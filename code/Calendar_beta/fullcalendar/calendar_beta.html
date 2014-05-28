@@ -244,7 +244,7 @@
                                                    $(this).hide();
                                                    
                                                    });
-                              
+                               
                               
                               $(document).delegate(".bc3cancel","click",function(e){
                                                   
@@ -1042,10 +1042,36 @@
                         $(".connect-icon").show();
                         $(".connect-text").show();
                                          });
-                              
-                              
-                              
-                    
+
+                      var curHeight=0;
+                      $(document).delegate(".cal-group-hider","click",function(){
+                                  curHeight=$('.cal-groups').height();
+                                  $('.cal-groups').animate({height:'0px',opacity:'0'},"medium");
+                                  $('.cal-group-hider').text("Show");
+
+                                  $('.cal-group-hider').addClass('cal-group-showr');
+                                  $('.cal-group-hider').removeClass('cal-group-hider');
+
+                            });
+
+                      $(document).delegate(".cal-group-showr","click",function(){
+                                  $('.cal-groups').animate({height:curHeight,opacity:'1'},"medium");
+                                  $('.cal-group-showr').text("Hide");
+                                  $('.cal-group-showr').addClass('cal-group-hider');
+                                  $('.cal-group-showr').removeClass('cal-group-showr');
+                            });
+
+                      $(document).delegate(".cal_view_events","click",function(){
+                          $('.fc-content').animate({height:'0px',opacity:'0'},"fast");
+                          $('.cal_view_events').text("Monthly Calendar");
+                          $('.cal_view_monthly').text("Event Planner");
+                          $('.cal_view_monthly').css('text-indent','-19px');
+                          $('.cal_view_events').css('text-indent','-6px');
+                      });
+                     
+
+
+
                     $(document).delegate(".repeatoptiont","mouseover",function(){
                                          $(this).css({"color":"#30E680","border-bottom":"1px solid #30E680"});
                                          });
@@ -1110,7 +1136,11 @@
 
               var lastScrollTop = 0;
             $(window).scroll(function(event){
+
+                //scroll function part
+
                 var st = $(this).scrollTop();
+
                 if (st > lastScrollTop){
                     var inc= st-lastScrollTop;
 
@@ -1125,7 +1155,6 @@
                     $(".month-fbtns").offset({ top: inc + offset_monthfbtns.top});
                     $(".incomplete-wrap").offset({ top: inc + offset_incompletewrap.top});
                     $(".explain-2").offset({ top: inc + offset_explain2.top});
-
 
                 } else {
                     var inc= st-lastScrollTop;
@@ -1143,6 +1172,15 @@
                     $(".explain-2").offset({ top: inc + offset_explain2.top});
                 }
                 lastScrollTop = st;
+
+                //scroll appearance part
+                if(st!=0){
+                  $(".fixed-cal-fbar").css({"box-shadow":"0 2px 2px -1px rgba(0,0,0,.1)"});
+                }else{
+                  
+                  $(".fixed-cal-fbar").css({"box-shadow":"none"});
+                }
+
                 });
                               
                                           
@@ -1266,97 +1304,23 @@ $(document).ready(function() {
          },
 
     });
+    $('input[name="check-box"]').wrap('<div class="check-box"><i></i></div>');
+    $.fn.toggleCheckbox = function () {
+        this.attr('checked', !this.attr('checked'));
+    }
+    $('.check-box').on('click', function () {
+        $(this).find(':checkbox').toggleCheckbox();
+        $(this).toggleClass('checkedBox');
+    });
+
+
+ 
     
   });
 
 </script>
 <body>
-    <section class="blackcanvasNew">
-          
-        <div class="bc3cancel"></div>
-          
-        <div id="newbc3content">
-        	<div class = "addevent-header0">
-            <a class="dexit">cancel</a>
-            <h1 class = "addevent-header1">Add Event</h1>
-            <div class = "addevent-header"> <button type="button" id="button1" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      Select event type
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" id="dropdown1">
-      <li><a id ="clickEvent1" href="#"><span id="event1"></span>Computational Biology</a></li>
-      <li><a id ="clickEvent2" href="#"><span id="event2"></span>Computer Science</a></li>
-      <li><a id ="clickEvent3" href="#"><span id="event3"></span>Computer Networking</a></li>
-      <li><a id ="clickEvent4" href="#"><span id="event4"></span>Ai</a></li>
-      <li><a id ="clickEvent5" href="#"><span id="event5"></span>Machine Learning</a></li>
-    </ul></div>
-        </div>
 
-          
-        <div class="uploadform">
-        	<div class="uploadevent">
-              <input type="text" id="nevt-title" placeholder="Title" class="nevt-input">
-              <input type="text" id="nevt-location" placeholder="Location" class="nevt-input">
-                  
-              <textarea wrap id="nevt-desc" onkeypress="taHeight()" placeholder="Details" class="nevt-input"></textarea>
-              <hr>
-              <div class="pdateinfo">
-              <span id = "newstardate-input"><input type="text" id="popupDatepicker">Pick a Date &#187; <span class="stdate"></span></span>
-                      
-            <div class='frtext'>From:</div><div class='totext'>To:</div>      
-        	</div>
-                  
-            <div class="hourpick1">
-             	<div class="input-append bootstrap-timepicker">
-                	<input id="timepicker1" type="text" class="input-small">
-                    <span class="add-on"><i class="icon-time"></i></span>
-              	</div> 
-          	</div>
-                  
-          
-            <div class="hourpick2">
-                <div class="input-append bootstrap-timepicker">
-                    <input id="timepicker2" type="text" class="input-small">
-                    <span class="add-on"><i class="icon-time"></i></span>
-              </div>
-            </div>
-                  
-			<div class='repeatc'><div class='repeathead'>Repeat:</div> <span class='repeatstate'>None</span>
-			  	<div class='repeatoption'>
-			    	<span class='repeatoptiont'>None</span>
-			        <span class='repeatoptiont'>Daily</span>
-			        <span class='repeatoptiont'>Weekly</span>
-			        <span class='repeatoptiont'>Monthly</span>
-			    </div>
-			</div>
-                  
-            </div>
-              
-				<div class="sb"><button class="acabuttons aca-submit">Create this Event</button>
-				</div>
-           
-              
-            </div>
-          
-          
-          
-          <!--mini calendar start-->
-      
-           <!--mini calendar ends--> 
-
-          
-          
-          
-			<div class="successinfo">
-			  <div class="si-head">Event added successfully</div>
-			  <div class="si-tail"><button class="addmore">Add more</button><button class="acabuttons" id = "donebutton">Done</button></div>
-			</div>
-          
-          
-          
-          <!---->
-		</div>
-	</section>
       
 <div class = "root">
     <div class = "top-bar">
@@ -1371,6 +1335,15 @@ $(document).ready(function() {
 
 
   <div class = "leftsec">
+      <div class = "sunken_toggle">
+         <span class = "active_view"></span>
+        <div class = "cal_view_monthly">
+        Monthly Calendar
+        </div>
+        <div class = "cal_view_events">
+          Event Planner
+        </div>       
+      </div>
       <div id="event-new">
           <div id="button-border">
            <div class="announcecolumn toolsforclass" style="position: relative">
@@ -1382,13 +1355,40 @@ $(document).ready(function() {
         <div class = "my-cals-wrap">
           <div class = "my-class-cals">
             <div class = "cals-header">
-              Events In My Classes
+              Class Events
+              <span class = "cal-group-hider">Hide</span>
+            </div>
+            <div class = "cal-groups">
+              <div id = "check-group-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Principles of Economics</span>
+              </div>
+              <div id = "check-group-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Principles of Economics</span>
+              </div>
+              <div id = "check-group-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Principles of Economics</span>
+              </div>
+               <div id = "check-group-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Principles of Economics</span>
+              </div>
+              <div id = "check-group-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Principles of Economics</span>
+              </div>                                                      
             </div>
           </div>
           <div class = "my-club-cals">
             <div class = "cals-header">
-              Events In My Clubs
+              Club Events
+              <span class = "cal-club-hider">Hide</span>
             </div>
+            <!--<div class = "cal-groups">
+              <div id = "check-club-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Young Politicians of America Organization</span>
+              </div>
+              <div id = "check-club-cal">
+                <input type="checkbox" name="check-box" /> <span class = "cal-group-title">Bhangra Dance Group</span>
+              </div>                                                     
+            </div>-->
           </div>
         </div>
       </div>
@@ -1436,11 +1436,12 @@ $(document).ready(function() {
 
           <div id='calendar'></div>
 
-          <div id="calendar-end"></div>
         </div>
       </div>
     </div>
   </div> 
+  <div class = "rightsec">
+  </div>
       
       
   
