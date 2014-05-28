@@ -1,0 +1,99 @@
+[29-Apr-2014 00:08:27] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/infi/index.php on line 17
+[29-Apr-2014 00:08:32] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/infi/index.php on line 17
+[29-Apr-2014 00:08:47] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/infi/index.php on line 17
+[29-Apr-2014 01:13:44] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi/index1.php on line 14
+[29-Apr-2014 01:15:28] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi/index1.php on line 14
+[25-May-2014 10:46:20] PHP Parse error:  syntax error, unexpected '<' in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 44
+[25-May-2014 10:46:23] PHP Parse error:  syntax error, unexpected '<' in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 44
+[26-May-2014 16:25:19] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:19] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:19] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:19] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:19] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:19] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:19] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:19] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:19] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:19] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:20] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:20] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:20] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:20] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:20] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:20] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:20] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:20] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:25:20] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:25:20] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:05] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:05] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[26-May-2014 16:27:37] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 13
+[26-May-2014 16:27:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 14
+[27-May-2014 14:36:58] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:36:58] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:36:58] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:38:53] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:38:53] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:38:53] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:46:31] PHP Fatal error:  Call to undefined function  checkplikes() in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 41
+[27-May-2014 14:53:55] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:53:55] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:53:55] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:55:23] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:55:23] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:55:23] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:57:32] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:57:32] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:57:32] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:57:37] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:57:37] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:57:37] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:59:14] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:59:14] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:59:14] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 14:59:15] PHP Warning:  mysqli_query() [<a href='function.mysqli-query'>function.mysqli-query</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 4
+[27-May-2014 14:59:15] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 138
+[27-May-2014 14:59:15] PHP Warning:  mysqli_close() [<a href='function.mysqli-close'>function.mysqli-close</a>]: Couldn't fetch mysqli in /home6/campusla/public_html/urlinq/kk/infi6/index5.php on line 151
+[27-May-2014 15:46:02] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:41) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 65
+[27-May-2014 15:47:07] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:41) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 65
+[27-May-2014 15:47:13] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:41) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 65
+[27-May-2014 15:47:49] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:41) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 65
+[27-May-2014 15:48:55] PHP Fatal error:  Call to undefined function  checkplikes() in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 63
+[27-May-2014 15:54:03] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:40) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 63
+[27-May-2014 15:57:02] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php:40) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 63
