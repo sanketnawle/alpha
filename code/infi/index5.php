@@ -1,7 +1,7 @@
 <?php 
 require_once('includes/dbconfig.php');
+// require_once('includes/likes1.php');
 $_SESSION['studentid']="1";
-// include "includes/likes.php";
 $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp DESC LIMIT 10");
 ?>
 
@@ -136,6 +136,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 		<div id='posts'>
 
 		<?php
+
 		while($row = mysqli_fetch_array($result)) {
 
 			include "includes/posts.php";

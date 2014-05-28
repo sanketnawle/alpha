@@ -1,9 +1,10 @@
 <?php
 
 require_once("dbconfig.php");
-
+$_SESSION['studentid']="1";
 // Uncomment the line below if you are testing this page alone
 // $_POST['last_time'] = "1397690304";
+
 
 if(isset($_POST['last_time'])){
 

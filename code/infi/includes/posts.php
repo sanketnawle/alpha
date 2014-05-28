@@ -38,7 +38,13 @@
 
 			//tools start
 			echo "<div class='post_tools'>";
-			echo "<div class='post_like'><img src='src/like-button.png'><div class='like_number'>10</div></div>";
+
+			echo "<div class='post_like'>";
+
+			include "postlikes.php";
+
+			// echo "<div class='like_number'>10</div>";
+			echo "</div>";
 			echo "<button class='post_follow'>Follow</button>";
 			echo "</div>";
 			//tools end
@@ -55,29 +61,7 @@
 
 				while($row1 = mysqli_fetch_array($reply_result)){
 
-					echo "<div class='post_comment' id='".strtotime($row1['update_timestamp'])."'>";
-					echo "<img src='dummy_pic/dummypic.png' class='comment_user_icon'>";
-
-			if($row1['studentid']!=0){
-				$cowner_result=mysqli_query($con,"select name from student_1 where studentid='".$row1['studentid']."'");
-				$cowner_row=mysqli_fetch_array($cowner_result);
-				$comment_owner=$cowner_row['name'];
-			}
-			else if($row1['profid']!=0){
-				$cowner_result=mysqli_query($con,"select name from professor_1 where profid='".$row1['profid']."'");
-				$cowner_row=mysqli_fetch_array($cowner_result);
-				$comment_owner=$cowner_row['name'];
-			}
-			else{
-				$comment_owner="Invalid User";
-			}
-
-					echo "<div class='comment_main'><span class='comment_owner'>".$comment_owner."</span> "."<span class='comment_msg'>".$row1['replymessage']."</span></div>";
-					
-					echo "<br><div class='comment_time'>".$row1['update_timestamp']."</div>";
-					echo "<div class='comment_like'><img src='src/like-button.png'><div class='comment_like_number'>10</div></div>";
-
-					echo "</div>";
+					include "includes/comments.php";
 				}
 			}
 			else{
