@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>
+<script src='lib/jquery.min.js'></script>
+<script src='lib/jquery-ui.custom.min.js'></script>
+<script src='fullcalendar/fullcalendar.min.js'></script>
+<script src='md5.js'></script> 
+<link href='p0.css' rel='stylesheet' />
+<link href='p01.css' rel='stylesheet' />
+<script type="text/javascript" src="datetimepicker/jquery.simple-dtpicker.js"></script>
+<link type="text/css" href="datetimepicker/jquery.simple-dtpicker.css" rel="stylesheet" />       
+<script src="banner.js"></script>
+<link rel="stylesheet" type="text/css" href="banner.css">
+<link rel="stylesheet" type="text/css" href="minical.css">    
+<script type="text/javascript" src="bootstrap/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="bootstrap/assets/prettify/prettify.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-timepicker.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/assets/pygments.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/assets/prettify/prettify.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/add.css" />
+<script>
+                $.fn.autogrow = function(options)
+    {
+        return this.filter('textarea').each(function()
+        {
+            var self         = this;
+            var $self        = $(self);
+            var minHeight    = $self.height();
+            var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
+
+            var shadow = $('<div></div>').css({
+                position:    'absolute',
+                top:         -10000,
+                left:        -10000,
+                width:       $self.width(),
+                fontSize:    $self.css('fontSize'),
+                fontFamily:  $self.css('fontFamily'),
+                fontWeight:  $self.css('fontWeight'),
+                lineHeight:  $self.css('lineHeight'),
+                resize:      'none',
+          'word-wrap': 'break-word'
+            }).appendTo(document.body);
+
+            var update = function(event)
+            {
+                var times = function(string, number)
+                {
+                    for (var i=0, r=''; i<number; i++) r += string;
+                    return r;
+                };
+
+                var val = self.value.replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/\n$/, '<br/>&nbsp;')
+                                    .replace(/\n/g, '<br/>')
+                                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
+
+        // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
+        if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
+          val += '<br />';
+        }
+
+                shadow.css('width', $self.width());
+                shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
+                $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
+            }
+
+            $self.change(update).keyup(update).keydown({event:'keydown'},update);
+            $(window).resize(update);
+            update();
+        });
+    };
+            $(document).ready(function() {
+                $(function() {
+                 $('#nevt-desc').autogrow();
+                 $('#nevt-desc').css('overflow', 'hidden').autogrow()
+              });        
+                
+                              
+                              var renderEventAct0=[];
+                              var renderEventAct1=[];
+                              
+                              $("#edit-picture").hide();    
+                              
+                              $(document).delegate("#profile-picture","mouseover",function(){
+                                                   $("#edit-picture").show();
+                                                   });  
+                              $(document).delegate("#edit-picture","mouseover",function(){
+                                                   $("#edit-picture").show();
+                                                   }); 
+                              $(document).delegate("#edit-picture","mouseout",function(){
+                                                   $("#edit-picture").hide();
+                                                   });         
+                              $(document).delegate("#profile-picture","mouseout",function(){
+                                                   $("#edit-picture").hide();
+                                                   }); 
+                              
+                              
+                              
+                              
+                              
+                              
+                              $( ".class-name" ).each(function( index ) {
+                                                      if($(this).text().length>21){
+                                                      //alert($(this).attr("id"));
+                                                      $(this).text($(this).text().substr(0,18)+"...");
+                                                      }
+                                                      });
+                              $( ".club-name" ).each(function( index ) {
+                                                     if($(this).text().length>21){
+                                                     //alert($(this).attr("id"));
+                                                     $(this).text($(this).text().substr(0,18)+"...");
+                                                     }
+                                                     });
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              $(document).delegate(".x-icon","mouseover",function(){
+                                                   $(this).closest(".class-buttons").find(".xdescription").show();
+                                                   });  
+                              $(document).delegate(".x-icon","mouseout",function(){
+                                                   $(this).closest(".class-buttons").find(".xdescription").hide();
+                                                   });    
+                              
+                              
+                              $(document).delegate(".edit-classes","mousedown",function(){
+                                                   $(".edit-classes").hide();
+                                                   $("#done-edit-classes").show();
+                                                   $(".class-buttons").show();
+                                                   });
+                              
+                              $(document).delegate(".announce","mouseover",function(){
+                                                   $(this).closest(".announcecolumn").find(".anndescription").show();
+                                                   });  
+                              $(document).delegate(".announce","mouseout",function(){
+                                                   $(this).closest(".announcecolumn").find(".anndescription").hide();
+                                                   });  
+                              
+                              $(document).delegate(".addevent","mouseover",function(){
+                                                   $(this).closest(".announcecolumn").find(".adedescription").show();
+                                                   });  
+                              $(document).delegate(".addevent","mouseout",function(){
+                                                   $(this).closest(".announcecolumn").find(".adedescription").hide();
+                                                   });    
+                              
+                              
+                              $(document).delegate(".edit-classes","mousedown",function(){
+                                                   $(".edit-classes").hide();
+                                                   $("#done-edit-classes").show();
+                                                   $(".class-buttons").show();
+                                                   });  
+                              
+                              $(document).delegate("#done-edit-classes","mousedown",function(){
+                                                   $(this).hide();
+                                                   $(".edit-classes").show();
+                                                   $(".class-buttons").hide();
+                                                   });    
+                              
+                              
+                              
+                              $(document).delegate(".x-icon","click",function(){
+                                                   var pid= "kw="+$(this).closest(".class-one").attr("id");
+                                                   $("#blackcanvas").show();
+                                                   $(".dropconfirm").attr("id",pid);
+                                                   
+                                                   });  
+                              
+                              
+                              $(document).delegate("#blackcanvas","click",function(e){
+                                                   
+                                                   if(($(e.target).is(".dropconfirm > *"))||($(e.target).is(".dropconfirm"))){return false;
+                                                   
+                                                   }
+                                                   
+                                                   $(this).hide();
+                                                   
+                                                   });
+                              
+                              
+                              $(document).delegate(".bc3cancel","click",function(e){
+                                                  
+                                                   $(".blackcanvas3").fadeOut();
+                                                   if(animationflag==1){
+                                                   $( "#bc3content" ).animate({marginRight:"-=700px"});
+                                                   animationflag=0;
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+                              
+                              
+                              $(document).delegate(".dbuttons","click",function(){
+                                                   var v= $(this).val();
+                                                   $("#blackcanvas").hide();
+                                                   if(v==1){
+                                                   var tid= $(".dropconfirm").attr("id").split("=");
+                                                   $("#"+tid[1]).hide();
+                                                   }
+                                                   $("#blackcanvas").hide();
+                                                   
+                                                   });
+                              
+                              
+                              $(document).delegate(".dexit","mouseover",function(){
+                                                   
+                                                   $(this).css("opacity","1");
+                                                   });
+                              
+                              $(document).delegate(".dexit","mouseout",function(){
+                                                   
+                                                   $(this).css("opacity","1");
+                                                   });
+                              
+                              
+                              $(document).delegate(".dexit","click",function(){
+                                                   
+                                                   $("#blackcanvas").hide();
+                                                   $("#blackcanvas2").fadeOut();
+ 
+                                                   
+                                                   $(".blackcanvas3").fadeOut();
+                                                   if(animationflag==1){
+                                                   $( "#bc3content" ).animate({marginRight:"-=700px"});
+                                                   animationflag=0;
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+                              
+                              $(document).delegate(".dexit-p","mouseover",function(){
+                                                   
+                                                   $(this).css("opacity","1");
+                                                   });
+                              
+                              $(document).delegate(".dexit-p","mouseout",function(){
+                                                   
+                                                   $(this).css("opacity","1");
+                                                   });
+                              
+                              
+                              $(document).delegate(".dexit-p","click",function(){
+                                                   
+                                                   $("#blackcanvas").hide();
+                                                   $("#blackcanvas2").fadeOut();
+
+                                                   
+                                                   $(".blackcanvas3").fadeOut();
+                                                   if(animationflag==1){
+                                                   $( "#bc3content" ).animate({marginRight:"-=700px"});
+                                                   animationflag=0;
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+                              $(document).delegate(".edit-clubs","mousedown",function(){
+                                                   $(".edit-clubs").hide();
+                                                   $("#done-edit-clubs").show();
+                                                   $(".club-buttons").show();
+                                                   });    
+                              
+                              $(document).delegate("#done-edit-clubs","mousedown",function(){
+                                                   $(this).hide();
+                                                   $(".edit-clubs").show();
+                                                   $(".club-buttons").hide();
+                                                   });   
+                              
+                              var ut=$("#university-title").text();
+                              var st=$("#school-title").text();
+                              var mat=$("#study-title").text();
+                              var mit=$("#minor-title").text();
+                              var eml=$("#user-email").text();
+                              var btx=$("#bio-contents").text();
+                              var loc=$("#user-location").text();
+                              $(document).delegate(".edit-profile","click",function(){
+                                                   $(this).addClass("pediting");
+                                                   $(this).text("Done Editing");
+                                                   
+                                                   $("#user-profile-info").hide();
+                                                   $("#editcolumn-u").val(ut);
+                                                   
+                                                   $("#editcolumn-a").val(mat);
+                                                   $("#editcolumn-i").val(mit);
+                                                   $(".editprofile").show();
+                                                   
+                                                   $(".peditable").hide();
+                                                   
+                                                   $(".emailtext").val(eml);
+                                                   $(".loctext").val(loc);
+                                                   $(".biotext").val(btx);
+                                                   $(".editingbio").show();
+                                                   
+                                                   });
+                              $(document).delegate(".peditable","click",function(){
+                                                  $(this).hide();
+                                                   $('.biotext').contentEditable = true;
+                                                 
+                                                  $(".biotext").show();
+                                                  $('.biotext').contentEditable = true;
+
+                              });
+                              
+                              $(document).delegate(".pediting","click",function(){
+                                                   
+                                                   $(this).removeClass("pediting");
+                                                   $(this).text("Edit Profile");
+                                                   
+                                                   $(".editprofile").hide();
+                                                   $("#university-title").text(ut);
+                                                   $("#school-title").text(st);
+                                                   $("#study-title").text(mat);
+                                                   $("#minor-title").text(mit);
+                                                   $("#user-profile-info").show();
+                                                   
+                                                   $(".editingbio").hide();
+                                                   $("#user-email").text(eml);
+                                                   $("#bio-contents").text(btx);
+                                                   $(".peditable").show();
+                                                   $(".peditable2").show();
+                                                   
+                                                   /*Ajax goes here*/
+                                                   /*ut= university title; 
+                                                    st= school title
+                                                    mat= major title
+                                                    mit= minor title
+                                                    eml= email address
+                                                    btx= bio text
+                                                    */
+                                                   });
+                              
+                              $(document).delegate(".editcolumn","keyup",function(){
+                                                   if($(this).attr("id")=="editcolumn-u"){
+                                                   ut=$(this).val();
+                                                   }
+                                                   
+                                                   if($(this).attr("id")=="editcolumn-a"){
+                                                   mat=$(this).val();
+                                                   }
+                                                   if($(this).attr("id")=="editcolumn-i"){
+                                                   mit=$(this).val();
+                                                   }
+                                                   });
+                              
+                              $(document).delegate(".editingbio","keyup",function(){
+                                                   if($(this).hasClass("emailtext")){
+                                                   eml=$(this).val();
+                                                   }
+                                                   if($(this).hasClass("loctext")){
+                                                   eml=$(this).val();
+                                                   }
+                                                   if($(this).hasClass("biotext")){
+                                                   btx=$(this).val();
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+                              
+                              $(document).delegate(".annbuttons","click",function(){
+                                                   
+                                                   $("#blackcanvas2").fadeOut();
+                                                   
+                                                   if($(this).hasClass("ann-submit")){
+                                                   
+                                                   var tid=$(this).attr("id").split("=");
+                                                   var cid=tid[1];
+                                                   /*cid is the course/club id*/
+                                                   
+                                                   /*Ajax goes here*/
+                                                   
+                                                   }
+                                                   
+                                                   });
+                              
+                              //need slightly revise!!
+                              $(document).delegate(".acabuttons","click",function(){
+                                                   
+                                                  
+                                                   
+                                                   if($(this).hasClass("aca-submit")){
+                                                   
+                                                    /*cid is the course/club id*/
+                                                   var tid=$(this).closest(".blackcanvas3").attr("id").split("=");
+                                                   var cid=tid[1];
+                                                   
+                                                   
+                                                   var t="";
+                                                   var t= $("#nevt-title").val();
+                                                   var desc=$("#nevt-desc").val();
+                                                   
+                                                   var st="";
+                                                   var tdate="";
+                                                   var tdate=$(".stdate").text();
+                                                   
+                                                   
+                                                   var st=tdate+" "+$('#timepicker1').data("timepicker").getTime();
+                                                   var ed=tdate+" "+$('#timepicker2').data("timepicker").getTime();
+                                                   
+                                                   var repeatstt= $(".repeatstate").text();
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   if((t!="")&&(tdate!=""))
+                                                   {
+                                                   alert(t+","+desc+","+st+","+ed+","+repeatstt+". added, please remove me and add ajax here");
+                                                   /*ajax goes here*/
+                                                   /*
+                                                    $.ajax({
+                                                    url: "http://127.0.0.1/PhpProject/calendar_0114/fullcalendar/user/create_events.php",
+                                                    data: "&id=" + gt+"&title=" + t+ "&start=" + dta+ "&end=" + dtb + "&description=" + desc,
+                                                    type: "POST",
+                                                    error: function(json){ alert('Error'); },
+                                                    success: function(json) { alert('Added Successfully'); }
+                                                    });
+                                                    */
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   
+                                                   //after ajax
+                                                   //appearance part
+                                                   
+                                                   //alter the event state from active1 to active0
+                                                   cleanBlinkActive1();
+                                                   cleanActive0();
+                                           
+                                                   var tpid=$(".stdate").attr("id").split("=");
+                                                   var nid= tpid[1];
+                                                   
+                                                   $("#"+nid).removeClass("active1");
+                                                   
+                                                   renderEventAct0.push(nid+"::"+$m);
+                                                   
+                                                   //retreive active0
+                                                   $.each( renderEventAct0, function( index, value ) {
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];
+                                                          if(parseInt(ind)==parseInt($m)){
+                                                          $("#"+dte).addClass("active0");
+                                                          }
+                                                          });
+                                                   
+                                                   
+                                                   $.each( renderEventAct1, function( index, value ) {
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];                                                          
+                                                          if(dte==nid){
+                                                          renderEventAct1.splice(index,value);
+                                                          }
+                                                          });
+                                                   
+                                                   
+                                                   
+                                                   //after added, remove everything
+                                                   
+                                                   $(".sb").remove();
+                                                   $(".uploadevent").remove();
+                                                   //remove complete
+                                                   //pop up add more button
+                                                   $(".successinfo").fadeIn();
+                                                   $("#startdate-input").animate({
+                                                                    marginLeft: '+=70px'
+                                                                                 }, 500);
+                                                   moveflag=0;
+                                                   
+                                                   }
+                                                   
+                                                   
+                                                   
+                                                   }else{
+                                                   $( "#bc3content" ).animate({marginRight:"-=700px"});
+
+                                                   $(".blackcanvas3").hide();
+                                                   animationflag=0;
+                                                    
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+                              
+                              $(document).delegate(".addmore","click",function(){
+                                                   $(".successinfo").hide();
+                                                   
+                                                   //add back removed elements
+                                                   
+                                                   
+                                                   $(".uploadform").append("<div class='uploadevent'><input type='text' id='nevt-title' placeholder='Title' class='nevt-input'><input type='text' id='nevt-location' placeholder='Location' class='nevt-input'><textarea wrap id='nevt-desc' onkeypress='taHeight()' placeholder='Details' class='nevt-input'></textarea><hr><div class='pdateinfo'><span id = 'startdate-input'>Pick a Date &#187; <span class='stdate'></span></span><div class='frtext'>from:</div><div class='totext'>to:</div></div><div class='hourpick1'><div class='input-append bootstrap-timepicker'><input id='timepicker1' type='text' class='input-small'><span class='add-on'><i class='icon-time'></i></span></div></div><div class='hourpick2'><div class='input-append bootstrap-timepicker'><input id='timepicker2' type='text' class='input-small'><span class='add-on'><i class='icon-time'></i></span></div></div></div>");
+                                                   
+                                                   $(".uploadform").append("<div class='sb'><button class='acabuttons aca-submit'>Add Event</button></div>");
+                                                   
+                                                   $(".uploadevent").append("<div class='repeatc'><div class='repeathead'>Repeat:</div> <span class='repeatstate'>None</span><div class='repeatoption'><span class='repeatoptiont'>None</span><span class='repeatoptiont'>Daily</span><span class='repeatoptiont'>Weekly</span><span class='repeatoptiont'>Monthly</span></div></div>");
+                                                   
+                                                   $('#timepicker1').timepicker();
+                                                   $('#timepicker2').timepicker();
+                                                   
+                                                   //initiate the global vars
+                                                   moveflag=0;
+                                                   blinkflag=0;
+                                                   
+                                                   });
+                              
+                              
+                              $(document).delegate(".announce","mousedown",function(){
+                                                   var tid="";
+                                                   if($(this).closest(".announcecolumn").hasClass("toolsforclass"))
+                                                   {
+                                                   tid="ed="+$(this).closest(".class-one").attr("id");
+                                                   }
+                                                   
+                                                   if($(this).closest(".announcecolumn").hasClass("toolsforclub"))
+                                                   {
+                                                   tid="ed="+$(this).closest(".club-one").attr("id");
+                                                   }
+                                                   
+                                                   
+                                                   $(".annbuttons").attr("id",tid)
+                                                   $("#blackcanvas2").fadeIn();
+                                                   
+                                                   });
+                              
+                              var animationflag=0;
+                              $(document).delegate(".addevent","mousedown",function(){
+                                                   var tid="";
+                                                   if($(this).closest(".announcecolumn").hasClass("toolsforclass"))
+                                                   {
+                                                   tid="ed="+$(this).closest(".class-one").attr("id");
+                                                   }
+                                                   
+                                                   if($(this).closest(".announcecolumn").hasClass("toolsforclub"))
+                                                   {
+                                                   tid="ed="+$(this).closest(".club-one").attr("id");
+                                                   }
+                                                   
+                                                   
+                                                   $(".blackcanvas3").attr("id",tid);
+                                                   $(".blackcanvas3").fadeIn();
+                                                   animationflag=1;
+                                                   
+                                                   //$("#bc3content").css("margin-right","0px");
+                                                   $( "#bc3content" ).animate({marginRight:"+=700px"});
+                                                   });
+                              
+                              
+                             
+                              
+                              
+                              function retyear(t){
+                              var t0=t.split(" ");
+                              var t1=t0[0].split("/");
+                              return t1[0];
+                              }
+                              function retmonth(t){
+                              var t0=t.split(" ");
+                              var t1=t0[0].split("/");
+                              return t1[1];
+                              }
+                              function retday(t){
+                              var t0=t.split(" ");
+                              var t1=t0[0].split("/");
+                              return t1[2];
+                              }  
+                              function rethour(t){
+                              var t0=t.split(" ");
+                              var t1=t0[1].split(":");
+                              return t1[0];
+                              }
+                              function retminute(t){
+                              var t0=t.split(" ");
+                              var t1=t0[1].split(":");
+                              return t1[1];
+                              }
+                              
+                              
+                              
+                              
+                              /*JQ for mini calendar*/
+                              function daysInMonth(month, year) {
+                              return new Date(year, month+1, 0).getDate();
+                              }
+                              
+                              function startAt(month, year) {
+                              return new Date(year, month, 1).getDay();
+                              }
+                              
+                              var date= new Date();
+                              var months=new Array();
+                              months[0]="January";
+                              months[1]="February";
+                              months[2]="March";
+                              months[3]="April";
+                              months[4]="May";
+                              months[5]="June";
+                              months[6]="July";
+                              months[7]="August";
+                              months[8]="September";
+                              months[9]="October";
+                              months[10]="November";
+                              months[11]="December";
+                              var $m= date.getMonth();
+                              var $M = months[$m]; 
+                              var $y = date.getFullYear(); 
+                              $(".minical-h1").text($M+" "+$y);
+                              
+                              var $ds=daysInMonth($m,$y);
+                              //alert(daysInMonth(m,y));
+                              
+                              var weekday=new Array(7);
+                              weekday[0]="su";
+                              weekday[1]="mo";
+                              weekday[2]="tu";
+                              weekday[3]="we";
+                              weekday[4]="th";
+                              weekday[5]="fr";
+                              weekday[6]="sa";
+                              var $w = weekday[startAt($m,$y)]; 
+                              //alert(w);
+                              
+                              $( ".calcell" ).each(function( index ) {
+                                                   var tid=$(this).attr("id");
+                                                   var tidsp= tid.split("_");
+                                                   var idx= tidsp[2];
+                                                   var td= tidsp[1];
+                                                   if((td==$w)&&(idx<=6))
+                                                   {
+                                                   
+                                                   for ( var i = idx; i < (parseInt(idx)+parseInt($ds)); i++ ) {
+                                                   
+                                                   $(".cl_"+i).removeClass("disable");
+                                                   $(".cl_"+i).text(parseInt(i)-parseInt(idx)+parseInt(1));
+                                                   }
+                                                   
+                                                   }
+                                                   });
+                              //mutated
+                              $(document).delegate(".m-next","click",function(){
+                                                   /*archive event*/
+                                                   $( ".calcell" ).each(function( index ) {
+                                                                        var iid= $(this).attr("id")+"::"+$m;
+                                                                        var inact0= jQuery.inArray( iid, renderEventAct0 );
+                                                                        var inact1= jQuery.inArray( iid, renderEventAct1 );
+                                                                        
+                                                                        
+                                                                        if($(this).hasClass("active0")&&(inact0=="-1")){renderEventAct0.push(iid);}
+                                                                        if($(this).hasClass("active1")&&(inact1=="-1")){renderEventAct1.push(iid);}
+                                                                        
+                                                                        
+                                                                        });
+                                                   /*archive event end*/
+                                                   cleanCalendar();
+                                                   if($m<11){
+                                                   $m=$m+1;
+                                                   }else{
+                                                   $m=0;
+                                                   }
+                                                   
+                                                   var $M = months[$m]; 
+                                                   var $ds=daysInMonth($m,$y);
+                                                   $(".minical-h1").text($M+" "+$y);
+                                                   
+                                                   var $ds=daysInMonth($m,$y);
+                                                   var $w = weekday[startAt($m,$y)];
+                                                   $( ".calcell" ).each(function( index ) {
+                                                                        var tid=$(this).attr("id");
+                                                                        var tidsp= tid.split("_");
+                                                                        var idx= tidsp[2];
+                                                                        var td= tidsp[1];
+                                                                        if((td==$w)&&(idx<=6))
+                                                                        {
+                                                                        
+                                                                        for ( var i = idx; i < (parseInt(idx)+parseInt($ds)); i++ ) {
+                                                                        
+                                                                        $(".cl_"+i).removeClass("disable");
+                                                                        $(".cl_"+i).text(parseInt(i)-parseInt(idx)+parseInt(1));
+                                                                        }
+                                                                        
+                                                                        }
+                                                                        });
+                                                   
+                                                   cleanActive0();
+                                                   cleanBlinkActive1();
+                                                   cleanBlinkActive2();
+                                                   
+                                                   /*retreive event*/
+                                                   $.each( renderEventAct0, function( index, value ) {
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];
+                                                          if(parseInt(ind)==parseInt($m)){
+                                                          $("#"+dte).addClass("active0");
+                                                          }
+                                                          });
+                                                   $.each( renderEventAct1, function( index, value ) {
+                                                          //alert(value);
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];
+                                                          if(parseInt(ind)==parseInt($m)){
+                                                          $("#"+dte).addClass("active1");
+                                                          
+                                                          }
+                                                          });
+                                                   
+                                                   /*retreive event end*/
+                                                   
+                                                   });
+                              //mutated
+                              $(document).delegate(".m-prev","click",function(){
+                                                   /*archive event*/
+                                                   $( ".calcell" ).each(function( index ) {
+                                                                        var iid= $(this).attr("id")+"::"+$m;
+                                                                        var inact0= jQuery.inArray( iid, renderEventAct0 );
+                                                                        var inact1= jQuery.inArray( iid, renderEventAct1 );
+                                                                    
+                                                                        
+                                                                        if($(this).hasClass("active0")&&(inact0=="-1")){renderEventAct0.push(iid);}
+                                                                        if($(this).hasClass("active1")&&(inact1=="-1")){renderEventAct1.push(iid);}
+                                                                        
+                                                                        
+                                                                        });
+                                                   /*archive event end*/
+                                                   
+                                                   cleanCalendar();
+                                                   if($m>0){
+                                                   $m=$m-1;
+                                                   }else{
+                                                   $m=11;
+                                                   }
+                                                   
+                                                   var $M = months[$m]; 
+                                                   var $ds=daysInMonth($m,$y);
+                                                   $(".minical-h1").text($M+" "+$y);
+                                                   
+                                                   var $ds=daysInMonth($m,$y);
+                                                   var $w = weekday[startAt($m,$y)];
+                                                   $( ".calcell" ).each(function( index ) {
+                                                                        var tid=$(this).attr("id");
+                                                                        var tidsp= tid.split("_");
+                                                                        var idx= tidsp[2];
+                                                                        var td= tidsp[1];
+                                                                        if((td==$w)&&(idx<=6))
+                                                                        {
+                                                                        
+                                                                        for ( var i = idx; i < (parseInt(idx)+parseInt($ds)); i++ ) {
+                                                                        
+                                                                        $(".cl_"+i).removeClass("disable");
+                                                                        $(".cl_"+i).text(parseInt(i)-parseInt(idx)+parseInt(1));
+                                                                        }
+                                                                        
+                                                                        }
+                                                                        });
+                                                   
+                                                   
+                                                   cleanActive0();
+                                                   cleanBlinkActive1();
+                                                
+                                                   
+                                                   /*retreive event*/
+                                                   $.each( renderEventAct0, function( index, value ) {
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];
+                                                          if(parseInt(ind)==parseInt($m)){
+                                                          $("#"+dte).addClass("active0");
+                                                          }
+                                                          });
+                                                   $.each( renderEventAct1, function( index, value ) {
+                                                          //alert(value);
+                                                          var mth=value.split("::");
+                                                          var ind=mth[1];
+                                                          var dte=mth[0];
+                                                          if(parseInt(ind)==parseInt($m)){
+                                                          $("#"+dte).addClass("active1");
+                                                          
+                                                          }
+                                                          });
+                                                   
+                                                   /*retreive event end*/
+                                                   
+                                                   
+                                                   });
+                              
+                              function cleanCalendar(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   $(this).text("");
+                                                   $(this).addClass("disable");
+                                                   });
+                              }
+                              
+                              function cleanBlinkActive1(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   $(this).removeClass("active1");
+                                                   $(this).removeClass("blink1");
+                                                   
+                                                   });
+                              }
+                              
+                              function cleanBlinkActive2(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   $(this).removeClass("active2");
+                                                   $(this).removeClass("blink2");
+                                                   
+                                                   });
+                              }
+                              //mutated
+                              function cleanActive0(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   $(this).removeClass("active0");
+                                                   
+                                                   });
+                              }
+                              
+                              function cleanBlink1(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   
+                                                   $(this).removeClass("blink1");
+                                                   
+                                                   });
+                              }
+                              
+                              function cleanBlink2(){
+                              $( ".calcell" ).each(function( index ) {
+                                                   
+                                                   $(this).removeClass("blink2");
+                                                   
+                                                   });
+                              }
+                              
+                              var blinkflag=0;
+                              var moveflag=0;
+                              $(document).delegate(".calcell","click",function(){
+                                                   if(!$(this).hasClass("disable")){
+                                                   if(blinkflag==0){
+                                                   
+                                                   cleanBlinkActive1();
+                                                   $(this).addClass("active1");
+                                                   $(this).addClass("blink1");
+                                                   
+                                                   var ddd=$(this).text();
+                                                   $M=months[$m];
+                                                   if(moveflag==0){
+                                                   $("#startdate-input").animate({
+                                                            marginLeft: '-=70px'
+                                                                                 }, 500);
+                                                   moveflag=1;
+                                                   }
+                                                   
+                                                   var nid= "wk="+$(this).attr("id")
+                                                   $(".stdate").text($M+" "+ddd);
+                                                   $(".stdate").attr("id",nid);
+                                                   /*
+                                                   $(".stdate").fadeIn( 'slow', function(){ 
+                                                                       
+                                                                       });
+                                                   
+                                                   */
+                                                   
+                                                   
+                                                   }
+                                                   /*
+                                                   if(blinkflag==1){
+                                                   cleanBlinkActive2();
+                                                   $(this).addClass("active2");
+                                                   $(this).addClass("blink2");
+                                                   if(hp2exists==0){
+                                                   createHourPicker2();
+                                                   
+                                                   }
+                                                   }
+                                                   */
+                                                   }
+                                                   
+                                                   });
+                              
+                              
+
+                              
+                              $(document).delegate(".hp1cells","mouseover",function(){
+                                                   $(this).css({"background-color":"#44D37C","color":"white"});
+                                                   });
+                              $(document).delegate(".hp1cells","mouseout",function(){
+                                                   $(this).css({"background-color":"transparent","color":"black"});
+                                                   });
+                              
+                              $(document).delegate(".hp1cells","click",function(){
+                                                   $(".hpdisplay1 span").text($(this).text());
+                                                   $(".hpdisplay1").attr("id",$(this).attr("id"));
+                                                   
+                                                   });
+                              
+                              //mutated
+                              $(document).delegate(".hp1ok","click",function(){
+                                                   if($(".hpdisplay1").attr("id")!="notime1"){
+                                                   
+                                                   $(".hp1content").remove();
+                                                   
+                                                   cleanBlink1();
+                                                   blinkflag=2;
+                                                   
+                                                   
+                                                   //alert($m);
+                                                   var tid=$y+"-"+$m+"-"+$(".active1").text()+"-"+$(".hpdisplay1").attr("id");
+                                                   $(".hpdisplay1").attr("id",tid);
+                                                   
+                                                   
+                                                   createHourPicker2();
+                                                   var nid= "fnl="+$(".active1").attr("id");
+                                                   $(".finalstep").css("margin-left","170px");
+                                                   $(".finalstep").attr("id",nid);
+                                                   }
+                                                   });
+                              
+                              
+                              
+                              $(document).delegate(".hp2cells","mouseover",function(){
+                                                   $(this).css({"background-color":"#44D37C","color":"white"});
+                                                   });
+                              $(document).delegate(".hp2cells","mouseout",function(){
+                                                   $(this).css({"background-color":"transparent","color":"black"});
+                                                   });
+                              
+                              $(document).delegate(".hp2cells","click",function(){
+                                                   $(".hpdisplay2 span").text($(this).text());
+                                                   $(".hpdisplay2").attr("id",$(this).attr("id"));
+                                                   });
+                              
+                              //mutated
+                              $(document).delegate(".hp2ok","click",function(){
+                                                   if($(".hpdisplay2").attr("id")!="notime2"){
+                                                   $(".hp2content").remove();
+                                                   blinkflag=2;
+                                                   }
+                                                   //alert($m);
+                                                   var tid=$y+"-"+$m+"-"+$(".active2").text()+"-"+$(".hpdisplay2").attr("id");
+                                                   $(".hpdisplay2").attr("id",tid);
+                                                   });
+                              
+                              //mutated
+                    $(".connect-text-linqd").hide();
+                    $(".connect-text-unlinq").hide();          
+                    $(document).delegate(".connect-button","mouseup",function(){
+                        $(".cb1").removeClass("connect-button");
+                        $(".cb1").addClass( "connect-button-linqd" );
+                        $(".connect-text").hide();
+                        $(".connect-icon").hide();
+                        $(".connect-text-linqd").show();
+                                         });         
+                    $(document).delegate(".connect-button-linqd","mouseenter",function(){
+                        $(".cb1").removeClass("connect-button-linqd");
+                        $(".cb1").addClass( "connect-button-unlinq" );
+                        $(".connect-text-linqd").hide();
+                        $(".connect-text-unlinq").show();
+                                         });   
+
+                    $(document).delegate(".connect-button-unlinq","mouseleave",function(){
+                        $(".cb1").removeClass("connect-button-unlinq");
+                        $(".cb1").addClass( "connect-button-linqd" );
+                        $(".connect-text-unlinq").hide();
+                        $(".connect-text-linqd").show();
+                                         });   
+                    $(document).delegate(".connect-button-unlinq","mouseup",function(){
+                        $(".cb1").removeClass("connect-button-unlinq");
+                        $(".cb1").addClass( "connect-button" );
+                        $(".connect-text-unlinq").hide();
+                        $(".connect-icon").show();
+                        $(".connect-text").show();
+                                         });
+                              
+                              
+                              
+                    
+                    $(document).delegate(".repeatoptiont","mouseover",function(){
+                                         $(this).css({"color":"#30E680","border-bottom":"1px solid #30E680"});
+                                         });
+                    $(document).delegate(".repeatoptiont","mouseout",function(){
+                                                   $(this).css({"color":"rgba(0,0,0,0.7)","border-bottom":"1px solid #ccc"});
+                                                   });
+                              $(document).delegate(".repeatstate","mouseover",function(){
+                                                   $(this).css({"opacity":"1"});
+                                                   $(".repeatoption").fadeIn();
+                                                   });
+
+                              $(document).delegate(".repeatstate","mouseout",function(){
+                                                   $(this).css({"opacity":"1"});
+                                                   $(".repeatoption").fadeOut();
+                                                   });
+                              $(document).delegate(".repeatoption","mouseout",function(){
+                                                   $(".repeatoption").fadeOut();
+                                                   });
+
+                              $(document).delegate(".repeatstate","mouseout",function(){
+                                                   $(this).css({"opacity":"0.7"});
+                                                   
+                                                   });
+
+                              $(document).delegate(".repeatoption","mouseover",function(){
+                                                   $(this).stop(true,true).show();
+                                                   });
+                    
+                              
+                     $(document).delegate(".repeatstate","click",function(){
+                                          $(".repeatoption").fadeIn();         
+                                          });
+                              
+                              
+                              
+                    $(document).delegate(".repeatoptiont","click",function(){
+                                        
+                                         
+                                         $(".repeatstate").text($(this).text());
+                                         
+                                         $(".repeatoption").hide();
+                                        });
+                              
+                            
+                              
+                    $('#timepicker1').timepicker();
+                    $('#timepicker2').timepicker();
+
+                              
+                                          
+        });
+      </script>    
+<script>
+
+ $(document).ready(function() {
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+  var calendar = $('#calendar').fullCalendar({
+   editable: true,
+   header: {
+    left: 'prev title next',
+    center: '',
+    right: ''
+   },
+   
+   /*echo events*/                                          
+   events: "http://127.0.0.1/PhpProject/calendar_0118/fullcalendar/user/events.php",
+   
+   // Convert the allDay from string to boolean
+   eventRender: function(event, element, view) {
+    if (event.allDay === 'true') {
+     event.allDay = true;
+    } else {
+     event.allDay = false;
+    }
+   },
+   selectable: true,
+   selectHelper: true,
+   select: function(start, end, allDay) {
+
+    start = $.fullCalendar.formatDate(start, "yyyy/MM/dd 11:45");
+    end = $.fullCalendar.formatDate(end, "yyyy/MM/dd 11:45");
+
+    $("#button-border").hide();
+    $("#create-form").show();
+    $("#nevt-st").val(start);
+    $("#nevt-ed").val(end);                                         
+    return false;
+   } , 
+    
+                                             
+   editable: true,
+                                             
+   eventDrop: function(event, delta) {
+   start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+   end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+   $.ajax({
+   url: 'http://127.0.0.1/PhpProject/fullcalendar/user/update_events.php',
+   data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+   type: "POST",
+   success: function(json) {
+    alert("Updated Successfully");
+   }
+   });
+   },
+   
+   eventResize: function(event) {
+   start = $.fullCalendar.formatDate(event.start, "yyyy-MM-dd HH:mm:ss");
+   end = $.fullCalendar.formatDate(event.end, "yyyy-MM-dd HH:mm:ss");
+   $.ajax({
+    url: 'http://localhost/PhpProjectfullcalendar/user/update_events.php',
+    data: 'title='+ event.title+'&start='+ start +'&end='+ end +'&id='+ event.id ,
+    type: "POST",
+    success: function(json) {
+     alert("Updated Successfully");
+    }
+   });
+
+}
+,
+eventClick: function(event) {
+$(".fc-event").css("background-color","transparent");
+var tid= event.id.split(" ");
+var id= tid[1];
+$(".fc-event-container").find("."+id).parent().css("background-color","rgb(31, 188, 238)");
+geteventinfo(event);
+},
+eventMouseover: function(event){   
+var tid= event.id.split(" ");
+var id= tid[1];
+var field=$(".fc-event-container").find("."+id).parent();                                   
+if(field.css('background-color') == 'rgb(31, 188, 238)'){}else{
+field.css("background-color","rgba(31, 188, 238, 0.35)");
+}
+                                             
+},
+eventMouseout: function(event){ 
+var tid= event.id.split(" ");
+var id= tid[1];
+var field=$(".fc-event-container").find("."+id).parent();
+if(field.css('background-color') == 'rgba(31, 188, 238, 0.35)')
+    {
+        field.css("background-color","transparent");
+    }
+}                                             
+   
+});
+              
+                $(document).delegate(".button-block button","click",function(){
+                                                var $this = $(this).parent();
+                                                var $a= $(this).parents(".wrapper");
+                                                var c=0;
+                                     
+                                                
+                                                if($a.hasClass("checked")){
+                                                $a.removeClass('checked');
+                                                $a.siblings('.state').text('Incomplete');
+                                                c=0;
+                                                }else{
+                                                $a.addClass('checked');
+                                                $a.siblings('.state').text('Completed');
+                                                c=1;
+                                                }
+                                                
+                                                $this.toggleClass('canceled');
+
+                                     
+                                            /*complete-incomplete Ajax here*/
+                                     var prt=$(this).closest(".eventinfo");
+                                     
+                                     var tid=prt.find(".originalid").text();
+                                     //alert(c);
+                                     //alert(tid);
+                                     /*
+                                      
+                                      tid is the event id, which is tag id
+                                      as you can see, tag id is very useful as its uniqueness.
+                                      Here you need to use this to locate the event, and then change its status
+                                      
+                                      c is the status of its completeness, can be 0 or 1, 0 incomplete 1 complete
+                                      
+                                      $.ajax({
+                                      url: "http://127.0.0.1/PhpProject/calendar_0114/fullcalendar/user/state_events.php",
+                                      data: "&id=" + tid+"&status=" + c,
+                                      type: "POST",
+                                      error: function(json){ alert('Error'); },
+                                      success: function(json) { alert('Added Successfully'); }
+                                      });
+                                      
+                                      */
+                                                
+                                     
+                                                return false;
+                                                });   
+                   
+                   
+                   $(".dd-hover").mouseover(function(){
+                                        $("#dropdown").css("border","1px solid #008DF1");   
+                                        
+                                        $("#d-head").css("border-bottom","1px solid white");
+                                        $(".dropdown").css("display","block");
+                                        });
+                   $(".dd-hover").mouseout(function(){
+                                            $("#dropdown").css("border","1px solid #545454");   
+                                            $("#d-head").css("border-bottom","none");
+                                            $(".dropdown").css("display","none");
+                                            });
+                   
+                   
+
+                   $(document).delegate("#newevent-button","click",function(){
+                                        $("#button-border").hide();
+                                        $("#create-form").show();
+                                        return false;
+                                        });  
+                   $(document).delegate("#c-close","click",function(){
+                                        $("#create-form").hide();
+                                        $("#button-border").show();
+                                        return false;
+                                        });
+                   
+                   
+                   
+                   $(document).delegate(".dropdown","click",function(){
+                                        var a= $(this).text();
+                                        $("#currentselection").text(a);
+                                        $("#currentselection").show();
+                                        var key=$(this).first().text().split(' ').join('').toLowerCase();
+                                        
+                                        if(key!="allcalendars"){
+                                        $(".fc-event-inner").hide();
+                                        $("."+key).show();
+                                        
+                                        $("#nevt-grouptag").attr("title",a);
+                                        $("#gt-head").text(a);
+                                        }else{
+                                        $(".fc-event-inner").show();
+                                        
+                                        }
+                                        
+                                        
+                                        
+                                        return false;
+                                        }); 
+                   
+                  
+                   
+                   
+                   
+                   var mname=[1,2,3,4,5,6,7,8,9,10,11,12];
+$(document).delegate("#nevent-button","click",function(){
+                     var t= $("#nevt-title").val();
+                     var desc=$("#nevt-desc").val();
+                     
+                     var st= $("#nevt-st").val();
+                     var ed= $("#nevt-ed").val();
+                     
+                     var sy=retyear(st);
+                     var sm=retmonth(st);
+                     sm= parseInt(sm)-1;
+                     var sd=retday(st);
+                     
+                     var sh=rethour(st);
+                     var smin=retminute(st);
+                     
+                     var ey=retyear(ed);
+                     var em=retmonth(ed);
+                     em= parseInt(em)-1;
+                     var eday=retday(ed);
+                    
+                     var eh=rethour(ed);
+                     var emin=retminute(ed);
+                     var gt="";
+                     var gt= $("#nevt-grouptag").attr("title");
+                     gt=gt.split(' ').join('').toLowerCase();
+                     
+                     var m= jQuery.inArray( $("#currentmonthview").text(), mname );
+                     
+                     
+                     var idstring= sy+""+sm+""+sd+""+sh+""+smin+""+ey+""+em+""+eday+""+eh+""+emin+""+gt+""+t+""+desc;
+                     idstring=idstring.split(' ').join('').toLowerCase();
+                     idstring=md5(idstring);
+                     
+                     gt=gt+" "+idstring;
+                     
+                     
+                     var dta=new Date(sy, sm ,sd,sh,smin,0);
+                     var dtb=new Date(ey, em ,eday,eh,emin,0);
+                     
+                     
+                     if(dtb<=dta){alert("end time cannot smaller than start time");return false;}
+                     
+                     dta = dta.getFullYear() + '-' +
+                                ('00' + (dta.getMonth()+1)).slice(-2) + '-' +
+                                ('00' + dta.getDate()).slice(-2) + ' ' + 
+                                ('00' + dta.getHours()).slice(-2) + ':' + 
+                                ('00' + dta.getMinutes()).slice(-2) + ':' + 
+                                ('00' + dta.getSeconds()).slice(-2);
+                     dtb = dtb.getFullYear() + '-' +
+                                ('00' + (dtb.getMonth()+1)).slice(-2) + '-' +
+                                ('00' + dtb.getDate()).slice(-2) + ' ' + 
+                                ('00' + dtb.getHours()).slice(-2) + ':' + 
+                                ('00' + dtb.getMinutes()).slice(-2) + ':' + 
+                                ('00' + dtb.getSeconds()).slice(-2);
+                     
+                    if(t)
+                     {
+                      
+                      $.ajax({
+                      url: "http://127.0.0.1/PhpProject/calendar_0118/fullcalendar/user/create_events.php",
+                      data: "&id=" + gt+"&title=" + t+ "&start=" + dta+ "&end=" + dtb + "&description=" + desc,
+                      type: "POST",
+                      error: function(json){ alert('Error'); },
+                      success: function(json) { alert('Added Successfully'); }
+                            });
+                     
+                      calendar.fullCalendar('renderEvent',
+                                            {
+                                                id: gt,
+                                                title: t,
+                                                description: desc,
+                                                start: new Date(sy, sm ,sd,sh,smin),
+                                                end: new Date(ey, em ,eday,eh,emin),
+                                                allDay: true
+                                            },
+                                                  true // make the event "stick"
+                                            );
+                      
+                      }
+                      });
+                   
+                   
+                   
+               
+    function retyear(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[0];
+                   }
+    function retmonth(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[1];
+                   }
+    function retday(t){
+                   var t0=t.split(" ");
+                   var t1=t0[0].split("/");
+                   return t1[2];
+                   }  
+    function rethour(t){
+                   var t0=t.split(" ");
+                   var t1=t0[1].split(":");
+                   return t1[0];
+                   }
+    function retminute(t){
+                   var t0=t.split(" ");
+                   var t1=t0[1].split(":");
+                   return t1[1];
+                   }
+                   
+    function geteventinfo(event){
+                   
+                   $(".eventinfo").remove();
+                   //alert(event.description);
+                   
+                   var l1=(event.start.getMinutes()<10?'0':'') + event.start.getMinutes();
+                   var l2=(event.end.getMinutes()<10?'0':'') + event.end.getMinutes();
+                   
+                   var y1=event.start.getFullYear().toString().substring(2);
+                   var y2=event.end.getFullYear().toString().substring(2);
+                   
+                   var s=y1+"/"+mname[event.start.getMonth()]+"/"+event.start.getDate()+" "+event.start.getHours()+":"+l1;
+                   var e=y2+"/"+mname[event.end.getMonth()]+"/"+event.end.getDate()+" "+event.end.getHours()+":"+l2;
+                   
+                   var tg=event.id.split(" ");
+                   var tag="";
+                   if(tg[0]==""){tag="No tag";}else{tag=tg[0];}
+                   
+                   var ds="";
+                   ds=event.description;
+                   if(ds.split(" ").join("")==""){ds="none";}
+                   /*
+                    This part is for you to echo two variable arrays for the linqs
+                    one array is the user profile page links
+                    another array is the the user icon path
+                    
+                    for those who is related to this event
+                    
+                    so if you sucessfully did it
+                    
+                    please do this:
+                    http://stackoverflow.com/questions/1808108/how-to-access-php-variables-in-javascript-or-jquery-rather-than-php-echo-vari
+                    
+                    use two js variable to save the php arrays
+                    
+                    and leave the rests to me, I handle the view more function and augment the other people in this event block
+                    
+                    */
+                   
+                   
+                   $( "#event-new" ).prepend( "<div class='eventinfo'><div class='ei-head'><span class='evt-editable' id='title_"+tg[1]+"'>"+event.title+"</span><a href='' class='e-close'><img src='src/exit-btn.png'></a></div><div class='e-timeinfo'><div class='stoe'><span class='evt-editable' id='start_"+tg[1]+"'>"+s+"</span> - <span class='evt-editable' id='end_"+tg[1]+"'>"+e+"</span></div></div><div class='groupcontent'><div class='gc-head'>Group<div class='wrapper'><div class='button-block'><button type='button'><i class='mark x'></i><i class='mark xx'></i></button></div></div><span class='state'>Incomplete</span></div><div class='tags'><div class='etag'><img src='src/class-pic.png'><span class='evt-editable' id='tag_"+tg[1]+"'>"+tag+"</span></div><div class='ot'>Description</div> <div class='contenttail'><span class='evt-editable' id='description_"+tg[1]+"'>"+ds+"</span></div> </div></div><div class='eventtail'><button class='editevt'>Edit</button><button class='rmvevt' id='"+tg[1]+"'>Remove</button><span class='originalid'>"+event.id+"</span></div><div class='editor'><span class='editor-name'>test</span><a href='' onclick='return false;'><img src='src/exit-btn.png' class='editorcancel'></a><input class='editorinput nevt-input' type='text'><button class='editorok'>OK</button></div></div>" );
+                   
+                   /*<div class='contenttail'><a href=''><img src='src/jake.png'></a><div class='ct-viewmore'><a href=''>View More ></a></div></div>*/
+                   }
+                   
+                   $(document).delegate(".e-close","click",function(){
+                                        $(this).closest(".eventinfo").remove();
+                                        $(".fc-event").css("background-color","transparent");
+                                        return false;
+                                        });
+                   
+                   $(document).delegate(".fc-day","mouseover",function(){
+                                        if(!$(this).hasClass("fc-header-left")){
+                                        if(!$(this).hasClass("fc-state-highlight")){
+                                        $(this).css("background-color","#f3f3f3");
+                                        }}
+                                        });
+                   
+                   $(document).delegate(".fc-day","mouseout",function(){
+                                        if(!$(this).hasClass("fc-header-left")){
+                                        if(!$(this).hasClass("fc-state-highlight")){
+                                        $(this).css("background-color","transparent");
+                                        }}
+                                        });
+                   
+                   
+                   /*remove button click*/
+                   $(document).delegate(".rmvevt","click",function(){
+                                        del = confirm("Do you want to remove the event?"); 
+                                        if(del){
+                                        
+                                        var tid=$(this).attr("id");
+                                        var h= $("#tag_"+tid).text();
+                                        if(h=="No tag"){
+                                        h="";
+                                        }
+                                        tid=h+" "+tid;
+                                        //alert(tid);
+                                        $('#calendar').fullCalendar('removeEvents', tid);
+                                        $(this).closest(".eventinfo").remove();
+                                        
+                                        /*
+                                         ajax goes here
+                                         
+                                         var tid is the event id I used*/
+                                         
+                                         $.ajax({
+                                         type: "POST",
+                                         url: "http://127.0.0.1/PhpProject/calendar_0118/fullcalendar/user/delete_events.php",
+                                         data: "&id=" + tid,
+                                         success: function(json){
+                                             alert("Event removed successfully.");
+                                         }
+                                         
+                                         });
+                                         
+                                         
+                                         
+                                        
+                                        }
+                                        });
+                   
+                   
+                   $(document).click(function(e){
+                                     if($(e.target).is("td")){hacktime();}
+                                     if($(e.target).is("a")){hacktime();}
+                                     
+                                     if($(e.target).is(".datepickinput"))return;
+                                     if($(target).parents('.datepicker').length > 0) return;
+                                     $(".datepicker").hide();
+                                     
+                                     });
+                   
+                   
+                   $(document).delegate(".editevt","click",function(){
+                                        var prt=$(this).closest(".eventinfo");
+                                        prt.find(".evt-editable").addClass("evt-ready-edit");
+                                        
+                                        $(this).removeClass("editevt");
+                                        $(this).addClass("doneedit");
+                                        $(this).text("Done Edit");
+                                        
+
+                                        });
+                   
+                   $(document).delegate(".evt-ready-edit","click",function(){
+                                        
+                                        
+                                        var idx= $(this).attr("id");
+                                        var idinfo=idx.split("_");
+                                        var whattoedit=idinfo[0];
+                                        var whichtoedit=idinfo[1];
+                                        
+                                        var editor=$(this).closest(".eventinfo").find(".editor");
+                                        
+                                        editor.find(".editor-name").text("new "+whattoedit+":");
+                                        
+                                        
+                                        editor.find(".editorok").attr("id",idinfo.join("-"));
+                                        
+                                        if((whattoedit=="start")||(whattoedit=="end")){
+                                        var tedt="20"+$(this).text();
+                                        editor.find(".editorinput").addClass("datepickinput");
+                                        editor.find(".editorinput").val(tedt);
+                                        
+                                        
+                                        
+                                        
+                                        }else{
+                                        
+                                        if((whattoedit=="title")||(whattoedit=="description")){
+                                        var tedt=$(this).text();
+                                        editor.find(".editorinput").removeClass("datepickinput");
+                                        editor.find(".editorinput").val(tedt);
+                                        }
+                                        
+                                        
+                                        
+                                        }
+                                        
+                                        //moveout animation
+                                        if((whattoedit=="start")||(whattoedit=="end")||(whattoedit=="title")){
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 5, position:'absolute'});
+                                        $(".editor").show();        
+                                        }else{
+                                        /*
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 77, position:'absolute'});
+                                        $(".editor").show();
+                                         */
+                                        if(whattoedit=="tag"){
+                                        var tagstring= "<div class='edittag'><a href='' class='edtdropdown whitehref '><div>None</div></a><a href='' class='edtdropdown whitehref'><div>Neurochemistry</div></a><a href='' class='edtdropdown whitehref'><div>Microeconomics</div></a><a href='' class='edtdropdown whitehref'><div>American History</div></a><a href='' class='edtdropdown whitehref'><div>UR Enterprenuers</div></a><a href='' class='edtdropdown whitehref'><div class='edtg-last'>Club Soccer</div></a></div>";
+                                        
+                                        $( ".tags" ).append(tagstring);
+                                        $(".etag").css({"border-top-left-radius":"0px","border-bottom-left-radius":"0px"});
+                                        }
+                                        
+                                        if(whattoedit=="description"){
+                                        $(".editor").parent().css({position: 'relative'});
+                                        $(".editor").css({top: 145, position:'absolute'});
+                                        $(".editor").show();  
+                                        }
+                                        
+                                        }
+    
+                                        });
+                   
+                   $(document).delegate(".edtdropdown","click",function(){
+                                        var t= $(this).text().split(" ").join("").toLowerCase();
+                                        if(t=="none"){t="No tag";}
+                                        var etag=$(this).closest(".eventinfo").find(".etag");
+                                        etag.find("span").text(t);
+                                        
+                                        
+                                        $(".edittag").remove();
+                                        $(".etag").css({"border-top-left-radius":"4px","border-bottom-left-radius":"4px"});
+                                        return false;
+                                        });
+                   
+                   $(document).delegate(".editorok","click",function(){
+                                        
+                                        var idx= $(this).attr("id");
+                                        var idinfo=idx.split("-");
+                                        var whattoedit=idinfo[0];
+                                        var changed= $(this).closest(".editor").find(".editorinput").val();
+                                        
+                                        if((whattoedit=="start")||(whattoedit=="end")){
+                                            changed=changed.substring(2);
+                                        }
+                                        
+                                        if((whattoedit=="title")&&(changed.split(" ").join("")==""))
+                                        {
+                                        changed="notitle";
+                                        }
+                                        
+                                        var idd= idinfo.join("_");
+                                        
+                                        $(this).closest(".eventinfo").find("#"+idd).text(changed);
+                                    
+                                        $(".editor").hide();
+                                
+                                        });
+                   
+                   
+                   $(document).delegate(".editorcancel","click",function(){
+                                        //movein animation
+                                        
+                                        
+                                        $(".editor").hide();
+                                        
+                                        return false;
+                                        
+                                        });
+                   
+                   $(document).delegate(".doneedit","click",function(){
+                                        $(".edittag").remove();
+                                        $(".editor").hide();
+                                        
+                                        var prt=$(this).closest(".eventinfo");
+                                        
+                                        
+                                        var eid=prt.find(".rmvevt").attr("id");
+                                        
+                                        var tid=prt.find(".originalid").text();
+                                        
+                                        
+                                        var spantitle="#title_"+eid;
+                                        var spanstart="#start_"+eid;
+                                        var spanend="#end_"+eid;
+                                        var spantag="#tag_"+eid;
+                                        var spandesc="#description_"+eid;
+                                        
+                                        
+                                        
+                                        var t= $(spantitle).text();
+                                        var desc=$(spandesc).text(); 
+                                        
+                                        var st= "20"+$(spanstart).text();
+                                        var ed= "20"+$(spanend).text();
+                                        
+                                        var sy=retyear(st);
+                                        var sm=retmonth(st);
+                                        sm= parseInt(sm)-1;
+                                        var sd=retday(st);
+                                        
+                                        var sh=rethour(st);
+                                        var smin=retminute(st);
+                                        
+                                        var ey=retyear(ed);
+                                        var em=retmonth(ed);
+                                        em= parseInt(em)-1;
+                                        var eday=retday(ed);
+                                        
+                                        var eh=rethour(ed);
+                                        var emin=retminute(ed);
+                                        var gt="";
+                                        var gt= $(spantag).text();
+                                        
+                                        gt=gt.split(' ').join('').toLowerCase();
+                                        if(gt=="notag"){
+                                        gt="";
+                                        }
+                                        
+                                        var m= jQuery.inArray( $("#currentmonthview").text(), mname );
+                                        
+                                        
+                                        var idstring= sy+""+sm+""+sd+""+sh+""+smin+""+ey+""+em+""+eday+""+eh+""+emin+""+gt+""+t+""+desc;
+                                        idstring=idstring.split(' ').join('').toLowerCase();
+                                        idstring=md5(idstring);
+                                        
+                                        gt=gt+" "+idstring;
+                                        
+                                        
+                                        var dta=new Date(sy, sm ,sd,sh,smin,0);
+                                        var dtb=new Date(ey, em ,eday,eh,emin,0);
+                                        
+                                        if(dtb<=dta){alert("end time cannot smaller than start time");return false;}
+                                        
+                                        dta = dta.getFullYear() + '-' +
+                                                ('00' + (dta.getMonth()+1)).slice(-2) + '-' +
+                                                ('00' + dta.getDate()).slice(-2) + ' ' + 
+                                                ('00' + dta.getHours()).slice(-2) + ':' + 
+                                                ('00' + dta.getMinutes()).slice(-2) + ':' + 
+                                                ('00' + dta.getSeconds()).slice(-2);
+                                        
+                                        dtb = dtb.getFullYear() + '-' +
+                                                ('00' + (dtb.getMonth()+1)).slice(-2) + '-' +
+                                                ('00' + dtb.getDate()).slice(-2) + ' ' + 
+                                                ('00' + dtb.getHours()).slice(-2) + ':' + 
+                                                ('00' + dtb.getMinutes()).slice(-2) + ':' + 
+                                                ('00' + dtb.getSeconds()).slice(-2);
+                                        if(t){
+                                        
+                                        $('#calendar').fullCalendar('removeEvents', tid);
+                                        prt.find(".evt-editable").removeClass("evt-ready-edit");
+                                        
+                                        $(this).removeClass("doneedit");
+                                        $(this).addClass("editevt");
+                                        $(this).text("Edit");
+                                        
+                                                                                
+                                        calendar.fullCalendar('renderEvent',
+                                                              {
+                                                              id: gt,
+                                                              title: t,
+                                                              description: desc,
+                                                              start: new Date(sy, sm ,sd,sh,smin,0),
+                                                              end: new Date(ey, em ,eday,eh,emin,0),
+                                                              allDay: true
+                                                              },
+                                                              true // make the event "stick"
+                                                              );
+                                        
+                                        
+                                        
+                                        
+                    //update the current eventinfo with new id
+                                        $(spantitle).attr("id","title_"+idstring);
+                                        $(spanstart).attr("id","start_"+idstring);
+                                        $(spanend).attr("id","end_"+idstring);
+                                        $(spantag).attr("id","tag_"+idstring);
+                                        $(".rmvevt").attr("id",idstring);
+                                        $(".originalid").text(gt);
+                                        
+                                        /* 
+                                         ajax goes here for edit
+                                         
+                                         var gt is the new id
+                                         var tid is the old id
+                                         vat t is the new title
+                                         var dta is the new start time
+                                         var dtb is the new end time
+                                         
+                                         so it should goes like this: use old id to locate the event in database, then mutate it with new vars, don't forget to repalce the old id with new id
+                                         */
+                                         $.ajax({
+                                         type: "POST",
+                                         url: "http://127.0.0.1/PhpProject/calendar_0118/fullcalendar/user/update_events.php",
+                                         data: "&oldid="+ tid +"&newid=" + gt + "&title="+ t + "&start="+ dta + "&end="+ dtb +"&description="+ desc,
+                                         success: function(json){
+                                             alert(json);
+                                             
+                                         },
+                                         error: function(json){
+                                             alert(json);
+                                         }
+                                         });
+                                         
+                                         
+                                        
+                                        
+                                        }
+                                        
+                                        
+                                        });
+                   
+                   
+                   $(".gt-hover").mouseover(function(){
+                                            
+                                            $("#gt-head").css("border-bottom","1px solid white");
+                                            $(".gtdropdown").show();
+                                            });
+                   $(".gt-hover").mouseout(function(){
+                                           $("#gt-head").css("border-bottom","none");
+                                           $(".gtdropdown").hide();
+                                           });
+                   
+                   $(document).delegate(".gtdropdown","click",function(){
+                                        var a= $(this).text();
+                                        $("#gt-head").text(a);
+                                        if(a.toLowerCase()=="none"){a="";}
+                                        $("#nevt-grouptag").attr("title",a);
+                                        return false;
+                                        });
+                   
+                  
+                  $(document).delegate(".datepickinput","focus",function(){
+                                       
+                                       $(this).appendDtpicker({
+                                                                    "closeOnSelected": true,
+                                                                    "minuteInterval": 15,
+                                                                    "dateFormat": "YYYY/MM/DD h:m",
+                                                                    "calendarMouseScroll": false
+                                        });                        
+                                       hacktime();
+                                       });
+                   
+                   
+                    
+                   
+                   function hacktime(){
+                   $(".timelist_item").each(function( index ) {
+                                        var str= $(this).text();
+                                        var st=str.split(":");
+                            if(st[1].length<=2){
+                                    if(st[0]=="00"){$(this).text("12:"+st[1]+" AM");}
+                                    if(st[0]=="01"){$(this).text("01:"+st[1]+" AM");}
+                                    if(st[0]=="02"){$(this).text("02:"+st[1]+" AM");}
+                                    if(st[0]=="03"){$(this).text("03:"+st[1]+" AM");}
+                                              if(st[0]=="04"){$(this).text("04:"+st[1]+" AM");}
+                                              if(st[0]=="05"){$(this).text("05:"+st[1]+" AM");}
+                                              if(st[0]=="06"){$(this).text("06:"+st[1]+" AM");}
+                                              if(st[0]=="07"){$(this).text("07:"+st[1]+" AM");}
+                                              if(st[0]=="08"){$(this).text("08:"+st[1]+" AM");}
+                                              if(st[0]=="09"){$(this).text("09:"+st[1]+" AM");}
+                                              if(st[0]=="10"){$(this).text("10:"+st[1]+" AM");}
+                                              if(st[0]=="11"){$(this).text("11:"+st[1]+" AM");}
+                                              
+                                              
+                                              if(st[0]=="12"){$(this).text("12:"+st[1]+" PM");}
+                                              if(st[0]=="13"){$(this).text("01:"+st[1]+" PM");}
+                                              if(st[0]=="14"){$(this).text("02:"+st[1]+" PM");}
+                                              if(st[0]=="15"){$(this).text("03:"+st[1]+" PM");}
+                                              if(st[0]=="16"){$(this).text("04:"+st[1]+" PM");}
+                                              if(st[0]=="17"){$(this).text("05:"+st[1]+" PM");}
+                                              if(st[0]=="18"){$(this).text("06:"+st[1]+" PM");}
+                                              if(st[0]=="19"){$(this).text("07:"+st[1]+" PM");}
+                                              if(st[0]=="20"){$(this).text("08:"+st[1]+" PM");}
+                                              if(st[0]=="21"){$(this).text("09:"+st[1]+" PM");}
+                                              if(st[0]=="22"){$(this).text("10:"+st[1]+" PM");}
+                                              if(st[0]=="23"){$(this).text("11:"+st[1]+" PM");}   
+                            }
+                                              
+                                  });
+                   }
+                   
+ });
+    
+
+
+</script>
+ 
+</head>
+<body>
+     <section class="blackcanvas3">
+          
+          <div class="bc3cancel"></div>
+          
+          <div id="bc3content">
+          <div class = "addevent-header0">
+            <a class="dexit">cancel</a>
+            <h1 class = "addevent-header1">Add Event</h1>
+            <div class = "addevent-header">Computational Biology</div>
+          </div>
+
+          
+          <div class="uploadform">
+          <div class="uploadevent">
+              
+              <input type="text" id="nevt-title" placeholder="Title" class="nevt-input">
+              <input type="text" id="nevt-location" placeholder="Location" class="nevt-input">
+                  
+                  <textarea wrap id="nevt-desc" onkeypress="taHeight()" placeholder="Details" class="nevt-input"></textarea>
+                  <hr>
+                  <div class="pdateinfo">
+                  <span id = "startdate-input">Pick a Date &#187; <span class="stdate"></span></span>
+                      
+            <div class='frtext'>From:</div><div class='totext'>To:</div>
+                      
+                      
+                  </div>
+                  
+                  <div class="hourpick1">
+                      <div class="input-append bootstrap-timepicker">
+                          <input id="timepicker1" type="text" class="input-small">
+                              <span class="add-on"><i class="icon-time"></i></span>
+                      </div> 
+                  </div>
+                  
+                  
+                  <div class="hourpick2">
+                      <div class="input-append bootstrap-timepicker">
+                          <input id="timepicker2" type="text" class="input-small">
+                              <span class="add-on"><i class="icon-time"></i></span>
+                      </div>
+                  </div>
+                  
+                  <div class='repeatc'><div class='repeathead'>Repeat:</div> <span class='repeatstate'>None</span>
+                      <div class='repeatoption'>
+                          <span class='repeatoptiont'>None</span>
+                          <span class='repeatoptiont'>Daily</span>
+                          <span class='repeatoptiont'>Weekly</span>
+                          <span class='repeatoptiont'>Monthly</span>
+                      </div>
+                  </div>
+                  
+          </div>
+              
+              <div class="sb"><button class="acabuttons aca-submit">Create this Event</button>
+              </div>
+           
+              
+          </div>
+          
+          
+          
+          <!--mini calendar start-->
+      
+           <!--mini calendar ends--> 
+
+          
+          
+          
+          <div class="successinfo">
+              <div class="si-head">Event added successfully</div>
+              <div class="si-tail"><button class="addmore">Add more</button><button class="acabuttons" id = "donebutton">Done</button></div>
+          </div>
+          
+          
+          
+          <!---->
+          </div>
+      </section>
+      
+<section id="banner">
+        <div id="logo"><img src="src/logo.png" ></div>
+            <div id="cicon"><a href="" class="whitehref"><img src="src/calendar-icon.png" > <span>Calendar</span></a></div>
+            
+            <div id="searchwrap">
+                <a href=""><img src="src/small-pic.png" id="uicon"></a>
+                <input type="text" id="search" placeholder="Search for courses, clubs, people"><a href=""><img src="src/search.png" id="sicon"></a>
+                <a href=""><img src="src/settings-icon.png" id="ticon"></a>
+                </div>
+</section>  
+    
+<section id="banner-bottom">
+<a href=""><div id="goback"><img src="src/back.png"></div></a>
+    
+            <!--The stuff inside dropdown is all clubs and course students in, you need to echo those html, as you can see except the head and tail column are slightly different, all other column is the same-->
+<div id="dropdown">
+    <a href="" class="bluehref dd-hover" onclick="return false;"><div id="d-head">&#9662; Your Calendars</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-0">All Calendars</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-1">Neurochemistry</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-2">Microeconomics</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-3">American History</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-4">UR Enterprenuers</div></a>
+    <a href="" class="dropdown whitehref dd-hover"><div id="d-5" class="d-last">Club Soccer</div></a>
+    
+    <img src="src/right-arrow.png" id="rightarrow">
+    <div id="currentselection"></div>
+</div>
+    
+</section>
+    
+<div id='calendar'>
+
+<div id="calendar-end"></div>
+    
+    
+    
+<div id="event-new">
+    
+    
+    
+    <div id="button-border">
+     <div class="announcecolumn toolsforclass" style="position: relative">
+             <div class = "addevent adminc" style=""><button type="button" class="btn btn-success">Add Event</button></div>
+           </div>
+    
+  
+     
+</div>
+    
+</div>
+    
+</body>
+</html>
