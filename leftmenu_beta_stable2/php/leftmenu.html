@@ -43,9 +43,19 @@ $(function() {
 		$(this).find(".card-tag").hide();
 	});
 
+
+
+	var ctr_lock_flag=0;
 	$(document).delegate(".head-lbtn","click",function(){
 
+
+	if(ctr_lock_flag==0){
+
+		ctr_lock_flag=1; 
+		setTimeout( function(){ ctr_lock_flag=0; },900);
+
 		if($(this).hasClass("png_flip")){
+
 			$(".card-des").hide();
 			$(".search-input").hide();
 			$(".search-add").hide();
@@ -97,8 +107,8 @@ $(function() {
 				$(".leftmenu-search").animate({ opacity: "1", height: "35px", marginTop:"+=0px" });
 			});	
 
-			
 		}
+	}
 
 
 	});
