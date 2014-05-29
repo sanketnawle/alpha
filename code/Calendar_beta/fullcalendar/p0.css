@@ -1307,7 +1307,7 @@ width:20px;
 
 .fixed-cal-fbar{
   height: 94px;
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 1);
   width: 1044px;
   position: absolute;
   border-top: 1px solid white;
@@ -1810,7 +1810,7 @@ border:1px solid transparent;
 cursor:pointer;
 
   margin-top: 3px;
-  text-indent: -28px;
+  text-indent: -25.5px;
 }
 
 .cal_view_events:hover{

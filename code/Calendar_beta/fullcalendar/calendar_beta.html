@@ -1062,9 +1062,11 @@
                             });
 
                       $(document).delegate(".cal_view_events","click",function(){
-                          $('.fc-content').animate({height:'0px',opacity:'0'},"fast");
-                          $('.cal_view_events').text("Monthly Calendar");
-                          $('.cal_view_monthly').text("Event Planner");
+                          $('.fc-content').animate({height:'0px',opacity:'0'},"medium",function(){
+                              $('.fc-content').delay(1000).css('display','none');
+                          });
+                          $('.cal_view_events').text("Monthly Planner");
+                          $('.cal_view_monthly').text("Event Viewer");
                           $('.cal_view_monthly').css('text-indent','-19px');
                           $('.cal_view_events').css('text-indent','-6px');
                       });
@@ -1338,10 +1340,10 @@ $(document).ready(function() {
       <div class = "sunken_toggle">
          <span class = "active_view"></span>
         <div class = "cal_view_monthly">
-        Monthly Calendar
+        Monthly Planner
         </div>
         <div class = "cal_view_events">
-          Event Planner
+        Event Viewer
         </div>       
       </div>
       <div id="event-new">
@@ -1429,6 +1431,9 @@ $(document).ready(function() {
         </div>
 
       </div>
+    </div>
+    <div class = "fixed-events-tabs">
+
     </div>
     <div class = "cal-top-border">
       <div class = "cal_border">

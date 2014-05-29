@@ -311,17 +311,20 @@ html .fc,
 	z-index: 9;
 	}
 	 
-.fc-event {
-	border: 1px solid #22C791!important;
-	border-bottom-color:#14A072!important; /* default BORDER color */
-	background: #24F096!important; /* default BACKGROUND color */
-	color: #484848!important;               /* default TEXT color */
+.fc-event { /* default BORDER color */ /* default BACKGROUND color */
+	color: #333333!important;               /* default TEXT color */
 	font-size: .86em;
-	font-weight:300;
+	font-weight: bold;
 	cursor: default;
+	text-indent: 5px;
+	border-radius: 3px;
 	padding-top:1px;
+	font-family: 'Open Sans', sans-serif!important;
 	padding-bottom:1px;
-	}
+	background-color: #DCDEE0!important; 
+	border: 1px solid #D0D1D3!important; 
+	border-bottom-color: #C4C5CA!important; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+}
 
 a.fc-event {
 	text-decoration: none;
@@ -427,7 +430,7 @@ table.fc-border-separate {
 	
 .fc-border-separate th.fc-last,
 .fc-border-separate td.fc-last {
-	border-right-width: 1px;
+	border-right-width: 0px;
 	}
 	
 .fc-border-separate tr.fc-last th,
