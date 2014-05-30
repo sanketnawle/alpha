@@ -1,0 +1,564 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/fbar.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<link href='http://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+<script>
+$(document).ready(function() {
+
+
+                $('.post').click(function(){
+                	$('.fb').css('height','170px');
+                	$('.postTxtarea').show();
+                	$('.postTxtarea').focus();
+                	$('.post').css('cursor','default');
+
+                	$('.post').removeClass('fani');
+                	$('.post-sec').show();
+                	$('.share').addClass('fani');
+                	$('.find').addClass('fani');
+                	$('.share').css('cursor','pointer');
+                	$('.find').css('cursor','pointer');
+                	$('.fbtn-post ').css('color','#333');
+                	$('.fbtn-post ').css('color','#333');
+                	$('.fbtn-ask').css('color','#666');
+                	$('.fbtn-upload ').css('color','#666');                	
+                	$(".wedge1a").show();
+                	$(".wedge1b").show();
+	 				$(".wedge2a").hide();
+	                $(".wedge2b").hide();
+					$(".wedge3a").hide();
+	                $(".wedge3b").hide(); 
+	                $('.btmfbar2').hide();
+	                 $('.btmfbar').show(); 
+	                 $(".ask_state").hide();
+	                 $('.uploadTxtarea').hide(); 
+	                 $('.uploadMode').hide();
+
+                 });
+
+                $('.share').click(function(){
+                	$('.fb').css('height','233px');
+                	$('.share').css('cursor','default');
+                	$('.find').css('cursor','pointer');
+
+                	$('.post').css('cursor','pointer');
+                	$('.share').removeClass('fani');
+                	$('.post-sec').show();
+                	$('.find').addClass('fani');
+                	$('.post').addClass('fani');
+                	$('.fbtn-upload ').css('color','#333');
+                	$('.fbtn-post ').css('color','#666');
+                	$('.fbtn-ask ').css('color','#666');                
+                	$(".wedge2a").show();
+                	$(".wedge2b").show();	
+	 				$(".wedge1a").hide();
+	                $(".wedge1b").hide();
+					$(".wedge3a").hide();
+					$(".ask_state").hide();
+	                $(".wedge3b").hide();    
+	                $('.postTxtarea').hide();           
+	                 $('.btmfbar').hide();	
+	                 $('.upload_state').show();
+	                 $('.btmfbar2').show();
+	                 $('.uploadTxtarea').show(); 
+	                 $('.uploadTxtarea').focus();
+	                 $('.uploadMode').show();
+                 });
+
+                $('.find').click(function(){
+                	$('.fb').css('height','226px');
+                	$('.find').css('cursor','default');
+                	$('.find').removeClass('fani');
+                	$('.post-sec').show();
+                	$('.share').addClass('fani');
+                	$('.post').addClass('fani');
+                 	$('.share').css('cursor','pointer');
+                	$('.post').css('cursor','pointer');
+                	$('.fbtn-ask ').css('color','#333');
+                	$('.fbtn-upload ').css('color','#666');
+                	$('.fbtn-post ').css('color','#666');
+                 	$(".wedge3a").show();
+                	$(".wedge3b").show();               
+	 				$(".wedge1a").hide();
+	 				
+	                $(".wedge1b").hide();                
+	 				$(".wedge2a").hide();
+	                $(".wedge2b").hide();	
+	                $('.postTxtarea').hide();
+	                $('.btmfbar').hide(); 
+	                $('.uploadTxtarea').hide(); 
+	                $('.uploadMode').hide();      
+	                $('.btmfbar2').hide();         	                	
+	                $(".ask_state").show();
+	                $(".topfbar").focus();
+                 }); 
+
+				
+
+
+				$('.who-dyn').mouseover(function(){
+					$('.who-explain').css('visibility','visible');
+					$('.who-explain').mouseover(function(){
+						$('.who-explain').css('visibility','visible');
+					});
+					$('.who-explain').mouseout(function(){
+						$('.who-explain').css('visibility','hidden');
+					});
+					$('.who-dyn').mouseout(function(){
+						$('.who-explain').css('visibility','hidden');
+					});
+				});
+
+				$(document).delegate(".fani","mouseover",function(){
+					$(this).find(".fbtn").css({"color":"#333"});
+				});
+
+				$(document).delegate(".fani","mouseout",function(){
+					$(this).find(".fbtn").css({"color":"#666"});
+				});
+
+                 $('.select').on('click','li',function(){
+					  $('#open').click();
+					  var $t = $(this),
+					      $f = $('.field')
+					      text = $t.text(),
+					      icon = $t.find('i').attr('class');
+					  $f.find('label').text(text);
+					  $f.find('i').attr('class',icon)
+					});
+					$('.field').click(function(e){
+					  e.preventDefault();
+					  $('#open').click();
+					});
+
+					
+
+				$(document).delegate(".field","click",function(){
+					$(".select").stop().fadeIn(200);
+
+					var cur= $(this).closest(".field").find("i").attr("class");
+					
+					$( ".select li" ).each(function( index ) {
+						if($(this).find("i").attr("class")==cur){
+							$(this).hide();
+						}else{
+							$(this).show();
+						}
+					});	
+					
+				});    
+
+			     $(document).click(function(event){
+			     	var $target= $(event.target);
+			     	var $container= $(".search-select");
+			     	if(!$container.is($target)&&($container.has($target).length===0)){
+			     		$(".select").stop().fadeOut(150);
+			     	}
+
+			     	if($target.hasClass("selitem")){
+			     		$(".select").stop().fadeOut(150);
+			     	}
+				});
+
+
+			   /*upload hack process.*/
+			   $(document).delegate(".attach-mod","click",function(){
+			   
+                                $(this).closest(".controlpad").find('.upload_hack').click();
+
+                                return false;
+                              });
+
+			   /*The following process need to be further modified according to backend*/
+
+			   /*
+			   $(".upload_button").click(function() {
+                                    $(".upload_hack").click(); 
+                                    });
+			   */
+			   $(document).delegate(".upload_hack","change",function(){
+			   					var $hack=$(this).closest(".controlpad").find('.upload_hack');
+                              	//alert($hack.val());
+
+                              	var filename= $hack.val();
+
+                              	if(filename.length>=18){
+                              		filename= filename.substring(0,15)+"...";
+                              	}
+
+                              	$(this).closest(".controlpad").find(".upload_textprompt").text(filename);
+                              	$(this).closest(".controlpad").find(".upload_textprompt").attr("title",$hack.val());
+                                    //need to modify
+                                    //$('.attach_form').submit();
+                                    }); 
+
+
+
+
+				$(document).delegate(".upl_anc","click",function(){
+			   
+                                $(this).closest(".upl_wrap").find('._uplI').click();
+
+                                return false;
+                              });
+
+				$(document).delegate("._uplI","change",function(){
+			   					var $hack=$(this).closest(".upl_wrap").find('._uplI');
+                              	//alert($hack.val());
+
+                              	$(this).closest(".upl_wrap").find(".uplName").text($hack.val());
+                              	$(this).closest(".upl_wrap").find(".uplName").attr("title",$hack.val());
+                                    //need to modify
+                                    //$('.attach_form').submit();
+                                    }); 
+
+
+
+	//textara auto growth
+    $("textarea").mousemove(function(e) {
+        var myPos = $(this).offset();
+        myPos.bottom = $(this).offset().top + $(this).outerHeight();
+        myPos.right = $(this).offset().left + $(this).outerWidth();
+        
+        if (myPos.bottom > e.pageY && e.pageY > myPos.bottom - 16 && myPos.right > e.pageX && e.pageX > myPos.right - 16) {
+            $(this).css({ cursor: "nw-resize" });
+        }
+        else {
+            $(this).css({ cursor: "" });
+        }
+    })
+    //  the following simple make the textbox "Auto-Expand" as it is typed in
+    .keyup(function(e) {
+        //  the following will help the text expand as typing takes place
+        while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+            $(this).height($(this).height()+1);
+        };
+    });
+
+
+
+
+    /*tagging function*/
+
+    var tags=["campus"];
+
+    
+    $(document).delegate(".midfbar-exp","click",function(e){
+    	$(".add_who").focus();
+    });
+
+    $(document).delegate(".add_who","focus",function(e){
+    	$(".tag-option").show();
+    });
+
+
+    $(document).delegate(".add_who","keyup",function(e){
+    	var code = e.keyCode || e.which;
+    	var $input= $(this);
+
+    	if(code==32){
+    		//alert("32");
+    		var tag= $input.val().trim().toLowerCase();
+
+    		if(tag!=""){
+    			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tag+"</div><div class='tag-close'></div></div>");
+    			tags.push(tag);
+    			$input.val(" ");
+    		}
+
+    	}
+
+    	
+    	if(code==8){
+    		if($input.val()==""){
+    			var tag= tags[0];
+    			tags.shift();
+    			$("#wit_"+tag).remove();
+    		}
+    	}
+    });
+
+	$(document).delegate(".tag-col","click",function(e){
+		var tag= $(this).text().trim().toLowerCase();
+		var isin=$.inArray(tag, tags);
+		if(isin==-1){
+			tags.push(tag);
+			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tag+"</div><div class='tag-close'></div></div>");
+		}
+
+	});    
+
+
+	$(document).delegate(".tag-close","click",function(e){
+		var tag= $(this).closest(".who-is-tagged").find(".tag-name").text().trim().toLowerCase();
+		var isin=tags.indexOf(tag);
+		if(isin>-1){
+			tags.splice(isin,1);
+			$("#wit_"+tag).remove();
+		}
+
+	});
+
+	$(document).delegate(".tag-option","mouseout",function(e){
+		$(this).delay(5000).hide();
+	});
+
+	$(document).delegate(".tag-option","mouseover",function(e){
+		$(this).stop().show();
+	});
+
+	$(document).delegate(".midfbar-exp","mouseout",function(e){
+		$(".tag-option").delay(5000).hide();
+	});
+	
+
+     });   
+
+</script>
+</head>
+<body>
+
+				<div id = "fbar" class = "fb">
+					<div class='fbar-head'>
+						<div class = "post fani fani-hover">
+							<div class = "fbtn fbtn-post">
+								Post Status 
+							</div>
+						</div>
+						<div class = "share fani fani-hover">
+							<div class = "fbtn fbtn-upload">
+								Share Notes
+							</div>							
+						</div>
+						<div class = "find fani fani-hover">
+							<div class = "fbtn fbtn-ask">
+								Ask Question
+							</div>							
+						</div>
+					</div>
+
+					<div class = "post-sec">
+						<div class = "wedge1a">
+						</div>
+
+						<div class = "wedge2a">
+						</div>
+
+						<div class = "wedge3a">
+						</div>
+
+						<div class = "post_state">						
+							<div class ="textwrap">
+								<textarea name = "message" class = "postTxtarea"placeholder = "What have you read lately?" ></textarea>
+							</div>	
+							<div class = "btmfbar controlpad">
+								<div class = "lfloat-mods">
+									<div class = "lfloat-attach">
+										<a class = "attach-mod" href = "#" title = "Attach a file to your post">
+											<span class = "attach-icon">
+											</span>
+										</a>
+									</div>
+									<div class="upload_textprompt"></div>
+
+                <form class="attach_form">
+                  <input type="file" class="upload_hack">
+                  <button class="upload_button">Upload</button>
+              </form>
+
+								</div>
+
+									<div class = "lfloat-anon">
+										<input class = "anon-checker" title = "Post anonymously" type="checkbox">
+										<span class= "anon-setting">Post Anonymously</span>
+									</div>
+
+
+								<div class="search-select">
+									<span title = "Who can see this post?" class="field">
+										<label class="seltext" for="open">Only Students</label><i class="icon user"></i>
+									</span>
+									<input id="open" type="checkbox" />
+									<ul class="select">
+										<li class="icon arrow selitem"></li>
+										<li class="selitem">Only Faculty<i class="icon candidate_icon list"></i>
+										</li>
+
+										<li class="selitem">Only Students<i class="icon candidate_icon user"></i></li>
+
+										<li class="selitem">Campus<i class="icon candidate_icon stat"></i></li>
+										<li class="selitem">Only Me<i class="icon candidate_icon accs"></i></li>
+
+									</ul>
+								</div>
+								<div class = "post-btn btn-1">
+									Post
+								</div>
+							</div>	
+						</div>
+						<div class = "upload_state">						
+							<div class ="textwrap">
+								<textarea name = "file_desc" class = "uploadTxtarea"placeholder = "Say something about this file..." ></textarea>
+							</div>	
+							<div class = "uploadMode">
+								<div class = "localUpload">
+									<div class = "upl_wrap">
+										<div class = "upl_head">
+											From Your Computer
+										</div>
+										<div class = "upl_btn">
+											<a class = "upl_anc">
+												<span class = "uplbtnText">Choose File</span>
+												<div class = "_upl">
+													<input type = "file" class = "_uplI" title = "Choose a file to upload" name = "file1">
+												</div>
+											</a>
+										</div>
+										<div class = "uplName">
+											No file chosen
+										</div>
+									</div>
+								</div>
+								<div class = "driveUpload">
+									<div class = "upl_wrap">
+										<span class = "iconText">
+											<img class = "icon" src = "../src/drive_icon.png" width = "16" height = "16">
+											<div class = "upl_head">
+												From Your Drive
+											</div>	
+											<div class = "upl_btn2">
+												<a class = "upl_anc">
+													<span class = "uplbtnText">Choose File</span>
+													<div class = "_upl">
+														<input type = "file" class = "_uplI" title = "Choose a file to upload" name = "file1">
+
+													</div>
+												</a>
+											</div>
+											<div class = "uplName">
+												No file chosen
+											</div>															
+										</span>	
+									</div>							
+								</div>
+							</div>
+							<div class = "btmfbar2 controlpad">
+								<div class="search-select">
+									<span title = "Who can see this post?" class="field">
+										<label class="seltext" for="open">Only Students</label><i class="icon user"></i>
+									</span>
+									<input id="open" type="checkbox" />
+									<ul class="select">
+										<li class="icon arrow selitem"></li>
+										<li class="selitem">Only Faculty<i class="icon candidate_icon list"></i>
+										</li>
+
+										<li class="selitem">Only Students<i class="icon candidate_icon user"></i></li>
+
+										<li class="selitem">Campus<i class="icon candidate_icon stat"></i></li>
+										<li class="selitem">Only Me<i class="icon candidate_icon accs"></i></li>
+
+									</ul>
+								</div>
+								<div class = "post-btn btn-2">
+									Post 
+								</div>
+							</div>	
+						</div>	
+						<div class = "ask_state">
+							<div class = "topfbar-wrap">
+								<div class = "quest-wrap">
+									
+									<input placeholder = "What's your question? Be specific" class = "topfbar questtxt"></input>
+								</div>
+							</div>
+
+							<div class ="textwrap2">
+								<textarea name = "q_desc" class = "askTxtArea"placeholder = "Add more details about this question..." ></textarea>
+							</div>	
+							<div class = "midfbar-wrap">
+								<div class = "midfbar-wrap2">
+									<div class = "who-wrap">
+										<div class = "who-dyn"><div class = "who-icon"></div></div>
+										<div class = "midfbar-exp">
+											<div class ="who-is-tagged" id="wit_campus"><div class='tag-name'>Campus</div> <div class='tag-close'></div></div>
+											<input placeholder = "+ Ask experts" class = "add_who"></input>
+										</div>
+										
+
+										<div class="tag-option">
+											<div class="tag-section">
+												<div class="tag-col">Campus</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col">Friends</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col">Class</div>
+												<hr class="post_options_hr"></hr>
+												
+											</div>
+											<div class="tag-section tagsec-r">
+												<div class="tag-col">Experts</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert1</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert2</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert3</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert4</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert5</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert6</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert7</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert8</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert9</div>
+												<hr class="post_options_hr"></hr>
+												<div class="tag-col sub-col">Expert10</div>
+												<hr class="post_options_hr"></hr>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class = "btmfbar3 controlpad">
+								<div class = "lfloat-mods">
+									<div class = "lfloat-attach">
+										<a class = "attach-mod" href = "#" title = "Attach a file to your post">
+											<span class = "attach-icon">
+											</span>
+										</a>
+									</div>
+									<div class="upload_textprompt"></div>
+			  <form class="attach_form">
+                  <input type="file" class="upload_hack">
+                  <button class="upload_button">Upload</button>
+              </form>
+									
+								</div>
+								<div class = "lfloat-anon">
+										<input class = "anon-checker" title = "Post anonymously" type="checkbox">
+										<span class= "anon-setting">Post Anonymously</span>
+									</div>
+
+								<div class = "post-btn btn-3">
+									Post 
+								</div>
+							</div>	
+						</div>									
+					</div>
+					</div>
+
+</body>
+</html>
