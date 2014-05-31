@@ -1062,9 +1062,23 @@
                             });
 
                       $(document).delegate(".cal_view_events","click",function(){
-                          $('.fc-content').animate({height:'0px',opacity:'0'},"medium",function(){
-                              $('.fc-content').delay(1000).css('display','none');
+                          $('.fc-content').animate({height:'0px',opacity:'0'},"fast",function(){
+                              $('.fc-content').delay(400).css('display','none');
+                              $('.fc-header').delay(400).css('display','none');
+                              $('.month-fbtns').delay(0).css('display','none');
+                              $('.incomplete-wrap').delay(0).css('display','none');
+                              $('.fixed-cal-fbar').delay(100).css('display','none');
+                              $('.fixed-cal-fbar').delay(0).css('display','none');
                           });
+                          $('.fixed-events-tabs').css('display','block');
+                          $('.event-tabs-border').css('display','block');
+                          $('.event_view').css('display','inline-block');
+                          $('.fixed-events-tabs').css({"height":"94px","opacity":"1"});
+                          $('.event_view').animate({height:'450px',opacity:'1'},"medium");
+                          $('.cal_wrapper').css('height','498px');
+                          $('.midsec').css({"height":"540px","margin-bottom":"20px"});
+                          $('.leftsec').css('height','574px');
+                          $('.rightsec').css('height','575px');
                           $('.cal_view_events').text("Monthly Planner");
                           $('.cal_view_monthly').text("Event Viewer");
                           $('.cal_view_monthly').css('text-indent','-19px');
@@ -1116,8 +1130,9 @@
                                          
                                          $(".repeatoption").hide();
                                         });
-
-                    $()
+                  
+                    
+                    
                             
                               
                     $('#timepicker1').timepicker();
@@ -1316,11 +1331,23 @@ $(document).ready(function() {
     });
 
 
+
+    $(document).delegate(".event_tab","click",function(){
+       $(".event_tab_active").removeClass("event_tab_active");
+       $(this).addClass("event_tab_active");
+       var el = $(this);
+       var position = el.position();
+       var width = el.width();
+       var pos_left = position.left;
+       var pos_tab_indicator = pos_left + 18;
+       $(".tab-indicator").css("left", pos_tab_indicator);
+       $(".tab-indicator").css("width", width);
+    });
  
     
   });
-
 </script>
+
 <body>
 
       
@@ -1433,14 +1460,239 @@ $(document).ready(function() {
       </div>
     </div>
     <div class = "fixed-events-tabs">
-
+      <div class = "event-tabs-border">
+        <div class = "event-tabs-wrapper">
+          <a class = "event_tab event_tab_active">
+            <span>June 1</span>
+            Microeconomics Homework 
+          </a>
+          <a class = "event_tab">
+            <span>June 2, 9:40 am</span>
+            Biochemistry Exam
+          </a>
+          <a class = "event_tab">
+            <span>June 3</span>
+            Big Data Guest Lecture
+          </a>
+          <a class = "event_tab">
+            <span>June 4, 6:00 pm</span>
+            UR Entrepreneurs Group Meeting
+          </a>
+          <a class = "event_tab">
+            <span>June 5, 11:00 am</span>
+            Neuro Group Project
+          </a>   
+          <b class = "tab-indicator">
+            <em class = "caret-transform">
+            </em>
+          </b>                                  
+        </div>
+      </div>
     </div>
     <div class = "cal-top-border">
       <div class = "cal_border">
         <div class = "cal_wrapper">
 
           <div id='calendar'></div>
+          <div class = "event_view">
+            <div class = "event_main">
+              <div class = "event_main_header">
+                <div class = "header_wrapper">
+                  <div class = "event_date">
+                    <div class = "event_month">JUN</div>
+                    <div class = "event_day">1</div>
+                  </div>
+                  <div class = "event_title">
+                    Microeconomics Homework
+                  </div>
+                  <a class = "event_status_icotxt">
+                    <img src = "src/complete.png" class = "event_status_icon">
+                    </img>
+                    <div>You've Joined</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class = "event_qa">
+              <div class = "qa_header">
+                <div class = "icon_text">
+                  <img src = "src/qa_icon.png" width = "30" height = "30">
+                  <div>
+                    Discussion and Questions
+                  </div>
+                  <div class = "icon_text_subtitle">
+                    Last post 51 minutes ago
+                  </div>  
+                </div>
+              </div>
+              <div class = "qa_scrollcontainer">
+                <div class = "iComments">
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>     
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>  
+                  <div class = "imageBlock comment">
+                    <div class = "Image iLoaded">
+                    </div>
+                    <div class = "ibContent">
+                      <a href = "#" class = "ibNameLink">
+                        Phillip Drake
+                      </a>
+                      <span class = "ibMessage">
+                        <span>I need help on problem set 12!</span>
+                      </span>
+                    </div>
+                  </div>                                                 
+                </div>
+              </div>
+              <div class = "qa_postcontainer">
+                <div class = "qa_inputcontainer">
+                  <input type = "text" class = "qa_input" placeholder = "Ask a question...">
 
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

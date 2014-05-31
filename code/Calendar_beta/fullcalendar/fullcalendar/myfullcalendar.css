@@ -225,6 +225,7 @@ html .fc,
  width: 14px;
  height: 30px;
  display: block;
+	background-position-x: 1px;
 }
 
 @font-face {
@@ -458,12 +459,12 @@ border-left-width:0px;
 	border-left-width: 1px;
 	padding-top: 6px;
 	border-left-width: 1px; /* For Safari 5.1 to 6.0 */  /* For Opera 11.1 to 12.0 */  /* For Firefox 3.6 to 15 */ 
-	color: rgb(0, 0, 0);
+	color: rgb(97, 97, 97);
 	border-left-color: #acacac;
 
 	background: #F1F1F1;
-	font-size: 14px;  
-	background: #F1F1F1 url(../src/white-gradient.png) repeat-x 50% 100%;
+	font-size: 12px;  
+	background: #f6f7f8;
 }
 
 .fc-border-separate tr.fc-last th.fc-first{
@@ -944,7 +945,7 @@ border: 1px solid rgb(102, 102, 102);
 
 padding: 3px 1.2em;
 margin-left: 5px;
-margin-top: -3px;
+margin-top: -2px;
 margin-right: 0px;
 position: absolute;
 border: 1px solid transparent;
