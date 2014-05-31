@@ -36,11 +36,11 @@ height:auto;
 	height:35px;
 	width:100%;
 	background-color:#34393D;
-	border-bottom:1px solid #BCC6D4;
 
 	padding-top: 3px;
 	padding-left: 1px;
 	padding-right: 1px;
+	border-bottom: 1px solid #232729;
 	margin-left:-1px;
 }
 
@@ -84,7 +84,12 @@ height:auto;
 }
 .head-rbtn:hover
 {
-	background-color: background-color: rgba(255, 255, 255, 0.10);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.head-rbtn:active
+{
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .leftmenu-ctr
@@ -95,7 +100,7 @@ height:auto;
 	height:15px;
 	width:23px;
 
-	margin-top:10px;
+	margin-top: 9.5px;
 	margin-left:7px;
 }
 
@@ -105,7 +110,7 @@ height:auto;
 	color:white;
 	font-size:14px;
 	height:100%;
-	line-height: 40px;
+	line-height: 36px;
 	margin-right:12px;
 	font-weight:600;
 	cursor:pointer;
@@ -120,7 +125,7 @@ height:auto;
 {
 	float:left;
 	height:100%;
-	width:40px;
+	width: 37px;
 }
 
 .search-icon:before
@@ -129,10 +134,13 @@ height:auto;
   	font-family:FontA;
   	font-style:normal;
   	content: "\f002";
-  	color:rgba(255,255,255,0.5);
+  	
+	color: #cccccc;
 
   	margin-left:13px;
-  	margin-top:6px;
+  	
+	font-size: 15px;
+	margin-top: 7px;
 
 }
 
@@ -140,13 +148,14 @@ height:auto;
 {
 	float:left;
 	width:28px;
-	height:28px;
+	height: 26px;
 	background-color:rgba(255, 255, 255, 0.2);
 
 	cursor:pointer;
 	border-radius:4px;
 
-	margin-left:15px;
+	margin-left: 27px;
+	margin-top: 2.5px;
 }
 
 .search-add:hover
@@ -157,14 +166,17 @@ height:auto;
 .search-input
 {
 	float:left;
-	margin-top:6px;
+	margin-top: 4.5px;
 	width:180px;
 
 	background-color:transparent;
 	color:white;
 	border:none;
-	font-size: 14px;
+	outline: none;
+	font-size: 13.5px;
 
+	font-weight: 100;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .add-icon:before
@@ -175,8 +187,10 @@ height:auto;
   	content: "\f067";
   	color:white;
 
-  	margin-left:7px;
-  	margin-top:7px;
+  	
+	margin-left: 8px;
+  	
+	margin-top: 6px;
 }
 
 .mini-add:before
@@ -200,7 +214,7 @@ height:auto;
 .leftmenu-card
 {
 	float:left;
-	height:65px;
+	height: 60px;
 	width:100%;
 	border:1px solid white;
 	cursor:pointer;
@@ -220,7 +234,7 @@ height:auto;
 	height:45px;
 	width:45px;
 	border-radius: 5px;
-	margin-top:9px;
+	margin-top: 7px;
 	margin-left:5px;
 	   -webkit-transition: -webkit-transform .3s ease-out; 
    -moz-transition: -moz-transform .3s ease-out; 
@@ -240,7 +254,7 @@ height:auto;
 .des-title
 {
 	float:left;
-	margin-top:12px;
+	margin-top: 8px;
 	font-size: 15px;
 	font-weight:600;
 	text-shadow: 1px 1px #ccc;
@@ -258,7 +272,7 @@ height:auto;
 {
 	position:absolute;
 	margin-left:171px;
-	margin-top:48px;
+	margin-top: 43px;
 	color:#838384;
 	display:none;
 	font-size: 13px;
@@ -266,7 +280,7 @@ height:auto;
 
 .club-des
 {
-	margin-top:23px;
+	margin-top: 20px;
 }
 
 .club-tag
@@ -327,6 +341,18 @@ height:auto;
 @font-face {
   font-family: "FontA";
   src: url(http://s.cdpn.io/999/fontawesome-webfont.ttf) format('truetype'), url(http://s.cdpn.io/999/FontAwesome.otf) format('opentype');
+}
+
+.des-sub:hover{
+	text-decoration: underline;
+}
+
+.search-add:active {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.head-lbtn:active {
+background-color: rgba(255,255,255,0.05);
 }
 
 @font-face {font-family: "Helvetica"; src: url('../fonts/Helvetica.ttf') format('truetype');}
