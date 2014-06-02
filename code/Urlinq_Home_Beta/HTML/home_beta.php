@@ -225,7 +225,7 @@
                         </div>
                         <div class="rightsec">
 							<div class="n_pf_5" id="divPlanner">              
-								<?php include('Planner/planner.php'); ?>
+								<?php include('Planner/planner - no php.php'); ?>
 								<script src="../JS/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
 								<script src="../JS/ampm.js" type="text/javascript"></script>
 								<script src="../JS/planner.js" type="text/javascript"></script>

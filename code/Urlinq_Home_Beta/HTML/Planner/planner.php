@@ -29,7 +29,7 @@
                                     $datetime = explode(" ", $startdate);
                                     $date = $datetime[0];
                                     $time = $datetime[1];
-                                    $date = date("l, M j", strtotime($date));
+                                    $date = date("l M j", strtotime($date));
                                     $time = date("g:i a", strtotime($time));
                                     $now = isNow($startdate);
 //                                                echo nl2br($now . "\r\n");
@@ -75,7 +75,7 @@
 
                             function isToday($date) {
                                 date_default_timezone_set('America/New_York');
-                                $system_date = date('l, M j', time());
+                                $system_date = date('l M j', time());
                                 $system_date = strtotime($system_date);
                                 $date = strtotime($date);
                                 if (($system_date - $date) == 0.00) {
@@ -116,7 +116,7 @@
                                                         <input class = "set_date" name="event_date"
                                                                </input>
 
-                                                        <input placeholder = "Add a time?"  id="set_time_24hr"  class = "set_time" name="event_time"></input>
+                                                        <input id="set_time_24hr"  class = "set_time" name="event_time"></input>
                                                         <div class = "calLayer">
                                                             <section id = "mounth" class="mounth">
                                                                 <header class="minical-header">

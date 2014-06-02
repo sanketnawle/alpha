@@ -709,10 +709,12 @@ $(document).ready(function () {
             $startTime = new Date().getHours();
         }
     }
+    $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
     $('#set_time_24hr').timeAutocomplete({
         increment: 15,
         formatter: 'ampm',
         start_hour: $startTime,
-        value: 'Add a time?'
+        value: $currentTime
     });
+    
 });
