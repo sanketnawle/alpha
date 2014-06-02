@@ -20,7 +20,7 @@ $(document).ready(function () {
     $('.btn_canc').click(function () {
         $('.pl_add').css('height', '19px');
         $('.pl_addevnt').css('display', 'none');
-        $('.planner').css('height', '325px');
+        //$('.planner').css('height', '325px');
         $('.pl_add').attr("placeholder", "+ Add new Event");
 
     });
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         $('.pl_add').css('height', '34px');
         $('.pl_addevnt').css('display', 'block');
-        $('.planner').css('height', '409px');
+        //$('.planner').css('height', '409px');
         $('.pl_add').attr("placeholder", "Name this event...");
 
     });

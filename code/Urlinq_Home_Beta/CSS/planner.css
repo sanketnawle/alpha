@@ -154,7 +154,7 @@
     .upc-1 {
         padding-left: 2px;
         padding-right: 6px;
-        height: 34px;
+        height: auto;
         padding-top: 6px;
         transition: .05s;
         -webkit-transition: .05s;
@@ -165,6 +165,7 @@
         margin-top: 0px;
         border-radius: 2.5px;
         border-bottom: 1px solid transparent;
+        display:inline-block;
     }
 
 
@@ -183,6 +184,7 @@
     .upc-floatL {
         float: left;
         width: 55px;
+        padding-top:3px;
     }
 
     .upc-floatL .top {
@@ -210,7 +212,7 @@
         width: 175px;
         text-align: left;
         color: #666;
-        height: 32px;
+        height: auto;
         padding-top: 0px;
     }
 
@@ -276,7 +278,7 @@
         float: right;
         z-index: 300;
         opacity: .8;
-        padding-top: 7px;
+        /*padding-top: 7px;*/
         right: 7px;
         position: absolute;
     }
