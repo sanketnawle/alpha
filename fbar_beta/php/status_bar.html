@@ -254,6 +254,10 @@ $(document).ready(function() {
     	$(".add_who").focus();
     });
 
+    $(document).delegate(".add_who","focus",function(e){
+    	$(".tag-option").show();
+    });
+
 
     $(document).delegate(".add_who","keyup",function(e){
     	var code = e.keyCode || e.which;
