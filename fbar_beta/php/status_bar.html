@@ -265,7 +265,7 @@ $(document).ready(function() {
 
     	if(code==32){
     		//alert("32");
-    		var tag= $input.val().trim().toLowerCase();
+    		var tag= $input.val().split(" ").join("").trim().toLowerCase();
 
     		if(tag!=""){
     			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tag+"</div><div class='tag-close'></div></div>");
@@ -286,11 +286,12 @@ $(document).ready(function() {
     });
 
 	$(document).delegate(".tag-col","click",function(e){
-		var tag= $(this).text().trim().toLowerCase();
+		var tagname= $(this).text();
+		var tag= $(this).text().split(" ").join("").trim().toLowerCase();
 		var isin=$.inArray(tag, tags);
 		if(isin==-1){
 			tags.push(tag);
-			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tag+"</div><div class='tag-close'></div></div>");
+			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tagname+"</div><div class='tag-close'></div></div>");
 		}
 
 	});    
@@ -298,12 +299,13 @@ $(document).ready(function() {
 
 
 	$(document).delegate(".tag-close","click",function(e){
-		var tag= $(this).closest(".who-is-tagged").find(".tag-name").text().trim().toLowerCase();
+		var tag= $(this).closest(".who-is-tagged").find(".tag-name").text().split(" ").join("").trim().toLowerCase();
 		var isin=tags.indexOf(tag);
 		if(isin>-1){
 			tags.splice(isin,1);
 			$("#wit_"+tag).remove();
 		}
+		return false;
 
 	});
 
