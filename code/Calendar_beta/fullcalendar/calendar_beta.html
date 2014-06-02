@@ -1330,7 +1330,10 @@ $(document).ready(function() {
         $(this).toggleClass('checkedBox');
     });
 
-
+    var tab_active = $(".event_tab_active");
+    var active_width = tab_active.width();
+    //alert(active_width);
+    //$(".tab-indicator").css("width",active_width);
 
     $(document).delegate(".event_tab","click",function(){
        $(".event_tab_active").removeClass("event_tab_active");
@@ -1465,6 +1468,7 @@ $(document).ready(function() {
           <a class = "event_tab event_tab_active">
             <span>June 1</span>
             Microeconomics Homework 
+            <span class = "border-appear"></span>
           </a>
           <a class = "event_tab">
             <span>June 2, 9:40 am</span>
@@ -1505,11 +1509,25 @@ $(document).ready(function() {
                   <div class = "event_title">
                     Microeconomics Homework
                   </div>
-                  <a class = "event_status_icotxt">
+                  <!--<a class = "event_status_icotxt">
                     <img src = "src/complete.png" class = "event_status_icon">
                     </img>
-                    <div>You've Joined</div>
+                    <div>Completed</div>
                   </a>
+                  <div class = "event_status_selector">
+                    <div class = "event_status">
+                      <img src = "src/complete.png" class = "event_status_icon">
+                      </img>
+                      <div>Complete</div>
+                    </div>
+                    <div class = "event_status">
+                      <img src = "src/incomplete.png" class = "event_status_icon">
+                      </img>
+                      <div>Incomplete</div>
+                    </div>
+                  </div>-->
+                </div>
+                <div class = "info_wrapper">
                 </div>
               </div>
             </div>
@@ -1518,11 +1536,8 @@ $(document).ready(function() {
                 <div class = "icon_text">
                   <img src = "src/qa_icon.png" width = "30" height = "30">
                   <div>
-                    Discussion and Questions
+                    Event Discussion and Questions
                   </div>
-                  <div class = "icon_text_subtitle">
-                    Last post 51 minutes ago
-                  </div>  
                 </div>
               </div>
               <div class = "qa_scrollcontainer">
