@@ -26,12 +26,25 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 				var feeds = $("#posts");
 				var last_time = 0;
 				var heightOffset= 0;
-				var commentUpdatePeriod=1000;
-				var commentUpdateFlag=1;
+				//var commentUpdatePeriod=20000;
+				//var commentUpdateFlag=1;
 
 				setInterval(function() {latest_feed(); }, 10000);
-				setInterval(function() {commentUpdateFlag_mutate(); }, commentUpdatePeriod);
+				//setInterval(function() {commentUpdateFlag_mutate(); }, commentUpdatePeriod);
 
+				$(document).delegate('.post_functions',"click", function(){
+					$(this).find('.post_functions_box').show();
+					$(this).addClass('functions_active');
+				});
+
+				$(document).delegate('.functions_active',"click", function(){
+
+						//ajax add here
+
+						//appearance change when click
+						$(this).find('.post_functions_box').hide();
+						$(this).removeClass('functions_active');
+					});
 
 				$(window).scroll(function(){
 					if (load == 'yes'){
@@ -77,6 +90,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 						}
 				});
 
+				/*
 				$(document).delegate('.posts',"mouseover", function(){
 					if(commentUpdateFlag==1){
 					var $owner= $(this).closest(".posts");
@@ -93,15 +107,196 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 						});
 					}
 				});	
+				*/
 
+				$(document).click(function(event){
+			     	var $target= $(event.target);
+
+			     	//click outside hide event
+			     	var $container= $(".post_functions");
+			     	if(!$container.is($target)&&($container.has($target).length===0)){
+			     		$(".post_functions_box").stop().fadeOut(100);
+			     		$(".post_functions").removeClass('functions_active');
+			     	}
+
+				});
+
+
+				//comment like
 				$(document).delegate('.comment_like img',"click", function(){
-					$(this).attr("src","src/liked-button.png");
+
+					var replyid= $(this).closest(".post_comment").find(".comment_msg").attr("id"); 
+
+					var lk= $(this).closest(".post_comment").find(".comment_like_number");
+					var afterlike= lk.text().trim();
+					if(afterlike==''){afterlike=0;}else{afterlike=parseInt(afterlike);}
+					addlike=afterlike+1;
+					minuslike=afterlike-1;
+					if(minuslike=='0'){minuslike=' ';}
+
+					if($(this).hasClass("-liked")){
+						//de-like
+						$(this).attr("src","src/like-button.png");
+						$(this).removeClass("-liked");
+
+						$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {replyid: replyid, unlike: 1},
+            				success: function(html){ 
+	                			//alert(minuslike);
+	                			lk.text(minuslike);
+			            	}
+						});
+
+					}else{
+						//like
+						$(this).attr("src","src/liked-button.png");
+						$(this).addClass("-liked");
+
+						$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {replyid: replyid, like: 1},
+            				success: function(html){ 
+            					//alert(replyid);
+	                			//alert(addlike);
+	                			lk.text(addlike);
+			            	}
+						});
+
+					}
 				});
 
+				//post like
 				$(document).delegate('.post_like img',"click", function(){
-					$(this).attr("src","src/liked-button.png");
+					var postid= $(this).closest(".posts").attr("id"); 
+
+					var lk= $(this).closest(".posts").find(".like_number");
+					var afterlike= lk.text().trim();
+					if(afterlike==''){afterlike=0;}else{afterlike=parseInt(afterlike);}
+					addlike=afterlike+1;
+					minuslike=afterlike-1;
+					if(minuslike=='0'){minuslike=' ';}
+					
+					//alert(postid);
+
+					if($(this).hasClass("-liked")){
+						//de-like
+						$(this).attr("src","src/like-button.png");
+						$(this).removeClass("-liked");
+
+						$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, unlike: 1},
+            				success: function(html){ 
+	                			//alert("success");
+	                			lk.text(minuslike);
+			            	}
+						});
+
+					}else{
+						//like
+						$(this).attr("src","src/liked-button.png");
+						$(this).addClass("-liked");
+
+						$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, like: 1},
+            				success: function(html){ 
+	                			//alert("success");
+	                			lk.text(addlike);
+			            	}
+						});
+
+					}
 				});
 
+				$(document).delegate('.post_like img',"mouseover", function(){
+					if(!$(this).hasClass("-liked")){
+					$(this).attr("src","src/liked-button.png");
+					}
+				});
+
+				$(document).delegate('.post_like img',"mouseout", function(){
+					if(!$(this).hasClass("-liked")){
+					$(this).attr("src","src/like-button.png");
+					}
+				});
+
+				$(document).delegate('.comment_like img',"mouseover", function(){
+					if(!$(this).hasClass("-liked")){
+					$(this).attr("src","src/liked-button.png");
+					}
+				});
+
+				$(document).delegate('.comment_like img',"mouseout", function(){
+					if(!$(this).hasClass("-liked")){
+					$(this).attr("src","src/like-button.png");
+					}
+				});
+
+				$(document).delegate('.post_comment',"mouseover", function(){
+					$(this).find(".comment_delete").show();
+				});
+
+				$(document).delegate('.post_comment',"mouseout", function(){
+					$(this).find(".comment_delete").hide();
+				});
+
+				                 $('.select').on('click','li',function(){
+					  $('#open').click();
+					  var $t = $(this),
+					      $f = $('.field')
+					      text = $t.text(),
+					      icon = $t.find('i').attr('class');
+					  $f.find('label').text(text);
+					  $f.find('i').attr('class',icon)
+					});
+					$('.field').click(function(e){
+					  e.preventDefault();
+					  $('#open').click();
+					});
+
+					
+
+				$(document).delegate(".field","click",function(){
+					$(".select").stop().fadeIn(200);
+
+					var cur= $(this).closest(".field").find("i").attr("class");
+					
+					$( ".select li" ).each(function( index ) {
+						if($(this).find("i").attr("class")==cur){
+							$(this).hide();
+						}else{
+							$(this).show();
+						}
+					});	
+					
+				});    
+				
+			     $(document).click(function(event){
+			     	var $target= $(event.target);
+			     	var $container= $(".search-select");
+			     	if(!$container.is($target)&&($container.has($target).length===0)){
+			     		$(".select").stop().fadeOut(150);
+			     	}
+
+			     	if($target.hasClass("selitem")){
+			     		$(".select").stop().fadeOut(150);
+			     	}
+				});
+
+	$(document).delegate(".search-select","mouseover",function(){
+		$(this).find(".card-tag").stop().fadeIn();
+	});
+
+	$(document).delegate(".search-select","mouseout",function(){
+		$(this).find(".card-tag").hide();
+	});
+				
 
 				function latest_feed() {
 
@@ -116,6 +311,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 						});
 				}
 
+				/*
 				function commentUpdateFlag_mutate() {
 
 						if(commentUpdateFlag==0){
@@ -124,6 +320,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 							commentUpdateFlag=0;
 						}
 				}
+				*/
 
 			});
 

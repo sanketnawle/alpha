@@ -1,6 +1,7 @@
 <?php
 
 require_once("dbconfig.php");
+session_start();
 
 // Uncomment the below 3 lines if you are testing this page alone
 // $_POST['postid'] = "92";
@@ -20,7 +21,7 @@ if(isset($_POST['commentcontent'])){
 	if($postquery){
 		$postquery->bind_param('iiis',$post_id,$studentid,$univid,$comment);
 		$postquery->execute();
-		echo "success";
+		//echo "success";
 		$postquery->close();
 	}
 	else {

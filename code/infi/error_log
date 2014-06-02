@@ -114,3 +114,6 @@
 [28-May-2014 10:08:02] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/index5.php:6) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 70
 [28-May-2014 10:10:43] PHP Fatal error:  Cannot redeclare checkplikes() (previously declared in /home6/campusla/public_html/urlinq/kk/infi6/includes/likes1.php:3) in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 70
 [28-May-2014 11:53:49] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home6/campusla/public_html/urlinq/kk/infi6/includes/likes1.php on line 3
+[29-May-2014 11:29:28] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 56
+[29-May-2014 11:29:35] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 56
+[29-May-2014 11:29:44] PHP Parse error:  syntax error, unexpected T_ECHO, expecting ',' or ';' in /home6/campusla/public_html/urlinq/kk/infi6/includes/posts.php on line 56

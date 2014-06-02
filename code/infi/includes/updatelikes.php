@@ -9,18 +9,18 @@ $_POST['like']="1";
 
 
 if(isset($_POST['postid'])){
-	$type="postid";
-	$id=$_POST['postid'];
+	$contenttype="postid";
+	$contentid=$_POST['postid'];
 	$table="home_posts_likes";
 }
 else if(isset($_POST['replyid'])){
-	$type="replyid";
-	$id=$_POST['replyid'];
+	$contenttype="replyid";
+	$contentid=$_POST['replyid'];
 	$table="home_reply_likes";
 }
 else{
-	$type="none";
-	$id="none";
+	$contenttype="none";
+	$contentid="none";
 }
 
 if(isset($_SESSION['studentid'])){
@@ -32,8 +32,8 @@ else if(isset($_SESSION['profid'])){
 	$userid=$_SESSION['profid'];
 }
 
-$query="SELECT * FROM ".$table." WHERE ".$usertype."='".$userid."' AND ".$type."='".$id."'";
-$quserlikes=mysqli_query($con,$query); //Checks current login user liked this status or not
+$query="SELECT * FROM ".$table." WHERE ".$usertype."='".$userid."' AND ".$contenttype."='".$contentid."'";
+$quserlikes=mysqli_query($con,$query); //Checks if currently loggedin user liked this status or not
 $userlikes=mysqli_num_rows($quserlikes);
 
 if($userlikes==0) $status="unlike";
@@ -42,7 +42,7 @@ echo $status;
 
 	if(isset($_POST['like'])){
 		if($status=="unlike"){
-			$likequery="INSERT INTO ".$table." (".$type.",".$usertype.",univid) VALUES ('".$id."','".$userid."','1')";
+			$likequery="INSERT INTO ".$table." (".$contenttype.",".$usertype.",univid) VALUES ('".$contentid."','".$userid."','1')";
 			$likeresult = mysqli_query($con,$likequery);
 			echo "success";
 		}
@@ -51,7 +51,7 @@ echo $status;
 
 	if(isset($_POST['unlike'])){
 		if($status=="liked"){
-			$unlikequery = mysqli_query($con,"DELETE FROM ".$table." WHERE ".$type."='".$id."' AND ".$usertype."='".$userid."'");
+			$unlikequery = mysqli_query($con,"DELETE FROM ".$table." WHERE ".$contenttype."='".$contentid."' AND ".$usertype."='".$userid."'");
 			echo "success";
 		}
 		else "failed to unlike";
