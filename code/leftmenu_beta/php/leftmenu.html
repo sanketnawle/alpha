@@ -15,15 +15,14 @@ $(function() {
 	var leftmenu_head_height=73;
 
 	//set height
-	//$(".leftmenu").height(wh-banner_height-buffer_area_height);
 	$(".leftmenu").css({"margin-top":banner_height-15});
-	//$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
+	$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
 	//on resize set height
 	$( window ).resize(function() {
 	var wh= $(window).height();
-	//$(".leftmenu").height(wh-banner_height-buffer_area_height);
+	$(".leftmenu").height(wh-banner_height-buffer_area_height);
 	$(".leftmenu").css({"margin-top":banner_height-15});
-	//$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
+	$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
 	});
 
 	$(document).delegate(".leftmenu-card","mouseover",function(){
