@@ -1,23 +1,21 @@
 <?php
 
-require_once("dbconfig.php");
+// require_once("dbconfig.php");
 
 // Uncomment the below 3 lines if you are testing this page alone
-$_SESSION['studentid']=1;
+// $_SESSION['studentid']=1;
 // $_SESSION['profid']=1;
-$_POST['postid'] = "92";
+// $_POST['postid'] = "92";
 // $_POST['commentid']=strtotime("2014-04-01 19:23:41");
-$postid="92";
-$row['messageid'] = $postid;
+// $postid="92";
+// $row['messageid'] = $postid;
 
-checkplikes();
+// checkplikes();
 // echo "test";
 
-function checkplikes(){
+function checkplikes($postid){
 	global $con;
-	echo "test1";
-	if($row['messageid']) echo $postid=$row['messageid'];
-		echo $row['messageid'];
+
 	if($postid){
 		// echo "test";
 		if ($_SESSION['studentid']!=0){

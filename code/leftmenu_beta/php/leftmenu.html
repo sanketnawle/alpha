@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/leftmenu.css">
+</head>
+
+<script>
+$(function() {
+
+	var banner_height=45;
+	var buffer_area_height=0;
+	var wh= $(window).height();
+
+	var leftmenu_head_height=73;
+
+	//set height
+	//$(".leftmenu").height(wh-banner_height-buffer_area_height);
+	$(".leftmenu").css({"margin-top":banner_height-15});
+	//$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
+	//on resize set height
+	$( window ).resize(function() {
+	var wh= $(window).height();
+	//$(".leftmenu").height(wh-banner_height-buffer_area_height);
+	$(".leftmenu").css({"margin-top":banner_height-15});
+	//$(".leftmenu-body").height($(".leftmenu").height()-leftmenu_head_height);
+	});
+
+	$(document).delegate(".leftmenu-card","mouseover",function(){
+		$(this).find(".des-tag").show();
+	});
+
+	$(document).delegate(".leftmenu-card","mouseout",function(){
+		$(this).find(".des-tag").hide();
+	});
+
+
+	$(document).delegate(".avatar-aug","mouseover",function(){
+		$(this).find(".card-tag").stop().fadeIn();
+	});
+
+	$(document).delegate(".avatar-aug","mouseout",function(){
+		$(this).find(".card-tag").hide();
+	});
+
+
+
+	var ctr_lock_flag=0;
+	$(document).delegate(".head-lbtn","click",function(){
+
+
+	if(ctr_lock_flag==0){
+
+		ctr_lock_flag=1; 
+		setTimeout( function(){ ctr_lock_flag=0; },900);
+
+		if($(this).hasClass("png_flip")){
+
+			$(".card-des").hide();
+			$(".search-input").hide();
+			$(".search-add").hide();
+			$(".leftmenu-owner").hide();
+			$(".head-rbtn").fadeIn();
+
+			$(".card-avatar").css({"transition":"transform 0.3s ease-in-out","transform":"scale(1.2)"});
+			$(".leftmenu-card").addClass("avatar-aug");
+
+			/*originally 280px*/
+			$(".leftmenu").animate({width:"72px"});	
+
+			$(".search-leftblock").animate({
+				marginLeft:"+=5px"},function(){
+					$(".leftmenu-search").animate({ opacity: "0", height: "0" , marginTop:"-=3px"});
+				});
+
+
+			$(".card-avatar").animate({marginLeft:"+=11.5px"});
+
+			$(this).removeClass("png_flip");
+
+			/*originally 10px*/
+			$(".leftmenu-ctr").css({"margin-left":"7px"});
+
+			
+
+		}else{
+			/*reverse process*/
+			/*from 15px*/
+			$('.leftmenu-ctr').css({"margin-left":"7px"});
+			$(".head-rbtn").fadeOut();
+			$(this).addClass("png_flip");	
+			
+			$(".card-avatar").animate({marginLeft:"+=5px"});	
+
+			$(".search-leftblock").animate({marginLeft:"+=0px"});	
+
+			$(".card-avatar").css({"transition":"transform 0.3s ease-in-out","transform":"scale(1)"});
+			$(".leftmenu-card").removeClass("avatar-aug");
+
+			$(".leftmenu").animate({width:"280px"},function(){
+				/*animation complete*/
+				$(".card-des").delay(1000).show();
+				$(".search-input").delay(1000).show();
+				$(".search-add").delay(1000).show();
+				$(".leftmenu-owner").delay(1000).show();
+
+				$(".leftmenu-search").animate({ opacity: "1", height: "35px", marginTop:"+=0px" });
+			});	
+
+		}
+	}
+
+
+	});
+
+	
+
+});
+</script>
+
+<body>
+<div class='leftmenu'>
+	<div class='leftmenu-head'>
+
+		<div class='head-lbtn png_flip'><img src="../src/burger_closed.png" class='leftmenu-ctr'>
+		</div>
+		<div class='head-rbtn'>
+		<div class='head-add'><i class='mini-add'></i></div>
+		</div>
+
+		<div class='leftmenu-owner'>Dummy Name</div>
+	</div>
+	<div class='leftmenu-search'>
+		<div class='search-leftblock'><i class='search-icon'></i></div>
+		<input type="text" class='search-input' placeholder='Search Classes & Clubs' />
+		<div class='search-add'><i class='add-icon'></i></div>
+	</div>
+	<div class='leftmenu-body'>
+		
+		<div class='leftmenu-card'>
+			<img src='../testpic/avatar.png' class='card-avatar'>
+			<div class='card-des'>
+				<div class='des-title'>Computer Science</div>
+				<div class='des-sub'>Professor Doom</div>
+				<div class='des-tag'>Course</div>
+			</div>
+
+		
+			<div class = "card-tag">
+				<div class = "tag-wedge"></div>
+				<div class = "tag-box">
+					<span>Computer Science</span>
+				</div>									
+			</div>
+
+		</div>
+
+		<div class='leftmenu-card'>
+			<img src='../testpic/avatar2.png' class='card-avatar'>
+			<div class='card-des'>
+				<div class='des-title club-des'>Science Club</div>
+				<div class='des-sub'></div>
+				<div class='des-tag club-tag'>Club</div>
+			</div>
+
+
+			<div class = "card-tag">
+				<div class = "tag-wedge"></div>
+				<div class = "tag-box">
+					<span>Science Club</span>
+				</div>									
+			</div>
+		</div>
+
+		<div class='leftmenu-card'>
+			<img src='../testpic/avatar2.png' class='card-avatar'>
+			<div class='card-des'>
+				<div class='des-title club-des'>Science Club</div>
+				<div class='des-sub'></div>
+				<div class='des-tag club-tag'>Club</div>
+			</div>
+
+
+			<div class = "card-tag">
+				<div class = "tag-wedge"></div>
+				<div class = "tag-box">
+					<span>Science Club</span>
+				</div>									
+			</div>
+		</div>
+
+	</div>	
+</div>
+</body>
+</html>
