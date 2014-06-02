@@ -5,7 +5,7 @@
  */
 
 (function($){
-
+    
     /*
      * TimeAutcomplete
      *
@@ -277,7 +277,7 @@
          * Pass an H:i:s time format in as the value: '' attribute on the element or 'current'
          */
         _setValueAsTime: function(){
-
+            
             var val = $.trim(this.el.val());
             var val_parts = val.split(':');
 
@@ -403,8 +403,7 @@
      *
      * @param {Object} opts The options passed to it when called (optional)
      */
-    $.fn.timeAutocomplete = function(opts){
-
+    $.fn.timeAutocomplete = function(opts){        
         // Do the nasty on each one.
         return this.each(function(){
 

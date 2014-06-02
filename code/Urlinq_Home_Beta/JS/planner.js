@@ -703,8 +703,6 @@ $(document).ready(function () {
         $('.calLayer').toggle();
     });
 
-
-
     // set time options for time picker 24hr
     if ((new Date().getMonth() + 1) >= $(".set_date").val().split('/')[0]) {
         if (new Date().getDate() <= $(".set_date").val().split('/')[1]) {
@@ -716,5 +714,5 @@ $(document).ready(function () {
         formatter: 'ampm',
         start_hour: $startTime,
         value: 'Add a time?'
-    });    
+    });
 });

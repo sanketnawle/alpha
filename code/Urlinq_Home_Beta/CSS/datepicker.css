@@ -101,7 +101,7 @@ box-shadow: 0 0 3px rgba(0,0,0,.3);
         height: 20px;
         margin-left: 14px;
         cursor: pointer;
-        background: url(src/minical_navs.png) no-repeat;
+        background: url(../src/minical_navs.png) no-repeat;
       
 }
 .minical-header nav span:first-of-type {
