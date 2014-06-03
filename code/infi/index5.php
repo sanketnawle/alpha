@@ -29,7 +29,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 				//var commentUpdatePeriod=20000;
 				//var commentUpdateFlag=1;
 
-				setInterval(function() {latest_feed(); }, 10000);
+				setInterval(function() {latest_feed(); }, 1000);
 				//setInterval(function() {commentUpdateFlag_mutate(); }, commentUpdatePeriod);
 
 				$(document).delegate('.post_functions',"click", function(){
@@ -191,7 +191,7 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
             				url: "includes/feedops.php",
             				data: {postid: postid, unlike: 1},
             				success: function(html){ 
-	                			//alert("success");
+	                			//alert(minuslike);
 	                			lk.text(minuslike);
 			            	}
 						});
@@ -246,24 +246,28 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 					$(this).find(".comment_delete").hide();
 				});
 
-				                 $('.select').on('click','li',function(){
-					  $('#open').click();
+				$('.select').on('click','li',function(){
 					  var $t = $(this),
-					      $f = $('.field')
+					      $f = $(this).closest(".search-select").find('.field')
 					      text = $t.text(),
 					      icon = $t.find('i').attr('class');
 					  $f.find('label').text(text);
 					  $f.find('i').attr('class',icon)
 					});
+
 					$('.field').click(function(e){
 					  e.preventDefault();
 					  $('#open').click();
 					});
 
 					
+				var tagbox_flag=0;
 
 				$(document).delegate(".field","click",function(){
-					$(".select").stop().fadeIn(200);
+					tagbox_flag=1;
+					$(".card-tag").hide();
+					$(this).closest(".search-select").find(".select").stop().fadeIn(200);
+
 
 					var cur= $(this).closest(".field").find("i").attr("class");
 					
@@ -278,34 +282,109 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 				});    
 				
 			     $(document).click(function(event){
+
 			     	var $target= $(event.target);
 			     	var $container= $(".search-select");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
 			     		$(".select").stop().fadeOut(150);
+			     		tagbox_flag=0;
 			     	}
 
 			     	if($target.hasClass("selitem")){
 			     		$(".select").stop().fadeOut(150);
+			     		tagbox_flag=0;
 			     	}
 				});
 
 	$(document).delegate(".search-select","mouseover",function(){
+		if(tagbox_flag==0){
+		var icon= $(this).find(".field .icon");
+		var tagtext='';
+		if(icon.hasClass("user")){tagtext="Seen by: <span style='font-weight:bold;'>Students</span>";}
+		if(icon.hasClass("list")){tagtext="Seen by: <span style='font-weight:bold;'>Faculty</span>";}
+		if(icon.hasClass("stat")){tagtext="Seen by: <span style='font-weight:bold;'>Campus</span>";}
+		if(icon.hasClass("accs")){tagtext="Seen by: <span style='font-weight:bold;'>Only Me</span>";}
+
+		$(this).find(".tag-box span").html(tagtext);
 		$(this).find(".card-tag").stop().fadeIn();
+		}
 	});
 
 	$(document).delegate(".search-select","mouseout",function(){
 		$(this).find(".card-tag").hide();
 	});
+
+
+	$(document).delegate(".option_delete","click",function(){
+
+					var postid= $(this).closest(".posts").attr("id");
+					$(this).closest(".posts").animate({ opacity: "0", height: "0", marginTop: "0px", marginBottom: "0px", paddingTop:"0px", paddingBottom:"0px"},400);
+					//alert(postid);
+					$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, delete: 1},
+            				success: function(html){ 
+            					
+			            	}
+						});
+	});
+
+		$(document).delegate(".comment_delete","click",function(){
+
+					var replyid= $(this).closest(".post_comment").find(".comment_msg").attr("id");
+					$(this).closest(".post_comment").animate({ opacity: "0", height: "0", marginTop:"0px", marginBottom:"0px", paddingTop:"0px", paddingBottom:"0px"},400);
+					//alert(replyid);
+					$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {replyid: replyid, delete: 1},
+            				success: function(html){ 
+            					
+			            	}
+						});
+	});
 				
+	$(document).delegate(".option_hide","click",function(){
+
+					var postid= $(this).closest(".posts").attr("id");
+					$(this).closest(".posts").animate({ opacity: "0", height: "0", marginTop: "0px", marginBottom: "0px", paddingTop:"0px", paddingBottom:"0px"},400);
+					//alert(postid);
+					$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, hide: 1},
+            				success: function(html){ 
+            					
+			            	}
+						});
+	});
+
+
+	$(document).delegate(".option_report","click",function(){
+
+					var postid= $(this).closest(".posts").attr("id");
+					//alert(postid);
+					$.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, report: 1},
+            				success: function(html){ 
+            					
+			            	}
+						});
+	});
 
 				function latest_feed() {
 
 						var latest = feeds.children().first().attr('id');
+						//alert(latest);
 						$.ajax({
 	            			type: "POST",
             				url: "includes/latestfeed.php",
             				data: {latest: latest},
             				success: function(html){ 
+            					//alert("a");
 	                			$("#posts").first().prepend( html );
 			            	}
 						});

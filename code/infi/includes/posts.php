@@ -35,6 +35,13 @@
 			//msg start
 			echo "<div class='post_msg'>".$row['message']."</div>";
 			//msg end
+			//msg edit
+			echo "<div class='post_edit'>";
+			echo "<textarea class='edit_area'></textarea>";
+			echo "<div class='edit_toolbar'><button class='edit_done'>Done</button><button class='edit_cancel'>Cancel</button></div>";
+			echo "</div>";
+			//msg edit
+
 
 			//tools start
 			echo "<div class='post_tools'>";
@@ -45,7 +52,7 @@
 			// echo "<div class='like_number'>10</div>";
 			echo "</div>";
 
-			echo "<div class='search-select'><span title = 'Who can see this post?' class='field'><i class='icon user'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
+			echo "<div class='search-select'><span class='field'><i class='icon user'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
 				<div class = 'tag-wedge'></div><div class = 'tag-box'><span>Science Club</span></div></div></div>";
 
 
@@ -55,19 +62,19 @@
 				
 				echo "</div>";		
 				echo "<div class = 'post_functions_box'>";
-					echo "<div class = 'post_functions_option' id ='option_report'>";
+					echo "<div class = 'post_functions_option option_report'>";
 						echo "Report this Post";
 					echo "</div>";	
 					echo "<hr class = 'post_options_hr'>";		
-					echo "<div class = 'post_functions_option' id ='option_edit'>";
+					echo "<div class = 'post_functions_option option_edit'>";
 						echo "Edit this Post";
 					echo "</div>";	
 					echo "<hr class = 'post_options_hr'>";
-					echo "<div class = 'post_functions_option' id ='option_hide'>";
+					echo "<div class = 'post_functions_option option_hide'>";
 						echo "Hide this Post";
 					echo "</div>";
 					echo "<hr class = 'post_options_hr'>";
-					echo "<div class = 'post_functions_option' id ='option_delete'>";
+					echo "<div class = 'post_functions_option option_delete'>";
 						echo "Delete this Post";
 					echo "</div>";
 

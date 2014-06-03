@@ -228,6 +228,48 @@ color: #121314;
   margin-top: 1px;
 }
 
+.post_edit
+{
+float: left;
+height: auto;
+width: 530px;
+box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12) inset;
+border: 1px solid #CED2D6;
+border-radius: 1px;
+margin-left: 13px;
+}
+
+.edit_area
+{
+  float:left;
+  width:519px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top:3px;
+  height:auto;
+  min-height:40px;
+  background-color:white;
+
+  font-size:14px;
+  font-family: 'Open Sans',sans-serif;
+
+  outline: none;
+  border:none;
+  resize:none;
+}
+
+.edit_toolbar
+{
+float: left;
+background-color: #F8FAFC;
+width: 100%;
+border-top: 1px solid #F2F2F2;
+height: 25px;
+border-radius: 0px 0px 1px 1px;
+}
+
+
+
 .reply_user_icon
 {
 
@@ -438,14 +480,13 @@ cursor: pointer;
 }
 
 .post_functions{
+  position:absolute;
   display: inline-block;
-cursor:pointer;
+  cursor:pointer;
   margin-top: 16px;
 
   height:18px;
-  margin-right: 30px;
-  position: relative;
-  left: 468px;
+  left:738px;
   width:19px;
 }
 
@@ -480,7 +521,7 @@ cursor:default;
 position: relative;
 padding-bottom:3px;
 display: none;
-
+z-index:100;
 }
 
 .post_options_hr{
@@ -583,7 +624,7 @@ box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 .search-select .icon:after {
   font-style: normal;
   font-family: FontA;
-  color: rgba(90,90,90,0.6);
+  color: rgba(117, 114, 114, 0.62);
   font-size: 16px;
   position: relative;
   right: 2px;
@@ -592,9 +633,9 @@ box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 }
 .search-select .icon.user:after {
   content: "\f0c0";
-  top: 2.1px;
-  left:-8px;
   font-size: 12px;
+  left:-9px;
+  top:4px;
 }
 .search-select .icon.list:after {
   content: "\f0eb";
@@ -633,6 +674,7 @@ border-radius: 4px;
 width: 170px;
 position: absolute;
 box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  z-index:100;
 }
 .search-select ul.select li {
   z-index: 1;
@@ -719,6 +761,7 @@ color: #999;
 margin-left: -50px;
 margin-top: 28px;
 display: none;
+  z-index:100;
 }
 
 .tag-box{
@@ -744,11 +787,11 @@ display: none;
 position: absolute;
 background-image: url(../src/wedgeUp.png);
 background-repeat: no-repeat;
-background-size: 17px;
-height: 12px;
+background-size: 14px;
+height: 14px;
 width: 20px;
-margin-top: -10px;
-margin-left: 40px;
+margin-top: -7px;
+margin-left: 42px;
 }
 
 

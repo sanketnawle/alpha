@@ -4,8 +4,9 @@ require_once("dbconfig.php");
 $_SESSION['studentid']="1";
 
 // Uncomment the below 3 lines if you are testing this page alone
-$_POST['postid'] = "141";
-$_POST['delete']='1';
+// $_POST['postid'] = "209";
+// $_POST['hide']='1';
+// $_POST['delete']='1';
 // $_POST['report']='1';
 // $_POST['edit']="Post by Kaushik";
 // $_POST['privacy']="Faculty";
@@ -51,11 +52,12 @@ if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
 
 if($contentid!="none"){
 	if(isset($_POST['like'])) like($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid);
-	if(isset($_POST['unlike'])) unlike($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid);
-	if(isset($_POST['delete'])) delete($con,$updatetable,$usertype,$userid,$contenttype,$contentid);
-	if(isset($_POST['privacy'])) updateprivacy($con,$usertype,$userid,$contenttype,$contentid,$privacy);
-	if(isset($_POST['report'])) report($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid);
-	if(isset($_POST['edit'])){
+	else if(isset($_POST['unlike'])) unlike($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid);
+	else if(isset($_POST['delete'])) delete($con,$updatetable,$usertype,$userid,$contenttype,$contentid);
+	else if(isset($_POST['privacy'])) updateprivacy($con,$usertype,$userid,$contenttype,$contentid,$privacy);
+	else if(isset($_POST['report'])) report($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid);
+	else if(isset($_POST['hide'])) hide($con,$usertype,$userid,$contenttype,$contentid);
+	else if(isset($_POST['edit'])){
 		$updatetext=$_POST['edit'];
 		edit($con,$updatetable,$content,$updatetext,$usertype,$userid,$ucontenttype,$contentid);
 	}
@@ -108,7 +110,7 @@ function unlike($con,$table,$updatetable,$usertype,$userid,$contenttype,$uconten
 	}
 }
 
-//checks if the current user is the owner of the post
+// Checking ownership of "post"
 function checkpowner($con,$usertype,$userid,$pid){
 	$pownerquery="SELECT * FROM home_posts WHERE messageid = '".$pid."'";
 	$pownerresult=mysqli_query($con,$pownerquery);
@@ -130,6 +132,7 @@ function checkpowner($con,$usertype,$userid,$pid){
 	else return $checkpowner="false";
 }
 
+// Checking ownership of "comment"
 function checkcowner($con,$usertype,$userid,$cid){
 	echo $cownerquery="SELECT * FROM home_reply WHERE replyid = '".$cid."'";
 	$cownerresult=mysqli_query($con,$cownerquery);
@@ -151,6 +154,7 @@ function checkcowner($con,$usertype,$userid,$cid){
 	else return $checkcowner="false";
 }
 
+// Deleting Starts
 function delete($con,$updatetable,$usertype,$userid,$contenttype,$contentid){
 	// echo "test";
 	if($contenttype=="replyid"){
@@ -174,7 +178,7 @@ function delete($con,$updatetable,$usertype,$userid,$contenttype,$contentid){
 
 	//checks if the current user is the owner of the post
 	$checkpowner=checkpowner($con,$usertype,$userid,$pid);
-
+	// echo $repdel;
 	// deleting a comment/reply
 	if($contenttype=="replyid"){
 		if(($checkpowner=="true") or ($usertype==$cownertype and $userid==$cownerid)){
@@ -251,6 +255,7 @@ function edit($con,$updatetable,$content,$updatetext,$usertype,$userid,$ucontent
 	}
 }
 
+// Reporting Starts
 function reportstatus($con,$table,$usertype,$userid,$contenttype,$contentid){
 	$statusquery = "SELECT * FROM home_reports WHERE ".$usertype."='".$userid."' AND ".$contenttype."='".$contentid."'";
 	$userreports = mysqli_query($con,$statusquery); //Checks if currently loggedin user reported this status or not
@@ -261,20 +266,37 @@ function reportstatus($con,$table,$usertype,$userid,$contenttype,$contentid){
 function report($con,$table,$updatetable,$usertype,$userid,$contenttype,$ucontenttype,$contentid){
 	// echo "test";
 	$reportcount=reportstatus($con,$table,$usertype,$userid,$contenttype,$contentid);
-	if($reportcount==0) $reportstatus="unreport";
-	else if($reportcount>=2){
-		delete($con,$updatetable,$usertype,$userid,$contenttype,$contentid);
+	if($reportcount==0){
+		$reportquery="INSERT INTO home_reports (".$contenttype.",".$usertype.",univid) VALUES ('".$contentid."','".$userid."','1')";
+		$reportresult = mysqli_query($con,$reportquery);
+		if($reportresult){
+			echo "report success";
+		}
+		else echo "report failed";
 	}
-	else{
-		if($reportstatus=="unreport"){
-			$reportquery="INSERT INTO home_reports (".$contenttype.",".$usertype.",univid) VALUES ('".$contentid."','".$userid."','1')";
-			$reportresult = mysqli_query($con,$reportquery);
-			if($reportresult){
-				echo "report success";
-			}
-			else echo "report failed";
-		}		
+	echo $threshrepcount = checkthreshreps($con,$table,$contenttype,$contentid);
+	if($threshrepcount>=2){
+		$delquery="DELETE FROM home_posts WHERE ".$ucontenttype." = '".$contentid."'";
+		$del=mysqli_query($con,$delquery);
+		if($del) echo "success";
+		else echo "delete failed";
 	}
 }
 
+function checkthreshreps($con,$table,$contenttype,$contentid){
+	$threshquery = "SELECT * FROM home_reports WHERE ".$contenttype."='".$contentid."'";
+	$threshreports = mysqli_query($con,$threshquery); //Checks if currently loggedin user reported this status or not
+	$threshrepcount = mysqli_num_rows($threshreports);
+	return $threshrepcount;
+}
+// Reporting ends
+
+function hide($con,$usertype,$userid,$contenttype,$contentid){
+	$hidequery="INSERT INTO home_hide (".$contenttype.",".$usertype.",univid) VALUES ('".$contentid."','".$userid."','1')";
+	$hideresult = mysqli_query($con,$hidequery);
+	if($hideresult){
+		echo "hide success";
+	}
+	else echo "hide failed";
+}
 ?>

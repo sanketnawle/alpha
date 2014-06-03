@@ -6,7 +6,7 @@ require_once("dbconfig.php");
 // $latest = date("Y-m-d H:i:s",$time);
 
 // Uncomment the line below if you are testing this page alone
-// $_POST['latest'] = "1398352086";
+// echo $_POST['latest'] = "1401809930";
 
 // echo( $_POST['latest']);
 
@@ -27,7 +27,7 @@ if(isset($_POST['latest'])){
 
 			// echo "<br><br><br> </div>";
 
-			include "includes/posts.php";			
+			include "posts.php";			
 
 		}
 	}
