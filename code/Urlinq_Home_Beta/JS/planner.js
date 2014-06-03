@@ -1,59 +1,137 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-    $('.fa-caret-down').click(function () {
+    $(document).delegate("#add_event", 'click',
+            function() {
+                var name = $("#event_name").val().toString();
+                var time = $("#set_time_24hr").val().toString();
+                var date = $("#event_date").val().toString();
+                $.ajax({
+                    url: "../HTML/Planner/insert.php",
+                    data: {event_name: name, event_time: time, event_date: date},
+                    type: "POST",
+                    dataType: "json",
+                    success: function(responseText)
+                    {
+                        document.getElementById("result").innerHTML = responseText.echo_string;
+                        document.getElementById("event_count").innerHTML = responseText.event_count.toString();
+//                            location.reload();
+
+                    },
+                    error: function(responseText) {
+//                           document.getElementById("result").innerHTML = responseText;
+                        alert("Connection Error. Try Later!");
+                    }
+                });
+            });
+
+    $(document).delegate('.fa-caret-down', 'click', function() {
         $('.pl_options').toggleClass('unhider');
         $('.fa-caret-down').toggleClass('open_Menu');
     });
-    $('.button-block button').on('click', function () {
+
+    $(document).delegate('.button-block button', 'click', function() {
+        var $event_id = $(this).parent().parent().attr('id');
+        $event_id = parseInt($event_id.replace("w-2-2", ""));        
         var $this = $(this).parent();
-        var $a = $(this).parents(".wrapper");
-        if ($a.hasClass("checked")) {
+        var $a = $(this).closest(".toDowrapper");
+        if ($a.hasClass("checked")) {            
             $a.removeClass('checked');
+            changeIncomplete('Increase');
+            changeIsChecked($event_id, 0);
         } else {
             $a.addClass('checked');
+            changeIncomplete('Decrease');
+            changeIsChecked($event_id, 1);
         }
 
         $this.toggleClass('canceled');
         return false;
     });
 
-    $('.btn_canc').click(function () {
+    function changeIsChecked($event_id, $value) {
+        $.ajax({
+            url: "../HTML/Planner/update.php",
+            data: {event_id: $event_id, value: $value},
+            type: "POST",
+            dataType: "json",            
+        });
+    }
+
+    function changeIncomplete($choice) {
+        switch ($choice) {
+            case 'Decrease':
+                $event_count = document.getElementById("event_count").innerHTML;
+                $event_count = $event_count.split(" ");
+                if ((parseInt($event_count[0]) - 1) === 0) {
+                    document.getElementById("event_count").innerHTML = "All Complete";
+                } else {
+                    $event_count[0] = (parseInt($event_count[0]) - 1).toString();
+                    document.getElementById("event_count").innerHTML = $event_count[0] + " " + $event_count[1];
+                }
+                break;
+            case 'Increase':
+                $event_count = document.getElementById("event_count").innerHTML;
+                if ($event_count.search("All") == -1) {
+                    $event_count = $event_count.split(" ");
+                    $event_count[0] = (parseInt($event_count[0]) + 1).toString();
+                    document.getElementById("event_count").innerHTML = $event_count[0] + " " + $event_count[1];
+                } else {
+                    document.getElementById("event_count").innerHTML = 1 + " " + "Incomplete";
+                }
+                break;
+            default:
+                alert("Should never come here");
+
+        }
+    }
+
+    $(document).delegate('.btn_canc', 'click', function() {
         $('.pl_add').css('height', '19px');
         $('.pl_addevnt').css('display', 'none');
-        $('.planner').css('height', '325px');
+        //$('.planner').css('height', '325px');
         $('.pl_add').attr("placeholder", "+ Add new Event");
+        $('.pl_add').val("");
 
     });
-    
-    $('.pl_add').click(function () {
+
+    $(document).delegate('.btn_addvent', 'click', function() {
+        $('.pl_add').css('height', '19px');
+        $('.pl_addevnt').css('display', 'none');
+        //$('.planner').css('height', '325px');
+        $('.pl_add').attr("placeholder", "+ Add new Event");
+        $('.pl_add').val("");
+
+    });
+
+    $(document).delegate(".pl_add", "click", function() {
 
         $('.pl_add').css('height', '34px');
         $('.pl_addevnt').css('display', 'block');
-        $('.planner').css('height', '409px');
+        // $('.planner').css('height', '409px');
         $('.pl_add').attr("placeholder", "Name this event...");
 
     });
-    
-    $(document).on("click", function (e) {
+
+    $(document).on("click", function(e) {
         var elem = $(e.target);
         if (!elem.hasClass("evnt_inps") &&
-            !elem.hasClass("set_date"))
+                !elem.hasClass("set_date"))
         {
             $('.calLayer').css('display', 'none');
         }
         if (elem.hasClass("days") ||
-            elem.hasClass("m-prev") ||
-            elem.hasClass("m-next") ||
-            elem.hasClass("minical-header") ||
-            elem.hasClass("minical-h1")) {
+                elem.hasClass("m-prev") ||
+                elem.hasClass("m-next") ||
+                elem.hasClass("minical-header") ||
+                elem.hasClass("minical-h1")) {
             $('.calLayer').css('display', 'block');
         }
-    }); 
+    });
 });
 
 
-$(document).ready(function () {
-    $(function () {
+$(document).ready(function() {
+    $(function() {
         $('#nevt-desc').autogrow();
         $('#nevt-desc').css('overflow', 'hidden').autogrow()
     });
@@ -63,33 +141,33 @@ $(document).ready(function () {
 
     $("#edit-picture").hide();
 
-    $(document).delegate("#profile-picture", "mouseover", function () {
+    $(document).delegate("#profile-picture", "mouseover", function() {
         $("#edit-picture").show();
     });
-    $(document).delegate("#edit-picture", "mouseover", function () {
+    $(document).delegate("#edit-picture", "mouseover", function() {
         $("#edit-picture").show();
     });
-    $(document).delegate("#edit-picture", "mouseout", function () {
+    $(document).delegate("#edit-picture", "mouseout", function() {
         $("#edit-picture").hide();
     });
-    $(document).delegate("#profile-picture", "mouseout", function () {
+    $(document).delegate("#profile-picture", "mouseout", function() {
         $("#edit-picture").hide();
     });
 
-    $(".class-name").each(function (index) {
+    $(".class-name").each(function(index) {
         if ($(this).text().length > 21) {
             //alert($(this).attr("id"));
             $(this).text($(this).text().substr(0, 18) + "...");
         }
     });
-    $(".club-name").each(function (index) {
+    $(".club-name").each(function(index) {
         if ($(this).text().length > 21) {
             //alert($(this).attr("id"));
             $(this).text($(this).text().substr(0, 18) + "...");
         }
     });
 
-    $(document).delegate(".editcolumn", "keyup", function () {
+    $(document).delegate(".editcolumn", "keyup", function() {
         if ($(this).attr("id") == "editcolumn-u") {
             ut = $(this).val();
         }
@@ -102,7 +180,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).delegate(".editingbio", "keyup", function () {
+    $(document).delegate(".editingbio", "keyup", function() {
         if ($(this).hasClass("emailtext")) {
             eml = $(this).val();
         }
@@ -115,7 +193,7 @@ $(document).ready(function () {
 
     });
 
-    $(document).delegate(".annbuttons", "click", function () {
+    $(document).delegate(".annbuttons", "click", function() {
 
         $("#blackcanvas2").fadeOut();
 
@@ -131,7 +209,7 @@ $(document).ready(function () {
     });
 
     //need slightly revise!!
-    $(document).delegate(".acabuttons", "click", function () {
+    $(document).delegate(".acabuttons", "click", function() {
 
 
 
@@ -188,7 +266,7 @@ $(document).ready(function () {
                 renderEventAct0.push(nid + "::" + $m);
 
                 //retreive active0
-                $.each(renderEventAct0, function (index, value) {
+                $.each(renderEventAct0, function(index, value) {
                     var mth = value.split("::");
                     var ind = mth[1];
                     var dte = mth[0];
@@ -197,7 +275,7 @@ $(document).ready(function () {
                     }
                 });
 
-                $.each(renderEventAct1, function (index, value) {
+                $.each(renderEventAct1, function(index, value) {
                     var mth = value.split("::");
                     var ind = mth[1];
                     var dte = mth[0];
@@ -220,7 +298,7 @@ $(document).ready(function () {
 
             }
         } else {
-            $("#bc3content").animate({ marginRight: "-=700px" });
+            $("#bc3content").animate({marginRight: "-=700px"});
 
             $(".blackcanvas3").hide();
             animationflag = 0;
@@ -229,7 +307,7 @@ $(document).ready(function () {
 
     });
 
-    $(document).delegate(".addmore", "click", function () {
+    $(document).delegate(".addmore", "click", function() {
         $(".successinfo").hide();
 
         //add back removed elements
@@ -251,7 +329,7 @@ $(document).ready(function () {
     });
 
 
-    $(document).delegate(".announce", "mousedown", function () {
+    $(document).delegate(".announce", "mousedown", function() {
         var tid = "";
         if ($(this).closest(".announcecolumn").hasClass("toolsforclass")) {
             tid = "ed=" + $(this).closest(".class-one").attr("id");
@@ -268,7 +346,7 @@ $(document).ready(function () {
     });
 
     var animationflag = 0;
-    $(document).delegate(".addevent", "mousedown", function () {
+    $(document).delegate(".addevent", "mousedown", function() {
         var tid = "";
         if ($(this).closest(".announcecolumn").hasClass("toolsforclass")) {
             tid = "ed=" + $(this).closest(".class-one").attr("id");
@@ -284,7 +362,7 @@ $(document).ready(function () {
         animationflag = 1;
 
         //$("#bc3content").css("margin-right","0px");
-        $("#bc3content").animate({ marginRight: "+=700px" });
+        $("#bc3content").animate({marginRight: "+=700px"});
     });
 
 
@@ -360,20 +438,20 @@ $(document).ready(function () {
     weekday[5] = "fr";
     weekday[6] = "sa";
     var $w = weekday[startAt($m, $y)];
-    
 
-    $(".calcell").each(function (index) {
+
+    $(".calcell").each(function(index) {
         var tid = $(this).attr("id");
         var tidsp = tid.split("_");
         var idx = tidsp[2];
         var td = tidsp[1];
         if ((td == $w) && (idx <= 6)) {
 
-            for (var i = idx; i < (parseInt(idx) + parseInt($ds)) ; i++) {
+            for (var i = idx; i < (parseInt(idx) + parseInt($ds)); i++) {
 
                 $(".cl_" + i).removeClass("disable");
                 $(".cl_" + i).text(parseInt(i) - parseInt(idx) + parseInt(1));
-            } 
+            }
         }
         if ($(this).hasClass("disable") && (idx >= parseInt($ds))) {
             $(this).hide();
@@ -383,16 +461,20 @@ $(document).ready(function () {
         }
     });
     //mutated
-    $(document).delegate(".m-next", "click", function () {
+    $(document).delegate(".m-next", "click", function() {
         /*archive event*/
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             var iid = $(this).attr("id") + "::" + $m;
             var inact0 = jQuery.inArray(iid, renderEventAct0);
             var inact1 = jQuery.inArray(iid, renderEventAct1);
 
 
-            if ($(this).hasClass("active0") && (inact0 == "-1")) { renderEventAct0.push(iid); }
-            if ($(this).hasClass("active1") && (inact1 == "-1")) { renderEventAct1.push(iid); }
+            if ($(this).hasClass("active0") && (inact0 == "-1")) {
+                renderEventAct0.push(iid);
+            }
+            if ($(this).hasClass("active1") && (inact1 == "-1")) {
+                renderEventAct1.push(iid);
+            }
 
 
         });
@@ -410,17 +492,17 @@ $(document).ready(function () {
 
         var $ds = daysInMonth($m, $y);
         var $w = weekday[startAt($m, $y)];
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             var tid = $(this).attr("id");
             var tidsp = tid.split("_");
             var idx = tidsp[2];
             var td = tidsp[1];
             if ((td == $w) && (idx <= 6)) {
 
-                for (var i = idx; i < (parseInt(idx) + parseInt($ds)) ; i++) {
+                for (var i = idx; i < (parseInt(idx) + parseInt($ds)); i++) {
                     $(".cl_" + i).removeClass("disable");
                     $(".cl_" + i).text(parseInt(i) - parseInt(idx) + parseInt(1));
-                } 
+                }
             }
             if ($(this).hasClass("disable") && (idx >= parseInt($ds))) {
                 $(this).hide();
@@ -435,7 +517,7 @@ $(document).ready(function () {
         cleanBlinkActive2();
 
         /*retreive event*/
-        $.each(renderEventAct0, function (index, value) {
+        $.each(renderEventAct0, function(index, value) {
             var mth = value.split("::");
             var ind = mth[1];
             var dte = mth[0];
@@ -443,7 +525,7 @@ $(document).ready(function () {
                 $("#" + dte).addClass("active0");
             }
         });
-        $.each(renderEventAct1, function (index, value) {
+        $.each(renderEventAct1, function(index, value) {
             //alert(value);
             var mth = value.split("::");
             var ind = mth[1];
@@ -458,16 +540,20 @@ $(document).ready(function () {
 
     });
     //mutated
-    $(document).delegate(".m-prev", "click", function () {
+    $(document).delegate(".m-prev", "click", function() {
         /*archive event*/
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             var iid = $(this).attr("id") + "::" + $m;
             var inact0 = jQuery.inArray(iid, renderEventAct0);
             var inact1 = jQuery.inArray(iid, renderEventAct1);
 
 
-            if ($(this).hasClass("active0") && (inact0 == "-1")) { renderEventAct0.push(iid); }
-            if ($(this).hasClass("active1") && (inact1 == "-1")) { renderEventAct1.push(iid); }
+            if ($(this).hasClass("active0") && (inact0 == "-1")) {
+                renderEventAct0.push(iid);
+            }
+            if ($(this).hasClass("active1") && (inact1 == "-1")) {
+                renderEventAct1.push(iid);
+            }
 
 
         });
@@ -486,18 +572,18 @@ $(document).ready(function () {
 
         var $ds = daysInMonth($m, $y);
         var $w = weekday[startAt($m, $y)];
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             var tid = $(this).attr("id");
             var tidsp = tid.split("_");
             var idx = tidsp[2];
             var td = tidsp[1];
             if ((td == $w) && (idx <= 6)) {
 
-                for (var i = idx; i < (parseInt(idx) + parseInt($ds)) ; i++) {
+                for (var i = idx; i < (parseInt(idx) + parseInt($ds)); i++) {
 
                     $(".cl_" + i).removeClass("disable");
                     $(".cl_" + i).text(parseInt(i) - parseInt(idx) + parseInt(1));
-                } 
+                }
             }
             if ($(this).hasClass("disable") && (idx >= parseInt($ds))) {
                 $(this).hide();
@@ -513,7 +599,7 @@ $(document).ready(function () {
 
 
         /*retreive event*/
-        $.each(renderEventAct0, function (index, value) {
+        $.each(renderEventAct0, function(index, value) {
             var mth = value.split("::");
             var ind = mth[1];
             var dte = mth[0];
@@ -521,7 +607,7 @@ $(document).ready(function () {
                 $("#" + dte).addClass("active0");
             }
         });
-        $.each(renderEventAct1, function (index, value) {
+        $.each(renderEventAct1, function(index, value) {
             //alert(value);
             var mth = value.split("::");
             var ind = mth[1];
@@ -538,14 +624,14 @@ $(document).ready(function () {
     });
 
     function cleanCalendar() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             $(this).text("");
             $(this).addClass("disable");
         });
     }
 
     function cleanBlinkActive1() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             $(this).removeClass("active1");
             $(this).removeClass("blink1");
 
@@ -553,7 +639,7 @@ $(document).ready(function () {
     }
 
     function cleanBlinkActive2() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             $(this).removeClass("active2");
             $(this).removeClass("blink2");
 
@@ -561,14 +647,14 @@ $(document).ready(function () {
     }
     //mutated
     function cleanActive0() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
             $(this).removeClass("active0");
 
         });
     }
 
     function cleanBlink1() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
 
             $(this).removeClass("blink1");
 
@@ -576,7 +662,7 @@ $(document).ready(function () {
     }
 
     function cleanBlink2() {
-        $(".calcell").each(function (index) {
+        $(".calcell").each(function(index) {
 
             $(this).removeClass("blink2");
 
@@ -589,7 +675,7 @@ $(document).ready(function () {
     var param2 = (param1.getMonth() + 1) + '/' + param1.getDate() + '/' + param1.getFullYear();
     $(".set_date").attr("value", param2);
     $startTime = 0;
-    $(document).delegate(".calcell", "click", function () {
+    $(document).delegate(".calcell", "click", function() {
         if (!$(this).hasClass("disable")) {
             if (blinkflag == 0) {
 
@@ -602,12 +688,12 @@ $(document).ready(function () {
 
                 var nid = "wk=" + $(this).attr("id")
                 $(".set_date").attr("value", ($m + 1) + "/" + ddd + "/" + $y);
-                
+
 
                 $('.calLayer').toggle();
 
                 // To reset the format of the timepicker
-                if ((new Date().getMonth() + 1) >= $(".set_date").val().split('/')[0]) {                    
+                if ((new Date().getMonth() + 1) >= $(".set_date").val().split('/')[0]) {
                     if (new Date().getDate() < $(".set_date").val().split('/')[1]) {
                         $('#set_time_24hr').timeAutocomplete({
                             increment: 15,
@@ -632,25 +718,25 @@ $(document).ready(function () {
                         start_hour: 0,
                         value: 'Add a time?'
                     });
-                }                
+                }
             }
         }
     });
-    
-    $(document).delegate(".hp1cells", "mouseover", function () {
-        $(this).css({ "background-color": "#44D37C", "color": "white" });
+
+    $(document).delegate(".hp1cells", "mouseover", function() {
+        $(this).css({"background-color": "#44D37C", "color": "white"});
     });
-    $(document).delegate(".hp1cells", "mouseout", function () {
-        $(this).css({ "background-color": "transparent", "color": "black" });
+    $(document).delegate(".hp1cells", "mouseout", function() {
+        $(this).css({"background-color": "transparent", "color": "black"});
     });
 
-    $(document).delegate(".hp1cells", "click", function () {
+    $(document).delegate(".hp1cells", "click", function() {
         $(".hpdisplay1 span").text($(this).text());
         $(".hpdisplay1").attr("id", $(this).attr("id"));
     });
 
     //mutated
-    $(document).delegate(".hp1ok", "click", function () {
+    $(document).delegate(".hp1ok", "click", function() {
         if ($(".hpdisplay1").attr("id") != "notime1") {
 
             $(".hp1content").remove();
@@ -673,20 +759,20 @@ $(document).ready(function () {
 
 
 
-    $(document).delegate(".hp2cells", "mouseover", function () {
-        $(this).css({ "background-color": "#44D37C", "color": "white" });
+    $(document).delegate(".hp2cells", "mouseover", function() {
+        $(this).css({"background-color": "#44D37C", "color": "white"});
     });
-    $(document).delegate(".hp2cells", "mouseout", function () {
-        $(this).css({ "background-color": "transparent", "color": "black" });
+    $(document).delegate(".hp2cells", "mouseout", function() {
+        $(this).css({"background-color": "transparent", "color": "black"});
     });
 
-    $(document).delegate(".hp2cells", "click", function () {
+    $(document).delegate(".hp2cells", "click", function() {
         $(".hpdisplay2 span").text($(this).text());
         $(".hpdisplay2").attr("id", $(this).attr("id"));
     });
 
     //mutated
-    $(document).delegate(".hp2ok", "click", function () {
+    $(document).delegate(".hp2ok", "click", function() {
         if ($(".hpdisplay2").attr("id") != "notime2") {
             $(".hp2content").remove();
             blinkflag = 2;
@@ -698,12 +784,10 @@ $(document).ready(function () {
 
     //mutated
 
-    $('.set_date').click(function () {
+    $(document).delegate('.set_date', 'click', function() {
 //        $('.calLayer').css('display', 'block');
         $('.calLayer').toggle();
     });
-
-
 
     // set time options for time picker 24hr
     if ((new Date().getMonth() + 1) >= $(".set_date").val().split('/')[0]) {
@@ -711,10 +795,11 @@ $(document).ready(function () {
             $startTime = new Date().getHours();
         }
     }
+    $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
     $('#set_time_24hr').timeAutocomplete({
         increment: 15,
         formatter: 'ampm',
         start_hour: $startTime,
-        value: 'Add a time?'
-    });    
+        value: $currentTime
+    });
 });
