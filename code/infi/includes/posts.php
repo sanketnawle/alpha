@@ -51,6 +51,7 @@
 			include "postlikes.php";
 			// echo "<div class='like_number'>10</div>";
 			echo "</div>";
+			echo $pownership=checkpowner($con,$row['messageid']);
 
 			echo "<div class='search-select'><span class='field'><i class='icon user'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
 				<div class = 'tag-wedge'></div><div class = 'tag-box'><span>Science Club</span></div></div></div>";

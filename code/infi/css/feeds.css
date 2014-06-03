@@ -237,6 +237,8 @@ box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12) inset;
 border: 1px solid #CED2D6;
 border-radius: 1px;
 margin-left: 13px;
+margin-top:13px;
+display:none;
 }
 
 .edit_area
@@ -264,10 +266,78 @@ float: left;
 background-color: #F8FAFC;
 width: 100%;
 border-top: 1px solid #F2F2F2;
-height: 25px;
+height: 28px;
 border-radius: 0px 0px 1px 1px;
 }
 
+
+.edit_cancel
+{
+float: right;
+color: black;
+border-radius: 2px;
+cursor: default;
+font-size: 12px;
+
+outline: 0;
+
+width: auto;
+height: 22px;
+
+margin-right:20px;
+margin-top: 3px;
+
+cursor:pointer;
+text-align: center;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+background-color: white;
+border-color: #999;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    
+border-width: 1px;
+border-style: solid;
+}
+
+
+.edit_done
+{
+float: right;
+color: #fff;
+border-radius: 2px;
+cursor: default;
+font-size: 12px;
+
+outline: 0;
+
+width: auto;
+height: 22px;
+
+margin-right:10px;
+margin-top: 3px;
+
+cursor:pointer;
+text-align: center;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+background-color: #22C791;
+border-color: #389677 #14A072 #0EA372;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    
+border-width: 1px;
+border-style: solid;
+}
+
+.edit-done:hover{
+background-color: #1ABD88;
+background-image: -webkit-linear-gradient(top,#22C791,#1AAC7C);
+background-image: linear-gradient(top,#22C791,#1AAC7C);
+border-color: #389677 #14A072 #06724F;
+}
+
+.edit-done:active{
+background-color: #1ABD88;
+border-color: #257A5E #0F865F #07835A;
+-webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, .2);
+}
 
 
 .reply_user_icon

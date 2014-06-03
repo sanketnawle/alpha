@@ -44,6 +44,7 @@ $_SESSION['studentid']='1';
 					if($replylikes!=0) echo $replylikes;
 					echo "</div>";
 
+					echo $cownership=checkcowner($con,$row1['replyid']);
 					// echo $_SESSION['studentid']." ".$row1['replyid']." ".$ruserlikes." ".$replylikes;
 
 					echo "</div>";

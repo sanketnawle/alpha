@@ -1,8 +1,9 @@
 <?php 
 require_once('includes/dbconfig.php');
-// require_once('includes/likes1.php');
 $_SESSION['studentid']="1";
 $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp DESC LIMIT 10");
+
+require_once('includes/feedchecks.php');
 ?>
 
 <!DOCTYPE html>
@@ -247,12 +248,26 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
 				});
 
 				$('.select').on('click','li',function(){
+					  var postid= $(this).closest(".posts").attr("id");
 					  var $t = $(this),
 					      $f = $(this).closest(".search-select").find('.field')
 					      text = $t.text(),
 					      icon = $t.find('i').attr('class');
 					  $f.find('label').text(text);
-					  $f.find('i').attr('class',icon)
+					  $f.find('i').attr('class',icon);
+					  
+					  var flag= text.toLowerCase().split(" ").join("").trim();
+					  alert(flag);
+					  /*
+					  $.ajax({
+	            			type: "POST",
+            				url: "includes/feedops.php",
+            				data: {postid: postid, privacy: flag},
+            				success: function(html){ 
+            					
+			            	}
+						});*/
+
 					});
 
 					$('.field').click(function(e){
@@ -373,6 +388,43 @@ $result = mysqli_query($con,"SELECT * FROM home_posts ORDER BY update_timestamp 
             					
 			            	}
 						});
+	});
+
+
+	$(document).delegate(".option_edit","click",function(){
+		var postid= $(this).closest(".posts").attr("id");
+		var txt= $(this).closest(".posts").find(".post_msg").text();
+
+		$(this).closest(".posts").find(".post_msg").hide();
+		$(this).closest(".posts").find(".edit_area").val(txt);
+		$(this).closest(".posts").find(".post_edit").show();
+
+	});
+
+	$(document).delegate(".edit_cancel","click",function(){
+		$(this).closest(".posts").find(".post_edit").hide();
+		$(this).closest(".posts").find(".post_msg").show();
+		$(this).closest(".posts").find(".edit_area").val("");
+	});
+
+	$(document).delegate(".edit_done","click",function(){
+		var postid= $(this).closest(".posts").attr("id");
+		var txt= $(this).closest(".posts").find(".edit_area").val();
+
+		$.ajax({   
+		  			type: "POST",
+            		url: "includes/feedops.php",
+            		data: {postid: postid, edit: txt},
+          			success: function(html){ 
+            				
+			        }
+				});
+
+		
+		$(this).closest(".posts").find(".edit_area").val("");
+		$(this).closest(".posts").find(".post_edit").hide();
+		$(this).closest(".posts").find(".post_msg").text(txt);
+		$(this).closest(".posts").find(".post_msg").show();
 	});
 
 				function latest_feed() {
