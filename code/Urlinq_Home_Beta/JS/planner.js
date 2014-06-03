@@ -20,7 +20,7 @@ $(document).ready(function () {
     $('.btn_canc').click(function () {
         $('.pl_add').css('height', '19px');
         $('.pl_addevnt').css('display', 'none');
-        $('.planner').css('height', '325px');
+        //$('.planner').css('height', '325px');
         $('.pl_add').attr("placeholder", "+ Add new Event");
 
     });
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         $('.pl_add').css('height', '34px');
         $('.pl_addevnt').css('display', 'block');
-        $('.planner').css('height', '409px');
+        //$('.planner').css('height', '409px');
         $('.pl_add').attr("placeholder", "Name this event...");
 
     });
@@ -703,18 +703,18 @@ $(document).ready(function () {
         $('.calLayer').toggle();
     });
 
-
-
     // set time options for time picker 24hr
     if ((new Date().getMonth() + 1) >= $(".set_date").val().split('/')[0]) {
         if (new Date().getDate() <= $(".set_date").val().split('/')[1]) {
             $startTime = new Date().getHours();
         }
     }
+    $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
     $('#set_time_24hr').timeAutocomplete({
         increment: 15,
         formatter: 'ampm',
         start_hour: $startTime,
-        value: 'Add a time?'
-    });    
+        value: $currentTime
+    });
+    
 });

@@ -1,5 +1,5 @@
 (function($){
-
+    
     $.timeAutocomplete.formatters.ampm = function(){
         this.initialize.apply(this, arguments);
     };

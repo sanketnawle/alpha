@@ -125,9 +125,8 @@ $(document).ready(function() {
 				});
 
                  $('.select').on('click','li',function(){
-					  $('#open').click();
 					  var $t = $(this),
-					      $f = $('.field')
+					      $f = $(this).closest(".search-select").find('.field')
 					      text = $t.text(),
 					      icon = $t.find('i').attr('class');
 					  $f.find('label').text(text);

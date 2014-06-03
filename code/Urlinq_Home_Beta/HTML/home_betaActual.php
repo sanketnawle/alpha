@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/fbar.css">
@@ -13,10 +12,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>    
-	<script src="../JS/jquery.min.js" type="text/javascript"></script>	
+    <script src="../JS/fbar.js"></script>       
     <script src="../JS/jquery-ui-1.10.2.custom.min.js"></script>
-    <script src="../JS/fbar.js"></script>  
-</head><body>
+    <script src="../JS/jquery.timeAutocomplete.js"></script>
+    <script src="../JS/ampm.js"></script>
+    <script src="../JS/planner.js"></script> 
+</head>
+<body>
     <div class="root">
         <div class="top-bar">
             <div class="top-bar-wrapper">
@@ -224,12 +226,9 @@
                             </div>
                         </div>
                         <div class="rightsec">
-							<div class="n_pf_5" id="divPlanner">              
-								<?php include('Planner/planner - no php.php'); ?>
-								<script src="../JS/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
-								<script src="../JS/ampm.js" type="text/javascript"></script>
-								<script src="../JS/planner.js" type="text/javascript"></script>
-							</div>
+    <div class="n_pf_5" id="divPlanner">              
+	<? php include('Planner/planner.php'); ?>
+    </div>
                         </div>
                     </div>
                 </div>
