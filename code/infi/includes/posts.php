@@ -23,6 +23,7 @@
 				$post_owner="Invalid User";
 			}
 
+			$pownership=checkpowner($con,$row['messageid']);
 			echo "<div class='post_title'><span class='post_owner'>".$post_owner."</span><span class='post_format'> started a discussion</span></div>";
 			echo "<div class='post_time'>".$row['update_timestamp']."</div>";
 			echo "</div>";
@@ -51,33 +52,51 @@
 			include "postlikes.php";
 			// echo "<div class='like_number'>10</div>";
 			echo "</div>";
-			echo $pownership=checkpowner($con,$row['messageid']);
 
-			echo "<div class='search-select'><span class='field'><i class='icon user'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
+			if($row['visibility']=="students") $iname="user";
+			else if($row['visibility']=="faculty") $iname="list";
+			else if($row['visibility']=="onlyme") $iname="accs";
+			else $iname="stat";
+			if($pownership=="post"){
+			echo "<div class='search-select'><span class='field'><i class='icon ".$iname."'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
 				<div class = 'tag-wedge'></div><div class = 'tag-box'><span>Science Club</span></div></div></div>";
+			}
+			else{
+			//echo	"<div class='search-select'><span class='field'><i class='icon ".$iname."'></i></span>"	;
+			}
 
-
-			
 			echo "<div class = 'post_functions'>";
 				echo "<div class = 'post_functions_showr'>";
 				
 				echo "</div>";		
 				echo "<div class = 'post_functions_box'>";
+
+				if($pownership!="post"){
 					echo "<div class = 'post_functions_option option_report'>";
 						echo "Report this Post";
 					echo "</div>";	
-					echo "<hr class = 'post_options_hr'>";		
+					echo "<hr class = 'post_options_hr'>";
+				}
+
+				if($pownership=="post"){
 					echo "<div class = 'post_functions_option option_edit'>";
 						echo "Edit this Post";
 					echo "</div>";	
 					echo "<hr class = 'post_options_hr'>";
+				}
+
+				if($pownership!="post"){
 					echo "<div class = 'post_functions_option option_hide'>";
 						echo "Hide this Post";
 					echo "</div>";
-					echo "<hr class = 'post_options_hr'>";
+					// echo "<hr class = 'post_options_hr'>";
+				}
+
+				if($pownership=="post"){
 					echo "<div class = 'post_functions_option option_delete'>";
 						echo "Delete this Post";
 					echo "</div>";
+				}
 
 				echo "</div>";	
 			echo "</div>";
@@ -117,5 +136,4 @@
 
 			echo "</div></div>";
 
-			echo "</div> </div>";
-?>
+			echo 

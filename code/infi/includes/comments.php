@@ -2,8 +2,9 @@
 // session_start();
 $_SESSION['studentid']='1';
 
+					$cownership=checkcowner($con,$row1['replyid']);
 					echo "<div class='post_comment' id='".strtotime($row1['update_timestamp'])."'>";
-					echo "<div class='comment_delete'><i class='fa fa-times'></i></div>";
+					if($cownership=="reply" or $pownership=="post") echo "<div class='comment_delete'><i class='fa fa-times'></i></div>";
 					echo "<img src='dummy_pic/dummypic.png' class='comment_user_icon'>";
 
 				if($row1['studentid']!=0){
@@ -44,7 +45,6 @@ $_SESSION['studentid']='1';
 					if($replylikes!=0) echo $replylikes;
 					echo "</div>";
 
-					echo $cownership=checkcowner($con,$row1['replyid']);
 					// echo $_SESSION['studentid']." ".$row1['replyid']." ".$ruserlikes." ".$replylikes;
 
 					echo "</div>";

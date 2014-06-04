@@ -27,11 +27,11 @@ require_once('includes/feedchecks.php');
 				var feeds = $("#posts");
 				var last_time = 0;
 				var heightOffset= 0;
-				//var commentUpdatePeriod=20000;
-				//var commentUpdateFlag=1;
+				var commentUpdatePeriod=3000;
+				var commentUpdateFlag=1;
 
 				setInterval(function() {latest_feed(); }, 1000);
-				//setInterval(function() {commentUpdateFlag_mutate(); }, commentUpdatePeriod);
+				setInterval(function() {commentUpdateFlag_mutate(); }, commentUpdatePeriod);
 
 				$(document).delegate('.post_functions',"click", function(){
 					$(this).find('.post_functions_box').show();
@@ -73,7 +73,8 @@ require_once('includes/feedchecks.php');
 
 				$(document).delegate('.submit',"click", function(){
 					var $owner= $(this).closest(".posts");
-					var commentid= $owner.find(".comments div").first().attr("id");
+					commentUpdateFlag=0;
+					var commentid= $owner.find(".comments .post_comment").last().attr("id");
 					var postid= $owner.attr("id");
 					var commentcontent= $owner.find(".postval").val().trim();
 					//the proof of successfully getting ids
@@ -84,18 +85,18 @@ require_once('includes/feedchecks.php');
             				url: "includes/updatecomments.php",
             				data: {postid: postid, commentid: commentid, commentcontent: commentcontent},
             				success: function(html){ 
-	                			$owner.find(".comments").html(html);
+	                			$owner.find(".comments").last().append(html);
 	                			$owner.find(".postval").val("");
 			            	}
 						});
 						}
 				});
 
-				/*
+				
 				$(document).delegate('.posts',"mouseover", function(){
 					if(commentUpdateFlag==1){
 					var $owner= $(this).closest(".posts");
-					var commentid= $owner.find(".comments div").first().attr("id");
+					var commentid= $owner.find(".comments .post_comment").last().attr("id");
 					var postid= $owner.attr("id");
 
 					$.ajax({
@@ -103,12 +104,13 @@ require_once('includes/feedchecks.php');
             				url: "includes/updatecomments.php",
             				data: {postid: postid, commentid: commentid},
             				success: function(html){ 
-	                			$owner.find(".comments").html(html);
+            					//alert(commentid);
+	                			$owner.find(".comments").last().append(html);
 			            	}
 						});
 					}
 				});	
-				*/
+				
 
 				$(document).click(function(event){
 			     	var $target= $(event.target);
@@ -442,7 +444,7 @@ require_once('includes/feedchecks.php');
 						});
 				}
 
-				/*
+				
 				function commentUpdateFlag_mutate() {
 
 						if(commentUpdateFlag==0){
@@ -451,7 +453,7 @@ require_once('includes/feedchecks.php');
 							commentUpdateFlag=0;
 						}
 				}
-				*/
+				
 
 			});
 

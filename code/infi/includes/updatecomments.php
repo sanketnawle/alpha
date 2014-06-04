@@ -40,7 +40,7 @@ function updatecomments(){
 		$comment_time = date("Y-m-d H:i:s",$_POST['commentid']);
 		global $con;
 		
-		$query = mysqli_query($con,"SELECT * FROM home_reply WHERE messageid = '".$post_id."' AND update_timestamp >= '".$comment_time."' ORDER BY update_timestamp");
+		$query = mysqli_query($con,"SELECT * FROM home_reply WHERE messageid = '".$post_id."' AND update_timestamp > '".$comment_time."' ORDER BY update_timestamp");
 		$i=0;
 
 		while($row1 = mysqli_fetch_array($query)){
@@ -48,9 +48,9 @@ function updatecomments(){
 		}
 	}
 
-	else{
-		echo "Mazaak: Give me the details to fetch data";
-	}
+	// else{
+		// echo "Mazaak: Give me the details to fetch data";
+	// }
 }
 mysqli_close($con);
 ?>

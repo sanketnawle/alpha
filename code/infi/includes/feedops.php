@@ -1,7 +1,7 @@
 <?php
 
 require_once("dbconfig.php");
-$_SESSION['studentid']="2";
+$_SESSION['studentid']="1";
 
 // Uncomment the below 3 lines if you are testing this page alone
 // $_POST['postid'] = "209";
