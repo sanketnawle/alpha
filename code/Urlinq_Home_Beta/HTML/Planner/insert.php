@@ -7,6 +7,12 @@ $password = "PASSurlinq@word9";
 $database = "campusla_urlinq_demo";
 
 $con = mysqli_connect($host, $user, $password, $database);
+
+$sid = 0;
+if(isset($_GET['student_id'])){
+    $sid = $_GET['student_id'];
+}
+
 //Checking connection
 if (mysqli_connect_errno()) {
     echo "Failed to connect";
@@ -24,8 +30,8 @@ $date = $date . $time;
 $date = strtotime($date);
 $date = date("Y-m-d H:i:sa", $date);
 
-$sql = "INSERT INTO personal_event (title, description, start)
-VALUES ('$title', ' ', '$date')";
+$sql = "INSERT INTO personal_event (s_id,title, description, start)
+VALUES ('$sid','$title', ' ', '$date')";
 
 if (!mysqli_query($con, $sql)) {
     echo "Error in executing query";

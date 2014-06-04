@@ -4,6 +4,11 @@ $user = "campusla_UrlinqU";
 $password = "PASSurlinq@word9";
 $database = "campusla_urlinq_demo";
 
+$sid = 0;
+if (isset($_GET['student_id'])) {
+    $sid = $_GET['student_id'];
+}
+
 $con = mysqli_connect($host, $user, $password, $database);
 
 $number_of_events = 5;
@@ -12,7 +17,7 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect";
 }
 
-$event = mysqli_query($con, "SELECT * FROM personal_event ORDER BY start");
+$event = mysqli_query($con, "SELECT * FROM personal_event WHERE `s_id`= $sid ORDER BY start");
 $count = mysqli_num_rows($event);
 
 $event_count = 0;
@@ -43,7 +48,7 @@ if (TRUE) {
             $events_array[] = array($time, $title, $date, $event_id, $isCheck);
         }
         $event_count++;
-        if($isCheck == 0){
+        if ($isCheck == 0) {
             $count_incomplete++;
         }
     }
@@ -106,12 +111,12 @@ echo '
                                                     </div>
                                                 </div>
                                                 <div class = "floatR">';
-                                                if($count_incomplete == 0){
-                                                    echo '<div id="event_count" class = "upcomingNmbr">' . 'All Complete' . '</div>';
-                                                }else{
-                                                    echo '<div id="event_count" class = "upcomingNmbr">' . $count_incomplete . ' Incomplete</div>';
-                                                }
-                                                    echo '
+if ($count_incomplete == 0) {
+    echo '<div id="event_count" class = "upcomingNmbr">' . 'All Complete' . '</div>';
+} else {
+    echo '<div id="event_count" class = "upcomingNmbr">' . $count_incomplete . ' Incomplete</div>';
+}
+echo '
                                                 </div>
 
                                             </div>
