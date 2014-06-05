@@ -164,6 +164,15 @@ $(document).ready(function() {
 			     	if($target.hasClass("selitem")){
 			     		$(".select").stop().fadeOut(150);
 			     	}
+
+			     	var $container2= $(".tag-option");
+			     	var $container3= $(".midfbar-exp");
+			     	if(!$container2.is($target)&&($container2.has($target).length===0)){
+			     		if(!$container3.is($target)&&($container3.has($target).length===0)){
+			     		$(".tag-option").stop().fadeOut(150);
+			     		}
+			     	}
+
 				});
 
 
@@ -308,19 +317,7 @@ $(document).ready(function() {
 
 	});
 
-	$(document).delegate(".tag-option","mouseout",function(e){
-		$(this).delay(5000).hide();
-	});
 
-	$(document).delegate(".tag-option","mouseover",function(e){
-		$(this).stop().show();
-	});
-
-	
-
-	$(document).delegate(".midfbar-exp","mouseout",function(e){
-		$(".tag-option").delay(5000).hide();
-	});
 	
 
      });   
