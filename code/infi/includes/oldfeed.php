@@ -13,6 +13,7 @@ if(isset($_POST['last_time'])){
 	// echo "********************<br>";
 
 	$query = mysqli_query($con,"SELECT * FROM home_posts WHERE update_timestamp < '".$last_time."' ORDER BY update_timestamp DESC LIMIT 10");
+	require_once('feedchecks.php');
 	while($row = mysqli_fetch_array($query)){
 
 		// echo $row['update_timestamp'];

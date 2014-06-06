@@ -2,10 +2,11 @@
 
 require_once("dbconfig.php");
 session_start();
+include "feedchecks.php";
 
 // Uncomment the below 3 lines if you are testing this page alone
-// $_POST['postid'] = "92";
-// $_POST['commentid']=strtotime("2014-04-01 19:23:41");
+// $_POST['postid'] = "219";
+// $_POST['commentid']="1401981625";
 // $_POST['commentcontent']="test by kk";
 $studentid=1;
 $univid=1;
@@ -21,7 +22,7 @@ if(isset($_POST['commentcontent'])){
 	if($postquery){
 		$postquery->bind_param('iiis',$post_id,$studentid,$univid,$comment);
 		$postquery->execute();
-		//echo "success";
+		// echo "success";
 		$postquery->close();
 	}
 	else {
