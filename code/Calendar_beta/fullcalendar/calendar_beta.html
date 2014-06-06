@@ -3,6 +3,8 @@
 <head>
     <title>Calendar
     </title>
+    <link href='p0.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="CSS/planner.css" />
     <link href='fullcalendar/myfullcalendar.css' rel='stylesheet' />
     <link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
     <link href="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox.css" type="text/css" rel="stylesheet" />
@@ -12,7 +14,6 @@
     <script src='lib/jquery-ui.custom.min.js'></script>
     <script src='fullcalendar/myfullcalendar.js'></script>
     <script src='md5.js'></script>
-    <link href='p0.css' rel='stylesheet' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     <link href='p01.css' rel='stylesheet' />
     <script type="text/javascript" src="datetimepicker/jquery.simple-dtpicker.js"></script>
@@ -33,13 +34,12 @@
     <script type="text/javascript" src="jquery.plugin.js"></script>
     <script type="text/javascript" src="jquery.datepick.js"></script>
 
-        
+
     <script src="JS/jquery-ui-1.10.2.custom.min.js"></script>
     <script src="JS/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
     <script src="JS/ampm.js" type="text/javascript"></script>
     <script src="JS/planner.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="CSS/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="CSS/planner.css" />
 </head>
 <script>
     $(function () {
@@ -1116,21 +1116,37 @@
             $(this).stop(true, true).show();
         });
 
-
         $(document).delegate(".repeatstate-1", "click", function () {
-            $(".repeatoption-1").fadeIn();
+            $(".repeatoption-1").toggle();
         });
-
-
 
         $(document).delegate(".repeatoptiont-1", "click", function () {
-
-
             $(".repeatstate-1").text($(this).text());
-
             $(".repeatoption-1").hide();
         });
-        
+
+        $(document).on("click", function (e) {
+            var elem = $(e.target);
+            if (!elem.hasClass("repeatstate-1")) {
+                $('.repeatoption-1').css('display', 'none');
+            }
+
+            if (elem.hasClass("blackcanvas30")) {
+                $(".blackcanvas30").fadeOut();
+                $("#bc3contentAddEvent").css('margin-left', '-300px');
+                $("#bc3contentAddEvent").animate({ marginLeft: "-=300px", marginLeft: "transition: all 0.5s ease-in-out;" });
+            }
+
+            if (!elem.hasClass("fa fa-caret-down open_Menu")) {
+                //alert();
+                if ($('.pl_options').is(':visible')) {
+                    $('.pl_options').toggleClass('unhider');
+                    $('.fa-caret-down').toggleClass('open_Menu');
+                }
+            }
+        });
+
+
         $('#timepicker1').timepicker();
         $('#timepicker2').timepicker();
         $('.incomplete-wrap').mouseover(function () {
@@ -1357,97 +1373,96 @@
 
         $(".fc-today").parent().addClass("fc-current-week");
         $(document).delegate(".fc-button-today, .fc-button-prev, .fc-button-next", "click", function () {
-            if ($('.fc-today').is(':visible'))
-            {
+            if ($('.fc-today').is(':visible')) {
                 $(".fc-today").parent().addClass("fc-current-week");
             }
         });
     });
-    
+
 </script>
 
-     <script>
-         $(document).ready(function () {
-             $(function () {
-                 $('#nevt-desc-1').autogrow();
-                 $('#nevt-desc-1').css('overflow', 'hidden').autogrow()
-             });
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $('#nevt-desc-1').autogrow();
+            $('#nevt-desc-1').css('overflow', 'hidden').autogrow()
+        });
 
-             $.fn.autogrow = function (options) {
-                 return this.filter('textarea').each(function () {
-                     var self = this;
-                     var $self = $(self);
-                     var minHeight = $self.height();
-                     var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
+        $.fn.autogrow = function (options) {
+            return this.filter('textarea').each(function () {
+                var self = this;
+                var $self = $(self);
+                var minHeight = $self.height();
+                var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
 
-                     var shadow = $('<div></div>').css({
-                         position: 'absolute',
-                         top: -10000,
-                         left: -10000,
-                         width: $self.width(),
-                         fontSize: $self.css('fontSize'),
-                         fontFamily: $self.css('fontFamily'),
-                         fontWeight: $self.css('fontWeight'),
-                         lineHeight: $self.css('lineHeight'),
-                         resize: 'none',
-                         'word-wrap': 'break-word'
-                     }).appendTo(document.body);
+                var shadow = $('<div></div>').css({
+                    position: 'absolute',
+                    top: -10000,
+                    left: -10000,
+                    width: $self.width(),
+                    fontSize: $self.css('fontSize'),
+                    fontFamily: $self.css('fontFamily'),
+                    fontWeight: $self.css('fontWeight'),
+                    lineHeight: $self.css('lineHeight'),
+                    resize: 'none',
+                    'word-wrap': 'break-word'
+                }).appendTo(document.body);
 
 
-                     var update = function (event) {
-                         var times = function (string, number) {
-                             for (var i = 0, r = ''; i < number; i++) r += string;
-                             return r;
-                         };
+                var update = function (event) {
+                    var times = function (string, number) {
+                        for (var i = 0, r = ''; i < number; i++) r += string;
+                        return r;
+                    };
 
-                         var val = self.value.replace(/</g, '&lt;')
-                                             .replace(/>/g, '&gt;')
-                                             .replace(/&/g, '&amp;')
-                                             .replace(/\n$/, '<br/>&nbsp;')
-                                             .replace(/\n/g, '<br/>')
-                                             .replace(/ {2,}/g, function (space) { return times('&nbsp;', space.length - 1) + ' ' });
+                    var val = self.value.replace(/</g, '&lt;')
+                                        .replace(/>/g, '&gt;')
+                                        .replace(/&/g, '&amp;')
+                                        .replace(/\n$/, '<br/>&nbsp;')
+                                        .replace(/\n/g, '<br/>')
+                                        .replace(/ {2,}/g, function (space) { return times('&nbsp;', space.length - 1) + ' ' });
 
-                         // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
-                         if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
-                             val += '<br />';
-                         }
+                    // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
+                    if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
+                        val += '<br />';
+                    }
 
-                         shadow.css('width', $self.width());
-                         shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
-                         $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
-                     }
+                    shadow.css('width', $self.width());
+                    shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
+                    $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
+                }
 
-                     $self.change(update).keyup(update).keydown({ event: 'keydown' }, update);
-                     $(window).resize(update);
-                     update();
-                 });
-             };
+                $self.change(update).keyup(update).keydown({ event: 'keydown' }, update);
+                $(window).resize(update);
+                update();
+            });
+        };
 
-             $(document).delegate(".dexit-1", "click", function (e) {
-                 $(".blackcanvas30").fadeOut();
-                 $("#bc3contentAddEvent").css('margin-left', '-300px');
-                 $("#bc3contentAddEvent").animate({ marginLeft: "-=300px", marginLeft: "transition: all 0.5s ease-in-out;" });
-             });
+        $(document).delegate(".dexit-1", "click", function (e) {
+            $(".blackcanvas30").fadeOut();
+            $("#bc3contentAddEvent").css('margin-left', '-300px');
+            $("#bc3contentAddEvent").animate({ marginLeft: "-=300px", marginLeft: "transition: all 0.5s ease-in-out;" });
+        });
 
-             $(document).delegate("#addEvent", "mousedown", function () {
-                 $(".blackcanvas30").fadeIn();
-                 $("#bc3contentAddEvent").animate({ marginLeft: "+=300px" });
-             });
+        $(document).delegate("#addEvent", "mousedown", function () {
+            $(".blackcanvas30").fadeIn();
+            $("#bc3contentAddEvent").animate({ marginLeft: "+=300px" });
+        });
 
-             $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
-             $('#set_from_time_24hr').timeAutocomplete({
-                 increment: 15,
-                 formatter: 'ampm',
-                 start_hour: 0,
-                 value: $currentTime
-             });
-             $('#set_to_time_24hr').timeAutocomplete({
-                 increment: 15,
-                 formatter: 'ampm',
-                 start_hour: 0,
-                 value: $currentTime
-             });
-         });
+        $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
+        $('#set_from_time_24hr').timeAutocomplete({
+            increment: 15,
+            formatter: 'ampm',
+            start_hour: 0,
+            value: $currentTime
+        });
+        $('#set_to_time_24hr').timeAutocomplete({
+            increment: 15,
+            formatter: 'ampm',
+            start_hour: 0,
+            value: $currentTime
+        });
+    });
 
 </script>
 
@@ -1473,133 +1488,148 @@
                     <div id="button-border">
                         <div class="announcecolumn toolsforclass" style="position: relative">
                             <div class="addevent adminc" id="addEvent" style="">
-                                <button type="button" class="btn-addevent">Add an Event</button></div>
+                                <button type="button" class="btn-addevent">Add an Event</button>
+                            </div>
                             <br>
                             <br>
 
-       
-    <section class="blackcanvas30">
-        <div id="bc3contentAddEvent">
-            <div style="display: inline-block;">
-                <div class="addevent-header0-1">
-                    <a class="dexit-1">cancel</a>
-                    <h1 class="addevent-header1-1">Add Event</h1>
-                    <div class="addevent-header-1">Add New Event Dropdown</div>
-                </div>
-                <div class="uploadform-1">
-                    <div class="uploadevent-1">
 
-                        <input type="text" id="nevt-title-1" placeholder="Title" class="nevt-input-1">
-                        <input type="text" id="nevt-location-1" placeholder="Location" class="nevt-input-1">
+                            <section class="blackcanvas30">
+                                <div id="bc3contentAddEvent">
+                                    <div style="display: inline-block;">
+                                        <div class="addevent-header0-1">
+                                            <a class="dexit-1">cancel</a>
+                                            <h1 class="addevent-header1-1">Add Event</h1>
+                                            <div class="addevent-header-1">
+                                                <div  class="fa fa-caret-down">Group Tag</div>
+                                                <div class="pl_options pl_options-1">
+                                                    <div class="pl_option pl_option-1">Group 1 </div>
+                                                    <div class="pl_option pl_option-1">Group 2</div>
+                                                    <div class="pl_option pl_option-1">Group 3</div>
+                                                </div>
 
-                        <textarea id="nevt-desc-1" onkeypress="taHeight()" placeholder="Details" class="nevt-input-1"></textarea>
-                        <hr class="addevt">
-                        <div class="pdateinfo-1">
-                            <span id="startdate-input-1">Pick a Date &#187;
+
+                                            </div>
+
+                                        </div>
+                                        <div class="uploadform-1">
+                                            <div class="uploadevent-1">
+
+                                                <input type="text" id="nevt-title-1" placeholder="Title" class="nevt-input-1">
+                                                <input type="text" id="nevt-location-1" placeholder="Location" class="nevt-input-1">
+
+                                                <textarea id="nevt-desc-1" onkeypress="taHeight()" placeholder="Details" class="nevt-input-1"></textarea>
+                                                <hr class="addevt">
+                                                <div class="pdateinfo-1">
+                                                    <span id="startdate-input-1">Pick a Date &#187;
                                 <input class="set_date" name="event_date" id="event_date" />
-                            </span>
-                            <div class="calLayer">
-                                <section id="mounth" class="mounth" style="margin-left: 43px; margin-top: 20px;">
-                                    <header class="minical-header">
-                                        <h1 class="minical-h1">JANUARY 2013</h1>
+                                                    </span>
+                                                    <div class="calLayer">
+                                                        <section id="mounth" class="mounth" style="margin-left: 43px; margin-top: 20px;">
+                                                            <header class="minical-header">
+                                                                <h1 class="minical-h1">JANUARY 2013</h1>
 
-                                        <nav role="padigation">
-                                            <span class="m-prev"></span>
-                                            <span class="m-next"></span>
-                                        </nav>
-                                    </header>
+                                                                <nav role="padigation">
+                                                                    <span class="m-prev"></span>
+                                                                    <span class="m-next"></span>
+                                                                </nav>
+                                                            </header>
 
-                                    <article>
-                                        <div class="days">
-                                            <b>SU</b>
-                                            <b>MO</b>
-                                            <b>TU</b>
-                                            <b>WE</b>
-                                            <b>TH</b>
-                                            <b>FR</b>
-                                            <b>SA</b>
+                                                            <article>
+                                                                <div class="days">
+                                                                    <b>SU</b>
+                                                                    <b>MO</b>
+                                                                    <b>TU</b>
+                                                                    <b>WE</b>
+                                                                    <b>TH</b>
+                                                                    <b>FR</b>
+                                                                    <b>SA</b>
+                                                                </div>
+                                                                <div class="dates">
+                                                                    <span id="calcell_su_0" class="calcell disable cl_0"></span>
+                                                                    <span id="calcell_mo_1" class="calcell disable cl_1"></span>
+
+                                                                    <span id="calcell_tu_2" class="calcell disable cl_2"></span>
+                                                                    <span id="calcell_we_3" class="calcell disable cl_3"></span>
+                                                                    <span id="calcell_th_4" class="calcell disable cl_4"></span>
+                                                                    <span id="calcell_fr_5" class="calcell disable cl_5"></span>
+                                                                    <span id="calcell_sa_6" class="calcell disable cl_6"></span>
+                                                                    <span id="calcell_su_7" class="calcell disable cl_7"></span>
+                                                                    <span id="calcell_mo_8" class="calcell disable cl_8"></span>
+                                                                    <span id="calcell_tu_9" class="calcell disable cl_9"></span>
+                                                                    <span id="calcell_we_10" class="calcell disable cl_10"></span>
+                                                                    <span id="calcell_th_11" class="calcell disable cl_11"></span>
+                                                                    <span id="calcell_fr_12" class="calcell disable cl_12"></span>
+                                                                    <span id="calcell_sa_13" class="calcell disable cl_13"></span>
+                                                                    <span id="calcell_su_14" class="calcell disable cl_14"></span>
+                                                                    <span id="calcell_mo_15" class="calcell disable cl_15"></span>
+                                                                    <span id="calcell_tu_16" class="calcell disable cl_16"></span>
+                                                                    <span id="calcell_we_17" class="calcell disable cl_17"></span>
+                                                                    <span id="calcell_th_18" class="calcell disable cl_18"></span>
+                                                                    <span id="calcell_fr_19" class="calcell disable cl_19"></span>
+                                                                    <span id="calcell_sa_20" class="calcell disable cl_20"></span>
+                                                                    <span id="calcell_su_21" class="calcell disable cl_21"></span>
+                                                                    <span id="calcell_mo_22" class="calcell disable cl_22"></span>
+                                                                    <span id="calcell_tu_23" class="calcell disable cl_23"></span>
+                                                                    <span id="calcell_we_24" class="calcell disable cl_24"></span>
+                                                                    <span id="calcell_th_25" class="calcell disable cl_25"></span>
+                                                                    <span id="calcell_fr_26" class="calcell disable cl_26"></span>
+                                                                    <span id="calcell_sa_27" class="calcell disable cl_27"></span>
+                                                                    <span id="calcell_su_28" class="calcell disable cl_28"></span>
+                                                                    <span id="calcell_mo_29" class="calcell disable cl_29"></span>
+                                                                    <span id="calcell_tu_30" class="calcell disable cl_30"></span>
+                                                                    <span id="calcell_we_31" class="calcell disable cl_31"></span>
+                                                                    <span id="calcell_th_32" class="calcell disable cl_32"></span>
+
+                                                                    <span id="calcell_fr_33" class="disable calcell cl_33"></span>
+                                                                    <span id="calcell_sa_34" class="disable calcell cl_34"></span>
+                                                                    <span id="calcell_su_35" class="disable calcell cl_35"></span>
+                                                                    <span id="calcell_mo_36" class="disable calcell cl_36"></span>
+                                                                    <span id="calcell_tu_37" class="disable calcell cl_37"></span>
+                                                                    <span id="calcell_we_38" class="disable calcell cl_38"></span>
+                                                                    <span id="calcell_th_39" class="disable calcell cl_39"></span>
+                                                                    <span id="calcell_fr_40" class="disable calcell cl_40"></span>
+                                                                    <span id="calcell_sa_41" class="disable calcell cl_41"></span>
+                                                                </div>
+                                                            </article>
+                                                        </section>
+                                                    </div>
+
+                                                    <div class='frtext-1'>
+                                                        From:
+                                <input id="set_from_time_24hr" class="set_time" name="event_time" style="width: 68px;" />
+                                                    </div>
+                                                    <div class='totext-1'>
+                                                        To:
+                                <input id="set_to_time_24hr" class="set_time" name="event_time" style="width: 68px;" />
+                                                    </div>
+
+                                                </div>
+                                                <div class='repeatc-1'>
+                                                    <div class='repeathead-1'>Repeat:</div>
+                                                    <span class='repeatstate-1'>None</span>
+                                                    <div class='repeatoption-1'>
+                                                        <div class='repeatoptiont-1'>None</div>
+                                                        <hr class="post_options_hr-1" />
+                                                        <div class='repeatoptiont-1'>Daily</div>
+                                                        <hr class="post_options_hr-1" />
+                                                        <div class='repeatoptiont-1'>Weekly</div>
+                                                        <hr class="post_options_hr-1" />
+                                                        <div class='repeatoptiont-1'>Monthly</div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div>
+                                                <button class="btn-addevent-1 btn-addevent">Add This Event</button>
+                                            </div>
+
+
                                         </div>
-                                        <div class="dates">
-                                            <span id="calcell_su_0" class="calcell disable cl_0"></span>
-                                            <span id="calcell_mo_1" class="calcell disable cl_1"></span>
-
-                                            <span id="calcell_tu_2" class="calcell disable cl_2"></span>
-                                            <span id="calcell_we_3" class="calcell disable cl_3"></span>
-                                            <span id="calcell_th_4" class="calcell disable cl_4"></span>
-                                            <span id="calcell_fr_5" class="calcell disable cl_5"></span>
-                                            <span id="calcell_sa_6" class="calcell disable cl_6"></span>
-                                            <span id="calcell_su_7" class="calcell disable cl_7"></span>
-                                            <span id="calcell_mo_8" class="calcell disable cl_8"></span>
-                                            <span id="calcell_tu_9" class="calcell disable cl_9"></span>
-                                            <span id="calcell_we_10" class="calcell disable cl_10"></span>
-                                            <span id="calcell_th_11" class="calcell disable cl_11"></span>
-                                            <span id="calcell_fr_12" class="calcell disable cl_12"></span>
-                                            <span id="calcell_sa_13" class="calcell disable cl_13"></span>
-                                            <span id="calcell_su_14" class="calcell disable cl_14"></span>
-                                            <span id="calcell_mo_15" class="calcell disable cl_15"></span>
-                                            <span id="calcell_tu_16" class="calcell disable cl_16"></span>
-                                            <span id="calcell_we_17" class="calcell disable cl_17"></span>
-                                            <span id="calcell_th_18" class="calcell disable cl_18"></span>
-                                            <span id="calcell_fr_19" class="calcell disable cl_19"></span>
-                                            <span id="calcell_sa_20" class="calcell disable cl_20"></span>
-                                            <span id="calcell_su_21" class="calcell disable cl_21"></span>
-                                            <span id="calcell_mo_22" class="calcell disable cl_22"></span>
-                                            <span id="calcell_tu_23" class="calcell disable cl_23"></span>
-                                            <span id="calcell_we_24" class="calcell disable cl_24"></span>
-                                            <span id="calcell_th_25" class="calcell disable cl_25"></span>
-                                            <span id="calcell_fr_26" class="calcell disable cl_26"></span>
-                                            <span id="calcell_sa_27" class="calcell disable cl_27"></span>
-                                            <span id="calcell_su_28" class="calcell disable cl_28"></span>
-                                            <span id="calcell_mo_29" class="calcell disable cl_29"></span>
-                                            <span id="calcell_tu_30" class="calcell disable cl_30"></span>
-                                            <span id="calcell_we_31" class="calcell disable cl_31"></span>
-                                            <span id="calcell_th_32" class="calcell disable cl_32"></span>
-
-                                            <span id="calcell_fr_33" class="disable calcell cl_33"></span>
-                                            <span id="calcell_sa_34" class="disable calcell cl_34"></span>
-                                            <span id="calcell_su_35" class="disable calcell cl_35"></span>
-                                            <span id="calcell_mo_36" class="disable calcell cl_36"></span>
-                                            <span id="calcell_tu_37" class="disable calcell cl_37"></span>
-                                            <span id="calcell_we_38" class="disable calcell cl_38"></span>
-                                            <span id="calcell_th_39" class="disable calcell cl_39"></span>
-                                            <span id="calcell_fr_40" class="disable calcell cl_40"></span>
-                                            <span id="calcell_sa_41" class="disable calcell cl_41"></span>
-                                        </div>
-                                    </article>
-                                </section>
-                            </div>
-
-                            <div class='frtext-1'>From:
-                                <input id="set_from_time_24hr" class="set_time" name="event_time" style="width: 60px;" /></div>
-                            <div class='totext-1'>To:
-                                <input id="set_to_time_24hr" class="set_time" name="event_time" style="width: 60px;" /></div>
-
-                        </div>
-                        <div class='repeatc-1'>
-                            <div class='repeathead-1'>Repeat:</div>
-                            <span class='repeatstate-1'>None</span>
-                            <div class='repeatoption-1'>
-                                <div class='repeatoptiont-1'>None</div>
-                                <hr class="post_options_hr-1" />
-                                <div class='repeatoptiont-1'>Daily</div>
-                                <hr class="post_options_hr-1" />
-                                <div class='repeatoptiont-1'>Weekly</div>
-                                <hr class="post_options_hr-1" />
-                                <div class='repeatoptiont-1'>Monthly</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div>
-                        <button class="btn-addevent">Create this Event</button>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </section>
+                                    </div>
+                                </div>
+                            </section>
 
 
                         </div>

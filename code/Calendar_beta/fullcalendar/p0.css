@@ -1282,8 +1282,7 @@ input[type="text"] {
     color: #444444;
     padding: 5px 2px;
     width: 170px;
-    font-weight: 200;
-    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-weight: 200;    
     margin-top: 51px;
     margin-left: 332px;
     font-size: 14px;
@@ -1300,8 +1299,7 @@ input[type="text"] {
     color: #fff;
     height: 13px;
     padding: 3px 4px;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);    
     font-size: 10px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.66);
     float: left;
@@ -1346,8 +1344,7 @@ input[type="text"] {
     background-image: none;
     margin-top: 3px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);    
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     background: #22C791 url(src/glass.png) repeat-x 0 50%;
 }
@@ -1432,8 +1429,7 @@ input[type="text"] {
         border: 0;
     }
 
-    .ui-icon-btn .ui-icon-lab {
-        font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+    .ui-icon-btn .ui-icon-lab {       
         font-weight: 400;
         color: #444444;
         margin-bottom: 5px;
@@ -2264,8 +2260,7 @@ i.notjoin {
 }
 
 .event_month {
-    color: #666;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666;    
     font-size: 10px;
     font-weight: 500;
     margin: -2px auto 0 auto;
@@ -2273,8 +2268,7 @@ i.notjoin {
 
 .event_day {
     color: #5d6676;
-    padding-left: 5px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-left: 5px;    
     font-size: 22px;
     font-weight: 500;
     margin: -2px auto -6px auto;
@@ -2665,8 +2659,7 @@ a.innerPic {
 }
 
 .doubleBox {
-    padding-top: 4px;
-    font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+    padding-top: 4px;    
     color: rgb(108, 185, 255);
     font-size: 20px;
 }

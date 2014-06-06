@@ -1544,7 +1544,7 @@
             return t.isPlainObject(r) ? P(r, n || a) : r
         }
 
-        function i(t, e) {
+        function i(t, e) {            
             return r.trigger.apply(r, [t, e || _].concat(Array.prototype.slice.call(arguments, 2), [_]))
         }
 
@@ -1587,7 +1587,7 @@
 
         function y(t, n) {
             n.click(function (r) {
-                return n.hasClass("ui-draggable-dragging") || n.hasClass("ui-resizable-resizing") ? e : i("eventClick", this, t, r)
+                return n.hasClass("ui-draggable-dragging") || n.hasClass("ui-resizable-resizing") ? e : i("eventClick", this, t, r)                
             }).hover(function (e) {
                 i("eventMouseover", this, t, e)
             }, function (e) {
