@@ -547,6 +547,9 @@ position: relative;
 .ContentSlider{
 	position: relative;
 cursor: -webkit-grab;
+cursor: -moz-grab;
+cursor: -ms-grab;
+cursor: -o-grab;
 -webkit-perspective: 0;
 -webkit-backface-visibility: hidden;
 
@@ -562,6 +565,9 @@ cursor: -webkit-grab;
 
 .ContentSlider:active{
 cursor: -webkit-grabbing;	
+cursor: -moz-grabbing;
+cursor: -ms-grabbing;	
+cursor: -o-grabbing;		
 }
 
 .slide:first-child{
