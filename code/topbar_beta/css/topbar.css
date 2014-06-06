@@ -2,9 +2,7 @@
 .topbar
 
 {
-	-webkit-animation-property: width;
--webkit-animation-property: height;
--webkit-transition-duration: 1s;
+
 	position:absolute;
 	width: 100%;
 	height: 47px;
@@ -32,8 +30,9 @@
 margin: 0 auto;
 
 position: relative;
-max-width: 1320px;
-min-width: 1280px;
+max-width: 1280px;
+min-width: 1080px;
+transition: all 1s;
 }
 
 
@@ -69,16 +68,15 @@ overflow: scroll;
 float: left;
 width: 320px;
 height: 27px;
-background-color: rgba(255, 255, 255, 1);
+background-color: #3c4246;
 color: #27292B;
 border: medium none;
 border-radius: 5px;
 margin-left: 30px;
 font-size: 14px;
-transition: all 0.2s ease-in-out;
--webkit-transition: all 0.2s ease-in-out 0;
 padding-left: 30px;
 box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 148, 0.32);
+transition: all 1s;
 }
 
 
@@ -108,9 +106,10 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 
 .topbar_righttool
 {
-	float: left;
+	float: right;
 	height: 47px;
-	margin-left: 350px;
+	margin-right: 40px;
+	transition: all 1s;
 }
 
 
@@ -289,20 +288,38 @@ position: relative;
 	color:white;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
 .topbar_wrapper 
 {
 margin: 0 auto;
 position: relative;
-max-width: 1080px;
+max-width: 960px;
 min-width: 960px;
+transition: all 1s;
 }
 
 .topbar_righttool
 {
-	float: left;
+	float: right;
 	height: 47px;
-	margin-left: 30px;
+	margin-right: 100px;
+	transition: all 1s;
+}
+
+.topbar_search_input
+{
+float: left;
+width: 320px;
+height: 27px;
+background-color: #3c4246;
+color: #27292B;
+border: medium none;
+border-radius: 5px;
+margin-left: 30px;
+font-size: 14px;
+transition: all 1s;
+padding-left: 30px;
+box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 148, 0.32);
 }
 
 }
@@ -334,7 +351,24 @@ min-width: 960px;
 	top:0px;
 	left:0px;
 }
+
+.topbar_search_input
+{
+float: left;
+width: 320px;
+height: 27px;
+background-color: #3c4246;
+color: #27292B;
+border: medium none;
+border-radius: 5px;
+margin-left: 30px;
+font-size: 14px;
+transition: all 1s;
+padding-left: 30px;
+box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 148, 0.32);
 }
+}
+
 
 .topbar_search .topbar_search_container{
 width:100%;
@@ -432,10 +466,6 @@ position: relative;
 margin-bottom: -3px;
 }
 
-.topbar_search .topbar_search_container .notop_padding .search_main_div form .search_input_wrapper input:focus{
-	width:480px;
-	background: white;
-}
 
 .noti_icon p{
 	margin: 0;
