@@ -528,6 +528,24 @@ font-weight: bold;
 margin-top: 1px;
 }
 
+::-webkit-input-placeholder {
+   color: #ccc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ccc;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #d6d6d6;  
+}
+
+:-ms-input-placeholder {  
+   color: #ccc;  
+}
+
+
+
 @import url(http://webfonts.ru/import/ptsans.css);
 
 @font-face {
