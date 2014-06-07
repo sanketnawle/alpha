@@ -19,29 +19,38 @@ $(function() {
 
 	$(".cal_icon").attr("src","src/calendar-icons/"+t+".png");
 
+	
+
+
 	var pw_final=740;
 	var ban_aug=0;
 	$( window ).resize(function() {
 		$(".topbar_search_input").removeClass("augged");
 		$(".topbar_search_input").css({"width":"320px","background-color":"#3c4246"});
+
+		if($(window).width()<=1080){
+			ban_aug=1;
+		}else{
+			ban_aug=0;
+		}
 		if($(window).width()<=740){
-		ban_aug=1;	
+			
 		$( ".topbar_search_input" ).css( "width", ( $( window ).width() * 0.432 | 0 ) + "px" );
-		$(".topbar_righttool").css({"float":"left","margin-left":"100px","transition":"none"});
+		
 
 		if($( ".topbar_search_input" ).width()<=258){$( ".topbar_search_input" ).css( "width", 210 + "px" );}
 		}else{
-		ban_aug=0;	
+		
 		$( ".topbar_search_input" ).css( "width", 320 + "px" );	
-		$(".topbar_righttool").css({"float":"right","margin-left":"0px","transition":"all 1s ease-in-out"});
 		}
 	});
-
+	
 	$( document ).delegate( ".topbar_search_input", "click", function() {
+		$(this).css({"background-color":"white"});
 		if(ban_aug==0){
 			if(!$(this).hasClass("augged")){
 			$(this).addClass("augged");
-			$(this).css({"width":"440px","background-color":"white"});
+			$(this).css({"width":"540px","background-color":"white"});
 			}
 			
 			
@@ -52,11 +61,15 @@ $(function() {
 			     	var $target= $(event.target);
 			     	var $container= $(".topbar");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
+			     		var w= $(".topbar_search_input").width();
+			     		if(w>=320){w=320;}
+
 			     		$(".topbar_search_input").removeClass("augged");
-						$(".topbar_search_input").css({"width":"320px","background-color":"#3c4246"});
+						$(".topbar_search_input").css({"width":w,"background-color":"#3c4246"});
 			     	}
 
 				});
+		
 
 });
 </script>

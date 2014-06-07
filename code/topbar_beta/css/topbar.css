@@ -109,7 +109,6 @@ transition: all 1s;
 	float: right;
 	height: 47px;
 	margin-right: 40px;
-	transition: all 1s;
 }
 
 
@@ -300,10 +299,9 @@ transition: all 1s;
 
 .topbar_righttool
 {
-	float: right;
+	float: left;
 	height: 47px;
-	margin-right: 100px;
-	transition: all 1s;
+	margin-left: 240px;
 }
 
 .topbar_search_input
@@ -352,6 +350,15 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 	left:0px;
 }
 
+
+.topbar_righttool
+{
+	float: left;
+	height: 47px;
+	margin-left: 200px;
+	transition: all 1s;
+}
+
 .topbar_search_input
 {
 float: left;
@@ -369,6 +376,50 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 }
 }
 
+
+@media (max-width: 924px) {
+
+.topbar_righttool
+{
+	float: left;
+	height: 47px;
+	margin-left: 180px;
+	transition: all 1s;
+}
+}
+
+@media (max-width: 853px) {
+
+.topbar_righttool
+{
+	float: left;
+	height: 47px;
+	margin-left: 140px;
+	transition: all 1s;
+}
+}
+
+@media (max-width: 810px) {
+
+.topbar_righttool
+{
+	float: left;
+	height: 47px;
+	margin-left: 100px;
+	transition: all 1s;
+}
+}
+
+@media (max-width: 766px) {
+
+.topbar_righttool
+{
+	float: left;
+	height: 47px;
+	margin-left: 70px;
+	transition: all 1s;
+}
+}
 
 .topbar_search .topbar_search_container{
 width:100%;
