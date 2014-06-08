@@ -71,6 +71,7 @@ box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,
 	line-height:30px;
 	font-weight:600;
 	display: inline-block;
+	float: left;
 }
 
 .profile-options h1 a{
@@ -423,9 +424,9 @@ font-weight:200;
 
 span.office-hours{
 padding-left: 10px;
-margin: -32px 0 -5px;
 display: inline-block;
 float: right;
+margin-top:10px;
 }
 .office-hours p{
 	margin: 0;
