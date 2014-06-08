@@ -141,7 +141,47 @@ $(document).ready(function() {
 		$(this).css({"transform":para,"-webkit-transform":para});
 	});
 
+
 	var matrix_x = 0;
+	$(document).delegate(".ar-right","mouseover",function(){
+		if($(this).hasClass("ar-disabled")){
+			return
+		}
+		if(!$(this).hasClass("ar-disabled")){
+		matrix_x = matrix_x - 15; 
+		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+		}
+	});	
+	$(document).delegate(".ar-right","mouseout",function(){
+		if($(this).hasClass("ar-disabled")){
+			return
+		}
+		if(!$(this).hasClass("ar-disabled")){
+		matrix_x = matrix_x + 15; 
+		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+		}
+	});	
+	$(document).delegate(".ar-left","mouseover",function(){
+		if($(this).hasClass("ar-disabled")){
+			return
+		}
+		if(!$(this).hasClass("ar-disabled")){
+		matrix_x = matrix_x + 15; 
+		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+		}
+	});	
+	$(document).delegate(".ar-left","mouseout",function(){
+		if($(this).hasClass("ar-disabled")){return}
+		if(!$(this).hasClass("ar-disabled")){
+		matrix_x = matrix_x - 15; 
+		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+		}
+	});	
+
 	$(document).delegate(".ar-right","click",function(){
 
 		
@@ -235,7 +275,6 @@ $(document).ready(function() {
     	}
     }
 	});
-
 
 
 
