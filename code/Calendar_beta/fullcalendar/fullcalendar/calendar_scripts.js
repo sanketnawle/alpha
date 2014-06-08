@@ -1103,7 +1103,7 @@ $(document).ready(function() {
           }
       },
       select: function(start, end, allDay) {
-        alert("zkl");
+        alert("zkl1");
         $('#addEvent').trigger("click");
         var title = prompt('Event Title:');
         if (title) {

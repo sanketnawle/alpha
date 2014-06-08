@@ -1268,9 +1268,10 @@
                 }
             },
             select: function (start, end, allDay) {
-                alert("zkl");
+                //alert("zkl");
                 $('#addEvent').trigger("click");
-                var title = prompt('Event Title:');
+
+                var title = "";//prompt('Event Title:');
                 if (title) {
                     calendar.fullCalendar('renderEvent',
                       {
@@ -1337,8 +1338,8 @@
             ],
             //点击事件，触发其他函数
             eventClick: function (calEvent, jsEvent, view) {
-                alert('zkl');
-                calEvent.title = "CLICKED!";
+                //alert('zkl1');
+                //calEvent.title = "CLICKED!";
                 $('#calendar').fullCalendar('updateEvent', calEvent);
 
 
@@ -1444,7 +1445,7 @@
             $("#bc3contentAddEvent").animate({ marginLeft: "-=300px", marginLeft: "transition: all 0.5s ease-in-out;" });
         });
 
-        $(document).delegate("#addEvent", "mousedown", function () {
+        $(document).delegate("#addEvent", "click", function () {
             $(".blackcanvas30").fadeIn();
             $("#bc3contentAddEvent").animate({ marginLeft: "+=300px" });
         });
