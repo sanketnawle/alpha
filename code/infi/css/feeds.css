@@ -671,19 +671,19 @@ outline: 0;
 box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 }
 
-.search-select {
+.posttool-select {
   float: right;
   margin-right: 41px;
   margin-top:18px;
   cursor:pointer;
   opacity:1;
 }
-.search-select .field {
+.posttool-select .field {
   background-color:white;
   cursor:pointer;
 }
 
-.search-select .field:active{
+.posttool-select .field:active{
   background: #ddd;
 border-bottom-color: #999;
 -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
@@ -691,7 +691,7 @@ border-bottom-color: #999;
 -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 }
-.search-select .icon:after {
+.posttool-select .icon:after {
   font-style: normal;
   font-family: FontA;
   color: rgba(117, 114, 114, 0.62);
@@ -701,40 +701,40 @@ box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
   opacity: 1;
   float: left;
 }
-.search-select .icon.user:after {
+.posttool-select .icon.user:after {
   content: "\f0c0";
   font-size: 12px;
   left:-9px;
   top:4px;
 }
-.search-select .icon.list:after {
+.posttool-select .icon.list:after {
   content: "\f0eb";
   left: -8px;
   top: 2.1px;
 }
-.search-select .icon.stat:after {
+.posttool-select .icon.stat:after {
   content: "\f0ac";
   left: -9.6px;
   top: 2.1px;
 }
-.search-select .icon.accs:after {
+.posttool-select .icon.accs:after {
 content: "\f023";
 left: -8.5px;
 top: 2.1px;
 }
-.search-select .icon.sign:after {
+.posttool-select .icon.sign:after {
   content: "\f08b";
 }
-.search-select .icon.arrow:after {
+.posttool-select .icon.arrow:after {
   content: "\F0DE";
 }
-.search-select input {
+.posttool-select input {
   display: none;
 }
-.search-select input:checked + .select {
+.posttool-select input:checked + .select {
   opacity: 1;
 }
-.search-select ul.select {
+.posttool-select ul.select {
   display:none;
 list-style: none outside none;
 padding: 0px;
@@ -746,7 +746,7 @@ position: absolute;
 box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   z-index:100;
 }
-.search-select ul.select li {
+.posttool-select ul.select li {
   z-index: 1;
   overflow: hidden;
   position: relative;
@@ -766,7 +766,7 @@ box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   color: #c0b7b4;
   padding-top: 6px;
 }
-.search-select ul.select li.arrow {
+.posttool-select ul.select li.arrow {
   display: inline;
   position: absolute;
   top: -11px;
@@ -776,18 +776,18 @@ box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 0;
   border: none;
 }
-.search-select ul.select li.arrow:after {
+.posttool-select ul.select li.arrow:after {
   font-size: 40px;
   color: white;
   opacity: 1;
 }
-.search-select ul.select li:nth-child(2) {
+.posttool-select ul.select li:nth-child(2) {
   border-radius: 4px 4px 0 0;
 }
-.search-select ul.select li:last-child {
+.posttool-select ul.select li:last-child {
   border-radius: 0 0 4px 4px;
 }
-.search-select ul.select li:not(.icon):hover {
+.posttool-select ul.select li:not(.icon):hover {
   margin-top: -1px;
   background-color: #01e2a7;
   color: white;
@@ -799,17 +799,17 @@ box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 
 
 
-.search-select ul.select li:not(.icon):hover i:after {
+.posttool-select ul.select li:not(.icon):hover i:after {
   color: white;
 }
-.search-select ul.select li:last-child {
+.posttool-select ul.select li:last-child {
   border-top: 1px solid #ddd8d7;
   border-bottom: 1px solid #ddd8d7;
 }
-.search-select ul.select li i:after {
+.posttool-select ul.select li i:after {
   color: #c0b7b4;
 }
-.search-select label {
+.posttool-select label {
   cursor: pointer;
   height: 24px;
   width: 300px;
@@ -865,9 +865,147 @@ margin-left: 42px;
 }
 
 
+.blackcanvas
+{
+
+  background-color:rgba(0,0,0,0.3);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  display:none;
+}
+
+.popup_box
+{
+  position:fixed;
+  left:0px;
+  right:0px;
+  margin:auto;
+  margin-top:200px;
+
+  width:445px;
+  height:119px;
+  background-color:white;
+  font-family: 'Open Sans Regular', 'Open Sans', sans-serif;
+
+  border-radius: 3px;
+box-shadow: 0px 2px 26px rgba(0, 0, 0, 0.3), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+}
+
+.popup_header
+{
+  float:left;
+  height:40px;
+  width:100%;
+  background-color:#F5F6F7;
+  border-bottom:1px solid #E5E5E5;
+  color: #4E5665;
+  font-weight: bold;
+}
+
+.popup_header div
+{
+  margin-left:10px;
+  height:40px;
+  line-height: 40px;
+}
+
+.popup_content
+{
+  float:left;
+  width:100%;
+  height:50px;
+  font-size:16px;
+}
+
+.popup_content .content_text
+{
+  font-size:16px;
+  margin-left:10px;
+  margin-top:10px;
+}
+
+.popup_footer
+{
+  float:left;
+  width:100%;
+  height:28px;
+  background-color:#F5F6F7;
+  border-top:1px solid #E5E5E5;
+}
+
+.bt_success
+{
+  float: right;
+color: #fff;
+border-radius: 2px;
+cursor: default;
+font-size: 12px;
+
+outline: 0;
+
+width: auto;
+height: 22px;
+
+margin-right:10px;
+margin-top: 3px;
+
+cursor:pointer;
+text-align: center;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+background-color: #22C791;
+border-color: #389677 #14A072 #0EA372;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    
+border-width: 1px;
+border-style: solid;
+}
+.bt_success:hover{
+background-color: #1ABD88;
+background-image: -webkit-linear-gradient(top,#22C791,#1AAC7C);
+background-image: linear-gradient(top,#22C791,#1AAC7C);
+border-color: #389677 #14A072 #06724F;
+}
+
+.bt_success:active{
+background-color: #1ABD88;
+border-color: #257A5E #0F865F #07835A;
+-webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, .2);
+}
+
+
+.bt_cancel
+{
+  float: right;
+color: black;
+border-radius: 2px;
+cursor: default;
+font-size: 12px;
+
+outline: 0;
+
+width: auto;
+height: 22px;
+
+margin-right:17px;
+margin-top: 3px;
+
+cursor:pointer;
+text-align: center;
+box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+background-color: white;
+border-color: #999;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    
+border-width: 1px;
+border-style: solid;
+}
+
 @font-face {font-family: "Helvetica"; src: url('../fonts/Helvetica.ttf') format('truetype');}
 
 @font-face {
   font-family: "FontA";
-  src: url(http://s.cdpn.io/999/fontawesome-webfont.ttf) format('truetype'), url(http://s.cdpn.io/999/FontAwesome.otf) format('opentype');
+  src: url(https://s.cdpn.io/999/fontawesome-webfont.ttf) format('truetype'), url(https://s.cdpn.io/999/FontAwesome.otf) format('opentype');
 }

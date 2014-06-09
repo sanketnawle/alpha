@@ -1,7 +1,7 @@
 <?php
-// require_once("dbconfig.php");
+require_once("dbconfig.php");
 
-// $_SESSION['studentid']='1';
+$_SESSION['studentid']='1';
 
 // $pid='209';
 // $cid='254';
@@ -48,6 +48,28 @@ function checkcowner($con,$cid){
 	return $cownership='none';
 }
 
+function checkhidden($con,$pid){
+	$usertype="none";
+	if(isset($_SESSION['studentid'])) if($_SESSION['studentid']!='0'){
+		$usertype='studentid';
+		$userid=$_SESSION['studentid'];
+	}
+	else if(isset($_SESSION['profid'])) if($_SESSION['profid']!='0'){
+		$usertype='profid';
+		$userid=$_SESSION['profid'];
+	}
+
+	if($usertype!="none"){
+		$hidque="SELECT * FROM home_hide WHERE postid= '".$pid."' and ".$usertype."=".$userid ;
+		$hidres=mysqli_query($con,$hidque);
+		if((mysqli_num_rows($hidres))>0) return $hidden='true';
+		// else echo 'none';
+	}
+	// else echo "Mazaak: define user before action";
+	return $hidden='false';
+}
+
 // echo $pownership=checkpowner($con,$pid);
 // echo $cownership=checkcowner($con,$cid);
+// echo $hidden=checkhidden($con,$pid);
 ?>

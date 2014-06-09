@@ -16,6 +16,7 @@ if(isset($_POST['latest'])){
 
 	$query = mysqli_query($con,"SELECT * FROM home_posts WHERE update_timestamp > '".$latest."' ORDER BY update_timestamp DESC");
 
+	require_once('feedchecks.php');
 	if(mysqli_num_rows($query)!=0){
 		while($row = mysqli_fetch_array($query)){
 

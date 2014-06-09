@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/topbar.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<script>
+$(function() {
+
+	
+
+
+	
+	var d = new Date();
+	var t= d.getDate();              
+	var nm= "'src/calendar-icons/"+t+".png'";
+
+
+	$(".cal_icon").attr("src","src/calendar-icons/"+t+".png");
+
+	
+
+
+	var pw_final=740;
+	var ban_aug=0;
+	$( window ).resize(function() {
+		$(".topbar_search_input").removeClass("augged");
+		$(".topbar_search_input").css({"width":"320px","background-color":"#3c4246"});
+
+		if($(window).width()<=1080){
+			ban_aug=1;
+		}else{
+			ban_aug=0;
+		}
+		if($(window).width()<=740){
+			
+		$( ".topbar_search_input" ).css( "width", ( $( window ).width() * 0.4 | 0 ) + "px" );
+		
+
+		if($( ".topbar_search_input" ).width()<=258){$( ".topbar_search_input" ).css( "width", 210 + "px" );}
+		}else{
+		
+		$( ".topbar_search_input" ).css( "width", 320 + "px" );	
+		}
+	});
+	
+	$( document ).delegate( ".topbar_search_input", "click", function() {
+		$(this).css({"background-color":"white"});
+		if(ban_aug==0){
+			if(!$(this).hasClass("augged")){
+			$(this).addClass("augged");
+			$(this).css({"width":"540px","background-color":"white"});
+			}
+			
+			
+		}
+	});
+
+				$(document).click(function(event){
+			     	var $target= $(event.target);
+			     	var $container= $(".topbar");
+			     	if(!$container.is($target)&&($container.has($target).length===0)){
+			     		var w= $(".topbar_search_input").width();
+			     		if(w>=320){w=320;}
+
+			     		$(".topbar_search_input").removeClass("augged");
+						$(".topbar_search_input").css({"width":w,"background-color":"#3c4246"});
+			     	}
+
+				});
+		
+
+});
+</script>
+
+</head>
+<body>
+
+		<div class = "topbar">
+			<div class = "topbar_wrapper">
+				<img class = "topbar_logo" src = "src/logo.png">
+				</img>
+				
+				<div class='topbar_search'>
+					<div class = "topbar_search_container">
+						<div class ="notop_padding">	
+							<div class = "search_main_div">
+								<form name = "search" method = "get">
+									<div class = "search_input_wrapper">
+										<input class='topbar_search_input' placeholder='Search groups and faculty...'>
+									</div>
+									<div class = "topbar_search_go">	
+										<a class = "green_go" title = "Search your University" name>
+											<span class = "search_icon">
+											</span>
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class='topbar_righttool'>
+					<div class='topbar_cal'><img class='cal_icon' src='src/calendar.png'></div>					
+					<div class='topbar_noti'><span class='noti_icon'><p>2</p></span></div>
+					<div class = "topbar_prof">
+						<div style = "background-image: url(src/userPic.jpg);" class = "prof-limit">
+						</div>
+					</div>
+				</div>
+				
+
+			</div>
+		</div>
+		
+</body>
+
+
+</html>

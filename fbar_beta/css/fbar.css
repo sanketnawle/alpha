@@ -1,8 +1,9 @@
 
 
 #fbar{	
+float: left;
 font-family: 'Open Sans', sans-serif;
-width: 560px;
+width: auto;
 height: 38px;
 background-color: #ffffff;
 background-image: url(src/noise-1.png),-webkit-gradient(linear,left top,left bottom,from(#27292B),to(#121314));
@@ -21,7 +22,7 @@ margin-left:30px;
 
 
 .post{
-	width:181.5px;
+	width:184.5px;
 	height: 38px;
 	border-right: 1px solid #bdc7d8;
 	display:inline-block;
@@ -35,7 +36,7 @@ margin-left:30px;
 }
 
 .share{
-		width:181.5px;
+		width:184.5px;
 		height:38px;
 		border-right: 1px solid #bdc7d8;
 		display:inline-block;
@@ -49,7 +50,7 @@ margin-left:30px;
 }
 
 .find{
-		width: 191.5px;
+		width: 185px;
 		height:38px;
 		margin-left: -4px;
 		display:inline-block;
@@ -928,7 +929,8 @@ margin:auto;
 
 	margin-left: 34px;
 	height: 30px;
-	overflow:scroll;
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
 
 .tag-option

@@ -1,5 +1,6 @@
 <?php
-
+		$hidden=checkhidden($con,$row['messageid']);
+		if($hidden!="true"){
 			echo "<div id=".strtotime($row['update_timestamp']).">"; //div id stores unixtimestamp of the post
 
 			echo "<div class='posts' id=".$row['messageid'].">";
@@ -24,7 +25,18 @@
 			}
 
 			$pownership=checkpowner($con,$row['messageid']);
-			echo "<div class='post_title'><span class='post_owner'>".$post_owner."</span><span class='post_format'> started a discussion</span></div>";
+			echo "<div class='post_title'><span class='post_owner'>";
+			
+			if($pownership=="post"){
+				if($row['anonymous']=="1") echo "Anonymous (ME)";
+				else echo $post_owner;
+			}
+			else{
+				if($row['anonymous']=="1") echo "Anonymous";
+				else echo $post_owner;
+			}
+
+			echo "</span><span class='post_format'> started a discussion</span></div>";
 			echo "<div class='post_time'>".$row['update_timestamp']."</div>";
 			echo "</div>";
 			//post head end
@@ -53,16 +65,18 @@
 			// echo "<div class='like_number'>10</div>";
 			echo "</div>";
 
-			if($row['visibility']=="students") $iname="user";
+			//setting 
+			if($row['visibility']=="student") $iname="user";
 			else if($row['visibility']=="faculty") $iname="list";
 			else if($row['visibility']=="onlyme") $iname="accs";
 			else $iname="stat";
 			if($pownership=="post"){
-			echo "<div class='search-select'><span class='field'><i class='icon ".$iname."'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
-				<div class = 'tag-wedge'></div><div class = 'tag-box'><span>Science Club</span></div></div></div>";
+			echo "<div class='posttool-select'><span class='field'><i class='icon ".$iname."'></i></span><input id='open' type='checkbox' /><ul class='select'><li class='icon arrow selitem'></li><li class='selitem'>Only Faculty<i class='icon candidate_icon list'></i></li><li class='selitem'>Only Students<i class='icon candidate_icon user'></i></li><li class='selitem'>Campus<i class='icon candidate_icon stat'></i></li><li class='selitem'>Only Me<i class='icon candidate_icon accs'></i></li></ul><div class = 'card-tag'>
+				<div class = 'tag-wedge'></div><div class = 'tag-box'><span></span></div></div></div>";
 			}
-			else{
-			//echo	"<div class='search-select'><span class='field'><i class='icon ".$iname."'></i></span>"	;
+			else {
+				echo "<div class='posttool-select'><span class='field'><i class='icon ".$iname."'></i></span><div class = 'card-tag'>
+				<div class = 'tag-wedge'></div><div class = 'tag-box'><span></span></div></div></div>";
 			}
 
 			echo "<div class = 'post_functions'>";
@@ -136,4 +150,6 @@
 
 			echo "</div></div>";
 
-			echo 
+			echo "</div> </div>";
+		}
+?>

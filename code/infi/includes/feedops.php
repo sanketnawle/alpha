@@ -4,12 +4,12 @@ require_once("dbconfig.php");
 $_SESSION['studentid']="1";
 
 // Uncomment the below 3 lines if you are testing this page alone
-// $_POST['postid'] = "209";
+// $_POST['postid'] = "212";
 // $_POST['hide']='1';
 // $_POST['delete']='1';
 // $_POST['report']='1';
 // $_POST['edit']="Post by Kaushik";
-// $_POST['privacy']="Faculty";
+// $_POST['privacy']="student";
 
 // setting up vars
 if(isset($_POST['postid'])){
