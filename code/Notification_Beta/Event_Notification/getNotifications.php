@@ -33,7 +33,7 @@ function getNotificationMessage($event_type, $event_id, $event){
             $query_result = mysqli_fetch_array($query_personal);
             if(mysqli_num_rows($query_result)){
                 $result = mysqli_fetch_array($query_result);
-                return array($result['title'], $result['start']);
+                return array($result['title'], $result['start_time']);
             }  
             break;
         case 2:
@@ -41,7 +41,7 @@ function getNotificationMessage($event_type, $event_id, $event){
             $query_result = mysqli_fetch_array($query_personal);
             if(mysqli_num_rows($query_result)){
                 $result = mysqli_fetch_array($query_result);
-                return array($result['title'], $result['start']);
+                return array($result['title'], $result['start_time']);
             }   
             break;
     }
