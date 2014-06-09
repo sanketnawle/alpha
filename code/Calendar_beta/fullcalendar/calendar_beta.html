@@ -1267,23 +1267,25 @@
                     $('#calendar').fullCalendar('option', 'contentHeight', 600);
                 }
             },
-            select: function (start, end, allDay) {
-                //alert("zkl");
+            select: function (start, end, allDay) {                
+                var param1 = new Date(start);
+                var param2 = (param1.getMonth() + 1) + '/' + param1.getDate() + '/' + param1.getFullYear();
+                $(".set_date").attr("value", param2);
                 $('#addEvent').trigger("click");
-
-                var title = "";//prompt('Event Title:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent',
-                      {
-                          title: title,
-                          start: start,
-                          end: end,
-                          allDay: allDay
-                      },
-                      true // make the event "stick"
-                    );
-                }
-                calendar.fullCalendar('unselect');
+                
+                //var title = prompt('Event Title:');
+                //if (title) {
+                //    calendar.fullCalendar('renderEvent',
+                //      {
+                //          title: title,
+                //          start: start,
+                //          end: end,
+                //          allDay: allDay
+                //      },
+                //      true // make the event "stick"
+                //    );
+                //}
+                //calendar.fullCalendar('unselect');
             },
             editable: true,
             events: [
@@ -1337,12 +1339,9 @@
               }
             ],
             //点击事件，触发其他函数
-            eventClick: function (calEvent, jsEvent, view) {
-                //alert('zkl1');
+            eventClick: function (calEvent, jsEvent, view) {                
                 //calEvent.title = "CLICKED!";
                 $('#calendar').fullCalendar('updateEvent', calEvent);
-
-
             },
 
         });
@@ -1462,6 +1461,27 @@
             formatter: 'ampm',
             start_hour: 0,
             value: $currentTime
+        });
+
+        $('#btnAddThisEvent').click(function () {
+            
+            var start = new Date($('.set_date').val()).toString();
+            var end = start;
+            
+            var title = $('#nevt-title-1').val(); 
+                    if (title) {
+                        $('#calendar').fullCalendar('renderEvent',
+                          {
+                              title: title,
+                              start: start,
+                              end: end,
+                              allDay: true
+                          },
+                          true // make the event "stick"
+                        );
+                    }
+                    $('#calendar').fullCalendar('unselect');
+                    $('.dexit-1').trigger("click");
         });
     });
 
@@ -1623,7 +1643,7 @@
                                             </div>
 
                                             <div>
-                                                <button class="btn-addevent-1 btn-addevent">Add This Event</button>
+                                                <button class="btn-addevent-1 btn-addevent" id="btnAddThisEvent">Add This Event</button>
                                             </div>
 
 

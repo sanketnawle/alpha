@@ -2507,16 +2507,10 @@ a.innerPic {
 
 
 
-<<<<<<< HEAD
     a.innerPic .smallPic {
         height: 29px;
         width: 29px;
     }
-=======
-
-a.innerPic .smallPic{
-    height: 29px;
->>>>>>> d13577787da89dbef02603124933a8a66e51bed1
 
         a.innerPic .smallPic .img {
             border: 0;
