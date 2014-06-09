@@ -35,11 +35,11 @@ $(function() {
 
 
 	$(document).delegate(".avatar-aug","mouseover",function(){
-		$(this).find(".card-tag").stop().fadeIn();
+		$(this).find(".card-tag").stop().show();
 	});
 
 	$(document).delegate(".avatar-aug","mouseout",function(){
-		$(this).find(".card-tag").hide();
+		$(this).find(".card-tag").delay(1).hide(0);
 	});
 
 
