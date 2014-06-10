@@ -34,8 +34,12 @@ $(document).ready(function() {
 	});
 
 	$(document).delegate(".form-control","focus",function(){
-		$(this).css("height","70px");
-		$(this).css("border-radius","0px 6px 6px 6px");
+		$(this).css({"height":"70px","width":"93.82%","margin-left":"6px","margin-top":"9px","border-radius":"4px"});
 		$(this).closest(".reply_tawrapper").closest(".commentform").css("height","87px");
+		$(this).closest(".commentform").find(".reply_user_icon").hide();
+	});
+
+	$(document).delegate(".post_comment","click",function(){
+		$(this).closest(".posts").find(".form-control").focus();
 	});
 });
