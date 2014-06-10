@@ -50,7 +50,7 @@ min-height: 75px;
 margin: 0 auto;
 padding: 10px 30px 15px;
 border-bottom: 1px solid #d9d9d9;
-background: #eee url(//d36xtkk24g8jdx.cloudfront.net/bluebar/acdcd6e/images/bg/white-gradient-200px.png) repeat-x 50% 50%;
+background: #eee url(src/white-gradient-200px.png) repeat-x 50% 50%;
 -webkit-box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.05);
 -moz-box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.05);
 box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.05);
