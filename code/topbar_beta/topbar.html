@@ -9,9 +9,6 @@
 $(function() {
 
 	
-
-
-	
 	var d = new Date();
 	var t= d.getDate();              
 	var nm= "'src/calendar-icons/"+t+".png'";
@@ -19,14 +16,12 @@ $(function() {
 
 	$(".cal_icon").attr("src","src/calendar-icons/"+t+".png");
 
-	
-
 
 	var pw_final=740;
 	var ban_aug=0;
 	$( window ).resize(function() {
 		$(".topbar_search_input").removeClass("augged");
-		$(".topbar_search_input").css({"width":"320px","background-color":"#3c4246"});
+		$(".topbar_search_input").css({"width":"300px"});
 
 		if($(window).width()<=1080){
 			ban_aug=1;
@@ -41,16 +36,16 @@ $(function() {
 		if($( ".topbar_search_input" ).width()<=258){$( ".topbar_search_input" ).css( "width", 210 + "px" );}
 		}else{
 		
-		$( ".topbar_search_input" ).css( "width", 320 + "px" );	
+		$( ".topbar_search_input" ).css( "width", 300 + "px" );	
 		}
 	});
 	
 	$( document ).delegate( ".topbar_search_input", "click", function() {
-		$(this).css({"background-color":"white"});
+		//$(this).css({"background-color":"white"});
 		if(ban_aug==0){
 			if(!$(this).hasClass("augged")){
 			$(this).addClass("augged");
-			$(this).css({"width":"540px","background-color":"white"});
+			$(this).css({"width":"430px"});
 			}
 			
 			
@@ -62,10 +57,10 @@ $(function() {
 			     	var $container= $(".topbar");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
 			     		var w= $(".topbar_search_input").width();
-			     		if(w>=320){w=320;}
+			     		if(w>=300){w=300;}
 
 			     		$(".topbar_search_input").removeClass("augged");
-						$(".topbar_search_input").css({"width":w,"background-color":"#3c4246"});
+						$(".topbar_search_input").css({"width":w});
 			     	}
 
 				});
@@ -89,13 +84,9 @@ $(function() {
 								<form name = "search" method = "get">
 									<div class = "search_input_wrapper">
 										<input class='topbar_search_input' placeholder='Search groups and faculty...'>
+										<div class='topbar_qicon'><img src='src/question.png'></div>
 									</div>
-									<div class = "topbar_search_go">	
-										<a class = "green_go" title = "Search your University" name>
-											<span class = "search_icon">
-											</span>
-										</a>
-									</div>
+									
 								</form>
 							</div>
 						</div>

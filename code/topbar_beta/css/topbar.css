@@ -66,12 +66,12 @@ overflow: scroll;
 .topbar_search_input
 {
 float: left;
-width: 320px;
+width: 300px;
 height: 27px;
-background-color: #3c4246;
-color: #27292B;
+background-color: white;
+color: #3c4246;
 border: medium none;
-border-radius: 5px;
+border-radius: 4px;
 margin-left: 30px;
 font-size: 14px;
 padding-left: 30px;
@@ -309,7 +309,7 @@ transition: all 1s;
 .topbar_search_input
 {
 float: left;
-width: 320px;
+width: 300px;
 height: 27px;
 background-color: #3c4246;
 color: #27292B;
@@ -364,7 +364,7 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 .topbar_search_input
 {
 float: left;
-width: 320px;
+width: 300px;
 height: 27px;
 background-color: #3c4246;
 color: #27292B;
@@ -446,7 +446,7 @@ white-space: nowrap;
 	margin-right:0px;
 }
 .topbar_search .topbar_search_container .notop_padding .search_main_div form .search_input_wrapper{
-	
+	height: 40px;
 }
 
 
@@ -455,14 +455,13 @@ white-space: nowrap;
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
 box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
 outline: none;
-background: #3c4246;
 background-clip: padding-box;
 border-right-width: 0;
-height: 30px;
+height: 28px;
 vertical-align: top;
-border-radius: 12px 0 0 12px;
 padding-left: 12px;
 font-weight: 400;
+margin-top: 2px;
 }
 
 .topbar_search .topbar_search_container .notop_padding .search_main_div form .topbar_search_go{
@@ -530,20 +529,35 @@ font-weight: bold;
 margin-top: 1px;
 }
 
+.topbar_qicon
+{
+	width: 20px;
+	height: 20px;
+	float: right;
+	opacity: 0.5;
+	cursor: pointer;	
+}
+
+.topbar_qicon img
+{
+	width: 20px;
+	height: 20px;
+}
+
 ::-webkit-input-placeholder {
-   color: #ccc;
+   color: #4c4c4c;  
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #dadada;  
+   color: #4c4c4c;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #dadada;  
+   color: #4c4c4c; 
 }
 
 :-ms-input-placeholder {  
-   color: #ccc;  
+   color: #4c4c4c;  
 }
 
 
