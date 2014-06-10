@@ -40,6 +40,9 @@
     <script src="JS/ampm.js" type="text/javascript"></script>
     <script src="JS/planner.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="CSS/datepicker.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="CSS/eventViewer.css" />
 </head>
 <script>
     $(function () {
@@ -1242,9 +1245,9 @@
         var calendar = $('#calendar').fullCalendar({
             height: 700,
             aspectRatio: 1.3,
-            eventColor: 'rgba(126,224,141,0.9)',
-            eventBoarderColor: 'rgba(178,218,103,0.7)',
-            eventTextColor: '#fff',
+            //eventColor: 'rgba(126,224,141,0.9)',
+            //eventBoarderColor: 'rgba(178,218,103,0.7)',
+            //eventTextColor: '#fff',
             weekMode: 'variable',
 
             header: {
@@ -1267,12 +1270,12 @@
                     $('#calendar').fullCalendar('option', 'contentHeight', 600);
                 }
             },
-            select: function (start, end, allDay) {                
+            select: function (start, end, allDay) {
                 var param1 = new Date(start);
                 var param2 = (param1.getMonth() + 1) + '/' + param1.getDate() + '/' + param1.getFullYear();
                 $(".set_date").attr("value", param2);
                 $('#addEvent').trigger("click");
-                
+
                 //var title = prompt('Event Title:');
                 //if (title) {
                 //    calendar.fullCalendar('renderEvent',
@@ -1339,7 +1342,7 @@
               }
             ],
             //点击事件，触发其他函数
-            eventClick: function (calEvent, jsEvent, view) {                
+            eventClick: function (calEvent, jsEvent, view) {
                 //calEvent.title = "CLICKED!";
                 $('#calendar').fullCalendar('updateEvent', calEvent);
             },
@@ -1464,26 +1467,39 @@
         });
 
         $('#btnAddThisEvent').click(function () {
-            
+
             var start = new Date($('.set_date').val()).toString();
             var end = start;
-            
-            var title = $('#nevt-title-1').val(); 
-                    if (title) {
-                        $('#calendar').fullCalendar('renderEvent',
-                          {
-                              title: title,
-                              start: start,
-                              end: end,
-                              allDay: true
-                          },
-                          true // make the event "stick"
-                        );
-                    }
-                    $('#calendar').fullCalendar('unselect');
-                    $('.dexit-1').trigger("click");
+
+            var title = $('#nevt-title-1').val();
+            if (title) {
+                $('#calendar').fullCalendar('renderEvent',
+                  {
+                      title: title,
+                      start: start,
+                      end: end,
+                      allDay: true
+                  },
+                  true // make the event "stick"
+                );
+            }
+            $('#calendar').fullCalendar('unselect');
+            $('.dexit-1').trigger("click");
         });
     });
+
+    function showHide(shID) {        
+        if (document.getElementById(shID)) {
+            if (document.getElementById(shID + '-show').style.display != 'none') {
+                document.getElementById(shID + '-show').style.display = 'none';
+                document.getElementById(shID).style.display = 'inline';
+            }
+            else {
+                document.getElementById(shID + '-show').style.display = 'inline';
+                document.getElementById(shID).style.display = 'none';
+            }
+        }
+    }
 
 </script>
 
@@ -1522,7 +1538,7 @@
                                             <a class="dexit-1">cancel</a>
                                             <h1 class="addevent-header1-1">Add Event</h1>
                                             <div class="addevent-header-1">
-                                                <div  class="fa fa-caret-down">Group Tag</div>
+                                                <div class="fa fa-caret-down">Group Tag</div>
                                                 <div class="pl_options pl_options-1">
                                                     <div class="pl_option pl_option-1">Group 1 </div>
                                                     <div class="pl_option pl_option-1">Group 2</div>
@@ -1775,7 +1791,593 @@
                         <div class="cal_wrapper">
 
                             <div id='calendar'></div>
+
+
+
                             <div class="event_view">
+                                <div class="event_main">
+
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="flag-wrapper direction-r">
+                                                <span class="flag1"></span>
+                                                <span class="flag">Sun, Jun 01</span>
+                                            </div>
+                                            <div class="direction-r">
+                                                <div class="desc">
+                                                    <div class="event_main_header">
+                                                        <div class="event-content">
+                                                            <div class="event_right">
+                                                                <div class="header_wrapper">
+                                                                    <div class="event-header-left">
+                                                                        <div class="event_title">
+                                                                            Microeconomics Homework 
+                                                                        </div>
+                                                                        <div class="event_group">
+                                                                            <div>Event in <a>Principles of Economics</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info_wrapper">
+                                                                    <div class="left_data">
+                                                                        <img class="event_icons" src="src/time_icon.png">
+                                                                        <div class="event-data">
+                                                                            10:00am
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            2 days from now
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="right_data">
+                                                                        <img class="event_icons" src="src/location_icon.png">
+                                                                        <div class="event-data">
+                                                                            Lattimore Hall Room 223
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            500 Joseph C Wilson Blvd
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event_join">
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button1" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Accept</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button2" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Maybe</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button3" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Reject</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="event_left">
+                                                                <img class="section_icon" src="src/resources.png">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="attendees_wrapper">
+                                                            <div class="creator_wrapper">
+                                                                <a class="event_creator">
+                                                                    <div class="creator_Image">
+                                                                    </div>
+                                                                    <div class="creator_name">
+                                                                        Professor Ashutosh
+                                                                    </div>
+                                                                    <div class="creator_info">
+                                                                        Added this event 5 weeks ago
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="attendee_list">
+                                                                <div class="event_attendees">Attending: </div>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person4.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person5.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="rosterLink">
+                                                                    <div class="doubleBox">
+                                                                        +67
+                                                                    </div>
+                                                                </a>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="info_wrapper bottom_right_data">
+                                                            <img class="section_icon" src="src/info.png">
+                                                            <div class="event_info">
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+                                                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                                                                <a href="#" id="description-show" class="showLink" 
+                                                                    onclick="showHide('description');return false;">See more.</a>
+                                                                 <div id="description" class="more">nisi ut aliquip 
+                                                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                                                            mollit anim id est laborum
+                                                                     <a href="#" id="description-hide" class="hideLink" 
+	                                                                    onclick="showHide('description');return false;">Hide.</a>
+                                                                     </div>
+                                                                 </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="desc">
+                                                    <div class="event_main_header">
+                                                        <div class="event-content">
+                                                            <div class="event_right">
+                                                                <div class="header_wrapper">
+                                                                    <div class="event-header-left">
+                                                                        <div class="event_title">
+                                                                            Microeconomics Homework 
+                                                                        </div>
+                                                                        <div class="event_group">
+                                                                            <div>Event in <a>Principles of Economics</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info_wrapper">
+                                                                    <div class="left_data">
+                                                                        <img class="event_icons" src="src/time_icon.png">
+                                                                        <div class="event-data">
+                                                                            10:00am
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            2 days from now
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="right_data">
+                                                                        <img class="event_icons" src="src/location_icon.png">
+                                                                        <div class="event-data">
+                                                                            Lattimore Hall Room 223
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            500 Joseph C Wilson Blvd
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event_join">
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button7" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Accept</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button8" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Maybe</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button9" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Reject</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="event_left">
+                                                                <img class="section_icon" src="src/resources.png">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="attendees_wrapper">
+                                                            <div class="creator_wrapper">
+                                                                <a class="event_creator">
+                                                                    <div class="creator_Image">
+                                                                    </div>
+                                                                    <div class="creator_name">
+                                                                        Professor Ashutosh
+                                                                    </div>
+                                                                    <div class="creator_info">
+                                                                        Added this event 5 weeks ago
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="attendee_list">
+                                                                <div class="event_attendees">Attending: </div>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person4.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person5.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="rosterLink">
+                                                                    <div class="doubleBox">
+                                                                        +67
+                                                                    </div>
+                                                                </a>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="info_wrapper bottom_right_data">
+                                                            <img class="section_icon" src="src/info.png">
+                                                            <div class="event_info">
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+                                                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                                                                <a href="#" id="A3" class="showLink" 
+                                                                    onclick="showHide('description');return false;">See more.</a>
+                                                                 <div id="Div2" class="more">nisi ut aliquip 
+                                                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                                                            mollit anim id est laborum
+                                                                     <a href="#" id="A4" class="hideLink" 
+	                                                                    onclick="showHide('description');return false;">Hide.</a>
+                                                                     </div>
+                                                                 </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="flag-wrapper direction-r">
+                                                <span class="flag1"></span>
+                                                <span class="flag">Sun, Jun 01</span>
+                                            </div>
+                                            <div class="direction-r">
+                                                <div class="desc">
+                                                    <div class="event_main_header">
+                                                        <div class="event-content">
+                                                            <div class="event_right">
+                                                                <div class="header_wrapper">
+                                                                    <div class="event-header-left">
+                                                                        <div class="event_title">
+                                                                            Microeconomics Homework 
+                                                                        </div>
+                                                                        <div class="event_group">
+                                                                            <div>Event in <a>Principles of Economics</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info_wrapper">
+                                                                    <div class="left_data">
+                                                                        <img class="event_icons" src="src/time_icon.png">
+                                                                        <div class="event-data">
+                                                                            10:00am
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            2 days from now
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="right_data">
+                                                                        <img class="event_icons" src="src/location_icon.png">
+                                                                        <div class="event-data">
+                                                                            Lattimore Hall Room 223
+                                                                        </div>
+                                                                        <div class="event-data2">
+                                                                            500 Joseph C Wilson Blvd
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="event_join">
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button4" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Accept</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button5" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Maybe</button>
+                                                                    <button class="btn-addevent-1 btn-addevent" id="Button6" style="min-width: 0px; margin-right: 5px; margin-top: 0px;float:left;">Reject</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="event_left">
+                                                                <img class="section_icon" src="src/resources.png">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="attendees_wrapper">
+                                                            <div class="creator_wrapper">
+                                                                <a class="event_creator">
+                                                                    <div class="creator_Image">
+                                                                    </div>
+                                                                    <div class="creator_name">
+                                                                        Professor Ashutosh
+                                                                    </div>
+                                                                    <div class="creator_info">
+                                                                        Added this event 5 weeks ago
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="attendee_list">
+                                                                <div class="event_attendees">Attending: </div>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person4.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person5.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person1.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person2.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="innerPic">
+                                                                    <div class="smallPic">
+                                                                        <img class="img" src="src/person3.jpg" width="29" height="29">
+                                                                    </div>
+                                                                </a>
+                                                                <a class="rosterLink">
+                                                                    <div class="doubleBox">
+                                                                        +67
+                                                                    </div>
+                                                                </a>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="info_wrapper bottom_right_data">
+                                                            <img class="section_icon" src="src/info.png">
+                                                            <div class="event_info">
+                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
+                                                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                                                                <a href="#" id="A1" class="showLink" 
+                                                                    onclick="showHide('description');return false;">See more.</a>
+                                                                 <div id="Div1" class="more">nisi ut aliquip 
+                                                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                                                            mollit anim id est laborum
+                                                                     <a href="#" id="A2" class="hideLink" 
+	                                                                    onclick="showHide('description');return false;">Hide.</a>
+                                                                     </div>
+                                                                 </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="event_qa">
+                                    <div class="qa_header">
+                                        <div class="icon_text">
+                                            <img src="src/qa_icon.png" width="22" height="22">
+                                            <div>
+                                                Discussion and Questions
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="qa_scrollcontainer">
+                                        <div class="iComments">
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>It's been a great 22 years on the east coast, but it's time to head out west. Moving to LA!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>It's been a great 22 years on the east coast, but it's time to head out west. Moving to LA!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>It's been a great 22 years on the east coast, but it's time to head out west. Moving to LA!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>It's been a great 22 years on the east coast, but it's time to head out west. Moving to LA!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="imageBlock comment">
+                                                <div class="Image iLoaded">
+                                                </div>
+                                                <div class="ibContent">
+                                                    <a href="#" class="ibNameLink">Phillip Drake
+                                                    </a>
+                                                    <span class="ibMessage">
+                                                        <span>I need help on problem set 12!</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="qa_postcontainer">
+                                        <div class="qa_inputcontainer">
+                                            <input type="text" class="qa_input" placeholder="Ask a question...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <!-- <div class="event_view">
                                 <div class="event_main">
                                     <div class="event_main_header">
                                         <div class="header_wrapper">
@@ -1798,26 +2400,6 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <!--<div class = "event_host">
-                    <div>Created by <a>Professor Paizes</a></div>
-                  </div>   -->
-                                            <!--<a class = "event_status_icotxt">
-                    <img src = "src/complete.png" class = "event_status_icon">
-                    </img>
-                    <div>Completed</div>
-                  </a>
-                  <div class = "event_status_selector">
-                    <div class = "event_status">
-                      <img src = "src/complete.png" class = "event_status_icon">
-                      </img>
-                      <div>Complete</div>
-                    </div>
-                    <div class = "event_status">
-                      <img src = "src/incomplete.png" class = "event_status_icon">
-                      </img>
-                      <div>Incomplete</div>
-                    </div>
-                  </div>-->
                                         </div>
                                         <div class="info_wrapper">
                                             <div class="left_data">
@@ -2191,7 +2773,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

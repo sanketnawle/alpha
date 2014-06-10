@@ -84,6 +84,7 @@
     .fc-header-title h2 {
         font-size: 1.3em;
         margin-top: 7px;
+        font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
         white-space: nowrap;
         font-weight: 500;
         color: #444444;
@@ -203,6 +204,7 @@
 .fc-text-arrow {
     margin: 0 .1em;
     font-size: 2em;
+    font-family: "Courier New", Courier, monospace;
     vertical-align: baseline; /* for IE7 */
 }
 
@@ -320,7 +322,7 @@
     font-family: 'Open Sans', sans-serif!important;
     padding-bottom: 1px;
     border: 1px solid #eee!important;
-    background: #999 url(../src/white-gradient-300px.png) repeat-x 50% 50% ;/*!important;*/
+    background: #999 url(../src/white-gradient-300px.png) repeat-x 50% 50%!important;
     -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.9)!important;
     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.9)!important;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.9)!important;
@@ -332,13 +334,8 @@ a.fc-event {
 
 a.fc-event,
 .fc-event-draggable {
-    cursor: -webkit-grab; cursor: -moz-grab; cursor: -ms-grab; cursor: -o-grab;
+    cursor: pointer;
 }
-
-    .fc-event-draggable:hover {
-        opacity:0.9;
-        background: #F6F7F8 url(../src/eventborder.png) no-repeat 103%;
-    }
 
 .fc-rtl .fc-event {
     text-align: right;
@@ -353,6 +350,7 @@ a.fc-event,
 .fc-event-time,
 .fc-event-title {
     padding: 0 1px;
+    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
     font-weight: 200;
 }
 
@@ -453,6 +451,7 @@ table.fc-border-separate {
     font-weight: 400;
     border-top-width: 0px;
     color: rgb(63, 63, 63);
+    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
     text-align: center;
     padding-bottom: 5px;
     padding-right: 3px;
@@ -518,6 +517,7 @@ table.fc-border-separate {
     float: right;
     padding: 2px 3px;
     font-size: 12px;
+    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
     color: #000000;
     padding-top: 5px;
     font-weight: 600;
@@ -542,6 +542,7 @@ table.fc-border-separate {
     font-weight: 600;
     color: rgb(66, 66, 66);
     padding-right: 3px;
+    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
 }
 
 /* right-to-left */
@@ -706,7 +707,7 @@ table.fc-border-separate {
     overflow: hidden !important;
     line-height: 8px !important;
     font-size: 11px !important;
-    /*font-family: monospace;*/
+    font-family: monospace;
     text-align: center;
     cursor: s-resize;
 }
@@ -746,7 +747,7 @@ table.fc-border-separate {
 
 .fc-state-highlight:hover {
     /* TODO: add .fc-today to <th>; */
-    /*  background: #f6f7f8;
+  /*  background: #f6f7f8;
     -moz-box-shadow: inset 0 0 10px rgba(160, 171, 195, 0.56);
     -webkit-box-shadow: inset 0 0 10px rgba(160, 171, 195, 0.56);
     box-shadow: inset 0 0 10px rgba(160, 171, 195, 0.56);*/
@@ -754,11 +755,11 @@ table.fc-border-separate {
 
 .fc-today {
     /*background-color:rgba(219, 233, 240, 1);*/
-    border-top: 3px solid #414141 !important;
+    border-top:3.5px solid #414141 !important;
 }
 
 .fc-current-week {
-    border-top: 3px solid #A5A5A5;
+    border-top:3.5px solid #A5A5A5;
 }
 
 .fc-day-header, .fc-widget-header {
@@ -950,6 +951,7 @@ html .fc .fc-header {
     left: 866px;
     background: #2e78c5 url(../src/glass.png) repeat-x 0 50%;
     border-radius: 4px;
+    font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -997,7 +999,7 @@ html .fc .fc-header {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.39);
+    background-color: rgba(0,0,0,0.84);
     z-index: 300;
     top: 0px;
     left: 0px;
@@ -1005,20 +1007,24 @@ html .fc .fc-header {
 }
 
 .dexit-1 {
+    width: 29.5px;
     float: left;
     cursor: pointer;
     bottom: 5px;
     color: rgb(255, 48, 57);
     font-size: 13px;
+    margin-left: -2px;
 }
 
 
 hr.addevt {
     border: 0;
     height: 0;
-    border-top: 1px solid #E9EAED;
+    border-top: 1px solid #ccc;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    width: 240px;
+    padding-right: 10px;
+    width: 100%;
+    margin-left: -5px;
 }
 
 
@@ -1027,7 +1033,7 @@ hr.addevt {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.39);
+    background-color: rgba(0,0,0,0.84);
     z-index: 300;
     top: 0px;
     left: 0px;
@@ -1036,7 +1042,7 @@ hr.addevt {
 }
 
 .uploadevent-1 {
-    width: 230px;
+    width: 262px;
     border-radius: 0px;
     height: auto;
     border-bottom-left-radius: 4px;
@@ -1046,21 +1052,20 @@ hr.addevt {
     overflow: hidden;
     margin-left: 0px;
     margin-top: 0px;
-    font-family: 'Open Sans',sans-serif;
 }
 
 .uploadform-1 {
     position: absolute;
-    margin-left: -120px;
+    margin-left: -135px;
     margin-top: 89px;
-    width: 240px;
+    width: 272px;
     height: auto;
-    border-top: 1px solid #E9EAED;
+    border-top: 1px solid #D8DDE2;
 }
 
 .nevt-input-1 {
     position: relative;
-    width: 97%;
+    width: 255.5px;
     line-height: normal;
     font-size: 14px;
     display: block;
@@ -1073,31 +1078,10 @@ hr.addevt {
     border-radius: 1px;
     MARGIN-left: 10px;
     border: transparent;
-    border-bottom: 1px solid #E9EAED;
+    border-bottom: 1px solid #ccc;
     padding-bottom: 8px;
-    font-family: 'Open Sans',sans-serif;
 }
 
-.nevt-input-1::-webkit-input-placeholder {
-   color:#A8ABAF;
-   font-weight: 600;
-}
-
-.nevt-input-1:-moz-placeholder { /* Firefox 18- */
-   color:#A8ABAF;
-   font-weight: 600;
-}
-
-.nevt-input-1::-moz-placeholder {  /* Firefox 19+ */
-   color:#A8ABAF;
-   font-weight: 600;
-}
-
-.nevt-input-1:-ms-input-placeholder {  
-   color:#A8ABAF;
-   font-weight: 600;
-}
-    
     .nevt-input-1:hover {
     }
 
@@ -1116,14 +1100,14 @@ hr.addevt {
 
 .addevent-header0-1 {
     position: absolute;
-    margin-left: -120px;
+    margin-left: -135px;
     margin-top: 16px;
-    width: 230px;
+    width: 262px;
     height: 80px;
     border-radius: 4px;
     border-top-left-radius: 4px;
     border-color: transparent;
-    background-color: #F6F7F8;
+    background-color: #e9eaf0;
     border-bottom: 3.5px solid #B1B5B8;
     padding: 10px 5px 6px 5px;
     font: 600 15px 'Open Sans';
@@ -1136,55 +1120,35 @@ h1.addevent-header1-1 {
     position: absolute;
     font-size: 1.35em;
     margin-top: 30px;
-    font-weight: 500;
+    font-weight: 700;
     margin-left: 3px;
     color: rgb(66, 65, 65);
 }
 
 .addevent-header-1 {
     font: 600 12.6px 'Open Sans';
-    color: #424141;
-    /*text-shadow: .5px .5px .5px rgb(5, 124, 34);
+    color: rgb(255, 255, 255);
+    text-shadow: .5px .5px .5px rgb(5, 124, 34);
     background-image: -moz-linear-gradient(top,rgba(19, 235, 140, 0.36) 0%,rgba(77, 214, 137, 0.51) 100%);
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(19, 235, 140, 0.64)),color-stop(100%,rgba(77, 214, 137, 0.89)));
-    background-image: -webkit-linear-gradient(top,rgba(19, 235, 140, 0.8) 0%,rgba(77, 214, 137, 0.93) 100%);*/
+    background-image: -webkit-linear-gradient(top,rgba(19, 235, 140, 0.8) 0%,rgba(77, 214, 137, 0.93) 100%);
     border-top-left-radius: 6px;
+    text-align: center;
+    border: 1px solid rgb(19, 199, 98);
     border-bottom-left-radius: 6px;
-    text-align: right;
-    border: 1px solid #D8DDE2;
-    background-color: rgba(230, 230, 230, 1);
     float: right;
     left: 5px;
     padding-right: 4px;
     position: relative;
-    width:auto;
-    height:20px;
-    padding-left:10px;
 }
 
-    .addevent-header-1:hover {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-        background-color: #f6f6f6;
-    position: relative;
-    width:auto;
-    height:20px;
-    padding-left:10px;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    }
-
-    .addevent-header-1:active {
-    background-color: rgba(230, 230, 230, 1);        
-    }
-
 #startdate-input-1 {
-    font-size: 13px;
+    font-size: 14px;
     color: #A8ABAF;
     font-weight: 600;
-    float: left;
+    float: right;
     margin-bottom: 7px;
+    margin-right: 6px;
     overflow: hidden;
 }
 
@@ -1195,12 +1159,13 @@ h1.addevent-header1-1 {
     font-weight: 600;
     overflow: hidden;
     margin-top: 40px;
+    margin-left: 40px;
 }
 
 .totext-1 {
     position: absolute;
     font-size: 13px;
-    margin-left: 122px;
+    margin-left: 159px;
     color: #A8ABAF;
     font-weight: 600;
     overflow: hidden;
@@ -1211,22 +1176,22 @@ h1.addevent-header1-1 {
 #bc3contentAddEvent {
     float: left;
     height: auto;
-    width: 260px;
-    background-color: rgba(63, 64, 68, 0);
+    width: 300px;
+    background-color: rgba(63, 64, 68, 0.85);
     z-index: 1;
     margin-left: -300px;
     transition: all 0.5s ease-in-out;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
     padding-bottom: 34px;
-    margin-top: 80px;
-    min-height: 390px;
+    margin-top: 50px;
+    min-height:410px;
 }
 
 .pdateinfo-1 {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #E9EAED;
+    border-bottom: 1px solid #ccc;
     margin-left: 10px;
     overflow: hidden;
 }
@@ -1234,11 +1199,11 @@ h1.addevent-header1-1 {
 
 
 .repeatc-1 {
-    border-top: 1px solid #E9EAED;
+    border-top: 1px solid #ccc;
     margin-top: 40px;
     width: 98%;
     height: 40px;
-    font-size: 13px;
+    font-size: 14px;
     margin-left: 10px;
 }
 
@@ -1248,6 +1213,7 @@ h1.addevent-header1-1 {
     height: 40px;
     text-align: center;
     line-height: 40px;
+    margin-left: 5px;
     color: #A8ABAF;
     font-weight: 600;
 }
@@ -1257,7 +1223,7 @@ h1.addevent-header1-1 {
     width: auto;
     padding-left: 6px;
     padding-right: 6px;
-    margin-left: 5px;
+    margin-left: 33px;
     line-height: 40px;
     font-weight: 600;
     cursor: pointer;
@@ -1266,92 +1232,60 @@ h1.addevent-header1-1 {
 }
 
 .repeatoption-1 {
-    position: absolute;
+    position: relative;
     width: 150px;
     font-weight: 600;
     color: rgba(0,0,0,0.7);
-    height: 125px;
+    height: 129px;
     margin-top: 39px;
-    margin-left: 55px;
+    margin-left: 92px;
     display: none;
-    margin-bottom: 5px;
+margin-bottom:5px;
     -webkit-background-clip: padding-box;
-    background-color: #fff;
-    border: 1px solid #E9EAED;
-    -webkit-border-radius: 3px;
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
-    width: 125px;
-    cursor: default;
-    padding-bottom: 3px;
-    z-index: 100;
+background-color: #fff;
+border: 1px solid rgba(0, 0, 0, .15);
+-webkit-border-radius: 3px;
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+width: 150px;
+
+cursor:default;
+padding-bottom:3px;
+
+z-index:100;
 }
 
 .repeatoptiont-1 {
     cursor: pointer;
     text-align: left;
-    width: 104px;
+    width: 128px;
     float: left;
     border-bottom: 1px solid #ccc;
-    font-family: 'Open Sans', sans-serif;
-    margin-top: 3px;
-    padding: 3px 11px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    font-size: 13.5px;
+
+  font-family: 'Open Sans', sans-serif;
+  margin-top:3px;
+  padding: 3px 11px;
+border-top:1px solid transparent;
+border-bottom:1px solid transparent;
 }
 
-    .repeatoptiont-1:hover {
-        color: white;
-        background-color: #01e2a7;
-        border-top: 1px solid #42B67E;
-        border-bottom: 1px solid #3AC979;
-    }
-
-.post_options_hr-1 {
-    width: 85%;
-    border: none;
-    border-bottom: 1px solid #E9EAED;
-    margin-top: 2px;
-    margin-bottom: 0px;
-    display: inline-block;
-    float: left;
-    margin-left: 10px;
+.repeatoptiont-1:hover{
+      color:white;
+  background-color: #01e2a7;
+  border-top: 1px solid #42B67E;
+border-bottom: 1px solid #3AC979;
 }
 
-.btn-addevent-1 {
-    text-transform: none;
-    height: 29px;
-    line-height: 25px;
-    margin-top:7px;
-}
+.post_options_hr-1{
+  width: 90%;
+border: none;
+border-bottom: 1px solid #C0C0C0;
 
-.set_date, .set_time {
-    border: 1px solid #E9EAED !important;
-}
+  margin-top: 2px;
 
-.pl_options-1 {
-    right:2px;
-    left:initial;
-    width:auto;
-    max-width:180px;
-    height:auto;
-    overflow:hidden;
-}
-
-.pl_option-1 {
-    width:84%;
-    text-indent:0px;
-    text-align:left;
-    padding-left:10px;
-    padding-right:10px;
-    display:inline-block;
-}
-.pl_option-1:first-child {
-    margin-left:-5px;
-}
-
-.fa-caret-down:after {
-color:#5B5E64 !important;
-top:0px;
-font-size:10px;
+  margin-bottom: 0px;
+  display:inline-block;
+  float:left;
+  margin-left:10px;
 }
 /* End of styles for adding event */

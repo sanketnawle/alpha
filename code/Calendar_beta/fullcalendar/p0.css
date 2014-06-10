@@ -1328,12 +1328,11 @@ input[type="text"] {
     font-size: 15px;
     font-weight: bold;
     height: 38px;
-    line-height: 38px;
     outline: 0;
     padding: 0px 8px;
     /*width: 30px;*/
     text-align: center;
-    background-color: #22C791;
+    background-color: #02e2a7;
     border-color: transparent;
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
