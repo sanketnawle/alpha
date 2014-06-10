@@ -1,0 +1,156 @@
+
+.calnoti_window
+{	
+	float: left;
+	width:auto;
+	height: auto;
+	background-color: white;
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+	border-radius: 3px;
+	border: 1px solid rgba(100, 100, 100, 0.4);
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+
+.calnoti_head
+{
+	border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+	background-clip: padding-box;
+	z-index: 100;
+	padding: 6px 8px 6px;
+	background-color: #FFF;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background-color: #F7F7F7;
+	height: 20px;
+	width: auto;
+	line-height: 20px;
+	color:#333;
+	font-weight: bold;
+	font-size: 14px;
+
+	width:350px;
+}
+
+.noti_head span
+{
+	font-weight: bold;
+}
+
+.head_main
+{
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+
+.head_minor
+{
+	float: right;
+	font-size: 12px;
+	cursor:pointer;
+	font-weight: normal;
+}
+
+.minor_fst
+{
+	margin-right: 10px;
+}
+
+.calnoti_content
+{
+	height: auto;
+	width:100%;
+	max-height:365px;
+	overflow-y: scroll;
+	overflow-x:hidden;
+}
+
+.today_alert
+{
+	height: auto;
+	width: 100%;
+	border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+}
+
+.alert_span
+{
+	min-height: 40px;
+	line-height: 40px;
+	width: 100%;
+	text-align: center;
+}
+
+.alert_color
+{
+	color:red;
+	font-weight: bold;
+}
+
+.alert_avatar
+{
+	height: 20px;
+	width: 20px;
+}
+
+.alert_frame
+{
+	position: absolute;
+	margin-left: 60px;
+	margin-top: 4px;
+}
+
+.keyword
+{
+	color: #029ACF;
+	font-weight: bold;
+}
+
+.keyword:hover
+{
+	color: #016283;
+	text-decoration: underline;	
+}
+
+.sub_calnoti_head
+{
+	font-weight: normal;
+}
+
+.invite_instance
+{
+	height: 63px;
+	width: 100%;
+	border-bottom: 1px solid #DDD;
+	overflow: hidden;
+	background-color: white;
+	cursor: pointer;
+	-webkit-transition: background-color 100ms linear;
+	-moz-transition: background-color 100ms linear;
+	-o-transition: background-color 100ms linear;
+	-ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
+}
+
+
+
+@import url(http://webfonts.ru/import/ptsans.css);
+
+@font-face {
+  font-family: "FontA";
+  src: url(http://s.cdpn.io/999/fontawesome-webfont.ttf) format('truetype'), url(http://s.cdpn.io/999/FontAwesome.otf) format('opentype');
+}
+
+@font-face {font-family: "Helvetica"; src: url('../fonts/Helvetica.ttf') format('truetype');}
+
+@font-face {font-family: "Helvetica Neue"; src: url('../fonts/HelveticaNeue.ttf') format('truetype');}
+
+@font-face {
+  font-family: 'Open Sans Regular', 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+
