@@ -44,4 +44,25 @@ $(document).ready(function() {
 	$(document).delegate(".post_comment_btn","click",function(){
 		$(this).closest(".posts").find(".form-control").focus();
 	});
+
+	$(document).delegate(".flat7b","click",function(event){
+		//alert("a");
+		//event.preventDefault();
+		//alert($(this).attr("id"));
+		if(!$(this).hasClass("flat_checked")){
+		$(this).css({"border":"1px solid #00A076","background-color":"#02e2a7"});
+		$(this).closest(".check_wrap").find(".move").css({"margin-left":"19px"});
+		$(this).addClass("flat_checked");
+		$(this).closest(".check_wrap").find(".comment_anon_text").css("color","rgba(33,33,33,.85)");
+		}else{
+		$(this).css({"border":"1px solid #C9C9C9","background-color":"#f5f5f5"});
+		$(this).closest(".check_wrap").find(".move").css({"margin-left":"0px"});
+		$(this).removeClass("flat_checked");
+		$(this).closest(".check_wrap").find(".comment_anon_text").css("color","rgba(153, 153, 153, 0.64)");
+
+		}
+	});
+
+
+
 });
