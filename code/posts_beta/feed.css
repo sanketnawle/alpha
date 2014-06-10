@@ -34,6 +34,7 @@ display: inline-block;
 width: 65px;
 float: left;
 position: relative;
+
 border: 1px solid #eee;
 height: 65px;
 
@@ -60,12 +61,13 @@ background-color: #F8F8F8;
 
 	width: 71px;
 
-	margin-left: -7px;
+	margin-left: -91px;
 	border-radius: 2px;
 height: 71px;
 -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
 -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
 box-shadow: 0 1px 5px rgba(0,0,0,.5);
+cursor:pointer;
 }
 
 .post_tag{
@@ -220,14 +222,14 @@ color: white;
 
 }
 
-.post_lc .post_comment:hover{
+.post_lc .post_comment_btn:hover{
 	background-color: #2e78c5;
 	cursor:pointer;
 
 	color:white;
 }
 
-.post_lc .post_comment:active{
+.post_lc .post_comment_btn:active{
 -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0px 0px 2px 0px rgba(0, 0, 0, 0.74);
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3),0px 0px 2px 0px rgba(0, 0, 0, 0.74);
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3),0px 0px 2px 0px rgba(0, 0, 0, 0.74);
@@ -290,7 +292,7 @@ margin-left:2px;
 background-size: cover;
 }
 
-.post_lc .post_comment{
+.post_lc .post_comment_btn{
 background: #D3D3D3 url(src/glass.png) repeat-x 0 50%;
 display: inline-block;
 float: left;
@@ -512,6 +514,7 @@ width: 35px;
 margin-top: 6px;
 height: 35px;
 float: left;
+cursor:pointer;
 }
 
 .comment_updown{
@@ -584,7 +587,8 @@ margin-top: -10px;
 div.commentform{
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-margin-bottom: 15px;
+
+	margin-bottom: 21px;
 border: 1px solid;
 -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 
@@ -641,7 +645,7 @@ div.reply_user_icon{
 	background:center center no-repeat url("src/mypic.png");
 	background-size:cover;
 	display:inline-block;
-	border-radius: 6px 0px 0px 6px;
+	border-radius: 4px 0px 0px 4px;
 	z-index: 100;
 	margin-left: 5px;
 	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16); 
@@ -665,8 +669,56 @@ div.commentform img.reply_attach:hover{
 }
 
 .reply_tawrapper{
-	height:45px;
-	display: inline;
+}
+
+.reply_functions{
+	display:none;
+	padding: 24px;
+	position: relative;
+	bottom: 37.5px;
+}
+
+.reply_functions .reply_button{
+	border-radius: 4px;
+
+	padding: 2.4px 12px;
+background: #2e78c5 url(src/glass.png) repeat-x 0 50%;
+border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+
+
+
+	font-size: 12.5px;
+font-weight: 400;
+color: white;
+text-transform: uppercase;
+
+	outline: none;
+ box-shadow: 0 1px 1px rgba(0,0,0,0.2); 
+	border: 1px solid;
+	display: inline-block;
+	transition: all 0s; border-color: #385A96 #145DA0 #062072; 
+	cursor:pointer;
+	text-shadow: 0 .5px .5px rgba(171, 175, 172, 0.9);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-transition: all 0s; 
+	-o-transition: all 0s; 
+	float: right;
+	margin-right: -17px;
+}
+.reply_functions .reply_button:hover{
+background-color: #1F69B6;
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+
+box-shadow: 0 1px 1px rgba(0,0,0,0.4); 
+}
+
+.reply_functions .reply_button:active{
+background-color: #2E80D6;
+
+box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }
 
 textarea.form-control::-webkit-input-placeholder {
@@ -687,6 +739,92 @@ textarea.form-control:-ms-input-placeholder {
 
 .comment_msg p{
 	margin:0;
+}
+
+.comment_owner_container:hover ~ .comment_owner{
+		text-decoration: underline;
+color: #016283;
+cursor: pointer;
+}
+
+.comment_owner_container:active ~ .comment_owner{
+	text-decoration: underline;
+color: rgba(4, 117, 156, 0.65);
+}
+
+.post_title a div.image_container:hover ~ span.post_owner{
+			text-decoration: underline;
+color: #016283;
+cursor: pointer;
+}
+
+.post_title a div.image_container:active ~ span.post_owner{
+	text-decoration: underline;
+color: rgba(4, 117, 156, 0.65);
+}
+
+
+
+
+#flat7{
+  display:none;
+}
+
+.flat7b{
+  display: inline-block;
+  border-radius:20px;
+  float: left;
+  width: 37px;
+  margin-top: 2px;
+  height: 19.5px;
+  border: 1px solid #C9C9C9;
+  cursor:pointer;
+  background-color:#f5f5f5;
+  margin-left: -17px;
+  
+  -webkit-transition: background-color 0.6s ease, border 0.6s ease;
+  -moz-transition: background-color 0.6s ease, border 0.6s ease;
+  -ms-transition: background-color 0.6s ease, border 0.6s ease;
+  -o-transition: background-color 0.6s ease, border 0.6s ease;
+  transition: background-color 0.6s ease, border 0.6s ease;
+}
+
+.move{
+  display:block;
+  border-radius:20px;
+  width: 16px;
+  height: 16px;
+  background-color:white;
+  border: 1px solid #efefef;
+  -webkit-box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
+  margin-left:0px;
+  margin-left: 1px;
+  margin-top: 0px;
+  -webkit-transition: margin-left 0.5s ease;
+  -moz-transition: margin-left 0.5s ease;
+  -ms-transition: margin-left 0.5s ease;
+  -o-transition: margin-left 0.5s ease;
+  transition: margin-left 0.5s ease;
+}
+
+#flat7:checked ~ .flat7b .move{
+  margin-left: 19px;
+  -webkit-transition: margin-left 0.5s ease;
+  -moz-transition: margin-left 0.5s ease;
+  -ms-transition: margin-left 0.5s ease;
+  -o-transition: margin-left 0.5s ease;
+  transition: margin-left 0.5s ease;
+}
+
+#flat7:checked ~ .flat7b{
+  border: 1px solid #00A076;
+  background-color: #02e2a7;
+  -webkit-transition: background-color 0.6s ease, border 0.6s ease;
+  -moz-transition: background-color 0.6s ease, border 0.6s ease;
+  -ms-transition: background-color 0.6s ease, border 0.6s ease;
+  -o-transition: background-color 0.6s ease, border 0.6s ease;
+  transition: background-color 0.6s ease, border 0.6s ease;
 }
 
 @font-face {

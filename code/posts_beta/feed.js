@@ -34,12 +34,14 @@ $(document).ready(function() {
 	});
 
 	$(document).delegate(".form-control","focus",function(){
-		$(this).css({"height":"70px","width":"93.82%","margin-left":"6px","margin-top":"9px","border-radius":"4px"});
-		$(this).closest(".reply_tawrapper").closest(".commentform").css("height","87px");
+		$(this).css({"height":"53px","width":"93.82%","margin-left":"6px","margin-top":"9px","border-radius":"4px"});
+		$(this).closest(".reply_tawrapper").closest(".commentform").css("height","96px");
 		$(this).closest(".commentform").find(".reply_user_icon").hide();
+		$(this).closest(".commentform").find(".reply_functions").show();
+		$(this).closest(".reply_tawrapper").find(".reply_attach").css({"margin-top":"-31px","padding-right":"82px"});
 	});
 
-	$(document).delegate(".post_comment","click",function(){
+	$(document).delegate(".post_comment_btn","click",function(){
 		$(this).closest(".posts").find(".form-control").focus();
 	});
 });
