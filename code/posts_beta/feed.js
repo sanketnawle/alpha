@@ -12,12 +12,7 @@ $(document).ready(function() {
 	});
 
 
-	$(document).delegate(".post_like","click",function(){
-		
-			$(this).addClass("post_liked")
-			$(this).find(".post_like_icon").css({"background":"center center no-repeat url(src/liked-button.png)","background-size":"cover"});
-			$(this).find(".like_number").css("color","white");
-	});
+
 
 	$(document).delegate(".form-control","focus",function(){
 		$(this).css({"height":"53px","width":"93.82%","margin-left":"6px","margin-top":"41px","border-radius":"4px"});
@@ -206,12 +201,19 @@ $(document).ready(function() {
 
 					}
 				});
-
+/*
+	$(document).delegate(".post_like","click",function(){
+		
+			$(this).addClass("post_liked")
+			$(this).find(".post_like_icon").css({"background":"center center no-repeat url(src/liked-button.png)","background-size":"cover"});
+			$(this).find(".like_number").css("color","white");
+	});
+*/
 				//post like
-				$(document).delegate('.post_like img',"click", function(){
+				$(document).delegate('.post_like',"click", function(){
 					var postid= $(this).closest(".posts").attr("id"); 
-
-					var lk= $(this).closest(".posts").find(".like_number");
+					//alert("b");
+					var lk= $(this).find(".like_number");
 					var afterlike= lk.text().trim();
 					if(afterlike==''){afterlike=0;}else{afterlike=parseInt(afterlike);}
 					addlike=afterlike+1;
@@ -220,10 +222,12 @@ $(document).ready(function() {
 					
 					//alert(postid);
 
-					if($(this).hasClass("-liked")){
+					if($(this).hasClass("post_liked")){
 						//de-like
-						$(this).attr("src","src/like-button.png");
-						$(this).removeClass("-liked");
+						$(this).removeClass("post_liked");
+						$(this).find(".post_like_icon").css({"background":"center center no-repeat url(src/liking-button.png)","background-size":"cover"});
+						$(this).find(".like_number").css("color","white");
+						
 
 						$.ajax({
 	            			type: "POST",
@@ -237,9 +241,11 @@ $(document).ready(function() {
 
 					}else{
 						//like
-						$(this).attr("src","src/liked-button.png");
-						$(this).addClass("-liked");
-
+						//alert("a");
+						$(this).find(".post_like_icon").css({"background":"center center no-repeat url(src/liked-button.png)","background-size":"cover"});
+						$(this).find(".like_number").css("color","white");
+						$(this).addClass("post_liked");
+						/*
 						$.ajax({
 	            			type: "POST",
             				url: "includes/feedops.php",
@@ -249,33 +255,32 @@ $(document).ready(function() {
 	                			lk.text(addlike);
 			            	}
 						});
-
+						*/
 					}
 				});
 
-				$(document).delegate('.post_like img',"mouseover", function(){
-					if(!$(this).hasClass("-liked")){
+				$(document).delegate('.post_like',"mouseover", function(){
+
+					if($(this).hasClass("post_liked")){
+
 					$(this).attr("src","src/liked-button.png");
+					}else{
+						
+					$(this).find(".post_like_icon").css({"background":"no-repeat url(src/liking-button.png)","background-size":"cover"});	
+					$(this).find(".like_number").css({"color":"white"});
 					}
 				});
 
-				$(document).delegate('.post_like img',"mouseout", function(){
-					if(!$(this).hasClass("-liked")){
+				$(document).delegate('.post_like',"mouseout", function(){
+					if($(this).hasClass("post_liked")){
 					$(this).attr("src","src/like-button.png");
+					}else{
+					$(this).find(".post_like_icon").css({"background":"no-repeat url(src/like-button.png)","background-size":"cover"});	
+					$(this).find(".like_number").css({"color":"#666"});	
 					}
 				});
 
-				$(document).delegate('.comment_like img',"mouseover", function(){
-					if(!$(this).hasClass("-liked")){
-					$(this).attr("src","src/liked-button.png");
-					}
-				});
-
-				$(document).delegate('.comment_like img',"mouseout", function(){
-					if(!$(this).hasClass("-liked")){
-					$(this).attr("src","src/like-button.png");
-					}
-				});
+				
 
 				$(document).delegate('.post_comment',"mouseover", function(){
 					$(this).find(".comment_delete").show();
@@ -285,91 +290,27 @@ $(document).ready(function() {
 					$(this).find(".comment_delete").hide();
 				});
 
-				$('.select').on('click','li',function(){
-					  var postid= $(this).closest(".posts").attr("id");
-					  var $t = $(this),
-					      $f = $(this).closest(".posttool-select").find('.field')
-					      text = $t.text(),
-					      icon = $t.find('i').attr('class');
-					  $f.find('label').text(text);
-					  $f.find('i').attr('class',icon);
-					  
-					  var flag= text.toLowerCase().split(" ").join("").trim();
-					  //alert(flag);
-					  if(flag=='onlystudents'){flag='student';}
-					  if(flag=='onlyfaculty'){flag='faculty';}
-					  if(flag=='onlyme'){flag='onlyme';}
-					  if(flag=='campus'){flag='campus';}
+				$(document).delegate('.field',"click", function(){
+					$(".visi_functions_box").show();
+				});
 
-					  $.ajax({
-	            			type: "POST",
-            				url: "includes/feedops.php",
-            				data: {postid: postid, privacy: flag},
-            				success: function(html){ 
-            					
-			            	}
-						});
-
-					});
-
-					$('.field').click(function(e){
-					  e.preventDefault();
-					  $('#open').click();
-					});
-
-					
-				var tagbox_flag=0;
-
-				$(document).delegate(".field","click",function(){
-					tagbox_flag=1;
-					$(".card-tag").hide();
-					$(this).closest(".posttool-select").find(".select").stop().fadeIn(200);
-
-
-					var cur= $(this).closest(".field").find("i").attr("class");
-					
-					$( ".select li" ).each(function( index ) {
-						if($(this).find("i").attr("class")==cur){
-							$(this).hide();
-						}else{
-							$(this).show();
-						}
-					});	
-					
-				});    
 				
 			     $(document).click(function(event){
 
 			     	var $target= $(event.target);
 			     	var $container= $(".posttool-select");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
-			     		$container.find(".select").stop().fadeOut(150);
+			     		$container.find(".visi_functions_box").stop().fadeOut(150);
+			     		tagbox_flag=0;
+			     	}
+			     	if($target.hasClass("visi_functions_option")){
+			     		$container.find(".visi_functions_box").stop().fadeOut(150);
 			     		tagbox_flag=0;
 			     	}
 
-			     	if($target.hasClass("selitem")){
-			     		$container.find(".select").stop().fadeOut(150);
-			     		tagbox_flag=0;
-			     	}
 				});
 
-	$(document).delegate(".posttool-select","mouseover",function(){
-		if(tagbox_flag==0){
-		var icon= $(this).find(".field .icon");
-		var tagtext='';
-		if(icon.hasClass("user")){tagtext="Seen by: <span style='font-weight:bold;'>Students</span>";}
-		if(icon.hasClass("list")){tagtext="Seen by: <span style='font-weight:bold;'>Faculty</span>";}
-		if(icon.hasClass("stat")){tagtext="Seen by: <span style='font-weight:bold;'>Campus</span>";}
-		if(icon.hasClass("accs")){tagtext="Seen by: <span style='font-weight:bold;'>Only Me</span>";}
-
-		$(this).find(".tag-box span").html(tagtext);
-		$(this).find(".card-tag").stop().show();
-		}
-	});
-
-	$(document).delegate(".posttool-select","mouseout",function(){
-		$(this).find(".card-tag").delay(1).hide(0);
-	});
+	
 
 
 	$(document).delegate(".option_delete","click",function(){
@@ -456,7 +397,7 @@ $(document).ready(function() {
 
 	$(document).delegate(".option_edit","click",function(){
 		var postid= $(this).closest(".posts").attr("id");
-		var txt= $(this).closest(".posts").find(".post_msg").text();
+		var txt= $(this).closest(".posts").find(".msg_span").text().trim();
 
 		$(this).closest(".posts").find(".post_msg").hide();
 		$(this).closest(".posts").find(".edit_area").val(txt);
@@ -486,9 +427,20 @@ $(document).ready(function() {
 		
 		$(this).closest(".posts").find(".edit_area").val("");
 		$(this).closest(".posts").find(".post_edit").hide();
-		$(this).closest(".posts").find(".post_msg").text(txt);
+		$(this).closest(".posts").find(".msg_span").text(txt);
 		$(this).closest(".posts").find(".post_msg").show();
 	});
+
+		$(document).delegate(".post_seen","mouseover",function(){
+			var p=$(this).find("span").text().trim();
+			$(this).find(".tag-box").text("Seen by "+p);
+			$(this).find(".card-tag").stop().show();
+		});
+
+		$(document).delegate(".post_seen","mouseout",function(){
+			$(this).find(".card-tag").delay(1).hide();
+		});
+
 
 				function latest_feed() {
 
