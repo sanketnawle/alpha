@@ -149,6 +149,8 @@ span.cal_noti_see:hover{
 	cursor:pointer;
 }
 
+
+
 .calnoti_window .tabs .tab{
 	width: 182px;
 display: inline-block;
@@ -345,7 +347,24 @@ transition: all 100ms ease-out 0s;
 	right: -2px;
 }
 
+.calnoti_content .noti_gen{
+	width:100%;
+	border-bottom:1px solid #ddd;
+	overflow:hidden;
+	-webkit-transition: background-color 100ms linear;
+-moz-transition: background-color 100ms linear;
+-o-transition: background-color 100ms linear;
+-ms-transition: background-color 100ms linear;
+transition: background-color 100ms linear;
+}
 
+.calnoti_content .noti_gen .noti_wrapper{
+	padding:6px 8px;
+}
+
+.calnoti_content .noti_gen:hover{
+	background-color: rgba(218,224,238,0.3);
+	}
 
 
 @import url(http://webfonts.ru/import/ptsans.css);
