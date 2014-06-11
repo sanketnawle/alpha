@@ -13,6 +13,17 @@
 	color: #333;
 }
 
+.noti_wedge{
+background: center center no-repeat url(../src/noti_wedgeUp.png);
+background-size: cover;
+width: 15px;
+height: 12px;
+display: inline-block;
+position: relative;
+top: 8px;
+left: 250px;
+}
+
 .calnoti_head
 {
 	border-bottom: 2px solid rgba(100, 100, 100, 0.22);
@@ -59,15 +70,7 @@
 	margin-right: 10px;
 }
 
-.calnoti_content
-{
-	height: auto;
-	width:100%;
-	max-height:365px;
-	overflow-y: scroll;
-	min-height:180px;
-	overflow-x:hidden;
-}
+
 
 .today_alert
 {
@@ -136,7 +139,7 @@
 }
 
 .calnoti_window .tabs{
-	border-bottom: 1px solid #e9eaed;
+	border-bottom: 1px solid #DDD;
 
 	width: 366px;
 
@@ -161,7 +164,6 @@ padding-top: 4.5px;
 	text-align: center;
 font-weight: 200;
 
-	text-shadow: 0 1px 1px rgba(162, 165, 163, 0.23);
 	font-size: 12px;
 		-webkit-transition: all 100ms linear;
 	-moz-transition: all 100ms linear;
@@ -266,6 +268,93 @@ color:white;
 	overflow:hidden;
 }
 
+.calnoti_window .calnoti_content .ui_scrollableWrap{
+	overflow-y:scroll;
+	height:100%;
+	outline:none;
+	overflow-x:hidden;
+	position:relative;
+}
+
+.calnoti_window .calnoti_content .ui_scrollableWrap .ui_scrollableBody{
+	padding-bottom:1px;
+}
+
+.ui_scrollableBody ul.calnoti_list{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	direction:ltr;
+}
+
+ul.calnoti_list li.calnoti_gen{
+	position:relative;
+	overflow:hiden;
+	list-style-type: none;
+	border-bottom:1px solid #ddd;
+	cursor:pointer;
+}
+
+ul.calnoti_list li.calnoti_gen:hover{
+	background-color: rgba(233, 233, 233, 0.3);
+	-webkit-transition: background-color 100ms linear;
+-moz-transition: background-color 100ms linear;
+-o-transition: background-color 100ms linear;
+-ms-transition: background-color 100ms linear;
+transition: background-color 100ms linear;
+}
+
+ul.calnoti_list li.calnoti_gen div a.calnoti_a{
+	border-top:0;
+	color:#333;
+	display:block;
+	outline:none;
+	padding:7px 23px 7px 8px;
+	position:relative;
+	cursor:pointer;
+	height: auto;
+	text-decoration: none;
+}
+
+a.calnoti_a .calnoti_left{
+}
+
+a.calnoti_a .calnoti_left .calnoti_daybox{
+	background-color: rgba(0, 0, 0, 0.18);
+border: 2px solid #fff;
+-webkit-border-radius: 5px;
+color: #fff;
+font-size: 28px;
+font-weight: 500;
+left: 12px;
+padding-bottom: 9px;
+padding-top: 7px;
+
+text-align: center;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+top: 0;
+width: 46px;
+}
+
+a.calnoti_a .calnoti_left .calnoti_daybox .daybox_month{
+	color: #fff;
+
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 10px;
+font-weight: 500;
+margin: -2px auto 0 auto;
+}
+
+a.calnoti_a .calnoti_left .calnoti_daybox .daybox_day{
+	color: #fff;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 22px;
+font-weight: 500;
+margin: -2px auto -6px auto;
+padding-left:3px;
+padding-right:3px;
+	}
+
 .calnoti_window .calnoti_footer{
 width:366px;
 }
@@ -358,13 +447,7 @@ transition: all 100ms ease-out 0s;
 transition: background-color 100ms linear;
 }
 
-.calnoti_content .noti_gen .noti_wrapper{
-	padding:6px 8px;
-}
 
-.calnoti_content .noti_gen:hover{
-	background-color: rgba(218,224,238,0.3);
-	}
 
 
 @import url(http://webfonts.ru/import/ptsans.css);
