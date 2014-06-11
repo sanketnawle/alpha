@@ -47,18 +47,23 @@ $(function() {
 			if(!$(this).hasClass("augged")){
 			$(this).addClass("augged");
 			$(this).css({"width":"430px"});
-
+			$(".topbar_qicon").hide();
 
 			}
 			
 		}
-		$(".topbar_qicon").hide();
+		
 		//$(".graph_search").show();
 	});
 
 
 		$( document ).delegate( ".topbar_search_input", "keydown", function() {
 			$(".graph_search").show();
+		});
+
+		$( document ).delegate( ".topbar_qicon img", "click", function() {
+			$(".graph_search").show();
+			$(".card-tag").hide();
 		});
 
 
