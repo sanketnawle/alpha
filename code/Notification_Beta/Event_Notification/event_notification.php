@@ -1,4 +1,5 @@
-    <?php
+<?php
+
 $sid = 0;
 $today_time = strtotime("now");
 if (isset($_GET['student_id'])) {
@@ -14,10 +15,10 @@ $datetime = date("Y-m-d", $today_time);
 $datetime_today_start = $datetime . " 00:00:00";            //Today Midnight
 $datetime_today_end = $datetime . " 23:59:59";              //Today End of Time
 
-$datetime_3Ahead = date("Y-m-d", $today_time + (3*24*60*60));     //3 Days from Today
+$datetime_3Ahead = date("Y-m-d", $today_time + (3 * 24 * 60 * 60));     //3 Days from Today
 $datetime_3Ahead = $datetime_3Ahead . " 23:59:59";
 
-$datetime_7Ahead = date("Y-m-d", $today_time + (6*24*60*60));     //Week End
+$datetime_7Ahead = date("Y-m-d", $today_time + (6 * 24 * 60 * 60));     //Week End
 $datetime_7Ahead = $datetime_7Ahead . " 23:59:59";
 
 
