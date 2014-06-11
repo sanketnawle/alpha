@@ -11,9 +11,17 @@
 <body>
 	<div class='calnoti_window'>
 		<div class='calnoti_head'>
-			<span>Calendar Notifications</span>
+			<span>Eventbox</span>
+			<a class = "seen_all">Mark as Seen</a>
 		</div>
-		<div class='tab'></div>
+		<div class='tabs'>
+			<div class = "past_events_tab tab-first tab inactive_pe_tab">
+				Complete <b class = "little-glyph complete"></b>
+			</div>
+			<div class = "past_events_tab tab inactive_pe_tab">
+				Incomplete <b class = "little-glyph incomplete"></b>
+			</div>
+		</div>
 
 		<div class='calnoti_content'>
 			<div class='ct_today'>
@@ -22,11 +30,10 @@
 				</div>
 
 				
+			</div>				
 		</div>
-		
-
-		<div class='calnoti_footer'>
-		</div>				
+		<div class = "calnoti_footer">
+		</div>
 	</div>
 </body>
 

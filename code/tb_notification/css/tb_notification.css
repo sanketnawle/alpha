@@ -4,7 +4,7 @@
 	height: auto;
 	background-color: white;
 	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
-	border-radius: 3px;
+	border-radius: 4px;
 	border: 1px solid rgba(100, 100, 100, 0.4);
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
@@ -13,7 +13,7 @@
 
 .noti_head
 {
-	border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+	border-bottom: 2px solid rgba(100, 100, 100, 0.22);
 	background-clip: padding-box;
 	z-index: 100;
 	position: relative;
@@ -23,11 +23,14 @@
 	border-top-right-radius: 3px;
 	background-color: #F7F7F7;
 	font-weight: bold;
+	background: #DBDBDB url(../src/white-gradient-100px.png) repeat-x 50% 50%;
 }
 
 .noti_head span
 {
 	font-weight: bold;
+	font-weight: 200;
+	font-size: 14px;
 }
 
 .sub_notihead
@@ -45,7 +48,7 @@
 	border-bottom: 1px solid #DDD;
 	overflow: hidden;
 
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0);
 	cursor: pointer;
 
 	-webkit-transition: background-color 100ms linear;
@@ -72,14 +75,15 @@
 	height: 47px;
 	width: 47px;
 	margin-left: 10px;
+	border-radius: 2px;
 	margin-top:8px;
 
-	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.1);
-	-moz-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.1);
-	box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.1);
 
 	background: center center no-repeat ;
 	background-size: cover;
+	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2); 
+	-moz-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2); 
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .gen_right
@@ -95,6 +99,7 @@
 	margin-top:15px;
 	font-size: 13px;
 	max-width: 240px;
+	font-weight: 200;
 }
 
 .notievent_time
@@ -128,7 +133,7 @@
 .keyword
 {
 	color: #029ACF;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .keyword:hover
@@ -174,13 +179,14 @@ text-transform: uppercase;
 border-radius: 2px;
 cursor: default;
 font-size: 10px;
+line-height: 23px;
 font-weight: bold;
 height: 27px;
 outline: 0;
 cursor: pointer;
 text-align: center;
 -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-background-color: #22C791;
+background-color: #02e2a7;
 border-color: #389677 #14A072 #0EA372;
 color: #fff;
 text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
