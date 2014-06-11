@@ -295,6 +295,8 @@ position: relative;
 
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 	box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.1);
 	margin-top: -8px;
 	display: none;
@@ -303,33 +305,45 @@ position: relative;
 .gs_col
 {
 	float: left;
-	height: 40px;
+	height: 50px;
 	width: 100%;
-	border-bottom: 1px solid #DDD;
 	cursor:pointer;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #575757;
 }
 
 .gs_col:hover
 {
-	background-color:rgba(218, 224, 238, 0.3);
+	background-color:#575757;
+	color:white;
 }
 
 .gs_icon
 {
-	height: 30px;
-	width: 30px;
-	margin-left: 5px;
-	margin-top: 4px;
+	height: 45px;
+	width: 45px;
+	margin-left: 7px;
 	float: left;
+}
+
+.gs_on_active
+{
+background-color: rgba(87, 87, 87, 0.86)!important;
 }
 
 .gs_col div
 {
-	color: #333;
 	float: left;
 	height: 100%;
-	line-height:40px;
+	line-height:50px;
 	margin-left: 10px;
+}
+
+.last_gscol
+{
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 }
 
 @media (max-width: 1080px) {
@@ -454,7 +468,7 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 {
 	float: left;
 	height: 47px;
-	margin-left: 70px;
+	margin-left: 30px;
 }
 }
 
