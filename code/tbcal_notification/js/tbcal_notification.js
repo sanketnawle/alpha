@@ -12,4 +12,10 @@ $(document).ready(function() {
 			$(this).find(".little-glyph").removeClass("active_glyph");
 			$(".past_events_tab").css("border-right-color","#e9eaed");
 		});
+
+	$(document).delegate(".cal_noti_see","click",function(){
+		$(".active_pe_tab").removeClass("active_pe_tab");
+		$(".little-glyph").removeClass("active_glyph");
+		$(".past_events_tab").css("border-right-color","#e9eaed");
+	});
 });   
