@@ -505,19 +505,25 @@ padding-right: 3px;
 	background-image:url(../src/dumypic.png);
 	background-repeat:no-repeat;
 background-size: cover;
-width: 47px;
-height: 47px;
+
+	width: 45px;
+
+	height: 45px;
 border-radius: 4px;
 
+	border: 2px solid #fff;
 }
 
 .calnoti_group{
 	background:no-repeat url(../src/computational_biology.png);
 background-size: cover;
-width: 47px;
-height: 47px;
+
+	width: 45px;
+
+	height: 45px;
 border-radius: 4px;
 
+	border: 2px solid #fff;
 }
 
 .calnoti_examgroup{
