@@ -18,4 +18,26 @@ $(document).ready(function() {
 		$(".little-glyph").removeClass("active_glyph");
 		$(".past_events_tab").css("border-right-color","#e9eaed");
 	});
+
+	$(document).delegate(".calnoti_gen","mouseover",function(){
+		$(this).find(".noti_remove").show();
+	});
+
+	$(document).delegate(".calnoti_gen","mouseout",function(){
+		$(this).find(".noti_remove").hide();
+	});
+
+
+	$(document).delegate(".noti_remove","mouseover",function(){
+		$(this).find(".card-tag").stop().show();
+	});
+
+	$(document).delegate(".noti_remove","mouseout",function(){
+		$(this).find(".card-tag").delay(1).hide(0);
+	});
+
+	$(document).delegate(".remove_icon","click",function(){
+		$(this).closest(".calnoti_gen").hide();
+	});
+
 });   
