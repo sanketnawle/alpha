@@ -1253,7 +1253,7 @@ input[type="text"] {
     width: 1044px;
     position: absolute;
     border-top: 1px solid white;
-    z-index: 200;
+    z-index: 13;
     border-bottom: 1px solid #e2e2e2;
     margin-top: -40px;
     opacity: 0;
@@ -1383,7 +1383,7 @@ input[type="text"] {
     display: inline-block;
     position: absolute;
     margin-top: 6px;
-    right: 190px;
+    right: 290px;
     z-index: 12;
 }
 
@@ -1415,9 +1415,10 @@ input[type="text"] {
     .ui-icon-btn .icon {
         left: 12px;
         position: absolute;
-        top: 6.5px;
+        top: 7.5px;
         vertical-align: middle;
         border: 0;
+        width:22px;
     }
 
     .ui-icon-btn .icon_2 {
@@ -1521,9 +1522,8 @@ input[type="text"] {
     height: 12px;
     cursor: pointer;
     display: inline-block;
-    margin: 2px 7px 0 0;
+    margin: 2px 7px 2px 0px;
     left: 1px;
-    position: relative;
     position: relative;
     overflow: hidden;
     box-shadow: 0 0 1px rgba(204, 204, 204, 0.36);
@@ -1539,6 +1539,7 @@ input[type="text"] {
     background: linear-gradient(to bottom, rgba(187, 228, 255, 1) 0%, rgba(128, 199, 255, 1) 47%, rgba(95, 204, 255, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
     border: 1px solid #50A6F7;
+    float:left;
 }
 
     .check-box i {
@@ -1593,6 +1594,12 @@ span.cal-group-title {
     font-size: .96em;
     font-weight: lighter;
     color: #333333;
+    width:160px;    
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+text-align:left;
+float:right;
 }
 
 .cal-group-hider {
@@ -1835,7 +1842,7 @@ span.cal-group-title:hover {
     box-shadow: 0 1px 1px rgba(0,0,0,.06);
     line-height: 16px;
     background-color: #e6e6e6;
-    height: 32px;
+    height: 15px;
     color: #aaa;
     text-shadow: 0 1px 0 rgba(255,255,255,.8);
     font-size: 1.4rem;
@@ -1845,10 +1852,10 @@ span.cal-group-title:hover {
 
     .qa_header .icon_text {
         display: block;
-        position: relative;
-        padding-left: 10px;
-        right: 20px;
-        margin-top: 1px;
+padding-left: 10px;
+right: 28px;
+position: relative;
+margin-top: -8px;
     }
 
 .icon_text {
@@ -2035,11 +2042,11 @@ em.caret-transform {
     position: relative;
     left: 0px;
     right: 0px;
-    overflow-y: scroll;
+    overflow-y: hidden;
     font-size: 1.4rem;
     border-bottom-right-radius: 3px;
     width: 100%;
-    height: 51px;
+    height: 45px;
     background-color: #e6e6e6;
     box-shadow: 0 -1px 1px rgba(0,0,0,.06);
     background: #e6e6e6 url(src/white-gradient-100px.png) repeat-x 50% 50%;
@@ -2051,8 +2058,8 @@ em.caret-transform {
 }
 
 .qa_inputcontainer {
-    top: 5.5px;
-    left: 17px;
+    top: 6px;
+    left: 12px;
     position: absolute;
     width: 86%;
     right: 0;
