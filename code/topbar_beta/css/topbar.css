@@ -25,7 +25,7 @@
 	left:0px;
 }
 
-.topbar_wrapper 
+.topbar .topbar_wrapper 
 {
 margin: 0 auto;
 
@@ -35,14 +35,14 @@ min-width: 1080px;
 }
 
 
-.topbar_logo{
+.topbar .topbar_wrapper  .topbar_logo{
 	float:left;
 	height: 26px;
 	margin-top: 12px;
 	margin-left: 50px;
 }
 
-.topbar_search
+.topbar .topbar_wrapper .topbar_search
 {
 	float:left;
 	width:auto;
@@ -50,18 +50,6 @@ min-width: 1080px;
 	margin-left: 30px;
 }
 
-body {
-font-family: 'Open Sans', sans-serif;
-margin: 0px auto;
-background: #F8f8f8 url(../src/noise-2.png);
-min-width: 720px;
-position: absolute;
-top: 0;
-right: 0;
-left: 0;
-bottom: 0;
-overflow: scroll;
-}
 
 .topbar_search_input
 {
@@ -104,7 +92,7 @@ transition-duration:.2s;
   	margin-top: 4px;
 }
 
-.topbar_righttool
+.topbar .topbar_wrapper .topbar_righttool
 {
 	float: right;
 	height: 47px;
@@ -112,7 +100,7 @@ transition-duration:.2s;
 }
 
 
-.topbar_noti
+.topbar_righttool .topbar_noti
 {	
 	float: left;
 	height: 46px;
@@ -125,7 +113,7 @@ transition-duration:.2s;
 	border: none;
 }
 
-.topbar_noti:hover
+.topbar_righttool .topbar_noti:hover
 {
 
 }
@@ -141,20 +129,26 @@ transition-duration:.2s;
 	height: 46px;
 }
 
-.topbar_noti:hover .noti_icon{
+.topbar_righttool .topbar_noti:hover .noti_icon{
 	background: rgba(255, 255, 255, 0.1);
 }
-.topbar_noti:active .noti_icon{
+.topbar_righttool .topbar_noti:active .noti_icon{
 	background-color:#0f1010;
 }
 
-.topbar_noti:hover .noti_icon p{
+.topbar_righttool .topbar_noti:hover .noti_icon p{
 	color:white;
 }
-.topbar_noti:active .noti_icon p{
+.topbar_righttool .topbar_noti:active .noti_icon p{
 	color:rgba(255,255,255,.7);
 }
-.noti_icon
+
+.topbar_righttool .topbar_noti p
+{
+	margin-top: 4px;
+}
+
+.topbar_righttool .topbar_noti .noti_icon
 {
 	float: left;
 
