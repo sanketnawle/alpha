@@ -147,7 +147,7 @@
     width: 286px;
     margin: 0px auto;
     z-index: 200;
-    min-height: 219px;
+    /*min-height: 219px;*/
     position: relative;
 }
 
@@ -359,6 +359,10 @@
     background-color: transparent;
 }
 
+.evnt_container {
+    width:262px;
+}
+
 .pl_day {
     width: 100%;
     font-weight: 700;
@@ -400,15 +404,12 @@
     border-top-style: solid;
     color: rgb(36, 36, 36);
     direction: ltr;
-    display: block;
+    display: inline-block;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 15px;
     height: 19px;
     line-height: 18px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
+    margin:0px !important;
     outline-color: rgb(136, 153, 166);
     outline-style: none;
     outline-width: 0px;
@@ -425,7 +426,7 @@
     vertical-align: top;
     white-space: nowrap;
     width: 244px;
-    word-wrap: normal;
+    word-wrap: normal;    
 }
 
     .pl_add:hover {
@@ -454,6 +455,7 @@
     color: rgb(36, 36, 36);
     padding: 3px 3px 4px;
     text-transform: lowercase;
+    float:right;
 }
 
     .set_time:-ms-input-placeholder {
@@ -481,7 +483,6 @@
     cursor: pointer;
     font-size: 12px;
     padding: 3px;
-    margin-right: 9px;
     margin-left: 8px;
     border-radius: 0px;
     padding-bottom: 4px;
@@ -505,6 +506,7 @@
     /*margin-left: 7px;
     color: rgb(36,36,36);*/
     display: inline-block;
+    width:100%;
 }
 
 .inp_lab {
