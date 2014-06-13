@@ -51,7 +51,9 @@
 											<span class = "post_format">posted in <span class = "post_group">Web Programming</span>
 											
 										</div>
-										<div class = "post_time">Started discussion 2 hours ago</div><span class = "mid-stop">&#183;</span>
+										<div class = "post_time">Started discussion 2 hours ago</div>
+									<!--
+										<span class = "mid-stop">&#183;</span>
 										<div class = "post_seen">
 											<div class = "seen_icon"></div><span>27</span>
 											<div class = 'card-tag'>
@@ -59,6 +61,7 @@
 												<div class = 'tag-box'><span></span></div>
 											</div>
 										</div>
+									-->
 								</div>
 								<div class = "post_tag">
 									<span>Computer Science</span>
@@ -78,7 +81,7 @@
 								</div>
 								<div class = "post_tools">
 									<div class = "post_lc">
-										<span class='mf_name'></span>
+										<div class='mf_name'></div>
 										<div class = 'card-tag'>
 												<div class = 'tag-wedge'></div>
 												<div class = 'tag-box'><span>
@@ -91,7 +94,7 @@
 											
 										</div>
 										<div class = "post_comment_btn">
-											Comment
+											Reply
 										</div>
 									</div>
 
@@ -132,7 +135,7 @@
 							<div class = "comments">
 
 								<button class='morecmt_bar'>
-									See more replies
+									Show Full Discussion 
 								</button>
 								<!--a comment-->
 								<div class = "post_comment" id = "12414113">
@@ -154,10 +157,10 @@
 											<div class = "comment_owner_container"><div class = "comment_user_icon"></div></div>										
 											<span class = "comment_owner">Jun Lee</span>
 										</a>
-										<span class = "comment_msg" id = "380"><p>The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture.
+										<span class = "comment_msg" id = "380">The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture.
 											The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture... 
 											<span class='pst_seemore'>see more</span>
-										</p>
+										
 										</span>
 									</div>
 									<div class = "comment_time">1 hour ago</div>
@@ -168,6 +171,7 @@
 							
 							<!--comment input html-->
 							<div class = "postcomment">
+								<form>
 								<div class = "commentform">
 									<div class = "reply_user_icon"></div>
 									<div class = "reply_tawrapper">
@@ -188,6 +192,7 @@
 									</div>
 
 								</div>
+							</form>
 							</div>
 							<!--comment input html end-->
 
