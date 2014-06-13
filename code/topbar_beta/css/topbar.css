@@ -154,7 +154,7 @@ transition-duration:.2s;
 .topbar_noti:active .noti_icon p{
 	color:rgba(255,255,255,.7);
 }
-.noti_icon
+.topbar_noti .noti_icon
 {
 	float: left;
 
@@ -182,12 +182,6 @@ border-color: linear-gradient(#aaa, #ccc);
 	margin-left: 5px;
 	color:white;
 }
-
-.topbar_noti:active
-{
-
-}
-
 
 .topbar_cal
 {	
@@ -568,7 +562,7 @@ margin-bottom: -3px;
 }
 
 
-.noti_icon p{
+.topbar_noti .noti_icon p{
 	margin: 0;
 
 	color: rgb(255, 255, 255);
