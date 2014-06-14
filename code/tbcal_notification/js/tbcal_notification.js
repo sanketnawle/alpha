@@ -27,6 +27,10 @@ $(document).ready(function() {
 		$(this).find(".noti_remove").hide();
 	});
 
+	$(document).delegate(".calnoti_gen","click",function(){
+		$(this).removeClass("calnoti_unseen");
+	});
+
 
 	$(document).delegate(".noti_remove","mouseover",function(){
 		$(this).find(".card-tag").stop().show();

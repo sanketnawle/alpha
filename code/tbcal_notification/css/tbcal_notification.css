@@ -141,7 +141,7 @@ left: 250px;
 .calnoti_window .tabs{
 	border-bottom: 1px solid #DDD;
 
-	width: 366px;
+	width: 390px;
 
 
 	height: 26px;
@@ -158,7 +158,7 @@ span.cal_noti_see:hover{
 
 
 .calnoti_window .tabs .tab{
-	width: 182px;
+	width: 195px;
 display: inline-block;
 padding-top: 4.5px;
 
@@ -203,7 +203,8 @@ cursor:pointer;
 .calnoti_window .tabs .tab-first{
 	border-right: 1px solid #e9eaed;
 
-	}
+	width: 193px;
+}
 
 	.calnoti_window .tabs .tab:hover{
 background-color: rgba(87, 87, 87, 0.7);
@@ -264,7 +265,7 @@ color:white;
 
 
 .calnoti_window .calnoti_content {
-	width:366px;
+	width: 390px;
 	height: 300px;
 	position:relative;
 	direction:ltr;
@@ -300,7 +301,7 @@ ul.calnoti_list li.calnoti_gen{
 }
 
 ul.calnoti_list li.calnoti_gen:hover{
-	background-color: rgba(60, 60, 60, 0.15);
+	background-color: rgba(60, 60, 60, 0.10);
 	-webkit-transition: background-color 100ms linear;
 -moz-transition: background-color 100ms linear;
 -o-transition: background-color 100ms linear;
@@ -308,7 +309,11 @@ ul.calnoti_list li.calnoti_gen:hover{
 transition: background-color 100ms linear;
 }
 ul.calnoti_list li.calnoti_gen:active{
-background-color:rgba(60, 60, 60, 0.10);
+background-color:rgba(60, 60, 60, 0.07);
+}
+
+ul.calnoti_list li.calnoti_unseen{
+	background-color:rgba(60, 60, 60, 0.05);
 }
 
 ul.calnoti_list li.calnoti_gen div a.calnoti_a{
@@ -316,10 +321,10 @@ ul.calnoti_list li.calnoti_gen div a.calnoti_a{
 	color:#333;
 	display:block;
 	outline:none;
-	padding:7px 23px 7px 8px;
+	padding: 7px 10px 7px 8px;
 	position:relative;
+	height: 50px;
 	cursor:pointer;
-	height: auto;
 	text-decoration: none;
 }
 
@@ -367,7 +372,7 @@ padding-right:3px;
 	}
 
 .calnoti_window .calnoti_footer{
-width:366px;
+width: 390px;
 }
 .calnoti_window .calnoti_footer a{
 background-color:#f7f7f7;
@@ -514,6 +519,31 @@ border-radius: 4px;
 	border: 2px solid #fff;
 }
 
+.calnoti_invite .noti_anchorcontainer a .calnoti_right .invite_text {
+	width: 190px;
+	overflow:hidden;
+	margin:0;
+	padding-top:1px;
+	float:left;
+	display:inline-block;
+}
+
+.calnoti_invite .noti_anchorcontainer a .calnoti_right .invite_text p{
+margin: 0;
+font-weight: 400;
+color: #222;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+font-size: 12.5px;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 36px;
+white-space: pre-wrap;
+}
+
+
+
 .calnoti_group{
 	background:no-repeat url(../src/computational_biology.png);
 background-size: cover;
@@ -536,7 +566,8 @@ border-radius: 4px;
 
 .calnoti_daily .noti_anchorcontainer a.calnoti_a div.calnoti_right{
 	float: left;
-max-width: 280px;
+
+	width: 295px;
 padding-top: 6px;
 padding-left: 10px;
 }
@@ -568,10 +599,10 @@ font-weight: 200;
 	color:rgba(4, 117, 156, 0.65);
 }
 
-.calnoti_2hrs .noti_anchorcontainer a.calnoti_a div.calnoti_right {
+.calnoti_2hrs .noti_anchorcontainer a.calnoti_a div.calnoti_right, .calnoti_invite .noti_anchorcontainer a.calnoti_a div.calnoti_right{
 float: left;
-max-width: 276px;
-padding-top: 6px;
+width: 310px;
+padding-top: 7px;
 padding-left: 10px;
 }
 
@@ -582,7 +613,7 @@ padding-left: 10px;
 	color: #222;
 	display: -webkit-box;   
 	-webkit-line-clamp: 2;   -webkit-box-orient: vertical;
-	font-size: 13px;
+	font-size: 12.5px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 	height:36px;
@@ -591,41 +622,45 @@ padding-left: 10px;
 
 
 
-.calnoti_2hrs:hover > .noti_anchorcontainer a.calnoti_a div p{
+.calnoti_2hrs:hover > .noti_anchorcontainer a.calnoti_a div p, .calnoti_invite:hover > .noti_anchorcontainer a.calnoti_a div p{
 	color:#029ACF;
 }
 
-.calnoti_2hrs:active > .noti_anchorcontainer a.calnoti_a div p{
+.calnoti_2hrs:active > .noti_anchorcontainer a.calnoti_a div p, .calnoti_invite:active > .noti_anchorcontainer a.calnoti_a div p{
 	color:rgba(4, 117, 156, 0.65);
 }
 
 div.reminder_textwrap{
-	width: 200px;
+	width: 190px;
 	overflow:hidden;
 	margin:0;
+	padding-top: 1px;
 	float: left;
 	display: inline-block;
 }
 
-div.complete_event{
+div.event_btns{
 	display: inline-block;
 float: left;
-position: relative;
+
+	margin-left: 4px;
+	position: relative;
 }
 
-div.complete_event button{
+div.event_btns button, div.add_to_cal{
 	margin: 0;
 -webkit-box-shadow: none;
 box-shadow: none;
 text-transform: uppercase;
--webkit-border-radius: 2px;
-border-radius: 2px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
 font-size: 10px;
 line-height: 23px;
 font-weight: bold;
 height: 27px;
 outline: 0;
-cursor: pointer;
+
+	cursor: pointer;
 text-align: center;
 -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 background-color: #02e2a7;
@@ -634,14 +669,98 @@ color: #fff;
 text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
 border-width: 1px;
 border-style: solid;
-padding-left: 8px;
-padding-right: 8px;
+
+	padding-left: 4px;
+
+	padding-right: 4px;
 margin-top: 5px;
 position: absolute;
 
+	margin-left: 22px;
 	left: 2px;
+	display: inline-block;
+	display: inherit;
+	width: 71px;
+	float: left;
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05); box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-div.complete_event button:hover{
+
+div.add_to_cal{
+	margin-left: 0px;
+	line-height:28px;
+	width: 66px;
+}
+
+div.dismiss{
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	border-radius: 4px;
+	background-color:#d3d3d3;
+	width: 29px;
+	height: 27px;
+	border: 1px solid;
+	border-color: #AAAAAA #A5A5A5 #7C7C7C;
+	margin-left: 85px;
+	position: relative;
+	margin-top: 5px;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+div.dismiss:hover{
+	background-color: #AFAFAF;
+
+	background-image: -webkit-linear-gradient(top,#C9C9C9,#AAAAAA);
+
+	background-image: -moz-linear-gradient(top,#C9C9C9,#AAAAAA);
+
+	background-image: -o-linear-gradient(top,#C9C9C9,#AAAAAA);
+
+	background-image: linear-gradient(top,#C9C9C9,#AAAAAA);
+
+	border-color: #9B9B9B #777777 #555555;
+}
+
+div.dismiss:active{
+		background-color: #C9C9C9;
+
+		border-color: #696969 #797979 #8A8A8A;
+
+		-webkit-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
+
+		-moz-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
+
+		-o-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
+
+		box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
+}
+
+div.dismiss b{
+
+	background-image:url(../src/dismiss_icon.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+	
+
+	width: 15px;
+	
+
+	height: 15px;
+	
+
+	display: block;
+
+	margin-left: 8px;
+
+	margin-top: 6px;
+
+}
+
+
+
+div.event_btns button:hover, div.event_btns div.add_to_cal:hover{
 background-color: #1ABD88;
 background-image: -webkit-linear-gradient(top,#22C791,#1AAC7C);
 background-image: -moz-linear-gradient(top,#22C791,#1AAC7C);
@@ -649,7 +768,7 @@ background-image: -o-linear-gradient(top,#22C791,#1AAC7C);
 background-image: linear-gradient(top,#22C791,#1AAC7C);
 border-color: #389677 #14A072 #06724F;
 }
-div.complete_event button:active{
+div.event_btns button:active,div.event_btns div.add_to_cal:active{
 	background-color: #1ABD88;
 border-color: #257A5E #0F865F #07835A;
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
