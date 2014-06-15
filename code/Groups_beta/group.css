@@ -1,0 +1,68 @@
+
+.mid_right_sec{
+	width: 1010px;
+float: left;
+top: 47px;
+
+	position: relative;
+	padding-left: 318px;
+	margin: 0 auto;
+}
+
+.group-head-sec{
+	position: relative;
+height: 240px;
+margin-left: 1px;
+width: 100%;
+background-color: rgba(255, 255, 255, 0.77);
+
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+
+	border-radius: 0px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); 
+	box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.14), 1px 1px 1px rgba(0, 0, 0, 0.14);
+}
+
+.group-head-sec .group-pic-frame{
+	display: block;
+position: absolute;
+background-color: #F8F8F8;
+z-index: 50;
+width: 190px;
+border-radius: 2px;
+height: 190px;
+-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+-moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+box-shadow: 0 1px 5px rgba(0,0,0,.5);
+cursor: pointer;
+margin-top: 24px;
+margin-left: -19px;
+}
+
+.group-head-sec .group-pic-frame .group-pic{
+	background: no-repeat url(src/biology.png);
+display: inline-block;
+width: 180px;
+float: left;
+position: relative;
+border: 1px solid #eee;
+height: 180px;
+margin-top: 4px;
+border-radius: 2px;
+margin-left: 5px;
+border-radius: 3px;
+border-left: none;
+background-size: cover;
+}
+
+.group-head-sec .group-head-footer{
+	position: absolute;
+bottom: 0px;
+height: 60px;
+width: 100%;
+border-top: 1px solid rgba(194, 194, 194, 0.79);
+}
