@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$(document).delegate(".post_functions_showr","click",function(){
 		if($(this).closest(".post_functions").hasClass("functions_active")){
-			$(this).closest(".post_functions").find(".post_functions_box").stop().fadeOut();
+			$(this).closest(".post_functions").find(".post_functions_box").hide();
 			$(this).closest(".post_functions").removeClass("functions_active");
 		}else{
 		$(this).closest(".post_functions").find(".post_functions_box").show();
@@ -149,7 +149,7 @@ $(document).ready(function() {
 			     	//click outside hide event
 			     	var $container= $(".post_functions");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
-			     		$(".post_functions_box").stop().fadeOut(100);
+			     		$(".post_functions_box").stop().hide();
 			     		$(".post_functions").removeClass('functions_active');
 			     	}
 
@@ -333,11 +333,11 @@ $(document).ready(function() {
 			     	var $target= $(event.target);
 			     	var $container= $(".posttool-select");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
-			     		$container.find(".visi_functions_box").stop().fadeOut(150);
+			     		$container.find(".visi_functions_box").stop().hide();
 			     		$container.find(".field").css({"text-decoration":"none"});
 			     	}
 			     	if($target.hasClass(".visi_functions_option")){
-			     		$container.find(".visi_functions_box").stop().fadeOut(150);
+			     		$container.find(".visi_functions_box").stop().hide();
 			     		$container.find(".field").css({"text-decoration":"none"});
 			     	}
 
