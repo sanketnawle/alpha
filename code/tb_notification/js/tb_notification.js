@@ -23,4 +23,13 @@ $(document).delegate(".remove_icon","click",function(){
 	$(this).closest(".noti_gen").hide();
 });
 
+$(document).delegate(".remove_icon","mouseover",function(){
+	$(this).css({"background-image":"url(img/hide-hover.png)"});
+});	
+
+$(document).delegate(".remove_icon","mouseout",function(){
+	$(this).css({"background-image":"url(img/hide.png)"});
+});	
+
+
 });   
