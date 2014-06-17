@@ -174,7 +174,7 @@ box-sizing: border-box;
 .leftsec{
 width: 22.17333%;
 float:left;
-z-index: 3;
+z-index: 3000;
 position: relative;
 min-height:1px;
 
