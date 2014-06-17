@@ -285,7 +285,7 @@ $(document).ready(function() {
 	      range: true,
 	      min: 0,
 	      max: 500,
-	      values: [ 0, 4 ],
+	      values: [ 0, 40 ],
 	      slide: function( event, ui ) {
 	        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 	      }

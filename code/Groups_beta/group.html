@@ -18,9 +18,16 @@
  <script src="feed.js"></script> 
   <script src="leftmenu.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="planner.js"></script>
 <script>
+$(document).ready(function() {
+	$(document).delegate(".joined","mouseover",function(){
+			$(this).text("Leave Class");
+	});
 
+	$(document).delegate(".joined","mouseout",function(){
+			$(this).text("Enrolled");
+	});
+});
 </script>
 </head>
 <body>
@@ -147,13 +154,91 @@
 						<div class = "group-pic">
 						</div>
 					</div>
+					<div class = "group-header-left">
+						<div class = "group-title">
+							<a>
+								Computational Biology
+							</a>
+						</div>
+						<div class = "group-leader">
+							<a>
+								<span>
+								</span>
+								<span>
+									Professor Garrigan
+								</span>			
+							</a>				
+						</div>		
+						<div class = "group-department">
+							<a>
+								<span>
+								</span>
+								<span>
+									Department of <span>Biology</span>
+								</span>	
+							</a>								
+						</div>								
+					</div>
 					<div class = "group-head-footer">
 						<div class = "group-header-tab">
-							<div class = "tab">
-							</div>
-							<div class = "tab">
+							<ul class = "group-nav">
+								<li class = "group-tab">
+									<a class = "tab-anchor group-tab-active">
+										<div class = "tab-title">
+											CLASS FEED
+											<span class = "tab-icon tab1-icon-active"></span>
+										</div>
+										<div class = "status tab-number">
+											<span class = "badge">
+												2
+											</span>
+										</div>
+									</a>
+								</li>
+								<li class = "group-tab">
+									<a class = "tab-anchor tab-inactive">
+										<div class = "tab-title">
+											MEMBERS
+											<span class = "tab-icon tab2-icon-inactive"></span>
+										</div>
+										<div class = "status tab-number">
+											<span class = "badge">
+												84
+											</span>
+										</div>
+									</a>
+								</li>
+								<li class = "group-tab">
+									<a class = "tab-anchor tab-inactive">
+										<div class = "tab-title">
+											FILES
+											<span class = "tab-icon tab3-icon-inactive"></span>
+										</div>
+										<div class = "status tab-number">
+											<span class = "badge">
+												22
+											</span>
+										</div>
+									</a>						
+								</li>
+								<li class = "group-tab tab-no-badge">
+									<a class = "tab-anchor">
+										<div class = "tab-title title-no-badge">
+											ABOUT
+										</div>
+									</a>						
+								</li>								
+							</ul>
+						</div>
+						<div class = "group-footer-functions">
+							<div class = "join-button">
+								<a class = "join joined">
+									Enrolled
+								</a>
 							</div>
 						</div>
+					</div>
+					<div class = "tab-wedge-down">
 					</div>
 				</div>
 				<div class = "midsec">
