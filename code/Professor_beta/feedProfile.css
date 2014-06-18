@@ -12,10 +12,7 @@
 	width: 660px;
 	margin-bottom: 15px;
 	padding-bottom: 15px;
-	-webkit-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
-	-moz-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
-	box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px;    
-	border-bottom: 1px solid rgba(243, 242, 242, 0.89);
+	border-bottom: 1px solid rgba(197, 197, 197, 0.36);
 }
 
 .post_main{

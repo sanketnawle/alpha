@@ -453,9 +453,11 @@ font-weight:200;
 
 span.office-hours{
 padding-left: 10px;
-display: inline-block;
-float: right;
-margin-top: 4px;
+display: block;
+padding-top: 35px;
+position: absolute;
+left: 221px;
+width: 300px;
 }
 .office-hours p{
 	margin: 0;
@@ -732,10 +734,11 @@ bottom: 0pz;
 	padding-top:0px;	
 }
 
-
+.user-tab-groups-content{
+	display:none;
+}
 
 .professor-group{
-	padding:5px;
 	width:99%;
 	background: #ffffff;
 -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
@@ -746,7 +749,7 @@ box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
 border-radius:3px;
 -o-transition: all .15s ease-out .1s;
 
-	height: 70px;
+	height: 112px;
 transition: all .15s ease-out .1s;
 }
 
@@ -756,24 +759,24 @@ a.group-link{
 padding-right: 30px;
 }
 a.group-link:hover > h3{
-	color:black;
-	text-decoration: underline;
+	color: #016283; text-decoration: underline;
 }
 
 a.group-link:active > h3{
-	color:#666;
+	color: rgba(4, 117, 156, 0.65);
 }
 a.group-link h3{
 	position: relative;
 left: 10px;
-color: #222;
-text-shadow: 0 1px 0 rgba(255,255,255,.8);
+
+
 font-weight: 400;
 
-	top: 5px;
+	top: -10px;
 display: inline-block;
 
-	font-size: 17px;
+	color: #029acf;
+	font-size: 24px;
 }
 a.group-link:hover > div.group-pic{
 	opacity:1;
@@ -782,12 +785,18 @@ a.group-link:active > div.group-pic{
 	opacity:.7;
 }
 div.group-pic{
-	width: 70px;
-border-radius: 12px;
-height: 70px;
+	width: 112px;
+
+	border-radius: 6px 0px 0px 6px;
+
+	height: 112px;
 display: inline-block;
-opacity:.9;
-float: left;
+
+	opacity: .7;
+
+	-moz-transition: opacity .2s ease-in-out;
+	transition: opacity .2s ease-in-out;
+	float: left;
 margin-top: 1px;
 background: center center no-repeat url(src/computational_biology.png);
 background-size: cover;
@@ -814,8 +823,154 @@ font-size: 14px;
 vertical-align: super;
 font-weight: 400;
 }
+.user-tab-following-content, .user-tab-followers-content{
+	margin-left:-3px;
+	display:none;
+}
+.user-tab-following-content .follow-tab-user-container .follow-tab-user-frame,.user-tab-followers-content .follow-tab-user-container .follow-tab-user-frame{
+	display: inline-block;
+
+	background-color: #F7F7F7;
+
+	width: 122px;
+
+	margin-bottom: 15px;
+	border-radius: 2px;
+
+	margin-left: 10px;
+	margin-top: 9px;
+	margin-right: 15px;
+
+	height: 122px;
+-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+-moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+box-shadow: 0 1px 5px rgba(0,0,0,.5);
+cursor: pointer;
+}
+.user-tab-following-content .follow-tab-user-container .follow-tab-user-pic, .user-tab-followers-content .follow-tab-user-container .follow-tab-user-pic{
+background: no-repeat url(src/person3.jpg);
+display: inline-block;
+width: 112px;
+float: left;
+position: relative;
+height: 112px;
+border-radius: 6px 0px 0px 6px;
+border-left: none;
+background-size: cover;
+}
+
+.follow-tab-user-container{
+	border-bottom: 1px solid #d9d9d9;
+
+	height: 112px;
+
+	margin-bottom: 10px;
+	width: 314px;
+background-repeat-y: no-repeat;
+
+	border-radius: 6px;
+float: left;
+
+	margin-left: 10px;
+
+	overflow: hidden;
+	display: inline-block;
+border: 1px solid;
+background-color: white;
+border-color: #DBE0E6 #D4D6DB #B9BCC5;
+}
+.follow-tab-user-sub{
+float: left;
+text-transform: uppercase;
+font-size: 12px;
+font-weight: bold;
+display:inline-block;
+padding-right: 4px;
+margin-top: 1px;
+text-indent: 4px;
+color: rgba(111, 111, 111, 0.45);
+}
+
+.follow-tab-mid-stop{
+	color: rgba(111, 111, 111, 0.45);
+display: inline;
+float: left;
+font-weight: bold;
+position: relative;
+font-size: 17px;
+margin-top: -2px;
+}
+
+
+
+.follow-tab-user-name{
+	font-size: 20px;
+float: left;
+
+	width: 200px;
+text-indent: 6px;
+
+	text-overflow: ellipsis;
+	margin-top: 4px;
+font-weight: 400;
+color: #029acf;
+
+	white-space: nowrap;
+	cursor:pointer;
+}
+
+.follow-tab-user-name:hover{
+	text-decoration: underline;
+color: #016283;
+cursor: pointer;
+}
+.follow-tab-user-name:active{
+text-decoration: underline;
+color: rgba(4, 117, 156, 0.65);
+}
 
 .user-tab-groups-content{
 	display:none;
 	opacity:0;
+}
+span.link-up-small{
+		margin-left: 154px;
+		position:relative;
+		top:0px;
+
+		margin-top: 64px;
+display:block;
+}
+.link-up-small a{
+line-height:28px;
+height: 27px;
+font-size: 14px;
+width: 120px;
+}
+
+.profile-bio-container{
+	color: #666;
+right: 0px;
+
+	width: 322px;
+	top: 36px;
+
+
+
+	text-align: left;
+	padding: 3px 0;
+
+	font-size: 13.2px;
+	height: 6.5em;
+	text-shadow: 0 1px 1px rgba(255,255,255,.8);
+	padding-right: 10px;
+
+
+
+
+
+
+	overflow: hidden;
+	line-height: 15px;
+
 }

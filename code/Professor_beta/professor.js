@@ -25,8 +25,6 @@ $(document).ready(function() {
 			var activeTabLeft = activeTabposition.left;
 			var activeTabNew = activeTabLeft -27;
 			$(".tab-indicator").css("margin-left",activeTabNew);
-
-		
 	});	
 
 	$(document).delegate(".pre-linked","mouseout",function(){
@@ -51,17 +49,45 @@ $(document).ready(function() {
 
 	$(document).delegate(".professor-tab","click",function(){
 		if($(this).hasClass("tab-2")){
-			$(".user-tab-groups-content").show();
+			$(".user-tab-following-content").hide();
+			$(".user-tab-followers-content").hide();
+			$(".user-tab-followers-content").animate({opacity:"0"},200);
+			$(".user-tab-following-content").animate({opacity:"0"},200);
 			$(".user-tab-dicussions-content").animate({opacity:"0"},200);
 			$(".user-tab-discussions-content").hide();
+			$(".user-tab-groups-content").show();
 			$(".user-tab-groups-content").animate({opacity:"1"},200);
 		}
 		if($(this).hasClass("tab-1")){
+			$(".user-tab-following-content").hide();
+			$(".user-tab-followers-content").hide();
+			$(".user-tab-followers-content").animate({opacity:"0"},200);
+			$(".user-tab-following-content").animate({opacity:"0"},200);
 			$(".user-tab-groups-content").hide();
-			$(".user-tab-discussions-content").show();
 			$(".user-tab-groups-content").animate({opacity:"0"},200);
+			$(".user-tab-discussions-content").show();
 			$(".user-tab-dicussions-content").animate({opacity:"1"},200);
 		}
+		if($(this).hasClass("tab-3")){
+			$(".user-tab-groups-content").hide();
+			$(".user-tab-followers-content").hide();
+			$(".user-tab-followers-content").animate({opacity:"0"},200);
+			$(".user-tab-groups-content").animate({opacity:"0"},200);
+			$(".user-tab-discussions-content").hide();
+			$(".user-tab-dicussions-content").animate({opacity:"0"},200);
+			$(".user-tab-following-content").show();
+			$(".user-tab-following-content").animate({opacity:"1"},200);			
+		}
+		if($(this).hasClass("tab-4")){
+			$(".user-tab-groups-content").hide();
+			$(".user-tab-groups-content").animate({opacity:"0"},200);
+			$(".user-tab-discussions-content").hide();
+			$(".user-tab-dicussions-content").animate({opacity:"0"},200);
+			$(".user-tab-following-content").hide();
+			$(".user-tab-following-content").animate({opacity:"0"},200);	
+			$(".user-tab-followers-content").show();
+			$(".user-tab-followers-content").animate({opacity:"1"},200);		
+		}					
 	});
 
 
