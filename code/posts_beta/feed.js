@@ -28,7 +28,7 @@ $(document).ready(function() {
 		//alert($(this).attr("id"));
 		if(!$(this).hasClass("flat_checked")){
 		$(this).css({"border":"1px solid #00A076","background-color":"#02e2a7"});
-		$(this).closest(".check_wrap").find(".move").css({"margin-left":"19px"});
+		$(this).closest(".check_wrap").find(".move").css({"margin-left":"18px"});
 		$(this).addClass("flat_checked");
 		$(this).closest(".check_wrap").find(".comment_anon_text").css("color","rgba(33,33,33,.85)");
 		}else{
