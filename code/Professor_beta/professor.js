@@ -1,6 +1,10 @@
 $(document).ready(function() {
-
-
+	$(document).delegate(".showcase-container","mouseover",function(){
+		$(this).find(".showcase-link").stop().animate({opacity: "1",marginTop:"35px"},0);
+	});
+	$(document).delegate(".showcase-container","mouseout",function(){
+		$(this).find(".showcase-link").stop().animate({opacity: "0",marginTop:"95px"},0);
+	});
 
 	$(document).delegate(".link","click",function(){
 		
@@ -44,6 +48,21 @@ $(document).ready(function() {
 			$(this).removeClass("linked");
 			$(this).addClass("link");
 	});		
+
+	$(document).delegate(".professor-tab","click",function(){
+		if($(this).hasClass("tab-2")){
+			$(".user-tab-groups-content").show();
+			$(".user-tab-dicussions-content").animate({opacity:"0"},200);
+			$(".user-tab-discussions-content").hide();
+			$(".user-tab-groups-content").animate({opacity:"1"},200);
+		}
+		if($(this).hasClass("tab-1")){
+			$(".user-tab-groups-content").hide();
+			$(".user-tab-discussions-content").show();
+			$(".user-tab-groups-content").animate({opacity:"0"},200);
+			$(".user-tab-dicussions-content").animate({opacity:"1"},200);
+		}
+	});
 
 
 

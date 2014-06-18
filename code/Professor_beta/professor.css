@@ -18,7 +18,7 @@ header.professor-header{
 	margin-left:auto;
 	margin-right: auto;
 	max-width:1048px;
-	min-width:720px;
+	min-width:1000px;
 	top: 40px;
 	border:none;
 	position: relative;
@@ -45,7 +45,7 @@ font-size: 13px;
 .profile-main{
 position: relative;
 max-width: 990px;
-min-width:720px;
+min-width:990px;
 min-height: 75px;
 margin: 0 auto;
 padding: 10px 30px 15px;
@@ -79,6 +79,7 @@ box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,
 	position:relative;
 	padding-right:24px;
 	text-decoration: none;
+	cursor: default;
 }
 
 .profile-options h1 a b.wedgeDown{
@@ -258,7 +259,7 @@ background: #eaeaea;
 border-radius: 0 0 4px 4px;
 padding: 14px 30px;
 max-width: 1020px;
-min-width: 750px;
+min-width: 1000px;
 margin: 0 auto;
 -webkit-border-radius: 0 0 4px 4px;
 border-radius: 0 0 4px 4px;
@@ -276,7 +277,15 @@ padding-right: 0px;
 	margin-top:6px;
 	font-weight: 200;
 	color: #029acf;
+	height: 50px;
+	overflow: hidden;
 }
+
+.info-piece-oneline{
+	height:30px;
+}
+
+
 
 .user-info-piece .small-icon{
 	display:inline-block;
@@ -326,14 +335,20 @@ font-weight: 400;
 bottom: 6px;
 position: relative;
 color: #029acf;
+text-overflow: ellipsis;
 cursor: pointer;
+}
+
+.user-info-piece h4.info-piece-oneline{
+	bottom: -6px;
+	left: 7px;
 }
 
 
 .user-info-piece a{
 	padding-top:7px;
 	cursor:pointer;
-	width: 300px;
+	width: auto;
 	display: block;
 	height: auto;
 }
@@ -369,6 +384,20 @@ box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 outline: none;
 -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.info-piece-oneline a{
+	padding-top: 0px;
+height: 38px;
+}
+
+.info-piece-oneline a:hover > h4{
+	color: #016283;
+text-decoration: underline;
+}
+
+.info-piece-oneline a:active > h4{
+color: rgba(4, 117, 156, 0.65);
 }
 
 a.mail:hover{
@@ -426,7 +455,7 @@ span.office-hours{
 padding-left: 10px;
 display: inline-block;
 float: right;
-margin-top:10px;
+margin-top: 4px;
 }
 .office-hours p{
 	margin: 0;
@@ -480,6 +509,7 @@ position: relative;
 
 	width: 33%;
 float: left;
+overflow:hidden;
 
 	margin-right: 0px;
 display: inline-block;
@@ -532,7 +562,7 @@ opacity:1;
 margin-top: 0px;
 
 	font-size: 11.5px;
-	opacity:0;
+	opacity:1;
 
 	color: White;
 	line-height: 17px;
@@ -545,7 +575,51 @@ margin-top: 0px;
   transition: all 120ms ease-in-out;
 
 	background: rgba(15, 15, 15, 0.9);
-height: 0px;
+height: 18px;
+}
+
+
+
+a.showcase-link{
+	padding: 3px 17px;
+display: inline-block;
+font-size: 16px;
+font-weight: bold;
+margin-top: 95px;
+
+color: #FFF;
+opacity:0;
+	border: 1px solid rgba(0, 0, 0, 0.51);
+
+	border-bottom-color: rgba(0, 0, 0, 0.85);
+border-radius: 4px;
+
+      -webkit-transition: background-color .1s;
+-moz-transition: background-color .1s;
+-o-transition: background-color .1s;
+transition: background-color .1s;
+
+cursor:pointer;
+	background-color: rgba(53, 53, 53, 1);
+}
+
+a.showcase-link-read{
+	margin-left: 57.5px;
+}
+
+a.showcase-link-download{
+	margin-left:36.5px;
+}
+
+a.showcase-link:hover{
+border: 1px solid rgba(0, 0, 0, 0.83);
+border-bottom-color: rgba(0, 0, 0, 1);
+background-color: rgba(34, 34, 34, 1);
+}
+a.showcase-link:active{
+-moz-box-shadow: inset 0 2px 5px 1px rgba(0, 0, 0, 0.66);
+-webkit-box-shadow: inset 0 2px 5px 1px rgba(0, 0, 0, 0.66);
+box-shadow: inset 0 2px 5px 1px rgba(0, 0, 0, 0.66);
 }
 
 .st-one{
@@ -583,7 +657,7 @@ height: 60px;
     float: left;
 
     display: inline-block;
-    width: 33.3333333%;
+    width: 25%;
     font-size: 11px;
     line-height: 18px;
     text-align: center;
@@ -626,7 +700,7 @@ b.tab-indicator{
 	display:block;
 	height:1px;
 	background:none;
-	width:33.3333%;
+	width: 25%;
 	bottom: -59px;
 	position: relative;
 	-webkit-transition: all ease-in-out 0.4s;
@@ -663,7 +737,7 @@ bottom: 0pz;
 .professor-group{
 	padding:5px;
 	width:99%;
-	background: rgba(204,204,204,.8) url(src/white-gradient-300px.png) repeat-x 0 100%;
+	background: #ffffff;
 -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
 -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
 box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
@@ -739,4 +813,9 @@ display: inline;
 font-size: 14px;
 vertical-align: super;
 font-weight: 400;
+}
+
+.user-tab-groups-content{
+	display:none;
+	opacity:0;
 }

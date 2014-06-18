@@ -19,10 +19,10 @@ body{
 }
 
 .top-bar{
-	position:fixed;
+	position:absolute;
 	width:100%;
 	height: 47px;
-
+	top:0px;
 	background-color: #27292B;
 	background-image: url(src/noise-1.png),-webkit-gradient(linear,left top,left bottom,from(#27292B),to(#121314));
 	background-image: url(src/noise-1.png),-webkit-linear-gradient(top,#27292B,#121314);
@@ -31,10 +31,8 @@ body{
 	background-image: url(src/noise-1.png),-ms-linear-gradient(top,#27292B,#121314);
 	background-image: url(src/noise-1.png),linear-gradient(top,#27292B,#121314);
 	background-position: 50% 50%;
-	z-index: 100;
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.65); 
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.65); 
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.65);
+	z-index: 6000;
+
 }
 
 .logo-h{
