@@ -6,6 +6,13 @@ $(document).ready(function() {
 		$(this).removeClass("inactiveType");
 	});
 
+	$(document).delegate(".fav","click",function(){
+		if($(this).hasClass("selected"))
+		{
+			$(this).removeClass("selected");
+		}
+	});
+	
 	$(document).delegate(".activeType","click",function(){
 		$(this).addClass("activeType");
 		$(this).removeClass("inactiveType");
@@ -132,18 +139,12 @@ $(document).ready(function() {
 			$(this).addClass("join");
 	});		
 
-
-	var lastslide_pos=0;
-	$(".slide").each(function( index ) {
-		var x= 250*index;
-		lastslide_pos=x-250;
-		var para= "matrix(1,0,0,1,"+x+",0)";
-		$(this).css({"transform":para,"-webkit-transform":para});
-	});
-
-
 	var matrix_x = 0;
 	$(document).delegate(".ar-right","mouseover",function(){
+		$(".slide").each(function( index ) {
+			var x= 250*index;
+			lastslide_pos=x-250;
+		});
 		if($(this).hasClass("ar-disabled")){
 			return
 		}
@@ -174,7 +175,7 @@ $(document).ready(function() {
 		}
 	});	
 	$(document).delegate(".ar-left","mouseout",function(){
-		if($(this).hasClass("ar-disabled")){return}
+		if($(this).hasClass("ar-disabled")){return;}
 		if(!$(this).hasClass("ar-disabled")){
 		matrix_x = matrix_x - 15; 
 		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
@@ -183,11 +184,9 @@ $(document).ready(function() {
 	});	
 
 	$(document).delegate(".ar-right","click",function(){
-
-		
 			matrix_x = matrix_x - 250;
 			if(matrix_x>=0){matrix_x=0;}
-			if((0-matrix_x)>=lastslide_pos){
+			if((0-matrix_x) >= lastslide_pos){
 				matrix_x=0-lastslide_pos;
 				$(".arrow-next").addClass("arrow-disabled");
 				$(".ar-right").addClass("ar-disabled");
@@ -225,6 +224,10 @@ $(document).ready(function() {
 	var ondrag=0;
 	var originX=0;
 	$(document).delegate(".ContentSlider","mousedown",function(e){
+		$(".slide").each(function( index ) {
+			var x= 250*index;
+			lastslide_pos=x-250;
+		});
 		ondrag=1;
 		originX=e.clientX;
 	});
@@ -275,24 +278,6 @@ $(document).ready(function() {
     	}
     }
 	});
-
-
-
-
-
-	  $(function() {
-	    $( "#slider-range" ).slider({
-	      range: true,
-	      min: 0,
-	      max: 500,
-	      values: [ 0, 40 ],
-	      slide: function( event, ui ) {
-	        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-	      }
-	    });
-	    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-	      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-	  });
 
 });
 
@@ -440,7 +425,7 @@ var range_slider = function (params) {
     // Correct rounding before init
     min = floor(min);
     max = ceil(max);
-
+   
     /* ----- Element specific error handling -----*/
 
     // Scrubber width do not match
@@ -478,7 +463,20 @@ var range_slider = function (params) {
             console.error("value parsed in is not a number.");
         }
     };
-
+  //Added by Kushal
+    /*---- Get the left and right values -----*/
+    that.getLeftScrubber = function()
+    {
+    	var lower = $_left_label.get(0).innerHTML;
+    	return lower.replace(unit,"").trim();
+    };
+    
+    that.getRightScrubber = function()
+    {
+    	var higher = $_right_label.get(0).innerHTML;
+    	return higher.replace(unit,"").trim();
+    };
+/*----------------------------------------------------------------------*/
     that.updateMax = function (unit_value) {
         // Force to be a number
         unit_value = parseFloat(unit_value);
@@ -784,5 +782,6 @@ var range_slider = function (params) {
 		    dragging_right = false;
 		}
 	);
+    
 
 }
