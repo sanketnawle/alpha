@@ -1,9 +1,14 @@
 
+body 
+{
+	overflow-x:hidden;
+}
+
 #posts
 {
 	font-family: 'Open Sans';
 	float: left;
-	width: 660px;
+	width: 700px;
 }
 
 .posts
@@ -440,10 +445,10 @@ height: auto;
 cursor: default;
 position: absolute;
 padding-bottom: 3px;
-margin-top: 5px;
+margin-top: 19px;
 display: none;
 z-index: 100;
-margin-left: 50px;
+margin-left: 54px;
 }
 
 .visi_functions_option{
@@ -464,10 +469,15 @@ border-top: 1px solid #42B67E;
 border-bottom: 1px solid #3AC979;
 }
 
-.field:hover
+.privacy_canedit .field:hover
 {
-	text-decoration: underline;
-	color: #666;
+	border: 1px solid rgba(60,60,60,0.23)!important;
+	background-color: rgba(60,60,60,0.03);
+}
+
+.privacy_canedit .field:hover .vstt_wedgeDown
+{
+	opacity:1!important;
 }
 
 .field:active
@@ -588,8 +598,33 @@ cursor:pointer;
 
 .comment_updown{
 width: 30px;
-margin-top: 25px;
 float: right;
+margin-top: 12px;
+}
+
+.long-len .comment_updown
+{
+	margin-top: 30px!important;
+}
+
+.mid-len .comment_updown
+{
+	margin-top: 25px!important;
+}
+
+.downvoted .comment_downvote
+{
+	opacity: 1!important;
+}
+
+.upvoted .comment_upvote
+{
+	background:  no-repeat url(img/upvote_active.png)!important;
+}
+
+.upvoted .score
+{
+	color: rgba(2, 226, 167, 0.6)!important;
 }
 
 .comment_upvote{
@@ -1265,10 +1300,9 @@ margin-top: -2px;
 {
 height: 20px;
 width: 20px;
-padding-left: 13px;
-margin-left: 50px;
-margin-top: -3px;
 opacity:1;
+margin-left: 2px;
+float: left;
 }
 
 .cmt_f_attach
@@ -1276,6 +1310,18 @@ opacity:1;
 float: left;
 margin-left: 20px;
 margin-top: -1px;
+}
+
+.field
+{
+margin-left: 55px;
+height: 20px;
+float: left;
+border: 1px solid rgba(60,60,60,0);
+border-radius: 4px;
+padding: 3px;
+padding-right: 6px;
+margin-top: -9px;
 }
 
 .cmt_f_attach img 
@@ -1326,11 +1372,11 @@ color: #989898;
 	position: absolute;
 	font-family: 'Open Sans Regular', 'Open Sans', sans-serif;
 	color:white;
-	margin-left: 67px;
-	margin-top:2px;
+	margin-top:22px;
 	z-index:10;
 	width: 1000px;
 	display: none;
+	margin-left: 5px;
 
 }
 
@@ -1365,6 +1411,24 @@ color: #989898;
 	border-bottom: 8.5px solid #575757;
 	margin-left: -1px;
 	margin-top: -3px;
+}
+
+.vstt_wedgeDown
+{
+float: left;
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 7px solid rgba(60,60,60,0.5);
+margin-left: 5px;
+margin-top: 8px;
+opacity: 0;
+}
+
+.text_hidden
+{
+	display:none;
 }
 
 

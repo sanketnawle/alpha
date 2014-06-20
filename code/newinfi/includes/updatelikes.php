@@ -59,5 +59,5 @@ echo $status;
 	// else{
 	// 	echo "Mazaak: Give me the details to fetch data";
 	// }
-
+mysqli_close($con);
 ?>

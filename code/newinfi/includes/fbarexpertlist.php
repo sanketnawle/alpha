@@ -23,7 +23,7 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
 
 	if(mysqli_num_rows($cresult)){
 		while($row = mysqli_fetch_array($cresult)) {
-	    	echo $row['firstname']." ".$row['lastname']<br>";
+	    	echo $row['firstname']." ".$row['lastname']."<br>";
 		}
 	}
 

@@ -4,7 +4,12 @@ $_SESSION['user_id']='1';
 
 	$cownership=checkcowner($con,$row1['reply_id']);
 
-				echo "<div class = 'post_comment' id = '".strtotime($row1['update_timestamp'])."'>";
+	$reply_len = strlen($reply_msg = $row1['reply_msg']);
+	if(77<$reply_len and $reply_len<157) $rlen_flag = "mid-len";
+	else if($reply_len>156) $rlen_flag = "long-len";
+	else $rlen_flag = NULL;
+
+				echo "<div class = 'post_comment ".$rlen_flag."' id = '".strtotime($row1['update_timestamp'])."'>";
 
 					if($cownership=="reply" or $pownership=="post"){
 						echo "<div class = 'comment_delete'>
@@ -12,9 +17,10 @@ $_SESSION['user_id']='1';
 						</div>";
 					}
 					
-				$vote_status=rvotestatus($con,$row1['reply_id']);
-					$reply_votes = $reply['up_vote']-$reply['down_vote'];
-					echo "<div class = 'comment_updown ".$vote_status."'>
+					$vote_status=rvotestatus($con,$row1['reply_id']);
+					$reply_votes = $row1['up_vote']-$row1['down_vote'];
+					echo "
+					<div class = 'comment_updown ".$vote_status."'>
 						<div class = 'comment_upvote cmt_vote'></div>
 						<div class = 'score'>".$reply_votes."</div>
 						<div class = 'comment_downvote cmt_vote'></div>
@@ -54,7 +60,10 @@ $_SESSION['user_id']='1';
 						</a>
 						<div class = 'comment_msg seemore_anchor' id = '".$row1['reply_id']."'>";
 						// echo $row1['post_id'];
-							if(strlen($reply_msg = $row1['reply_msg'])>100) echo substr($reply_msg,0,200)." . . . <span class='pst_seemore'> see more</span>";
+							if($reply_len>200){
+								echo substr($reply_msg,0,200)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
+								echo "<span class='text_hidden'>".substr($reply_msg,200)."</span>";
+							}
 							else echo $reply_msg;
 							echo "</div>
 					</div>
@@ -67,3 +76,6 @@ $_SESSION['user_id']='1';
 
 					echo "</div>
 				</div>";
+
+?>
+

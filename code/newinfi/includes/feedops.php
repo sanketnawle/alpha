@@ -5,8 +5,8 @@ $_SESSION['user_id']="1";
 
 // Uncomment the below 3 lines if you are testing this page alone
 // $_POST['post_id'] = "f6e6ee97-f651-11e3-b732-00259022578e";
-// $_POST['reply_id'] = "6655929c-f666-11e3-b732-00259022578e";
-// $_POST['vote'] = "downvote";
+// $_POST['reply_id'] = "13";
+// $_POST['vote'] = "upvote";
 // $_POST['like']='1';
 // $_POST['delete']='1';
 // $_POST['hide']='1';
@@ -40,12 +40,12 @@ if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
 if($contentid!="none"){
 	if(isset($_POST['like'])) like($con,$table,$updatetable,$contenttype,$contentid);
 	else if(isset($_POST['unlike'])) unlike($con,$table,$updatetable,$contenttype,$contentid);
-	else if(isset($_POST['vote'])) vote($con,$votetable,$contenttype,$contentid);
+	else if(isset($_POST['vote'])) vote($con,$votetable,$contenttype,$contentid,$updatetable);
 	else if(isset($_POST['delete'])) delete($con,$updatetable,$contenttype,$contentid);
 	else if(isset($_POST['privacy'])) updateprivacy($con,$contenttype,$contentid,$privacy);
 	else if(isset($_POST['report'])) report($con,$table,$updatetable,$contenttype,$contenttype,$contentid);
 	else if(isset($_POST['hide'])) hide($con,$contenttype,$contentid);
-	else if(isset($_POST['seemore'])) seemore($con,$content,$updatetable,$contenttype,$contentid);
+	// else if(isset($_POST['seemore'])) seemore($con,$content,$updatetable,$contenttype,$contentid);
 	else if(isset($_POST['edit'])){
 		$updatetext=$_POST['edit'];
 		edit($con,$updatetable,$content,$updatetext,$contenttype,$contentid);
@@ -103,7 +103,7 @@ function votestatus($con,$votetable,$contenttype,$contentid){
 	$votestatus = "none"; //setting up default value
 
 	// checking if user has voted
-	$upstatusquery = "SELECT * FROM ".$votetable." WHERE user_id='".$_SESSION['user_id']."' AND ".$contenttype."='".$contentid."' AND vote_type = 'upvote'";
+	$upstatusquery = "SELECT user_id FROM ".$votetable." WHERE user_id='".$_SESSION['user_id']."' AND ".$contenttype."='".$contentid."' AND vote_type = 'upvote'";
 	$userupvotes = mysqli_query($con,$upstatusquery); //Checks if currently loggedin user liked this status or not
 	if($userupvotes){
 		$upcount = mysqli_num_rows($userupvotes);
@@ -112,7 +112,7 @@ function votestatus($con,$votetable,$contenttype,$contentid){
 	
 	// checking if user has downvoted
 	if($votestatus!="upvoted"){
-		$downstatusquery = "SELECT * FROM ".$votetable." WHERE user_id='".$_SESSION['user_id']."' AND ".$contenttype."='".$contentid."' AND vote_type = 'downvote'";
+		$downstatusquery = "SELECT user_id FROM ".$votetable." WHERE user_id='".$_SESSION['user_id']."' AND ".$contenttype."='".$contentid."' AND vote_type = 'downvote'";
 		$userdownvotes = mysqli_query($con,$downstatusquery); //Checks if currently loggedin user liked this status or not
 		if($userdownvotes){
 			$downcount = mysqli_num_rows($userdownvotes);
@@ -122,30 +122,65 @@ function votestatus($con,$votetable,$contenttype,$contentid){
 	return $votestatus;
 }
 
-function vote($con,$votetable,$contenttype,$contentid){
+function vote($con,$votetable,$contenttype,$contentid,$updatetable){
 	// echo $votetable;
+	echo $vote_flag = NULL ;
 	$votestatus=votestatus($con,$votetable,$contenttype,$contentid);
 	if($votestatus=="none"){
 		$votequery="INSERT INTO ".$votetable." (".$contenttype.", user_id, vote_type) VALUES ('".$contentid."','".$_SESSION['user_id']."','".$_POST['vote']."')";
 		$voteresult = mysqli_query($con,$votequery);
 		if($voteresult){
-			echo "vote_insert success";
+			echo $vote_flag = "success";
+			// echo "vote_insert success";
 		}
-		else echo "vote_insert failed";
+		else {
+			echo $vote_flag = "fail";
+			// echo "vote_insert failed";
+		}
 	}
-	else if(($votestatus=="upvoted" AND $_POST['vote']=="upvote") OR ($votestatus=="downvoted" AND $_POST['vote']=="downvote")){
+	else if(($votestatus=="upvoted" AND $_POST['vote']=="upvote") OR ($votestatus=="downvoted" AND $_POST['vote']=="downvote")) {
 		$delvoteq = "DELETE FROM ".$votetable." WHERE ".$contenttype." = '".$contentid."' AND user_id = '".$_SESSION['user_id']."'";
 		$delvote = mysqli_query($con,$delvoteq);
-		if($delvote) echo "vote_del success";
-		else echo "vote_del failed";
+		if($delvote){
+			echo $vote_flag = "success";
+			// echo "vote_del success";
+		}
+		else {
+			echo $vote_flag = "fail";
+			// echo "vote_del failed";
+		}
 	}
 	else{
 		$votequery="UPDATE ".$votetable." SET vote_type = '".$_POST['vote']."' WHERE ".$contenttype." = '".$contentid."' AND user_id = '".$_SESSION['user_id']."'";
 		$voteresult = mysqli_query($con,$votequery);
 		if($voteresult){
-			echo "vote_update success";
+			echo $vote_flag = "success";
+			// echo "vote_update success";
 		}
-		else echo "vote_update failed";
+		else {
+			echo $vote_flag = "fail";
+			// echo "vote_update failed";
+		}
+	}
+	// echo $vote_flag = "success";
+	//updating reply_votes count in reply table
+	if($vote_flag == "success"){
+		$upvotes=0; $downvotes=0;
+		$upvoteq = "SELECT vote_type AS vote_type, COUNT(*) AS votes FROM ".$votetable." WHERE ".$contenttype." = '".$contentid."' GROUP BY vote_type";
+		$upvote_res = mysqli_query($con, $upvoteq);
+		if($upvote_res){
+			while($vcrow = mysqli_fetch_array($upvote_res)){
+				if ($vcrow['vote_type']=="upvote") $upvotes = $vcrow['votes'];
+				else if($vcrow['vote_type']=="downvote") $downvotes = $vcrow['votes'];
+			}
+		}
+		// else echo "nope";
+		$update_upvotes = mysqli_query($con, "UPDATE ".$updatetable." SET up_vote = '".$upvotes."' WHERE ".$contenttype." = '".$contentid."'");
+		$update_downvotes = mysqli_query($con, "UPDATE ".$updatetable." SET down_vote = '".$downvotes."' WHERE ".$contenttype." = '".$contentid."'");
+		// if($update_upvotes) echo "upvote update success"; echo $upvotes;
+		// if($update_downvotes) echo "downvote update success"; echo $downvotes;
+		mysqli_free_result($update_upvotes);
+		mysqli_free_result($update_downvotes);
 	}
 }
 
@@ -334,15 +369,16 @@ function hide($con,$contenttype,$contentid){
 	else echo "hide failed";
 }
 
-function seemore($con,$content,$updatetable,$contenttype,$contentid){
-	$seemore_query = "SELECT ".$content." from ".$updatetable." WHERE ".$contenttype."='".$contentid."'";
-	$seemore_result = mysqli_query($con,$seemore_query);
-	if($seemore_result){
-		while($srow = mysqli_fetch_array($seemore_result)){
-			if($content=="reply_msg") echo $srow['reply_msg'];
-			else if($content=="text_msg") echo $srow['text_msg'];
-		}
-	}
-}
+// function seemore($con,$content,$updatetable,$contenttype,$contentid){
+// 	$seemore_query = "SELECT ".$content." from ".$updatetable." WHERE ".$contenttype."='".$contentid."'";
+// 	$seemore_result = mysqli_query($con,$seemore_query);
+// 	if($seemore_result){
+// 		while($srow = mysqli_fetch_array($seemore_result)){
+// 			if($content=="reply_msg") echo $srow['reply_msg'];
+// 			else if($content=="text_msg") echo $srow['text_msg'];
+// 		}
+// 	}
+// }
 
+mysqli_close($con);
 ?>

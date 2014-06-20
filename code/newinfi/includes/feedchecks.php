@@ -4,7 +4,7 @@ require_once("dbconfig.php");
 $_SESSION['user_id']='1';
 
 // $pid='209';
-// $cid='254';
+// $cid='13';
 
 function checkpowner($con,$pid){
 		$pownerquery="SELECT * FROM posts WHERE post_id= '".$pid."' and user_id = ".$_SESSION['user_id'] ;
@@ -37,20 +37,20 @@ function checkhidden($con,$pid){
 					$votestatus = "none"; //setting up default value
 
 					// checking if user has voted
-					$upstatusquery = "SELECT * FROM reply_votes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$replyid."' AND vote_type = '1'";
+					$upstatusquery = "SELECT * FROM reply_votes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$replyid."' AND vote_type = 'upvote'";
 					$userupvotes = mysqli_query($con,$upstatusquery); //Checks if currently loggedin user liked this status or not
 					if($userupvotes){
 						$upcount = mysqli_num_rows($userupvotes);
-						if($upcount!=0) $votestatus="upvoted";
+						if($upcount!=0) return $votestatus="upvoted";
 					}
 	
 					// checking if user has downvoted
 					if($votestatus!="upvoted"){
-						$downstatusquery = "SELECT * FROM reply_votes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$replyid."' AND vote_type = '-1'";
+						$downstatusquery = "SELECT * FROM reply_votes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$replyid."' AND vote_type = 'downvote'";
 						$userdownvotes = mysqli_query($con,$downstatusquery); //Checks if currently loggedin user liked this status or not
 						if($userdownvotes){
 							$downcount = mysqli_num_rows($userdownvotes);
-							if($downcount!=0) $votestatus="downvoted";
+							if($downcount!=0) return $votestatus="downvoted";
 						}
 					}
 					return $votestatus;
@@ -59,4 +59,6 @@ function checkhidden($con,$pid){
 // echo $pownership=checkpowner($con,$pid);
 // echo $cownership=checkcowner($con,$cid);
 // echo $hidden=checkhidden($con,$pid);
+// echo $vs = rvotestatus($con,$cid);
+
 ?>

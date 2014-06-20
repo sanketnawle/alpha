@@ -236,6 +236,8 @@ $(document).ready(function() {
 				});
 
 
+
+
 				/*
 				$(document).delegate('.mf_liked',"mouseover", function(){
 					$(this).closest(".post_lc").find(".mf_name").text($(this).attr("id"));
@@ -265,10 +267,16 @@ $(document).ready(function() {
 					$(this).find(".comment_delete").hide();
 				});
 
-				$(document).delegate('.vstt_icon',"click", function(){
+				$(document).delegate('.field',"click", function(){
+					if($(this).closest(".posttool-select").hasClass("privacy_canedit")){
 					$(this).closest(".posttool-select").find(".visi_functions_box").show();
 					cardtag_flag=1;
 					$(this).closest(".field").find(".card-tag").hide();
+
+					$(this).css({"border":"1px solid rgba(60,60,60,0.23)","background-color":"rgba(60,60,60,0.03)"});
+
+					$(this).find(".vstt_wedgeDown").css({"opacity":"1"});
+					}
 				});
 
 				
@@ -279,10 +287,15 @@ $(document).ready(function() {
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
 			     		$container.find(".visi_functions_box").stop().hide();
 			     		cardtag_flag=0;
+
+			     		$container.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"white"});
+						$container.find(".vstt_wedgeDown").css({"opacity":"0"});
 			     	}
 			     	if($target.hasClass(".visi_functions_option")){
 			     		$container.find(".visi_functions_box").stop().hide();
 			     		cardtag_flag=0;
+			     		$container.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"white"});
+						$container.find(".vstt_wedgeDown").css({"opacity":"0"});
 			     	}
 				});
 
@@ -310,6 +323,17 @@ $(document).ready(function() {
 
 			     	$(this).closest(".visi_functions_box").hide();
 			     	cardtag_flag=0;
+			     	ref.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"white"});
+					ref.find(".vstt_wedgeDown").css({"opacity":"0"});
+
+					var src_2=$(this).closest(".posttool-select").find(".visi_icon").css("background-image");
+					var srcarr= src_2.split("_");
+					srcarr[srcarr.length-1]="status.png";
+					var subarr=srcarr[srcarr.length-2].split("/");
+					srcarr[srcarr.length-2]="status/"+privacy;
+					var src_2=srcarr.join("_").substring(4);
+					//alert(src_2);
+					$(this).closest(".posttool-select").find(".vstt_icon").attr("src",src_2);
 			     });
 	
 
@@ -583,7 +607,7 @@ $(document).ready(function() {
 		$(document).delegate(".visi_functions_option","mouseover",function(){
 			var src=$(this).closest("span").find(".visi_icon").css("background-image");
 			srcarr=src.split("_");
-			srcarr[srcarr.length-1]="hover.png";
+			srcarr[srcarr.length-1]="hover.png)";
 			src=srcarr.join("_");
 			//alert(src);
 			$(this).closest("span").find(".visi_icon").css("background-image",src);
@@ -592,7 +616,7 @@ $(document).ready(function() {
 		$(document).delegate(".visi_functions_option","mouseout",function(){
 			var src=$(this).closest("span").find(".visi_icon").css("background-image");
 			srcarr=src.split("_");
-			srcarr[srcarr.length-1]="normal.png";
+			srcarr[srcarr.length-1]="normal.png)";
 			src=srcarr.join("_");
 			$(this).closest("span").find(".visi_icon").css("background-image",src);
 		});
@@ -606,13 +630,13 @@ $(document).ready(function() {
 
 						if($(this).hasClass("comment_upvote")){
 							vote="upvote";
-							$(this).css({"background-image":"url(img/upvote_active.png)"});
-							$(this).closest(".comment_updown").find(".comment_downvote").css({"opacity":"0.4"});
+							//$(this).css({"background-image":"url(img/upvote_active.png)"});
+							//$(this).closest(".comment_updown").find(".comment_downvote").css({"opacity":"0.4"});
 						}
 						if($(this).hasClass("comment_downvote")){
 							vote="downvote";
-							$(this).closest(".comment_updown").find(".comment_upvote").css({"background-image":"url(src/upvote.png)"});
-							$(this).css({"opacity":"1"});
+							//$(this).closest(".comment_updown").find(".comment_upvote").css({"background-image":"url(src/upvote.png)"});
+							//$(this).css({"opacity":"1"});
 						}
 						var score=parseInt($(this).closest(".post_comment").find(".score").text());
 
@@ -635,7 +659,7 @@ $(document).ready(function() {
 						//alert(score);
 						$(this).closest(".comment_updown").find(".score").text(score);
 
-						//alert(reply_id);
+						//alert(vote);
 						$.ajax({
 	            			type: "POST",
             				url: "includes/feedops.php",
@@ -648,7 +672,7 @@ $(document).ready(function() {
 
 
 		$(document).delegate(".pst_seemore","click",function(){
-
+				/*
 					var type= $(this).closest(".seemore_anchor");
 
 					if(type.hasClass("comment_msg")){
@@ -672,7 +696,10 @@ $(document).ready(function() {
 	                			type.html(html);
 			            	}
 						});
-					}
+					}*/
+					$(this).closest(".seemore_anchor").find(".txt_tail").hide();
+					$(this).closest(".seemore_anchor").find(".text_hidden").show();
+					$(this).hide();
 		});
 
 				function latest_feed() {
@@ -690,11 +717,6 @@ $(document).ready(function() {
 			            	}
 						});
 				}
-
-
-
-
-
 
 
 });
@@ -719,6 +741,3 @@ $(document).ready(function() {
 <?php
 mysqli_close($con);
 ?>
-
-
-

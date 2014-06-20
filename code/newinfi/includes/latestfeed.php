@@ -34,5 +34,5 @@ if(isset($_POST['latest'])){
 	}
 }
 // else echo "Mazaak: Beta, For every output you expect, there must be an input given.";
-
+mysqli_close($con);
 ?>

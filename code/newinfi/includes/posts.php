@@ -40,7 +40,7 @@
 								echo "<span class = 'post_format'> posted in <span class = 'post_group'>Web Programming</span></span>";
 							echo "</div>";
 				
-							echo "<div class = 'post_time'>Started discussion at ".$row['update_timestamp']."</div>
+							echo "<div class = 'post_time'>Discussion started at ".$row['update_timestamp']."</div>
 						</div>
 
 						<div class = 'post_tag'>
@@ -48,7 +48,10 @@
 						</div>
 						<div class = 'post_msg'>
 							<span class='msg_span seemore_anchor'>";
-								if(strlen($text_msg = $row['text_msg'])>100) echo substr($text_msg,0,500)." . . . <span class='pst_seemore'> see more</span>";
+								if(strlen($text_msg = $row['text_msg'])>100){
+									echo substr($text_msg,0,500)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
+									echo "<span class='text_hidden'>".substr($text_msg,500)."</span>";
+								}
 								else echo $text_msg;
 							echo "</span>
 						</div>
@@ -82,7 +85,7 @@
 								
 								<span class='field'>
 									<img class='vstt_icon' src='img/privacy_icons/privacy_status/".$row['privacy']."_status.png'>
-									
+									<div class='vstt_wedgeDown'></div>
 									<div class = 'card-tag'>
 										<div class = 'tag-wedge'></div>
 										<div class = 'tag-box'>
@@ -193,4 +196,5 @@
 				</div>
 			</div>";
 	}
+
 ?>
