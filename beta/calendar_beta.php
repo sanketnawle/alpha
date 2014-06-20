@@ -162,13 +162,19 @@
 
                                                             <div class="qa_scrollcontainer" style="max-height: 400px; width: 474px; background: #FFF; z-index: 1; min-height: 350px;">
 
-                                                                <div class="iComments" id="inviteConnections">                                                                   
+                                                                <div class="iComments" id="inviteConnections">
 
-
+                                                                    
 
                                                                 </div>
 
                                                             </div>
+
+															<div class='repeatc-1 invites_done'>
+
+                                                <button class="btn-addevent-1 btn-addevent" id="btnInviteDone">Done</button>
+
+                                            </div>
 
                                                         </div>
 
@@ -566,7 +572,7 @@
 
                                                 <div class='repeatc-1'>
 
-                                                    <div class='repeathead-1' id="invitedConnections" onclick="toggleInviteConnections(this);" style="cursor: pointer;">Invite Connections.</div>
+                                                    <div class='repeathead-1 inviteConnections' id="invitedConnections" onclick="toggleInviteConnections(this);" style="cursor: pointer;">Invite Connections</div>
 
                                                     
 
@@ -606,7 +612,7 @@
 
                                                 <div class='repeatc-1'>
 
-                                                <button class="btn-addevent-1 btn-addevent" id="btnAddThisEvent">Add Event</button>
+                                                <button class="btn-addevent-1 btn-addevent btn-addevent-modal" id="btnAddThisEvent">Add Event</button>
 
                                             </div>
 
@@ -636,7 +642,7 @@
 
                             <div class="cals-header">
 
-                                Class Events
+                                Your Class Events
 
               <span class="cal-group-hider">Hide</span>
 
@@ -692,7 +698,7 @@
 
                             <div class="cals-header">
 
-                                Club Events
+                               Your Club Events
 
               <span class="cal-group-hider">Hide</span>
 
@@ -724,7 +730,7 @@
 
                             <div class="cals-header">
 
-                                Private Events
+                               Your Personal Events
 
               <span class="cal-group-hider">Hide</span>
 
@@ -764,7 +770,7 @@
 
                     <div class="ui-icon-btn">
 
-                        <img class="icon" src="img/download-button.png">
+                        <img class="icon" src="img/import_cal_icon.png">
 
                         <div class="ui-icon-lab">
 
@@ -785,6 +791,8 @@
                         12
 
                     </div>
+
+                    <span class = "incomplete-text-head">Incompleted</span>
 
                 </div>
 
@@ -810,7 +818,7 @@
 
                         <div class="month-events">
 
-                            <span style="font-weight: 600;">17</span> events this month
+                            <span class = "events-this-month" style="font-weight: 700;">17</span> Events this month
 
                         </div>
 

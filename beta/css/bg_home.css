@@ -1,0 +1,15 @@
+body
+
+{
+font-family: 'Open Sans', sans-serif;
+margin: 0px auto;
+background: #edeeef url(../img/noise-2.png);
+min-width: 720px;
+position: absolute;
+top: 0;
+right: 0;
+left: 0;
+bottom: 0;
+overflow: scroll;
+}
+

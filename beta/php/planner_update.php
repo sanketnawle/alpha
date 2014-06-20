@@ -1,55 +1,31 @@
 <?php
 
+include 'dbconnection.php';
 
 
-$host = "localhost";
-
-$user = "campusla_UrlinqU";
-
-$password = "PASSurlinq@word9";
-
-$database = "campusla_urlinq_demo";
-
-
-
-$con = mysqli_connect($host, $user, $password, $database);
-
-//Checking connection
-
-if (mysqli_connect_errno()) {
-
-    echo "Failed to connect";
-
+$user_id = 0;
+if (isset($_POST['user_id'])) {
+    $user_id = $_POST['user_id'];
 }
-
-
-
-$sid = 0;
-
-if(isset($_GET['student_id'])){
-
-    $sid = $_GET['student_id'];
-
-}
-
-
-
-
 
 $event_id = mysqli_escape_string($con, $_POST['event_id']);
-
+$event_type = mysqli_escape_string($con, $_POST['event_type']);
 $value = mysqli_escape_string($con, $_POST['value']);
 
 
 
-$sql = "UPDATE personal_event SET ischeck='$value' WHERE `eventid` = '$event_id' and `s_id`= '$sid'";
+switch ($event_type) {
+    case 1:
+        $sql = "UPDATE personal_event SET is_check='$value' WHERE `event_id` = $event_id and `user_id`= $user_id";
+        if (!mysqli_query($con, $sql)) {
 
-
-
-if (!mysqli_query($con, $sql)) {
-
-    echo "Error in executing query";
-
+            echo "Error in executing query";
+        }
+        break;
+    case 5:
+        $sql = "UPDATE group_event_invited SET is_check='$value' WHERE `event_id` = $event_id and `user_id`= $user_id";
+        if (!mysqli_query($con, $sql)) {
+            echo "Error in executing query";
+        }
 }
-
 ?>
