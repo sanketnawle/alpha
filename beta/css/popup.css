@@ -14,7 +14,7 @@
 	margin: auto;
 	margin-top: 160px;
     display:none;
-    z-index:10;
+    z-index:500;
 }
 
 .popup_head
@@ -81,6 +81,8 @@
 	width: 100%;
 	position: fixed;
 	background-color: rgba(0,0,0,0.5);
+    z-index:400;
+    display:none;
 }
 
 .popup_btn_0

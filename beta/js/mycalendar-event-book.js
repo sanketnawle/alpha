@@ -1,3 +1,31 @@
+    $(document).ready(function() {
+        var tdt=$(".fc-header-left .fc-header-title h2").text();
+        var tdtarr=tdt.split(" ");
+        var tdtarr1="<span class='tdt_0'>"+tdtarr[0]+"</span>";
+        var tdtarr2="<span class='tdt_1'>"+tdtarr[1]+"</span>";
+        var tdt= tdtarr1+" "+tdtarr2;
+        $(".fc-header-left .fc-header-title h2").html(tdt);
+
+        
+        $(document).delegate(".cal-group-toggle-checked", "click", function () {
+                $(this).closest(".cal-group").css("opacity",".65");
+                $(this).removeClass("cal-group-toggle-checked");
+                $(this).addClass("cal-group-toggle-unchecked");
+                $(this).find(".cal-group-checkmark").removeClass("cal-group-checkmark-checked");
+                $(this).find(".cal-group-checkmark").addClass("cal-group-checkmark-unchecked");
+        });
+        $(document).delegate(".cal-group-toggle-unchecked", "click", function () {
+                $(this).closest(".cal-group").css("opacity","1");
+                $(this).removeClass("cal-group-toggle-unchecked");
+                $(this).addClass("cal-group-toggle-checked");
+                $(this).find(".cal-group-checkmark").removeClass("cal-group-checkmark-unchecked");
+                $(this).find(".cal-group-checkmark").addClass("cal-group-checkmark-checked");
+        });
+
+    });
+
+
+
 $(function () {
 
         $('#popupDatepicker').datepick();
@@ -3399,6 +3427,8 @@ $(document).ready(function () {
         }
 
         $('#invitedConnections').text(connectionsInvited + ' connections invited');
+
+        
 
     }
 

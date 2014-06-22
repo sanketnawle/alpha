@@ -313,16 +313,15 @@ color: white;
 #event-new {
     position: relative;
     height: 65px;
-    width: 190px;
-    border-radius: 5px;
-    /* background-color: #f6f7f8; */
-    /* border: 1px solid #e9eaed; */
-    margin-top: 10px;
-    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: #eaeaea; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2); padding-top: 5px; border-radius: 4px; 
+    width: 221px; 
+    border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 #button-border {
-    height: 70px;
+    height: 65px;
     width: 250px;
 }
 
@@ -1236,7 +1235,7 @@ input[type="text"] {
 
 
 .fixed-cal-fbar {
-    height: 94px;
+    height: 95px;
     background-color: rgba(255, 255, 255, 1);
     width: 1044px;
     position: absolute;
@@ -1319,45 +1318,50 @@ input[type="text"] {
     cursor: pointer;
     outline: 0;
     padding: 0px 8px;
-    margin-top: 3px;
+    
     background: #D3D3D3 url(../img/glass.png) repeat-x 0 50%;
     width: 130px;
     text-shadow: 0 1px 1px #ABAFAC;
     line-height: 35px;
-    height: 38px;
+    
+
+    height: 48px;
     text-align: center;
     border-radius: 5px;
-    font-size: 16px;
+    
+
+    font-size: 18px;
     font-weight: bold;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-    color: #666;
+    
+
+    color: white;
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
     outline: none;
     border-color: transparent;
     border: 1px solid transparent;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    transition: all 0.15s ease; -moz-transition: all 0.15s ease; border-width: 1px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15); 
+
+    background-color: rgba(28, 109, 230, 0.8); 
+
+    background: rgba(28, 109, 230, 0.8);
+
 }
 
     .btn-addevent:hover {
-background-color: #02e2a7;
-cursor: pointer;
-color: white;
-box-shadow: 0 1px 1px rgba(0,0,0,0.39);
-transition: all 0s;
--moz-box-shadow: 0 1px 1px rgba(0,0,0,0.39);
--moz-transition: all 0s;
--o-transition: all 0s;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.39);
-border-color: #389677 #14A072 #06724F;
+cursor: pointer; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1); box-shadow: 0 1px 1px rgba(0,0,0,0.1); 
+background-color: rgba(28, 109, 230, 0.8); background-image: linear-gradient(top,#22C791,#1AAC7C); background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.15)); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#26000000)"; border-top: none;
 }
 
     .btn-addevent:active {
--moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
--webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-border-color: #257A5E #0F865F #07835A;
-background-color: #01CE98;
 color: white;
+background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000, endColorstr=#26000000)"; border-color: transparent; box-shadow: inset 0 1px 4px rgba(0,0,0,0.3); 
+background-color: rgba(28, 109, 230, 0.8); 
+background: rgba(28, 109, 230, 0.8); 
+-webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 109, 230, 0.57);
+box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 109, 230, 0.57);
+ color: #fff;
 }
 
 .evnts-incomplete {
@@ -1374,35 +1378,36 @@ color: white;
 .month-fbtns {
     display: inline-block;
     position: absolute;
-    margin-top: 6px;
-    right: 290px;
+    margin-top: 4px;
+    right: 130px;
     z-index: 12;
 }
 
 .ui-icon-btn {
+    color: background: #D3D3D3 url(../img/glass.png) repeat-x 0 50%;
     display: inline-block;
     position: relative;
     margin-right: 20px;
-    padding: 2px 15px;
+    padding: 2px 15px 8px;
     border-radius: 4px;
-    background-color: transparent;
-    border: 1px solid transparent;
     cursor: pointer;
+    line-height: 13px;
     z-index: 12;
+    color: #666;  
+    padding: 6px 1.3em 5.5px;
+    background: #f5f5f5; background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1)); background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1); background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1); background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1); background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1); background-image: linear-gradient(top,#f5f5f5,#f1f1f1); border: 1px solid #dcdcdc; border: 1px solid rgba(0,0,0,0.1);
 }
 
     .ui-icon-btn:hover {
-        background-color: #eee;
-        border: 1px solid #999;
-        border-bottom-color: #888;
-        -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
-    }
+    
+        border: 1px solid rgba(163, 163, 163, 0.62); box-shadow: 0 1px 1px rgba(0,0,0,0.1); 
+        color: #666; transition: all 0s; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1); -moz-transition: all 0s; -o-transition: all 0s; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
 
     .ui-icon-btn:active {
-        background: #ddd;
-        border-bottom-color: #999;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
-    }
+    
+        background: #f6f6f6; background-image: -webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#f1f1f1)); background-image: -webkit-linear-gradient(top,#f6f6f6,#f1f1f1); background-image: -moz-linear-gradient(top,#f6f6f6,#f1f1f1); background-image: -ms-linear-gradient(top,#f6f6f6,#f1f1f1); background-image: -o-linear-gradient(top,#f6f6f6,#f1f1f1); background-image: linear-gradient(top,#f6f6f6,#f1f1f1); box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.17); -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.17); -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.17); border: 1px solid rgba(0,0,0,0.1);
+}
 
     .ui-icon-btn .icon {
         left: 12px;
@@ -1410,7 +1415,7 @@ color: white;
         top: 7.5px;
         vertical-align: middle;
         border: 0;
-        width:22px;
+        width: 30px;
     }
 
     .ui-icon-btn .icon_2 {
@@ -1422,12 +1427,13 @@ color: white;
     }
 
     .ui-icon-btn .ui-icon-lab {       
-        font-weight: 400;
-        color: #444444;
         margin-bottom: 5px;
         margin-top: 8px;
-        margin-left: 28px;
-    }
+        font-weight: bold;
+        margin-left: 33px;
+    
+        font-size: 15px;
+}
 
 .explain-2 {
     position: absolute;
@@ -1481,10 +1487,9 @@ color: white;
 
 .my-cals {
     position: relative;
-    height: 65px;
-    margin-left: 30px;
-    width: 190px;
-    margin-top: 15px;
+    margin-left: 5px;
+    width: 210px;
+    margin-top: 6px;
 }
 
 .my-cals-wrap {
@@ -1496,8 +1501,12 @@ color: white;
     text-align: left;
     font-size: 14px;
     font-weight: bold;
-    color: rgba(84, 84, 85, 0.74);
-    border-bottom: 1px solid #e2e2e2;
+    color: #666;
+    text-shadow: 0 1px 1px rgba(194, 194, 194, 1);
+    border-bottom: 1px solid #A7A7A7;
+    -webkit-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
+    -moz-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
+    box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px;
 }
 
 .my-club-cals {
@@ -1636,7 +1645,7 @@ float:right;
 }
 
 .cal-group-hider:active {
-    color: #5890ff;
+    color: rgba(83, 87, 95, 0.76);
 }
 
 .cal-group-showr {
@@ -1667,7 +1676,7 @@ float:right;
 }
 
 .cal-group-showr:active {
-    color: #5890ff;
+    color: rgba(83, 87, 95, 0.76);
 }
 
 
@@ -2699,8 +2708,8 @@ height:50px;
 .announcecolumn .adminc
 {
 display:inline-block;
-margin-top: 11px;
-margin-right: 30px;
+margin-top: 6.6px;
+margin-right: -9px;
 }
 
 
@@ -2744,6 +2753,12 @@ text-align: center;
 padding: 1px 5px 5.5px;
 }
 
+.cal-left-sec-container{
+    padding-top: 5px;
+    border-radius: 4px;
+    width: 221px;
+}
+
 span.incomplete-text-head{
     font-size:14px;
     font-weight:500;
@@ -2751,6 +2766,110 @@ span.incomplete-text-head{
     top: 3px;
     left: 1px;
 }
+
+.cal-groups .cal-group{
+    height: 27px;
+
+    background-color: #B3B3B3;
+
+    border-radius: 6px;
+
+    /* border: 2px solid #ddd; */
+
+
+    background: rgba(144, 13, 231, 0.5);
+}
+
+.cal-groups .cal-group .cal-group-pic{
+    background-image: url(../img/philosophy.jpeg);
+width: 27px;
+height: 27px;
+display: inline-block;
+background-size: cover;
+float: left;
+opacity: .8;
+-moz-transition:opacity .15s ease;
+transition:opacity .15s ease;
+-webkit-transition:opacity .15s ease;
+    border-radius: 5px 0px 0px 5px;
+}
+.cal-groups .cal-group{
+margin-bottom:4px;
+}
+
+.cal-group .cal-group-name{
+    padding-top: 6px;
+
+    width: 147px;
+display: inline-block;
+height: 20px;
+float: left;
+color: #888888;
+}
+
+.cal-group .cal-group-name span{
+    font-size: 12.5px;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+text-indent: 3px;
+
+    font-weight: bold;
+ 
+    color: #FFFFFF;
+    display: block;
+}
+
+.cal-group .cal-group-toggle{
+    display: inline-block;
+height: 27px;
+cursor:pointer;
+-moz-transition:background-color .1s ease-in;
+transition:background-color .1s ease-in;
+
+    border-radius: 0px 5px 5px 0px;
+float: right;
+
+    width: 27px;
+
+    background: rgba(144, 13, 231, 0.42) url(../img/glass.png) repeat-x 0 50%;
+}
+
+.cal-group .cal-group-toggle:hover{
+   background-color: rgba(144, 13, 231, 0.25); 
+}
+
+.cal-group .cal-group-toggle-unchecked:hover{
+    background: rgba(144, 13, 231, 0.75) url(../img/glass.png) repeat-x 0 50%;
+}
+
+.cal-group .cal-group-toggle:active{
+   background-color: rgba(144, 13, 231, 0.7); 
+}
+
+.cal-group .cal-group-toggle-checked{
+   background-color: rgba(144, 13, 231, 0.7); 
+}
+
+.cal-group-toggle span.cal-group-checkmark{
+    background-size: cover;
+    display: inline-block;
+    z-index: 100;
+    width: 19px;
+    -moz-transition:background-image .15s ease;
+    transition:background-image .15s ease;
+    height: 18px;
+    margin-top: 4px;
+}
+
+.cal-group-toggle span.cal-group-checkmark-unchecked{
+    background-image: url(../img/checkmark-outline.png);
+}
+.cal-group-toggle span.cal-group-checkmark-checked{
+    background-image: url(../img/checkmark-checked.png);
+}
+
+
 
 @font-face {
     font-family: "FontA";

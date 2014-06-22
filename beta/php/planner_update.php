@@ -28,4 +28,6 @@ switch ($event_type) {
             echo "Error in executing query";
         }
 }
+
+mysqli_close($con);
 ?>

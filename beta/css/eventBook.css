@@ -746,20 +746,22 @@ a.hideLink {
     margin-left: 44px;
     width: 65%;/*92.5%;*/
     padding: 5px;
-    border: 1px solid #E9EAED;
+    border: 1px solid transparent;
     background-color: #FFFFFF;
     float:left;
     border-radius: 6px;
     /*-webkit-box-shadow: 0px 0px 0px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 0px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
     box-shadow: 0px 0px 0px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);    */
-    border-color: #e1e8ed #D2DDE4 #B7C3CA;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    border-color: transparent;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .fixed-events-tabs {
     position:fixed;
     height:94px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 2px -1px;
 }
 
 .event-tabs-border {
@@ -792,39 +794,58 @@ a.hideLink {
 }
 
 .btn_select_today {
-    color: #FFF;
-font-weight: lighter;
+font-weight: bold;
 font-size: 15px;
-padding: 2px 1.3em 3px;
-margin-left: 5px;
-margin-top: -2px;
+padding: 6px 1.3em 5.5px;
+margin-left: 35px;
+margin-top: -7px;
 margin-right: 0px;
 position: absolute;
-border: 1px solid transparent;
-background: url('../img/glass.png') repeat-x scroll 0px 50% #2E78C5;
+line-height: 26px;
+left: 866px;
 border-radius: 4px;
+webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+color: #fff;
+border-style: solid;
+text-align: center;
+opacity: .9;
+cursor: pointer;
+border-top: none;
+text-decoration: none;
+text-shadow: 0 1px 1px #ABAFAC;
+border-color: transparent;
+transition: all 0.15s ease;
+-moz-transition: all 0.15s ease;
+border-width: 1px;
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+background-color: #1CE69C;
+background: rgba(28,230,156,.8);
 }
 
 .btn_select_today:hover{
 cursor: pointer;
-        background-color: #1F69B6;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.39);
-        transition: all 0s;
-        -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.39);
-        -moz-transition: all 0s;
-        -o-transition: all 0s;
-        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.39);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+background-color: #1ce69c;
+background-image: linear-gradient(top,#22C791,#1AAC7C);
+background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.15));
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#26000000)";
+border-top: none;
 }
 
 .btn_select_today:active{
-    background-color: #2E80D6;
-        background: #2E80D6 url(../img/glass.png) repeat-x 0 50%;
-        background-image: #2E80D6 url(../img/glass.png) repeat-x 0 50%;
-        box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-        -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15));
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000, endColorstr=#26000000)";
+border-color: transparent;
+-webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 3px rgba(28, 230, 156, 0.5);
+box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 3px rgba(28, 230, 156, 0.5);
+background-color: #1CE69C;
+background: rgba(28,230,156,.8);
+color: #fff;
 }
+
+
 
 .event_view_cal {
     float:right;
@@ -956,13 +977,16 @@ float: right;
 
 .cal_event_select {
 position: relative;
-top: -25px;
+left: -55px;
+top: -15px;
 }
 
 .event_cal_filter {
     position:relative;
     top:-2px;
-    width:28px;
+    left: 10px;
+    width: 32px;
+    cursor: pointer;
 }
 
 .fade-out {

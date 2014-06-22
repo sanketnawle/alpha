@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/eventViewer.css" />
+    <link rel="stylesheet" type="text/css" href="css/eventBook.css" />
 
 
 
@@ -82,6 +82,27 @@
 
     <script src="js/mycalendar-event-book.js" type="text/javascript"></script>
 
+    <script>
+        $(document).ready(function() {
+        var tdt=$(".fc-header-left .fc-header-title h2").text();
+        var tdtarr=tdt.split(" ");
+        var tdtarr1="<span class='tdt_0'>"+tdtarr[0]+"</span>";
+        var tdtarr2="<span class='tdt_1'>"+tdtarr[1]+"</span>";
+        var tdt= tdtarr1+" "+tdtarr2;
+        $(".fc-header-left .fc-header-title h2").html(tdt);
+
+        $(document).delegate(".fc-button", "click", function () {
+            var tdt=$(".fc-header-left .fc-header-title h2").text();
+            var tdtarr=tdt.split(" ");
+            var tdtarr1="<span class='tdt_0'>"+tdtarr[0]+"</span>";
+            var tdtarr2="<span class='tdt_1'>"+tdtarr[1]+"</span>";
+            var tdt= tdtarr1+" "+tdtarr2;
+            $(".fc-header-left .fc-header-title h2").html(tdt);
+        });
+
+        });
+    </script>
+
 </head>
 
 
@@ -122,6 +143,7 @@
 
                 </div>
 
+                
                 <div id="event-new">
 
                     <div id="button-border">
@@ -634,123 +656,109 @@
 
                 </div>
 
-                <div class="my-cals">
+                <div class = "cal-left-sec-container">
+                    <div class="my-cals">
 
-                    <div class="my-cals-wrap">
+                        <div class="my-cals-wrap">
 
-                        <div class="my-class-cals">
+                            <div class="my-class-cals">
 
-                            <div class="cals-header">
+                                <div class="cals-header">
 
-                                Your Class Events
+                                    Your Class Events
 
-              <span class="cal-group-hider">Hide</span>
-
-                            </div>
-
-                            <div class="cal-groups">
-
-                                <div class="check-group-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Principles of Economics</span>
+                                    <span class="cal-group-hider">Hide</span>
 
                                 </div>
 
-                                <div class="check-group-cal">
+                                <div class="cal-groups">
 
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Principles of Economics</span>
-
-                                </div>
-
-                                <div class="check-group-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Principles of Economics</span>
-
-                                </div>
-
-                                <div class="check-group-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Principles of Economics</span>
-
-                                </div>
-
-                                <div class="check-group-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Principles of Economics</span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="my-club-cals">
-
-                            <div class="cals-header">
-
-                               Your Club Events
-
-              <span class="cal-group-hider">Hide</span>
-
-                            </div>
-
-                            <div class="cal-groups">
-
-                                <div class="check-club-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Young Politicians of America Organization</span>
-
-                                </div>
-
-                                <div class="check-club-cal">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Bhangra Dance Group</span>
+                                    <div class = "cal-group">
+                                        <div class = "cal-group-pic">
+                                        </div>
+                                        <div class = "cal-group-name">
+                                            <span>Principles of Microeconomics</span>
+                                        </div>
+                                        <div class = "cal-group-toggle cal-group-toggle-checked">
+                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "cal-group">
+                                        <div class = "cal-group-pic">
+                                        </div>
+                                        <div class = "cal-group-name">
+                                            <span>Principles of Microeconomics</span>
+                                        </div>
+                                        <div class = "cal-group-toggle cal-group-toggle-checked">
+                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "cal-group">
+                                        <div class = "cal-group-pic">
+                                        </div>
+                                        <div class = "cal-group-name">
+                                            <span>Principles of Microeconomics</span>
+                                        </div>
+                                        <div class = "cal-group-toggle cal-group-toggle-checked">
+                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "cal-group">
+                                        <div class = "cal-group-pic">
+                                        </div>
+                                        <div class = "cal-group-name">
+                                            <span>Principles of Microeconomics</span>
+                                        </div>
+                                        <div class = "cal-group-toggle cal-group-toggle-checked">
+                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
+                                        </div>
+                                    </div>
+                                    <div class = "cal-group">
+                                        <div class = "cal-group-pic">
+                                        </div>
+                                        <div class = "cal-group-name">
+                                            <span>Principles of Microeconomics</span>
+                                        </div>
+                                        <div class = "cal-group-toggle cal-group-toggle-checked">
+                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
+                                        </div>
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                        </div>
+                            <div class="my-club-cals">
 
-                        <div class="my-club-cals">
+                                <div class="cals-header">
 
-                            <div class="cals-header">
+                                    Your Club Events
 
-                               Your Personal Events
-
-              <span class="cal-group-hider">Hide</span>
-
-                            </div>
-
-                            <div class="cal-groups">
-
-                                <div id="Div3">
-
-                                    <input type="checkbox" name="check-box" />
-
-                                    <span class="cal-group-title">Lecture Discussion</span>
+                                    <span class="cal-group-hider">Hide</span>
 
                                 </div>
 
-                                <div id="Div4">
+                                <div class="cal-groups">
 
-                                    <input type="checkbox" name="check-box" />
 
-                                    <span class="cal-group-title">Pag Completion</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="my-club-cals">
+
+                                <div class="cals-header">
+
+                                    Your Personal Events
+
+                                    <span class="cal-group-hider">Hide</span>
+
+                                </div>
+
+                                <div class="cal-groups">
+
+
 
                                 </div>
 
@@ -759,7 +767,6 @@
                         </div>
 
                     </div>
-
                 </div>
 
             </div>
@@ -768,13 +775,14 @@
 
                 <div class="month-fbtns">
 
+
                     <div class="ui-icon-btn">
 
                         <img class="icon" src="img/import_cal_icon.png">
 
                         <div class="ui-icon-lab">
 
-                            Import
+                            Import Cals
 
                         </div>
 
@@ -836,7 +844,7 @@
 
                         <div class="event_view_cal">
 
-                            <img src="img/cal_icon_little.png" class="event_cal_filter" id="img_cal_filter" title="Pick a Date." />
+                            <img src="img/cal_icon_major.png" class="event_cal_filter" id="img_cal_filter" title="Pick a Date." />
 
                             <input class="set_date" name="event_date_select" id="event_date_select" style="display: none;" />
 

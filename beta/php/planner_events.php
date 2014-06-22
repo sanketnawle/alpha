@@ -2,31 +2,17 @@
 
 include 'dbconnection.php';
 session_start();
-
 $user_id = 0;
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
-if (isset($_POST['time'])) {
+if(isset($_POST['time'])){
     $now_time = $_POST['time'];
 }
-if (isset($_POST['date'])) {
+if(isset($_POST['date'])){
     $today_date = $_POST['date'];
 }
-
-$title = mysqli_escape_string($con, $_POST['event_name']);
-$start_date = $_POST['event_date'];
-$start_date = date("Y-m-d", strtotime($start_date));
-$start_time = $_POST['event_time'];
-$start_time = date("H:i:s", strtotime($start_time));
-
-
-$insert_event_query = "INSERT INTO personal_event 
-    (`user_id`, `title`, `start_date`, `start_time`, `end_time`, `recurrence`, `invites`)
-    VALUES ($user_id, '$title', '$start_date' , '$start_time', '$start_time', 'none', 0)";
-//echo $insert_event_query;
-$insert_event_query_result = mysqli_query($con, $insert_event_query);
 
 $today_date_unix = strtotime($today_date);
 $today_date = date("Y-m-d", strtotime($today_date));

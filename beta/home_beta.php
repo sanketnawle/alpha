@@ -68,7 +68,7 @@
 
                             <div class="rightsec">
 
-                                <div class="n_pf_5" id="divPlanner">                                                            
+                                <div class="n_pf_5" id="divPlanner" style="display:none;">                                                            
 
                                     <?php include('planner.php'); ?>
 

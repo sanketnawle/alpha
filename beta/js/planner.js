@@ -81,6 +81,13 @@ $(document).ready(function () {
     //    });
 
 
+    $('#event_name').on('keyup', function () {        
+
+        $('#event_name').removeClass("event_name_error");
+        $('#event_name').attr("placeholder", "+ Add new Event");
+    });
+
+
 
     $(document).delegate(".btn_addvent", 'click',
 
@@ -92,9 +99,12 @@ $(document).ready(function () {
 
                 if ((name == null) || (name.trim() == ""))
                 {
-                    $('#alertModal').show();
-
-                    $('#alertMessage').text("Please enter an event title.");
+                    //$('#alertModal').show();
+                    //$('#alertModal').parent('.blackcanvas').show();
+                    //$('#alertMessage').text("Please enter an event title.");
+                    $('#event_name').addClass("event_name_error");
+                    $('#event_name').attr("placeholder", "Please enter an event title...");
+                    $('#event_name').focus();
                     return;
                 }
                 var hours = ts.getHours();
@@ -130,105 +140,50 @@ $(document).ready(function () {
                     success: function (responseText) {
                         document.getElementById("result").innerHTML = responseText.echo_string;
                         $('#alertModal').show();
-                        $('#alertMessage').text("Event added successfully.");
 
                         $('.pl_add').css('height', '19px');
                         $('.pl_addevnt').css('display', 'none');
                         $('.pl_add').attr("placeholder", "+ Add new Event");
                         $('.pl_add').val("");
                     },
-                    error: function (responseText) {
+                    error: function (responseText) {                        
                         $('#alertModal').show();
+                        $('#alertModal').parent('.blackcanvas').show();
                         $('#alertMessage').text("Connection Error!! Try Again.");
                     }
                 });
             }
             );
 
-    $(document).delegate('.fa-caret-down', 'click', function () {
-
-
-
-        $('.pl_options').toggleClass('unhider');
-
-
-
-        $('.fa-caret-down').toggleClass('open_Menu');
-
-
-
+    $(document).delegate('.planner_dropdown', 'click', function () {
+        $('.pl_options').toggle();
+        //$('.fa-caret-down').toggleClass('open_Menu');
+    });
+    $(document).delegate('.pl_option', 'click', function () {
+        $('.pl_options').toggle();
+        //$('.fa-caret-down').toggleClass('open_Menu');
     });
 
-
-
-
-
-
-
     $(document).delegate('.button-block button', 'click', function () {
-
         var $event_id = $(this).parent().parent().attr('id');
-
         $event_id = $event_id.replace("w-2-2", "");
-
         var $event_details = $event_id.split("_");
-
         $event_id = $event_details[0];
-
         var $event_type = $event_details[1];
 
         //        alert($event_id + " " + $event_type);
-
-
-
         var $this = $(this).parent();
-
-
-
         var $a = $(this).closest(".toDowrapper");
-
-
-
         if ($a.hasClass("checked")) {
-
-
-
             $a.removeClass('checked');
-
-
-
             changeIsChecked($event_id, $event_type, 0);
-
-
-
         } else {
-
-
-
             $a.addClass('checked');
-
-
-
             changeIsChecked($event_id, $event_type, 1);
-
-
-
         }
 
-
-
-
-
-
-
         $this.toggleClass('canceled');
-
-
-
         return false;
-
-
-
     });
 
 
@@ -339,51 +294,23 @@ $(document).ready(function () {
 
 
     $(document).on("click", function (e) {
-
-
-
         var elem = $(e.target);
-
-
-
         if (!elem.hasClass("evnt_inps") &&
-
                 !elem.hasClass("set_date")) {
-
-
-
             $('.calLayer').css('display', 'none');
-
-
-
         }
-
-
-
         if (elem.hasClass("days") ||
-
                 elem.hasClass("m-prev") ||
-
                 elem.hasClass("m-next") ||
-
                 elem.hasClass("minical-header") ||
-
                 elem.hasClass("minical-h1")) {
-
-
-
             $('.calLayer').css('display', 'block');
-
-
-
         }
 
-
-
+        if (!elem.hasClass("planner_dropdown")) {
+            $('.pl_options').hide();
+        }
     });
-
-
-
 });
 
 
@@ -1468,7 +1395,7 @@ $(document).ready(function () {
                 if ((new Date().getMonth() + 1) >= $("#event_date").val().split('/')[0]) {
                     if (new Date().getDate() < $("#event_date").val().split('/')[1]) {
                         $('#set_time_24hr').timeAutocomplete({
-                            increment: 15,
+                            increment: 10,
                             formatter: 'ampm',
                             start_hour: 0,
                             value: 'Add a time?'
@@ -1476,7 +1403,7 @@ $(document).ready(function () {
                     }
                     else {
                         $('#set_time_24hr').timeAutocomplete({
-                            increment: 15,
+                            increment: 10,
                             formatter: 'ampm',
                             start_hour: new Date().getHours(),
                             value: 'Add a time?'                            
@@ -1485,7 +1412,7 @@ $(document).ready(function () {
                 }
                 else {
                     $('#set_time_24hr').timeAutocomplete({
-                        increment: 15,
+                        increment: 10,
                         formatter: 'ampm',
                         start_hour: 0,
                         value: 'Add a time?'
@@ -1506,11 +1433,91 @@ $(document).ready(function () {
         }
     }
 
-    $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
+    $currentTime = new Date().getHours() + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';   
     $('#set_time_24hr').timeAutocomplete({
-        increment: 15,
+        increment: 10,
         formatter: 'ampm',
         start_hour: $startTime,
         value: $currentTime
     });
+
+    function UpdateEvents() {
+
+        var dt = new Date();
+
+        var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
+
+        var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
+
+
+
+
+
+        var hours = dt.getHours() == 0 ? "12" : dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours();
+
+        var minutes = (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
+
+        var ampm = dt.getHours() < 12 ? "am" : "pm";
+
+        var formattedTime = hours + ":" + minutes + " " + ampm;
+
+
+
+        if ($('#result').prop('childNodes') >= 1) {
+
+            $(".upc-1").each(function (index) {
+
+                if ($(this).children('.upc-floatL').children('.time').text() == formattedTime) {
+
+                    //$('#result').append(getEvents(today_date, now_time));
+
+                    $.ajax({
+
+                        url: "php/planner_events.php",
+                        data: { date: today_date, time: now_time },
+                        type: "POST",
+                        dataType: "json",
+                        success: function (responseText) {
+
+                            document.getElementById("result").innerHTML = responseText.echo_string;
+
+                        },
+                        error: function (responseText) {
+
+                            alert("failure");
+
+                        }
+
+                    });
+
+                }          
+
+            });
+
+        }
+
+        else {
+
+            $.ajax({
+
+                url: "php/planner_events.php",
+                data: { date: today_date, time: now_time},
+                type: "POST",
+                dataType: "json",
+                success: function (responseText) {
+                    document.getElementById("result").innerHTML = responseText.echo_string;
+                    $('#divPlanner').show();
+                },
+                error: function (responseText) {
+
+                    var test = responseText.responseText;
+
+                }
+
+            });
+        }
+
+    }
+
+    setInterval(function () { UpdateEvents() }, 500);
 });
