@@ -1,0 +1,63 @@
+[24-Jun-2014 16:16:15] PHP Fatal error:  Can't use function return value in write context in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 6
+[24-Jun-2014 16:27:34] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:28:03] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:28:15] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:28:17] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:28:40] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:28:42] PHP Fatal error:  Function name must be a string in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/time.php on line 11
+[24-Jun-2014 16:41:05] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:05] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:05] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:05] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:06] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:07] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 16:41:08] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 17:13:15] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 17:13:15] PHP Fatal error:  Call to undefined function  formattime() in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 75
+[24-Jun-2014 17:18:19] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 36
+[24-Jun-2014 17:18:19] PHP Fatal error:  Call to undefined function  formattime() in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/comments.php on line 75
+[24-Jun-2014 17:20:35] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:36] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:40] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:40] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:45] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:45] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:49] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:52] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:54] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:55] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:56] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:20:59] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:21:05] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:21:07] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:21:08] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
+[24-Jun-2014 17:21:09] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedops.php on line 182
