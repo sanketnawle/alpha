@@ -1015,16 +1015,23 @@ span.info-piece-book a div.book-image{
 
 }
 
-span.info-piece-book a div.book-icon{
-
+div.showcaser{
+	position:fixed;
+	width:100%;
+	height:100%;
+	display:none;
+	top:0px;
+	left:0px;
+	z-index:8200;
 }
 
-span.info-piece-book a div.book-icon-textbook{
+div.showcase-box{
+width:600px;
+border-radius:6px;
+height:400px;
+background-color:#fff;
+}
 
-}
-span.info-piece-book a div.book-icon-link{
-	
-}
 
 a.office-hours-editor{
 
