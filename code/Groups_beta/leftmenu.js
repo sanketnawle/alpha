@@ -4,11 +4,14 @@ $(document).ready(function() {
 			$(".burger").addClass("flipBurger");
 			$(".leftmenu").animate({ opacity: "0", marginLeft: "-300px"},200);
 			$(".mid_right_sec").css({"float":"none","padding-left":"0px"});
+			$(".group-header-left").css({"padding-left":"110px"});
+
 		}
 		else{
 			$(".burger").removeClass("flipBurger");
 			$(".leftmenu").animate({ opacity: "1", marginLeft: "0px"},200);
 			$(".mid_right_sec").css({"float":"left","padding-left":"318px"});
+			$(".group-header-left").css({"padding-left":"242px"});
 		}
 	});
 });

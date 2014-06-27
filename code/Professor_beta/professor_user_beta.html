@@ -21,19 +21,121 @@
 </head>
 <body>
 	<div class = "root">
+		<div class = "blacksheet-main editing-mode">
+
+		</div>
+
+		<div class = "showcaser">
+			<div class = "showcase_box">
+			</div>
+		</div>
+		<div class = "main-2">
+			<header class = "professor-header-2">
+				<div class = "resource-wrapper resources-vacant">
+					<div class = "no-showcase">
+						<div class = "ns-title">You have nothing showcased</div>
+						<div class = "ns-right-pointer-icon">
+
+						</div>
+						<a class = "ns-btn">
+							Add a Showcase
+						</a>
+					</div>
+				</div>
+			</header>
+			<div class = "prof-header-bar-alias">
+				<div class = "personal-website-wrap">
+					<div class = "personal-website-wrap-header">
+						<label class = "user-info-labels" for = "user_website">Your Personal Website URL</label>
+					</div>
+					<div class = "website-inp-wrap">
+						<input type = "text" id = "user_website" name = "user_website" class = "user_website user_inp_full" placeholder = "http://www...">
+					</div>
+				</div>
+				<div class = "orig-edit-btns">
+					
+					<a class = "cancel-edit-profile">
+						Cancel
+					</a>
+					<a class = "save-edit-profile">
+						Save Changes
+					</a>	
+				</div>
+				<span class = "profpic-container profpic-container-edit">
+					<span class = "img img-inset user-pic img-wrap-edit">
+						<div class = "user-pic-div user-pic-div-edit"></div>
+
+					</span>
+					<div class = "pic-text-icon-center">
+							<div class = "pic-text-icon">
+							</div>
+							<div class = "pic-text">
+							Change your profile photo
+							</div>
+					</div>
+					<a class = "upload-pic-btn">
+						Upload a New Photo
+					</a>					
+				</span>
+			</div>
+			<div class = "profile-content-2">
+				<div class = "user-info-wrapper-2">
+					<div class = "user-info-editable full-name-editable">
+						<div class = "labels-halfs">
+							<label class = "user-info-labels user-info-labels-half" for = "user_fname">First name</label>
+							<label class = "user-info-labels user-info-labels-half" for = "user_lname">Last name</label>
+						</div>
+						<div class = "inputs-halfs">
+							<input type = "text" id = "user_fname" name = "user_fname" class = "user_inp_half user_fname" value = "Daphne" maxlength = "15">
+							<input type = "text" id = "user_lname" name = "user_lname" placeholder = "Last name" class = "user_inp_half user_lname" value = "Daphne" maxlength = "15">
+						</div>
+					</div>
+					<div class = "user-title">
+						Professor
+					</div>
+					<div class = "user-info-editable about-editable">
+						<textarea id = "user_about" name = "user_about" class = "user_about user_inp_big" placeholder = "Bio" maxlength = "250" value ="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidudont ut labore"></textarea>
+					</div>
+					<div class = "user-info-editable school-name-editable">
+						<label class = "user-info-labels" for = "user_school">School</label>
+						<input type = "text" id = "user_school" name = "user_school" class = "user_school user_inp_full" value = "Daphne">
+					</div>
+					<div class = "user-info-editable dept-name-editable">
+						<label class = "user-info-labels" for = "user_dept">Department</label>
+						<input type = "text" id = "user_dept" name = "user_dept" class = "user_dept user_inp_full" value = "Applied Physics and Astrophysics" maxlength = "25">
+					</div>
+					<div class = "user-info-editable email-editable">
+						<label class = "user-info-labels" for = "user_email">Edu Email</label>
+						<input type = "text" id = "user_email" name = "user_email" class = "user_email user_inp_full" value = "daphne.bavelier@poly.edu" maxlength = "25">
+					</div>	
+					<div class = "user-info-editable location-editable">
+						<label class = "user-info-labels" for = "user_loc" style = "top:-2px">Office Location</label>
+						<input type = "text" id = "user_loc" name = "user_loc" placeholder = "Building and Office Number" class = "user_loc user_inp_full" value = "Metrotech 7-415" maxlength = "25">
+					</div>	
+							
+				</div>
+			</div>
+		</div>
 		<div class = "top-bar">
 			<div class = "top-bar-wrapper">
 				<img class = "logo-h" src = "src/logo.png">
 				</img>
-
-
 			</div>
 		</div>
 
 		<div class = "main">
-			<header class = "professor-header">
+			<header class = "professor-header professor-header-nothing">
 				<div class = "resource-wrapper resources-vacant">
-					<div class = "professor-showcase">
+ 					<div class = "no-showcase ns-hide">
+						<div class = "ns-title">You have nothing showcased</div>
+						<div class = "ns-right-pointer-icon">
+
+						</div>
+						<a class = "ns-btn">
+							Add a Showcase
+						</a>
+					</div>
+					<div class = "professor-showcase" style = "display:none">
 						<div class = "showcase-container">
 							<div class = "showcase-title st-one">
 								The Out of Africa Diaspora
@@ -68,31 +170,122 @@
 							<span>Professor Bavelier</span>
 						</a>
 					</h1>
+					<a class = "user-website">
+						<span class = "website-icon">
+
+						</span>
+						<div class = "website-title-hider">
+							<span class = "website-title" title = "http://wolframalpha.com">
+								http://wolframalpha.com
+							</span>
+						</div>
+					</a>		
 					<span class = "office-hours">
 						<p>OFFICE HOURS</p>
 						<b>M 10:00-11:00 am, W 2:30-3:30 pm</b>
 						<span class = "office-hours-status in-office"></span>						
 					</span>
+					<a class = "office-hours-editor oh-editor-fx">
+					Edit Office Hours
+					</a>
+				</div>
+				<div class = "blacksheet">
+
+					<div class = "edit_office_hours_wrap">
+						<div class = "edit_office_hours_frame">
+							<div class = "oh_day_select">
+								<input class="oh_checkbox" id="oh_check_mon" type="checkbox">
+								<label tabindex="2" for="oh_check_mon" class="oh_checkbox_label">Monday</label>
+								<div class = "time_select_fx">
+									<div class = "uw_outline">
+									</div>
+									<div class = "uw_solid">
+									</div>
+									<div class = "time_select_main">
+										<input id = "off_hr_start_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "Start Time">
+										<input id = "off_hr_end_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "End Time">
+									</div>
+								</div>
+							</div>
+							<div class = "oh_day_select">
+								<input class="oh_checkbox" id="oh_check_tue" type="checkbox">
+								<label tabindex="2" for="oh_check_tue" class="oh_checkbox_label">Tuesday</label>
+								<div class = "time_select_fx">
+									<div class = "uw_outline">
+									</div>
+									<div class = "uw_solid">
+									</div>
+									<div class = "time_select_main">
+										<input id = "off_hr_start_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "Start Time">
+										<input id = "off_hr_end_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "End Time">
+									</div>
+								</div>
+							</div>
+							<div class = "oh_day_select">
+								<input class="oh_checkbox" id="oh_check_wed" type="checkbox">
+								<label tabindex="2" for="oh_check_wed" class="oh_checkbox_label">Wednesday</label>
+								<div class = "time_select_fx">
+									<div class = "uw_outline">
+									</div>
+									<div class = "uw_solid">
+									</div>
+									<div class = "time_select_main">
+										<input id = "off_hr_start_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "Start Time">
+										<input id = "off_hr_end_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "End Time">
+									</div>
+								</div>
+							</div>
+							<div class = "oh_day_select">
+								<input class="oh_checkbox" id="oh_check_thu" type="checkbox">
+								<label tabindex="2" for="oh_check_thu" class="oh_checkbox_label">Thursday</label>
+								<div class = "time_select_fx">
+									<div class = "uw_outline">
+									</div>
+									<div class = "uw_solid">
+									</div>
+									<div class = "time_select_main">
+										<input id = "off_hr_start_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "Start Time">
+										<input id = "off_hr_end_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "End Time">
+									</div>
+								</div>
+							</div>
+							<div class = "oh_day_select">
+								<input class="oh_checkbox" id="oh_check_fri" type="checkbox">
+								<label tabindex="2" for="oh_check_fri" class="oh_checkbox_label">Friday</label>
+								<div class = "time_select_fx">
+									<div class = "uw_outline">
+									</div>
+									<div class = "uw_solid">
+									</div>
+									<div class = "time_select_main">
+										<input id = "off_hr_start_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "Start Time">
+										<input id = "off_hr_end_time_24hr" class = "ui-autocomplete-inpu set_time" name = "event_time" autocomplete="off" placeholder = "End Time">
+									</div>
+								</div>
+							</div>
+									
+						</div>
+						<a class = "office-hours-editor done-editing">
+							Done Editing
+						</a>
+					</div>
+
 				</div>
 
+				<div class = "edit-profile-main-wrap">
+					<a class = "edit-profile">
+						Edit Profile
+					</a>
+				
+				</div>
 
-				<span class = "profpic-container">
+				<span class = "profpic-container profpic-container-real">
 					<span class = "img img-inset user-pic">
-						<div class = "user-pic-div"></div>
-						<b class = "img-shadow">
+						<div class = "user-pic-div user-pic-div-my"></div>
+						<b class = "img-shadow img-shadow-my">
 						</b>
 					</span>
-					<span class = "link-button">
-						<a class = "link link-up">
-							Follow
-						</a>						
-					</span>
-					<span class = "email-button">
-						<a class = "mail">
-							<div class = "fa_mail">
-							</div>
-						</a>						
-					</span>
+
 				</span>
 
 			</div>
@@ -116,7 +309,7 @@
 						<a>
 							<div class = "small-icon department_icon" style = "background-image: url(src/physics_icon.png);">
 							</div>
-							<div class = "info-piece-text-wrapper">					<p>Member of the</p>		
+							<div class = "info-piece-text-wrapper">		<p>Member of the</p>		
 								<h4>Department of Applied Physics and Astrophysics</h4>
 							</div>
 						</a>
@@ -125,7 +318,7 @@
 						<a>
 							<div class = "small-icon email_icon" style = "background-image: url(src/email.png);">
 							</div>
-							<h4 class = "info-piece-oneline">Ross.bavelier@poly.edu</h4>
+							<h4 class = "info-piece-oneline">Daphne.bavelier@poly.edu</h4>
 						</a>
 					</span>
 					<span class = "user-info-piece info-piece-oneline">
@@ -135,32 +328,17 @@
 							<h4 class = "info-piece-oneline">Metrotech 7-415</h4>
 						</a>
 					</span>	
+					<br>
+					<br>
+					<br>
+					<div class = "user-events">
 
-					
-					<h5>Recommended Books</h5>
-					
-					<span class = "user-info-piece info-piece-book">
-						<a>
-							<div class = "book-image">
-							</div>
-							<div class =  "book-title">
-									The Outliers
-							</div>
-
-							<div class = "book-author">
-									Malcolm Gladwell
-							</div>											
-
-							<div class = "book-icon book-icon-textbook">
-							</div>
-						</a>
-					</span>
-						
+					</div>	
 				</div>
 				<div class = "user-groups">
 					<div class = "user-groups-tabs">
 						<div class = "tab-active professor-tab tab-1">
-							<span>Discussions</span>
+							<span>Posts</span>
 							<span class = "tab-count">4</span>
 						</div>						
 						<div class = "tab-inactive professor-tab tab-2">
@@ -615,7 +793,9 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
+
 </body>
 
 

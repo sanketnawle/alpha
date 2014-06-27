@@ -6,6 +6,11 @@ $(document).ready(function() {
 		$(this).find(".showcase-link").stop().animate({opacity: "0",marginTop:"95px"},0);
 	});
 
+	$(document).on("pageload",function(){
+		$(".no-showcase").hide();
+		$(".no-showcase").fadeIn(900);
+	});
+
 	$(document).delegate(".link","click",function(){
 		
 			$(this).text("Following")
@@ -89,8 +94,48 @@ $(document).ready(function() {
 			$(".user-tab-followers-content").animate({opacity:"1"},200);		
 		}					
 	});
+	$(document).delegate(".oh-editor-fx","click",function(){
+		$(this).hide();
+		$(".blacksheet").fadeIn(200);
+		$(".blacksheet-main").fadeIn(200);
+	});
+	$(document).delegate(".done-editing","click",function(){
+		$(".blacksheet").hide();
+		$(".oh-editor-fx").fadeIn(200);
+		$(".blacksheet-main").fadeOut(200);
+	});
 
+	$(document).delegate(".edit-profile","click",function(){
+		$(this).hide();
+		$(".profpic-container-real").hide();
+		$(".user-info-wrapper").css("opacity","0");
+		$(".blacksheet-main").fadeIn(400);
+		$(".main-2").show();
+	});
+	$(document).delegate(".cancel-edit-profile","click",function(){
+		$(".blacksheet-main").fadeOut(400);
+		$(".main-2").hide();
+		$(".edit-profile").show();
+		$(".profpic-container-real").show();
+		$(".add_book_list").show()
+		$(".user-info-wrapper").css("opacity","1");		
+	});
+	
 
+	$(document).delegate(".add_book_list","click",function(){
+		$(this).fadeOut(200);
+	});
+	$(document).delegate(".oh_checkbox","click",function(){
+		$(".time_select_fx").hide();
+		$(this).closest(".oh_day_select").find(".oh_checkbox_label").css({"background-position":"0 -15px","color":"rgba(55, 55, 55,1)"});
+		$(this).addClass("oh_checkbox_checked");
+		$(this).closest(".oh_day_select").find(".time_select_fx").show();
+	});
+	$(document).delegate(".oh_checkbox_checked","click",function(){
+		$(this).closest(".oh_day_select").find(".oh_checkbox_label").css({"background-position":"0px 0px","color":"rgba(77, 77, 77,.6)"});
+		$(this).removeClass("oh_checkbox_checked");
+		$(this).closest(".oh_day_select").find(".time_select_fx").hide();
+	});	
 
 	 // to fade in on page load
 

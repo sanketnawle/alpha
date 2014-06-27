@@ -95,6 +95,18 @@ width: 100%;
 padding-bottom:100px;
 }
 
+.main-2{
+margin-right: auto;
+margin-left: auto;
+padding:0;
+top: 47px;
+position:absolute;
+z-index:9000;
+display:none;
+width: 100%;
+padding-bottom:100px;
+}
+
 .leftsec{
 width: 25.53333%;
 float:left;
@@ -127,3 +139,5 @@ padding-right: 10px;
 border-radius: 4px;
 min-width: 191px;
 }
+
+
