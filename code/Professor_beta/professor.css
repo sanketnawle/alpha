@@ -675,7 +675,7 @@ height: auto;
 	width: 100%;
 height: 60px;
   margin-bottom:20px;
-	border-bottom: 1px solid #c5c5c5;  
+	border-bottom: 2px solid #c5c5c5;  
 }
 
 .professor-tab{
@@ -696,26 +696,25 @@ height: 60px;
 	color: #4B5258;
 	cursor:default;
 }
-.tab-active .tab-count{color: #474747;}
+/*.tab-active .tab-count{color: #474747;}*/
 
 .tab-inactive:hover{
 		color: #4B5258;
 	cursor:pointer;
 }
 
-.tab-inactive:hover .tab-count{color: #474747;}
+/*.tab-inactive:hover .tab-count{color: #474747;}*/
 
 .tab-1{
 
 }
-.tab-inactive .tab-count{color:rgba(127, 127, 127, 0.4)}
+/*.tab-inactive .tab-count{color:rgba(127, 127, 127, 0.4)}*/
 
 .tab-count{
 	display: block;
 font-size: 18px;
 font-weight: 600;
-transition: color .15s ease-in-out;
-color: #474747;
+/*color: #474747;*/
 }
 .tab-inactive{
 color: rgba(127, 127, 127, 0.4);
@@ -732,6 +731,7 @@ b.tab-indicator{
 -moz-transition: all ease-in-out 0.4s;
 -o-transition: all ease-in-out 0.4s;
 transition: all ease-in-out 0.4s;
+border: none;
 }
 
 em.caret-transform {
@@ -740,7 +740,7 @@ width: 100%;
 z-index: 5000;
 position: relative;
 height: 1px;
-border-bottom: 1px solid #333;
+border-bottom: 2px solid rgba(177, 104, 226, 0.8);
 -moz-transform-origin: 50% 50%;
 transform-origin: 50% 50%;
 -webkit-transition: -webkit-transform 0.4s ease-in-out;
@@ -1182,10 +1182,12 @@ color:white;
 	border: none;
 	font-size:11.5px;
 	display: inline-block;
+	line-height: 30px;
 	position: absolute;
-	top: 39px;
+	top: 32px;
 	font-weight: 600;
 	left: 457px;
+	height: 28px;
 	width: 77px;
 }
 
@@ -1227,7 +1229,7 @@ width: 0;
 
 
 
-	border-bottom-color: rgba(0, 0, 0, 1);
+	border-bottom-color: rgba(139, 139, 139, 0.98);
 
 
 }
@@ -1247,7 +1249,7 @@ height: 0;
 width: 0;
 
 
-	border-bottom-color: rgba(49, 49, 49, 0.97);
+	border-bottom-color: rgba(199, 199, 199, 0.97);
 }
 
 
@@ -1277,8 +1279,8 @@ div.time_select_main{
     height: 28px;
     border-radius: 2px;
     left: -89px;
-    background-color: rgba(49, 49, 49, 0.97);
-    border: 1px solid rgba(0, 0, 0, 0.98);
+    background-color: rgba(199, 199, 199, 0.97);
+    border: 1px solid rgba(139, 139, 139, 0.98);
 }
 
 input.set_time{
@@ -2063,6 +2065,24 @@ color: #fff;
 div.ns-hide{
 	left:412px;
 }
+
+.tab-active .prof-tab-1{
+	color:rgba(177, 104, 226, 0.8);
+}
+
+.tab-active .prof-tab-2{
+	color:rgba(14, 207, 161, 0.98);
+}
+
+.tab-active .prof-tab-3{
+	color:rgba(253, 112, 45, 0.74);
+}
+
+
+.tab-active .prof-tab-4{
+	color:rgba(28, 109, 230, 0.8);
+}
+
 
 header.professor-header-2{
 margin: 0;

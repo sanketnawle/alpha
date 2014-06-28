@@ -18,10 +18,12 @@ $(document).ready(function() {
 			$(this).addClass("pre-linked");
 		
 	});
+
+	var cl_cache=["rgba(165, 21, 221, 0.5)","rgba(14, 207, 161, 0.98)","rgba(253, 112, 45, 0.74)","rgba(28, 109, 230, 0.8)"];
 	$(document).delegate(".tab-inactive","click",function(){
 			$(".tab-active").addClass("tab-inactive");
 			$(".tab-active").removeClass("tab-active");
-
+			//alert("aa");
 			$(this).removeClass("tab-inactive");
 			$(this).addClass("tab-active");
 
@@ -29,8 +31,35 @@ $(document).ready(function() {
 			var activeTabposition = activeTab.position();
 			var activeTabLeft = activeTabposition.left;
 			var activeTabNew = activeTabLeft -27;
+			//var activeColor = activeTab.
 			$(".tab-indicator").css("margin-left",activeTabNew);
+
+			//var cl=$(".tab-active").css("color");
+			//alert(cl);
+			var index=0;
+			if($(this).hasClass("tab-1")){index=0;}
+			if($(this).hasClass("tab-2")){index=1;}
+			if($(this).hasClass("tab-3")){index=2;}
+			if($(this).hasClass("tab-4")){index=3;}
+			//$(".tab-indicator").css("background-color",cl_cache[index]);
+			$(".caret-transform").css("border-bottom-color",cl_cache[index]);
+			//alert(cl);
+			//$(".caret-transform").css("border-bo",activeTabNew);
 	});	
+
+		$(document).delegate(".professor-tab","mouseover",function(){
+			if($(this).hasClass("tab-1")){index=0;}
+			if($(this).hasClass("tab-2")){index=1;}
+			if($(this).hasClass("tab-3")){index=2;}
+			if($(this).hasClass("tab-4")){index=3;}
+			$(this).css("color",cl_cache[index]);
+		});
+
+		$(document).delegate(".professor-tab","mouseout",function(){
+			
+			$(this).css("color","rgba(127, 127, 127, 0.4)");
+			$(this).find("tab-count").css("color","rgba(127, 127, 127, 0.4)");
+		});
 
 	$(document).delegate(".pre-linked","mouseout",function(){
 			$(this).text("Following");
