@@ -327,6 +327,8 @@ $(document).ready(function() {
 					$(this).css({"text-decoration":"underline"});
 				});
 
+			
+
 				
 			     $(document).click(function(event){
 

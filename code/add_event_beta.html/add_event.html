@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar
+    </title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="add_event.css" />
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src = "add_event.js"></script>
+</head>
+<body>
+    <div class = "btn-addevent-wrap">
+        <button type = "button" class = "btn-addevent">
+        Add an Event
+        </button>
+    </div>
+    <div class = "add-event-wedge">
+        <div class = "left-wedge-outer">
+        </div>
+        <div class = "left-wedge-solid">
+        </div>
+    </div>
+    <div class = "add-event-box">
+        <div class = "add-event-header">
+            <div class = "add-event-pic">
+                <div class = "add-event-pic-actual">
+                    <div class = "add-event-pic-fx">
+                        <div class = "add-event-pic-upload">
+                            Upload
+                        </div>
+                        <div class = "add-event-pic-toggler">
+                            <div class = "add-event-left">
+                                <div class = "toggle-icon">
+                                </div>
+                            </div>
+
+                            <div class = "add-event-right">
+                                <div class = "toggle-icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "header-inp-wrap">
+                <input type = "text" class = "inp-foc inp-thr event-title" label = "Event title" placeholder = "Event title">
+            </div>
+            <div class = "header-inp-wrap">
+                <input type = "text" class = "inp-foc inp-twof event-date inp-icon-left" label = "Event date" value = "Fri, Jun 27, 2014">
+                <span class = "event-date-icon"></span>
+                <div class = "event-repeat add-event-box-dd">
+                    <span class = "dd-title">Repeat</span>
+                    <span class = "down-arrow"></span>
+               </div>
+               <div class = "click-out pos-abs dd-box">
+               </div>
+            </div>
+            <div class = "header-inp-wrap">
+                <span class = "">
+                    <input type = "text" class = "inp-foc inp-half event-start-time" label = "Event time">
+                    <span class = "down-arrow down-arrow-down"></span>
+                    <div class = "st-time-dd">
+                    </div>
+                </span>
+                <span class="">
+                    <a class = "add-endtime">
+                    Add an end time
+                    </a>
+                    <input type = "text" class = "inp-foc inp-half event-end-time" label = "Event end time">
+                    <span class = "down-arrow down-arrow-2 down-arrow-down"></span>
+                    <span class = "revert-end-time">
+                    </span>
+                     <div class = "end-time-dd">
+                    </div>
+                </span>
+                
+               
+
+            </div>
+        </div>
+        <div class = "add-event-box-main">
+            <div class = "add-event-box-main-row">
+                <input type = "text" class = "inp-foc inp-one event-loc inp-icon-left" label = "Event location" placeholder = "Location (optional)">
+                <span class = "event-loc-icon"></span>
+            </div>
+            <div class = "add-event-box-main-row">
+                <input type = "text" class = "inp-foc inp-one event-details" label = "Event details" placeholder = "Details (optional)">
+            </div>
+            <div class = "add-event-box-main-row">
+                <input type = "text" class = "inp-foc inp-one event-invites" label = "Event details" placeholder = "Invite groups, people, and email addresses">
+                <span class = "down-arrow down-arrow-3 down-arrow-down"></span>
+                <div class = "add-event-box-invite-dd">
+                </div>
+            </div>
+            <div class = "add-event-box-main-row">
+                <div class = "add-event-box-btns-wrap">
+                    <button class = "add-event-box-btns add-event-box-cancel">
+                        Cancel
+                    </button>
+                     <button class = "add-event-box-btns add-event-box-create">
+                        Add Event 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
