@@ -469,6 +469,7 @@ position: relative;
 margin-bottom: 10px;
 	background: #d3d7dc;
 	z-index: 20;
+	overflow: hidden;
 }
 
 div.add-event-box-main{
@@ -661,17 +662,17 @@ div.dd-box-invite-scrollwrap{
 }
 
 a.ddbox-hor-scroller{
-width:72px;
+width:52px;
 height: 129px;
 position:absolute;
 margin:0;
 overflow:hidden;
 top: 0px;
--webkit-transition: opacity .2s, width .5s;
 z-index: 50;
 bottom: 0px;
 top: 36px;
 cursor: pointer;
+display: none;
 }
 
 a.ddbox-hor-scroller div.ddbox-hor-scroller-cont{
@@ -839,12 +840,12 @@ i.ddbox-hor-scroll-icon{
 a.hor-scroller-left i.ddbox-hor-scroll-icon{
     background-image: url(src/left-scroll-icon.png);
  
-    left: 20px;
+    left: 10px;
 }
 
 a.hor-scroller-right i.ddbox-hor-scroll-icon{
  background-image: url(src/right-scroll-icon.png);
- right: 20px;
+ right: 10px;
 }
 
 div.dd-box-invite-scrollwrap ul.hor-scroll-invites li.ddbox-invite-option:hover::after{
@@ -871,3 +872,7 @@ span.close-invite-ddbox:hover{
 	opacity:1;
 	background-image: url(src/close-icon-hover.png);
 }
+
+
+
+

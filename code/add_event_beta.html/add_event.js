@@ -67,14 +67,99 @@ $(document).ready(function() {
 		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
 		var leftPos = $cardref.scrollLeft();
 		$cardref.stop().animate({scrollLeft: leftPos + 15}, 400);
+		$(this).stop().show();
+	});
+
+	$(document).delegate('.hor-scroller-right',"mouseout", function(){
+		if(rightable==1){
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos - 15}, 400);
+		}
 	});
 
 	$(document).delegate('.hor-scroller-left',"mouseover", function(){
 		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
 		var leftPos = $cardref.scrollLeft();
 		$cardref.stop().animate({scrollLeft: leftPos - 15}, 400);
+		$(this).stop().show();
 	});
-	
+
+	$(document).delegate('.hor-scroller-left',"mouseout", function(){
+		if(leftable==1){
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos + 15}, 400);
+	}
+	});
+
+
+	var able_offset=45;
+	var leftable=0;
+	var rightable=0;
+	$('.dd-box-invite-scrollwrap').bind('scroll', function(){
+		var $ref=$(this).closest(".add-event-dd-box-invite");
+		//get scroll width
+
+		var scrollw= ($(this)[0].scrollWidth);
+		
+
+		if($(this).scrollLeft()<=0){
+			leftable=0;
+			$ref.find(".hor-scroller-left").stop().hide();
+		}
+
+		if($(this).scrollLeft()>=able_offset)
+		{
+			if(leftable==0){
+				$ref.find(".hor-scroller-left").stop().show();
+				leftable=1;
+			}
+		}
+		
+
+		if($(this).scrollLeft()+$(this).innerWidth()>=(scrollw-40)){
+			$ref.find(".hor-scroller-right").stop().hide();
+			rightable=0;
+		}
+		
+		if($(this).scrollLeft()+$(this).innerWidth()<=(scrollw-40)){
+			if(rightable==0){
+				$ref.find(".hor-scroller-right").stop().show();
+				rightable=1;
+			}
+		}
+	});
+
+
+	$(document).delegate('.dd-box-invite-scrollwrap',"mouseover", function(){
+		var $ref=$(this).closest(".add-event-dd-box-invite");
+		var scrollw= ($(this)[0].scrollWidth);
+
+		if($(this).scrollLeft()+$(this).innerWidth()>=(scrollw-40)){
+
+		}else{
+			
+			$ref.find(".hor-scroller-right").stop().show();
+			rightable=1;
+			
+		}
+
+		if($(this).scrollLeft()>=able_offset)
+		{
+				$ref.find(".hor-scroller-left").stop().show();
+				leftable=1;
+		}
+
+
+	});
+
+	$(document).delegate('.dd-box-invite-scrollwrap',"mouseleave", function(){
+		var $ref=$(this).closest(".add-event-dd-box-invite");
+		$ref.find(".hor-scroller-right").stop().hide();
+		$ref.find(".hor-scroller-left").stop().hide();
+	});
+
 });
 
 
