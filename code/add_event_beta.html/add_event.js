@@ -74,7 +74,9 @@ $(document).ready(function() {
 		if(rightable==1){
 		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
 		var leftPos = $cardref.scrollLeft();
-		$cardref.stop().animate({scrollLeft: leftPos - 15}, 400);
+		$cardref.stop().animate({scrollLeft: leftPos - 15}, 400, function(){
+			$(this).find('.hor-scroller-right').hide();
+		});
 		}
 	});
 
@@ -89,7 +91,9 @@ $(document).ready(function() {
 		if(leftable==1){
 		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
 		var leftPos = $cardref.scrollLeft();
-		$cardref.stop().animate({scrollLeft: leftPos + 15}, 400);
+		$cardref.stop().animate({scrollLeft: leftPos + 15}, 400, function(){
+			$(this).find('.hor-scroller-left').hide();
+		});
 	}
 	});
 
