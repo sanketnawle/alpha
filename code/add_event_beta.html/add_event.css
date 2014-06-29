@@ -671,6 +671,7 @@ top: 0px;
 z-index: 50;
 bottom: 0px;
 top: 36px;
+cursor: pointer;
 }
 
 a.ddbox-hor-scroller div.ddbox-hor-scroller-cont{

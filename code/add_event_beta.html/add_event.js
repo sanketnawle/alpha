@@ -47,4 +47,34 @@ $(document).ready(function() {
 		$(this).find(".after-click-effect").hide();
 		$(this).find(".invite-option-checkwrap").css({"background-image":"url(src/unchecked-invite.png)","opacity":".7"});
 	});
+
+
+	$(document).delegate('.hor-scroller-right',"click", function(){
+
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos + 200}, 400);
+	});
+
+	$(document).delegate('.hor-scroller-left',"click", function(){
+
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos - 200}, 400);
+	});
+
+	$(document).delegate('.hor-scroller-right',"mouseover", function(){
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos + 15}, 400);
+	});
+
+	$(document).delegate('.hor-scroller-left',"mouseover", function(){
+		var $cardref=$(this).closest(".add-event-dd-box-invite").find(".dd-box-invite-scrollwrap");
+		var leftPos = $cardref.scrollLeft();
+		$cardref.stop().animate({scrollLeft: leftPos - 15}, 400);
+	});
+	
 });
+
+
