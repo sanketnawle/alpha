@@ -158,7 +158,7 @@ $(document).ready(function() {
 
 	});
 
-	$(document).delegate('.dd-box-invite-scrollwrap',"mouseleave", function(){
+	$(document).delegate('.add-event-dd-box-invite',"mouseleave", function(){
 		var $ref=$(this).closest(".add-event-dd-box-invite");
 		$ref.find(".hor-scroller-right").stop().hide();
 		$ref.find(".hor-scroller-left").stop().hide();
