@@ -13,16 +13,6 @@
 	color: #333;
 }
 
-.noti_wedge{
-background: center center no-repeat url(../src/noti_wedgeUp.png);
-background-size: cover;
-width: 15px;
-height: 12px;
-display: inline-block;
-position: relative;
-top: 8px;
-left: 250px;
-}
 
 .calnoti_head
 {
@@ -647,7 +637,7 @@ float: left;
 	position: relative;
 }
 
-div.event_btns button, div.add_to_cal{
+div.event_btns button{
 	margin: 0;
 -webkit-box-shadow: none;
 box-shadow: none;
@@ -674,93 +664,18 @@ border-style: solid;
 
 	padding-right: 4px;
 margin-top: 5px;
-position: absolute;
-
 	margin-left: 22px;
 	left: 2px;
 	display: inline-block;
-	display: inherit;
-	width: 71px;
+	width: auto;
 	float: left;
 	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05); box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
-div.add_to_cal{
-	margin-left: 0px;
-	line-height:28px;
-	width: 66px;
-}
-
-div.dismiss{
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-	border-radius: 4px;
-	background-color:#d3d3d3;
-	width: 29px;
-	height: 27px;
-	border: 1px solid;
-	border-color: #AAAAAA #A5A5A5 #7C7C7C;
-	margin-left: 85px;
-	position: relative;
-	margin-top: 5px;
-	display: inline-block;
-	float: right;
-	cursor: pointer;
-}
-
-div.dismiss:hover{
-	background-color: #AFAFAF;
-
-	background-image: -webkit-linear-gradient(top,#C9C9C9,#AAAAAA);
-
-	background-image: -moz-linear-gradient(top,#C9C9C9,#AAAAAA);
-
-	background-image: -o-linear-gradient(top,#C9C9C9,#AAAAAA);
-
-	background-image: linear-gradient(top,#C9C9C9,#AAAAAA);
-
-	border-color: #9B9B9B #777777 #555555;
-}
-
-div.dismiss:active{
-		background-color: #C9C9C9;
-
-		border-color: #696969 #797979 #8A8A8A;
-
-		-webkit-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
-
-		-moz-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
-
-		-o-box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
-
-		box-shadow: inset 0 1px 5px rgba(0,0,0,0.3);
-}
-
-div.dismiss b{
-
-	background-image:url(../src/dismiss_icon.png);
-	background-repeat:no-repeat;
-	background-size:cover;
-	
-
-	width: 15px;
-	
-
-	height: 15px;
-	
-
-	display: block;
-
-	margin-left: 8px;
-
-	margin-top: 6px;
-
-}
 
 
 
-div.event_btns button:hover, div.event_btns div.add_to_cal:hover{
+div.event_btns button:hover{
 background-color: #1ABD88;
 background-image: -webkit-linear-gradient(top,#22C791,#1AAC7C);
 background-image: -moz-linear-gradient(top,#22C791,#1AAC7C);
@@ -768,30 +683,13 @@ background-image: -o-linear-gradient(top,#22C791,#1AAC7C);
 background-image: linear-gradient(top,#22C791,#1AAC7C);
 border-color: #389677 #14A072 #06724F;
 }
-div.event_btns button:active,div.event_btns div.add_to_cal:active{
+div.event_btns button:active{
 	background-color: #1ABD88;
 border-color: #257A5E #0F865F #07835A;
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 -o-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-}
-
-.noti_remove {
-float: right;
-margin-top: 7px;
-margin-right: 9px;
-height: 10px;
-width: 10px;
-display: none;
-}
-
-.noti_remove .remove_icon:after {
-font-family: FontA;
-font-style: normal;
-content: "\f00d";
-color: #a3a3a3;
-font-size: 12px;
 }
 
 .card-tag {
@@ -859,6 +757,32 @@ font-size: 14px;
 font-weight: 500;
 margin: -2px auto 0 auto;
 padding-top: 18px;
+}
+
+.smaller_btn
+{
+	margin-left: 25px!important;
+}
+
+
+.noti_remove
+{
+	position: absolute;
+	margin-left: 368px;
+	height:10px;
+	width: 10px;
+	display:none;
+	margin-top: 0px;
+	z-index: 100;
+}
+
+.noti_remove .remove_icon:after
+{
+	font-family:FontA;
+  	font-style:normal;
+  	content: "\f00d";
+	color: #a3a3a3;
+	font-size: 12px;
 }
 
 @import url(http://webfonts.ru/import/ptsans.css);

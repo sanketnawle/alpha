@@ -237,7 +237,7 @@ border-color: #389677 #14A072 #06724F;
 
 .follow_bt:active
 {
-	background-color: #1ABD88;
+background-color: #1ABD88;
 border-color: #257A5E #0F865F #07835A;
 
 background: #1ABD88 url(../img/glass.png) repeat-x 0 50%;
@@ -246,7 +246,6 @@ background: #1ABD88 url(../img/glass.png) repeat-x 0 50%;
 -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 -o-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-
 }
 
 .noti_footer
