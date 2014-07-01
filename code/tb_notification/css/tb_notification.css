@@ -1,4 +1,4 @@
-.noti_window
+.h_noti_window
 {	
 	width:370px;
 	height: auto;
@@ -11,7 +11,7 @@
 	color: #333;
 }
 
-.noti_head
+.h_noti_head
 {
 	border-bottom: 2px solid rgba(100, 100, 100, 0.22);
 	background-clip: padding-box;
@@ -26,14 +26,14 @@
 	background: #DBDBDB url(../img/white-gradient-100px.png) repeat-x 50% 50%;
 }
 
-.noti_head span
+.h_noti_head span
 {
 	font-weight: bold;
 	font-weight: 200;
 	font-size: 14px;
 }
 
-.seen_all{
+.h_seen_all{
 	float: right;
 font-size: 11px;
 font-weight: bold;
@@ -43,24 +43,24 @@ margin-top: 4px;
 cursor:pointer;
 }
 
-.seen_all:hover{
+.h_seen_all:hover{
 	color: rgba(77, 77, 77, 0.9);
 	text-decoration: underline;
 }
 
-.seen_all:active{
+.h_seen_all:active{
 	color: rgba(77, 77, 77, 0.4);
 }
 
 
-.sub_notihead
+.h_sub_notihead
 {
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 	z-index: 0;
 }
 
-.noti_gen
+.h_noti_gen
 {
 	height: 63px;
 	width: 100%;
@@ -78,25 +78,25 @@ cursor:pointer;
     transition: background-color 100ms linear;
 }
 
-.noti_gen:hover
+.h_noti_gen:hover
 {
 	background-color:rgba(60, 60, 60, 0.1);
 }
 
-.noti_gen:active
+.h_noti_gen:active
 {
 	background-color: rgba(60, 60, 60, 0.07);
 }
 
 
-.gen_left
+.h_gen_left
 {
 	float: left;
 	height: 100%;
 	padding-right: 10px;
 }
 
-.gen_left .gen_noti_icon
+.h_gen_left .h_gen_noti_icon
 {
 	height: 47px;
 	width: 47px;
@@ -110,14 +110,14 @@ cursor:pointer;
 
 }
 
-.gen_right
+.h_gen_right
 {
 	float: left;
 	max-width: 290px;
 	height: 100%;
 }
 
-.notievent_des
+.h_notievent_des
 {
 	float:left;
 	margin-top:15px;
@@ -126,7 +126,7 @@ cursor:pointer;
 	font-weight: 200;
 }
 
-.notievent_time
+.h_notievent_time
 {
 	float: right;
 	margin-top: 7px;
@@ -135,7 +135,7 @@ cursor:pointer;
 	font-size: 12px;
 }
 
-.noti_remove
+.h_noti_remove
 {
 	float: right;
 	margin-top: 7px;
@@ -145,7 +145,7 @@ cursor:pointer;
 	display:none;
 }
 
-.noti_remove .remove_icon
+.h_noti_remove .remove_icon
 {
 	width: 10px;
 	height: 10px;
@@ -155,25 +155,25 @@ cursor:pointer;
 	background-repeat:no-repeat;
 }
 
-.keyword
+.h_keyword
 {
 	color: #029ACF;
 	font-weight: 500;
 }
 
-.keyword:hover
+.h_keyword:hover
 {
 	color: #016283;
 	text-decoration: underline;	
 }
 
-.noti_fol
+.h_noti_fol
 {
 	width:200px;
 	height: 100%;
 }
 
-.span1
+.h_span1
 {
 	float: left;
 	width: 100%;
@@ -181,19 +181,19 @@ cursor:pointer;
 	margin-top: -2px;
 }
 
-.span2
+.h_span2
 {
 	float: left;
 	width: 100%;
 	height:20px;
 }
 
-.sub_keyword
+.h_sub_keyword
 {
 	color:#a3a3a3;
 }
 
-.follow_bt
+.h_follow_bt
 {
 -webkit-box-shadow: none;
 box-shadow: none;
@@ -225,7 +225,7 @@ margin-top: 20px;
 margin-left: 10px;
 }
 
-.follow_bt:hover
+.h_follow_bt:hover
 {
 background-color: #1ABD88;
 background-image: -webkit-linear-gradient(top,#22C791,#1AAC7C);
@@ -235,7 +235,7 @@ background-image: linear-gradient(top,#22C791,#1AAC7C);
 border-color: #389677 #14A072 #06724F;
 }
 
-.follow_bt:active
+.h_follow_bt:active
 {
 background-color: #1ABD88;
 border-color: #257A5E #0F865F #07835A;
@@ -248,7 +248,7 @@ background: #1ABD88 url(../img/glass.png) repeat-x 0 50%;
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }
 
-.noti_footer
+.h_noti_footer
 {
 	background-color: #F7F7F7;
 	border-top: 1px solid #C5C5C5;
@@ -260,13 +260,13 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 	border-bottom-right-radius:3px;
 }
 
-.noti_footer:hover
+.h_noti_footer:hover
 {
 	text-decoration: underline;
 }
 
 
-.noti_content
+.h_noti_content
 {
 	height: auto;
 	width:100%;
@@ -278,7 +278,7 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 
 
 
-.card-tag{
+.h_card-tag{
 	position: absolute;
 	font-family: 'Open Sans Regular', 'Open Sans', sans-serif;
 	color:white;
@@ -289,7 +289,7 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 
 }
 
-.tag-box{
+.h_tag-box{
 	position: relative;
 	max-width: 160px;
 	padding-top: 4px;
@@ -311,7 +311,7 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 	z-index:1;
 }
 
-.tag-wedge{
+.h_tag-wedge{
 	position: relative;
 	z-index:10;
 	width: 0; 

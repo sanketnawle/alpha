@@ -1,33 +1,33 @@
 $(document).ready(function() {
 
-$(document).delegate(".noti_gen","mouseover",function(e){
-	$(this).find(".notievent_time").hide();
-	$(this).find(".noti_remove").show();
+$(document).delegate(".h_noti_gen","mouseover",function(e){
+	$(this).find(".h_notievent_time").hide();
+	$(this).find(".h_noti_remove").show();
 });
 
-$(document).delegate(".noti_gen","mouseout",function(e){
-	$(this).find(".noti_remove").hide();
-	$(this).find(".notievent_time").show();
+$(document).delegate(".h_noti_gen","mouseout",function(e){
+	$(this).find(".h_noti_remove").hide();
+	$(this).find(".h_notievent_time").show();
 });
 
 
-$(document).delegate(".noti_remove","mouseover",function(){
-	$(this).find(".card-tag").stop().show();
+$(document).delegate(".h_noti_remove","mouseover",function(){
+	$(this).find(".h_card-tag").stop().show();
 });
 
-$(document).delegate(".noti_remove","mouseout",function(){
-	$(this).find(".card-tag").delay(1).hide(0);
+$(document).delegate(".h_noti_remove","mouseout",function(){
+	$(this).find(".h_card-tag").delay(1).hide(0);
 });
 
-$(document).delegate(".remove_icon","click",function(){
-	$(this).closest(".noti_gen").hide();
+$(document).delegate(".h_remove_icon","click",function(){
+	$(this).closest(".h_noti_gen").hide();
 });
 
-$(document).delegate(".remove_icon","mouseover",function(){
+$(document).delegate(".h_remove_icon","mouseover",function(){
 	$(this).css({"background-image":"url(img/hide-hover.png)"});
 });	
 
-$(document).delegate(".remove_icon","mouseout",function(){
+$(document).delegate(".h_remove_icon","mouseout",function(){
 	$(this).css({"background-image":"url(img/hide.png)"});
 });	
 
