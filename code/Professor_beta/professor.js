@@ -127,27 +127,87 @@ $(document).ready(function() {
 		$(this).hide();
 		$(".blacksheet").fadeIn(200);
 		$(".blacksheet-main").fadeIn(200);
+		$(".office-hours").hide();
 	});
 	$(document).delegate(".done-editing","click",function(){
 		$(".blacksheet").hide();
 		$(".oh-editor-fx").fadeIn(200);
 		$(".blacksheet-main").fadeOut(200);
+		$(".office-hours").show();
 	});
 
+
+	
+
 	$(document).delegate(".edit-profile","click",function(){
+		var web= $(".website-title").text().trim();
+		var about= $(".profile-bio-container").text().trim();
+		var school= $(".info_field_0").text().trim();
+		var dept= $(".info_field_1").text().trim();
+		var email= $(".info_field_2").text().trim();
+		var loc= $(".info_field_3").text().trim();
+		var name= $(".info_username").text().trim().split(" ");
+		var fname= name[0];
+		var lname= name[1];
+
+		$("#user_website").val(web);
+		$("#user_fname").val(fname);
+		$("#user_lname").val(lname);
+		$("#user_about").val(about);
+		$("#user_school").val(school);
+		$("#user_dept").val(dept);
+		$("#user_email").val(email);
+		$("#user_loc").val(loc);
+
+
 		$(this).hide();
 		$(".profpic-container-real").hide();
 		$(".user-info-wrapper").css("opacity","0");
 		$(".blacksheet-main").fadeIn(400);
 		$(".main-2").show();
+		$(".ns-hide").hide();
+		$(".user-website").hide();
 	});
+
+
 	$(document).delegate(".cancel-edit-profile","click",function(){
 		$(".blacksheet-main").fadeOut(400);
 		$(".main-2").hide();
 		$(".edit-profile").show();
 		$(".profpic-container-real").show();
 		$(".add_book_list").show()
-		$(".user-info-wrapper").css("opacity","1");		
+		$(".user-info-wrapper").css("opacity","1");	
+		$(".ns-hide").show();	
+		$(".user-website").show();
+	});
+
+	$(document).delegate(".save-edit-profile","click",function(){
+
+		var web= $("#user_website").val(); 
+		var about= $("#user_about").val(); 
+		var school= $("#user_school").val(); 
+		var dept= $("#user_dept").val(); 
+		var email= $("#user_email").val(); 
+		var loc= $("#user_loc").val(); 
+		var name= $("#user_fname").val()+" "+$("#user_lname").val();
+		
+		$(".website-title").text(web);
+		$(".profile-bio-container").text(about);
+		$(".info_field_0").text(school);
+		$(".info_field_1").text(dept);
+		$(".info_field_2").text(email);
+		$(".info_field_3").text(loc);
+		$(".info_username").text(name);
+
+
+		$(".blacksheet-main").fadeOut(400);
+		$(".main-2").hide();
+		$(".edit-profile").show();
+		$(".profpic-container-real").show();
+		$(".add_book_list").show()
+		$(".user-info-wrapper").css("opacity","1");	
+		$(".ns-hide").show();	
+		$(".user-website").show();
 	});
 	
 

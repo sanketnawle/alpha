@@ -86,31 +86,31 @@
 							<label class = "user-info-labels user-info-labels-half" for = "user_lname">Last name</label>
 						</div>
 						<div class = "inputs-halfs">
-							<input type = "text" id = "user_fname" name = "user_fname" class = "user_inp_half user_fname" value = "Daphne" maxlength = "15">
-							<input type = "text" id = "user_lname" name = "user_lname" placeholder = "Last name" class = "user_inp_half user_lname" value = "Daphne" maxlength = "15">
+							<input type = "text" id = "user_fname" name = "user_fname" placeholder = "First name" class = "user_inp_half user_fname" value = "" maxlength = "15">
+							<input type = "text" id = "user_lname" name = "user_lname" placeholder = "Last name" class = "user_inp_half user_lname" value = "" maxlength = "15">
 						</div>
 					</div>
 					<div class = "user-title">
 						Professor
 					</div>
 					<div class = "user-info-editable about-editable">
-						<textarea id = "user_about" name = "user_about" class = "user_about user_inp_big" placeholder = "Bio" maxlength = "250" value ="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidudont ut labore"></textarea>
+						<textarea id = "user_about" name = "user_about" class = "user_about user_inp_big" placeholder = "Bio" maxlength = "250"></textarea>
 					</div>
 					<div class = "user-info-editable school-name-editable">
 						<label class = "user-info-labels" for = "user_school">School</label>
-						<input type = "text" id = "user_school" name = "user_school" class = "user_school user_inp_full" value = "Daphne">
+						<input type = "text" id = "user_school" name = "user_school" class = "user_school user_inp_full" placeholder = "School" value = "">
 					</div>
 					<div class = "user-info-editable dept-name-editable">
 						<label class = "user-info-labels" for = "user_dept">Department</label>
-						<input type = "text" id = "user_dept" name = "user_dept" class = "user_dept user_inp_full" value = "Applied Physics and Astrophysics" maxlength = "25">
+						<input type = "text" id = "user_dept" name = "user_dept" class = "user_dept user_inp_full" value = "" placeholder = "Department" maxlength = "25">
 					</div>
 					<div class = "user-info-editable email-editable">
 						<label class = "user-info-labels" for = "user_email">Edu Email</label>
-						<input type = "text" id = "user_email" name = "user_email" class = "user_email user_inp_full" value = "daphne.bavelier@poly.edu" maxlength = "25">
+						<input type = "text" id = "user_email" name = "user_email" class = "user_email user_inp_full" value = "" placeholder = "School email address" maxlength = "25">
 					</div>	
 					<div class = "user-info-editable location-editable">
 						<label class = "user-info-labels" for = "user_loc" style = "top:-2px">Office Location</label>
-						<input type = "text" id = "user_loc" name = "user_loc" placeholder = "Building and Office Number" class = "user_loc user_inp_full" value = "Metrotech 7-415" maxlength = "25">
+						<input type = "text" id = "user_loc" name = "user_loc" placeholder = "Building and Office Number" class = "user_loc user_inp_full" value = "" maxlength = "25">
 					</div>	
 							
 				</div>
@@ -164,10 +164,13 @@
 				</div>
 			</header>
 			<div class = "profile-main">
+				<a class = "office-hours-editor oh-editor-fx">
+					Edit Office Hours
+				</a>
 				<div class = "profile-options has-dropdown">
 					<h1>
 						<a href = "#">
-							<span>Professor Bavelier</span>
+							<span class='info_username'>Professor Bavelier</span>
 						</a>
 					</h1>
 					<a class = "user-website">
@@ -185,10 +188,8 @@
 						<b>M 10:00-11:00 am, W 2:30-3:30 pm</b>
 						<span class = "office-hours-status in-office"></span>						
 					</span>
-					<a class = "office-hours-editor oh-editor-fx">
-					Edit Office Hours
-					</a>
 				</div>
+				
 				<div class = "blacksheet">
 
 					<div class = "edit_office_hours_wrap">
@@ -301,7 +302,7 @@
 							</div>
 							<div class = "info-piece-text-wrapper">
 								<p>Teaches at</p>
-								<h4>NYU Polytechnic School of Engineering</h4>
+								<h4 class='info_field_0'>NYU Polytechnic School of Engineering</h4>
 							</div>
 						</a>
 					</span>					
@@ -310,7 +311,7 @@
 							<div class = "small-icon department_icon" style = "background-image: url(src/physics_icon.png);">
 							</div>
 							<div class = "info-piece-text-wrapper">		<p>Member of the</p>		
-								<h4>Department of Applied Physics and Astrophysics</h4>
+								<h4 class='info_field_1'>Department of Applied Physics and Astrophysics</h4>
 							</div>
 						</a>
 					</span>
@@ -318,14 +319,14 @@
 						<a>
 							<div class = "small-icon email_icon" style = "background-image: url(src/email.png);">
 							</div>
-							<h4 class = "info-piece-oneline">Daphne.bavelier@poly.edu</h4>
+							<h4 class='info_field_2 info-piece-oneline'>Daphne.bavelier@poly.edu</h4>
 						</a>
 					</span>
 					<span class = "user-info-piece info-piece-oneline">
 						<a>
 							<div class = "small-icon location_icon" style = "background-image:url(src/location.png);">
 							</div>
-							<h4 class = "info-piece-oneline">Metrotech 7-415</h4>
+							<h4 class='info_field_3 info-piece-oneline'>Metrotech 7-415</h4>
 						</a>
 					</span>	
 					<br>
@@ -419,171 +420,12 @@
 								Professor	
 							</div>		
 							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
+								<a class = "linked link-up link-up-small">
 									Following
 								</a>
 							</span>		
 						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "link link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
+						
 						
 					</div>
 					<div class = "user-tab-followers-content">
@@ -607,186 +449,7 @@
 								</a>
 							</span>		
 						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
-						<div class = "follow-tab-user-container">	
-
-							<div class = "follow-tab-user-pic">
-							</div>
-							<a class = "follow-tab-user-name">
-								Jacob Lazarus
-							</a>
-							<div class = "follow-tab-user-school follow-tab-user-sub">
-								NYU Poly	
-							</div>
-							<span class = "follow-tab-mid-stop">&#183;</span>							
-							<div class = "follow-tab-account-type follow-tab-user-sub">
-								Professor	
-							</div>		
-							<span class = "link-button link-up-small">
-								<a class = "linked link-up link-up-small">
-									Following
-								</a>
-							</span>		
-						</div>
+				
 						
 						
 					</div>					
