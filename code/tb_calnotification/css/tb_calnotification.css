@@ -1,6 +1,6 @@
 .c_noti_window
 {	
-	width:370px;
+	width:auto;
 	height: auto;
 	background-color: white;
 	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
@@ -9,6 +9,7 @@
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	color: #333;
+	float: left;
 }
 
 .c_noti_head
@@ -332,6 +333,7 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 
 .tabs
 {
+	float: left;
 	border-bottom: 1px solid #DDD;
 	width: auto;
 	height: 26px;
