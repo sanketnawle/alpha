@@ -1,59 +1,59 @@
 body{
-	font-family: 'Open Sans', sans-serif;
-	margin:0px auto;
-	background-color:whitesmoke;
-	min-width: 720px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	overflow: scroll;
+    font-family: 'Open Sans', sans-serif;
+    margin:0px auto;
+    background-color:whitesmoke;
+    min-width: 720px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: scroll;
 }
 
 div.eventbook-main{
-	max-width:1000px;
-	min-width:700px;
-	width:80%;
-	background-color:white;
-	overflow: hidden;
-	border:;
-	margin: 0 auto;
-	padding-bottom: 100px;
-	margin-bottom: 100px;
-	height: 5000px;
-	box-shadow: rgb(238, 238, 238) -3px 0px 3px 2px, rgb(238, 238, 238) 3px 0px 3px 2px;
+    max-width:1000px;
+    min-width:700px;
+    width:80%;
+    background-color:white;
+    overflow: hidden;
+    border:;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+    height: 5000px;
+    box-shadow: rgb(238, 238, 238) -3px 0px 3px 2px, rgb(238, 238, 238) 3px 0px 3px 2px;
 }
 
 div.eventbook-header{
-	height:60px;
-	border-bottom: 1px solid #ECECEC;
-	position: fixed;
-	z-index: 100;
-	max-width: 1000px;
-	width: 80%;
-	min-width: 700px;
-	background-color: white;
-	top: 0px;
-	overflow: hidden;
+    height:60px;
+    border-bottom: 1px solid #ECECEC;
+    position: fixed;
+    z-index: 100;
+    max-width: 1000px;
+    width: 80%;
+    min-width: 700px;
+    background-color: white;
+    top: 0px;
+    overflow: hidden;
 }
 
 div.eventbook-content{
-	border-left: 1px solid #ECECEC;
-	width: 84%;
-	left: 75px;
-	position: relative;
-	z-index: 1;
-	height: 100%;
-	top: 0px;
-	padding-top: 20px;
+    border-left: 1px solid #ECECEC;
+    width: 84%;
+    left: 75px;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    top: 0px;
+    padding-top: 20px;
 }
 
 div.eventbook-content-wrap{
-	bottom: 50px;
-	position: relative;
-	top: 60px;
-	height: 100%;
+    bottom: 50px;
+    position: relative;
+    top: 60px;
+    height: 100%;
 }
 
 div.header-left-title{
@@ -97,14 +97,14 @@ div.header-left-title div.eb-day-cont span.eb-current-day{
 }
 
 span.eb-prev-day{
-	    vertical-align: middle;
+        vertical-align: middle;
     line-height: 40px;
     text-align: center;
     font-size: 23px;
     font-weight: 400;
     color: #6a7480;
     display:block;
-	}
+    }
 
 div.header-left-title div.eb-day-cont span.eb-next-day{
     vertical-align: middle;
@@ -170,7 +170,7 @@ box-shadow: 0 1px 0 rgba(0,0,0,.05);
 }
 
 div.eb-fx-cont:hover{
-	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
 box-shadow: 0 1px 0 rgba(0,0,0,.1);
 border-color: #66afe9;
 }
@@ -183,7 +183,7 @@ border: 1px solid #66afe9;
 
 div.fx-cont-left{
     border-radius: 4px 0px 0px 4px;
-	
+    
     margin-right: 4px;
     margin-left: 10px;
 }
@@ -191,30 +191,30 @@ div.fx-cont-left{
 div.fx-cont-left span{
     background-image: url(src/left-arrow.png);
  
-	      
+          
 }
 
 div.eb-fx-cont span{
-	
+    
     position: relative; background-repeat: no-repeat; background-size: 100%; width: 14px; height: 25px; margin-top: 9px; margin-right: 9px; margin-left: 8px; display: block; background-position-x: 1px;
 }
 
 div.fx-cont-right{
     border-radius: 0px 4px 4px 0px;
-	
+    
 }
 
 div.fx-cont-right span{
     background-image: url(src/right-arrow.png);
  
-	
+    
     margin-left: 9px;
     margin-right: 8px;
 }
 
 div.eventbook-date-break{
     position: relative;
-	
+    
     top: 40px;
     left: -101px;
     width: 100%;
@@ -293,36 +293,36 @@ div.eventbook-content div.eventbook-event-cont{
 
 
 div.eventbook-content div.eventbook-groupevent-cont{
-	min-height: 210px;
-	    
-	border: 1px solid #ECECEC;
-	border-left: 3px solid rgba(245, 191, 132, 1);
+    min-height: 210px;
+        
+    border: 1px solid #ECECEC;
+    border-left: 3px solid rgba(245, 191, 132, 1);
     min-width: 480px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     padding-right: 10px;
     background-image: -moz-linear-gradient(left,rgba(165, 21, 221, 0.2),#FFFFFF 7%);
     
-	background-image: -webkit-linear-gradient(left,rgba(245, 191, 132, 0.48),#FFFFFF 5%);
-	border-radius: 0px 4px 4px 0px;
+    background-image: -webkit-linear-gradient(left,rgba(245, 191, 132, 0.48),#FFFFFF 5%);
+    border-radius: 0px 4px 4px 0px;
 }
 
 div.eventbook-event-cont:hover > div.eb-event-timeuntill{
-	opacity:1;
+    opacity:1;
 }
 div.eb-event-frame{
-	padding-top:4px;
-	padding-right: 3px;
-	background: rgba(11,25,2,0.06);
-	padding-bottom:4px;
-	border-radius: 0px 5px 5px 0px;
-	min-width: 490px;
-	margin-right: 200px;
+    padding-top:4px;
+    padding-right: 3px;
+    background: rgba(11,25,2,0.06);
+    padding-bottom:4px;
+    border-radius: 0px 5px 5px 0px;
+    min-width: 490px;
+    margin-right: 200px;
 }
 
 div.eb-event-timeuntill{
     font-size: 13px; 
     font-weight: 500;
-	
+    
     opacity: .3;
     display: inline-block;
     position: relative;
@@ -357,31 +357,31 @@ left: -16px;
 }
 
 div.eventbook-event-time span{
-	color: #fff;
+    color: #fff;
 font-size: 14px;
 font-weight: bold;
 position: relative;
 
-	top: 0px;
+    top: 0px;
 color: white;
 
-	text-shadow: 0 1px 1px rgba(162, 165, 163, 0.6);
+    text-shadow: 0 1px 1px rgba(162, 165, 163, 0.6);
 }
 
 div.eventbook-event-time::after{
-	content: "";
+    content: "";
 position: absolute;
 bottom: -10px;
 
-	left: 0;
+    left: 0;
 display: block;
 width: 0;
 height: 0;
 border-style: solid;
 
-	border-width: 0 13px 10px 0px;
+    border-width: 0 13px 10px 0px;
 
-	border-color: transparent rgba(233, 152, 63, 1) transparent transparent;
+    border-color: transparent rgba(233, 152, 63, 1) transparent transparent;
 }
 
 div.eventbook-event-time-personal::after{
@@ -390,7 +390,7 @@ border-color: transparent #777777 transparent transparent;
 
 div.eb-group-creator-name{
     margin-top: 4px;
-	
+    
     font-size: 18px;
     color: #029acf;
     font-weight: 400;
@@ -412,36 +412,36 @@ div.eventbook-personalevent-cont{
 }
 
 span.eventbook-event-group{
-	background-image:url(src/neuroscience.jpg);
-	background-size:cover;
-	height: 18px;
-	width: 18px;
-	display: inline-block;
-	text-shadow: none;
-	margin-right: 2px;
-	border-radius: 3px;
-	border: none;
-	top: 4px!important;
+    background-image:url(src/neuroscience.jpg);
+    background-size:cover;
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+    text-shadow: none;
+    margin-right: 2px;
+    border-radius: 3px;
+    border: none;
+    top: 4px!important;
 }
 
 .eventbook-discuss-btn{
-	position: absolute;
-	bottom: 4px;
-	text-align: center;
-	background-color: #fff;
-	border: 0;
-	border: 1px solid rgba(0,0,0,0.2);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	outline: 0;
-	right: 4px;
-	font-size: 13px;
-	cursor:pointer;
-	color: #333437;
-	left: 4px;
-	padding-top: 4px;
-	padding-bottom: 4px;
+    position: absolute;
+    bottom: 4px;
+    text-align: center;
+    background-color: #fff;
+    border: 0;
+    border: 1px solid rgba(0,0,0,0.2);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    right: 4px;
+    font-size: 13px;
+    cursor:pointer;
+    color: #333437;
+    left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 .eventbook-discuss-btn:hover{
 -webkit-transition: all 150ms ease-in-out;
@@ -464,35 +464,35 @@ div.eb-event-titlepic{
 }
 
 div.eb-event-titlepic div.eb-event-pic-frame{
-	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
 -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
 box-shadow: 0 1px 5px rgba(0,0,0,.5);
 background-color:#f8f8f8;
    
     
-	border-radius: 2px;
+    border-radius: 2px;
    
     
-	display: inline-block;
-	margin-left: 1px;
-	float: left;
-	padding: 2px;
+    display: inline-block;
+    margin-left: 1px;
+    float: left;
+    padding: 2px;
 }
 
 div.eb-event-titlepic div.eb-event-pic-frame div.eb-event-pic{
-	background-image: url(src/lab_stock.jpg);
-	 
-	width: 160px;
+    background-image: url(src/lab_stock.jpg);
+     
+    width: 160px;
     
-	height: 112px;
+    height: 112px;
      
-	border-radius: 3px;
-	background-size: cover;
+    border-radius: 3px;
+    background-size: cover;
      
-	min-width: 110px;
-	border: 1px solid #eee;
+    min-width: 110px;
+    border: 1px solid #eee;
      background-repeat:no-repeat;
-	}
+    }
 
 div.eb-event-titlepic div.eb-event-title{
     font-size: 21px;
@@ -516,17 +516,17 @@ div.eb-event-titlepic div.eb-event-title{
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator{
     border-radius: 3px; border: 1px solid #ECECEC;
-	
+    
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     height: 55px;
-    background: rgba(228, 228, 228, 0.15);
+    background: rgba(245, 245, 245, 1);
 }
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator:hover > div.eb-group-creator-picframe{
 opacity:.8;
 }
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator:hover{
-	cursor:pointer;
+    cursor:pointer;
 }
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator:hover > div.eb-group-creator-name{
 text-decoration: underline;
@@ -539,28 +539,28 @@ color: rgba(4, 117, 156, 0.65);
 }
 
 div.eb-group-attendant:hover > .eb-attendant-pic{
-	opacity:.8;
+    opacity:.8;
 }
 
 div.eb-group-attendant:hover{
-	cursor:pointer;
-	background-color: #FAFAFA;
+    cursor:pointer;
+    background-color: #FAFAFA;
 }
 
 div.eb-group-attendant:hover > .eb-attendant-name{
-	text-decoration: underline;
-	color: #016283;
+    text-decoration: underline;
+    color: #016283;
 }
 
 div.eb-group-attendant:active > .eb-attendant-name{
-	text-decoration: underline;
-	color: rgba(4, 117, 156, 0.65);
+    text-decoration: underline;
+    color: rgba(4, 117, 156, 0.65);
 }
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-attending{
     border-radius: 3px; border: 1px solid #ECECEC; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);  
     background: #FFFFFF;
-	
+    
     position: absolute;
     width: 99.4%;
     bottom: 0px;
@@ -568,9 +568,9 @@ div.eb-group-attendant:active > .eb-attendant-name{
 }
 
 div.eb-event-location{
-	font-size: 18px;
+    font-size: 18px;
 
-	display: inline-block;
+    display: inline-block;
 font-weight: 200;
 color: rgba(0, 0, 0, 0.4);
 margin-left: 7px;
@@ -595,7 +595,7 @@ padding-right: 10px;
     position: absolute; 
     top: -1px; 
     right: -245px;
-	
+    
     height: 101%;
     width: 240px;
 }
@@ -638,7 +638,7 @@ div.eb-group-creator-picframe{
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); 
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); 
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); background-color: #f8f8f8;
-	
+    
     padding: 1px;
     display: inline-block;
     float: left;
@@ -650,7 +650,7 @@ div.eb-group-creator-picframe{
 
 span.eb-group-created-copy{
     font-size: 12px;
-	
+    
     color: rgba(0, 0, 0, 0.4);
 }
 
@@ -679,11 +679,12 @@ text-decoration: underline;
 color: rgba(4, 117, 156, 0.65);
 }
 div.eb-group-attending-header{
-	width: 100%;
-	overflow:hidden;
+    width: 100%;
+    overflow:hidden;
 height: 25px;
 border-bottom: 1px solid #ECECEC;
-background-color: rgba(228, 228, 228, 0.15);
+
+    background-color: rgba(245, 245, 245, 1);
 }
 
 div.attending-header-left span.people-icon{
@@ -698,24 +699,24 @@ div.attending-header-left span.people-icon{
     left: 10px;
 }
     .eb-personal-event-name{
-    	font-size: 21px;
+        font-size: 21px;
 display: block;
 font-weight: 500;
 color: #474747;
 
 
-    	position: absolute;
-    	display: inline-block;
+        position: absolute;
+        display: inline-block;
 
-    	top: 45px;
-    	left: 8px;
-    	float: left;
+        top: 45px;
+        left: 8px;
+        float: left;
 
     
 }
 div.attending-header-left span.people-number{
     font-size: 14px;
-	
+    
     font-weight: 600;
     color: rgba(0, 0, 0, 0.46);
     margin-left: 11px;
@@ -745,7 +746,7 @@ div.eb-group-attendant{
     right: -250px; 
     height: 104%; 
     width: 239px;
-	
+    
     background: rgba(11,25,2,0.06); padding-bottom: 4px; 
     border-radius: 3px;
 }
@@ -907,7 +908,7 @@ font-size: 11.111111640930176px;
 
 .eb-personal-event-info{
     position: absolute;
-	
+    
     top: 101px;
     height: 87px;
     left: 0px;
@@ -917,11 +918,11 @@ font-size: 11.111111640930176px;
 
 .eb-event-type{
     display: inline-block;
-	
+    
     float: left;
     text-transform: uppercase;
     width: 100%;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
     font-size: 15.5px; 
     padding-top: 4px;
     padding-bottom: 2px;
@@ -958,25 +959,25 @@ div.eb-personal-event-notes {
 }
 
 div.eb-personal-event-notes:hover > span.eb-personal-event-info-content,.eb-personal-event-files:hover span.eb-personal-event-info-content{
-	color:rgba(97, 83, 83, 0.43);
+    color:rgba(97, 83, 83, 0.43);
 }
 
 div.eb-personal-event-info {
-	
+    
 }
 
 div.event-attend-status{
     display: inline-block;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
-	box-shadow: 0 1px 0 rgba(0,0,0,.05);
-	background-color: #fff;
-	background-image: -webkit-linear-gradient(top,transparent,transparent);
-	height: 31px;
-	background-image: linear-gradient(top,transparent,transparent);
-	color: #404040;
-	border: 1px solid #d9d9d9;
-	cursor: pointer;
-	border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(top,transparent,transparent);
+    height: 31px;
+    background-image: linear-gradient(top,transparent,transparent);
+    color: #404040;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,.15);
     border-radius: 3px;
     width: 120px;
     position: absolute;
@@ -987,15 +988,15 @@ div.event-attend-status{
 div.event-edit-btn{
     display: inline-block;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
-	box-shadow: 0 1px 0 rgba(0,0,0,.05);
-	background-color: #fff;
-	background-image: -webkit-linear-gradient(top,transparent,transparent);
-	height: 31px;
-	background-image: linear-gradient(top,transparent,transparent);
-	color: #404040;
-	border: 1px solid #d9d9d9;
-	cursor: pointer;
-	border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(top,transparent,transparent);
+    height: 31px;
+    background-image: linear-gradient(top,transparent,transparent);
+    color: #404040;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,.15);
     border-radius: 3px;
     width: 133px;
     position: absolute;
@@ -1004,11 +1005,11 @@ div.event-edit-btn{
 }
 
 div.event-edit-btn:hover{
-	-webkit-box-shadow:0 1px 0 rgba(0,0,0,.1);box-shadow:0 1px 0 rgba(0,0,0,.1);background-color:#fff;background-image:-webkit-linear-gradient(top,transparent,transparent);background-image:linear-gradient(top,transparent,transparent);border-color: #66afe9;color:#222;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,.1);box-shadow:0 1px 0 rgba(0,0,0,.1);background-color:#fff;background-image:-webkit-linear-gradient(top,transparent,transparent);background-image:linear-gradient(top,transparent,transparent);border-color: #66afe9;color:#222;
 }
 
 div.event-edit-btn:active{
-	background:#e5e5e5;
+    background:#e5e5e5;
 -webkit-box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 border: 1px solid #66afe9;
@@ -1032,9 +1033,28 @@ box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(10
 border: 1px solid #66afe9;
 }
 
+div.event-attend-status-hider{
+  background:#e5e5e5;
+-webkit-box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+border: 1px solid #66afe9;  
+}
+div.event-attend-status-hider:hover{
+  background:#e5e5e5;
+-webkit-box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+border: 1px solid #66afe9;  
+}
+
+
 div.event-attend-status:hover > span.down-arrow{
-	background-image:url(src/down_arrow_foc_hov.png);
-	transition:background-image .1s ease;
+    background-image:url(src/down_arrow_foc_hov.png);
+    transition:background-image .1s ease;
+}
+
+
+div.event-attend-status-hider > span.down-arrow{
+    background-image:url(src/down_arrow_foc_hov.png);
 }
 
 .eb-personal-tools-cont{
@@ -1042,7 +1062,7 @@ div.event-attend-status:hover > span.down-arrow{
 
     background-color: white;
     position: absolute;
-    top: 32px;
+    top: 28px;
     bottom: 4px;
     left: 4px;
     right: 4px;
@@ -1063,15 +1083,15 @@ right: 6px;
 }
 
 span.attend-icon{
-	background: center center no-repeat url(src/checked-event.png);
+    background: center center no-repeat url(src/checked-event.png);
 background-size: cover;
 display: inline-block;
-	width: 14px;
-	height: 14px;
+    width: 14px;
+    height: 14px;
 cursor: pointer;
 position: relative;
-	left: 5px;
-	top: 6px;
+    left: 5px;
+    top: 6px;
 }
 
 span.edit-icon{
@@ -1083,29 +1103,29 @@ height: 14px;
 cursor: pointer;
 position: relative;
 left: 6px;
-top: 6px;	
+top: 6px;   
 }
 
 span.attend-icon{
-	background: center center no-repeat url(src/checked-event.png);
+    background: center center no-repeat url(src/checked-event.png);
 background-size: cover;
 display: inline-block;
-	width: 14px;
-	height: 14px;
+    width: 14px;
+    height: 14px;
 cursor: pointer;
 position: relative;
-	left: 5px;
-	top: 6px;
+    left: 5px;
+    top: 6px;
 }
 
 span.remove-icon{
-	background-image: url(src/dismiss-event.png);
-	left: 0px;
-	top: 2px;
-	width: 14px;
-	height: 14px;
-	background-size: cover;
-	background-repeat: no-repeat;
+    background-image: url(src/dismiss-event.png);
+    left: 0px;
+    top: 2px;
+    width: 14px;
+    height: 14px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .dd-box-attending{
@@ -1128,27 +1148,28 @@ box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
 }
 
 .dd-box-show{
-	display:block;
-	opacity:1;
+    display:block;
+    opacity:1;
 }
 
 .dd-box-attending:hover{
-	background-color: #fafafa;
-	cursor:pointer;
+    background-color: #fafafa;
+    cursor:pointer;
 }
 
 .dd-box-attending:hover> div.attending-option{
-	color: rgba(50, 50, 50, 1);
+    color: rgba(50, 50, 50, 1);
+    text-decoration: underline;
 }
 
 .dd-box-attending:active> div.attending-option{
-	color: rgba(64, 64, 64, 0.53);
+    color: rgba(64, 64, 64, 0.53);
 }
 .dd-box-attending div.attending-option{
-	font-size: 14px;
+    font-size: 14px;
 font-weight: 700;
 
-	padding-left: 4px;
+    padding-left: 4px;
 color: rgba(64, 64, 64, 0.83);
 }
 
@@ -1166,14 +1187,14 @@ border-top: 9px solid #E0E0E0;
 border-right: 8px solid rgba(246, 246, 246, 0);
 }
 .eb-personal-note-wedges{
-	position: absolute;
+    position: absolute;
 
-	left: 50px;
+    left: 50px;
 
-	top: 92px;
+    top: 92px;
 }
 .eb-personal-file-wedges{
-		position: absolute;
+        position: absolute;
 right: 100px;
 top: 87px;
 }
@@ -1234,7 +1255,7 @@ top: 92px;
 }
 
 @media(max-width:1200px){
-	div.eb-event-loc-group-wrap div.eb-event-group {
+    div.eb-event-loc-group-wrap div.eb-event-group {
 font-size: 13px;
 display: inline-block;
 font-weight: 200;
@@ -1254,7 +1275,7 @@ margin-left: 7px;
 
 
 @media(max-width:1170px){
-	div.eb-group-attendant div.eb-attendant-name {
+    div.eb-group-attendant div.eb-attendant-name {
 display: inline-block;
 font-size: 13px;
 font-weight: 400;
@@ -1283,7 +1304,7 @@ position: absolute;
 top: -5px;
 right: -231px;
 height: 104%;
-width: 220px;	
+width: 220px;   
 }
 
 }
@@ -1315,7 +1336,7 @@ top: 4px;
 }
 }
 @media (max-width: 1035px) {
-	div.eb-group-attendant div.eb-attendant-name {
+    div.eb-group-attendant div.eb-attendant-name {
 display: inline-block;
 font-size: 13px;
 font-weight: 400;
@@ -1330,7 +1351,7 @@ position: relative;
 }
 
 div.eb-event-frame{
-	padding-right: 8px;
+    padding-right: 8px;
 }
 }
 
@@ -1377,7 +1398,7 @@ background-repeat: no-repeat;
 }
 
 .eb-personal-event-name{
-	font-size:18px;
+    font-size:18px;
 }
 
 div.eb-event-titlepic div.eb-event-title {
@@ -1397,7 +1418,7 @@ font-weight: 200;
 color: rgba(0, 0, 0, 0.4);
 margin-left: 7px;
 }
-	div.eb-group-attendant div.eb-attendant-name {
+    div.eb-group-attendant div.eb-attendant-name {
 display: inline-block;
 font-size: 12px;
 font-weight: 400;
@@ -1415,7 +1436,7 @@ position: relative;
 }
 
 @media (max-width:1000px){
-	.eb-groupevent-wrap .eventbook-groupevent-people {
+    .eb-groupevent-wrap .eventbook-groupevent-people {
 position: absolute;
 top: -1px;
 right: -170px;
@@ -1434,7 +1455,7 @@ width: 158px;
 }
 
 @media (max-width: 940px) {
-	.eb-groupevent-wrap .eventbook-groupevent-people {
+    .eb-groupevent-wrap .eventbook-groupevent-people {
 position: absolute;
 top: -1px;
 right: -125px;
@@ -1469,7 +1490,7 @@ width: 114px;
 
 
 @media (max-width: 880px) {
-	div.eb-event-titlepic div.eb-event-title {
+    div.eb-event-titlepic div.eb-event-title {
 font-size: 17px;
 
 font-weight: 500;
