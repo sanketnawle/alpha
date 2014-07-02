@@ -93,7 +93,6 @@ cursor:pointer;
 {
 	float: left;
 	height: 100%;
-	padding-right: 10px;
 }
 
 .h_gen_left .h_gen_noti_icon
@@ -110,11 +109,12 @@ cursor:pointer;
 
 }
 
-.h_gen_right
+.c_gen_right
 {
 	float: left;
-	max-width: 290px;
+	width: 200px;
 	height: 100%;
+	text-overflow:ellipsis;
 }
 
 .h_notievent_des
@@ -123,6 +123,15 @@ cursor:pointer;
 	margin-top:15px;
 	font-size: 13px;
 	max-width: 240px;
+	font-weight: 200;
+}
+
+.c_notievent_des
+{
+	float:left;
+	margin-top:15px;
+	font-size: 13px;
+	width: 300px;
 	font-weight: 200;
 }
 
@@ -222,7 +231,8 @@ padding-left:8px;
 padding-right: 8px; 
 
 margin-top: 20px;
-margin-left: 10px;
+margin-right: 15px;
+float: right;
 }
 
 .h_follow_bt:hover
@@ -396,18 +406,178 @@ color:white;
 	}
 
 	b.complete{
-			background: center center no-repeat url(../src/complete.png);
+			background: center center no-repeat url(../img/complete.png);
 			background-size: cover;
 	}
 
 	b.incomplete{
-		background: center center no-repeat url(../src/incomplete.png);
+		background: center center no-repeat url(../img/incomplete.png);
 		background-size: cover;
 	}
 
 		b.active_glyph{
 		opacity:1;
 	}
+
+
+.calnoti_left{
+    display: inline-block;
+    float: left;
+    height: 100%;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.calnoti_left .calnoti_daybox{
+	background-color: rgba(0, 0, 0, 0.18);
+border: 2px solid #fff;
+-webkit-border-radius: 5px;
+border-radius:5px;
+color: #fff;
+font-size: 28px;
+font-weight: 500;
+
+padding-bottom: 9px;
+padding-top: 7px;
+
+text-align: center;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+top: 0;
+width: 46px;
+}
+
+.calnoti_left .calnoti_daybox .daybox_month{
+	color: #fff;
+
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 10px;
+font-weight: 500;
+margin: -2px auto 0 auto;
+}
+
+.calnoti_left .calnoti_daybox .daybox_day{
+	color: #fff;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 22px;
+font-weight: 500;
+margin: -2px auto -6px auto;
+padding-left:3px;
+padding-right:3px;
+	}
+
+.c_span1
+{
+font-size: 14px;
+font-weight: 400;
+color: #222;
+width: 300px;
+}
+
+.c_span2
+{
+font-size: 13px;
+color: #444;
+font-weight: 200;
+width: 300px;
+text-overflow:ellipsis;
+}
+
+.calnoti_upcoming{
+	background-color: rgba(247, 75, 62, 0.75);
+border: 2px solid #fff;
+
+	-webkit-border-radius: 5px;
+color: #fff;
+font-size: 28px;
+font-weight: 500;
+
+
+	border-radius: 5px;
+text-align: center;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+top: 0;
+
+	width: 46px;
+
+	margin-left: -1px;
+	height: 46px;
+}
+
+.hrs_text{
+	color: #fff;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	font-size: 18px;
+font-weight: 500;
+margin: -2px auto 0 auto;
+padding-top: 7px;
+}
+
+.hrs_text2{
+	color: #fff;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	font-size: 9px;
+font-weight: 500;
+margin: -2px auto -6px auto;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.calnoti_inviter{
+	background-image:url(../testpic/dummypic.png);
+	background-repeat:no-repeat;
+background-size: cover;
+
+	width: 45px;
+
+	height: 45px;
+border-radius: 4px;
+
+	border: 2px solid #fff;
+	margin-left: 8px;
+	margin-top: 8px;
+	margin-right: 8px;
+}
+
+.calnoti_exam{
+	background-color: rgba(88, 144, 255, 0.89);
+border: 2px solid #fff;
+-webkit-border-radius: 5px;
+color: #fff;
+font-size: 28px;
+font-weight: 500;
+border-radius: 5px;
+text-align: center;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+top: 0;
+width: 46px;
+text-transform: uppercase;
+margin-left: -1px;
+height: 46px;
+}
+
+.calnoti_exam_text{
+	color: #fff;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-weight: 500;
+margin: -2px auto 0 auto;
+padding-top: 18px;
+}
+
+.calnoti_group{
+	background:no-repeat url(../src/computational_biology.png);
+background-size: cover;
+
+	width: 45px;
+
+	height: 45px;
+border-radius: 4px;
+
+	border: 2px solid #fff;
+}
 
 @import url(http://webfonts.ru/import/ptsans.css);
 
