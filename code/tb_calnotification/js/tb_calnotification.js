@@ -51,6 +51,9 @@ $(document).delegate(".c_remove_icon","mouseout",function(){
 		$(".past_events_tab").css("border-right-color","#e9eaed");
 	});
 
-
+	$(document).delegate(".c_follow_bt","click",function(){
+		//alert("a");
+		return false;
+	});
 
 });   

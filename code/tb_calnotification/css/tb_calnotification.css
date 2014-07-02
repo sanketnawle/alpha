@@ -229,6 +229,7 @@ float: right;
 .c_small_btn
 {
 	margin-right: 20px;
+	margin-top: 20px;
 }
 
 .h_follow_bt:hover
@@ -668,6 +669,22 @@ transition: all 100ms ease-out 0s;
 	width: 10px;
 	height: 10px;
 }
+
+.c_accpet_btn
+{
+	margin-top: 20px;
+}
+
+.c_noti_content a:link
+{	
+	color: #222;
+}
+
+.c_noti_content a:visited
+{	
+	color: #222;
+}
+
 
 @import url(http://webfonts.ru/import/ptsans.css);
 
