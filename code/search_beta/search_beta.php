@@ -66,6 +66,15 @@
 		callFilter(search_type,search_string,univ_id,filter);
 		callBookmarks();
 
+		$(document).delegate(".fav","click",function(){
+			if($(this).hasClass("selected"))
+			{
+				$(this).removeClass("selected");
+			}
+			callBookmarks($(this).attr('id'));
+			alert($(this).attr('id'));
+		});
+		
 		$(document).delegate("#search","click",function(){
 			search_type= $(".activeType").data("value");
 			search_string = $("#search_query").val();
@@ -117,6 +126,64 @@
 				$("#category3").text(professor_rows);
 				$("#category4").text(student_rows);
 				$("#category5").text(group_rows);
+
+				var count = 0; var key = "";
+				
+				if(course_rows > 0){
+					count++;
+					key = "#category2";
+					$("#category2").parent().parent().show();
+				}
+				else
+				{
+					$("#category2").parent().addClass("inactiveType");
+					$("#category2").parent().removeClass("activeType");
+					$("#category2").parent().parent().hide();
+				}
+				
+				if(professor_rows > 0){
+					count++;
+					key = "#category3";
+					$("#category3").parent().parent().show();
+				}
+				else{
+					$("#category3").parent().addClass("inactiveType");
+					$("#category3").parent().removeClass("activeType");
+					$("#category3").parent().parent().hide();
+				}
+
+				if(student_rows > 0){
+					count++;
+					key = "#category4";
+					$("#category4").parent().parent().show();
+				}
+				else{
+					$("#category4").parent().addClass("inactiveType");
+					$("#category4").parent().removeClass("activeType");
+					$("#category4").parent().parent().hide();
+				}
+				
+				if(group_rows > 0){
+					count++;
+					key = "#category5";
+					$("#category5").parent().parent().show();
+				}
+				else{
+					$("#category5").parent().addClass("inactiveType");
+					$("#category5").parent().removeClass("activeType");
+					$("#category5").parent().parent().hide();
+				}
+
+				if(count != 1)
+				{
+					$("#category1").parent().addClass("activeType");
+				}
+				else
+				{
+					$("#category1").parent().removeClass("activeType");
+					$("#category1").parent().addClass("inactiveType");
+					$(key).parent().addClass("activeType");
+				}	
 				$("#result").html(responseText);
 				mySlider.updateMax(credits);
 			}
@@ -188,7 +255,7 @@
 <?php
 /*get the list of departments in the university*/
 	$deptsql="SELECT * FROM department where univ_id =".$_GET['univid'];
-	if($deptListRes = $dbObj->query($deptsql))
+	if($deptListRes = $con->query($deptsql))
 	{
 		while ($deptRow = $deptListRes->fetch_array(MYSQLI_ASSOC))
 		{

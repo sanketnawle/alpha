@@ -1,7 +1,7 @@
 <?php
 include_once ('includefiles.php');
 $_SESSION['user_id'] = 1;
-//$_POST['class'] = "92e9ddb3-f589-11e3-b732-00259022578e";
+// $_POST['class'] = "92da67e6-f589-11e3-b732-00259022578e";
 function addBookmark($class_id,$user_id)
 {
 	global  $dbObj;
@@ -13,15 +13,17 @@ function addBookmark($class_id,$user_id)
 			AND cs.class_id = ?";
 	$ins_stmt = "Insert into course_bookmarks(class_id, user_id) VALUES (?,?)";
 	
-	$stmt = $dbObj->prepare($check_stmt);
-	echo "prepared";
-	$stmt->bind_param("is", $user_id, $class_id);
-	echo "bound";
-	$stmt->execute();
-	$stmt->bind_result($count);
-	while($stmt->fetch())
-		echo $count;
-	$stmt->close();
+	$count = 0;
+	if($stmt = $dbObj->prepare($check_stmt))
+	{
+// 		echo "prepared";
+		$stmt->bind_param("is", $user_id, $class_id);
+// 		echo "bound";
+		$stmt->execute();
+		$stmt->bind_result($count);
+		$stmt->fetch();
+		$stmt->close();
+	}
 	if($count != 0)
 	{
 		$ins_stmt = $dbObj->prepare($ins_stmt);
@@ -29,6 +31,10 @@ function addBookmark($class_id,$user_id)
 		$ins_stmt->execute();
 		$affected_rows = $ins_stmt->affected_rows;
 		$ins_stmt->close();
+	}
+	else
+	{
+		exit("Cannot add this course to bookmarks");
 	}
 	return $affected_rows;
 }
@@ -103,7 +109,53 @@ function checkConflict($user_id)
 	}
 	return $schedule_array;
 }
-
+function selectBookmarks($user_id)
+{
+	$result_array = checkConflict($user_id);
+	$class_ids = array_column($result_array, 'class');
+	$class_ids = array_unique($class_ids);
+	//echo "<br/> unique";
+	// 	foreach ($class_ids as $v)
+		// 		echo  "<br/>".$v;
+	foreach($class_ids as $v)
+	{
+		echo '<div class = "bookmark-piece">
+				  <div class = "bookmark-title-clear';
+	
+		foreach($result_array as $row)
+		{
+			if($row['class'] == $v
+			&& $row['conflict'] == true)
+			{
+				echo " busy";
+				break;
+			}
+		}
+		echo '"><p class = "bookmark-title">';
+		//echo $i." ".$v." ".$key."<br/>";
+		$key = searchForClassId($v, $result_array);
+		echo $result_array[$key]['course'].
+		'</p>
+				  </div>
+				  <div class = "bookmark-timing"><p>';
+		foreach($result_array as $row)
+		{
+			if($row['class'] == $v)
+			{
+				$stime = new DateTime($row['start'], new DateTimeZone("America/New_York"));
+				if($row['conflict'])
+				{
+					echo "<span class='busy'>".$row['day'].$stime->format('H:i')."</span><br/>";
+				}
+				else
+				{
+					echo "<span>".$row['day'].$stime->format('H:i')."</span><br/>";
+				}
+			}
+		}
+		echo '</p></div></div>';
+	}
+}
 function searchForClassId($id, $array) {
 	foreach ($array as $key => $val) {
 		if ($val['class'] == $id) {
@@ -112,90 +164,6 @@ function searchForClassId($id, $array) {
 	}
 	return null;
 }
-
-if (!function_exists('array_column')) {
-	function array_column($input = null, $columnKey = null, $indexKey = null)
-	{
-		$argc = func_num_args();
-		$params = func_get_args();
-	
-		if ($argc < 2) {
-			trigger_error("array_column() expects at least 2 parameters, {$argc} given", E_USER_WARNING);
-			return null;
-		}
-	
-		if (!is_array($params[0])) {
-			trigger_error('array_column() expects parameter 1 to be array, ' . gettype($params[0]) . ' given', E_USER_WARNING);
-			return null;
-		}
-	
-		if (!is_int($params[1])
-		&& !is_float($params[1])
-		&& !is_string($params[1])
-		&& $params[1] !== null
-		&& !(is_object($params[1]) && method_exists($params[1], '__toString'))
-		) {
-			trigger_error('array_column(): The column key should be either a string or an integer', E_USER_WARNING);
-			return false;
-		}
-	
-		if (isset($params[2])
-		&& !is_int($params[2])
-		&& !is_float($params[2])
-		&& !is_string($params[2])
-		&& !(is_object($params[2]) && method_exists($params[2], '__toString'))
-		) {
-			trigger_error('array_column(): The index key should be either a string or an integer', E_USER_WARNING);
-			return false;
-		}
-	
-		$paramsInput = $params[0];
-		$paramsColumnKey = ($params[1] !== null) ? (string) $params[1] : null;
-	
-		$paramsIndexKey = null;
-		if (isset($params[2])) {
-			if (is_float($params[2]) || is_int($params[2])) {
-				$paramsIndexKey = (int) $params[2];
-			} else {
-				$paramsIndexKey = (string) $params[2];
-			}
-		}
-	
-		$resultArray = array();
-	
-		foreach ($paramsInput as $row) {
-	
-			$key = $value = null;
-			$keySet = $valueSet = false;
-	
-			if ($paramsIndexKey !== null && array_key_exists($paramsIndexKey, $row)) {
-				$keySet = true;
-				$key = (string) $row[$paramsIndexKey];
-			}
-	
-			if ($paramsColumnKey === null) {
-				$valueSet = true;
-				$value = $row;
-			} elseif (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
-				$valueSet = true;
-				$value = $row[$paramsColumnKey];
-			}
-	
-			if ($valueSet) {
-				if ($keySet) {
-					$resultArray[$key] = $value;
-				} else {
-					$resultArray[] = $value;
-				}
-			}
-	
-		}
-	
-		return $resultArray;
-	}
-	
-}
-
 	$choice = '';
 	$user_id = $_SESSION['user_id'];
 	if(isset($_POST['class']))
@@ -207,6 +175,7 @@ if (!function_exists('array_column')) {
 		$chk_stmt->execute();
 		$chk_stmt->bind_result($count);
 		$chk_stmt->fetch();
+		$chk_stmt->close();
 		if($count == 1)
 		{
 			$choice = 'REMOVE';
@@ -220,107 +189,22 @@ if (!function_exists('array_column')) {
 	{
 		$choice = 'SELECT';
 	}
-	//echo $choice;
+// 	echo $choice;
 if($choice == 'SELECT')
 {
-	$result_array = checkConflict($user_id);
-	//echo count($result_array);
-	$class_ids = array_column($result_array, 'class');
-	$class_ids = array_unique($class_ids);
-	//echo "<br/> unique";
-// 	foreach ($class_ids as $v)
-// 		echo  "<br/>".$v;
-	foreach($class_ids as $v)
-	{
-		echo '<div class = "bookmark-piece">
-				  <div class = "bookmark-title-clear">
-				  <p class = "bookmark-title">';
-		//echo $i." ".$v." ".$key."<br/>";
-		$key = searchForClassId($v, $result_array);
-		echo $result_array[$key]['course'].
-		'</p>
-				  </div>
-				  <div class = "bookmark-timing';
-		foreach($result_array as $row)
-		{
-			if($row['class'] == $v
-			&& $row['conflict'] == true)
-			{
-				echo " busy";
-				break;
-			}
-		}
-		echo '"><p>';
-		foreach($result_array as $row)
-		{
-			if($row['class'] == $v)
-			{
-				if($row['conflict'])
-				{
-					echo "<span class='conflict'>".$row['day'].$row['start']."</span>";
-				}
-				else
-				{
-					echo "<span>".$row['day'].$row['start']."</span>";
-				}
-			}
-		}
-		echo '</p></div></div>';
-	}
-	
+	selectBookmarks($user_id);
 }
 elseif($choice == 'ADD')
 {	
  	if(addBookmark($class_id, $user_id) == 1)
  	{
-		$result_array = checkConflict($user_id);
-		echo count($result_array);
-		$class_ids = array_column($result_array, 'class');
-		$class_ids = array_unique($class_ids);
-		echo "<br/> unique";
-		foreach ($class_ids as $v)
-			echo  "<br/>".$v;
-		foreach($class_ids as $v)
-		{
-			echo '<div class = "bookmark-piece">
-				  <div class = "bookmark-title-clear">
-				  <p class = "bookmark-title">';
-			echo $i." ".$v." ".$key."<br/>";
-			$key = searchForClassId($v, $result_array);
-			echo $result_array[$key]['course'].
-				  '</p>
-				  </div>
-				  <div class = "bookmark-timing';
-			foreach($result_array as $row)
-			{
-				if($row['class'] == $v
-				&& $row['conflict'] == true)
-				{
-					echo " busy";
-					break;
-				}
-			}
-				  	echo '"><p>';
-		  	foreach($result_array as $row)
-		  	{
-		  		if($row['class'] == $v)
-		  		{
-		  			if($row['conflict'])
-		  			{
-		  				echo "<span class='conflict'>".$row['day'].$row['start']."</span>";
-		  			}
-		  			else
-		  			{
-		  				echo "<span>".$row['day'].$row['start']."</span>";
-		  			}
-		  		}
-		  	}	  		  	
-				  	echo '</p></div></div>';
-		}
+ 		selectBookmarks($user_id);
  	}
 }
 elseif($choice == 'REMOVE')
 {
 	$user_id = $_SESSION['user_id'];
 	removeBookmark($class_id, $user_id);
+	selectBookmarks($user_id);
 }
+$dbObj->close();
