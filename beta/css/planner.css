@@ -215,7 +215,7 @@ border-bottom: 1px solid #3AC979;
     width: 184px;
 }
 
-    .upc-eventL .evntName {
+    .upc-eventL .evntName a {
         font-size: 13.9px;
         font-weight: 400;
         line-height: 17.7px;
@@ -230,7 +230,7 @@ border-bottom: 1px solid #3AC979;
         color: #029acf;  font-weight: 400;
 }
 
-.upc-eventL .evntName:hover {
+.upc-eventL .evntName a:hover {
     font-weight: 500;
     text-decoration: underline; 
     color: #016283; cursor: pointer;
@@ -872,5 +872,65 @@ border: none;
 border-bottom: 1px solid #C0C0C0;
 margin-top: 3px;
 margin-bottom: 4px;
+}
+
+.pl_free_planner{
+    padding-bottom: 40px;
+    padding-top: 20px;  
+}
+
+div.no_events_speech{
+    -webkit-border-radius: 3px;
+border-radius: 3px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+box-shadow: 0 1px 2px rgba(0,0,0,.2);
+background-color: #eaeaea;
+color: #868686;
+display: block;
+font-size: 13px;
+padding: 15px 20px;
+margin: 0 auto;
+position: relative;
+text-align: center;
+width: 60%;
+}
+
+div.no_events_speech::before{
+    border-color: rgba(170,170,170,0);
+border-top-color: #aaa;
+
+    border-width: 13px;
+
+    margin-left: -13px;
+
+}
+div.no_events_speech::before,div.no_events_speech::after{
+top: 94%;
+border: solid transparent;
+content: '';
+height: 0;
+left: 50%;
+position: absolute;
+pointer-events: none;
+width: 0;
+}
+div.no_events_speech::after{
+border-color: rgba(255,255,255,0);
+border-top-color: #eaeaea;
+border-width: 12px;
+margin-left: -12px;
+}
+
+div.no_events_speech p{
+    margin: 0;
+    font-size: 14px;
+}
+
+img.no_events_face{
+    width: 85px;
+height: 85px;
+margin: 0 auto;
+padding-top:10px;
+display: block;
 }
 /* End of styles for planner dropdown */

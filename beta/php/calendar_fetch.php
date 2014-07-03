@@ -1,121 +1,154 @@
 <?php
 
-include 'php/dbconnection.php';
+include 'dbconnection.php';
+session_start();
 
-$user_id = 0;
-$today_date = date("Y-m-d", strtotime("now"));
+$user_id = 1;
+$month_date = date("Y-m-d", strtotime("now"));
 
-if (isset($_POST['user_id'])) {
-    $user_id = $_POST['user_id'];
+
+$grey_code = "192";
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 }
-if (isset($_POST['date'])) {
-    $today_date = $_POST['date'];
+if (isset($_POST['month_date'])) {
+    $month_date = $_POST['month_date'];
 }
-
-$today_date_unix = strtotime($today_date);
-
+//echo $month_date;
 //Starting of the month
-$today_date = date("Y-m-d", strtotime($today_date));
-$month_start = date("Y-m-01", strtotime($today_date));
-$month_end = date("Y-m-t", strtotime($today_date));
+$month_start = date("Y-m-01", strtotime($month_date));
+//-7 days from month start
+$month_start = date("Y-m-d", strtotime("-7 days", strtotime($month_start)));
+//Month end
+$month_end = date("Y-m-t", strtotime($month_date));
+//+7 days from month start
+$month_end = date("Y-m-d", strtotime("+7 days", strtotime($month_end)));
+
+
 
 $range = $month_end;
 
-$personal_event = 1;
-$personal_event_recurring = 2;
-$personal_invited_event = 3;
-$group_event = 4;
-$course_event = 5;
+$get_types = "SELECT * FROM event_types";
+$get_types_result = mysqli_query($con, $get_types);
+
+while ($row = mysqli_fetch_array($get_types_result)) {
+    $event_name = $row['event_name'];
+    switch ($event_name) {
+        case 'to_do':
+            $to_do_event = $row['type'];
+            break;
+        case 'personal':
+            $personal_event = $row['type'];
+            break;
+        case 'personal_invited':
+            $personal_invited_event = $row['type'];
+            break;
+        case 'group':
+            $group_event = $row['type'];
+            break;
+        case 'group_personal':
+            $group_event_personal = $row['type'];
+            break;
+        case 'course':
+            $course_event = $row['type'];
+            break;
+        case 'course_personal':
+            $course_event_personal = $row['type'];
+    }
+}
+
 $result_array = array();
-
-
-
 
 //Selecting events for the user without recurrence
 $personal_event_query = "SELECT * FROM personal_event WHERE `user_id`= '$user_id' 
-    AND `start_date` BETWEEN $month_start AND $month_end AND `recurrence`='none'
+    AND `start_date` BETWEEN '$month_start' AND '$month_end' AND `recurrence`='none'
     ORDER BY start_date ASC, start_time ASC";
-
-//echo "personal query: "  . $personal_event_query;
 
 $personal_event_query_result = mysqli_query($con, $personal_event_query);
 
-$count = 0;
 while ($row = mysqli_fetch_array($personal_event_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $result_array[] = array(
         'title' => $row['title'],
+        'location' => $row['location'],
         'start_date' => $row['start_date'],
+        'end_date' => $row['end_date'],
+        'end_time' => $row['end_time'],
         'start_time' => $row['start_time'],
+        'group_name' => "",
+        'red_color' => $grey_code,
+        'green_color' => $grey_code,
+        'blue_color' => $grey_code,
         'is_check' => $row['is_check'],
         'event_id' => $row['event_id'],
+        'editable' => TRUE,
         'type' => $personal_event
     );
-    $count++;
 }
-//
-//
+
+
 //Selecting events for the user with recurrence
 $personal_events_recurrence_query = "SELECT * FROM personal_event WHERE `user_id`= '$user_id' 
     AND `end_date` >= '$month_start' AND `recurrence`!='none' ";
 
-//echo "personal recurring query: "  . $personal_events_recurrence_query;
-
 $personal_events_recurrence_query_result = mysqli_query($con, $personal_events_recurrence_query);
-//echo mysqli_num_rows($personal_events_recurrence_query_result);
-//echo $personal_events_recurrence_query;
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($personal_events_recurrence_query_result)) {
-    if ($count == 5) {
-        break;
-    }
-    $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $tange, $month_start);
+    $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
 //    echo print_r($recurrence_dates);
     foreach ($recurrence_dates as $dates) {
         $result_array[] = array(
             'title' => $row['title'],
+            'location' => $row['location'],
             'start_date' => $dates,
+            'end_date' => $dates,
+            'end_time' => $row['end_time'],
             'start_time' => $row['start_time'],
+            'group_name' => "",
+            'red_color' => $grey_code,
+            'green_color' => $grey_code,
+            'blue_color' => $grey_code,
             'is_check' => 0,
             'event_id' => $row['event_id'],
-            'type' => $personal_event_recurring
+            'editable' => TRUE,
+            'type' => $personal_event
         );
     }
-    $count++;
 }
 
+//
 //Selecting events user has been invited to without recurrence
 $personal_invited_event_query = "SELECT * FROM personal_event WHERE `event_id` IN 
     (SELECT `event_id` FROM personal_event_invited WHERE `user_id` ='$user_id' AND (`choice`='0' OR `choice`='1'))
-        AND `recurrence`='none' AND `start_date` BETWEEN $month_start AND $month_end
+        AND `recurrence`='none' AND `start_date` BETWEEN '$month_start' AND '$month_end'
         ORDER BY start_date ASC,start_time ASC";
 
 //echo "personal invited query: "  . $personal_invited_event_query;
 
 $personal_invited_event_query_result = mysqli_query($con, $personal_invited_event_query);
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $result_array[] = array(
         'title' => $row['title'],
+        'location' => $row['location'],
         'start_date' => $row['start_date'],
+        'end_date' => $row['end_date'],
+        'end_time' => $row['end_time'],
         'start_time' => $row['start_time'],
+        'group_name' => "",
+        'red_color' => $grey_code,
+        'green_color' => $grey_code,
+        'blue_color' => $grey_code,
         'is_check' => 0,
         'event_id' => $row['event_id'],
+        'editable' => FALSE,
         'type' => $personal_invited_event
     );
-    $count++;
 }
-//
-//
-//
-//
+
+
 //Selecting events user has been invited to with recurrence
 $personal_invited_event_recurrence_query = "SELECT * FROM personal_event WHERE
         `event_id` IN (SELECT `event_id` FROM personal_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
@@ -124,116 +157,161 @@ $personal_invited_event_recurrence_query = "SELECT * FROM personal_event WHERE
 $personal_invited_event_recurrence_query_result = mysqli_query($con, $personal_invited_event_recurrence_query);
 
 //echo "personal invited recurrence query: "  . $personal_invited_event_recurrence_query;
-$count = 0;
+
 while ($row = mysqli_fetch_array($personal_invited_event_recurrence_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
     foreach ($recurrence_dates as $dates) {
         $result_array[] = array(
             'title' => $row['title'],
+            'location' => $row['location'],
             'start_date' => $dates,
+            'end_date' => $dates,
+            'end_time' => $row['end_time'],
             'start_time' => $row['start_time'],
+            'group_name' => "",
+            'red_color' => $grey_code,
+            'green_color' => $grey_code,
+            'blue_color' => $grey_code,
             'is_check' => 0,
             'event_id' => $row['event_id'],
+            'editable' => FALSE,
             'type' => $personal_invited_event
         );
     }
-    $count++;
 }
-
-//
-//
 //
 //Selecting club events has is part of without recurrence
-$group_event_query = "SELECT * FROM group_event WHERE `event_id` IN 
+$group_event_query = "SELECT E.*, G.`group_name` FROM group_event E, groups G WHERE E.`event_id` IN 
     (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' AND (`added`='0' OR `added`='1'))
-        AND `recurrence`='none' AND `start_date` BETWEEN $month_start AND $month_end
+        AND E.`recurrence`='none' AND E.`start_date` BETWEEN '$month_start' AND '$month_end' AND E.`group_id` = G.`group_id`
         ORDER BY start_date ASC,start_time ASC";
 
 //echo "group query: "  . $group_event_query;
 
 $group_event_query_result = mysqli_query($con, $group_event_query);
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($group_event_query_result)) {
-    if ($count == 5) {
-        break;
-    }
+    $group_id = $row['group_id'];
+    $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM group_users WHERE `group_id`=$group_id AND `user_id` = $user_id )";
+    $get_color_query_result = mysqli_query($con, $get_color_query);
+    $fetch_color = mysqli_fetch_array($get_color_query_result);
+    $red_code = $fetch_color['red_code'];
+    $green_code = $fetch_color['green_code'];
+    $blue_code = $fetch_color['blue_code'];
+
     $result_array[] = array(
         'title' => $row['title'],
+        'location' => $row['location'],
         'start_date' => $row['start_date'],
+        'end_date' => $row['end_date'],
+        'end_time' => $row['end_time'],
         'start_time' => $row['start_time'],
+        'group_name' => $row['group_name'],
+        'red_color' => $red_code,
+        'green_color' => $green_code,
+        'blue_color' => $blue_code,
         'is_check' => 0,
         'event_id' => $row['event_id'],
+        'editable' => FALSE,
         'type' => $group_event
     );
-    $count++;
 }
-//
+////
 //Selecting club events invited to with recurrence
-$group_event_recurrence_query = "SELECT * FROM group_event    
-        WHERE `event_id` IN (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' 
-            AND (`added`='0' OR `added`='1')) AND `recurrence`!='none' AND `end_date` >= '$month_start'";
+$group_event_recurrence_query = "SELECT E.*, G.`group_name` FROM group_event E, groups G   
+        WHERE E.`event_id` IN (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' 
+            AND (`added`='0' OR `added`='1')) AND E.`recurrence`!='none' AND E.`end_date` >= '$month_start' 
+                AND E.`group_id` = G.`group_id`";
 
 //echo "group recurrence query: "  . $group_event_recurrence_query;
 $group_event_recurrence_query_result = mysqli_query($con, $group_event_recurrence_query);
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($group_event_recurrence_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
+    $group_id = $row['group_id'];
+    $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM group_users WHERE `group_id`=$group_id AND `user_id` = $user_id )";
+    $get_color_query_result = mysqli_query($con, $get_color_query);
+    $fetch_color = mysqli_fetch_array($get_color_query_result);
+    $red_code = $fetch_color['red_code'];
+    $green_code = $fetch_color['green_code'];
+    $blue_code = $fetch_color['blue_code'];
+
     foreach ($recurrence_dates as $dates) {
         $result_array[] = array(
             'title' => $row['title'],
-            'start_date' => $$dates,
+            'location' => $row['location'],
+            'start_date' => $dates,
+            'end_date' => $dates,
+            'end_time' => $row['end_time'],
             'start_time' => $row['start_time'],
+            'group_name' => $row['group_name'],
+            'red_color' => $red_code,
+            'green_color' => $green_code,
+            'blue_color' => $blue_code,
             'is_check' => 0,
             'event_id' => $row['event_id'],
+            'editable' => FALSE,
             'type' => $group_event
         );
     }
-    $count++;
 }
-//
-//
-//
-//
+
+
 //Selecting course events he is part of without recurrence
 $course_event_query = "SELECT * FROM course_event WHERE `event_id` IN
     (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
-        AND `recurrence`='none' AND `start_date` BETWEEN $month_start AND $month_end
+        AND `recurrence`='none' AND `start_date` BETWEEN '$month_start' AND '$month_end'
         ORDER BY start_date ASC,start_time ASC";
 
 //echo "course query: "  . $course_event_query;
 $course_event_query_result = mysqli_query($con, $course_event_query);
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($course_event_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $event_id = $row['event_id'];
-    $check_ischeck_query = "SELECT is_check FROM group_event_invited WHERE `event_id`='$event_id' AND `user_id`='$user_id'";
+    $check_ischeck_query = "SELECT is_check FROM course_event_invited WHERE `event_id`='$event_id' AND `user_id`='$user_id'";
     $check_ischeck_query_result = mysqli_query($con, $check_ischeck_query);
     $ischeck = mysqli_fetch_array($check_ischeck_query_result);
     $ischeck = $ischeck['ischeck'];
+
+    $class_id = $row['class_id'];
+    $course_name_query = "SELECT `course_name` FROM courses WHERE `course_id` = 
+        (SELECT `course_id` FROM courses_semester WHERE `class_id` = '$class_id')";
+    $course_name_query_result = mysqli_query($con, $course_name_query);
+    $course_name = mysqli_fetch_array($course_name_query_result);
+    $course_name = $course_name['course_name'];
+
+    $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM courses_user WHERE `class_id`='$class_id' AND `user_id` = $user_id )";
+    $get_color_query_result = mysqli_query($con, $get_color_query);
+    $fetch_color = mysqli_fetch_array($get_color_query_result);
+    $red_code = $fetch_color['red_code'];
+    $green_code = $fetch_color['green_code'];
+    $blue_code = $fetch_color['blue_code'];
+
     $result_array[] = array(
         'title' => $row['title'],
+        'location' => $row['location'],
         'start_date' => $row['start_date'],
+        'end_date' => $row['end_date'],
+        'end_time' => $row['end_time'],
         'start_time' => $row['start_time'],
+        'red_color' => $red_code,
+        'green_color' => $green_code,
+        'blue_color' => $blue_code,
+        'group_name' => $course_name,
         'is_check' => $ischeck,
         'event_id' => $row['event_id'],
+        'editable' => FALSE,
         'type' => $course_event
     );
-    $count++;
 }
-//
-//
-//
+
+
 //Selecting course events user is part of with recurrence
 $course_event_recurrence_query = "SELECT * FROM course_event WHERE
     `event_id` IN (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
@@ -243,11 +321,8 @@ $course_event_recurrence_query = "SELECT * FROM course_event WHERE
 
 $course_event_recurrence_query_result = mysqli_query($con, $course_event_recurrence_query);
 
-$count = 0;
+
 while ($row = mysqli_fetch_array($course_event_recurrence_query_result)) {
-    if ($count == 5) {
-        break;
-    }
     $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
     foreach ($recurrence_dates as $dates) {
         $event_id = $row['event_id'];
@@ -255,26 +330,184 @@ while ($row = mysqli_fetch_array($course_event_recurrence_query_result)) {
         $check_ischeck_query_result = mysqli_query($con, $check_ischeck_query);
         $ischeck = mysqli_fetch_array($check_ischeck_query_result);
         $ischeck = $ischeck['ischeck'];
+
+        $class_id = $row['class_id'];
+        $course_name_query = "SELECT `course_name` FROM courses WHERE `course_id` = 
+        (SELECT `course_id` FROM courses_semester WHERE `class_id` = '$class_id')";
+        $course_name_query_result = mysqli_query($con, $course_name_query);
+        $course_name = mysqli_fetch_array($course_name_query_result);
+        $course_name = $course_name['course_name'];
+
+        $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM courses_user WHERE `class_id`='$class_id' AND `user_id` = $user_id )";
+        $get_color_query_result = mysqli_query($con, $get_color_query);
+        $fetch_color = mysqli_fetch_array($get_color_query_result);
+        $red_code = $fetch_color['red_code'];
+        $green_code = $fetch_color['green_code'];
+        $blue_code = $fetch_color['blue_code'];
+
         $result_array[] = array(
             'title' => $row['title'],
-            'start_date' => $today_date,
+            'location' => $row['location'],
+            'start_date' => $dates,
+            'end_date' => $dates,
+            'end_time' => $row['end_time'],
             'start_time' => $row['start_time'],
+            'red_color' => $red_code,
+            'green_color' => $green_code,
+            'blue_color' => $blue_code,
+            'group_name' => $course_name,
             'is_check' => $ischeck,
             'event_id' => $row['event_id'],
+            'editable' => FALSE,
             'type' => $course_event
         );
     }
-    $count++;
+}
+
+$course_personal_event_query = "SELECT * FROM course_event WHERE `user_id` = $user_id 
+    AND `start_date` BETWEEN '$month_start' AND '$month_end'
+        ORDER BY start_date ASC,start_time ASC";
+
+$course_personal_event_query_result = mysqli_query($con, $course_personal_event_query);
+
+while ($row = mysqli_fetch_array($course_personal_event_query_result)) {
+    $class_id = $row['class_id'];
+    $course_name_query = "SELECT `course_name` FROM courses WHERE `course_id` = 
+        (SELECT `course_id` FROM courses_semester WHERE `class_id` = '$class_id')";
+    $course_name_query_result = mysqli_query($con, $course_name_query);
+    $course_name = mysqli_fetch_array($course_name_query_result);
+    $course_name = $course_name['course_name'];
+
+    $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM courses_user WHERE `class_id`='$class_id' AND `user_id` = $user_id )";
+    $get_color_query_result = mysqli_query($con, $get_color_query);
+    $fetch_color = mysqli_fetch_array($get_color_query_result);
+    $red_code = $fetch_color['red_code'];
+    $green_code = $fetch_color['green_code'];
+    $blue_code = $fetch_color['blue_code'];
+
+    if ($row['recurrence'] != 'none') {
+        $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
+        foreach ($recurrence_dates as $dates) {
+            $event_id = $row['event_id'];
+            $result_array[] = array(
+                'title' => $row['title'],
+                'location' => $row['location'],
+                'start_date' => $dates,
+                'end_date' => $dates,
+                'end_time' => $row['end_time'],
+                'start_time' => $row['start_time'],
+                'red_color' => $red_code,
+                'green_color' => $green_code,
+                'blue_color' => $blue_code,
+                'group_name' => $course_name,
+                'is_check' => $row['is_check'],
+                'event_id' => $row['event_id'],
+                'editable' => TRUE,
+                'type' => $course_event_personal
+            );
+        }
+    } else {
+        $result_array[] = array(
+            'title' => $row['title'],
+            'location' => $row['location'],
+            'start_date' => $row['start_date'],
+            'end_date' => $row['end_date'],
+            'end_time' => $row['end_time'],
+            'start_time' => $row['start_time'],
+            'red_color' => $red_code,
+            'green_color' => $green_code,
+            'blue_color' => $blue_code,
+            'group_name' => $course_name,
+            'is_check' => $row['is_check'],
+            'event_id' => $row['event_id'],
+            'editable' => TRUE,
+            'type' => $course_event_personal
+        );
+    }
+}
+
+$group_personal_event_query = "SELECT E.*, G.`group_name` FROM group_event E, groups G WHERE E.`user_id` = $user_id 
+    AND E.`start_date` BETWEEN '$month_start' AND '$month_end' AND E.`group_id` = G.`group_id`
+        ORDER BY start_date ASC,start_time ASC";
+
+$group_personal_event_query_result = mysqli_query($con, $group_personal_event_query);
+
+while ($row = mysqli_fetch_array($group_personal_event_query_result)) {
+    $group_id = $row['group_id'];
+    $get_color_query = "SELECT `red_code` ,`green_code`, `blue_code` FROM event_color_table WHERE `color_id` = 
+        (SELECT `color_id` FROM group_users WHERE `group_id`=$group_id AND `user_id` = $user_id )";
+    $get_color_query_result = mysqli_query($con, $get_color_query);
+    $fetch_color = mysqli_fetch_array($get_color_query_result);
+    $red_code = $fetch_color['red_code'];
+    $green_code = $fetch_color['green_code'];
+    $blue_code = $fetch_color['blue_code'];
+    if ($row['recurrence'] != 'none') {
+        $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $month_start);
+        foreach ($recurrence_dates as $dates) {
+            $event_id = $row['event_id'];
+            $result_array[] = array(
+                'title' => $row['title'],
+                'location' => $row['location'],
+                'start_date' => $dates,
+                'end_date' => $dates,
+                'end_time' => $row['end_time'],
+                'start_time' => $row['start_time'],
+                'red_color' => $red_code,
+                'green_color' => $green_code,
+                'blue_color' => $blue_code,
+                'group_name' => $row['group_name'],
+                'is_check' => $row['is_check'],
+                'event_id' => $row['event_id'],
+                'editable' => TRUE,
+                'type' => $group_event_personal
+            );
+        }
+    } else {
+        $result_array[] = array(
+            'title' => $row['title'],
+            'location' => $row['location'],
+            'start_date' => $row['start_date'],
+            'end_date' => $row['end_date'],
+            'end_time' => $row['end_time'],
+            'start_time' => $row['start_time'],
+            'red_color' => $red_code,
+            'green_color' => $green_code,
+            'blue_color' => $blue_code,
+            'group_name' => $row['group_name'],
+            'is_check' => $row['is_check'],
+            'event_id' => $row['event_id'],
+            'editable' => TRUE,
+            'type' => $group_event_personal
+        );
+    }
 }
 
 
-$sort = array();
-foreach ($result_array as $k => $v) {
-    $sort['start_date'][$k] = $v['start_date'];
-    $sort['start_time'][$k] = $v['start_time'];
-}
 
-array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $result_array);
+
+if (count($result_array) > 0) {
+    $sort = array();
+    foreach ($result_array as $k => $v) {
+        $sort['start_date'][$k] = $v['start_date'];
+        $sort['start_time'][$k] = $v['start_time'];
+    }
+    array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $result_array);
+    $json = array(
+        'events_array' => $result_array
+    );
+
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+} else {
+    $json = array(
+        'events_array' => array()
+    );
+
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
 
 function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $month_start) {
     $dates = array();

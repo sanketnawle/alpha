@@ -1,10 +1,11 @@
 <?php
 
 include 'dbconnection.php';
-$user_id = 2;
+session_start();
+$user_id = 1;
 
-if (isset($_POST['user_id'])) {
-    $user_id = $_POST['user_id'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 }
 if ($_POST['event_id'] != "") {
     $event_id = $_POST['event_id'];

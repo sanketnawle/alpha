@@ -210,10 +210,7 @@ $(document).ready(function () {
 
             data: { event_id: $event_id, value: $value, event_type: $event_type },
 
-            type: "POST",
-
-            dataType: "json",
-
+            type: "POST"
         });
 
 
@@ -1432,8 +1429,8 @@ $(document).ready(function () {
             $startTime = new Date().getHours();
         }
     }
-
-    $currentTime = new Date().getHours() + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';   
+    var curDt = new Date(new Date().getTime() + (10 * 60000));
+    $currentTime = curDt.getHours() + ':' + ("0" + curDt.getMinutes()).slice(-2) + ':00';
     $('#set_time_24hr').timeAutocomplete({
         increment: 10,
         formatter: 'ampm',
@@ -1442,64 +1439,36 @@ $(document).ready(function () {
     });
 
     function UpdateEvents() {
-
         var dt = new Date();
-
         var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
-
         var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
-
-
-
-
-
         var hours = dt.getHours() == 0 ? "12" : dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours();
-
         var minutes = (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
-
         var ampm = dt.getHours() < 12 ? "am" : "pm";
-
         var formattedTime = hours + ":" + minutes + " " + ampm;
 
 
-
-        if ($('#result').prop('childNodes') >= 1) {
-
+        if ($('#result').prop('childNodes').length >= 2) {
             $(".upc-1").each(function (index) {
-
-                if ($(this).children('.upc-floatL').children('.time').text() == formattedTime) {
-
+                if ($(this).children('.upc-floatL').children(':last').text() == formattedTime) {
                     //$('#result').append(getEvents(today_date, now_time));
-
                     $.ajax({
-
                         url: "php/planner_events.php",
                         data: { date: today_date, time: now_time },
                         type: "POST",
                         dataType: "json",
                         success: function (responseText) {
-
                             document.getElementById("result").innerHTML = responseText.echo_string;
-
                         },
                         error: function (responseText) {
-
                             alert("failure");
-
                         }
-
                     });
-
-                }          
-
+                }         
             });
-
         }
-
         else {
-
             $.ajax({
-
                 url: "php/planner_events.php",
                 data: { date: today_date, time: now_time},
                 type: "POST",
@@ -1509,15 +1478,12 @@ $(document).ready(function () {
                     $('#divPlanner').show();
                 },
                 error: function (responseText) {
-
                     var test = responseText.responseText;
-
                 }
-
             });
         }
-
     }
 
-    setInterval(function () { UpdateEvents() }, 500);
+    setInterval(function () { UpdateEvents() }, 1000);
+
 });

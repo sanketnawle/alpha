@@ -110,7 +110,7 @@ $echo_string = '
       <div class = "evnt_create">
         <a class = "btn_canc">Cancel</a>
         <input id="add_event" class = "btn_addvent" type = "submit" value="Add"/>
-      </div>
+      </div>      
     </div>
   </div>
   <div id="result" class = "upcomingEvnt-wrapper">

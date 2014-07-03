@@ -24,7 +24,7 @@
 
 .event_main_header {
     float:left;
-    width:auto;
+    width:100%;
 }
 
 .qa_header { 
@@ -87,10 +87,11 @@
     float:right;
     margin-top:-17px;
     width:25px;
+    cursor: pointer;
 }
 .event_left {
-    width:100px;
-    height:100px;
+    width:80px;
+    height:80px;
     float:left;
     background:#DDD;
     border-radius:3px;
@@ -100,10 +101,11 @@
 .event-content {
     display:inline-block;
     height:auto;
+    width:100%;
 }
 
 .event_right {
-    width:83%;
+    width:86%;/*83%*/
     float:right;    
     /*display:none;*/
 }
@@ -134,7 +136,9 @@
     width: 80px;
     font-weight: 600;
     display: inline-block;
-    color: rgb(87, 87, 87); text-shadow: 0 1px 1px #A2A5A3;
+    font-size: 16px;
+    color: rgb(255, 255, 255); 
+    text-shadow: 0 1px 1px #8196CC;
 }
 
 
@@ -179,13 +183,14 @@
 }
 .event_icons {
     float: left;
-    padding: 13px 0px;
+    padding: 5px 0px;/*13px 0px*/
 }
 .event_icons1 {
     float: left;
 padding-right: 5px;
 width: 13px;
 padding-top: 3px;
+    display: none;
 }
 
 .event-data {
@@ -219,6 +224,7 @@ padding-top: 3px;
     text-align: left;
     padding-left: 0px;
     padding-top: 0px;
+    text-transform: capitalize;
     color: #353434;
 }
 
@@ -229,7 +235,8 @@ input:focus {
 .event_join {
     display:inline-block;
     width:auto;
-    padding-top:14px;
+    padding-top:5px;/*14px*/
+    padding-bottom:2px;
 }
 
 .event_content {
@@ -373,6 +380,7 @@ content: "";
     padding-top: 5px;
     text-indent: 0px;
     padding-left:5px;
+    width: 200px;
 }
 
 .creator_wrapper {
@@ -409,9 +417,9 @@ content: "";
     font-size: 11.5px;
     width: auto;
     position: relative;
-    left: 0px;
+    left: -45px;
     top: 0px;
-    padding-left:45px;
+    /*padding-left:45px;*/
     padding-right: 5px;
     font-style:italic;
 }
@@ -607,6 +615,7 @@ padding-left: 5px;
     padding-top: 4px;    
     color: rgb(108, 185, 255);
     font-size: 20px;
+    line-height: 24px;
 }
 
 .section_icon {
@@ -628,7 +637,7 @@ padding-left: 5px;
 
 .event_info {
     text-align: left;
-    font-size: 11.5px;
+    font-size: 12.5px;
     text-overflow: ellipsis;
     overflow: hidden;
     text-indent: 0px;
@@ -663,6 +672,10 @@ a.hideLink {
 /* Time line for the events */
 /* ================ The Timeline ================ */
 
+.hide {
+    opacity:0;
+}
+
 .timeline {
     position: relative;
     width: 100%;
@@ -678,7 +691,7 @@ a.hideLink {
         top: 0;
         content: ' ';
         display: block;
-        width: 1px;
+        width: 3px;
         height: 100%;
         margin-left: -3px;
         background: #CCC;
@@ -687,7 +700,7 @@ a.hideLink {
         background: -webkit-linear-gradient(top, #F2F2F2 0%, #CCC 8%, #CCC 92%, #F2F2F2 100%);
         background: -o-linear-gradient(top, #F2F2F2 0%, #CCC 8%, #CCC 92%, #F2F2F2 100%);
         background: -ms-linear-gradient(top, #F2F2F2 0%, #CCC 8%, #CCC 92%, #F2F2F2 100%);
-        background: linear-gradient(to bottom, #F2F2F2 0%, #CCC 8%, #CCC 92%, #F2F2F2 100%);        
+        background: linear-gradient(to bottom, #95CBFD 0%, #95CBFD 8%, #95CBFD 92%, #95CBFD 100%);        
     }
 
     .timeline li {
@@ -713,6 +726,7 @@ a.hideLink {
     position: relative;
     width: 100%;
     float: left;
+    margin-top: 14px;
     /*margin-left: 30px;*/
 }
 
@@ -729,9 +743,9 @@ a.hideLink {
         content: ' ';
         width: 3px;
         height: 3px;
-        background: #929292;
+        background: rgba(146, 146, 146, 0);
         border-radius: 10px;
-        border: 1px solid #929292;
+        border: 1px solid rgba(146, 146, 146, 0);
         left: 16%;       
         z-index:2; 
     }
@@ -782,7 +796,7 @@ a.hideLink {
 }
 
 .cur_event {
-    color:#4e5665;
+    color: #5BADF8;
     height:auto;
     width:auto;
     max-width: 200px;
@@ -863,16 +877,14 @@ color: #fff;
     padding:5px;  
     z-index:1; 
 
-    margin-left: 26px;
-    border: 1px solid #E9EAED;
-    border-radius: 4px;
-
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-    background: #FFFFFF;
+    margin-left: -2px;
+    border-radius: 0px 5px 5px 0;
+ 
+    background: #95CBFD;
 } 
 .arrow_box:after, .arrow_box:before { right: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
-.arrow_box:after { border-color: rgba(246, 247, 248, 0); border-right-color: #FFFFFF; border-width: 8px; margin-top: -8px;} 
-.arrow_box:before { border-color: rgba(206, 214, 224, 0); border-right-color: #E9EAED; border-width: 9px; margin-top: -9px; }
+.arrow_box:after { border-color: rgba(246, 247, 248, 0); border-right-color: rgba(255, 255, 255, 0); border-width: 8px; margin-top: -8px;} 
+.arrow_box:before { border-color: rgba(206, 214, 224, 0); border-right-color: rgba(233, 234, 237, 0); border-width: 9px; margin-top: -9px; }
 
 .right_tilted_border {
 width: 0px;
@@ -888,29 +900,29 @@ float: right;
     text-align:left;
     font-size:15px;
     font-weight:700;
-    color:#4E5665;
+    color: rgba(114, 114, 114, 0.53);
+    margin-top: 10px;
     margin-left:35px;
     margin-bottom:15px;
      
     margin-bottom: 22px; text-shadow: 0 1px 1px rgba(255, 255, 255, 0.66); 
-    font-size: 16px; text-transform: uppercase;
+    font-size: 19px; 
 }
 /* End of timeline styles */
 
 
 /* Styles for the accept buttons */
 .left_btn:hover {
-            background-color: #1ABD88;
+            background-color: #1CE69C;
             border-color: #389677 #14A072 #06724F;
             cursor: pointer;
             color: white;
         }
 
         .right_btn:hover {
-            /*background-color: #2e78c5;*/
             cursor: pointer;
             color: white;
-            background-color: #1F69B6;
+            background-color: #646464;
         }
 
         .right_btn:active {
@@ -932,7 +944,7 @@ float: right;
         }
 
         .center_btn:hover {
-            background-color: rgba(251, 106, 0, 1);
+            background-color: rgba(253, 108, 40, 0.85);
             cursor: pointer;
             color: white;
         }
@@ -946,7 +958,7 @@ float: right;
 
 
         .event_status_btn {
-            background: #D3D3D3 url(../img/glass.png) repeat-x 0 50%;
+            /* background: #D3D3D3 url(../img/glass.png) repeat-x 0 50%; */
             display: inline-block;
             float: left;
             text-indent: 8px;
@@ -956,12 +968,14 @@ float: right;
             font-weight: 600;
             margin-left: 1px;
             font-size: 10px;
+            margin-bottom: 4px;
+            margin-top: 2px;
             padding-right: 8px;
             width: auto;
-            -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.74);
-            -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.74);
-            box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.74);
-            text-shadow: 0 .5px .5px rgba(171, 175, 172, 0.9);
+            -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 .5px .5px rgba(177, 177, 177, 0.9);
         }
 
         .right_btn {
@@ -992,13 +1006,13 @@ top: -15px;
 .fade-out {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 1s, opacity 1s linear;
+  /* transition: visibility 0s 1s, opacity 1s linear; */  
 }
 
 .fade-in {
   visibility: visible;
   opacity: 1;
-  transition: opacity 1s linear;
+  transition: opacity 1s linear;  
 }
 
 .add_event_container {
@@ -1035,63 +1049,71 @@ z-index: 5;
     width:50%;
 }
 
-.lfloat-mods {
-    overflow: hidden;
-    display: block;
-    float: left;
+/* Styles for file uploads */
+.tooltip{
+    position: relative;
+    display: inline;
+    display:none;
+    z-index: 1000;    
+    float: right;
+top: 10px;
+right: -90px;
+width: 182px;
 }
 
-.attach-mod {
-    border-right: medium none;
-    height: 45px;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
+.editTooltip{  
+    position:absolute;  
+    display:none;
+    z-index: 1000;      
+background:#fff;
+font-weight:400;
+cursor:default;
+color: #666 !important;
+width:100%;
+}
+
+.file_link {
+ font-size: 12px;
+    color: rgba(0,0,0,.7);
     text-decoration: none;
-    width: 48px;
-    border-bottom-left-radius: 1.5px;
+    font-weight: 600;
+    cursor:pointer;
+}
+.file_link a:hover{
+                color: rgba(0,0,0,.9);
+                text-decoration: underline;
+            }
+
+.file_link a:active {
+    opacity:0.5;
 }
 
-.attach-icon {
-    background-image: url('../img/attach.png');
-    background-repeat: no-repeat;
-    background-size: 27px 25.5px;
-    height: 30px;
-    width: 30px;
+.lfloat-mods {    
     display: block;
-    opacity: 1;
-    margin-top: 5.5px;
-    margin-left: 10.5px;
-}
-
-.upload_textprompt {
-    height: 30px;
-    width: 120px;
     float: left;
-    overflow: hidden;
-    padding-top: 10px;
+}
+img.reply_attach {
+    position: relative;
+    cursor: pointer;
+    display: block;
+opacity: 1;
+margin-top: 12px;
+margin-left: 10.5px;
+float:right;
+}
+.upload_feed_hack {
+    display: none;
+}
+.feed_upload_textprompt {
+    display: none;
     font-size: 12px;
-    color: #A79B97;
-    text-align: left;
+color: #989898;
+float: left;
+position: relative;
+top: -27px;
+right: 20px;
 }
-
-.attach_form {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
-}
-
-.upload_hack {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
-}
-
-.upload_button {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
-}
+/* End of styles for file uploads */
 
 /* styles for invite connections */
 .inviteConnections {    

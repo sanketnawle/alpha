@@ -201,7 +201,7 @@
                 var i = r.dropAccept;
                 (t.isFunction(i) ? i.call(a, o) : o.is(i)) && (ce = a, ie.dragStart(ce, e, n))
             }
-        }).bind("dragstop", function (t, e) {
+        }).bind("dragstop", function (t, e) {            
             ce && (ie.dragStop(ce, t, e), ce = null)
         })
     }
@@ -784,7 +784,7 @@
             return a += "</tbody>"
         }
 
-        function h(t) {
+        function h(t) {            
             var e = le + "-widget-content",
                 n = O.start.getMonth(),
                 r = f(new Date),
@@ -1329,7 +1329,7 @@
             var n = "<",
                 r = t.url,
                 a = j(t, y),
-                o = ["fc-event", "fc-event-vert"];
+                o = ["fc-event", "fc-event-vert"]; 
             return b(t) && o.push("fc-event-draggable"), e.isStart && o.push("fc-event-start"), e.isEnd && o.push("fc-event-end"), o = o.concat(t.className), t.source && (o = o.concat(t.source.className || [])), n += r ? "a href='" + q(t.url) + "'" : "div", n += " class='" + o.join(" ") + "'" + " style=" + "'" + "position:absolute;" + "top:" + e.top + "px;" + "left:" + e.left + "px;" + a + "'" + ">" + "<div class='fc-event-inner'>" + "<div class='fc-event-time'>" + q(ae(t.start, t.end, y("timeFormat"))) + "</div>" + "<div class='fc-event-title'>" + q(t.title || "") + "</div>" + "</div>" + "<div class='fc-event-bg'></div>", e.isEnd && D(t) && (n += "<div class='ui-resizable-handle ui-resizable-s'>=</div>"), n += "</" + (r ? "a" : "div") + ">"
         }
 
@@ -1363,7 +1363,7 @@
                         e.draggable("option", "revert", o)
                     }, n, "drag")
                 },
-                stop: function (n, a) {
+                stop: function (n, a) {                    
                     if (u.stop(), K(), w("eventDragStop", e, t, n, a), o) r(), e.css("filter", ""), U(t, e);
                     else {
                         var s = 0;
@@ -1409,7 +1409,7 @@
                         f || (D = Math.round((n.position.top - o.top) / x) * k)
                     }(s != c || f != v || g != p || D != M) && (r(), c = s, v = f, p = g, M = D), e.draggable("option", "revert", !s)
                 },
-                stop: function (n, a) {
+                stop: function (n, a) {                    
                     K(), w("eventDragStop", e, t, n, a), s && (f || b || D) ? G(this, t, b, f ? 0 : D, f, n, a) : (s = !0, f = !1, g = 0, b = 0, D = 0, r(), e.css("filter", ""), e.css(o), U(t, e))
                 }
             })
@@ -1813,7 +1813,37 @@
                 o = ["fc-event", "fc-event-hori"];
             H(r) && o.push("fc-event-draggable"), t.isStart && o.push("fc-event-start"), t.isEnd && o.push("fc-event-end"), o = o.concat(r.className), r.source && (o = o.concat(r.source.className || []));
             var i = j(r, T);
-            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + o.join(" ") + "'" + " style=" + "'" + "position:absolute;" + "left:" + t.left + "px;" + i + "'" + ">" + "<div class='fc-event-inner'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>" + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "") + "</span>" + "</div>", t.isEnd && F(r) && (e += "<div class='ui-resizable-handle ui-resizable-" + (n ? "w" : "e") + "'>" + "&nbsp;&nbsp;&nbsp;" + "</div>"), e += "</" + (a ? "a" : "div") + ">"
+            
+            var editOption = "";
+            if (r.editable) {
+                editOption = '<div style="border-top:1px solid #CCC; text-align: center;padding-top: 5px;padding-bottom: 5px;width: 103%;">'
+                                        + '<b class="file_link">'
+                                            + '<a onclick="DisplayEditEvents(this,' + r.id + ',' + r.type + ')" style="padding:5px; padding-left:0px; color: #666 !important;">edit</a>'
+                                            + '<a onclick="DeleteEvents(this,' + r.id + ',' + r.type + ')" style="padding-top: 5px;padding-bottom: 5px; color: #666 !important;">delete</a>'
+                                                 
+                                        + '</b>'
+                                    + '</div>';
+            }
+            var eventLoc = ((new Date(r.start)).getMonth().toString() + "$" + (new Date(r.start)).getDate().toString() + "$" + (new Date(r.start)).getFullYear().toString());
+            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + o.join(" ") + "'" + " style=" + "'"
+                + "position:absolute;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
+                + "<div class='fc-event-inner' onmouseover='showTooltip(this);' onmouseout='hideTooltip(this);' onmousedown='hideTooltip(this);'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>"
+                + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "")
+                + "</span>" + '<div class="editTooltip" onmouseover="tooltipShow(this);" onmouseout="tooltipHide(this);" >'
+                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;width:100%;">'                                    
+                                    + '<b class="file_link">'                                        
+                                             + '<a onclick="LinkEventInEventBook(' + (new Date(r.start)).getMonth().toString() + ','
+                                             + (new Date(r.start)).getDate().toString() + ',' + (new Date(r.start)).getFullYear().toString()
+                                             + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
+                                                + r.title + '</a>'
+                                    + '</b>'
+                                    + '<div style="padding: 5px; width:100%;float:left;">' + r.startendtime + '</div>'
+                                    + '<div style="padding: 5px; width:100%;"><span style="font-weight:bold;">Location : </span>' + r.location + '</div>'
+                                    + editOption
+                                + '</div>'
+                            + '</div>'
+                + "</div>", t.isEnd && F(r) && (e += "<div class='ui-resizable-handle ui-resizable-" + (n ? "w" : "e") + "'>"
+                + "&nbsp;&nbsp;&nbsp;" + "</div>"), e += "</" + (a ? "a" : "div") + ">"
         }
 
         function u(e, n) {
@@ -1912,6 +1942,7 @@
                 },
                 stop: function (a, o) {
                     r.stop(), Q(), k("eventDragStop", e, t, a, o), n ? O(this, t, n, 0, t.allDay, a, o) : (e.css("filter", ""), W(t, e))
+                    UpdateDragableEvents(t.id, t.type, n);                    
                 }
             })
         }
@@ -2151,6 +2182,10 @@
             lazyFetching: !0,
             startParam: "start",
             endParam: "end",
+            type: "type",
+            location: "location",
+            startendtime: "startendtime",
+            color: "color",
             titleFormat: {
                 month: "MMMM yyyy",
                 week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
