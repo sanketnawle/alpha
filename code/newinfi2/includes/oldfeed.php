@@ -1,6 +1,8 @@
 <?php
 
 require_once("dbconfig.php");
+require_once("time.php");
+
 $_SESSION['user_id']="1";
 // Uncomment the line below if you are testing this page alone
 // echo $_POST['last_time'] = "1399690304";
@@ -25,7 +27,9 @@ if(isset($_POST['last_time'])){
 
 		// echo "<br><br><br> </div>";
 
-		include "posts.php";	
+		if($row['post_type']=="status")	include "posts.php";
+		else if($row['post_type']=="notes") include "posts_notes.php";
+		else if($row['post_type']=="question") include "posts_question.php";
 	}
 }
 // else{

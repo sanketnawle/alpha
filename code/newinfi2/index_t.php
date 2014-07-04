@@ -2,7 +2,7 @@
 require_once('includes/dbconfig.php');
 require_once('includes/time.php');
 $_SESSION['user_id']="1";
-$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 5");
+$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 4");
 
 require_once('includes/feedchecks.php');
 ?>
@@ -21,15 +21,10 @@ require_once('includes/feedchecks.php');
 		<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
-		<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-		<!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  		<!--<script src="feed.js"></script>--> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
-	</head>
-
-
-
 		<script>
 		navigator.sayswho= (function(){
     		var ua= navigator.userAgent, tem, 
@@ -53,65 +48,8 @@ require_once('includes/feedchecks.php');
                 window.open ("includes/download_file.php?file_id="+id, "hiddenFrame");
             }
 			
-var j$=$.noConflict();
+			//ajax
 $(document).ready(function() {
-
-	j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
-
-				j$('.play').embedly({
-				query: {
-				maxwidth:500,
-				autoplay:true
-			},
-display: function(data, elem){
-//Adds the image to the a tag and then sets up the sizing.
-j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
-.width(data.thumbnail_width)
-.height(data.thumbnail_height)
-.find('span').css('top', data.thumbnail_height/2-36)
-.css('left', data.thumbnail_width/2 - 36);
-//alert($(elem).html());
-var j$elhtml=  j$(elem).html();
-j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
-
-var t_title=data.title;
-var t_des=data.description;
-var t_url=data.url;
-//alert(data.title+" , "+data.description+", "+data.url);
-var ctt= t_title+"<span class='link-text-website'>"+t_url+"</span>";
-
-j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-if(data.type==='video'){
-
-}else{
-	j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-}
-
-}
-}).on('click', function(){
-// Handles the click event and replaces the link with the video.
-var data = j$(this).data('embedly');
-
-if(data.type==='video'){
-j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-return false;
-}else{
-	window.open(data.url, '_blank');
-}
-
-});
-
-j$(document).delegate('.playable_wrap',"click", function(){
-	j$(this).closest(".post_lr_link_msg").find(".play").click();
-});
-
-
-
-
-
-
 
 	$(document).delegate(".post_functions_showr","click",function(){
 		if($(this).closest(".post_functions").hasClass("functions_active")){
@@ -190,7 +128,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 						if($(window).scrollTop()+heightOffset >= $(document).height() - $(window).height()){
 							//alert(heightOffset);
 							load = 'no';
-							    last_time = $("#posts").children().last().attr('id');
+							var last_time = $("#posts").children().last().attr('id');
 							var $ref=$("#posts");
 							var pullrequest = $.ajax({
             					type: "POST",
@@ -311,7 +249,9 @@ j$(document).delegate('.playable_wrap',"click", function(){
 
 				});
 
-
+				$(document).delegate('.post_lc .card-tag',"mouseover", function(){
+					$(this).stop().show();
+				});
 
 				$(document).delegate('.post_like',"mouseout", function(){
 					if($(this).hasClass("post_liked")){
@@ -321,32 +261,47 @@ j$(document).delegate('.playable_wrap',"click", function(){
 					$(this).find(".like_number").css({"color":"#666"});	
 					}
 
+					$(this).closest(".post_lc").find(".card-tag").delay(1).hide(0);
 				});
 
 
+				//new functions
 
+				$(document).delegate('.q_viewmore',"mouseover", function(){
+					var t=$(this).position().top;
+					var l=$(this).position().left;
+					//alert(t+","+l);
+					$(this).find(".card-tag").css({"margin-left":l-100});
 
+					$(this).find(".card-tag").stop().show();
+				});				
 
-				/*
+				$(document).delegate('.q_viewmore',"mouseleave", function(){
+					$(this).find(".card-tag").delay(1).hide(0);
+				});
+				
 				$(document).delegate('.mf_liked',"mouseover", function(){
-					$(this).closest(".post_lc").find(".mf_name").text($(this).attr("id"));
-					$(this).closest(".post_lc").find(".mf_name").stop().show();
+					var t=$(this).closest(".q_viewmore").position().top;
+					var l=$(this).closest(".q_viewmore").position().left;
+					$(this).closest(".q_viewmore").find(".mf_name").css({"margin-left":l-95});
+					$(this).closest(".q_viewmore").find(".mf_name").text($(this).attr("id"));
+					$(this).closest(".q_viewmore").find(".mf_name").stop().show();
 				});
 
-				$(document).delegate('.mf_liked',"mouseout", function(){
-					$(this).closest(".post_lc").find(".mf_name").delay(1).hide();
+				$(document).delegate('.mf_liked',"mouseleave", function(){
+					$(this).closest(".q_viewmore").find(".mf_name").delay(1).hide();
 				});
-
+				
 				$(document).delegate('.mf_name',"mouseover", function(){
 					$(this).stop().show();
-					$(this).closest(".post_lc").find(".card-tag").stop().show();
+					//$(this).closest(".post_lc").find(".card-tag").stop().show();
 				});			
 
 				$(document).delegate('.mf_name',"mouseout", function(){
 					$(this).stop().delay(1).hide();
-					$(this).closest(".post_lc").find(".card-tag").delay(1).hide(0);
+					//$(this).closest(".post_lc").find(".card-tag").delay(1).hide(0);
 				});			
-				*/
+				
 
 				$(document).delegate('.post_comment',"mouseover", function(){
 					$(this).find(".comment_delete").show();
@@ -670,10 +625,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 			likepost_flag=0;
 		}
 
-		var cmtmore_flag=0;
 		$(document).delegate(".morecmt_bar","click",function(){
-				if(cmtmore_flag==0){
-				cmtmore_flag=1;
 				var top_reply=$(this).closest(".posts").find(".post_comment").first().attr("id");
 				var post_id=$(this).closest(".posts").attr("id");
 				var $ref=$(this).closest(".posts").find(".comments");
@@ -686,10 +638,8 @@ j$(document).delegate('.playable_wrap',"click", function(){
             				success: function(html){ 
             					$this.hide();
 	                			$ref.prepend(html);
-	                			cmtmore_flag=0;
 			            	}
 						});
-			}
 		});
 
 
@@ -782,7 +732,8 @@ j$(document).delegate('.playable_wrap',"click", function(){
 					$(this).hide();
 		});
 
-				/*link post animation*/
+
+		/*link post animation*/
 		$(document).delegate(".playable_wrap > *","mouseover",function(){
 			$(this).closest(".playable_wrap").find(".play_btn").css({"background-position":"0% 100%"});
 		});
@@ -791,50 +742,8 @@ j$(document).delegate('.playable_wrap',"click", function(){
 			$(this).closest(".playable_wrap").find(".play_btn").css({"background-position":"0% 0%"});
 		});
 
-
-
-						//new functions
-
-				$(document).delegate('.q_viewmore',"mouseover", function(){
-					var t=$(this).position().top;
-					var l=$(this).position().left;
-					//alert(t+","+l);
-					$(this).find(".card-tag").css({"margin-left":l-100});
-
-					$(this).find(".card-tag").stop().show();
-				});				
-
-				$(document).delegate('.q_viewmore',"mouseleave", function(){
-					$(this).find(".card-tag").delay(1).hide(0);
-				});
-				
-				$(document).delegate('.mf_liked',"mouseover", function(){
-					var t=$(this).closest(".q_viewmore").position().top;
-					var l=$(this).closest(".q_viewmore").position().left;
-					$(this).closest(".q_viewmore").find(".mf_name").css({"margin-left":l-95});
-					$(this).closest(".q_viewmore").find(".mf_name").text($(this).attr("id"));
-					$(this).closest(".q_viewmore").find(".mf_name").stop().show();
-				});
-
-				$(document).delegate('.mf_liked',"mouseleave", function(){
-					$(this).closest(".q_viewmore").find(".mf_name").delay(1).hide();
-				});
-				
-				$(document).delegate('.mf_name',"mouseover", function(){
-					$(this).stop().show();
-					//$(this).closest(".post_lc").find(".card-tag").stop().show();
-				});			
-
-				$(document).delegate('.mf_name',"mouseout", function(){
-					$(this).stop().delay(1).hide();
-					//$(this).closest(".post_lc").find(".card-tag").delay(1).hide(0);
-				});			
-
-				
-
-
 				function latest_feed() {
-						//alert(j$.embedly.defaults.key);
+
 						var latest = feeds.children().first().attr('id');
 						var $ref=$("#posts");
 						//alert(latest);
@@ -843,96 +752,24 @@ j$(document).delegate('.playable_wrap',"click", function(){
             				url: "includes/latestfeed.php",
             				data: {latest: latest},
             				success: function(html){ 
-            					//alert(html);
             					//alert("a");
 	                			$ref.first().prepend( html );
-			            		//alert($(".new_fd").attr("id"));
-
-				//success end
-								}
-				});
-
-
-				//ajax end
-
-			}
+			            	}
+						});
+				}
 
 
 });
-</script>
-		<script>
-		/*
-		$.noConflict();
-		jQuery( document ).ready(function( $ ) {
-			$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
-			//alert("a");
-			$('.play').embedly({
-				query: {
-				maxwidth:500,
-				autoplay:true
-			},
-display: function(data, elem){
-//Adds the image to the a tag and then sets up the sizing.
-$(elem).html('<img src="'+data.thumbnail_url+'"/>')
-.width(data.thumbnail_width)
-.height(data.thumbnail_height)
-.find('span').css('top', data.thumbnail_height/2-36)
-.css('left', data.thumbnail_width/2 - 36);
-//alert($(elem).html());
-var $elhtml=  $(elem).html();
-$(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
-
-var t_title=data.title;
-var t_des=data.description;
-var t_url=data.url;
-//alert(data.title+" , "+data.description+", "+data.url);
-var ctt= t_title+"<span class='link-text-website'>"+t_url+"</span>";
-
-$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-if(data.type==='video'){
-
-}else{
-	$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-}
-
-}
-}).on('click', function(){
-// Handles the click event and replaces the link with the video.
-var data = $(this).data('embedly');
-
-if(data.type==='video'){
-$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-return false;
-}else{
-	window.open(data.url, '_blank');
-}
-
-});
-
-
-$(document).delegate('.playable_wrap',"click", function(){
-	$(this).closest(".post_lr_link_msg").find(".play").click();
-});
-
-
-
-		});*/
 		</script>
-
+	</head>
 
 	<body>
 		<section class='popup_section'><?php include "popup.php";?></section>
 		<div id = "posts">
 			<!--a post start-->
 			<?php
-				if($result){
-					while($row = mysqli_fetch_array($result)) {
-						if($row['post_type']=="status")	include "includes/posts.php";
-						else if($row['post_type']=="notes") include "includes/posts_notes.php";
-						else if($row['post_type']=="question") include "includes/posts_question.php";
-					}
+				while($row = mysqli_fetch_array($result)) {
+					include "includes/posts_link1.php";
 				}
 			?>
 			<!--a post end-->

@@ -5,7 +5,7 @@ session_start();
 include "feedchecks.php";
 
 // Uncomment the below 3 lines if you are testing this page alone
-$_POST['fbar_type']="status";
+// $_POST['fbar_type']="status";
 // $_POST['post_status']="fbar test new";
 // $_POST['privacy']="campus";
 // $_POST['anon']=0;
@@ -17,11 +17,11 @@ $target_univ_id=1;
 // $target_univ_id=$_SESSION['$target_univ_id'];		//when session variables are set
 
 // Set vars for querying the db
-$up_flag="";
-$file_location="";
-$file_name="";
-$file_ext="";
-$id = ""; //file_id
+$up_flag=NULL;
+$file_location=NULL;
+$file_name=NULL;
+$file_ext=NULL;
+$id = NULL; //file_id
 // Setting vars end
 
 if(isset($_FILES['file'])){
@@ -101,18 +101,18 @@ if(isset($_FILES['file'])){
 if(isset($_POST['fbar_type'])=="status"){
 	if(isset($_POST['post_status']) || $up_flag=="success"){
 		if(isset($_POST['post_status'])) $text = $_POST['post_status'];
-		else $text="";
+		else $text=NULL;
 
 		if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
-		else $privacy="";
+		else $privacy="campus";
 
 		if(isset($_POST['anon'])) $anon=$_POST['anon'];
-		else $anon="";
+		else $anon=NULL;
 
 		$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, file_id, privacy, anon) VALUES (?,?,?,?,?,?,?,?,?)");
 
 		if($postquery){
-			$postquery->bind_param('isiissiii',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $id, $privacy, $anon);
+			$postquery->bind_param('isiissisi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $id, $privacy, $anon);
 			$postquery->execute();
 			echo "success";
 			$postquery->close();
@@ -128,15 +128,15 @@ if(isset($_POST['fbar_type'])=="status"){
 if(isset($_POST['fbar_type'])=="notes"){
 	if(isset($_POST['notes_desc']) || $up_flag=="success"){
 		if(isset($_POST['notes_desc'])) $text = $_POST['notes_desc'];
-		else $text="";
+		else $text=NULL;
 
 		if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
-		else $privacy="";
+		else $privacy=NULL;
 
 		$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, file_id, privacy, anon) VALUES (?,?,?,?,?,?,?,?,?)");
 
 		if($postquery){
-			$postquery->bind_param('isiissiii',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $id, $privacy, $anon);
+			$postquery->bind_param('isiissisi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $id, $privacy, $anon);
 			if($postquery->execute()){
 				echo "success";
 			}

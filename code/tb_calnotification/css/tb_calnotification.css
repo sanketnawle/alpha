@@ -114,6 +114,7 @@ cursor:pointer;
 {
 	float: left;
 	height: 100%;
+	width: 190px;
 	text-overflow:ellipsis;
 }
 
@@ -271,6 +272,13 @@ box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 	text-decoration: underline;
 }
 
+
+.c_wrap_right
+{
+width: auto;
+height: 100%;
+float: left;
+}
 
 .c_noti_content
 {

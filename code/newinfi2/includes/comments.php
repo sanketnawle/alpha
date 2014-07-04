@@ -4,7 +4,7 @@ $_SESSION['user_id']='1';
 
 	$cownership=checkcowner($con,$row1['reply_id']);
 
-	$reply_len = strlen($reply_msg = $row1['reply_msg']);
+	$reply_len = strlen($reply_msg = autolink($row1['reply_msg']));
 	if(77<$reply_len and $reply_len<157) $rlen_flag = "mid-len";
 	else if($reply_len>156) $rlen_flag = "long-len";
 	else $rlen_flag = NULL;
@@ -31,11 +31,11 @@ $_SESSION['user_id']='1';
 						$cowner_row=mysqli_fetch_array($cowner_result);
 						$comment_owner=$cowner_row['firstname']." ".$cowner_row['lastname'];
 									
-						// check if liked by the user and count the total likes
-						$rquserlikes=mysqli_query($con,"SELECT * FROM reply_likes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$row1['reply_id']."'"); //Checks current login user liked this status or not
-						$ruserlikes=mysqli_num_rows($rquserlikes);
-						$rtotallikes=mysqli_query($con,"SELECT * FROM reply_likes WHERE reply_id='".$row1['reply_id']."'");  // Total number of likes for the status message
-						$replylikes=mysqli_num_rows($rtotallikes);				
+						// check if liked by the user and count the total votes
+						$rquservotes=mysqli_query($con,"SELECT * FROM reply_votes WHERE user_id='".$_SESSION['user_id']."' AND reply_id='".$row1['reply_id']."'"); //Checks current login user liked this status or not
+						$ruservotes=mysqli_num_rows($rquservotes);
+						$rtotalvotes=mysqli_query($con,"SELECT * FROM reply_votes WHERE reply_id='".$row1['reply_id']."'");  // Total number of votes for the status message
+						$replyvotes=mysqli_num_rows($rtotalvotes);				
 					}
 
 					else $comment_owner="Invalid User";
@@ -58,28 +58,48 @@ $_SESSION['user_id']='1';
 
 							echo "</span>
 						</a>
+						<div class='ct_ts'>".formattime($row1['update_timestamp'])."</div>
 						<div class = 'comment_msg seemore_anchor' id = '".$row1['reply_id']."'>";
 						// echo $row1['post_id'];
 							if($reply_len>200){
 								echo substr($reply_msg,0,200)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
 								echo "<span class='text_hidden'>".substr($reply_msg,200)."</span>";
 							}
-							else if($reply_msg=="" AND $row1['file_id']!=""){
-								echo $comment_owner." shared a file";
+							else if($reply_msg==NULL AND $row1['file_id']!=NULL){
+								echo "<span class='no_content_cmt'>".$comment_owner." shared a file</span>";
 							}
 
 								else echo $reply_msg;
-							echo "</div>
-					</div>
+
+							echo "</div>";
+
+							// if($row1['file_id']!=NULL){
+							// 	$f_query = "SELECT * from file_upload WHERE file_id = ".$row1['file_id'];
+							// 	$f_res = mysqli_query($con,$f_query);
+							// 	if($f_query){
+							// 		while($rf_row = mysqli_fetch_array($f_res)){
+							// 			$r_file_type = $rf_row['file_type'];
+							// 			// if(substr( $r_file_type, 0, 5 ) === "image") echo "<div class='cmt_pic_att'><img src='data:image/jpeg;base64,".base64_encode($rf_row['file_content'])."'></div>";
+							// 		}
+							// 	}
+							// }
+
+							if($ftype = file_type($con,$row1['file_id'])){
+								if(substr( $ftype, 0, 5 ) === "image"){
+									echo "<div class='cmt_pic_att'><img src='data:image/jpeg;base64,".base64_encode($rf_row['file_content'])."'></div>";
+								}
+							}
+							
+					echo "</div>
 					
-					<div class = 'comment_time'><div class='ct_ts'>".formattime($row1['update_timestamp'])."</div>";
+					<div class = 'comment_time'>";
 						
-						if($row1['file_id']!=0){
-							echo "<div class='cmt_f_attach' title=''><img src='src/comment_attach.png'><a href='javascript:download(".$row1['file_id'].")'>Attached file</a></div>";
+						if($row1['file_id']!=NULL){
+							echo "<div class='cmt_f_attach' title=''><img src='src/comment_attach.png'><a href='javascript:download(".$row1['file_id'].")'>Attached file</a> (".$r_file_type.")</div>";
+
 						}
 
 					echo "</div>
 				</div>";
 
 ?>
-

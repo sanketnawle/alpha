@@ -12,11 +12,15 @@
 									echo "<div class = 'image_container'>";
 										echo "<div class = 'post_user_icon'></div>";
 									echo "</div>";
+									
+									// echo $row['post_id']."-".$row['user_id'];
 
 									if($row['user_id']!=0){
+										// echo "test";
 										$powner_result=mysqli_query($con,"select firstname,lastname from user where user_id='".$row['user_id']."'");
-										$owner_row=mysqli_fetch_array($powner_result);
-										$post_owner=$owner_row['firstname']." ".$owner_row['lastname'];
+										while($owner_row=mysqli_fetch_array($powner_result)){
+											$post_owner=$owner_row['firstname']." ".$owner_row['lastname'];
+										}
 									}
 									else $post_owner = "Invalid User";
 
@@ -37,7 +41,7 @@
 									echo "</span>";
 								echo "</a>";
 								echo "<!--hide below span if post not in a group-->";
-								
+
 								if((!is_null($row['target_type']))AND(!is_null($row['target_id']))){
 									$target_tag = tar_tag($row['target_type'],$row['target_id']);
 									if(!is_null($target_tag))
@@ -46,55 +50,102 @@
 
 							echo "</div>";
 				
-							echo "<div class = 'post_time'>Discussion started ".formattime($row['update_timestamp'])."</div>
+							echo "<div class = 'post_time'><span class='file_icon'></span>File shared ".formattime($row['update_timestamp'])."</div>
 						</div>
 
 						<div class = 'post_tag'>
 							<span>Computer Science</span>
 						</div>
-						<div class = 'post_msg post_lr_link_msg'>
+						<div class = 'post_msg post_file_msg'>
 							<span class='msg_span seemore_anchor'>";
-								if(strlen($text_msg = autolink($row['text_msg']))>500){
-									echo substr($text_msg,0,500)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
-									echo "<span class='text_hidden'>".substr($text_msg,500)."</span>";
-								}
-								else echo $text_msg;
-							echo "</span>";
+								
+								echo "
+								<div class = 'file-wrapper'>
+										<div class = 'file-container'>
+											<div class = 'file-pic-wrap'>";
 
-							if($embed_link = detect_embed($text_msg)){
-								echo "<p class='f_hidden_p'>".$embed_link."</p>";
- 								echo "<div class = 'link-wrapper'>
-										<div class = 'link-container'>
-											<a class = 'link-anchor-box'>
-												<div class = 'link-pic-wrap'>
-													<div class='playable_wrap'>
-													<div class='play_btn'></div>
-													<div class = 'link-img'></div>
-													</div>
-													<div class = 'link-text-data'>
-														<div class = 'link-text-title'> 
-															<span class = 'link-text-website'>
-																
-															</span>
-														</div>
-														<div class = 'link-text-about'>
-														</div>
+											if(isset($fnotes_name)) $fnotes_name=NULL;
+											if(isset($fnotes_type)) $fnotes_type=NULL;
+											
+											// $fnotes = mysqli_prepare($con, "SELECT file_name, file_type FROM file_upload WHERE file_id = ?");
+											// mysqli_bind_param($fnotes, 'i', $row['file_id']);
+											// mysqli_execute($fnotes);
+											// mysqli_bind_result($fnotes, $fnotes_name,$fnotes_type);
+
+											$fnotes = mysqli_query($con, "SELECT file_name, file_type FROM file_upload WHERE file_id = ".$row['file_id']);
+											if($fnotes){
+												while($fnotes_row = mysqli_fetch_array($fnotes)){
+													$fnotes_name = $fnotes_row['file_name'];
+													$fnotes_type = $fnotes_row['file_type'];
+												}
+											}
+
+											// if(mysqli_fetch($fnotes)){
+												// echo $fnotes_name;
+												// echo "-";
+												// echo $fnotes_type;
+												if((substr($fnotes_type, -12) == "presentation") OR (substr($fnotes_type, -13) == "ms-powerpoint")){
+													$fnotes_type_tag = "ppt";
+													$fnotes_type_name = "Microsoft Powerpoint";
+												}
+												else if((substr($fnotes_type, -8) == "document") OR (substr($fnotes_type, -6) == "msword")){
+													$fnotes_type_tag = "doc";
+													$fnotes_type_name = "Microsoft Document";
+												}
+												else if(substr($fnotes_type, -3) == "pdf"){
+													$fnotes_type_tag = "pdf";
+													$fnotes_type_name = "Portable Document Format (PDF)";
+												}
+												else if((substr($fnotes_type, -5) == "sheet") OR (substr($fnotes_type, -8) == "ms-excel")){
+													$fnotes_type_tag = "xls";
+													$fnotes_type_name = "Microsoft Excel";
+												}
+												else if(substr($fnotes_type, -14) == "zip-compressed"){
+													$fnotes_type_tag = "zip";
+													$fnotes_type_name = "Compressed File (ZIP)";
+												}
+												else{
+													$fnotes_type_tag = "other";
+													$fnotes_type_name = "Other Files";
+												}
+											// }
+											
+											// echo $fnotes_name."*";
+												echo "<div class = 'file-img file-img-type-".$fnotes_type_tag."'>
+													<div>
+														<a class = 'file-download' href='javascript:download(".$row['file_id'].")'>
+															Download
+														</a>
 													</div>
 												</div>
-											</a>
+												<div class = 'file-text-data'>
+													<div class = 'file-text-title'>".$fnotes_name."
+													</div>
+
+													<span class='google_drive_icon'></span>
+
+													<div class = 'file-text-type'>".$fnotes_type_name."</div>
+													<div class = 'file-text-about'>";
+													
+													if(strlen($text_msg = autolink($row['text_msg']))>500){
+														echo substr($text_msg,0,500)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
+														echo "<span class='text_hidden'>".substr($text_msg,500)."</span>";
+													}
+													else echo $text_msg;
+
+													echo "</div>";
+
+												echo "</div>													
+												
+											</div>
 										</div>
-									</div>";
-							}
+									</div>
+									";
 
-						echo "</div>";
 
-							if($ftype = file_type($con,$row['file_id'])){
-								if(substr( $ftype, 0, 5 ) === "image"){
-									echo "<div class='post_attachment_review'><img class='post_attachment_review_img' src='data:image/jpeg;base64,".base64_encode(file_content($con,$row['file_id']))."'></div>";
-								}
-							}
-
-						echo "<div class = 'post_edit'>
+							echo "</span>
+						</div>
+						<div class = 'post_edit'>
 							<textarea class = 'edit_area'></textarea>
 							<div class = 'edit_toolbar'>
 								<button class = 'edit_done'>Done</button>
@@ -116,8 +167,8 @@
 								include "postlikes.php";
 
 								echo "<div class = 'post_comment_btn'>
-										Reply
-									</div>
+									Reply
+								</div>
 							</div>
 
 							<div class='posttool-select ".$edit_flag."'>
@@ -175,7 +226,7 @@
 
 					$count_query = mysqli_query($con,"select * from reply where post_id='".$row['post_id']."'");
 					$reply_count = mysqli_num_rows($count_query);
-					mysqli_free_result($count_query);
+						mysqli_free_result($count_query);
 
 					$reply_query = "select * from reply where post_id='".$row['post_id']."' ORDER BY update_timestamp DESC LIMIT 2";
 					$reply_result = mysqli_query($con,$reply_query);
@@ -189,20 +240,21 @@
 							</button>";
 					}
 					if(isset($rep_row))  unset($rep_row); //unset the array if already set ****very important****
-					
-					if($reply_result->num_rows){
-						while($res = mysqli_fetch_array($reply_result)){
-							$rep_row[] = $res;
-						}
+						if($reply_result->num_rows){
 
-						$rev_row = array_reverse($rep_row,true);
-						foreach ($rev_row as $row1) {
-							// echo $row1['reply_id'];
-							if(isset($_POST['last_time'])) include "comments.php";
-							else include "includes/comments.php";
+							while($res = mysqli_fetch_array($reply_result)){
+								$rep_row[] = $res;
+							}
+
+							$rev_row = array_reverse($rep_row,true);
+							foreach ($rev_row as $row1) {
+								// echo $row1['reply_id'];
+								if(isset($_POST['last_time'])) include "comments.php";
+								else include "includes/comments.php";
+							}
+
 						}
-					}
-					else echo "<div id='0000000000'></div>";
+						else echo "<div id='0000000000'></div>";
 
 					echo "</div>
 									

@@ -1,6 +1,7 @@
 <?php
 
 require_once("dbconfig.php");
+require_once("time.php");
 
 // $time = "1398352086";
 // $latest = date("Y-m-d H:i:s",$time);
@@ -28,7 +29,9 @@ if(isset($_POST['latest'])){
 
 			// echo "<br><br><br> </div>";
 
-			include "posts.php";			
+		if($row['post_type']=="status")	include "posts.php";
+		else if($row['post_type']=="notes") include "posts_notes.php";
+		else if($row['post_type']=="question") include "posts_question.php";			
 
 		}
 	}

@@ -3,7 +3,7 @@
 		$hidden=checkhidden($con,$row['post_id']);
 
 		if($hidden!="true"){
-			echo "<div class='new_fd' id = '".strtotime($row['update_timestamp'])."'>";
+			echo "<div id = '".strtotime($row['update_timestamp'])."'>";
 				echo "<div class = 'posts' id = '".$row['post_id']."'>";
 					echo "<div class = 'post_main'>";
 						echo "<div class = 'post_head'>";
@@ -37,64 +37,35 @@
 									echo "</span>";
 								echo "</a>";
 								echo "<!--hide below span if post not in a group-->";
-								
-								if((!is_null($row['target_type']))AND(!is_null($row['target_id']))){
-									$target_tag = tar_tag($row['target_type'],$row['target_id']);
-									if(!is_null($target_tag))
-										echo "<span class = 'post_format'> posted to <span class = 'post_group'>".$target_tag."</span></span>";
-								}
-
+								echo "<span class = 'post_format'> posted in <span class = 'post_group'>Web Programming</span></span>";
 							echo "</div>";
 				
-							echo "<div class = 'post_time'>Discussion started ".formattime($row['update_timestamp'])."</div>
+							echo "<div class = 'post_time'>Question asked ".formattime($row['update_timestamp'])."
+							<span class = 'asked_experts'>to <a><span class = 'experts_icon'></span><span class = 'experts_name'>Computer Science</span></a></span>
+							</div>
 						</div>
 
 						<div class = 'post_tag'>
 							<span>Computer Science</span>
 						</div>
-						<div class = 'post_msg post_lr_link_msg'>
+
+						<div class='question_title_span'>
+							".$row['text_msg']."
+						</div>
+
+						<div class = 'post_msg'>
 							<span class='msg_span seemore_anchor'>";
-								if(strlen($text_msg = autolink($row['text_msg']))>500){
+								if(strlen($text_msg = $row['text_msg'])>100){
 									echo substr($text_msg,0,500)."<span class = 'txt_tail'> . . . </span><span class='pst_seemore'> see more</span>";
 									echo "<span class='text_hidden'>".substr($text_msg,500)."</span>";
 								}
 								else echo $text_msg;
-							echo "</span>";
+							echo "</span>
+						</div>
 
-							if($embed_link = detect_embed($text_msg)){
-								echo "<p class='f_hidden_p'>".$embed_link."</p>";
- 								echo "<div class = 'link-wrapper'>
-										<div class = 'link-container'>
-											<a class = 'link-anchor-box'>
-												<div class = 'link-pic-wrap'>
-													<div class='playable_wrap'>
-													<div class='play_btn'></div>
-													<div class = 'link-img'></div>
-													</div>
-													<div class = 'link-text-data'>
-														<div class = 'link-text-title'> 
-															<span class = 'link-text-website'>
-																
-															</span>
-														</div>
-														<div class = 'link-text-about'>
-														</div>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>";
-							}
+						<div class='post_attachment_review'><img class='post_attachment_review_img' src='dummy_pic/IMG_0205.JPG'></div>
 
-						echo "</div>";
-
-							if($ftype = file_type($con,$row['file_id'])){
-								if(substr( $ftype, 0, 5 ) === "image"){
-									echo "<div class='post_attachment_review'><img class='post_attachment_review_img' src='data:image/jpeg;base64,".base64_encode(file_content($con,$row['file_id']))."'></div>";
-								}
-							}
-
-						echo "<div class = 'post_edit'>
+						<div class = 'post_edit'>
 							<textarea class = 'edit_area'></textarea>
 							<div class = 'edit_toolbar'>
 								<button class = 'edit_done'>Done</button>
@@ -116,8 +87,8 @@
 								include "postlikes.php";
 
 								echo "<div class = 'post_comment_btn'>
-										Reply
-									</div>
+									Reply
+								</div>
 							</div>
 
 							<div class='posttool-select ".$edit_flag."'>
@@ -189,20 +160,21 @@
 							</button>";
 					}
 					if(isset($rep_row))  unset($rep_row); //unset the array if already set ****very important****
-					
-					if($reply_result->num_rows){
-						while($res = mysqli_fetch_array($reply_result)){
-							$rep_row[] = $res;
-						}
+						if($reply_result->num_rows){
 
-						$rev_row = array_reverse($rep_row,true);
-						foreach ($rev_row as $row1) {
-							// echo $row1['reply_id'];
-							if(isset($_POST['last_time'])) include "comments.php";
-							else include "includes/comments.php";
+							while($res = mysqli_fetch_array($reply_result)){
+								$rep_row[] = $res;
+							}
+
+							$rev_row = array_reverse($rep_row,true);
+							foreach ($rev_row as $row1) {
+								// echo $row1['reply_id'];
+								if(isset($_POST['last_time'])) include "comments.php";
+								else include "includes/comments.php";
+							}
+
 						}
-					}
-					else echo "<div id='0000000000'></div>";
+						else echo "<div id='0000000000'></div>";
 
 					echo "</div>
 									

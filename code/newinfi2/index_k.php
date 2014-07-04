@@ -2,7 +2,7 @@
 require_once('includes/dbconfig.php');
 require_once('includes/time.php');
 $_SESSION['user_id']="1";
-$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 5");
+$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 4");
 
 require_once('includes/feedchecks.php');
 ?>
@@ -10,7 +10,7 @@ require_once('includes/feedchecks.php');
 <!DOCTYPE html> 
 <html>
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 		<link rel = "stylesheet" type = "text/css" href = "feed.css">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -21,16 +21,15 @@ require_once('includes/feedchecks.php');
 		<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
-		<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-		<!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  		<!--<script src="feed.js"></script>--> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 		<script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+
 	</head>
-
-
-
-		<script>
+			<script>
 		navigator.sayswho= (function(){
     		var ua= navigator.userAgent, tem, 
    			 M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -47,70 +46,14 @@ require_once('includes/feedchecks.php');
     		return M.join(' ');
 			})();
 		</script>
-		<script>
+				<script>
             function download (id)
             {
                 window.open ("includes/download_file.php?file_id="+id, "hiddenFrame");
             }
 			
-var j$=$.noConflict();
+			//ajax
 $(document).ready(function() {
-
-	j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
-
-				j$('.play').embedly({
-				query: {
-				maxwidth:500,
-				autoplay:true
-			},
-display: function(data, elem){
-//Adds the image to the a tag and then sets up the sizing.
-j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
-.width(data.thumbnail_width)
-.height(data.thumbnail_height)
-.find('span').css('top', data.thumbnail_height/2-36)
-.css('left', data.thumbnail_width/2 - 36);
-//alert($(elem).html());
-var j$elhtml=  j$(elem).html();
-j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
-
-var t_title=data.title;
-var t_des=data.description;
-var t_url=data.url;
-//alert(data.title+" , "+data.description+", "+data.url);
-var ctt= t_title+"<span class='link-text-website'>"+t_url+"</span>";
-
-j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-if(data.type==='video'){
-
-}else{
-	j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-}
-
-}
-}).on('click', function(){
-// Handles the click event and replaces the link with the video.
-var data = j$(this).data('embedly');
-
-if(data.type==='video'){
-j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-return false;
-}else{
-	window.open(data.url, '_blank');
-}
-
-});
-
-j$(document).delegate('.playable_wrap',"click", function(){
-	j$(this).closest(".post_lr_link_msg").find(".play").click();
-});
-
-
-
-
-
 
 
 	$(document).delegate(".post_functions_showr","click",function(){
@@ -834,7 +777,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 
 
 				function latest_feed() {
-						//alert(j$.embedly.defaults.key);
+					//alert("asd");
 						var latest = feeds.children().first().attr('id');
 						var $ref=$("#posts");
 						//alert(latest);
@@ -846,56 +789,37 @@ j$(document).delegate('.playable_wrap',"click", function(){
             					//alert(html);
             					//alert("a");
 	                			$ref.first().prepend( html );
-			            		//alert($(".new_fd").attr("id"));
-
-				//success end
-								}
-				});
-
-
-				//ajax end
-
-			}
+			            	}
+						});
+				}
 
 
 });
 </script>
-		<script>
-		/*
-		$.noConflict();
-		jQuery( document ).ready(function( $ ) {
-			$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
-			//alert("a");
-			$('.play').embedly({
-				query: {
-				maxwidth:500,
-				autoplay:true
-			},
+			<script>
+
+$(document).ready(function() {
+		$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
+		
+$('.play').embedly({
+query: {
+maxwidth:139,
+autoplay:true
+},
 display: function(data, elem){
 //Adds the image to the a tag and then sets up the sizing.
-$(elem).html('<img src="'+data.thumbnail_url+'"/>')
+$(elem).html('<img src="'+data.thumbnail_url+'"/><span></span>')
 .width(data.thumbnail_width)
 .height(data.thumbnail_height)
 .find('span').css('top', data.thumbnail_height/2-36)
 .css('left', data.thumbnail_width/2 - 36);
-//alert($(elem).html());
-var $elhtml=  $(elem).html();
-$(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
 
-var t_title=data.title;
-var t_des=data.description;
-var t_url=data.url;
-//alert(data.title+" , "+data.description+", "+data.url);
-var ctt= t_title+"<span class='link-text-website'>"+t_url+"</span>";
 
-$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+alert($(elem).html());
+$(".link-img").html($(elem).html());
 
-if(data.type==='video'){
 
-}else{
-	$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-}
+//$.embedly.extract(data.url).progress(function(data){alert(data.title+" , "+data.description)});
 
 }
 }).on('click', function(){
@@ -903,40 +827,59 @@ if(data.type==='video'){
 var data = $(this).data('embedly');
 
 if(data.type==='video'){
-$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+$(this).replaceWith(data.html);
 return false;
-}else{
-	window.open(data.url, '_blank');
 }
 
 });
 
 
-$(document).delegate('.playable_wrap',"click", function(){
-	$(this).closest(".post_lr_link_msg").find(".play").click();
+
+
+$(".f_hidden_p").each(function( index ) {
+var $html= $(this).html();
+//$(".link-img").html($html);
 });
 
-
-
-		});*/
+});
 		</script>
 
-
 	<body>
-		<section class='popup_section'><?php include "popup.php";?></section>
-		<div id = "posts">
-			<!--a post start-->
-			<?php
-				if($result){
-					while($row = mysqli_fetch_array($result)) {
-						if($row['post_type']=="status")	include "includes/posts.php";
-						else if($row['post_type']=="notes") include "includes/posts_notes.php";
-						else if($row['post_type']=="question") include "includes/posts_question.php";
-					}
-				}
-			?>
-			<!--a post end-->
+
+		<div class='aaaa'>
+		<p class='f_hidden_p'>
+			<a class='play' href="http://www.nyu.edu/"></a>
+		</p>
+
+		<div class = 'post_msg post_lr_link_msg'>
+		<div class = 'link-wrapper'>
+										<div class = 'link-container'>
+											<a class = 'link-anchor-box'>
+												<div class = 'link-pic-wrap'>
+													<div class='playable_wrap'>
+													<div class='play_btn'></div>
+													<div class = 'link-img'>
+														
+													</div>
+													</div>
+													<div class = 'link-text-data'>
+														<div class = 'link-text-title'>Western American Genotypes more Resilient than Eastern Genotypes 
+															<span class = 'link-text-website'>
+																WOLFRAMALPHA.COM
+															</span>
+														</div>
+														<div class = 'link-text-about'>
+														Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntu
+														</div>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
 		</div>
+
+	</div>
+
 	</body>
 
 </html>

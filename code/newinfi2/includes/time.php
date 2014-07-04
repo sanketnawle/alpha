@@ -62,7 +62,9 @@
             $periods[$j].= "s";
         }
      
-        return "$difference $periods[$j] {$tense}";
+        if($difference==0 AND $periods[$j]=="seconds") return "now";
+        else return "$difference $periods[$j] {$tense}";
+        
     }
      
     // echo $timestamp = "2014-06-24 10:45";
