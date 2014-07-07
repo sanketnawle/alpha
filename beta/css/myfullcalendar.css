@@ -37,12 +37,13 @@
 }
 
 .fc-header-left {
-    width: 30%;
+    width: 25%;
     text-align: center;
 }
 
 .fc-header-center {
     display: none;
+    width:0px;
 }
 
     .fc-header-center .fc-button {
@@ -51,7 +52,7 @@
 
 .fc-header-right {
     top: -4px;
-    width: 100px;
+    width: 40%;
     z-index: -1;
 }
 
@@ -1101,15 +1102,6 @@ hr.addevt {
     .nevt-input-1:focus {
         outline: 0;
     }
-
-
-#nevt-desc-1 {
-    margin-top: 8px;
-    height: 35px;
-    resize: none;
-    border-bottom: none;
-}
-
 
 .addevent-header0-1 {
     position: absolute;

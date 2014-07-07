@@ -16,6 +16,7 @@ $(document).ready(function () {
         $(this).find(".cal-group-checkmark").removeClass("cal-group-checkmark-checked");
         $(this).find(".cal-group-checkmark").addClass("cal-group-checkmark-unchecked");
 
+        $(".3_7").hide();
     });
     $(document).delegate(".cal-group-toggle-unchecked", "click", function () {
 
@@ -25,9 +26,8 @@ $(document).ready(function () {
         $(this).find(".cal-group-checkmark").removeClass("cal-group-checkmark-unchecked");
         $(this).find(".cal-group-checkmark").addClass("cal-group-checkmark-checked");
 
+        $(".3_7").show();
     });
-
-
 });
 
 
@@ -2309,57 +2309,29 @@ $(document).ready(function () {
     var curHeight = 0;
 
     $(document).delegate(".cal-group-hider", "click", function () {
-
         //curHeight = $('.cal-groups').height();
-
         //$('.cal-groups').animate({ height: '0px', opacity: '0' }, "medium");
-
         //$('.cal-group-hider').text("Show");
-
-
-
         //$('.cal-group-hider').addClass('cal-group-showr');
-
         //$('.cal-group-hider').removeClass('cal-group-hider');
-
-
-
         curHeight = $(this).parent().parent().children('.cal-groups').height();
-
         $(this).parent().parent().children('.cal-groups').animate({ height: '0px', opacity: '0' }, "medium");
-
         $(this).text("Show");
-
-
-
         $(this).addClass('cal-group-showr');
-
-        $(this).removeClass('cal-group-hider');
-
-
+        $(this).removeClass('cal-group-hider');        
     });
 
 
 
     $(document).delegate(".cal-group-showr", "click", function () {
-
         //$('.cal-groups').animate({ height: curHeight, opacity: '1' }, "medium");
-
         //$('.cal-group-showr').text("Hide");
-
         //$('.cal-group-showr').addClass('cal-group-hider');
-
         //$('.cal-group-showr').removeClass('cal-group-showr');
-
         $(this).parent().parent().children('.cal-groups').animate({ height: curHeight, opacity: '1' }, "medium");
-
-        $(this).text("Hide");
-
+        $(this).text("Hide");        
         $(this).addClass('cal-group-hider');
-
-        $(this).removeClass('cal-group-showr');
-
-
+        $(this).removeClass('cal-group-showr');        
     });
 
 
@@ -3042,78 +3014,79 @@ $(document).ready(function () {
     
     //when scroll
     $(window).scroll(function () { 
-
         if ($('.cal_view_monthly').text() == "Event Book") {
-
             var id = "";
-
             var daytime = "";
-
             var time = "";
-
             var type = "";
-
-            $("li").each(function (index) {
-
-                var scrollWindow = ((($(this).children(":first")).offset()).top - $(window).scrollTop());
-                if ((scrollWindow >= 100) && (scrollWindow <= 140)) {
-
+            $("div.eb-event-wrap").each(function (index) {
+                var scrollWindow = (($(this).offset()).top - $(window).scrollTop());
+                if ((scrollWindow >= 100) && (scrollWindow <= 160)) {
                     document.getElementById('currentEvent').innerHTML = ($(this).children(":first")).text();
-                    ($(this).children(":first")).addClass("fade-out");
-                    ($(this).children(":first")).removeClass("fade-in");
+                    ($(this).prevAll(".eventbook-date-break:first")).addClass("fade-out");
+                    ($(this).prevAll(".eventbook-date-break:first")).removeClass("fade-in");
 
+                    // To set the day, month and year for the top bar
+                    var dayMonthYear = ($(this).prop("id")).split('_');
+                    var day = dayMonthYear[dayMonthYear.length - 1].split(',')[0];
+                    var month = (dayMonthYear[dayMonthYear.length - 1].split(',')[1]).trim().split(' ')[1]
+                    var date = (dayMonthYear[dayMonthYear.length - 1].split(',')[1]).trim().split(' ')[0];
+                    var year = (dayMonthYear[dayMonthYear.length - 1].split(',')[1]).trim().split(' ')[2];
+                    if (day.toLowerCase() == "sun") {
+                        day = "Sunday";
+                    }
+                    else if (day.toLowerCase() == "mon") {
+                        day = "Monday";
+                    }
+                    else if (day.toLowerCase() == "tue") {
+                        day = "Tuesday";
+                    }
+                    else if (day.toLowerCase() == "wed") {
+                        day = "Wednesday";
+                    }
+                    else if (day.toLowerCase() == "thu") {
+                        day = "Thursday";
+                    }
+                    else if (day.toLowerCase() == "fri") {
+                        day = "Friday";
+                    }
+                    else {
+                        day = "Saturday";
+                    }
+                    $('.eb-day-cont').children(':first').text(day);
+                    $('.eb-month').text(month);
+                    $('.eb-date').text(date);
+                    $('.eb-year').text(year);
                 }
                 else {
-
                     if (!($(this).children(":first")).hasClass("hide")) {
-
-                        ($(this).children(":first")).addClass("fade-in");
-                        ($(this).children(":first")).removeClass("fade-out");
-
+                        ($(this).prevAll(".eventbook-date-break:first")).addClass("fade-in");
+                        ($(this).prevAll(".eventbook-date-break:first")).removeClass("fade-out");
                     }
-
                 }
-                //if ($(window).scrollTop() >= 10) {
-                //    $('.fixed-events-tabs').addClass("fade-in");
-                //    $('.fixed-events-tabs').removeClass("fade-out");
-                //}
-                //else {
-                //    $('.fixed-events-tabs').addClass("fade-out");
-                //    $('.fixed-events-tabs').removeClass("fade-in");
-                //}      
+
                 id = ($(this).prop('id')).split('_')[0];
                 type = ($(this).prop('id')).split('_')[1];
-                time = $(this).find(".event-data1").text();
+                time = $(this).find("div .eventbook-event-time :last").text();
                 daytime = ($(this).prop('id')).split('_')[2];
-
             });
-
             var documentHeight = $(document).height();
-
             var scrollDifference = $(window).height() + $(window).scrollTop();
-
             if (documentHeight == scrollDifference) {
-
                 InfiniteScrollEventBook(id, daytime, type, time);    
-
                 //alert(id + " " + daytime + " " + type + " " + time);
-
             }
-
         }
-
     });
 
     $(document).delegate('#event_date', 'click', function () {
         //        $('.calLayer').css('display', 'block');
         $(this).parents(".header-inp-wrap").children('.calLayer').toggle();
-
     });
 
     $(document).delegate('#img_cal_filter', 'click', function () {
         //        $('.calLayer').css('display', 'block');
         $(this).parents(".event_view_cal").children('.calLayer').toggle();
-
     });
 
     $(document).delegate('#repeat_date_icon', 'click', function () {
@@ -3129,64 +3102,186 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".upload_feed_hack", "change", function () {
-
         var $hack = $(this);
-
         var filename = $hack.val();
         if (filename.length >= 18) {
-
             filename = filename.substring(0, 15) + "...";
-
         }
-
         $(this).closest(".lfloat-mods").find(".feed_upload_textprompt").text(filename);
         $(this).closest(".lfloat-mods").find(".feed_upload_textprompt").attr("title", $hack.val());
-
     });
-
-
-
-
-
+    
     $(document).delegate("#btn_select_event", "click", function () {
-
         window.location.hash = ((new Date()).toUTCString()).substr(0, 11);
-
-        $(window).scrollTop(($(window).scrollTop() - 120));
-
+        $(window).scrollTop(($(window).scrollTop() - 60));
     });
-
-
-
+    
     $(document).delegate(".attachment_img", "mouseover", function () {
-
         $(this).parent().children('.tooltip').stop().show();
-
     });
-
-
-
+    
     $(document).delegate(".attachment_img", "mouseout", function () {
-
         $(this).parent().children('.tooltip').delay(400).hide(0);
-
     });
-
-
-
+    
     $(document).delegate(".tooltip", "mouseover", function () {
-
         $(this).parents('.header_wrapper').children('.tooltip').stop().show();
-
     });
     $(document).delegate(".tooltip", "mouseout", function () {
-
         $(this).parents('.header_wrapper').children('.tooltip').delay(400).hide(0);
-
     });
 
+    $(document).delegate(".eventbook-discuss-btn", "click", function () {
+        $(this).addClass("eventbook-discuss-hider");
+        $(this).text("Hide this discussion");
+        $(this).closest(".eventbook-groupevent-cont").closest(".eb-groupevent-wrap").find(".eb-event-discussion").animate({ opacity: "1", height: "120" }, 200);
+    });
+    $(document).delegate(".eventbook-discuss-hider", "click", function () {
+        $(this).closest(".eventbook-groupevent-cont").closest(".eb-groupevent-wrap").find(".eb-event-discussion").animate({ opacity: "0", height: "0" }, 250).stop();
+        $(this).text("View the full discussion (10)");
+        $(this).removeClass("eventbook-discuss-hider");
+    });
 
+    $(document).delegate(".event-attend-status", "click", function () {
+        $(this).addClass("event-attend-status-hider");
+        $(this).closest(".eventbook-event-cont").find(".dd-box-attending").addClass("dd-box-show");
+    });
+    $(document).delegate(".event-attend-status-hider", "click", function () {
+        $(this).removeClass("event-attend-status-hider");
+        $(this).closest(".eventbook-event-cont").find(".dd-box-attending").removeClass("dd-box-show");
+    });
+    $(document).on("click", function (e) {
+        var elem = $(e.target);
+        if (elem.hasClass("dd-box-attending") || elem.hasClass("attending-option") || elem.hasClass("event-attend-status") || elem.hasClass("attend-icon") || elem.hasClass("attend-title-toggler") || elem.hasClass("remove-icon")) {
+            return;
+        }
+        else {
+            $('.dd-box-attending').removeClass("dd-box-show");
+            $(".event-attend-status-hider").removeClass("event-attend-status-hider");
+        }
+    });
+    if ((window).innerWidth < 941) {
+        $(".eb-event-type").text("TO-DO");
+    }
+    if ((window).innerWidth > 942) {
+        $(".eb-event-type").text("PERSONAL TO-DO");
+    }
+    $(window).resize(function () {
+        if ((window).innerWidth < 941) {
+            $(".eb-event-type").text("TO-DO");
+        }
+        if ((window).innerWidth > 942) {
+            $(".eb-event-type").text("PERSONAL TO-DO");
+        }
+    });
 
+    $(document).delegate(".fx-cont-right", "click", function () {
+        var month = 0;
+        if ($('.eb-month').text().toLowerCase() == "jan") {
+            month = 0;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "feb") {
+            month = 1;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "mar") {
+            month = 2;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "apr") {
+            month = 3;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "may") {
+            month = 4;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "jun") {
+            month = 5;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "jul") {
+            month = 6;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "aug") {
+            month = 7;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "sep") {
+            month = 8;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "oct") {
+            month = 9;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "nov") {
+            month = 10;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "dec") {
+            month = 10;
+        }
+        var nextDate = new Date(Number($('.eb-year').text()), Number(month), Number($('.eb-date').text()));
+        nextDate = nextDate.setDate(nextDate.getDate() + 1);
+        nextDate = (new Date(nextDate)).toUTCString().substr(0, 11);
+        
+        window.location.hash = nextDate;
+        $(window).scrollTop(($(window).scrollTop() - 60));
+        $("html, body").animate({ scrollTop: $('#' + nextDate).offset().top }, 900);
+        $(".eb-current-day").animate({ marginTop: "-40" }, 500);
+
+        $(".eb-current-day").addClass("eb-prev-day");
+        $(".eb-prev-day").removeClass("eb-current-day");
+
+        $(".eb-next-day").addClass("eb-current-day");
+        $(".eb-next-day").removeClass("eb-next-day");
+    });
+
+    $(document).delegate(".fx-cont-left", "click", function () {
+
+        var month = 0;
+        if ($('.eb-month').text().toLowerCase() == "jan") {
+            month = 0;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "feb") {
+            month = 1;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "mar") {
+            month = 2;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "apr") {
+            month = 3;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "may") {
+            month = 4;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "jun") {
+            month = 5;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "jul") {
+            month = 6;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "aug") {
+            month = 7;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "sep") {
+            month = 8;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "oct") {
+            month = 9;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "nov") {
+            month = 10;
+        }
+        else if ($('.eb-month').text().toLowerCase() == "dec") {
+            month = 10;
+        }
+        var nextDate = new Date(Number($('.eb-year').text()), Number(month), Number($('.eb-date').text()));
+        nextDate = nextDate.setDate(nextDate.getDate() - 1);
+        nextDate = (new Date(nextDate)).toUTCString().substr(0, 11);
+
+        window.location.hash = nextDate;
+        $(window).scrollTop(($(window).scrollTop() - 60));
+        $("html, body").animate({ scrollTop: $('#' + nextDate).offset().top }, 900);
+        $(".eb-prev-day").animate({ marginTop: "0" }, 500);
+        $(".eb-current-day").addClass("eb-next-day");
+        $(".eb-prev-day").addClass("eb-current-day");
+        $(".eb-prev-day").removeClass("eb-prev-day");
+        $(".eb-next-day").removeClass("eb-current-day");
+        $(".eb-current-day").addClass("eb-current-day");
+    });
 });
 
 // to show the tooltip for the events
@@ -3270,7 +3365,7 @@ function FilterEvents(sender) {
 
     window.location.hash = ((new Date(date)).toUTCString()).substr(0, 11);
 
-    $(window).scrollTop(($(window).scrollTop() - 120));
+    $(window).scrollTop(($(window).scrollTop() - 60));
 
 }
 
@@ -3448,19 +3543,11 @@ function UpdateDragableEvents(id, type, n) {
 
 var connectionsInvited = 0;
 function invite(sender) {
-
-
-
     var checkbox = $(sender).children('.invite-check-box');
     if (checkbox.prop('checked')) {
-
         $(sender).removeClass("ddbox-option-invited");
-
         $(sender).find(".after-click-effect").hide();
-
         $(sender).find(".invite-option-checkwrap").css({ "background-image": "url(img/unchecked-invite.png)", "opacity": ".7" });
-
-
 
         connectionsInvited -= 1;
         checkbox.prop('checked', false);
@@ -3469,18 +3556,11 @@ function invite(sender) {
         //$(sender).children('.invite_details_box').children('.ibNameLink').css('color', '#424141');
         //$(sender).children('.invite').addClass('toinvite');
         //$(sender).children('.invite').removeClass('invited');
-
     }
     else {
-
         $(sender).addClass("ddbox-option-invited");
-
         $(sender).find(".after-click-effect").show();
-
         $(sender).find(".invite-option-checkwrap").css({ "background-image": "url(img/checked-invite.png)", "opacity": "1" });
-
-
-
         connectionsInvited += 1;
         checkbox.prop('checked', true);
         //$(sender).children('.invite_details_box').css('opacity', '0.5');
@@ -3491,10 +3571,12 @@ function invite(sender) {
 
     }
     $('#invitedConnections').text(connectionsInvited + ' connections invited');
-
 }
 
 var prevEventDate = "";
+var missingEventDates = new Date();
+missingEventDates = missingEventDates.setDate(missingEventDates.getDate() - 1);
+
 function DisplayEventBook() {
 
     // 1 to do 	-	title date time 
@@ -3514,782 +3596,494 @@ function DisplayEventBook() {
 
 
     var date = new Date();
-    date = (date.getFullYear() + "-" + ("0" + (date.getMonth())).slice(-2) + "-" + ("0" + date.getDate()).slice(-2));    
+    date = (date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2));    
+
+    document.getElementById('currentEvent').innerHTML = new Date(date).toUTCString().substr(0,11);
+    var dayMonthYear = new Date(date).toUTCString().substr(0, 16);
+    var day1 = dayMonthYear.split(',')[0];
+    var month1 = (dayMonthYear.split(',')[1]).trim().split(' ')[1]
+    var date1 = (dayMonthYear.split(',')[1]).trim().split(' ')[0];
+    var year1 = (dayMonthYear.split(',')[1]).trim().split(' ')[2];
+    if (day1.toLowerCase() == "sun") {
+        day1 = "Sunday";
+    }
+    else if (day1.toLowerCase() == "mon") {
+        day1 = "Monday";
+    }
+    else if (day1.toLowerCase() == "tue") {
+        day1 = "Tuesday";
+    }
+    else if (day1.toLowerCase() == "wed") {
+        day1 = "Wednesday";
+    }
+    else if (day1.toLowerCase() == "thu") {
+        day1 = "Thursday";
+    }
+    else if (day1.toLowerCase() == "fri") {
+        day1 = "Friday";
+    }
+    else {
+        day1 = "Saturday";
+    }
+    $('.eb-day-cont').children(':first').text(day1);
+    $('.eb-month').text(month1);
+    $('.eb-date').text(date1);
+    $('.eb-year').text(year1);
+
 
     $.ajax({
-
         url: "php/event_book_fetch.php",
         data: { event_id: null, time: "00:00:00", date: date, type: null }, // event_id  time date  yyyy-mm-dd
         type: "POST",
         dataType: "json",
         success: function (responseText) {
-
-            if ($(".timeline").children("li").length == 1) {
-
+            if ($(".eventbook-content").children("div.eb-event-wrap").length == 0) {
                 DisplayEvents(responseText.events_array);                
-
             }
-
         },
-
         error: function (responseText) {
-
             alert("error " + responseText);
-
         }
-
     });
-
 }
 
 function DisplayToDo(ary, formattedTime) {
 
     var appendVal = "";
-    if (prevEventDate != (new Date(ary['start_date'])).toUTCString().substr(0, 11)) {
+    var colorString = "border-color:rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.23) rgba("
+        + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.455);"
+        + "background-image: -moz-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.2),#FFFFFF 7%);"
+        + "background-image: -webkit-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.48),#FFFFFF 5%);";
 
-        prevEventDate = (new Date(ary['start_date'])).toUTCString().substr(0, 11);
+    var eventTimeColor = "background-color: rgb(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ");";
 
-        appendVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
-
-    }
-
-    else {
-
-        appendVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
-
-    }
-
-    appendVal += '<div class="flag-wrapper direction-r">'
-
-                + '<span class="flag1"></span>'
-
-                + '<span class="arrow_box">'
-
-                    + '<div class="left_data1">'
-
-                        + '<img class="event_icons1" src="img/time_icon.png">'
-
-                        + '<div class="event-data1">'
-
-                        + formattedTime
-
-                    + '</div>'
-
-                + '</div>'
-
-            + '</span>'
-
-        + '</div>'
-
-        + '<div class="direction-r">'
-
-            + '<div class="desc">'
-
-                + '<div class="event_main_header">'
-
-                    + '<div class="event-content">'
-
-                            + '<div class="header_wrapper" style="border:none;">'
-
-                                + '<div class="event-header-left">'
-
-                                    + '<div class="event_title">';
-
-    if ((ary['title'] != null)) {
-
-        appendVal += ary['title'];
-
-    }
-
-    appendVal += '</div></div></div></div></div></div></div></li>';
+    appendVal += '<div id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" class = "eb-event-wrap eb-personalevent-wrap">'
+        + '<div style="display:none;">' + (new Date(ary['start_date'])).toUTCString().substr(0, 12) + '</div>'
+					+ '<div class = "eb-event-frame">'
+						+ '<div class = "eventbook-event-cont eventbook-personalevent-cont" style="' + colorString + '">'
+							+ '<div class = "eventbook-event-time eventbook-event-time-personal" style="' + eventTimeColor + '">'
+								+ '<span>'
+									+ formattedTime
++ '								</span>'
+							+ '</div>'
+							+ '<div class = "eb-event-timeuntill">'
++ '								2 hours and 30 minutes from now'
+							+ '</div>'
+							+ '<div class = "event-edit-btn">	     '
+			                    + '<span class = "edit-icon"></span>'
+			                    + '<span style = "padding-left:8px;" class = "attend-title">Edit and Invite</span>'
+			               + '</div>							'
+							+ '<div class = "eb-personal-event-name">'
+                            + ary['title']
+							+ '</div>						'
+							+ '<div class = "eb-personal-event-info-header">'
+								+ '<div class = "event-info-notes-header">'
++ '									Notes'
+								+ '</div>'
+								+ '<div class = "event-info-files-header">'
++ '									Files'
++ '								</div>								'
+							+ '</div>'
+							+ '<div class = "eb-personal-note-wedges">'
+								+ '<div class = "eb-personal-wedges-notes-outer">'
+								+ '</div>'
+								+ '<div class = "eb-personal-wedges-notes-solid">'
++ '								</div>'
+							+ '</div>'
+							+ '<div class = "eb-personal-files-wedges">'
+								+ '<div class = "eb-personal-wedges-notes-outer">'
+								+ '</div>'
+								+ '<div class = "eb-personal-wedges-notes-solid">'
++ '								</div>'
+							+ '</div>							'
+							+ '<div class = "eb-personal-event-info">'
+							+ '	<div class = "eb-personal-event-notes">									'
+									+ '<span class = "eb-personal-event-info-content">...'
++ '									</span>'
+								+ '</div>'
+								+ '<div class = "eb-personal-event-files">'
+									+ '<span class = "eb-personal-event-info-content">...'
+									+ '</span>'
++ '								</div>'
+							+ '</div>'
+							+ '<div class = "eb-personal-right">'
+								+ '<div class = "eb-event-type">'
++ '									PERSONAL TO-DO'
+								+ '</div>'
+								+ '<div class = "eb-personal-tools-cont">'
+								+ '</div>'
+						+ '</div>'
+	+ '					</div>						'
++ '					</div>					'
+				+ '</div>';
 
     return appendVal;
 
 }
-
-
 
 function DisplayPersonalInvited(ary, formattedTime) {
-
-    var appendVal = "";
-    if (prevEventDate != (new Date(ary['start_date'])).toUTCString().substr(0, 11)) {
-
-        prevEventDate = (new Date(ary['start_date'])).toUTCString().substr(0, 11);
-
-        appendVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
-
-    }
-
-    else {
-
-        appendVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
-
-    }
-
-    appendVal += '<div class="flag-wrapper direction-r">'
-
-                                                   + '<span class="flag1"></span>'
-
-                                                   + '<span class="arrow_box">'
-
-                                                       + '<div class="left_data1">'
-
-                                                           + '<img class="event_icons1" src="img/time_icon.png">'
-
-                                                           + '<div class="event-data1">'
-
-                           + formattedTime
-
-                           + '</div>'
-
-                       + '</div>'
-
-                   + '</span>'
-
-               + '</div>'
-
-               + '<div class="direction-r">'
-
-                   + '<div class="desc">'
-
-                       + '<div class="event_main_header">'
-
-                           + '<div class="event-content">'
-
-                            //+ '<div class="event_right">'
-
-                                + '<div class="header_wrapper">'
-
-                                    + '<div class="event-header-left">'
-
-                                        + '<div class="event_title">';
-
-    if ((ary['title'] != null)) {
-
-        appendVal += ary['title'];
-
-    }
-
-    appendVal += '</div>'
-
-    + '</div>';
-
-    if (ary['file_id'] != null) {
-
-        appendVal += '<div class="attachment_img">&nbsp;</div>'
-
-            + '<div class="tooltip">'
-
-                + '<div class="explain-2-box" style="top:0px;">'
-
-                    + '<div class="explain-wedge">'
-
-                    + '</div>'
-
-                    + '<b class="file_link">'
-
-                                            + '<a onclick="FetchFile(' + ary['file_id'] + ');">'
-
-                                                + ary['file_name'] + '</a>'
-
-                                        + '</b>'
-
-                + '</div>'
-
-            + '</div>';
-
-    }
-
-    appendVal += '</div>';
-
-    if ((ary['location'] != null)) {
-
-        appendVal += '<div class="info_wrapper" style="border-bottom: 1px solid #E9EAED;width:100%;">'
-
-            + '<div class="right_data" style="border-right:none;">'
-
-                + '<img class="event_icons" src="img/location_icon.png">'
-
-                + '<div class="event-data">'
-
-                + ary['location']
-
-        + '</div></div>';
-
-        if (ary['created_by'] != null) {
-
-            if (ary['created_by'] == "0") {
-
-                appendVal += '<div class="event_join">'
-
-                                + '<div class="left_btn event_status_btn">'
-
-                                    + 'Accept'     // choice 0 nothing 1 accept 2 maybe 3 decline
-
-                                + '</div>'
-
-                                + '<div class="center_btn event_status_btn">'
-
-                                    + 'Maybe'
-
-                                + '</div>'
-
-                                + '<div class="right_btn event_status_btn">'
-
-                                    + 'Decline'
-
-                                + '</div>'
-
-                            + '</div>';
-
-            }
-
-        }
-
-        appendVal += '</div>';
-
-    }
-
-    else {
-
-        if (ary['created_by'] != null) {
-
-            if (ary['created_by'] == "0") {
-
-                appendVal += '<div class="info_wrapper" style="border-bottom: 1px solid #E9EAED;width:100%;">';
-
-                appendVal += '<div class="event_join">'
-
-                                + '<div class="left_btn event_status_btn">'
-
-                                    + 'Accept'     // choice 0 nothing 1 accept 2 maybe 3 decline
-
-                                + '</div>'
-
-                                + '<div class="center_btn event_status_btn">'
-
-                                    + 'Maybe'
-
-                                + '</div>'
-
-                                + '<div class="right_btn event_status_btn">'
-
-                                    + 'Decline'
-
-                                + '</div>'
-
-                            + '</div>';
-
-                appendVal += '</div>';
-
-            }
-
-        }
-
-    }
-
-    if ((ary['description'] != null)) {
-
-        appendVal += '<div class="info_wrapper bottom_right_data" style="border-top:none;">'
-
-                + '<div class="event_info">';
-
-        if (ary['description'].toString().length <= 220) {
-
-            appendVal += ary['description'].toString() + '</div>';
-
-        }
-
-        else {
-
-            appendVal += ary['description'].toString().substr(0, 220)
-
-                + '<a href="#" id="description-show" class="showLink"'
-
-                  + 'onclick="showHide(this);return false;">&nbsp;See more.</a>'
-
-              + '<div id="description" class="more">';
-
-            appendVal += ary['description'].toString().substr(221, ary['description'].toString().length)
-
-                + '<a href="#" id="A7" class="hideLink"'
-
-                + 'onclick="showHide(this);return false;">&nbsp;hide.</a>'
-
-                + '</div>'
-
-            + '</div>';
-
-        }
-
-        appendVal += '</div>';
-
-    }
-
-    if (ary['invites'] != 0) {
-
-        if ((ary['description'] != null)) {
-
-            appendVal += '<div class="attendees_wrapper">';
-
-        }
-
-        else {
-
-            appendVal += '<div class="attendees_wrapper" style="border-top:none;margin-top:0px;">';
-
-        }
-
-        appendVal += '<div class="creator_wrapper">'
-
-                    + '<a class="event_creator">'
-
-                        + '<div class="creator_Image">'
-
-                        + '</div>'
-
-                        + '<div class="creator_name">'
-
-                            + ary['name'].toString()
-
-                        + '</div>'
-
-                        + '<div class="creator_info">'
-
-                            + 'Added ' + ary['time_added'].toString()
-
-                        + '</div>'
-
-                    + '</a>'
-
-                + '</div>'
-
-            + '<div class="attendee_list">'
-
-               + '<div class="event_attendees">Attending: </div>'
-
-                + '<a>'
-
-                    + '<div style="font-size:20px;float: right; margin-top: -5px;">'
-
-                        + ary['count'].toString()
-
-                    + '</div>'
-
-                + '</a>'
-
-            + '</div>'
-
-        + '</div>'
-
-    + '</div>';
-
-    }
-
-    appendVal += '<div class="event_qa" style="display: none;" id="divQA1">'
-
-    + '</div>'
-
-    + '</div>'
-
-    + '</div>'
-
-    + '</li>';
-
-    return appendVal;
-
-}
-
-
-
-function GroupPersonal(ary, formattedTime) {
-
     var updateVal = "";
-
-    if (prevEventDate != (new Date(ary['start_date'])).toUTCString().substr(0, 11)) {
-
-        prevEventDate = (new Date(ary['start_date'])).toUTCString().substr(0, 11);
-
-        updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
-
-    }
-
-    else {
-
-        updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
-
-    }
-
-    updateVal += '<div class="flag-wrapper direction-r">'
-
-                                                   + '<span class="flag1"></span>'
-
-                                                   + '<span class="arrow_box">'
-
-                                                       + '<div class="left_data1">'
-
-                                                           + '<img class="event_icons1" src="img/time_icon.png">'
-
-                                                           + '<div class="event-data1">'
-
-                           + formattedTime
-
-                           + '</div>'
-
-                       + '</div>'
-
-                   + '</span>'
-
-               + '</div>'
-
-
-
-            + '<div class="direction-r">'
-
-                + '<div class="desc">'
-
-                    + '<div class="event_main_header">'
-
-                        + '<div class="event-content">'
-
-                            + '<div class="event_right">'
-
-                                + '<div class="header_wrapper">'
-
-                                    + '<div class="event-header-left">'
-
-                                        + '<div class="event_title">';
-
-    if ((ary['title'] != null)) {
-
-        updateVal += ary['title'];
-
-    }
-
-    updateVal += '</div>';
-
-    if ((ary['type'] != "1")) {
-
-        updateVal += '<div class="event_group">'
-
-              + '<div>Event in <a>'
-
-              + ary['group_name'].toString()
-
-              + '</a></div>'
-
-          + '</div>';
-
-    }
-
-    updateVal += '</div>';
-
-    if (ary['file_id'] != null) {
-
-        updateVal += '<div class="attachment_img">&nbsp;</div>'
-
-            + '<div class="tooltip" >'
-
-                + '<div class="explain-2-box" style="top:0px;">'
-
-                    + '<div class="explain-wedge">'
-
-                    + '</div>'
-
-                    + '<b class="file_link">'
-
-                                            + '<a onclick="FetchFile(' + ary['file_id'] + ');">'
-
-                                                + ary['file_name'] + '</a>'
-
-                                        + '</b>'
-
-                + '</div>'
-
-            + '</div>';
-
-    }
-
-    if ((ary['type'] != "1")) {
-
-        updateVal += '<div class="show_discussions">'
-
-              + '<a onclick="toggleDiscussion(this);">Show Discussions</a>'
-
-          + '</div>';
-
-    }
-
-    updateVal += '</div>';;
-
-    if ((ary['location'] != null)) {
-
-        updateVal += '<div class="info_wrapper">'
-
-                        + '<div class="right_data" style="border-right:none;">'
-
-                            + '<img class="event_icons" src="img/location_icon.png">'
-
-                            + '<div class="event-data">'
-
-                            + ary['location']
-
-                    + '</div></div>';
-
-        if (ary['created_by'] != null) {
-
-            if (ary['created_by'] == "0") {
-
-                updateVal += '<div class="event_join">'
-
-                                + '<div class="left_btn event_status_btn">'
-
-                                    + 'Accept'     // choice 0 nothing 1 accept 2 maybe 3 decline
-
-                                + '</div>'
-
-                                + '<div class="center_btn event_status_btn">'
-
-                                    + 'Maybe'
-
-                                + '</div>'
-
-                                + '<div class="right_btn event_status_btn">'
-
-                                    + 'Decline'
-
-                                + '</div>'
-
-                            + '</div>';
-
-            }
-
-        }
-
-        updateVal += '</div>';
-
-    }
-
-    else {
-
-        if (ary['created_by'] != null) {
-
-            if (ary['created_by'] == "0") {
-
-                updateVal += '<div class="info_wrapper">';
-
-                updateVal += '<div class="event_join">'
-
-                                + '<div class="left_btn event_status_btn">'
-
-                                    + 'Accept'     // choice 0 nothing 1 accept 2 maybe 3 decline
-
-                                + '</div>'
-
-                                + '<div class="center_btn event_status_btn">'
-
-                                    + 'Maybe'
-
-                                + '</div>'
-
-                                + '<div class="right_btn event_status_btn">'
-
-                                    + 'Decline'
-
-                                + '</div>'
-
-                            + '</div>';
-
-                updateVal += '</div>';
-
-            }
-
-        }
-
-    }
-
+    var colorString = "border-color:rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.23) rgba("
+        + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.455);"
+        + "background-image: -moz-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.2),#FFFFFF 7%);"
+        + "background-image: -webkit-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.48),#FFFFFF 5%);";
+
+    var eventTimeColor = "background-color: rgb(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ");";
+
+    //if (prevEventDate != (new Date(ary['start_date'])).toUTCString().substr(0, 11)) {
+    //    prevEventDate = (new Date(ary['start_date'])).toUTCString().substr(0, 11);
+    //    updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
+    //}
+    //else {
+    //    updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
+    //}
+    updateVal += '<div id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" class = "eb-event-wrap eb-groupevent-wrap">'
+        + '<div style="display:none;">' + (new Date(ary['start_date'])).toUTCString().substr(0, 12) + '</div>'
+        + '<div class = "eventbook-event-cont eventbook-groupevent-cont" style="' + colorString + '">'
+						+ '<div class = "eventbook-event-time" style="' + eventTimeColor + '">'
+							+ '<span class = "eventbook-event-group">'
+							+ '</span>'
+							+ '<span>'
++ '								9:30 am - 11:30 am'
+							+ '</span>'
+						+ '</div>'
+						+ '<div class = "eb-event-timeuntill">'
++ '							30 minutes from now'
+	+ '					</div>'
+						+ '<div class = "event-attend-status">	     '
+		                    + '<span class = "attend-icon"></span>'
+		                    + '<span class = "attend-title attend-title-toggler">Going</span>'
+		                    + '<span class = "down-arrow"></span>'
+		               + '</div>'
+		               + '<div class = "dd-box-attending">'
++ '		               		<div class = "attending-option">'
+		               			+ '<span class = "attend-icon remove-icon"></span>'
+    + 'Remove from my calendar'
++ '</div>'
++ '</div>'
++ '<div class = "eb-event-titlepic">'
+    + '<div class = "eb-event-pic-frame">'
+        + '<div class = "eb-event-pic">'
+        + '</div>'
+    + '</div>'
+    + '<div class = "eb-event-title-wrap">'
+        + '<div class = "eb-event-title">'
+            + 'Neuroscience Lab Meeting '
+        + '</div>'
+        + '<div class = "eb-event-loc-group-wrap">'
+            + '<div class = "eb-event-location">'
+                + '@ Lattimore 256'
+            + '</div>'
+            + '<span class= "midline-dot">&#183;</span>'
+            + '<div class = "eb-event-group">'
+                + 'Neurochemical Foundations of Behavior '
+            + '</div>'
+        + '</div>'
+        + '<div class = "eb-event-description">'
+            + 'The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture. The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture'
+        + '</div>'
+    + '</div>							'
++ '</div>'
++ '<div class = "eventbook-discuss-btn">'
+    + 'View the full discussion <span>(10)</span>'
++ '</div>'
++ '<div class = "eventbook-groupevent-people">'
+     + '<div class = "eb-group-creator">';
+    if ((ary['name'] != null) && (ary['name'] != ""))
+    {
+    updateVal += 
+        + '<div class = "eb-group-creator-picframe">'
+            + '<div class = "eb-group-creator-pic">'
+            + '</div>'
+        + '</div>'
+        + '<div class = "eb-group-creator-name">'
+            + ary['name'].toString()
+        + '</div>'
+        + '<span class = "eb-group-created-copy">'
+            + 'Added ' + ary['time_added'].toString()
+        + '</span>';
+}
     updateVal += '</div>'
-
-+ '<div class="event_left"></div></div></div>';
-
-    if ((ary['description'] != null)) {
-
-        updateVal += '<div class="info_wrapper bottom_right_data">'
-
-                + '<div class="event_info">';
-
-        if (ary['description'].toString().length <= 220) {
-
-            updateVal += ary['description'].toString() + '</div>';
-
-        }
-
-        else {
-
-            updateVal += ary['description'].toString().substr(0, 220)
-
-                + '<a href="#" id="description-show" class="showLink"'
-
-                  + 'onclick="showHide(this);return false;">&nbsp;See more.</a>'
-
-              + '<div id="description" class="more">';
-
-            updateVal += ary['description'].toString().substr(221, ary['description'].toString().length)
-
-                + '<a href="#" id="A7" class="hideLink"'
-
-                + 'onclick="showHide(this);return false;">&nbsp;hide.</a>'
-
-                + '</div>'
-
-            + '</div>';
-
-        }
-
-        updateVal += '</div>';
-
-    }
-
-    if (ary['invites'] != null) {
-
-        if (ary['invites'] != 0) {
-
-            updateVal += '<div class="attendees_wrapper">'
-
-                + '<div class="creator_wrapper">'
-
-                + '<a class="event_creator">'
-
-                + '<div class="creator_Image">'
-
-                + '</div>'
-
-                + '<div class="creator_name">'
-
-                    + ary['name'].toString()
-
-                + '</div>'
-
-                + '<div class="creator_info">'
-
-                    + 'Added ' + ary['time_added'].toString()
-
-                + '</div>'
-
-                + '</a>'
-
-                + '</div>'
-
-                + '<div class="attendee_list">'
-
-                + '<div class="event_attendees">Attending: </div>'
-
-                    + '<div class="event_attendees">Attending: </div>'
-
-                    + '<a>'
-
-                    + '<div style="font-size:20px;float: right; margin-top: -5px;">'
-
-                        + ary['count'].toString()
-
-                    + '</div>'
-
-                    + '</a>'
-
-                + '</div>'
-
-                + '</div>'
-
+        + '<div class = "eb-group-attending">'
+            + '<div class = "eb-group-attending-header">';
+    if ((ary['count'] != null) && (ary['count'] != null)) {
+        updateVal += '<div class = "attending-header-left">'
+            + '<span class = "people-number">' + ary['count'] + ' people attending</span>'
         + '</div>';
-
-        }
-
     }
-
-    updateVal += '<div class="event_qa" style="display: none;" id="divQA1">'
-
+    updateVal += '</div>'
+        + '<div class = "eb-group-attendants-scrollable">'
+            + '<div class = "eb-group-attendant">'
+                + '<div class = "eb-attendant-pic">'
+                + '</div>'
+                + '<div class = "eb-attendant-name">'
+                    + 'Ross Aarow Sobel Kahn Kopelman '
+                + '</div>'
+            + '</div>'
+            + '<div class = "eb-group-attendant">'
+                + '<div class = "eb-attendant-pic">'
++ '                </div>'
+                + '<div class = "eb-attendant-name">'
+                    + 'Anish Kumar'
+                + '</div>'
+            + '</div>            '
+        + '</div>'
+    + '</div>'
 + '</div>'
-
++ '</div> '
++ '<div class = "eb-event-discussion">'
 + '</div>'
-
-+ '</div>'
-
-+ '</li>';
-
++ '</div>';
     return updateVal;
 
 }
 
+function GroupPersonal(ary, formattedTime) {
+    var updateVal = "";
+    var colorString = "border-color:rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.23) rgba("
+        + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code']
+        + ", 0.23) rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.455);"
+        + "background-image: -moz-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.2),#FFFFFF 7%);"
+        + "background-image: -webkit-linear-gradient(left,rgba(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ", 0.48),#FFFFFF 5%);";
 
+    var eventTimeColor = "background-color: rgb(" + ary['red_code'] + "," + ary['green_code'] + "," + ary['blue_code'] + ");";
+
+    //if (prevEventDate != (new Date(ary['start_date'])).toUTCString().substr(0, 11)) {
+    //    prevEventDate = (new Date(ary['start_date'])).toUTCString().substr(0, 11);
+    //    updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
+    //}
+    //else {
+    //    updateVal += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
+    //}
+    updateVal += '<div id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" class = "eb-event-wrap eb-groupevent-wrap">'
+        + '<div style="display:none;">' + (new Date(ary['start_date'])).toUTCString().substr(0, 12) + '</div>'
+        + '<div class = "eventbook-event-cont eventbook-groupevent-cont" style="' + colorString + '">'
+						+ '<div class = "eventbook-event-time" style="' + eventTimeColor + '">'
+							+ '<span class = "eventbook-event-group">'
+							+ '</span>'
+							+ '<span>'
+                            + formattedTime
+							+ '</span>'
+						+ '</div>'
+						+ '<div class = "eb-event-timeuntill">'
++ '							30 minutes from now'
+	+ '					</div>'
+						+ '<div class = "event-attend-status">	     '
+		                    + '<span class = "attend-icon"></span>'
+		                    + '<span class = "attend-title attend-title-toggler">Going</span>'
+		                    + '<span class = "down-arrow"></span>'
+		               + '</div>'
+		               + '<div class = "dd-box-attending">'
++ '		               		<div class = "attending-option">'
+		               			+ '<span class = "attend-icon remove-icon"></span>'
+    + 'Remove from my calendar'
++ '</div>'
++ '</div>'
++ '<div class = "eb-event-titlepic">'
+    + '<div class = "eb-event-pic-frame">'
+        + '<div class = "eb-event-pic">'
+        + '</div>'
+    + '</div>'
+    + '<div class = "eb-event-title-wrap">';
+    if (ary['title'] != null) {
+        updateVal += '<div class = "eb-event-title">'
+                + ary['title']
+            + '</div>';
+    }
+    updateVal += '<div class = "eb-event-loc-group-wrap">';
+    if ((ary['location'] != null) && (ary['location'] != "")) {
+        updateVal += '<div class = "eb-event-location">'
+                    + '@ ' + ary['location']
+                + '</div>';
+    }    
+    if ((ary['group_name'] != null) && (ary['group_name'] != "")) {
+        if ((ary['location'] != null) && (ary['location'] != "")) {
+            updateVal += '<span class= "midline-dot">&#183;</span>';
+        }
+        updateVal += '<div class = "eb-event-group">'
+            + ary['group_name']
+        + '</div>';
+    }
+    updateVal += '</div>';
+    if ((ary['group_name'] != null) && (ary['group_name'] != "")) {
+        updateVal += '<div class = "eb-event-description">'
+            + ary['description']
+        + '</div>';
+    }
+    updateVal += '</div>'
++ '</div>'
++ '<div class = "eventbook-discuss-btn">'
+    + 'View the full discussion <span>(10)</span>'
++ '</div>'
++ '<div class = "eventbook-groupevent-people">'
+    + '<div class = "eb-group-creator">';
+    if ((ary['name'] != null) && (ary['name'] != "")) {
+        updateVal += '<div class = "eb-group-creator-picframe">'
+            + '<div class = "eb-group-creator-pic">'
+            + '</div>'
+        + '</div>'
+        + '<div class = "eb-group-creator-name">'
+            + ary['name'].toString()
+        + '</div>'
+        + '<span class = "eb-group-created-copy">'
+            + 'Added ' + ary['time_added'].toString()
+        + '</span>';
+    }
+    updateVal += '</div>'
+    + '<div class = "eb-group-attending">'
+        + '<div class = "eb-group-attending-header">';
+    if ((ary['count'] != null) && (ary['count'] != null)) {
+        updateVal += '<div class = "attending-header-left">'
+            + '<span class = "people-number">' + ary['count'] + ' people attending</span>'
+        + '</div>';
+    }
+    updateVal += '</div>'
+        + '<div class = "eb-group-attendants-scrollable">'
+            + '<div class = "eb-group-attendant">'
+                + '<div class = "eb-attendant-pic">'
+                + '</div>'
+                + '<div class = "eb-attendant-name">'
+                    + 'Ross Aarow Sobel Kahn Kopelman '
+                + '</div>'
+            + '</div>'
+            + '<div class = "eb-group-attendant">'
+                + '<div class = "eb-attendant-pic">'
++ '                </div>'
+                + '<div class = "eb-attendant-name">'
+                    + 'Anish Kumar'
+                + '</div>'
+            + '</div>            '
+        + '</div>'
+    + '</div>'
++ '</div>'
++ '</div> '
++ '<div class = "eb-event-discussion">'
++ '</div>'
++ '</div>';
+    return updateVal;
+
+}
 
 function DisplayEvents(ary) {
-
     var appendString = "";
-
-
-
     for (var i = 0; i < ary.length; i++) {
-
         var formattedTime = "00:00";
         if (ary[i]['start_time'] != null) {
-
             var hours = ary[i]['start_time'].substr(0, 2) == 0 ? "12" :
                 ary[i]['start_time'].substr(0, 2) > 12 ? ("0" + (ary[i]['start_time'].substr(0, 2) - 12)).slice(-2)
                 : ("0" + ary[i]['start_time'].substr(0, 2)).slice(-2);
             var minutes = ary[i]['start_time'].substr(3, 2);
             var ampm = ary[i]['start_time'].substr(0, 2) < 12 ? "am" : "pm";
             formattedTime = hours + ":" + minutes + " " + ampm;
-
         }
 
-        if (ary[i]['type'] == "1") {
-
-            appendString += DisplayToDo(ary[i], formattedTime);
-
+        //to be removed after the db error in sending the data from 1st jan 1970
+        if (Math.round(Number((new Date((new Date(ary[i]['start_date'])).toUTCString()) - new Date(missingEventDates)) / (24 * 3600 * 1000))) < 0)
+        {
+            continue;
         }
 
-        else if ((ary[i]['type'] == "2") || (ary[i]['type'] == "3")) {
+        if (new Date(missingEventDates).toUTCString().substr(0, 16) != (new Date(ary[i]['start_date'])).toUTCString().substr(0, 16)) {
+            var dateDiff = Math.round(Number((new Date((new Date(ary[i]['start_date'])).toUTCString()) - new Date(missingEventDates)) / (24 * 3600 * 1000)));
+            //alert(dateDiff);
+            var dateString = "";            
+            for (var index = 1 ; index <= dateDiff; index++)
+            {                
+                dateString = new Date((new Date(missingEventDates)).setDate(((new Date(missingEventDates)).getDate() + 1)));
+                dateString = dateString.toUTCString().substr(0, 11);
+                if (i == 0) {
+                    appendString +=
+                '<div class = "eventbook-date-break fade-out" id="' + dateString + '">';
+                }
+                else {
+                    appendString +=
+                '<div class = "eventbook-date-break" id="' + dateString + '">';
+                }                
+                appendString += '<div class = "eb-db-date">'
+                            + '<span class = "eb-db-day">'
+                                + dateString.substr(0, 3)
+                            + '</span>'
+                            + '<div class = "eb-db-icon">'
+                                + '<span class = "eb-db-icon-m">'
+                                    + dateString.substr(8, 3)
+                                + '</span>'
+                                + '<span class = "eb-db-icon-d">'
+                                    + dateString.substr(5, 2)
+                                + '</span>'
+                            + '</div>'
+                        + '</div>'
+                        + '<div class = "eb-db-jump">'
+                        + '</div>'
+                    + '</div>';
 
-            appendString += DisplayPersonalInvited(ary[i], formattedTime);
-
-        }
-
-        else if ((ary[i]['type'] == "4") || (ary[i]['type'] == "5")
-
-            || (ary[i]['type'] == "6") || (ary[i]['type'] == "7")) {
-
-            appendString += GroupPersonal(ary[i], formattedTime);
-
-        }
-
-        else if (ary[i]['type'] == "8") {
-
-            if (prevEventDate != (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11)) {
-
-                prevEventDate = (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11);
-
-                appendString += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
-
+                appendString += '<div class = "eb-event-wrap" id="' + "_"
+                    + (new Date((new Date(missingEventDates)).setDate(((new Date(missingEventDates)).getDate() + 1)))).toUTCString().substr(0, 16) + '">'
+                    + '<div style="display:none;">' + dateString + '</div></div>';
+                missingEventDates = new Date((new Date(missingEventDates)).setDate(((new Date(missingEventDates)).getDate() + 1)));
             }
+            missingEventDates = new Date((new Date(missingEventDates)).setDate(((new Date(missingEventDates)).getDate() + 1)));
+            if (dateString != "") {
+                prevEventDate = dateString;//(new Date((new Date(missingEventDates)).setDate(((new Date(missingEventDates)).getDate() + 1)))).toUTCString().substr(0, 11);
+            }
+        }
 
+        if (prevEventDate != (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11)) {
+            prevEventDate = (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11);
+            if (i == 0) {
+                appendString +=
+                    '<div class = "eventbook-date-break fade-out" id="' + prevEventDate + '">';
+            }
             else {
-
-                appendString += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
-
+                appendString +=
+                    '<div class = "eventbook-date-break" id="' + prevEventDate + '">';
             }
-
+            appendString += '<div class = "eb-db-date">'
+                            + '<span class = "eb-db-day">'
+                                + prevEventDate.substr(0, 3)
+                            + '</span>'
+                            + '<div class = "eb-db-icon">'
+                                + '<span class = "eb-db-icon-m">'
+                                    + prevEventDate.substr(8,3)
+                                + '</span>'
+                                + '<span class = "eb-db-icon-d">'
+                                    + prevEventDate.substr(5, 2)
+                                + '</span>'
+                            + '</div>'
+                        + '</div>'
+                        + '<div class = "eb-db-jump">'
+                        + '</div>'
+                    + '</div>';
+        }
+        if (ary[i]['type'] == "1") {
+            appendString += DisplayToDo(ary[i], formattedTime);
+        }
+        //else if ((ary[i]['type'] == "2") || (ary[i]['type'] == "3")) {
+        //    appendString += DisplayPersonalInvited(ary[i], formattedTime);
+        //}
+        else if ((ary[i]['type'] == "2") || (ary[i]['type'] == "3")
+            || (ary[i]['type'] == "4") || (ary[i]['type'] == "5")
+            || (ary[i]['type'] == "6") || (ary[i]['type'] == "7")) {
+            appendString += GroupPersonal(ary[i], formattedTime);
+        }
+        else if (ary[i]['type'] == "8") {
+            if (prevEventDate != (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11)) {
+                prevEventDate = (new Date(ary[i]['start_date'])).toUTCString().substr(0, 11);
+                appendString += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '"><div class="event_day_time" id="' + prevEventDate + '">' + prevEventDate + '</div>'
+            }
+            else {
+                appendString += '<li id="' + ary['event_id'] + "_" + ary['type'] + "_" + (new Date(ary['start_date'])).toUTCString().substr(0, 16) + '" style="position:relative; top:-35px;padding:0px;"><div class="event_day_time fade-out hide">' + prevEventDate + '</div>'
+            }
             appendString += '<div class="flag-wrapper direction-r">'
-
                                     + '<span class="flag1"></span>'
-
                                     + '<span class="arrow_box">'
-
                                         + '<div class="left_data1">'
-
                                             + '<img class="event_icons1" src="img/time_icon.png">'
-
                                             + '<div class="event-data1">'
-
             + formattedTime
 
             + '</div>'
@@ -4530,78 +4324,43 @@ function DisplayEvents(ary) {
 
     }
 
-    $(".timeline").append(appendString);
+    $(".eventbook-content").append(appendString);
 
 }
 
-
-
 function InfiniteScrollEventBook(id, daytime, type, time) {
-
     // 1 to do 	-	title date time 
-
     // 2 personal	- 	title date time - if - desc locn attachments
-
     // 3 personal invited -	title date time - if - desc locn invited by accepted cnt atchmnts
-
     // 4 group personal 	-	title date time pic  - if - desc locn atchmnts
-
     // 5 group 	-	title date time pic  - if - desc locn invited by accepted cnt atchmnts
-
     // 6 course personal
-
     // 7 course
-
-
-
     var date = new Date(daytime);
-    date = (date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2));    
-
-
-
+    date = (date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2));
     var hours = parseInt(time.substr(0, 2));
-
     if (time.indexOf('am') != -1 && hours == 12) {
-
         time = time.replace('12', '00');
-
     }
-
     if (time.indexOf('pm') != -1 && hours < 12) {
-
         time = time.replace(hours, (hours + 12));
-
     }
-
     time = time.replace(' ', '');
-
     time = time.replace(/(am|pm)/, ':00');
 
-
-
     $.ajax({
-
         url: "php/event_book_fetch.php",
         data: { event_id: id, time: time, date: date, type: type }, // event_id  time date  yyyy-mm-dd
         type: "POST",
         dataType: "json",
         success: function (responseText) {            
-
                 DisplayEvents(responseText.events_array);            
-
         },
-
         error: function (responseText) {
-
             alert("error " + responseText);
-
         }
-
     });
-
 }
-
-
 
 function DisplayEditEvents(sender, id, type) {
 
@@ -4695,21 +4454,13 @@ function DeleteEvents(sender, id, type) {
         type: "POST",
         dataType: "text",
         success: function (responseText) {            
-
             $('#calendar').fullCalendar('removeEvents', id);
-
         },
-
         error: function (responseText) {
-
             alert(responseText);
-
         }
-
     });
-
 }
-
 
 
 function clearInsertFields() {
@@ -4718,108 +4469,69 @@ function clearInsertFields() {
     var param2 = (param1.getMonth() + 1) + '/' + param1.getDate() + '/' + param1.getFullYear();
     $("#event_date").attr("value", param2);
 
-
     $('#nevt-location-1').val("");
     $('#nevt-title-1').val("");
     $('#nevt-desc-1').val("");
     $currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':00';
     $('#set_from_time_24hr').timeAutocomplete({
-
         increment: 15,
         formatter: 'ampm',
         start_hour: 0,
         value: $currentTime
-
     });
     $('#set_to_time_24hr').timeAutocomplete({
-
         increment: 15,
         formatter: 'ampm',
         start_hour: 0,
         value: $currentTime
-
     });
     $('.dd-title').text("None");
-
     $('#event_id').text("");
-
     $('#event_type').text("");
-
     $('#theme_id').text("");
-
     $('#inviteConnections').children('li').remove();
-
     $("#divInviteConnections").hide();
-
 }
-
-
 
 function LinkEventInEventBook(month, date, year) {
-
     var eventdate = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + ("0" + date).slice(-2);
-
     eventdate = ((new Date(eventdate)).toUTCString()).substr(0, 11);
-
     $('.cal_view_events').text("Event Book");
-
     $('.cal_view_events').trigger("click");
-
     window.location.hash = eventdate;
-
-    $(window).scrollTop(($(window).scrollTop() - 120));
-
+    $(window).scrollTop(($(window).scrollTop() - 60));
 }
-
-
 
 function DisplayCalendarFetchEvents(responseText) {
 
     for (var i = 0; i < responseText.events_array.length; i++) {
-
         var locn = "";
-
         if (responseText.events_array[i]["location"] != "null") {
-
             locn = responseText.events_array[i]["location"];
-
         }
-
         var starttoendtime = "";
-
         if (responseText.events_array[i]["start_time"] != null) {
-
             var hours = responseText.events_array[i]["start_time"].substr(0, 2) == 0 ? "12" :
                 responseText.events_array[i]["start_time"].substr(0, 2) > 12 ? ("0" + (responseText.events_array[i]["start_time"].substr(0, 2) - 12)).slice(-2)
                 : ("0" + responseText.events_array[i]["start_time"].substr(0, 2)).slice(-2);
             var minutes = responseText.events_array[i]["start_time"].substr(3, 2);
             var ampm = responseText.events_array[i]["start_time"].substr(0, 2) < 12 ? "am" : "pm";
             starttoendtime = hours + ":" + minutes + " " + ampm;
-
         }
-
         if (responseText.events_array[i]["end_time"] != null) {
-
             var hours = responseText.events_array[i]["end_time"].substr(0, 2) == 0 ? "12" :
                 responseText.events_array[i]["end_time"].substr(0, 2) > 12 ? ("0" + (responseText.events_array[i]["end_time"].substr(0, 2) - 12)).slice(-2)
                 : ("0" + responseText.events_array[i]["end_time"].substr(0, 2)).slice(-2);
             var minutes = responseText.events_array[i]["end_time"].substr(3, 2);
             var ampm = responseText.events_array[i]["end_time"].substr(0, 2) < 12 ? "am" : "pm";
             if (starttoendtime != (hours + ":" + minutes + " " + ampm)) {
-
                 starttoendtime += " to " + (hours + ":" + minutes + " " + ampm);
-
             }
-
         }
-
-
 
         $('#calendar').fullCalendar('renderEvent',
          {
-
              id: responseText.events_array[i]["event_id"],
-
              title: responseText.events_array[i]["title"],
              start: responseText.events_array[i]["start_date"],
              end: responseText.events_array[i]["end_date"],
@@ -4907,7 +4619,10 @@ function RenderCourseClubGroups() {
 
             for (var i = 0; i < responseText.course_array.length; i++) {
 
-                $('#class_groups').append('<div class = "cal-group">'
+                $('#class_groups').append('<div class = "cal-group" style="background-color:rgba(' +
+                    responseText.course_array[i]['red_color']
+                    + ',' + responseText.course_array[i]['green_color']
+                    + ',' + responseText.course_array[i]['blue_color'] + ',0.5);">'
 
                                         + '<div class = "cal-group-pic"></div>'
 
@@ -4917,7 +4632,10 @@ function RenderCourseClubGroups() {
 
                                         + '</div>'
 
-                                        + '<div class = "cal-group-toggle cal-group-toggle-checked">'
+                                        + '<div class = "cal-group-toggle cal-group-toggle-checked" style="background-color:rgba(' +
+                    responseText.course_array[i]['red_color']
+                    + ',' + responseText.course_array[i]['green_color']
+                    + ',' + responseText.course_array[i]['blue_color'] + ',0.5);">'
 
                                             + '<span class = "cal-group-checkmark cal-group-checkmark-checked"></span>'
 
@@ -4931,7 +4649,10 @@ function RenderCourseClubGroups() {
 
             for (var i = 0; i < responseText.group_array.length; i++) {
 
-                $('#club_groups').append('<div class = "cal-group">'
+                $('#club_groups').append('<div class = "cal-group" style="background-color:rgba(' +
+                    responseText.course_array[i]['red_color']
+                    + ',' + responseText.course_array[i]['green_color']
+                    + ',' + responseText.course_array[i]['blue_color'] + ',0.5);">'
 
                                         + '<div class = "cal-group-pic"></div>'
 
@@ -4941,7 +4662,10 @@ function RenderCourseClubGroups() {
 
                                         + '</div>'
 
-                                        + '<div class = "cal-group-toggle cal-group-toggle-checked">'
+                                        + '<div class = "cal-group-toggle cal-group-toggle-checked" style="background-color:rgba(' +
+                    responseText.course_array[i]['red_color']
+                    + ',' + responseText.course_array[i]['green_color']
+                    + ',' + responseText.course_array[i]['blue_color'] + ',0.5);">'
 
                                             + '<span class = "cal-group-checkmark cal-group-checkmark-checked"></span>'
 

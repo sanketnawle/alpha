@@ -1825,12 +1825,13 @@
                                     + '</div>';
             }
             var eventLoc = ((new Date(r.start)).getMonth().toString() + "$" + (new Date(r.start)).getDate().toString() + "$" + (new Date(r.start)).getFullYear().toString());
-            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + o.join(" ") + "'" + " style=" + "'"
+            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + r.id + "_" + r.type  + " " + o.join(" ") + "'" + " style=" + "'"
                 + "position:absolute;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
                 + "<div class='fc-event-inner' onmouseover='showTooltip(this);' onmouseout='hideTooltip(this);' onmousedown='hideTooltip(this);'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>"
                 + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "")
                 + "</span>" + '<div class="editTooltip" onmouseover="tooltipShow(this);" onmouseout="tooltipHide(this);" >'
-                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;width:100%;">'                                    
+                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;width:100%;'
+                                + '-webkit-box-shadow: 0 0 3px ' + r.color + ';' + 'box-shadow: 0 0 3px ' + r.color + ';' + 'border: 1px solid  ' + r.color + ';' + '">'
                                     + '<b class="file_link">'                                        
                                              + '<a onclick="LinkEventInEventBook(' + (new Date(r.start)).getMonth().toString() + ','
                                              + (new Date(r.start)).getDate().toString() + ',' + (new Date(r.start)).getFullYear().toString()

@@ -20,7 +20,8 @@
 
     <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="css/eventBook.css" />
+    <link rel="stylesheet" type="text/css" href="css/eventbook.css" />
+    <link rel="stylesheet" type="text/css" href="css/eventBookold.css" />
     <link rel="stylesheet" type="text/css" href="css/add_event.css" />
 
 
@@ -466,16 +467,7 @@
                                     <span class="cal-group-hider">Hide</span>
                                 </div>
                                 <div class="cal-groups" id="class_groups">
-                                    <div class = "cal-group">
-                                        <div class = "cal-group-pic">
-                                        </div>
-                                        <div class = "cal-group-name">
-                                            <span>Principles of Microeconomics</span>
-                                        </div>
-                                        <div class = "cal-group-toggle cal-group-toggle-checked">
-                                            <span class = "cal-group-checkmark cal-group-checkmark-checked"></span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -585,43 +577,55 @@
                 <div class="fixed-events-tabs">
 
                     <div class="event-tabs-border">
-
-                        <span id="currentEvent" class="cur_event">Sun, Jun 01</span>
-
-                        <div class="event_view_cal">
-
+                        
+                        <div class = "eventbook-header">
+                                    <div class = "header-left-title">
+                                        <span id="currentEvent" style="display:none;" >Sun, Jun 01</span>
+                                        <div class = "eventbook-date-cont eb-day-cont">
+                                            <span class = "eb-current-day">
+                                                Monday
+                                            </span>
+                                            <span class = "eb-next-day">
+                                                Tuesday
+                                            </span>
+                                        </div>
+                                        <div class = "eventbook-date-cont eb-month-cont">
+                                            <span class = "eb-month">
+                                                June
+                                            </span>
+                                            <span class = "eb-date">
+                                                31
+                                            </span>
+                                        </div>
+                                        <div class = "eventbook-date-cont eb-year-cont">
+                                            <span class = "eb-year">
+                                                2014
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class = "header-center-fx">
+                                        <div class = "fx-cont-left eb-fx-cont">
+                                            <span></span>
+                                        </div>
+                                        <div class = "fx-cont-right eb-fx-cont">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class = "header-right-fx">
+                                            <div class="event_view_cal">
                             <img src="img/cal_icon_major.png" class="event_cal_filter" id="img_cal_filter" title="Pick a Date." />
-
                             <input class="set_date" name="event_date_select" id="event_date_select" style="display: none;" />
-
                             <button class="btn_select_today" id="btn_select_event">Today</button>
-
-
-
                             <div class="calLayer cal_event_select">
-
                                 <section id="Section1" class="mounth" style="margin-left: 43px; margin-top: 20px;">
-
                                     <header class="minical-header">
-
                                         <h1 class="minical-h1">JANUARY 2013</h1>
-
-
-
                                         <nav role="padigation">
-
                                             <span class="m-prev"></span>
-
                                             <span class="m-next"></span>
-
                                         </nav>
-
                                     </header>
-
-
-
                                     <article>
-
                                         <div class="days">
 
                                             <b>SU</b>
@@ -674,7 +678,7 @@
                                             <span onclick="FilterEvents(this);" id="calcell_mo_72" class="calcell disable cl_29"></span>
                                             <span onclick="FilterEvents(this);" id="calcell_tu_73" class="calcell disable cl_30"></span>
                                             <span onclick="FilterEvents(this);" id="calcell_we_74" class="calcell disable cl_31"></span>
-                                            <span onclick="FilterEvents(this);" id="calcell_th_75" class="calcell disable cl_32"></span>											
+                                            <span onclick="FilterEvents(this);" id="calcell_th_75" class="calcell disable cl_32"></span>                                            
                                             <span onclick="FilterEvents(this);" id="calcell_fr_76" class="disable calcell cl_33"></span>
                                             <span onclick="FilterEvents(this);" id="calcell_sa_77" class="disable calcell cl_34"></span>
                                             <span onclick="FilterEvents(this);" id="calcell_su_78" class="disable calcell cl_35"></span>
@@ -692,9 +696,8 @@
                             </div>
 
                         </div>
-
-
-
+                                    </div>
+                                </div>                    
                     </div>
 
                 </div>
@@ -715,8 +718,8 @@
 
                                 <div class="event_main">
 
-                                    <ul class="timeline">
-                                        <li>
+                                    <div class="eventbook-content">
+                                        <!--<li>
                                             <div class="event_day_time">
                                                 Mon, Jun 03
                                             </div>
@@ -760,10 +763,7 @@
                                                                             500 Joseph C Wilson Blvd
                                                                         </div>
                                                                     </div>
-                                                                    <div class="event_join">
-                                                                        <!--<button class="btn-addevent-1 btn-addevent" id="Button1" style="min-width: 0px; margin-right: 5px; font-size: 10px; height: 20px; line-height: 5px;">Accept</button>
-                                                                        <button class="btn-addevent-1 btn-addevent" id="Button2" style="min-width: 0px; margin-right: 5px; font-size: 10px; height: 20px; line-height: 5px;">Maybe</button>
-                                                                        <button class="btn-addevent-1 btn-addevent" id="Button3" style="min-width: 0px; margin-right: 5px; font-size: 10px; height: 20px; line-height: 5px;">Reject</button>-->
+                                                                    <div class="event_join">                                                                        
                                                                         <div class="left_btn event_status_btn">
                                                                             Accept
                                                                         </div>
@@ -1113,9 +1113,9 @@
 
                                             </div>
 
-                                        </li>
+                                        </li>-->
 
-                                    </ul>
+                                    </div>
 
 
 
