@@ -163,6 +163,7 @@ $(document).ready(function() {
 		$ref.find(".hor-scroller-right").stop().hide();
 		$ref.find(".hor-scroller-left").stop().hide();
 	});
+	
 
 });
 

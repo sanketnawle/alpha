@@ -9,9 +9,9 @@ div#tray{
 	overflow-x:hidden;
 	z-index:1010;
 	background-color: #3c4246;
-	-webkit-box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 1); 
-	-moz-box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 1); 
-	box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 1);
+	-webkit-box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 0.6); 
+	-moz-box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 0.6); 
+	box-shadow: 0 4px 5px .8px rgba(41, 41, 41, 0.6);
 }
 
 div#tray div.group_search{
