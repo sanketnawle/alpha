@@ -138,7 +138,7 @@ width: 992px;
 float:left;
 border: 1px solid rgba(0,0,0,.1);
 position:relative;
-height:1000px;
+height:auto;
 padding-top:10px;
 padding-bottom:20px;
 min-height:1px;
@@ -152,6 +152,7 @@ box-shadow: 3px 3px 12px -7px rgba(0,0,0,0.7) inset, -3px -3px 12px -7px rgba(0,
 border-top: none;
 border: 1px solid rgba(0, 0, 0, .15); border-width: 0 1px 1px 1px;
 margin-left: 1px;
+border-radius: 0px 0px 5px 5px;
 }
 
 
@@ -203,6 +204,17 @@ padding-left: 10px;
 padding-right: 10px;
 border-radius: 4px;
 min-width: 191px;
+}
 
+div.members-header-line{
+    display: inline-block;
 
+    margin-left: 5px;
+    margin-right: 10px;
+    border-bottom: 1px solid rgba(219, 219, 219, 0.89);
+    width: 777px;
+    margin-bottom: 4px;
+    -webkit-box-shadow: rgba(207, 203, 203, 0.57) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
+    -moz-box-shadow: rgba(207, 203, 203, 0.57) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px; 
+    box-shadow: rgba(207, 203, 203, 0.57) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px;
 }
