@@ -1,0 +1,1 @@
+[09-Jul-2014 14:19:08 America/Denver] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/connections.php on line 28

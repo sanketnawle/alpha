@@ -2,9 +2,6 @@
     background-color: #FFFFFF;
     width: 286px;
     margin: 0 auto;
-    margin-top: 100px;
-    margin-left: 100px;
-    position: fixed;
     height: auto;
     border-radius: 5px;
     border-bottom-width: .12em;
@@ -215,7 +212,7 @@ border-bottom: 1px solid #3AC979;
     width: 184px;
 }
 
-    .upc-eventL .evntName {
+    .upc-eventL .evntName a {
         font-size: 13.9px;
         font-weight: 400;
         line-height: 17.7px;
@@ -230,7 +227,7 @@ border-bottom: 1px solid #3AC979;
         color: #029acf;  font-weight: 400;
 }
 
-.upc-eventL .evntName:hover {
+.upc-eventL .evntName a:hover {
     font-weight: 500;
     text-decoration: underline; 
     color: #016283; cursor: pointer;
@@ -261,7 +258,7 @@ color: rgba(4, 117, 156, 0.65);
     border-style: solid;
     cursor: pointer;
     background-color: white;
-    border-color: #FF4737;
+    border-color: #f52b4f;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-border-radius: 4px;
@@ -498,6 +495,7 @@ color: rgba(4, 117, 156, 0.65);
     padding: 3px;
     margin-left: 8px;
     border-radius: 0px;
+    background-size: 20px;
     padding-bottom: 4px;
     background-color: white; border: 1px solid #dddddd; 
     border-radius: 2px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;

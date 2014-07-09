@@ -5,10 +5,49 @@
 <link rel="stylesheet" type="text/css" href="css/fbar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
-<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+
+<script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+<script src="filepicker.js"></script>
+	<script>
+		init = function(appID,fileID) {
+        s = new gapi.drive.share.ShareClient(appID);
+        s.setItemIds([fileID]);
+    }
+
+		function initPicker() {
+			var picker = new FilePicker({
+				apiKey: 'AIzaSyDXcdGwlZUFArSbExSC81-g4PIlAA6vzD4',
+				clientId: '648831685142-djuu0p1kanvmn751rnj189avhde81ckt',
+				buttonEl: document.getElementById('pick'),
+				onSelect: function(file) {
+					console.log(file);
+					//alert(file);
+					$(".googleuploadinfoarchive_fbar").val(file);
+					var nm= file.split("||")[3].trim();
+					var shortnm=nm;
+					if(shortnm.length>=18){
+                              		shortnm= shortnm.substring(0,15)+"...";
+                              	}
+
+					$(".googleuploadinfoarchive_fbar").closest(".driveUpload").find(".drive_link").attr("title",nm);
+					$(".googleuploadinfoarchive_fbar").closest(".driveUpload").find(".drive_link").text(shortnm);
+					//alert($(".googleuploadinfoarchive_fbar").val());
+					// gapi.load('drive-share', init('648831685142',file));
+					gapi.client.request({
+						'path': '/drive/v2/files/'+file,
+       					'method': 'GET',
+       					callback: function (responsejs, responsetxt){
+           				var downloadUrl = responsejs.downloadUrl;
+       }
+					})
+				}
+			});	
+		}
+	</script>
+	
+	<script src="https://www.google.com/jsapi?key='AIzaSyDXcdGwlZUFArSbExSC81-g4PIlAA6vzD4'"></script>
+	<script src="https://apis.google.com/js/client.js?onload=initPicker"></script>
+
 <script>
 		navigator.sayswho= (function(){
     		var ua= navigator.userAgent, tem, 
@@ -31,90 +70,90 @@ $(document).ready(function() {
 
 
                 $('.post').click(function(){
-                	$('.fb').css('height','170px');
-                	$('.postTxtarea').show();
-                	$('.postTxtarea').focus();
-                	$('.post').css('cursor','default');
+                	$('#fbar').css('height','auto');
+                	$("#fbar").find('.postTxtarea').show();
+                	$("#fbar").find('.postTxtarea').focus();
+                	$("#fbar").find('.post').css('cursor','default');
 
-                	$('.post').removeClass('fani');
-                	$('.post-sec').show();
-                	$('.share').addClass('fani');
-                	$('.find').addClass('fani');
-                	$('.share').css('cursor','pointer');
-                	$('.find').css('cursor','pointer');
-                	$('.fbtn-post ').css('color','#333');
-                	$('.fbtn-post ').css('color','#333');
-                	$('.fbtn-ask').css('color','#666');
-                	$('.fbtn-upload ').css('color','#666');                	
-                	$(".wedge1a").show();
-                	$(".wedge1b").show();
-	 				$(".wedge2a").hide();
-	                $(".wedge2b").hide();
-					$(".wedge3a").hide();
-	                $(".wedge3b").hide(); 
-	                $('.btmfbar2').hide();
-	                 $('.btmfbar').show(); 
-	                 $(".ask_state").hide();
-	                 $('.uploadTxtarea').hide(); 
-	                 $('.uploadMode').hide();
+                	$("#fbar").find('.post').removeClass('fani');
+                	$("#fbar").find('.post-sec').show();
+                	$("#fbar").find('.share').addClass('fani');
+                	$("#fbar").find('.find').addClass('fani');
+                	$("#fbar").find('.share').css('cursor','pointer');
+                	$("#fbar").find('.find').css('cursor','pointer');
+                	$("#fbar").find('.fbtn-post ').css('color','#333');
+                	$("#fbar").find('.fbtn-post ').css('color','#333');
+                	$("#fbar").find('.fbtn-ask').css('color','#666');
+                	$("#fbar").find('.fbtn-upload ').css('color','#666');                	
+                	$("#fbar").find(".wedge1a").show();
+                	$("#fbar").find(".wedge1b").show();
+	 				$("#fbar").find(".wedge2a").hide();
+	                $("#fbar").find(".wedge2b").hide();
+					$("#fbar").find(".wedge3a").hide();
+	                $("#fbar").find(".wedge3b").hide(); 
+	                $("#fbar").find('.btmfbar2').hide();
+	                 $("#fbar").find('.btmfbar').show(); 
+	                 $("#fbar").find(".ask_state").hide();
+	                 $("#fbar").find('.uploadTxtarea').hide(); 
+	                 $("#fbar").find('.uploadMode').hide();
 
                  });
 
                 $('.share').click(function(){
-                	$('.fb').css('height','233px');
-                	$('.share').css('cursor','default');
-                	$('.find').css('cursor','pointer');
+                	$('#fbar').css('height','auto');
+                	$("#fbar").find('.share').css('cursor','default');
+                	$("#fbar").find('.find').css('cursor','pointer');
 
-                	$('.post').css('cursor','pointer');
-                	$('.share').removeClass('fani');
-                	$('.post-sec').show();
-                	$('.find').addClass('fani');
-                	$('.post').addClass('fani');
-                	$('.fbtn-upload ').css('color','#333');
-                	$('.fbtn-post ').css('color','#666');
-                	$('.fbtn-ask ').css('color','#666');                
-                	$(".wedge2a").show();
-                	$(".wedge2b").show();	
-	 				$(".wedge1a").hide();
-	                $(".wedge1b").hide();
-					$(".wedge3a").hide();
-					$(".ask_state").hide();
-	                $(".wedge3b").hide();    
-	                $('.postTxtarea').hide();           
-	                 $('.btmfbar').hide();	
-	                 $('.upload_state').show();
-	                 $('.btmfbar2').show();
-	                 $('.uploadTxtarea').show(); 
-	                 $('.uploadTxtarea').focus();
-	                 $('.uploadMode').show();
+                	$("#fbar").find('.post').css('cursor','pointer');
+                	$("#fbar").find('.share').removeClass('fani');
+                	$("#fbar").find('.post-sec').show();
+                	$("#fbar").find('.find').addClass('fani');
+                	$("#fbar").find('.post').addClass('fani');
+                	$("#fbar").find('.fbtn-upload ').css('color','#333');
+                	$("#fbar").find('.fbtn-post ').css('color','#666');
+                	$("#fbar").find('.fbtn-ask ').css('color','#666');                
+                	$("#fbar").find(".wedge2a").show();
+                	$("#fbar").find(".wedge2b").show();	
+	 				$("#fbar").find(".wedge1a").hide();
+	                $("#fbar").find(".wedge1b").hide();
+					$("#fbar").find(".wedge3a").hide();
+					$("#fbar").find(".ask_state").hide();
+	                $("#fbar").find(".wedge3b").hide();    
+	                $("#fbar").find('.postTxtarea').hide();           
+	                 $("#fbar").find('.btmfbar').hide();	
+	                 $("#fbar").find('.upload_state').show();
+	                 $("#fbar").find('.btmfbar2').show();
+	                 $("#fbar").find('.uploadTxtarea').show(); 
+	                 $("#fbar").find('.uploadTxtarea').focus();
+	                 $("#fbar").find('.uploadMode').show();
                  });
 
                 $('.find').click(function(){
-                	$('.fb').css('height','226px');
-                	$('.find').css('cursor','default');
-                	$('.find').removeClass('fani');
-                	$('.post-sec').show();
-                	$('.share').addClass('fani');
-                	$('.post').addClass('fani');
-                 	$('.share').css('cursor','pointer');
-                	$('.post').css('cursor','pointer');
-                	$('.fbtn-ask ').css('color','#333');
-                	$('.fbtn-upload ').css('color','#666');
-                	$('.fbtn-post ').css('color','#666');
-                 	$(".wedge3a").show();
-                	$(".wedge3b").show();               
-	 				$(".wedge1a").hide();
+                	$('#fbar').css('height','auto');
+                	$("#fbar").find('.find').css('cursor','default');
+                	$("#fbar").find('.find').removeClass('fani');
+                	$("#fbar").find('.post-sec').show();
+                	$("#fbar").find('.share').addClass('fani');
+                	$("#fbar").find('.post').addClass('fani');
+                 	$("#fbar").find('.share').css('cursor','pointer');
+                	$("#fbar").find('.post').css('cursor','pointer');
+                	$("#fbar").find('.fbtn-ask ').css('color','#333');
+                	$("#fbar").find('.fbtn-upload ').css('color','#666');
+                	$("#fbar").find('.fbtn-post ').css('color','#666');
+                 	$("#fbar").find(".wedge3a").show();
+                	$("#fbar").find(".wedge3b").show();               
+	 				$("#fbar").find(".wedge1a").hide();
 	 				
-	                $(".wedge1b").hide();                
-	 				$(".wedge2a").hide();
-	                $(".wedge2b").hide();	
-	                $('.postTxtarea').hide();
-	                $('.btmfbar').hide(); 
-	                $('.uploadTxtarea').hide(); 
-	                $('.uploadMode').hide();      
-	                $('.btmfbar2').hide();         	                	
-	                $(".ask_state").show();
-	                $(".topfbar").focus();
+	                $("#fbar").find(".wedge1b").hide();                
+	 				$("#fbar").find(".wedge2a").hide();
+	                $("#fbar").find(".wedge2b").hide();	
+	                $("#fbar").find('.postTxtarea').hide();
+	                $("#fbar").find('.btmfbar').hide(); 
+	                $("#fbar").find('.uploadTxtarea').hide(); 
+	                $("#fbar").find('.uploadMode').hide();      
+	                $("#fbar").find('.btmfbar2').hide();         	                	
+	                $("#fbar").find(".ask_state").show();
+	                $("#fbar").find(".topfbar").focus();
                  }); 
 
 				
@@ -143,23 +182,23 @@ $(document).ready(function() {
 
                  $('.select').on('click','li',function(){
 					  var $t = $(this),
-					      $f = $(this).closest(".search-select").find('.field')
+					      $f = $(this).closest(".search-select").find('.field_fbar');
 					      text = $t.text(),
 					      icon = $t.find('i').attr('class');
 					  $f.find('label').text(text);
 					  $f.find('i').attr('class',icon)
 					});
-					$('.field').click(function(e){
+					$('.field_fbar').click(function(e){
 					  e.preventDefault();
 					  $('#open').click();
 					});
 
 					
 
-				$(document).delegate(".field","click",function(){
+				$(document).delegate(".field_fbar","click",function(){
 					$(".select").stop().fadeIn(200);
 
-					var cur= $(this).closest(".field").find("i").attr("class");
+					var cur= $(this).closest(".field_fbar").find("i").attr("class");
 					
 					$( ".select li" ).each(function( index ) {
 						if($(this).find("i").attr("class")==cur){
@@ -222,7 +261,7 @@ $(document).ready(function() {
                               	$(this).closest(".controlpad").find(".upload_textprompt").attr("title",$hack.val());
                                     //need to modify
                                     //$('.attach_form').submit();
-                                    }); 
+                                }); 
 
 
 
@@ -237,12 +276,12 @@ $(document).ready(function() {
                               	$(this).closest(".upl_wrap").find(".uplName").attr("title",$hack.val());
                                     //need to modify
                                     //$('.attach_form').submit();
-                                    }); 
+                                }); 
 
 
 
 	//textara auto growth
-    $("textarea").mousemove(function(e) {
+    $(".autogrowth_textarea").mousemove(function(e) {
         var myPos = $(this).offset();
         myPos.bottom = $(this).offset().top + $(this).outerHeight();
         myPos.right = $(this).offset().left + $(this).outerWidth();
@@ -321,13 +360,24 @@ $(document).ready(function() {
     	}
     });
 
+
+	var tags_type=new Array();
 	$(document).delegate(".tag-col","click",function(e){
 		var tagname=$(this).text();
 		var tag= $(this).attr("id").trim();
+		var tp= "";
+		if($(this).hasClass("user")){tp="user";}
+		if($(this).hasClass("courses")){tp="courses";}
 		var isin=$.inArray(tag, tags);
+		
 		if(isin==-1){
 			tags.push(tag);
+			tags_type.push(tp);
+
 			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tagname+"</div><div class='tag-close'></div></div>");
+			$(".add_who").val("");
+			$(".add_who").focus();
+			$(".tag-option").hide();
 		}
 
 	});    
@@ -336,18 +386,22 @@ $(document).ready(function() {
 
 	$(document).delegate(".tag-close","click",function(e){
 		var tag= $(this).closest(".who-is-tagged").attr("id").trim().substring(4);
+		//alert("a");
 		var isin=tags.indexOf(tag);
+		
 		if(isin>-1){
 			tags.splice(isin,1);
+			tags_type.splice(isin,1);
 			$("#wit_"+tag).remove();
 		}
 		return false;
 
 	});
 
-	$(document).delegate(".flat7b","click",function(event){
+	$(document).delegate(".flat7b_fbar","click",function(event){
 
 		if(!$(this).hasClass("flat_checked")){
+			
 		$(this).css({"border":"1px solid #00A076","background-color":"#02e2a7"});
 		$(this).closest(".check_wrap").find(".move").css({"margin-left":"19px"});
 		$(this).addClass("flat_checked");
@@ -365,15 +419,15 @@ $(document).ready(function() {
 		var cardtag_flag=0;
 		$(document).delegate(".vstt_icon","mouseover",function(){
 			if(cardtag_flag==0){
-			$(this).closest(".field").find(".card-tag").show();
+			$(this).closest(".field_fbar").find(".card-tag").show();
 			}
 		});
 
 		$(document).delegate(".vstt_icon","mouseout",function(){
-			$(this).closest(".field").find(".card-tag").hide();
+			$(this).closest(".field_fbar").find(".card-tag").hide();
 		});
 
-		$(document).delegate(".visi_functions_option","mouseover",function(){
+		$(document).delegate(".visi_functions_option_fbar","mouseover",function(){
 			var src=$(this).closest("span").find(".visi_icon").css("background-image");
 			srcarr=src.split("_");
 			srcarr[srcarr.length-1]="hover.png)";
@@ -384,7 +438,7 @@ $(document).ready(function() {
 			$(this).closest("span").find(".visi_icon").css("background-image",src);
 		});
 
-		$(document).delegate(".visi_functions_option","mouseout",function(){
+		$(document).delegate(".visi_functions_option_fbar","mouseout",function(){
 			var src=$(this).closest("span").find(".visi_icon").css("background-image");
 			srcarr=src.split("_");
 			srcarr[srcarr.length-1]="normal.png)";
@@ -394,11 +448,11 @@ $(document).ready(function() {
 			$(this).closest("span").find(".visi_icon").css("background-image",src);
 		});
 	
-		$(document).delegate('.field',"click", function(){
+		$(document).delegate('.field_fbar',"click", function(){
 					if($(this).closest(".posttool-select").hasClass("privacy_canedit")){
 					$(this).closest(".posttool-select").find(".visi_functions_box").show();
 					cardtag_flag=1;
-					$(this).closest(".field").find(".card-tag").hide();
+					$(this).closest(".field_fbar").find(".card-tag").hide();
 
 					$(this).css({"border":"1px solid rgba(60,60,60,0.23)","background-color":"rgba(60,60,60,0.03)"});
 
@@ -414,18 +468,18 @@ $(document).ready(function() {
 			     		$container.find(".visi_functions_box").stop().hide();
 			     		cardtag_flag=0;
 
-			     		$container.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
+			     		$container.find(".field_fbar").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
 						$container.find(".vstt_wedgeDown").css({"opacity":"0"});
 			     	}
-			     	if($target.hasClass(".visi_functions_option")){
+			     	if($target.hasClass(".visi_functions_option_fbar")){
 			     		$container.find(".visi_functions_box").stop().hide();
 			     		cardtag_flag=0;
-			     		$container.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
+			     		$container.find(".field_fbar").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
 						$container.find(".vstt_wedgeDown").css({"opacity":"0"});
 			     	}
 				});
 
-			$(document).delegate(".visi_functions_option","click",function(){
+			$(document).delegate(".visi_functions_option_fbar","click",function(){
 			     	//student campus connections faculty
 			     	var ref=$(this).closest(".posttool-select");
 			     	var privacy= "campus";
@@ -437,10 +491,11 @@ $(document).ready(function() {
 
 			     	ref.find(".tag-box").text("Visible to "+privacy);
 			     	ref.closest(".select_wrap").find(".visi_val").val(privacy);
-			     	
+			     	//alert(ref.closest(".select_wrap").find(".visi_val").val());
+
 			     	$(this).closest(".visi_functions_box").hide();
 			     	cardtag_flag=0;
-			     	ref.find(".field").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
+			     	ref.find(".field_fbar").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
 					ref.find(".vstt_wedgeDown").css({"opacity":"0"});
 
 					var src_2=$(this).closest(".posttool-select").find(".visi_icon").css("background-image");
@@ -461,9 +516,10 @@ $(document).ready(function() {
 					var post_status=$ref.find(".postTxtarea").val().trim();
 					var anon=$ref.find(".post_anon_val").val();
 					var privacy= $ref.find(".visi_val").val();
+					//alert($ref.find(".visi_val").attr(""));
 					
 					if(post_status==""){
-						//$ref.find(".fbar_errorprompt").text("no text input");
+
 					}else{
 
 					if($ref.find(".upload_hack").val()!=''){
@@ -491,10 +547,11 @@ $(document).ready(function() {
             				contentType: false,
         					processData: false,
             				success: function(html){ 
-
+            					alert(html);
 			            	}
 						});
 
+						//reset
 						$ref.find(".postTxtarea").val("");
             			$ref.find(".upload_hack").val("");
             			$ref.find(".upload_textprompt").attr("title","");
@@ -505,7 +562,7 @@ $(document).ready(function() {
             				url: "../kk/newinfi2/includes/fbarops.php",
             				data: {fbar_type: fbar_type, post_status: post_status, anon: anon, privacy:privacy},
             				success: function(html){ 
-            					
+            					alert(html);
 			            	}
 						});
 						$ref.find(".postTxtarea").val("");
@@ -523,14 +580,21 @@ $(document).ready(function() {
 				var $ref=$(this).closest(".fbar_anchor");
 				var notes_desc=$ref.find(".uploadTxtarea").val().trim();
 				var fileexistproof=$ref.find("._uplI").val();
-				var fileexistproof2=$ref.find(".drive_link").attr("title");
+				var privacy= $ref.find(".visi_val").val();
+
+				var fileexistproof2=$(".googleuploadinfoarchive_fbar").val();
+
+				//alert(fileexistproof);
 
 				if((fileexistproof=="")&&(fileexistproof2=="")){
 
 				}else{
+					if(fileexistproof!=""){
+
 					var formData= new FormData( $ref.find("._uplI").closest("form")[0]);
 					formData.append("fbar_type",fbar_type);
    					formData.append("notes_desc",notes_desc);
+   					formData.append("privacy",privacy);
 
    					$.ajax({
 	            			type: "POST",
@@ -547,10 +611,34 @@ $(document).ready(function() {
             				contentType: false,
         					processData: false,
             				success: function(html){ 
+            					alert(fbar_type+","+notes_desc+","+fileexistproof+","+privacy);
+            					alert(html);
 
 			            	}
 						});
+   					}else{
+   						var fileinfo= $(".googleuploadinfoarchive_fbar").val().trim().split("||");
+   						var gdrive_id= fileinfo[0].trim();
+   						var gdrive_type= fileinfo[1].trim();
+   						var gdrive_url= fileinfo[2].trim();
+   						var gdrive_name= fileinfo[3].trim();
 
+   						$.ajax({
+	            			type: "POST",
+            				url: "../kk/newinfi2/includes/fbarops.php",
+            				data: {fbar_type: fbar_type, notes_desc:notes_desc, privacy:privacy, gdrive_id:gdrive_id, gdrive_name:gdrive_name,gdrive_url:gdrive_url,gdrive_type:gdrive_type},
+            				success: function(html){ 
+            					alert(html);
+			            	}
+						});
+   					}
+   					
+
+
+            					//reset
+								$ref.find(".uploadTxtarea").val("");
+								$ref.find(".uplName").text("No file chosen");
+								$ref.find("._uplI").val("");
 				}
 
 
@@ -560,26 +648,51 @@ $(document).ready(function() {
 			$(document).delegate(".btn-3","click",function(){
 				var fbar_type="question";
 				var $ref=$(this).closest(".fbar_anchor");
+				var privacy= $ref.find(".visi_val").val();
 				var que_title=$ref.find(".questtxt").val().trim();
 				var que_desc=$ref.find(".askTxtArea").val().trim();
+
+				/*
+				$.each( tags_type, function( key, value ) {
+					alert(value);
+				});*/
+				
+
+				
+				$.each( tags, function( key, value ) {
+					tags[key]=tags_type[key]+"$$"+value;
+				});
+				
+				/*
+				$.each( tags, function( key, value ) {
+					alert(value);
+				});
+				*/
+				//tags=['1','2','3'];
+				$.each( tags, function( key, value ) {
+					alert(value);
+				});
+
 				var experts = JSON.stringify(tags);
-				var anon=$ref.find(".post_anon_val").val();
-				var privacy= $ref.find(".visi_val").val();
+				var anon=$(this).closest(".controlpad").find(".post_anon_val").val();
+				
 
 				var fileexistproof=$ref.find(".upload_hack").val();
 
-				if((que_title=="")||(que_desc=="")){
+				if(que_title==""){
 
 				}else{
 
+				
 				if(fileexistproof!=""){
 					var formData= new FormData( $ref.find(".upload_hack").closest("form")[0]);
 					formData.append("fbar_type",fbar_type);
-   					formData.append("que_title",notes_desc);
-   					formData.append("que_desc",fbar_type);
-   					formData.append("experts",notes_desc);
-   					formData.append("anon",fbar_type);
-   					formData.append("privacy",notes_desc);
+   					formData.append("que_title",que_title);
+   					formData.append("que_desc",que_desc);
+   					formData.append("experts",experts);
+   					formData.append("anon",anon);
+   					formData.append("privacy",privacy);
+
 
    					$.ajax({
 	            			type: "POST",
@@ -596,22 +709,43 @@ $(document).ready(function() {
             				contentType: false,
         					processData: false,
             				success: function(html){ 
-
+            					alert(html);
 			            	}
 						});
 
 				}else{
-					
+					//alert(fbar_type+","+que_title+","+que_desc+","+anon+","+privacy);
 					$.ajax({
 	            			type: "POST",
             				url: "../kk/newinfi2/includes/fbarops.php",
-            				data: {fbar_type: fbar_type, que_title: que_title, que_desc:que_desc ,experts:experts, anon: anon, privacy:privacy},
-            				success: function(html){ 
+            				data: {fbar_type: fbar_type, que_title:que_title, que_desc:que_desc, anon:anon, privacy:privacy, experts:experts},
+            				error: function(html){ 
+            					alert(html);
+
+			            	},
+			            	success: function(html){ 
+            					alert(html);
             					
 			            	}
 						});
 					
 				}
+
+								//reset
+								while(tags.length > 0) {
+    								tags.pop();
+								}
+								while(tags_type.length > 0) {
+    								tags_type.pop();
+								}
+								$(".who-is-tagged").remove();
+								$ref.find(".add_who").val("");
+								$ref.find(".askTxtArea").val("");
+								$ref.find(".topfbar").val("");
+								$ref.find(".upload_hack").val("");
+								$ref.find(".upload_textprompt").text("");
+								$ref.find(".upload_textprompt").attr("title","");
+
 				}
 			});
 
@@ -659,7 +793,7 @@ $(document).ready(function() {
 
 						<div class = "post_state fbar_anchor">						
 							<div class ="textwrap">
-								<textarea name = "message" class = "postTxtarea"placeholder = "What have you read lately?" ></textarea>
+								<textarea name = "message" class = "postTxtarea autogrowth_textarea"placeholder = "What have you read lately?" ></textarea>
 							</div>	
 							<div class = "btmfbar controlpad">
 								<div class='fbar_errorprompt'></div>
@@ -682,42 +816,42 @@ $(document).ready(function() {
 									<div class = "lfloat-anon">
 										<div class='check_wrap'>
 											<input type='checkbox' id='flat_0' class='flat7c'/>
-												<label for='flat7' class='flat7b'>
+												<label for='flat7' class='flat7b_fbar'>
 									    			<span class='move'></span>
 												</label>
 												<span class = 'comment_anon_text'>Post Anonymously</span>
-											<input type='hidden' val='0' class='post_anon_val'>
+											<input type='hidden' value='0' class='post_anon_val'>
 										</div>
 
 										<div class='select_wrap'>
-											<input type='hidden' class='visi_val' val=''/>
+											<input type='hidden' class='visi_val' value='campus'>
 											<div class='posttool-select privacy_canedit'>
 								
-												<span class='field'>
+												<span class='field_fbar'>
 													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
 												<div class='vstt_wedgeDown'></div>
 												<div class = 'card-tag'>
 													<div class = 'tag-wedge'></div>
 													<div class = 'tag-box'>
-														<span>Visible to </span>
+														<span>Visible to campus</span>
 													</div>									
 												</div>
 												</span>
 												<div class = 'visi_functions_box'>
 													<span>
-														<div class = 'visi_functions_option '><div class='visi_icon i_campus' style='background-image:url(img/privacy_icons/privacy_dropdown/campus_normal.png);'></div>Campus</div>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus' style='background-image:url(img/privacy_icons/privacy_dropdown/campus_normal.png);'></div>Campus</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-													<div class = 'visi_functions_option '><div class='visi_icon i_student' style='background-image:url(img/privacy_icons/privacy_dropdown/class_normal.png);'></div>Only Students</div>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_student' style='background-image:url(img/privacy_icons/privacy_dropdown/class_normal.png);'></div>Only Students</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-														<div class = 'visi_functions_option '><div class='visi_icon i_faculty' style='background-image:url(img/privacy_icons/privacy_dropdown/faculty_normal.png);'></div>Only Faculty</div>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty' style='background-image:url(img/privacy_icons/privacy_dropdown/faculty_normal.png);'></div>Only Faculty</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-													<div class = 'visi_functions_option '><div class='visi_icon i_connections' style='background-image:url(img/privacy_icons/privacy_dropdown/connections_normal.png);'></div>My Connections</div>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections' style='background-image:url(img/privacy_icons/privacy_dropdown/connections_normal.png);'></div>My Connections</div>
 													</span>
 												</div>
 											</div>
@@ -733,7 +867,7 @@ $(document).ready(function() {
 						</div>
 						<div class = "upload_state fbar_anchor">						
 							<div class ="textwrap">
-								<textarea name = "file_desc" class = "uploadTxtarea"placeholder = "Say something about this file..." ></textarea>
+								<textarea name = "file_desc" class = "uploadTxtarea autogrowth_textarea" placeholder = "Say something about this file..." ></textarea>
 							</div>	
 							<div class = "uploadMode">
 								<div class = "localUpload">
@@ -757,6 +891,7 @@ $(document).ready(function() {
 									</div>
 								</div>
 								<div class = "driveUpload">
+									<input type='hidden' val='' class='googleuploadinfoarchive_fbar'>
 									<div class = "upl_wrap">
 										<span class = "iconText">
 											<img class = "icon" src = "img/drive_icon.png" width = "16" height = "16">
@@ -764,7 +899,7 @@ $(document).ready(function() {
 												From Your Drive
 											</div>	
 											<div class = "upl_btn2">
-												<a class = "upl_anc">
+												<a class = "upl_anc" id='pick'>
 													<span class = "uplbtnText">Choose File</span>
 												</a>
 											</div>
@@ -780,6 +915,44 @@ $(document).ready(function() {
 								<div class="search-select">
 									
 								</div>
+								<div class = "lfloat-anon">
+
+										<div class='select_wrap'>
+											<input type='hidden' class='visi_val' value='campus'/>
+											<div class='posttool-select privacy_canedit'>
+								
+												<span class='field_fbar'>
+													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
+												<div class='vstt_wedgeDown'></div>
+												<div class = 'card-tag'>
+													<div class = 'tag-wedge'></div>
+													<div class = 'tag-box'>
+														<span>Visible to campus</span>
+													</div>									
+												</div>
+												</span>
+												<div class = 'visi_functions_box'>
+													<span>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus' style='background-image:url(img/privacy_icons/privacy_dropdown/campus_normal.png);'></div>Campus</div>
+													<hr class = 'post_options_hr'>
+													</span>
+													<span>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_student' style='background-image:url(img/privacy_icons/privacy_dropdown/class_normal.png);'></div>Only Students</div>
+													<hr class = 'post_options_hr'>
+													</span>
+													<span>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty' style='background-image:url(img/privacy_icons/privacy_dropdown/faculty_normal.png);'></div>Only Faculty</div>
+													<hr class = 'post_options_hr'>
+													</span>
+													<span>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections' style='background-image:url(img/privacy_icons/privacy_dropdown/connections_normal.png);'></div>My Connections</div>
+													</span>
+												</div>
+											</div>
+										</div>
+
+								</div>
+
 								<div class = "post-btn btn-2">
 									Post 
 								</div>
@@ -794,7 +967,7 @@ $(document).ready(function() {
 							</div>
 
 							<div class ="textwrap2">
-								<textarea name = "q_desc" class = "askTxtArea"placeholder = "Add more details about this question..." ></textarea>
+								<textarea name = "q_desc" class = "askTxtArea autogrowth_textarea"placeholder = "Add more details about this question... (Optional)" ></textarea>
 							</div>	
 							<div class = "midfbar-wrap">
 								<div class = "midfbar-wrap2">
@@ -835,41 +1008,43 @@ $(document).ready(function() {
 								<div class = "lfloat-anon">
 										<div class='check_wrap'>
 											<input type='checkbox' id='flat_0' class='flat7c'/>
-												<label for='flat7' class='flat7b'>
+												<label for='flat7' class='flat7b_fbar'>
 									    			<span class='move'></span>
 												</label>
 												<span class = 'comment_anon_text'>Post Anonymously</span>
-												<input type='hidden' val='0' class='post_anon_val'>
+												<input type='hidden' value='0' class='post_anon_val'>
 										</div>
 
+
 										<div class='select_wrap'>
+											<input type='hidden' class='visi_val' value='campus'/>
 											<div class='posttool-select privacy_canedit'>
 								
-												<span class='field'>
+												<span class='field_fbar'>
 													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
 												<div class='vstt_wedgeDown'></div>
 												<div class = 'card-tag'>
 													<div class = 'tag-wedge'></div>
 													<div class = 'tag-box'>
-														<span>Visible to </span>
+														<span>Visible to campus</span>
 													</div>									
 												</div>
 												</span>
 												<div class = 'visi_functions_box'>
 													<span>
-														<div class = 'visi_functions_option '><div class='visi_icon i_campus' style='background-image:url(img/privacy_icons/privacy_dropdown/campus_normal.png);'></div>Campus</div>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus' style='background-image:url(img/privacy_icons/privacy_dropdown/campus_normal.png);'></div>Campus</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-													<div class = 'visi_functions_option '><div class='visi_icon i_student' style='background-image:url(img/privacy_icons/privacy_dropdown/class_normal.png);'></div>Only Students</div>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_student' style='background-image:url(img/privacy_icons/privacy_dropdown/class_normal.png);'></div>Only Students</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-														<div class = 'visi_functions_option '><div class='visi_icon i_faculty' style='background-image:url(img/privacy_icons/privacy_dropdown/faculty_normal.png);'></div>Only Faculty</div>
+														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty' style='background-image:url(img/privacy_icons/privacy_dropdown/faculty_normal.png);'></div>Only Faculty</div>
 													<hr class = 'post_options_hr'>
 													</span>
 													<span>
-													<div class = 'visi_functions_option '><div class='visi_icon i_connections' style='background-image:url(img/privacy_icons/privacy_dropdown/connections_normal.png);'></div>My Connections</div>
+													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections' style='background-image:url(img/privacy_icons/privacy_dropdown/connections_normal.png);'></div>My Connections</div>
 													</span>
 												</div>
 											</div>

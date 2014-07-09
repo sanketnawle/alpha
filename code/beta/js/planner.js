@@ -210,10 +210,7 @@ $(document).ready(function () {
 
             data: { event_id: $event_id, value: $value, event_type: $event_type },
 
-            type: "POST",
-
-            dataType: "json",
-
+            type: "POST"
         });
 
 
@@ -1443,8 +1440,8 @@ $(document).ready(function () {
 
     function UpdateEvents() {
         var dt = new Date();
-        var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
-        var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
+        //var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
+        //var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
         var hours = dt.getHours() == 0 ? "12" : dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours();
         var minutes = (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
         var ampm = dt.getHours() < 12 ? "am" : "pm";
@@ -1457,7 +1454,7 @@ $(document).ready(function () {
                     //$('#result').append(getEvents(today_date, now_time));
                     $.ajax({
                         url: "php/planner_events.php",
-                        data: { date: today_date, time: now_time },
+                        data: { },//date: today_date, time: now_time },
                         type: "POST",
                         dataType: "json",
                         success: function (responseText) {
@@ -1473,7 +1470,7 @@ $(document).ready(function () {
         else {
             $.ajax({
                 url: "php/planner_events.php",
-                data: { date: today_date, time: now_time},
+                data: { },//date: today_date, time: now_time},
                 type: "POST",
                 dataType: "json",
                 success: function (responseText) {
@@ -1488,4 +1485,5 @@ $(document).ready(function () {
     }
 
     setInterval(function () { UpdateEvents() }, 1000);
+    UpdateEvents();
 });

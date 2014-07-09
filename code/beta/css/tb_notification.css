@@ -113,7 +113,7 @@ cursor:pointer;
 .gen_right
 {
 	float: left;
-	max-width: 290px;
+	max-width: 280px;
 	height: 100%;
 }
 
@@ -130,7 +130,7 @@ cursor:pointer;
 {
 	float: right;
 	margin-top: 7px;
-	margin-right: 10px;
+	margin-right: 8px;
 	color: #a3a3a3;
 	font-size: 12px;
 }

@@ -1813,26 +1813,36 @@
                 o = ["fc-event", "fc-event-hori"];
             H(r) && o.push("fc-event-draggable"), t.isStart && o.push("fc-event-start"), t.isEnd && o.push("fc-event-end"), o = o.concat(r.className), r.source && (o = o.concat(r.source.className || []));
             var i = j(r, T);
-            var divColor = "";
-            if (r.type == "1") {
-                divColor = "#7BD148";
+            
+            var editOption = "";
+            if (r.editable) {
+                editOption = '<div style="border-top:1px solid #CCC; text-align: center;padding-top: 5px;padding-bottom: 5px;width: 103%;">'
+                                        + '<b class="file_link">'
+                                            + '<a onclick="DisplayEditEvents(this,' + r.id + ',' + r.type + ')" style="padding:5px; padding-left:0px; text-transform: uppercase; color: #666 !important;">Edit</a>'
+                                        + '</b>'
+                                    + '</div>';
             }
-            else if (r.type == "2") {
-                divColor = "#FAD165";
-            }
-            else if (r.type == "3") {
-                divColor = "#7BD148";
-            }
-            else if (r.type == "4") {
-                divColor = "#D06B64";
-            }
-            else if (r.type == "5") {
-                divColor = "#1587BD"; 
-            }
-            else {
-                divColor = "#999";
-            }
-            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + o.join(" ") + "'" + " style=" + "'" + "position:absolute;background-color:" + divColor + ";" + "left:" + t.left + "px;" + i + "'" + ">" + "<div class='fc-event-inner' >", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>" + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "") + "</span>" + "</div>", t.isEnd && F(r) && (e += "<div class='ui-resizable-handle ui-resizable-" + (n ? "w" : "e") + "'>" + "&nbsp;&nbsp;&nbsp;" + "</div>"), e += "</" + (a ? "a" : "div") + ">"
+            var eventLoc = ((new Date(r.start)).getMonth().toString() + "$" + (new Date(r.start)).getDate().toString() + "$" + (new Date(r.start)).getFullYear().toString());
+            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + r.groupid + " " + o.join(" ") + "'" + " style=" + "'"
+                + "position:absolute;margin-top: 2px;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
+                + "<div class='fc-event-inner' onmouseover='showTooltip(this);' onmouseout='hideTooltip(this);' onmousedown='hideTooltip(this);'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>"
+                + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "")
+                + "</span>" + '<div class="editTooltip" onmouseover="tooltipShow(this);" onmouseout="tooltipHide(this);" >'
+                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;'
+                                + '-webkit-box-shadow: 0 0 3px ' + r.color + ';' + 'box-shadow: 0 0 3px ' + r.color + ';' + 'border: 1px solid  ' + r.color + ';' + '">'
+                                    + '<b class="file_link">'                                        
+                                             + '<a onclick="LinkEventInEventBook(' + (new Date(r.start)).getMonth().toString() + ','
+                                             + (new Date(r.start)).getDate().toString() + ',' + (new Date(r.start)).getFullYear().toString()
+                                             + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
+                                                + r.title + '</a>'
+                                    + '</b>'
+                                    + '<div style="padding: 5px; width:100%;float:left;">' + r.startendtime + '</div>'
+                                    + '<div style="padding: 5px; width:100%;"><span style="font-weight:bold;">Location : </span>' + r.location + '</div>'
+                                    + editOption
+                                + '</div>'
+                            + '</div>'
+                + "</div>", t.isEnd && F(r) && (e += "<div class='ui-resizable-handle ui-resizable-" + (n ? "w" : "e") + "'>"
+                + "&nbsp;&nbsp;&nbsp;" + "</div>"), e += "</" + (a ? "a" : "div") + ">"
         }
 
         function u(e, n) {
@@ -2172,6 +2182,10 @@
             startParam: "start",
             endParam: "end",
             type: "type",
+            location: "location",
+            startendtime: "startendtime",
+            color: "color",
+            groupid: "groupid",
             titleFormat: {
                 month: "MMMM yyyy",
                 week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",

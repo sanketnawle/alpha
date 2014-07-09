@@ -1,0 +1,3 @@
+[09-Jul-2014 14:04:45 America/Denver] PHP Fatal error:  Call to undefined function checkhidden() in /home6/campusla/public_html/urlinq/beta/includes/posts.php on line 3
+[09-Jul-2014 14:21:56 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/includes/feedchecks.php on line 151
+[09-Jul-2014 14:21:59 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/includes/feedchecks.php on line 151
