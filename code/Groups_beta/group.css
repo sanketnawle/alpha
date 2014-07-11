@@ -1444,6 +1444,7 @@ div.members-tab-content div.members-list-wrap{
     display: block;
     width: 100%;
 }
+
 div.members-tab-content div.members-list-wrap div.member, div.files-tab-content div.files-type-content div.file{
 	margin: 10px 14px 20px 0;
 	padding: 0;
