@@ -577,6 +577,23 @@ div.rating-stars-filled,div.create-rating-stars-filled{
     padding-left: 2px;
 }
 
+div.your_grade_stars
+{
+	position: absolute;
+	padding-left: 2px;
+}
+
+.grade_star_filled
+{
+	position: absolute;
+}
+
+.grade_star_filled .img
+{
+	height: 20px;
+	width: 20px;
+}
+
 div.rating-stars-filled div.rating_star{
 
 }
@@ -600,6 +617,8 @@ div.rating_star_unrated{
 	display:none;
 	opacity:0;
 }
+
+
 
 div.r_s_ur img{
 width:20px;
@@ -2677,3 +2696,17 @@ div.tab-block-create-review{
 div.tab-block-content-reviews{
 	padding-top: 12px;
 }
+
+
+.grade_stars
+{
+	position: absolute;
+	margin-left: 2px;
+	display: none;
+}
+
+div.grey_star{
+	opacity: 0;
+}
+
+

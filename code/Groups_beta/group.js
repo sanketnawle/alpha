@@ -345,41 +345,50 @@ $(document).ready(function() {
 	});
 	
 	$(document).delegate('.rating_star_empty1',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated1',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated1',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty1',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 	});
 
 	$(document).delegate('.rating_star_empty2',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated2',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated2',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty2',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty3',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -388,6 +397,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated3',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -396,16 +406,19 @@ $(document).ready(function() {
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated3',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty3',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty4',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -416,6 +429,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated4',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -426,18 +440,21 @@ $(document).ready(function() {
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated4',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty4',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty5',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -450,6 +467,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated5").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated5',"mouseenter", function(){
+		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
@@ -462,6 +480,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated5").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated5',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
@@ -469,15 +488,38 @@ $(document).ready(function() {
 		$(".rating_star_unrated5").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty5',"mouseleave", function(){
+		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
 		$(".rating_star_unrated5").addClass("rating_star_unrated");
 	});
-	
+
+
+
+	$(document).delegate('.rating_star',"click", function(){
+		$(".grey_star").removeClass("grey_star");
+		$(".grade_stars").find(".rating_star").addClass("grey_star");
+		var rt=0;
+		for (i = 0; i <= 5; i++) {
+		if($(this).hasClass("rating_star_unrated"+i)){
+
+			for (j = 0; j < i; j++) {
+					var k=j+1;
+					//alert($(".grade_stars").find(".rating_star_unrated"+k).attr("class"));
+					$(".grade_stars").find(".grating_star_unrated"+k).removeClass("grey_star");
+				
+			}
+		}
+		}
+
+		$(".grade_stars").show();		
+
+	});
 
 
 
 
 });
+
