@@ -1,36 +1,46 @@
 $(document).ready(function() {
 	$(document).delegate(".pagination-item","click",function(){
 		if($(this).hasClass("flag-active")){
-			return
+			return false;
 		}
-		if($(this).hasClass("page-item-2") && $(this).hasClass("flag-inactive")){
-			$(".text-grabber-active").animate({ opacity: "0",left:"500px",right:"-500px"},800).hide(0);
-			$(".state2").show();
+		var nb_origin=$(".flag-active").attr("id").split("_")[1];
+		//alert(nb_origin);
+		var $original=$(".state"+nb_origin);
 
-			$(".state2").addClass("text-grabber-active");
-			$(".state2").animate({ opacity: "1",left:"0px",right:"0px"},800);
-			$(".page-item-1").removeClass("flag-active").addClass("flag-inactive");
-			$(".page-item-3").removeClass("flag-active").addClass("flag-inactive");
+		$( ".pagination-item" ).removeClass("flag-active");
+		$(this).addClass("flag-active");
+		$( ".pagination-item" ).each(function() {
+			if(!$(this).hasClass("flag-inactive")){
+				$(this).addClass("flag-inactive");
+			}
+		});
 
-			$(this).addClass("flag-active");
+		var nb= $(this).attr("id").split("_")[1];
 
-			$(this).removeClass("flag-inactive");
-		}
-		if($(this).hasClass("page-item-1") && $(this).hasClass("flag-inactive")){
-			$(".text-grabber-active").stop().animate({ opacity: "0",left:"500px",right:"-500px"},800).hide(0);
-			$(".state1").show();
+		var $newob=$(".state"+nb);
+		//$newob.show();
+		 $original.animate({
+			opacity: 0,
+			left:200
+			}, 650,'easeInOutQuart', function() {
+				$original.css({"left":"0px"});
+				$original.removeClass("text-grabber-active");
+				$original.addClass("text-grabber-inactive");
 
-			$(".state1").addClass("text-grabber-active");
-			$(".state1").animate({ opacity: "1",left:"0px",right:"0px"},800);
-			$(".page-item-2").removeClass("flag-active").addClass("flag-inactive");;
-			$(".page-item-3").removeClass("flag-active").addClass("flag-inactive");;
+				$newob.show();
+				$newob.animate({
+					opacity: 1,
+					left:200
+					}, 600,'easeInOutQuart', function() {
+						$newob.css({"left":"0px"});
+						$newob.addClass("text-grabber-active");
+						$newob.removeClass("text-grabber-inactive");
+					});
 
-			$(this).addClass("flag-active");
-
-			$(this).removeClass("flag-inactive");
-		}
+			});
 
 	});
+
 	$(document).delegate(".account-type","click",function(){
 		if($(this).hasClass("student")){
 			$(".faculty").removeClass("account-type-chosen");

@@ -597,6 +597,8 @@ div.grabber-container div.slider-items-wrapper{
   min-height:220px;
   margin:0;
   position:relative;
+  width: 1000px;
+  margin-left: -200px;
 }
 
 div.slider-items-wrapper div.text-switcher div.feature-description{
@@ -629,6 +631,7 @@ div.text-switcher{
   padding-left: 20px;
   padding-right: 20px;
   right:0px;
+  width: 460px;
 }
 
 div.slider-items-wrapper div.text-grabber-active{
@@ -636,8 +639,8 @@ div.slider-items-wrapper div.text-grabber-active{
 }
 
 div.slider-items-wrapper div.text-grabber-inactive{
-  left:-500px;
-  right:500px;
+  opacity:0;
+  display: none;
 }
 
 div.feature-description-pagination{
@@ -816,6 +819,11 @@ padding-left: 22px;
 padding-right: 22px;
 }
 
+}
+
+.text-grabber-active
+{
+  margin-left: 200px;
 }
 
 @media(max-width:552px){
