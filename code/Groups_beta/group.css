@@ -2124,6 +2124,16 @@ div.help-div div.help-wedge{
     left: 152px;
 }
 
+div.help-div div.help-star-wedge{
+    border-color: transparent; 
+    border-bottom-color: #3C3C3C; border-style: dashed dashed solid; 
+    border-width: 0 6.5px 6.5px; 
+    display: block;    z-index: 1; height: 0; width: 0;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
 div.help-div div.help-box{
     width: 180px;
 	
@@ -2137,6 +2147,24 @@ div.help-div div.help-box{
     color: white;
     background-color: #3C3C3C;
 }
+
+div.help-div div.help-star-box{
+	
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    text-shadow: none;
+    padding: 7px;
+    font-weight: 400;
+    display: inline-block;
+    display: inline;
+    border-radius: 4px;
+    color: white;
+    background-color: #3C3C3C;
+}
+
+
+
 
 div.group-about-subjects div.box-header span.help-icon-right{
 background-image:url(src/question-help-icon.png);
@@ -2666,7 +2694,9 @@ div.tab-block-right div.reviews-distribution div.dist-bars div div.bar-dist{
     float: left;
     width: 140px;
     background-color: #575757;
-    height: 18px;  vertical-align: middle;
+    height: 18px;  
+    border-radius: 1px;
+    vertical-align: middle;
 }
 
 div.tab-block-right div.reviews-distribution div.dist-bars div div.bar-val{
@@ -2690,6 +2720,8 @@ div.tab-block-create-review{
 	
     border-bottom: 1px solid #ddd;
     display: inline-block; position: relative; margin: 0; padding: 0;  
+    top: 10px;
+    left: 15px;
     width: 380px; border-bottom: 1px solid #ddd;
 }
 
@@ -2702,6 +2734,7 @@ div.tab-block-content-reviews{
 {
 	position: absolute;
 	margin-left: 2px;
+	z-index: 19;
 	display: none;
 }
 
@@ -2709,4 +2742,32 @@ div.grey_star{
 	opacity: 0;
 }
 
+#help-star-1{
+	left:-8px;
+	display:none;
+}
+
+#help-star-2{
+	left:18px;
+	display:none;
+}
+#help-star-3{
+	left:36px;
+	display:none;
+}
+#help-star-4{
+	left:46px;
+	display:none;
+}
+#help-star-5{
+	left:74px;
+	display:none;
+}
+
+.tab-block-create-review .help-div{
+	opacity:0;
+	display:none;
+	position:absolute;
+	top: 20px;
+}
 

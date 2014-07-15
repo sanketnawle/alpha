@@ -1,32 +1,140 @@
 <html>
+
+
 <head>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+  <title>Your University - On Urlinq</title>
     <link href="lp_beta.css" rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="eventbook.css" />
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src = "eventbook.js"></script>
+  <script src="lp_beta.js"></script> 
+  
+
 </head>
 
-<script>
 
-</script>
 
-<body>
-    <div class = "lp-main">
-        <div class = "header">
-          <div class = "top-bar">
-            <div class = "top-bar-wrapper">
-                <img src = "src/logo.png" class = "logo">
+  <body>
+      <div class = "lp-main">
+
+          <div class = "header">
+            <div class = "top-bar">
+              <div class = "top-bar-wrapper content">
+                  <img src = "src/logo.png" class = "logo">
+              </div>
             </div>
           </div>
-        </div>
-        <div class = "center-main">
-          <h2 class = "center-header-text">
-            It's your link to 
-          </h2>
-        </div>
+          <div class = "main-content-wrap">
+            <div class = "main-market-area">
+             
+             
+              
+
+            </div>
+            
+          </div>
+
+          <div class = "signup-container">
+              <div class = "signup-form-wrap">
+                  <div class = "header-sec">
+                    <div class = "header-sec-left">
+                      <h4 class = "header">Sign Up
+                    </div>
+                    <div class = "header-sec-right">
+                      <div class = "time-to-signup">45</div>
+                      <div class = "signup-slog">seconds to get started (free!)</div>
+                    </div>
+                  </div>
+                  <div class = "registration-form">
+                    <form name = "register" id = "register" class = "register" method = "post" action = "afterregister.php" autocomplete="on">
+                      <div class = "registration-sec">
+                        <div class = "registration-sec-header">
+                          Choose Your Account Type
+                        </div>
+                        <ul class = "account-types">
+                          <li class = "account-type student">
+                            <input name = "account-types" type = "radio" id = "student" class = "typecheck">
+                            <label for = "student">Student</label>
+                            <div id = "account-type-label">Student</div>
+                          </li>
+                          <li class = "account-type faculty">
+                            <input name = "account-types" type = "radio" id = "faculty" class = "typecheck">
+                            <label for = "faculty">Faculty</label>
+                            <div id = "account-type-label">Faculty</div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class = "fname-lname-sec registration-sec-texts">
+                        <input type = "text" name ="fname" id = "fname" autocomplete = "on" placeholder = "First Name">
+                        <input type = "text" name ="lname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name">
+                      </div>
+                      <div class = "registration-sec-texts">
+                        <input type = "email" name = "email" autocomplete = "off" placeholder = "Your School Email">
+                      </div>
+                      <div class = "registration-sec-texts">
+                        <input type = "password" name = "password" id = "password" placeholder = "New Password">
+                      </div>
+                      <button type = "button" class = "rounded Button SignUp largeBtn">
+                        <em></em>
+                        <span class = "buttonText">
+                          Create Your Account
+                        </span>
+                    </form>
+                  </div>
+                  <div class = "footer-sec">
+                    <div class = "leftLine">
+                    </div>
+                    <div class = "or-head">
+                      or
+                    </div>
+                    <div class = "rightLine">
+                    </div>
+                    <button type = "button" class = "rounded Button FacebookConnect loginButton largeBtn">
+                      <em></em>
+                      <span class = "buttonText">Continue with Facebook</span>
+                    </button>
+                  </div>
+              </div>
+          </div>
+          <div class = "grabber">
+            <div class = "grabber-container">
+              <div class = "slider-items-wrapper">
+                <div class = "text-switcher state1 text-grabber-active text-grabber-active">
+                  <div class = "feature-description">
+                    <h1>Your University</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+                <div class = "text-switcher state2 text-grabber-inactive">
+                  <div class = "feature-description">
+                    <h1>Your Courses</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+                <div class = "text-switcher state3 text-grabber-inactive">
+                  <div class = "feature-description">
+                    <h1>Your Calendar</h1>
+                    <p>Urlinq organizes your University's information to help you navigate and discover all that it has to offer</p>
+                  </div>
+                </div>
+              </div>
+              <div class = "feature-description-pagination">
+                <span class = "pagination-item page-item-1 flag-active">
+                </span>
+                <span class = "pagination-item page-item-2 flag flag-inactive">
+                </span>
+                <span class = "pagination-item page-item-3 flag flag-inactive">
+                </span>
+              </div>
+            </div>
+          </div>
+
+        
     </div>
-</body>
+    <div class = "footer-area">
+      
+    </div>
+  </body>
+
 </html>

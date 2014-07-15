@@ -348,19 +348,23 @@ $(document).ready(function() {
 		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
+		$("#help-star-1").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated1',"mouseenter", function(){
 		$(".grade_stars").hide();
 		$(".rating_star_unrated1").css("display","inline-block");
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
+		$("#help-star-1").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated1',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
+		$("#help-star-1").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty1',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
+		$("#help-star-1").css({"opacity":"0","display":"none"});
 	});
 
 	$(document).delegate('.rating_star_empty2',"mouseenter", function(){
@@ -369,6 +373,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
+		$("#help-star-2").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated2',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -376,16 +381,19 @@ $(document).ready(function() {
 		$(".rating_star_unrated1").removeClass("rating_star_unrated");
 		$(".rating_star_unrated2").css("display","inline-block");
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
+		$("#help-star-2").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated2',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
+		$("#help-star-2").css({"opacity":"0","display":"none"});
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_empty2',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
+		$("#help-star-2").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty3',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -395,6 +403,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
 		$(".rating_star_unrated3").css("display","inline-block");
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
+		$("#help-star-3").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated3',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -404,18 +413,21 @@ $(document).ready(function() {
 		$(".rating_star_unrated2").removeClass("rating_star_unrated");
 		$(".rating_star_unrated3").css("display","inline-block");
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
+		$("#help-star-3").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated3',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
+		$("#help-star-3").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty3',"mouseleave", function(){
 		$(".grade_stars").show();
 		$(".rating_star_unrated1").addClass("rating_star_unrated");
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
+		$("#help-star-3").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty4',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -426,6 +438,10 @@ $(document).ready(function() {
 		$(".rating_star_unrated3").css("display","inline-block");
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
 		$(".rating_star_unrated4").css("display","inline-block");
+
+		//alert("a");
+		$("#help-star-4").css({"opacity":"1","display":"inline-block"});
+
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
 	});
 	$(document).delegate('.rating_star_unrated4',"mouseenter", function(){
@@ -438,6 +454,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated3").removeClass("rating_star_unrated");
 		$(".rating_star_unrated4").css("display","inline-block");
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
+		$("#help-star-4").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated4',"mouseleave", function(){
 		$(".grade_stars").show();
@@ -445,6 +462,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
+		$("#help-star-4").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty4',"mouseleave", function(){
 		$(".grade_stars").show();
@@ -452,6 +470,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
+		$("#help-star-4").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty5',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -465,6 +484,8 @@ $(document).ready(function() {
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
 		$(".rating_star_unrated5").css("display","inline-block");
 		$(".rating_star_unrated5").removeClass("rating_star_unrated");
+		//alert("a");
+		$("#help-star-5").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated5',"mouseenter", function(){
 		$(".grade_stars").hide();
@@ -478,6 +499,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated4").removeClass("rating_star_unrated");
 		$(".rating_star_unrated5").css("display","inline-block");
 		$(".rating_star_unrated5").removeClass("rating_star_unrated");
+		$("#help-star-5").css({"opacity":"1","display":"inline-block"});
 	});
 	$(document).delegate('.rating_star_unrated5',"mouseleave", function(){
 		$(".grade_stars").show();
@@ -486,6 +508,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
 		$(".rating_star_unrated5").addClass("rating_star_unrated");
+		$("#help-star-5").css({"opacity":"0","display":"none"});
 	});
 	$(document).delegate('.rating_star_empty5',"mouseleave", function(){
 		$(".grade_stars").show();
@@ -493,6 +516,7 @@ $(document).ready(function() {
 		$(".rating_star_unrated2").addClass("rating_star_unrated");
 		$(".rating_star_unrated3").addClass("rating_star_unrated");
 		$(".rating_star_unrated4").addClass("rating_star_unrated");
+		$("#help-star-5").css({"opacity":"0","display":"none"});
 		$(".rating_star_unrated5").addClass("rating_star_unrated");
 	});
 
