@@ -21,8 +21,8 @@ $(document).ready(function() {
 		//$newob.show();
 		 $original.animate({
 			opacity: 0,
-			left:200
-			}, 610,'easeInOutQuart', function() {
+			left:180
+			}, 650,'swing', function() {
 				$original.css({"left":"0px"});
 				$original.removeClass("text-grabber-active");
 				$original.addClass("text-grabber-inactive");
@@ -31,7 +31,7 @@ $(document).ready(function() {
 				$newob.animate({
 					opacity: 1,
 					left:200
-					}, 600,'easeInOutQuart', function() {
+					}, 500,'swing', function() {
 						$newob.css({"left":"0px"});
 						$newob.addClass("text-grabber-active");
 						$newob.removeClass("text-grabber-inactive");
