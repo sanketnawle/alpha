@@ -22,6 +22,31 @@
             <div class = "top-bar">
               <div class = "top-bar-wrapper content">
                   <img src = "src/logo.png" class = "logo">
+                  <div class = "signin-wrap">
+                    <form name = "login" id = "login" method = "post" action = "afterlogin.php">
+                      <input type = "text" name = "login_email" id = "login_email" autocomplete = "on" placeholder = "School Email">
+                      <input type = "password" name = "login_password" id = "login_password"placeholder = "Password">
+                       <button name = "submit" id = "submit"type = "button" class = "rounded Button SignIn smallBtn">
+                          <span class = "buttonText">
+                            Sign In
+                          </span>
+                        </button>
+                        <div class = "fb_signin_wrap">
+                          <button name = "fb_signin" id = "fb_signin" type = "button" class = "rounded Button fb_signin smallBtn">
+                            <em class = "fb_icon">
+                            </em>
+                          </button>
+                          <div class = "help-div" id ="help-1">
+                            <div class ="help-wedge">
+
+                            </div>
+                            <div class = "help-box">
+                              Sign In with Facebook
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
               </div>
             </div>
           </div>
@@ -43,7 +68,7 @@
                     </div>
                     <div class = "header-sec-right">
                       <div class = "time-to-signup">45</div>
-                      <div class = "signup-slog">seconds to get started (free!)</div>
+                      <div class = "signup-slog">seconds to get started</div>
                     </div>
                   </div>
                   <div class = "registration-form">
@@ -73,13 +98,14 @@
                         <input type = "email" name = "email" autocomplete = "off" placeholder = "Your School Email">
                       </div>
                       <div class = "registration-sec-texts">
-                        <input type = "password" name = "password" id = "password" placeholder = "New Password">
+                        <input type = "password" name = "password" id = "password" placeholder = "Password">
                       </div>
                       <button type = "button" class = "rounded Button SignUp largeBtn">
                         <em></em>
                         <span class = "buttonText">
                           Create Your Account
                         </span>
+                      </button>
                     </form>
                   </div>
                   <div class = "footer-sec">
@@ -130,11 +156,32 @@
             </div>
           </div>
 
-        
+          <footer class="page-footer3">
+            <div style = "top: -30px;" class="footer-wrapper">
+              <nav class="footer-links">
+                <ul>
+                  
+                  <li>
+                    <span><a class = "footer-linq" href = "https://urlinq.com/blog">Blog</a></span>
+                  </li>
+                  
+                  <li>
+                    <span><a class = "footer-linq" href= "https://urlinq.com/team/jobs">Jobs</a></span>
+                  </li>
+                  <li>
+                    <span><a class = "footer-linq" href = "https://urlinq.com/team/contact">Contact</a></span>
+                  </li>
+                </ul>
+              </nav>
+              <p class="copyright">
+                <span>&#169;</span>
+                <span>2014</span>
+                <span>Urlinq</span>
+              </p>
+            </div>
+          </footer>
     </div>
-    <div class = "footer-area">
-      
-    </div>
+
   </body>
 
 </html>

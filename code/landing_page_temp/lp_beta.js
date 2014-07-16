@@ -22,7 +22,7 @@ $(document).ready(function() {
 		 $original.animate({
 			opacity: 0,
 			left:200
-			}, 650,'easeInOutQuart', function() {
+			}, 610,'easeInOutQuart', function() {
 				$original.css({"left":"0px"});
 				$original.removeClass("text-grabber-active");
 				$original.addClass("text-grabber-inactive");
