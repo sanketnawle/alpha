@@ -4,7 +4,7 @@ min-height: 100%;
 margin: 0 auto;
 position: relative;
 z-index: 2;
-padding-bottom: 30px;
+padding-bottom: 0px;
 border-top: none;
 border-bottom: none;
 font-family: 'Open Sans', sans-serif;
@@ -12,6 +12,23 @@ overflow-x: hidden;
 overflow-y: auto;
 background: url(src/body_noise.png) repeat 50% 50%;
 }
+
+div.lp-main-marketing-nyu{
+  background-image: url(src/nyu.JPG);
+    margin: 0 auto;
+  right: 0px;
+  position: absolute;
+  left: 0px
+  bottom: 0px;
+  z-index: 0;
+  height: 100%;
+  width:100%;
+  background-position: 0px 650px;
+  top: 60px;
+  background-size: cover;
+}
+
+
 
 div.lp-main{
   
@@ -25,6 +42,8 @@ div.lp-main{
   background-image: url("src/noise-2.png"),      -o-linear-gradient(top, #26AB7B, #2EB19C); /* Opera 11.10+ */ 
   background-image: url("src/noise-2.png"),         linear-gradient(to bottom, #09FAA3, #1DA7D3); 
   /* position: fixed; */
+  overflow: hidden;
+  height: 100%;
 }
 
 .top-bar{
@@ -195,11 +214,11 @@ div.main-market-area{
   bottom: 0px;
   width: 2000px;
   z-index: 0;
-  height: 348px;
   right: 0px;
-  top: 0px;
+  height: 290px;
+  top: 60px;
   background-image: url(src/nyu.JPG);
-  opacity: .35;
+  opacity: .23;
   background-size: cover;
 }
 
@@ -212,7 +231,7 @@ div.main-market-area{
 .main-content-wrap{
   background: transparent;
 
-  height: 290px;
+  height: 45%;
   overflow: hidden;
   position: relative;
 }
@@ -252,7 +271,7 @@ div.signup-form-wrap{
   
 }
 
-div.grabber{  position: fixed;  
+div.grabber{  position: absolute;  
 
   
     
@@ -590,7 +609,7 @@ div.signin-wrap{
   float: right;
   margin-top: 15px;
   width: 60%;
-  min-width: 410px;
+  min-width: 378px;
 }
 
 form#login{
@@ -701,28 +720,29 @@ div.or-head{
 
 
 .page-footer3 {
-position: absolute;
+position: relative;
 vertical-align: bottom;
 display: block;
 margin-left: auto;
-bottom: 20px;
+bottom: 0px;
 z-index: 1000;
 margin-right: auto;
-width: 100%;
+width: 400px;
+display: block;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 height: 30px;
 text-transform: uppercase;
 font-size: 12px;
 font-weight: bold;
 font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+margin: 0 auto;
 }
 
 .footer-wrapper {
 margin: 0 auto;
 padding: 0 16px;
-z-index: -400;
 position: relative;
-clear: both;
+top: 20px;
 }
 
 nav.footer-links {
@@ -805,6 +825,14 @@ div.feature-description h1{
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.14);
 }
 
+div.bottom-container{
+    position: relative;
+  
+    width: 100%;
+    background: url(src/body_noise.png) repeat 50% 50%;
+    height: 46%;
+}
+
 div.feature-description p{
   color: rgb(51, 51, 51);
 display: block;
@@ -825,6 +853,10 @@ div.text-switcher{
   padding-right: 20px;
   right:0px;
   width: 460px;
+}
+
+div.welcome-message{
+  
 }
 
 div.slider-items-wrapper div.text-grabber-active{
@@ -868,12 +900,9 @@ div.grabber div.grabber-container{
   
     margin-right: 20px;
     padding: 10px;
-    background: white;
     margin-top: 50px;
-    height: 350px;
     z-index: 10;
     border-radius: 6px;
-    background: url(src/content-background.png) 6px 6px no-repeat;
 }
 
 @media(max-width:1250px){
@@ -1033,7 +1062,7 @@ div.grabber{
 
 div.signin-wrap{
   position:absolute;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 div.footer-sec button.FacebookConnect {
@@ -1129,7 +1158,17 @@ padding-right: 22px;
 
 @media(max-width:552px){
   div.signup-container{
-    left:60px;
+    left:40px;
+  }
+
+  div.grabber{
+    left:5px;
+  }
+}
+
+@media(max-width:500px){
+  div.signup-container{
+    left:20px;
   }
 
   div.grabber{

@@ -11,7 +11,14 @@ height: 145px;
 box-shadow: 0 1px 5px rgba(0,0,0,.5);
 cursor: pointer;
 margin-top: 290px;
-margin-left: 50px;
+margin-left: 28.5px;
+}
+
+div.mid_right_sec .club-head-sec .group-head-footer .group-header-tab ul.group-nav {
+margin: 0;
+list-style: none;
+padding: 0;
+padding-left: 208px!important;
 }
 
 .group-head-sec .club-pic-frame .club-pic{
@@ -35,7 +42,7 @@ background-size: cover;
 }
 
 div.club-head-sec div.group-head-top-sec{
-	
+    
     top: 0px;
     bottom: 48px;
     margin:0;
@@ -58,11 +65,11 @@ div.club-head-sec div.group-head-top-sec div.group-head-top-sec-shadow{
 div.club-head-sec div.group-head-top-sec .image-container{
     background-color:#000;
     webkit-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;
-	-webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
-	-moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
-	box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
-	top: 0px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    top: 0px;
     bottom: 0px;
     margin:0;
     left: 0px;
@@ -75,6 +82,10 @@ position: absolute;
 height: 50%;
 width: 20%;
 margin: 0 0 0 -1px;
+}
+
+div.club-head-sec div.tab-wedge-down{
+    left:275px;
 }
 
 div.imagesContainer div.clubPhoto1{
@@ -99,12 +110,12 @@ width: 40%;
 
 div.imagesContainer div.clubPhoto4{
 left: 60%;
-top: 0;	
+top: 0; 
 }
 
 div.imagesContainer div.clubPhoto5{
 left: 60%;
-top: 50%;	
+top: 50%;   
 margin-top: 1px;
 }
 
@@ -140,7 +151,7 @@ position: relative;
 width:100%;
 height:100%;
 background-image:url(src/gisa-pic1.jpg);
-opacity:1;	
+opacity:1;  
 }
 
 div.imagesContainer div.clubPhoto a.clubPhotoVis b.clubPhotoShadow{
@@ -155,19 +166,19 @@ top: 0;
 
 .club-head-sec .club-header-left .club-title .group-name{
     color: #fff;
-	
+    
     -webkit-font-smoothing: antialiased;  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
     font-size: 29px;
 }
 
 .club-head-sec .club-header-left .club-title .group-id{
     color: rgba(255, 255, 255, 0.88);
-	
+    
     text-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px;
 }
 
 .mid_right_sec .club-head-sec{
-	height: 452px;
+    height: 452px;
 }
 
 div.club-leader {
@@ -176,10 +187,10 @@ div.club-leader {
 
 div.club-leader a{
     display: inline-block;
-	
+    
 }
 div.club-leader a:hover{
-	cursor:pointer;
+    cursor:pointer;
 }
 span.club-leader-info-title{
 text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
@@ -224,7 +235,7 @@ div.club-leader a div.leader-icon-frame {
     height: 35px; -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5); -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5); box-shadow: 0 1px 5px rgba(0,0,0,.5); cursor: pointer;
 }
 div.club-leader div.invite-btn{
-	bottom: 16px;
+    bottom: 16px;
 opacity: 1;
 color: rgba(255, 255, 255, 1);
 background:none;
@@ -234,16 +245,16 @@ border:3px solid #fff;
 }
 
 div.club-leader div.invite-btn:hover{
-	background-color:#02e2a7;
-	background:#02e2a7;
-	background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
-	background: -moz-linear-gradient(#02e2a7, #01BE8D);
-	background: linear-gradient(#02e2a7, #01BE8D);
-	background: -webkit-linear-gradient(#02e2a7, #01BE8D);
-	border:3px solid #02e2a7;
-	border-left: 3px solid #00D39C;
-	border-right: 3px solid #00D39C;
-	border-bottom:3px solid #01BE8D;
+    background-color:#02e2a7;
+    background:#02e2a7;
+    background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
+    background: -moz-linear-gradient(#02e2a7, #01BE8D);
+    background: linear-gradient(#02e2a7, #01BE8D);
+    background: -webkit-linear-gradient(#02e2a7, #01BE8D);
+    border:3px solid #02e2a7;
+    border-left: 3px solid #00D39C;
+    border-right: 3px solid #00D39C;
+    border-bottom:3px solid #01BE8D;
 }
 
 div.club-leader div.invite-btn:active{
@@ -251,12 +262,40 @@ bottom:15px;
 }
 
 div.club-leader div.invite-btn span.mail-icon{
-	opacity:1;
+    opacity:1;
+}
+
+div.mid_right_sec .club-head-sec .group-head-footer .group-header-tab li.group-tab a.tabc div.tab-title span.tabc-icon-inactive {
+background-image: url(src/events_icon_inactive.png);
+height: 13px;
+width: 11px;
+}
+
+div.mid_right_sec .club-head-sec .group-head-footer .group-header-tab li.group-tab a.tabc div.tab-title span.tabc-icon-active {
+background-image: url(src/events_icon_active.png);
+height: 13px;
+width: 11px;
+}
+div.mid_right_sec .club-head-sec .group-head-footer .group-header-tab li.group-tab a.tabc div.tab-title span.tab-icon {
+display: inline-block;
+background-repeat: no-repeat;
+background-size: cover;
+transition: all .15s ease-in-out;
+width: 14px;
+height: 14px;
+position: relative;
+top: 1.3px;
+}
+
+div.mid_right_sec .club-head-sec .group-head-footer .group-header-tab li.group-tab a.tabc:hover> div.tab-title span.tabc-icon-inactive {
+background-image: url(src/events_icon_active.png);
+height: 14px;
+width: 14px;
 }
 
 div.club-leader a div.leader-icon-frame div.leader-icon{
     background-image: url(src/farring.png);
-	
+    
     background: no-repeat url(src/farring.png); display: inline-block; 
     width: 35px; float: left; position: relative; border: 1px solid #eee; 
     height: 35px;  
