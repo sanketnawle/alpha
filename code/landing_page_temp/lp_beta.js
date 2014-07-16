@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var pcount=0;
 	$(document).delegate(".pagination-item","click",function(){
 		if($(this).hasClass("flag-active")){
 			return false;
@@ -16,6 +17,12 @@ $(document).ready(function() {
 		});
 
 		var nb= $(this).attr("id").split("_")[1];
+
+		
+		pcount=parseInt(nb);
+		clearInterval(mytimer);
+		mytimer=setInterval(function() {pinclick_trigger(); }, 7000);
+		//alert(nb);
 
 		var $newob=$(".state"+nb);
 		//$newob.show();
@@ -57,5 +64,16 @@ $(document).ready(function() {
 			
 		}
 	});
+
+	
+	function pinclick_trigger(){
+		pcount=pcount+1;
+		if(pcount>=3){pcount=0;}
+		//alert(pcount);
+		$("#lgnavi_"+pcount).click();
+		//alert("a");
+	}
+	var mytimer=setInterval(function() {pinclick_trigger(); }, 7000);
+	
 });
 
