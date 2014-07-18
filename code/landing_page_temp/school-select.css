@@ -143,8 +143,10 @@ border-radius: 4px;
 display:inline-block;
 float:left;
 font-size: 14px;
+-moz-box-shadow: inset 0 2px 0px #7DEBC3;
 outline: none;
 -webkit-box-shadow: inset 0 2px 0px #7DEBC3;
+box-shadow: inset 0 2px 0px #7DEBC3;
 padding: 6px 15px;
 bottom: 0px;
 border: 1px solid;
@@ -154,6 +156,15 @@ background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), t
 background: -webkit-linear-gradient(#02e2a7, #01BE8D);
 border-color: #2EA680 #189F79 #01974F;
 }
+
+div.progressWrap div.progress div.floatR-btns button.disabled{
+box-shadow: none !important;
+text-shadow: 0 0 0 !important;
+background: #ebebeb !important;
+border: 1px solid #ddd !important;
+color: #aaa !important;
+cursor: default;
+}	
 
 div.progressWrap div.progress div.floatR-btns button.mediumBtn:hover{	
 background-image: -webkit-linear-gradient(#02e2a7, #00CA95);
