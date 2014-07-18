@@ -406,7 +406,7 @@ div.schoolGrid div.centeredWrapper div.school div.school a.schoolSelectWrapper d
 /* overflow: hidden; */
 -ms-text-overflow: ellipsis;
 /* text-overflow: ellipsis; */
-color: #555;
+color: rgba(2, 154, 207, 0.66);
 display: inline-block;
 font-size: 14px;
 width: 82%;

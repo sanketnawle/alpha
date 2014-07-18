@@ -17,12 +17,16 @@
 			if($(this).hasClass("school-added")){
 				$(this).removeClass("school-added");
 			}
+			
+
 			if(!$(this).hasClass("school-added")){
-				$(".school-added").removeClass("school-added");
 				$(".school-added").find(".option-checkwrap").removeClass("school-checked");
 				$(this).find(".option-checkwrap").addClass("school-checked");
 				$(this).addClass("school-added");
+				$(this).addClass("school-added-other");
 			}
+
+
 		});
 	});
 	</script>
@@ -135,8 +139,8 @@
 											<span class = "hoverMask">
 											</span>
 											<div class = "schoolImage schoolImage-dos">
-												<img class = "schoolImg" src = "src/poly-logo.jpg">
-												<img class = "schoolImg" src = "src/poly-building-pic1.jpg">
+												<img class = "schoolImg" src = "src/nyu-stern-logo.jpg">
+												<img class = "schoolImg" src = "src/stern-logo.jpg">
 											</div>
 										</div>
 									</a>
