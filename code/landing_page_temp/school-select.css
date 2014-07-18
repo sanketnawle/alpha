@@ -650,9 +650,9 @@ img.floatR{
 
 button.scrollTop{
 	border-radius:3px;
-	-webkit-transform: translateY(0px);
--ms-transform: translateY(0px);
-transform: translateY(0px);
+	-webkit-transform: translateY(80px);
+-ms-transform: translateY(80px);
+transform: translateY(80px);
 visibility: visible;
 padding: 10px 14px 18px;
 background-color: #f7f7f7;
@@ -669,7 +669,16 @@ z-index: 2501;
 cursor: pointer;
 font-weight: bold;
 text-shadow: 0 1px #fff;
+outline:none;
 white-space: nowrap;
+}
+
+button.scrollTop:active{
+	background-color: #f7f7f7;
+background: -webkit-linear-gradient(#f0f0f0, #fff);
+background: linear-gradient(#f0f0f0, #fff);
+border-color: #b8b8b8 #c2c2c2 #ccc;
+box-shadow: 0 0 2px rgba(0, 0, 0, 0.33) inset;
 }
 
 button.scrollTop em{
