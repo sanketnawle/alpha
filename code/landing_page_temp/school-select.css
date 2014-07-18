@@ -4,10 +4,10 @@ display: block;
 height: 160px;
 margin:0;
 width:100%;
-background-color: #d8d8d8;
 position:relative;
 z-index:auto;
-padding:12px 0;
+padding:12px 0;        
+background-color: #d8d8d8;
 }
 
 div.UrContent{
@@ -16,7 +16,9 @@ div.UrContent{
 box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.1);
 padding-top:10px;
 position: relative;
-height: 400px;
+height: 100%;
+z-index: 30;
+background: #EEEEEE url(src/noise-1.png) repeat 50% 50%;
 }
 
 div.onboard{
@@ -35,7 +37,10 @@ color: #606060;
 height: 156px;
 margin: 0 auto;
 position: relative;
-width: 736px;
+max-width: 736px;
+z-index: 20;
+min-width: 490px;
+width: 91%;
 }
 
 div.UrProgress div.headerContent div.headerMain{
@@ -46,7 +51,7 @@ width: 100%;
 
 div.UrProgress div.headerContent div.headerMain h2.headerTitle1{
 font-size: 23px;
-padding: 20px 6px 0 65px;
+padding: 20px 6px 0 20px;
 line-height: 1.4em;
 margin:0;	
 }
@@ -102,7 +107,7 @@ display: inline-block;
 
 
 div.progressWrap div.progress ul.ui-progress li.active{
-background:#01BE8D;
+background: #23E4B2;
 }
 
 
@@ -159,12 +164,12 @@ border-color: #2EA680 #189F79 #01974F;
 }
 
 div.progressWrap div.progress div.floatR-btns button.disabled{
-box-shadow: none !important;
-text-shadow: 0 0 0 !important;
-background: #ebebeb !important;
-border: 1px solid #ddd !important;
-color: #aaa !important;
-cursor: default;
+box-shadow: none !important; 
+text-shadow: 0 0 0 !important; 
+background: #ebebeb !important; 
+border: 1px solid #ddd !important; 
+color: #aaa !important; 
+cursor: default; 
 }	
 
 div.progressWrap div.progress div.floatR-btns button.mediumBtn:hover{	
@@ -230,6 +235,9 @@ margin: 0 auto;
 position:relative;
 width: 736px;
 text-align:left;
+width: 91%;
+max-width: 736px;
+min-width:490px;
 }
 
 div.newUserSchool div.searchBar div.biginput{
@@ -292,6 +300,26 @@ div.newUserSchool div.searchBar div.biginput form div.searchWrapper div.typeAhea
 	
 }
 
+div.UrProgress div.bg-image{
+    background-size: cover;
+
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 190px;
+    z-index: 10;
+    bottom: 0px;
+    background-imge: url;
+    opacity: 1;
+    background-position: 200px 690px;
+    background-repeat: repeat;
+    background-image: url(src/icon-bg.jpg);
+}
+
+div.UrProgress div.bg-image-1{
+	
+}
+
 button.submitSchoolSearch{
 width: 24px;
 height: 24px;
@@ -331,10 +359,15 @@ div.schoolGrid{
 overflow: auto;
 padding-bottom: 2px;
 margin-bottom: 14px;
-width: 1250px;
+width: 1500px;
 margin: 0 auto 14px;
 margin-top: 20px;
 position: relative;
+}
+@media(max-width:1525px){
+div.schoolGrid{
+width: 1250px;
+}
 }
 
 @media(max-width:1250px){
@@ -347,6 +380,12 @@ position: relative;
 	div.schoolGrid{
 		width:750px;
 	}
+}
+@media(max-width:755px){
+div.schoolGrid {
+width: 500px;
+}
+
 }
 
 div.schoolGrid div.padItems{
@@ -368,16 +407,14 @@ cursor:pointer;
 }
 
 div.schoolGrid div.centeredWrapper div.item:hover > div.school a div.name{
-opacity:.8;
+opacity:1;
 }
 
 div.schoolGrid div.centeredWrapper div.item:hover > div.school a .imageWrapper {
 background: rgba(255, 255, 255, 0.15);
 }
 
-div.schoolGrid div.centeredWrapper div.item:active > div.school a div.name{
-	opacity:.5;
-}
+
 
 div.schoolGrid div.centeredWrapper div.item:active > div.school a .imageWrapper .hoverMask {
 background: rgba(255, 255, 255, 0.3);
@@ -408,7 +445,7 @@ div.schoolGrid div.centeredWrapper div.school div.school a.schoolSelectWrapper d
 /* overflow: hidden; */
 -ms-text-overflow: ellipsis;
 /* text-overflow: ellipsis; */
-color: rgba(2, 154, 207, 0.66);
+color: #666;
 display: inline-block;
 font-size: 14px;
 width: 189px;
@@ -462,7 +499,7 @@ div.schoolGrid div.centeredWrapper div.school div.school a.schoolSelectWrapper d
 }
 
 div.schoolGrid div.centeredWrapper div.school div.school a.schoolSelectWrapper div.imageWrapper div.schoolImage-dos img.schoolImg{
-    width: 49%;
+    width: 106.5px;
 
     height: 100%;
 }
@@ -480,10 +517,17 @@ div.school-selector:hover > div.school a.schoolSelectWrapper div.imageWrapper{
 }
 
 div.school-selector:hover > div.school a.schoolSelectWrapper div.option-checkwrap{
-	margin-top:0px;
-	opacity:.85;
-	height: 26px;
-width: 26px;
+margin-top:0px;
+opacity:.7;
+height: 23px;
+width: 23px;
+margin-right:0px;
+}
+
+div.school-selector:active > div.school a.schoolSelectWrapper div.option-checkwrap{
+margin-top:0px;
+height: 23px;
+width: 23px;
 margin-right:0px;
 }
 
@@ -506,6 +550,27 @@ background-repeat: no-repeat;
 transition: all .35s ease;
 }
 
+.option-decidewrap{
+	position: absolute;
+height: 23px;
+width: 23px;
+	right: 10px;
+	display: inline-block;
+
+	z-index: 1500;
+	opacity: 0;
+
+	background-image: url(src/checked-invite.png);
+
+background-size: cover;
+background-repeat: no-repeat;
+-moz-transition: margin .35s ease;
+-webkit-transition: margin .35s ease;
+transition: margin .35s ease;
+}
+
+
+
 div.typeAhead-dd {
 transition: opacity 0.25s linear;
 border-radius: 6px;
@@ -515,8 +580,11 @@ position: absolute;
 z-index: 2000;
 background: #fff;
 left: 0;
+width: 100%;
 right: 0;
-opacity:0;
+opacity:1;
+padding: 10px 0px;
+height: auto;
 }
 
 div.typeAhead-dd ul.results{
@@ -563,6 +631,60 @@ color: #333;
 a.schoolSelectWrapper div.school-checked{
 background-image:url(src/checked-invite.png);
 opacity:1;
+}
+
+div.school-decided{
+background-image:url(src/checked-invite.png);
+opacity:1;
+}
+
+img.floatL{
+    float: left;
+
+}
+
+img.floatR{
+    float: right;
+	
+}
+
+button.scrollTop{
+	border-radius:3px;
+	-webkit-transform: translateY(0px);
+-ms-transform: translateY(0px);
+transform: translateY(0px);
+visibility: visible;
+padding: 10px 14px 18px;
+background-color: #f7f7f7;
+background: -webkit-linear-gradient(#fff, #f0f0f0);
+background: linear-gradient(#fff, #f0f0f0);
+border: 1px solid #ccc;
+color: #5f5f5f;
+bottom: -10px;
+position: fixed;
+right: 14px;
+-webkit-transition: opacity 0.3s,-webkit-transform 0.25s;
+transition: opacity 0.3s,transform 0.25s;
+z-index: 2501;
+cursor: pointer;
+font-weight: bold;
+text-shadow: 0 1px #fff;
+white-space: nowrap;
+}
+
+button.scrollTop em{
+	width: 14px;
+height: 20px;
+
+	background: url(src/scroll-top-icon.png);
+display: inline-block;
+font: 0/0 serif;
+text-shadow: none;
+color: transparent;
+
+	top: 2px;
+	position: relative;
+vertical-align: middle;
 }
 
 body{
