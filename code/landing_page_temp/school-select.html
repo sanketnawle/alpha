@@ -38,6 +38,22 @@
             
 
         });
+
+
+
+        $(window).scroll(function() {
+            if($(window).scrollTop()>=50){
+                 $(".scrollTop").css({'-webkit-transform':'translateY(0px)','transform':'translateY(0px)','-ms-transform':'translateY(0px)'}); 
+            }else{
+                $(".scrollTop").css({'-webkit-transform':'translateY(80px)','transform':'translateY(80px)','-ms-transform':'translateY(80px)'}); 
+            }
+
+        });
+
+        $(document).delegate('.scrollTop',"click", function(){
+            $(window).scrollTop(0);
+        });
+
     });
     </script>
 </head>
