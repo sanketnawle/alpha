@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+x<!DOCTYPE html> 
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -13,16 +13,22 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script>
 	$(document).ready(function() {
+		$(".typeAhead-dd").hide();
+		$(document).delegate(".ui-big-input","mousedown",function(){
+			$(".typeAhead-dd").show();
+			$(".typeAhead-dd").animate({ opacity: "1"},50);
+		});
+
+
+
 		$(document).delegate('.school-selector',"click", function(){
 			if($(this).hasClass("school-added")){
 				$(this).removeClass("school-added");
-<<<<<<< HEAD
 			}
 			
 
 			if(!$(this).hasClass("school-added")){
 				$(".school-added").find(".option-checkwrap").removeClass("school-checked");
-=======
 				$(this).find(".option-checkwrap").removeClass("school-checked");
 				return false;
 			}else
@@ -33,7 +39,6 @@
 					$(this).find(".option-checkwrap").removeClass("school-checked");
 				});
 
->>>>>>> FETCH_HEAD
 				$(this).find(".option-checkwrap").addClass("school-checked");
 				$(this).addClass("school-added");
 				$(this).addClass("school-added-other");
@@ -44,17 +49,25 @@
 	});
 	</script>
 </head>
-<body>
-	<div class = "PageBase">
+<body><div class = "PageBase">
 		<div class = "UrProgress onboard module">
 			<div class = "headerContent">
 				<div class = "headerMain">
 					<div class = "school-logo">
 					</div>
 					<h2 class = "headerTitle1">Welcome to Urlinq, Jacob</h2>
-					<h3 class = "headerTitle2">To start exploring a campus and its people, select your school below</h3>
+					<h3 class = "headerTitle2">To start exploring your campus and its people, select your school below</h3>
 					<div class = "progressWrap">
 						<div class = "progress">
+							<div class = "floatR-btns">
+								
+								<button type = "button" class = "disabled rounded mediumBtn">
+									<em class "nextBtn-icon">
+									</em>
+									<span class = "buttonText">
+										Next
+									</span>
+							</div>
 							<ul max = "3" class = "ui-progress round" value = "1">
 								<li class = "1 active">
 								</li>
@@ -66,17 +79,10 @@
 								</li>
 
 							</ul>
-							<div class = "floatR-btns">
-								<!--<a class = "skip">
+							<!--<a class = "skip">
 									Skip this step
-								</a>-->
-								<button type = "button" class = "disabled rounded mediumBtn">
-									<em class "nextBtn-icon">
-									</em>
-									<span class = "buttonText">
-										Next
-									</span>
-							</div>
+							</a>-->
+							
 
 						</div>
 					</div>
@@ -93,6 +99,57 @@
 								<div class = "searchWrapper">
 									<input placeholder = "Which school at NYU are you a part of?" class = "ui-big-input">
 									<div class = "typeAhead-dd">
+										<ul class = "results">
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+											<li class = "ul-dd-list">
+												<a>
+													<span class = "typeaheadName">
+														Polytechnic
+													</span>
+												</a>
+											</li>
+										</ul>
 									</div>
 
 								</div>
@@ -152,8 +209,8 @@
 											<span class = "hoverMask">
 											</span>
 											<div class = "schoolImage schoolImage-dos">
-												<img class = "schoolImg" src = "src/nyu-stern-logo.jpg">
-												<img class = "schoolImg" src = "src/stern-logo.jpg">
+												<img class = "schoolImg" src = "src/nyu-stern-building.jpg">
+												<img class = "schoolImg" src = "src/nyu-stern-logo.png">
 											</div>
 										</div>
 									</a>
