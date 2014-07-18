@@ -16,11 +16,24 @@
 		$(document).delegate('.school-selector',"click", function(){
 			if($(this).hasClass("school-added")){
 				$(this).removeClass("school-added");
+<<<<<<< HEAD
 			}
 			
 
 			if(!$(this).hasClass("school-added")){
 				$(".school-added").find(".option-checkwrap").removeClass("school-checked");
+=======
+				$(this).find(".option-checkwrap").removeClass("school-checked");
+				return false;
+			}else
+			if(!$(this).hasClass("school-added")){
+				
+				$( ".school-added" ).each(function( index ) {
+					$(this).removeClass("school-added");
+					$(this).find(".option-checkwrap").removeClass("school-checked");
+				});
+
+>>>>>>> FETCH_HEAD
 				$(this).find(".option-checkwrap").addClass("school-checked");
 				$(this).addClass("school-added");
 				$(this).addClass("school-added-other");
@@ -165,6 +178,7 @@
 									</a>
 								</div>
 							</div>
+							
 							<div class = "item school school-selector">
 								<div class = "school ajax">
 									<a class = "schoolSelectWrapper">
@@ -184,11 +198,12 @@
 									</a>
 								</div>
 							</div>
+									
 							<div class = "item school school-selector">
 								<div class = "school ajax">
 									<a class = "schoolSelectWrapper">
 										<div class = "name">
-											Steinhardt School of Culture and Education
+											Gallatin School of Individualized Study
 										</div>
 										<div class = "option-checkwrap">
 										</div>
@@ -202,7 +217,10 @@
 										</div>
 									</a>
 								</div>
-							</div>
+							</div>	
+
+
+
 						</div>
 					</div>
 				</div>
