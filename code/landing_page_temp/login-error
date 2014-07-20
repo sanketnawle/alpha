@@ -5,7 +5,6 @@
     <link rel="stylesheet" type="text/css" href="school-select.css">
     <link rel="shortcut icon" href="src/favicon.ico"/>
     <title>Urlinq</title>
-    <meta name="viewport" content="width=device-width, initial-scale=.75">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
@@ -51,8 +50,7 @@
         });
 
         $(document).delegate('.scrollTop',"click", function(){
-            $("html").animate({scrollTop: 0},500,'easeOutSine');
-            return false;
+            $(window).scrollTop(0);
         });
 
     });
@@ -430,6 +428,8 @@
                                     </a>
                                 </div>
                             </div>    
+
+
 
                         </div>
                     </div>

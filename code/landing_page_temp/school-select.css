@@ -286,6 +286,15 @@ z-index: 670;
 padding-left: 46px;
 }
 
+div.searchWrapper input.ui-big-input::-webkit-input-placeholder {
+  color:rgb(161, 163, 165);
+}
+
+div.searchWrapper input.ui-big-input:focus::-webkit-input-placeholder {
+  transition: opacity 0.25s; 
+  opacity: .4;
+}
+
 div.searchWrapper input.ui-big-input:focus {
 background-color: #ffffff;
 border-color: #aaa;
@@ -311,6 +320,7 @@ div.UrProgress div.bg-image{
     bottom: 0px;
     background-imge: url;
     opacity: 1;
+    background-size: 595px;
     background-position: 200px 690px;
     background-repeat: repeat;
     background-image: url(src/icon-bg.jpg);
@@ -426,6 +436,7 @@ box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 background: #fff;
 width: 216px;
 padding: 10px;
+padding-top: 7px;
 position: relative;
 float: left;
 }
@@ -445,9 +456,9 @@ div.schoolGrid div.centeredWrapper div.school div.school a.schoolSelectWrapper d
 /* overflow: hidden; */
 -ms-text-overflow: ellipsis;
 /* text-overflow: ellipsis; */
-color: #666;
+color: #35393C;
 display: inline-block;
-font-size: 14px;
+font-size: 15px;
 width: 189px;
 font-weight: bold;
 height: 38px;
@@ -703,3 +714,4 @@ body{
 	height:100%;
 	margin: 0;
 }
+
