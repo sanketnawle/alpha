@@ -1,6 +1,5 @@
 .signin-error-main{
 	background: url(src/body_noise.png) repeat 50% 50%;
-	overflow:hidden;
 	height:100%;
 	width:100%;
 	margin:0 auto;
@@ -242,7 +241,6 @@ div.signin_err_box_moreoptions{
 
 div.signin_err_box_moreoptions_open{
 	position: relative;
-	border-top: 1px solid #ccc;
 }
 
 div.signin_err_box_moreoptions div.leftFl{
@@ -271,8 +269,9 @@ div.username_known{
 
 div.username_known div.pic-wrap{
 	display: inline-block;
-	width: 24%;
+	width: 19%;
 	float: left;
+	min-width: 120px;
 	padding-left: 10px;
 }
 
@@ -563,39 +562,74 @@ ul.color-border{
   font-size:0;
 	margin: 0;
 	padding: 0;
+	padding-bottom: 40px;
 }
 
 ul.color-border li{
 	  display:inline-block;
   
 	  width: 25%;
+
   
-	  height: 4px;
+	  padding-top: 7px;
+	  border-style: solid;
+	  border-width: 2px 0px;
+	  color: white;
+	  font-size: 16px; text-align: center; 
+	  font-weight: 600;
+	  padding-bottom: 7px;
+	  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 ul.color-border li:nth-child(1) {
-  background: #02e2a7;
+  border-color: #02e2a7;
   width: 34%;
+  color: #02e2a7; 
+}
+
+ul.color-border li:nth-child(1):hover {
+background-color:#02e2a7;
+	}
+
+ul.color-border li:hover {
+color:white!important;
+cursor:pointer;
+}
+
+ul.color-border li:active {
+opacity:.8;
 }
 
 ul.color-border li:nth-child(2) {
-  background: #1DA7D3;
+  border-color: #1DA7D3;
   width: 26%;
+  color: #1DA7D3;
+}
+
+ul.color-border li:hover:nth-child(2) {
+	background-color: #1DA7D3;
 }
 
 ul.color-border li:nth-child(3) {
-  background: rgba(253, 112, 45, 0.74);
+  border-color: rgba(253, 112, 45, 0.74);
   width: 22%;
+  color: rgba(253, 112, 45, 0.74);
 }
+
+ul.color-border li:nth-child(3):hover {
+background-color:rgba(253, 112, 45, 0.74);
+	}
 
 ul.color-border li:nth-child(4) {
-  background: rgba(177, 104, 226, 0.8);
+  border-color: rgba(177, 104, 226, 0.8);
   width: 18%;
+  color: rgba(177, 104, 226, 0.8);
 }
 
-ul.color-border li:nth-child(5) {
-  background:#9b59b6;
+ul.color-border li:nth-child(4):hover {
+ background-color: rgba(177, 104, 226, 0.8);
 }
+
 
 
 
