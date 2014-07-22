@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 
 
+
+
 	$(document).delegate(".form-control","focus",function(){
 		$(this).css({"height":"53px","width":"93.82%","margin-left":"6px","margin-top":"41px","border-radius":"4px"});
 		$(this).closest(".reply_tawrapper").closest(".commentform").css("height","96px");

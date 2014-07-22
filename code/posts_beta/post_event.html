@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel = "stylesheet" type = "text/css" href = "feed.css"> 
+<link rel = "stylesheet" type = "text/css" href = "feed_event_post.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
@@ -13,7 +14,24 @@
  <script src="feed.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
+$(document).ready(function() {
 
+	$('.add_event_btn').hover(function(){
+               $(".med_box_open").delay(500).css({ "z-index":"2000","top":"31px","height":"22px","opacity": "1"});
+
+          });
+
+	$('.add_event_btn').mouseleave(
+    function(){
+        setTimeout(
+            function(){
+               $(".med_box_open").css({"z-index":"0", "top":"15px","height":"0px","opacity": "0"});
+            }, 
+            50)
+          });
+
+
+});
 </script>
 </head>
 <body>
@@ -25,21 +43,31 @@
 					<div id = "123456789">
 				
 						<div class = "posts" id = "226">
+							<div class = "event_post_context">
+							</div>
 							<div class = "post_main">
 								<div class = "post_head">
 
 										<div class = "post_title">
 											<a>
 												<div class = "image_container">
-													<div class = "post_user_icon"></div>
+													<div class = "event_date_box">
+														<div class = "groupImgOverlay">
+														</div>
+														<div class = "smallMonth">July</div>
+														<div class = "bigDay">21</div>
+
+													</div>
 												</div>											
-												<span class = "post_owner">Anita Farrington</span>
+												<a class = "a_link event_post_title">Watch the Sunset over northern New Jersey</a>
 											</a>
 											<!--hide below span if post not in a group-->
-											<span class = "post_format">posted in <span class = "post_group">Web Programming</span></span>
+											<br>
+											<!--hide happening in "group name" in groups, show only in the main home page feed.-->
+											<span class = "post_format">Happening in <span class = "post_group">Web Programming</span></span>
 											
 										</div>
-										<div class = "post_time">Started discussion 2 hours ago</div>
+
 									<!--
 										<span class = "mid-stop">&#183;</span>
 										<div class = "post_seen">
@@ -52,49 +80,12 @@
 									-->
 								</div>
 								<div class = "post_tag">
-									<span>Computer Science</span>
+									<span>Event</span>
 								</div>
 
 								<div class = "post_msg">
 									<div class="event-content">
-                                            <div class="event_right">
-                                                <div class="header_wrapper">
-                                                    <div class="event-header-left">
-                                                        <div class="event_title">
-                                                                            Microeconomics Homework! 
-                                                        </div>
-                                                        <div class="event_group">
-                                                        <div>Event in <a>Principles of Economics</a></div>
-                                                        </div>
-                                                    </div>
-                                                <div class="attachment_img">&nbsp;</div>
-                                                
-                                                </div>
-                                                <div class="info_wrapper">																
-                                                    <div class="right_data">
-                                                        <img class="event_icons" src="src/location_icon.png">              <div class="event-data">
-																			Lattimore Hall Room 223
-                                                        </div>
-                                                        <div class="event-data2">
-                                                                            500 Joseph C Wilson Blvd
-                                                        </div>
-                                                    </div>
-                                                    <div class="event_join">
-                                                      
-                                                        <div class="left_btn event_status_btn">
-                                                                            Accept
-                                                        </div>
-                                                        <div class="center_btn event_status_btn">
-                                                                            Maybe
-                                                        </div>
-                                                        <div class="right_btn event_status_btn">
-                                                                            Decline
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="event_left">
-                                        </div>
+                                           
                                     </div>
 
 								</div>
@@ -107,121 +98,44 @@
 									</div>
 								</div>
 								<div class = "post_tools">
-									<div class = "post_lc">
-										<div class='mf_name'></div>
-										<div class = 'card-tag'>
-												<div class = 'tag-wedge'></div>
-												<div class = 'tag-box'><span>
-													<div class='mf_liked' id='Anita' style='background: url(src/farring.png) no-repeat'></div>
-												</span></div>
+									<div class = "post_lc event_post_scheduleclear parent-div-ani">
+										<div class = "add_event_btn">
+											<em></em>
+											Add to Calendar
+
 										</div>
-										<div class = "post_like">
-											<img class = "post_like_icon" src='src/like-button.png'>
-											<div class = "like_number unliked">7</div>
-											
+										<div class = "event_time">
+											<span>Every week, 8:00 pm to 9:00 pm</span>
+											<em></em>
 										</div>
-										<div class = "post_comment_btn">
-											Reply
+										<div class = "event_scheduler med_box_open">
+											You're schedule is free at this time!
 										</div>
+
+
 									</div>
 
 									
-									<div class='posttool-select'>
-										<span class='field'>Visible to Campus</span>
 
-										<div class = "visi_functions_box">
-											<div class = "visi_functions_option">Campus</div>
-											<hr class = "post_options_hr">
-											<div class = "visi_functions_option">Only Students</div>
-											<hr class = "post_options_hr">
-											<div class = "visi_functions_option">Only Faculty</div>
-											<hr class = "post_options_hr">
-											<div class = "visi_functions_option">Only Me</div>
-										</div>
-
-									</div>
 									
 
 									<div class = "post_functions">
 										<div class = "post_functions_showr">
 										</div>
 										<div class = "post_functions_box">
-											<div class = "post_functions_option option_edit">Edit this Post</div>
+											<div class = "post_functions_option option_edit">Hide this Event</div>
 											<hr class = "post_options_hr">
-											<div class = "post_functions_option option_delete">Delete this Post</div>
-											<hr class = "post_options_hr">
-											<div class = "post_functions_option option_hide">Hide this Post</div>
-											<hr class = "post_options_hr">
-											<div class = "post_functions_option option_report">Report this Post</div>
+											<div class = "post_functions_option option_delete">Report this Event</div>
+											
+											
 											
 										</div>
 									</div>
 								</div>
 							</div>
+
 							
-							<div class = "comments">
 
-								<button class='morecmt_bar'>
-									Show Full Discussion 
-								</button>
-								
-								<div class = "post_comment" id = "12414113">
-									<div class = "comment_delete">
-										<i class = "fa fa-times"></i>
-									</div>
-									<div class = "comment_updown">
-										<div class = "comment_upvote">
-										</div>
-										
-										<div class = "score unvoted">0</div>
-										
-										<div class = "comment_downvote">
-										</div>
-									</div>
-
-									<div class = "comment_main">
-										<a>
-											<div class = "comment_owner_container"><div class = "comment_user_icon"></div></div>										
-											<span class = "comment_owner">Jun Lee</span>
-										</a>
-										<div class = "comment_msg" id = "380">The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture.
-											The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture... 
-											<span class='pst_seemore'>see more</span>
-										
-										</div>
-									</div>
-									<div class = "comment_time">1 hour ago</div>
-
-								</div>
-								
-							</div>
-							<!--
-							-->
-							
-							<div class = "postcomment">
-								<form>
-								<div class = "commentform">
-									<div class = "reply_user_icon"></div>
-									<div class = "reply_tawrapper">
-										<textarea class = "form-control postval" rows = "3" placeholder = "Add to the discussion" required></textarea>
-										<img class = "reply_attach" src = "src/comment_attach.png">
-									</div>
-									<div class = "reply_functions">
-										<div class='check_wrap'>
-											<input type="checkbox" id="flat_0" class='flat7c'/>
-											<label for="flat7" class="flat7b">
-											    <span class="move"></span>
-											</label>
-											<span class = "comment_anon_text">Post Anonymously</span>
-										</div>
-										<a class = "reply_button">
-											Reply
-										</a>
-									</div>
-
-								</div>
-							</form>
-							</div>
 							
 
 						</div>

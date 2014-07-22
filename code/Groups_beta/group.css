@@ -949,8 +949,16 @@ div.group-header-right div.ghr-box div.ghr-box-head span.ghr-head-title{
     font-weight: 200;
     font-size: 15px;
     color: rgb(66, 66, 66);
+    word-wrap: normal;
+    width: 160px;
+    display: inline-block;
 }
 
+div.group-header-right div.ghr-box div.ghr-box-head span.ghr-head-time{
+position: relative;
+top: 1px;
+font-size: 12px;
+}
 div.group-header-right div.ghr-1{
     background-color: rgb(206, 206, 206);   -webkit-box-shadow: 0 0 6px 0px rgba(0, 0, 0, .2); -moz-box-shadow: 0 0 6px 0px rgba(0, 0, 0, .2); box-shadow: 0 0 6px 0px rgba(0, 0, 0, .2); 
     background: -webkit-linear-gradient(45deg,#F7F7F7,#F0F0F0); 

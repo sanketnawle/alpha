@@ -4,6 +4,7 @@
 	font-family: 'Open Sans';
 	float: left;
 	width: 660px;
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .posts
@@ -407,6 +408,8 @@ padding-bottom: 3px;
 display: none;
 z-index: 100;
 }
+
+
 
 .post_functions_option{
 	font-size: 13.5px;
