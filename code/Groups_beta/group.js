@@ -62,6 +62,8 @@ $(document).ready(function() {
 			$(".tab-wedge-down").css("left","310px");
 			$(this).removeClass("tab-inactive");
 			$(this).addClass("group-tab-active");
+			$(".departments-tab-content").stop().animate({ opacity: "0"},300);
+			$(".departments-tab-content").hide();
 			
 			$(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
 			$(".syllabus-tab-content").hide();
