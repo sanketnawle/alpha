@@ -1056,3 +1056,9 @@ width: 320px;
 height: 60px;
 -webkit-box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
 }
+
+
+div.group-head-sec div.group-head-top-sec
+{
+    overflow: hidden;
+}
