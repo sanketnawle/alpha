@@ -15,6 +15,7 @@ $(document).ready(function() {
     var dn_1 = $(".doughnut_1").get(0).getContext("2d");
     var dn_2 = $(".doughnut_2").get(0).getContext("2d");
     var pi_0 = $(".pie_0").get(0).getContext("2d");
+    var pi_i = $(".pie_i").get(0).getContext("2d");
     var ln_0 = $(".linegraph_0").get(0).getContext("2d");
 
 
@@ -79,6 +80,21 @@ $(document).ready(function() {
     }
 ]
 
+        var data_pi_i = [
+    {
+        value: 15,
+        color: "#f04b5b",
+        highlight: "#f26370",
+        label: "Female"
+    },
+    {
+        value: 30,
+        color:"#4BAEF0",
+        highlight: "#63b9f2",
+        label: "Male"
+    }
+]
+
 var data_ln_0 = {
     labels: ["7/08", "7/15", "7/21", "8/05", "8/12", "8/19", "8/27","9/05","9/12"],
     datasets: [
@@ -128,6 +144,13 @@ var chart_pi0= new Chart(pi_0).Doughnut(data_pi_0, {
     animationEasing: "easeOutCubic"
 });
 
+var chart_pii= new Chart(pi_i).Doughnut(data_pi_i, {
+    percentageInnerCutout : 0,
+    segmentShowStroke : false,
+    showTooltips: true,
+    animationSteps : 75,
+    animationEasing: "easeOutCubic"
+});
 
 var chart_ln0 = new Chart(ln_0).Line(data_ln_0, {
     bezierCurve : false,
@@ -280,6 +303,32 @@ $( ".am_cell" ).each(function( index ) {
     }
 });
 
+$(document).delegate(".show_detail_of_event","mouseenter",function(){
+    $(this).closest(".ev_cell_right").css({"opacity":"1"});
+});
+$(document).delegate(".show_detail_of_event","mouseleave",function(){
+    $(this).closest(".ev_cell_right").css({"opacity":"0.7"});
+});
+
+
+$(document).delegate(".show_detail_of_event","click",function(){
+    var $detail=$(this).closest(".ev_cell").find(".ev_detail");
+    if($(this).hasClass("unfolded_detail")){
+        $detail.hide();
+        $(this).removeClass("unfolded_detail");
+        $(this).find(".anl_header_dropdown_showr_wedgeup").remove();
+        $(this).prepend("<div class='anl_header_dropdown_showr_wedgedown'></div>");
+    }else{
+        $(".ev_detail").hide();
+
+        $detail.show();
+        $(this).addClass("unfolded_detail");
+        $(this).find(".anl_header_dropdown_showr_wedgedown").remove();
+        $(this).prepend("<div class='anl_header_dropdown_showr_wedgeup'></div>");
+    }
+
+});
+
 });
 
 
@@ -392,7 +441,7 @@ $( ".am_cell" ).each(function( index ) {
                 <div class='mb-left-cell-mid-percent'>12%</div>
             </div>
             <div class='anl-content-box-mb-left-cell-right'>
-                152
+                24
             </div>
         </div>
 
@@ -405,7 +454,7 @@ $( ".am_cell" ).each(function( index ) {
                 <div class='mb-left-cell-mid-percent'>20%</div>
             </div>
             <div class='anl-content-box-mb-left-cell-right'>
-                152
+                40
             </div>
         </div>
 
@@ -418,7 +467,7 @@ $( ".am_cell" ).each(function( index ) {
                 <div class='mb-left-cell-mid-percent'>15%</div>
             </div>
             <div class='anl-content-box-mb-left-cell-right'>
-                152
+                30
             </div>
         </div>
 
@@ -431,7 +480,7 @@ $( ".am_cell" ).each(function( index ) {
                 <div class='mb-left-cell-mid-percent'>23%</div>
             </div>
             <div class='anl-content-box-mb-left-cell-right'>
-                152
+                46
             </div>
         </div>
 
@@ -444,7 +493,7 @@ $( ".am_cell" ).each(function( index ) {
                 <div class='mb-left-cell-mid-percent'>30%</div>
             </div>
             <div class='anl-content-box-mb-left-cell-right'>
-                152
+                60
             </div>
         </div>
     </div>
@@ -617,7 +666,9 @@ $( ".am_cell" ).each(function( index ) {
     </div>
 
     <div class='anl-content-box-ev'>
-        <div class='ev_cell'>
+
+    <div class='ev_cell'>
+        <div class='ev_nondetail'>
         <div class='ev_cell_left'>
             <div class='ev_cell_left_photo' style='background-image: url(img/dummy_2.jpg)'></div>
             <div class='ev_cell_left_name'>Weekly Meeting</div>
@@ -635,10 +686,205 @@ $( ".am_cell" ).each(function( index ) {
             100%
         </div>
 
+        <div class='ev_cell_right'>
+            <span class='show_detail_of_event'><div class='anl_header_dropdown_showr_wedgedown'></div>Detail</span>
+        </div>
+
+        </div>
+        <div class='ev_detail'>
+
+        <div class='anl-header detail-anl-header'>
+            <span>Member Breakdown</span>
+
+            <div class = 'anl_header_dropdown'>
+            <div class = 'anl_header_dropdown_showr'>
+               <div class='anl_header_dropdown_showr_wedgedown'></div> All Schools
+            </div>  
+            <div class = 'anl_header_dropdown_box'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 1</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 2</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 3</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>All Schools</div>
+            </div>
+            </div>
         </div>
 
 
-                <div class='ev_cell'>
+
+<div class='anl-content-box-mb detail_mb'>
+    <div class='anl-content-box-mb-left'>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Freshman</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:12%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>12%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                24
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Sophomore</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:20%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>20%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                40
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Junior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:15%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>15%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                30
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Senior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:23%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>23%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                46
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Graduate</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:30%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>30%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                60
+            </div>
+        </div>
+    </div>
+
+
+    <div class='anl-content-box-mb-right'>
+        <canvas class="pie_i" width="180" height="180"></canvas>
+        <div class='anl-content-box-mb-right-right'>
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_0 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Female: <span>35%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Female</div>
+            </div>
+
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_1 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Male: <span>65%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Male</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <div class='anl-header detail-anl-header'>
+            <span>Presented Attendances</span>
+
+            <div class='anl_tea'>Total Events Attendence</div>
+
+            <div class='anl_pea'>% Total Events Attendence</div>
+        </div>
+
+
+
+
+        <div class='anl-content-box-am detail_anl-content-box-am'>
+            <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+        </div>
+
+
+        </div>
+        </div>
+
+
+
+    <div class='ev_cell'>
+        <div class='ev_nondetail'>
         <div class='ev_cell_left'>
             <div class='ev_cell_left_photo' style='background-image: url(img/dummy_2.jpg)'></div>
             <div class='ev_cell_left_name'>Weekly Meeting</div>
@@ -656,10 +902,205 @@ $( ".am_cell" ).each(function( index ) {
             100%
         </div>
 
+        <div class='ev_cell_right'>
+            <span class='show_detail_of_event'><div class='anl_header_dropdown_showr_wedgedown'></div>Detail</span>
+        </div>
+
+        </div>
+        <div class='ev_detail'>
+
+        <div class='anl-header detail-anl-header'>
+            <span>Member Breakdown</span>
+
+            <div class = 'anl_header_dropdown'>
+            <div class = 'anl_header_dropdown_showr'>
+               <div class='anl_header_dropdown_showr_wedgedown'></div> All Schools
+            </div>  
+            <div class = 'anl_header_dropdown_box'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 1</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 2</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 3</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>All Schools</div>
+            </div>
+            </div>
         </div>
 
 
-                <div class='ev_cell'>
+
+<div class='anl-content-box-mb detail_mb'>
+    <div class='anl-content-box-mb-left'>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Freshman</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:12%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>12%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                24
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Sophomore</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:20%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>20%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                40
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Junior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:15%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>15%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                30
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Senior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:23%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>23%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                46
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Graduate</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:30%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>30%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                60
+            </div>
+        </div>
+    </div>
+
+
+    <div class='anl-content-box-mb-right'>
+        <canvas class="pie_i" width="180" height="180"></canvas>
+        <div class='anl-content-box-mb-right-right'>
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_0 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Female: <span>35%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Female</div>
+            </div>
+
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_1 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Male: <span>65%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Male</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <div class='anl-header detail-anl-header'>
+            <span>Presented Attendances</span>
+
+            <div class='anl_tea'>Total Events Attendence</div>
+
+            <div class='anl_pea'>% Total Events Attendence</div>
+        </div>
+
+
+
+
+        <div class='anl-content-box-am detail_anl-content-box-am'>
+            <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+        </div>
+
+
+        </div>
+        </div>
+
+
+
+            <div class='ev_cell'>
+        <div class='ev_nondetail'>
         <div class='ev_cell_left'>
             <div class='ev_cell_left_photo' style='background-image: url(img/dummy_2.jpg)'></div>
             <div class='ev_cell_left_name'>Weekly Meeting</div>
@@ -677,7 +1118,201 @@ $( ".am_cell" ).each(function( index ) {
             100%
         </div>
 
+        <div class='ev_cell_right'>
+            <span class='show_detail_of_event'><div class='anl_header_dropdown_showr_wedgedown'></div>Detail</span>
         </div>
+
+        </div>
+        <div class='ev_detail'>
+
+        <div class='anl-header detail-anl-header'>
+            <span>Member Breakdown</span>
+
+            <div class = 'anl_header_dropdown'>
+            <div class = 'anl_header_dropdown_showr'>
+               <div class='anl_header_dropdown_showr_wedgedown'></div> All Schools
+            </div>  
+            <div class = 'anl_header_dropdown_box'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 1</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 2</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>School 3</div>
+                <hr class = 'anl_option_hr'>
+                <div class = 'anl_header_dropdown_option anl_option_edit'>All Schools</div>
+            </div>
+            </div>
+        </div>
+
+
+
+<div class='anl-content-box-mb detail_mb'>
+    <div class='anl-content-box-mb-left'>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Freshman</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:12%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>12%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                24
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Sophomore</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:20%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>20%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                40
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Junior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:15%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>15%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                30
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Senior</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:23%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>23%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                46
+            </div>
+        </div>
+
+        <div class='anl-content-box-mb-left-cell'>
+            <div class='anl-content-box-mb-left-cell-left'><span>Graduate</span></div>
+            <div class='anl-content-box-mb-left-cell-mid'>
+                <div class='mb-left-cell-mid-grey'>
+                    <div class='mb-left-cell-mid-color bar_color_blue' style='width:30%'></div>
+                </div>
+                <div class='mb-left-cell-mid-percent'>30%</div>
+            </div>
+            <div class='anl-content-box-mb-left-cell-right'>
+                60
+            </div>
+        </div>
+    </div>
+
+
+    <div class='anl-content-box-mb-right'>
+        <canvas class="pie_i" width="180" height="180"></canvas>
+        <div class='anl-content-box-mb-right-right'>
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_0 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Female: <span>35%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Female</div>
+            </div>
+
+            <div class='anl-content-box-mb-right-right-cell'>
+            <div class='pattern_1 anl_pi_pattern'>
+                <div class = 'card-tag-pattern'>
+                    <div class = 'tag-wedge-pattern'></div>
+                    <div class = 'tag-box-pattern'>
+                        <span>Male: <span>65%</span></span>
+                    </div>                                  
+                </div>
+            </div>
+
+            <div class='mb-right-cell-tag'>Male</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <div class='anl-header detail-anl-header'>
+            <span>Presented Attendances</span>
+
+            <div class='anl_tea'>Total Events Attendence</div>
+
+            <div class='anl_pea'>% Total Events Attendence</div>
+        </div>
+
+
+
+
+        <div class='anl-content-box-am detail_anl-content-box-am'>
+            <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+                <div class='am_cell'>
+                <div class='am_cell_left'>
+                    <div class='am_cell_left_photo' style='background-image: url(img/dummy_1.jpg)'></div>
+                    <div class='am_cell_left_name'>Kushal Kadaba</div>
+                </div>
+
+                <div class='am_cell_mid_0'>
+                    16
+                </div>
+
+                <div class='am_cell_mid_1'>
+                    32%
+                </div>
+            </div>
+
+        </div>
+
+
+        </div>
+        </div>
+
     </div>
 
 </div>

@@ -546,6 +546,18 @@ margin-bottom: 4px;
 	margin-left: 5px;
 }
 
+.anl_header_dropdown_showr_wedgeup
+{ 
+	float: right;
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent; 
+	border-right: 5px solid transparent; 
+	border-bottom: 8px solid rgba(0,0,0,0.6); 
+	margin-top: 6px;
+	margin-left: 5px;
+}
+
 .anl-content-box-mb-left-cell
 {
 	float: left;
@@ -896,7 +908,7 @@ opacity: 0.6;
 
 .ev_cell
 {
-	height: 60px;
+	min-height: 60px;
 	width: 100%;
 	border-bottom:1px solid #D3D5D9;
 }
@@ -967,3 +979,125 @@ margin-left: 50px;
 {
 	display: none;
 }
+
+.ev_detail
+{
+	width: 100%;
+	height: auto;
+	border-top: 1px dashed #D3D5D9;
+	display: none;
+}
+
+.ev_nondetail
+{
+	height: 60px;
+}
+
+.ev_cell_right
+{
+	float: right;
+	height: 100%;
+	line-height: 62px;
+	font-size: 14px;
+	color: #424242;
+	opacity: 0.7;
+}
+
+.ev_cell_right span
+{
+	cursor: pointer;
+	margin-right: 1px;
+}
+
+.ev_cell_right .anl_header_dropdown_showr_wedgedown
+{
+	margin-top: 29px;
+	margin-right: 25px;
+}
+
+.ev_cell_right .anl_header_dropdown_showr_wedgeup
+{
+	margin-top: 27px;
+	margin-right: 25px;	
+}
+
+/*single event detail css*/
+.detail-anl-header
+{
+	margin-top: 5px;
+}
+
+.detail-anl-header span
+{
+	margin-left: 80px;
+	font-size: 16px;
+}
+
+.detail-anl-header .anl_header_dropdown
+{
+	margin-right: 165px;
+}
+
+.detail_mb 
+{
+	transform: scale(0.75);
+	margin-top: 0px;
+	margin-left: -60px;
+}
+
+.detail-anl-header .anl_tea
+{
+	margin-left: 110px;
+}
+
+.detail-anl-header .anl_pea
+{
+	margin-left: 110px;
+}
+
+.detail_anl-content-box-am
+{
+	margin-bottom: 0px;
+	margin-top: 5px;
+}
+
+.detail_anl-content-box-am .am_cell
+{
+	height: 40px;
+	border-bottom: none;
+	padding-bottom: 2px;
+}
+
+.detail_anl-content-box-am .am_cell *
+{
+	line-height: 40px;
+}
+
+.detail_anl-content-box-am .am_cell .am_cell_left
+{
+	margin-left: 80px;
+	border-bottom: 1px solid #D3D5D9;
+}
+
+.detail_anl-content-box-am .am_cell .am_cell_left .am_cell_left_photo
+{
+	margin-left: 0px;
+	height: 30px;
+	width: 30px;
+}
+
+.detail_anl-content-box-am .am_cell .am_cell_mid_0
+{
+	width: 135px;
+	border-bottom: 1px solid #D3D5D9;
+}
+
+.detail_anl-content-box-am .am_cell .am_cell_mid_1
+{
+	margin-left: 0px;
+	padding-left: 120px;
+	border-bottom: 1px solid #D3D5D9;
+}
+
+
+
