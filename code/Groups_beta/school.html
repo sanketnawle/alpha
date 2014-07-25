@@ -87,6 +87,8 @@ $(document).ready(function() {
 
 	});
 
+
+	/*popup control*/
 	$('.upload_cover').click(function(){
 	    $(".modal_loading").show();
 	    $(".modal_loading").css("opacity","1");
@@ -110,7 +112,44 @@ $(document).ready(function() {
 	 });
 
 
+	$(document).delegate(".uploadedPhotoFrame","click",function(){
+		$(this).closest("form").find(".hidden_fileup_modal").click();
+	});
 
+	$(document).delegate(".hidden_fileup_modal","change",function(){
+		//var tname=$(this).closest("form").find("#cover_name").val();
+		var $preview= $(this).closest("form").find(".uploadedPhotoPreview");
+		var $hidestuff= $(this).closest("form").find(".uploadedPhotoFrame");
+
+		var formData= new FormData( $(this).closest("form")[0]);
+		$.ajax({
+	            			type: "POST",
+            				url: "cover-image-upload.php",
+            				xhr: function() {  // Custom XMLHttpRequest
+            					var myXhr = $.ajaxSettings.xhr();
+            					if(myXhr.upload){ // Check if upload property exists
+                					myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+            						}
+           					 return myXhr;
+        					},
+
+            				data: formData,
+            				contentType: false,
+        					processData: false,
+            				success: function(html){ 
+            					$hidestuff.hide();
+            					$preview.show();
+			            	}
+						});
+
+	});	
+
+	$(document).delegate(".uploadPhotoBtn","click",function(event){
+		event.preventDefault();
+	});
+	
+
+	/*popup control end*/
 
 	$(document).delegate(".tab-inactive","click",function(){
 		if($(this).hasClass("tabDepartments")){
@@ -210,6 +249,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<div class = "root">
+
 		<div class = "modal_coverPhoto_body modal_body">
 			<div class = "modal_coverPhoto_container">
 				<div class = "modal_loading">
@@ -225,10 +265,11 @@ $(document).ready(function() {
 					</div>
 					<div class = "modal_main">
 						<form>
+							<input type='file' name='photo_file' class='hidden_fileup_modal'>
 							<label for = "cover_name" class = "label_left">
 								Cover Photo Name
 							</label>
-							<input class = "inputBig inputPhotoName" id = "cover_name" placeholder = "Enter a name for this photo...">
+							<input type='text' name='photo_name' class = "inputBig inputPhotoName" id = "cover_name" placeholder = "Enter a name for this photo...">
 							<div class = "uploadedPhotoFrame">
 								<div class = "noPhotoText">
 									No photo uploaded
@@ -240,6 +281,7 @@ $(document).ready(function() {
 									Upload Photo
 								</button> 
 							</div>
+							<div class='uploadedPhotoPreview'></div>
 							<div class = "btmleft">
 
 								<button type=  "button" class = "cancelBtn grayBtn">
@@ -254,6 +296,10 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+
+
+
+
 		<div class = "top-bar">
 			<div class = "top-bar-wrapper">
 				<ul class = "noselect nav">
