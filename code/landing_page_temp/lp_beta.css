@@ -41,8 +41,8 @@ div.lp-main{
   background-image: url("src/noise-2.png"),     -ms-linear-gradient(top, #26AB7B, #2EB19C); /* IE10 */ 
   background-image: url("src/noise-2.png"),      -o-linear-gradient(top, #26AB7B, #2EB19C); /* Opera 11.10+ */ 
   background-image: url("src/noise-2.png"),         linear-gradient(to bottom, #09FAA3, #1DA7D3); 
-  /* position: fixed; */
-  overflow: hidden;
+  position: relative;
+  /* overflow: hidden; */
   height: 100%;
 }
 
@@ -208,14 +208,14 @@ div.main-market-area{
 
 
   left: 0px;
-    background-position: 0px 590px;
+    
+  background-position: -460px 756px;
 
-  background-position-y: 590px;
   bottom: 0px;
   width: 2000px;
   z-index: 0;
   right: 0px;
-  height: 290px;
+  height: 55%;
   top: 60px;
   background-image: url(src/nyu.JPG);
   opacity: .23;
@@ -231,7 +231,7 @@ div.main-market-area{
 .main-content-wrap{
   background: transparent;
 
-  height: 45%;
+  height: 55%;
   overflow: hidden;
   position: relative;
 }
@@ -277,7 +277,7 @@ div.grabber{  position: absolute;
     
     
 
-  left: 13%;  top: 333px;  z-index: 20;  width: 555px;}
+  left: 13%;  top: 0px;  z-index: 20;  width: 555px;}
 
 div.signup-header{
   position: absolute;
@@ -832,7 +832,7 @@ div.bottom-container{
   
     width: 100%;
     background: url(src/body_noise.png) repeat 50% 50%;
-    height: 46%;
+    height: 36%;
 }
 
 div.feature-description p{
@@ -858,6 +858,7 @@ div.text-switcher{
 }
 
 div.welcome-message{
+    display: none;
   
 }
 
@@ -901,8 +902,8 @@ div.grabber div.grabber-container{
     margin-left: 20px;
   
     margin-right: 20px;
-    padding: 10px;
-    margin-top: 50px;
+    padding: 6px;
+    margin-top: 0px;
     z-index: 10;
     border-radius: 6px;
 }

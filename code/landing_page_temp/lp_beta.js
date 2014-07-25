@@ -73,7 +73,7 @@ $(document).ready(function() {
 		$("#lgnavi_"+pcount).click();
 		//alert("a");
 	}
-	var mytimer=setInterval(function() {pinclick_trigger(); }, 7000);
+	var mytimer=setInterval(function() {pinclick_trigger(); }, 8000);
 	
 });
 

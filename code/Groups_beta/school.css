@@ -660,8 +660,11 @@ div.spec-group-header-right{
     /* overflow: hidden; */
     position: fixed;
     font-size: 20px;
+    background-color: white;
     left: 1097px;
     top: 50px;
+    padding-left: 10px;
+    width: 218px;
 }
 
 div.spec-group-header-right div.ghr-box{
@@ -777,6 +780,8 @@ div.group-head-top-sec div.group-cover-picture{
     background-position: 0px -150px;
     background-image: url(src/nyu_poly_cover.jpg);
 }
+
+/* Modal animation and CSS begins */
 
 div.modal_coverPhoto_body{
 height: auto;
@@ -900,6 +905,8 @@ transition: all .2s ease;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
+
+/*MODAL modular styling ends */
 
 input.inputBig:focus{
 outline: 0;
