@@ -29,6 +29,7 @@ div.study_box_open div span{
     font-size:14px;
     font-weight:400;
     color:#565a5c;
+    cursor:default;
 }
 
 div.study_box_open div div button{
@@ -299,7 +300,18 @@ div.group-header-left div.spec-group-title{
 div.spec-group-title a.group-id{
     color: rgba(255, 255, 255, 0.88);
 text-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px;
+font-weight:600;
 }
+
+div.spec-group-title a.group-id:hover{
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+div.spec-group-title a.group-id:active{
+    opacity:.9;
+}
+
 
 button.upload_cover i{
 background-image:url(src/add_cover_icon.png);
@@ -456,6 +468,7 @@ a.school-id em{
     height: 15px;
     position: relative;
     top: 2px;
+    margin-right: 2px;
 }
 
 span.line-divider{
