@@ -67,6 +67,28 @@ $(document).ready(function() {
 
     });
 
+    $('.group_location').mouseenter(function(){
+    	$(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
+        $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
+				$(this).closest(".group-head-top-sec").find(".location-pic-container").delay(50).css({"height":"160"});
+				$(this).closest(".group-head-top-sec").find(".location_building_pic").show();
+
+		});
+
+
+
+
+
+    });
+
+
+   	$('.group_location').mouseleave(function(){
+   		$(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
+   		$(this).closest(".group-head-top-sec").find(".location-pic-container").css({"height":"60px"});
+   		$(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
+   		$(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
+   	});
+
     $(document).delegate('.study_type_btn',"click", function(){
     	
     	if(!$(this).hasClass("pressedGraybtn")){
@@ -543,11 +565,27 @@ $(document).ready(function() {
 									<i></i>
 									<span>Submit Cover</span>
 								</button>
+								<div class = "group_location">
+									<em></em>
+									<span class = "group_location_name">
+										6 Metrotech Center, Brooklyn, NY
+									</span>
+								</div>
 								<div class = "help-div" id = "help-3">
 									<div class = "help-wedge">
 									</div>
 									<div class = "help-box">
 										Submit a photo of this school for a chance to replace its current cover photo.
+									</div>
+								</div>
+								<div class = "location-pic-div-wrap">
+									<div class = "white-wedge-up">
+									</div>
+									<div class = "location-pic-container">
+										<div class = "modal_loading3">
+											<img class = "modal_animation" src = "src/loadingAnimation.gif">
+										</div>
+										<img class = "location_building_pic" src = "src/polyMT6.jpg" class = "location-picture">
 									</div>
 								</div>
 							</div>
@@ -638,15 +676,7 @@ $(document).ready(function() {
 					</div>
 					<div class = "midsec">
 						<div class = "feed-tab-content">
-							<div class = "post_filter_container">
-								<header>NYU Polytechnic School of Engineering <strong>Feed</strong></header>
-								<span class = "filter_line_1 line-divider"></span>
-								<div class = "filter_box">
-									All Posts 
-									<em></em>
-								</div>
-								
-							</div>
+
 							<div id = "posts">
 								<div id = "123456789">
 
