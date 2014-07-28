@@ -32,6 +32,98 @@
 
 $(document).ready(function() {
 
+	$('.studybtn').mouseenter(function(){
+		$(".modal_loading2").css({"display":"none","opacity":"0"});
+		$(".js_wrap").css({"height":"auto","opacity":"1"});
+		$(".study_box_open").show();
+		setTimeout(
+			function(){
+      		 $(".study_box_open").css({"top":"3px","height":"18px","opacity": "1"});
+      		 setTimeout(
+			function(){
+				$(".study_box_open").css({"height":"150px"});
+			},
+			350)
+      		},
+      		450)
+
+
+    });
+
+
+
+    $('.study_box_open').mouseleave(function(){
+    	
+        setTimeout(
+            function(){
+               $(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"},
+               	function(){
+					$(".study_box_open").hide();
+               	});
+            }, 
+            350)
+
+
+
+    });
+
+    $(document).delegate('.study_type_btn',"click", function(){
+    	
+    	if(!$(this).hasClass("pressedGraybtn")){
+    		$(".pressedGraybtn").find(".check").animate({left:0,opacity:0},150, function(){
+    				$(this).find(".check").delay(400).hide();
+    		});
+    		$(".pressedGraybtn").removeClass("pressedGraybtn");
+    		$(this).prepend("<em class = 'check'></em>");
+    		$(this).find(".check").animate({left:16,opacity:1},200, function(){
+    			$(this).closest(".js_wrap").delay(250).animate({height:0,opacity:0},300);
+    			$(".modal_loading2").show();
+    			$(".modal_loading2").delay(500).animate({opacity:1},100, function(){
+    				setTimeout(
+    					function(){
+    						$(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"});
+
+    					},
+    					200)
+    				
+    			});
+    			
+
+    		});
+
+
+
+    		$(this).addClass("pressedGraybtn");
+
+
+			if($(this).hasClass("majorType")){
+    			$(".studybtn").text("My Major");
+    		}
+    		if($(this).hasClass("minorType")){
+    			$(".studybtn").text("My Minor");
+    		}
+    		if($(this).hasClass("interestType")){
+    			$(".studybtn").text("My Interest");
+    		}
+
+
+    	}
+
+
+
+
+    	else{
+    		$(this).find(".check").animate({left:0,opacity:0},150, function(){
+    			$(this).find(".check").delay(400).hide();
+    		});
+    		$(this).removeClass("pressedGraybtn");
+    		$(".studybtn").text("Concentrate");
+    		
+    	}
+    	
+    });
+
+
 	$(document).delegate('.group-cover-pic-info',"click", function(){
 		$('body,html').animate({
 				scrollTop: 0
@@ -110,6 +202,18 @@ $(document).ready(function() {
 	 });
 
 
+	$(document).delegate(".followBtn","click",function(){
+		if(!$(this).hasClass("unfollowBtn")){
+			$(".study_box_open").css("left","112px");
+			$(this).html("<em class = 'unfollow-icon'></em>Unfollow");
+			$(this).addClass("unfollowBtn");
+		}
+		else{
+			$(".study_box_open").css("left","88px");
+			$(this).html("<em></em>Folow");
+			$(this).removeClass("unfollowBtn");
+		}
+	});
 
 
 	$(document).delegate(".tab-inactive","click",function(){
@@ -472,9 +576,7 @@ $(document).ready(function() {
 							</div>	
 													
 						</div>
-						<div class = "spec-group-header-right">
-							<div>The Next Event</div>
-						</div>
+
 						<div class = "group-head-footer">
 							<div class = "group-header-tab">
 								<ul class = "group-nav">
@@ -907,44 +1009,36 @@ $(document).ready(function() {
 	                                            </div>
 	                                            <div class = "deptBtns">
 	                                            	<button class = "followBtn">
+	                                            		<em></em>
 	                                            		Follow
 	                                            	</button>
-	                                            	<button class = "focusbtn">
+
+	                                            	<button class = "studybtn">
+	                                            		Concentrate
 	                                            	</button>
+
+	                                            	
+	                                            	
+	                                            	<div class = "study_box_open">
+	                                            		<div class = "js_wrap">
+															<span>I am...</span>
+															<div class = "study_first_option">
+
+																<button class = "majorType study_type_btn" type = "button">Majoring in this subject</button>
+																<button class = "minorType study_type_btn" type = "button">Minoring in this subject</button>
+																<button class = "interestType study_type_btn" type = "button">Interested in this subject</button>
+															</div>
+														</div>
+														<div class = "modal_loading2">
+															<img class = "modal_animation" src = "src/loadingAnimation.gif">
+														</div>
+													</div>
 	                                            </div>
 	                                        </div>
 	                                    </a>
 	                                </div>
 	                            </div>
-	                            <div class = "item department department-selector">
-	                                <div class = "department ajax">
-	                                    <a class = "departmentSelectWrapper">
-	                                        <div class = "name">
-	                                           	Neuroscience
-	                                        </div>
-	                                      
 
-	                                        <div class = "imageWrapper">
-	                                            <span class = "hoverMask">
-	                                            </span>
-	                                            <div class = "deptImage deptImage-dos">
-	                                                <img class = "coverBig deptImg" src = "src/Neuroscience.jpg">
-	                                                <div class = "blackData">
-	                                                	<span class = "group_members">
-	                                                		<em class = "members-icon"></em>
-	                                                		<span>250</span>
-
-	                                                	</span>
-	                                                </div>
-	                                                <div class = "dept-short-wrapper">	<div class = "subject-color">
-	                                                		<span>BNS</span>
-	                                                	</div>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </a>
-	                                </div>
-	                            </div>
 	                            
 							</div>
 						</div>

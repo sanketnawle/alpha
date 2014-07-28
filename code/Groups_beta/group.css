@@ -7,7 +7,7 @@ top: 47px;
 	position: relative;
 	padding-left: 318px;
 	margin: 0 auto;
-	margin-bottom:70px;
+	margin-bottom:200px;
 }
 
 button.disabled,a.disabled{
@@ -27,6 +27,8 @@ div.group-head-sec div.group-head-top-sec{
     bottom: 48px;
     right: 0px;
 }
+
+
 
 div.group-head-sec div.group-head-top-sec div.group-head-top-sec-shadow {
 background: -webkit-gradient(linear, center top, center bottom, from(transparent), to(rgba(0, 0, 0, .7)));
