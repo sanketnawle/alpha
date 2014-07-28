@@ -22,16 +22,12 @@ body{
 	position:fixed;
 	left:0;
 	right:0;
+	-moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+	-webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+	box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
 	height: 47px;
-	border-bottom: none;
+	border-bottom: 1px solid black;
 	background-color: #27292B;
-	background-image: url(src/noise-1.png),-webkit-gradient(linear,left top,left bottom,from(#27292B),to(#121314));
-	background-image: url(src/noise-1.png),-webkit-linear-gradient(top,#27292B,#121314);
-	background-image: url(src/noise-1.png),-moz-linear-gradient(top,#27292B,#121314);
-	background-image: url(src/noise-1.png),-o-linear-gradient(top,#27292B,#121314);
-	background-image: url(src/noise-1.png),-ms-linear-gradient(top,#27292B,#121314);
-	background-image: url(src/noise-1.png),linear-gradient(top,#27292B,#121314);
-	background-position: 50% 50%;
 	z-index: 6000;
 }
 
