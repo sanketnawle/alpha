@@ -796,7 +796,7 @@ div.group-title div.group-name{
 	font-family: 'Avenir','Helvetica Neue','Helvetica','Arial',sans-serif;
 }
 
-div.group-title a.group-id{
+div.group-title a.group-id,div.group-title span.group-id{
 	display: inline;
 font-size: 12px;
 font-weight: 400;

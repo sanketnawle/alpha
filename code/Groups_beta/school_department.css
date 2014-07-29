@@ -1,3 +1,25 @@
+
+div.study_box_open{
+    width: 205px;
+    opacity: 0;
+    transition: width 350ms cubic-bezier(0.23, 0.5, 0.32, 1), height 350ms cubic-bezier(0.23, 0.5, 0.32, 1), left 350ms cubic-bezier(0.23, 0.5, 0.32, 1), top 350ms cubic-bezier(0.23, 0.5, 0.32, 1), opacity 350ms cubic-bezier(0.23, 0.5, 0.32, 1);
+    -webkit-transition: width 350ms cubic-bezier(0.23, 0.5, 0.32, 1), height 350ms cubic-bezier(0.23, 0.5, 0.32, 1), left 350ms cubic-bezier(0.23, 0.5, 0.32, 1), top 350ms cubic-bezier(0.23, 0.5, 0.32, 1), opacity 350ms cubic-bezier(0.23, 0.5, 0.32, 1);
+    border-radius: 3px;
+    position: absolute;
+    background-color:white;
+    height:0px;
+    overflow: hidden;
+    z-index:2000;
+    left: 96px;
+    display:none;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;
+    top:3px;
+    padding:10px 8px 5px 8px;
+    border: 1px solid rgb(170, 170, 170);
+    font-size:12.5px;
+}
+
 body{
     background:#eee;
     -webkit-font-smoothing: antialiased; 
@@ -501,15 +523,16 @@ span.filter_line_2{
     
 }
 
-div.departments-tab-content{
+div.departments-tab-content,div.courses-tab-content{
     min-height: 300px;
 
     padding-left: 2px;
     padding-right: 2px;
     padding-top: 8px;
+    display:none;
 }
 
-div.departmentsCards{
+div.departmentsCards,div.coursesCards{
     
 }
 
@@ -533,11 +556,11 @@ position: relative;
 margin: 28px 7px 0 7px;
 }
 
-div.card-wrapper div.department{
+div.card-wrapper div.department,div.card-wrapper div.courses{
 
 }
 
-div.item div.department{
+div.item div.department, div.item div.courses{
 border-radius: 6px;
 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 background: #fff;
@@ -550,11 +573,11 @@ float: left;
 height: 260px;
 }
 
-div.item div.department:nth-of-type(2n){
+div.item div.department:nth-of-type(2n),div.item div.courses:nth-of-type(2n){
 margin-left:20px;
 }
 
-a.departmentSelectWrapper{
+a.departmentSelectWrapper,a.coursesSelectWrapper{
 
 }
 
@@ -611,7 +634,7 @@ top: 35px;
 z-index: 100;
 }
 
-div.deptImage{
+div.deptImage,div.coursesImage{
 height: 185px;
 border-radius: 6px;
 width: 296px;
@@ -619,17 +642,17 @@ position: relative;
 float: left;
 }
 
-img.deptImg{
+img.deptImg,img.coursesImg{
  width: 296px;
 height: 100%;   
  border-radius: 5px;
 }
 
-div.deptImage .coverBig{
+div.deptImage .coverBig,div.coursesImage .coverBig{
     float:left;
 }
 
-div.dept-short-wrapper{
+div.dept-short-wrapper,div.courses-short-wrapper{
 position:absolute;
 display: block; position: absolute; background-color: #F8F8F8; 
 width: 64px; 
@@ -640,11 +663,11 @@ border-radius: 4px;
 height: 64px; -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5); -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5); box-shadow: 0 1px 5px rgba(0,0,0,.5); cursor: pointer;
 }
 
-div.dept-short-wrapper:hover{
+div.dept-short-wrapper:hover,div.courses-short-wrapper:hover{
 opacity:.9!important;
 }
 
-div.dept-short-wrapper:active{
+div.dept-short-wrapper:active,div.courses-short-wrapper:active{
 opacity:.75!important;
 }
 
@@ -661,7 +684,7 @@ div.blackData{
 transition: opacity .1s ease;
 }
 
-div.dept-short-wrapper div{
+div.dept-short-wrapper div,div.courses-short-wrapper div{
     background: #B176F0; border-radius: 3px; 
     height: 60px; color: #FFF; 
     width: 60px; position: relative; top: 2px; 
@@ -669,11 +692,11 @@ div.dept-short-wrapper div{
     
 }
 
-div.dept-short-wrapper div.subject-color{
+div.dept-short-wrapper div.subject-color,div.courses-short-wrapper div.subject-color{
     background: #fd702d;
 
 }
-div.dept-short-wrapper div span{
+div.dept-short-wrapper div span,div.courses-short-wrapper div span{
     font-size: 26px; 
     float: right;   
     font-weight: 200;
@@ -690,16 +713,16 @@ div.dept-short-wrapper div span{
 div.department-selector:active > div a div.name{
 }
 
-div.department-selector:hover > div a div.imageWrapper div.deptImage{
+div.department-selector:hover > div a div.imageWrapper div.deptImage,div.courses-selector:hover > div a div.imageWrapper div.coursesImage{
     opacity: 1;
 }
 
-div.department-selector:active > div a div.imageWrapper div.deptImage{
+div.department-selector:active > div a div.imageWrapper div.deptImage,div.courses-selector:active > div a div.imageWrapper div.coursesImage{
     opacity: 1;
 }
 
 
-div.departmentsTabTop{
+div.departmentsTabTop,div.coursesTabTop{
     color: #151515;
 font-size: 21px;
 margin: 0 auto;
@@ -930,7 +953,7 @@ position: relative;
 background-size: cover;    
 }
 
-div.deptBtns{
+div.deptBtns,div.coursesBtns{
 position: absolute;
 bottom: 7px;
 height: 36px;
@@ -996,7 +1019,7 @@ border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2;  bac
 }
 
 
-div.department-selector:hover div a div div div.blackData{
+div.department-selector:hover div a div div div.blackData,div.courses-selector:hover div a div div div.blackData{
     opacity:1;
     bottom: 152px;
 }
@@ -1138,6 +1161,147 @@ cursor: pointer; color: #666; font-weight: bold; vertical-align: middle;
 font-weight: 600;
 padding: 12px 12px;
 }
+
+div.filter-wrapper{
+    height: 46px;
+
+    width: 687px;
+}
+
+div.cross{
+
+    display: block;
+    margin: 0;
+    padding: 0;
+    
+
+    z-index: 1;
+
+    position: relative;
+}
+
+div.filter-wrapper div.uiToggle{
+    float: left;
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+}
+
+
+
+div.uiToggle a.filterselectorBtn{
+    border-radius: 4px;             
+ -webkit-border-radius: 4px; border: 1px solid #B1B2B3; 
+    background: #F8F8F8; color: #929394; background-position: right -5px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    background-position: right -5px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1); max-width: 169px;
+    height: 26px;
+    cursor:pointer;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    -moz-transition: opacity .1s ease, width .1s ease;
+-webkit-transition: opacity .1s ease, width .1s ease;
+transition: opacity .1s ease, width .1s ease;
+    font-size: 13px;
+    width: 80px;
+    line-height: 26px;
+    padding-left: 8px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+div.openToggle a.filterselectorBtn{
+    background: rgb(82, 224, 168);
+    color: white;
+    border-radius: 4px 4px 0px 0px;
+    border: 1px solid rgb(46, 184, 156);
+}
+
+div.openToggle a.filterselectorBtn em{
+    background-image:url(src/down_arrow_sharp_g.png);
+}
+
+div.uiToggle div.uiSelectorMenuWrapper{
+    position: absolute;
+    display:none;
+    width: 150px;
+}
+
+div.openToggle div.uiSelectorMenuWrapper{
+    display:block;
+}
+
+div.uiSelectorMenuWrapper div.uiMenu{
+    border: 1px solid #585858; 
+    border-bottom: 2px solid #272C2B; background-color: #fff; padding: 3px 0 4px; overflow-y: auto;
+
+}
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner{
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner li.menuItem{
+
+white-space: nowrap;
+}
+
+
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner li.menuItem a{
+    font-size: 12px;
+
+    border: 1px solid #fff; border-width: 1px 0; color: #111; display: block; font-weight: normal; line-height: 16px; padding: 2px 16px 2px 22px; text-decoration: none;
+}
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner li.menuItem a:hover{
+
+background: #3c4246;
+border-color: rgb(19, 19, 19);
+font-weight:600;
+color: #FFF;
+cursor:pointer;
+text-decoration: none;
+}
+
+li.menuItem a span em{
+    display:none;
+    background: url(src/checkmarks.png) left 4px no-repeat;
+}
+
+li.menuItemActive a span em{
+    display:inline-block;
+    background-image: url(src/checkmarks.png);
+    width: 22px;
+    background-position: 0px 2px;
+    height: 22px;
+    left: 2px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+li.menuItemActive a:hover > span em{
+    display:inline-block;
+    background-image: url(src/checkmarks.png);
+    background-position: 0px -57px;
+}
+
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner li.menuItem a span{
+max-width: 300px;
+text-overflow: ellipsis;
+white-space: nowrap;
+display:block;
+}
+
+div.uiSelectorMenuWrapper div.uiMenu ul.MenuInner li.menuItem a:hover{
+
+    }
+
+
 
 div.modal_main form input.inputBig {
 border: 1px solid #d7d7d7;
@@ -1284,6 +1448,24 @@ border-bottom-color: #B9B9B9;
 -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
 }
+
+a.filterselectorBtn em{
+    background-image:url(src/down_arrow_sharp.png);
+    background-size:cover;
+    display:inline-block;
+    width: 13px;
+    margin-bottom: 1px;
+    height: 7px;
+    margin-left: 4px;
+    background-repeat:no-repeat;
+}
+
+div.uiToggle a.filterselectorBtn:active{
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);  
+}
+
 
 div.btmleft button.blueBtn{
     background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); 

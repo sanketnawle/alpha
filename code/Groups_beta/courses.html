@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="backgroundGroup.css">
 <link rel = "stylesheet" type = "text/css" href = "feedGroup.css"> 
 <link rel = "stylesheet" type = "text/css" href = "group.css"> 
+<link rel = "stylesheet" type = "text/css" href = "courses.css"> 
 <link rel = "stylesheet" type = "text/css" href = "school_department.css"> 
 
 <link rel = "stylesheet" type = "text/css" href = "leftmenu.css"><link rel="stylesheet" type="text/css" href="planner.css">
@@ -286,8 +287,8 @@ $(document).ready(function() {
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
             }
 
-            $(this).find(".tab-title").find(".tab-icon").removeClass("tab2-icon-inactive");
-            $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
             $(".tab-wedge-down").css("left","460px");
@@ -350,17 +351,57 @@ $(document).ready(function() {
             
             
         }
+
+        if($(this).hasClass("tabFeed")){
+            
+            
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
+            }
+
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tab1-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","310px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+
+            
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".files-tab-content").stop().animate({ opacity: "0"},300);
+            $(".files-tab-content").hide()
+            $(".members-tab-content").stop().animate({ opacity: "0"},300);
+            $(".members-tab-content").hide();
+            $(".courses-tab-content").stop().animate({ opacity: "0"},300);
+            $(".courses-tab-content").hide();
+            $(".departments-tab-content").stop().animate({ opacity: "0"},300);
+            $(".departments-tab-content").hide();
+            $(".feed-tab-content").show();
+            $(".feed-tab-content").animate({ opacity: "1"},300);
+            
+        }       
     });
 
 
 
 
 });
-$(document).ready(function() {
 
-       window.scroll(0,175); 
-
-});
 </script>
 </head>
 <body>
@@ -526,47 +567,12 @@ $(document).ready(function() {
             </div>
             <div class = "main-mid-sec">
 
-                <div class = "mid_right_sec mid_right_sec_school">
+                <div class = "mid_right_sec">
                     <div class = "group-head-sec">
                         <div class = "group-head-top-sec">
-                            <div class = "group-head-top-sec-shadow">
-                            </div>
-                            <div class = "info-scroll-up info-shower">
-                                <div class = "group-cover-pic-info">
-                                    <b>Neural Transmission in the Hippocampus</b>
-                                    <em class = "em_hide"></em>
-                                </div>
-                                <button class = "upload_cover">
-                                    <i></i>
-                                    <span>Update Cover</span>
-                                </button>
-                                <div class = "group_location">
-                                    <em></em>
-                                    <span class = "group_location_name">
-                                        Silver Building, Floor 7
-                                    </span>
-                                </div>
-                                <div class = "help-div" id = "help-3">
-                                    <div class = "help-wedge">
-                                    </div>
-                                    <div class = "help-box">
-                                        Submit a photo of this school for a chance to replace its current cover photo.
-                                    </div>
-                                </div>
-                                <div class = "location-pic-div-wrap">
-                                    <div class = "white-wedge-up">
-                                    </div>
-                                    <div class = "location-pic-container">
-                                        <div class = "modal_loading3">
-                                            <img class = "modal_animation" src = "src/loadingAnimation.gif">
-                                        </div>
-                                        <img class = "location_building_pic" src = "src/silvercenter.jpg" class = "location-picture">
-                                    </div>
-                                </div>
-                            </div>
+
                             
-                            <div class = "group-cover-picture" style = "background-image:url(src/neuroCover.jpg)">
-                            </div>
+
                         </div>
                         <div class = "group-pic-frame">
                             <div style = "background:no-repeat url(src/neuroProf.jpg)" class = "group-pic">
@@ -575,17 +581,14 @@ $(document).ready(function() {
                         <div class = "group-header-left group-header-above">
 
                             
-                            <div class = "group-title spec-group-title">
-                                <div class = "group-name group-name-mt">
-                                    Neuroscience
+                            <div class = "group-title">
+                                <div class = "group-name">
+                                    Principles of Neurobiology
                                 </div>
-                                <a class = "group-id school-id">
-                                    <em></em>
-                                    NYU Polytechnic School of Engineering
-                                </a>
-                                <a class = "link_website_white">
-                                    <span>Visit this Department's web site</span>
-                                </a>
+                                <span class = "group-id">
+                                    NSC 201
+                                </span>
+
                             </div>  
                                                     
                         </div>
@@ -596,59 +599,53 @@ $(document).ready(function() {
                                     <li class = "group-tab">
                                         <a class = "tab1 tabFeed tab-anchor group-tab-active">
                                             <div class = "tab-title">
-                                                DEPARTMENT FEED
+                                                COURSE FEED
                                                 <span class = "tab-icon tab1-icon-active"></span>
                                             </div>
 
                                         </a>
                                     </li>
+                                    
                                     <li class = "group-tab">
                                         <a class = "tabCourse tab-anchor tab-inactive">
                                             <div class = "tab-title">
-                                                COURSES
+                                                OPEN CLASSES
+                                                <span class = "tab-icon tabClasses-icon-inactive"></span>
+                                            </div>
+                                            <div class = "status tab-number">
+                                                <span class = "badge">
+                                                    5
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>    
+                                    <li class = "group-tab">
+                                        <a class = "tabCourse tab-anchor-last tab-anchor tab-inactive">
+                                            <div class = "tab-title">
+                                                ABOUT
                                                 <span class = "tab-icon tab2-icon-inactive"></span>
                                             </div>
                                             <div class = "status tab-number">
                                                 <span class = "badge">
-                                                    84
+                                                    5
                                                 </span>
                                             </div>
                                         </a>
-                                    </li>
-                                    <li class = "group-tab">
-                                        <a class = "tabmembers tab-anchor tab-inactive">
-                                            <div class = "tab-title">
-                                                MEMBERS
-                                                <span class = "tab-icon tab3-icon-inactive"></span>
-                                            </div>
-                                            <div class = "status tab-number">
-                                                <span class = "badge">
-                                                    22
-                                                </span>
-                                            </div>
-                                        </a>                        
-                                    </li>   
-                                    <li class = "tab-no-badge group-tab">
-                                        <a class = "tabc tabevents tab-anchor tab-inactive">
-                                            <div class = "tab-title">
-                                                EVENTS
-                                                <span class = "tab-icon tabc-icon-inactive"></span>
-                                            </div>
-                                        </a>
-                                    </li>                           
+                                    </li> 
+                                                        
                                 </ul>
                             </div>
                             <div class = "group-footer-functions">
 
                                 <div class = "join-button">
                                     <a class = "join disabled">
-                                        Member
+                                        Follow
                                     </a>
                                     <div class = "help-div" id = "help-4">
                                         <div class = "help-wedge">
                                         </div>
                                         <div class = "help-box">
-                                            You are a member of this school. Go to your profile page to change which school you are a part of. 
+                                            Follow this course to receive updates on the events and discussions its members are having. 
                                         </div>
                                     </div>
                                 </div>

@@ -1,0 +1,25 @@
+.mid_right_sec .midsec {
+	background: #DADBDD;
+}
+
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor-last{
+border-right: 1px solid #e9eaed;
+}
+
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabClasses-icon-inactive{
+	background-image: url(src/class_icon.png);
+	top:0px;
+	height:14px;
+	width:19px;
+}
+
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabClasses-icon-active{
+	background-image: url(src/class_icon_hover.png);
+	top:0px;
+	height:14px;
+	width:19px;
+}
+
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tabClasses-icon-inactive{
+	background-image: url(src/class_icon_hover.png);
+}
