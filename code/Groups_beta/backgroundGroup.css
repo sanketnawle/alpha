@@ -137,7 +137,7 @@ position:relative;
 height:auto;
 padding-top:10px;
 padding-bottom:20px;
-min-height:1px;
+min-height:1000px;
 background: #EBECEE url(src/noise-2.png);
 padding-left: 9px; 
 padding-right: 9px;

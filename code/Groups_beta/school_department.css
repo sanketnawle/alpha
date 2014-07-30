@@ -1456,6 +1456,7 @@ a.filterselectorBtn em{
     width: 13px;
     margin-bottom: 1px;
     height: 7px;
+    pointer-events:none;
     margin-left: 4px;
     background-repeat:no-repeat;
 }
@@ -1517,6 +1518,6 @@ div.btmleft button.blueBtn:active{
 /*frame cover photo overflow taking care*/
 div.group-head-sec div.group-head-top-sec
 {
-    overflow: hidden;
+    overflow:hidden;
 }
 /*frame cover photo overflow taking care end*/

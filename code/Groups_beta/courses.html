@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+﻿<!DOCTYPE html> 
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -90,6 +90,31 @@ $(document).ready(function() {
         $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
 
+    /*jQuery for showing more or less classes, and movement of related about div */
+
+    $(document).delegate(".moreClasses","click", function(){
+
+            if(!$(this).hasClass("lessClasses")){
+                $(this).addClass("lessClasses");
+                $(".hidden").show();
+                $(this).find("span").text("Hide 3 Classes");
+                $(".moreClassesIcon").addClass("lessClassesIcon");
+                $(".feed-tab-rightsec").css("margin-top","182px");
+
+            }
+            else{
+                $(this).removeClass("lessClasses");
+                $(".hidden").hide();
+                $(this).find("span").text("3 More Classes");
+                $(".moreClassesIcon").removeClass("lessClassesIcon");
+                $(".feed-tab-rightsec").css("margin-top","0px");
+            }            
+
+
+
+
+    });
+
     $(document).delegate('.study_type_btn',"click", function(){
         
         if(!$(this).hasClass("pressedGraybtn")){
@@ -145,49 +170,70 @@ $(document).ready(function() {
         }
         
     });
-
-
-    $(document).delegate('.group-cover-pic-info',"click", function(){
-        $('body,html').animate({
-                scrollTop: 0
-            }, 200);
-    });
-
     $(window).scroll(function() {
-        var y=$(window).scrollTop()*0.32;
-        var x=$(window).scrollTop()*1;
-        //alert(y);
-        $(".group-cover-picture").css({"transform":"translateY("+y+"px)"});
-        $(".spec-group-header-right").css({"height":y+"px"});
+        if($(".tabFeed").hasClass("group-tab-active")){
+            if($(window).scrollTop()>203){
+                $(".uiHeaderFx").css({"border-bottom-color":"transparent","background-image":"none"});
 
-        if($(window).scrollTop()>=5){
-            $(".info-scroll-up").css("cursor","pointer");
-            $(".em_hide").css({
-                "width":"12px",
-                "opacity":"1"
-            });
+            }
+            else{
+                $(".uiHeaderFx").css({
+                            "border-bottom-color":"#e9eaed",
+                            "background-image": "-moz-linear-gradient(45deg,#F7F7F7,#F0F0F0)",
+                            "background-image": "-webkit-linear-gradient(45deg,#F7F7F7,#F0F0F0)",
+                            "background-image": "linear-gradient(45deg,#F7F7F7,#F0F0F0)"
+                    });
+            }
         }
-        else{
-            $(".info-scroll-up").css("cursor","default");
-            $(".em_hide").css({
-                "width":"0",
-                "opacity":"0"
-            });
-        }
-
 
     });
-
     $(window).scroll(function() {
 
-        if($(window).scrollTop()>175){
-            $(".info-scroll-up").css({"position":"absolute","top":"175px"});
-            $(".spec-group-header-right").css({"position":"absolute","top":"177px","left":"777px"})
+        if($(".tabFeed").hasClass("group-tab-active")){
+            if($(".moreClasses").hasClass("lessClasses")){
+                if($(window).scrollTop()>35){
+                    $(".feed-tab-rightsec").css({"position":"fixed","margin-top":"192px"});
+                    $(".classesExpandUI").css({"border-radius":"4px","position":"fixed","top":"58px","left":"1028px",
+                        "-webkit-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "-moz-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "box-shadow": "0px 1px 2px rgba(0,0,0,0.2)"
+                    });
+                    
+                }
+                else{
+                    $(".feed-tab-rightsec").css({"position":"relative","margin-top":"184px"});
+                    $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                        "-webkit-box-shadow": "none",
+                        "-moz-box-shadow": "none",
+                        "box-shadow": "none"
+                    });
+                    
+                }
+            }
+            else{
+                if($(window).scrollTop()>35){
+                    $(".feed-tab-rightsec").css({"position":"fixed","margin-top":"10px"});
+                    $(".classesExpandUI").css({"border-radius":"4px","position":"fixed","top":"58px","left":"1028px",
+                        "-webkit-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "-moz-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "box-shadow": "0px 1px 2px rgba(0,0,0,0.2)"
+                    });
+                    
+                }
+                else{
+                    $(".feed-tab-rightsec").css({"position":"relative","margin-top":"0px"});
+                    $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                        "-webkit-box-shadow": "none",
+                        "-moz-box-shadow": "none",
+                        "box-shadow": "none"
+                    });
+                    
+                }
+            }
+
         }
-        else{
-            $(".info-scroll-up").css({"position":"fixed","top":"50px"});
-            $(".spec-group-header-right").css({"position":"fixed","top":"50px","left":"1097px"});
-        }
+
+        
 
     });
 
@@ -230,6 +276,8 @@ $(document).ready(function() {
 
 
 
+
+
     $('.upload_cover').click(function(){
         $(".modal_loading").show();
         $(".modal_loading").css("opacity","1");
@@ -256,26 +304,55 @@ $(document).ready(function() {
     $(document).delegate(".followBtn","click",function(){
         if(!$(this).hasClass("unfollowBtn")){
             $(".study_box_open").css("left","112px");
-            $(this).html("<em class = 'unfollow-icon'></em>Unfollow");
+            $(this).html("<em class = 'unfollow-icon'></em>Unfollow this Course");
             $(this).addClass("unfollowBtn");
         }
         else{
             $(".study_box_open").css("left","88px");
-            $(this).html("<em></em>Folow");
+            $(this).html("<em></em>Folow this Course");
             $(this).removeClass("unfollowBtn");
         }
     });
 
+    $(document).delegate(".joinBtn","click",function(){
+        if(!$(this).hasClass("joinedBtn")){
+            $(this).html("<img class = 'modal_animation' src = 'src/loadingAnimation.gif'>");
+            $(this).delay(600).queue(function(n){
+                $(this).html("Leave");
+                $(this).addClass("joinedBtn"); n();
+            });
+            
+            
+        }
+        else{
+             $(this).removeClass("joinedBtn");
+             $(this).text("Join");
+        }
+    });
+
+
+
+    /* THIS IS the navigational javascript for the courses page */
 
     $(document).delegate(".tab-inactive","click",function(){
-        if($(this).hasClass("tabCourse")){
-            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
-                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
-                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
-            }
+        if ($(this).hasClass("tabCourse")) {
+            $(".feed-tab-rightsec").css("margin-top","0px");
+            $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                    "-webkit-box-shadow": "none",
+                    "-moz-box-shadow": "none",
+                    "box-shadow": "none"
+            });
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab1-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabAbout-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-inactive");
+            }
+            if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")) {
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
             }
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
@@ -286,6 +363,8 @@ $(document).ready(function() {
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
             }
+            //$(this).find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-inactive");
+            //$(this).find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-active");
 
             $(this).find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-inactive");
             $(this).find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-active");
@@ -307,14 +386,21 @@ $(document).ready(function() {
             $(".courses-tab-content").animate({ opacity: "1"},300);
             $(".courses-tab-content").show();
         }
-        if($(this).hasClass("tabmembers")){
-            
+        if($(this).hasClass("tabAbout")){
+            $(".feed-tab-rightsec").css("margin-top","0px");
+
+            $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                    "-webkit-box-shadow": "none",
+                    "-moz-box-shadow": "none",
+                    "box-shadow": "none"
+            });
             
             
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
             }
+
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
@@ -323,8 +409,14 @@ $(document).ready(function() {
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
             }
-            $(this).find(".tab-title").find(".tab-icon").removeClass("tab3-icon-inactive");
-            $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabClasses-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-inactive");
+            }
+
+
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
             $(".tab-wedge-down").css("left","591px");
@@ -353,6 +445,7 @@ $(document).ready(function() {
         }
 
         if($(this).hasClass("tabFeed")){
+
             
             
             
@@ -360,6 +453,22 @@ $(document).ready(function() {
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
             }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabAbout-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabClasses-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-inactive");
+            }
+
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
@@ -567,10 +676,86 @@ $(document).ready(function() {
             </div>
             <div class = "main-mid-sec">
 
-                <div class = "mid_right_sec">
+                <div class = "mid_right_sec mid_right_sec_course">
                     <div class = "group-head-sec">
                         <div class = "group-head-top-sec">
+                            
+                            <div class = "classesExpandUI">
+                                <div class = "uiHeader uiHeaderFx">
+                                    5 Classes this Semester
+                                </div>
+                                <div class="uiListWrapper">
+                                    <ul class = "uiList classList">
+                                        <li class = "classLi">
 
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">M 9:00am, Th 10:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                                <span class = "midline-dot">
+                                                    &#183;
+                                                </span>
+                                                 <span class = "classInfo classCode">NSC201A</span>
+                                            </div>
+
+                                            <div class ="rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+
+                                        </li>
+                                        <li class = "classLi">
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                            </div>
+                                            <div class = "rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+                                        </li>
+                                        <li class = "classLi hidden">
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                            </div>
+                                            <div class = "rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+                                        </li>
+                                        <li class = "classLi hidden">
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                            </div>
+                                            <div class = "rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+                                        </li>
+                                        <li class = "classLi hidden">
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                            </div>
+                                            <div class = "rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+                                        </li>
+
+
+                                    </ul>
+                                    <div class = "uiBtm moreClasses">
+                                        <span>3 More Classes</span><em class = "moreClassesIcon"></em>
+                                    </div>
+                                </div>
+                            </div>
                             
 
                         </div>
@@ -581,15 +766,27 @@ $(document).ready(function() {
                         <div class = "group-header-left group-header-above">
 
                             
-                            <div class = "group-title">
+                            <div class = "group-title course-group-title">
                                 <div class = "group-name">
                                     Principles of Neurobiology
                                 </div>
                                 <span class = "group-id">
                                     NSC 201
                                 </span>
+                                <br>
+                                <div class= "btnWrap">
+                                    <button class = "followBtn">
+                                        <em></em>
+                                        Follow this Course
+                                    </button>
+                                </div>
+                                <div class= "courseDepartment">
+                                    <a><span>Neuroscience Department</span></a>
+                                </div>
 
+                                                    
                             </div>  
+
                                                     
                         </div>
 
@@ -597,7 +794,7 @@ $(document).ready(function() {
                             <div class = "group-header-tab">
                                 <ul class = "group-nav">
                                     <li class = "group-tab">
-                                        <a class = "tab1 tabFeed tab-anchor group-tab-active">
+                                        <a class = "tabFeed tab-anchor group-tab-active">
                                             <div class = "tab-title">
                                                 COURSE FEED
                                                 <span class = "tab-icon tab1-icon-active"></span>
@@ -620,10 +817,10 @@ $(document).ready(function() {
                                         </a>
                                     </li>    
                                     <li class = "group-tab">
-                                        <a class = "tabCourse tab-anchor-last tab-anchor tab-inactive">
+                                        <a class = "tabAbout tab-anchor-last tab-anchor tab-inactive">
                                             <div class = "tab-title">
                                                 ABOUT
-                                                <span class = "tab-icon tab2-icon-inactive"></span>
+                                                <span class = "tab-icon tabAbout-icon-inactive"></span>
                                             </div>
                                             <div class = "status tab-number">
                                                 <span class = "badge">
@@ -635,22 +832,7 @@ $(document).ready(function() {
                                                         
                                 </ul>
                             </div>
-                            <div class = "group-footer-functions">
 
-                                <div class = "join-button">
-                                    <a class = "join disabled">
-                                        Follow
-                                    </a>
-                                    <div class = "help-div" id = "help-4">
-                                        <div class = "help-wedge">
-                                        </div>
-                                        <div class = "help-box">
-                                            Follow this course to receive updates on the events and discussions its members are having. 
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                         <div class = "tab-wedge-down">
                         </div>
@@ -870,7 +1052,7 @@ $(document).ready(function() {
                                             <i class = "plusIcon"></i>
                                             <div class = "invite-input-wrap">
                                                 <div class = "innerWrap">
-                                                    <input type = "text" class = "inputText inviteInput" name = "Invite form" placeholder = "Invite people to join this school">
+                                                    <input type = "text" class = "inputText inviteInput" name = "Invite form" placeholder = "Share this course with someone">
                                                     <div class = "search-icon" title = "Search people">
                                                     </div>
                                                 </div>
