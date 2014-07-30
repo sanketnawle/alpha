@@ -275,7 +275,7 @@ position:relative;
 
 .classList li .rightFloat{
     position: absolute;
-    right: -2px;
+    right: 1px;
     top: 50%;
     margin-top: -13px;
     height: 26px;
@@ -293,7 +293,7 @@ position:relative;
     font-size: 11.5px;  width: auto; 
     cursor:pointer;
     border-radius: 4px;
-    padding: 0px 6px;
+    width: 62px;
     font-weight: 600; 
     height: 26px;
     color: rgba(0, 0, 0, 0.62);
@@ -330,7 +330,7 @@ div.uiBtm{
 }
 
 div.moreClasses{
-    width: 115px;
+    width: 120px;
     cursor:pointer;
     margin: 0 auto;
 }
@@ -350,20 +350,18 @@ div.moreClasses span{
 }
 
 div.moreClasses em{
-background-image: url(src/down_arrow_sharp.png);
+background-image: url(src/right_arrow_sharp.png);
 background-size: cover;
 display: inline-block;
-width: 13px;
-margin-bottom: 1px;
-height: 7px;
+width: 7px;
+margin-bottom: -1px;
+height: 11px;
 margin-left: 4px;
 pointer-events: none;
 background-repeat: no-repeat;
 }
 
-div.moreClasses em.lessClassesIcon{
-background-image: url(src/up_arrow_sharp.png);	
-}
+
 
 li.hidden{
 	display:none;

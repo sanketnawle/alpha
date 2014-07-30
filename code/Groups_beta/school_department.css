@@ -613,6 +613,7 @@ color: rgba(4, 117, 156, 0.65)!important;
 }
 
 
+
 div.imageWrapper{
 position: relative;
 
@@ -652,7 +653,7 @@ div.deptImage .coverBig,div.coursesImage .coverBig{
     float:left;
 }
 
-div.dept-short-wrapper,div.courses-short-wrapper{
+div.dept-short-wrapper,div.courses-professor-picture{
 position:absolute;
 display: block; position: absolute; background-color: #F8F8F8; 
 width: 64px; 
@@ -663,12 +664,49 @@ border-radius: 4px;
 height: 64px; -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5); -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5); box-shadow: 0 1px 5px rgba(0,0,0,.5); cursor: pointer;
 }
 
-div.dept-short-wrapper:hover,div.courses-short-wrapper:hover{
+div.dept-short-wrapper:hover,div.courses-professor-picture:hover{
 opacity:.9!important;
 }
 
-div.dept-short-wrapper:active,div.courses-short-wrapper:active{
+div.dept-short-wrapper:active,div.courses-professor-picture:active{
 opacity:.75!important;
+}
+
+div.CoursetaughtBy{
+    position: relative;
+margin: 6px 3px 6px;
+height: 23px;
+width: 350px;
+}
+
+div.CoursetaughtBy a{
+    color:#029acf;
+    font-size:14.5px;
+    font-weight:500;
+}
+
+
+div.CoursetaughtBy span{
+    color: #6D6D6D;
+    font-size: 15px;
+}
+
+a.courses div.name{
+    width:350px;
+}
+
+div.courses-professor-picture img{
+    width:60px;
+    margin:2px;
+}
+
+.avenir{
+    font-family: Avenir,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+div.coursesCards div.item div.courses{
+width:460px;
+height:120px;
 }
 
 div.blackData{
@@ -679,9 +717,9 @@ div.blackData{
     bottom: 240px;
     right: 0px; 
     opacity:0;
-    -moz-transition: opacity .1s ease;
--webkit-transition: opacity .1s ease;
-transition: opacity .1s ease;
+    -moz-transition: opacity .7s ease-in-out;
+-webkit-transition: opacity .7s ease-in-out;
+transition: opacity .7s ease-in-out;
 }
 
 div.dept-short-wrapper div,div.courses-short-wrapper div{
@@ -1083,14 +1121,12 @@ div.modal_loading2{
 }
 
 img.modal_animation{
-    width: 25px;
-
-    height: 25px;
+width: 25px;
+height: 25px;
 margin: 0 auto;
 position: relative;
 display: block;
-
-    top: 19px;
+top: 19px;
 }
 
 div.modal_header{

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -33,40 +33,103 @@
 
 $(document).ready(function() {
 
-    $('.studybtn').mouseenter(function(){
-        $(".modal_loading2").css({"display":"none","opacity":"0"});
-        $(".js_wrap").css({"height":"auto","opacity":"1"});
-        $(".study_box_open").show();
+/*Start Learn Button Animation JQUERY */
+
+     $(document).delegate(".studybtn","mouseenter",function(){
+        var thisBox = $(this).closest(".coursesBtns").find(".study_box_open");   
+        $(this).closest(".coursesBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
+        $(this).closest(".coursesBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
+        $(this).closest(".coursesBtns").find(".study_box_open").show();
         setTimeout(
             function(){
-             $(".study_box_open").css({"top":"3px","height":"18px","opacity": "1"});
+             $(thisBox).css({"top":"3px","height":"18px","opacity": "1"});
              setTimeout(
             function(){
-                $(".study_box_open").css({"height":"150px"});
+                $(thisBox).css({"height":"150px"});
             },
             300)
             },
-            400)
+            250)
 
 
     });
 
 
-
-    $('.study_box_open').mouseleave(function(){
-        
+     $(document).delegate('.study_box_open',"mouseleave",function(){
+        var thisBox = $(this);    
         setTimeout(
             function(){
-               $(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"},
-                function(){
-                    $(".study_box_open").hide();
-                });
+               $(thisBox).css({"top":"3px","height":"0px","opacity": "0"});
+                setTimeout(function(){
+                $(thisBox).hide();
+            },
+            300)
             }, 
-            350)
-
-
-
+            250)
     });
+
+
+     $(document).delegate('.study_type_btn',"click", function(){
+        
+        if(!$(this).hasClass("pressedGraybtn")){
+            $(this).find(".check").animate({left:0,opacity:0},150, function(){
+                    $(this).find(".check").delay(400).hide();
+            });
+            $(".pressedGraybtn").removeClass("pressedGraybtn");
+            $(this).prepend("<em class = 'check'></em>");
+            $(this).find(".check").animate({left:16,opacity:1},200, function(){
+                $(this).closest(".js_wrap").delay(250).animate({height:0,opacity:0},300);
+                $(".modal_loading2").show();
+                $(".modal_loading2").delay(500).animate({opacity:1},100, function(){
+                    setTimeout(
+                        function(){
+                            $(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"});
+
+                        },
+                        200)
+                    
+                });
+                
+
+            });
+
+            $(this).addClass("pressedGraybtn");
+
+
+            if($(this).hasClass("majorType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Major");
+            }
+            if($(this).hasClass("minorType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Minor");
+            }
+            if($(this).hasClass("interestType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Interest");
+            }
+
+
+        }
+
+
+
+
+        else{
+            $(this).find(".check").animate({left:0,opacity:0},150, function(){
+                $(this).find(".check").delay(400).hide();
+            });
+            $(this).removeClass("pressedGraybtn");
+            $(".studybtn").text("Concentrate");
+            
+        }
+        
+    });
+
+/*End Learn Button Animation JQUERY */
+
+
+
+
+
+
 
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
@@ -90,7 +153,7 @@ $(document).ready(function() {
         $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
 
-    /*jQuery for showing more or less classes, and movement of related about div */
+    /*jQuery for showing more or less classes, and movement of related about div 
 
     $(document).delegate(".moreClasses","click", function(){
 
@@ -115,61 +178,9 @@ $(document).ready(function() {
 
     });
 
-    $(document).delegate('.study_type_btn',"click", function(){
-        
-        if(!$(this).hasClass("pressedGraybtn")){
-            $(".pressedGraybtn").find(".check").animate({left:0,opacity:0},150, function(){
-                    $(this).find(".check").delay(400).hide();
-            });
-            $(".pressedGraybtn").removeClass("pressedGraybtn");
-            $(this).prepend("<em class = 'check'></em>");
-            $(this).find(".check").animate({left:16,opacity:1},200, function(){
-                $(this).closest(".js_wrap").delay(250).animate({height:0,opacity:0},300);
-                $(".modal_loading2").show();
-                $(".modal_loading2").delay(500).animate({opacity:1},100, function(){
-                    setTimeout(
-                        function(){
-                            $(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"});
+*/
 
-                        },
-                        200)
-                    
-                });
-                
-
-            });
-
-
-
-            $(this).addClass("pressedGraybtn");
-
-
-            if($(this).hasClass("majorType")){
-                $(".studybtn").text("My Major");
-            }
-            if($(this).hasClass("minorType")){
-                $(".studybtn").text("My Minor");
-            }
-            if($(this).hasClass("interestType")){
-                $(".studybtn").text("My Interest");
-            }
-
-
-        }
-
-
-
-
-        else{
-            $(this).find(".check").animate({left:0,opacity:0},150, function(){
-                $(this).find(".check").delay(400).hide();
-            });
-            $(this).removeClass("pressedGraybtn");
-            $(".studybtn").text("Concentrate");
-            
-        }
-        
-    });
+    
     $(window).scroll(function() {
         if($(".tabFeed").hasClass("group-tab-active")){
             if($(window).scrollTop()>203){
@@ -187,6 +198,8 @@ $(document).ready(function() {
         }
 
     });
+
+    /*
     $(window).scroll(function() {
 
         if($(".tabFeed").hasClass("group-tab-active")){
@@ -236,6 +249,8 @@ $(document).ready(function() {
         
 
     });
+
+*/
 
     $('.cancelBtn').click(function(){
         $(".modal_body").animate({opacity:0},300,function(){
@@ -317,8 +332,8 @@ $(document).ready(function() {
     $(document).delegate(".joinBtn","click",function(){
         if(!$(this).hasClass("joinedBtn")){
             $(this).html("<img class = 'modal_animation' src = 'src/loadingAnimation.gif'>");
-            $(this).delay(600).queue(function(n){
-                $(this).html("Leave");
+            $(this).delay(450).queue(function(n){
+                $(this).html("Member");
                 $(this).addClass("joinedBtn"); n();
             });
             
@@ -330,8 +345,12 @@ $(document).ready(function() {
         }
     });
 
-
-
+    $(document).delegate(".joinedBtn","mouseover",function(){
+        $(this).html("Leave");
+    });
+    $(document).delegate(".joinedBtn","mouseleave",function(){
+        $(this).html("Member");
+    });
     /* THIS IS the navigational javascript for the courses page */
 
     $(document).delegate(".tab-inactive","click",function(){
@@ -715,39 +734,7 @@ $(document).ready(function() {
                                                 <button title = "Join this section" class = "joinBtn">Join</button>
                                             <div>
                                         </li>
-                                        <li class = "classLi hidden">
-                                            <div class = "leftFloat classDetails">
-                                                <img src = "src/memon.jpg">
-                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
-                                                
-                                                <span class = "classInfo">Prof Memon</span>
-                                            </div>
-                                            <div class = "rightFloat">
-                                                <button title = "Join this section" class = "joinBtn">Join</button>
-                                            <div>
-                                        </li>
-                                        <li class = "classLi hidden">
-                                            <div class = "leftFloat classDetails">
-                                                <img src = "src/memon.jpg">
-                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
-                                                
-                                                <span class = "classInfo">Prof Memon</span>
-                                            </div>
-                                            <div class = "rightFloat">
-                                                <button title = "Join this section" class = "joinBtn">Join</button>
-                                            <div>
-                                        </li>
-                                        <li class = "classLi hidden">
-                                            <div class = "leftFloat classDetails">
-                                                <img src = "src/memon.jpg">
-                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
-                                                
-                                                <span class = "classInfo">Prof Memon</span>
-                                            </div>
-                                            <div class = "rightFloat">
-                                                <button title = "Join this section" class = "joinBtn">Join</button>
-                                            <div>
-                                        </li>
+
 
 
                                     </ul>
@@ -1212,6 +1199,35 @@ $(document).ready(function() {
 
                                 <div class = "item courses courses-selector">
                                     <div class = "courses ajax">
+                                            <div class = "name">
+                                                <a>Long Class Name - <span>Class ID</span></a>
+                                            </div>
+                                            <div class = "CoursetaughtBy">
+                                                <span>Class taught by</span>
+                                                <a class = "userName"> Professor Herbert</a>
+                                            </div>
+                                          
+
+                                            <div class = "imageWrapper">
+                                                    <div class = "courses-professor-picture">      
+                                                            <img src = "src/memon.jpg">
+                                                    </div>
+                                                <div class = "StudentClassBtns">
+
+
+                                                    <button class = "joinBtnBig">
+                                                        Join this Class
+                                                    </button>
+
+                                                    
+                                        
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class = "item courses courses-selector">
+                                    <div class = "courses ajax">
                                         <a class = "coursesSelectWrapper">
                                             <div class = "name">
                                                 Mechanical and Aeronautical Engineering f af ada dad a
@@ -1242,7 +1258,7 @@ $(document).ready(function() {
                                                     </button>
 
                                                     <button class = "studybtn">
-                                                        Concentrate
+                                                        Learn
                                                     </button>
 
                                                     
@@ -1265,9 +1281,7 @@ $(document).ready(function() {
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-
-                                
+                                </div>                                
                             </div>
                         </div>
                         <div class = "about-content">
@@ -1720,4 +1734,4 @@ $(document).ready(function() {
 </body>
 
 
-</html>
+</html> 
