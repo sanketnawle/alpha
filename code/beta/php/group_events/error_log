@@ -1,3 +1,0 @@
-[16-Jul-2014 14:06:07 America/Denver] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home6/campusla/public_html/urlinq/beta/php/group_events/test_database.php on line 17
-[16-Jul-2014 14:21:14 America/Denver] PHP Fatal error:  Cannot pass parameter 2 by reference in /home6/campusla/public_html/urlinq/beta/php/group_events/test_database.php on line 16
-[16-Jul-2014 14:21:52 America/Denver] PHP Fatal error:  Call to undefined method mysqli_stmt::get_result() in /home6/campusla/public_html/urlinq/beta/php/group_events/test_database.php on line 18
