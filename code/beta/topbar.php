@@ -10,6 +10,7 @@
 
 </head>
 <script>
+
 $( document ).ready(function() {
 
 	
@@ -45,17 +46,25 @@ $( document ).ready(function() {
 			$(this).removeClass("gs_on_active");
 		});
 
+
 				$(document).click(function(event){
+
 			     	var $target= $(event.target);
 			     	var $container= $(".topbar");
 			     	if(!$container.is($target)&&($container.has($target).length===0)){
-			     		$(".topbar_qicon").show();
-			     		var w= $(".topbar_search_input").width();
 
-			     		$(".topbar_search_input").removeClass("augged");
-						$(".topbar_search_input").css({"width":w});
-						$(".graph_search").hide();
-						$(".topbar_search_input").css({"border-bottom-left-radius":"4px","border-bottom-right-radius":"4px"});
+			     	if($(".c_noti_window").find(".complete_tab_noti").hasClass("active_pe_tab")){
+			     		$(".topbar").find(".complete_tab_noti").click();
+			     	}
+			     	if($(".c_noti_window").find(".incomplete_tab_noti").hasClass("active_pe_tab")){
+			     		$(".topbar").find(".incomplete_tab_noti").click();
+			     	}
+
+
+						cidiv_flag=0;
+						gidiv_flag=0;
+						$(".ci_div").hide();
+						$(".gi_div").hide();
 			     	}
 
 				});
@@ -80,9 +89,98 @@ $(document).delegate(".card-tag","mouseout",function(){
 });
 */
 
+var cidiv_flag=0;
+var gidiv_flag=0;
+$(document).delegate(".topbar_cal","click",function(){
+	//alert("beforesuccess");
+	gidiv_flag=0;
+	$(".gi_div").hide();
+
+	if(cidiv_flag==0){
+	var $rt=$(".c_noti_window");
+	$.ajax({
+	        type: "POST",
+            url: "tb_calnotification_fetch.php",
+            success: function(html){ 
+            		//alert("aftersuccess");
+	                $rt.find(".c_noti_content").html(html);
+
+			}
+		});
+		$(".ci_div").show();
+		cidiv_flag=1;
+	}else{
+		if($(".c_noti_window").find(".complete_tab_noti").hasClass("active_pe_tab")){
+			     		$(".topbar").find(".complete_tab_noti").click();
+			     	}
+		if($(".c_noti_window").find(".incomplete_tab_noti").hasClass("active_pe_tab")){
+			     		$(".topbar").find(".incomplete_tab_noti").click();
+			     	}
+
+		cidiv_flag=0;
+		$(".ci_div").hide();
+	}
+});
+
+//getNewNotifications("kuan");
+$(document).delegate(".topbar_noti","click",function(){
+	cidiv_flag=0;
+	$(".ci_div").hide();
+	if(gidiv_flag==0){
+	var $rt=$(".noti_window");
+	getNotifications("kuan");
+		$(".gi_div").show();
+		gidiv_flag=1;
+	}else{
+		gidiv_flag=0;
+		$(".gi_div").hide();
+	}
+});
+
+
+$(document).delegate(".topbar_search_input","keydown",function(e){
+	
+	if(e.which==13){
+		var q=$(".topbar_search_input").val().trim();
+		//alert(inputval);
+		if(q!=""){
+
+			window.open("search_beta.php?q="+q);
+
+		}
+
+		return false;
+	}
+});
+
+
+countcalNotification();
+setInterval(function() {countcalNotification(); }, 30000);
+
+function countcalNotification()
+{
+	$.ajax({
+	    type: "POST",
+        url: "php/check_new_notifications.php",
+        success: function(html){ 
+        	if(html!="0"){
+        	$(".rednoti").find("span").text(html);
+        	$(".rednoti").show();
+        	}
+			},
+		error: function(x,t,e){
+
+			} 
+	});
+}
 
 
 });
+
+function LoadHome()
+{
+	window.location = '/beta/home.php';
+}
 </script>
 
 <body>
@@ -90,22 +188,36 @@ $(document).delegate(".card-tag","mouseout",function(){
 		<div class = "topbar">
 			<div class = "topbar_wrapper">
 				<div class='topbar_left'>
-				<img class = "topbar_logo" src = "img/logo.png"/>
+				<img class = "topbar_logo" src = "img/logo.png" onclick="LoadHome();"/>
 				<img class = "leftbar_close flip" src = "img/burger_closed.png"/>
 				</div>
 				
 
 
 				<div class='topbar_righttool'>
-					<div class='topbar_cal'><img class='cal_icon' src='img/calendar.png'></div>					
+					<!--<a href='php/logout.php'>test logout</a>-->
+					<div class='topbar_cal'>
+						<img class='cal_icon' src='img/calendar.png'>
+						<div class='rednoti'><span></span></div>
+					</div>					
+
 					<div class='topbar_noti'>
-						<span class='noti_icon'><p>2</p></span>
+						<span class='noti_icon'><p>0</p></span>
 						
 					</div>
 					<div class = "topbar_prof">
 						<div style = "background-image: url(img/userPic.jpg);" class = "prof-limit">
 						</div>
 					</div>
+				</div>
+
+				<div class='noti_includediv'>
+						<div class='ci_div'>
+						<?php include 'tb_calnotification.php';?>
+						</div>
+						<div class='gi_div'>
+						<?php include 'tb_notification.html';?>
+						</div>
 				</div>
 
 
@@ -147,4 +259,4 @@ $(document).delegate(".card-tag","mouseout",function(){
 </html>
 
 
-						
+					

@@ -10,12 +10,15 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 
-$now_time = date("H:i:s", strtotime("now"));
 $today_date = date("Y-m-d", strtotime("now"));
+$now_time = date("H:i:s", strtotime("now"));
 
-$today_date_unix = strtotime($today_date);
-$today_date = date("Y-m-d", strtotime($today_date));
-$now_time = date("H:i:s", strtotime($now_time));
+$user_today_timestamp = new DateTime(user_time($today_date . "" . $now_time));
+$today_date_user = $user_today_timestamp->format("Y-m-d");
+$now_time_user = $user_today_timestamp->format("H:i:s");
+$user_today_timestamp_copy = clone $user_today_timestamp;
+$user_today_timestamp_copy->add(new DateInterval("P1D"));
+$tommorow_date = $user_today_timestamp_copy->format("Y-m-d");
 $range = date("Y-m-d", strtotime("+1 month", strtotime($today_date)));
 
 
@@ -56,9 +59,6 @@ while ($row = mysqli_fetch_array($get_types_result)) {
 $result_array = array();
 
 
-
-
-
 //Selecting events for the user without recurrence
 
 $personal_event_query = "SELECT * FROM personal_event WHERE `user_id`= '$user_id' AND 
@@ -68,13 +68,10 @@ $personal_event_query = "SELECT * FROM personal_event WHERE `user_id`= '$user_id
     AND `recurrence`='none' ORDER BY start_date ASC, start_time ASC";
 
 
-
 //echo "personal query: "  . $personal_event_query;
 
 
-
 $personal_event_query_result = mysqli_query($con, $personal_event_query);
-
 
 
 $count = 0;
@@ -84,6 +81,11 @@ while ($row = mysqli_fetch_array($personal_event_query_result)) {
     if ($count == 5) {
 
         break;
+    }
+    if ($row['invites'] == 0 AND ($row['location'] == NULL OR $row['location'] == 'NULL') AND $row['recurrence'] == 'none') {
+        $type_event = $to_do_event;
+    } else {
+        $type_event = $personal_event;
     }
 
     $result_array[] = array(
@@ -95,7 +97,7 @@ while ($row = mysqli_fetch_array($personal_event_query_result)) {
         'recurrence' => $row['recurrence'],
         'is_check' => $row['is_check'],
         'event_id' => $row['event_id'],
-        'type' => $personal_event
+        'type' => $type_event
     );
 
     $count++;
@@ -110,16 +112,12 @@ $personal_events_recurrence_query = "SELECT * FROM personal_event WHERE `user_id
     AND `end_date` >= '$today_date' AND `recurrence`!='none' ";
 
 
-
 //echo "personal recurring query: "  . $personal_events_recurrence_query;
-
 
 
 $personal_events_recurrence_query_result = mysqli_query($con, $personal_events_recurrence_query);
 
-//echo mysqli_num_rows($personal_events_recurrence_query_result);
 //echo $personal_events_recurrence_query;
-
 
 
 $count = 0;
@@ -134,6 +132,11 @@ while ($row = mysqli_fetch_array($personal_events_recurrence_query_result)) {
     $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $today_date);
 
 //    echo print_r($recurrence_dates);
+    if ($row['invites'] == 0 AND ($row['location'] == NULL OR $row['location'] == 'NULL') AND $row['recurrence'] == 'none') {
+        $type_event = $to_do_event;
+    } else {
+        $type_event = $personal_event;
+    }
 
     foreach ($recurrence_dates as $dates) {
 
@@ -146,7 +149,7 @@ while ($row = mysqli_fetch_array($personal_events_recurrence_query_result)) {
             'recurrence' => $row['recurrence'],
             'is_check' => 0,
             'event_id' => $row['event_id'],
-            'type' => $personal_event
+            'type' => $type_event
         );
     }
 
@@ -154,25 +157,21 @@ while ($row = mysqli_fetch_array($personal_events_recurrence_query_result)) {
 }
 
 
-
 //Selecting events user has been invited to without recurrence
 
 $personal_invited_event_query = "SELECT * FROM personal_event WHERE `event_id` IN 
 
-    (SELECT `event_id` FROM personal_event_invited WHERE `user_id` ='$user_id' AND (`choice`='0' OR `choice`='1'))
+    (SELECT `event_id` FROM personal_event_invited WHERE `user_id` ='$user_id' AND (`choice`='2' OR `choice`='1'))
 
         AND `recurrence`='none' AND ((`start_date` = '$today_date' AND `end_time`>'$now_time') OR (`start_date` > '$today_date'))
 
         ORDER BY start_date ASC,start_time ASC";
 
 
-
 //echo "personal invited query: "  . $personal_invited_event_query;
 
 
-
 $personal_invited_event_query_result = mysqli_query($con, $personal_invited_event_query);
-
 
 
 $count = 0;
@@ -207,14 +206,12 @@ while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
 
 $personal_invited_event_recurrence_query = "SELECT * FROM personal_event WHERE
 
-        `event_id` IN (SELECT `event_id` FROM personal_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+        `event_id` IN (SELECT `event_id` FROM personal_event_invited WHERE `user_id`='$user_id' AND (`choice`='2' OR `choice`='1'))
 
         AND `recurrence`!='none' AND `end_date` >= '$today_date'";
 
 
-
 $personal_invited_event_recurrence_query_result = mysqli_query($con, $personal_invited_event_recurrence_query);
-
 
 
 //echo "personal invited recurrence query: "  . $personal_invited_event_recurrence_query;
@@ -249,7 +246,6 @@ while ($row = mysqli_fetch_array($personal_invited_event_recurrence_query_result
 }
 
 
-
 //
 //
 //
@@ -257,20 +253,17 @@ while ($row = mysqli_fetch_array($personal_invited_event_recurrence_query_result
 
 $group_event_query = "SELECT * FROM group_event WHERE `event_id` IN 
 
-    (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' AND (`added`='0' OR `added`='1'))
+    (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' AND (`added`='2' OR `added`='1'))
 
         AND `recurrence`='none' AND ((`start_date` = '$today_date' AND `end_time`>'$now_time') OR (`start_date` > '$today_date'))
 
         ORDER BY start_date ASC,start_time ASC";
 
 
-
 //echo "group query: "  . $group_event_query;
 
 
-
 $group_event_query_result = mysqli_query($con, $group_event_query);
-
 
 
 $count = 0;
@@ -304,14 +297,12 @@ $group_event_recurrence_query = "SELECT * FROM group_event
 
         WHERE `event_id` IN (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' 
 
-            AND (`added`='0' OR `added`='1')) AND `recurrence`!='none' AND `end_date` >= '$today_date'";
-
+            AND (`added`='2' OR `added`='1')) AND `recurrence`!='none' AND `end_date` >= '$today_date'";
 
 
 //echo "group recurrence query: "  . $group_event_recurrence_query;
 
 $group_event_recurrence_query_result = mysqli_query($con, $group_event_recurrence_query);
-
 
 
 $count = 0;
@@ -351,18 +342,16 @@ while ($row = mysqli_fetch_array($group_event_recurrence_query_result)) {
 
 $course_event_query = "SELECT * FROM course_event WHERE `event_id` IN
 
-    (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+    (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='1'))
 
         AND `recurrence`='none' AND ((`start_date` = '$today_date' AND `end_time`>'$now_time') OR (`start_date` > '$today_date'))
 
         ORDER BY start_date ASC,start_time ASC";
 
 
-
 //echo "course query: "  . $course_event_query;
 
 $course_event_query_result = mysqli_query($con, $course_event_query);
-
 
 
 $count = 0;
@@ -382,7 +371,7 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
 
     $ischeck = mysqli_fetch_array($check_ischeck_query_result);
 
-    $ischeck = $ischeck['ischeck'];
+    $ischeck = $ischeck['is_check'];
 
     $result_array[] = array(
         'title' => $row['title'],
@@ -406,18 +395,15 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
 
 $course_event_recurrence_query = "SELECT * FROM course_event WHERE
 
-    `event_id` IN (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+    `event_id` IN (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='1'))
 
         AND `end_date` >= '$today_date' AND `recurrence`!='none' ";
-
 
 
 //echo "course recurrence query: "  . $course_event_recurrence_query;
 
 
-
 $course_event_recurrence_query_result = mysqli_query($con, $course_event_recurrence_query);
-
 
 
 $count = 0;
@@ -429,7 +415,7 @@ while ($row = mysqli_fetch_array($course_event_recurrence_query_result)) {
         break;
     }
 
-    $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range);
+    $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $today_date);
 
     foreach ($recurrence_dates as $dates) {
 
@@ -459,7 +445,7 @@ while ($row = mysqli_fetch_array($course_event_recurrence_query_result)) {
     $count++;
 }
 
-$course_personal_query = "SELECT * FROM course_event WHERE `user_id` = $user_id AND `end_date` >= $today_date";
+$course_personal_query = "SELECT * FROM course_event WHERE `user_id` = $user_id AND `end_date` >= '$today_date'";
 $course_personal_query_result = mysqli_query($con, $course_personal_query);
 
 $count = 0;
@@ -502,7 +488,7 @@ while ($row = mysqli_fetch_array($course_personal_query_result)) {
 }
 
 
-$group_personal_query = "SELECT * FROM group_event WHERE `user_id` = $user_id AND `end_date` >= $today_date";
+$group_personal_query = "SELECT * FROM group_event WHERE `user_id` = $user_id AND `end_date` >= '$today_date'";
 $group_personal_query_result = mysqli_query($con, $group_personal_query);
 
 $count = 0;
@@ -546,7 +532,7 @@ while ($row = mysqli_fetch_array($group_personal_query_result)) {
 
 $event_count_show = 0;
 
-$prev_day = 0;
+$prev_day = "1969-01-01";
 
 $echo_string = "";
 
@@ -576,46 +562,45 @@ if (count($result_array) == 0) {
 } else {
 
     $sort = array();
-
     foreach ($result_array as $k => $v) {
-
         $sort['start_date'][$k] = $v['start_date'];
-
         $sort['start_time'][$k] = $v['start_time'];
     }
 
-
-
     array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $result_array);
-
+//    print_r($result_array);
 
 
     foreach ($result_array as $event) {
 
         if ($event_count_show == 5) {
-
             break;
         }
 
-        if ($event['start_date'] < $today_date) {
+        $user_start_timestamp = new DateTime(user_time($event['start_date'] . " " . $event['start_time']));
+        $user_end_timestamp = new DateTime(user_time($event['end_date'] . " " . $event['end_time']));
+        $start_date = $user_start_timestamp->format("Y-m-d");
+        $end_date = $user_end_timestamp->format("Y-m-d");
+        $start_time = $user_start_timestamp->format("H:i:s");
+        $end_time = $user_end_timestamp->format("H:i:s");
+
+        if ($start_date < $today_date_user) {
             continue;
-        } else if ($event['start_date'] == $today_date) {
-            if ($event['start_time'] < $now_time) {
+        } else if ($start_date == $today_date_user) {
+            if ($start_time < $now_time_user) {
                 continue;
             }
         }
-        $user_start_timestamp = new DateTime(user_time($event['start_date'] . " " . $event['start_time']));
-        $user_end_timestamp = new DateTime(user_time($event['end_date'] . " " . $event['end_time']));
 
 //        echo $event['type'];
 
         $event_count_show++;
 
-        if ($prev_day !== $event['start_date']) {
+        if ($prev_day !== $start_date) {
 
-            $prev_day = $event['start_date'];
+            $prev_day = $start_date;
 
-            if (isToday1($event['start_date'], $today_date_unix)) {
+            if (isToday1($start_date, $today_date_user)) {
 
 
                 $day = $user_start_timestamp->format("M j");
@@ -627,14 +612,13 @@ if (count($result_array) == 0) {
                       </div>';
 
 
-
                 //Setting id for use when this event is deleted or checked
 
                 $echo_string = $echo_string . '<div class = "upcoming upc-1" id="event' . $event['event_id'] . '">';
 
                 $endtime = $user_end_timestamp->format("g:i a");
 
-                if (isNow1($event['start_time'], $now_time)) {
+                if (isNow1($start_time, $now_time_user)) {
 
                     $echo_string = $echo_string . '
 
@@ -659,7 +643,7 @@ if (count($result_array) == 0) {
 
                     </div>';
                 }
-            } else if (isTomorrow1($event['start_date'], $today_date_unix)) {
+            } else if (isTomorrow1($start_date, $tommorow_date)) {
 
                 $day = $user_start_timestamp->format("M j");
 
@@ -716,13 +700,13 @@ if (count($result_array) == 0) {
             }
         } else {
 
-            if (isToday1($event['start_date'], $today_date_unix)) {
+            if (isToday1($start_date, $today_date_user)) {
 
                 $echo_string = $echo_string . '<div class = "upcoming upc-1" id="event' . $event['event_id'] . '">';
 
                 $endtime = $user_end_timestamp->format("g:i a");
 
-                if (isNow1($event['start_time'], $now_time)) {
+                if (isNow1($start_time, $now_time_user)) {
 
                     $echo_string = $echo_string . '
 
@@ -765,18 +749,16 @@ if (count($result_array) == 0) {
             }
         }
 
-
-
         $echo_string = $echo_string . '<div class = "upc-eventL">
 
-                        <div class = "evntName" ><a href="calendar_beta.php?id=' . $event['event_id'] . '&type=' . $event['type'] . '">' . $event['title'] . '</a></div>
+                        <div class = "evntName" ><a href="calendar_beta.php?plnr=0&id=' . $event['event_id'] . '&type=' . $event['type'] . '">' . $event['title'] . '</a></div>
 
                     </div>';
 
 
-
         if (($event['type'] == $personal_event or $event['type'] == $course_event_personal or
-                $event['type'] == $course_event) AND $event['recurrence'] == 'none') {
+                $event['type'] == $course_event or $event['type'] == $to_do_event) AND $event['recurrence'] == 'none'
+        ) {
 
             if ($event['is_check'] == 0) {
 
@@ -821,17 +803,15 @@ if (count($result_array) == 0) {
     }
 }
 
-function isNow1($start_time, $now_time) {
+function isNow1($start_time, $now_time)
+{
+    $start_time = new DateTime($start_time);
+    $now_time = new DateTime($now_time);
+    $diff = $now_time->diff($start_time);
+    $minutes = $diff->format('%i');
+    $hours = $diff->format('%h');
 
-    $system_time = strtotime($now_time);
-
-    $start_time = strtotime($start_time);
-
-    $diff = round(($start_time - $system_time) / 60, 2);
-
-//                                            echo nl2br($diff . "\r\n");
-
-    if ($diff < 30.00) {
+    if ($minutes < 30 and $hours == 0) {
 
         return True;
     } else {
@@ -840,40 +820,26 @@ function isNow1($start_time, $now_time) {
     }
 }
 
-function isToday1($start_date, $today_date_unix) {
-
-//    echo "Start date" . $start_date . '*';
-//    echo $today_date_unix;
-
-    $start_date = strtotime($start_date);
-
-
-
-    if ($today_date_unix == $start_date) {
-
+function isToday1($start_date, $today_date)
+{
+    if ($today_date === $start_date) {
         return True;
     } else {
-
         return False;
     }
 }
 
-function isTomorrow1($start_date, $today_date_unix) {
-
-    $tomorrow_unix = strtotime("+1 day", $today_date_unix);
-
-    $start_date = strtotime($start_date);
-
-    if (($tomorrow_unix - $start_date) == 0) {
-
+function isTomorrow1($start_date, $tomorrow_date)
+{
+    if ($tomorrow_date === $start_date) {
         return True;
     } else {
-
         return False;
     }
 }
 
-function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $today_date) {
+function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $today_date)
+{
 
     $dates = array();
 
@@ -984,11 +950,9 @@ function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $
 mysqli_close($con);
 
 
-
 $json = array(
     'echo_string' => $echo_string
 );
-
 
 
 $jsonstring = json_encode($json);

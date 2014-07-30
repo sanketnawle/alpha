@@ -2,10 +2,6 @@
 		$edit_flag = NULL;
 		$hidden=checkhidden($con,$row['post_id']);
 
-			user_time($row['update_timestamp']);
-			$user_modtime = explode(" ",user_time($row['update_timestamp']));
-			$create_time = $user_modtime[0]."T".$user_modtime[1]."Z";
-
 		if($hidden!="true"){
 			echo "<div id = '".strtotime($row['update_timestamp'])."'>";
 				echo "<div class = 'posts new_fd' id = '".$row['post_id']."'>";
@@ -50,8 +46,8 @@
 
 							echo "</div>";
 				
-							echo "<div class = 'post_time'>Discussion started <time class='timeago' datetime='". $create_time ."'>".formattime($row['update_timestamp'])."</time></div>
-						</div>
+							echo "<div class = 'post_time'> Discussion started <time class='timeago' datetime='".$create_time."'>".formattime($row['update_timestamp'])."</time> </div>";
+						echo "</div>
 
 						<div class = 'post_tag'>
 							<span>Computer Science</span>
@@ -93,10 +89,11 @@
 						echo "</div>";
 
 						if($row['file_share_type'] == "regular"){
-							if($ftype = file_type($con,$row['file_id'])){
-								if(substr( $ftype, 0, 5 ) === "image"){
-									echo "<div class='post_attachment_review'><img class='post_attachment_review_img' src='https://urlinq.com/kk/newinfi2/includes/getimage.php?id=".$row['file_id']."'></div>";
+							if($file_up = file_up_desc($con,$row['file_id'])){
+								if(substr( $file_up['type'], 0, 5 ) === "image"){
+									echo "<div class='post_attachment_review'><img class='post_attachment_review_img' src='https://urlinq.com/beta/includes/getimage.php?id=".$row['file_id']."'></div>";
 								}
+								else echo "<div class='post_attachment_review'><a class = 'file-download' href='javascript:download(".$row['file_id'].")'>".$file_up['name']."</a></div>";
 							}
 						}
 
@@ -219,7 +216,7 @@
 						<div class = 'commentform'>
 							<div class = 'reply_user_icon'></div>
 							<div class = 'reply_tawrapper'>
-								<textarea class = 'form-control postval' rows = '3' placeholder = 'Add to the discussion' required></textarea>
+								<textarea class = 'form-control postval' placeholder = 'Add to the discussion' required></textarea>
 								<img class = 'reply_attach' src = 'src/comment_attach.png'>
 								<form enctype='multipart/form-data'><input type='file' name='file' class='upload_feed_hack'></form>
 							</div>

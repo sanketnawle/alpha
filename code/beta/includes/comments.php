@@ -1,7 +1,5 @@
 <?php
 
-$_SESSION['user_id']='1';
-
 	$cownership=checkcowner($con,$row1['reply_id']);
 
 	$reply_len = strlen($reply_msg = autolink($row1['reply_msg']));
@@ -84,9 +82,9 @@ $_SESSION['user_id']='1';
 							// 	}
 							// }
 
-							if($ftype = file_type($con,$row1['file_id'])){
-								if(substr( $ftype, 0, 5 ) === "image"){
-									echo "<div class='cmt_pic_att'><img src='data:image/jpeg;base64,".base64_encode($rf_row['file_content'])."'></div>";
+							if($file_up = file_up_desc($con,$row1['file_id'])){
+								if(substr( $file_up['type'], 0, 5 ) === "image"){
+									echo "<div class='cmt_pic_att'><img src='includes/getimage.php?id=".$row1['file_id']."'></div>";
 								}
 							}
 							
@@ -95,7 +93,7 @@ $_SESSION['user_id']='1';
 					<div class = 'comment_time'>";
 						
 						if($row1['file_id']!=NULL){
-							echo "<div class='cmt_f_attach' title=''><img src='src/comment_attach.png'><a href='javascript:download(".$row1['file_id'].")'>Attached file</a> (".$r_file_type.")</div>";
+							echo "<div class='cmt_f_attach' title=''><img src='src/comment_attach.png'><a href='javascript:download(".$row1['file_id'].")'>".$file_up['name']."</a></div>";
 
 						}
 

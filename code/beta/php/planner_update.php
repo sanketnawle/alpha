@@ -1,11 +1,11 @@
 <?php
 
 include 'dbconnection.php';
-
+include "redirect.php";
 
 $user_id = 1;
-if (isset($_POST['user_id'])) {
-    $user_id = $_POST['user_id'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 }
 
 $event_id = mysqli_escape_string($con, $_POST['event_id']);

@@ -14,7 +14,7 @@
         }
 
         function f() {
-            oe = r.theme ? "ui" : "fc", n.addClass("fc"), r.isRTL ? n.addClass("fc-rtl") : n.addClass("fc-ltr"), r.theme && n.addClass("ui-widget"), ae = t("<div class='fc-content' style='position:relative'/>").prependTo(n), ne = new a(ee, r), re = ne.render(), re && n.prepend(re), y(r.defaultView), r.handleWindowResize && t(window).resize(x), m() || v()
+            oe = r.theme ? "ui" : "fc", n.addClass("fc"), r.isRTL ? n.addClass("fc-rtl") : n.addClass("fc-ltr"), r.theme && n.addClass("ui-widget"), ae = t("<div class='fc-content' style='position:relative;'/>").prependTo(n), ne = new a(ee, r), re = ne.render(), re && n.prepend(re), y(r.defaultView), r.handleWindowResize && t(window).resize(x), m() || v()
         }
 
         function v() {
@@ -1822,8 +1822,13 @@
                                         + '</b>'
                                     + '</div>';
             }
+            var groupClass = "personalevent";
+            if ((r.groupid != null) && (r.groupid != "") && (r.groupid != "null"))
+            {
+                groupClass = r.groupid;
+            }
             var eventLoc = ((new Date(r.start)).getMonth().toString() + "$" + (new Date(r.start)).getDate().toString() + "$" + (new Date(r.start)).getFullYear().toString());
-            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + r.groupid + " " + o.join(" ") + "'" + " style=" + "'"
+            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + groupClass + " " + o.join(" ") + "'" + " style=" + "'"
                 + "position:absolute;margin-top: 2px;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
                 + "<div class='fc-event-inner' onmouseover='showTooltip(this);' onmouseout='hideTooltip(this);' onmousedown='hideTooltip(this);'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>"
                 + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "")
@@ -1833,7 +1838,7 @@
                                     + '<b class="file_link">'                                        
                                              + '<a onclick="LinkEventInEventBook(' + (new Date(r.start)).getMonth().toString() + ','
                                              + (new Date(r.start)).getDate().toString() + ',' + (new Date(r.start)).getFullYear().toString()
-                                             + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
+                                             + ',' + r.id + ',' + r.type + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
                                                 + r.title + '</a>'
                                     + '</b>'
                                     + '<div style="padding: 5px; width:100%;float:left;">' + r.startendtime + '</div>'

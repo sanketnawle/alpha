@@ -51,8 +51,8 @@
     font-size: 1.4rem;
     border-radius: 3px;
     width: 100%;
-    height: auto;
-    max-height: 110px;
+    height: 90px;
+    max-height: 90px;
     border: 1px solid #E6E6E6;
     border-bottom:none;
 }
@@ -521,32 +521,6 @@ padding-left: 5px;
         transform: rotate(-45deg); /* TODO: prefix */
         -webkit-transform: rotate(-45deg); /* TODO: prefix */
     }
-
-.button-block.canceled {
-    height: 13px;
-    width: 13px;
-    border-width: 1.8px;
-    border-color: #00c692;
-    border-radius: 2px;
-    background-color: white;
-    transform: -webkit-scale(5);
-}
-
-    .button-block.canceled .mark {
-        background-color: #000000;
-    }
-
-        .button-block.canceled .mark.x {
-            right: 13px;
-            top: 9px;
-            height: 13px;
-        }
-
-        .button-block.canceled .mark.xx {
-            height: 6px;
-            top: 15.3px;
-            left: 10px;
-        }
 
 .centerText {
     position: absolute;
@@ -1064,7 +1038,6 @@ width: 182px;
     position:absolute;  
     display:none;
     z-index: 1000;      
-background:#fff;
 font-weight:400;
 cursor:default;
 color: #666 !important;
@@ -1113,6 +1086,11 @@ position: relative;
 top: -27px;
 right: -375px;
 }
+
+    .feed_upload_textprompt:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 /* End of styles for file uploads */
 
 /* styles for invite connections */

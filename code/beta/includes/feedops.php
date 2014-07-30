@@ -1,7 +1,7 @@
 <?php
 
 require_once("dbconfig.php");
-$_SESSION['user_id']="1";
+session_start();
 
 // Uncomment the below 3 lines if you are testing this page alone
 // $_POST['post_id'] = "f6e6ee97-f651-11e3-b732-00259022578e";

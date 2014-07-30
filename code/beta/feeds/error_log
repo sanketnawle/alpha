@@ -171,3 +171,161 @@
 [07-Jul-2014 17:45:08 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedchecks.php on line 151
 [07-Jul-2014 17:46:02 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedchecks.php on line 151
 [07-Jul-2014 17:48:21 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/kk/newinfi2/includes/feedchecks.php on line 151
+[09-Jul-2014 14:24:25 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[09-Jul-2014 14:24:25 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[09-Jul-2014 14:25:45 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[09-Jul-2014 14:25:45 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[09-Jul-2014 14:25:50 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[09-Jul-2014 14:25:50 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[09-Jul-2014 16:02:16 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[09-Jul-2014 16:02:16 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[09-Jul-2014 16:07:15 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[09-Jul-2014 16:07:15 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[10-Jul-2014 09:01:39 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[10-Jul-2014 09:01:39 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[10-Jul-2014 14:52:41 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[10-Jul-2014 14:52:41 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 08:36:14 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 08:36:14 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 08:36:14 America/Denver] PHP Notice:  Undefined variable: qtl_list in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 100
+[11-Jul-2014 08:36:14 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 08:44:03 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 08:44:03 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 08:44:03 America/Denver] PHP Notice:  Undefined variable: qtl_list in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 100
+[11-Jul-2014 08:44:03 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:01:13 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 09:01:13 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:24:08 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:24:08 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:24:25 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:24:25 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:26:53 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 976
+[11-Jul-2014 09:26:53 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:33:11 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:33:11 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:33:53 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:33:53 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:34:15 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:34:15 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:36:30 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:36:30 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:36:46 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:36:46 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:37:19 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:37:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:40:34 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:40:34 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:44:49 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:44:49 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:47:41 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:47:41 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:49:22 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:49:22 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:54:07 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:54:07 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:55:32 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:55:32 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 09:56:09 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 09:56:09 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:00:28 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:00:28 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:01:03 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:01:03 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:02:21 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:02:23 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:04:19 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:04:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:05:18 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:05:18 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:06:08 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 975
+[11-Jul-2014 10:06:08 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:08:54 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 973
+[11-Jul-2014 10:08:54 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:10:27 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 973
+[11-Jul-2014 10:10:29 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:11:38 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 973
+[11-Jul-2014 10:11:38 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:12:05 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 973
+[11-Jul-2014 10:12:05 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:16:35 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 969
+[11-Jul-2014 10:16:35 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:17:04 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 969
+[11-Jul-2014 10:17:04 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:27:11 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 10:27:11 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:29:05 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 963
+[11-Jul-2014 10:29:05 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:29:27 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 963
+[11-Jul-2014 10:29:27 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:42:04 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 962
+[11-Jul-2014 10:42:04 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:46:16 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 962
+[11-Jul-2014 10:46:16 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:47:13 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 962
+[11-Jul-2014 10:47:13 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:48:04 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 962
+[11-Jul-2014 10:48:04 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:48:27 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 962
+[11-Jul-2014 10:48:27 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:52:33 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 963
+[11-Jul-2014 10:52:33 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:53:23 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 963
+[11-Jul-2014 10:53:23 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:55:56 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 10:55:56 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 10:56:29 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 10:56:29 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 11:01:18 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 11:01:18 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:23:42 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 12:23:42 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:25:16 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 12:25:16 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:25:28 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 12:25:28 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:27:57 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 966
+[11-Jul-2014 12:27:57 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:31:13 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 12:31:13 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:32:16 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 12:32:16 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:34:25 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 12:34:25 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:36:19 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 967
+[11-Jul-2014 12:36:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:45:25 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:45:25 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:47:43 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:47:43 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:49:05 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:49:05 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:51:00 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:51:00 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:56:03 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:56:03 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 12:59:00 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 12:59:00 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 13:02:44 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 13:02:44 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 13:10:39 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 13:10:39 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 13:16:18 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 13:16:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 13:17:41 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 13:17:41 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 13:26:19 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 13:26:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 15:22:34 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 15:22:34 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:16:19 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 968
+[11-Jul-2014 17:16:19 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:20:58 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 979
+[11-Jul-2014 17:20:58 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:21:57 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 978
+[11-Jul-2014 17:21:57 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:22:51 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 988
+[11-Jul-2014 17:22:51 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:25:59 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 988
+[11-Jul-2014 17:25:59 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151
+[11-Jul-2014 17:27:30 America/Denver] PHP Warning:  include(): Failed opening 'popup.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home6/campusla/public_html/urlinq/beta/feeds/feeds.php on line 988
+[11-Jul-2014 17:27:30 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/feeds/includes/feedchecks.php on line 151

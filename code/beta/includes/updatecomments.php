@@ -2,31 +2,26 @@
 
 	require_once("dbconfig.php");
 	require_once("time.php");
-	require_once('../php/time_change.php');
 	session_start();
 	include "feedchecks.php";
 
-	// Uncomment the below 3 lines if you are testing this page alone
-	// $_POST['post_id'] = "13";
+	// Uncomment the below lines if you are testing this page alone
+	// $_POST['post_id'] = "218";
 	// $_POST['top_reply']="1401981625";
-	// $_POST['reply_id']="1401981625";
+	// $_POST['reply_id']="0000000000";
 	// $_POST['reply_msg']="reply by tester";
-	// $_POST['anon']=1;
-
-	$user_id=1;
-	$univ_id=1;
+	// $_POST['anon']=0;
 
 	$up_id = NULL;
 
-	include_once "fileupload.php"; //file-uplod script
+	include_once "fileupload.php"; //file-upload script
 
 	if(isset($_POST['reply_msg'])||($up_id=="success")){
 
 		$comment = $_POST['reply_msg'];
 		$post_id = $_POST['post_id'];
 		$anon = $_POST['anon'];
-		// $user_id=$_SESSION['$user_id']; //when session variables are set
-		// $univ_id=$_SESSION['$univ_id'];		//when session variables are set
+		$user_id=$_SESSION['user_id']; //when session variables are set
 
 		$replyquery = "INSERT INTO reply (post_id,user_id,reply_msg,file_id,anon) VALUES (?,?,?,?,?)";
 		$replyres = $con->prepare($replyquery);

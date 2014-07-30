@@ -15,7 +15,7 @@
 
 									if($row['user_id']!=0){
 										$powner_result=mysqli_query($con,"select firstname,lastname from user where user_id='".$row['user_id']."'");
-										$owner_row=mysqli_fetch_array($powner_result);
+										if ($owner_row=mysqli_fetch_array($powner_result))
 										$post_owner=$owner_row['firstname']." ".$owner_row['lastname'];
 									}
 									else $post_owner = "Invalid User";

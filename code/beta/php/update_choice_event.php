@@ -6,7 +6,7 @@ session_start();
 $user_id = 1;
 $event_id = 0;
 $type = 0;
-$value = 0;
+$value = 1;
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -53,7 +53,7 @@ while ($row = mysqli_fetch_array($get_types_result)) {
 
 switch ($type) {
     case $personal_invited_event:
-        $sql = "UPDATE personal_event_invited SET choice=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
+        $sql = "UPDATE personal_event_invited SET choice=$value, show_notification=0 WHERE `event_id` = $event_id and `user_id`= $user_id";
         if (!mysqli_query($con, $sql)) {
             echo "Error in executing query";
         } else {
@@ -61,7 +61,7 @@ switch ($type) {
         }
         break;
     case $course_event:
-        $sql = "UPDATE course_event_invited SET choice=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
+        $sql = "UPDATE course_event_invited SET choice=$value, show_notification=0 WHERE `event_id` = $event_id and `user_id`= $user_id";
         if (!mysqli_query($con, $sql)) {
             echo "Error in executing query";
         } else {
@@ -69,7 +69,7 @@ switch ($type) {
         }
         break;
     case $group_event:
-        $sql = "UPDATE group_event_invited SET added=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
+        $sql = "UPDATE group_event_invited SET added=$value, show_notification=0 WHERE `event_id` = $event_id and `user_id`= $user_id";
         if (!mysqli_query($con, $sql)) {
             echo "Error in executing query";
         } else {

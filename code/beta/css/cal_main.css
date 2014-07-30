@@ -315,7 +315,7 @@ color: white;
 #event-new {
     position: relative;
     height: 65px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 10px;    padding-top: 5px; border-radius: 4px; 
     width: 221px; 
 }
@@ -1002,41 +1002,34 @@ input[type="text"] {
 
 
 .button-block {
-    width: 13px;
-    height: 13px;
-    border-radius: 1px;
-    /* TODO: prefix; */
-    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;    
+    margin: 5px auto;
     position: relative;
     display: block;
     position: relative;
-    border: 10px solid transparent;
-    border-width: 1.8px;
-    border-style: solid;
+    border: 3px solid transparent;        
     cursor: pointer;
     background-color: white;
     border-color: #FF3610;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     box-sizing: border-box;
     -webkit-transition: border 600ms ease-in-out;
     -moz-transition: border 600ms ease-in-out;
     -ms-transition: border 600ms ease-in-out;
     -o-transition: border 600ms ease-in-out;
-    transition: border 600ms ease-in-out;
+    transition: border 600ms ease-in-out;    
 }
 
-    .button-block button {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 30px;
-        height: 30px;
+    .button-block button {                      
+        width: 50px;
+        height: 50px;
         background: transparent;
-        border: 0;
-        margin: -15px 0 0 -15px;
+        border: 0;        
         cursor: pointer;
     }
 
@@ -1067,8 +1060,10 @@ input[type="text"] {
     }
 
 .button-block.canceled {
-    height: 20px;
-    width: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;    
+    margin: 5px auto;
     border-width: 3px;
     border-color: #37ef74;
 }
@@ -1451,8 +1446,8 @@ box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 
     top: 35px;
     font-size: 12px;
     left: -9px;
-    position: relative;
-    margin-right: 5px;
+    position: relative;  
+
 padding: 5px;
     min-height: 25px;
     -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
@@ -1514,7 +1509,15 @@ padding: 5px;
     margin-top: 15px;
 }
 
-
+.cals-personal-hider {
+border:none; 
+box-shadow:none; 
+cursor:pointer;
+}
+.cals-personal-hider:hover {
+color: #666;
+text-decoration:underline;
+}
 .radio-btn input[type="radio"], .check-box input[type="checkbox"] {
     visibility: hidden;
 }
@@ -1707,15 +1710,16 @@ float:right;
 
 .cal_view_monthly {
     background-color: white;
-    padding: 7px 10px 7px 30px;
+    padding: 6.5px 10px 6.5px 30px;
     text-align:left;    
     box-shadow: -1px 1px 3px rgba(0,0,0,0.05);
     border: 1px solid #eee;
     border-right: 1px solid transparent;
+    font-weight: 700;
+    font-size: 13px;
+    color: #4D4D4D;
     text-shadow: 0 1px 0 #fff;
-    font-weight: bold;
-    color: #333333;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 2px 0px 0px 2px;
 }
 
 .active_view {
@@ -1725,8 +1729,7 @@ float:right;
     display: inline-block;
     z-index: 20;
     height: 34px;
-    background-color: #2E80D6;
-    background-image: url(../img/stripe_ptrn.png);
+    background-color: #575757;
     background-repeat: repeat;
     border-radius: 4px 0px 0px 4px;
 }
@@ -1735,8 +1738,8 @@ float:right;
     padding: 7px 10px 7px 30px;
     text-align:left;    
     text-shadow: 0 1px 0 #fff;
-    font-weight: lighter;
-    color: #333333;
+    font-weight: 400;
+    color: #029acf;
     border-radius: 4px 0px 0px 4px;
     border: 1px solid transparent;
     cursor: pointer;
@@ -2141,7 +2144,7 @@ i.notjoin {
 
 .iComments .comment {
     min-height: 32px;
-    margin: 0 0 9px;
+    margin: 9px 0 0px;
     opacity: .97;
     -webkit-transition: opacity .2s;
     -moz-transition: opacity .2s;
@@ -2566,32 +2569,6 @@ a.innerPic {
         -webkit-transform: rotate(-45deg); /* TODO: prefix */
     }
 
-.button-block.canceled {
-    height: 13px;
-    width: 13px;
-    border-width: 1.8px;
-    border-color: #00c692;
-    border-radius: 2px;
-    background-color: white;
-    transform: -webkit-scale(5);
-}
-
-    .button-block.canceled .mark {
-        background-color: #000000;
-    }
-
-        .button-block.canceled .mark.x {
-            right: 13px;
-            top: 9px;
-            height: 13px;
-        }
-
-        .button-block.canceled .mark.xx {
-            height: 6px;
-            top: 15.3px;
-            left: 10px;
-        }
-
 .centerText {
     position: absolute;
     opacity: 1;
@@ -2898,9 +2875,7 @@ div.cal-fbar-wrap .month-events{
 }
 
 @media(max-width:1150px){
-    div.cal-fbar-wrap .month-events{
-        display:none;
-    }
+
     div.midsec div.incomplete-wrap{
         display:none;
     }

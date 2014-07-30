@@ -1,6 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    margin: 0px auto;
+    margin: 0;
+	padding: 0;	
     background: whitesmoke;
     min-width: 720px;
     position: absolute;
@@ -111,9 +112,8 @@ body {
 
 .leftsec {
     padding-left: 15px;
-    float: left;
     display: block;
-    position: fixed !important;
+    position: fixed;
     z-index: 20;
     width: 250px;
     height: 100%;

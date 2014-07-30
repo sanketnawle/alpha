@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 if (isset($_POST['month_date'])) {
-    $month_date = $_POST['month_date'];
+    $month_date = mysql_escape_string($_POST['month_date']);
 }
 //Starting of the month
 $month_start = date("Y-m-01", strtotime($month_date));
@@ -34,37 +34,42 @@ $month_end = date("Y-m-d", strtotime("+7 days", strtotime($month_end)));
 $range = $month_end;
 
 if (isset($_POST['event_id'])) {
-    $event_id = $_POST['event_id'];
+    $event_id = mysql_escape_string($_POST['event_id']);
 }
 if (isset($_POST['title'])) {
-    $title = $_POST['title'];
+    $title_original = $_POST['title'];
+    $title = mysql_escape_string(htmlspecialchars($_POST['title']));
 }
 if (isset($_POST['location'])) {
-    $location = $_POST['location'];
+    $location_original = $_POST['location'];
+    $location = mysql_escape_string(htmlspecialchars($_POST['location']));
     if ($location == '') {
         $location = NULL;
+        $location_original = NULL;
     }
 }
 if (isset($_POST['details'])) {
-    $details = $_POST['details'];
+    $details_original = $_POST['details'];
+    $details = mysql_escape_string(htmlspecialchars($_POST['details']));
     if ($details == '') {
         $details = NULL;
+        $details_original = NULL;
     }
 }
 if (isset($_POST['start_date'])) {
-    $start_date = $_POST['start_date'];
+    $start_date = mysql_escape_string($_POST['start_date']);
 }
 if (isset($_POST['start_time'])) {
-    $start_time = $_POST['start_time'];
+    $start_time = mysql_escape_string($_POST['start_time']);
 }
 if (isset($_POST['end_time'])) {
-    $end_time = $_POST['end_time'];
+    $end_time = mysql_escape_string($_POST['end_time']);
 }
 if (isset($_POST['repeat'])) {
-    $repeat = $_POST['repeat'];
+    $repeat = mysql_escape_string($_POST['repeat']);
 }
 if (isset($_POST['end_date'])) {
-    $end_date = $_POST['end_date'];
+    $end_date = mysql_escape_string($_POST['end_date']);
     if ($end_date == '') {
         $end_date = $start_date;
     }
@@ -78,16 +83,16 @@ if (isset($_POST['connections'])) {
     }
 }
 if (isset($_POST['theme_id'])) {
-    $theme_id = $_POST['theme_id'];
+    $theme_id = mysql_escape_string($_POST['theme_id']);
     if ($theme_id == "") {
         $theme_id = 1;
     }
 }
 if (isset($_POST['type'])) {
-    $type = $_POST['type'];
+    $type = mysql_escape_string($_POST['type']);
 }
 if (isset($_POST['file_flag'])) {
-    $file_flag = $_POST['file_flag'];
+    $file_flag = mysql_escape_string($_POST['file_flag']);
 }
 
 switch ($type) {
@@ -172,8 +177,8 @@ if ($up_id != NULL) {
             $user_time_start = new DateTime(user_time($dates . " " . $start_time));
             $user_time_end = new DateTime(user_time($dates . " " . $end_time));
             $result_array[] = array(
-                'title' => $title,
-                'location' => $location,
+                'title' => $title_original,
+                'location' => $location_original,
                 'start_date' => $user_time_start->format("Y-m-d"),
                 'end_date' => $user_time_end->format("Y-m-d"),
                 'end_time' => $user_time_end->format("H:i:s"),
@@ -192,8 +197,8 @@ if ($up_id != NULL) {
         $user_time_end = new DateTime(user_time($end_date . " " . $end_time));
 
         $result_array[] = array(
-            'title' => $title,
-            'location' => $location,
+            'title' => $title_original,
+            'location' => $location_original,
             'start_date' => $user_time_start->format("Y-m-d"),
             'end_date' => $user_time_end->format("Y-m-d"),
             'end_time' => $user_time_end->format("H:i:s"),
@@ -234,8 +239,8 @@ if ($up_id != NULL) {
             $user_time_start = new DateTime(user_time($dates . " " . $start_time));
             $user_time_end = new DateTime(user_time($dates . " " . $end_time));
             $result_array[] = array(
-                'title' => $title,
-                'location' => $location,
+                'title' => $title_original,
+                'location' => $location_original,
                 'start_date' => $user_time_start->format("Y-m-d"),
                 'end_date' => $user_time_end->format("Y-m-d"),
                 'end_time' => $user_time_end->format("H:i:s"),
@@ -254,8 +259,8 @@ if ($up_id != NULL) {
         $user_time_end = new DateTime(user_time($end_date . " " . $end_time));
 
         $result_array[] = array(
-            'title' => $title,
-            'location' => $location,
+            'title' => $title_original,
+            'location' => $location_original,
             'start_date' => $user_time_start->format("Y-m-d"),
             'end_date' => $user_time_end->format("Y-m-d"),
             'end_time' => $user_time_end->format("H:i:s"),

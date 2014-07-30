@@ -99,7 +99,7 @@ overflow: scroll;
 .topbar_search_input
 {
 float: left;
-width: 640px;
+width: 600px;
 height: 27px;
 background-color: white;
 color: #3c4246;
@@ -111,18 +111,18 @@ box-shadow: 0px 0px 5px rgba(47, 47, 47, 0.6) inset, 0px 1px 0px rgba(161, 148, 
 }
 
 
-@media (max-width: 1050px) {
+@media (max-width: 1120px) {
 .topbar_search {
-	width:450px;
+	width:450px!important;
 }
 
 .topbar_search_input
 {
-	width:400px;
+	width:400px!important;
 }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 930px) {
 .topbar_search {
 	display: none;
 }
@@ -457,15 +457,36 @@ white-space: nowrap;
 
 .topbar_search .topbar_search_container .notop_padding .search_main_div form .search_input_wrapper input{
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
-box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
 outline: none;
 background-clip: padding-box;
 border-right-width: 0;
-height: 28px;
+height: 27px;
 vertical-align: top;
 padding-left: 12px;
 font-weight: 400;
+-webkit-box-shadow: inset 0 2px 2px #9B9B9B,rgba(105, 105, 105, 0.62) 0 2px 6px;
+-moz-box-shadow: inset 0 2px 2px #9B9B9B,rgba(105, 105, 105, 0.62) 0 2px 6px;
+box-shadow: inset 0 2px 2px #9B9B9B,rgba(105, 105, 105, 0.62) 0 2px 6px;
 margin-top: 2px;
+}
+
+.notop_padding .search_main_div form .search_input_wrapper input::-webkit-input-placeholder {
+  color:rgb(161, 163, 165);
+}
+
+.notop_padding .search_main_div form .search_input_wrapper input:focus::-webkit-input-placeholder {
+  transition: opacity 0.15s; 
+  opacity: .4;
+}
+
+.notop_padding .search_main_div form .search_input_wrapper input::-moz-placeholder {
+  color:rgb(161, 163, 165);
+}
+
+
+.notop_padding .search_main_div form .search_input_wrapper input:focus::-moz-placeholder {
+  transition: opacity 0.15s; 
+  opacity: .4;
 }
 
 .topbar_search .topbar_search_container .notop_padding .search_main_div form .topbar_search_go{
@@ -590,6 +611,48 @@ margin-top: 1px;
 	width: 20px;
 	z-index: 10;
 	margin-left: 40px;
+}
+
+.noti_includediv
+{
+float: right;
+margin-right: -160px;
+margin-top: 45px;
+}
+
+.ci_div
+{
+	display: none;
+	margin-top: -6px;
+}
+
+.gi_div
+{
+	display: none;
+	margin-top: -6px;
+}
+
+.rednoti
+{
+width: 18px;
+height: 18px;
+background: none repeat scroll 0% 0% #F00;
+border-radius: 9px;
+position: absolute;
+margin-left: 22px;
+margin-top: 25px;
+display: none;
+color: white;
+font-size: 10px;
+}
+
+.rednoti span
+{
+
+width: 18px;
+height: 5px;
+text-align: center;
+position: absolute;
 }
 
 input::-webkit-input-placeholder { color:#999; font-weight: lighter;}

@@ -329,7 +329,7 @@ $(document).ready(function() {
     	if(len_detect>=2){
     		$.ajax({
 	            		type: "POST",
-            			url: "../kk/newinfi/includes/fbarexp.php",
+            			url: "includes/fbarexp.php",
             			data: {query:query},
             			success: function(html){ 
             					$(".tag-option").html(html);
@@ -374,7 +374,9 @@ $(document).ready(function() {
 			tags.push(tag);
 			tags_type.push(tp);
 
-			$(".midfbar-exp").prepend("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tagname+"</div><div class='tag-close'></div></div>");
+			$(".midfbar-exp").find(".add_who").remove();
+			$(".midfbar-exp").append("<div class='who-is-tagged' id='wit_"+tag+"'><div class='tag-name'>"+tagname+"</div><div class='tag-close'></div></div>");
+			$(".midfbar-exp").append("<input placeholder = '+ Ask experts' class = 'add_who'></input>");
 			$(".add_who").val("");
 			$(".add_who").focus();
 			$(".tag-option").hide();
@@ -534,7 +536,7 @@ $(document).ready(function() {
 
 						$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				xhr: function() {  // Custom XMLHttpRequest
             					var myXhr = $.ajaxSettings.xhr();
             					if(myXhr.upload){ // Check if upload property exists
@@ -559,7 +561,7 @@ $(document).ready(function() {
 					}else{
 						$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				data: {fbar_type: fbar_type, post_status: post_status, anon: anon, privacy:privacy},
             				success: function(html){ 
             					alert(html);
@@ -598,7 +600,7 @@ $(document).ready(function() {
 
    					$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				xhr: function() {  // Custom XMLHttpRequest
             					var myXhr = $.ajaxSettings.xhr();
             					if(myXhr.upload){ // Check if upload property exists
@@ -625,7 +627,7 @@ $(document).ready(function() {
 
    						$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				data: {fbar_type: fbar_type, notes_desc:notes_desc, privacy:privacy, gdrive_id:gdrive_id, gdrive_name:gdrive_name,gdrive_url:gdrive_url,gdrive_type:gdrive_type},
             				success: function(html){ 
             					alert(html);
@@ -696,7 +698,7 @@ $(document).ready(function() {
 
    					$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				xhr: function() {  // Custom XMLHttpRequest
             					var myXhr = $.ajaxSettings.xhr();
             					if(myXhr.upload){ // Check if upload property exists
@@ -717,7 +719,7 @@ $(document).ready(function() {
 					//alert(fbar_type+","+que_title+","+que_desc+","+anon+","+privacy);
 					$.ajax({
 	            			type: "POST",
-            				url: "../kk/newinfi2/includes/fbarops.php",
+            				url: "includes/fbarops.php",
             				data: {fbar_type: fbar_type, que_title:que_title, que_desc:que_desc, anon:anon, privacy:privacy, experts:experts},
             				error: function(html){ 
             					alert(html);
@@ -748,6 +750,24 @@ $(document).ready(function() {
 
 				}
 			});
+
+
+			var curkeypos=$(".tag-col").first();
+			$(document).delegate(".add_who","keydown",function(e){
+				//alert(curkeypos.attr("id"));
+				//down
+				if(e.which=='40'){
+					curkeypos.next().addClass("opt_jshover");
+				}
+
+				//up
+				if(e.which=='38'){
+
+				}
+			});
+
+
+
 
 			function progressHandlingFunction(e){
     			if(e.lengthComputable){
@@ -814,7 +834,7 @@ $(document).ready(function() {
 								</div>
 
 									<div class = "lfloat-anon">
-										<div class='check_wrap'>
+										<div class='check_wrap fbarcheck_wrap'>
 											<input type='checkbox' id='flat_0' class='flat7c'/>
 												<label for='flat7' class='flat7b_fbar'>
 									    			<span class='move'></span>
@@ -982,7 +1002,7 @@ $(document).ready(function() {
 										<div class="tag-option">
 
 											<div class="tag-section tagsec-r">
-												<?php include "../kk/newinfi2/includes/fbarexp.php";?>
+												
 											</div>
 										</div>
 
@@ -1006,7 +1026,7 @@ $(document).ready(function() {
 									
 								</div>
 								<div class = "lfloat-anon">
-										<div class='check_wrap'>
+										<div class='check_wrap fbarcheck_wrap'>
 											<input type='checkbox' id='flat_0' class='flat7c'/>
 												<label for='flat7' class='flat7b_fbar'>
 									    			<span class='move'></span>

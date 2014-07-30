@@ -75,59 +75,72 @@ $(document).ready(function() {
 	    $('.event-repeat').css('display', 'block');
 	    $('#fileAttach').hide();
 	    $('#btnDeleteEvent').hide();
+	    $('.add-event-box-edit-header').hide();
+	    $('#btnAddThisEvent').text('Add Event');
 	    /*$("#bc3contentAddEvent").animate({ marginTop: "+=600px" });*/
 	});
 
-	$(document).delegate('.add-event-right', "click", function () {
+	var clickCount = 0;
+	function flagSetClickCount(e) {
+	    clickCount = 0;
+	}
+	
+	setInterval(function () { flagSetClickCount(); }, 1500);
+	$(document).delegate('.add-event-right', "click", function () {	    
+	    if (clickCount == 0) {	        
+	        clickCount = 1;
+	        var $cardref = $(this).parents(".add-event-header").children(".add-event-pic");
+	        var topPos = $cardref.scrollTop();
 
-	    var $cardref = $(this).parents(".add-event-header").children(".add-event-pic");
-	    var topPos = $cardref.scrollTop();
-	    $cardref.stop().animate({ scrollTop: topPos + 125 }, 400);
-	    if (theme_pic_index < $cardref.children('.add-event-pic-actual').prop('childElementCount')) {
-	        theme_pic_index++;
-	    }
-	    if (theme_pic_index == $cardref.children('.add-event-pic-actual').prop('childElementCount')) {
-	        $cardref.stop().animate({ scrollTop: 0 }, 400);
-	        theme_pic_index = 0;
-	    }
-	    var index = 0;
-	    var flag = true;
-	    $('.theme_pic').each(function () {
-	        if (theme_pic_index.toString() == index.toString()) {
-	            if (flag) {
-	                $('#theme_id').text($(this).prop('id'));	                
-	                flag = false;
-	                return;
-	            }
+	        $cardref.stop().animate({ scrollTop: topPos + 125 }, 400);
+	        if (theme_pic_index < $cardref.children('.add-event-pic-actual').prop('childElementCount')) {
+	            theme_pic_index++;
 	        }
-	        index++;
-	    });
+	        if (theme_pic_index == $cardref.children('.add-event-pic-actual').prop('childElementCount')) {
+	            $cardref.stop().animate({ scrollTop: 0 }, 400);
+	            theme_pic_index = 0;
+	        }
+	        var index = 0;
+	        var flag = true;
+	        $('.theme_pic').each(function () {
+	            if (theme_pic_index.toString() == index.toString()) {
+	                if (flag) {
+	                    $('#theme_id').text($(this).prop('id'));
+	                    flag = false;
+	                    return;
+	                }
+	            }
+	            index++;
+	        });
+	    }	    
 	});
 
 	$(document).delegate('.add-event-left', "click", function () {
-
-	    var $cardref = $(this).parents(".add-event-header").children(".add-event-pic");
-	    var topPos = $cardref.scrollTop();
-	    $cardref.stop().animate({ scrollTop: topPos - 125 }, 400);
-	    if (theme_pic_index > 0) {
-	        theme_pic_index--;
-	    }
-	    if (theme_pic_index == 0) {
-	        $cardref.stop().animate({ scrollTop: ($cardref.children('.add-event-pic-actual').prop('childElementCount') * 125) }, 400);
-	        theme_pic_index = $cardref.children('.add-event-pic-actual').prop('childElementCount');
-	    }
-	    var index = 0;
-	    var flag = true;
-	    $('.theme_pic').each(function () {
-	        if (theme_pic_index.toString() == index.toString()) {
-	            if (flag) {
-	                $('#theme_id').text($(this).prop('id'));	                
-	                flag = false;
-	                return;
-	            }
+	    if (clickCount == 0) {
+	        clickCount = 1;
+	        var $cardref = $(this).parents(".add-event-header").children(".add-event-pic");
+	        var topPos = $cardref.scrollTop();
+	        $cardref.stop().animate({ scrollTop: topPos - 125 }, 400);
+	        if (theme_pic_index > 0) {
+	            theme_pic_index--;
 	        }
-	        index++;
-	    });
+	        if (theme_pic_index == 0) {
+	            $cardref.stop().animate({ scrollTop: ($cardref.children('.add-event-pic-actual').prop('childElementCount') * 125) }, 400);
+	            theme_pic_index = $cardref.children('.add-event-pic-actual').prop('childElementCount');
+	        }
+	        var index = 0;
+	        var flag = true;
+	        $('.theme_pic').each(function () {
+	            if (theme_pic_index.toString() == index.toString()) {
+	                if (flag) {
+	                    $('#theme_id').text($(this).prop('id'));
+	                    flag = false;
+	                    return;
+	                }
+	            }
+	            index++;
+	        });
+	    }
 	});
 
 

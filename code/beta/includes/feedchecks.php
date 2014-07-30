@@ -1,8 +1,5 @@
 <?php
 	require_once("dbconfig.php");
-
-	$_SESSION['user_id']='1';
-
 	// $pid='209';
 	// $cid='13';
 
@@ -90,6 +87,7 @@
 
 	function que_tag_list($con,$pid){
 		// return $pid;
+		$qtl_list = NULL;
 		if(isset($qtl_list)) unset($qtl_list);
 		$tag_list_q = mysqli_query($con, "SELECT * FROM posts_questions WHERE post_id = ".$pid);
 		if($tag_list_q){
@@ -102,13 +100,13 @@
 		else return $qtl_list = NULL;
 	}
 
-	function file_type($con,$file_id){
-		$ftype_q = $con->prepare("SELECT file_type FROM file_upload WHERE file_id = ?");
+	function file_up_desc($con,$file_id){
+		$ftype_q = $con->prepare("SELECT file_name,file_type FROM file_upload WHERE file_id = ?");
 		$ftype_q->bind_param('i',$file_id);
 		if($ftype_q->execute()){
-			$ftype_q->bind_result($ftype);
+			$ftype_q->bind_result($file_up['name'], $file_up['type']);
 			$ftype_q->fetch();
-			return $ftype;
+			return $file_up;
 		}
 		return "Mazaak:lol";
 	}
@@ -148,8 +146,11 @@
 	// Input should always have http or https, so this must be processed in autolink before it is fed into this function
 	function detect_embed($string){
 		preg_match("/([\w]+:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/i",$string,$match);
-		$string = preg_replace("/([\w]+:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/i","<a class=\"play\" href=\"$1\">$1</A>",$match[0]);
-		if(!is_null($string))return $string;
+		if(isset($match[0])){
+			$string = preg_replace("/([\w]+:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/i","<a class=\"play\" href=\"$1\">$1</A>",$match[0]);
+			if(!is_null($string)) return $string;
+		}
+		else return NULL;
 	}
 
 // echo detect_embed("http://www.php.net/manual/en/function.preg-match.php hukk www.urlinq.com");

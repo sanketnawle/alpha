@@ -16,7 +16,6 @@
 }
 
 .pl_head {
-    background-color: #313131;
     border-radius: 0px;
     width: 100%;
     margin: 0 auto;
@@ -26,11 +25,12 @@
     margin-left: 0px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.2);
     border-top-left-radius: 5px; 
-    border-top-right-radius: 5px; background-color: #F7F7F7; 
-    height: 33px; width: auto;  color: #333; font-weight: 200; 
+    border-top-right-radius: 5px; 
+    background-color: #575757; 
+    height: 33px; width: auto;  
+    color: #FFF; font-weight: 200; 
     border-bottom: 2px solid rgba(0, 0, 0, 0.03);
     font-size: 14px; 
-    background: #DBDBDB url(../img/white-gradient-100px.png) repeat-x 50% 50%;
 }
 
 .pl_head_wrap {
@@ -81,7 +81,7 @@
 }
 
 .text1 {
-    color: #333;
+    color: #FFF;
     font-size: 17px;
     font-weight: 200;
     line-height: 18px;
@@ -109,8 +109,8 @@
     z-index: 400;
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
     border-radius: 4px;
-    left: 98px;
-top: 30px;
+    margin-left: 80px;
+margin-top: 5px;
 }
 
 .pl_option:first-child {
@@ -223,7 +223,7 @@ border-bottom: 1px solid #3AC979;
         color: #666;
         height: 33px;
         padding-top: 0px;
-    
+        text-decoration: none;
         color: #029acf;  font-weight: 400;
 }
 

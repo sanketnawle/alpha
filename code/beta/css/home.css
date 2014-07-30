@@ -64,10 +64,10 @@ position: relative;
 padding: 10px 9px 20px;
 padding-left: 25px;
 min-height: 1px;
-background: url('../img/noise-2.png') repeat scroll 0% 0% #EBECEE;
+background: #DADBDD url(../img/noise-2.png);
 z-index: 2;
-border-style: solid;
-border-color: rgba(0, 0, 0, 0.25);
+/* border-style: solid; */
+/* border-color: rgba(0, 0, 0, 0.25); */
 -moz-border-top-colors: none;
 -moz-border-right-colors: none;
 -moz-border-bottom-colors: none;

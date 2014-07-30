@@ -161,6 +161,15 @@ $(document).ready(function () {
     });
     $(document).delegate('.pl_option', 'click', function () {
         $('.pl_options').toggle();
+        var text = $(this).text();
+        if (text.toString().toLowerCase() == "View full schedule".toLowerCase())
+        {
+            window.location = "calendar_beta.php?plnr=0";
+        }
+        else if (text.toString().toLowerCase() == "View my monthly calendar".toLowerCase())
+        {
+            window.location = "calendar_beta.php?plnr=1";
+        }
         //$('.fa-caret-down').toggleClass('open_Menu');
     });
 

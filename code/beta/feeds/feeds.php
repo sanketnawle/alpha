@@ -26,15 +26,15 @@ require_once('includes/feedchecks.php');
  		<!--<script src="feed.js"></script>--> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
-		<script src="js/timeago.js" type="text/javascript"></script>
+		<!-- // <script src="js/timeago.js" type="text/javascript"></script> -->
 	</head>
 
 		<script>
 
-		$(document).ready(function(){
-			 jQuery.timeago.settings.allowFuture = true;
-                jQuery("time.timeago").timeago();
-		});
+		// $(document).ready(function(){
+		// 	 jQuery.timeago.settings.allowFuture = true;
+  //               jQuery("time.timeago").timeago();
+		// });
 		navigator.sayswho= (function(){
     		var ua= navigator.userAgent, tem, 
    			 M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -62,7 +62,13 @@ $(document).ready(function() {
 
 	j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
 
-				j$('.play').embedly({
+
+
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
 				query: {
 				maxwidth:500,
 				autoplay:true
@@ -108,6 +114,12 @@ return false;
 
 });
 
+}
+
+});
+
+
+
 j$(document).delegate('.playable_wrap',"click", function(){
 	j$(this).closest(".post_lr_link_msg").find(".play").click();
 });
@@ -115,7 +127,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 
 
 
-
+	latest_feed();
 
 
 	$(document).delegate(".post_functions_showr","click",function(){
@@ -161,16 +173,10 @@ j$(document).delegate('.playable_wrap',"click", function(){
 		$(this).closest(".posts").find(".form-control").focus();
 	});
 
-
-
-
-
 				var load='yes';
 				var feeds = $("#posts");
 				var last_time = 0;
 				var heightOffset= 550;
-
-				setInterval(function() {latest_feed(); }, 1000);
 
 
 				$(document).delegate('.post_functions',"click", function(){
@@ -208,12 +214,17 @@ j$(document).delegate('.playable_wrap',"click", function(){
         						$ref.last().append( html );
         						load = 'yes';
 
-        											j$('.play').embedly({
-						query: {
-						maxwidth:500,
-						autoplay:true
-						},
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
+				query: {
+				maxwidth:500,
+				autoplay:true
+			},
 display: function(data, elem){
+	
 //Adds the image to the a tag and then sets up the sizing.
 j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
 .width(data.thumbnail_width)
@@ -253,6 +264,9 @@ return false;
 
 });
 
+}
+
+});
 
         						
         					});
@@ -887,13 +901,20 @@ return false;
 
 
 				function latest_feed() {
+					var feeds=$("#posts");
 
-					j$('.play').embedly({
-						query: {
-						maxwidth:500,
-						autoplay:true
-						},
+
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
+				query: {
+				maxwidth:500,
+				autoplay:true
+			},
 display: function(data, elem){
+	
 //Adds the image to the a tag and then sets up the sizing.
 j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
 .width(data.thumbnail_width)
@@ -933,6 +954,12 @@ return false;
 
 });
 
+}
+
+});
+
+
+
 //alert("a");					
 						
 						var latest = feeds.children().first().attr('id');
@@ -942,14 +969,20 @@ return false;
 	            			type: "POST",
             				url: "includes/latestfeed.php",
             				data: {latest: latest},
+            				//timeout: 50000,
             				success: function(html){ 
-            					//alert(html);
-            					//alert("a");
+            					// alert(html);
+            					// alert("a");
 	                			$ref.first().prepend( html );
+	                			setTimeout(function() {latest_feed(); }, 1000);
 			            		//alert($(".new_fd").attr("id"));
 
 				//success end
-								}
+								},
+							error: function(x,t,e){
+								// alert(t);
+								setTimeout(function() {latest_feed(); }, 1000);
+							} 
 				});
 
 

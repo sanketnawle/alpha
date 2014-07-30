@@ -64,9 +64,7 @@ div.header-left-title div.eventbook-date-cont{
     overflow:hidden;
     float: left;
     margin-right: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-top: 9px;
+    margin-top: 10px;
     background: #f5f5f5; 
     background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1)); 
     background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1); 
@@ -82,57 +80,62 @@ div.header-left-title div.eventbook-date-cont{
 
 div.header-left-title div.eb-day-cont span.eb-current-day{
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
-    font-size: 23px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 600;
     color: #6a7480;
     display:block;
+    padding-top:7px;
 }
 
 span.eb-prev-day{
         vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
     font-size: 23px;
-    font-weight: 400;
+    font-weight: 600;
     color: #6a7480;
     display:block;
+    padding-top:7px;
     }
 
 div.header-left-title div.eb-day-cont span.eb-next-day{
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
     font-size: 23px;
-    font-weight: 400;
+    font-weight: 600;
     color: #6a7480;
     display:block;
+    padding-top:7px;
 }
 
 
 
 div.header-left-title div.eb-month-cont span.eb-month{
     vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 23px; 
-    font-weight: 400; 
+    font-size: 15px; 
+    font-weight: 600; 
     color: #6a7480;
-
+    padding-left:5px;
 }
 
 div.header-left-title div.eb-month-cont span.eb-date{
     vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 24px; 
+    font-size: 15px; 
     font-weight: 600; 
     color: #6a7480;
-
+    padding-right:5px;
 }
 
 div.header-left-title div.eb-year-cont span.eb-year{
     vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 25px; 
-    font-weight: 100; 
+    font-size: 15px; 
+    font-weight: 500; 
     color: #6a7480;
+    padding-left: 5px;
+padding-right: 5px;
 }
 
 div.header-center-fx{  
@@ -182,7 +185,7 @@ div.fx-cont-left{
 div.fx-cont-left span{
     background-image: url('../img/right-arrow.png');
 -moz-transform: rotate(180deg);
--webkit-transform: rotate(90deg);
+-webkit-transform: rotate(180deg);
 top: -11px;        
 }
 
@@ -839,29 +842,21 @@ transform: rotate(-45deg);
 /* TODO: prefix; */
 }
 
-.button-block.canceled {
-        height: 20px;
-        width: 20px;
-        border-width: 3px;
-        border-color: #00c692;
-        border-radius: 4px;
-        background-color: white;
-    }
 
     .button-block.canceled .mark {
         background-color: #000000;
     }
 
     .button-block.canceled .mark.x {
-        right: 12px;
-        top: 9px;
-        height: 13px;
+        right: 14px;
+height: 34px;
+top: 5px;
     }
 
     .button-block.canceled .mark.xx {
-        height: 5px;
-        top: 15px;
-        left: 10.5px;
+        top: 22px;
+left: 12px;
+height: 15px;
     }
 
 
@@ -911,12 +906,10 @@ div.eb-personal-event-notes span.eb-personal-event-info-content,.eb-personal-eve
 
 div.eb-personal-event-notes {
     width: 65%;
-
     overflow: hidden;
     padding-left: 8px;
     padding-top: 5px;
-    padding-bottom: 4px;
-    cursor:pointer;
+    padding-bottom: 4px;    
     border-right: 1px solid #ECECEC;
     margin-top: 5.5px;
     position: relative;
@@ -924,7 +917,7 @@ div.eb-personal-event-notes {
     float: left;
 }
 
-div.eb-personal-event-notes:hover > span.eb-personal-event-info-content,.eb-personal-event-files:hover span.eb-personal-event-info-content{
+.eb-personal-event-files:hover span.eb-personal-event-info-content{
     color:rgba(97, 83, 83, 0.43);
 }
 
@@ -1033,6 +1026,9 @@ div.event-attend-status-hider > span.down-arrow{
     bottom: 4px;
     left: 4px;
     right: 4px;
+    text-align: center;
+color: #404040;
+padding-top: 5px;
     border-radius: 2px;
 } 
 
@@ -1156,7 +1152,7 @@ border-right: 8px solid rgba(246, 246, 246, 0);
 .eb-personal-note-wedges{
     position: absolute;
     left: 50px;
-    top: 73px;
+    top: 62%;
 }
 .eb-personal-file-wedges{
         position: absolute;
@@ -1184,35 +1180,27 @@ border-right: 7px solid rgba(246, 246, 246, 0);
 }
 
 .event-info-notes-header{
-
     position: absolute;
-    
-
-    left: 38px;
-    
-    
-
-    top: 36px;
-
+    left: 38px;       
+    top: 33px;
     font-size: 14px; 
     font-weight: 200; color: rgba(0, 0, 0, 0.46);
 }
 
 .event-info-files-header{
     position: absolute; 
-    right: 59px; top: 36px; font-size: 14px; font-weight: 200; color: rgba(0, 0, 0, 0.46);
-
+    right: 59px; top: 33px; font-size: 14px; font-weight: 200; color: rgba(0, 0, 0, 0.46);
 }
 
 .eb-personal-files-wedges {
 position: absolute;
 right: 50px;
-top: 73px;
+top: 62%;
 }
 
 .eb-personal-event-files
 {
-    width: 30%; overflow: hidden; padding-left: 8px; padding-top: 5px; padding-bottom: 4px;  cursor: pointer; 
+    width: 30%; overflow: hidden; padding-left: 8px; padding-top: 5px; padding-bottom: 4px;  
     margin-top: 5.5px; position: relative; display: inline-block; 
     padding-right: 4px;
     float: right;

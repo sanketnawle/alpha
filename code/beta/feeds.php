@@ -1,8 +1,20 @@
 <?php
 require_once('includes/dbconfig.php');
 require_once('includes/time.php');
-$_SESSION['user_id']="1";
-$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 5");
+
+if(!isset($_GET['user_id'])){
+	session_start();
+}
+
+if(isset($_GET['user_id'])){
+	// echo "test";
+	$_GET['user_id'] = 1;
+	$result = mysqli_query($con,"SELECT * FROM posts WHERE user_id = ".$_GET['user_id']." ORDER BY update_timestamp DESC LIMIT 5");
+}
+else{
+	$result = mysqli_query($con,"SELECT * FROM posts ORDER BY update_timestamp DESC LIMIT 5");
+	// echo mysqli_num_rows($result);
+}
 
 require_once('includes/feedchecks.php');
 ?>
@@ -26,11 +38,15 @@ require_once('includes/feedchecks.php');
  		<!--<script src="feed.js"></script>--> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+		<!-- // <script src="js/timeago.js" type="text/javascript"></script> -->
 	</head>
 
-
-
 		<script>
+
+		// $(document).ready(function(){
+		// 	 jQuery.timeago.settings.allowFuture = true;
+  //               jQuery("time.timeago").timeago();
+		// });
 		navigator.sayswho= (function(){
     		var ua= navigator.userAgent, tem, 
    			 M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -48,6 +64,7 @@ require_once('includes/feedchecks.php');
 			})();
 		</script>
 		<script>
+
             function download (id)
             {
                 window.open ("includes/download_file.php?file_id="+id, "hiddenFrame");
@@ -58,7 +75,11 @@ $(document).ready(function() {
 
 	j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
 
-				j$('.play').embedly({
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
 				query: {
 				maxwidth:500,
 				autoplay:true
@@ -104,6 +125,12 @@ return false;
 
 });
 
+}
+
+});
+
+
+
 j$(document).delegate('.playable_wrap',"click", function(){
 	j$(this).closest(".post_lr_link_msg").find(".play").click();
 });
@@ -111,7 +138,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 
 
 
-
+	setTimeout(function() {latest_feed(); }, 5000);
 
 
 	$(document).delegate(".post_functions_showr","click",function(){
@@ -128,7 +155,7 @@ j$(document).delegate('.playable_wrap',"click", function(){
 
 
 	$(document).delegate(".form-control","focus",function(){
-		$(this).css({"height":"53px","width":"93.82%","margin-left":"6px","margin-top":"41px","border-radius":"4px"});
+		$(this).css({"height":"53px","border-radius":"4px","margin-left":"10px","width":"545px","margin-top":"10px"});
 		$(this).closest(".reply_tawrapper").closest(".commentform").css("height","96px");
 		$(this).closest(".commentform").find(".reply_user_icon").hide();
 		$(this).closest(".commentform").find(".reply_functions").show();
@@ -157,16 +184,10 @@ j$(document).delegate('.playable_wrap',"click", function(){
 		$(this).closest(".posts").find(".form-control").focus();
 	});
 
-
-
-
-
 				var load='yes';
 				var feeds = $("#posts");
 				var last_time = 0;
 				var heightOffset= 550;
-
-				setInterval(function() {latest_feed(); }, 1000);
 
 
 				$(document).delegate('.post_functions',"click", function(){
@@ -204,12 +225,17 @@ j$(document).delegate('.playable_wrap',"click", function(){
         						$ref.last().append( html );
         						load = 'yes';
 
-        											j$('.play').embedly({
-						query: {
-						maxwidth:500,
-						autoplay:true
-						},
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
+				query: {
+				maxwidth:500,
+				autoplay:true
+			},
 display: function(data, elem){
+	
 //Adds the image to the a tag and then sets up the sizing.
 j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
 .width(data.thumbnail_width)
@@ -245,6 +271,10 @@ j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.htm
 return false;
 }else{
 	window.open(data.url, '_blank');
+}
+
+});
+
 }
 
 });
@@ -883,13 +913,19 @@ return false;
 
 
 				function latest_feed() {
+					var feeds=$("#posts");
 
-					j$('.play').embedly({
-						query: {
-						maxwidth:500,
-						autoplay:true
-						},
+j$( ".new_fd" ).each(function( index ) {
+
+			j$(this).removeClass("new_fd");
+			if(j$(this).find(".f_hidden_p").text().trim()!=""){
+			j$(this).find('.play').embedly({
+				query: {
+				maxwidth:500,
+				autoplay:true
+			},
 display: function(data, elem){
+	
 //Adds the image to the a tag and then sets up the sizing.
 j$(elem).html('<img src="'+data.thumbnail_url+'"/>')
 .width(data.thumbnail_width)
@@ -929,6 +965,11 @@ return false;
 
 });
 
+}
+
+});
+
+
 //alert("a");					
 						
 						var latest = feeds.children().first().attr('id');
@@ -938,14 +979,20 @@ return false;
 	            			type: "POST",
             				url: "includes/latestfeed.php",
             				data: {latest: latest},
+            				//timeout: 50000,
             				success: function(html){ 
-            					//alert(html);
-            					//alert("a");
+            					// alert(html);
+            					// alert("a");
 	                			$ref.first().prepend( html );
+	                			setTimeout(function() {latest_feed(); }, 1000);
 			            		//alert($(".new_fd").attr("id"));
 
 				//success end
-								}
+								},
+							error: function(x,t,e){
+								// alert(t);
+								setTimeout(function() {latest_feed(); }, 1000);
+							} 
 				});
 
 
@@ -960,13 +1007,16 @@ return false;
 
 
 	<body>
-		<section class='popup_section'><?php include "popup.php";?></section>
+		
 		<div id = "posts">
 			<!--a post start-->
+
 			<?php
 				if($result){
 					while($row = mysqli_fetch_array($result)) {
-
+						$create_ts_arr = explode(" ", $row['update_timestamp']);
+						$create_time = $create_ts_arr[0]."T".$create_ts_arr[1]."Z";
+						
 						if($row['post_type']=="status")	include "includes/posts.php";
 						else if($row['post_type']=="notes") include "includes/posts_notes.php";
 						else if($row['post_type']=="question") include "includes/posts_question.php";

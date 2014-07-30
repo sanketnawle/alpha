@@ -10,18 +10,16 @@ $echo_string = '
         <div class = "text1">My Planner
         <div class="planner_dropdown"></div>
 <div class="pl_options" style="display: none;">
-   <div class = "pl_option">View my full planner</div>
+   <div class = "pl_option">View full schedule</div>
     <hr class="post_options_hr"></hr>
-          <div class = "pl_option">View my monthly calendar</div>
-    <hr class="post_options_hr"></hr>
-          <div class = "pl_option">Hide all upcoming</div>
+          <div class = "pl_option">View my monthly calendar</div>    
 </div>
         
         </div>
         <!--<i class="fa fa-caret-down"></i>
         
         <div class = "pl_options">
-          <div class = "pl_option">View my full planner</div>
+          <div class = "pl_option">View full schedule</div>
           <div class = "pl_option">View my monthly calendar</div>
           <div class = "pl_option">Hide all upcoming</div>
         </div>-->

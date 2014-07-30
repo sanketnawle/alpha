@@ -9,7 +9,11 @@ $user_id = 1;
 $event_id = 0;
 $type = 0;
 $grey_color = 192;
-
+$invited_red_code = 51;
+$invited_green_code = 255;
+$invited_blue_code = 0;
+$today_date = date("Y-m-d", strtotime("now"));
+$now_time = date("H:i:s", strtotime("now"));
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -72,7 +76,6 @@ while ($row = mysqli_fetch_array($get_types_result)) {
 $result_array = array();
 
 
-
 if (($type == $personal_event or $type == $to_do_event) AND $event_id != 0) {
 //Selecting events for the user without recurrence
     $personal_event_query = "SELECT * FROM personal_event WHERE `user_id`= '$user_id' AND `event_id`!='$event_id' 
@@ -91,21 +94,25 @@ if (($type == $personal_event or $type == $to_do_event) AND $event_id != 0) {
 
 
 while ($row = mysqli_fetch_array($personal_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
     $count = 0;
     $invite_array = array();
     if ($row['invites'] == 1) {
         $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location` 
-            FROM personal_event_invited PI, user U WHERE PI.`event_id`=$event_id and PI.`choice` = 1 AND U.`user_id` = PI.`user_id`";
+            FROM personal_event_invited PI, user U WHERE PI.`event_id`=$this_event_id and PI.`choice` = 1 AND U.`user_id` = PI.`user_id`";
         $get_invited_query_result = mysqli_query($con, $get_invited_query);
         while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+            if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+                $picture_link = $result_row['profile_picture'];
+            } else {
+                $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+            }
             $count++;
             $invite_array[] = array(
                 'user_id' => $result_row['user_id'],
                 'firstname' => $result_row['firstname'],
                 'lastname' => $result_row['lastname'],
-                'profile_picture' => $result_row['profile_picture'],
-                'pic_location' => $result_row['pic_location']
+                'profile_picture' => $picture_link,
             );
         }
     }
@@ -116,8 +123,12 @@ while ($row = mysqli_fetch_array($personal_event_query_result)) {
     $result_row = mysqli_fetch_array($get_user_query_result);
 
     $name = "Created by you";
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
 
     if ($row['invites'] == 0 AND ($row['location'] == NULL OR $row['location'] == 'NULL') AND $row['recurrence'] == 'none') {
         $type_event = $to_do_event;
@@ -163,8 +174,7 @@ while ($row = mysqli_fetch_array($personal_event_query_result)) {
         'choice' => NULL,
         'name' => $name,
         'theme_pic' => $theme_url,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
+        'pic_name' => $picture_link,
         'created_by' => 1,
         'file_name' => $file_name,
         'file_id' => $file_id,
@@ -183,7 +193,7 @@ while ($row = mysqli_fetch_array($personal_event_query_result)) {
 if ($type == $personal_invited_event AND $event_id != 0) {
     $personal_invited_event_query = "SELECT P.*, PI.`choice` FROM personal_event P, personal_event_invited PI 
     WHERE P.`event_id` = PI.`event_id` AND PI.`user_id` = '$user_id'    
-        AND ((P.`start_date` = '$today_date' AND P.`start_time``>='$now_time') OR (P.`start_date` > '$today_date')) 
+        AND ((P.`start_date` = '$today_date' AND P.`start_time`>='$now_time') OR (P.`start_date` > '$today_date'))
             AND P.`event_id`!='$event_id'
         ORDER BY start_date ASC,start_time ASC LIMIT 15";
 
@@ -198,32 +208,39 @@ if ($type == $personal_invited_event AND $event_id != 0) {
 }
 
 while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
 
     $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location` 
-        FROM personal_event_invited PI, user U WHERE PI.`event_id`=$event_id and `choice` = 1 AND PI.`event_id` = U.`user_id`";
+        FROM personal_event_invited PI, user U WHERE PI.`event_id`=$this_event_id and `choice` = 1 AND PI.`user_id` = U.`user_id`";
     $get_invited_query_result = mysqli_query($con, $get_invited_query);
     $count = 0;
     $invite_array = array();
     while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+        if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+            $picture_link = $result_row['profile_picture'];
+        } else {
+            $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+        }
         $count++;
         $invite_array[] = array(
             'user_id' => $result_row['user_id'],
             'firstname' => $result_row['firstname'],
             'lastname' => $result_row['lastname'],
-            'profile_picture' => $result_row['profile_picture'],
-            'pic_location' => $result_row['pic_location']
+            'profile_picture' => $picture_link,
         );
     }
 
     $get_user_query = "SELECT `pic_location`, `profile_picture`, `firstname`, `lastname`, `user_id` FROM user 
-            WHERE `user_id` = (SELECT `user_id` from personal_event WHERE `event_id`=$event_id)";
+            WHERE `user_id` = (SELECT `user_id` from personal_event WHERE `event_id`=$this_event_id)";
     $get_user_query_result = mysqli_query($con, $get_user_query);
     $result_row = mysqli_fetch_array($get_user_query_result);
 
     $name = $result_row['firstname'] . " " . $result_row['lastname'];
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
 
     if ($row['file_id'] != NULL) {
         $file_id = $row['file_id'];
@@ -261,8 +278,7 @@ while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
         'invite_array' => $invite_array,
         'choice' => $row['choice'],
         'name' => $name,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
+        'pic_name' => $picture_link,
         'created_by' => 0,
         'file_name' => $file_name,
         'file_id' => $file_id,
@@ -270,9 +286,9 @@ while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
         'group_id' => NULL,
         'group_name' => NULL,
         'editable' => FALSE,
-        'red_color' => $grey_color,
-        'green_color' => $grey_color,
-        'blue_color' => $grey_color,
+        'red_color' => $invited_red_code,
+        'green_color' => $invited_green_code,
+        'blue_color' => $invited_blue_code,
         'time_added' => $formatted_time,
         'type' => $personal_invited_event
     );
@@ -289,7 +305,7 @@ ORDER BY start_date ASC,start_time ASC LIMIT 15";
     $group_event_query_result = mysqli_query($con, $group_event_query);
 } else {
 //Selecting club events has is part of without recurrence
-    $group_event_query = "SELECT * FROM group_event G, group_event_invited GI WHERE G.`event_id`=GI.`event_id` 
+    $group_event_query = "SELECT G.*, GI.`added` FROM group_event G, group_event_invited GI WHERE G.`event_id`=GI.`event_id` 
 AND GI.`user_id` = '$user_id'
 AND ((G.`start_date` = '$today_date' AND G.`start_time`>='$now_time') OR (G.`start_date` > '$today_date'))
 ORDER BY start_date ASC,start_time ASC LIMIT 15";
@@ -298,33 +314,39 @@ ORDER BY start_date ASC,start_time ASC LIMIT 15";
 }
 
 
-
 while ($row = mysqli_fetch_array($group_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
     $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location`
-        FROM group_event_invited GI, user U WHERE GI.`event_id`=$event_id and GI.`added` = 1 AND GI.`user_id` = U.`user_id`";
+        FROM group_event_invited GI, user U WHERE GI.`event_id`=$this_event_id and GI.`added` = 1 AND GI.`user_id` = U.`user_id`";
     $get_invited_query_result = mysqli_query($con, $get_invited_query);
     $count = 0;
     $invite_array = array();
     while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+        if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+            $picture_link = $result_row['profile_picture'];
+        } else {
+            $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+        }
         $count++;
         $invite_array[] = array(
             'user_id' => $result_row['user_id'],
             'firstname' => $result_row['firstname'],
             'lastname' => $result_row['lastname'],
-            'profile_picture' => $result_row['profile_picture'],
-            'pic_location' => $result_row['pic_location']
+            'profile_picture' => $picture_link,
         );
     }
 
     $get_user_query = "SELECT `pic_location`, `profile_picture`, `firstname`, `lastname`, `user_id` FROM user 
-            WHERE `user_id` = (SELECT `user_id` from group_event WHERE `event_id`=$event_id)";
+            WHERE `user_id` = (SELECT `user_id` from group_event WHERE `event_id`=$this_event_id)";
     $get_user_query_result = mysqli_query($con, $get_user_query);
     $result_row = mysqli_fetch_array($get_user_query_result);
 
     $name = $result_row['firstname'] . " " . $result_row['lastname'];
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
 
     if ($row['file_id'] != NULL) {
         $file_id = $row['file_id'];
@@ -378,8 +400,7 @@ while ($row = mysqli_fetch_array($group_event_query_result)) {
         'choice' => $row['added'],
         'name' => $name,
         'theme_pic' => $theme_url,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
+        'pic_name' => $picture_link,
         'created_by' => 0,
         'file_name' => $file_name,
         'file_id' => $file_id,
@@ -398,37 +419,41 @@ while ($row = mysqli_fetch_array($group_event_query_result)) {
 if ($type == $group_event_personal AND $event_id != 0) {
 //Selecting club events has is part of without recurrence
     $group_event_query = "SELECT G.* FROM group_event G WHERE 
-G.`event_id`!='$event_id' AND G.`user_id` = '$user_id'
+G.`event_id`!= '$event_id' AND G.`user_id` = '$user_id'
 AND ((G.`start_date` = '$today_date' AND G.`start_time`>='$now_time') OR (G.`start_date` > '$today_date'))
 ORDER BY start_date ASC,start_time ASC LIMIT 15";
+//    echo $group_event_query;
 
     $group_event_query_result = mysqli_query($con, $group_event_query);
 } else {
 //Selecting club events has is part of without recurrence
-    $group_event_query = "SELECT * FROM group_event G, group_event_invited GI WHERE 
+    $group_event_query = "SELECT G.* FROM group_event G, group_event_invited GI WHERE 
 G.`user_id` = '$user_id' AND ((G.`start_date` = '$today_date' AND G.`start_time`>='$now_time') OR (G.`start_date` > '$today_date'))
 ORDER BY start_date ASC,start_time ASC LIMIT 15";
-
+//    echo $group_event_query;
     $group_event_query_result = mysqli_query($con, $group_event_query);
 }
 
 
-
 while ($row = mysqli_fetch_array($group_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
     $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location`
-        FROM group_event_invited GI, user U WHERE GI.`event_id`=$event_id and GI.`added` = 1 AND GI.`user_id` = U.`user_id`";
+        FROM group_event_invited GI, user U WHERE GI.`event_id`=$this_event_id and GI.`added` = 1 AND GI.`user_id` = U.`user_id`";
     $get_invited_query_result = mysqli_query($con, $get_invited_query);
     $count = 0;
     $invite_array = array();
     while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+        if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+            $picture_link = $result_row['profile_picture'];
+        } else {
+            $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+        }
         $count++;
         $invite_array[] = array(
             'user_id' => $result_row['user_id'],
             'firstname' => $result_row['firstname'],
             'lastname' => $result_row['lastname'],
-            'profile_picture' => $result_row['profile_picture'],
-            'pic_location' => $result_row['pic_location']
+            'profile_picture' => $picture_link,
         );
     }
 
@@ -438,8 +463,11 @@ while ($row = mysqli_fetch_array($group_event_query_result)) {
     $result_row = mysqli_fetch_array($get_user_query_result);
 
     $name = "Created by you";
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
 
     if ($row['file_id'] != NULL) {
         $file_id = $row['file_id'];
@@ -494,9 +522,8 @@ while ($row = mysqli_fetch_array($group_event_query_result)) {
         'choice' => NULL,
         'name' => $name,
         'theme_pic' => $theme_url,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
-        'created_by' => $created_by,
+        'pic_name' => $picture_link,
+        'created_by' => 1,
         'file_name' => $file_name,
         'file_id' => $file_id,
         'red_color' => $red_code,
@@ -531,33 +558,39 @@ ORDER BY start_date ASC,start_time ASC LIMIT 15";
 }
 
 
-
 while ($row = mysqli_fetch_array($course_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
     $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location`
-        FROM course_event_invited CI, user U WHERE CI.`event_id`=$event_id and CI.`choice` = 1 AND CI.`user_id`=U.`user_id`";
+        FROM course_event_invited CI, user U WHERE CI.`event_id`=$this_event_id and CI.`choice` = 1 AND CI.`user_id`=U.`user_id`";
     $get_invited_query_result = mysqli_query($con, $get_invited_query);
     $count = 0;
     $invite_array = array();
     while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+        if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+            $picture_link = $result_row['profile_picture'];
+        } else {
+            $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+        }
         $count++;
         $invite_array[] = array(
             'user_id' => $result_row['user_id'],
             'firstname' => $result_row['firstname'],
             'lastname' => $result_row['lastname'],
-            'profile_picture' => $result_row['profile_picture'],
-            'pic_location' => $result_row['pic_location']
+            'profile_picture' => $picture_link,
         );
     }
 
     $get_user_query = "SELECT `pic_location`, `profile_picture`, `firstname`, `lastname`, `user_id` FROM user 
-            WHERE `user_id` = (SELECT `user_id` from course_event WHERE `event_id`=$event_id)";
+            WHERE `user_id` = (SELECT `user_id` from course_event WHERE `event_id`=$this_event_id)";
     $get_user_query_result = mysqli_query($con, $get_user_query);
     $result_row = mysqli_fetch_array($get_user_query_result);
 
     $name = $result_row['firstname'] . " " . $result_row['lastname'];
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
 
     if ($row['file_id'] != NULL) {
         $file_id = $row['file_id'];
@@ -612,9 +645,8 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
         'choice' => $row['choice'],
         'name' => $name,
         'theme_pic' => $theme_url,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
-        'created_by' => $created_by,
+        'pic_name' => $picture_link,
+        'created_by' => 0,
         'file_name' => $file_name,
         'file_id' => $file_id,
         'red_color' => $red_code,
@@ -648,22 +680,25 @@ ORDER BY start_date ASC,start_time ASC LIMIT 15";
 }
 
 
-
 while ($row = mysqli_fetch_array($course_event_query_result)) {
-    $event_id = $row['event_id'];
+    $this_event_id = $row['event_id'];
     $get_invited_query = "SELECT U.`user_id`, U.`firstname`, U.`lastname`, U.`profile_picture`, U.`pic_location`
-        FROM course_event_invited CI, user U WHERE CI.`event_id`=$event_id and CI.`choice` = 1 AND CI.`user_id`=U.`user_id`";
+        FROM course_event_invited CI, user U WHERE CI.`event_id`=$this_event_id and CI.`choice` = 1 AND CI.`user_id`=U.`user_id`";
     $get_invited_query_result = mysqli_query($con, $get_invited_query);
     $count = 0;
     $invite_array = array();
     while ($result_row = mysqli_fetch_array($get_invited_query_result)) {
+        if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+            $picture_link = $result_row['profile_picture'];
+        } else {
+            $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+        }
         $count++;
         $invite_array[] = array(
             'user_id' => $result_row['user_id'],
             'firstname' => $result_row['firstname'],
             'lastname' => $result_row['lastname'],
-            'profile_picture' => $result_row['profile_picture'],
-            'pic_location' => $result_row['pic_location']
+            'profile_picture' => $picture_link,
         );
     }
 
@@ -672,8 +707,11 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
     $get_user_query_result = mysqli_query($con, $get_user_query);
     $result_row = mysqli_fetch_array($get_user_query_result);
 
-    $pic_location = $result_row['pic_location'];
-    $pic_name = $result_row['profile_picture'];
+    if ($result_row['pic_location'] == NULL OR $result_row['pic_location'] == '') {
+        $picture_link = $result_row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $result_row['pic_location'] . "/" . $result_row['profile_picture'];
+    }
     $created_by = 1;
     $name = "Created by you";
 
@@ -730,9 +768,8 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
         'choice' => NULL,
         'name' => $name,
         'theme_pic' => $theme_url,
-        'pic_location' => $pic_location,
-        'pic_name' => $pic_name,
-        'created_by' => $created_by,
+        'pic_name' => $picture_link,
+        'created_by' => 1,
         'file_name' => $file_name,
         'file_id' => $file_id,
         'red_color' => $red_code,

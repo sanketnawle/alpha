@@ -2,9 +2,7 @@
 
 require_once("dbconfig.php");
 require_once("time.php");
-require_once('../php/time_change.php');
 
-$_SESSION['user_id']="1";
 // Uncomment the line below if you are testing this page alone
 // echo $_POST['last_time'] = "1399690304";
 
@@ -15,7 +13,8 @@ if(isset($_POST['last_time'])){
 	$last_time = date("Y-m-d H:i:s",$_POST['last_time']);
 	// echo "********************<br>";
 
-	$query = "SELECT * FROM posts WHERE update_timestamp < '".$last_time."' ORDER BY update_timestamp DESC LIMIT 10";
+	if(isset($_GET['user_id'])) $query = "SELECT * FROM posts WHERE update_timestamp < '".$last_time."' AND user_id = ".$_GET['user_id']." ORDER BY update_timestamp DESC LIMIT 10";
+	else $query = "SELECT * FROM posts WHERE update_timestamp < '".$last_time."' ORDER BY update_timestamp DESC LIMIT 10";
 	$result = mysqli_query($con,$query);
 	
 	require_once('feedchecks.php');

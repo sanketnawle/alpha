@@ -8,7 +8,10 @@ $user_id = 1;
 $month_date = date("Y-m-d", strtotime("now"));
 
 
-$grey_code = "192";
+$grey_code = 192;
+$invited_red_code = 51;
+$invited_green_code = 255;
+$invited_blue_code = 0;
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -56,6 +59,10 @@ while ($row = mysqli_fetch_array($get_types_result)) {
             break;
         case 'course_personal':
             $course_event_personal = $row['type'];
+            break;
+        case 'office timing':
+            $office_timing = $row['type'];
+            break;
     }
 }
 
@@ -135,7 +142,7 @@ while ($row = mysqli_fetch_array($personal_events_recurrence_query_result)) {
 //
 //Selecting events user has been invited to without recurrence
 $personal_invited_event_query = "SELECT * FROM personal_event WHERE `event_id` IN 
-    (SELECT `event_id` FROM personal_event_invited WHERE `user_id` ='$user_id' AND (`choice`='0' OR `choice`='1'))
+    (SELECT `event_id` FROM personal_event_invited WHERE `user_id` ='$user_id' AND (`choice`='2' OR `choice`='1'))
         AND `recurrence`='none' AND `start_date` BETWEEN '$month_start' AND '$month_end'
         ORDER BY start_date ASC,start_time ASC";
 
@@ -157,9 +164,9 @@ while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
         'start_time' => $user_time_start->format("H:i:s"),
         'group_id' => NULL,
         'group_name' => "",
-        'red_color' => $grey_code,
-        'green_color' => $grey_code,
-        'blue_color' => $grey_code,
+        'red_color' => $invited_red_code,
+        'green_color' => $invited_green_code,
+        'blue_color' => $invited_blue_code,
         'is_check' => 0,
         'event_id' => $row['event_id'],
         'editable' => FALSE,
@@ -170,7 +177,7 @@ while ($row = mysqli_fetch_array($personal_invited_event_query_result)) {
 
 //Selecting events user has been invited to with recurrence
 $personal_invited_event_recurrence_query = "SELECT * FROM personal_event WHERE
-        `event_id` IN (SELECT `event_id` FROM personal_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+        `event_id` IN (SELECT `event_id` FROM personal_event_invited WHERE `user_id`='$user_id' AND (`choice`='2' OR `choice`='1'))
         AND `recurrence`!='none' AND `end_date` >= '$month_start'";
 
 $personal_invited_event_recurrence_query_result = mysqli_query($con, $personal_invited_event_recurrence_query);
@@ -192,9 +199,9 @@ while ($row = mysqli_fetch_array($personal_invited_event_recurrence_query_result
             'start_time' => $user_time_start->format("H:i:s"),
             'group_id' => NULL,
             'group_name' => "",
-            'red_color' => $grey_code,
-            'green_color' => $grey_code,
-            'blue_color' => $grey_code,
+            'red_color' => $invited_red_code,
+            'green_color' => $invited_green_code,
+            'blue_color' => $invited_blue_code,
             'is_check' => 0,
             'event_id' => $row['event_id'],
             'editable' => FALSE,
@@ -205,7 +212,7 @@ while ($row = mysqli_fetch_array($personal_invited_event_recurrence_query_result
 //
 //Selecting club events has is part of without recurrence
 $group_event_query = "SELECT E.*, G.`group_name` FROM group_event E, groups G WHERE E.`event_id` IN 
-    (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' AND (`added`='0' OR `added`='1'))
+    (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' AND (`added`='2' OR `added`='1'))
         AND E.`recurrence`='none' AND E.`start_date` BETWEEN '$month_start' AND '$month_end' AND E.`group_id` = G.`group_id`
         ORDER BY start_date ASC,start_time ASC";
 
@@ -249,7 +256,7 @@ while ($row = mysqli_fetch_array($group_event_query_result)) {
 //Selecting club events invited to with recurrence
 $group_event_recurrence_query = "SELECT E.*, G.`group_name` FROM group_event E, groups G   
         WHERE E.`event_id` IN (SELECT `event_id` FROM group_event_invited WHERE `user_id`='$user_id' 
-            AND (`added`='0' OR `added`='1')) AND E.`recurrence`!='none' AND E.`end_date` >= '$month_start' 
+            AND (`added`='2' OR `added`='1')) AND E.`recurrence`!='none' AND E.`end_date` >= '$month_start' 
                 AND E.`group_id` = G.`group_id`";
 
 //echo "group recurrence query: "  . $group_event_recurrence_query;
@@ -294,7 +301,7 @@ while ($row = mysqli_fetch_array($group_event_recurrence_query_result)) {
 
 //Selecting course events he is part of without recurrence
 $course_event_query = "SELECT * FROM course_event WHERE `event_id` IN
-    (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+    (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='2' OR `choice`='1'))
         AND `recurrence`='none' AND `start_date` BETWEEN '$month_start' AND '$month_end'
         ORDER BY start_date ASC,start_time ASC";
 
@@ -349,7 +356,7 @@ while ($row = mysqli_fetch_array($course_event_query_result)) {
 
 //Selecting course events user is part of with recurrence
 $course_event_recurrence_query = "SELECT * FROM course_event WHERE
-    `event_id` IN (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='0' OR `choice`='1'))
+    `event_id` IN (SELECT `event_id` FROM course_event_invited WHERE `user_id`='$user_id' AND (`choice`='2' OR `choice`='1'))
         AND `end_date` >= '$month_start' AND `recurrence`!='none' ";
 
 //echo "course recurrence query: "  . $course_event_recurrence_query;

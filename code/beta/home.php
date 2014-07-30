@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
+    include "php/redirect.php";
     require_once('php/time_change.php');
+   
 ?>
 <html>
 
@@ -17,30 +19,10 @@
 
 $( document ).ready(function() {
     
-    var enabled = true;
-var scrollMinX = 0;
-var scrollMinY = 0;
-var scrollMaxX = document.body.scrollWidth - window.innerWidth;
-var scrollMaxY = document.body.scrollHeight - window.innerHeight;
-
-
-window.onresize = function () {
-    scrollMaxX = document.body.scrollWidth - window.innerWidth;
-    scrollMaxY = document.body.scrollHeight - window.innerHeight;
-};
-
-document.onscroll = function () {
-    if (!enabled) return;
-
-    if (window.scrollX <= scrollMinX) scrollTo(scrollMinX, window.scrollY);
-    if (window.scrollX >= scrollMaxX) scrollTo(scrollMaxX, window.scrollY);
-    
-    if (window.scrollY <= scrollMinY) scrollTo(window.scrollX, scrollMinY);
-};
 
 
 
-
+    /*
     var lastScrollTop = 0;
             $(window).scroll(function (event) {
 
@@ -54,29 +36,16 @@ document.onscroll = function () {
                 var inc = st - lastScrollTop;
 
                 var offset_rightbar = $(".rightbar_bag").offset();
-                //var offset_leftbar = $(".leftbar_bag").offset();
                 
                 $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
-                //var vl='+='+inc;
-                //alert(vl);
-
-                //$(".rightbar_bag").stop().animate({ marginTop: vl },1);
-
-                //$(".leftbar_bag").offset({ top: inc + offset_leftbar.top });
-
+                
             } else {
                     
                 var inc = st - lastScrollTop;
 
                 var offset_rightbar = $(".rightbar_bag").offset();
-                //var offset_leftbar = $(".leftbar_bag").offset();
 
                 $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
-                //$(".leftbar_bag").offset({ top: inc + offset_leftbar.top });
-
-                //var vl=inc + offset_rightbar.top;
-                //alert(vl);
-                //$(".rightbar_bag").animate({ top: '+='+vl });
                 
             }
             lastScrollTop = st;
@@ -84,7 +53,7 @@ document.onscroll = function () {
         }
 
 
-        });
+        });*/
 
         $(document).delegate(".topbar_left","click",function(){
             if($(this).find(".leftbar_close").hasClass("flip")){
@@ -155,6 +124,7 @@ document.onscroll = function () {
         <?php include 'topbar.php';?>
     </section>
 
+    
 
     <section class='content_bag'>
 
@@ -181,6 +151,8 @@ document.onscroll = function () {
         </section>
 
     </section>
+    
+
 
     </body>
 </html>

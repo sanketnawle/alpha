@@ -1,14 +1,8 @@
 <?php
-	include_once 'includefiles.php';
-	$_SESSION['user_id'] = 1;
-	if(isset($_SESSION['user_id']))
-	{
-		$user_id = $_SESSION['user_id'];
-	}
-	else
-	{
-		header("location:login.php");
-	}	
+	require_once('php/redirect.php');
+	require_once('includes/dbconfig.php');
+	$user_id = $_SESSION['user_id'];
+		
 ?>
 <!DOCTYPE html> 
 <html>

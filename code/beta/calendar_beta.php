@@ -5,86 +5,37 @@
 <head>
 
     <title>Calendar</title>
-
-    <link href='css/cal_main.css' rel='stylesheet' />
-
-    <!--<link rel="stylesheet" type="text/css" href="css/planner.css" />-->
-
+    <link href='css/cal_main.css' rel='stylesheet' />    
     <link href='css/myfullcalendar.css' rel='stylesheet' />
-
     <link href="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox.css" type="text/css" rel="stylesheet" />
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" type="text/css" href="css/background_cal.css">
-
     <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
-
     <link rel="stylesheet" type="text/css" href="css/eventbook.css" />
     <link rel="stylesheet" type="text/css" href="css/eventBookold.css" />
-    <link rel="stylesheet" type="text/css" href="css/add_event.css" />
+    <link rel="stylesheet" type="text/css" href="css/add_event.css" />    
+    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
 
 
-
-    <!--<link href='css/p01.css' rel='stylesheet' />
-
-    <link type="text/css" href="css/jquery.simple-dtpicker.css" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="css/banner.css">
-
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-timepicker.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/pygments.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/prettify.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/add.css" />-->
-
-    <!--<link rel="stylesheet" type="text/css" href="css/minical.css">        
-
-    <link rel="stylesheet" type="text/css" href="css/jquery.datepick.css">-->
-
-
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-    <script type="text/javascript" src="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>
-
+<!--    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>    
     <script src='js/jquery.min.js'></script>
-
     <script src='js/jquery-ui.custom.min.js'></script>
-
     <script src='js/myfullcalendar.js'></script>
-
-    <!--<script src='js/md5.js'></script>
-
-    <script type="text/javascript" src="js/jquery.simple-dtpicker.js"></script>
-
-    <script type="text/javascript" src="js/prettify.js"></script>
-
-    <script type="text/javascript" src="js/bootstrap.js"></script>-->
-
     <script type="text/javascript" src="js/bootstrap-timepicker.js"></script>
-
     <script type="text/javascript" src="js/jquery.plugin.js"></script>
-
     <script type="text/javascript" src="js/jquery.datepick.js"></script>
-
     <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
-
     <script src="js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
-
     <script src="js/ampm.js" type="text/javascript"></script>
-
     <script src="js/calendar_selector.js" type="text/javascript"></script>
-
     <script src="js/mycalendar-event-book.js" type="text/javascript"></script>
     <script src = "js/add_event.js"></script>
     <script src = "js/timeago.js"></script>
+    <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -103,27 +54,18 @@
             var tdt= tdtarr1+" "+tdtarr2;
             $(".fc-header-left .fc-header-title h2").html(tdt);
         });
-
         });
-    </script>
-
+    </script>        
 </head>
 
 
 
-<body>
-
+<body >
+<section class='topbar_bag'>
+        <?php include 'topbar1.php';?>
+    </section>
     <div class="root">
 
-        <div class="top-bar">
-
-            <div class="top-bar-wrapper">
-
-                <img class="logo-h" src="img/logo.png" />
-
-            </div>
-
-        </div>
 
         <div class="main">
 
@@ -139,7 +81,7 @@
 
                     </div>
 
-                    <div class="cal_view_events">
+                    <div class="cal_view_events" >
 
                         Event Book
 
@@ -176,6 +118,9 @@
         </div>
     </div>-->
     <div class = "add-event-box">
+        <div class="add-event-box-edit-header">
+            Edit Event                   
+        </div>
         <div class = "add-event-header">
             <div class = "add-event-pic">
                 <div class = "add-event-pic-actual">
@@ -201,7 +146,7 @@
                 <input id = "nevt-title-1" type = "text" class = "inp-foc inp-thr event-title" label = "Event title" placeholder = "Event title">
             </div>
             <div class = "header-inp-wrap">
-                <input type="date" format readonly name="event_date" id="event_date" class = "set_date inp-foc inp-twof event-date inp-icon-left" label = "Event date"> 
+                <input type="text" readonly name="event_date" id="event_date" class = "set_date inp-foc inp-twof event-date inp-icon-left" label = "Event date"> 
                 <!--<span class = "event-date-icon"></span>-->                
                 <div class="calLayer">
                                                             <section id="mounth" class="mounth" style="margin-left: 190px; margin-top: 35px;">
@@ -369,16 +314,13 @@
                     </span>
                      <div class = "end-time-dd">
                     </div>-->
-                </span>
-                
-               
-
+                </span>                        
             </div>
         </div>
         <div class = "add-event-box-main">
             <div class = "add-event-box-main-row">
-                <input id="nevt-location-1" type = "text" class = "inp-foc inp-one event-loc inp-icon-left" label = "Event location" placeholder = "Location (optional)">
                 <span class = "event-loc-icon"></span>
+                <input id="nevt-location-1" type = "text" class = "inp-foc inp-one event-loc inp-icon-left" label = "Event location" placeholder = "Location (optional)">                
             </div>
             <div class = "add-event-box-main-row">
                 <textarea id="nevt-desc-1" type = "text" class = "inp-foc inp-one event-details" rows="4" 
@@ -386,8 +328,13 @@
             </div>
             <div class = "add-event-box-main-row">
                 <input type = "text" id="invitedConnections" onclick="toggleInviteConnections(this);" 
-                    class = "inp-foc inp-one event-invites" label = "Event details" placeholder = "Invite groups, people, and email addresses">
-                <span class = "down-arrow down-arrow-3 down-arrow-down"></span>
+                    class = "inp-foc inp-one event-invites" label = "Event details" placeholder = "Invite people">
+                <span class = "down-arrow down-arrow-3 down-arrow-down"></span>                    
+                    <div class="tag-option" 
+                        style="background: none repeat scroll 0% 0% #FFF;display: none; width: 498px; position: absolute; z-index: 50; border:1px solid #C0C0C0;margin-top:-11px;">
+                        <div class="tag-section tagsec-r">                                            
+                        </div>
+                    </div>
                 <div class = "add-event-dd-box-invite" id="divInviteConnections">
                     <div class = "clearfix-invite-ddbox">
                         <span class = "invite-dd-box-header">
@@ -473,9 +420,7 @@
                                 <div class="cal-groups" id="class_groups">
                                     
                                 </div>
-
                             </div>
-
                             <div class="my-club-cals">
                                 <div class="cals-header">
                                     Your Club Events
@@ -483,27 +428,12 @@
                                 </div>
                                 <div class="cal-groups" id="club_groups">
 
-
                                 </div>
-
                             </div>
-
                             <div class="my-club-cals">
-
-                                <div class="cals-header">
-
-                                    Your Personal Events
-
-                                    <span class="cal-group-hider">Hide</span>
-
+                                <div class="cals-header cals-personal-hider" >
+                                    Hide Personal Events                                    
                                 </div>
-
-                                <div class="cal-groups">
-
-
-
-                                </div>
-
                             </div>
 
                         </div>
@@ -1141,9 +1071,7 @@
 
         </div>
 
-    </div>
-
+    </div>            
 </body>
 
 </html>
-

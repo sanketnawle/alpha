@@ -133,10 +133,11 @@
 
 						echo "</div>";
 
-							if($ftype = file_type($con,$row['file_id'])){
-								if(substr( $ftype, 0, 5 ) === "image"){
+							if($file_up = file_up_desc($con,$row['file_id'])){
+								if(substr( $file_up['type'], 0, 5 ) === "image"){
 									echo "<div class='post_attachment_review'><img class='post_attachment_review_img' src='https://urlinq.com/kk/newinfi2/includes/getimage.php?id=".$row['file_id']."'></div>";
 								}
+								else echo "<div class='post_attachment_review'><a class = 'file-download' href='javascript:download(".$row['file_id'].")'>".$file_up['name']."</a></div>";
 							}
 
 						echo "<div class = 'post_edit'>
@@ -251,7 +252,7 @@
 						<div class = 'commentform'>
 							<div class = 'reply_user_icon'></div>
 							<div class = 'reply_tawrapper'>
-								<textarea class = 'form-control postval' rows = '3' placeholder = 'Add to the discussion' required></textarea>
+								<textarea class = 'form-control postval' placeholder = 'Add to the discussion' required></textarea>
 								<img class = 'reply_attach' src = 'src/comment_attach.png'>
 								<form enctype='multipart/form-data'><input type='file' name='file' class='upload_feed_hack'></form>
 							</div>

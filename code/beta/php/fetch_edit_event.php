@@ -49,8 +49,8 @@ $invited_result_row = mysqli_fetch_array($get_invited_query_result);
 $count = $invited_result_row['total'];
 
 if ($result_row['file_id'] != NULL) {
-    $file_id = $row['file_id'];
-    $fetch_file_query = "SELECT `file_name` from file_upload WHERE `file_id`=$file_id";
+    $file_id = $result_row['file_id'];
+    $fetch_file_query = "SELECT `file_name` from file_upload WHERE `file_id`= $file_id";
     $fetch_file_query_result = mysqli_query($con, $fetch_file_query);
     if ($fetch_file_query_result > 0) {
         $file_result_row = mysqli_fetch_array($fetch_file_query_result);

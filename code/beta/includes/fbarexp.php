@@ -1,10 +1,8 @@
 <?php
 
 require_once("dbconfig.php");
-// session_start();
+session_start();
 
-$studentid=1;
-$univid=1;
 // $_POST['query']="bi";
 
 if(isset($_POST['query'])){
@@ -16,7 +14,7 @@ $search_string = mysqli_real_escape_string($con,$search_string);
 // Check Length More Than One Character
 if (strlen($search_string) >= 1 && $search_string !== '') {
 	// Build Query
-	$cquery = 'SELECT user_id as uid, NULL as cid, CONCAT(firstname, " ",lastname) as search_res FROM user WHERE (firstname LIKE 			"%'.$search_string.'%") OR (lastname LIKE "%'.$search_string.'%")
+	$cquery = 'SELECT user_id as uid, NULL as cid, CONCAT(firstname, " ",lastname) as search_res FROM user WHERE (firstname LIKE "%'.$search_string.'%") OR (lastname LIKE "%'.$search_string.'%")
 				UNION
 			SELECT NULL, course_id as cid, course_name as search_res FROM courses WHERE course_name LIKE "%'.$search_string.'%"';
 

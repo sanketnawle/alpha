@@ -2,6 +2,7 @@
 
 include 'dbconnection.php';
 include 'time_change.php';
+session_start();
 
 $user_id = 1;
 $up_id = NULL;
@@ -34,18 +35,23 @@ $month_end = date("Y-m-d", strtotime("+7 days", strtotime($month_end)));
 $range = $month_end;
 
 if (isset($_POST['title'])) {
-    $title = $_POST['title'];
+    $title_original = $_POST['title'];
+    $title = mysqli_escape_string($con, htmlspecialchars($_POST['title']));
 }
 if (isset($_POST['location'])) {
-    $location = $_POST['location'];
+    $location_original = $_POST['location'];
+    $location = mysqli_escape_string($con, htmlspecialchars($_POST['location']));
     if ($location == '') {
         $location = NULL;
+        $location_original = NULL;
     }
 }
 if (isset($_POST['details'])) {
-    $details = $_POST['details'];
+    $details_original = $_POST['details'];
+    $details = mysqli_escape_string($con, htmlspecialchars($_POST['details']));
     if ($details == '') {
         $details = NULL;
+        $details_original = NULL;
     }
 }
 if (isset($_POST['theme_id'])) {
@@ -84,7 +90,7 @@ if (isset($_POST['connections'])) {
     }
 }
 
-include 'fileupload.php';
+include 'file_ops.php';
 if (count($connections) > 0) {
     $invites = 1;
 } else {
@@ -118,8 +124,8 @@ if ($up_id != NULL) {
             $user_time_start = new DateTime(user_time($dates . " " . $start_time));
             $user_time_end = new DateTime(user_time($dates . " " . $end_time));
             $result_array[] = array(
-                'title' => $title,
-                'location' => $location,
+                'title' => $title_original,
+                'location' => $location_original,
                 'start_date' => $user_time_start->format("Y-m-d"),
                 'end_date' => $user_time_end->format("Y-m-d"),
                 'end_time' => $user_time_end->format("H:i:s"),
@@ -138,8 +144,8 @@ if ($up_id != NULL) {
         $user_time_end = new DateTime(user_time($end_date . " " . $end_time));
 
         $result_array[] = array(
-            'title' => $title,
-            'location' => $location,
+            'title' => $title_original,
+            'location' => $location_original,
             'start_date' => $user_time_start->format("Y-m-d"),
             'end_date' => $user_time_end->format("Y-m-d"),
             'end_time' => $user_time_end->format("H:i:s"),
@@ -172,8 +178,8 @@ if ($up_id != NULL) {
             $user_time_start = new DateTime(user_time($dates . " " . $start_time));
             $user_time_end = new DateTime(user_time($dates . " " . $end_time));
             $result_array[] = array(
-                'title' => $title,
-                'location' => $location,
+                'title' => $title_original,
+                'location' => $location_original,
                 'start_date' => $user_time_start->format("Y-m-d"),
                 'end_date' => $user_time_end->format("Y-m-d"),
                 'end_time' => $user_time_end->format("H:i:s"),
@@ -192,8 +198,8 @@ if ($up_id != NULL) {
         $user_time_end = new DateTime(user_time($end_date . " " . $end_time));
 
         $result_array[] = array(
-            'title' => $title,
-            'location' => $location,
+            'title' => $title_original,
+            'location' => $location_original,
             'start_date' => $user_time_start->format("Y-m-d"),
             'end_date' => $user_time_end->format("Y-m-d"),
             'end_time' => $user_time_end->format("H:i:s"),
@@ -220,7 +226,8 @@ $json = array(
 $jsonstring = json_encode($json);
 echo $jsonstring;
 
-function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $month_start) {
+function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $month_start)
+{
     $dates = array();
     switch ($recurrenceType) {
         //Daily event

@@ -287,7 +287,7 @@
 						<div class = 'commentform'>
 							<div class = 'reply_user_icon'></div>
 							<div class = 'reply_tawrapper'>
-								<textarea class = 'form-control postval' rows = '3' placeholder = 'Add to the discussion' required></textarea>
+								<textarea class = 'form-control postval' placeholder = 'Add to the discussion' required></textarea>
 								<img class = 'reply_attach' src = 'src/comment_attach.png'>
 								<form enctype='multipart/form-data'><input type='file' name='file' class='upload_feed_hack'></form>
 							</div>

@@ -1,8 +1,11 @@
 <?php
 
 require_once("dbconfig.php");
-session_start();
 include "feedchecks.php";
+session_start();
+
+$user_id = $_SESSION['user_id'];
+$target_univ_id= $_SESSION['univ_id'];
 
 // Uncomment the below 4 lines if you are testing this page alone
 // $_POST['fbar_type']="notes";
@@ -10,9 +13,6 @@ include "feedchecks.php";
 // $_POST['notes_desc']="fbar notes test new";
 // $_POST['privacy']="campus";
 // $_POST['anon']=0;
-
-$user_id=1;
-$target_univ_id=1;
 
 // $user_id=$_SESSION['$user_id']; //when session variables are set
 // $target_univ_id=$_SESSION['$target_univ_id'];		//when session variables are set
@@ -25,7 +25,7 @@ if((isset($_POST['target_type']))&&(isset($_POST['target_id']))){
 }
 else{
 	$target_type = NULL;
-	$target_id = NULL;	
+	$target_id = NULL;
 }
 
 include_once "fileupload.php";
@@ -33,7 +33,7 @@ include_once "fileupload.php";
 if(isset($_POST['fbar_type'])){
 	if($_POST['fbar_type']=="status"){
 		if(isset($_POST['post_status']) || $up_id!=NULL){
-			if(isset($_POST['post_status'])) echo $text = htmlspecialchars($_POST['post_status'],ENT_HTML5);
+			if(isset($_POST['post_status'])) $text = $_POST['post_status'];
 			else $text=NULL;
 
 			if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
@@ -48,10 +48,15 @@ if(isset($_POST['fbar_type'])){
 				else $up_type = NULL;
 			}
 
+			if(isset($_POST['gdrive_id'])) {
+				if(!is_null($_POST['gdrive_id'])) $up_type = 'gdrive';
+				else $up_type = NULL;
+			}
+
 			$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, file_id, file_share_type, privacy, anon) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
 			if($postquery){
-				$postquery->bind_param('isiississi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $up_id, $up_type, $privacy, $anon);
+				$postquery->bind_param('isiississi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], htmlspecialchars($text), $up_id, $up_type, $privacy, $anon);
 				if($postquery->execute()) echo "success";
 				$postquery->close();
 			}
@@ -66,7 +71,7 @@ if(isset($_POST['fbar_type'])){
 	// $up_id = 38;
 	if($_POST['fbar_type']=="notes"){
 		if($up_id!=NULL){
-			if(isset($_POST['notes_desc'])) $text = htmlspecialchars($_POST['notes_desc'],ENT_HTML5);
+			if(isset($_POST['notes_desc'])) $text = $_POST['notes_desc'];
 			else $text=NULL;
 
 			if(isset($_POST['privacy'])) $privacy=$_POST['privacy'];
@@ -89,7 +94,7 @@ if(isset($_POST['fbar_type'])){
 			$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, file_id, file_share_type, privacy) VALUES (?,?,?,?,?,?,?,?,?)");
 
 			if($postquery){
-				$postquery->bind_param('isiississ',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $up_id, $up_type, $privacy);
+				$postquery->bind_param('isiississ',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], htmlspecialchars($text), $up_id, $up_type, $privacy);
 				if($postquery->execute()) echo "success";
 				else "execution failed";
 				$postquery->close();
@@ -104,11 +109,10 @@ if(isset($_POST['fbar_type'])){
 
 	if($_POST['fbar_type']=="question"){
 		if((isset($_POST['que_title'])AND(!empty($_POST['que_title']))) || $up_id!=NULL){
-			echo "test";
-			if(isset($_POST['que_title'])) echo $text = htmlspecialchars($_POST['que_title'],ENT_HTML5);
+			if(isset($_POST['que_title'])) echo $text = $_POST['que_title'];
 			else echo $text=NULL;
 
-			if(isset($_POST['que_desc'])) echo $sub_text = htmlspecialchars($_POST['que_desc'],ENT_HTML5);
+			if(isset($_POST['que_desc'])) echo $sub_text = $_POST['que_desc'];
 			else echo $sub_text=NULL;
 
 			if(isset($_POST['privacy'])) echo $privacy=$_POST['privacy'];
@@ -117,17 +121,11 @@ if(isset($_POST['fbar_type'])){
 			if(isset($_POST['anon'])) echo $anon=$_POST['anon'];
 			else echo $anon=NULL;
 
-			if(isset($up_id)) {
-				// echo $up_id;
-				if(!is_null($up_id)) $up_type = 'regular';
-				else $up_type = NULL;
-			}			
-
 			$ptagid = NULL;
-			$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, sub_text, file_id, file_share_type, privacy, anon) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			$postquery = $con->prepare("INSERT INTO posts (user_id, target_type, target_id, target_univ_id, post_type, text_msg, sub_text, file_id, privacy, anon) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
 			if($postquery){
-				$postquery->bind_param('isiisssissi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], $text, $sub_text, $up_id, $up_type, $privacy, $anon);
+				$postquery->bind_param('isiisssisi',$user_id, $target_type, $target_id, $target_univ_id, $_POST['fbar_type'], htmlspecialchars($text), htmlspecialchars($sub_text), $up_id, $privacy, $anon);
 				if($postquery->execute()){
 					$ptagid = $con->insert_id;
 					echo "success";

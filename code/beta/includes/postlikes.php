@@ -1,6 +1,6 @@
 <?php
 
-		if ($_SESSION['user_id']!=0){
+		if ($_SESSION['user_id']!=NULL){
 			// echo "test";
 			$usertype = "user_id";
 			$userid=$_SESSION['user_id'];

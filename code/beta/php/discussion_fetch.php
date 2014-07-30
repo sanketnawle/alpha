@@ -5,6 +5,7 @@ session_start();
 
 $user_id = 1;
 $event_id = 1;
+$disc_array = array();
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -21,6 +22,11 @@ $get_disc_query = "SELECT D.*, U.`firstname`, U.`lastname`, U.`profile_picture`,
 $get_disc_query_result = mysqli_query($con, $get_disc_query);
 
 while ($row = mysqli_fetch_array($get_disc_query_result)) {
+    if ($row['pic_location'] == NULL OR $row['pic_location'] == '') {
+        $picture_link = $row['profile_picture'];
+    } else {
+        $picture_link = "../DEMO/" . $row['pic_location'] . "/" . $row['profile_picture'];
+    }
     $user_name = $row['firstname'] . " " . $row['lastname'];
     $disc_array[] = array(
         'disc_id' => $row['disc_id'],
@@ -29,8 +35,7 @@ while ($row = mysqli_fetch_array($get_disc_query_result)) {
         'comment' => $row['comment'],
         'user_id' => $row['user_id'],
         'user_name' => $user_name,
-        'profile_picture' => $row['profile_picture'],
-        'pic_location' => $row['pic_location'],
+        'profile_picture' => $picture_link,
         'time_added' => $row['time_added']
     );
 }

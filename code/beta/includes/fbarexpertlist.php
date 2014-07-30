@@ -3,8 +3,6 @@
 require_once("dbconfig.php");
 session_start();
 
-$studentid=1;
-$univid=1;
 // $_POST['query']="bi";
 
 $search_string = preg_replace("/[^A-Za-z0-9]/", " ", $_POST['query']);
