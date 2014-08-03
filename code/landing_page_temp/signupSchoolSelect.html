@@ -31,7 +31,6 @@ $(document).ready(function() {
 
 
 	$(document).delegate(".schoolJoin","click",function(){
-		$(".signUp_header").removeClass("ScrollDownShadow");
 		var SignUpItemChosen = $(this);
 		$(this).removeClass("unchosen");
 		setTimeout(
@@ -41,7 +40,7 @@ $(document).ready(function() {
 		        $(this).text('There are many fields to study at your School').fadeIn(800);
 		    });
 		    $('#SignupStepSubHeader').fadeOut(800, function() {
-		        $(this).text('Choose the subject you study from the list below.').fadeIn(800);
+		        $(this).text('Choose your major.').fadeIn(800);
 		    });
 		    
 		    $(".SignUpProgressTracker").fadeIn(1300);
@@ -65,7 +64,7 @@ $(document).ready(function() {
 				$(".signUp_header").addClass("signUp_headerStep2");
 			
 			},
-			1300)
+			900)
 
 		setTimeout(
 			function(){
@@ -78,7 +77,7 @@ $(document).ready(function() {
 
 
 		},
-		2300)
+		1800)
 
 		setTimeout(
 			function(){
@@ -97,7 +96,7 @@ $(document).ready(function() {
 
 
 	});
-	
+	/**
 	$(".niceScroller").scroll(function(){
 		if(($('.topListItem').offset().top) <= 148){
 			$(".signUp_header").addClass("ScrollDownShadow");
@@ -107,7 +106,7 @@ $(document).ready(function() {
 		}
 
 	});
-
+**/
 
 
 

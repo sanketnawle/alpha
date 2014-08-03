@@ -477,7 +477,7 @@ div.SignUpPart2SchoolChosen div.chosenText em.school_icon{
 }
 
 div.SignUpPart2SchoolChosen div.chosenText{
-font-size: 16px;
+font-size: 15px;
 font-weight:normal;
 max-width: 208px;
 color: #565a5c;
@@ -587,7 +587,7 @@ right: 0px;
 position: absolute;
 display:none;
 	border: 1px solid #d7d7d7;
-bottom: 12px;
+bottom: 14px;
 border-width: 1px 0px 1px 0px;
 }
 
