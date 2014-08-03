@@ -10,7 +10,7 @@ div.study_box_open{
     height:0px;
     overflow: hidden;
     z-index:2000;
-    left: 96px;
+    left: 88px;
     display:none;
     -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;
@@ -37,7 +37,7 @@ div.study_box_open{
     height:0px;
     overflow: hidden;
     z-index:2000;
-    left: 96px;
+    left: 88px;
     display:none;
     -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;
     box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;

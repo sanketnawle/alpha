@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="backgroundGroup.css">
 <link rel = "stylesheet" type = "text/css" href = "feedGroup.css"> 
 <link rel = "stylesheet" type = "text/css" href = "group.css"> 
+<link rel = "stylesheet" type = "text/css" href = "coursesCardUI.css"> 
 <link rel = "stylesheet" type = "text/css" href = "courses.css"> 
 <link rel = "stylesheet" type = "text/css" href = "school_department.css"> 
 
@@ -16,7 +17,7 @@
 </script>
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-
+<script src = "courses.js"></script>
  <script src="feed.js"></script> 
  <script src="school.js"></script> 
   <script src="group.js"></script> 
@@ -1184,104 +1185,167 @@ $(document).ready(function() {
                             syllabus tab
                         </div>
                         <div class = "courses-tab-content">
-                            <div class = "coursesTabTop">
-                                <form>
-                                    <div class = "searchWrapper">
-                                        <input placeholder = "Search this departments courses" class = "tabSearcher ajax">
-                                        </input>
-                                    </div>
-                                    <button class = "submitSearch">
-                                    </button>
-                                </form>
-                            </div>
+
                             <div class = "coursesCards card-wrapper">
                                 
 
-                                <div class = "item courses courses-selector">
+                                <div class = "item courses-selector">
                                     <div class = "courses ajax">
-                                            <div class = "name">
-                                                <a>Long Class Name - <span>Class ID</span></a>
-                                            </div>
-                                            <div class = "CoursetaughtBy">
-                                                <span>Class taught by</span>
-                                                <a class = "userName"> Professor Herbert</a>
-                                            </div>
-                                          
-
-                                            <div class = "imageWrapper">
-                                                    <div class = "courses-professor-picture">      
-                                                            <img src = "src/memon.jpg">
-                                                    </div>
-                                                <div class = "StudentClassBtns">
-
-
-                                                    <button class = "joinBtnBig">
-                                                        Join this Class
-                                                    </button>
-
-                                                    
-                                        
+                                        <div class = "course-top course-row">
+                                            <div class = "leftFloat">
+                                                <div class = "frame">
+                                                    <img width = "44px" height = "44px" src = "src/neuroscience.jpg" class = "coursePicture">
+                                                </div>
+                                                <a class = "classLink">
+                                                    <h3 class = "course-name">Neuroscience and Advertising</h3>
+                                                </a>
+                                                <!-- For Courses, hide the ID here and instead show the various class ID's in the next row -->
+                                                <h4 class = "section-id">
+                                                    NSC203A
+                                                </h4>
+                                                <div class = "course-professor">
+                                                     <span>Taught by</span>
+                                                    <img  width = "21px" height = "21px" src = "src/memon.jpg" class = "professorPicture">
+                                                    <a class = "courseCardLink">Professor Herbert</a>
                                                 </div>
                                             </div>
+                                            <div class = "classUIBtn">
+                                                <!-- change "Class" to "Course" and button to follow, for courses in the button below"-->
+                                                <button class = "joinBtn JoinBtnLong">
+                                                    Join this Class
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class = "course-row course-middle-top">
+                                            <!--Hide Professor and time for and reviews for courses -->
+                                          
+                                            <div class = "leftFloat course-column time-column">
+                                                <em class = "schedule-free">
+                                                </em>
+                                                <p class = "course-info">
+                                                    M 10:00am-11:00am W 1:30pm-4:00pm
+                                                </p>
+                                                <div class = "help-div-left" id = "help-classTime">
+                                                    <div class = "help-wedge">
+                                                    </div>
+                                                    <div class = "help-box">
+                                                        You have no other classes at this time.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <!--For courses show the following HTML = the different class sections for this course  -->
+                                            <div class = "leftFloat course-column reviews-column">
+                                                <a class = "courseCardLink">
+                                                    Read Reviews (20) 
+                                                </a>
+                                                <em class = "right-arrow right-arrow-blue"></em>
+                                            </div>
+                                        </div>
+                                        <div class = "course-row course-middle-bottom">
+                                            <div class = "courseDescription">
+                                                Calculating the actual coordinates of your box and doing the bounds checks will be tough, and will rely on mouse events anyways to get the mouse's current coordinates. Tracking mouseover/mouseouts has the issues you mentioned. 
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- This bottom row displays other students who are either members of this class or following this course show 8-->
+
+                                        <div class = "course-row course-bottom">
+                                            <div class = "courseMember friendMember">
+
+                                                <img class = "courseMemberPic MemberPicBig" src = "src/myPic.png">
+                                                <div class = "courseMembersWrapper">
+                                                    <a>Jacob Lazarus</a>
+                                                    <span>and <b>4</b> others you know have taken this class</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class = "item courses courses-selector">
+                                <div class = "item courses-selector">
                                     <div class = "courses ajax">
-                                        <a class = "coursesSelectWrapper">
-                                            <div class = "name">
-                                                Mechanical and Aeronautical Engineering f af ada dad a
+                                        <div class = "course-top course-row">
+                                            <div class = "leftFloat">
+                                                <div class = "frame">
+                                                    <img width = "44px" height = "44px" src = "src/neuroscience.jpg" class = "coursePicture">
+                                                </div>
+                                                <a class = "classLink">
+                                                    <h3 class = "course-name">Neuroscience and Advertising</h3>
+                                                </a>
+                                                <!-- For Courses, hide the ID here and instead show the various class ID's in the next row -->
+                                                <h4 class = "section-id">
+                                                    NSC203A
+                                                </h4>
+                                                <div class = "course-professor">
+                                                     <span>Taught by</span>
+                                                    <img  width = "21px" height = "21px" src = "src/memon.jpg" class = "professorPicture">
+                                                    <a class = "courseCardLink">Professor Herbert</a>
+                                                </div>
                                             </div>
+                                            <div class = "classUIBtn">
+                                                <!-- change "Class" to "Course" and button to follow, for courses in the button below"-->
+                                                <button class = "joinBtn JoinBtnLong">
+                                                    Join this Class
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class = "course-row course-middle-top">
+                                            <!--Hide Professor and time for and reviews for courses -->
                                           
-
-                                            <div class = "imageWrapper">
-                                                <span class = "hoverMask">
-                                                </span>
-                                                <div class = "coursesImage coursesImage-dos">
-                                                    <img class = "floatL coursesImg" src = "src/aeronauticalEng.png">
-                                                    <div class = "blackData">
-                                                        <span class = "group_members">
-                                                            <em class = "members-icon"></em>
-                                                            <span>250</span>
-
-                                                        </span>
+                                            <div class = "leftFloat course-column time-column">
+                                                <em class = "schedule-free">
+                                                </em>
+                                                <p class = "course-info">
+                                                    M 10:00am-11:00am W 1:30pm-4:00pm
+                                                </p>
+                                                <div class = "help-div-left" id = "help-classTime">
+                                                    <div class = "help-wedge">
                                                     </div>
-                                                    <div class = "courses-short-wrapper">       <div>
-                                                            <span>ME</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class = "coursesBtns">
-                                                    <button class = "followBtn">
-                                                        <em></em>
-                                                        Follow
-                                                    </button>
-
-                                                    <button class = "studybtn">
-                                                        Learn
-                                                    </button>
-
-                                                    
-                                                    
-                                                    <div class = "study_box_open">
-                                                        <div class = "js_wrap">
-                                                            <span>I am...</span>
-                                                            <div class = "study_first_option">
-
-                                                                <button class = "majorType study_type_btn" type = "button">Majoring in this subject</button>
-                                                                <button class = "minorType study_type_btn" type = "button">Minoring in this subject</button>
-                                                                <button class = "interestType study_type_btn" type = "button">Interested in this subject</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class = "modal_loading2">
-                                                            <img class = "modal_animation" src = "src/loadingAnimation.gif">
-                                                        </div>
+                                                    <div class = "help-box">
+                                                        You have no other classes at this time.
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                            
+
+                                            <!--For courses show the following HTML = the different class sections for this course  -->
+                                            <div class = "leftFloat course-column reviews-column">
+                                                <a class = "courseCardLink">
+                                                    Read Reviews (20) 
+                                                </a>
+                                                <em class = "right-arrow right-arrow-blue"></em>
+                                            </div>
+                                        </div>
+                                        <div class = "course-row course-middle-bottom">
+                                            <div class = "courseDescription">
+                                                Calculating the actual coordinates of your box and doing the bounds checks will be tough, and will rely on mouse events anyways to get the mouse's current coordinates. Tracking mouseover/mouseouts has the issues you mentioned. 
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- This bottom row displays other students who are either members of this class or following this course show 8-->
+
+                                        <div class = "course-row course-bottom">
+                                            <div class = "courseMember friendMember">
+
+                                                <img class = "courseMemberPic MemberPicBig" src = "src/myPic.png">
+                                                <div class = "courseMembersWrapper">
+                                                    <a>Jacob Lazarus</a>
+                                                    <span>and <b>4</b> others have taken this class</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>                                
+                                </div>                            
                             </div>
                         </div>
                         <div class = "about-content">
