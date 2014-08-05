@@ -29,74 +29,251 @@
 
 $(document).ready(function() {
 
+	$(document).click(function(event){
 
-	$(document).delegate(".schoolJoin","click",function(){
-		var SignUpItemChosen = $(this);
-		$(this).removeClass("unchosen");
+     	var $target= $(event.target);
+     	var $container= $(".signup_anchor");
+     	if(!$container.is($target)&&($container.has($target).length===0)){
+     		$(".signup_past_dropdown").hide();
+     	}
+
+	});
+
+	$(document).delegate(".proceed-to-confirm","click",function(){
+		$(".signUpMain_fader").addClass("zoomOutFade");
+	});
+
+	$(document).delegate(".signup_anchor","click",function(){
+		$(".signup_past_dropdown").hide();
+		$(this).find(".signup_past_dropdown").show();
+	});
+
+
+	$(document).delegate(".signup_change_item","click",function(){
+		if(!$(this).hasClass("signup_change_chosen_item")){
+		var txt=$(this).find("div").text().trim();
+		var txt2=$(this).closest(".signup_past_dropdown").find(".signup_change_chosen_item").find("div").text().trim();
+		$(this).find("div").text(txt2);
+		$(this).closest(".signup_past_dropdown").find(".signup_change_chosen_item").find("div").text(txt);
+		}
+	});
+
+	$(document).delegate("#classyear-select","change",function(){
+		var yval=$(this).val();
+		if(yval!="-1"){
+			$(".nextBtn").removeClass("disabled");
+			$(".nextBtn").addClass("proceed-to-confirm");
+			$(".SignUpStep3-sec-last").css("pointer-events","all");
+			$(".SignUpStep3-sec-last").addClass("displayed");
+			$(document).delegate(".upload_photo_box","click",function(){
+				$(this).addClass("upload_photo_box_uploaded");
+				$(this).find(".photo_upload_text").text("Photo Uploaded");
+			});
+		}
+		else{
+			$(".nextBtn").addClass("disabled");
+		}
+		
+	});
+
+	$(document).delegate(".account-type","click",function(){
+		if($(this).hasClass("undergraduate")){
+			$(".graduate").removeClass("account-type-chosen");
+			$(this).addClass("account-type-chosen");
+			$("#undergrad").prop("checked", true);
+			$("#grad").prop("checked", false);
+		}
+		if($(this).hasClass("graduate")){
+			$(".undergraduate").removeClass("account-type-chosen");
+			$(this).addClass("account-type-chosen");
+			$("#grad").prop("checked", true);
+			$("#undergrad").prop("checked", false);
+						
+			
+		}
+	});
+
+
+	$(document).delegate(".deptJoin","click",function(){
+		$(".search-signup-container").fadeOut(600);
+		$(this).css("pointer-events","none");
+		$(".nextBtn").text("Finish");
+		$(".SignUpProgressTracker").animate({opacity:0},600);
+		$(this).find(".joinBtn").text("Joined");
+		$('#SignupStepHeader').fadeOut(600, function() {
+		        $(this).text("Connect with the right people in your department").fadeIn(600);
+		    });
+		$('#SignupStepSubHeader').fadeOut(600, function() {
+		        $(this).text('Lastly, fill in your class year and academic standing').fadeIn(600);
+		    });
 		setTimeout(
 		function(){
-			$(SignUpItemChosen).addClass("slideUpChosen");
-			$('#SignupStepHeader').fadeOut(800, function() {
-		        $(this).text('There are many fields to study at your School').fadeIn(800);
-		    });
-		    $('#SignupStepSubHeader').fadeOut(800, function() {
-		        $(this).text('Choose your major.').fadeIn(800);
-		    });
+		$(SignUpDeptItemChosen).addClass("slideUpChosen");
+		},
+		550)
+
+		var SignUpDeptItemChosen = $(this);
+		$(this).removeClass("unchosen2");
+		setTimeout(
+		function(){
+			$(".SignUpProgressTracker").css("bottom","6px");
+			$(".SignUpProgressTracker").addClass("SignUpProgressTrackerPart3");
+			$(".SignUpPart2SchoolChosen").addClass("SignUpPart2SchoolChosenSmall");
+			$(".SignUpPart3DepartmentChosen").css("display","inline-block");
+			
+
+			$(".SignupPart2Message").text("Your department has 500 faculty and 200 students");
 		    
-		    $(".SignUpProgressTracker").fadeIn(1300);
-		    $(".ui-progress").find("li.1").removeClass("active");
-		    $(".ui-progress").find("li.2").removeClass("inactive").addClass("active");
+		    $(".ui-progress").find("li.2").removeClass("active");
+		    $(".ui-progress").find("li.3").removeClass("inactive").addClass("active");
+		    $(".SignUpProgressTracker").animate({opacity:1},400);
+
 		},
 		700)
 
 		setTimeout(
+		function(){
+		$(".loadingAnimationWrapper").fadeIn();
+		},
+		1050)
+
+		setTimeout(
+		function(){
+		$(".loadingAnimationWrapper").fadeOut();
+		},
+		1550)
+
+		setTimeout(
+		function(){
+			$(".departmentSignUpList").hide();
+			$(".deptJoin").hide();
+			$(".SignUpStep3Wrapper").show();
+
+		},
+		1650)
+
+
+
+		setTimeout(
 			function(){
-			$(".unchosen").addClass("slideLeft");
+				  $('.SignUpStep3-sec').each(function(i) {
+				    var $li = $(this);
+				    setTimeout(function() {
+				      $li.addClass('displayed');
+				    }, i*240); // delay 250 ms
+				  });
 
 
 
+		},
+		1700)
+		 
+
+		setTimeout(
+			function(){
+
+			$(".unchosen2").addClass("slideLeft");
+		},
+		100)
+	});
+
+	$(document).delegate(".schoolJoin","click",function(){
+		$(".search-signup-container").fadeOut(600);
+		
+		$(this).find(".joinBtn").text("Joined");
+		$(this).css("pointer-events","none");
+		var SignUpItemChosen = $(this);
+		$(this).removeClass("unchosen");
+
+		setTimeout(
+		function(){
+			
+			$('#SignupStepHeader').fadeOut(500, function() {
+		        $(this).text('There are many subjects to study at your School').fadeIn(500);
+		    });
+		    $('#SignupStepSubHeader').fadeOut(500, function() {
+		        $(this).text('Below, click the department of your major or grad program.').fadeIn(500);
+		    });
+		    
+		    $('.search-signup-lists').delay(500).attr("placeholder","Search for your department");
+		    $(".ui-progress").find("li.1").removeClass("active");
+		    $(".ui-progress").find("li.2").removeClass("inactive").addClass("active");
+		    
+		},
+		700)
+
+		setTimeout(
+		function(){		
+		$(SignUpItemChosen).addClass("slideUpChosen")
+			;
+
+		},
+		550)
+
+		setTimeout(
+		function(){
+		
+		$(".signUp_header").addClass("signUp_headerStep2");
+
+		},
+		1000)
+
+		setTimeout(
+			function(){
+			$(".unchosen").addClass("slideLeft"); 
 		},
 		100)
 
-		setTimeout(
-			function(){
-				$(".loadingAnimationWrapper").fadeIn();
-				$(".signUp_header").addClass("signUp_headerStep2");
-			
-			},
-			900)
 
 		setTimeout(
 			function(){
 			
-			$(".loadingAnimationWrapper").fadeOut();
-			$(".schoolJoin").hide();
-			$(".schoolsSignUpList").hide();
-			$(".signupFormNext").addClass("signupFormNextStep2");
+			
+
 			$(".departmentSignUpList").fadeIn();
+			
 
 
 		},
-		1800)
+		1300)
 
 		setTimeout(
 			function(){
 
-  $('.SignUpItem2').each(function(i) {
-    var $li = $(this);
-    setTimeout(function() {
-      $li.addClass('displayed');
-    }, i*270); // delay 250 ms
-  });
+				$(".signupFormNext").addClass("signupFormNextStep2");
 
+			},
+			1650)
+
+		setTimeout(
+			function(){
+				$(".SignUpProgressTracker").show();
+		$(".SignUpProgressTracker").animate({opacity:1},800);
+				  $('.SignUpItem2').each(function(i) {
+				    var $li = $(this);
+				    setTimeout(function() {
+				      $li.addClass('displayed');
+				    }, i*240); // delay 250 ms
+				  });
+				  $(".search-signup-container").fadeIn(600);
 
 
 		},
-		2350)
+		1750)
+
+
+		setTimeout(
+			function(){
+				$(".schoolJoin").hide();
+				$(".schoolsSignUpList").hide();
+			},
+			1600)
 
 
 	});
+
 	/**
+	
 	$(".niceScroller").scroll(function(){
 		if(($('.topListItem').offset().top) <= 148){
 			$(".signUp_header").addClass("ScrollDownShadow");
@@ -106,31 +283,33 @@ $(document).ready(function() {
 		}
 
 	});
-**/
+
+	**/
 
 
 
-	$(".blackBackground").delay(600).fadeIn(300);
+
+	$(".blackBackground").delay(600).fadeIn(500);
   	setTimeout(
 		function(){
 					$(".loadingAnimationWrapper").fadeOut();
 					$(".schoolsSignUpList").fadeIn();
 					setTimeout(
 						function(){
-					ItemSlide(0, 260);
+					ItemSlide(0, 230);
 
 
 				},
 				300)
   		},
-  		1100)
+  		1000)
 
   	setTimeout(
 		function(){
 			$(".niceScroller").css("overflow-y","scroll");
 			$(".info").css("cursor","pointer");
   		},
-  		1750)			
+  		2350)			
 
 });
 
@@ -158,351 +337,676 @@ function ItemSlide(index, interval) {
 			<img class = "logo" src = "src/logo.png">
 		</div>
 		<div class = "signUpMain_1">
-			<div class = "signUp_header">
-				<div class = "animateMiddle">
-					<h1 id ="SignupStepHeader">Welcome to Urlinq's academic network at <span>NYU</span></h1>
-					<p id ="SignupStepSubHeader">
-						First, join the school or college you attend from the list below.  
-					</p>
+			<div class = "signUpMain_fader">
+				<div class = "signUp_header">
+					<div class = "animateMiddle">
+						<h1 id ="SignupStepHeader">Welcome to Urlinq's academic network at <span>NYU</span></h1>
+						<p id ="SignupStepSubHeader">
+							First, click on the school or college you attend below.  
+						</p>
 
-					<!--This SignUpProgressTracker div fades in only after the user has selected a school from part 1 and allows the user to adjust the school they chose with a simple option select tag -->
+						<!--This SignUpProgressTracker div fades in only after the user has selected a school from part 1 and allows the user to adjust the school they chose with a simple option select tag -->
 
-					<div class = "SignUpProgressTracker">
-						<div class = "SignUpPart2SchoolChosen">
-							
-							<div class = "chosenText">
-								Polytechnic School of Engineering
-							</div>
-							<div class = "wedge_wrapper">
-								<div class = "wedge_outer">
+						<div class = "SignUpProgressTracker">
+							<div class = "SignUpPart2SchoolChosen signup_anchor">
+								
+								<div class = "chosenImg">
+									<img src = "src/nyu-poly-logo.png">
 								</div>
-								<div class="wedge_solid">
+								<div class = "wedge_wrapper">
+									<div class = "wedge_outer">
+									</div>
+									<div class="wedge_solid">
+									</div>
+								</div>
+								<div class = "signup_past_dropdown">
+									<h4>Change your School</h4>
+									<div class = "signup_change_chosen_wrap scrollable_dropdown">
+										<div class = "signup_change_chosen_item signup_change_item">
+											<em>
+											</em>
+											<div>Chosen School Name</div>
+										</div>
+										<div class = "signup_change_item">
+											<div>Other School Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other School Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other School Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other School Name</div>	
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class = "SignUpPart3DepartmentChosen signup_anchor">
+								
+								<div class = "chosenImg">
+									<img src = "src/neuroProf.jpg">
+								</div>
+								<div class = "wedge_wrapper">
+									<div class = "wedge_outer">
+									</div>
+									<div class="wedge_solid">
+									</div>
+								</div>
+								<div class = "signup_past_dropdown">
+									<h4>Change your Department</h4>
+									<div class = "signup_change_chosen_wrap scrollable_dropdown">
+										<div class = "signup_change_chosen_item signup_change_item">
+											<em>
+											</em>
+											<div>Chosen Department Name</div>
+										</div>
+										<div class = "signup_change_item">
+											<div>Other Department Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other Department Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other Department Name</div>	
+										</div>
+										<div class = "signup_change_item">
+											<div>Other Department Name</div>	
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class = "SignupPart2Message">
-							There are 35 departments at this school.
+							<div class = "SignupPart2Message">
+								There are 35 departments at this school.
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class = "signupFormNext scrollable">
-				<div class = "loadingAnimationWrapper">
-					<img class = "modal_animation" src = "src/signUpLoadingAnimation.gif">
-				</div>
-				
-				<div class = "choiceSignUpList schoolsSignUpList scroller niceScroller">	
-					<div class = "scroll-inner">
-						<div class = "choicesContainer">
-							<!-- For JS purposes, the topListItem class should only be found in the first div of the SignupChoiceList -->
-							<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-cas-logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>College of Arts and Sciences</h3>
-												<p>12700 members</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class = "school listItem unchosen schoolJoin SignUpItem">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-poly-logo.png">
-											</div>
-											<div class = "name">
-												<h3>Polytechnic School of Engineering</h3>
-												<p>6500 students, faculty, and graduates</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class = "school unchosen listItem schoolJoin SignUpItem">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/stern_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/stern_logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Stern</h3>
-												<p>4500 people</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class = "school unchosen listItem schoolJoin SignUpItem">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/gallatin_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/gallatin_logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Gallatin School of Individualized Study</h3>
-												<p>2500 members</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class = "school unchosen listItem schoolJoin SignUpItem">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/NYU_CAS_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-cas-logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Polytechnic School of Engineering</h3>
-												<p>6500 people</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>							
-						</div>
+				<div class = "signupFormNext scrollable">
+					<div class = "loadingAnimationWrapper">
+						<img class = "modal_animation" src = "src/signUpLoadingAnimation.gif">
 					</div>
-				</div>	
+					
+					<div class = "choiceSignUpList schoolsSignUpList scroller niceScroller">	
+						<div class = "scroll-inner">
+							<div class = "choicesContainer">
+								<!-- For JS purposes, the topListItem class should only be found in the first div of the SignupChoiceList -->
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
-				<div class = "choiceSignUpList departmentSignUpList scroller niceScroller">	
-					<div class = "scroll-inner">
-						<div class = "choicesContainer">
-							<!-- For JS purposes, the topListItem class should only be found in the first div of the SignupChoiceList -->
-							<div class = "topListItem2 school unchosen2 listItem deptJoin SignUpItem2">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-cas-logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>College of Arts and Sciences</h3>
-												<p>12700 members</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
+								<div class = "school listItem unchosen schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-poly-logo.png">
+												</div>
+												<div class = "name">
+													<h3>Polytechnic School of Engineering</h3>
+													<p>6500 students, faculty, and graduates</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								<div class = "school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/stern_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/stern_logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Stern</h3>
+													<p>4500 people</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/gallatin_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/gallatin_logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Gallatin School of Individualized Study</h3>
+													<p>2500 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "topListItem school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "school unchosen listItem schoolJoin SignUpItem">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Polytechnic School of Engineering</h3>
+													<p>6500 people</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>							
 							</div>
-							<div class = "school listItem unchosen2 deptJoin SignUpItem2">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-poly-logo.png">
-											</div>
-											<div class = "name">
-												<h3>Polytechnic School of Engineering</h3>
-												<p>6500 students, faculty, and graduates</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class = "school unchosen2 listItem deptJoin SignUpItem2">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/stern_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/stern_logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Stern</h3>
-												<p>4500 people</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class = "school unchosen2 listItem deptJoin SignUpItem2">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/gallatin_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/gallatin_logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Gallatin School of Individualized Study</h3>
-												<p>2500 members</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class = "school unchosen2 listItem deptJoin SignUpItem2">
-								<!-- Displays schools cover photo in background css, not img tag -->
-								<div class = "choiceInner" style = "background-image:url(src/NYU_CAS_cover.jpg)">
-									<div class = "info">
-										<div class = "choiceJoin">
-											<div class = "schoolsmallImage">
-												<img src = "src/nyu-cas-logo.jpg">
-											</div>
-											<div class = "name">
-												<h3>Polytechnic School of Engineering</h3>
-												<p>6500 people</p>
-											</div>
-											<div class = "button">
-												<div class ="join">
-													<button type = "button" class = "joinBtn">
-														<i class = "joinIcon">
-														</i>
-														<span>Join</span>
-														<i class = "leaveIcon">
-														</i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>							
 						</div>
+					</div>	
+
+					<div class = "choiceSignUpList departmentSignUpList scroller niceScroller">	
+						<div class = "scroll-inner">
+							<div class = "choicesContainer">
+								<!-- For JS purposes, the topListItem class should only be found in the first div of the SignupChoiceList -->
+								<div class = "topListItem2 department unchosen2 listItem deptJoin SignUpItem2">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner"  style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>College of Arts and Sciences</h3>
+													<p>12700 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "school department listItem unchosen2 deptJoin SignUpItem2">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-poly-logo.png">
+												</div>
+												<div class = "name">
+													<h3>Polytechnic School of Engineering</h3>
+													<p>6500 students, faculty, and graduates</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "department unchosen2 listItem deptJoin SignUpItem2">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/stern_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/stern_logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Stern</h3>
+													<p>4500 people</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class = "department unchosen2 listItem deptJoin SignUpItem2">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/gallatin_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/gallatin_logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Gallatin School of Individualized Study</h3>
+													<p>2500 members</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class = "department unchosen2 listItem deptJoin SignUpItem2">
+									<!-- Displays schools cover photo in background css, not img tag -->
+									<div class = "choiceInner" style = "background-image:url(src/NYU_CAS_cover.jpg)">
+										<div class = "info">
+											<div class = "choiceJoin">
+												<div class = "schoolsmallImage">
+													<img src = "src/nyu-cas-logo.jpg">
+												</div>
+												<div class = "name">
+													<h3>Mechanical Engineering</h3>
+													<p>6500 engineers</p>
+												</div>
+												<div class = "button">
+													<div class ="join">
+														<button type = "button" class = "joinBtn">
+															<i class = "joinIcon">
+															</i>
+															<span>Join</span>
+															<i class = "leaveIcon">
+															</i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>							
+							</div>
+						</div>
+					</div>	
+
+					<div class = "SignUpStep3Wrapper">
+						<div class = "SignUpStep3-sec SignUpStep3-sec-first">
+	                        <div class = "registration-sec-header">
+	                          Academic Standing
+	                        </div>
+	                        <div class = "SignUpStep3-typechoice">
+		                        <ul class = "account-types">
+		                          <li class = "account-type undergraduate account-type-chosen">
+		                            <input name = "account-types" checked = "true" type = "radio" id = "undergrad" class = "typecheck">
+		                            <div id = "account-type-label">Undergraduate</div>
+		                          </li>
+		                          <li class = "account-type graduate">
+		                            <input name = "account-types" type = "radio" id = "grad" class = "typecheck">
+		                            <div id = "account-type-label">Graduate</div>
+		                          </li>
+		                        </ul>
+		                    </div>
+	                    </div>
+	                    <div class = "SignUpStep3-sec SignUpStep3-sec-tall">
+	                    	<div class = "text-left">
+	                    		<div class = "h4-text">
+	                    			Class Year
+	                    		</div>
+	                    	</div>
+	                    	<div class = "options-box">
+	                    		<div class = "box-condensed">
+	                    			<div class = "box-col">
+	                    				<div class = "panelClassyear">
+	                    					<div class = "panel-body-light">
+	                    						<div class = "row-ClassYear">
+	                    							<div class = "col-text">
+	                    								<div class = "select select-large" id="select_year">
+	                    									<em class = "group_icon"> 
+	                    									</em>
+	                    									<select id = "classyear-select" value="0">
+	                    										<option value = "-1">Year</option>
+	                    										<option value = "2014" class = "classyears">2014</option>
+	                    										<option value = "2015" class = "classyears">2015</option>
+	                    										<option value = "2016" class = "classyears">2016</option>
+	                    										<option value="2017" class = "classyears">2017</option>
+	                    										<option value="2018" class = "classyears">2018</option>
+	                    										<option value="2019" class = "classyears">2019</option>
+	                    										<option value="2020" class = "classyears">2020</option>
+	                    										<option value="2021" class = "classyears">2021</option>
+	                    									</select>
+	                    									<em></em>
+	                    								</div>
+	                    							</div>
+	                    						</div>
+	                    					</div>
+	                    				</div>
+	                    			</div>
+	                    		</div>
+	                    	</div>
+	                    </div>
+	                    <div class = "SignUpStep3-sec-last">
+	                    	<div class = "text-left">
+	                    		<div class = "h4-text">
+	                    			Profile Picture 
+	                    		</div>
+	                    	</div>
+	                    	<div class = "upload_photo_box">
+	                    		<em class = "camera_icon">
+	                    		</em>
+	                    		<div class=  "photo_upload_text">
+	                    			Upload Photo
+	                    		</div>
+	                    	</div>
+	                    </div>
 					</div>
-				</div>	
 
-			</div>
-			<div class = "signUp_footer">
-				<div class = "shadowUpside">
 				</div>
-				<div class = "progress">
-		            <ul max = "3" class = "ui-progress round" value = "1">
-	                    <li class = "1 active">
-	                    </li>
+				<div class = "signUp_footer">
+					<div class = "shadowUpside">
+					</div>
+					<div class = "progress">
+			            <ul max = "3" class = "ui-progress round" value = "1">
+		                    <li class = "1 active">
+		                    </li>
 
-	                    <li class = "2 inactive">
-	                    </li>
+		                    <li class = "2 inactive">
+		                    </li>
 
-	                    <li class = "3 inactive">
-	                    </li>
+		                    <li class = "3 inactive">
+		                    </li>
 
-	                </ul>
-	            </div>
-	            <div class = "btn-wrapper">
-	            	<button class = "nextBtn disabled">
-	            		Next 
-	            		<em>
-	            		</em>
-	            	</button>
-	            </div>
+		                </ul>
+		            </div>
+		            <div class = "search-wrapper">
+		            	<div class = "search-signup-container">
+			            	<input type="stringSearch" name="signup_search" placeholder = "Search for your school" class = "search-signup-lists">
+			            	</input>
+
+			            </div>
+		            </div>
+		            <div class = "btn-wrapper">
+		            	<button class = "nextBtn disabled">
+		            		Next 
+		            		<em>
+		            		</em>
+		            	</button>
+		            </div>
+				</div>
 			</div>
 		</div>
 	</div> 
