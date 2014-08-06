@@ -40,7 +40,22 @@ $(document).ready(function() {
 	});
 
 	$(document).delegate(".proceed-to-confirm","click",function(){
-		$(".signUpMain_fader").addClass("zoomOutFade");
+		$(".signUpMain_fader").fadeOut(600);
+		
+
+
+		setTimeout(
+		function(){		
+		$(".signUpMain_emailconfirm").show();
+		},
+		600)
+
+		setTimeout(
+		function(){		
+		$(".signUpMain_emailconfirm").addClass("displayed");
+		},
+		700)
+
 	});
 
 	$(document).delegate(".signup_anchor","click",function(){
@@ -110,7 +125,7 @@ $(document).ready(function() {
 		function(){
 		$(SignUpDeptItemChosen).addClass("slideUpChosen");
 		},
-		550)
+		450)
 
 		var SignUpDeptItemChosen = $(this);
 		$(this).removeClass("unchosen2");
@@ -129,19 +144,19 @@ $(document).ready(function() {
 		    $(".SignUpProgressTracker").animate({opacity:1},400);
 
 		},
-		700)
+		500)
 
 		setTimeout(
 		function(){
 		$(".loadingAnimationWrapper").fadeIn();
 		},
-		1050)
+		1200)
 
 		setTimeout(
 		function(){
 		$(".loadingAnimationWrapper").fadeOut();
 		},
-		1550)
+		1500)
 
 		setTimeout(
 		function(){
@@ -150,7 +165,7 @@ $(document).ready(function() {
 			$(".SignUpStep3Wrapper").show();
 
 		},
-		1650)
+		1550)
 
 
 
@@ -160,13 +175,13 @@ $(document).ready(function() {
 				    var $li = $(this);
 				    setTimeout(function() {
 				      $li.addClass('displayed');
-				    }, i*240); // delay 250 ms
+				    }, i*270); // delay 250 ms
 				  });
 
 
 
 		},
-		1700)
+		1650)
 		 
 
 		setTimeout(
@@ -200,7 +215,7 @@ $(document).ready(function() {
 		    $(".ui-progress").find("li.2").removeClass("inactive").addClass("active");
 		    
 		},
-		700)
+		500)
 
 		setTimeout(
 		function(){		
@@ -208,7 +223,7 @@ $(document).ready(function() {
 			;
 
 		},
-		550)
+		450)
 
 		setTimeout(
 		function(){
@@ -216,13 +231,14 @@ $(document).ready(function() {
 		$(".signUp_header").addClass("signUp_headerStep2");
 
 		},
-		1000)
+		750)
 
 		setTimeout(
 			function(){
 			$(".unchosen").addClass("slideLeft"); 
 		},
-		100)
+		200)
+
 
 
 		setTimeout(
@@ -235,7 +251,7 @@ $(document).ready(function() {
 
 
 		},
-		1300)
+		950)
 
 		setTimeout(
 			function(){
@@ -243,23 +259,29 @@ $(document).ready(function() {
 				$(".signupFormNext").addClass("signupFormNextStep2");
 
 			},
-			1650)
+			1500)
 
 		setTimeout(
 			function(){
-				$(".SignUpProgressTracker").show();
-		$(".SignUpProgressTracker").animate({opacity:1},800);
+		$(".SignUpProgressTracker").show();
+		$(".SignUpProgressTracker").animate({opacity:1},850);
+				},
+				1450)
+
+		setTimeout(
+			function(){
+
 				  $('.SignUpItem2').each(function(i) {
 				    var $li = $(this);
 				    setTimeout(function() {
 				      $li.addClass('displayed');
-				    }, i*240); // delay 250 ms
+				    }, i*270); // delay 250 ms
 				  });
 				  $(".search-signup-container").fadeIn(600);
 
 
 		},
-		1750)
+		1550)
 
 
 		setTimeout(
@@ -267,7 +289,7 @@ $(document).ready(function() {
 				$(".schoolJoin").hide();
 				$(".schoolsSignUpList").hide();
 			},
-			1600)
+			1450)
 
 
 	});
@@ -309,7 +331,7 @@ $(document).ready(function() {
 			$(".niceScroller").css("overflow-y","scroll");
 			$(".info").css("cursor","pointer");
   		},
-  		2350)			
+  		1850)			
 
 });
 
@@ -336,7 +358,19 @@ function ItemSlide(index, interval) {
 		<div class = "logo_wrapper">
 			<img class = "logo" src = "src/logo.png">
 		</div>
+
 		<div class = "signUpMain_1">
+			<div class = "signUpMain_emailconfirm">
+				<h1 id ="SignupStepHeader-confirm">Check your email</h1>
+				<p id ="SignupStepSubHeader-confirm">
+					We sent you a confirmation email with a link to get you started on Urlinq.  
+				</p>
+				<img src = "src/EmailConfirmIcon.png" class = "center-img">
+				<div>
+					<a>Resend</a>
+					<a>Sign in</a>
+				</div>
+			</div>
 			<div class = "signUpMain_fader">
 				<div class = "signUp_header">
 					<div class = "animateMiddle">
