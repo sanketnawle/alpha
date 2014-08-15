@@ -13,15 +13,26 @@
       <script>
       
       $(document).ready(function() {
-
-      });
+        setTimeout(
+          function(){
+            $(".steppingStone").addClass("fade-in-left");
+          },
+          500)
+        });
 
       </script>
 
   </head>
-  <body>
+  <body style = "background:#edefed;">
     <div class = "steppingStone animated">
-      
+      <div class = "steppingStone-Interior">
+      </div>
+      <div class = "steppingStone-arrow-container left">
+        <div class = "steppingStone-arrow-border">
+        </div>
+        <div class = "steppingStone-arrow">
+        </div>
+      </div>
     </div>
   </body>
 </html>
