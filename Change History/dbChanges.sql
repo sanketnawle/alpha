@@ -6,7 +6,7 @@
 --- Date: 8/18/2014
 --- Reason:adding another enum review for professors not in database
 --- Created by: kt
---- Module Name:user 
+--- Module Name:user login 
 --- ------------------------------------------------------------------------------------------------
 --- Queries
 --- ------------------------------------------------------------------------------------------------
