@@ -18,7 +18,7 @@
 --- Module Name: groups
 --- ------------------------------------------------------------------------------------------------
 --- Queries
-	ALTER TABLE `groups`  ADD `color_id` INT(11) NOT NULL COMMENT 'linked to event_color_table color_id' AFTER `group_desc`,  ADD INDEX (`color_id`) 
+	ALTER TABLE `groups`  ADD `color_id` INT(11) NOT NULL COMMENT 'linked to event_color_table color_id' AFTER `group_desc`,  ADD INDEX (`color_id`);
 --- ------------------------------------------------------------------------------------------------
 
 --- ------------------------------------------------------------------------------------------------
@@ -28,7 +28,17 @@
 --- Module Name: courses_semester
 --- ------------------------------------------------------------------------------------------------
 --- Queries
-	ALTER TABLE `courses_semester`  ADD `color_id` INT(11) NOT NULL COMMENT 'linked to event_color_table color_id',  ADD INDEX (`color_id`) 
+	ALTER TABLE `courses_semester`  ADD `color_id` INT(11) NOT NULL COMMENT 'linked to event_color_table color_id',  ADD INDEX (`color_id`);
+--- ------------------------------------------------------------------------------------------------
+
+--- ------------------------------------------------------------------------------------------------
+--- Date: 08/20/2014
+--- Reason: removing foreign key constraint on file_id from showcase to store IDs from different tables. 
+--- Created by: KU
+--- Module Name: profile_showcase
+--- ------------------------------------------------------------------------------------------------
+--- Queries
+	ALTER TABLE `showcase`  DROP FOREIGN KEY `showcase_ibfk_2`; 
 --- ------------------------------------------------------------------------------------------------
 
 --- ------------------------------------------------------------------------------------------------
