@@ -1,4 +1,4 @@
--- ------------------------------------------------------------------------------------------------
+	-- ------------------------------------------------------------------------------------------------
 -- This file is to be used to log any changes in the database schema. All such changes will be 
 -- reviewed and moved to production. Strictly follow the format given below for the changes.  
 -- Be as specific as possible while giving the reason.
@@ -65,5 +65,16 @@ RENAME login to user_login
 -- Reason:change of hash from sha1 to sha512
 -- Created by:kt
 -- Module Name: login(old db)
+-- ------------------------------------------------------------------------------------------------
+
+-- ------------------------------------------------------------------------------------------------
+-- Date: 8/28/2014
+-- Reason: sync event option and notification option
+-- Created by:AN
+-- Module Name: courses_user
+-- ------------------------------------------------------------------------------------------------
+ -- Queries
+	ALTER TABLE `courses_user`  ADD `sync_events` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'sync all events for this class' AFTER `is_admin`,  
+ADD `notifications` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'show notifications for this class' AFTER `sync_events`
 -- ------------------------------------------------------------------------------------------------
 
