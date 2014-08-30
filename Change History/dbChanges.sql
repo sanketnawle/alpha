@@ -50,23 +50,16 @@
 -- Queries
 	ALTER TABLE `courses_semester`  ADD `component` VARCHAR(200) NOT NULL DEFAULT 'Lecture' COMMENT 'type of class' AFTER `year`
 -- ------------------------------------------------------------------------------------------------
--- Queries
- ALTER TABLE user_login CHANGE password VARCHAR(512)
 -- ------------------------------------------------------------------------------------------------
 -- Date: 8/28/2014
 -- Reason:change of hash from sha1 to sha512
 -- Created by:kt
 -- Module Name: user_login
 -- ------------------------------------------------------------------------------------------------
- -- Queries
-RENAME login to user_login
+-- Queries
+	ALTER TABLE login RENAME user_login
+ 	ALTER TABLE user_login CHANGE password VARCHAR(512);
 -- ------------------------------------------------------------------------------------------------
--- Date: 8/28/2014
--- Reason:change of hash from sha1 to sha512
--- Created by:kt
--- Module Name: login(old db)
--- ------------------------------------------------------------------------------------------------
-
 -- ------------------------------------------------------------------------------------------------
 -- Date: 8/28/2014
 -- Reason: sync event option and notification option
@@ -75,6 +68,6 @@ RENAME login to user_login
 -- ------------------------------------------------------------------------------------------------
  -- Queries
 	ALTER TABLE `courses_user`  ADD `sync_events` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'sync all events for this class' AFTER `is_admin`,  
-ADD `notifications` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'show notifications for this class' AFTER `sync_events`
+ADD `notifications` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'show notifications for this class' AFTER `sync_events`;
 -- ------------------------------------------------------------------------------------------------
 
