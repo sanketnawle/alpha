@@ -1,4 +1,4 @@
-	-- ------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------
 -- This file is to be used to log any changes in the database schema. All such changes will be 
 -- reviewed and moved to production. Strictly follow the format given below for the changes.  
 -- Be as specific as possible while giving the reason.
@@ -69,5 +69,20 @@
  -- Queries
 	ALTER TABLE `courses_user`  ADD `sync_events` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'sync all events for this class' AFTER `is_admin`,  
 ADD `notifications` BOOLEAN NOT NULL DEFAULT TRUE COMMENT 'show notifications for this class' AFTER `sync_events`;
+-- ------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------
+-- Date: 9/2/2014
+-- Reason: Add bug report to prod
+-- Created by:KU
+-- Module Name: bug report
+-- ------------------------------------------------------------------------------------------------
+-- Queries
+	CREATE TABLE `bug_report` (
+ `user_id` int(11) NOT NULL,
+ `bug_description` varchar(500) NOT NULL,
+ `logged_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ KEY `user_id` (`user_id`),
+ CONSTRAINT `bug_report_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Bug Report Table'
 -- ------------------------------------------------------------------------------------------------
 
