@@ -1,0 +1,319 @@
+.calnoti_main_window
+{
+    width:940px;
+    min-height: 280px;
+    background-color: #606060;
+    border-radius: 0px 0px 4px 4px;
+    border:2px solid #111111;
+}
+
+.calnoti_sec
+{
+    width: 321px;
+    height: 280px;
+    padding-left: 16px;
+    float: left;
+}
+
+.cn_sec_header
+{
+    height: 55px;
+    width: 294px;
+    border-bottom: 2px solid white; 
+    font-family: 'Open Sans';
+}
+
+.sec_header_prompt
+{
+    color: white;
+    font-size: 24px;
+    padding-top: 22px;
+    float: left;
+    font-weight: 300;
+}
+
+.greenNotiCircleBig
+{
+    float: left;
+    color: white;
+    border-radius: 50%;
+    background-image: -moz-linear-gradient(90deg, rgb(0,204,148)0%, rgb(2,226,167)100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(0,204,148)0%, rgb(2,226,167)100%);
+    background-image: -ms-linear-gradient(90deg, rgb(0,204,148)0%, rgb(2,226,167)100%);
+    margin-top: 29px;
+    margin-left: 20px;
+    width: 21px;
+    height: 21px;
+
+    text-align: center;
+}
+
+.greenNotiCircleBig div
+{
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.cn_sec_content
+{
+    width: 100%;
+    height: 218px;
+    overflow-y:scroll; 
+}
+
+.cn_row
+{
+    height: 49px;
+    width: 294px;
+    margin-top: 10px;
+    padding:3px;
+}
+
+.row_icon
+{
+    height: 49px;
+    width: 49px;
+    color: white;
+    font-family: 'Open Sans';
+    float: left;
+}
+
+.EXM
+{
+    background-color: red;
+    border-radius: 1px;
+}
+
+.CLB
+{
+    background-color: blue;
+    border-radius: 1px;
+}
+
+.CLS
+{
+    background-color: green;
+    border-radius: 1px;
+}
+
+.EVT
+{
+    background-color: orange;
+    border-radius: 1px;
+}
+
+.INV
+{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 1px;
+    color: #333;
+z-index: 10;
+position: relative;
+}
+
+.evt_background
+{
+    height: 49px;
+    width: 49px;
+    position: absolute; 
+    margin-top: -50px;
+}
+
+.info_0
+{
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.info_1
+{
+    font-size: 18px;
+    text-align: center;
+}
+
+.info_1 div
+{
+    margin-top: -4px;
+font-size: 20px;
+font-weight: 400;
+}
+
+.cn_row_left
+{
+z-index: 10;
+float: left;
+}
+
+
+.cn_row_content
+{
+    float: left;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 231px;
+}
+
+.evt_row
+{
+    width: 191px;
+}
+
+.evt_checkbox
+{
+    width: 40px;
+    height: 100%;
+    float: left;
+}
+
+.cn_row_footer
+{
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 12px;
+
+    height: 20px;
+    margin-top: 30px;
+}
+
+.info_3
+{
+
+    margin-top: -2px;
+    margin-right: 3px;
+    float: right;
+}
+
+.info_4
+{
+
+    margin-top: -2px;
+    margin-right: 3px;
+    float: right;
+}
+
+.sep 
+{
+    float: right;
+    margin-right: 3px;
+}
+
+.ivt_rightbox
+{
+    width: 40px;
+    float: left;
+    margin-top: 8px;
+}
+
+.plus_btn
+{
+    width: 27px;
+    height: 24px;
+    background-color: #252525;
+    border:1.5px solid #111111;
+    border-radius: 6px; 
+    color: white;
+    font-family: 'Helvetica';
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tooltipwrap
+{
+    position: absolute;
+    display: none;
+}
+
+.twedge
+{
+        width: 0; 
+        height: 0; 
+        border-left: 7px solid transparent; 
+        border-right: 7px solid transparent; 
+        border-top: 10px solid #252525;
+        margin-top: -10px;
+        position: absolute;
+        z-index: 10;
+        margin-left: 7px;
+}
+
+.tcontent
+{
+    position: relative;
+    background-color: #252525;
+    border:1.5px solid #111111;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top:3px;
+    padding-bottom: 3px;
+    color: white;
+    border-radius:  4px;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    margin-top: -32px;
+    margin-left: -5px;
+}
+
+.conflict_schedule .plus_btn
+{
+    color: red;
+}
+
+.button-block
+{
+    width: 24px;
+height: 24px;
+border-radius: 3px;
+margin: 13px auto;
+display: block;
+position: relative;
+border: 3px solid white;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 600ms ease-in-out 0s;
+}
+
+.button-block button
+{
+    width: 33px;
+height: 33px;
+background: none repeat scroll 0% 0% transparent;
+border: 0px none;
+cursor: pointer;
+}
+
+.mark {
+    background-color: white;
+    position: absolute;
+    height: 15px;
+    width: 2px;
+    display: none;
+    top: 7px;
+}
+.flag_checked .mark
+{
+    display: block;
+}
+
+
+    .mark.x {
+right: 5px;
+height: 15px;
+top: 2px;
+        transform: rotate(45deg); /* TODO: prefix */
+        -webkit-transform: rotate(45deg); /* TODO: prefix */
+    }
+
+    .mark.xx {
+height: 7px;
+top: 8px;
+left: 4px;
+        transform: rotate(-45deg); /* TODO: prefix */
+        -webkit-transform: rotate(-45deg); /* TODO: prefix */
+    }
