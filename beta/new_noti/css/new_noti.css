@@ -1,6 +1,6 @@
 .calnoti_main_window
 {
-    width:940px;
+    width:910px;
     min-height: 280px;
     background-color: #606060;
     border-radius: 0px 0px 4px 4px;
@@ -15,17 +15,25 @@
     float: left;
 }
 
+.dynamic_sec
+{
+width: 195px;
+padding-left: 16px;
+float: left;
+padding-top: 20px;
+}
+
 .cn_sec_header
 {
     height: 55px;
     width: 294px;
-    border-bottom: 2px solid white; 
+    border-bottom: 2px solid rgba(255,255,255,0.65); 
     font-family: 'Open Sans';
 }
 
 .sec_header_prompt
 {
-    color: white;
+    color: rgba(255,255,255,0.65);
     font-size: 24px;
     padding-top: 22px;
     float: left;
@@ -57,7 +65,7 @@
 .cn_sec_content
 {
     width: 100%;
-    height: 218px;
+    height: 222px;
     overflow-y:scroll; 
 }
 
@@ -80,25 +88,25 @@
 
 .EXM
 {
-    background-color: red;
+    background-color:  #ff5a5f;
     border-radius: 1px;
 }
 
 .CLB
 {
-    background-color: blue;
+    background-color: #1da7d3;
     border-radius: 1px;
 }
 
 .CLS
 {
-    background-color: green;
+    background-color: #00ce95;
     border-radius: 1px;
 }
 
 .EVT
 {
-    background-color: orange;
+    background-color: #fd702d;
     border-radius: 1px;
 }
 
@@ -106,7 +114,7 @@
 {
     background-color: rgba(255,255,255,0.5);
     border-radius: 1px;
-    color: #333;
+    color: #353535;
 z-index: 10;
 position: relative;
 }
@@ -121,23 +129,24 @@ position: relative;
 
 .info_0
 {
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 13px;
     text-align: center;
     padding-top: 2px;
 }
 
 .info_1
 {
-    font-size: 18px;
+    font-size: 21.68px;
     text-align: center;
+    font-weight: 500;
 }
 
 .info_1 div
 {
     margin-top: -4px;
-font-size: 20px;
-font-weight: 400;
+    font-size: 21.68px;
+    font-weight: 500;
 }
 
 .cn_row_left
@@ -173,7 +182,7 @@ float: left;
 
 .cn_row_footer
 {
-    color: white;
+    color: rgba(255,255,255,0.65);
     font-family: 'Open Sans';
     font-size: 12px;
 
@@ -201,6 +210,7 @@ float: left;
 {
     float: right;
     margin-right: 3px;
+    margin-top: -1px;
 }
 
 .ivt_rightbox
@@ -222,6 +232,15 @@ float: left;
     font-size: 22px;
     text-align: center;
     cursor: pointer;
+}
+
+.plus_btn div
+{
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+    background-position: -66px 1px;
 }
 
 .tooltipwrap
@@ -260,9 +279,66 @@ float: left;
     margin-left: -5px;
 }
 
-.conflict_schedule .plus_btn
+.conflict_schedule .plus_btn div
 {
-    color: red;
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+    background-position: -66px -47px;
+}
+
+.ds_row
+{
+    float: left;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.ds_row_icon
+{
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+
+    float: left;
+    
+}
+
+.mc_icon
+{
+    background-position: -7px -185px;
+    margin-top: 1px;
+}
+
+.wc_icon
+{
+    background-position: -7px -117px;
+    margin-top: 1px;
+}
+
+.pl_icon
+{
+    background-position: -68px 1px;
+    margin-top: 1px;
+}
+
+.underline
+{
+    text-decoration: underline;
+}
+
+
+.ds_row_txt
+{
+    float: left;
+    height: 24px;
+    font-family: 'Open Sans';
+    color: rgba(255,255,255,1);
+    font-size: 18px;
+    margin-left: 7px;
 }
 
 .button-block
