@@ -14,6 +14,14 @@ $(document).ready(function () {
 		$(this).closest(".ivt_rightbox").find(".tooltipwrap").hide();
 	});
 
+	$(document).delegate(".dld_btn", "mouseenter", function () {
+		$(this).closest(".ivt_rightbox").find(".tooltipwrap").show();
+	});  
+	$(document).delegate(".dld_btn", "mouseleave", function () {
+		$(this).closest(".ivt_rightbox").find(".tooltipwrap").hide();
+	});
+
+
 	$(document).delegate(".cn_row", "mouseenter", function () {
 		$(this).addClass("cn_row_hover");
 		$(this).find(".close_ivt").show();
@@ -22,6 +30,14 @@ $(document).ready(function () {
 		$(this).removeClass("cn_row_hover");
 		$(this).find(".close_ivt").hide();
 	});  
+
+	$(document).delegate(".f_row", "mouseenter", function () {
+		$(this).addClass("cn_row_hover");
+	});  
+	$(document).delegate(".f_row", "mouseleave", function () {
+		$(this).removeClass("cn_row_hover");
+	});  
+
 
 	$(document).delegate(".ds_row", "mouseenter", function () {
 		$(this).addClass("ds_row_hover");

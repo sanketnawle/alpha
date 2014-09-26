@@ -58,6 +58,25 @@ padding-top: 20px;
     text-align: center;
 }
 
+.turn_me_blue
+{
+    background-image: -moz-linear-gradient(90deg, rgb(0,146,200)0%, rgb(0,165,225)100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(0,146,200)0%, rgb(0,165,225)100%);
+    background-image: -ms-linear-gradient(90deg, rgb(0,146,200)0%, rgb(0,165,225)100%);  
+}
+
+.smaller_text_content
+{
+    font-size: 12.3px!important;
+    margin-top: 2px!important;
+}
+
+.smaller_text_content span
+{
+    color: white;
+    font-weight: bold;
+}
+
 .greenNotiCircleBig div
 {
     font-size: 14px;
@@ -137,6 +156,58 @@ cursor: pointer;
     color: #353535;
 z-index: 10;
 position: relative;
+}
+
+.ZIP
+{
+    background-color: rgba(183,183,183,1);
+    border-radius: 1px;
+}
+
+.EXM .file_type
+{
+font-size: 18px;
+font-weight: 500;
+margin-top: 11px;
+margin-left: 4px;
+}
+
+.CLB .file_type
+{
+font-size: 18px;
+font-weight: 500;
+margin-top: 11px;
+margin-left: 2px;
+}
+
+.CLS .file_type
+{
+font-size: 18px;
+font-weight: 500;
+margin-top: 11px;
+margin-left: 7px;
+}
+
+.EVT .file_type
+{
+font-size: 18px;
+font-weight: 500;
+margin-top: 11px;
+margin-left: 5px;
+}
+
+.ZIP .file_type
+{
+font-size: 18px;
+font-weight: 500;
+margin-top: 11px;
+margin-left: 8px;
+}
+
+
+.no_gloomy
+{
+    background-color: transparent;
 }
 
 .evt_background
@@ -237,6 +308,21 @@ margin-top: 37px;
     float: right;
 }
 
+.info_5
+{
+    float: right;
+    height: 15px;
+    width: 15px;
+    background-size: cover;
+    margin-top: 1px;
+    margin-right: 3px;
+}
+
+.margint1
+{
+    margin-top: 1px!important;
+}
+
 .sep 
 {
     float: right;
@@ -274,6 +360,52 @@ margin-top: 37px;
     background-image: url('../img/NotiMenuAssetsMap.png');
     background-repeat: no-repeat;
     background-position: -66px 1px;
+}
+
+.dld_btn
+{
+    width: 27px;
+    height: 24px;
+    background-color: #252525;
+    border:1.5px solid #111111;
+    border-radius: 6px; 
+    color: white;
+    font-family: 'Helvetica';
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    float: right;
+    margin-right: 3px;
+}
+
+.flw_btn
+{
+    width: 79px;
+    height: 19px;
+    background-color: #252525;
+    border:1.5px solid #111111;
+    border-radius: 6px; 
+    color: white;
+    font-family: 'Helvetica';
+    font-size: 11.5px;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    margin-top: 3px;
+}
+
+.flw_btn div
+{
+    margin-top: 3px;
+}
+
+.dld_btn div
+{
+    height: 24px;
+    width: 24px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+    background-position: -68px -139px;
 }
 
 .tooltipwrap
@@ -440,6 +572,172 @@ opacity:1;
     padding-top: 10px;
 }
 
+.prof_announce_sec
+{
+    height: 125px;
+    width: 100%;
+    padding-top: 8px;
+}
+
+.prof_announce_sec_head
+{
+    height: 31px;
+    width: 100%;
+}
+
+.prof_info_0
+{
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    margin-top: 1px;
+    float: left;
+}
+
+.prof_info_1
+{
+    font-size: 13px;
+    color: white;
+    width: 150px;
+    font-family: 'Open Sans';
+    margin-left: 6px;
+    float: left;
+}
+.prof_info_2
+{
+    font-size: 10px;
+    color: #c0c0c0;
+        width: 150px;
+    font-family: 'Open Sans';
+    margin-left: 6px;
+    float: left;
+}
+
+.prof_wedge
+{
+    width: 0; 
+    height: 0; 
+    border-left: 7px solid transparent; 
+    border-right: 7px solid transparent; 
+    border-bottom: 10px solid #555;
+    margin-left: 8px;
+}
+
+.prof_announce_sec_content
+{
+    background-color: #555;
+    max-height: 80px;
+    width: 100%;
+    border-radius: 2px;
+    padding-left:5px; 
+    padding-right:3px; 
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+
+.prof_announce_sec_content .ctext
+{
+    max-height: 60px;
+    font-size: 10.85px;
+    font-weight: 600;
+    color: white;
+    font-family: 'Open Sans';
+}
+
+.cfooter
+{
+    clear: both;
+    height: 20px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.cfooter_like
+{
+    height: 18px;
+    width: 18px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+background-position: -74px -120px;
+float: left;
+}
+
+.cfooter_reply
+{
+    float: right;
+    min-width: 50px;
+    font-family: 'Open Sans';
+    font-size: 12.9px;
+    color: #c0c0c0;
+    margin-right: 2px;
+}
+
+.cfooter_reply_pic
+{
+        height: 18px;
+    width: 18px;
+    background-image: url('../img/NotiMenuAssetsMap.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+background-position: -74px -99px;
+float: left;
+}
+
+.latest_follow_sec
+{
+
+}
+
+.latest_follow_sec .cn_sec_header
+{
+    width: 100%;
+    height: 44px;
+}
+
+.latest_follow_sec_content
+{
+    width: 100%;
+}
+
+.latest_follow_sec .cn_sec_header .sec_header_prompt
+{
+    font-size: 16px;
+}
+
+.f_row
+{
+    height: 49px;
+    width: 100%;
+    padding:2px;
+    border-radius: 2px;
+        cursor: pointer;
+}
+
+.f_row_pic
+{
+    height: 49px;
+    width: 49px;
+    background-size: cover;
+    float: left;
+}
+
+.f_rightdiv
+{
+    float: left;
+    height: 49px;
+    max-width: 130px;
+    margin-left: 10px;
+    font-family: 'Open Sans';
+}
+
+.frd_name
+{
+    font-size: 14px;
+    color: white;
+    margin-top: 3px;
+}
+
 /*css for check box*/
 
 .button-block
@@ -539,6 +837,44 @@ display: block;
     width: auto;
     padding-right: 10px;
     float: right;
+}
+
+.f_row
+{
+    height: 40px;
+    width: auto;
+    float: right;
+    padding-left: 3px;
+    padding-right: 10px;
+        margin-left: 10px;
+}
+
+.f_row_pic
+{
+    height: 38px;
+    width: 38px;
+}
+
+.f_rightdiv
+{
+    height: 40px;
+    max-width: 300px;
+}
+
+.frd_name
+{
+    margin-top: 0px;
+    width: auto;
+}
+
+.flw_btn
+{
+    height: 16px;
+}
+
+.flw_btn div
+{
+    margin-top: 1px;
 }
 }
 
