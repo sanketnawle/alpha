@@ -14,7 +14,11 @@
 </head>
 <body>
 	<div class='calnoti_main_window'>
-		<div class='calnoti_main_window_head_bp'></div>
+		<div class='calnoti_main_window_head_bp'>
+			<div class='ds_row'><div class='ds_row_icon mc_icon'></div><div class='ds_row_txt'>Monthly Calendar</div></div>
+			<div class='ds_row'><div class='ds_row_icon wc_icon'></div><div class='ds_row_txt'>Weekly Calendar</div></div>
+			<div class='ds_row'><div class='ds_row_icon pl_icon'></div><div class='ds_row_txt underline'>Add New Event</div></div>
+		</div>
 
 		<div class='calnoti_sec'>
 			<div class='cn_sec_header'>
@@ -23,7 +27,7 @@
 			</div>
 
 			<div class='cn_sec_content'>
-				<div class='cn_row'>
+				<div class='cn_row cn_unseen'>
 					<div class='cn_row_left'><div class='EXM row_icon'><div class='info_0'>Sep</div><div class='info_1'><div>12</div></div></div></div>
 
 					<div class='cn_row_content'>Study For Exam</div>
@@ -47,7 +51,7 @@
 				<div class='cn_row'>
 					<div class='cn_row_left'><div class='EVT row_icon'><div class='info_0'>Sep</div><div class='info_1'><div>12</div></div></div></div>
 
-					<div class='cn_row_content evt_row'>Study For Exam</div>
+					<div class='cn_row_content evt_row no_footer'>Study For Exam</div>
 					<div class='evt_checkbox'>
 						<div class='button-block'>
 							<button type='button'>
@@ -58,6 +62,9 @@
 					</div>
 				</div>
 
+				<div class='cn_row no_row_display'>
+					<div>no new event reminders</div>
+				</div>
 			</div>
 		</div>
 
@@ -79,12 +86,13 @@
 							<div class='twedge'></div>
 							<div class='tcontent'>Add this event to Calendar</div>
 						</div>
+						<div class='close_ivt'></div>
 						<div class='plus_btn'><div></div></div>
 					</div>
 
 					<div class='cn_row_footer'><div class='info_3'>1 Week Away</div><span class='sep'>&#8226;</span><div class='info_4'>Jake Invited you</div></div>
 
-					<img class='evt_background' src='dummypic/dm.jpg'>
+					<div class='img_frame'><img class='evt_background' src='dummypic/dm.jpg'></div>
 				</div>
 
 
@@ -98,14 +106,18 @@
 							<div class='twedge'></div>
 							<div class='tcontent'>Busy at this time</div>
 						</div>
+						<div class='close_ivt'></div>
 						<div class='plus_btn'><div></div></div>
 					</div>
 
 					<div class='cn_row_footer'><div class='info_3'>1 Week Away</div><span class='sep'>&#8226;</span><div class='info_4'>In Biosensor CS3441</div></div>
 
-					<img class='evt_background' src='dummypic/dm.jpg'>
+					<div class='img_frame'><img class='evt_background' src='dummypic/dm.jpg'></div>
 				</div>
 
+				<div class='cn_row no_row_display'>
+					<div>no new event invitations</div>
+				</div>
 				
 			</div>
 		</div>
