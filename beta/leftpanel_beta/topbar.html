@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link href="topbar.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="topbar">
+        <div class="left">
+            <a href="./home.php" class="urlinq"></a>
+            <a class="menu"></a>
+        </div>
+        <div class="right">
+            <a class="notify calendar">
+                <div class="day">Tue</div>
+                <div class="date">9</div>
+            </a>
+            <a class="notify board">
+                <div class="icon"></div>
+            </a>
+        </div>
+        <div class="center">
+            <form method="get" action="./search_beta.php">
+                <input type="text" name="q" class="text" autocomplete="off" placeholder="Search groups and faculty">
+                <button type="submit" class="submit"></button>
+            </form>
+            <ul class="prelist">
+                <li><a><img src="http://placehold.it/40x40?id=1"><span>Professors in Your Department</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=2"><span>Courses in Your Department</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=3"><span>Professors in Your School</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=4"><span>Courses in Your School</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=5"><span>Clubs in Your School</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=6"><span>Search Your School</span></a></li>
+            </ul>
+            <ul class="postlist">
+                <li><a><img src="http://placehold.it/40x40?id=7"><span>Sample Search Result</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=8"><span>Example result for the search</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=9"><span>Something is return from search</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=0"><span>Another search result</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=9"><span>Anything is return from search</span></a></li>
+                <li><a><img src="http://placehold.it/40x40?id=0"><span>Some another search result</span></a></li>
+                <li><a>Search for More</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function ($) {
+            $(function () {
+                $(".topbar .center form")
+                    .click(function () { $(".text", $(this)).focus(); })
+                    .submit(function (e) {
+                        if ($(".text", $(this)).val().trim() == "") {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                $(".topbar .center form .text").on("focus", function () {
+                    var text = $(this);
+                    if (text.val().trim() == "") text.closest(".center").find(".prelist").show();
+                    else text.closest(".center").find(".postlist").show();
+                }).on("blur", function () {
+                    $(this).closest(".center").find(".prelist").hide();
+                    $(this).closest(".center").find(".postlist").hide();
+                }).on("keyup", function (e) {
+                    e = e || event;
+                    var text = $(this);
+                    if (e.keyCode == 27) {
+                        text.val("");
+                        text.trigger("blur");
+                    } else if (text.val().trim() == "") {
+                        text.closest(".center").find(".postlist").hide();
+                        text.closest(".center").find(".prelist").show();
+                    } else {
+                        text.closest(".center").find(".postlist").show();
+                        text.closest(".center").find(".prelist").hide();
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>

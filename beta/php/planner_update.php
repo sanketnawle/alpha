@@ -1,22 +1,23 @@
 <?php
 
 include 'dbconnection.php';
+require_once '../includes/common_functions.php';
 
-
-$user_id = 1;
-if (isset($_POST['user_id'])) {
-    $user_id = $_POST['user_id'];
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
-$event_id = mysqli_escape_string($con, $_POST['event_id']);
-$event_id = (int) $event_id;
-$event_type = mysqli_escape_string($con, $_POST['event_type']);
-$event_type = (int) $event_type;
-$value = mysqli_escape_string($con, $_POST['value']);
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
+$event_id = input_sanitize($_POST['event_id'], $con);
+$event_type = input_sanitize($_POST['event_type'], $con);
+$value = input_sanitize($_POST['value'], $con);
 
 
 $get_types = "SELECT * FROM event_types";
-$get_types_result = mysqli_query($con, $get_types);
+$get_types_result = $con->query($get_types);
 
 
 while ($row = mysqli_fetch_array($get_types_result)) {
@@ -49,27 +50,26 @@ while ($row = mysqli_fetch_array($get_types_result)) {
 switch ($event_type) {
     case 1:
     case 2:
-        $sql = "UPDATE personal_event SET is_check=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
+        $sql = "UPDATE personal_event SET is_check=$value WHERE event_id = $event_id and user_id= $user_id";
         echo $sql;
-        if (!mysqli_query($con, $sql)) {
+        if (!$con->query($sql)) {
             echo "Error in executing query";
         }
         break;
+
+    //One of these queries will be successful depending on admin/non-admin
     case 6:
-        $sql = "UPDATE course_event SET is_check=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
-        echo $sql;
-        if (!mysqli_query($con, $sql)) {
+        $sql = "UPDATE course_event SET is_check=$value WHERE event_id = $event_id and user_id= $user_id";
+        if (!$con->query($sql)) {
             echo "Error in executing query";
         }
-        break;
     case 7:
-        $sql = "UPDATE course_event_invited SET is_check=$value WHERE `event_id` = $event_id and `user_id`= $user_id";
-        echo $sql;
-        if (!mysqli_query($con, $sql)) {
+        $sql = "UPDATE course_event_invited SET is_check=$value WHERE event_id = $event_id and user_id= $user_id";
+        if (!$con->query($sql)) {
             echo "Error in executing query";
         }
         break;
 }
 
-mysqli_close($con);
+$con->close();
 ?>

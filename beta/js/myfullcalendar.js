@@ -14,7 +14,7 @@
         }
 
         function f() {
-            oe = r.theme ? "ui" : "fc", n.addClass("fc"), r.isRTL ? n.addClass("fc-rtl") : n.addClass("fc-ltr"), r.theme && n.addClass("ui-widget"), ae = t("<div class='fc-content' style='position:relative'/>").prependTo(n), ne = new a(ee, r), re = ne.render(), re && n.prepend(re), y(r.defaultView), r.handleWindowResize && t(window).resize(x), m() || v()
+            oe = r.theme ? "ui" : "fc", n.addClass("fc"), r.isRTL ? n.addClass("fc-rtl") : n.addClass("fc-ltr"), r.theme && n.addClass("ui-widget"), ae = t("<div class='fc-content' style='position:relative;'/>").prependTo(n), ne = new a(ee, r), re = ne.render(), re && n.prepend(re), y(r.defaultView), r.handleWindowResize && t(window).resize(x), m() || v()
         }
 
         function v() {
@@ -1818,24 +1818,27 @@
             if (r.editable) {
                 editOption = '<div style="border-top:1px solid #CCC; text-align: center;padding-top: 5px;padding-bottom: 5px;width: 103%;">'
                                         + '<b class="file_link">'
-                                            + '<a onclick="DisplayEditEvents(this,' + r.id + ',' + r.type + ')" style="padding:5px; padding-left:0px; color: #666 !important;">edit</a>'
-                                            + '<a onclick="DeleteEvents(this,' + r.id + ',' + r.type + ')" style="padding-top: 5px;padding-bottom: 5px; color: #666 !important;">delete</a>'
-                                                 
+                                            + '<a onclick="DisplayEditEvents(this,' + r.id + ',' + r.type + ')" style="padding:5px; padding-left:0px; text-transform: uppercase; color: #666 !important;">Edit</a>'
                                         + '</b>'
                                     + '</div>';
             }
+            var groupClass = "personalevent";
+            if ((r.groupid != null) && (r.groupid != "") && (r.groupid != "null"))
+            {
+                groupClass = r.groupid;
+            }
             var eventLoc = ((new Date(r.start)).getMonth().toString() + "$" + (new Date(r.start)).getDate().toString() + "$" + (new Date(r.start)).getFullYear().toString());
-            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + r.id + "_" + r.type  + " " + o.join(" ") + "'" + " style=" + "'"
-                + "position:absolute;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
+            return e += a ? "<a href='" + q(a) + "'" : "<div", e += " class='" + groupClass + " " + o.join(" ") + "'" + " style=" + "'"
+                + "position:absolute;margin-top: 2px;background-color:" + r.color + ";" + "left:" + t.left + "px;" + i + "'" + ">"
                 + "<div class='fc-event-inner' onmouseover='showTooltip(this);' onmouseout='hideTooltip(this);' onmousedown='hideTooltip(this);'>", !r.allDay && t.isStart && (e += "<span class='fc-event-time'>"
                 + q(G(r.start, r.end, T("timeFormat"))) + "</span>"), e += "<span class='fc-event-title'>" + q(r.title || "")
                 + "</span>" + '<div class="editTooltip" onmouseover="tooltipShow(this);" onmouseout="tooltipHide(this);" >'
-                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;width:100%;'
+                                + '<div class="explain-2-box" style="top:0px;max-width:300px;left:0px;'
                                 + '-webkit-box-shadow: 0 0 3px ' + r.color + ';' + 'box-shadow: 0 0 3px ' + r.color + ';' + 'border: 1px solid  ' + r.color + ';' + '">'
                                     + '<b class="file_link">'                                        
                                              + '<a onclick="LinkEventInEventBook(' + (new Date(r.start)).getMonth().toString() + ','
                                              + (new Date(r.start)).getDate().toString() + ',' + (new Date(r.start)).getFullYear().toString()
-                                             + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
+                                             + ',' + r.id + ',' + r.type + ')" style="padding: 5px;color: #666 !important; float:left; width:100%;">'
                                                 + r.title + '</a>'
                                     + '</b>'
                                     + '<div style="padding: 5px; width:100%;float:left;">' + r.startendtime + '</div>'
@@ -2187,6 +2190,7 @@
             location: "location",
             startendtime: "startendtime",
             color: "color",
+            groupid: "groupid",
             titleFormat: {
                 month: "MMMM yyyy",
                 week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
