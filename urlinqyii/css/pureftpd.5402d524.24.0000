@@ -1,0 +1,6 @@
+.feed_planner_bag .rightsec
+{
+position: absolute!important;
+margin-left: 682px!important;
+margin-top: 254px!important;
+}
