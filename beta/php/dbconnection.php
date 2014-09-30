@@ -1,8 +1,8 @@
 <?php
 
 $host = "localhost";
-$user = "campusla_UrlinqU";
-$password = "mArCh3!!1992X";
+$user = "root";
+$password = "";
 $database = "campusla_urlinq_beta";
 // if(isset($con))
 // $con->close();
