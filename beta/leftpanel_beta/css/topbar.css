@@ -1,4 +1,4 @@
-﻿body {
+body {
     margin: 0;
     background-color: #EEE;
 }
@@ -47,14 +47,14 @@
             .topbar .left a.urlinq {
                 width: 130px;
                 display: block;
-                background-image: url(https://urlinq.com/beta/img/logo.png);
+                background-image: url(../img/logo.png);
                 background-size: auto 25px;
                 background-repeat: no-repeat;
                 background-position: center center;
             }
 
             .topbar .left a.menu {
-                background-image: url(menu-toggle.png);
+                background-image: url(../img/menu-toggle.png);
                 background-size: 300% auto;
                 background-repeat: no-repeat;
                 background-position: right center;
@@ -111,7 +111,7 @@
                 right: 0;
                 border: none;
                 background: none;
-                background-image: url(https://urlinq.com/beta/img/smallSearchIco.png);
+                background-image: url(../img/smallSearchIco.png);
                 background-repeat: no-repeat;
                 background-size: 20px 20px;
                 background-position: center center;
@@ -129,7 +129,7 @@
             width: 48px;
         }
 
-            .topbar .right .notify:hover {
+            .topbar .right .notify:hover, .topbar .right .notify.active {
                 background: rgba(255, 255, 255, 0.15);
             }
 
@@ -142,20 +142,12 @@
                     color: #d6d6d6;
                 }
 
-                    .topbar .right .notify.calendar > div.day {
-                        font-size: 13px;
-                    }
-
-                    .topbar .right .notify.calendar > div.date {
-                        font-size: 20px;
-                    }
-
-                .topbar .right .notify.calendar:hover, .topbar .right .notify.calendar.active {
+                .topbar .right .notify.calendar:hover div, .topbar .right .notify.calendar.active div {
                     color: #01ce95;
                 }
 
             .topbar .right .notify.board .icon {
-                background-image: url(board_icon.png);
+                background-image: url(../img/board_icon.png);
                 background-size: 200% auto;
                 background-repeat: no-repeat;
                 background-position: left center;
@@ -220,3 +212,11 @@
                 background-color: #D1D2D4;
                 color: #313234;
             }
+
+div.day {
+    font-size: 13px;
+}
+
+div.date {
+    font-size: 20px;
+}

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="css/topbar.css" type="text/css" rel="stylesheet">
+    <link href="css/leftpanel.css" rel="stylesheet" type="text/css">
+    <link href="css/notify.css" rel="stylesheet" type="text/css">    
+</head>
+<body>
+    <div class="topbar">
+        <div class="left">
+            <a href="./home.php" class="urlinq"></a>
+            <a class="menu active"></a>
+        </div>
+        <div class="right">
+            <a class="notify calendar">
+                <div class="day">Tue</div>
+                <div class="date">9</div>
+            </a>
+            <a class="notify board">
+                <div class="icon"></div>
+            </a>
+        </div>
+        <div class="center">
+            <form method="get" action="./search_beta.php">
+                <input type="text" name="q" class="text" autocomplete="off" placeholder="Search groups and faculty">
+                <button type="submit" class="submit"></button>
+            </form>
+            <ul class="prelist">
+                <li><a><img src="http://lorempixel.com/40/40?id=1"><span>Professors in Your Department</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=2"><span>Courses in Your Department</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=3"><span>Professors in Your School</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=4"><span>Courses in Your School</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=5"><span>Clubs in Your School</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=6"><span>Search Your School</span></a></li>
+            </ul>
+            <ul class="postlist">
+                <li><a><img src="http://lorempixel.com/40/40?id=7"><span>Sample Search Result</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=8"><span>Example result for the search</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=9"><span>Something is return from search</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=0"><span>Another search result</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=9"><span>Anything is return from search</span></a></li>
+                <li><a><img src="http://lorempixel.com/40/40?id=0"><span>Some another search result</span></a></li>
+                <li><a>Search for More</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='notify-window calendar'>
+        <div class='left column'>
+            <div class='header'>
+                <span class='text'>Reminders</span>
+                <span class='count'>4</span>
+            </div>
+            <ul>
+                <li class="unseen">
+                    <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='footer'>1 Week Away &bull; CS Exam</div>
+                </li>
+                <li>
+                    <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='footer'>1 Week Away &bull; CS Exam</div>
+                </li>
+                <li>
+                    <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='footer'>1 Week Away &bull; CS Exam</div>
+                </li>
+                <li>
+                    <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='check'>
+                        <input type="checkbox" class="event-check" style="display: none">
+                        <div class="check-square">
+                            <div class="tick x"></div>
+                            <div class="tick xx"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nostyle">No New Event Reminders</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='middle column'>
+            <div class='header'>
+                <span class='text'>Suggested/Invited</span>
+                <span class='count'>2</span>
+            </div>
+            <ul class='cn_sec_content'>
+                <li>
+                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
+                        <div class="day">Sep</div><div class="date">12</div>
+                    </div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='add'><div class="icon"></div></div>
+                    <div class='footer'>1 Week Away &bull; Jake Invited you</div>
+                </li>
+
+                <li>
+                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
+                        <div class="day">Sep</div><div class="date">12</div>
+                    </div>
+                    <div class='content'>Study For Exam</div>
+                    <div class='add busy'><div class="icon"></div></div>
+                    <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
+                </li>
+                <li>
+                    <div class="nostyle">no new event invitations</div>
+                </li>
+
+            </ul>
+        </div>
+        <div class='right column'>
+            <ul>
+                <li><div class='icon mc'></div>Monthly Calendar</li>
+                <li><div class='icon wc'></div>Weekly Calendar</li>
+                <li class="underline"><div class='icon pl'></div>Add New Event</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='notify-window board'>
+        <div class='column left'>
+            <div class='header'>
+                <span class='text'>DISCUSSIONS</span>
+                <span class='count'>2</span>
+            </div>
+            <ul class='cn_sec_content'>
+                <li>
+                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
+                    <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
+                    <div class='footer'>September 10 at 5:00pm</div>
+                </li>
+                <li>
+                    <div class="nostyle">No New Post Notifications</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class='column middle'>
+            <div class='header'>
+                <span class='text'>FILES/DUCUMENTS</span>
+                <span class='count'>2</span>
+            </div>
+            <ul>
+                <li>
+                    <div class='icon pdf'><div class='file'>.PDF</div></div>
+                    <div class='content'>File Name</div>
+                    <div class='ivt_rightbox'>
+                        <div class='tooltipwrap'>
+                            <div class='twedge'></div>
+                            <div class='tcontent'>Download File</div>
+                        </div>
+                        <div class='dld_btn'><div></div></div>
+                    </div>
+                    <div class='cn_row_footer'><div class='info_3 margint1'>1 Week Away</div><span class='sep margint1'>&#8226;</span><div class='info_4 margint1'>Jake Lazarus</div><div class='info_5' style='background-image:url(dummypic/dm.jpg);'></div></div>
+                </li>
+                <li>
+                    <div class='cn_row_left'><div class='CLB row_icon'><div class='file_type'>.DOC</div></div></div>
+                    <div class='cn_row_content evt_row'>File Name</div>
+                    <div class='ivt_rightbox'>
+                        <div class='tooltipwrap'>
+                            <div class='twedge'></div>
+                            <div class='tcontent'>Download File</div>
+                        </div>
+                        <div class='dld_btn'><div></div></div>
+                    </div>
+                    <div class='cn_row_footer'><div class='info_3 margint1'>1 Week Away</div><span class='sep margint1'>&#8226;</span><div class='info_4 margint1'>Jake Lazarus</div><div class='info_5' style='background-image:url(dummypic/dm.jpg);'></div></div>
+                </li>
+                <li>
+                    <div class='cn_row_left'><div class='CLS row_icon'><div class='file_type'>.XLS</div></div></div>
+                    <div class='cn_row_content evt_row'>File Name</div>
+                    <div class='ivt_rightbox'>
+                        <div class='tooltipwrap'>
+                            <div class='twedge'></div>
+                            <div class='tcontent'>Download File</div>
+                        </div>
+                        <div class='dld_btn'><div></div></div>
+                    </div>
+                    <div class='cn_row_footer'><div class='info_3 margint1'>1 Week Away</div><span class='sep margint1'>&#8226;</span><div class='info_4 margint1'>Jake Lazarus</div><div class='info_5' style='background-image:url(dummypic/dm.jpg);'></div></div>
+                </li>
+                <li>
+                    <div class='cn_row_left'><div class='EVT row_icon'><div class='file_type'>.PPT</div></div></div>
+                    <div class='cn_row_content evt_row'>File Name</div>
+                    <div class='ivt_rightbox'>
+                        <div class='tooltipwrap'>
+                            <div class='twedge'></div>
+                            <div class='tcontent'>Download File</div>
+                        </div>
+                        <div class='dld_btn'><div></div></div>
+                    </div>
+                    <div class='cn_row_footer'><div class='info_3 margint1'>1 Week Away</div><span class='sep margint1'>&#8226;</span><div class='info_4 margint1'>Jake Lazarus</div><div class='info_5' style='background-image:url(dummypic/dm.jpg);'></div></div>
+                </li>
+                <li>
+                    <div class='cn_row_left'><div class='ZIP row_icon'><div class='file_type'>.ZIP</div></div></div>
+                    <div class='cn_row_content evt_row'>File Name</div>
+                    <div class='ivt_rightbox'>
+                        <div class='tooltipwrap'>
+                            <div class='twedge'></div>
+                            <div class='tcontent'>Download File</div>
+                        </div>
+                        <div class='dld_btn'><div></div></div>
+                    </div>
+                    <div class='cn_row_footer'><div class='info_3 margint1'>1 Week Away</div><span class='sep margint1'>&#8226;</span><div class='info_4 margint1'>Jake Lazarus</div><div class='info_5' style='background-image:url(dummypic/dm.jpg);'></div></div>
+                </li>
+
+
+                <li>
+                    <div class="nostyle">no new event invitations</div>
+                </li>
+            </ul>
+        </div>
+        <div class='column right'>
+            <ul>
+                <li>
+                    <div class='icon' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
+                    <div class='f_rightdiv'>
+                        <div class='frd_name'>Ross Kopelman followed you</div>
+                        <div class='flw_btn'><div>Follow</div></div>
+                    </div>
+                </li>
+                <li class='f_row prof_media'>
+                    <div class='f_row_pic' style='background-image:url(dummypic/dm.jpg);'></div>
+                    <div class='f_rightdiv'>
+                        <div class='frd_name'>Professor Adams Made an announcement</div>
+                        <div class='prof_info_2'>September 10 at 3:00pm</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="leftpanel">
+        <div class="profile">
+            <div class="title">
+                Profile
+                <div class="menu"></div>
+            </div>
+            <ul>
+                <li class="profile-panel">
+                    <a class="nostyle">
+                        <img class="profile-img" src="http://lorempixel.com/50/70">
+                        <div class="details">
+                            <span class="name">My Very Really Long Name</span>
+                            <!--<span class="status">
+                                <img class="status-img" src="http://lorempixel.com/18/18">
+                                <span class="status-msg">Online</span>
+                            </span>-->
+                        </div>
+                    </a>
+                </li>
+                <li><a>Department</a></li>
+                <li><a>Really Long School Name</a></li>
+            </ul>
+            <div class="profile-menu">
+                <ul>
+                    <li><a><div class="icon prof"></div>Your Profile</a></li>
+                    <li><a><div class="icon edit"></div>Edit Profile</a></li>
+                    <li><a><div class="icon sign"></div>Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="listing">
+            <div class="class scrollable">
+                <div class="title">
+                    <div class="wedge"></div>
+                    Classes
+                </div>
+                <ul>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 4</a></li>
+                </ul>
+            </div>
+            <div class="club scrollable">
+                <div class="title">
+                    <div class="wedge"></div>
+                    Clubs
+                </div>
+                <ul>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function ($) {
+            var leftPanelOpen = true;
+            var openNotify = null;
+
+            var weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            $(function () {
+                $(".topbar .center form")
+                    .click(function () { $(".text", $(this)).focus(); })
+                    .submit(function (e) {
+                        if ($(".text", $(this)).val().trim() == "") {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                $(".topbar .center form .text").on("focus", function () {
+                    var text = $(this);
+                    if (text.val().trim() == "") text.closest(".center").find(".prelist").show();
+                    else text.closest(".center").find(".postlist").show();
+                }).on("blur", function () {
+                    $(this).closest(".center").find(".prelist").hide();
+                    $(this).closest(".center").find(".postlist").hide();
+                }).on("keyup", function (e) {
+                    e = e || event;
+                    var text = $(this);
+                    if (e.keyCode == 27) {
+                        text.val("");
+                        text.trigger("blur");
+                    } else if (text.val().trim() == "") {
+                        text.closest(".center").find(".postlist").hide();
+                        text.closest(".center").find(".prelist").show();
+                    } else {
+                        text.closest(".center").find(".postlist").show();
+                        text.closest(".center").find(".prelist").hide();
+                    }
+                });
+                $(".leftpanel .scrollable .title").click(function () {
+                    var title = $(this);
+                    var clubs = $(".leftpanel .scrollable.club");
+                    var classes = $(".leftpanel .scrollable.class");
+                    (title.parents(".scrollable")[0] == classes[0] ? function () {
+                        //classes.toggleClass("min");
+                        // case 1: 50 50
+                        if (!(classes.hasClass("full") || classes.hasClass("min"))) {
+                            classes.addClass("min");
+                            clubs.addClass("full");
+                        } else if (classes.hasClass("min")) {
+                            if (clubs.hasClass("min")) {
+                                classes.removeClass("min").addClass("full");
+                            } else {
+                                classes.removeClass("min");
+                                clubs.removeClass("full");
+                            }
+                        } else if (classes.hasClass("full")) {
+                            classes.removeClass("full").addClass("min");
+                        }
+                    } : function () {
+                        if (!(clubs.hasClass("full") || clubs.hasClass("min"))) {
+                            clubs.addClass("min");
+                            classes.addClass("full");
+                        } else if (clubs.hasClass("min")) {
+                            if (classes.hasClass("min")) {
+                                clubs.removeClass("min").addClass("full");
+                            } else {
+                                clubs.removeClass("min");
+                                classes.removeClass("full");
+                            }
+                        } else if (clubs.hasClass("full")) {
+                            clubs.removeClass("full").addClass("min");
+                        }
+                    })();
+                });
+                $(".notify-window .column ul .check").click(function () {
+                    $(this).toggleClass("done")
+                    $(".event-check", $(this))[0].checked = $(this).hasClass("done");
+                })
+                $(".leftpanel .scrollable ul, .notify-window .column ul").mCustomScrollbar({
+                    theme: "minimal-dark",
+                    scrollInertia: 100
+                })
+                $(".leftpanel .profile .title").click(function () {
+                    var menu = $(".menu", $(this));
+                    var profilemenu = $(".profile-menu", $(this).parents(".profile"));
+                    menu.hasClass("open") ? (function () {
+                        menu.removeClass("open")
+                            .css({ "background-image": "url(img/menu-x-bar.gif?p" + new Date().getTime().toString() + ")" });
+                        profilemenu.removeClass("open");
+                    }()) : (function () {
+                        menu.addClass("open")
+                            .css({ "background-image": "url(img/menu-bar-x.gif?p" + new Date().getTime().toString() + ")" });
+                        profilemenu.addClass("open");
+                    }());
+                });
+                function toggleMenu(active) {
+                    var menu = $(".topbar .left a.menu");
+                    var leftpanel = $(".leftpanel");
+
+                    if (active) menu.addClass("active");
+                    else menu.removeClass("active");
+
+                    menu.hasClass("active") ? (function () {
+                        leftpanel.removeClass("hide").addClass("show");
+                    }()) : (function () {
+                        leftpanel.addClass("hide").removeClass("show");
+                    }());
+                }
+                $(".topbar .left a.menu").click(function () {
+                    leftPanelOpen = $(this).toggleClass("active").hasClass("active")
+                    toggleMenu(leftPanelOpen);
+                });
+                $(".topbar .right .day").html(weekDays[new Date().getDay()]);
+                $(".topbar .right .date").html(new Date().getDate());
+                $(window).resize(function () {
+                    if ($(window).width() < 1250) toggleMenu(false);
+                    else if (leftPanelOpen) toggleMenu(true);
+                })
+                $(".notify-window .column ul li .add").hover(function () {
+                    var nottooltip = $("<div class='nottooltip' />").html(
+                        '<div class="tooltip">' +
+                            '<div class="ttwedge"></div>' +
+                            '<div class="ttcontent"></div>' +
+                        '</div>');
+                    var icon = $(this);
+                    nottooltip.css({ "top": icon.offset().top, "left": icon.offset().left + 22 });
+                    $("body").append(nottooltip);
+                }, function () {
+                    $("div.nottooltip").remove();
+                });
+                $(".topbar .notify").click(function () {
+                    // Reset
+                    $(".topbar .notify").removeClass("active");
+                    $(".notify-window").hide();
+
+                    var notify = $(this);
+                    if (openNotify !== notify[0]) {
+                        console.log("I am in", openNotify, notify);
+                        notify.toggleClass("active");
+
+                        if (notify.hasClass("calendar")) {
+                            $(".notify-window.calendar").toggle();
+                        } else if (notify.hasClass("board")) {
+                            $(".notify-window.board").toggle();
+                        }
+                        openNotify = notify[0];
+                    } else {
+                        openNotify = null;
+                    }
+                })
+                $(window).resize();
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>

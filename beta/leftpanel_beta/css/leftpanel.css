@@ -25,16 +25,6 @@ body {
     width: 240px;
 }
 
-    .leftpanel.hide {
-        transition: .3s ease-out;
-        transform: translateX(-250px);        
-    }
-
-    .leftpanel.show {
-        transition: .3s ease-in;
-        transform: translateX(0);
-    }
-
     .leftpanel .profile-panel {
         margin-bottom: 5px;
     }
@@ -123,7 +113,7 @@ body {
 
         .leftpanel .listing .scrollable .wedge {
             float: right;
-            background-image: url(wedge_down.png);
+            background-image: url(../img/wedge_down.png);
             width: 12px;
             height: 20px;
             margin-right: -1px;
@@ -220,7 +210,7 @@ body {
             width: 18px;
             height: 19px;
             float: right;
-            background-image: url(menu-bar.gif);
+            background-image: url(../img/menu-bar.gif);
             background-size: 100% auto;
             cursor: pointer;
             background-position: center center;
@@ -293,7 +283,7 @@ body {
                     width: 15px;
                     height: 15px;
                     margin-right: 10px;
-                    background-image: url(menu-icons.png);
+                    background-image: url(../img/menu-icons.png);
                     background-size: 30px 60px;
                 }
 
