@@ -1,4 +1,48 @@
+        var j$ = $.noConflict();
 $(document).ready(function () {
+        /* Embedly for the showcase */
+    j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';    
+    function Embedly() {
+        // alert('ee');
+        j$("li.ddbox-invite-option").each(function (index) {
+            j$(this).find('div.content').embedly({
+                query: {
+                    wmode: 'transparent',
+                    autoplay: true
+                },
+                method: 'after',
+                display: function (data, elem) {
+
+                    //Adds the image to the a tag and then sets up the sizing.
+                    j$(elem).html('<div style="width:150px; height:122px;background: url(' + data.thumbnail_url + ') no-repeat scroll 50% 50% / 100% auto transparent;"></div>')
+                    .width('150')//(data.thumbnail_width)
+                    .height('122')//(data.thumbnail_height)
+                    .find('span').css('top', data.thumbnail_height / 2 - 36)
+                    .css('left', data.thumbnail_width / 2 - 36);
+                    //alert($(elem).html());
+                    var j$elhtml = j$(elem).html();
+                    j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
+
+                    var t_title = data.title;
+                    var t_des = data.description;
+                    var t_url = data.url;
+                    //alert(data.title+" , "+data.description+", "+data.url);
+                    var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
+
+                    //j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+                    //j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+
+                    if (data.type === 'video') {
+                        $(this).append('<div style="background-position: 0% 0%; left: 25px; height: 50px; width: 50px; margin-top: -85px;" class="play_btn"></div>');
+                    } 
+                    // else {
+                    //    j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+                    //}
+                }
+            });
+        });
+    }   
+
     $(document).delegate('.showcase-container', 'mouseover', function () {
         $(this).find('.showcase-link').stop().animate({ opacity: '1', marginTop: '35px' }, 0);
     });
@@ -421,11 +465,12 @@ $(document).ready(function () {
                 url: "php/profile/showcase.php",
                 data: { title: title, link: link },
                 success: function (responseText) {
+
                     $('.sc_cancel').trigger('click');
                     $('.showcase-photos').show();
                     $('.showcase_step2').hide();
-                    //Embedly();
-
+                    Embedly();
+                    alert("q");
                     if ((responseText.showcase_ele != null) && (responseText.showcase_ele.length > 0) && (responseText.showcase_ele[0].length > 0)) {
                         $('#inviteConnections').children('li').remove();
                         for (var i = 0; i < responseText.showcase_ele.length; i++) {
@@ -434,6 +479,7 @@ $(document).ready(function () {
                             }
                         }
                         Embedly();
+                        
                         $('.sc_btn').trigger('click');
                     }
                 },
@@ -454,6 +500,7 @@ $(document).ready(function () {
     $(document).delegate('.sc_cancel', 'click', function () {
         $(this).closest('.showcase_step2').addClass('clickable_showcase_step2');
         //$(this).closest('.step2_content_anchor').empty();
+        alert("wqe");
         $('.showcase_right_box').css({ 'width': '225px', 'opacity': '1' });
         $('.showcase_left_box').css({ 'width': '225px', 'opacity': '1' });
         $(this).closest('.showcase_step2').find('.step2_content_anchor_link').hide();
@@ -463,7 +510,7 @@ $(document).ready(function () {
         sc_click_flag = 0;
         $('#showcase_file_error').hide();
         $('#showcase_link_error').hide();
-        $(".sc_btn").trigger("click");
+        //$(".sc_btn").trigger("click");
     });
 
     $(document).delegate('.sc_btn', 'click', function () {
@@ -606,7 +653,7 @@ $(document).ready(function () {
 
                             FetchDepartments(responseText.prof_info[i]['univ_id'], responseText.prof_info[i]['dept_id'], responseText.attribs[i]['show_major']);
                             }
-							// to set the univ ID
+                            // to set the univ ID
                             $('#profile_teaches_at').data('univID', responseText.prof_info[i]['univ_id']);
 
                             is_owner = responseText.prof_info[i]['is_owner'];
@@ -1383,35 +1430,35 @@ $(document).ready(function () {
     }
 
     function bindControlsToFunctions() {   
-		
-		/*$(".user-class-visibility .container .current .drop").click(function(e){
-			$(e.target).parent().parent().trigger("click"); 
-		});*/
-		$(".user-class-visibility .container .current").on("mouseover",function(){
-			$(this).addClass("mouseover");
-		}); // When the user hovers on the privacy button the dropdown should be visible 
-		
-		$(".user-class-visibility .container .current").on("mouseout",function(e){
-			if ( !$(e.target).parent().find(".options").is(":visible")){ 
-				$(this).removeClass("mouseover");
-			}
-		});// when the user mouse outs from the privacy button all other elements except the privacy label ( like public ) should be seen
-		
+        
+        /*$(".user-class-visibility .container .current .drop").click(function(e){
+            $(e.target).parent().parent().trigger("click"); 
+        });*/
+        $(".user-class-visibility .container .current").on("mouseover",function(){
+            $(this).addClass("mouseover");
+        }); // When the user hovers on the privacy button the dropdown should be visible 
+        
+        $(".user-class-visibility .container .current").on("mouseout",function(e){
+            if ( !$(e.target).parent().find(".options").is(":visible")){ 
+                $(this).removeClass("mouseover");
+            }
+        });// when the user mouse outs from the privacy button all other elements except the privacy label ( like public ) should be seen
+        
         $(".user-class-visibility .container").click(function(e) {
-			var container = $(e.target);
-			while(!container.is(".user-class-visibility .container")){
-				container = container.parent();
-			}
-			var addClass = true;
-			if(container.hasClass("active")){
-				addClass = false;
-			}
-			$(".user-class-visibility .container").removeClass("active");
-			if(addClass){
-				container.addClass("active");
-				$(".user-class-visibility .container .current").removeClass("mouseover");
-				container.find(".current").addClass("mouseover");
-			}                      
+            var container = $(e.target);
+            while(!container.is(".user-class-visibility .container")){
+                container = container.parent();
+            }
+            var addClass = true;
+            if(container.hasClass("active")){
+                addClass = false;
+            }
+            $(".user-class-visibility .container").removeClass("active");
+            if(addClass){
+                container.addClass("active");
+                $(".user-class-visibility .container .current").removeClass("mouseover");
+                container.find(".current").addClass("mouseover");
+            }                      
         });
 
         $(".user-class-visibility .option").click(function(e) {
@@ -1422,7 +1469,7 @@ $(document).ready(function () {
             $(".option", container).removeClass("selected");
             $(this).addClass("selected");
             container.removeClass("active");
-			$(".user-class-visibility .container .current").removeClass("mouseover");
+            $(".user-class-visibility .container .current").removeClass("mouseover");
             var isItem  = $(this).closest(".user-groups-courses").length;
 
             if(isItem === 0) {
@@ -1440,10 +1487,10 @@ $(document).ready(function () {
             var container = $(".user-class-visibility .container")
             if((!container.is(e.target) && container.has(e.target).length === 0)){
                 container.removeClass("active");
-				container.find(".current").removeClass("mouseover");
+                container.find(".current").removeClass("mouseover");
             }  
-			/*if(!(container.is(e.target) || container.has(e.target).length != 0 || container.hasClass("active"))) {
-				$(".user-class-visibility .container .current").removeClass("mouseover");
+            /*if(!(container.is(e.target) || container.has(e.target).length != 0 || container.hasClass("active"))) {
+                $(".user-class-visibility .container .current").removeClass("mouseover");
                 container.removeClass("active");
             } */ 
         })
@@ -1471,11 +1518,11 @@ $(document).ready(function () {
         var courseList = "";
         for (var i = 0; i < ary.length; i++) {
             courseList += '<div class = "user-groups-courses">'
-						+ '<div class = "professor-group course-group">'
-										+ '<a class = "group-link">'
-											+ '<div class = "group-pic classlink" id="groupPic_' + ary[i]['class_id'] 
+                        + '<div class = "professor-group course-group">'
+                                        + '<a class = "group-link">'
+                                            + '<div class = "group-pic classlink" id="groupPic_' + ary[i]['class_id'] 
                                             + '" style="background: url(' + ary[i]['c_dp'] + ') no-repeat scroll center center / cover transparent">'
-											+ '</div>';
+                                            + '</div>';
             if (ary[i]['c_name'] != null && ary[i]['c_name'] != "") {
                 courseList += '<h3 class="classlink" id="groupName_' + ary[i]['class_id'] + '">' + ary[i]['c_name'] + '</h3>';
             }
@@ -1483,13 +1530,13 @@ $(document).ready(function () {
                 courseList += '<h3>Unavailable</h3>';
             }
             // courseList += '<div class="user-course-lock"><div class="hover"></div></div>';
-			if(is_owner){
-				courseList += DisplayVisiButtons();
-			}
+            if(is_owner){
+                courseList += DisplayVisiButtons();
+            }
             courseList += '</a>'
-										+ '<div class = "admin-group-functions">'
-											+ '<div class="gfunction"><span>' + ary[i]['c_id'] + ' (' + ary[i]['sec_id'] + ')</span></div>'
-											+ '<div class="gfunction"><span>';
+                                        + '<div class = "admin-group-functions">'
+                                            + '<div class="gfunction"><span>' + ary[i]['c_id'] + ' (' + ary[i]['sec_id'] + ')</span></div>'
+                                            + '<div class="gfunction"><span>';
             if ((ary[i]['timing'] != null) && (ary[i]['timing'] != "") && (ary[i]['timing'] != "null")) {
                 courseList += ary[i]['timing'];
             }
@@ -1549,14 +1596,14 @@ $(document).ready(function () {
         var clubsList = "";
         for (var i = 0; i < ary.length; i++) {
             clubsList += '<div class = "user-groups-courses">'
-						+ '<div class = "professor-group course-group">'
-										+ '<a class = "group-link">'
-											+ '<div class = "group-pic group-link" id="grpPic_' + ary[i]['group_id']
+                        + '<div class = "professor-group course-group">'
+                                        + '<a class = "group-link">'
+                                            + '<div class = "group-pic group-link" id="grpPic_' + ary[i]['group_id']
                                             + '" style="background: url(' + ary[i]['cl_dp'] + ') no-repeat scroll center center / cover transparent">'
-											+ '</div>'
-											+ '<h3 class="group-link" id="grpName_' + ary[i]['group_id'] + '">' + ary[i]['group_name'] + '</h3>';
-			clubsList += DisplayVisiButtons("club") + '</a>	'
-										+ '<div class = "admin-group-functions">';
+                                            + '</div>'
+                                            + '<h3 class="group-link" id="grpName_' + ary[i]['group_id'] + '">' + ary[i]['group_name'] + '</h3>';
+            clubsList += DisplayVisiButtons("club") + '</a> '
+                                        + '<div class = "admin-group-functions">';
             if (ary[i]['group_desc'].length > 220) {
                 clubsList += '<div class="gfunction"><span>' + ary[i]['group_desc'].substr(0,220) + '...' + '</span></div>';
             }
@@ -1718,50 +1765,7 @@ $(document).ready(function () {
 
     /* End of code for the showcase scroll setup */
 
-    /* Embedly for the showcase */
-
-    var jquery$$ = $.noConflict();
-    jquery$$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';    
-    function Embedly() {
-
-        jquery$$("li.ddbox-invite-option").each(function (index) {
-            jquery$$(this).find('div.content').embedly({
-                query: {
-                    wmode: 'transparent',
-                    autoplay: true
-                },
-                method: 'after',
-                display: function (data, elem) {
-
-                    //Adds the image to the a tag and then sets up the sizing.
-                    jquery$$(elem).html('<div style="width:150px; height:122px;background: url(' + data.thumbnail_url + ') no-repeat scroll 50% 50% / 100% auto transparent;"></div>')
-                    .width('150')//(data.thumbnail_width)
-                    .height('122')//(data.thumbnail_height)
-                    .find('span').css('top', data.thumbnail_height / 2 - 36)
-                    .css('left', data.thumbnail_width / 2 - 36);
-                    //alert($(elem).html());
-                    var jquery$$elhtml = jquery$$(elem).html();
-                    jquery$$(elem).closest(".post_lr_link_msg").find(".link-img").html(jquery$$elhtml);
-
-                    var t_title = data.title;
-                    var t_des = data.description;
-                    var t_url = data.url;
-                    //alert(data.title+" , "+data.description+", "+data.url);
-                    var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
-
-                    //jquery$$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-                    //jquery$$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-                    if (data.type === 'video') {
-                        $(this).append('<div style="background-position: 0% 0%; left: 25px; height: 50px; width: 50px; margin-top: -85px;" class="play_btn"></div>');
-                    } 
-                    // else {
-                    //    jquery$$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-                    //}
-                }
-            });
-        });
-    }    
+ 
 
     // Display the showcase for the current user
     function DisplayShowcase(ary) {
@@ -1861,14 +1865,14 @@ $(document).ready(function () {
                             if (!document.getElementById('myinterest_' + responseText.interests[0]['interest_id'])) {
                                 AddInterest(userId, responseText.interests[0]['interest_id']);
                             }
-							$('#user_interest').val("");
-							$('.tag-option').hide();
+                            $('#user_interest').val("");
+                            $('.tag-option').hide();
                         }
                     }
                     else if ((code == 13) && (interest != "")) {
                         // if enter is pressed to enter and when there are no suggestions insert interests and user interests
                         InsertInterests(interest, userId, new_interest);
-						$('#user_interest').val("");
+                        $('#user_interest').val("");
                     }
                 },
                 error: function (responseText) {
@@ -1918,7 +1922,7 @@ $(document).ready(function () {
             dataType: "json",
             url: "php/profile/user_interests.php",
             data: { user_id: userId, insert: true, interest_id: interest_id },
-            success: function (responseText) {								$("#user_interest").val("");
+            success: function (responseText) {                              $("#user_interest").val("");
                 if ((responseText.interestsList != null) && (responseText.interestsList.length > 0)) {
                     DisplayEventsListToEdit(responseText.interestsList);
                 }
@@ -1994,9 +1998,9 @@ $(document).ready(function () {
         for (var i = 0; i < ary.length; i++)
         {
             interestsList += '<div class="selected-interests" id="myinterest_' + ary[i]['interest_id'] + '" style="float: left;">'
-                				+ '<span class="myinterests-text">' + ary[i]['interest'] + '</span>'
-                				+ '<img class="myinterests-delete" title="delete interest" src="img/hide.png"></img>'
-                    		+ '</div>';
+                                + '<span class="myinterests-text">' + ary[i]['interest'] + '</span>'
+                                + '<img class="myinterests-delete" title="delete interest" src="img/hide.png"></img>'
+                            + '</div>';
             interestsCSV += "<p class='single_interest'>" + ary[i]['interest'] + '</p>';
 
         }
@@ -2033,9 +2037,9 @@ $(document).ready(function () {
                 if ((responseText.interestsList != null) && (responseText.interestsList.length > 0)) {
                     DisplayEventsListToEdit(responseText.interestsList);
                 }
-                else {									$('#my_interests').html("");
-                    if (!is_owner) {						$('#profile_interests').hide();
-                        						$('#profile_interests').prev('h5').css('display', 'none');
+                else {                                  $('#my_interests').html("");
+                    if (!is_owner) {                        $('#profile_interests').hide();
+                                                $('#profile_interests').prev('h5').css('display', 'none');
                     }
                 }
             },
