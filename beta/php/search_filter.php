@@ -660,7 +660,7 @@ if ($_POST['page'] == 1 && $_POST['search_type'] == "All"
         $photo_position = 220 * $photo_index;
         $lastslide_pos = $photo_position - 220;
         $photo_index += 1;
-        echo '<div class = "slide" style = "transform: matrix(1,0,0,1,' . $photo_position . ',0)">
+        echo '<div class = "slide" style = "transform: matrix(1,0,0,1,' . $photo_position . ',0); -webkit-transform: matrix(1,0,0,1,' . $photo_position . ',0)">
 				<div class = "slide-inner">
 				<div class = "result-photo">
 				<img src = "' . $row['picture'] . '">
