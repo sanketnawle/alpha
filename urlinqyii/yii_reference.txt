@@ -87,7 +87,7 @@ c) CLEAN URL's
         'rules'=>array()
 
     Inside of the 'rules' array, add your URL and map it to the corresponding controller
-    For example, If you was working on analytics and you wanted to create a new view that returned
+    For example, If you were working on analytics and you wanted to create a new view that returned
     event attendance data, you would first create the action function in the 'protected/controllers/AnalyticsController.php'
     like this:
      public function actionAttendance(){
@@ -105,3 +105,16 @@ c) CLEAN URL's
      Now when you go to
      urlinq.com/analytics/attendance, the actionAttendance() function in the Analytics controller will be called
      and will return JSON
+
+d) REFERENCING CSS/JS/IMAGE/ASSETS
+    All Css/js/assets are to be stored in urlinqyii/css  urlinqyii/js  urlinqyii/assets
+    and should be referenced in your html like this:
+
+    CSS
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->request->baseUrl; ?>/css/file_name.css'/>
+
+    JS
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script_name.js"></script>
+
+    Images
+    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">

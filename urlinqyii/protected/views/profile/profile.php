@@ -76,8 +76,10 @@
 		<section class='topbar_bag'>
 	        <?php
 
-                echo $this->renderPartial('/partial/topbar',array('user'=>$user));
-
+                Yii::app()->runController('partial/feeds');
+                //$this->render('//partial/feeds');
+                //echo $this->renderPartial('/partial/feeds',array('posts'=>'lol'));
+                //echo $this->renderPartial('/partial/topbar',array('user'=>$user));
             ?>
 	    </section>
 
