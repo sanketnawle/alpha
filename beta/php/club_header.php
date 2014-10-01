@@ -77,10 +77,10 @@ if ($is_admin == "1") {
                                         Upload a cover photo of this club.
                                     </div>
                                 </div>
-                                <button class = "upload_cover" id="promote_group" style="margin-left:180px;">
+                                <a href="promotion/prom.html?group_id='+$group+'"><button class = "upload_cover" id="promote_group" style="margin-left:180px;">
                                     <!--<i></i>-->
                                     <span>Promote Club</span>
-                                </button>';
+                                </button></a>';
 }
 echo '</div>
                             <div class = "group-cover-picture">
