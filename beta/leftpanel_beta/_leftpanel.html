@@ -1,0 +1,151 @@
+<html>
+<head>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="css/leftpanel.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div style="position: fixed; height: 48px; width: 100%; background-color: #313234"></div>
+    <div class="leftpanel">
+        <div class="profile">
+            <div class="title">
+                Profile
+                <div class="menu"></div>
+            </div>
+            <ul>
+                <li class="profile-panel">
+		    <a class="nostyle">
+                    <img class="profile-img" src="http://lorempixel.com/50/70">
+                    <div class="details">
+                        <span class="name">My Very Really Long Name</span>
+                        <!--<span class="status">
+                            <img class="status-img" src="http://lorempixel.com/18/18">
+                            <span class="status-msg">Online</span>
+                        </span>-->
+                    </div>
+		    </a>
+                </li>
+                <li><a>Department</a></li>
+                <li><a>Really Long School Name</a></li>
+            </ul>
+            <div class="profile-menu">
+                <ul>
+                    <li><a><div class="icon prof"></div>Your Profile</a></li>
+                    <li><a><div class="icon edit"></div>Edit Profile</a></li>
+                    <li><a><div class="icon sign"></div>Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="listing">
+            <div class="class scrollable">
+                <div class="title">
+                    <div class="wedge"></div>
+                    Classes
+                </div>
+                <ul>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 1</a></li>
+                    <li><a>Subject 2</a></li>
+                    <li><a>A Very Very Long Subject 3</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 4</a></li>
+                    <li><a>Subject 4</a></li>
+                </ul>
+            </div>
+            <div class="club scrollable">
+                <div class="title">
+                    <div class="wedge"></div>
+                    Clubs
+                </div>
+                <ul>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                    <li><a>Club 1</a></li>
+                    <li><a>Club 2</a></li>
+                    <li><a>A Very Very Really Lengthy Organisation 1</a></li>
+                    <li><a>Organisation 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $(".leftpanel .scrollable .title").click(function () {
+                var title = $(this);
+                var clubs = $(".leftpanel .scrollable.club");
+                var classes = $(".leftpanel .scrollable.class");
+                (title.parents(".scrollable")[0] == classes[0] ? function () {
+                    //classes.toggleClass("min");
+                    // case 1: 50 50
+                    if (!(classes.hasClass("full") || classes.hasClass("min"))) {
+                        classes.addClass("min");
+                        clubs.addClass("full");
+                    } else if (classes.hasClass("min")) {
+                        if (clubs.hasClass("min")) {
+                            classes.removeClass("min").addClass("full");
+                        } else {
+                            classes.removeClass("min");
+                            clubs.removeClass("full");
+                        }
+                    } else if (classes.hasClass("full")) {
+                        classes.removeClass("full").addClass("min");
+                    }
+                } : function () {
+                    if (!(clubs.hasClass("full") || clubs.hasClass("min"))) {
+                        clubs.addClass("min");
+                        classes.addClass("full");
+                    } else if (clubs.hasClass("min")) {
+                        if (classes.hasClass("min")) {
+                            clubs.removeClass("min").addClass("full");
+                        } else {
+                            clubs.removeClass("min");
+                            classes.removeClass("full");
+                        }
+                    } else if (clubs.hasClass("full")) {
+                        clubs.removeClass("full").addClass("min");
+                    }
+                })();
+            });
+            $(".leftpanel .scrollable ul").mCustomScrollbar({
+                theme: "minimal-dark",
+                scrollInertia: 100
+            })
+            $(".leftpanel .profile .title").click(function () {
+                var menu = $(".menu", $(this));
+                var profilemenu = $(".profile-menu", $(this).parents(".profile"));
+                menu.hasClass("open") ? (function () {
+                    menu.removeClass("open")
+                        .css({ "background-image": "url(menu-x-bar.gif?p" + new Date().getTime().toString() + ")" });
+                    profilemenu.removeClass("open");
+                }()) : (function () {
+                    menu.addClass("open")
+                        .css({ "background-image": "url(menu-bar-x.gif?p" + new Date().getTime().toString() + ")" });
+                    profilemenu.addClass("open");
+                }());
+            })
+        })
+    </script>
+</body>
+</html>

@@ -7,12 +7,12 @@
     border: none;
     height: auto;
     opacity: 0;
-    width: 100%;
+    width: 97%;
     position: relative;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    top:0px;
+    top: -5px;
+    background: #FFF;
+    border-right: 1px solid #E6E6E6;
+    left: 15px;
 }
 
 .event_main {
@@ -49,11 +49,12 @@
     right: 0px;
     overflow: auto;
     font-size: 1.4rem;
-    border-radius: 0px;
+    border-radius: 3px;
     width: 100%;
-    height: auto;
-    max-height: 140px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+    height: 90px;
+    max-height: 90px;
+    border: 1px solid #E6E6E6;
+    border-bottom:none;
 }
 
 .uploadform-1 .qa_scrollcontainer {
@@ -521,32 +522,6 @@ padding-left: 5px;
         -webkit-transform: rotate(-45deg); /* TODO: prefix */
     }
 
-.button-block.canceled {
-    height: 13px;
-    width: 13px;
-    border-width: 1.8px;
-    border-color: #00c692;
-    border-radius: 2px;
-    background-color: white;
-    transform: -webkit-scale(5);
-}
-
-    .button-block.canceled .mark {
-        background-color: #000000;
-    }
-
-        .button-block.canceled .mark.x {
-            right: 13px;
-            top: 9px;
-            height: 13px;
-        }
-
-        .button-block.canceled .mark.xx {
-            height: 6px;
-            top: 15.3px;
-            left: 10px;
-        }
-
 .centerText {
     position: absolute;
     opacity: 1;
@@ -775,7 +750,6 @@ a.hideLink {
 .fixed-events-tabs {
     position:fixed;
     height:94px;
-    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 2px -1px;
     width:79.7%;
 }
 
@@ -812,57 +786,47 @@ a.hideLink {
 font-weight: bold;
 font-size: 15px;
 padding: 6px 1.3em 5.5px;
-margin-left: 35px;
+margin-left: 88px;
 position: absolute;
 line-height: 26px;
 border-radius: 4px;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-color: #fff;
 border-style: solid;
 text-align: center;
 opacity: .9;
 cursor: pointer;
 border-top: none;
 text-decoration: none;
-text-shadow: 0 1px 1px #ABAFAC;
-border-color: transparent;
 transition: all 0.15s ease;
 -moz-transition: all 0.15s ease;
-border-width: 1px;
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
-background-color: #1CE69C;
-background: rgba(28,230,156,.8);
+color: #565a5c;
+border: 1px solid #D6D6D6;
+outline: none;
+border-bottom: 1px solid #C2C2C2;
+background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+-webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+-moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+text-shadow: none;
 }
 
 .btn_select_today:hover{
 cursor: pointer;
--moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
--webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-background-color: #1ce69c;
-background-image: linear-gradient(top,#22C791,#1AAC7C);
-background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.15));
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#26000000)";
-border-top: none;
+-moz-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); -webkit-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); box-shadow: inset 0 -1px 0px rgba(0,0,0,.4);
 }
 
 .btn_select_today:active{
-background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15));
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000, endColorstr=#26000000)";
-border-color: transparent;
--webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 3px rgba(28, 230, 156, 0.5);
-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 3px rgba(28, 230, 156, 0.5);
-background-color: #1CE69C;
-background: rgba(28,230,156,.8);
-color: #fff;
+background-color: rgba(0,0,0,.25); -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
 }
 
 
 
 .event_view_cal {
     width: 350px;
+
 float: right;
+
 position: relative;
+
 top: -45px;
 }
 .midsec {
@@ -995,16 +959,24 @@ top: -10px;
 
 .event_cal_filter {
     cursor: pointer;
-width: 32px;
+
+
+    width: 28px;
+
 position: relative;
+
 left: 20px;
-top: 5px;
+
+
+    top: 2px;
+    padding: 6.5px 12px;
+    border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
 .fade-out {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 1s linear; 
+  opacity: .8;
+  transition: opacity .5s linear; 
 }
 
 .fade-in {
@@ -1063,7 +1035,6 @@ width: 182px;
     position:absolute;  
     display:none;
     z-index: 1000;      
-background:#fff;
 font-weight:400;
 cursor:default;
 color: #666 !important;
@@ -1097,7 +1068,9 @@ img.reply_attach {
 opacity: 1;
 margin-top: 12px;
 margin-left: 10.5px;
-float:right;
+right: -95%;
+
+top: -10px;
 }
 .upload_feed_hack {
     display: none;
@@ -1109,8 +1082,13 @@ color: #989898;
 float: left;
 position: relative;
 top: -27px;
-right: 20px;
+right: -375px;
 }
+
+    .feed_upload_textprompt:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 /* End of styles for file uploads */
 
 /* styles for invite connections */

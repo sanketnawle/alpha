@@ -1,10 +1,13 @@
 <?php
 
 include 'dbconnection.php';
-session_start();
+require_once 'time_change.php';
+require_once '../includes/common_functions.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 
-$user_id = 1;
 $event_id = 1;
 $type = 0;
 
@@ -12,10 +15,10 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 if (isset($_POST['event_id'])) {
-    $event_id = $_POST['event_id'];
+    $event_id = input_sanitize($_POST['event_id'], $con);
 }
 if (isset($_POST['type'])) {
-    $type = $_POST['type'];
+    $type = input_sanitize($_POST['type'], $con);
 }
 
 switch ($type) {
@@ -31,21 +34,26 @@ switch ($type) {
         break;
 }
 
-$fetch_event_query = "SELECT * FROM $table_name WHERE `event_id` = $event_id";
-$fetch_event_query_result = mysqli_query($con, $fetch_event_query);
+$fetch_event_query = "SELECT * FROM $table_name WHERE event_id = $event_id";
+$fetch_event_query_result = $con->query($fetch_event_query);
 
 $result_row = mysqli_fetch_array($fetch_event_query_result);
+if ($type == 1 or $type == 2) {
+    $invites = $result_row['invites'];
+} else {
+    $invites = NULL;
+}
 
 $table_name_invited = $table_name . "_invited";
-$get_invited_query = "SELECT COUNT(*) AS total FROM $table_name_invited WHERE `event_id`=$event_id";
-$get_invited_query_result = mysqli_query($con, $get_invited_query);
+$get_invited_query = "SELECT COUNT(*) AS total FROM $table_name_invited WHERE event_id=$event_id";
+$get_invited_query_result = $con->query($get_invited_query);
 $invited_result_row = mysqli_fetch_array($get_invited_query_result);
 $count = $invited_result_row['total'];
 
 if ($result_row['file_id'] != NULL) {
-    $file_id = $row['file_id'];
-    $fetch_file_query = "SELECT `file_name` from file_upload WHERE `file_id`=$file_id";
-    $fetch_file_query_result = mysqli_query($con, $fetch_file_query);
+    $file_id = $result_row['file_id'];
+    $fetch_file_query = "SELECT file_name from file_upload WHERE file_id= $file_id";
+    $fetch_file_query_result = $con->query($fetch_file_query);
     if ($fetch_file_query_result > 0) {
         $file_result_row = mysqli_fetch_array($fetch_file_query_result);
         $file_name = $file_result_row['file_name'];
@@ -65,17 +73,20 @@ if ($result_row['location'] == NULL or $result_row['location'] == 'NULL') {
     $location = $result_row['location'];
 }
 
+$user_time_start = new DateTime(user_time($result_row['start_date'] . " " . $result_row['start_time']));
+$user_time_end = new DateTime(user_time($result_row['end_date'] . " " . $result_row['end_time']));
+
 $result_array = array(
     'title' => $result_row['title'],
     'description' => $description,
     'location' => $location,
-    'start_date' => $result_row['start_date'],
-    'end_date' => $result_row['end_date'],
-    'start_time' => $result_row['start_time'],
-    'end_time' => $result_row['end_time'],
+    'start_date' => $user_time_start->format("Y-m-d"),
+    'end_date' => $user_time_end->format("Y-m-d"),
+    'end_time' => $user_time_end->format("H:i:s"),
+    'start_time' => $user_time_start->format("H:i:s"),
     'is_check' => $result_row['is_check'],
     'recurrence' => $result_row['recurrence'],
-    'invites' => $result_row['invites'],
+    'invites' => $invites,
     'invite_count' => $count,
     'file_name' => $file_name,
     'file_id' => $file_id,

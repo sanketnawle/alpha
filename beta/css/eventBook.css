@@ -33,9 +33,9 @@ min-width: 700px;
 }
 
 div.eventbook-content{
-    border-left: 1px solid #ECECEC;
+    border-left: 1px solid rgba(60, 66, 70, 0.19);
     width: 80%;
-    left: 75px;
+    left: 35px;
     position: relative;
     z-index: 1;
     height: 100%;
@@ -51,88 +51,90 @@ div.eventbook-content-wrap{
 }
 
 div.header-left-title{
-    width: 315px;
+    width: 325px;
 display: inline-block;
 float: left;
 height: 100%;
-margin-left: 50px;
+
+    margin-left: 52px;
 margin-top: 5px;
 }
 
 div.header-left-title div.eventbook-date-cont{
     display: inline-block;
-    overflow:hidden;
     float: left;
-    margin-right: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-top: 9px;
-    background: #f5f5f5; 
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1)); 
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1); 
-    background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1); 
-    background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1); 
-    background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1); 
-    background-image: linear-gradient(top,#f5f5f5,#f1f1f1); 
-    border: 1px solid #dcdcdc; 
-    border: 1px solid rgba(0,0,0,0.1); 
-    border-radius: 3px;
+    margin-right: 6px;
+    position: relative;
+    margin-top: 10px;         
+    border-radius: 1px;
     height: 40px;
+    border-radius: 4px;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05); box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    color: #565a5c;     
+    padding: 0px 10px;
+    border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2;
 }
 
 div.header-left-title div.eb-day-cont span.eb-current-day{
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
-    font-size: 23px;
-    font-weight: 400;
-    color: #6a7480;
+    font-size: 1.35em;
+    font-weight: 600;
+    font-weight: 500;  font-family: 'Open Sans', sans-serif;
     display:block;
+    padding-top:7px;
 }
 
 span.eb-prev-day{
         vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
     font-size: 23px;
-    font-weight: 400;
+    font-weight: 600;
     color: #6a7480;
     display:block;
+    padding-top:7px;
     }
 
 div.header-left-title div.eb-day-cont span.eb-next-day{
     vertical-align: middle;
-    line-height: 40px;
+    line-height: 26px;
     text-align: center;
     font-size: 23px;
-    font-weight: 400;
-    color: #6a7480;
+    font-weight: 600;
     display:block;
+    display: none;
+    padding-top:7px;
 }
 
 
 
 div.header-left-title div.eb-month-cont span.eb-month{
-    vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 23px; 
-    font-weight: 400; 
-    color: #6a7480;
-
+    vertical-align: middle;  text-align: center; 
+    font-size: 12px; 
+    font-weight: 600; font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: block;
+    padding-top: 3px;
 }
 
 div.header-left-title div.eb-month-cont span.eb-date{
-    vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 24px; 
-    font-weight: 600; 
-    color: #6a7480;
-
+    vertical-align: middle;  text-align: center; 
+    display: block;
+    line-height: 15px;
+    font-size: 16px; 
+    font-weight: bolder; 
 }
 
 div.header-left-title div.eb-year-cont span.eb-year{
     vertical-align: middle; line-height: 40px; text-align: center; 
-    font-size: 25px; 
-    font-weight: 100; 
-    color: #6a7480;
+    font-size: 1.35em; 
+    font-weight: 200; 
+    padding-left: 5px;
+padding-right: 5px;
+    color: #565a5c;
 }
 
 div.header-center-fx{  
@@ -143,33 +145,31 @@ margin-left: 400px;
 position: relative;
 }
 
-div.eb-fx-cont{
-    background: #f5f5f5; 
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1)); 
-    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1); 
-    background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
-     background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1); background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1); 
-     background-image: linear-gradient(top,#f5f5f5,#f1f1f1); border: 1px solid #dcdcdc; border: 1px solid rgba(0,0,0,0.1); 
+div.eb-fx-cont{   
+       
+       border: 1px solid rgba(0,0,0,0.1); 
     border-radius: 3px; 
     height: 40px;
--webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
+border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
 box-shadow: 0 1px 0 rgba(0,0,0,.05);
     display: inline-block;
+    position: relative;
     float: left;
     cursor:pointer;
+    
+       width: 33px;
     margin-top: 9px;
 }
 
 div.eb-fx-cont:hover{
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
-box-shadow: 0 1px 0 rgba(0,0,0,.1);
-border-color: #66afe9;
+    -moz-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); -webkit-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); box-shadow: inset 0 -1px 0px rgba(0,0,0,.4);
+
+
 }
 
 div.eb-fx-cont:active{
--webkit-box-shadow: inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-box-shadow: inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-border: 1px solid #66afe9;
+    background-color: rgba(0,0,0,.25); -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
 }
 
 div.fx-cont-left{
@@ -180,15 +180,24 @@ div.fx-cont-left{
 }
 
 div.fx-cont-left span{
-    background-image: url('../img/right-arrow.png');
--moz-transform: rotate(180deg);
--webkit-transform: rotate(90deg);
-top: -11px;        
+
+    background-image: url(../img/minical_right_arrow.png);
+    -moz-transform: rotate(180deg);
+-webkit-transform: rotate(180deg);
+        
+    
+
+    background-position: -3px -1px!important;
+
 }
 
 div.eb-fx-cont span{
     
-    position: relative; background-repeat: no-repeat; background-size: 100%; width: 14px; height: 25px; margin-top: 13px; margin-right: 9px; margin-left: 8px; display: block; background-position-x: 1px;
+    position: relative; background-repeat: no-repeat; 
+    background-size: contain; 
+    width: 27px; 
+    height: 33px;    display: block; 
+    background-position: -4px 7px;
 }
 
 div.fx-cont-right{
@@ -197,11 +206,11 @@ div.fx-cont-right{
 }
 
 div.fx-cont-right span{
-    background-image: url(../img/right-arrow.png);
  
     
     margin-left: 9px;
     margin-right: 8px;
+    background-image: url(../img/minical_right_arrow.png);
 }
 
 div.eventbook-date-break{
@@ -211,36 +220,47 @@ div.eventbook-date-break{
     padding-right: 200px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    background-color: #E4E4E4;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    background-color: #F2F4F5;
+    padding-top: 4px;
+    padding-bottom: 4px;
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 2px -1px;
     text-align: left;
 padding-left: 20px;
+    border-bottom: 1px solid #d7d7d7;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 0px 3px 3px 0px;    
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2); 
+    background-color: #3c4246; 
+    border-bottom: 1px solid black;
 }
 
-div.eventbook-date-break div.eb-db-date{    
+div.eventbook-date-break div.eb-db-date{
+    margin-left: 55px;
+    
 }
 
 div.eventbook-date-break div.eb-db-date span.eb-db-day{
     display: inline-block;
   text-align: center; 
     position: relative;
-    font-size: 22px; 
+    font-size: 19px; 
     top: -7px;
-    font-weight: 200; 
-    color: rgba(0, 0, 0, 0.22);
+    font-weight: 500; 
+    color: #FFFFFF;
 }
 
 div.eventbook-date-break div.eb-db-date div.eb-db-icon{
     display: inline-block;
-
-    background-color: rgba(0,0,0,.15); border: 2px solid #fff; -webkit-border-radius: 5px; color: #fff;  font-weight: 500; left: 12px; 
-    padding-bottom: 1px; 
-    margin-left: 25px;
-    padding-top: 1px;  text-align: center; 
-    margin-top: 1px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.28); top: 0; width: 46px;
+color: white; 
+    border: 1px solid #FFFFFF; -webkit-border-radius: 5px;   font-weight: 500; 
+    left: 12px; 
+    padding-bottom: 0px;  
+    color: #FFFFFF; text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+    margin-left: 15px;
+    padding-top: 0px;  text-align: center; 
+    margin-top: 1px; top: 0; 
+    width: 40px;
 }
 
 div.eventbook-date-break div.eb-db-date div.eb-db-icon span.eb-db-icon-m{
@@ -249,14 +269,15 @@ div.eventbook-date-break div.eb-db-date div.eb-db-icon span.eb-db-icon-m{
     text-transform: uppercase;
     font-weight: 100;
     display: block;
+    line-height: 14px;
 }
 
 div.eventbook-date-break div.eb-db-date div.eb-db-icon span.eb-db-icon-d{
 
-    font-size: 24px;
+    font-size: 14px;
     
 
-    line-height: 21px;
+    line-height: 14px;
 
     font-weight: 700;
 
@@ -264,47 +285,52 @@ div.eventbook-date-break div.eb-db-date div.eb-db-icon span.eb-db-icon-d{
 
 
 div.eventbook-content div.eventbook-event-cont{
-    position: relative;
-
-    
+    position: relative;    
     margin-top: 20px;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0px;
     border: 1px solid #ECECEC;
     border-left: none;
-    left: -1px;
+    left: 0px;
     min-width: 490px;
     border: 1px solid rgba(105, 105, 105, 0.23);
-    margin-right: 200px;
-    min-height: 138px;
-    border-left: 3px solid rgba(189, 189, 189, 0.498039);
-     background-image: -moz-linear-gradient(left center , rgba(228, 228, 228, 0.09), #FFF 7%);
-    background-image: -webkit-linear-gradient(left,rgba(189, 189, 189, 0.21),#FFFFFF 5%);
+    margin-right: 200px;    
+    border-left: 1px solid #ECECEC;
+     
+    background-image: none!important;
+    background-color: #fff!important;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    border-left-width: 0px!important;
 }
 
 
 div.eventbook-content div.eventbook-groupevent-cont{
-    min-height: 210px;
+    min-height: 180px;
         
     border: 1px solid #ECECEC;
     border-left: 3px solid rgba(245, 191, 132, 1);
-    min-width: 480px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    min-width: 480px; 
     padding-right: 10px;
     background-image: -moz-linear-gradient(left,rgba(165, 21, 221, 0.2),#FFFFFF 7%);
     
-    background-image: -webkit-linear-gradient(left,rgba(245, 191, 132, 0.48),#FFFFFF 5%);
-    border-radius: 0px 4px 4px 0px;
+    background-image: none!important;
+    border-radius: 0px; box-shadow: 0 1px 1px rgba(0,0,0,0.05);  
+    border-bottom-color: #e9e9e9!important;
+    border-right-color: #E9e9e9!important;
+    border-top-color: #E9E9E9!important;
+    background-color: #FFF!important;
+    border-left-width: 1px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 div.eventbook-event-cont:hover > div.eb-event-timeuntill{
     opacity:1;
 }
 div.eb-event-frame{
-    padding-top:4px;
-    padding-right: 3px;
-    background: rgba(11,25,2,0.06);
-    padding-bottom:4px;
-    border-radius: 0px 5px 5px 0px;
+    padding-top: 4px;
+    padding-right: 2px;
+    background: #FFF;
+    padding-bottom: 3px;
+    border-radius: 0px 0px 0px 0px;
     min-width: 490px;
     margin-right: 200px;
 }
@@ -313,7 +339,7 @@ div.eb-event-timeuntill{
     font-size: 13px; 
     font-weight: 500;
     
-    opacity: .3;
+    opacity: .6;
     display: inline-block;
     position: relative;
     transition: opacity .15s ease-in-out;
@@ -323,7 +349,7 @@ div.eb-event-timeuntill{
 }
 
 div.eventbook-event-time{
-background: rgba(245, 191, 132, 1);
+background: #52595E!important;
 -webkit-transition: margin .3s ease-in-out;
 -moz-transition: margin .3s ease-in-out;
 -ms-transition: margin .3s ease-in-out;
@@ -337,13 +363,13 @@ display: inline-block;
 float: left;
 border-top-right-radius: 2px;
 border-bottom-right-radius: 2px;
-left: -13px;
+left: -14px;
 padding-right: 8px;
 }
 
 div.eventbook-event-time-personal{
 background: #575757;
-left: -16px;
+left: -14px;
 }
 
 div.eventbook-event-time span{
@@ -353,9 +379,9 @@ font-weight: bold;
 position: relative;
 
     top: 0px;
-color: white;
 
-    text-shadow: 0 1px 1px rgba(162, 165, 163, 0.6);
+    color: white;
+
 }
 
 div.eventbook-event-time::after{
@@ -371,7 +397,7 @@ border-style: solid;
 
     border-width: 0 13px 10px 0px;
 
-    border-color: transparent rgba(233, 152, 63, 1) transparent transparent;
+    border-color: transparent #3c4246 transparent transparent!important;
 }
 
 div.eventbook-event-time-personal::after{
@@ -397,7 +423,7 @@ div.eventbook-personalevent-cont{
 
     border-radius: 0px 5px 5px 0px;
 
-    margin-right: 2px!important;
+    margin-right: 1px!important;
 
 }
 
@@ -414,7 +440,7 @@ span.eventbook-event-group{
     top: 4px!important;
 }
 
-.eventbook-discuss-btn{
+.eventbook-discuss-btn, .eventbook-discuss-hider{
     position: absolute;
     bottom: 4px;
     text-align: center;
@@ -430,10 +456,11 @@ span.eventbook-event-group{
     cursor:pointer;
     color: #333437;
     left: 4px;
+    display: none;
     padding-top: 4px;
     padding-bottom: 4px;
 }
-.eventbook-discuss-btn:hover{
+.eventbook-discuss-btn:hover, .eventbook-discuss-hider:hover{
 -webkit-transition: all 150ms ease-in-out;
 -moz-transition: all 150ms ease-in-out;
 -ms-transition: all 150ms ease-in-out;
@@ -454,19 +481,27 @@ div.eb-event-titlepic{
 }
 
 div.eb-event-titlepic div.eb-event-pic-frame{
-    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
--moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
-box-shadow: 0 1px 5px rgba(0,0,0,.5);
-background-color:#f8f8f8;
+
+
+
    
     
-    border-radius: 2px;
+    
+
+
+
+    border-radius: 6px;
    
     
     display: inline-block;
     margin-left: 1px;
     float: left;
-    padding: 2px;
+    
+
+
+
+    padding: 3px 3px;
+    background-color: #F8F8F8; -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5); -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5); box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 
 div.eb-event-titlepic div.eb-event-pic-frame div.eb-event-pic{
@@ -476,11 +511,10 @@ div.eb-event-titlepic div.eb-event-pic-frame div.eb-event-pic{
     
     height: 112px;
      
-    border-radius: 3px;
+    border-radius: 5px;
     background-size: cover;
      
     min-width: 110px;
-    border: 1px solid #eee;
      background-repeat:no-repeat;
     }
 
@@ -494,7 +528,8 @@ div.eb-event-titlepic div.eb-event-title{
 .eb-event-wrap{
     margin-bottom: 20px;
 text-align: left;
-margin-top: 20px;
+
+    margin-top: 35px;
 }
 
 .eb-groupevent-wrap{   
@@ -503,11 +538,11 @@ margin-top: 20px;
 
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator{
-    border-radius: 3px; border: 1px solid #ECECEC;
-    
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    border-radius: 0px 6px 0px 0px; border: 1px solid #ECECEC;
+     
     height: 55px;
-    background: rgba(245, 245, 245, 1);
+    background: rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-creator:hover > div.eb-group-creator-picframe{
@@ -546,13 +581,15 @@ div.eb-group-attendant:active > .eb-attendant-name{
 }
 
 .eb-groupevent-wrap .eventbook-groupevent-people .eb-group-attending{
-    border-radius: 3px; border: 1px solid #ECECEC; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05);  
+    border-radius: 0px 0px 6px 0px; 
+    border: 1px solid #e9e9e9;    
     background: #FFFFFF;
     
     position: absolute;
     width: 99.4%;
     bottom: 0px;
-    top: 62px;
+    top: 60px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 div.eb-event-title-wrap{
@@ -576,7 +613,7 @@ margin-left: 7px;
 
 div.eb-event-location {
 font-size: 15px;
-font-weight: 200;
+font-weight: 400;
 color: rgba(0, 0, 0, 0.4);
 display: inline-block;
 }
@@ -652,9 +689,10 @@ div.eb-group-attending-header{
     width: 100%;
     overflow:hidden;
 height: 25px;
-border-bottom: 1px solid #ECECEC;
 
-    background-color: rgba(245, 245, 245, 1);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2); background-color: #3c4246;
+    border: 1px solid black;
+    border-right: 0px;
 }
 
 div.attending-header-left span.people-icon{
@@ -669,37 +707,35 @@ div.attending-header-left span.people-icon{
     left: 10px;
 }
     .eb-personal-event-name{
-        font-size: 21px;
-display: block;
+       font-size: 21px;
 font-weight: 500;
 color: #474747;
-
-
-        position: absolute;
-        display: inline-block;
-
-        top: 45px;
-        left: 8px;
-        float: left;
-
+position: relative;
+left: 8px;
+display: inline-block;
+float: left;
+width: 98%;
     
 }
 div.attending-header-left span.people-number{
-    font-size: 14px;
+    font-size: 12px;
     
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.46);
-    margin-left: 11px;
+    color: #fff;
+    margin-left: 6px;
+    text-transform: uppercase;
 }
 
 div.eb-group-attendants-scrollable{
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:scroll;
 width:100%;
 position: absolute;
 bottom: 0px;
 top: 27px;
 }
 div.attending-header-left{
+    padding-top: 2px;
 
 }
 
@@ -712,13 +748,16 @@ div.eb-group-attendant{
 
 .eb-personal-right{
     position: absolute; 
-    top: -5px; 
-    right: -250px; 
-    height: 104%; 
-    width: 239px;
+    top: 0px; 
+    right: -246px; 
+    height: 100%; 
+    width: 240px;
     
-    background: rgba(11,25,2,0.06); padding-bottom: 4px; 
-    border-radius: 3px;
+    background: #eee; 
+    padding-bottom: 1px; 
+    border-radius: 0px 6px 6px 0px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2); background-color: #3c4246; 
+    padding-right: 2px;
 }
 
 div.eb-group-attendant div.eb-attendant-name{
@@ -731,7 +770,8 @@ div.eb-group-attendant div.eb-attendant-name{
     color: #029acf;
     white-space: nowrap;
     overflow: hidden;
-    width: 185px;
+    width: auto;
+    max-width: 170px;
     top: 1px;
     position: relative;
 }
@@ -755,17 +795,20 @@ div.eb-group-attendant div.eb-attendant-pic{
 
 div.eb-event-discussion{
     position: relative; 
-    margin-top: 8px; border-radius: 3px; border: 1px solid #ECECEC;   
+    margin-top: 8px; 
+    display: none!important;
+    border-radius: 3px; border: 1px solid #ECECEC;   
     margin-right: 200px;  
     min-width: 471px; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); 
     height: 0;
     max-height:150px;
-    opacity:0;
+    display:none;
     border-bottom: 1px solid #ddd;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.05); 
-    margin-left: 10px;
-    padding-right: 10px; 
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);     
+    padding: 10px; 
     background: rgba(245, 245, 245, 1);
+    padding-bottom: 20px;
+    height:auto;
 }
 
 div.eb-personal-todo-wrap{
@@ -844,29 +887,21 @@ transform: rotate(-45deg);
 /* TODO: prefix; */
 }
 
-.button-block.canceled {
-        height: 20px;
-        width: 20px;
-        border-width: 3px;
-        border-color: #00c692;
-        border-radius: 4px;
-        background-color: white;
-    }
 
     .button-block.canceled .mark {
         background-color: #000000;
     }
 
     .button-block.canceled .mark.x {
-        right: 12px;
-        top: 9px;
-        height: 13px;
+        right: 14px;
+height: 34px;
+top: 5px;
     }
 
     .button-block.canceled .mark.xx {
-        height: 5px;
-        top: 15px;
-        left: 10.5px;
+        top: 22px;
+left: 12px;
+height: 15px;
     }
 
 
@@ -879,13 +914,12 @@ font-size: 11.111111640930176px;
 }
 
 .eb-personal-event-info{
-    position: absolute;
-    
-    top: 101px;
-    height: 87px;
-    left: 0px;
-    width: 100%;
-    border-top: 1px solid #ECECEC;
+    position: relative;
+width: 100%;
+border-top: 1px solid #ECECEC;
+margin-top: 20px;
+height: auto;
+display: inline-block;
 }
 
 .eb-event-type{
@@ -894,12 +928,15 @@ font-size: 11.111111640930176px;
     float: left;
     text-transform: uppercase;
     width: 100%;
-    /* border-bottom: 1px solid #ccc; */
-    font-size: 15.5px; 
-    padding-top: 4px;
+    font-size: 13.5px; 
+    padding-top: 7px;
+    z-index: 1000;
     padding-bottom: 2px;
-    font-weight: 200; color: rgba(0, 0, 0, 0.4);
+    font-weight: 500; 
+    color: #fff;
     text-indent: 5px;
+    border-radius: 0px 8px 0px 0px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2); box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 div.eb-personal-event-notes span.eb-personal-event-info-title {
 
@@ -917,12 +954,10 @@ div.eb-personal-event-notes span.eb-personal-event-info-content,.eb-personal-eve
 
 div.eb-personal-event-notes {
     width: 65%;
-
     overflow: hidden;
     padding-left: 8px;
     padding-top: 5px;
-    padding-bottom: 4px;
-    cursor:pointer;
+    padding-bottom: 4px;    
     border-right: 1px solid #ECECEC;
     margin-top: 5.5px;
     position: relative;
@@ -930,7 +965,7 @@ div.eb-personal-event-notes {
     float: left;
 }
 
-div.eb-personal-event-notes:hover > span.eb-personal-event-info-content,.eb-personal-event-files:hover span.eb-personal-event-info-content{
+.eb-personal-event-files:hover span.eb-personal-event-info-content{
     color:rgba(97, 83, 83, 0.43);
 }
 
@@ -963,28 +998,24 @@ div.event-edit-btn{
     box-shadow: 0 1px 0 rgba(0,0,0,.05);
     background-color: #fff;
     background-image: -webkit-linear-gradient(top,transparent,transparent);
-    height: 31px;
-    background-image: linear-gradient(top,transparent,transparent);
+    height: 28px;
     color: #404040;
-    border: 1px solid #d9d9d9;
     cursor: pointer;
-    border: 1px solid rgba(0,0,0,.15);
     border-radius: 3px;
-    width: 133px;
+    width: auto;
     position: absolute;
     right: 6px;
     top: 6px;
+    padding-right: 5px;
+    border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 div.event-edit-btn:hover{
-    -webkit-box-shadow:0 1px 0 rgba(0,0,0,.1);box-shadow:0 1px 0 rgba(0,0,0,.1);background-color:#fff;background-image:-webkit-linear-gradient(top,transparent,transparent);background-image:linear-gradient(top,transparent,transparent);border-color: #66afe9;color:#222;
+    cursor: pointer; -moz-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); -webkit-box-shadow: inset 0 -1px 0px rgba(0,0,0,.4); box-shadow: inset 0 -1px 0px rgba(0,0,0,.4);
 }
 
 div.event-edit-btn:active{
-    background:#e5e5e5;
--webkit-box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-box-shadow:inset 0 2px 0 #ddd, inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-border: 1px solid #66afe9;
+    background-color: rgba(0,0,0,.25); -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
 }
 
 div.event-attend-status span.attend-title, div.event-edit-btn span.attend-title{
@@ -1030,15 +1061,19 @@ div.event-attend-status-hider > span.down-arrow{
 }
 
 .eb-personal-tools-cont{
-    border: 1px solid rgba(105, 105, 105, 0.23);
 
     background-color: white;
     position: absolute;
     top: 28px;
-    bottom: 4px;
-    left: 4px;
-    right: 4px;
-    border-radius: 2px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+color: #404040;
+padding-top: 5px;
+    border-radius: 0px 0px 5px 0px;
+    
+
 } 
 
 span.down-arrow{
@@ -1160,10 +1195,8 @@ border-right: 8px solid rgba(246, 246, 246, 0);
 }
 .eb-personal-note-wedges{
     position: absolute;
-
     left: 50px;
-
-    top: 92px;
+    top: 62%;
 }
 .eb-personal-file-wedges{
         position: absolute;
@@ -1177,7 +1210,7 @@ display: inline;
 width: 0px;
 left: -15px;
 z-index: 2;
-top: -1px;
+top: 0px;
 position: relative;
 border-left: 7px solid rgba(255, 255, 255, 0);
 border-top: 8px solid #FFFFFF;
@@ -1185,41 +1218,33 @@ border-right: 7px solid rgba(246, 246, 246, 0);
 }
 
 .eb-personal-event-info-header{
-    top: 10px;
+    top: -7px;
 
     position: relative;
 }
 
 .event-info-notes-header{
-
     position: absolute;
-    
-
-    left: 38px;
-    
-    
-
-    top: 36px;
-
+    left: 38px;       
+    top: 33px;
     font-size: 14px; 
     font-weight: 200; color: rgba(0, 0, 0, 0.46);
 }
 
 .event-info-files-header{
     position: absolute; 
-    right: 59px; top: 36px; font-size: 14px; font-weight: 200; color: rgba(0, 0, 0, 0.46);
-
+    right: 59px; top: 33px; font-size: 14px; font-weight: 200; color: rgba(0, 0, 0, 0.46);
 }
 
 .eb-personal-files-wedges {
 position: absolute;
 right: 50px;
-top: 92px;
+top: 62%;
 }
 
 .eb-personal-event-files
 {
-    width: 30%; overflow: hidden; padding-left: 8px; padding-top: 5px; padding-bottom: 4px;  cursor: pointer; 
+    width: 30%; overflow: hidden; padding-left: 8px; padding-top: 5px; padding-bottom: 4px;  
     margin-top: 5.5px; position: relative; display: inline-block; 
     padding-right: 4px;
     float: right;

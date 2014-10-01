@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    background-color: #EEE;
+}
+
+.topbar * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    list-style: none;
+    cursor: default;
+}
+
+.topbar {
+    background-color: #313234;
+    height: 48px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 1px solid #000;
+    z-index: 1000;
+    min-width: 900px;
+}
+
+    .topbar .left {
+        overflow: auto;
+        float: left;
+        margin-right: 25px;
+    }
+
+        .topbar .left a {
+            float: left;
+            height: 48px;
+        }
+
+            .topbar .left a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .topbar .left a.urlinq {
+                width: 130px;
+                display: block;
+                background-image: url(../img/logo.png);
+                background-size: auto 25px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .topbar .left a.menu {
+                background-image: url(../img/menu-toggle.png);
+                background-size: 300% auto;
+                background-repeat: no-repeat;
+                background-position: right center;
+                width: 48px;
+                height: 30px;
+                margin: 9px 0;
+                border-radius: 2px;
+                margin-left: 10px;
+            }
+
+                .topbar .left a.menu:hover {
+                    background-position: left center !important;
+                }
+
+                .topbar .left a.menu.active {
+                    box-shadow: 0 0 27px rgba(255, 255, 255, 0.15) inset;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                }
+
+    .topbar:hover .left a.menu {
+        background-position: center center;
+    }
+
+    .topbar .center {
+        width: 55%;
+        max-width: 600px;
+        margin: auto;
+    }
+
+        .topbar .center form {
+            background-color: white;
+            position: relative;
+            margin-top: 10px;
+            padding: 7px 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.35) inset;
+            overflow: auto;
+        }
+
+            .topbar .center form .text {
+                width: 100%;
+                float: left;
+                margin-right: -25px;
+                padding-right: 25px;
+                font-size: 14px;
+                border: none;
+            }
+
+            .topbar .center form .submit {
+                width: 30px;
+                position: absolute;
+                height: 30px;
+                top: 0;
+                right: 0;
+                border: none;
+                background: none;
+                background-image: url(../img/smallSearchIco.png);
+                background-repeat: no-repeat;
+                background-size: 20px 20px;
+                background-position: center center;
+            }
+
+    .topbar .right {
+        float: right;
+        width: 22%;
+        overflow: auto;
+    }
+
+        .topbar .right .notify {
+            float: left;
+            height: 48px;
+            width: 48px;
+        }
+
+            .topbar .right .notify:hover, .topbar .right .notify.active {
+                background: rgba(255, 255, 255, 0.15);
+            }
+
+            .topbar .right .notify.calendar {
+                padding-top: 4px;
+            }
+
+                .topbar .right .notify.calendar > div {
+                    text-align: center;
+                    color: #d6d6d6;
+                }
+
+                .topbar .right .notify.calendar:hover div, .topbar .right .notify.calendar.active div {
+                    color: #01ce95;
+                }
+
+            .topbar .right .notify.board .icon {
+                background-image: url(../img/board_icon.png);
+                background-size: 200% auto;
+                background-repeat: no-repeat;
+                background-position: left center;
+                width: 32px;
+                margin: auto;
+                height: 48px;
+            }
+
+                .topbar .right .notify.board:hover .icon, .topbar .right .notify.board .icon.active {
+                    background-position: right center;
+                }
+
+    .topbar .center ul.prelist, .topbar .center ul.postlist {
+        display: none;
+    }
+
+    .topbar .center ul {
+        background-color: #FFF;
+        position: absolute;
+        top: 44px;
+        width: 55%;
+        max-width: 600px;
+        border-radius: 3px;
+        border: 1px solid #DDD;
+        box-shadow: 0 3px 8px #EEE;
+        padding: 4px 0;
+    }
+
+        .topbar .center ul li a {
+            display: block;
+            overflow: auto;
+            padding: 5px 8px;
+        }
+
+            .topbar .center ul li a:hover {
+                background-color: #313234;
+                color: #FFF;
+            }
+
+            .topbar .center ul li a img {
+                float: left;
+                width: 40px;
+                height: 40px;
+                clear: both;
+                margin-right: 10px;
+                border-radius: 3px;
+            }
+
+            .topbar .center ul li a span {
+                display: table-cell;
+                height: 40px;
+                vertical-align: middle;
+            }
+
+        .topbar .center ul.postlist li:last-child a {
+            border-top: 1px solid #DDD;
+            text-align: center;
+            padding: 9px;
+        }
+
+            .topbar .center ul.postlist li:last-child a:hover {
+                background-color: #D1D2D4;
+                color: #313234;
+            }
+
+div.day {
+    font-size: 13px;
+}
+
+div.date {
+    font-size: 20px;
+}

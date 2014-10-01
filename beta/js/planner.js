@@ -1,496 +1,324 @@
+
 $(document).ready(function () {
 
 
+    //To load event book or calendar from planner 
+    var qs = (function (a) {
 
-    //    $(function() {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i) {
 
-    //        var ts = new Date();
+            var p = a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
 
-    //        var hours = ts.getHours();
+        }
+        return b;
 
-    //        if (hours < 10) {
+    })(window.location.search.substr(1).split('&'));
 
-    //            hours = '0' + hours;
+    var insertUrl = "php/planner_insert.php";
+    if (window.location.toLocaleString().toLowerCase().search("home") > 0) {        
 
-    //        }
+        insertUrl = "php/planner_insert.php";
 
-    //        var minutes = ts.getMinutes();
+    }
+    else if (window.location.toLocaleString().toLowerCase().search("class") > 0) {        
 
-    //        if (minutes < 10) {
+        insertUrl = "php/class_planner_insert.php";
 
-    //            minutes = '0' + minutes;
+    }
+    else if (window.location.toLocaleString().toLowerCase().search("clubs") > 0) {        
 
-    //        }
+        insertUrl = "php/club_planner_insert.php";
 
-    //        var seconds = ts.getSeconds();
-
-    //        if (seconds < 10) {
-
-    //            seconds = '0' + seconds;
-
-    //        }
-
-    //        var year = ts.getFullYear();
-
-    //        var month = ts.getMonth() + 1;
-
-    //        if (month < 10) {
-
-    //            month = '0' + month;
-
-    //        }
-
-    //        var day = ts.getDate();
-
-    //        if (day < 10) {
-
-    //            day = '0' + day;
-
-    //        }
-
-    //        var time = hours + ":" + minutes + ":" + seconds;
-
-    //        var date = year + "-" + month + "-" + day;
-
-    //        alert(time + " " + date);
-
-    //        $.ajax({
-
-    //            url: "planner.php",
-
-    //            data: {time: time, date: date},
-
-    //            type: "POST",
-
-    //            success: function(responseText)
-
-    //
-
-    //            {
-
-    //                document.getElementById("divPlanner").innerHTML = responseText;
-
-    ////                document.getElementById("event_count").innerHTML = responseText.event_count.toString();
-
-    ////                          alert("responseText");
-
-    //            }
-
-    //        });
-
-    //    });
+    }
 
 
-    $('#event_name').on('keyup', function () {        
+    $('#event_name').on('keyup', function () {
+
 
         $('#event_name').removeClass("event_name_error");
         $('#event_name').attr("placeholder", "+ Add new Event");
+
     });
-
-
 
     $(document).delegate(".btn_addvent", 'click',
 
             function () {
-                var name = $("#event_name").val().toString();                
-                var start_time = $("#set_time_24hr").val().toString();
-                var start_date = $("#event_date").val().toString();
-                var ts = new Date();
 
-                if ((name == null) || (name.trim() == ""))
-                {
-                    //$('#alertModal').show();
-                    //$('#alertModal').parent('.blackcanvas').show();
-                    //$('#alertMessage').text("Please enter an event title.");
+                var name = $("#event_name").val().toString();
+                var start_time = $(this).closest(".planner").find("#set_time_24hr").val().toString();
+                var start_date = $(this).closest(".planner").find("#event_date").val().toString();
+                var ts = new Date();
+                //alert(start_date);
+                if ((name == null) || (name.trim() == "")) {                    
                     $('#event_name').addClass("event_name_error");
                     $('#event_name').attr("placeholder", "Please enter an event title...");
                     $('#event_name').focus();
                     return;
+
                 }
                 var hours = ts.getHours();
 
                 if (hours < 10) {
+
                     hours = '0' + hours;
+
                 }
                 var minutes = ts.getMinutes();
                 if (minutes < 10) {
+
                     minutes = '0' + minutes;
+
                 }
                 var seconds = ts.getSeconds();
                 if (seconds < 10) {
+
                     seconds = '0' + seconds;
+
                 }
                 var year = ts.getFullYear();
                 var month = ts.getMonth() + 1;
                 if (month < 10) {
+
                     month = '0' + month;
+
                 }
                 var day = ts.getDate();
                 if (day < 10) {
+
                     day = '0' + day;
+
                 }
                 var time = hours + ":" + minutes + ":" + seconds;
-                var date = year + "-" + month + "-" + day;                
-
+                var date = year + "-" + month + "-" + day;
+                
                 $.ajax({
-                    url: "php/planner_insert.php",
-                    data: { event_name: name, event_time: start_time, event_date: start_date, time: time, date: date },
+
+                    url: insertUrl,
+                    data: //{ event_name: name, event_time: start_time, event_date: start_date, time: time, date: date },
+                        insertUrl == "php/planner_insert.php" ?
+                        {
+
+                            event_name: name, event_time: start_time, event_date: start_date, time: time, date: date
+                        } :
+                        {
+                            event_name: name, event_time: start_time, event_date: start_date, time: time, date: date, class_id: qs["class_id"], club_id: qs["group_id"]
+                        },
                     type: "POST",
                     dataType: "json",
                     success: function (responseText) {
+
                         document.getElementById("result").innerHTML = responseText.echo_string;
-                        $('#alertModal').show();
+                        //$('#//alertModal').show();
 
                         $('.pl_add').css('height', '19px');
                         $('.pl_addevnt').css('display', 'none');
                         $('.pl_add').attr("placeholder", "+ Add new Event");
                         $('.pl_add').val("");
+
                     },
-                    error: function (responseText) {                        
-                        $('#alertModal').show();
-                        $('#alertModal').parent('.blackcanvas').show();
-                        $('#alertMessage').text("Connection Error!! Try Again.");
+                    error: function (responseText) {
+
+                        //$('#//alertModal').show();
+                        //$('#//alertModal').parent('.blackcanvas').show();
+                        //$('#//alertMessage').text("Connection Error!! Try Again.");
+                        alert("Connection Error!! Try Again.");
+
                     }
+
                 });
+
             }
             );
 
     $(document).delegate('.planner_dropdown', 'click', function () {
+
         $('.pl_options').toggle();
         //$('.fa-caret-down').toggleClass('open_Menu');
     });
     $(document).delegate('.pl_option', 'click', function () {
+
         $('.pl_options').toggle();
+        var text = $(this).text();
+        if (text.toString().toLowerCase() == "View full schedule".toLowerCase()) {
+
+            window.location = "calendar_beta.php?plnr=0";
+
+        }
+        else if (text.toString().toLowerCase() == "View my monthly calendar".toLowerCase()) {
+
+            window.location = "calendar_beta.php?plnr=1";
+
+        }
         //$('.fa-caret-down').toggleClass('open_Menu');
     });
 
     $(document).delegate('.button-block button', 'click', function () {
+
         var $event_id = $(this).parent().parent().attr('id');
         $event_id = $event_id.replace("w-2-2", "");
         var $event_details = $event_id.split("_");
         $event_id = $event_details[0];
         var $event_type = $event_details[1];
 
-        //        alert($event_id + " " + $event_type);
+        //        //alert($event_id + " " + $event_type);
         var $this = $(this).parent();
         var $a = $(this).closest(".toDowrapper");
         if ($a.hasClass("checked")) {
+
             $a.removeClass('checked');
             changeIsChecked($event_id, $event_type, 0);
+
         } else {
+
             $a.addClass('checked');
             changeIsChecked($event_id, $event_type, 1);
+
         }
 
         $this.toggleClass('canceled');
         return false;
+
     });
 
 
     $(".evntName").each(function () {
 
+
         var txt = $(this).text();
         if (txt.length >= 42) {
+
             txt = txt.substring(0, 39) + "...";
+
         }
 
         $(this).text(txt);
 
+
     });
-
-
-
-
 
     function changeIsChecked($event_id, $event_type, $value) {
 
+
         $.ajax({
+
 
             url: "php/planner_update.php",
 
             data: { event_id: $event_id, value: $value, event_type: $event_type },
 
             type: "POST"
+
         });
-
-
-
     }
-
-
-
-
-
-
 
     $(document).delegate('.btn_canc', 'click', function () {
 
-
-
         $('.pl_add').css('height', '19px');
-
-
-
         $('.pl_addevnt').css('display', 'none');
-
-
-
-        //$('.planner').css('height', '325px');
-
-
-
         $('.pl_add').attr("placeholder", "+ Add new Event");
-
-
-
         $('.pl_add').val("");
-
-
-
-
-
-
-
     });
-
 
     $(document).delegate(".pl_add", "click", function () {
-
-
-
-
-
-
-
         $('.pl_add').css('height', '34px');
-
-
-
         $('.pl_addevnt').css('display', 'block');
-
-
-
-        // $('.planner').css('height', '409px');
-
-
-
         $('.pl_add').attr("placeholder", "Name this event...");
-
-
-
-
-
-
-
     });
 
-
-
-
-
-
-
     $(document).on("click", function (e) {
+
         var elem = $(e.target);
         if (!elem.hasClass("evnt_inps") &&
                 !elem.hasClass("set_date")) {
+
             $('.calLayer').css('display', 'none');
+
         }
         if (elem.hasClass("days") ||
                 elem.hasClass("m-prev") ||
                 elem.hasClass("m-next") ||
                 elem.hasClass("minical-header") ||
                 elem.hasClass("minical-h1")) {
+
             $('.calLayer').css('display', 'block');
+
         }
 
         if (!elem.hasClass("planner_dropdown")) {
+
             $('.pl_options').hide();
+
         }
+
     });
+
 });
-
-
-
-
-
-
 
 $(document).ready(function () {
 
 
-
-    $(function () {
-
-
-
-        $('#nevt-desc').autogrow();
-
-
-
-        $('#nevt-desc').css('overflow', 'hidden').autogrow()
-
-
-
-    });
-
-
-
-
-
-
-
     var renderEventAct0 = [];
-
-
-
     var renderEventAct1 = [];
-
-
-
-
-
-
-
     $("#edit-picture").hide();
-
-
-
-
-
-
-
     $(document).delegate("#profile-picture", "mouseover", function () {
 
-
-
         $("#edit-picture").show();
 
-
-
     });
-
-
-
     $(document).delegate("#edit-picture", "mouseover", function () {
 
-
-
         $("#edit-picture").show();
 
-
-
     });
-
-
 
     $(document).delegate("#edit-picture", "mouseout", function () {
 
-
-
         $("#edit-picture").hide();
 
-
-
     });
-
-
 
     $(document).delegate("#profile-picture", "mouseout", function () {
 
-
-
         $("#edit-picture").hide();
 
-
-
     });
-
-
-
-
-
-
 
     $(".class-name").each(function (index) {
 
-
-
         if ($(this).text().length > 21) {
-
-
-
-            //alert($(this).attr("id"));
-
-
 
             $(this).text($(this).text().substr(0, 18) + "...");
 
-
-
         }
 
-
-
     });
-
-
 
     $(".club-name").each(function (index) {
 
 
-
         if ($(this).text().length > 21) {
-
-
-
-            //alert($(this).attr("id"));
-
 
 
             $(this).text($(this).text().substr(0, 18) + "...");
 
-
-
         }
 
-
-
     });
-
-
-
-
-
-
-
     $(document).delegate(".editcolumn", "keyup", function () {
-
 
 
         if ($(this).attr("id") == "editcolumn-u") {
 
-
-
             ut = $(this).val();
 
-
-
         }
-
-
-
-
-
-
-
         if ($(this).attr("id") == "editcolumn-a") {
 
-
-
             mat = $(this).val();
-
-
 
         }
 
@@ -500,11 +328,14 @@ $(document).ready(function () {
 
 
 
+
             mit = $(this).val();
 
 
 
+
         }
+
 
 
 
@@ -520,11 +351,14 @@ $(document).ready(function () {
 
 
 
+
         if ($(this).hasClass("emailtext")) {
 
 
 
+
             eml = $(this).val();
+
 
 
 
@@ -536,7 +370,9 @@ $(document).ready(function () {
 
 
 
+
             eml = $(this).val();
+
 
 
         }
@@ -547,11 +383,14 @@ $(document).ready(function () {
 
 
 
+
             btx = $(this).val();
 
 
 
+
         }
+
 
 
 
@@ -575,6 +414,7 @@ $(document).ready(function () {
 
 
 
+
         $("#blackcanvas2").fadeOut();
 
 
@@ -584,6 +424,7 @@ $(document).ready(function () {
 
 
         if ($(this).hasClass("ann-submit")) {
+
 
 
 
@@ -611,7 +452,9 @@ $(document).ready(function () {
 
 
 
+
         }
+
 
 
 
@@ -632,6 +475,7 @@ $(document).ready(function () {
 
 
     $(document).delegate(".acabuttons", "click", function () {
+
 
 
 
@@ -735,7 +579,8 @@ $(document).ready(function () {
 
 
 
-                alert(t + "," + desc + "," + st + "," + ed + "," + repeatstt + ". added, please remove me and add ajax here");
+
+                //alert(t + "," + desc + "," + st + "," + ed + "," + repeatstt + ". added, please remove me and add ajax here");
 
 
 
@@ -763,11 +608,11 @@ $(document).ready(function () {
 
                  
 
-                 error: function(json){ alert('Error'); },
+                 error: function(json){ //alert('Error'); },
 
                  
 
-                 success: function(json) { alert('Added Successfully'); }
+                 success: function(json) { //alert('Added Successfully'); }
 
                  
 
@@ -863,6 +708,7 @@ $(document).ready(function () {
 
 
 
+
                     var mth = value.split("::");
 
 
@@ -879,11 +725,14 @@ $(document).ready(function () {
 
 
 
+
                         $("#" + dte).addClass("active0");
 
 
 
+
                     }
+
 
 
 
@@ -896,6 +745,7 @@ $(document).ready(function () {
 
 
                 $.each(renderEventAct1, function (index, value) {
+
 
 
 
@@ -915,11 +765,14 @@ $(document).ready(function () {
 
 
 
+
                         renderEventAct1.splice(index, value);
 
 
 
+
                     }
+
 
 
 
@@ -961,7 +814,9 @@ $(document).ready(function () {
 
                 $("#startdate-input").animate({
 
+
                     marginLeft: '+=70px'
+
 
 
 
@@ -977,11 +832,14 @@ $(document).ready(function () {
 
 
 
+
             }
 
 
 
+
         } else {
+
 
 
 
@@ -1005,7 +863,9 @@ $(document).ready(function () {
 
 
 
+
         }
+
 
 
 
@@ -1022,6 +882,7 @@ $(document).ready(function () {
 
 
     $(document).delegate(".addmore", "click", function () {
+
 
 
 
@@ -1097,6 +958,7 @@ $(document).ready(function () {
 
 
 
+
     });
 
 
@@ -1109,6 +971,7 @@ $(document).ready(function () {
 
 
 
+
         var tid = "";
 
 
@@ -1117,7 +980,9 @@ $(document).ready(function () {
 
 
 
+
             tid = "ed=" + $(this).closest(".class-one").attr("id");
+
 
 
 
@@ -1133,7 +998,9 @@ $(document).ready(function () {
 
 
 
+
             tid = "ed=" + $(this).closest(".club-one").attr("id");
+
 
 
 
@@ -1161,6 +1028,7 @@ $(document).ready(function () {
 
 
 
+
     });
 
 
@@ -1177,6 +1045,7 @@ $(document).ready(function () {
 
 
 
+
         var tid = "";
 
 
@@ -1185,7 +1054,9 @@ $(document).ready(function () {
 
 
 
+
             tid = "ed=" + $(this).closest(".class-one").attr("id");
+
 
 
 
@@ -1201,7 +1072,9 @@ $(document).ready(function () {
 
 
 
+
             tid = "ed=" + $(this).closest(".club-one").attr("id");
+
 
 
 
@@ -1241,6 +1114,7 @@ $(document).ready(function () {
 
 
 
+
     });
 
 
@@ -1250,6 +1124,7 @@ $(document).ready(function () {
 
 
     function retyear(t) {
+
 
 
 
@@ -1265,11 +1140,13 @@ $(document).ready(function () {
 
 
 
+
     }
 
 
 
     function retmonth(t) {
+
 
 
 
@@ -1285,11 +1162,13 @@ $(document).ready(function () {
 
 
 
+
     }
 
 
 
     function retday(t) {
+
 
 
 
@@ -1305,11 +1184,13 @@ $(document).ready(function () {
 
 
 
+
     }
 
 
 
     function rethour(t) {
+
 
 
 
@@ -1325,11 +1206,13 @@ $(document).ready(function () {
 
 
 
+
     }
 
 
 
     function retminute(t) {
+
 
 
 
@@ -1345,7 +1228,9 @@ $(document).ready(function () {
 
 
 
+
     }
+
 
 
 
@@ -1359,89 +1244,150 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-
-
+    
     var blinkflag = 0;
-
-
-
+    
     var moveflag = 0;
-
-
-
+    
     var param1 = new Date();
-
-
-
+    
     var param2 = (param1.getMonth() + 1) + '/' + param1.getDate() + '/' + param1.getFullYear();
-
-
-
+    
     $("#event_date").attr("value", param2);
-
-
-
+    
     $startTime = 0;
-
-
-
+    
     $(document).delegate(".calcell", "click", function () {
+
         if (!$(this).hasClass("disable")) {
-            if (blinkflag == 0) {                
+
+            if (blinkflag == 0) {
                 // To reset the format of the timepicker
                 if ((new Date().getMonth() + 1) >= $("#event_date").val().split('/')[0]) {
+
                     if (new Date().getDate() < $("#event_date").val().split('/')[1]) {
+
                         $('#set_time_24hr').timeAutocomplete({
+
                             increment: 10,
                             formatter: 'ampm',
                             start_hour: 0,
                             value: 'Add a time?'
+
                         });
+
                     }
                     else {
+
                         $('#set_time_24hr').timeAutocomplete({
+
                             increment: 10,
                             formatter: 'ampm',
                             start_hour: new Date().getHours(),
-                            value: 'Add a time?'                            
-                        });                      
+                            value: 'Add a time?'
+
+                        });
+
                     }
+
                 }
                 else {
+
                     $('#set_time_24hr').timeAutocomplete({
+
                         increment: 10,
                         formatter: 'ampm',
                         start_hour: 0,
                         value: 'Add a time?'
+
                     });
+
                 }
+
             }
+
         }
+
     });
 
     $(document).delegate('#event_date', 'click', function () {
+
         $('.calLayer').toggle();
+
     });
 
     // set time options for time picker 24hr
     if ((new Date().getMonth() + 1) >= $("#event_date").val().split('/')[0]) {
+
         if (new Date().getDate() <= $("#event_date").val().split('/')[1]) {
+
             $startTime = new Date().getHours();
+
         }
+
     }
     var curDt = new Date(new Date().getTime() + (10 * 60000));
     $currentTime = curDt.getHours() + ':' + ("0" + curDt.getMinutes()).slice(-2) + ':00';
+
+
     $('#set_time_24hr').timeAutocomplete({
+
         increment: 10,
         formatter: 'ampm',
         start_hour: $startTime,
         value: $currentTime
+
     });
+    
+
+});
+
+
+
+$(document).ready(function () {
+
+    //To load event book or calendar from planner 
+    var qs = (function (a) {
+
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i) {
+
+            var p = a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+
+        }
+        return b;
+
+    })(window.location.search.substr(1).split('&'));
+
+    var postUrl = "php/planner_events.php";
+    if (window.location.toLocaleString().toLowerCase().search("home") > 0) {
+
+        postUrl = "php/planner_events.php";
+
+    }
+    else if (window.location.toLocaleString().toLowerCase().search("class") > 0) {
+
+        postUrl = "php/class_planner_events.php";
+
+    }
+    else if (window.location.toLocaleString().toLowerCase().search("clubs") > 0) {
+
+        //alert("clubs...");
+
+        postUrl = "php/club_planner_events.php";
+
+    }
+
+    var fetchPlannerEvents = 0;
 
     function UpdateEvents() {
+
         var dt = new Date();
-        var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
-        var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
+        //var now_time = ("0" + dt.getHours()).slice(-2) + ':' + ("0" + new Date().getMinutes()).slice(-2) + ':00';
+        //var today_date = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
         var hours = dt.getHours() == 0 ? "12" : dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours();
         var minutes = (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
         var ampm = dt.getHours() < 12 ? "am" : "pm";
@@ -1449,41 +1395,82 @@ $(document).ready(function () {
 
 
         if ($('#result').prop('childNodes').length >= 2) {
+
             $(".upc-1").each(function (index) {
+
                 if ($(this).children('.upc-floatL').children(':last').text() == formattedTime) {
                     //$('#result').append(getEvents(today_date, now_time));
                     $.ajax({
-                        url: "php/planner_events.php",
-                        data: { date: today_date, time: now_time },
+
+                        url: postUrl,
+                        data: //{},//date: today_date, time: now_time },
+                            postUrl == "php/planner_events.php" ?
+                            {} :
+                            {
+
+                                class_id: qs["class_id"], club_id: qs["group_id"]
+
+                            },
                         type: "POST",
                         dataType: "json",
                         success: function (responseText) {
+                            //alert(responseText);
                             document.getElementById("result").innerHTML = responseText.echo_string;
+
                         },
                         error: function (responseText) {
-                            alert("failure");
+
+                            //alert("failure");
+
                         }
+
                     });
-                }         
+
+                }
+
             });
+
         }
         else {
-            $.ajax({
-                url: "php/planner_events.php",
-                data: { date: today_date, time: now_time},
-                type: "POST",
-                dataType: "json",
-                success: function (responseText) {
-                    document.getElementById("result").innerHTML = responseText.echo_string;
-                    $('#divPlanner').show();
-                },
-                error: function (responseText) {
-                    var test = responseText.responseText;
-                }
-            });
+
+            if (fetchPlannerEvents == 0) {
+
+                fetchPlannerEvents++;
+
+                $.ajax({
+
+                    url: postUrl,
+                    data: //{},//date: today_date, time: now_time },
+                        postUrl == "php/planner_events.php" ?
+                            {} :
+                            {
+
+                                class_id: qs["class_id"], club_id: qs["group_id"]
+
+                            },
+                    type: "POST",
+                    dataType: "json",
+                    success: function (responseText) {
+
+                        document.getElementById("result").innerHTML = responseText.echo_string;
+                        $('#divPlanner').show();
+
+                    },
+                    error: function (responseText) {
+
+                        var test = responseText.responseText;
+                        //alert("eror1");
+                    }
+
+                });
+
+            }
+
         }
+
     }
 
     setInterval(function () { UpdateEvents() }, 1000);
+    UpdateEvents();
 
 });

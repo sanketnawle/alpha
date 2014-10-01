@@ -1,0 +1,399 @@
+[27-Aug-2014 12:45:58 America/Denver] PHP Fatal error:  Call to undefined function get_user() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 14
+[27-Aug-2014 12:46:21 America/Denver] PHP Fatal error:  Call to undefined function get_user() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 14
+[27-Aug-2014 12:46:40 America/Denver] PHP Fatal error:  Call to undefined function get_user() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 14
+[27-Aug-2014 12:46:44 America/Denver] PHP Fatal error:  Call to undefined function get_user() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 14
+[27-Aug-2014 12:51:06 America/Denver] PHP Fatal error:  Call to undefined function get_user_dp() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 17
+[27-Aug-2014 12:52:05 America/Denver] PHP Warning:  Illegal string offset 'gender' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 20
+[27-Aug-2014 12:57:05 America/Denver] PHP Warning:  Illegal string offset 'gender' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_gender_data.php on line 20
+[27-Aug-2014 14:09:28 America/Denver] PHP Fatal error:  Call to undefined function get_student_attribs() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 24
+[27-Aug-2014 14:10:00 America/Denver] PHP Fatal error:  Call to undefined function get_student_attribs() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 24
+[27-Aug-2014 14:10:04 America/Denver] PHP Fatal error:  Call to undefined function get_student_attribs() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 24
+[27-Aug-2014 14:10:41 America/Denver] PHP Fatal error:  Call to undefined function get_student_attribs() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 24
+[27-Aug-2014 14:10:47 America/Denver] PHP Fatal error:  Call to undefined function get_student_attribs() in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 24
+[27-Aug-2014 14:11:52 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 393
+[27-Aug-2014 14:23:52 America/Denver] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 397
+[27-Aug-2014 14:33:56 America/Denver] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 397
+[28-Aug-2014 13:08:09 America/Denver] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 397
+[28-Aug-2014 13:11:50 America/Denver] PHP Fatal error:  Call to a member function execute() on a non-object in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 400
+[28-Aug-2014 13:33:13 America/Denver] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 399
+[28-Aug-2014 13:33:13 America/Denver] PHP Notice:  Undefined index: student_type in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 28
+[28-Aug-2014 13:33:13 America/Denver] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 399
+[28-Aug-2014 13:33:13 America/Denver] PHP Notice:  Undefined index: student_type in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 28
+[28-Aug-2014 13:40:24 America/Denver] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 397
+[28-Aug-2014 13:43:38 America/Denver] PHP Notice:  Undefined variable: user_attribs in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 40
+[28-Aug-2014 13:45:23 America/Denver] PHP Fatal error:  Cannot use object of type mysqli_result as array in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 41
+[28-Aug-2014 13:45:26 America/Denver] PHP Fatal error:  Cannot use object of type mysqli_result as array in /home6/campusla/public_html/urlinq/beta/php/analytics/club_class_rank_data.php on line 41
+[28-Aug-2014 13:47:17 America/Denver] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home6/campusla/public_html/urlinq/beta/includes/common_functions.php on line 246
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 7
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 10
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 13
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:37:49 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:37:49 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 16
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 7
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 10
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 13
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:41:50 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 21:41:50 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 16
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 7
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 10
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 13
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 23:12:16 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[28-Aug-2014 23:12:16 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 16
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 7
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 10
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 13
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:28:07 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:28:07 America/Denver] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 16
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 6
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 7
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 10
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 12
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 13
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: con in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:29:15 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 15
+[29-Aug-2014 11:29:15 America/Denver] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 16
+[29-Aug-2014 11:35:00 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:36:58 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:39:20 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:48:12 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:49:20 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:51:17 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[29-Aug-2014 11:51:34 America/Denver] PHP Notice:  Undefined variable: group_id in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_count_data.php on line 9
+[30-Aug-2014 23:36:52 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to authenticate user. Error: "Error=BadAuthentication
+Url=https://www.google.com/accounts/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvR6XndoAf8rxpwb3qHgain0ZIdUsWQ3NtjdIU9iVlX_h4bkoFIpG9NnAHkfKtuhnWoFI8u8R9fCXZIsf3gGbredPDSKt-qKfwdnO2l3Q6VgZ1fGy92PHE3gBie0CuAig8rve8qiDgbfL9Bhcsa0RgEOk3uU7Ae8ZZfQeCu8fa0CO7Hjh86CQqgqHqmd-o-t_TDSfqrR8RwIO0xB6VMsF0C64u05Q
+Info=WebLoginRequired
+"' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:418
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php(62): gapi->authenticateUser('urlinq5@gmail.c...', 'Daisy@619')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(11): gapi->__construct('urlinq5@gmail.c...', 'Daisy@619')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 418
+[30-Aug-2014 23:46:33 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to authenticate user. Error: "Error=BadAuthentication
+Url=https://www.google.com/accounts/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbuY-K53113ZcnLM_OZan3q-dHDw0eOaaVPJy9Nqxsznpys2sueJKKRHyJ95oYVMWHbzGUr-1O0cYP7E_4kCGLn8KE_-OMEC43yQNN2j8aMyRiKN_hRx_Qi0S1mtaR17Mgbu4CZhJ8sxqIH5NHRzJ_1xJYk9GWV4XCmA2dIdSgqMrr2cZVO3Db9JyTeEeee8WQESo0MpGvn7_-XSs9O5eNHLHsMdpg
+Info=WebLoginRequired
+"' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:418
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php(62): gapi->authenticateUser('urlinq5@gmail.c...', 'Daisy@619')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(11): gapi->__construct('urlinq5@gmail.c...', 'Daisy@619')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 418
+[30-Aug-2014 23:51:39 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to authenticate user. Error: "Error=BadAuthentication
+Url=https://www.google.com/accounts/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbuoMfAJaFyschMvjQx2BKxeKWiPt86DLu_YTgu66WGVb1XiJJeeWbub2WnW7DD2C1kCvSUmDzag_Q_98O92-Ev7LvnShmWkc75erkdpAvPlGAJQ3OCrWqqQDkALCtGfuQG4icoCrp3ofmZ_ISBR-0WI0hHWb99v6I7bQSom3iRIk4FDDNNo_3yEdmxHXEzCjaHgh1RS3ChsxIjopJ1Jku0-Fg6vnw
+Info=WebLoginRequired
+"' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:418
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php(62): gapi->authenticateUser('urlinq5@gmail.c...', 'Daisy@619')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(11): gapi->__construct('urlinq5@gmail.c...', 'Daisy@619')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 418
+[30-Aug-2014 23:53:34 America/Denver] PHP Notice:  Undefined offset: 0 in /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php on line 70
+[30-Aug-2014 23:53:34 America/Denver] PHP Fatal error:  Call to a member function getPageviews() on a non-object in /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php on line 70
+[31-Aug-2014 12:15:01 America/Denver] PHP Notice:  Undefined index: name in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 27
+[31-Aug-2014 12:15:01 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 12:15:01 America/Denver] PHP Notice:  Undefined index: name in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 27
+[31-Aug-2014 12:15:01 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 12:16:13 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 13:50:54 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 13:51:14 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 46
+[31-Aug-2014 14:04:37 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 14:26:10 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 37
+[31-Aug-2014 14:26:29 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_attendance_data.php on line 38
+[31-Aug-2014 14:35:24 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 52
+[31-Aug-2014 14:35:31 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 52
+[31-Aug-2014 21:01:11 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 52
+[31-Aug-2014 21:43:29 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(69): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(25): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[31-Aug-2014 21:46:32 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 52
+[31-Aug-2014 21:46:32 America/Denver] PHP Notice:  Undefined variable: all_members_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 38
+[31-Aug-2014 21:46:32 America/Denver] PHP Fatal error:  Call to a member function close() on a non-object in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 38
+[31-Aug-2014 21:47:38 America/Denver] PHP Notice:  Undefined variable: all_members_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 38
+[31-Aug-2014 21:47:38 America/Denver] PHP Fatal error:  Call to a member function close() on a non-object in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 38
+[31-Aug-2014 22:06:43 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(69): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(25): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[01-Sep-2014 10:54:17 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(69): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(25): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[01-Sep-2014 11:50:28 America/Denver] PHP Notice:  Undefined variable: arr in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_data.php on line 43
+[01-Sep-2014 11:50:41 America/Denver] PHP Notice:  Undefined variable: arr in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_data.php on line 43
+[01-Sep-2014 12:54:36 America/Denver] PHP Warning:  mysqli_fetch_array(): Couldn't fetch mysqli_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_semester_data.php on line 30
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-0 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-1 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-2 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-3 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-4 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-5 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-6 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-7 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-8 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-9 monht) at position 6 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-10 monht) at position 7 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-11 monht) at position 7 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:23 America/Denver] PHP Warning:  DateTime::modify(): Failed to parse time string (-12 monht) at position 7 (h): The timezone could not be found in the database in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 21
+[01-Sep-2014 13:01:47 America/Denver] PHP Warning:  mysqli_fetch_array(): Couldn't fetch mysqli_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_line_graph_year_data.php on line 30
+[01-Sep-2014 14:16:06 America/Denver] PHP Warning:  mysql_insert_id(): Access denied for user 'root'@'localhost' (using password: NO) in /home6/campusla/public_html/urlinq/beta/php/analytics/club_user_add_tag.php on line 22
+[01-Sep-2014 14:16:06 America/Denver] PHP Warning:  mysql_insert_id(): A link to the server could not be established in /home6/campusla/public_html/urlinq/beta/php/analytics/club_user_add_tag.php on line 22
+[01-Sep-2014 14:18:25 America/Denver] PHP Fatal error:  Cannot use object of type mysqli_result as array in /home6/campusla/public_html/urlinq/beta/php/analytics/club_user_add_tag.php on line 18
+[01-Sep-2014 14:23:29 America/Denver] PHP Warning:  mysql_insert_id() expects parameter 1 to be resource, object given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_user_add_tag.php on line 23
+[01-Sep-2014 19:38:20 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:38:20 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:38:20 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:39:15 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:43:14 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 19:58:47 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 31
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 19:59:05 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 19:59:05 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 19:59:05 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 19:59:05 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 19:59:05 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:00:48 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:00:48 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:00:48 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:00:48 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:00:48 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  mysqli_fetch_array(): Couldn't fetch mysqli_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:03:26 America/Denver] PHP Warning:  mysqli_fetch_array(): Couldn't fetch mysqli_result in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 25
+[01-Sep-2014 20:03:26 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:06:09 America/Denver] PHP Notice:  Undefined index: invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 61
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Illegal string offset 'user_type' in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 38
+[01-Sep-2014 20:08:31 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:08:31 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 27
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Notice:  Undefined index: event_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:09:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 50
+[01-Sep-2014 20:11:38 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 32
+[01-Sep-2014 22:19:16 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 32
+[02-Sep-2014 16:05:44 America/Denver] PHP Notice:  Undefined index: accepted_invite_count in /home6/campusla/public_html/urlinq/beta/php/analytics/club_event_data.php on line 32
+[03-Sep-2014 21:06:46 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:07:36 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:08:59 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:09:04 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:09:07 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:09:11 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:09:14 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:10:46 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:10:50 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:10:54 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[03-Sep-2014 21:10:59 America/Denver] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 22
+[04-Sep-2014 09:34:23 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(78): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(37): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[07-Sep-2014 11:58:49 America/Denver] PHP Notice:  Undefined index: HTTP_ORIGIN in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 10
+[07-Sep-2014 11:58:56 America/Denver] PHP Notice:  Undefined index: HTTP_ORIGIN in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 10
+[07-Sep-2014 12:02:58 America/Denver] PHP Notice:  Undefined index: HTTP_ORIGIN in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 10
+[07-Sep-2014 12:03:06 America/Denver] PHP Notice:  Undefined index: HTTP_ORIGIN in /home6/campusla/public_html/urlinq/beta/php/analytics/club_attendance_data.php on line 10
+[12-Sep-2014 09:52:57 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[12-Sep-2014 15:47:52 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 15:11:25 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 15:12:25 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 15:20:40 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 15:21:42 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 15:24:25 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 16:40:18 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(78): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(37): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[13-Sep-2014 17:06:26 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 18:11:23 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'GAPI: Failed to request report data. Error: "GDatainvalidParameterInvalid value 'ga:dimension2==' for filters parameter."' in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php:218
+Stack trace:
+#0 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(78): gapi->requestReportData('78486849', Array, Array, NULL, 'ga:dimension2 =...')
+#1 /home6/campusla/public_html/urlinq/beta/php/analytics/club_page_view_data.php(37): get_all_views('')
+#2 {main}
+  thrown in /home6/campusla/public_html/urlinq/beta/php/analytics/gapi.class.php on line 218
+[13-Sep-2014 18:29:04 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[13-Sep-2014 18:30:49 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 10:14:02 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 14:39:00 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 21:25:32 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 21:30:43 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 21:40:50 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 21:41:21 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[14-Sep-2014 23:20:50 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[15-Sep-2014 11:28:17 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[15-Sep-2014 12:37:42 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[16-Sep-2014 18:06:02 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[19-Sep-2014 19:38:22 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[20-Sep-2014 13:29:17 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[20-Sep-2014 13:29:29 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[20-Sep-2014 13:30:18 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[20-Sep-2014 13:30:27 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[21-Sep-2014 18:06:45 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[23-Sep-2014 11:29:52 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[23-Sep-2014 17:30:52 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[23-Sep-2014 20:26:15 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[23-Sep-2014 22:21:27 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[24-Sep-2014 11:26:07 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[24-Sep-2014 12:26:57 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[24-Sep-2014 18:29:33 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[24-Sep-2014 18:30:09 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 09:00:54 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 12:19:49 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:32:51 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:37:11 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:38:12 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:51:17 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:52:10 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 22:53:16 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[25-Sep-2014 23:21:22 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[26-Sep-2014 15:33:20 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[27-Sep-2014 20:16:53 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[27-Sep-2014 21:09:56 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54
+[28-Sep-2014 12:48:57 America/Denver] PHP Warning:  Division by zero in /home6/campusla/public_html/urlinq/beta/php/analytics/club_member_data.php on line 54

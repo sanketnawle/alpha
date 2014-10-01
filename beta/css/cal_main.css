@@ -153,6 +153,8 @@ body {
     //right:0px;
     //margin: auto;
     margin-left: -2px;
+    margin-bottom: 44px;
+    border-right: 1px solid rgb(233, 233, 233);
 }
 
 .cal_wrapper {
@@ -315,7 +317,7 @@ color: white;
 #event-new {
     position: relative;
     height: 65px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 10px;    padding-top: 5px; border-radius: 4px; 
     width: 221px; 
 }
@@ -795,7 +797,7 @@ color: white;
 .evt-ready-edit {
     color: #F0544E;
     cursor: pointer;
-    text-decoration: underline;
+
 }
 
 .editor {
@@ -935,12 +937,12 @@ input[type="text"] {
 }
 
 .whitehref:hover {
-    text-decoration: underline;
+
     color: #1fbcee;
 }
 
 .whitehref:active {
-    text-decoration: underline;
+
     color: #1fbcee;
 }
 
@@ -1002,41 +1004,34 @@ input[type="text"] {
 
 
 .button-block {
-    width: 13px;
-    height: 13px;
-    border-radius: 1px;
-    /* TODO: prefix; */
-    margin: 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;    
+    margin: 5px auto;
     position: relative;
     display: block;
     position: relative;
-    border: 10px solid transparent;
-    border-width: 1.8px;
-    border-style: solid;
+    border: 3px solid transparent;        
     cursor: pointer;
     background-color: white;
     border-color: #FF3610;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     box-sizing: border-box;
     -webkit-transition: border 600ms ease-in-out;
     -moz-transition: border 600ms ease-in-out;
     -ms-transition: border 600ms ease-in-out;
     -o-transition: border 600ms ease-in-out;
-    transition: border 600ms ease-in-out;
+    transition: border 600ms ease-in-out;    
 }
 
-    .button-block button {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 30px;
-        height: 30px;
+    .button-block button {                      
+        width: 33px;
+        height: 33px;
         background: transparent;
-        border: 0;
-        margin: -15px 0 0 -15px;
+        border: 0;        
         cursor: pointer;
     }
 
@@ -1067,8 +1062,10 @@ input[type="text"] {
     }
 
 .button-block.canceled {
-    height: 20px;
-    width: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;    
+    margin: 5px auto;
     border-width: 3px;
     border-color: #37ef74;
 }
@@ -1237,13 +1234,14 @@ input[type="text"] {
 .fixed-cal-fbar {
     height: 95px;
     background-color: rgba(255, 255, 255, 1);
-    width: 100%;
+    width: 99.8%;
     position: absolute;
     border-top: 1px solid white;
     z-index: 10;
-    border-bottom: 1px solid #575757;
+    border-bottom: 1px solid #D1D1D1;
     margin-top: -40px;
     box-shadow: none;
+    -webkit-box-shadow: rgb(238, 238, 238) 1px 0px 0px 0px; -moz-box-shadow: rgb(238, 238, 238) 1px 0px 0px 0px,rgb(243, 243, 243) 2px 0px 5px 1px; box-shadow: rgb(238, 238, 238) 1px 0px 0px 0px,rgb(243, 243, 243) 2px 0px 5px 1px;
 }
 
 .fixed-events-tabs {
@@ -1257,6 +1255,8 @@ input[type="text"] {
     margin-top: -40px;
     opacity: 0;
     box-shadow: none;
+    border-right: 1px solid #e2e2e2;
+    border-bottom-right-radius: 3px;
 }
 
 .group-cal-checker {
@@ -1350,18 +1350,12 @@ input[type="text"] {
 }
 
     .btn-addevent:hover {
-cursor: pointer; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1); box-shadow: 0 1px 1px rgba(0,0,0,0.1); 
-background-color: rgba(28, 109, 230, 0.8); background-image: linear-gradient(top,#22C791,#1AAC7C); background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.15)); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#26000000)"; border-top: none;
+cursor: pointer; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1); -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1); box-shadow: 0 1px 1px rgba(0,0,0,0.1);     
 }
 
-    .btn-addevent:active {
-color: white;
-background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#26000000, endColorstr=#26000000)"; border-color: transparent; box-shadow: inset 0 1px 4px rgba(0,0,0,0.3); 
-background-color: rgba(28, 109, 230, 0.8); 
-background: rgba(28, 109, 230, 0.8); 
--webkit-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 109, 230, 0.57);
-box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 109, 230, 0.57);
- color: #fff;
+    .btn-addevent:active {      
+ -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+color: #fff;
 }
 
 .evnts-incomplete {
@@ -1373,6 +1367,9 @@ box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 
     margin-top: 3px;
     margin-right: 1px;
     padding: 1px 5px 5.5px;
+    border-radius: 600px; background-color: #dc0d17; background-image: -webkit-gradient(linear, center top, center bottom, from(#fa3c45), to(#dc0d17)); background-image: -webkit-linear-gradient(#fa3c45, #dc0d17); color: #fff;  
+    line-height: 13px;
+    padding: 4px 7px; text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
 }
 
 .month-fbtns {
@@ -1440,6 +1437,7 @@ box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 
     display: inline;
     visibility: hidden;
     z-index: 1000;
+    display: none;
     margin-left: -43px;
     margin-top: 5px;
 }
@@ -1451,8 +1449,8 @@ box-shadow: inset 0 1px 4px rgba(0,0,0,0.3), 0 0 0 1px #fff, 0 0 0 4px rgba(28, 
     top: 35px;
     font-size: 12px;
     left: -9px;
-    position: relative;
-    margin-right: 5px;
+    position: relative;  
+
 padding: 5px;
     min-height: 25px;
     -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
@@ -1469,7 +1467,7 @@ padding: 5px;
     margin: 0 auto;
     position: relative;
     padding-right: 2px;
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
 .explain-2-box b {
@@ -1514,7 +1512,15 @@ padding: 5px;
     margin-top: 15px;
 }
 
+.cals-personal-hider {
+border:none; 
+box-shadow:none; 
+cursor:pointer;
+}
+.cals-personal-hider:hover {
+color: #666;
 
+}
 .radio-btn input[type="radio"], .check-box input[type="checkbox"] {
     visibility: hidden;
 }
@@ -1701,21 +1707,21 @@ float:right;
     width: 165px;
     height: 78px;
     position: relative;
-    margin-left: 80px;
+    margin-left: 28px;
     margin-top: 20px;
 }
 
 .cal_view_monthly {
     background-color: white;
-    padding: 7px 10px 7px 30px;
+    padding: 6.5px 10px 6.5px 30px;
     text-align:left;    
     box-shadow: -1px 1px 3px rgba(0,0,0,0.05);
     border: 1px solid #eee;
-    border-right: 1px solid transparent;
+    font-weight: 700;
+    font-size: 13px;
+    color: #4D4D4D;
     text-shadow: 0 1px 0 #fff;
-    font-weight: bold;
-    color: #333333;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px;
 }
 
 .active_view {
@@ -1725,27 +1731,28 @@ float:right;
     display: inline-block;
     z-index: 20;
     height: 34px;
-    background-color: #2E80D6;
-    background-image: url(../img/stripe_ptrn.png);
+    background-color: #3c4246;
     background-repeat: repeat;
     border-radius: 4px 0px 0px 4px;
+    background-image: url(../img/stripe_ptrn.png);
 }
 
 .cal_view_events {
     padding: 7px 10px 7px 30px;
     text-align:left;    
     text-shadow: 0 1px 0 #fff;
-    font-weight: lighter;
-    color: #333333;
+    font-weight: 400;
+    color: #029acf;
     border-radius: 4px 0px 0px 4px;
     border: 1px solid transparent;
     cursor: pointer;
     margin-top: 3px;
+    font-size: 13.5px;
 }
 
     .cal_view_events:hover {
         /*box-shadow: inset -4px 0 0 #ccc;*/
-        text-decoration: underline;
+
     }
 
 .event_view {
@@ -1764,7 +1771,7 @@ float:right;
     background-color: rgba(247, 248, 250, 0.25);
     -webkit-box-shadow: 0 0 12px rgba(0,0,0,.1);
     -moz-box-shadow: 0 0 12px rgba(0,0,0,.1);
-    box-shadow: 0 0 12px rgba(0,0,0,.1);
+    box-shadow: 3px 0px 4px 0px rgba(133, 133, 133, 0.1);
 }
 
 .event-tabs-border {
@@ -1813,7 +1820,7 @@ float:right;
 
 
 span.cal-group-title:hover {
-    text-decoration: underline;
+
     color: black;
     cursor: pointer;
 }
@@ -2047,23 +2054,21 @@ em.caret-transform {
     overflow-y: hidden;
     font-size: 1.4rem;
     border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     width: 100%;
     height: 45px;
-    background-color: #e6e6e6;
-    box-shadow: 0 -1px 1px rgba(0,0,0,.06);
+    background-color: #e6e6e6;    
     background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
-    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
-    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
     padding-right: 1px;
-    border-top: 1px solid rgba(0, 0, 0, 0.14);
+    border: 1px solid #E6E6E6;
+
 }
 
 .qa_inputcontainer {
     top: 3px;
     left: 12px;
     position: absolute;
-    width: 86%;
+    width: 91%;
     right: 0;
     color: #222;
 }
@@ -2143,7 +2148,7 @@ i.notjoin {
 
 .iComments .comment {
     min-height: 32px;
-    margin: 0 0 9px;
+    margin: 9px 0 0px;
     opacity: .97;
     -webkit-transition: opacity .2s;
     -moz-transition: opacity .2s;
@@ -2165,11 +2170,11 @@ background-size: 100% 100%;
 opacity: 1;
 /*background-image: url('../img/user_pic.jpg');*/
 float: left;
-margin-right: 5px;
+margin-left: 5px;
 }
 
 .imageBlock .ibContent {
-    margin-left: 32px;
+    margin-left: 22px;
     padding: 0 8px 0 20px;
     color: #222;
 }
@@ -2186,11 +2191,11 @@ margin-right: 5px;
     line-height: 20px;
     text-align: left;
     position: relative;
-    top: 1px;
+    top: -3px;
 }
 
     .ibContent .ibNameLink:hover {
-        text-decoration: underline;
+
         color: black;
     }
 
@@ -2205,9 +2210,8 @@ margin-right: 5px;
     text-align: left;
     display: block;
     line-height: 13px;
-    margin-top: 0px;
-    position: relative;
-    bottom: 1px;
+    margin-top: -6px;
+    position: relative;    
 }
 
 
@@ -2377,12 +2381,12 @@ input:focus {
 
             .event_group div a:hover .event_group div a:after {
                 color: rgba(0,0,0,1);
-                text-decoration: underline;
+
             }
 
             .event_group div a:hover {
                 color: rgba(0,0,0,.9);
-                text-decoration: underline;
+
             }
 
 .event_group {
@@ -2413,7 +2417,7 @@ input:focus {
 
         .event_host div a:hover {
             color: rgba(0,0,0,.9);
-            text-decoration: underline;
+
         }
 
 .event_creator .creator_Image {
@@ -2463,7 +2467,7 @@ input:focus {
 }
 
     .event_creator:hover > .creator_name {
-        text-decoration: underline;
+
         color: black;
     }
 
@@ -2568,32 +2572,6 @@ a.innerPic {
         transform: rotate(-45deg); /* TODO: prefix */
         -webkit-transform: rotate(-45deg); /* TODO: prefix */
     }
-
-.button-block.canceled {
-    height: 13px;
-    width: 13px;
-    border-width: 1.8px;
-    border-color: #00c692;
-    border-radius: 2px;
-    background-color: white;
-    transform: -webkit-scale(5);
-}
-
-    .button-block.canceled .mark {
-        background-color: #000000;
-    }
-
-        .button-block.canceled .mark.x {
-            right: 13px;
-            top: 9px;
-            height: 13px;
-        }
-
-        .button-block.canceled .mark.xx {
-            height: 6px;
-            top: 15.3px;
-            left: 10px;
-        }
 
 .centerText {
     position: absolute;
@@ -2738,20 +2716,30 @@ border-radius:4px;
 span.events-this-month{
     display: inline-block;
 padding: 2px;
-border-radius: 600px;
+border-radius: 600px; 
+    background-color: #00C994; 
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#00C994)); 
+    background-image: -webkit-linear-gradient(#02e2a7, #00C994); color: #fff; height: 13px; padding: 3px 4px; 
+    border-radius: 9999px;
 background-color: #2e78c5;
 color: #fff;
-height: 13px;
-padding: 3px 4px;
-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
+
+    height: 12px;
+
+
 font-size: 10px;
-margin-right:-2px;
+
+    margin-right: 0px;
 color: white;
 font-weight: bolder;
-font-size: 13px;
-text-indent: -1px;
+
+    font-size: 13px;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+    text-indent: 0px;
 text-align: center;
-padding: 1px 5px 5.5px;
+
+    padding: 5px 7px;
+    line-height: 13px;
 }
 
 .cal-left-sec-container{    
@@ -2812,7 +2800,9 @@ color: #888888;
 text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
-text-indent: 3px;
+
+    text-shadow: 0 1px 1px rgba(171, 175, 172, 0.29);
+    text-indent: 3px;
 
     font-weight: bold;
  
@@ -2870,14 +2860,14 @@ float: right;
 }
 
 span.tdt_0{
-font-weight:600;
-color:#6a7480;
+font-weight: 500;
+color: #565a5c;
 font-family: 'Open Sans', sans-serif;
 }
 
 span.tdt_1{
 font-weight:200;
-color:#6a7480;
+color: #565a5c;
 font-family: 'Open Sans', sans-serif;
 }
 
@@ -2901,9 +2891,7 @@ div.cal-fbar-wrap .month-events{
 }
 
 @media(max-width:1150px){
-    div.cal-fbar-wrap .month-events{
-        display:none;
-    }
+
     div.midsec div.incomplete-wrap{
         display:none;
     }

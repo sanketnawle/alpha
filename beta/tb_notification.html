@@ -1,115 +1,187 @@
-<!DOCTYPE html> 
 <html>
 <head>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-<script src = "js/tb_notification.js"></script>
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src = "js/tb_notification.js"></script>-->
+<script>
+	var timestamp=null;
+/*To get New notifications and the number on top. 
+This function is using long polling*/
+	function getNewNotifications(type){
+	/* 	//alert("a");
+	$.ajax({
+	type: "GET",
+	url: "newNotifications.php",
+	async: true,
+	cache: false,
+	
+	success: function(data){
+	//Display message here
+	//alert(data);
+	$(".noti_icon").find("p").text(data);
+	
+	if (data != 0)
+	{
+		//should be the number displayed. $("#nots").prepend(data);
+		getNotifications('pa');
+
+	}
+	setTimeout("getNewNotifications('latest')",30000);
+	},
+	
+	error: function(XMLHttpRequest,textStatus,errorThrown) {
+	// alert("error: "+textStatus + " "+ errorThrown );
+	setTimeout("getNewNotifications('latest')",30000);
+	}
+	}); */
+	}
+/*To get old notifications. Call this function to get old notifications.*/
+	function getNotifications(type){
+
+		$('#nots').html("<img class='waiting_animation_circletype waiting_animation_circletype_sz45' src='img/waiting_animation_circletype.GIF'>");
+
+		$.ajax({
+		type: "GET",
+		url: "notifications.php",
+		data: {type:type},
+		async: true,
+		cache: false,
+		
+	success: function(data){
+		//Display message here
+		if (data != '')
+		{
+			if(type == 'pa')
+			{
+				$('#nots').html(data);
+			}
+			else
+			{
+				$('#nots').find(".waiting_animation_circletype").remove();
+				$('#nots').append(data);
+			}
+		}
+	},
+	
+	});
+	}
+	 
+	 /*
+	$(document).ready(
+	function()
+	{
+
+
+		$(document).delegate(".noti_remove","click", function(){
+		alert("a");
+		var data = $(this).data('value');
+		var type = $(this).data('type');
+		$.ajax({
+			type: "GET",
+			url: "notif_ops.php",
+			data:{type:"remove", ftype:type, fd:data}
+		})
+	});
+
+
+	});
+	*/
+$(document).ready(function() {
+	setTimeout("getNotifications('pa')",30000);
+	setTimeout("getNewNotifications('all')",30000);
+
+	$(document).delegate(".noti_gen","mouseover",function(e){
+		$(this).find(".notievent_time").hide();
+		$(this).find(".noti_remove").show();
+	});
+
+	$(document).delegate(".noti_gen","mouseout",function(e){
+		$(this).find(".noti_remove").hide();
+		$(this).find(".notievent_time").show();
+	});
+
+
+	$(document).delegate(".noti_remove","mouseover",function(){
+		$(this).find(".card-tag").stop().show();
+	});
+
+	$(document).delegate(".noti_remove","mouseout",function(){
+		$(this).find(".card-tag").delay(1).hide(0);
+	});
+
+	$(document).delegate(".remove_icon","click",function(){
+		$(this).closest(".noti_gen").hide();
+		var data = $(this).closest(".noti_remove").data('value');
+		var type = $(this).closest(".noti_remove").data('type');
+		$.ajax({
+			type: "GET",
+			url: "notif_ops.php",
+			data:{type:"remove", ftype:type, fd:data},
+			success: function(html) {
+                alert("a");
+            },
+            error: function(html){
+            	alert(html);
+            }
+		});
+	});
+
+
+	var notiload = 'yes';
+    var heightOffset = 20;
+            $(".noti_content").scroll(function() {
+                if (notiload == 'yes') {
+                    //alert("as");
+
+                    if ($(this).scrollTop() + heightOffset + $(this).innerHeight() >= $(this).prop("scrollHeight")) {
+                        //alert(heightOffset);
+                        //alert("ac");
+                        //notiload = 'no';
+                        getNotifications("kuan");
+                    }
+                }
+            }); 
+               
+
+
+            $(document).delegate(".unseen_notifications", "click", function() {
+                $(this).find(".noti_gen").css({"background-color": "white"});
+                $(this).removeClass("unseen_notifications");
+                //alert("b");
+                var fd = $(this).find(".noti_remove").data('value');
+                var ftype = $(this).find(".noti_remove").data('type');
+                var type= 'mark_seen';
+                //alert("a");
+                $.ajax({
+                    type: "POST",
+                    url: "notif_ops.php",
+                    data: {type: type, fd: fd, ftype:ftype},
+                    success: function(html) {
+
+                    },
+                    error: function(html) {
+
+                    }
+                });
+            });
+
+});   
+
+	
+</script>
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" type="text/css" href="css/tb_notification.css">
 </head>
 <body>
+<div class='g_noti_wedge'></div>
 <div class='noti_window'>
 	<div class='noti_head'>
 		<span>Notifications<span>
 		<a class='seen_all'>Mark as Seen</a>
 	</div>
-	<div class='noti_content'>
-
-	<div class='noti_gen'>
-		<div class='gen_left'>
-			<div class='gen_noti_icon' style='background-image:url(testpic/dummypic.png);'></div>
-		</div>
-		<div class='gen_right'>
-			<div class='notievent_des'><span class='keyword'>Henry Kautz</span> posted in <span class='keyword'>CSUG</span> : "In this summer, there is a REU oppotunity ..."</div>
-		</div>
-		<div class='notievent_time'>33 mins</div>
-			<div class='noti_remove'>
-				<i class='remove_icon'></i>
-				<div class = "card-tag">
-					<div class = "tag-wedge"></div>
-					<div class = "tag-box">
-						<span>Hide</span>
-					</div>									
-				</div>
-			</div>
-	</div>
-
-	<div class='noti_gen'>
-		<div class='gen_left'>
-			<div class='gen_noti_icon' style='background-image:url(testpic/dummypic.png);'></div>
-		</div>
-		<div class='gen_right'>
-			<div class='notievent_des'><span class='keyword'>Henry Kautz</span> followed you</div>
-		</div>
-		<div class='notievent_time'>2 hrs</div>
-			<div class='noti_remove'>
-				<i class='remove_icon'></i>
-				<div class = "card-tag">
-					<div class = "tag-wedge"></div>
-					<div class = "tag-box">
-						<span>Hide</span>
-					</div>									
-				</div>
-			</div>
-	</div>
-
-	<div class='noti_gen'>
-		<div class='gen_left'>
-			<div class='gen_noti_icon' style='background-image:url(testpic/dummypic.png);'></div>
-		</div>
-		<div class='gen_right'>
-			<div class='notievent_des'><span class='keyword'>Henry Kautz</span> liked your post : "8 yrs Scotch tastes like ink."</div>
-		</div>
-		<div class='notievent_time'>33 mins</div>
-			<div class='noti_remove'>
-				<i class='remove_icon'></i>
-				<div class = "card-tag">
-					<div class = "tag-wedge"></div>
-					<div class = "tag-box">
-						<span>Hide</span>
-					</div>									
-				</div>
-			</div>
-	</div>
-
-
-	<div class='noti_head sub_notihead'>
-		<span>Who to follow<span>
-	</div>
-
-	<div class='noti_gen'>
-		<div class='gen_left'>
-			<div class='gen_noti_icon' style='background-image:url(testpic/dummypic.png);'></div>
-		</div>
-		<div class='gen_right'>
-			<div class='notievent_des'>
-				<div class='noti_fol'>
-				<span class='keyword span1'>Henry Kautz</span><span class='sub_keyword span2'>20 followers in common</span>
-				</div>
-			</div>
-		</div>		
+	<div id='nots' class='noti_content'>
 		
-		<button class='follow_bt'>Follow</button>
-	</div>
-
-	<div class='noti_gen'>
-		<div class='gen_left'>
-			<div class='gen_noti_icon' style='background-image:url(testpic/dummypic.png);'></div>
-		</div>
-		<div class='gen_right'>
-			<div class='notievent_des'>
-				<div class='noti_fol'>
-				<span class='keyword span1'>Jake Lazarus</span><span class='sub_keyword span2'>20 followers in common</span>
-				</div>
-			</div>
-		</div>		
-		
-		<button class='follow_bt'>Follow</button>
-	</div>
-
-
-	
 	</div>
 	<!--<div class='noti_footer'>
 		

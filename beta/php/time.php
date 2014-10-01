@@ -28,7 +28,7 @@
         $time->setTimezone(new DateTimeZone($_SESSION['user_tz']));
         $new_time = $time->format('Y-m-d H:i:sP');
      
-        $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+        $periods = array("sec", "min", "hr", "day", "week", "month", "year", "decade");
         $lengths = array("60","60","24","7","4.35","12","10");
      
         // $now = time();

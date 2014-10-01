@@ -1,27 +1,27 @@
 <?php
 
-include('popup.html');
+
 
 $echo_string = '
 <div class = "planner">
   <div class = "pl_head">
     <div class = "pl_head_wrap">
       <div class = "floatL">
-        <div class = "text1">My Planner
-        <div class="planner_dropdown"></div>
+        <div class = "text1">';
+if(isset($inpage)) $echo_string .= $inpage;
+else $echo_string .= "My Planner";
+$echo_string.='<div class="planner_dropdown"></div>
 <div class="pl_options" style="display: none;">
-   <div class = "pl_option">View my full planner</div>
+   <div class = "pl_option">View full schedule</div>
     <hr class="post_options_hr"></hr>
-          <div class = "pl_option">View my monthly calendar</div>
-    <hr class="post_options_hr"></hr>
-          <div class = "pl_option">Hide all upcoming</div>
+          <div class = "pl_option">View my monthly calendar</div>    
 </div>
         
         </div>
         <!--<i class="fa fa-caret-down"></i>
         
         <div class = "pl_options">
-          <div class = "pl_option">View my full planner</div>
+          <div class = "pl_option">View full schedule</div>
           <div class = "pl_option">View my monthly calendar</div>
           <div class = "pl_option">Hide all upcoming</div>
         </div>-->
@@ -32,7 +32,7 @@ $echo_string = '
     </div>
   </div>
   <div class = "add_upcoming">
-    <textarea placeholder = "+ Add new Event" class = "pl_add" id="event_name" name="event_name"></textarea>
+    <textarea placeholder = "+ Add new To-Do" class = "pl_add" id="event_name" name="event_name"></textarea>
     <div class = "pl_addevnt">
       <div class = "evnt_inps">
                                                         When<input class = "set_date" name="event_date" id="event_date" readonly />
