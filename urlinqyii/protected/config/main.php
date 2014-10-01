@@ -60,7 +60,8 @@ return array(
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
-//                '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+
+                //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
@@ -73,7 +74,7 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=campusla_urlinq_beta',
+			'connectionString' => 'mysql:host=localhost;dbname=urlinq_beta',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

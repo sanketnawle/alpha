@@ -9,12 +9,12 @@
         href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
         rel='stylesheet' type='text/css'>
     <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
-    <link rel='stylesheet' type='text/css' href='css/backgroundGroup.css'>
-    <link rel='stylesheet' type='text/css' href='css/group.css'>
-    <link rel='stylesheet' type='text/css' href='css/invite_modal.css'>
-    <link rel='stylesheet' type='text/css' href='css/photo_modal.css'>
-    <link rel='stylesheet' type='text/css' href='css/clubs.css'>
-    <link rel='stylesheet' type='text/css' href='css/planner_for_club.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/backgroundGroup.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/group.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/invite_modal.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/photo_modal.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/clubs.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/planner_for_club.css'>
 
     
     <link rel="shortcut icon" href="img/Ur_FavIcon.jpg" type="image/jpg">
@@ -141,17 +141,19 @@
     </div>
 
     <div class='main<?php
-	    if(!is_member_of($con,$_SESSION['user_id'],'club',$_GET['group_id']))
-	    {
-		    echo " non-member";
-	    }
+	    //if(!is_member_of($con,$_SESSION['user_id'],'club',$_GET['group_id']))
+	    //{
+		//    echo " non-member";
+	    //}
     ?>'>
 
         <div class='main-mid-sec'>
 
             <div class='mid_right_sec'>
                 <div class="group-head-sec">
-                    <?php include "php/club_header.php"; ?>
+
+
+                    <?php include "club_header.php"; ?>
                 </div>
                 <div class='midsec'>
 	                <?php
@@ -180,7 +182,7 @@
                         <?php include('analytics.php'); ?>
                     </div>
                     <div class='about-content-tab'>
-                        <?php include('php/club_about_tab.php'); ?>
+                        <?php include('club_about_tab.php'); ?>
                     </div>
                 </div>
             </div>

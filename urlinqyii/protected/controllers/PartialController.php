@@ -25,6 +25,18 @@ class PartialController extends Controller
 
         $this->render('topbar');
     }
+
+
+
+    public function actionFeeds(){
+
+        $posts = Post::model()->findAll();
+
+
+
+        $this->render('feeds',array('posts'=>$posts));
+    }
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
