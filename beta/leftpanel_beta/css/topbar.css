@@ -69,7 +69,7 @@ body {
                     background-position: left center !important;
                 }
 
-                .topbar .left a.menu.active {
+                .topbar:hover .left a.menu.active {
                     box-shadow: 0 0 27px rgba(255, 255, 255, 0.15) inset;
                     border: 1px solid rgba(255, 255, 255, 0.15);
                 }
