@@ -1,0 +1,81 @@
+
+/* css for waiting animation*/
+
+img.waiting_animation_circletype
+{
+	height: 100%;
+	width: 100%;
+}
+
+.waiting_animation_circletype_sz55
+{
+	max-width: 55px;
+	max-height: 55px;
+	margin-left: 8px;
+	margin-top: 7px;
+}
+
+.waiting_animation_circletype_sz75
+{
+	max-width: 75px;
+	max-height: 75px;
+	margin-left: 8px;
+	margin-top: 7px;
+}
+
+
+.waiting_animation_circletype_sz45
+{
+	min-height: 25px;
+	min-width: 45px;
+	max-width: 45px;
+	max-height: 25px;
+	margin-left: 160px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.waiting_animation_circletype_sz10
+{
+	min-height: 10px;
+	min-width: 10px;
+	max-width: 10px;
+	max-height: 10px;
+	margin-left: 260px;
+	margin-top: 3px;
+}
+
+.waiting_animation_beadtype
+{
+	height: 40px;
+	width: 40px;
+}
+
+.bead_animation_adjust_1
+{
+	position: absolute;
+	margin-left: 518px;
+	z-index: 1000;
+	margin-top: 5px;
+}
+
+.circletype_animation_adjust_1
+{
+	position: absolute;
+	z-index: 100;
+	margin-left: 150px;
+}
+
+.circletype_animation_adjust_2
+{
+	position: absolute;
+	z-index: 100;
+	margin-left: 250px;
+}
+/*
+html:
+<img class='waiting_animation_circletype' src='img/waiting_animation_circletype.GIF'>
+
+<img class='waiting_animation_beadtype' src='img/waiting_animation_beadtype.gif'>
+*/
+
