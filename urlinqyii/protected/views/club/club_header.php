@@ -1,30 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kushal kadaba
- * Date: 7/18/14
- * Time: 11:02 AM
- */
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-require_once("dbconnection.php");
+
+//require_once("dbconnection.php");
 
 if(isset($_GET['group_id'])){
     $group=$_GET['group_id'];
 }
 
-$user_id = $_SESSION['user_id'];
 
-$get_group_header_query = "SELECT g.group_id, g.univ_id, g.group_name, g.website, g.dp_blob_id, g.cover_blob_id FROM groups g  
-    WHERE g.group_id = ?";
-$get_group_header_stmt = $con->prepare($get_group_header_query);
-if($get_group_header_stmt != null) {
-    $get_group_header_stmt->bind_param("i",$group); 
-    $get_group_header_stmt->execute();    
-    $get_group_header_stmt->bind_result($group_id, $univ_id, $group_name, $website, $dp_blob, $cover_blob); 
-    $get_group_header_stmt->fetch();  
-    $get_group_header_stmt->close();
+$user_id = $user->user_id;
+
+
 }
 
 $get_group_header_query = "SELECT count(*) as user_count FROM group_users WHERE group_id = ?";

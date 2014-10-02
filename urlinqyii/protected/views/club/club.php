@@ -152,7 +152,16 @@
             <div class='mid_right_sec'>
                 <div class="group-head-sec">
 
+                    <?php
 
+                        //Yii::app()->runController('club/header',array('user'=>$user));
+                        //$this->render('//partial/feeds');
+                        //echo $this->renderPartial('/partial/feeds',array('posts'=>'lol'));
+                        echo $this->renderPartial('club_header',array('user'=>$user));
+
+
+
+                    ?>
                     <?php include "club_header.php"; ?>
                 </div>
                 <div class='midsec'>

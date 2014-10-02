@@ -21915,3 +21915,1584 @@ Stack trace:
 REQUEST_URI=/urlinqyii/profile/img/liked-button.png
 HTTP_REFERER=http://localhost/urlinqyii/profile/1
 ---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "jquery-ui-1.11.0/jquery-ui.min.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jquery-ui-1.11....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/jquery-ui-1.11.0/jquery-ui.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/fb_icon_small.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/fb_icon...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/fb_icon_small.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/nyu.JPG".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/nyu.JPG')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/nyu.JPG
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/student-icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/student...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/student-icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/teacher-icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/teacher...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/teacher-icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/signup-icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/signup-...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/signup-icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/facebook-icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/faceboo...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/facebook-icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/lp_beta.css
+---
+2014/10/02 18:47:30 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#1 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#2 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (156)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 18:52:06 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:52:08 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:52:08 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:52:08 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:52:09 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:52:23 [error] [php] Use of undefined constant asdasd - assumed 'asdasd' (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:24)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#4 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#5 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#6 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#7 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#8 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#9 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#10 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#12 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#13 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#14 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 18:56:27 [error] [php] Undefined variable: _SESSION (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:9)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (9)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:06 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:07 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:07 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:07 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:08 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:26 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:27 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:27 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 18:58:27 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(24): ClubController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionHeader()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(157): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (24)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (157)
+2014/10/02 19:04:32 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:04:45 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:12)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (12)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:05:08 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:05:08 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:05:08 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:05:09 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(13): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (13)
+2014/10/02 19:06:49 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(64): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (64)
+2014/10/02 19:07:18 [error] [php] Undefined index: id (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:70)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/test
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (70)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/10/02 19:07:23 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(79): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionTest()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/test
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (79)
+2014/10/02 19:07:45 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(79): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionTest()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/test
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (79)
+2014/10/02 19:10:13 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php:16)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php(160): ClubController->renderPartial()
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#4 C:\wamp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#5 C:\wamp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(64): ClubController->render()
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#10 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club_header.php (16)
+in C:\wamp\www\alpha\urlinqyii\protected\views\club\club.php (160)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (64)
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery-ui-1.11.0".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('jquery-ui-1.11....')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('jquery-ui-1.11....')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/jquery-ui-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/jquery-ui-1.11.0/jquery-ui.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/clubs.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/clubs.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/topbar...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/topbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/waitin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/waiting_animation.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/preload...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/preload_img.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_not...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_notification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_cal...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_calnotification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "leftmenu.css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('leftmenu.css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('leftmenu.css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/leftmenu.c...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/leftmenu.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/jquery.jscrollpane.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.jscrollpane.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.mousewheel.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/logo.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/add.pn...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/add.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/src/loadin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/logo.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/noise-2.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/noise-2.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundGroup.css
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/white-gradi...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_calnotification.css
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/complete.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/complete.pn...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/complete.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_calnotification.css
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/incomplete.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/incomplete....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/incomplete.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_calnotification.css
+---
+2014/10/02 20:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/Ur_Fav...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/Ur_FavIcon.jpg
+---
+2014/10/02 20:15:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/white-gradi...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_calnotification.css
+---
+2014/10/02 20:15:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/clubs.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/clubs.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery-ui-1.11.0".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('jquery-ui-1.11....')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('jquery-ui-1.11....')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/jquery-ui-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/jquery-ui-1.11.0/jquery-ui.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/topbar...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/topbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/waitin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/waiting_animation.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_not...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_notification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_cal...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_calnotification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "leftmenu.css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('leftmenu.css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('leftmenu.css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/leftmenu.c...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/leftmenu.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.mousewheel.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/jquery.jscrollpane.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.jscrollpane.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/preload...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/preload_img.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/logo.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/src/loadin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/add.pn...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/add.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery-ui-1.11.0".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('jquery-ui-1.11....')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('jquery-ui-1.11....')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/jquery-ui-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/jquery-ui-1.11.0/jquery-ui.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/waitin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/waiting_animation.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/clubs.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/clubs.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/topbar...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/topbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "leftmenu.css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('leftmenu.css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('leftmenu.css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/leftmenu.c...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/leftmenu.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/preload...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/preload_img.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_not...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_notification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/jquery.jscrollpane.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/tb_cal...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/tb_calnotification.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.mousewheel.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.jscrollpane.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/add.pn...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/add.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/img/logo.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/src/loadin...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "profile.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('profile.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('profile.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/profile.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/profile.php?user_id=1
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/10/02 20:16:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
