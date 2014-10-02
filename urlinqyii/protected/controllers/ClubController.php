@@ -59,7 +59,7 @@ class ClubController extends Controller
 
 
 
-
+        aslidjasokdja;sdjaoisdjalksdasd
 
         $this->render('club',array('club'=>$club,'user'=>$user));
 	}

@@ -37,7 +37,9 @@ class ApiController extends Controller
         $password = $_POST['password'];
 
         //TOKEN USERID
-		$this->render('login');
+        $data = array('token'=>'2393GJS');
+
+        $this->renderJSON($data);
 	}
 
 
