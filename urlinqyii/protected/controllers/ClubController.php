@@ -59,8 +59,11 @@ class ClubController extends Controller
 
 
 
+<<<<<<< HEAD
         aslidjasokdja;sdjaoisdjalksdasd
 
+=======
+>>>>>>> upstream/master
         $this->render('club',array('club'=>$club,'user'=>$user));
 	}
 
