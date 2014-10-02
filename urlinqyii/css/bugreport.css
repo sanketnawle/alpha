@@ -1,0 +1,132 @@
+.report_board
+{
+	height: 500px;
+	width: 600px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+	margin:auto;
+	margin-top: 80px;
+	background-color: white;
+
+	border-radius: 5px;
+	color: #333;
+	padding:10px;
+}
+
+.rb_head
+{
+	width: 100%;
+	font-size: 24px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #eaeaea;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.rb_des_p
+{
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.rb_des_t
+{
+	border: none;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	resize: none;
+
+	width: 570px;
+	height: 300px;
+
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 20px;
+	font-weight: lighter;
+	padding-top: 10px;
+	padding-left: 10px;
+
+	font-family: "Open Sans",sans-serif;
+}
+
+.rb_btn_1
+{
+border-radius: 3px;
+outline: medium none;
+margin: 4px 0px -1px;
+box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.15) inset, 0px 1px 3px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+border-width: 1px;
+border-style: solid;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+background: linear-gradient(#30BBE7, #1DA7D3) repeat scroll 0% 0% transparent;
+border-color: #1795BD #1686AA #1682A5;
+padding: 6.5px 10px;
+font-size: 14px;
+font-weight: 200;
+transition: #6363CE 0.15s ease 0s;
+color: #FFF;
+z-index: 400;
+
+margin-right: 10px;
+}
+
+.rb_btn_1:hover
+{
+	background: linear-gradient(#23BEF0, #16ABDA) repeat scroll 0% 0% transparent;
+}
+
+.rb_btn_1:active
+{
+box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+.rb_btn_0
+{
+border-radius: 3px;
+outline: medium none;
+margin: 4px 0px -1px;
+box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.15) inset, 0px 1px 3px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+border-width: 1px;
+border-style: solid;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+background: #ebebeb;
+border-color: #ddd;
+padding: 6.5px 10px;
+font-size: 14px;
+font-weight: 200;
+
+color: #333;
+z-index: 400;
+
+margin-right: 20px;
+}
+
+.rb_btn_0:hover
+{
+	color: rgba(89, 89, 90, 0.95) !important;
+}
+
+.rb_btn_0:active
+{
+	color: rgba(0, 0, 0, 0.9) !important;	
+}
+
+
+.rb_footer
+{
+	float: right;
+	margin-top: 15px;
+}

@@ -1,0 +1,120 @@
+a) CREATING NEW CONTROLLER / MODEL
+    Go to <base url>/gii
+    It will ask you for a password, which is set to 'test'
+    gii is only used in development, and should not be enabled on the production site so the password is not a concern.
+    If you want to change the password on your local machine, go to
+    '/protected/config/main.php' and edit the password in modules['gii']
+
+    'modules'=>array(
+        'gii'=>array(
+            'class'=>'system.gii.GiiModule',
+            'password'=>'test',
+            // If removed, Gii defaults to localhost only. Edit carefully to taste.
+            'ipFilters'=>array('127.0.0.1','::1'),
+        ),
+
+    ),
+
+    Once signed in to /gii/, there are options for
+        Controller Generator
+        Crud Generator
+        Form Generator
+        Model Generator
+        Module Generator
+
+    CONTROLLERS
+        Controllers should handle specific things. For example there should be a different controller for class, department,
+        school, event, etc. To create the controller for class, click controller generator.
+        In the Controller ID field, type Class, then in the Action ID's field you can input
+        different actions you want the controller to have.
+
+    MODELS
+        Models are the interface between the program and the database. If you want to add a new table to the database,
+        reference 'CHANGES TO DATABASE'. Please use singular naming conventions for table names 'department, class, event'.
+        Once the table is created, to to gii model generator. Type the database table name into the first field,
+        then model name in the second. Again, use singular name.
+
+        Once the model is created, it can be used anywhere in the code. If you wanted to query for an event, use
+
+        DOCUMENTATION: http://www.yiiframework.com/doc/guide/1.1/en/database.arr
+
+        $event=Event::model()->find('id=:id', array(':id'=>1));
+
+        To create a new event, use
+
+        $event=new Event;
+        $event->name='Fun Club';
+        $event->attribute=value;
+        $event->save();
+
+
+
+
+
+
+b) CHANGES TO DATABASE
+    DOCUMENTATION: http://www.yiiframework.com/doc/guide/1.1/en/database.migration
+    To make any changes to the database, command line into the '/protected/' folder and type
+
+    yiic migrate create migration_name_here
+
+    a new file will be created in the '/protected/migrations' folder. Go to this file and
+    add your changes to the up() function
+
+    public function up(){
+
+    }
+
+    Example commands:
+
+    $this->createTable('users', array(
+        'id' => 'pk',
+        'name' => 'string NOT NULL',
+        'email' => 'text',
+    ));
+
+    $this->addColumn('posts', 'author_id', 'int AFTER id');
+
+c) CLEAN URL's
+    DOCUMENTATION: http://www.yiiframework.com/doc/guide/1.1/en/topics.url
+    To create clean urls such as urlinq.com/class/1, go to '/protected/config/main.php'
+    and find the urlManager section. Will look like this:
+
+    'urlManager'=>array(
+        'urlFormat'=>'path',
+        'showScriptName'=>false,
+        'caseSensitive'=>false,
+        'rules'=>array()
+
+    Inside of the 'rules' array, add your URL and map it to the corresponding controller
+    For example, If you were working on analytics and you wanted to create a new view that returned
+    event attendance data, you would first create the action function in the 'protected/controllers/AnalyticsController.php'
+    like this:
+     public function actionAttendance(){
+        //Get the data
+
+        //Return the data as json
+        $this->renderJSON($data);
+     }
+
+     then in '/protected/config/main.php' under urlManager['rules'], add
+
+     //urlinq.com/analytics/attendance     <controllerName>/<actionName>
+     'analytics/attendance'        =>       '/analytics/attendance',
+
+     Now when you go to
+     urlinq.com/analytics/attendance, the actionAttendance() function in the Analytics controller will be called
+     and will return JSON
+
+d) REFERENCING CSS/JS/IMAGE/ASSETS
+    All Css/js/assets are to be stored in urlinqyii/css  urlinqyii/js  urlinqyii/assets
+    and should be referenced in your html like this:
+
+    CSS
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->request->baseUrl; ?>/css/file_name.css'/>
+
+    JS
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script_name.js"></script>
+
+    Images
+    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
