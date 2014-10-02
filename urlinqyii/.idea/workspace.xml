@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SiteController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SiteController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="28" selection-start="3532" selection-end="3532" vertical-scroll-proportion="0.393534" vertical-offset="1840" max-vertical-offset="3298">
+            <state line="134" column="0" selection-start="3574" selection-end="3574" vertical-scroll-proportion="-16.846153" vertical-offset="1840" max-vertical-offset="3298">
               <folding />
             </state>
           </provider>
@@ -46,7 +46,7 @@
       <file leaf-file-name="club_header.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/club/club_header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="56" selection-start="2498" selection-end="2498" vertical-scroll-proportion="-15.692307" vertical-offset="561" max-vertical-offset="3723">
+            <state line="48" column="34" selection-start="1948" selection-end="1948" vertical-scroll-proportion="-9.807693" vertical-offset="561" max-vertical-offset="3723">
               <folding>
                 <marker date="1412281952219" expanded="true" signature="169:234" placeholder="SELECT count..group_users..." />
                 <marker date="1412281952219" expanded="true" signature="608:808" placeholder="SELECT count..posts..." />
@@ -123,14 +123,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClubController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClubController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-12.923077" vertical-offset="786" max-vertical-offset="2040">
+            <state line="52" column="32" selection-start="2104" selection-end="2104" vertical-scroll-proportion="0.2419175" vertical-offset="667" max-vertical-offset="2006">
               <folding>
-                <marker date="1412282109999" expanded="true" signature="616:681" placeholder="SELECT count..group_users..." />
-                <marker date="1412282109999" expanded="true" signature="1055:1255" placeholder="SELECT count..posts..." />
-                <marker date="1412282109999" expanded="true" signature="1637:1714" placeholder="SELECT count..group_users..." />
+                <marker date="1412282882973" expanded="true" signature="616:681" placeholder="SELECT count..group_users..." />
+                <marker date="1412282882973" expanded="true" signature="1055:1255" placeholder="SELECT count..posts..." />
+                <marker date="1412282882973" expanded="true" signature="1637:1714" placeholder="SELECT count..group_users..." />
               </folding>
             </state>
           </provider>
@@ -455,7 +455,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -463,7 +463,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15677084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15677084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -788,9 +788,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ClassController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="31" selection-start="424" selection-end="424" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="0" selection-start="3574" selection-end="3574" vertical-scroll-proportion="-16.846153" vertical-offset="1840" max-vertical-offset="3298">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/club/club_header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="56" selection-start="2498" selection-end="2498" vertical-scroll-proportion="-15.692307" vertical-offset="561" max-vertical-offset="3723">
+        <state line="48" column="34" selection-start="1948" selection-end="1948" vertical-scroll-proportion="-9.807693" vertical-offset="561" max-vertical-offset="3723">
           <folding>
             <marker date="1412281952219" expanded="true" signature="169:234" placeholder="SELECT count..group_users..." />
             <marker date="1412281952219" expanded="true" signature="608:808" placeholder="SELECT count..posts..." />
@@ -830,28 +844,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/ClassController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="424" selection-end="424" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-12.923077" vertical-offset="786" max-vertical-offset="2040">
+        <state line="52" column="32" selection-start="2104" selection-end="2104" vertical-scroll-proportion="0.2419175" vertical-offset="667" max-vertical-offset="2006">
           <folding>
-            <marker date="1412282109999" expanded="true" signature="616:681" placeholder="SELECT count..group_users..." />
-            <marker date="1412282109999" expanded="true" signature="1055:1255" placeholder="SELECT count..posts..." />
-            <marker date="1412282109999" expanded="true" signature="1637:1714" placeholder="SELECT count..group_users..." />
+            <marker date="1412282882973" expanded="true" signature="616:681" placeholder="SELECT count..group_users..." />
+            <marker date="1412282882973" expanded="true" signature="1055:1255" placeholder="SELECT count..posts..." />
+            <marker date="1412282882973" expanded="true" signature="1637:1714" placeholder="SELECT count..group_users..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="28" selection-start="3532" selection-end="3532" vertical-scroll-proportion="0.393534" vertical-offset="1840" max-vertical-offset="3298">
-          <folding />
         </state>
       </provider>
     </entry>
