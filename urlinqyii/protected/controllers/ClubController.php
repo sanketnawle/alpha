@@ -58,9 +58,6 @@ class ClubController extends Controller
         $user = User::model()->find('user_id=:id', array(':id'=>1));
 
 
-
-
-
         $this->render('club',array('club'=>$club,'user'=>$user));
 	}
 

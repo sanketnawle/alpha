@@ -12,36 +12,36 @@ $user_id = $user->user_id;
 
 }
 
-$get_group_header_query = "SELECT count(*) as user_count FROM group_users WHERE group_id = ?";
-$get_group_header_stmt = $con->prepare($get_group_header_query);
-if($get_group_header_stmt != null) {
-    $get_group_header_stmt->bind_param("i",$group); 
-    $get_group_header_stmt->execute();    
-    $get_group_header_stmt->bind_result($user_count); 
-    $get_group_header_stmt->fetch();  
-    $get_group_header_stmt->close();
-}
-
-$get_group_header_query = "SELECT count(*) as file_count FROM posts p JOIN groups_files gf on (p.target_id = gf.group_id) WHERE 
-    ((p.target_type = 'groups' and p.file_id is not null and p.target_id = ?) or gf.group_id = ?)";
-$get_group_header_stmt = $con->prepare($get_group_header_query);
-if($get_group_header_stmt != null) {
-    $get_group_header_stmt->bind_param("ii",$group,$group); 
-    $get_group_header_stmt->execute();    
-    $get_group_header_stmt->bind_result($file_count); 
-    $get_group_header_stmt->fetch();  
-    $get_group_header_stmt->close();
-}
-
-$get_group_header_query = "SELECT count(*), is_admin FROM group_users WHERE group_id = ? and user_id = ?";
-$get_group_header_stmt = $con->prepare($get_group_header_query);
-if($get_group_header_stmt != null) {
-    $get_group_header_stmt->bind_param("ii",$group,$user_id); 
-    $get_group_header_stmt->execute();    
-    $get_group_header_stmt->bind_result($is_member, $is_admin); 
-    $get_group_header_stmt->fetch();  
-    $get_group_header_stmt->close();
-}
+//$get_group_header_query = "SELECT count(*) as user_count FROM group_users WHERE group_id = ?";
+//$get_group_header_stmt = $con->prepare($get_group_header_query);
+//if($get_group_header_stmt != null) {
+//    $get_group_header_stmt->bind_param("i",$group);
+//    $get_group_header_stmt->execute();
+//    $get_group_header_stmt->bind_result($user_count);
+//    $get_group_header_stmt->fetch();
+//    $get_group_header_stmt->close();
+//}
+//
+//$get_group_header_query = "SELECT count(*) as file_count FROM posts p JOIN groups_files gf on (p.target_id = gf.group_id) WHERE
+//    ((p.target_type = 'groups' and p.file_id is not null and p.target_id = ?) or gf.group_id = ?)";
+//$get_group_header_stmt = $con->prepare($get_group_header_query);
+//if($get_group_header_stmt != null) {
+//    $get_group_header_stmt->bind_param("ii",$group,$group);
+//    $get_group_header_stmt->execute();
+//    $get_group_header_stmt->bind_result($file_count);
+//    $get_group_header_stmt->fetch();
+//    $get_group_header_stmt->close();
+//}
+//
+//$get_group_header_query = "SELECT count(*), is_admin FROM group_users WHERE group_id = ? and user_id = ?";
+//$get_group_header_stmt = $con->prepare($get_group_header_query);
+//if($get_group_header_stmt != null) {
+//    $get_group_header_stmt->bind_param("ii",$group,$user_id);
+//    $get_group_header_stmt->execute();
+//    $get_group_header_stmt->bind_result($is_member, $is_admin);
+//    $get_group_header_stmt->fetch();
+//    $get_group_header_stmt->close();
+//}
 
 echo '
                         <div class = "group-head-top-sec" style="background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $cover_blob . ') no-repeat scroll 50% center / 100% auto #333;">

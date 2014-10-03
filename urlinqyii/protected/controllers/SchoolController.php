@@ -4,7 +4,10 @@ class SchoolController extends Controller
 {
 	public function actionSchool()
 	{
-		$this->render('school');
+
+        $school = School::model()->find('id=:id', array(':id'=>1));
+
+		$this->render('school',array('school'=>$school));
 	}
 
 	// Uncomment the following methods and override them if needed

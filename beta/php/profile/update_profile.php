@@ -1,6 +1,6 @@
 <?php
 	require_once("../../includes/dbconfig.php");
-	session_start();
+	session_start();    
 
 	// echo $_SESSION['user_id'];
 
@@ -129,6 +129,7 @@
 				// check if student_attribs are already inserted
 				$attrib_exist_q = "SELECT user_id FROM student_attribs WHERE user_id = ?";
 				$attrib_exist_stmt = $con->prepare($attrib_exist_q);
+                echo "step 1";
 				if($attrib_exist_stmt){
 					$attrib_exist_stmt->bind_param('i',$_SESSION['user_id']);
 					$attrib_exist_stmt->execute();
@@ -136,14 +137,16 @@
 					$attrib_exist_stmt->fetch();
 					$attrib_exist_stmt->close();
 				}
-
+                echo "step 2";
 				if(is_null($stuex_id) OR ($stuex_id == 0)){
 					$update_stuatt_q = "INSERT INTO student_attribs (user_id, website, major, year, student_type) VALUES (?,?,?,?,?)";
 					$update_stuatt_stmt = $con->prepare($update_stuatt_q);
+                    echo "step 3";
 					if($update_stuatt_stmt){
+                        echo "step 4";
 						$update_stuatt_stmt->bind_param('issss',$_SESSION['user_id'], $_POST['website'],
 							$_POST['major'], $_POST['year'],$_POST['student_type']);
-						$update_stuatt_stmt->execute();
+						echo $update_stuatt_stmt->execute()? "success": "failed";
 						$update_stuatt_stmt->close();
 					}
 					// if ($update_proatt_stmt->errno) {
@@ -152,20 +155,28 @@
 					// }
 				}
 				else{
+                    echo "step 5";
 					if(isset($_POST['major'])){
 						// echo "-".$profex_id."-";
 						$update_stuatt_q = "UPDATE student_attribs SET website=?, major=?, year=?, student_type=? WHERE user_id =?";
 						$update_stuatt_stmt = $con->prepare($update_stuatt_q);
+                        echo "step 6";
 						if($update_stuatt_stmt){
+                            echo "step 7";
 							$update_stuatt_stmt->bind_param('ssisi', $_POST['website'], $_POST['major'],
 								$_POST['year'], $_POST['student_type'], $_SESSION['user_id']);
-							$update_stuatt_stmt->execute();
+							echo $update_stuatt_stmt->execute()? "success 2": "failed 2";
 							$update_stuatt_stmt->close();
+                            print_r($update_stuatt_stmt);
 						}
 					}
 				}
 			}
 			// updating student attribs end
+            if ($update_stuatt_stmt->errno) {
+	  		 			echo "FAILURE!!! " . $update_stuatt_stmt->error;
+	  		 			echo "Database trolled us!! :(";
+					 }
 
 		// }
 			// else die("Access denied");
