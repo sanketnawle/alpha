@@ -18,8 +18,8 @@ header.professor-header {
     position: relative;
     border-radius: 4px 4px 0 0;
     width: 500px;
-margin-left: auto;
-margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -37,11 +37,9 @@ margin-right: auto;
 .delete-showcase {
     float: right;
     width: 20px;
-
     height: 20px;
     margin-top: 10px;
     position: absolute;
-
 }
 
 .profile-main {
@@ -76,15 +74,14 @@ margin-right: auto;
     }
 
         .profile-options h1 a {
-            color: #111!important;
+            color: #111 !important;
             position: relative;
             padding-right: 21px;
             text-decoration: none;
             font-size: 24px;
             cursor: default;
-        
             text-shadow: 0 1px 1px rgba(255,255,255,.8);
-}
+        }
 
             .profile-options h1 a b.wedgeDown {
                 width: 7px;
@@ -294,7 +291,7 @@ span.link-button {
     border-radius: 3px;
     left: 0px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     vertical-align: middle;
 }
 
@@ -493,7 +490,8 @@ span.office-hours {
     text-transform: uppercase;
     line-height: 25px;
     display: block;
-    color: #666; text-shadow: 0 1px 1px rgba(255,255,255,.8);
+    color: #666;
+    text-shadow: 0 1px 1px rgba(255,255,255,.8);
     width: 600px;
     position: absolute;
     margin-top: 8px;
@@ -1103,7 +1101,7 @@ a.office-hours-editor:focus {
         color: rgba(77, 77, 77, 0.6);
         font-size: 12px;
         font-weight: 600;
-        height:20px;
+        height: 20px;
     }
 
         .edit_office_hours_frame .oh_day_select:last-of-type {
@@ -1360,15 +1358,30 @@ div.edit-profile-main-wrap a.edit-profile {
     padding-top: 9px;
     padding-bottom: 9px;
     border-radius: 4px;
-    border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2;  background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
     div.edit-profile-main-wrap a.edit-profile:hover {
-        -moz-transition: all 0s ease 0s; transition: all 0s ease 0s; -moz-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09); -webkit-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09); box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
-}
+        -moz-transition: all 0s ease 0s;
+        transition: all 0s ease 0s;
+        -moz-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+        -webkit-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+        box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+    }
 
     div.edit-profile-main-wrap a.edit-profile:active {
-    background-color: rgba(0,0,0,.25); -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08); -moz-transition: all 0s ease 0s; transition: all 0s ease 0s;
+        background-color: rgba(0,0,0,.25);
+        -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
+        -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
+        box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
+        -moz-transition: all 0s ease 0s;
+        transition: all 0s ease 0s;
     }
 
 div.root div.blacksheet-main {
@@ -1408,9 +1421,14 @@ div.orig-edit-btns {
         padding-top: 9px;
         padding-bottom: 9px;
         border-radius: 5px;
-    
-        border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-}
+        border: 1px solid #D6D6D6;
+        outline: none;
+        border-bottom: 1px solid #C2C2C2;
+        background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+        -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+        -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    }
 
     div.orig-edit-btns a.save-edit-profile {
         text-shadow: 0 1px 1px #ABAFAC;
@@ -1426,9 +1444,18 @@ div.orig-edit-btns {
         padding-bottom: 9px;
         padding-top: 9px;
         cursor: pointer;
-    
-        -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; background: -moz-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D)); background: -moz-linear-gradient(#02e2a7, #01BE8D); background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D)); background: -webkit-linear-gradient(#02e2a7, #01BE8D); background-color: #01BE8D; border: 1px solid rgba(61, 213, 164, 1); background-clip: padding-box; border-color: rgb(32, 182, 146) rgba(38, 179, 133, 1) rgb(18, 156, 123);
-}
+        -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+        -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+        background: -moz-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
+        background: -moz-linear-gradient(#02e2a7, #01BE8D);
+        background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
+        background: -webkit-linear-gradient(#02e2a7, #01BE8D);
+        background-color: #01BE8D;
+        border: 1px solid rgba(61, 213, 164, 1);
+        background-clip: padding-box;
+        border-color: rgb(32, 182, 146) rgba(38, 179, 133, 1) rgb(18, 156, 123);
+    }
 
 span.profpic-container-edit {
     background-color: transparent;
@@ -1547,7 +1574,7 @@ span.profpic-container-edit:hover > span.img-wrap-edit div.user-pic-div-edit {
 }
 
 .edit_office_hours_frame .oh_day_select label.oh_checkbox_label {
-    display:none;
+    display: none;
 }
 
 div.user-info-wrapper-2 div.user-info-editable {
@@ -1623,8 +1650,7 @@ div.user-info-wrapper-2 div.user-info-editable input.user_inp_full {
     padding: 4px;
     margin: 0px 0px 0px 17px;
     padding: 6px 7px;
-    outline: 0;
-    float: right;
+    outline: 0;    
     font-size: 13px;
     line-height: normal;
     background-color: #fff;
@@ -1643,8 +1669,7 @@ input.user_inp_full {
     width: 232px;
     margin: 2px 0px 5px;
     padding: 6px 7px;
-    outline: 0;
-    float: right;
+    outline: 0;    
     font-size: 13px;
     margin-right: 2px;
     line-height: normal;
@@ -1722,9 +1747,7 @@ textarea.user_interest {
     font-size: 13px;
     border: 1px solid #dddddd;
     border-radius: 2px;
-
     overflow: hidden;
-    
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1834,7 +1857,7 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
 .cf_bt {
     background-color: #EDEDED;
     border-width: 1px;
-     border-image: none;
+    border-image: none;
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 11.5px;
@@ -1849,8 +1872,8 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
     margin-left: 10px;
     margin-top: 6px;
     color: black;
-
-    border: 1px solid #999; border-bottom-color: #888;
+    border: 1px solid #999;
+    border-bottom-color: #888;
 }
 
     .cf_bt:hover {
@@ -1881,7 +1904,7 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
     float: right;
     display: inline;
     text-transform: capitalize;
-    min-width: 70px;    
+    min-width: 70px;
     border-radius: 2px;
     font-size: 10px;
     font-weight: bold;
@@ -1899,20 +1922,33 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
     border-width: 1px;
     border-style: solid;
     font-family: Helvetica,Arial,"lucida grande",tahoma,verdana,arial,sans-serif;
-    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; background: -moz-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D)); background: -moz-linear-gradient(#02e2a7, #01BE8D); 
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
+    background: -moz-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
+    background: -moz-linear-gradient(#02e2a7, #01BE8D);
     border: 1px solid;
-    background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D)); background: -webkit-linear-gradient(#02e2a7, #01BE8D); background-color: #01BE8D; border: 1px solid rgba(61, 213, 164, 1); background-clip: padding-box; border-color: rgb(32, 182, 146) rgba(38, 179, 133, 1) rgb(18, 156, 123);
+    background: -webkit-gradient(linear, center top, center bottom, from(#02e2a7), to(#01BE8D));
+    background: -webkit-linear-gradient(#02e2a7, #01BE8D);
+    background-color: #01BE8D;
+    border: 1px solid rgba(61, 213, 164, 1);
+    background-clip: padding-box;
+    border-color: rgb(32, 182, 146) rgba(38, 179, 133, 1) rgb(18, 156, 123);
 }
 
     .sc_btn:hover, .sc_add:hover {
-    
-        background: -moz-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0)); background: -moz-linear-gradient(#24F5BE, #07D6A0); background: -webkit-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0)); background: -webkit-linear-gradient(#24F5BE, #07D6A0); background-color: #07D6A0;
-}
+        background: -moz-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0));
+        background: -moz-linear-gradient(#24F5BE, #07D6A0);
+        background: -webkit-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0));
+        background: -webkit-linear-gradient(#24F5BE, #07D6A0);
+        background-color: #07D6A0;
+    }
 
     .sc_btn:active, .sc_add:active {
-    
-        -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset; -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset;
-}
+        -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset;
+        -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2) inset;
+    }
 
 .sc_cancel {
     box-shadow: none;
@@ -1933,7 +1969,13 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
     padding-left: 5px;
     padding-right: 5px;
     margin-top: 2px;
-    border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
     .sc_cancel:hover {
@@ -1963,7 +2005,7 @@ div.user-info-wrapper-2 div.user-info-editable input:focus, textarea:focus {
     padding: 5px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 
 div.add_new_sec {
@@ -1985,11 +2027,19 @@ div.add_new_sec {
 
 div.orig-edit-btns a.cancel-edit-profile:hover {
     color: #292f33;
-    -moz-transition: all 0s ease 0s; transition: all 0s ease 0s; -moz-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09); -webkit-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09); box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+    -moz-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
+    -moz-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+    -webkit-box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
+    box-shadow: inset 0 -1px 0px rgba(0, 0, 0, 0.09);
 }
 
 div.orig-edit-btns a.cancel-edit-profile:active {
-    background: #F5F5F5;     transition: all 0s ease 0s;  -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);  -moz-transition: all 0s ease 0s; transition: all 0s ease 0s;
+    background: #F5F5F5;
+    transition: all 0s ease 0s;
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
+    -moz-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
 }
 
 div.add_new_sec:hover {
@@ -2106,7 +2156,8 @@ div.personal-website-wrap {
     }
 
     div.personal-website-wrap div.website-inp-wrap {
-        padding: 5px;
+        padding: 3px 5px;
+        position: relative;
     }
 
 input.user_website:focus {
@@ -2117,6 +2168,37 @@ input.user_website:focus {
 }
 
 div.personal-website-wrap div.website-inp-wrap input {
+}
+
+div.personal-website-wrap div.website-inp-wrap .dropdown {
+    display: none;
+    position: absolute;
+    padding: 0;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #66afe9;
+    top: 20px;
+    left: 5px;
+    right: 5px;
+    max-height: 200px;
+    overflow: auto;
+    z-index: 10;
+    font-size: 14px;
+}
+
+    div.personal-website-wrap div.website-inp-wrap .dropdown li {
+        display: block !important;
+        margin: 3px 0;
+        padding: 4px 8px !important;
+    }
+
+        div.personal-website-wrap div.website-inp-wrap .dropdown li:hover,
+        div.personal-website-wrap div.website-inp-wrap .dropdown li.active {
+            background-color: #f1f1f1;            
+        }
+
+div.personal-website-wrap div.website-inp-wrap input:focus ~ .dropdown {
+    display: block;
 }
 
 .no-showcase {
@@ -2229,7 +2311,6 @@ a.ns-btn {
     cursor: pointer;
     outline: 0;
     padding: 0px 8px;
-   
     width: 130px;
     text-shadow: none;
     line-height: 35px;
@@ -2242,7 +2323,6 @@ a.ns-btn {
     color: white;
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
     margin-top: -147px;
-    
     float: left;
     outline: none;
     display: inline-block;
@@ -2256,21 +2336,17 @@ a.ns-btn {
     background: linear-gradient(#23BEF0, #16ABDA) repeat scroll 0% 0% transparent;
     border-color: black;
     margin-left: 120% !important;
-
-
-
-    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.26); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.26); 
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.26);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.26);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .26);
 }
 
     a.ns-btn:hover {
-background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
-background: -webkit-linear-gradient(#30BBE7, #1DA7D3);
+        background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
+        background: -webkit-linear-gradient(#30BBE7, #1DA7D3);
     }
 
     a.ns-btn:active {
-
-       
     }
 
 div.ns-hide {
@@ -2314,7 +2390,6 @@ header.professor-header-2 {
     width: 600px;
     margin-left: 40%;
     margin-top: 80px;
-    
     border-radius: 4px;
     display: none;
 }
@@ -2325,50 +2400,58 @@ header.professor-header-2 {
     height: 30px !important;
     width: 225px;
     cursor: pointer;
-     background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
-display: inline-block;
-float: left;
-height: 100%;
-text-indent: 8px;
-font-weight: bold;
-line-height: 27px;
-font-weight: 600;
-margin-left: 0px;
-color: rgba(0, 0, 0, 0.62) !important;
-padding-left: 11px;
-font-size: 13px;
-padding-right: 19px;
-text-transform: uppercase;
-width: auto;
-border-radius: 5px 0px 0px 5px;
-border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-border-left-color:transparent;
-    
-
-
+    background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    text-indent: 8px;
+    font-weight: bold;
+    line-height: 27px;
+    font-weight: 600;
+    margin-left: 0px;
+    color: rgba(0, 0, 0, 0.62) !important;
+    padding-left: 11px;
+    font-size: 13px;
+    padding-right: 19px;
+    text-transform: uppercase;
+    width: auto;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left-color: transparent;
 }
 
 .showcase_right_box {
     /*border-left: 1px solid #D9D9D9;*/
-    
     background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
-display: inline-block;
-float: left;
-height: 30px;
-text-indent: 8px;
-font-weight: bold;
-line-height: 27px;
-font-weight: 600;
-margin-left: 0px;
-color: rgba(0, 0, 0, 0.62) !important;
-padding-left: 11px;
-font-size: 13px;
-padding-right: 19px;
-text-transform: uppercase;
-width: auto;
-border-radius: 0px 5px 5px 0px;
-border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-border-left-color:transparent;
+    display: inline-block;
+    float: left;
+    height: 30px;
+    text-indent: 8px;
+    font-weight: bold;
+    line-height: 27px;
+    font-weight: 600;
+    margin-left: 0px;
+    color: rgba(0, 0, 0, 0.62) !important;
+    padding-left: 11px;
+    font-size: 13px;
+    padding-right: 19px;
+    text-transform: uppercase;
+    width: auto;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left-color: transparent;
 }
 
 .sc_txt {
@@ -2378,11 +2461,13 @@ border-left-color:transparent;
     color: #333;
     margin-top: 35px;
 }
+
 #upload_showcase {
     margin-top: -25px !important;
     color: rgba(0, 0, 0, 0.62) !important;
     width: auto !important;
 }
+
 #upload_showcase2 {
     margin-top: -25px !important;
     color: rgba(0, 0, 0, 0.62) !important;
@@ -2391,15 +2476,13 @@ border-left-color:transparent;
 
 
 #upload_showcase:hover {
-    
     color: white !important;
-    
 }
-#upload_showcase2:hover{
-   
+
+#upload_showcase2:hover {
     color: white !important;
-    
 }
+
 .upload_sc_pic {
     background: url("img/sc_upload.png");
     height: 26px;
@@ -2420,20 +2503,16 @@ border-left-color:transparent;
 
 .clickable_showcase_step2 .showcase_step2_box:hover {
     background: -webkit-linear-gradient(#23BEF0, #16ABDA);
-    border-color: #1795BD #1686AA #1682A5; 
+    border-color: #1795BD #1686AA #1682A5;
     color: white !important;
-   
-    
 }
 
 .clickable_showcase_step2 .showcase_step2_box:active {
     background: -webkit-linear-gradient(#23BEF0, #16ABDA);
-    border-color: #1795BD #1686AA #1682A5; 
-    -moz-box-shadow:    inset 0 0 5px #000000;
-   -webkit-box-shadow: inset 0 0 5px #000000;
-   box-shadow:         inset 0 0 5px #000000;
-
-    
+    border-color: #1795BD #1686AA #1682A5;
+    -moz-box-shadow: inset 0 0 5px #000000;
+    -webkit-box-shadow: inset 0 0 5px #000000;
+    box-shadow: inset 0 0 5px #000000;
 }
 
 
@@ -2651,16 +2730,28 @@ div.member-person div.member-wrap div.follow-btn {
         font-size: 16px;
         outline: none;
         border-color: transparent;
-     text-align: center; font-weight: 600; color: rgba(0, 0, 0, 0.62); border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; 
-        background: #A8A8A8 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.62);
+        border: 1px solid #D6D6D6;
+        outline: none;
+        border-bottom: 1px solid #C2C2C2;
+        background: #A8A8A8 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+        -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+        -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
         padding: 4px 6px;
-}
+    }
 
         div.member-person div.member-wrap div.follow-btn a.follow:hover, .user_connection_follow:hover {
             cursor: pointer;
-        
-            background: #23BEF0; background: -moz-linear-gradient(#23BEF0, #16ABDA); background: -webkit-gradient(linear, center top, center bottom, from(#23BEF0), to(#16ABDA)); background: -webkit-linear-gradient(#23BEF0, #16ABDA); color: white; border-color: #1795BD #1686AA #1682A5;
-}
+            background: #23BEF0;
+            background: -moz-linear-gradient(#23BEF0, #16ABDA);
+            background: -webkit-gradient(linear, center top, center bottom, from(#23BEF0), to(#16ABDA));
+            background: -webkit-linear-gradient(#23BEF0, #16ABDA);
+            color: white;
+            border-color: #1795BD #1686AA #1682A5;
+        }
 
         div.member-person div.member-wrap div.follow-btn a.follow:active, .user_connection_follow:active {
             -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
@@ -2673,7 +2764,7 @@ div.member-person div.member-wrap div.follow-btn {
         cursor: pointer;
         color: white;
         background-color: #d55b60;
-        background: #d55b60!important;
+        background: #d55b60 !important;
         box-shadow: 0 1px 1px rgba(0,0,0,0.39);
         border-color: #96384B #A0143B #720617;
         transition: all 0s;
@@ -2704,7 +2795,7 @@ div.member-person div.member-wrap div.follow-btn {
 }
 
 .secondh5 {
-    margin-top: 15px!important;
+    margin-top: 15px !important;
 }
 
 .photo_hidden_form {
@@ -2720,15 +2811,14 @@ div.member-person div.member-wrap div.follow-btn {
 /* Styles for showcase here */
 
 .add-more-showcase {
-    
     display: block;
-    margin-left: 110% !important;;
+    margin-left: 110% !important;
+    ;
     margin-right: auto;
     color: white;
     font-size: 13px;
     font-weight: 600;
     width: 135px;
-
     top: 40px;
     padding-bottom: 0px !important;
     padding: 5px;
@@ -2739,12 +2829,8 @@ div.member-person div.member-wrap div.follow-btn {
     background-color: #1BB3E3;
     margin-bottom: 20px;
     border-radius: 5px;
-    
-    left: 55px !important; 
-    top:20px  !important;
-
-
-
+    left: 55px !important;
+    top: 20px !important;
 }
 
 .div.add-event-dd-box-invite {
@@ -2795,7 +2881,7 @@ div.dd-box-invite-scrollwrap ul.hor-scroll-invites {
     transition-property: transform, box-shadow;
     transform: scale(1) translateZ(0px);    
     */
-       /* z-index: 100;
+        /* z-index: 100;
         -webkit-transform: scale(1.5);
         -moz-transform: scale(1.5);
         -o-transform: scale(1.5);
@@ -2814,7 +2900,7 @@ div.dd-box-invite-scrollwrap ul.hor-scroll-invites {
     div.dd-box-invite-scrollwrap ul.hor-scroll-invites li.ddbox-invite-option {
         /*transition-property: transform, box-shadow;
         transform: scale(0.9) translateZ(0px);*/
-       /* -webkit-transition: 0.5s ease-in-out;
+        /* -webkit-transition: 0.5s ease-in-out;
         -moz-transition: 0.5s ease-in-out;
         -o-transition: 0.5s ease-in-out;
         transition: 0.5s ease-in-out;*/
@@ -2944,135 +3030,136 @@ div.dd-box-invite-scrollwrap ul.hor-scroll-invites {
 
 /* Styles for the */
 .dept-dropdown {
-width: 222px;
-margin-left: 16px;
-height: 29px;
-margin-top: -1px;
-font-size: 13px;
-background-color: #FFF;
-color: #66757F;
-overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
-float: left;
+    width: 222px;
+    margin-left: 16px;
+    height: 29px;
+    margin-top: -1px;
+    font-size: 13px;
+    background-color: #FFF;
+    color: #66757F;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
 }
 
 .student-graduation-level {
-width: 222px;
-padding-left: 8px;
-margin-top: 2px;
-height: 29px;
-background-color: #FFF;
-color: #66757F;
-overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
-float: left;
-margin-bottom: 5px;
-margin-left: -2px;
-font-size: 13px;
+    width: 222px;
+    padding-left: 8px;
+    margin-top: 2px;
+    height: 29px;
+    background-color: #FFF;
+    color: #66757F;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: -2px;
+    font-size: 13px;
 }
 
 #school_departments {
     width: 225px;
-margin-left: 95px;
-margin-top: 30px;
+    margin-left: 95px;
+    margin-top: 30px;
 }
 
 #student_level {
-width: 227px;
-margin-left: 0px;
-margin-top: 62px;
+    width: 227px;
+    margin-left: 0px;
+    margin-top: 62px;
 }
 
 
-.sc_cancel, .sc_add, .sc_btn{
-     padding: 1.7px 13px;
+.sc_cancel, .sc_add, .sc_btn {
+    padding: 1.7px 13px;
     border-style: solid;
     text-align: center;
     opacity: .9;
     position: relative;
     vertical-align: middle;
     cursor: pointer;
-    
     display: inline-block;
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
     border-radius: 4px;
-    float: right;  
-    
-     margin-top: 1.1px;
-    
-     height: 21px;
-    
+    float: right;
+    margin-top: 1.1px;
+    height: 21px;
     transition: all 0.15s ease;
-    -moz-transition:all 0.15s ease;
-    border-width: 1px;  background: -moz-linear-gradient(#02e2a7, #01BE8D);   
+    -moz-transition: all 0.15s ease;
+    border-width: 1px;
+    background: -moz-linear-gradient(#02e2a7, #01BE8D);
 }
 
 .sc_cancel {
     float: left;
 }
 
-.sc_btn {display: none;}
-.content{
+.sc_btn {
+    display: none;
+}
+
+.content {
     width: 100% !important;
     height: 100% !important;
 }
 /* showcase arrow begin*/
-.ns-title{
+.ns-title {
     font-size: 35px !important;
     position: relative;
     top: 105px !important;
     left: 25px !important;
-
 }
-#showcase_arrow{
+
+#showcase_arrow {
     width: auto;
     height: 100px;
     margin-left: 110%;
     margin-top: -5px;
 }
 
-span.profile-ints-container p{
-text-align: center;
-border-radius: 5px;
-margin-left: 5px;
-background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
--webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
--moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-width: auto;
-display: inline-block;
-padding: 5px 12px;
-text-transform: capitalize;
-margin: 5px 5px;
+span.profile-ints-container p {
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 5px;
+    background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    width: auto;
+    display: inline-block;
+    padding: 5px 12px;
+    text-transform: capitalize;
+    margin: 5px 5px;
 }
-.post_comment_btn{
+
+.post_comment_btn {
     height: 100% !important;
 }
 
-a#univ_link{
-    color:#666!important;
-    cursor:default!important;
+a#univ_link {
+    color: #666 !important;
+    cursor: default !important;
 }
 
 
-a#univ_link div h4.info_field_0{
-    color:#666;
-}
+    a#univ_link div h4.info_field_0 {
+        color: #666;
+    }
 
-a#univ_link div h4.info_field_0:hover{
-    color:#666;
-}
+        a#univ_link div h4.info_field_0:hover {
+            color: #666;
+        }
 
-a#univ_link div h4.info_field_0:active{
-    color:#666;
-}
+        a#univ_link div h4.info_field_0:active {
+            color: #666;
+        }
 
-.user-info-piece #univ_link #university_icon{
-    background-image:url(../img/NYUIcon.png)!important;
+.user-info-piece #univ_link #university_icon {
+    background-image: url(../img/NYUIcon.png) !important;
 }
 
 .error_box_log_color {
@@ -3081,7 +3168,7 @@ a#univ_link div h4.info_field_0:active{
 }
 
 
-.profile_unavaliable{
+.profile_unavaliable {
     display: none;
 }
 
@@ -3094,94 +3181,111 @@ a#univ_link div h4.info_field_0:active{
     font-size: 14px;
 }
 
-.user-class-visibility .container {
-    float: right;
-    margin-right: 21px;
-    right: 0;
-    cursor: default;
-    position: relative;
-}
+    .user-class-visibility .container {
+        float: right;
+        margin-right: 21px;
+        right: 0;
+        cursor: default;
+        position: relative;
+    }
 
-.user-class-visibility .current {
-    padding: 4px 30px 4px 10px;    
-    position: relative;
-    color: rgba(127, 127, 127, 0.4);
-    font-weight: 600;
-	box-shadow: none;
-	background: transparent;
-}
+    .user-class-visibility .current {
+        padding: 4px 30px 4px 10px;
+        position: relative;
+        color: rgba(127, 127, 127, 0.4);
+        font-weight: 600;
+        box-shadow: none;
+        background: transparent;
+    }
 
-.user-class-visibility .drop, .user-class-visibility .tick {
-    position: absolute;
-    background-image: url(../img/profile-visi.png);
-    background-size: 200% 200%;
-}
+    .user-class-visibility .drop, .user-class-visibility .tick {
+        position: absolute;
+        background-image: url(../img/profile-visi.png);
+        background-size: 200% 200%;
+    }
 
-.user-class-visibility .drop {
-    background-position: top left;
-    height: 13px;
-    width: 13px;
-    top: 8px;
-    right: 9px;
-}
+    .user-class-visibility .drop {
+        background-position: top left;
+        height: 13px;
+        width: 13px;
+        top: 8px;
+        right: 9px;
+    }
 
-.user-class-visibility .tick {
-    background-position: bottom left;
-    display: none;
-    height: 17px;
-    width: 15px;
-    top: 7px;
-    left: 8px;
-}
+    .user-class-visibility .tick {
+        background-position: bottom left;
+        display: none;
+        height: 17px;
+        width: 15px;
+        top: 7px;
+        left: 8px;
+    }
 
-.user-class-visibility .hover{
-    display: none;
-    position: absolute;
-    width: 129px;
-    height: 33px;
-    background-image: url(../img/visi-classes.png);
-    background-repeat: no-repeat;
-    top: 0;
-    left: 100%;
-}
+    .user-class-visibility .hover {
+        display: none;
+        position: absolute;
+        width: 129px;
+        height: 33px;
+        background-image: url(../img/visi-classes.png);
+        background-repeat: no-repeat;
+        top: 0;
+        left: 100%;
+    }
 
-.user-class-visibility .option:hover .tick, .user-class-visibility .option.selected .tick { display: block; }
-.user-class-visibility .option:hover .tick { background-position: right bottom; }
-.user-class-visibility .option:hover { background-color: #3c4246; color: #FFF; }
-.user-class-visibility .current:hover .hover { display: block; }
+    .user-class-visibility .option:hover .tick, .user-class-visibility .option.selected .tick {
+        display: block;
+    }
 
-.user-class-visibility .options {
-    position: absolute;
-    background-color: #FFF;
-    min-width: 100%;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
-    border-top: 0;
-    display: none;
-    z-index: 4;
-    padding: 3px 0;
-}
+    .user-class-visibility .option:hover .tick {
+        background-position: right bottom;
+    }
 
-.user-class-visibility .container.active .options { display: block; }
-.user-class-visibility .container.active .drop { background-position: right top; }
+    .user-class-visibility .option:hover {
+        background-color: #3c4246;
+        color: #FFF;
+    }
 
-.user-class-visibility .label {
-    float: right;
-    margin-right: 10px;
-    margin-top: 5px;
-}
+    .user-class-visibility .current:hover .hover {
+        display: block;
+    }
 
-.user-class-visibility .container.active .current {
-    color: #FFF;
-    border-radius: 4px 4px 0 0;
-    background-color: #52E0A8;
-    border-color: #2eb892;
-}
+    .user-class-visibility .options {
+        position: absolute;
+        background-color: #FFF;
+        min-width: 100%;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+        border-top: 0;
+        display: none;
+        z-index: 4;
+        padding: 3px 0;
+    }
 
-.user-class-visibility .option {
-    position: relative;
-    padding: 5px 30px 6px;
-    white-space: nowrap;
-}
+    .user-class-visibility .container.active .options {
+        display: block;
+    }
+
+    .user-class-visibility .container.active .drop {
+        background-position: right top;
+    }
+
+    .user-class-visibility .label {
+        float: right;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .user-class-visibility .container.active .current {
+        color: #FFF;
+        border-radius: 4px 4px 0 0;
+        background-color: #52E0A8;
+        border-color: #2eb892;
+    }
+
+    .user-class-visibility .option {
+        position: relative;
+        padding: 5px 30px 6px;
+        white-space: nowrap;
+    }
 
 .user-groups-courses .user-class-visibility {
     position: absolute;
@@ -3190,23 +3294,41 @@ a#univ_link div h4.info_field_0:active{
     font-size: 0.75em;
 }
 
-.user-class-visibility .current > *{
-	display: none;
+.user-class-visibility .current > * {
+    display: none;
 }
 
-.user-class-visibility .current.mouseover{
-	background: #F8F8F8;
-	box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
-	color: #888;
-	font-weight: 600;
+.user-class-visibility .current.mouseover {
+    background: #F8F8F8;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+    color: #888;
+    font-weight: 600;
 }
 
-.user-class-visibility .current.mouseover > *{
-	display: block;
+    .user-class-visibility .current.mouseover > * {
+        display: block;
+    }
+
+.user-groups-courses .user-class-visibility .drop {
+    top: 6px;
 }
-.user-groups-courses .user-class-visibility .drop { top: 6px; }
-.user-groups-courses .user-class-visibility .tick { top: 5px; }
-.user-groups-courses .user-class-visibility .hover { background-image: url(../img/visi-class.png); }
-.user-groups-courses .user-class-visibility.club .hover { background-image: url(../img/visi-club.png); }
-.user-class-visibility.club .hover { background-image: url(../img/visi-clubs.png); }
-.user-groups-courses .user-class-visibility .options { z-index: 2; }
+
+.user-groups-courses .user-class-visibility .tick {
+    top: 5px;
+}
+
+.user-groups-courses .user-class-visibility .hover {
+    background-image: url(../img/visi-class.png);
+}
+
+.user-groups-courses .user-class-visibility.club .hover {
+    background-image: url(../img/visi-club.png);
+}
+
+.user-class-visibility.club .hover {
+    background-image: url(../img/visi-clubs.png);
+}
+
+.user-groups-courses .user-class-visibility .options {
+    z-index: 2;
+}
