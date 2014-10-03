@@ -218,3 +218,4 @@ pip-log.txt
 #MYConfig
 beta/includes/dbconfig.php
 beta/php/dbconnection.php
+beta/includes/dbconfig.php
