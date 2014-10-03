@@ -219,3 +219,7 @@ pip-log.txt
 beta/includes/dbconfig.php
 beta/php/dbconnection.php
 beta/includes/dbconfig.php
+/beta/nbproject/private/
+
+#Netbeans project
+beta/nbproject
