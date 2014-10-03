@@ -218,11 +218,8 @@ pip-log.txt
 #MYConfig
 beta/includes/dbconfig.php
 beta/php/dbconnection.php
-<<<<<<< HEAD
 /beta/nbproject/private/
 
 # Netbean project
 beta/nbproject/
-=======
 beta/includes/dbconfig.php
->>>>>>> 7a8ae49d87c844e95bb9720a21df7ff4859ceb86
