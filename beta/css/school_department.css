@@ -158,15 +158,12 @@ div.group-title div.group-name-mt{
 }
 
 div.group-cover-pic-info{
-
 padding: 5px 10px;
-
 margin-left: 4px;
-
-
 display: inline-block;
-
 font-size: 13px;
+margin-top: 367px;
+margin-left: 885px;
 color: white;
 -moz-transition:opacity .1s ease, width .1s ease;
     -webkit-transition:opacity .1s ease, width .1s ease;

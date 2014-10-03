@@ -221,5 +221,6 @@ beta/php/dbconnection.php
 beta/includes/dbconfig.php
 /beta/nbproject/private/
 
-#Netbeans project
+#Netbeans/Intellij project files
 beta/nbproject
+.idea
