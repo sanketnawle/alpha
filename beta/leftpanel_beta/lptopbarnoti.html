@@ -21,11 +21,176 @@
         </div>
         <div class="right">
             <a class="notify calendar">
-                <div class="day">Tue</div>
-                <div class="date">9</div>
+                <div class="button">
+                    <div class="day">Tue</div>
+                    <div class="date">9</div>
+                </div>
+                <div class='notify-window calendar'>
+                    <div class="toolbar">
+                        <ul>
+                            <li class="rem active" data-column="left"><div class="icon"></div></li>
+                            <li class="inv" data-column="middle"><div class="icon"></div></li>
+                            <li class="cal" data-column="right"><div class="icon"></div></li>
+                        </ul>
+                    </div>
+                    <div class='left column active'>
+                        <div class='header'>
+                            <span class='text'>Reminders</span>
+                            <span class='count'>4</span>
+                        </div>
+                        <ul>
+                            <li class="unseen">
+                                <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='footer'>1 Week Away &bull; CS Exam</div>
+                            </li>
+                            <li>
+                                <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='footer'>1 Week Away &bull; CS Exam</div>
+                            </li>
+                            <li>
+                                <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='footer'>1 Week Away &bull; CS Exam</div>
+                            </li>
+                            <li>
+                                <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='check'>
+                                    <input type="checkbox" class="event-check" style="display: none">
+                                    <div class="check-square">
+                                        <div class="tick x"></div>
+                                        <div class="tick xx"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nostyle">No New Event Reminders</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class='middle column'>
+                        <div class='header'>
+                            <span class='text'>Suggested/Invited</span>
+                            <span class='count'>2</span>
+                        </div>
+                        <ul class='cn_sec_content'>
+                            <li>
+                                <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
+                                    <div class="day">Sep</div><div class="date">12</div>
+                                </div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='action add' title="Add this to event to Calendar"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Invited you</div>
+                            </li>
+
+                            <li>
+                                <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
+                                    <div class="day">Sep</div><div class="date">12</div>
+                                </div>
+                                <div class='content'>Study For Exam</div>
+                                <div class='action add busy' title="Busy at this time"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
+                            </li>
+                            <li>
+                                <div class="nostyle">no new event invitations</div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class='right column'>
+                        <ul>
+                            <li><div class='icon mc'></div>Monthly Calendar</li>
+                            <li><div class='icon wc'></div>Weekly Calendar</li>
+                            <li class="underline"><div class='icon pl'></div>Add New Event</li>
+                        </ul>
+                    </div>
+                </div>
             </a>
             <a class="notify board">
-                <div class="icon"></div>
+                <div class="button">
+                    <div class="icon"></div>
+                </div>
+                <div class='notify-window board' style="display: none">
+                    <div class="toolbar">
+                        <ul>
+                            <li class="dis active" data-column="left"><div class="icon"></div></li>
+                            <li class="fil" data-column="middle"><div class="icon"></div></li>
+                            <li class="fol" data-column="right"><div class="icon"></div></li>
+                        </ul>
+                    </div>
+                    <div class='column left active'>
+                        <div class='header'>
+                            <span class='text'>DISCUSSIONS</span>
+                            <span class='count'>2</span>
+                        </div>
+                        <ul class='cn_sec_content'>
+                            <li>
+                                <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
+                                <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
+                                <div class='footer'>September 10 at 5:00pm</div>
+                            </li>
+                            <li>
+                                <div class="nostyle">No New Post Notifications</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class='column middle'>
+                        <div class='header'>
+                            <span class='text'>FILES</span>
+                            <span class='count'>2</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class='icon pdf'><div class='file'>.PDF</div></div>
+                                <div class='content'>File Name</div>
+                                <div class='action down' title="Download"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                            </li>
+                            <li>
+                                <div class='icon doc'><div class='file'>.DOC</div></div>
+                                <div class='content'>File Name</div>
+                                <div class='action down' title="Download"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                            </li>
+                            <li>
+                                <div class='icon xls'><div class='file'>.XLS</div></div>
+                                <div class='content'>File Name</div>
+                                <div class='action down' title="Download"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                            </li>
+                            <li>
+                                <div class='icon ppt'><div class='file'>.PPT</div></div>
+                                <div class='content'>File Name</div>
+                                <div class='action down' title="Download"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                            </li>
+                            <li>
+                                <div class='icon zip'><div class='file'>.ZIP</div></div>
+                                <div class='content'>File Name</div>
+                                <div class='action down' title="Download"><div class="icon"></div></div>
+                                <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                            </li>
+                            <li>
+                                <div class="nostyle">no new event invitations</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='column right'>
+                        <ul>
+                            <li>
+                                <div class='icon full' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
+                                <div class='content two-lines'>
+                                    <div class='line1'>Ross Kopelman</div>
+                                    <div class='line2'><div class="follow">Follow</div></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="center">
@@ -49,169 +214,6 @@
                 <li><a><img src="http://lorempixel.com/40/40?id=9"><span>Anything is return from search</span></a></li>
                 <li><a><img src="http://lorempixel.com/40/40?id=0"><span>Some another search result</span></a></li>
                 <li><a>Search for More</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class='notify-window calendar'>
-        <div class='left column'>
-            <div class='header'>
-                <span class='text'>Reminders</span>
-                <span class='count'>4</span>
-            </div>
-            <ul>
-                <li class="unseen">
-                    <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='footer'>1 Week Away &bull; CS Exam</div>
-                </li>
-                <li>
-                    <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='footer'>1 Week Away &bull; CS Exam</div>
-                </li>
-                <li>
-                    <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='footer'>1 Week Away &bull; CS Exam</div>
-                </li>
-                <li>
-                    <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='check'>
-                        <input type="checkbox" class="event-check" style="display: none">
-                        <div class="check-square">
-                            <div class="tick x"></div>
-                            <div class="tick xx"></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="nostyle">No New Event Reminders</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class='middle column'>
-            <div class='header'>
-                <span class='text'>Suggested/Invited</span>
-                <span class='count'>2</span>
-            </div>
-            <ul class='cn_sec_content'>
-                <li>
-                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
-                        <div class="day">Sep</div><div class="date">12</div>
-                    </div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='action add' title="Add this to event to Calendar"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Invited you</div>
-                </li>
-
-                <li>
-                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
-                        <div class="day">Sep</div><div class="date">12</div>
-                    </div>
-                    <div class='content'>Study For Exam</div>
-                    <div class='action add busy' title="Busy at this time"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
-                </li>
-                <li>
-                    <div class="nostyle">no new event invitations</div>
-                </li>
-
-            </ul>
-        </div>
-        <div class='right column'>
-            <ul>
-                <li><div class='icon mc'></div>Monthly Calendar</li>
-                <li><div class='icon wc'></div>Weekly Calendar</li>
-                <li class="underline"><div class='icon pl'></div>Add New Event</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class='notify-window board'>
-        <div class='column left'>
-            <div class='header'>
-                <span class='text'>DISCUSSIONS</span>
-                <span class='count'>2</span>
-            </div>
-            <ul class='cn_sec_content'>
-                <li>
-                    <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
-                    <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
-                    <div class='footer'>September 10 at 5:00pm</div>
-                </li>
-                <li>
-                    <div class="nostyle">No New Post Notifications</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class='column middle'>
-            <div class='header'>
-                <span class='text'>FILES/DUCUMENTS</span>
-                <span class='count'>2</span>
-            </div>
-            <ul>
-                <li>
-                    <div class='icon pdf'><div class='file'>.PDF</div></div>
-                    <div class='content'>File Name</div>
-                    <div class='action down' title="Download"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                </li>
-                <li>
-                    <div class='icon doc'><div class='file'>.DOC</div></div>
-                    <div class='content'>File Name</div>
-                    <div class='action down' title="Download"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                </li>
-                <li>
-                    <div class='icon xls'><div class='file'>.XLS</div></div>
-                    <div class='content'>File Name</div>
-                    <div class='action down' title="Download"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                </li>
-                <li>
-                    <div class='icon ppt'><div class='file'>.PPT</div></div>
-                    <div class='content'>File Name</div>
-                    <div class='action down' title="Download"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                </li>
-                <li>
-                    <div class='icon zip'><div class='file'>.ZIP</div></div>
-                    <div class='content'>File Name</div>
-                    <div class='action down' title="Download"><div class="icon"></div></div>
-                    <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                </li>
-                <li>
-                    <div class="nostyle">no new event invitations</div>
-                </li>
-            </ul>
-        </div>
-        <div class='column right'>
-            <ul>
-                <li>
-                    <div class='icon med' style='background-image: url(http://lorempixel.com/50/50?dm.png);;'></div>
-                    <div class='content two-lines'>
-                        <div class='line1'>Prof. Adams</div>
-                        <div class='line2'>September 10 at 3:00pm</div>
-                    </div>
-                    <div class="balloon">
-                        <div class="bwedge"></div>
-                        <div class="bcontent">
-                            <div class="msg">Hey Class, today we will cover dynamic feedback loops in skin worn biosensors</div>
-                            <div class=""
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class='icon full' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
-                    <div class='f_rightdiv'>
-                        <div class='frd_name'>Ross Kopelman followed you</div>
-                        <div class='flw_btn'><div>Follow</div></div>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>
@@ -297,162 +299,7 @@
             </div>
         </div>
     </div>
-    <script>
-        (function ($) {
-            var leftPanelOpen = true;
-            var openNotify = null;
-            var actionTitle = "";
 
-            var weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            $(function () {
-                $(".topbar .center form")
-                    .click(function () { $(".text", $(this)).focus(); })
-                    .submit(function (e) {
-                        if ($(".text", $(this)).val().trim() == "") {
-                            e.preventDefault();
-                            return false;
-                        }
-                    });
-                $(".topbar .center form .text").on("focus", function () {
-                    var text = $(this);
-                    if (text.val().trim() == "") text.closest(".center").find(".prelist").show();
-                    else text.closest(".center").find(".postlist").show();
-                }).on("blur", function () {
-                    $(this).closest(".center").find(".prelist").hide();
-                    $(this).closest(".center").find(".postlist").hide();
-                }).on("keyup", function (e) {
-                    e = e || event;
-                    var text = $(this);
-                    if (e.keyCode == 27) {
-                        text.val("");
-                        text.trigger("blur");
-                    } else if (text.val().trim() == "") {
-                        text.closest(".center").find(".postlist").hide();
-                        text.closest(".center").find(".prelist").show();
-                    } else {
-                        text.closest(".center").find(".postlist").show();
-                        text.closest(".center").find(".prelist").hide();
-                    }
-                });
-                $(".leftpanel .scrollable .title").click(function () {
-                    var title = $(this);
-                    var clubs = $(".leftpanel .scrollable.club");
-                    var classes = $(".leftpanel .scrollable.class");
-                    (title.parents(".scrollable")[0] == classes[0] ? function () {
-                        //classes.toggleClass("min");
-                        // case 1: 50 50
-                        if (!(classes.hasClass("full") || classes.hasClass("min"))) {
-                            classes.addClass("min");
-                            clubs.addClass("full");
-                        } else if (classes.hasClass("min")) {
-                            if (clubs.hasClass("min")) {
-                                classes.removeClass("min").addClass("full");
-                            } else {
-                                classes.removeClass("min");
-                                clubs.removeClass("full");
-                            }
-                        } else if (classes.hasClass("full")) {
-                            classes.removeClass("full").addClass("min");
-                        }
-                    } : function () {
-                        if (!(clubs.hasClass("full") || clubs.hasClass("min"))) {
-                            clubs.addClass("min");
-                            classes.addClass("full");
-                        } else if (clubs.hasClass("min")) {
-                            if (classes.hasClass("min")) {
-                                clubs.removeClass("min").addClass("full");
-                            } else {
-                                clubs.removeClass("min");
-                                classes.removeClass("full");
-                            }
-                        } else if (clubs.hasClass("full")) {
-                            clubs.removeClass("full").addClass("min");
-                        }
-                    })();
-                });
-                $(".notify-window .column ul .check").click(function () {
-                    $(this).toggleClass("done")
-                    $(".event-check", $(this))[0].checked = $(this).hasClass("done");
-                })
-                $(".leftpanel .scrollable ul, .notify-window .column ul").mCustomScrollbar({
-                    theme: "minimal-dark",
-                    scrollInertia: 100
-                })
-                $(".leftpanel .profile .title").click(function () {
-                    var menu = $(".menu", $(this));
-                    var profilemenu = $(".profile-menu", $(this).parents(".profile"));
-                    menu.hasClass("open") ? (function () {
-                        menu.removeClass("open")
-                            .css({ "background-image": "url(img/menu-x-bar.gif?p" + new Date().getTime().toString() + ")" });
-                        profilemenu.removeClass("open");
-                    }()) : (function () {
-                        menu.addClass("open")
-                            .css({ "background-image": "url(img/menu-bar-x.gif?p" + new Date().getTime().toString() + ")" });
-                        profilemenu.addClass("open");
-                    }());
-                });
-                function toggleMenu(active) {
-                    var menu = $(".topbar .left a.menu");
-                    var leftpanel = $(".leftpanel");
-
-                    if (active) menu.addClass("active");
-                    else menu.removeClass("active");
-
-                    menu.hasClass("active") ? (function () {
-                        leftpanel.show();
-                    }()) : (function () {
-                        leftpanel.hide();
-                    }());
-                }
-                $(".topbar .left a.menu").click(function () {
-                    leftPanelOpen = $(this).toggleClass("active").hasClass("active")
-                    toggleMenu(leftPanelOpen);
-                });
-                $(".topbar .right .day").html(weekDays[new Date().getDay()]);
-                $(".topbar .right .date").html(new Date().getDate());
-                $(window).resize(function () {
-                    if ($(window).width() < 1250) toggleMenu(false);
-                    else if (leftPanelOpen) toggleMenu(true);
-                })
-                $(".notify-window .column ul li .action").hover(function () {
-                    var action = $(this);
-                    actionTitle = action.attr("title");
-                    action.removeAttr("title");
-                    var nottooltip = $("<div class='nottooltip' />").html(
-                        '<div class="tooltip">' +
-                            '<div class="ttwedge"></div>' +
-                            '<div class="ttcontent">' + actionTitle + '</div>' +
-                        '</div>');
-                    var icon = $(this);
-                    nottooltip.css({ "top": icon.offset().top, "left": icon.offset().left + 22 });
-                    $("body").append(nottooltip);
-                }, function () {
-                    $(this).attr("title", actionTitle);
-                    $("div.nottooltip").remove();
-                });
-                $(".topbar .notify").click(function () {
-                    // Reset
-                    $(".topbar .notify").removeClass("active");
-                    $(".notify-window").hide();
-
-                    var notify = $(this);
-                    if (openNotify !== notify[0]) {
-                        console.log("I am in", openNotify, notify);
-                        notify.toggleClass("active");
-
-                        if (notify.hasClass("calendar")) {
-                            $(".notify-window.calendar").toggle();
-                        } else if (notify.hasClass("board")) {
-                            $(".notify-window.board").toggle();
-                        }
-                        openNotify = notify[0];
-                    } else {
-                        openNotify = null;
-                    }
-                })
-                $(window).resize();
-            });
-        })(jQuery);
-    </script>
+    <script src="js/lptopbar.js"></script>
 </body>
 </html>

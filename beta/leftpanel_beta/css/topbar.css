@@ -29,22 +29,22 @@ body {
     min-width: 900px;
 }
 
-    .topbar .left {
+    .topbar > .left {
         overflow: auto;
         float: left;
         margin-right: 25px;
     }
 
-        .topbar .left a {
+        .topbar > .left a {
             float: left;
             height: 48px;
         }
 
-            .topbar .left a:hover {
+            .topbar > .left a:hover {
                 background-color: rgba(255, 255, 255, 0.15);
             }
 
-            .topbar .left a.urlinq {
+            .topbar > .left a.urlinq {
                 width: 130px;
                 display: block;
                 background-image: url(../img/logo.png);
@@ -53,7 +53,7 @@ body {
                 background-position: center center;
             }
 
-            .topbar .left a.menu {
+            .topbar > .left a.menu {
                 background-image: url(../img/menu-toggle.png);
                 background-size: 300% auto;
                 background-repeat: no-repeat;
@@ -65,16 +65,16 @@ body {
                 margin-left: 10px;
             }
 
-                .topbar .left a.menu:hover {
+                .topbar > .left a.menu:hover {
                     background-position: left center !important;
                 }
 
-                .topbar:hover .left a.menu.active {
-                    box-shadow: 0 0 27px rgba(255, 255, 255, 0.15) inset;
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                }
+    .topbar:hover > .left a.menu.active {
+        box-shadow: 0 0 27px rgba(255, 255, 255, 0.15) inset;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
 
-    .topbar:hover .left a.menu {
+    .topbar:hover > .left a.menu {
         background-position: center center;
     }
 
@@ -117,46 +117,66 @@ body {
                 background-position: center center;
             }
 
-    .topbar .right {
+    .topbar > .right {
         float: right;
         width: 22%;
         overflow: auto;
     }
 
-        .topbar .right .notify {
-            float: left;
-            height: 48px;
+        .topbar > .right .notify {
+            position: absolute;
             width: 48px;
+            height: 49px;
+            z-index: 10;
         }
 
-            .topbar .right .notify:hover, .topbar .right .notify.active {
+            .topbar > .right .notify .button {
+                height: 100%;
+                position: absolute;
+                width: 100%;
+                z-index: 10;
+            }
+
+            .topbar > .right .notify:hover .button {
                 background: rgba(255, 255, 255, 0.15);
             }
 
-            .topbar .right .notify.calendar {
-                padding-top: 4px;
+            .topbar > .right .notify.active .button {
+                background-color: #FFF;
             }
 
-                .topbar .right .notify.calendar > div {
+            .topbar > .right .notify.calendar .button {
+                padding-top: 8px;
+            }
+
+                .topbar > .right .notify.calendar .button div {
                     text-align: center;
                     color: #d6d6d6;
                 }
 
-                .topbar .right .notify.calendar:hover div, .topbar .right .notify.calendar.active div {
-                    color: #01ce95;
-                }
-
-            .topbar .right .notify.board .icon {
-                background-image: url(../img/board_icon.png);
-                background-size: 200% auto;
-                background-repeat: no-repeat;
-                background-position: left center;
-                width: 32px;
-                margin: auto;
-                height: 48px;
+            .topbar > .right .notify.calendar:hover .notify-window {
+                color: #000;
             }
 
-                .topbar .right .notify.board:hover .icon, .topbar .right .notify.board .icon.active {
+            .topbar > .right .notify.calendar:hover .button div, .topbar > .right .notify.calendar.active .button div {
+                color: #01ce95;
+            }
+
+            .topbar > .right .notify.board {
+                margin-left: 48px;
+            }
+
+                .topbar > .right .notify.board .button .icon {
+                    background-image: url(../img/board_icon.png);
+                    background-size: 200% auto;
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    width: 32px;
+                    margin: auto;
+                    height: 48px;
+                }
+
+                .topbar > .right .notify.board:hover .button .icon, .topbar > .right .notify.board.active .button .icon {
                     background-position: right center;
                 }
 
@@ -214,9 +234,11 @@ body {
             }
 
 div.day {
-    font-size: 13px;
+    font-size: 10px;
+    line-height: 11px;
 }
 
 div.date {
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 23px;
 }
