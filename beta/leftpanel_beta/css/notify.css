@@ -10,6 +10,7 @@
 }
 
 .notify-window {
+    display: none;
     position: absolute;
     width: 350px;
     height: 300px;
@@ -179,7 +180,7 @@
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
-                        line-height: 30px
+                        line-height: 30px;
                     }
 
                     .notify-window .column ul li .content.two-lines .line2 .follow {
@@ -255,17 +256,25 @@
                     width: 17px;
                 }
 
-                .notify-window .column ul li .action.add .icon {
-                    background-position: left 40%;
+                .notify-window .column ul li .action.add {
+                    background: none;
                 }
 
-                .notify-window .column ul li .action.add:hover .icon {
-                    background-position-x: right;
-                }
+                    .notify-window .column ul li .action.add:hover {
+                        background-color: #FFF;
+                    }
 
-                .notify-window .column ul li .action.add.busy:hover .icon {
-                    background-position: right 60%;
-                }
+                    .notify-window .column ul li .action.add .icon {
+                        background-position: left 40%;
+                    }
+
+                    .notify-window .column ul li .action.add:hover .icon {
+                        background-position-x: right;
+                    }
+
+                    .notify-window .column ul li .action.add.busy:hover .icon {
+                        background-position: right 60%;
+                    }
 
                 .notify-window .column ul li .action.down .icon {
                     background-position: left 100%;
