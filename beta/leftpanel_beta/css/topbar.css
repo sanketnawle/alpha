@@ -14,7 +14,7 @@ body {
     font-weight: 300;
     font-size: 15px;
     list-style: none;
-    cursor: default;
+    cursor: pointer;
 }
 
 .topbar {
@@ -27,6 +27,9 @@ body {
     border-bottom: 1px solid #000;
     z-index: 1000;
     min-width: 900px;
+    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+    -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
 }
 
     .topbar > .left {
@@ -41,7 +44,6 @@ body {
         }
 
             .topbar > .left a:hover {
-                background-color: rgba(255, 255, 255, 0.15);
             }
 
             .topbar > .left a.urlinq {
@@ -50,18 +52,20 @@ body {
                 background-image: url(../img/logo.png);
                 background-size: auto 25px;
                 background-repeat: no-repeat;
-                background-position: center center;
-            }
+                background-position: center 12px;
+            
+                border-right: 1px solid rgba(0, 0, 0, 0.1); -webkit-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset; -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset; box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+}
 
             .topbar > .left a.menu {
                 background-image: url(../img/menu-toggle.png);
                 background-size: 300% auto;
                 background-repeat: no-repeat;
                 background-position: right center;
-                width: 48px;
-                height: 30px;
-                margin: 9px 0;
-                border-radius: 2px;
+                width: 42px;
+                height: 28px;
+                margin: 11px 0;
+                border-radius: 4px;
                 margin-left: 10px;
             }
 
@@ -70,9 +74,9 @@ body {
                 }
 
     .topbar:hover > .left a.menu.active {
-        box-shadow: 0 0 27px rgba(255, 255, 255, 0.15) inset;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-    }
+
+        cursor: pointer;
+}
 
     .topbar:hover > .left a.menu {
         background-position: center center;
@@ -88,7 +92,7 @@ body {
             background-color: white;
             position: relative;
             margin-top: 10px;
-            padding: 7px 10px;
+            padding: 7px 10px 5px;
             border-radius: 3px;
             box-shadow: 0 2px 3px rgba(0,0,0,0.35) inset;
             overflow: auto;
@@ -99,21 +103,25 @@ body {
                 float: left;
                 margin-right: -25px;
                 padding-right: 25px;
-                font-size: 14px;
+                font-size: 15px;
+                font-family: 'Open Sans', sans-serif;
                 border: none;
-            }
+            
+                font-weight: 500;
+                line-height:18px;
+}
 
             .topbar .center form .submit {
                 width: 30px;
                 position: absolute;
                 height: 30px;
-                top: 0;
+                top: 1px;
                 right: 0;
                 border: none;
                 background: none;
                 background-image: url(../img/smallSearchIco.png);
                 background-repeat: no-repeat;
-                background-size: 20px 20px;
+                background-size: 17px 17px;
                 background-position: center center;
             }
 
@@ -128,7 +136,10 @@ body {
             width: 48px;
             height: 49px;
             z-index: 10;
-        }
+        
+            -webkit-box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+            box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset; border-right: 1px solid rgba(0, 0, 0, 0.1); border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
 
             .topbar > .right .notify .button {
                 height: 100%;
@@ -164,7 +175,9 @@ body {
 
             .topbar > .right .notify.board {
                 margin-left: 48px;
-            }
+            
+                border-left: none;
+}
 
                 .topbar > .right .notify.board .button .icon {
                     background-image: url(../img/board_icon.png);
@@ -190,22 +203,28 @@ body {
         top: 44px;
         width: 55%;
         max-width: 600px;
-        border-radius: 3px;
-        border: 1px solid #DDD;
-        box-shadow: 0 3px 8px #EEE;
-        padding: 4px 0;
-    }
+        border-radius: 4px;
+        padding: 4px 0px 4px;
+    
+        border-top: none;
+        box-shadow: 0 0 8px -1px #414141;
+}
 
         .topbar .center ul li a {
             display: block;
             overflow: auto;
             padding: 5px 8px;
-        }
+        
+            border-left: 4px solid transparent;
+            cursor: pointer;
+}
 
             .topbar .center ul li a:hover {
-                background-color: #313234;
+                background-color: #333;
                 color: #FFF;
-            }
+            
+                border-left: 4px solid #222;
+}
 
             .topbar .center ul li a .icon {
                 background-image: url(../img/search-icons.png);
@@ -214,7 +233,6 @@ body {
                 height: 40px;
                 clear: both;
                 margin-right: 10px;
-                border-radius: 3px;
             }
 
             .topbar .center ul li a .icon.src {
@@ -260,3 +278,17 @@ div.date {
     font-size: 22px;
     line-height: 23px;
 }
+
+.mainsearch::-webkit-input-placeholder { color:#999; font-weight: 500;}
+.mainsearch::-moz-placeholder { color:#474747; font-weight: 500;} /* firefox 19+ */
+.mainsearch:-ms-input-placeholder { color:#474747; font-weight: 500;} /* ie */
+.mainsearch:-moz-placeholder { color:#474747; font-weight: 500;}
+
+.mainsearch:focus::-webkit-input-placeholder{  transition: opacity 0.15s; 
+  opacity: .4;}
+.mainsearch:focus::-moz-placeholder{   transition: opacity 0.15s; 
+  opacity: .4;} /* firefox 19+ */
+.mainsearch:focus:-ms-input-placeholder{   transition: opacity 0.15s; 
+  opacity: .4;} /* ie */
+.mainsearch:focus:-moz-placeholder{   transition: opacity 0.15s; 
+  opacity: .4;}
