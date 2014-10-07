@@ -11,6 +11,8 @@ $(document).ready(function() {
 		$(".no-showcase").fadeIn(900);
 	});
 
+	//THIS IS MAH CODE BRUH, LOOK AT IT! LOOK AT IT!
+
 	$(document).delegate(".link","click",function(){
 		
 			$(this).text("Following")

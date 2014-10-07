@@ -178,6 +178,7 @@ left: 0px;
 	background-image: url(../src/members_icon_active.png)!important;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-inactive{
+	
 	background-image: url(../src/members_icon_inactive.png)!important;
 	width: 14px!important;
 	height: 14px!important;

@@ -23,6 +23,7 @@ if(isset($_GET['univ_id'])){
 ?>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
+<meta name="viewport" content="width=device-width" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
@@ -598,7 +599,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","460px");
+            $(".tab-wedge-down").css("left","480px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -629,9 +630,6 @@ $(document).ready(function() {
             
         }
         if($(this).hasClass("tabmembers")){
-            
-            
-            
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
@@ -648,7 +646,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","591px");
+            $(".tab-wedge-down").css("left","651px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -667,10 +665,9 @@ $(document).ready(function() {
                             url: "php/school_components/professor_school.php?university=<?php echo $university; ?>",
                             success: function(html){
                                 $(".members-tab-content").remove();
-
                                 $(".midsec").append(html);
-                              $(".members-tab-content").show();
-                              $(".members-tab-content").animate({ opacity: "1"},300);
+                                $(".members-tab-content").show();
+                                $(".members-tab-content").animate({ opacity: "1"},300);
                             }
                         });
             
@@ -712,9 +709,8 @@ $(document).ready(function() {
                             type: "POST",
                             url: "php/school_components/events_school.php?university=<?php echo $university; ?>",
                             success: function(html){
-                                $(".syllabus-tab-content").remove();
-
-                                $(".midsec").append(html);
+                              $(".syllabus-tab-content").remove();
+                            $(".midsec").append(html);
                               $(".syllabus-tab-content").show();
                               $(".syllabus-tab-content").animate({ opacity: "1"},300);
                             }
@@ -850,16 +846,34 @@ $(document).ready(function() {
                     </div>
                     
                     <div class = "midsec">
-                        <?php include "php/school_components/feed_school.php"; ?> 
-                        
+                        <!-- ?php include php/school_components/feed_school.php; ?>  -->
+                         <div class="section group">
+                            <div class="col span_1_of_3">
+                                <div class="school_header"> ABOUT </div>
+                                <div class="school_info">
+                                    <h3 class="school_name"> The School Name </h3>
+                                    <div class="school_about">
+                                        About the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the school
+                                    </div>
+                                    <div class="school_links">
+                                        <h3 class="school_links_header"> Links </h3>
 
-                        
-                                    
-                                
-                        
-                        
-
-                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col span_1_of_3">
+                                <div class="school_header"> ANNOUNCEMENTS </div>
+                                <div class="school_info">
+                                </div>
+                            
+                            </div>
+                            <div class="col span_1_of_3">
+                                <div class="school_header"> STUDENTS YOU MAY KNOW </div>
+                                <div class="school_info">
+                                </div>
+                            
+                            </div>
+                        </div>
                            
                                                  
                        

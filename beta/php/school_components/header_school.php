@@ -105,7 +105,7 @@ echo '</div>
                                     <li class = "group-tab">
                                         <a class = "tab1 tabFeed tab-anchor group-tab-active">
                                             <div class = "tab-title">
-                                                SCHOOL FEED
+                                                SCHOOL INFO
                                                 <span class = "tab-icon tab1-icon-active"></span>
                                             </div>
 

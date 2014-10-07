@@ -179,7 +179,7 @@ position: relative;
 top: 1.3px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab1-icon-active{
-	background-image:url(src/feed_icon_active.png);
+	background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
 	width: 13px;
 height: 13px;
 
@@ -190,7 +190,7 @@ height: 13px;
 	}
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab1-icon-inactive{
-	background-image:url(src/feed_icon_active.png);
+	background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab1-icon-inactive{
@@ -273,7 +273,7 @@ border-radius: 10px;
 }
 
 div.tab-wedge-down{
-background-image: url('src/tab-wedge-down.png');
+background-image: url('../src/tab-wedge-down.png');
 display: block;
 background-repeat: no-repeat;
 background-size: cover;
@@ -297,7 +297,9 @@ transition: background-color .15s ease-in-out;
 	opacity:.85;
 	transition: opacity .15s ease-in-out;
 }
-
+.group-tab:last-child{
+	border-right: 1px solid #e9eaed;
+}
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title,.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.status span.badge{
 color: #029acf;

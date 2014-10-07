@@ -3,7 +3,7 @@
 	{
 		$con->close();
 	} */
-	$con=mysqli_connect("localhost","campusla_UrlinqU","mArCh3!!1992X","campusla_urlinq_beta");
+	$con=mysqli_connect("localhost","root","","urlinq");
 
 	// Check connection
 
