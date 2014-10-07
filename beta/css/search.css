@@ -905,7 +905,7 @@ a.innerPic .smallPic .img{
 .results-top-sec{
 	position: relative;
 	left: 0px;
-	top: 0px;
+	top: -5px;
 	width: 95.6%;
 	margin: 0 auto;
 	margin-left: 14.5px;
@@ -913,11 +913,13 @@ a.innerPic .smallPic .img{
 }
 .result-header{
 	float:left;
-	padding-top: 5px;
 	padding-bottom: 7px;
-	width: 106%;
+	padding-right: 8px;
+	width: auto;
 	border-bottom: 1px solid #E9EAED;
     margin-left:-20px;
+    text-align: left;
+    color: #029ACF !important;
 }
 
 .result-header h2{
@@ -925,13 +927,15 @@ a.innerPic .smallPic .img{
 font-size: 16.5px;
 font-weight: 200;
 	padding-left: 10px;
-	color: #222;
+	color: #029ACF;
 cursor:pointer;
 display: inline;
+
 }
 
 .result-header h2:hover{
-	color:black;
+	/*color:black;*/
+	text-decoration: underline;
 }
 
 .result-header h2:active{
@@ -989,6 +993,8 @@ color: rgb(71, 71, 71);
 font-weight: 200;
 /*text-align: left;*/
 display:inline-block;
+text-align: left;
+margin-top: 3px !important;
 }
 
 .tooltip{
@@ -1246,41 +1252,40 @@ padding-right: 6px;
 }
 
 
-.course-bottom-functions .join-button a{
-width:120px;
+.course-bottom-functions .join-button a, .person-bottom-functions .link-button a{
+	width:120px;
 	line-height: 35px;
 	height: 33px;
-text-align:center;
-display: block;
-border-radius: 4px;
-
+	text-align:center;
+	display: block;
+	border-radius: 4px;
 	font-size: 16px;
 	font-weight: 600;
-
 	color: #666;
-
-outline: none;
-border-color:transparent;
-
-
+	outline: none;
+	border-color:transparent;
 	border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; margin: 1px 0 -1px; 
 	background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-margin-top: 4.5px;
-margin-right: -17px;
+	margin-top: 4.5px;
+	margin-right: -17px;
 }
-.course-bottom-functions .join-button a.linked{
+.person-bottom-functions .link-button a{
+	margin-right: -10px;
+	margin-top: -4px !important;
+}
+.course-bottom-functions .join-button a.linked, .person-bottom-functions .link-button a.linked{
 	color:white;
 }
 
 
-.course-bottom-functions .join-button a:hover{
+.course-bottom-functions .join-button a:hover, .person-bottom-functions .link-button a:hover {
 cursor:pointer;
 color:white;      border: 1px solid rgba(61, 213, 164, 1); background-clip: padding-box; border-color: rgb(32, 182, 146) rgba(38, 179, 133, 1) rgb(18, 156, 123); 
 border-radius: 4px; background: -moz-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0)); background: -moz-linear-gradient(#24F5BE, #07D6A0); background: -webkit-gradient(linear, center top, center bottom, from(#24F5BE), to(#07D6A0)); background: -webkit-linear-gradient(#24F5BE, #07D6A0); background-color: #07D6A0;
 outline: none;  position: relative;  top: 0px; cursor: pointer; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
 }
 
-.course-bottom-functions .join-button a:active{
+.course-bottom-functions .join-button a:active, .person-bottom-functions .link-button a:active{
 -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
@@ -1289,7 +1294,7 @@ background-color:#01CE98;
 color:white;
 }
 
-.course-bottom-functions .join-button a.joined{
+.course-bottom-functions .join-button a.joined, .person-bottom-functions .link-button a.joined{
 	background-color:#02e2a7;
 	color:white;
 	background-image: none;
@@ -1297,12 +1302,12 @@ color:white;
 	border-radius: 4px; outline: none;  position: relative;  top: 0px; cursor: pointer; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC; box-shadow: 0 1px 0 rgba(0, 0, 0, .1),inset 0 1px 1px #00FFCC;
 }
 
-.course-bottom-functions .join-button a.pre-joined{
+.course-bottom-functions .join-button a.pre-joined, .person-bottom-functions .link-button a.pre-joined{
 	background-color:#02e2a7;
 	color:white;
 }
 
-.course-bottom-functions .join-button a.joined:hover{
+.course-bottom-functions .join-button a.joined:hover, .person-bottom-functions .link-button a.joined:hover{
 color: white;
 border-color: #CE3856 #C92653 #B11029;
 transition: all 0s;
@@ -1355,10 +1360,10 @@ width: 430px;
 
 .person-info{
 	width: 100%;
-
 	margin-bottom: 0px;
 	float: left;
 	margin-top: 6px;
+	text-align: left;
 }
 
 .person-info h4{
@@ -1374,7 +1379,7 @@ cursor: pointer;
 
 .person-info h4:hover{
 	color: #016283;
-
+	text-decoration: underline;
 }
 
 .person-info h4:active{
@@ -1385,7 +1390,6 @@ cursor: pointer;
 	width: 19px;
 padding-bottom: 19px;
 }
-
 .person-info .mail{
 	background-image:url(../src/email.png);
 	box-shadow:none;
@@ -1427,6 +1431,7 @@ padding-top: 0px;
 
 	padding-right: 7px;
 }
+/*
 .person-bottom-functions .link-button a{
 	background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
 width: 120px;
@@ -1474,9 +1479,9 @@ border-color: #257A5E #0F865F #07835A;
 background-color:#01CE98;
 color:white;
 }
-
+*/
 .person-bottom-functions .link-button a.linked{
-	background-color:#02e2a7;
+	background-color: #01BE8D;
 	color:white;
 }
 
@@ -1509,25 +1514,23 @@ box-shadow: inset 0 2px 2px rgba(0,0,0,0.3);
 
 .slide-inner .person-bottom-functions{
 	padding-left: 15px;
-position: absolute;
-bottom: 60px;
-width:auto;
-opacity:.85;
-height:auto;
+	position: absolute;
+	bottom: 60px;
+	width:auto;
+	opacity:.85;
+	height:auto;
 }
 
 .bookmarks-content{
 	width: 100%;
-margin: 0;
-color: white;
-position: relative;
-
+	margin: 0;
+	color: white;
+	position: relative;
 	margin-top: 12px;
 }
 
 .bookmark-piece{
 	height: 45px;
-
 	opacity: .83;
 	margin-bottom: 4px;
 }
@@ -1674,5 +1677,9 @@ div.top_bar_footer_tour a,div.top_bar_footer_tour a:visited{
 	color:#fff!important;
 }
 
+
+a:hover{
+	text-decoration: underline;
+}
 
 /* END SEARCH PAGE TOUR CSS */
