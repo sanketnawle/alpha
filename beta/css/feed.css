@@ -782,11 +782,13 @@ textarea.form-control{
 }
 
 .dragdropbox {	
-    border: 1px dashed #0B85A1;    
-    color: #92AAB0;
-    text-align: center;
-    vertical-align: middle;
-    padding: 13px 10px;    
+border: 1px dashed #ddd;
+color: rgba(0, 0, 0, 0.42);
+text-align: center;
+vertical-align: middle;
+padding: 13px 10px;
+font-size: 13px;
+font-weight: 600;  
 }
 .dragdropbox:hover {
 	background-color: #f9f9f9;
@@ -1499,8 +1501,6 @@ opacity: 0;
 
 .question_title_span
 {
-font-size: 16px;
-font-weight: 400;
 float: left;
 margin-left: 77px;
 width: 100%;
@@ -1514,6 +1514,13 @@ width: 100%;
 -webkit-hyphens: auto;
    -moz-hyphens: auto;
         hyphens: auto;
+font-size: 19px;
+color: #333;
+letter-spacing: -0.5px;
+line-height: 1.25;
+font-weight: 400;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+margin-top: 4px;
 }
 
 
