@@ -1,0 +1,48 @@
+html {
+    height: 75%;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    max-width: 100%!important;
+    background-color:#f2f2f2;
+    height: 100%;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    line-height: 30px;
+    font-size: 1.35em;
+}
+
+div {
+    margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+}
+
+b {
+    font-size: 1.4em;
+    font-weigth: 700;
+}
+
+.error_icon {
+    height: 140px;
+    width: 140px;
+}
+
+.inner_wrapper {
+    background-color:#fff;
+    border: 1px solid #c8c8c8;
+    box-shadow: 1px 1px 10px #c8c8c8, -1px -1px 10px #c8c8c8;
+    height: 100%;
+    padding: 60px 60px;
+}

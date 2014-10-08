@@ -390,35 +390,40 @@ $(document).ready(function() {
     });
 
 
-
-
     $(document).delegate('.group-cover-pic-info',"click", function(){
         $('body,html').animate({
                 scrollTop: 0
             }, 200);
     });
 
+
     $(window).scroll(function() {
         var y=$(window).scrollTop()*0.32;
         var x=$(window).scrollTop()*1;
         //alert(y);
-        $(".group-cover-picture").css({"transform":"translateY("+y+"px)"});
-        $(".spec-group-header-right").css({"height":y+"px"});
+        //$(".group-cover-picture").css({"transform":"translateY("+y+"px)"});
+        //$(".spec-group-header-right").css({"height":y+"px"});
 
         if($(window).scrollTop()>=5){
             $(".info-scroll-up").css("cursor","pointer");
+            /*
             $(".em_hide").css({
                 "width":"12px",
                 "opacity":"1"
             });
+            */
         }
         else{
             $(".info-scroll-up").css("cursor","default");
+            /*
             $(".em_hide").css({
                 "width":"0",
                 "opacity":"0"
             });
+            */
+
         }
+
 
 
     });

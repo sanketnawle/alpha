@@ -186,6 +186,7 @@ button.upload_cover {
     margin-left: 15px;
     height: 30px;
     opacity:0;
+    opacity:0;
     width: 143px;
     padding-right: 4px;
     z-index: 200;
@@ -199,6 +200,10 @@ button.upload_cover {
     -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46), inset 0 -1px 1px rgba(146, 146, 146, 0.46);
     box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46), inset 0 -1px 1px rgba(146, 146, 146, 0.46);
     -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46), inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+    /***DT***/
+    float: right;
+    margin-right: 7px;
+    margin-top: -30px;
 }
 
 button.upload_cover em{
@@ -279,13 +284,12 @@ cursor:pointer;
 
 div.group-cover-pic-info span{
     font-weight: 400;
-
     color: rgba(255, 255, 255, 0.75);
 }
 
 div.group-cover-pic-info em{
     background-image:url(src/up_icon.png);
-    display:inline-block;
+    display: none;
     width: 12px;
     height: 12px;
     background-size: cover;
@@ -298,6 +302,7 @@ div.group-cover-pic-info em{
     transition:all .25s ease;
 }
 
+/*
 div.group-cover-pic-info:hover > em{
     background-image:url(src/up_icon_hover.png);
 }
@@ -305,8 +310,8 @@ div.group-cover-pic-info:hover > em{
 div.group-cover-pic-info:active > em{
     background-image:url(src/up_icon_hover.png);
     opacity:.7;
-
 }
+*/
 
 div.group-header-above{
     z-index:10;
@@ -474,10 +479,16 @@ height: 14px;
 top: 1.3px;
 }
 
+
 div.group-head-sec:hover > div.group-head-top-sec div.info-shower button.upload_cover{
-    display:inline-block;
-    opacity:1;
+    display: block;
+    opacity: 1;
 }
+
+div.group-head-sec:hover + div.group-cover-pic-info {
+    display: none;
+}
+
 
 
 a.school-id em{
@@ -1081,7 +1092,6 @@ float: right;
 }
 
 div.group-head-top-sec div.group-cover-picture{
-    
     position: relative;
     width: 100%;
     height: 100%;
@@ -1171,10 +1181,9 @@ em.floatR{
 
 em.close{
     background-image: url(src/close-icon.png);
-
-    width: 12px;
-    height: 12px;
-    top: 5px;
+    /***DT***/
+    width: 15px;
+    height: 20px;
     position: relative;
     position: relative;
     background-size: cover;
@@ -1186,12 +1195,12 @@ em.close:hover{
 }
 
 em.close:hover{
-opacity:.8;
+    opacity:.8;
 }
 
 div.modal_main {
-    margin-top: 10px;
-
+    /***DT***/
+    margin-top: 25px;
     width: 100%;
     position: relative;
     height: 280px;
