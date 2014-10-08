@@ -1617,16 +1617,86 @@ div.group-head-sec div.group-head-top-sec
 .school_info{
     padding: 5px;
     padding-left: 10px;
+    overflow: scroll;
+    max-height: 340px;
+    font-size: 13px;
+    color:grey;
 
 }
-.school_name, .school_links_header{
+.school_announcements{
+    padding-left: 10px;
+    overflow: scroll !important;
+    max-height: 350px;
+}
+.school_announcer_name{
+    display: inline-block;
+    width: auto;
+    height: 20px;
+}
+.school_announcer_position{
+    font-size: 13px;
+    color:grey;
+    margin-top: -20px;
+    margin-left: -1px;
+}
+.school_posted_time{
+    display: inline-block;
+    font-size: 13px;
+    padding-left: 40px !important;
+    color: grey;
+}
+.school_name, .school_links_header, .school_announcer_name{
     font-size: 100%;
     color: #65C5E6;
 }
 
 .school_about{
     color: #C8C8C8;
-     text-shadow: 0px .5px .5px rgba(0,0,0,.1);
+    text-shadow: 0px .5px .5px rgba(0,0,0,.1);
+}
+.school_list_of_students, .school_single_student{
+    text-decoration: none;
+    list-style: none;
+}
+.school_the_announcement {
+    color: grey;
+    font-size: 13px;
+}
+.school_list_of_students{
+    display: inline-block;
+    width: 98%;
+    overflow: scroll;
+    margin-left: -34px;
+    color:white;
+    vertical-align: text-bottom;
+    max-height: 340px;
+    overflow: scroll;
+
+
+}
+
+.school_single_student{
+    border-radius: 3px;
+    display: inline-block;
+    width: 90px;
+    max-width: 90px;
+    height: 90px;
+    background-size: cover;
+    margin:5px;
+    text-align: center;
+    font-size: 13px;
+    vertical-align: text-bottom;
+    box-shadow: inset 0 -10px 30px -10px #000000;
+    -moz-box-shadow: inset 0 -10px 30px -10px #000000;
+    -webkit-box-shadow: inset 0 -10px 30px -10px #000000;
+
+}
+.school_single_student:hover{
+    transition-duration:.3s;
+    box-shadow: inset 0 -10px 100px -10px #000000;
+    -moz-box-shadow: inset 0 -10px 100px -10px #000000;
+    -webkit-box-shadow: inset 0 -10px 100px -10px #000000;
+
 }
 
 .col {
@@ -1634,10 +1704,14 @@ div.group-head-sec div.group-head-top-sec
     float:left;
     margin: 1% 0 1% 1.6%;
     background-color: #FFFFFF;
-    min-height: 300px;
+    min-height: 400px;
     box-shadow: 0px 1px 1px rgba(0,0,0,.3);
     border-radius: 5px;
+    max-height: 400px;
+
+    
 }
+
 .col:first-child { margin-left: 0; }
 .group:before,
 .group:after {

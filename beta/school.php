@@ -23,7 +23,6 @@ if(isset($_GET['univ_id'])){
 ?>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<meta name="viewport" content="width=device-width" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
@@ -44,6 +43,7 @@ if(isset($_GET['univ_id'])){
 
 
 $(document).ready(function() {
+    var originalHTML = "";
     $.urlParam = function (sParam) {
 
         var sPageURL = window.location.search.substring(1);
@@ -258,6 +258,7 @@ $(document).ready(function() {
         });
     });
 
+   
              $(document).delegate('.study_box_open',"mouseleave",function(){
 
                 var thisBox = $(this);    
@@ -537,10 +538,12 @@ $(document).ready(function() {
 
 
 
-
     $(document).delegate(".tab-inactive","click",function(){
-        if($(this).hasClass("tab1")){           
-            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+        if($(this).hasClass("tab1")){  
+            $(".tab1").click(function(){
+                $(".midsec").append(originalHTML);
+            });
+             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
             }
@@ -599,7 +602,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","480px");
+            $(".tab-wedge-down").css("left","475px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -620,16 +623,20 @@ $(document).ready(function() {
                             url: "php/school_components/department_school.php?university=<?php echo $university; ?>",
                             success: function(html){
                                 $(".departments-tab-content").remove();
-
+                                originalHTML = $(".midsec").html();
+                                $(".midsec").html("");
                                 $(".midsec").append(html);
-                               $(".departments-tab-content").animate({ opacity: "1"},300);
-                               $(".departments-tab-content").show();
+                                $(".departments-tab-content").animate({ opacity: "1"},300);
+                                $(".departments-tab-content").show();
                             }
                         });
             
             
         }
         if($(this).hasClass("tabmembers")){
+            
+            
+            
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
@@ -646,7 +653,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","651px");
+            $(".tab-wedge-down").css("left","648px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -665,9 +672,10 @@ $(document).ready(function() {
                             url: "php/school_components/professor_school.php?university=<?php echo $university; ?>",
                             success: function(html){
                                 $(".members-tab-content").remove();
+
                                 $(".midsec").append(html);
-                                $(".members-tab-content").show();
-                                $(".members-tab-content").animate({ opacity: "1"},300);
+                              $(".members-tab-content").show();
+                              $(".members-tab-content").animate({ opacity: "1"},300);
                             }
                         });
             
@@ -709,8 +717,9 @@ $(document).ready(function() {
                             type: "POST",
                             url: "php/school_components/events_school.php?university=<?php echo $university; ?>",
                             success: function(html){
-                              $(".syllabus-tab-content").remove();
-                            $(".midsec").append(html);
+                                $(".syllabus-tab-content").remove();
+
+                                $(".midsec").append(html);
                               $(".syllabus-tab-content").show();
                               $(".syllabus-tab-content").animate({ opacity: "1"},300);
                             }
@@ -754,6 +763,8 @@ $(document).ready(function() {
             $(".syllabus-tab-content").hide();
             $(".about-content").show();
             $(".about-content").animate({ opacity: "1"},300);
+            
+
             
     });
 
@@ -846,34 +857,93 @@ $(document).ready(function() {
                     </div>
                     
                     <div class = "midsec">
-                        <!-- ?php include php/school_components/feed_school.php; ?>  -->
-                         <div class="section group">
+                       <div class="section group">
                             <div class="col span_1_of_3">
-                                <div class="school_header"> ABOUT </div>
+                                <div class="school_header"> 
+                                    ABOUT 
+                                </div>
                                 <div class="school_info">
-                                    <h3 class="school_name"> The School Name </h3>
-                                    <div class="school_about">
-                                        About the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the schoolAbout the school
-                                    </div>
+                                    <h3 class="school_name">
+                                        NEW YORK UNIVERSITY
+                                    </h3>
+                                    More about the school.More about the school.More about the school.More about the school.
+                                    More about the school.More about the school.More about the school.More about the school.
+                                    More about the school.More about the school.More about the school.More about the school.
                                     <div class="school_links">
-                                        <h3 class="school_links_header"> Links </h3>
+                                        <h3 class="school_links_header">
+                                            Links
+                                        </h3>
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col span_1_of_3">
+                                <div class="school_header"> 
+                                    ANNOUNCEMENTS
+                                </div>
+                                <div class="school_announcements">
+                                    <div class="school_announcement">
+                                        <h4 class="school_announcer_name"> Announcer Name </h4>
+                                        <div class="school_posted_time"> Posted 2 days ago</div> 
+                                        <p class="school_announcer_position"> Dean of School Of Engineering</p>
+                                        <div class="school_the_announcement">
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                        </div>
 
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col span_1_of_3">
-                                <div class="school_header"> ANNOUNCEMENTS </div>
-                                <div class="school_info">
-                                </div>
+                                    <div class="school_announcement">
+                                        <h4 class="school_announcer_name"> Announcer Name </h4>
+                                        <div class="school_posted_time"> Posted 2 days ago</div> 
+                                        <p class="school_announcer_position"> Dean of School Of Engineering</p>
+                                        <div class="school_the_announcement">
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                            School will be close on this day.School will be close on this day.
+                                        </div>
+                                    </div>
+                                </div> 
                             
                             </div>
                             <div class="col span_1_of_3">
-                                <div class="school_header"> STUDENTS YOU MAY KNOW </div>
-                                <div class="school_info">
-                                </div>
+                                <div class="school_header"> 
+                                    STUDENTS YOU MAY KNOW 
+                                 </div>
+                                <div class="school_students_you_may_know">
+                                    <ul class="school_list_of_students">
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                        <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                                    </ul>
+                                </div> 
                             
                             </div>
-                        </div>
+                    </div>
+                        
+
+                        
+                                    
+                                
+                        
+                        
+
+                        
                            
                                                  
                        
