@@ -134,19 +134,25 @@ div.mid_right_sec_school div.group-head-sec{
 }
 
 div.mid_right_sec_school div.group-head-sec div.group-pic-frame{
+    /***DT***/
+    /*
     width: 190px;
-
     height: 190px;
     margin-top: 222px;
     margin-left: 27px;
+    */
+    display: none;
 }
 
 div.mid_right_sec_school div.group-head-sec div.group-pic{
+    /**DT***/
+    /*
     background: no-repeat url(src/nyu_poly_logo.jpg);
-    
     width: 180px;
     height: 180px;
     background-size: cover;
+    */
+    display: none;
 }
 
 div.group-title div.group-name-mt{
