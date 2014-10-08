@@ -1,6 +1,5 @@
 html {
-    height: 75%;
-    width: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -22,6 +21,10 @@ div {
     margin-bottom: 50px;
 }
 
+.center_contents {
+    text-align: center;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -31,9 +34,8 @@ a:hover {
 }
 
 b {
-    font-size: 1.4em;
-    font-weigth: 700;
-    opacity: 0.8;
+    font-size: 1.35em;
+    opacity: 0.85;
 }
 
 .error_icon {
