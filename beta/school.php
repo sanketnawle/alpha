@@ -428,8 +428,9 @@ $(document).ready(function() {
 
     });
 
+    /***DT***/
+    /*
     $(window).scroll(function() {
-
         if($(window).scrollTop()>175){
             $(".info-scroll-up").css({"position":"absolute","top":"175px"});
             $(".spec-group-header-right").css({"position":"absolute","top":"177px","left":"777px"})
@@ -438,8 +439,11 @@ $(document).ready(function() {
             $(".info-scroll-up").css({"position":"fixed","top":"50px"});
             $(".spec-group-header-right").css({"position":"fixed","top":"50px","left":"1097px"});
         }
-
     });
+    */
+
+    $(".group-head-top-sec").mouseenter(function() { $(".group-cover-pic-info").css("opacity", "0"); });
+    $(".group-head-top-sec").mouseleave(function() { $(".group-cover-pic-info").css("opacity", "1"); });
 
     $('.cancelBtn').click(function(){
         $(".modal_body").animate({opacity:0},300,function(){
