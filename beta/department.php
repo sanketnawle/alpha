@@ -23,6 +23,7 @@ include('php/redirect.php');
 
 
 $(document).ready(function() {
+
     $.urlParam = function (sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
@@ -509,19 +510,19 @@ $(document).ready(function() {
             });
 
             $(document).delegate('.ready_to_unfollow',"mouseenter", function(){
-                $(this).text("Unfollow");
+                $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Following");
+                $(this).text("Joined");
             });
            
 
             $(document).delegate('.joinBtn',"click", function(){
                 if($(this).hasClass("joinedBtn")){
-                    $(this).text("Follow");
+                    $(this).text("Join");
                     $(this).removeClass("joinedBtn");
                 }else{
-                    $(this).text("Followed");
+                    $(this).text("Joined");
                     $(this).addClass("joinedBtn");
                 }
 
@@ -727,11 +728,10 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+   window.scroll(0,175);
 
-       window.scroll(0,175); 
-
-
-
+   $('.joinBtn').text('Join');
+   $('.joinedBtn').text('Joined');
 });
 
     /*progress function for ajax*/
@@ -742,6 +742,7 @@ $(document).ready(function() {
     }
 
 });
+
 </script>
 </head>
 <body>
