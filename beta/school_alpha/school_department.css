@@ -162,8 +162,10 @@ div.mid_right_sec_school div.group-head-sec div.group-pic{
 div.group-title div.group-name-mt{
     -webkit-font-smoothing: antialiased; color: rgb(255, 255, 255); display: inline-block; font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif; 
     margin-bottom: 6px;
-    font-size: 29px; font-weight: 600; height: 40px; text-shadow: rgba(0, 0, 0, 0.8) 0px 1px 4px; 
-    width: 600px;
+    font-size: 35px;
+    font-weight: 600;
+    text-shadow: rgba(0, 0, 0, 0.8) 0px 1px 4px;
+    width: 100%;
 
 }
 
@@ -327,15 +329,18 @@ div.group-header-above{
 }
 
 div.group-header-left div.spec-group-title{
-    margin-top: 284px;
-
+    margin-top: 250px;
     z-index: 10;
 }
 
 div.spec-group-title a.group-id{
+    /***DT***/
+    /*
     color: rgba(255, 255, 255, 0.88);
-text-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px;
-font-weight:600;
+    text-shadow: rgba(0, 0, 0, 0.2) 2px 2px 6px;
+    font-weight:600;
+    */
+    display: none;
 }
 
 div.spec-group-title a.group-id:hover{

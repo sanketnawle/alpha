@@ -417,12 +417,11 @@ border: 1px solid rgba(0,0,0,0.1);
 /*header section */
 
 div.group-header-left{
-display:inline-block;
-float:left;
-padding-top: 22px;
-max-width: 550px;
-position: absolute;
-left: 240px;
+    display: block;
+    float: center;
+    max-width: 800px;
+    position: relative;
+    margin: 0 auto;
 }
 
 div.group-header-left .group-leader{
@@ -798,12 +797,9 @@ div.urGroupStickyHeader div.stickyHeaderWrap div.back{
 }
 
 div.group-header-left div.group-title{
-    margin-top: 38px;
-	
     display: inline-block;
-    padding: 7px;
-    padding-left: 4px;
-    padding-right: 4px;
+    width: 100%;
+    text-align: center;
 }
 
 div.group-title div.group-name{
