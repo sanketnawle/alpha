@@ -992,7 +992,6 @@ $(document).ready(function() {
                                     </div>
                                     <div class = "tab-block-content tab-block-content-scroll">
                                         <div class = "members-scrollwrap">
-                                            
                                                 <?php
                                                      include 'php/dbconnection.php';
                                                      $query=$con->query("SELECT user_id,firstname,lastname FROM user WHERE user_id 

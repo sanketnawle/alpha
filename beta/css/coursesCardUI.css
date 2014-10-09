@@ -2,9 +2,11 @@ div.coursesCards {
 }
 
 div.courses-tab-content div.coursesCards div.item div.courses {
-    width: 460px;
     height: 210px;
-    overflow: scroll;
+    overflow: hidden;
+}
+div.courses-tab-content div.coursesCards div.item div.courses:hover {
+    overflow-y: auto;
 }
 
 div.coursesCards div.item {
@@ -13,10 +15,11 @@ div.coursesCards div.item {
 div.courses-selector div.courses {
 }
 
-    div.courses-selector div.courses div.course-top {
-        border-top: none;
-        height: 54px;
-    }
+div.courses-selector div.courses div.course-top {
+    margin-top: 2px;
+    border-top: none;
+    height: 54px;
+}
 
 div.course-top div div.frame {
     display: block;
@@ -442,7 +445,7 @@ div.course-top div.leftFloat div.course-professor {
 div.courses div.course-row {
     padding: 4px 6px;
     border-top: 1px solid #E0E0E0;
-    width: 97%;
+    width: 96%;
 }
 
 div.courses div.course-bottom {
