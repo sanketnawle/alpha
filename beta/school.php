@@ -549,9 +549,8 @@ $(document).ready(function() {
 
     $(document).delegate(".tab-inactive","click",function(){
         if($(this).hasClass("tab1")){  
-            $(".tab1").click(function(){
-                $(".midsec").append(originalHTML);
-            });
+             $(".midsec").append(originalHTML);
+           
              if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
@@ -680,9 +679,10 @@ $(document).ready(function() {
                             type: "POST",
                             url: "php/school_components/professor_school.php?university=<?php echo $university; ?>",
                             success: function(html){
-                                $(".members-tab-content").remove();
-
-                                $(".midsec").append(html);
+                              $(".members-tab-content").remove();
+                              originalHTML = $(".midsec").html();
+                              $(".midsec").html("");
+                              $(".midsec").append(html);
                               $(".members-tab-content").show();
                               $(".members-tab-content").animate({ opacity: "1"},300);
                             }
