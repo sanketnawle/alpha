@@ -102,6 +102,10 @@ div.study_box_open div div button:active{
     box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px rgba(0,0,0,.08);
 }
 
+div.school_students_you_may_know {
+    overflow: hidden;
+}
+
 a.disabled:hover ~ #help-4{
 z-index: 1;
 opacity: 1;
