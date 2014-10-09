@@ -32,29 +32,28 @@ echo '
 <em></em>
 <span class = "group_location_name">
 <a href="http://maps.google.com/?q=' . get_univ_add($con, $university) . '" target="_blank" style="text-decoration:none;">
-                                            ' . get_univ_add($con, $university) . '
-                                        </a>    
-                                       
-                                    </span>
-                                </div>
-                                <div class = "help-div" id = "help-3">
-                                    <div class = "help-wedge">
-                                    </div>
-                                    <div class = "help-box">
-                                        Submit a photo of this school for a chance to replace its current cover photo.
-                                    </div>
-                                </div>
-                                <div class = "location-pic-div-wrap">
-                                    <div class = "white-wedge-up">
-                                    </div>
-                                    <div class = "location-pic-container">
-                                        <div class = "modal_loading3">
-                                            <img class = "modal_animation" src = "src/loadingAnimation.gif">
-                                        </div>
-                                        <img class = "location_building_pic" src = "" class = "location-picture">
-                                    </div>
-                                </div>
-                            </div>';
+            ' . get_univ_add($con, $university) . '
+    </a>
+</span>
+</div>
+<div class = "help-div" id = "help-3">
+    <div class = "help-wedge">
+    </div>
+    <div class = "help-box">
+        Submit a photo of this school for a chance to replace its current cover photo.
+    </div>
+</div>
+<div class = "location-pic-div-wrap">
+    <div class = "white-wedge-up">
+    </div>
+    <div class = "location-pic-container">
+        <div class = "modal_loading3">
+            <img class = "modal_animation" src = "src/loadingAnimation.gif">
+        </div>
+        <img class = "location_building_pic" src = "" class = "location-picture">
+    </div>
+</div>
+</div>';
 
 $query = $con->query("SELECT dp_blob_id,cover_blob_id FROM university WHERE univ_id =$university");
 while ($row = $query->fetch_array()) {

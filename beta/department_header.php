@@ -166,17 +166,11 @@ if ($get_department_details_query_result->num_rows == 0) {
     }
 
     echo "
-
             <div class = 'group_location'>
-
                 <em></em>
-
-                    <span class = 'group_location_name'>
-
-                        " . $department_row['dept_location'] . "
-
-                    </span>
-
+                <span class = 'group_location_name'>
+                <a href='http://maps.google.com/?q=' target='_blank' style='text-decoration:none;'>New York</a>
+                </span>
             </div>
 
             <div class = 'help-div' id = 'help-3'>
