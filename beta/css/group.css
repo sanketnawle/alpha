@@ -32,9 +32,9 @@ width: 100%;
 
 .group-head-sec .group-pic-frame{
 	display: block;
-position: absolute;
-background-color: #F8F8F8;
-z-index: 105;
+	position: absolute;
+	background-color: #F8F8F8;
+	z-index: 105;
 
 	width: 196px;
 

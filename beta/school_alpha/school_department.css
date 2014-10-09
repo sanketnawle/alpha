@@ -188,7 +188,7 @@ div.group-cover-pic-info b{
 }
 
 div.info-scroll-up{
-    display:inline-block;
+
 }
 
 button.upload_cover {
@@ -989,7 +989,9 @@ div.location-pic-container img.location_building_pic{
 div.info-scroll-up div.location-pic-div{
     
 }
-
+div.info-scroll-up{
+    background: transparent !important; 
+}
 div.blackData span.group_members{
 position: absolute;
 right: 10px;
