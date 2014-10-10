@@ -56,7 +56,7 @@
       <file leaf-file-name="club.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="51" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-15.038462" vertical-offset="102" max-vertical-offset="3689">
+            <state line="25" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="3689">
               <folding>
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -117,9 +117,9 @@
         </entry>
       </file>
       <file leaf-file-name="clubs.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/clubs.js">
+        <entry file="file://$PROJECT_DIR$/js/club/clubs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1026" column="70" selection-start="43862" selection-end="43862" vertical-scroll-proportion="0.37458193" vertical-offset="17106" max-vertical-offset="20230">
+            <state line="1031" column="0" selection-start="43944" selection-end="43944" vertical-scroll-proportion="0.46934226" vertical-offset="17106" max-vertical-offset="20230">
               <folding>
                 <marker date="1412966950013" expanded="false" signature="36976:36998" placeholder="..." />
                 <marker date="1412966950013" expanded="false" signature="37874:37896" placeholder="..." />
@@ -219,10 +219,10 @@
         <option value="$PROJECT_DIR$/protected/views/club/club_events_tab.php" />
         <option value="$PROJECT_DIR$/protected/views/club/club_header.php" />
         <option value="$PROJECT_DIR$/protected/config/main.php" />
-        <option value="$PROJECT_DIR$/protected/views/club/club.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ClubController.php" />
         <option value="$PROJECT_DIR$/html/templates/member.html" />
         <option value="$PROJECT_DIR$/js/clubs.js" />
+        <option value="$PROJECT_DIR$/protected/views/club/club.php" />
       </list>
     </option>
   </component>
@@ -541,6 +541,7 @@
       <recent name="C:\wamp\www\urlinqyii\protected\views\club" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\alpha\urlinqyii\js\club" />
       <recent name="C:\wamp\www\alpha\urlinqyii\protected\views\partial" />
       <recent name="C:\wamp\www\urlinqyii\protected\components" />
       <recent name="C:\wamp\www\urlinqyii\php" />
@@ -774,7 +775,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/components/leftmenu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="57" selection-start="6613" selection-end="6613" vertical-scroll-proportion="-10.961538" vertical-offset="1041" max-vertical-offset="3978" />
+        <state line="144" column="57" selection-start="6613" selection-end="6613" vertical-scroll-proportion="-10.961538" vertical-offset="1041" max-vertical-offset="3978">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ClassController.php">
@@ -1004,15 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="51" selection-start="1728" selection-end="1728" vertical-scroll-proportion="-15.038462" vertical-offset="102" max-vertical-offset="3689">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/templates/member.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="35" selection-start="41" selection-end="72" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="170">
@@ -1020,9 +1014,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/clubs.js">
+    <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1026" column="70" selection-start="43862" selection-end="43862" vertical-scroll-proportion="0.37458193" vertical-offset="17106" max-vertical-offset="20230">
+        <state line="25" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="3689">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/club/clubs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1031" column="0" selection-start="43944" selection-end="43944" vertical-scroll-proportion="0.46934226" vertical-offset="17106" max-vertical-offset="20230">
           <folding>
             <marker date="1412966950013" expanded="false" signature="36976:36998" placeholder="..." />
             <marker date="1412966950013" expanded="false" signature="37874:37896" placeholder="..." />

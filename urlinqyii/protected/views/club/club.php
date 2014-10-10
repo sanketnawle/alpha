@@ -31,7 +31,7 @@
     </script>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/clubs.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/clubs.js'></script>
 </head>
 <body>
 <div class='root'>
