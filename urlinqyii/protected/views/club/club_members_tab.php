@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 7/21/14
- * Time: 5:26 PM
- */
+
 
 echo '
     

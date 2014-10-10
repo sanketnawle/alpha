@@ -111,10 +111,29 @@ d) REFERENCING CSS/JS/IMAGE/ASSETS
     and should be referenced in your html like this:
 
     CSS
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->request->baseUrl; ?>/css/file_name.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/file_name.css'/>
 
     JS
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script_name.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/script_name.js"></script>
 
     Images
-    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
+    <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
+
+
+f) QUERYING SPECIFIC COLUMNS FROM TABLE
+
+
+    examples:
+
+    $is_admin = Yii::app()->db->createCommand()
+        ->select('is_admin')
+        ->from('group_users u')
+        ->where('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$club->group_id))
+        ->queryRow();
+
+    $user = Yii::app()->db->createCommand()
+        ->select('id, username, profile')
+        ->from('tbl_user u')
+        ->join('tbl_profile p', 'u.id=p.user_id')
+        ->where('id=:id', array(':id'=>$id))
+        ->queryRow();

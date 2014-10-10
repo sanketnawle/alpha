@@ -14,7 +14,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="leftmenu.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css">
     
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
@@ -25,9 +25,9 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     -->
 
-    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all"/>
-    <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+    <link type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.jscrollpane.css" rel="stylesheet" media="all"/>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.mousewheel.js"></script>
 
 
     <script>
@@ -59,7 +59,7 @@
         <input type="text" placeholder="Search your courses & clubs" class="search_groups" id="tray_search">
         <i class="icon_search"></i>
         <a class="join-group">
-            <img class="add-icon" src='img/add.png'>
+            <img class="add-icon" src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/add.png'>
         </a>
     </div>
 

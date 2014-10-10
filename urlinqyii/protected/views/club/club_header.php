@@ -1,6 +1,5 @@
 <?php
 
-//require_once("dbconnection.php");
 
 if(isset($_GET['group_id'])){
     $group=$_GET['group_id'];
@@ -10,41 +9,8 @@ if(isset($_GET['group_id'])){
 $user_id = $user->user_id;
 
 
-}
-
-//$get_group_header_query = "SELECT count(*) as user_count FROM group_users WHERE group_id = ?";
-//$get_group_header_stmt = $con->prepare($get_group_header_query);
-//if($get_group_header_stmt != null) {
-//    $get_group_header_stmt->bind_param("i",$group);
-//    $get_group_header_stmt->execute();
-//    $get_group_header_stmt->bind_result($user_count);
-//    $get_group_header_stmt->fetch();
-//    $get_group_header_stmt->close();
-//}
-//
-//$get_group_header_query = "SELECT count(*) as file_count FROM posts p JOIN groups_files gf on (p.target_id = gf.group_id) WHERE
-//    ((p.target_type = 'groups' and p.file_id is not null and p.target_id = ?) or gf.group_id = ?)";
-//$get_group_header_stmt = $con->prepare($get_group_header_query);
-//if($get_group_header_stmt != null) {
-//    $get_group_header_stmt->bind_param("ii",$group,$group);
-//    $get_group_header_stmt->execute();
-//    $get_group_header_stmt->bind_result($file_count);
-//    $get_group_header_stmt->fetch();
-//    $get_group_header_stmt->close();
-//}
-//
-//$get_group_header_query = "SELECT count(*), is_admin FROM group_users WHERE group_id = ? and user_id = ?";
-//$get_group_header_stmt = $con->prepare($get_group_header_query);
-//if($get_group_header_stmt != null) {
-//    $get_group_header_stmt->bind_param("ii",$group,$user_id);
-//    $get_group_header_stmt->execute();
-//    $get_group_header_stmt->bind_result($is_member, $is_admin);
-//    $get_group_header_stmt->fetch();
-//    $get_group_header_stmt->close();
-//}
-
 echo '
-                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $cover_blob . ') no-repeat scroll 50% center / 100% auto #333;">
+                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $club->cover_blob_id . ') no-repeat scroll 50% center / 100% auto #333;">
                             <div class = "group-head-top-sec-shadow">
                             </div>
                             <div class = "info-scroll-up info-shower">   ';
@@ -78,8 +44,11 @@ echo '
                                     <input class="header_small_img_input" name="img" type="file" style="display:none;"/>
                                 </form>';
                             }
+
+                            //replace the image_url with a $club->$file->file_url once the db is restructured
                             echo '<div class = "group-pic" style="margin-top: 5px; margin-left: 5px;
-                                background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $dp_blob . ') no-repeat scroll 50% center / 100% auto #333;">
+
+                                background-size:cover; background-image:url(' .  'http://static.bbc.co.uk/earthscience/images/ic/640x360/surface_and_interior/lava.jpg' . ') no-repeat scroll 50% center / 100% auto #333;">
                             </div>';
                             if ($is_admin == "1")
                             {
@@ -93,8 +62,8 @@ echo '
                         echo '</div>
                         <div class = "group-header-left group-header-above">
                             <div class = "group-title spec-group-title">
-                                <div class = "group-name group-name-mt" id="groupid_' . $group_id . '">'
-                                . $group_name .
+                                <div class = "group-name group-name-mt" id="groupid_' . $club->group_id . '">'
+                                . $club->group_name .
                                 '</div>';
                                 if ($is_admin == "1")
                                 {
@@ -104,9 +73,9 @@ echo '
                                         <span>Done</span>
                                     </button>';
                                 }
-                                if (($website != null) && ($website != ""))
+                                if (($club->website != null) && ($club->website != ""))
                                 {
-                                    echo '<a class = "link_website_white" href="' . $website .'" target="_blank" style="text-decoration:none;">
+                                    echo '<a class = "link_website_white" href="' . $club->website .'" target="_blank" style="text-decoration:none;">
                                      <span>Visit the club\'s website</span>                                
                                     </a>';
                                 }

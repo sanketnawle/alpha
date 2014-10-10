@@ -152,6 +152,8 @@ if (count($events_array) > 0) {
     }
 
     array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $events_array);
+
+
     $prev_week_start_date = "2014-01-01";
     $prev_week_end_date = "2014-01-07";
     $prev_day = "00-00-00";

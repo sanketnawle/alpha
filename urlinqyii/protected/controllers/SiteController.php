@@ -134,7 +134,10 @@ class SiteController extends Controller
 
 
     public function actionJson(){
-        $data = array('test'=>'lol','test_array'=>array(1,2,3,4));
+        //$data = array('test'=>'lol','test_array'=>array(1,2,3,4));
+
+        $data = array('success'=>true,'posts'=>array('post1','post2'));
+
 
         $this->renderJSON($data);
     }
