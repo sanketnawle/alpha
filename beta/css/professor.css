@@ -1,6 +1,5 @@
 header.professor-header {
-    margin: 0;
-    padding: 12px 0 0;
+    margin: 0;    
     background: #333 url(../src/noise-black.png);
     background-image: url(../src/profile-header-gradient.png), url(../src/noise-black.png);
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
@@ -9,17 +8,22 @@ header.professor-header {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 180px;
+    height: 300px;
     display: block;
 }
 
 .resource-wrapper {
-    border: none;
     position: relative;
-    border-radius: 4px 4px 0 0;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 100%;
+}
+
+.showcase-photos {
+    height: 100%;
+}
+
+.clearfix-invite-ddbox {
+    position: relative;
+    height: 100%;
 }
 
 
@@ -2278,10 +2282,6 @@ span.ns-title {
     text-shadow: 0 1px 3px rgba(0,0,0,0.75);
 }
 
-div.main header.professor-header-nothing {
-    min-height: 225px;
-}
-
 .no-showcase .ns-title {
     color: #fff;
     font-size: 18px;
@@ -2811,26 +2811,20 @@ div.member-person div.member-wrap div.follow-btn {
 /* Styles for showcase here */
 
 .add-more-showcase {
-    display: block;
-    margin-left: 110% !important;
-    ;
-    margin-right: auto;
+    display: block;        
     color: white;
     font-size: 13px;
     font-weight: 600;
     width: 135px;
-    top: 40px;
-    padding-bottom: 0px !important;
-    padding: 5px;
-    height: 25px !important;
-    position: relative;
+    top: 20px;
+    right: 20px;
+    padding: 5px 5px 0 5px;
+    height: 25px;
+    position: absolute;
     cursor: pointer;
     z-index: 50;
-    background-color: #1BB3E3;
-    margin-bottom: 20px;
+    background-color: #1BB3E3;    
     border-radius: 5px;
-    left: 55px !important;
-    top: 20px !important;
 }
 
 .div.add-event-dd-box-invite {
@@ -2843,12 +2837,9 @@ div.dd-box-invite-scrollwrap ul.hor-scroll-invites li.ddbox-invite-option {
 }
 
 div.dd-box-invite-scrollwrap {
-    min-height: 200px;
-    padding-left: 35px;
-    padding-right: 70px;
-    width: auto;
-    display: block;
-    margin: auto;
+    height: 100%;
+    top: 0 !important;
+    margin: 0;
 }
 
 a.ddbox-hor-scroller {
@@ -2857,19 +2848,17 @@ a.ddbox-hor-scroller {
     z-index: 100;
 }
 
-div.add-event-dd-box-invite {
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px;
-    background-color: transparent;
-    border: none;
-    border-radius: 0px;
-    margin-bottom: 10px;
+div.add-event-dd-box-invite {    
+    display: block;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    top: 0;
+    z-index: 2;
 }
 
 div.dd-box-invite-scrollwrap ul.hor-scroll-invites {
-    top: 40px;
-    max-height: 195px;
+    
 }
 
     div.dd-box-invite-scrollwrap ul.hor-scroll-invites li.ddbox-invite-option:hover {
@@ -3331,4 +3320,109 @@ a#univ_link {
 
 .user-groups-courses .user-class-visibility .options {
     z-index: 2;
+}
+
+.showcase-wrapper *, .showcase-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    box-sizing: border-box;
+    color: inherit;
+    font-family: open-sans;
+}
+
+.showcase-wrapper {
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    height: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 1px;
+    background-color: #333;
+}
+
+.showcase-wrapper ul {    
+    overflow: hidden;
+    width: 166.667%;
+    height: 100%;
+    margin-left: -33.33%;
+}
+
+.showcase-wrapper ul.goleft {
+    transition: 1s ease-in-out;
+    margin-left: -66.67%;
+}
+
+.showcase-wrapper ul.goright {
+    transition: 1s ease-in-out;
+    margin-left: 0%;
+} 
+
+.showcase-wrapper ul li {
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 2px !important;
+}
+
+.showcase-wrapper ul li img {
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.showcase-wrapper .controls {
+    opacity: 0.15;
+    position: absolute;
+    top: 100%;
+    width: 33.33%;
+    height: 50px;
+    margin: -50px 33.33% 0;
+    transition: opacity .3s;
+}
+.showcase-wrapper:hover .controls {    
+    opacity: 1;
+}
+
+.showcase-wrapper .controls .center {    
+    margin: 0 50px 0 50px;
+    color: #FFF;
+    line-height: 50px;
+    font-size: 20px;
+    text-shadow: 0 0 3px #444;
+    text-align: center;
+    transition: opacity .3s;
+}
+
+.showcase-wrapper .controls.hide .center, .showcase-wrapper:hover .controls.hide .center {
+    opacity: 0;
+}
+
+.showcase-wrapper .controls .btn {    
+    background-image: url(../img/arrow.png);
+    background-size: 100% 100%;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin: 5px;
+    opacity: 0.85;
+}
+
+.showcase-wrapper .controls .btn:hover {
+    opacity: 1;
+}
+
+.showcase-wrapper .controls .left {
+    float: left;
+}
+
+.showcase-wrapper .controls .right {
+    float: right;
+    transform: rotateY(180deg);
 }

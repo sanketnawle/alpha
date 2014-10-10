@@ -96,7 +96,7 @@ body {
             padding: 6px 10px 4px;
             border-radius: 3px;
             box-shadow: 0 2px 3px rgba(0,0,0,0.35) inset;
-            overflow: auto;
+            overflow: hidden;
         }
 
             .topbar .center form .text {
