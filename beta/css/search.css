@@ -5,11 +5,13 @@ search type select
 */
 
 body{
-	background: #F8f8f8!important;
+	background: #eee!important;
 }
 
 .visible-lg{
-	padding-top:14px;
+	padding-top: 60px;
+	width: 310px;
+	position: fixed;
 }
 
 .searchType{
@@ -90,7 +92,8 @@ a.type{
 	border-radius:4px;
 padding: 10px 15px;
 text-decoration:none;
-	font-weight: 200;
+	
+		font-weight: 400;
 	
 		font-size: 15px;
 }
@@ -651,7 +654,7 @@ color: #818181;
 font-weight: 700;
 margin:0 0 10px;
 padding:0;
-	font-size: .8em;
+	font-size: .55em;
     overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
@@ -912,15 +915,15 @@ a.innerPic .smallPic .img{
 	z-index: 100;
 }
 .result-header{
-	float:left;
-	padding-bottom: 7px;
-	
-	padding-right: 8px;
-	width: auto;
-	border-bottom: 1px solid #E9EAED;
-    margin-left:-20px;
-    text-align: left;
-    color: #029ACF !important;
+float: left;
+padding-bottom: 7px;
+padding-left: 6px;
+padding-right: 8px;
+width: auto;
+border-bottom: 1px solid #E9EAED;
+margin-left: -29px;
+text-align: left;
+color: #029ACF !important;
 }
 
 .result-header h2{
@@ -1257,6 +1260,7 @@ padding-right: 6px;
 width:120px;
 	line-height: 35px;
 	height: 33px;
+	text-decoration: none!important;
 text-align:center;
 display: block;
 border-radius: 4px;
@@ -1425,17 +1429,19 @@ padding-bottom: 19px;
 }
 
 .person-bottom-functions{
-	padding-left: 23px;
+	padding-left: 7px;
 position: relative;
-float: left;
-width: 76%;
+
+	float: right;
+
+	width: auto;
 height: 40px;
 padding-top: 0px;
+	top: -75px;
 }
 .person-bottom-functions .link-button{
 	float: right;
 
-	padding-right: 7px;
 }
 /*.person-bottom-functions .link-button a{
 	background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
@@ -1547,6 +1553,11 @@ position: relative;
 	opacity:1;
 }
 
+.vert-results-wrapper .person-main .person-bottom-functions{
+	top:108px!important;
+}
+
+
 .bookmark-title-clear{
 	width: 168px;
 overflow: hidden;
@@ -1592,6 +1603,7 @@ float: right;
 .slide-inner .person-bottom-functions .link-button a{
 	width: 78px;
 font-size: 13px;
+text-decoration: none!important;
 height: 24px;
 line-height: 25px;
 }
