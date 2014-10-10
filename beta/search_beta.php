@@ -306,52 +306,51 @@
 							<a class = "type inactiveType" data-value="Posts"><span id="category6" class = "resultNum pull-right"></span>Posts</a>
 						</div>-->
 					</div>
-				</div>
-				<hr class = "hr-divider">
-				<div class = "form-group">
-					<label class = "col-sm control-label" for = "search_query">Keywords:</label>
+					<hr class = "hr-divider">
+					<div class = "form-group">
+						<label class = "col-sm control-label" for = "search_query">Keywords:</label>
 						<div class = "col-lg">
 							<input class = "form-control" id = "search_query" name = "search[query]" type = "text" value = "">
 						</div>
-				</div>
-<!-- 				<div class = "form-group">
-					<label class = "col-sm control-label" for = "subject_query">Subjects:</label>
-					<div class = "col-lg">
-						<input class = "form-control" id = "subject_query" name = "subject[query]" type = "text" value = "">
-						<div class = "dropdown subjects">
-						<ul class = "subject-results" id = "subject-drop">
-					
-<?php
-/*get the list of departments in the university*/
-// 	$deptsql="SELECT * FROM department where univ_id =".$_GET['univid'];
-// 	if($deptListRes = $con->query($deptsql))
-// 	{
-// 		while ($deptRow = $deptListRes->fetch_array(MYSQLI_ASSOC))
-// 		{
-?>
-									<li class = "subject-results-dept" id = <?php //echo "'".$deptRow['dept_id']."'";?>>
-										<div class = "subject-result-label">
-											<span class = "subject-match">
-											</span>
-											<?php //echo $deptRow['dept_name'];?>
-										</div>
-									</li>
-<?php 			
-// 		}
-		
-// 	}
-?>
-							</ul>
-							</div>
-						</div>						
 					</div>
--->					
-					<!--<div class = "form-group advancedToggle advancedShow">
-						<span class = "FAcaret"></span>
-						<a class= "collapsed" href = "#">
-							Advanced Options
-						</a>
-					</div>-->
+					<!-- 				<div class = "form-group">
+										<label class = "col-sm control-label" for = "subject_query">Subjects:</label>
+										<div class = "col-lg">
+											<input class = "form-control" id = "subject_query" name = "subject[query]" type = "text" value = "">
+											<div class = "dropdown subjects">
+											<ul class = "subject-results" id = "subject-drop">
+										
+					<?php
+					/*get the list of departments in the university*/
+					// 	$deptsql="SELECT * FROM department where univ_id =".$_GET['univid'];
+					// 	if($deptListRes = $con->query($deptsql))
+					// 	{
+					// 		while ($deptRow = $deptListRes->fetch_array(MYSQLI_ASSOC))
+					// 		{
+					?>
+														<li class = "subject-results-dept" id = <?php //echo "'".$deptRow['dept_id']."'";?>>
+															<div class = "subject-result-label">
+																<span class = "subject-match">
+																</span>
+																<?php //echo $deptRow['dept_name'];?>
+															</div>
+														</li>
+					<?php 			
+					// 		}
+							
+					// 	}
+					?>
+												</ul>
+												</div>
+											</div>						
+										</div>
+					-->					
+										<!--<div class = "form-group advancedToggle advancedShow">
+											<span class = "FAcaret"></span>
+											<a class= "collapsed" href = "#">
+												Advanced Options
+											</a>
+										</div>-->
 					<div class = "advancedOptions">
 						<div class = "form-group">
 							<label class = "col-sm control-label" for = "search_query">Credits:</label>
@@ -361,7 +360,7 @@
 						</div>
 					</div>
 					<button class = "search-btn" name = "commit" id ="search" >Search</button>
-
+				</div>
 			</div>
 			<div id = "result" class = "midsec loadani_parent">
 				<section class='loading_animation'>

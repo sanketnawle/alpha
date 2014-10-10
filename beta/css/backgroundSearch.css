@@ -80,9 +80,9 @@ top:48px;
 padding-top:10px;
 padding-bottom:20px;
 min-height:600px;
-background: #EBECEE url(src/noise-2.png);
 padding-left: .2px; padding-right: 0px;
 z-index: 2;
+background: #f7f7f7; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05); border-color: #DBE0E6 #D4D6DB #B9BCC5;
 }
 
 
