@@ -29,12 +29,12 @@ echo '
 <span>Submit Cover</span>
 </button>
 <div class = "group_location">
-<em></em>
-<span class = "group_location_name">
-<a href="http://maps.google.com/?q=' . get_univ_add($con, $university) . '" target="_blank" style="text-decoration:none;">
-            ' . get_univ_add($con, $university) . '
-    </a>
-</span>
+    <em></em>
+    <span class = "group_location_name">
+        <a href="http://maps.google.com/?q=' . get_univ_add($con, $university) . '" target="_blank" style="text-decoration:none;">
+                    ' . get_univ_add($con, $university) . '
+        </a>
+    </span>
 </div>
 <div class = "help-div" id = "help-3">
     <div class = "help-wedge">

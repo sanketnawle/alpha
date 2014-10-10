@@ -727,12 +727,12 @@ $(document).ready(function() {
     });
 
 
-$(document).ready(function() {
-   window.scroll(0,175);
+    $(document).ready(function() {
+       window.scroll(0,175);
 
-   $('.joinBtn').text('Join');
-   $('.joinedBtn').text('Joined');
-});
+       $('.joinBtn').text('Join');
+       $('.joinedBtn').text('Joined');
+    });
 
     /*progress function for ajax*/
     function progressHandlingFunction(e) {

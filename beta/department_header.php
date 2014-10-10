@@ -129,7 +129,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         <div class = 'info-scroll-up info-shower'>
 
-            <!--<div class = 'group-cover-pic-info'>
+            <div class = 'group-cover-pic-info'>
 
                 <b><?php
 
@@ -141,7 +141,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 <em class = 'em_hide'></em>
 
-            </div>-->
+            </div>
 
 ";
 
@@ -159,9 +159,21 @@ if ($get_department_details_query_result->num_rows == 0) {
 
 ";
 
+
     } else {
 
 //no option to edit cover photo
+//DT Test
+echo "
+
+            <button class = 'upload_cover'>
+
+                <i></i>
+
+                <span>Submit Cover</span>
+
+            </button>
+";
 
     }
 
