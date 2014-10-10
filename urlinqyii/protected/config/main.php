@@ -62,6 +62,7 @@ return array(
 
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                'club/<id:\d+>/members'=>'club/members',
 
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',

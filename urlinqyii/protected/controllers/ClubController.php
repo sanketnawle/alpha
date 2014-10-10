@@ -53,6 +53,8 @@ class ClubController extends Controller
 	public function actionView()
 	{
         $club_id = $_GET['id'];
+
+
         $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
 
         $user = User::model()->find('user_id=:id', array(':id'=>1));
@@ -219,6 +221,15 @@ class ClubController extends Controller
         $connected_users = $command->queryAll();
 
 
+//        $get_admin_flag_query = "SELECT COUNT(*) as admin_flag FROM group_users WHERE group_id = $group_id AND user_id = $user_id AND is_admin = 1";
+//        $get_admin_flag_query_result = mysqli_query($con, $get_admin_flag_query);
+//        $admin_row = mysqli_fetch_array($get_admin_flag_query_result);
+//        $admin_flag = $admin_row['admin_flag'];
+//
+//// add date filter to show the evnts from current month to future 15 events
+//        $get_admin_event_query = "SELECT GE.* FROM group_event GE WHERE GE.made_by_admin = 1 AND (((start_date = '$month_start_date' AND start_time >= '$month_start_time') OR (start_date > '$month_start_date')) AND ((end_date = '$month_end_date' AND end_time < '$month_end_time') OR (end_date < '$month_end_date')))";
+//        $get_admin_event_query_result = mysqli_query($con, $get_admin_event_query);
+
         //$connected_users = array(1,2,3);
         //$count = count ( $results )
 
@@ -229,7 +240,18 @@ class ClubController extends Controller
 
 
 
+    public function actionMembers(){
 
+
+
+        $club_id = $_GET['id'];
+        $club = Group::model()->find('group_id=:id', array(':id'=>1));
+
+
+        $data = array('success'=>true,'club'=>$club,'members'=>$club->users);
+
+        $this->renderJSON($data);
+    }
 
 
 

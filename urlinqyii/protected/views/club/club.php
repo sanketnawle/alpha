@@ -22,6 +22,14 @@
 
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+
+
+    <!--  This allows us to use club_id in our javascript without having to access the url parameter  -->
+    <script type="text/javascript">
+        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        club_id = '<?php echo $club->group_id; ?>';
+    </script>
+
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/clubs.js'></script>
 </head>
@@ -157,6 +165,7 @@
                         //Yii::app()->runController('club/header',array('user'=>$user));
                         //$this->render('//partial/feeds');
                         //echo $this->renderPartial('/partial/feeds',array('posts'=>'lol'));
+
                         echo $this->renderPartial('club_header',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
 
                     ?>
@@ -178,12 +187,12 @@
 	                ?>
                     <div class="members-tab-content"></div>
 	                <?php
-	                if($is_member)
-	                {
-	                ?>
-                    <div class='files-tab-content'></div>
-                    <div class='syllabus-tab-content'></div>
-	                <?php
+	                if($is_member){
+                    ?>
+                        <div class='files-tab-content'></div>
+                        <div class='syllabus-tab-content'></div>
+
+                    <?php
 	                }
 	                ?>
 	                <div class='analytics-tab'>

@@ -1,10 +1,6 @@
 <?php
 
 
-if(isset($_GET['group_id'])){
-    $group=$_GET['group_id'];
-}
-
 
 $user_id = $user->user_id;
 
