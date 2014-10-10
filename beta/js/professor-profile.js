@@ -648,7 +648,8 @@ $(document).ready(function () {
                 if ((responseText.prof_info != null) && (responseText.prof_info.length > 0)) {
                     for (var i = 0; i < responseText.prof_info.length; i++) {
                         DisplayProfileDetails(responseText.prof_info[i]);
-                        if ((responseText.attribs != null) && (responseText.attribs.length > 0)) {                            
+                        if ((responseText.attribs != null) && (responseText.attribs.length > 0)) {
+                            console.log(responseText.attribs[i]);
                             DisplayAttribsDetails(responseText.attribs[i], responseText.prof_info[i]['user_type'].toLowerCase());
 
                             FetchDepartments(responseText.prof_info[i]['univ_id'], responseText.prof_info[i]['dept_id'], responseText.attribs[i]['show_major']);
@@ -837,16 +838,16 @@ $(document).ready(function () {
                     $('#student_type').text(ary['student_type']);
                 }
 
-                $('#stu_type').text(ary['student_type']);
+                $('#stu_type').val(ary['student_type']);
                 $('#' + ary['student_type']).trigger('click');
             }
             else {
                 $('#student_type').text("Unavailable");
             }
-            if ((ary['show_major'] != null) && (ary['show_major'] != "")) {
-                $('#student_major').text(ary['show_major']);
 
-                $('#stu_major').val(ary['show_major']);
+            if ((ary['major'] != null) && (ary['major'] != "")) {
+                $('#student_major').text(ary['major']);
+                $('#stu_major').val(ary['major']);
             }
             else {
                 $('#student_major').text("Unavailable");
@@ -973,8 +974,9 @@ $(document).ready(function () {
         $('#profile_office_hours').text();
         var gradYear = $("#stu_grad_year").val();
         var major = $("#stu_major").val();
-        var studentType = $("#stu_type").text();
+        var studentType = $("#stu_type").val();
 
+        console.log("I am called");
         $.ajax({
             type: "POST",
             dataType: "text",
@@ -990,7 +992,8 @@ $(document).ready(function () {
                         univ_name: university, univ_id: universityId, dept_name: department, dept_id: departmentId, mail: email, office_loc: officeLocation, office_hrs: office_hrs,
                         year: gradYear, major: major, student_type: studentType
                     },
-            success: function (responseText) {                                
+            success: function (responseText) {
+                console.log(responseText);
                 FetchProfileDetails(userID);
                 //if ((responseText.user_dp != null) && (responseText.user_dp.length > 0)) {
                 //    DisplayProfileDetails(responseText.prof_info[0]);
@@ -1904,6 +1907,49 @@ $(document).ready(function () {
             $('#student_level').hide();
         }
     });
+    var dropdownoption = -1;
+
+    $("div.website-inp-wrap input").on("keyup", function (e) {
+        e = e || event;
+        var input = $(this);
+        var dropdown = input.siblings(".dropdown");
+        var list = $("li", dropdown);
+        if (e.keyCode == 40 || e.keyCode == 38) {
+            list.removeClass("active");
+
+            if (e.keyCode == 40 && ++dropdownoption == list.length) dropdownoption = 0;
+            else if (e.keyCode == 38 && --dropdownoption == -1) dropdownoption = list.length - 1;
+
+            $(list[dropdownoption]).addClass("active");
+            input.val($(list[dropdownoption]).html());
+            dropdown.scrollTop(0);
+            dropdown.scrollTop($(list[dropdownoption]).position().top);
+        } else if (e.keyCode == 13) {
+            input.trigger("blur");
+        }
+        else {
+            changeOptionInDropDown(input);
+        }
+    }).on("focus", function () {
+        changeOptionInDropDown($(this))
+    }).on("blur", function () {
+        var dropdown = $(this).siblings(".dropdown");        
+        $(this).val($("li:hover", dropdown).html() || $("li.active", dropdown).html() || "");
+    });
+
+    function changeOptionInDropDown(input) {
+        var dropdown = input.siblings(".dropdown");
+        var list = $("li", dropdown);
+        list.removeClass("active").each(function (i, e) {            
+            if (new RegExp('^' + input.val(), 'i').test($(e).html())) {
+                $(e).addClass("active");
+                dropdownoption = i;
+                dropdown.scrollTop(0);
+                dropdown.scrollTop($(list[dropdownoption]).position().top);
+                return false;
+            }
+        })
+    }
 
     $(document).delegate('.interest-list', 'click', function (){
         var interest_id = $(this).prop('id').split('_')[1].trim();
@@ -2107,3 +2153,10 @@ $(document).ready(function () {
     
     /* Code to manage the dropdowns end here*/
 });
+
+(function ($) {
+    $("div.website-inp-wrap .dropdown").mCustomScrollbar({
+        theme: 'minimal-dark',
+        scrollInertia: 10
+    });
+})(jQuery);

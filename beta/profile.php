@@ -61,15 +61,13 @@
 
 	<script src="https://www.google.com/jsapi?key='AIzaSyDXcdGwlZUFArSbExSC81-g4PIlAA6vzD4'"></script>
 	<script src="https://apis.google.com/js/client.js?onload=initDrivePicker"></script>
-			
+		
 	<script src='//code.jquery.com/jquery-1.10.2.js'></script>
 	<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>			
-	<script type="text/javascript" src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js"></script>
-	<!--<script src='//code.jquery.com/jquery-1.10.2.js'></script>
-	<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>			
-	<script type="text/javascript" src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js"></script>	-->
+
+	<script src="scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link href="scroll/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+	
 	<script type="text/javascript" src="js/professor-profile.js"></script>
 
 	</head>
@@ -107,20 +105,23 @@
 						</div>
 						<div class = 'website-inp-wrap'>
 							<input type = 'text' id = 'stu_grad_year' name = 'graduation_year' class = 'user_website user_inp_full' placeholder = 'Year of graduation'>
+							<ul class='dropdown'>
+								<?php $d = date("Y"); for($i = $d - 4; $i <= $d + 6; ++$i): ?>
+								<li><?php echo $i; ?></li>
+								<?php endfor;?>
+							</ul>
 						</div>
 						<div class = 'website-inp-wrap'>							
-							<div class="status-event-repeat status-add-event-box-dd student-graduation-level" style="display: block;">
-								<span class="status-dd-title">Graduation Level</span><span class="down-arrow" style="margin-top: -28px;"></span>
-								<span class='selected-value-to-send' id='stu_type' style='display:none;'></span>
-							</div>
-							<div class="status-click-out status-dd-box" id='student_level' style='display:none;'>
-								<div class="status-repeatoptiont-1" id='Undergrad'>Undergrad</div>    
-								<div class="status-repeatoptiont-1" id='Grad'>Grad</div>
-								<div class="status-repeatoptiont-1" id='PhD'>Ph.D</div>
-							</div>
+							<input type = 'text' id = 'stu_type' name = 'graduation_year' class = 'user_website user_inp_full' placeholder = 'Graduation Level'>
+							<ul class='dropdown'>
+								<li>Undergraduate</li>
+								<li>Masters</li>
+								<li>Ph.D</li>
+							</ul>
 						</div>
 						<div class = 'website-inp-wrap'>
 							<input type = 'text' id = 'stu_major' name = 'graduation_major' class = 'user_website user_inp_full' placeholder = 'Major'>
+							<ul class='dropdown'><?php include("php/listofmajors.html"); ?></ul>
 						</div>
 					</div>
 					<div class = 'orig-edit-btns'>
