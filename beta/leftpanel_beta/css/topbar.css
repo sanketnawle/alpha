@@ -53,9 +53,11 @@ body {
                 background-size: auto 25px;
                 background-repeat: no-repeat;
                 background-position: center 12px;
-            
-                border-right: 1px solid rgba(0, 0, 0, 0.1); -webkit-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset; -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset; box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-}
+                border-right: 1px solid rgba(0, 0, 0, 0.1);
+                -webkit-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+                -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+            }
 
             .topbar > .left a.menu {
                 background-image: url(../img/menu-toggle.png);
@@ -74,9 +76,8 @@ body {
                 }
 
     .topbar:hover > .left a.menu.active {
-
         cursor: pointer;
-}
+    }
 
     .topbar:hover > .left a.menu {
         background-position: center center;
@@ -106,10 +107,9 @@ body {
                 font-size: 15px;
                 font-family: 'Open Sans', sans-serif;
                 border: none;
-            
                 font-weight: 500;
-                line-height:18px;
-}
+                line-height: 18px;
+            }
 
             .topbar .center form .submit {
                 width: 30px;
@@ -136,10 +136,11 @@ body {
             width: 48px;
             height: 49px;
             z-index: 10;
-        
             -webkit-box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-            box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset; border-right: 1px solid rgba(0, 0, 0, 0.1); border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
+            box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
 
             .topbar > .right .notify .button {
                 height: 100%;
@@ -175,9 +176,8 @@ body {
 
             .topbar > .right .notify.board {
                 margin-left: 48px;
-            
                 border-left: none;
-}
+            }
 
                 .topbar > .right .notify.board .button .icon {
                     background-image: url(../img/board_icon.png);
@@ -205,58 +205,64 @@ body {
         max-width: 600px;
         border-radius: 4px;
         padding: 4px 0px 4px;
-    
         border-top: none;
         box-shadow: 0 0 8px -1px #414141;
-}
+    }
 
         .topbar .center ul li a {
             display: block;
             overflow: auto;
             padding: 5px 8px;
-        
-            border-left: 4px solid transparent;
+            border-left: 2px solid transparent;
             cursor: pointer;
-}
+            color: #555;
+        }
 
             .topbar .center ul li a:hover {
-                background-color: #333;
-                color: #FFF;
-            
-                border-left: 4px solid #222;
-}
+                background-color: #DDD;
+                border-left: 2px solid #222;
+            }
 
             .topbar .center ul li a .icon {
                 background-image: url(../img/search-icons.png);
+                background-size: 100% 500%;
                 float: left;
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
                 clear: both;
                 margin-right: 10px;
             }
 
-            .topbar .center ul li a .icon.src {
-                background-position-y: 100%
-            }
+                .topbar .center ul li a .icon.src, .topbar .center ul li a .icon.pro {
+                    background-position-y: 100%;
+                }
 
-            .topbar .center ul li a .icon.sch {
-                background-position-y: 75%
-            }
-            .topbar .center ul li a .icon.pro {
-                background-position-y: 25%
-            }
-            .topbar .center ul li a .icon.cls {
-                background-position-y: 0%
-            }
-            .topbar .center ul li a .icon.clb {
-                background-position-y: 50%
-            }
+                .topbar .center ul li a .icon.sch {
+                    background-position-y: 75%;
+                }
+
+                .topbar .center ul li a .icon.dpt {
+                    background-position-y: 25%;
+                }
+
+                .topbar .center ul li a .icon.cls {
+                    background-position-y: 0%;
+                }
+
+                .topbar .center ul li a .icon.clb {
+                    background-position-y: 50%;
+                }
 
             .topbar .center ul li a span {
                 display: table-cell;
-                height: 40px;
+                height: 30px;
                 vertical-align: middle;
             }
+
+                .topbar .center ul li a span b {
+                    color: #000;
+                    font-weight: 400;
+                }
 
         .topbar .center ul.postlist li:last-child a {
             border-top: 1px solid #DDD;
@@ -265,8 +271,7 @@ body {
         }
 
             .topbar .center ul.postlist li:last-child a:hover {
-                background-color: #D1D2D4;
-                color: #313234;
+                background-color: #DDD;
             }
 
 div.day {
@@ -279,16 +284,42 @@ div.date {
     line-height: 23px;
 }
 
-.mainsearch::-webkit-input-placeholder { color:#999; font-weight: 500;}
-.mainsearch::-moz-placeholder { color:#474747; font-weight: 500;} /* firefox 19+ */
-.mainsearch:-ms-input-placeholder { color:#474747; font-weight: 500;} /* ie */
-.mainsearch:-moz-placeholder { color:#474747; font-weight: 500;}
+.mainsearch::-webkit-input-placeholder {
+    color: #999;
+    font-weight: 500;
+}
 
-.mainsearch:focus::-webkit-input-placeholder{  transition: opacity 0.15s; 
-  opacity: .4;}
-.mainsearch:focus::-moz-placeholder{   transition: opacity 0.15s; 
-  opacity: .4;} /* firefox 19+ */
-.mainsearch:focus:-ms-input-placeholder{   transition: opacity 0.15s; 
-  opacity: .4;} /* ie */
-.mainsearch:focus:-moz-placeholder{   transition: opacity 0.15s; 
-  opacity: .4;}
+.mainsearch::-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* firefox 19+ */
+.mainsearch:-ms-input-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* ie */
+.mainsearch:-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+
+.mainsearch:focus::-webkit-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+.mainsearch:focus::-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* firefox 19+ */
+.mainsearch:focus:-ms-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* ie */
+.mainsearch:focus:-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
