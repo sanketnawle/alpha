@@ -59,8 +59,6 @@ echo "
 
 <div class='feed-tab-content'>";
 
-
-
 echo "<div class='group_fbar_wrap'>";
 
 include_once('status_bar.php');
@@ -76,7 +74,6 @@ include_once('feeds.php');
 echo "</div>";
 
 
-
 echo "<div class='feed-tab-rightsec'>";
 
 include_once('department_feed_right_about.php');
@@ -88,9 +85,7 @@ echo "</div>";
 
 
 echo "
-
     </div>
-
 ";
 
 
