@@ -1024,22 +1024,44 @@ $(document).ready(function () {
     });
 
     function FetchMembers(){
+
+        //Load the member.html template into $member_div
+        //This code reduces redundancy because all javascript that
+        //needs to display members can use the template like this
+        //and the html does not need to be written in multiple places
         $member_div = null;
         $.get(base_url + '/html/templates/member.html',function(data){
             $member_div = $(data);
-            //console.log($(data));
         });
 
 
-
+        //Make a getJSON request to the backend
+        //The response will look like this:
+        //{'success':true,'members':[{"user_id":"1","user_email":"rlk314@nyu.edu","user_type":"s","firstname":"Ross","lastname":"Kopelman","univ_id":"1","dept_id":"1","user_bio":"ross","dp_flag":"link","dp_link":"http:\/\/graph.facebook.com\/1331550187\/picture?type=large","dp_blob":"198","status":"active","gender":"M","Available":"0"}]}
+        //All JSON returned from the backend will use this format when we are done porting
+        //the code to Yii
         $.getJSON(base_url + "/club/" + club_id.toString() + '/members', { group_id: club_id }, function(members_json) {
+
             alert(JSON.stringify(members_json));
+
+            //Loop through each member in the members array
+            //of the json data
             $.each(members_json['members'],function(member){
-                $member_div = $member_div.clone();
-                $member_div.find('.member_name');
+                //Clone the $member_div template
+                //Notice how this easy this makes it to reuse code
+                $temporary_member_div = $member_div.clone();
+                //Extract the data from json for ease of use
+                $firstname = member['firstname'];
+                $lastname = member['lastname'];
+                $dp_link = member['dp_link'];
+
+                //Access HTML attributes by using .find() on the $member_div
+                $temporary_member_div.find('.member_name').text($firstname);
 
                 //$member_div.find('.img').attr('src',user['img_url'])
 
+
+                //Add the member to the html
                 $(".members-tab-content").append();
             });
 
@@ -1051,13 +1073,13 @@ $(document).ready(function () {
 
 //        $.ajax({
 //            type: "POST",
-//            url: base_url + "/club/" + club_id.toString() + '/members',
+//            url: 'php/members.php',
 //            data: { group_id: club_id },
 //            success: function (html) {
 //                alert(html);
-////                $(".members-tab-content").html(html);
-////                $(".members-tab-content").animate({ opacity: "1" }, 300);
-////                $(".members-tab-content").show();
+//                $(".members-tab-content").html(html);
+//                $(".members-tab-content").animate({ opacity: "1" }, 300);
+//                $(".members-tab-content").show();
 //            },
 //            error: function (html) {
 //                alert("error fetching members");
