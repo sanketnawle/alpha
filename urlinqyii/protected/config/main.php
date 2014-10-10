@@ -62,14 +62,21 @@ return array(
 
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                'home/feed' => 'feed/getHomePosts',
+                'profile/<id:\d+>/feed' => 'feed/getProfilePosts',
+                'class/<id:[\w|-]+>/feed' => 'feed/getClassPosts',
+                'course/<id:[\w|\-|\s]+>/feed' => 'feed/getCoursePosts',
+                'club/<id:[\w|-]+>/feed' => 'feed/getClubPosts',
+                'department/<id:[\w|-]+>/feed' => 'feed/getDepartmentPosts',
+                'school/<id:[\w|-]+>/feed' => 'feed/getSchoolPosts',
+
                 'club/<id:\d+>/members'=>'club/members',
 
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
                 'search/json'=>'search/json'
                 //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-
+                //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
             ),
         ),
