@@ -2,10 +2,10 @@
 
 class SchoolController extends Controller
 {
-	public function actionSchool()
+	public function actionView()
 	{
 
-        $school = School::model()->find('id=:id', array(':id'=>1));
+        $school = School::model()->find('univ_id=:id', array(':id'=>1));
 
 		$this->render('school',array('school'=>$school));
 	}

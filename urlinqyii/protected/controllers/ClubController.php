@@ -52,6 +52,7 @@ class ClubController extends Controller
 
 	public function actionView()
 	{
+
         $club_id = $_GET['id'];
 
 
@@ -135,7 +136,7 @@ class ClubController extends Controller
         $user = User::model()->find('user_id=:id', array(':id'=>1));
 
 
-
+        $data= Campaign::model()->findAllBySql($query);
 
         //$club_id = $_GET['id'];
         $club = Group::model()->find('group_id=:id', array(':id'=>$club->group_id));

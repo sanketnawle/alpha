@@ -1,5 +1,11 @@
-<div class="member" data-user_id="">
-    <div class="member_name"></div>
+<div class="member" id="' . $row["user_id"] . '">
+    <div class="member-person prof-member-person">
+        <div class="member-wrap prof-member-wrap">
+            <div class="person-thumb">
+                <div class="picwrap" style="background-image:url(' . get_dp($con, $row['user_id'], "user") . ')"></div>
 
-
-</div>
+                <div class="member-bio">
+                    <span>' . $row['user_bio'] . '</span> <a href="profile.php?user_id=' . $row["user_id"] . '"><strong>View Profile</strong></a>
+                </div>
+            </div>
+        </div>

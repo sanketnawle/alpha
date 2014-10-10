@@ -1024,19 +1024,26 @@ $(document).ready(function () {
     });
 
     function FetchMembers(){
+        $member_div = null;
         $.get(base_url + '/html/templates/member.html',function(data){
-
-            console.log($(data));
-//            alert($member_div);
+            $member_div = $(data);
+            //console.log($(data));
         });
 
 
 
         $.getJSON(base_url + "/club/" + club_id.toString() + '/members', { group_id: club_id }, function(members_json) {
             alert(JSON.stringify(members_json));
+            $.each(members_json['members'],function(member){
+                $member_div = $member_div.clone();
+                $member_div.find('.member_name');
 
-            $member_div = $('<div class="template" ></div>').attrs('user_id',user_id);
-            $member_div.find('.img').attr('src',user['img_url'])
+                //$member_div.find('.img').attr('src',user['img_url'])
+
+                $(".members-tab-content").append();
+            });
+
+
 
         }).error(function() {
             alert("error getting club member json");
