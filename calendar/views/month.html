@@ -1,0 +1,16 @@
+﻿<div class="header row1">
+    <div class="left">
+        <a ng-href="{{getPrevMonthLink()}}" class="arrow left"><i class="x"></i><i class="xx"></i></a>
+        <a ng-href="{{getNextMonthLink()}}" class="arrow right"><i class="x"></i><i class="xx"></i></a>
+        <div class="month">{{getMonthName(activeMonth, false)}}</div>
+        <div class="year">{{activeYear}}</div>
+        <div class="wedge"></div>
+    </div>
+    <div class="right">
+        <a ng-href="{{getTodayLink()}}" class="today">Today</a>
+    </div>
+</div>
+<div class="header row2">
+    <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}}</span>
+</div>
+<div class="month-grid" id="month-grid"></div>

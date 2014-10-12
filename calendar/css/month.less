@@ -1,0 +1,137 @@
+﻿@import "common.less";
+
+.body {
+    @header-1-height: 60px;
+    @header-2-height: 35px;
+
+    .header.row1 {
+        overflow: hidden;
+        @right-width: 200px;
+        line-height: @header-1-height;
+        height: @header-1-height;
+
+        & > .left {
+            float: left;
+            width: 100%;
+            height: 100%;
+            margin-right: -@right-width;
+            padding-right: @right-width;
+            padding-left: 20px;
+            font-size: 30px;
+
+            & > * {
+                float: left;
+                margin-right: 10px;
+            }
+
+            .month {
+                font-weight: 600;
+            }
+
+            .year {
+                font-weight: 100;
+            }
+
+            .arrow {
+                position: relative;
+                width: 32px;
+                height: 28px;
+                margin-top: (@header-1-height - 28px) / 2;
+
+                &.right {
+                    transform: rotateZ(180deg);
+                }
+
+                i {
+                    position: absolute;
+                    background-color: #888;
+                    width: 2px;
+                    height: 15px;
+                    left: 50%;
+
+                    &.x {
+                        transform: rotateZ(35deg);
+                        top: 1px;
+                    }
+
+                    &.xx {
+                        transform: rotateZ(-35deg);
+                        bottom: 0;
+                    }
+                }
+
+                &:hover {
+                    i {
+                        background-color: #333;
+                    }
+                }
+            }
+        }
+
+        & > .right {
+            float: right;
+            width: @right-width;
+            height: 100%;
+            text-align: center;
+
+            .today {
+                padding: @ideal-padding;
+                background-color: #FBFBFB;
+                border: 1px solid @border-color;
+                border-radius: 5px;
+                color: #444;
+                font-weight: 600;
+
+                &:hover {
+                    color: #000;
+                    border-color: darken(@border-color, 10%);
+                }
+            }
+        }
+    }
+
+    .header.row2 {
+        height: @header-2-height;
+        border-bottom: 1px solid @border-color;
+        font-size: @ideal-font-size;
+        padding-top: @header-2-height - 25;
+
+        .grid-column {
+            @temp-width: 100%;
+            width: @temp-width / 7;
+            padding-right: 10px;
+            text-align: right;
+            float: left;
+
+            &:first-child, &:last-child {
+                color: lighten(#000, 75%);
+            }
+        }
+    }
+
+    .month-grid {
+        .absolute(@header-1-height + @header-2-height, 0, 0, 0);
+        background-color: @border-color;
+
+        .grid-item {
+            @temp-size: 100%;
+            width: @temp-size / 7;
+            float: left;
+            border-style: solid;
+            border-color: @border-color;
+            border-width: 1px;
+            padding: 6px;
+            height: @temp-size / 6;
+            background-color: #FFF;
+
+            &.out-of-range {
+                color: lighten(#000, 50%);
+            }
+
+            &:nth-child(7n), &:nth-child(7n + 1), &:nth-child(1) {
+                background-color: #F8F8F8;
+                color: lighten(#000, 50%);
+            }
+        }
+    }
+}

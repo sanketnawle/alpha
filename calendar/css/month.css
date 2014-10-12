@@ -1,0 +1,115 @@
+/* Functions */
+/* Variables */
+.body .header.row1 {
+  overflow: hidden;
+  line-height: 60px;
+  height: 60px;
+}
+.body .header.row1 > .left {
+  float: left;
+  width: 100%;
+  height: 100%;
+  margin-right: -200px;
+  padding-right: 200px;
+  padding-left: 20px;
+  font-size: 30px;
+}
+.body .header.row1 > .left > * {
+  float: left;
+  margin-right: 10px;
+}
+.body .header.row1 > .left .month {
+  font-weight: 600;
+}
+.body .header.row1 > .left .year {
+  font-weight: 100;
+}
+.body .header.row1 > .left .arrow {
+  position: relative;
+  width: 32px;
+  height: 28px;
+  margin-top: 16px;
+}
+.body .header.row1 > .left .arrow.right {
+  transform: rotateZ(180deg);
+}
+.body .header.row1 > .left .arrow i {
+  position: absolute;
+  background-color: #888;
+  width: 2px;
+  height: 15px;
+  left: 50%;
+}
+.body .header.row1 > .left .arrow i.x {
+  transform: rotateZ(35deg);
+  top: 1px;
+}
+.body .header.row1 > .left .arrow i.xx {
+  transform: rotateZ(-35deg);
+  bottom: 0;
+}
+.body .header.row1 > .left .arrow:hover i {
+  background-color: #333;
+}
+.body .header.row1 > .right {
+  float: right;
+  width: 200px;
+  height: 100%;
+  text-align: center;
+}
+.body .header.row1 > .right .today {
+  padding: 3px 19px 4px;
+  background-color: #FBFBFB;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  color: #444;
+  font-weight: 600;
+}
+.body .header.row1 > .right .today:hover {
+  color: #000;
+  border-color: #bbbbbb;
+}
+.body .header.row2 {
+  height: 35px;
+  border-bottom: 1px solid #d4d4d4;
+  font-size: 14px;
+  padding-top: 10px;
+}
+.body .header.row2 .grid-column {
+  width: 14.28571429%;
+  padding-right: 10px;
+  text-align: right;
+  float: left;
+}
+.body .header.row2 .grid-column:first-child,
+.body .header.row2 .grid-column:last-child {
+  color: #bfbfbf;
+}
+.body .month-grid {
+  position: absolute;
+  top: 95px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: auto;
+  background-color: #d4d4d4;
+}
+.body .month-grid .grid-item {
+  width: 14.28571429%;
+  float: left;
+  border-style: solid;
+  border-color: #d4d4d4;
+  border-width: 1px;
+  padding: 6px;
+  height: 16.66666667%;
+  background-color: #FFF;
+}
+.body .month-grid .grid-item.out-of-range {
+  color: #808080;
+}
+.body .month-grid .grid-item:nth-child(7n),
+.body .month-grid .grid-item:nth-child(7n + 1),
+.body .month-grid .grid-item:nth-child(1) {
+  background-color: #F8F8F8;
+  color: #808080;
+}
