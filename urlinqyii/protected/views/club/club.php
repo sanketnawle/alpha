@@ -31,7 +31,7 @@
     </script>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/clubs.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
 </head>
 <body>
 <div class='root'>
@@ -173,19 +173,24 @@
                 </div>
                 <div class='midsec'>
 	                <?php
-	                if($is_member)
-	                {
-		            ?>
-		                <div class='feed-tab-content'>
+	                if($is_member){
+                    ?>
+                            <div class='feed-tab-content'>
 
-                        <?php
-                            echo $this->renderPartial('club_feed_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
-                        ?>
-                    </div>
-	                <?php
+                            <?php
+                                echo $this->renderPartial('club_feed_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                            ?>
+                        </div>
+                    <?php
 	                }
 	                ?>
-                    <div class="members-tab-content"></div>
+                    <div class="members-tab-content">
+
+                        <?php
+                            echo $this->renderPartial('club_members_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                        ?>
+
+                    </div>
 	                <?php
 	                if($is_member){
                     ?>
