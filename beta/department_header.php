@@ -222,11 +222,6 @@ echo "
         </div>
 
 
-
-        <div class = 'group-cover-picture' style='background-image: url(" . get_cover_pic($con, $dept_id, 'dept') . "); background-size: cover; transform: translateY(0px);'>
-
-        </div>
-
     </div>
 
     <div class = 'group-pic-frame'>
