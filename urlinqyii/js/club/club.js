@@ -552,7 +552,7 @@ $(document).ready(function () {
             $(this).find(".tab-title").find(".tab-icon").addClass("tabc-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            //$(".tab-wedge-down").css("left", "710px");
+            //$(".tab-wedge-down")club.css("left", "710px");
             $(".tab-wedge-down").css("left", "591px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
@@ -570,17 +570,19 @@ $(document).ready(function () {
             $(".analytics-tab").hide();
 
             //if ($(".syllabus-tab-content").children().length == 0) {
-                $.ajax({
-                    type: "POST",
-                    url: "php/club_events_tab.php",
-                    data: { club_id: qs['group_id'] },
-                    success: function (html) {
-                        $(".syllabus-tab-content").html(html);
-                    },
-                    error: function (html) {
-                        alert("error");
-                    }
-                });
+
+            //replaced by renderPatial('club_events_tab.php')
+//                $.ajax({
+//                    type: "POST",
+//                    url: "php/club_events_tab.php",
+//                    data: { club_id: qs['group_id'] },
+//                    success: function (html) {
+//                        $(".syllabus-tab-content").html(html);
+//                    },
+//                    error: function (html) {
+//                        alert("error");
+//                    }
+//                });
             //}
             $(".syllabus-tab-content").show();
             $(".syllabus-tab-content").animate({ opacity: "1" }, 300);
@@ -608,7 +610,7 @@ $(document).ready(function () {
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
             $(".tab-wedge-down").css("left", "710px");
-            //$(".tab-wedge-down").css("left", "591px");
+            //$(".tab-wedge-down")club.css("left", "591px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").stop().animate({ opacity: "0" }, 300);
@@ -1103,20 +1105,22 @@ $(document).ready(function () {
     }
 
     $(document).delegate('.delete-user', 'click', function () {
+        var $member_div = $(this).parents(".member");
+        var delete_user_id = $member_div.attr("id");
         
-        var delete_user_id = $(this).parents(".member").attr("id");
-        
-        $.ajax({
-            type: "POST",
-            url: "php/club_enroll.php",
-            data: { group_id: qs['group_id'], delete_user: true, user_id: delete_user_id },
-            success: function (html) {
-                FetchMembers();
-            },
-            error: function (html) {
-                alert("error");
+
+
+        //We dont have to pass the group_id because its already in the URL
+        //urlinq.com/club/id/member/remove
+        $.post( base_url + "/club/" + club_id + '/member/remove', { user_id: delete_user_id} , function( json_response ) {
+            if(json_response['success']){
+                alert('successss');
+                $member_div.remove();
+            }else{
+                alert("error deleting user " + delete_user_id.toString());
             }
-        });
+        }, "json");
+
         profileLoadFlag = 0;
     });
 

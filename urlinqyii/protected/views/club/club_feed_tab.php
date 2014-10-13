@@ -5,7 +5,7 @@ echo "<div class='feed-tab-content'>";
 
 echo "<div class='group_fbar_wrap'>";
 
-    echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php'));
+    echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group','target_id'=>$club->group_id));
 
 echo "</div>";
 

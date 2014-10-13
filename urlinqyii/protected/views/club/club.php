@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <?php
 //	include('php/redirect.php');
@@ -13,7 +17,7 @@
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/group.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_modal.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/photo_modal.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/clubs.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/club.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_club.css'>
 
     
@@ -169,7 +173,7 @@
                         echo $this->renderPartial('club_header',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
 
                     ?>
-                    <?php include "club_header.php"; ?>
+
                 </div>
                 <div class='midsec'>
 	                <?php
@@ -180,7 +184,7 @@
                             <?php
                                 echo $this->renderPartial('club_feed_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
                             ?>
-                        </div>
+                            </div>
                     <?php
 	                }
 	                ?>
@@ -191,11 +195,17 @@
                         ?>
 
                     </div>
-	                <?php
+
+                    <?php
 	                if($is_member){
-                    ?>
-                        <div class='files-tab-content'></div>
-                        <div class='syllabus-tab-content'></div>
+                      ?>
+                    <div class='files-tab-content'></div>
+                    <div class='syllabus-tab-content'>
+                        <?php
+                            echo $this->renderPartial('club_events_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                        ?>
+
+                    </div>
 
                     <?php
 	                }

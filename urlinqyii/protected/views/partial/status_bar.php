@@ -34,12 +34,12 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/fbar.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/fbar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
-<script src="filepicker.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/filepicker.js"></script>
 	<script>
 		init = function(appID,fileID) {
         s = new gapi.drive.share.ShareClient(appID);
@@ -234,7 +234,7 @@ $(document).ready(function() {
                  $('.select').on('click','li',function(){
 					  var $t = $(this),
 					      $f = $(this).closest(".search-select").find('.field_fbar');
-					      text = $t.text(),
+					      text = $t.text();
 					      icon = $t.find('i').attr('class');
 					  $f.find('label').text(text);
 					  $f.find('i').attr('class',icon)
@@ -1049,7 +1049,7 @@ $(document).ready(function() {
 											<div class='posttool-select privacy_canedit'>
 								
 												<span class='field_fbar'>
-													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
+													<img class='vstt_icon' src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/privacy_icons/privacy_status/campus_status.png'>
 												<div class='vstt_wedgeDown'></div>
 												<div class = 'card-tag'>
 													<div class = 'tag-wedge'></div>
@@ -1115,7 +1115,7 @@ $(document).ready(function() {
 									<input type='hidden' val='' class='googleuploadinfoarchive_fbar'>
 									<div class = "upl_wrap">
 										<span class = "iconText">
-											<img class = "icon" src = "img/drive_icon.png" width = "16" height = "16">
+											<img class = "icon" src = "<?php echo Yii::app()->getBaseUrl(true); ?>/assets/drive_icon.png" width = "16" height = "16">
 											<div class = "upl_head">
 												From Your Drive
 											</div>	
@@ -1143,7 +1143,7 @@ $(document).ready(function() {
 											<div class='posttool-select privacy_canedit'>
 								
 												<span class='field_fbar'>
-													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
+													<img class='vstt_icon' src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/privacy_icons/privacy_status/campus_status.png'>
 												<div class='vstt_wedgeDown'></div>
 												<div class = 'card-tag'>
 													<div class = 'tag-wedge'></div>
@@ -1242,7 +1242,7 @@ $(document).ready(function() {
 											<div class='posttool-select privacy_canedit'>
 								
 												<span class='field_fbar'>
-													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
+													<img class='vstt_icon' src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/privacy_icons/privacy_status/campus_status.png'>
 												<div class='vstt_wedgeDown'></div>
 												<div class = 'card-tag'>
 													<div class = 'tag-wedge'></div>

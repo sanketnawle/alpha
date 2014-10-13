@@ -7089,7 +7089,7 @@ if ( window.getComputedStyle ) {
 		var width, minWidth, maxWidth,
 			computed = _computed || getStyles( elem ),
 
-			// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+			// getPropertyValue is only needed for club.css('filter') in IE9, see #12537
 			ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined,
 			style = elem.style;
 
@@ -9246,7 +9246,7 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// passing an empty string as a 3rd parameter to .css will automatically
+			// passing an empty string as a 3rd parameter to club.css will automatically
 			// attempt a parseFloat and fallback to a string if the parse fails
 			// so, simple values such as "10px" are parsed to Float.
 			// complex values such as "rotate(1rad)" are returned as is.

@@ -70,14 +70,22 @@ if ($user_count > 0) {
     ";
     foreach ($connected_users as $row) {
         echo "<li class = 'people-box'>
-                <div class = 'person-pic-wrap' style='background-image:url(".  get_user_dp($con, $row['user_id']).")'>
+                <div class = 'person-pic-wrap' style='background-image:url(".  'http://a.dilcdn.com/bl/wp-content/uploads/sites/8/2012/09/02-11.jpg' .")'>
                 </div>
-              	<span class = 'grade'>";        if($row['type'] == 's')        	echo strtoupper(get_student_grade($row['user_id']));       	elseif($row['type'] == 'a')       		echo "Professor";       	else       		echo "Admin";       	echo "</span>
-                <div class = 'person-title-wrap'>
-                <a href='profile.php?user_id=".$row['user_id']."'><p>".$row['firstname']." ".                $row['lastname']."</p></a>
-                </div>
-                <div class = 'after-click-effect'></div>
-              </li>";
+              	<span class = 'grade'>";
+                if($row['user_type'] == 's'){
+                    echo strtoupper(get_student_grade($row['user_id']));
+                }elseif($row['type'] == 'a'){
+                    echo "Professor";
+                } else {
+                    echo "Admin";
+                }
+                echo "</span>
+                    <div class = 'person-title-wrap'>
+                    <a href='profile.php?user_id=".$row['user_id']."'><p>".$row['firstname']." ".                $row['lastname']."</p></a>
+                    </div>
+                    <div class = 'after-click-effect'></div>
+                  </li>";
     }
 
     echo "           </ul>
@@ -139,6 +147,8 @@ if ($user_count > 0) {
                                 <div class = 'after-click-effect'></div>
                             </li>";
         }
+
+
         echo "</ul>
              </div>				<a class = 'ddbox-hor-scroller hor-scroller-left'>
                         <div class = 'ddbox-hor-scroller-cont'>
@@ -173,7 +183,9 @@ if ($user_count > 0) {
                 echo "<a href='profile.php?user_id=".$g_user_id."'> ".$g_lastname."</a>";               }
     echo "</div>
         </div></a>
-    </div>";    $get_club_admin_stmt->close();}//closing about-tab-leftsec
+    </div>";    $get_club_admin_stmt->close();
+
+    }//closing about-tab-leftsec
 echo "</div>";
 
 //opening about-tab-rightsec and group-about

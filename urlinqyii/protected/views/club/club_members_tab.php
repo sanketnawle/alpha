@@ -44,7 +44,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                     <div class="person-thumb">
                       <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
                       <div class="member-bio">
-                        <span>' . "INTEREST GOES HERE" . '</span> <a href="profile.php?user_id=' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' . "INTEREST GOES HERE" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         if ($row1['user_id'] != $user->user_id) {
@@ -53,8 +53,8 @@ echo '<div class="members-list-wrap prof-member-list">';
                       }
                     echo '</div>
                     <h3 class="person-title">
-                    <a href="profile.php?user_id=' . $row1['user_id'] . '"><strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong></a>
-                        <span><a class="search_unit" href="school/school.php?univ_id=' . $row1['univ_id'] . '">' . "$ row1['univ_name']" . '</a></span>
+                    <a href="profile/' . $row1['user_id'] . '"><strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong></a>
+                        <span><a class="search_unit" href="school/' . $row1['univ_id'] . '">' . "$ row1['univ_name']" . '</a></span>
                     </h3>';
         if ($row1['user_id'] != $user->user_id) {
           if ($is_admin){
@@ -101,14 +101,14 @@ if(count($club->users) > 0) {
                     <div class="person-thumb">
                       <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
                       <div class="member-bio">
-                        <span>' . "$ row1['interest'] goes here" . '</span> <a href="profile.php?user_id=' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' . "$ row1['interest'] goes here" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         echo '<img class="delete-user" title="delete member"/>';
                       }
                     echo '</div>
                     <h3 class="person-title">
-                      <a href="profile.php?user_id=' . $row1['user_id'] . ' ">
+                      <a href="profile/' . $row1['user_id'] . ' ">
                         <strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong>
                       </a>
                       <span>

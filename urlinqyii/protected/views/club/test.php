@@ -16,4 +16,7 @@ var_dump($is_member);
 
 
 var_dump($connected_users);
+
+
+var_dump($club->events);
 ?>

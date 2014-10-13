@@ -63,7 +63,7 @@ class Group extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'groupEvents' => array(self::HAS_MANY, 'GroupEvent', 'group_id'),
+			'events' => array(self::HAS_MANY, 'GroupEvent', 'group_id'),
 			'users' => array(self::MANY_MANY, 'User', 'group_users(group_id, user_id)'),
 			'univ' => array(self::BELONGS_TO, 'University', 'univ_id'),
 			'dpBlob' => array(self::BELONGS_TO, 'DisplayPicture', 'dp_blob_id'),

@@ -2,10 +2,23 @@
 
 class DepartmentController extends Controller
 {
-	public function actionDepartment()
+	public function actionView()
 	{
+
+        $department_id = $_GET['id'];
+
+
 		$this->render('department');
 	}
+
+
+
+    public function actionTest(){
+
+
+        $data = array('msg'=>'this data is from the department controller');
+        $this->renderJSON($data);
+    }
 
 	// Uncomment the following methods and override them if needed
 	/*
