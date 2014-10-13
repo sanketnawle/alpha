@@ -457,12 +457,12 @@ $(document).ready(function() {
         
         if(!$(this).hasClass("unfollowBtn")){
             $(".study_box_open").css("left","112px");
-            $(this).html("<em class = 'unfollow-icon'></em>Following");
+            $(this).html("<em class = 'unfollow-icon'></em>Member");
             $(this).addClass("unfollowBtn");
         }
         else{
             $(".study_box_open").css("left","88px");
-            $(this).html("<em></em>Follow this Department");
+            $(this).html("<em></em>Join this Department");
             $(this).removeClass("unfollowBtn");
         }
         $.ajax({
@@ -481,7 +481,7 @@ $(document).ready(function() {
                 var follow_user=$(this).closest(".member").attr('id');
 
                 if(!$(this).hasClass(".tab_followed")){
-                $(this).text("Following");
+                $(this).text("Member");
                 $(this).addClass("tab_followed");          
                 }
                 $.ajax({  
@@ -513,7 +513,7 @@ $(document).ready(function() {
                 $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Join");
+                $(this).text("Member");
             });
            
 
@@ -561,7 +561,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","310px");
+            $(".tab-wedge-down").css("left","275px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -604,7 +604,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","445px");
+            $(".tab-wedge-down").css("left","410px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").hide();
@@ -652,7 +652,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","587px");
+            $(".tab-wedge-down").css("left","551px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -688,6 +688,61 @@ $(document).ready(function() {
             
         }
         
+        if($(this).hasClass("tabstudents")){
+            
+            
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab1-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
+            }
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tab3-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","697px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+
+            $(".feed-tab-content").stop().animate({ opacity: "0"},300);
+            $(".feed-tab-content").hide();
+            $(".departments-tab-content").stop().animate({ opacity: "0"},300);
+            $(".departments-tab-content").hide();
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".courses-tab-content").stop().animate({ opacity: "0"},300);
+            $(".courses-tab-content").hide()
+             $.ajax({
+                            type: "POST",
+                            url: "department_members_tab.php",
+                            data:{dept_id:univ_id},
+                            success: function(html){
+                                $(".members-tab-content").remove();
+
+                                $(".midsec").append(html);
+                              $(".members-tab-content").show();
+                              $(".members-tab-content").animate({ opacity: "1"},300);
+                            }
+                        });
+            
+            
+
+            
+
+            
+            
+            
+        }
     });
     $(document).delegate("#group-about-link","click",function(){
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
