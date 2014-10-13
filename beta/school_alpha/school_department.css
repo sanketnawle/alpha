@@ -1165,12 +1165,14 @@ div.modal_header{
     border-radius: 3px 3px 0px 0px;
     background-color: #f5f6f7; border-bottom: 1px solid #e5e5e5; -webkit-border-radius: 3px 3px 0 0; color: #4e5665; font-weight: bold; line-height: 19px; 
     padding: 10px 12px; text-shadow: 0 1px 0 #fff;
+    height: 8px;
 }
 
 span.white{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+    margin-top: -5px;
 }
 
 .modal_content{
@@ -1186,12 +1188,11 @@ em.floatR{
 
 em.close{
     background-image: url(src/close-icon.png);
-    /***DT***/
     width: 15px;
     height: 20px;
     position: relative;
-    position: relative;
     background-size: cover;
+    margin-top: -5px;
 }
 
 em.close:hover{
@@ -1486,8 +1487,7 @@ button.uploadPhotoBtn:hover{
 
 div.btmleft{
     position: absolute;
-
-    bottom: 10px;
+    bottom: 15px;
     right: 10px;
 }
 
