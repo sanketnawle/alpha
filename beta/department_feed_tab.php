@@ -61,7 +61,7 @@ echo "
 
 echo "<div class='group_fbar_wrap'>";
 
-include_once('status_bar.php');
+include_once('department_status_bar.php');
 
 echo "</div>";
 

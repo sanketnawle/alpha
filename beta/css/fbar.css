@@ -31,6 +31,19 @@
 	cursor:pointer;
 }
 
+.event{
+    width:216px;
+    height:38px;
+    border-right: 1px solid #E2E2E2;
+    display:inline-block;
+    margin-left: -4.4px;
+    -webkit-transition: .05px;
+    -moz-transition: .05px;
+    -o-transition: .05px;
+    transition: .05px;
+    cursor:pointer;
+}
+
 
 
 .find{
@@ -45,6 +58,44 @@
 	cursor:pointer;
     padding-right: 1px;
     padding-left: .4px;
+}
+
+.opp {
+    width:216px;
+    height:38px;
+    margin-left: -4px;
+    display:inline-block;
+    -webkit-transition: .05px;
+    -moz-transition: .05px;
+    -o-transition: .05px;
+    transition: .05px;
+    cursor:pointer;
+    padding-right: 1px;
+    padding-left: .4px;
+}
+
+.hide_this {
+    display: none;
+}
+
+.fbar_input {
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25),0 1px 1px #eee;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 3px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    color: #717171;
+    font-size: 20px;
+    outline: none;
+    position: relative;
+    -moz-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 280px;
 }
 
 .fani:hover{
@@ -106,6 +157,14 @@
     margin-left: 20px;
 }
 
+.fbtn-opp {
+    background-image: url('../img/ask.png');
+    background-size: 19px;
+    background-position: 27px 48%;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+
 
 
 .fbtn-upload{
@@ -132,7 +191,8 @@
 
 
 .post-sec{
-	margin:0 auto;
+	margin-left: -2px;
+    max-width: 653px;
 	height:auto;
 	background-color: white;
 	border: 1px solid;
@@ -302,23 +362,15 @@ background-image:url(../img/wedge.png);
 
 
 .textwrap{
-
-		color: rgb(20, 24, 35);
-
+    color: rgb(20, 24, 35);
 	cursor:default;
-
 	overflow-x:hidden;
-
 	overflow-y:hidden;
-
 	text-align:left;
-
 	line-height:15.4px;
-
 	direction:ltr;
-
 	display:block;
-
+    padding: 0 10px;
 }
 
 .textwrap2{
@@ -396,52 +448,68 @@ display:none;
 }
 
 
-
 .uploadTxtarea{
-
-position: relative;
-
-margin-top: 2px;
-
-margin-left: 8px;
-
-height: 51px;
-
-width: 627px;
-
-z-index: 65;
-
-padding-left: 5px;
-
-padding-top: 3px;
-
-font-size: 14.5px;
-
-resize: none;
-
-outline: none;
-
-margin-bottom: 2px;
-
-border: none;
-
--webkit-box-shadow: none;
-
--moz-box-shadow: none;
-
--o-box-shadow:none;
-
-box-shadow: none;
-
-
-
-font-family: 'Open Sans', sans-serif;	
-
+    position: relative;
+    margin-top: 2px;
+    margin-left: 8px;
+    width: 98%;
+    z-index: 60;
+    padding-left: 5px;
+    padding-top: 3px;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+    margin-bottom: 2px;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow:none;
+    box-shadow: none;
+    font-family: 'Open Sans', sans-serif;
 }
 
+.time_label {
+    color: rgba(0, 0, 0, 0.37);
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 15px;
+    margin-left: 6px;
+    font-weight: 600;
+}
 
+.date_line {
+    width: 100%;
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: -5px;
+}
 
+form .set_time2 {
+    width: 94px;
+    border-radius: 2px;
+    border: 1px solid #AAB2C4;
+    font-size: 12px;
+    color: rgb(36, 36, 36);
+    padding: 3px 3px 4px;
+    text-transform: lowercase;
+    background-color: white; border: 1px solid #dddddd;
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    border: 1px solid #d7d7d7;
+    border-radius: 2px;
+    -moz-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: rgb(41, 47, 51);
+    margin-left: 10px;
+}
 
+#opp_form textarea{
+    display: block !important;
+}
 
 
 
@@ -634,20 +702,30 @@ display:none;
 
 
 .localUpload{
-
 	width: 49.5%;
-
 	float:left;
-
 	color: #141823;
-
 	height: 65px;
-
 	margin-top: 5px;
-
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.webUpload{
+    width: 49.5%;
+    float:right;
+    color: #141823;
+    height: 65px;
+    margin-top: 5px;
+}
 
+.thin_input {
+    height: 30px;
+    margin: 5px 5px;
+}
+
+.bottom_border {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
 
 .driveUpload{
 
