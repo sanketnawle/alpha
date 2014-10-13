@@ -181,7 +181,7 @@ echo "
             <div class = 'group_location'>
                 <em></em>
                 <span class = 'group_location_name'>
-                <a href='http://maps.google.com/?q=' target='_blank' style='text-decoration:none;'>New York</a>
+                <a class='location_link' href='http://maps.google.com/?q=' target='_blank'>New York</a>
                 </span>
             </div>
 
@@ -199,7 +199,7 @@ echo "
 
             </div>
 
-        <!--<div class = 'location-pic-div-wrap'>
+        <div class = 'location-pic-div-wrap'>
 
                 <div class = 'white-wedge-up'>
 
@@ -217,7 +217,7 @@ echo "
 
                 </div>
 
-            </div>-->
+            </div>
 
         </div>
 

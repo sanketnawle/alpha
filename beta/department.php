@@ -513,7 +513,7 @@ $(document).ready(function() {
                 $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Member");
+                $(this).text("Join");
             });
            
 
@@ -522,7 +522,7 @@ $(document).ready(function() {
                     $(this).text("Join");
                     $(this).removeClass("joinedBtn");
                 }else{
-                    $(this).text("Member");
+                    $(this).text("Joined");
                     $(this).addClass("joinedBtn");
                 }
 

@@ -938,10 +938,10 @@ div.location-pic-div-wrap{
     -moz-transition: opacity .15s ease;
     -webkit-transition: opacity .15s ease;
     transition: opacity .15s ease;
-    right: 15px;
+    right: 0;
     opacity:1;
     display:none;
-    top: 45px;
+    top: 60px;
 }
 
 div.location-pic-div-wrap div.white-wedge-up{
@@ -968,7 +968,6 @@ div.location-pic-container{
     background: white;
     -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;   border: 1px solid rgb(170, 170, 170);
     border-radius: 4px;
-    border-top: none;
     width: 256px;
     height: 60px;
 }
