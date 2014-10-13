@@ -1,7 +1,7 @@
 ﻿@import "common.less";
 
 .body {
-    @header-1-height: 60px;
+    @header-1-height: 50px;
     @header-2-height: 35px;
 
     .header.row1 {
@@ -9,7 +9,7 @@
         @right-width: 200px;
         line-height: @header-1-height;
         height: @header-1-height;
-
+        
         & > .left {
             float: left;
             width: 100%;
@@ -17,7 +17,7 @@
             margin-right: -@right-width;
             padding-right: @right-width;
             padding-left: 20px;
-            font-size: 30px;
+            font-size: 25px;
 
             & > * {
                 float: left;
@@ -80,6 +80,7 @@
                 border: 1px solid @border-color;
                 border-radius: 5px;
                 color: #444;
+                font-size: @ideal-font-size;
                 font-weight: 600;
 
                 &:hover {
@@ -117,21 +118,38 @@
             @temp-size: 100%;
             width: @temp-size / 7;
             float: left;
-            border-style: solid;
-            border-color: @border-color;
-            border-width: 1px;
-            padding: 6px;
+            border: 1px solid @border-color;
+            padding: 3px;
             height: @temp-size / 6;
             background-color: #FFF;
+            font-size: 10px;
+            text-align: right;
 
             &.out-of-range {
-                color: lighten(#000, 50%);
+                color: darken(@border-color, 20%);
             }
 
-            &:nth-child(7n), &:nth-child(7n + 1), &:nth-child(1) {
+            &:nth-of-type(7n), &:nth-of-type(7n + 1), &:nth-of-type(1) {
                 background-color: #F8F8F8;
-                color: lighten(#000, 50%);
+                color: darken(@border-color, 20%);
             }
+        }
+
+        .week-line {
+            .absolute(0, 0, auto, 0);
+            border-top: 1px solid #6F9;
+            height: 2px;
+        }
+
+        .grid-event {
+            background-color: #E44;
+            color: #FFF;
+            padding: 2px 5px 3px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 2px;
         }
     }
 }

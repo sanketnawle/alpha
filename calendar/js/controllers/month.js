@@ -23,5 +23,6 @@ ulcal.controller("MonthController", function ($scope, $routeParams) {
         return "#/month/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     }
 
-    MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear);
+     //window.grid = // for debugging
+        MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear)
 });

@@ -1,9 +1,7 @@
-/* Functions */
-/* Variables */
 .body .header.row1 {
   overflow: hidden;
-  line-height: 60px;
-  height: 60px;
+  line-height: 50px;
+  height: 50px;
 }
 .body .header.row1 > .left {
   float: left;
@@ -12,7 +10,7 @@
   margin-right: -200px;
   padding-right: 200px;
   padding-left: 20px;
-  font-size: 30px;
+  font-size: 25px;
 }
 .body .header.row1 > .left > * {
   float: left;
@@ -28,7 +26,7 @@
   position: relative;
   width: 32px;
   height: 28px;
-  margin-top: 16px;
+  margin-top: 11px;
 }
 .body .header.row1 > .left .arrow.right {
   transform: rotateZ(180deg);
@@ -63,6 +61,7 @@
   border: 1px solid #d4d4d4;
   border-radius: 5px;
   color: #444;
+  font-size: 14px;
   font-weight: 600;
 }
 .body .header.row1 > .right .today:hover {
@@ -87,7 +86,7 @@
 }
 .body .month-grid {
   position: absolute;
-  top: 95px;
+  top: 85px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -97,19 +96,39 @@
 .body .month-grid .grid-item {
   width: 14.28571429%;
   float: left;
-  border-style: solid;
-  border-color: #d4d4d4;
-  border-width: 1px;
-  padding: 6px;
+  border: 1px solid #d4d4d4;
+  padding: 3px;
   height: 16.66666667%;
   background-color: #FFF;
+  font-size: 10px;
+  text-align: right;
 }
 .body .month-grid .grid-item.out-of-range {
-  color: #808080;
+  color: #a1a1a1;
 }
-.body .month-grid .grid-item:nth-child(7n),
-.body .month-grid .grid-item:nth-child(7n + 1),
-.body .month-grid .grid-item:nth-child(1) {
+.body .month-grid .grid-item:nth-of-type(7n),
+.body .month-grid .grid-item:nth-of-type(7n + 1),
+.body .month-grid .grid-item:nth-of-type(1) {
   background-color: #F8F8F8;
-  color: #808080;
+  color: #a1a1a1;
+}
+.body .month-grid .week-line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  z-index: auto;
+  border-top: 1px solid #6F9;
+  height: 2px;
+}
+.body .month-grid .grid-event {
+  background-color: #E44;
+  color: #FFF;
+  padding: 2px 5px 3px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
 }
