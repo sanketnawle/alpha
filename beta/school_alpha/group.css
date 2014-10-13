@@ -126,11 +126,6 @@ width:100%;
 }
 
 .group-head-sec .group-head-footer .group-header-tab{
-	margin-bottom: 0px;
-	display: inline-block;
-	display: inherit;
-	position:relative;
-	float: left;
 	font-family:'Open Sans'!important;
 }
 
@@ -283,7 +278,7 @@ height: 15px;
 position: absolute;
 bottom: -7px;
 z-index: 4000;
-left: 275px;
+left: 60px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
 background-color:#f6f7f8;
@@ -2860,13 +2855,10 @@ div.grey_star{
 }
 
 
-/*planner overwrite*/
-/*
-.feed_planner_bag .rightsec
-{
-position: absolute!important;
-margin-left: 682px!important;
-margin-top: 254px!important;
+.feed-tab {
+    margin-left: -214px;
 }
-*/
-/*planner overwrite end*/
+
+.courses-tab {
+    margin-left: -77px;
+}

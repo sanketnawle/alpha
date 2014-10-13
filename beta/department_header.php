@@ -281,7 +281,7 @@ echo "
 
             <ul class = 'group-nav'>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab feed-tab'>
 
                     <a class = 'tab1 tabFeed tab-anchor group-tab-active'>
 
@@ -299,7 +299,7 @@ echo "
 
                 </li>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab courses-tab'>
 
                     <a class = 'tabDepartments tab-anchor tab-inactive'>
 
@@ -325,7 +325,7 @@ echo "
 
                 </li>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab faculty-tab'>
 
                     <a class = 'tabmembers tab-anchor tab-inactive'>
 
@@ -350,7 +350,7 @@ echo "
                     </a>
 
                 </li>
-                <li class = 'group-tab'>
+                <li class = 'group-tab students-tab'>
 
                     <a class = 'tabstudents tab-anchor tab-inactive'>
 

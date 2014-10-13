@@ -561,7 +561,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","275px");
+            $(".tab-wedge-down").css("left","60px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -604,7 +604,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","410px");
+            $(".tab-wedge-down").css("left","200px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").hide();
@@ -652,7 +652,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","551px");
+            $(".tab-wedge-down").css("left","345px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -708,7 +708,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","697px");
+            $(".tab-wedge-down").css("left","495px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
