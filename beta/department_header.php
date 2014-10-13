@@ -91,8 +91,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
             <em></em>
 
-            Following
-
+            Member
         </button>
 
     </div>
@@ -109,7 +108,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
             <em></em>
 
-            Follow this Department
+            Join this Department
 
         </button>
 
@@ -331,7 +330,32 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                         <div class = 'tab-title'>
 
-                            MEMBERS
+                            Faculty
+
+                            <span class = 'tab-icon tab3-icon-inactive'></span>
+
+                        </div>
+
+                        <div class = 'status tab-number'>
+
+                            <span class = 'badge'>
+
+                                " . $department_row['user_count'] . "
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </li>
+                <li class = 'group-tab'>
+
+                    <a class = 'tabstudents tab-anchor tab-inactive'>
+
+                        <div class = 'tab-title'>
+
+                            Students
 
                             <span class = 'tab-icon tab3-icon-inactive'></span>
 

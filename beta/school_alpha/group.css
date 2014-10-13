@@ -53,7 +53,7 @@ z-index: 10;
 left: 0px;
 right: 0px;
 height: 130px;
-	
+
 }
 
 
@@ -139,7 +139,7 @@ width:100%;
 	list-style:none;
 	padding:0;	
 	/* box-shadow: 0 -1px 1px 1px rgba(0, 0, 0, 0.09); */
-	padding-left: 243px;
+	padding-left: 213px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab{
@@ -195,7 +195,7 @@ height: 13px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab1-icon-inactive{
-	background-image:url(src/feed_icon_inactive.png);
+	background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
 	width: 13px;
 height: 13px;
 left: 0px;
@@ -283,7 +283,7 @@ height: 15px;
 position: absolute;
 bottom: -7px;
 z-index: 4000;
-left: 310px;
+left: 275px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
 background-color:#f6f7f8;
@@ -1549,6 +1549,7 @@ width:100%;
 
 div.members-tab-content div.members-list-wrap div.member div.ta-member-person{
 	background: rgba(0, 163, 255, 0.45);
+	
 }
 
 div.members-tab-content div.members-list-wrap div.member div.prof-member-person{
@@ -1559,7 +1560,7 @@ div.members-tab-content div.members-list-wrap div.member div.ta-member-person{
 }
 
 div.members-tab-content div.members-list-wrap div.member div.member-person div.member-wrap, div.files-tab-content div.files-type-content div.file div.file-cont div.file-wrap{
-	overflow: hidden;
+overflow: hidden;
 border-radius: 6px;
 background-color: #fff;
 padding: 5px;
