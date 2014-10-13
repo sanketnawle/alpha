@@ -74,7 +74,7 @@ while ($course_row = $get_courses_query_result->fetch_array()) {
         echo "
                                             <div class = 'classUIBtn'>
                                                 <button class='joinBtn JoinBtnLong joinedBtn'>
-                                                    Joined
+                                                    Member
                                                 </button>
                                             </div>
     ";

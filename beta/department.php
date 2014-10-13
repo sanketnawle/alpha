@@ -513,7 +513,7 @@ $(document).ready(function() {
                 $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Joined");
+                $(this).text("Member");
             });
            
 
@@ -522,7 +522,7 @@ $(document).ready(function() {
                     $(this).text("Join");
                     $(this).removeClass("joinedBtn");
                 }else{
-                    $(this).text("Joined");
+                    $(this).text("Member");
                     $(this).addClass("joinedBtn");
                 }
 
@@ -726,13 +726,6 @@ $(document).ready(function() {
             
     });
 
-
-    $(document).ready(function() {
-       window.scroll(0,175);
-
-       $('.joinBtn').text('Join');
-       $('.joinedBtn').text('Joined');
-    });
 
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
