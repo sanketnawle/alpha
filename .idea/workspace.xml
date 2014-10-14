@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/department_header.php" afterPath="$PROJECT_DIR$/beta/department_header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/school_alpha/group.css" afterPath="$PROJECT_DIR$/beta/school_alpha/group.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/php/school_components/header_school.php" afterPath="$PROJECT_DIR$/beta/php/school_components/header_school.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/school_alpha/school_department.css" afterPath="$PROJECT_DIR$/beta/school_alpha/school_department.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/school.php" afterPath="$PROJECT_DIR$/beta/school.php" />
     </list>
     <ignored path="alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="school.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="school.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/beta/school.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.66" vertical-offset="8152" max-vertical-offset="15930">
-              <caret line="569" column="25" selection-start-line="569" selection-start-column="20" selection-end-line="569" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.2177264" vertical-offset="11557" max-vertical-offset="15795">
+              <caret line="778" column="4" selection-start-line="778" selection-start-column="4" selection-end-line="778" selection-end-column="4" />
               <folding>
                 <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -143,17 +140,17 @@
                 <element signature="n#style#0;n#li#11;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#12;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#13;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1413311997000" expanded="true" signature="48266:48552" placeholder="SELECT user_..user..." />
-                <marker date="1413311997000" expanded="true" signature="48404:48454" placeholder="SELECT to_us..connect..." />
+                <marker date="1413315917000" expanded="true" signature="48199:48485" placeholder="SELECT user_..user..." />
+                <marker date="1413315917000" expanded="true" signature="48337:48387" placeholder="SELECT to_us..connect..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="group.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/beta/school_alpha/group.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6095764" vertical-offset="3869" max-vertical-offset="43050">
+            <state vertical-scroll-proportion="-12.730769" vertical-offset="3869" max-vertical-offset="43050">
               <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
               <folding />
             </state>
@@ -258,6 +255,7 @@
         <option value="$PROJECT_DIR$/beta/php/school_components/header_school.php" />
         <option value="$PROJECT_DIR$/beta/topbar.php" />
         <option value="$PROJECT_DIR$/beta/school_alpha/group.css" />
+        <option value="$PROJECT_DIR$/beta/school.php" />
       </list>
     </option>
   </component>
@@ -704,10 +702,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/beta/school_alpha/group.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.730769" vertical-offset="3869" max-vertical-offset="43050">
+          <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/beta/school.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.66" vertical-offset="8152" max-vertical-offset="15930">
-          <caret line="569" column="25" selection-start-line="569" selection-start-column="20" selection-end-line="569" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.2177264" vertical-offset="11557" max-vertical-offset="15795">
+          <caret line="778" column="4" selection-start-line="778" selection-start-column="4" selection-end-line="778" selection-end-column="4" />
           <folding>
             <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#1;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -723,17 +729,9 @@
             <element signature="n#style#0;n#li#11;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#12;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#13;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1413311997000" expanded="true" signature="48266:48552" placeholder="SELECT user_..user..." />
-            <marker date="1413311997000" expanded="true" signature="48404:48454" placeholder="SELECT to_us..connect..." />
+            <marker date="1413315917000" expanded="true" signature="48199:48485" placeholder="SELECT user_..user..." />
+            <marker date="1413315917000" expanded="true" signature="48337:48387" placeholder="SELECT to_us..connect..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/school_alpha/group.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6095764" vertical-offset="3869" max-vertical-offset="43050">
-          <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>

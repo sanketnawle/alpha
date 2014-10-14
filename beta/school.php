@@ -776,16 +776,7 @@ $(document).ready(function() {
 
             
     });
-
-
-$(document).ready(function() {
-
-       window.scroll(0,175); 
-
-
-
-});
-
+    
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {
