@@ -223,3 +223,6 @@ beta/php/dbconnection.php
 # Netbean project
 beta/nbproject/
 beta/includes/dbconfig.php
+
+# Intellij project folder
+.idea/
