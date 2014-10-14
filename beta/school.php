@@ -567,7 +567,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","310px");
+            $(".tab-wedge-down").css("left","70px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -610,7 +610,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","475px");
+            $(".tab-wedge-down").css("left","240px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -661,7 +661,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","648px");
+            $(".tab-wedge-down").css("left","410px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -776,7 +776,7 @@ $(document).ready(function() {
 
             
     });
-    
+
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {

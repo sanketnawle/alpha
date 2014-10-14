@@ -100,7 +100,7 @@ echo '</div>
                         <div class = "group-head-footer">
                             <div class = "group-header-tab">
                                 <ul class = "group-nav">
-                                    <li class = "group-tab">
+                                    <li class = "group-tab info-tab">
                                         <a class = "tab1 tabFeed tab-anchor group-tab-active">
                                             <div class = "tab-title">
                                                 SCHOOL INFO
@@ -109,7 +109,7 @@ echo '</div>
 
                                         </a>
                                     </li>
-                                    <li class = "group-tab">
+                                    <li class = "group-tab departments-tab">
                                         <a class = "tabDepartments tab-anchor tab-inactive">
                                             <div class = "tab-title">
                                                 DEPARTMENTS
@@ -123,7 +123,7 @@ echo '</div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class = "group-tab">
+                                    <li class = "group-tab members-tab">
                                         <a class = "tabmembers tab-anchor tab-inactive">
                                             <div class = "tab-title">
                                                 MEMBERS

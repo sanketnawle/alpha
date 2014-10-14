@@ -278,7 +278,7 @@ div.tab-wedge-down{
     position: absolute;
     bottom: -7px;
     z-index: 4000;
-    left: 310px;
+    left: 70px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
 background-color:#f6f7f8;
@@ -2861,4 +2861,12 @@ div.grey_star{
 
 .courses-tab {
     margin-left: -77px;
+}
+
+
+.info-tab {
+    margin-left: -214px;
+}
+.departments-tab {
+    margin-left: -60px;
 }
