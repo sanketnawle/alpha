@@ -148,7 +148,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         echo "
 
-            <button class = 'upload_cover'>
+            <button class = 'upload_cover upload_department_cover'>
 
                 <i></i>
 
@@ -165,7 +165,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 //DT Test
 echo "
 
-            <button class = 'upload_cover'>
+            <button class = 'upload_cover upload_department_cover'>
 
                 <i></i>
 

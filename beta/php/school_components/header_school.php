@@ -23,7 +23,7 @@ echo '
 
     '</b>
 </div>
-<button style="margin-right: -155px;" class = "upload_cover">
+<button class = "upload_cover upload_school_cover">
 <i></i>
 <span>Submit Cover</span>
 </button>

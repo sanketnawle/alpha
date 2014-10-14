@@ -807,8 +807,8 @@ $(document).ready(function() {
                         <span class = "floatL white">
                             Submit Cover Photo
                         </span>
-                        <em class = "floatR cancelBtn close">
-                        </em>
+                        <div class = "floatR cancelBtn close school_modal_close">
+                        </div>
                     </div>
                     <div class = "modal_main">
                         <form>
