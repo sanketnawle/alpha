@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $user = "root";
-$password = "root";
+$password = "";
 $database = "urlinq_beta";
 // if(isset($con))
 // $con->close();

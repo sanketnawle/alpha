@@ -18,5 +18,18 @@ var_dump($is_member);
 var_dump($connected_users);
 
 
+
+
 var_dump($club->events);
+
+
+
+
+
+echo "USER COURSES";
+var_dump($user->courses);
+
+
+echo "$ COURSES";
+var_dump($courses);
 ?>

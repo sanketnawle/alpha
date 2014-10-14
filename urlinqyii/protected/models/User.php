@@ -59,7 +59,22 @@ class User extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
+
+
+        //courses user
 		return array(
+            'courses' => array(self::MANY_MANY, 'Course', 'courses_user(class_id, user_id)'),
+
+
+            //'courses' => array(self::HAS_MANY, 'CourseUser', 'user_id'),
+
+            //'modelbs' => array(self::HAS_MANY, 'Model_B', 'ModelB_Id', 'through'=>'modelabs'),
+
+            //'courses' => array(self::HAS_MANY, 'Course', 'class_id', 'through'=>'CourseUser'),
+
+
+            //'classes' => array(self::HAS_MANY, 'Course', array('id'=>'user_id'), 'through'=>'CourseUser')
+
 		);
 	}
 
@@ -97,8 +112,7 @@ class User extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
-	{
+	public function search(){
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;

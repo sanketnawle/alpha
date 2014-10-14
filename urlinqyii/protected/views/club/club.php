@@ -45,7 +45,15 @@
     </div>
 
     <div class='gp_leftbar_wrap'>
-        <?php include("leftmenu.php"); ?>
+        <?php
+
+            echo Yii::app()->runController('partial/leftmenu',array('user'=>$user));
+
+
+            //echo $this->renderPartial('/partial/leftmenu',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+            //include("leftmenu.php");
+        ?>
+
     </div>
 
     <button class='email_invite email_invite_simulator'></button>
