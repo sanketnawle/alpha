@@ -5,11 +5,13 @@ search type select
 */
 
 body{
-	background: #F8f8f8!important;
+	background: #eee!important;
 }
 
 .visible-lg{
-	padding-top:14px;
+	padding-top: 60px;
+	width: 310px;
+	position: fixed;
 }
 
 .searchType{
@@ -90,7 +92,8 @@ a.type{
 	border-radius:4px;
 padding: 10px 15px;
 text-decoration:none;
-	font-weight: 200;
+	
+		font-weight: 400;
 	
 		font-size: 15px;
 }
@@ -651,7 +654,7 @@ color: #818181;
 font-weight: 700;
 margin:0 0 10px;
 padding:0;
-	font-size: .8em;
+	font-size: .55em;
     overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
@@ -1254,27 +1257,29 @@ padding-right: 6px;
 
 
 .course-bottom-functions .join-button a, .person-bottom-functions .link-button a{
-width:120px;
+    width: 120px;
 	line-height: 35px;
 	height: 33px;
-text-align:center;
-display: block;
-border-radius: 4px;
-
+    text-align: center;
+    display: block;
+    border-radius: 4px;
 	font-size: 16px;
 	font-weight: 600;
-
 	color: #666;
-
-outline: none;
-border-color:transparent;
-
-
-	border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; margin: 1px 0 -1px; 
-	background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-margin-top: 4.5px;
-margin-right: -17px;
+    outline: none;
+    border-color:transparent;
+	border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    margin: 1px 0 -1px;
+	background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-right: -17px;
 }
+
 .course-bottom-functions .join-button a.linked, .person-bottom-functions .link-button a.linked{
 	color:white;
 }
@@ -1425,17 +1430,19 @@ padding-bottom: 19px;
 }
 
 .person-bottom-functions{
-	padding-left: 23px;
+	padding-left: 7px;
 position: relative;
-float: left;
-width: 76%;
+
+	float: right;
+
+	width: auto;
 height: 40px;
 padding-top: 0px;
+	top: -75px;
 }
 .person-bottom-functions .link-button{
 	float: right;
 
-	padding-right: 7px;
 }
 /*.person-bottom-functions .link-button a{
 	background: #D3D3D3 url(../src/glass.png) repeat-x 0 50%;
@@ -1547,6 +1554,11 @@ position: relative;
 	opacity:1;
 }
 
+.vert-results-wrapper .person-main .person-bottom-functions{
+	top:108px!important;
+}
+
+
 .bookmark-title-clear{
 	width: 168px;
 overflow: hidden;
@@ -1592,6 +1604,7 @@ float: right;
 .slide-inner .person-bottom-functions .link-button a{
 	width: 78px;
 font-size: 13px;
+text-decoration: none!important;
 height: 24px;
 line-height: 25px;
 }

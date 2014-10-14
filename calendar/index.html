@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+
+    <!-- Styles -->
+        <!-- Open Sans font -->
+    <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css">
+    <link href="css/master.css" type="text/css" rel="stylesheet">
+    <link href="css/day.css" type="text/css" rel="stylesheet">
+    <link href="css/week.css" type="text/css" rel="stylesheet">
+    <link href="css/month.css" type="text/css" rel="stylesheet">
+    <link href="css/semester.css" type="text/css" rel="stylesheet">
+
+    <!-- Libraries -->
+    <script src="lib/jquery.js"></script>
+    <script src="lib/ng.js"></script>
+    <script src="lib/ng-route.js"></script>
+    <script src="lib/ng-animate.js"></script>
+
+    <!-- Application -->
+    <script src="js/ulCalendar.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/calendar.js"></script>
+    <script src="js/controllers/day.js"></script>
+    <script src="js/controllers/week.js"></script>
+    <script src="js/controllers/month.js"></script>
+    <script src="js/controllers/semester.js"></script>
+
+    <!-- Helpers -->
+    <script src="js/helpers/date.js"></script>
+    <script src="js/helpers/range.js"></script>
+
+    <!-- Classes -->
+    <script src="js/classes/month-grid.js"></script>
+</head>
+<body>
+    <div class="topbar"></div>
+    <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
+        <div class="toolbar">
+            <div class="column left">
+                <button class="full">Create Event</button>
+                <button class="quick" title="Create Quick Event"></button>
+            </div>
+            <div class="column right">
+                <form class="search">
+                    <input type="submit" value="">
+                    <input type="text" placeholder="Search">
+                </form>
+            </div>
+            <div class="column center">
+                <ul>
+                    <li ng-repeat="item in menu.items">
+                        <a ng-href="#/{{item}}/{{getLink($index)}}" ng-class="{active: menu.active == $index}">{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="leftbar">
+
+        </div>
+        <div ng-view class="body">
+
+        </div>
+    </div>
+</body>
+</html>

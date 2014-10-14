@@ -7,6 +7,14 @@ class SearchController extends Controller
 		$this->render('search');
 	}
 
+
+    public function actionJson(){
+        $data = array('success'=>true,'posts'=>array('post1','post2'));
+
+
+        $this->renderJSON($data);
+    }
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

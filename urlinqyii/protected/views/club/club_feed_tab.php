@@ -1,23 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 8/5/14
- * Time: 2:58 PM
- */
+
 
 echo "<div class='feed-tab-content'>";
 
 echo "<div class='group_fbar_wrap'>";
-include_once('status_bar.php');
+
+    echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group','target_id'=>$club->group_id));
+
 echo "</div>";
 
 echo "<div class='group_feed_wrap'>";
-include_once('feeds.php');
+
+    Yii::app()->runController('partial/feeds',array('user'=>$user));
+
 echo "</div>";
 
 echo "<div class='feed-tab-rightsec'>";
-include_once('php/club_feed_right_about.php');
+
+
+    echo $this->renderPartial('club_feed_right_about',array('club'=>$club));
+
 echo "</div>";
 
 echo "</div>";

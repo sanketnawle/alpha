@@ -59,8 +59,20 @@ return array(
                 '<action:(contact|login|test|json|home)>'=>'site/<action>',
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
+
+
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
+
+                'department/test'=>'department/test',
+
+                'club/<id:\d+>/members'=>'club/members',
+                'club/<id:\d+>/member/remove'=>'club/removeMember',
+
+
+                //urlinq.com/getposts
+                'getposts'=>'profile/getPosts',
+                'search/json'=>'search/json'
                 //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 

@@ -11,7 +11,7 @@
 
 
 
-        <link rel="stylesheet" type="text/css" href="css/tb_calnotification.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/tb_calnotification.css">
 
     </head>
 
@@ -31,19 +31,19 @@
         <div class='c_noti_window'>
 
 
-                        <div class='c_noti_content_setting'>
-                            <a href="<?php echo "./profile.php?user_id=".$user->user_id;?>"><div class="topbar_setting_div first_setting_style">View Profile</div></a>
-                            <a href="php/logout.php"><div class="topbar_setting_div">Log Out</div></a>
-                        </div>
+        <div class='c_noti_content_setting'>
+            <a href="<?php echo "./profile.php?user_id=".$user->user_id;?>"><div class="topbar_setting_div first_setting_style">View Profile</div></a>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/logout"><div class="topbar_setting_div">Log Out</div></a>
+        </div>
 
 
 
 
-                        </div>
+        </div>
 
-                        </body>
+        </body>
 
 
-                        </html>
+</html>
 
 

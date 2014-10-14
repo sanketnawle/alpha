@@ -6827,7 +6827,7 @@ if ( window.getComputedStyle ) {
 
 		if ( computed ) {
 
-			// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+			// getPropertyValue is only needed for club.css('filter') in IE9, see #12537
 			ret = computed.getPropertyValue( name ) || computed[ name ];
 
 			if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
@@ -8973,7 +8973,7 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// passing any value as a 4th parameter to .css will automatically
+			// passing any value as a 4th parameter to club.css will automatically
 			// attempt a parseFloat and fallback to a string if the parse fails
 			// so, simple values such as "10px" are parsed to Float.
 			// complex values such as "rotate(1rad)" are returned as is.
