@@ -269,16 +269,16 @@ border-radius: 10px;
 }
 
 div.tab-wedge-down{
-background-image: url('../src/tab-wedge-down.png');
-display: block;
-background-repeat: no-repeat;
-background-size: cover;
-width: 21px;
-height: 15px;
-position: absolute;
-bottom: -7px;
-z-index: 4000;
-left: 60px;
+    background-image: url('../src/tab-wedge-down.png');
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 21px;
+    height: 15px;
+    position: absolute;
+    bottom: -7px;
+    z-index: 4000;
+    left: 310px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
 background-color:#f6f7f8;

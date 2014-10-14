@@ -22,9 +22,8 @@ echo '
     ucfirst(get_alias_univ($con, $university)) .
 
     '</b>
-<em class = "em_hide"></em>
 </div>
-<button class = "upload_cover">
+<button style="margin-right: -155px;" class = "upload_cover">
 <i></i>
 <span>Submit Cover</span>
 </button>

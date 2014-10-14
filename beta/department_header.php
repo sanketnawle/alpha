@@ -152,7 +152,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 <i></i>
 
-                <span>Submit Cover</span>
+                <span>Update Cover</span>
 
             </button>
 
@@ -169,7 +169,7 @@ echo "
 
                 <i></i>
 
-                <span>Submit Cover</span>
+                <span>Update Cover</span>
 
             </button>
 ";
@@ -187,12 +187,6 @@ echo "
             <div class = 'help-div' id = 'help-3'>
 
                 <div class = 'help-wedge'>
-
-                </div>
-
-                <div class = 'help-box'>
-
-                    Submit a photo of this school for a chance to replace its current cover photo.
 
                 </div>
 

@@ -132,7 +132,7 @@ div.study_box_open div.js_wrap{
 
 
 div.mid_right_sec_school div.group-head-sec{
-    height: 452px;
+    height: 408px;
     z-index:3;
     
 }
@@ -176,7 +176,7 @@ div.group-cover-pic-info{
     font-size: 13px;
     position: relative;
     float: right;
-    margin-top: 360px;
+    margin-top: 315px;
     margin-right: 2px;
     color: #fff;
     border-top-left-radius: 2px;
@@ -214,8 +214,8 @@ button.upload_cover {
     position: relative;
     display: block;
     float: right;
-    margin-right: -117px;
-    margin-top: 360px;
+    margin-right: -111px;
+    margin-top: 315px;
 }
 
 div.info-scroll-up{
@@ -1587,6 +1587,7 @@ div.btmleft button.blueBtn:active{
 div.group-head-sec div.group-head-top-sec
 {
     overflow:hidden;
+    height: 360px;
 }
 /*frame cover photo overflow taking care end*/
 
