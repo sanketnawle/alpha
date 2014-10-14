@@ -2096,6 +2096,32 @@ $(document).ready(function () {
     });
     /* End of code for interests */
 
+    /*char counter*/
+
+    var txt_lmt=300;
+    
+
+    $(document).delegate('.edit-profile', 'click', function () {
+        check_char_lim($('#user_about'));
+    });
+
+    $(document).delegate('#user_about', 'keydown', function () {
+        check_char_lim($('#user_about'));
+    });
+
+    function check_char_lim(del){
+        var strl= del.val().length;
+        $(".char_reminder").find("span").text(strl);
+        if (strl>=(txt_lmt-txt_lmt/6)) {
+            $(".char_reminder").addClass("about_to_exceed");
+        }else{
+            $(".char_reminder").removeClass("about_to_exceed");
+        }
+    }
+
+
+    /*char counter end*/
+
     /* Code to manage the dropdowns */
 
     //$(document).delegate(".repeatoptiont", "mouseover", function () {

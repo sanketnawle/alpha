@@ -3426,3 +3426,22 @@ a#univ_link {
     float: right;
     transform: rotateY(180deg);
 }
+
+
+
+/*char counter*/
+
+.char_reminder
+{
+float: right;
+font-size: 11px;
+margin-right: 5px;
+margin-top: -1px;
+color: #333;
+}
+
+.about_to_exceed
+{
+    color: red!important;
+}
+/*char counter end*/

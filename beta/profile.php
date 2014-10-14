@@ -175,8 +175,9 @@
                         <div class="user-title">
 							About
                         </div>
+                        <div class='char_reminder'>character: <span>0</span>/300</div>
                         <div class="user-info-editable about-editable">
-                            <textarea id="user_about" name="user_about" class="user_about user_inp_big" placeholder="Bio" maxlength="250"></textarea>
+                            <textarea id="user_about" name="user_about" class="user_about user_inp_big" placeholder="Bio" maxlength="300"></textarea>
                         </div>
 
                         <div class="user-title">
