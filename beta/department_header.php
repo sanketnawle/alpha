@@ -91,8 +91,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
             <em></em>
 
-            Following
-
+            Member
         </button>
 
     </div>
@@ -109,7 +108,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
             <em></em>
 
-            Follow this Department
+            Join this Department
 
         </button>
 
@@ -129,7 +128,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         <div class = 'info-scroll-up info-shower'>
 
-            <!--<div class = 'group-cover-pic-info'>
+            <div class = 'group-cover-pic-info'>
 
                 <b><?php
 
@@ -141,7 +140,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 <em class = 'em_hide'></em>
 
-            </div>-->
+            </div>
 
 ";
 
@@ -149,34 +148,40 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         echo "
 
-            <button class = 'upload_cover'>
+            <button class = 'upload_cover upload_department_cover'>
 
                 <i></i>
 
-                <span>Submit Cover</span>
+                <span>Update Cover</span>
 
             </button>
 
 ";
 
+
     } else {
 
 //no option to edit cover photo
+//DT Test
+echo "
+
+            <button class = 'upload_cover upload_department_cover'>
+
+                <i></i>
+
+                <span>Update Cover</span>
+
+            </button>
+";
 
     }
 
     echo "
-
             <div class = 'group_location'>
-
                 <em></em>
-
-                    <span class = 'group_location_name'>
-
-                        " . $department_row['dept_location'] . "
-
-                    </span>
-
+                <span class = 'group_location_name'>
+                <a class='location_link' href='http://maps.google.com/?q=' target='_blank'>New York</a>
+                </span>
             </div>
 
             <div class = 'help-div' id = 'help-3'>
@@ -185,15 +190,9 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 </div>
 
-                <div class = 'help-box'>
-
-                    Submit a photo of this school for a chance to replace its current cover photo.
-
-                </div>
-
             </div>
 
-        <!--<div class = 'location-pic-div-wrap'>
+        <div class = 'location-pic-div-wrap'>
 
                 <div class = 'white-wedge-up'>
 
@@ -211,15 +210,10 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 </div>
 
-            </div>-->
+            </div>
 
         </div>
 
-
-
-        <div class = 'group-cover-picture' style='background-image: url(" . get_cover_pic($con, $dept_id, 'dept') . "); background-size: cover; transform: translateY(0px);'>
-
-        </div>
 
     </div>
 
@@ -281,7 +275,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
             <ul class = 'group-nav'>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab feed-tab'>
 
                     <a class = 'tab1 tabFeed tab-anchor group-tab-active'>
 
@@ -299,7 +293,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 </li>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab courses-tab'>
 
                     <a class = 'tabDepartments tab-anchor tab-inactive'>
 
@@ -325,13 +319,38 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 </li>
 
-                <li class = 'group-tab'>
+                <li class = 'group-tab faculty-tab'>
 
                     <a class = 'tabmembers tab-anchor tab-inactive'>
 
                         <div class = 'tab-title'>
 
-                            MEMBERS
+                            Faculty
+
+                            <span class = 'tab-icon tab3-icon-inactive'></span>
+
+                        </div>
+
+                        <div class = 'status tab-number'>
+
+                            <span class = 'badge'>
+
+                                " . $department_row['user_count'] . "
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </li>
+                <li class = 'group-tab students-tab'>
+
+                    <a class = 'tabstudents tab-anchor tab-inactive'>
+
+                        <div class = 'tab-title'>
+
+                            Students
 
                             <span class = 'tab-icon tab3-icon-inactive'></span>
 

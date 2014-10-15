@@ -915,15 +915,15 @@ a.innerPic .smallPic .img{
 	z-index: 100;
 }
 .result-header{
-float: left;
-padding-bottom: 7px;
-padding-left: 6px;
-padding-right: 8px;
-width: auto;
-border-bottom: 1px solid #E9EAED;
-margin-left: -29px;
-text-align: left;
-color: #029ACF !important;
+	float:left;
+	padding-bottom: 7px;
+	
+	padding-right: 8px;
+	width: auto;
+	border-bottom: 1px solid #E9EAED;
+    margin-left:-20px;
+    text-align: left;
+    color: #029ACF !important;
 }
 
 .result-header h2{
@@ -1257,28 +1257,29 @@ padding-right: 6px;
 
 
 .course-bottom-functions .join-button a, .person-bottom-functions .link-button a{
-width:120px;
+    width: 120px;
 	line-height: 35px;
 	height: 33px;
-	text-decoration: none!important;
-text-align:center;
-display: block;
-border-radius: 4px;
-
+    text-align: center;
+    display: block;
+    border-radius: 4px;
 	font-size: 16px;
 	font-weight: 600;
-
 	color: #666;
-
-outline: none;
-border-color:transparent;
-
-
-	border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2; margin: 1px 0 -1px; 
-	background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-margin-top: 4.5px;
-margin-right: -17px;
+    outline: none;
+    border-color:transparent;
+	border: 1px solid #D6D6D6;
+    outline: none;
+    border-bottom: 1px solid #C2C2C2;
+    margin: 1px 0 -1px;
+	background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-right: -17px;
 }
+
 .course-bottom-functions .join-button a.linked, .person-bottom-functions .link-button a.linked{
 	color:white;
 }

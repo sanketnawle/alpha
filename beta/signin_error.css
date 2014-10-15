@@ -558,13 +558,13 @@ div.username_known a.not_you{
 }
 
 ul.color-border{
-	list-style:none;
-        width:100%;
-        font-size:0;
+	list-style: none;
+    width: 97%;
+    font-size: 0;
 	margin: 0;
 	padding: 0;
 	padding-bottom: 40px;
-        text-align:center;
+	text-align: center;
 }
 
 ul.color-border li{

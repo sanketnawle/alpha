@@ -23,6 +23,7 @@ include('php/redirect.php');
 
 
 $(document).ready(function() {
+
     $.urlParam = function (sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
@@ -382,6 +383,7 @@ $(document).ready(function() {
             }, 200);
     });
 
+    /*
     $(window).scroll(function() {
         var y=$(window).scrollTop()*0.32;
         var x=$(window).scrollTop()*1;
@@ -403,10 +405,7 @@ $(document).ready(function() {
                 "opacity":"0"
             });
         }
-
-
     });
-
     $(window).scroll(function() {
 
         if($(window).scrollTop()>175){
@@ -417,8 +416,8 @@ $(document).ready(function() {
             $(".info-scroll-up").css({"position":"fixed","top":"50px"});
             $(".spec-group-header-right").css({"position":"fixed","top":"50px","left":"1097px"});
         }
-
     });
+    */
 
     $('.cancelBtn').click(function(){
         $(".modal_body").animate({opacity:0},300,function(){
@@ -458,12 +457,12 @@ $(document).ready(function() {
         
         if(!$(this).hasClass("unfollowBtn")){
             $(".study_box_open").css("left","112px");
-            $(this).html("<em class = 'unfollow-icon'></em>Following");
+            $(this).html("<em class = 'unfollow-icon'></em>Member");
             $(this).addClass("unfollowBtn");
         }
         else{
             $(".study_box_open").css("left","88px");
-            $(this).html("<em></em>Follow this Department");
+            $(this).html("<em></em>Join this Department");
             $(this).removeClass("unfollowBtn");
         }
         $.ajax({
@@ -482,7 +481,7 @@ $(document).ready(function() {
                 var follow_user=$(this).closest(".member").attr('id');
 
                 if(!$(this).hasClass(".tab_followed")){
-                $(this).text("Following");
+                $(this).text("Member");
                 $(this).addClass("tab_followed");          
                 }
                 $.ajax({  
@@ -511,19 +510,19 @@ $(document).ready(function() {
             });
 
             $(document).delegate('.ready_to_unfollow',"mouseenter", function(){
-                $(this).text("Unfollow");
+                $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Following");
+                $(this).text("Member");
             });
            
 
             $(document).delegate('.joinBtn',"click", function(){
                 if($(this).hasClass("joinedBtn")){
-                    $(this).text("Follow");
+                    $(this).text("Join");
                     $(this).removeClass("joinedBtn");
                 }else{
-                    $(this).text("Followed");
+                    $(this).text("Joined");
                     $(this).addClass("joinedBtn");
                 }
 
@@ -562,7 +561,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","310px");
+            $(".tab-wedge-down").css("left","60px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -605,7 +604,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","445px");
+            $(".tab-wedge-down").css("left","200px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").hide();
@@ -653,7 +652,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","587px");
+            $(".tab-wedge-down").css("left","345px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -689,6 +688,61 @@ $(document).ready(function() {
             
         }
         
+        if($(this).hasClass("tabstudents")){
+            
+            
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab1-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
+            }
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tab3-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","495px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+
+            $(".feed-tab-content").stop().animate({ opacity: "0"},300);
+            $(".feed-tab-content").hide();
+            $(".departments-tab-content").stop().animate({ opacity: "0"},300);
+            $(".departments-tab-content").hide();
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".courses-tab-content").stop().animate({ opacity: "0"},300);
+            $(".courses-tab-content").hide()
+             $.ajax({
+                            type: "POST",
+                            url: "department_members_tab.php",
+                            data:{dept_id:univ_id},
+                            success: function(html){
+                                $(".members-tab-content").remove();
+
+                                $(".midsec").append(html);
+                              $(".members-tab-content").show();
+                              $(".members-tab-content").animate({ opacity: "1"},300);
+                            }
+                        });
+            
+            
+
+            
+
+            
+            
+            
+        }
     });
     $(document).delegate("#group-about-link","click",function(){
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
@@ -728,14 +782,6 @@ $(document).ready(function() {
     });
 
 
-$(document).ready(function() {
-
-       window.scroll(0,175); 
-
-
-
-});
-
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {
@@ -744,6 +790,7 @@ $(document).ready(function() {
     }
 
 });
+
 </script>
 </head>
 <body>
@@ -766,8 +813,8 @@ $(document).ready(function() {
 						<span class='floatL white'>
 							Submit Cover Photo
 						</span>
-                    <em class='floatR cancelBtn close'>
-                    </em>
+                    <div class='floatR cancelBtn close'>
+                    </div>
                 </div>
                 <div class='modal_main'>
                     <form>
