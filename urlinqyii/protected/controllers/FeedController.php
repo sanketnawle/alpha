@@ -12,8 +12,17 @@ class FeedController extends Controller
         self::$cur_user_id = Yii::app()->session['user_id'] || 1;
         self::$user = User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id));
         self::$cur_sem = "fall";
+//        if($_POST['start_rec']) self::start_rec=$_POST['start_rec'];
     }
 
+    public function getReplies($posts){
+        foreach($posts as $i=>$post){
+            $reply = Reply::model()->find('post_id=:id', array(':id'=>$post['post_id']));
+            $posts[$i]['reply_count']=count($reply);
+            $posts[$i]['replies']=$reply;
+        }
+        return $posts;
+    }
 
     public function addPostData($posts){
         foreach($posts as $i=>$post){
@@ -50,8 +59,10 @@ class FeedController extends Controller
                 $posts [$i] ['target_name'] = NULL;
             }
         }
+//        self::getReplies($posts);
         return $posts;
     }
+
 
 	public function actionGetHomePosts()
 	{
@@ -75,7 +86,7 @@ class FeedController extends Controller
         $command = Yii::app()->db->createCommand($posts_sql_home);
 
         $posts = $command->queryAll();
-        $this->renderJSON(self::addPostData($posts));
+        $this->renderJSON(self::getReplies(self::addPostData($posts)));
 
 //        $this->renderJSON($posts);
 	}
@@ -99,8 +110,6 @@ class FeedController extends Controller
 
     public function actionGetClassPosts()
     {
-        
-
         $posts_sql_class = "SELECT distinct *
 		  from posts p
 		  left join posts_questions pq
@@ -118,8 +127,6 @@ class FeedController extends Controller
 
     public function actionGetCoursePosts()
     {
-        
-
         $posts_sql_course = "SELECT distinct *
 		  from posts p
 		  left join posts_questions pq
@@ -138,8 +145,6 @@ class FeedController extends Controller
 
     public function actionGetClubPosts()
     {
-        
-
         $posts_sql_club = "SELECT distinct *
 		  from posts p
 		  left join posts_questions pq
@@ -158,8 +163,6 @@ class FeedController extends Controller
 
     public function actionGetDepartmentPosts()
     {
-        
-
         $posts_sql_dept = "SELECT distinct *
 		  from posts p
 		  left join posts_questions pq
@@ -178,8 +181,6 @@ class FeedController extends Controller
 
     public function actionGetSchoolPosts()
     {
-        
-
         $posts_sql_school = "SELECT distinct *
 		  from posts p
 		  left join posts_questions pq
