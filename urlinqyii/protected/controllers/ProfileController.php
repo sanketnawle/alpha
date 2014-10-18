@@ -22,8 +22,7 @@ class ProfileController extends Controller
 
 
     //http://localhost/urlinqyii/profile/1
-    public function actionView()
-    {
+    public function actionView() {
         $user_id = $_GET['id'];
         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
 

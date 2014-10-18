@@ -28,6 +28,8 @@ echo '
                  </div>";
         }
 
+//$admin_array = array();
+
 
 echo '<div class="members-list-wrap prof-member-list">';
     foreach ($club->users as $row1) {
@@ -70,16 +72,16 @@ echo '<div class="members-list-wrap prof-member-list">';
           else {
               echo '<a class="follow">Follow</a></div>';
           }      
-          if (($is_admin) && (count($admin_array) > 1))
-          { 
-            echo '<div class="upgrade-admin upgrade-student" title="remove as admin" style="padding: 0px 10px; width:auto;">Remove</div>';
-          } 
+          //if (($is_admin) && (count($admin_array) > 1))
+          //{
+          //  echo '<div class="upgrade-admin upgrade-student" title="remove as admin" style="padding: 0px 10px; width:auto;">Remove</div>';
+          //}
         }
         echo '</div></div></div>';
     }
     echo '</div>';
 
-$admin_array = array();
+
 
 //fetching members for the club
 if(count($club->users) > 0) {
@@ -123,12 +125,16 @@ if(count($club->users) > 0) {
            {
               echo '<div class="follow-btn">';
            }
+
+
           if ($row1['follow'] == "true") {
               echo '<a class="follow tab_followed ready_to_unfollow">Following</a></div>';
           }
            else {
               echo '<a class="follow">Follow</a></div>';
           }
+
+
           if ($is_admin)
           {
             echo '<div class="upgrade-admin upgrade-student" style="padding: 0px 16px; width:auto;">Admin</div>';
