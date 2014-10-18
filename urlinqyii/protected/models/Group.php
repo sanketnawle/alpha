@@ -70,7 +70,7 @@ class Group extends CActiveRecord
 			'coverBlob' => array(self::BELONGS_TO, 'DisplayPicture', 'cover_blob_id'),
 			'color' => array(self::BELONGS_TO, 'EventColorTable', 'color_id'),
 			'groupsFiles' => array(self::HAS_MANY, 'GroupsFiles', 'group_id'),
-
+            'admins' => array(self::HAS_MANY,'User',array('user_id'=>'id'),'through'=>'group_users')
 
 //            'invites' => array(self::HAS_MANY, Invite, '', 'on'=>'invite.origin_type = group')
 		);

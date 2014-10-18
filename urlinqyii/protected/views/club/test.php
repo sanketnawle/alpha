@@ -32,4 +32,9 @@ var_dump($user->courses);
 
 echo "$ COURSES";
 var_dump($courses);
+
+
+echo "ADMINS";
+
+var_dump($club->admins);
 ?>

@@ -66,12 +66,14 @@ echo '<div class="members-list-wrap prof-member-list">';
               {
                 echo '<div class="follow-btn">'; 
               }
-          if ($row1['follow'] == "true") {              
-              echo '<a class="follow tab_followed ready_to_unfollow">Following</a></div>';                    
-          } 
-          else {
-              echo '<a class="follow">Follow</a></div>';
-          }      
+
+
+//          if ($row1['follow'] == "true") {
+//              echo '<a class="follow tab_followed ready_to_unfollow">Following</a></div>';
+//          }
+//          else {
+//              echo '<a class="follow">Follow</a></div>';
+//          }
           //if (($is_admin) && (count($admin_array) > 1))
           //{
           //  echo '<div class="upgrade-admin upgrade-student" title="remove as admin" style="padding: 0px 10px; width:auto;">Remove</div>';
@@ -127,12 +129,12 @@ if(count($club->users) > 0) {
            }
 
 
-          if ($row1['follow'] == "true") {
-              echo '<a class="follow tab_followed ready_to_unfollow">Following</a></div>';
-          }
-           else {
-              echo '<a class="follow">Follow</a></div>';
-          }
+//          if ($row1['follow'] == "true") {
+//              echo '<a class="follow tab_followed ready_to_unfollow">Following</a></div>';
+//          }
+//           else {
+//              echo '<a class="follow">Follow</a></div>';
+//          }
 
 
           if ($is_admin)
