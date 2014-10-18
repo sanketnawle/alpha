@@ -726,20 +726,17 @@ transition: opacity .1s linear;
 	float: left;
 	margin-top: 7px;
 	width: 580px
+	margin-bottom: 10px;
 }
 
 div.commentform{
-
 	margin-bottom: 12px;
 	border: 1px solid;
-
 	padding: 10px;
-
 	-webkit-border-radius: 3px;
-
 	border-radius: 3px;
 	background: #fff; border: 1px solid #ccc; border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-
+    width: 558px;
 }
 
 textarea.form-control{

@@ -2,32 +2,23 @@
 <html xmlns='http://www.w3.org/1999/xhtml'><head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
         <title>Urlinq | Error</title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-        <style type='text/css'>
-            html { height: 75%; }
-            body { margin: 0; padding: 20px; max-width: 100%!important; background-color:#f2f2f2; height: 100%;}
-            p { font-family: 'Open Sans', sans-serif; color: #555;
-                line-height: 30px; font-size: 1.35em; }
-            div { margin-bottom: 50px;}
-            a { text-decoration: none; color: black;}
-            a:hover { text-decoration: none;}
-            b { font-size: 1.4em; font-weigth: 700; }
-        </style>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href="errorPage.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 
-        <div style="background-color:#fff; border: 1px solid #c8c8c8; box-shadow: 1px 1px 10px #c8c8c8, -1px -1px 10px #c8c8c8; height: 100%; padding: 60px 60px;">
+        <div class="inner_wrapper">
 
-            <div style="text-align:center;">
-                <img height="120" width="120" src="#" />
+            <div class="center_contents">
+                <img class="error_icon" src="error.png" />
             </div> 
 
             <div>
-                <p>This doesn't happen often, but it looks like <b style="color: #54c594;">something is broken</b>. Hitting the back button and trying again might be your best bet. If that doesn't work, you can <b style="opacity: 0.95;">head back to the <a href="https://urlinq.com/beta/home.php" style="color: #45a8cf;">homepage</a></b>.
+                <p>This doesn't happen often, but it looks like <b class="error_text_broken">something is broken</b>. Hitting the back button and trying again might be your best bet. If that doesn't work, you can <b>head back to the <a class="error_text_homepage" href="#">homepage</span></b>.
             </div>
 
             <div>
-                <p><a href="#"><b style="opacity: 0.7; color: #f16b6a;">Click here</b></a> to report this bug so we can get this fixed right away.</p>
+                <p><a href="#"><b class="error_text_report">Click here</b></a> to report this bug so we can get this fixed right away.</p>
             </div>
 
         </div>
