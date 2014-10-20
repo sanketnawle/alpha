@@ -244,7 +244,7 @@ $(document).ready(function () {
         $('.main-2').show();
         //$('.ns-hide').hide();
         //$('.user-website').hide();
-        $('.resource-wrapper').css('z-index', '9999');
+        $('.resource-wrapper').css('z-index', '8000');
     });
 
     // cancel the edit profile
@@ -2102,15 +2102,32 @@ $(document).ready(function () {
     
 
     $(document).delegate('.edit-profile', 'click', function () {
-        check_char_lim($('#user_about'));
+        check_char_lim();
     });
 
     $(document).delegate('#user_about', 'keydown', function () {
-        check_char_lim($('#user_about'));
+        check_char_lim();
+    });
+    $('#user_about').on('paste', function() {
+        //alert("qw");
+        
+    setTimeout(function() {
+        var $self = $('#user_about');
+        var strl = $self.val().length;   
+
+        $(".char_reminder").find("span").text(txt_lmt-strl);
+        if (strl>=280) {
+            $(".char_reminder").addClass("about_to_exceed");
+        }else{
+            $(".char_reminder").removeClass("about_to_exceed");
+        }
+
+    }, 1);
+
     });
 
-    function check_char_lim(del){
-        var strl= del.val().length;
+    function check_char_lim(){
+        var strl= $('#user_about').val().length;
         $(".char_reminder").find("span").text(txt_lmt-strl);
         if (strl>=280) {
             $(".char_reminder").addClass("about_to_exceed");
