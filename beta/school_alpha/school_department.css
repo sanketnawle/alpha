@@ -149,13 +149,6 @@ div.mid_right_sec_school div.group-head-sec div.group-pic-frame{
 }
 
 div.mid_right_sec_school div.group-head-sec div.group-pic{
-    /**DT***/
-    /*
-    background: no-repeat url(src/nyu_poly_logo.jpg);
-    width: 180px;
-    height: 180px;
-    background-size: cover;
-    */
     display: none;
 }
 
@@ -922,20 +915,20 @@ div.location-pic-container{
     background: white;
     -webkit-box-shadow: rgba(0, 0, 0, 0.298039) -3px 3px 3px;
     box-shadow: rgba(0, 0, 0, 0.298039) -3px 3px 3px;
-    border-radius: 4px;
+    border-radius: 3px;
     width: 256px;
-    height: 60px;
+    height: 165px;
+    overflow: hidden;
 }
 
 div.location-pic-container img.location_building_pic{
-    width: 240px;
-    opacity:1;
-    display:none;
-    position:absolute;
-    height: 144px;
-    top:16px;
-    left:9px;
-    border-radius: 3px;
+    width: 104%;
+    height: 110%;
+    opacity: 1;
+    display: none;
+    margin-top: -35px;
+    margin-left: -5px;
+    background-image: url(src/nyu_poly_cover.jpg);
 }
 
 
@@ -1064,14 +1057,14 @@ div.group-head-top-sec div.group-cover-picture{
 /* Modal animation and CSS begins */
 
 div.modal_coverPhoto_container{
--webkit-border-radius: 3px;
-margin:0 auto;
-margin-top:100px;
-background:white;
-position: relative;
-width: 320px;
-height: 60px;
--webkit-box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
+    -webkit-border-radius: 3px;
+    margin:0 auto;
+    margin-top:100px;
+    background:white;
+    position: relative;
+    width: 320px;
+    height: 60px;
+    -webkit-box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
 }
 
 div.modal_coverPhoto_body{
@@ -1105,12 +1098,12 @@ div.modal_loading2{
 }
 
 img.modal_animation{
-width: 25px;
-height: 25px;
-margin: 0 auto;
-position: relative;
-display: block;
-top: 19px;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    top: 68px;
 }
 
 div.modal_header{

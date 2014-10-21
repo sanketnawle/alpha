@@ -371,22 +371,19 @@ $(document).ready(function() {
 
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
-        $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
-                $(this).closest(".group-head-top-sec").find(".location-pic-container").delay(50).css({"height":"160"});
-                $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
 
+        $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
+                $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
         });
 
-
-
-
+        $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
 
     });
 
 
+
     $('.group_location').mouseleave(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
-        $(this).closest(".group-head-top-sec").find(".location-pic-container").css({"height":"60px"});
         $(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
         $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
