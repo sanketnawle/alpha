@@ -897,34 +897,31 @@ div.location-pic-div-wrap{
     -webkit-transition: opacity .15s ease;
     transition: opacity .15s ease;
     right: 0;
-    opacity:1;
-    display:none;
-    top: 60px;
+    opacity: 1;
+    display: none;
+    top: -122px;
+    z-index: 100;
 }
 
 div.location-pic-div-wrap div.white-wedge-up{
-border-color: transparent;
-border-bottom-color: #fff;
-border-style: dashed dashed solid;
-border-width: 0 8.5px 8.5px;
-display: block;
-z-index: 1;
-height: 0;
-width: 0;
-position: relative;
-margin: 0 auto;
-}
-
-div.white-wedge-up{
-
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-style: dashed dashed solid;
+    border-width: 0 8.5px 8.5px;
+    display: block;
+    height: 0;
+    width: 0;
+    position: relative;
+    margin-top: 188px;
+    margin-left: 186px;
 }
 
 
 
 div.location-pic-container{
-
     background: white;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 2px 2px;   border: 1px solid rgb(170, 170, 170);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) -3px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.298039) -3px 3px 3px;
     border-radius: 4px;
     width: 256px;
     height: 60px;
