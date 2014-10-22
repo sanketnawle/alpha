@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/department_header.php" afterPath="$PROJECT_DIR$/beta/department_header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/php/school_components/header_school.php" afterPath="$PROJECT_DIR$/beta/php/school_components/header_school.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/school.php" afterPath="$PROJECT_DIR$/beta/school.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/school_alpha/school_department.css" afterPath="$PROJECT_DIR$/beta/school_alpha/school_department.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,24 +38,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="school.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="school.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/beta/school.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.791667" vertical-offset="11606" max-vertical-offset="15840">
-              <caret line="791" column="19" selection-start-line="791" selection-start-column="19" selection-end-line="791" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.40350878" vertical-offset="551" max-vertical-offset="16035">
+              <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
               <folding>
-                <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-                <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+                <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+                <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="school_department.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="school_department.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/beta/school_alpha/school_department.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64471406" vertical-offset="13233" max-vertical-offset="26685">
-              <caret line="907" column="6" selection-start-line="907" selection-start-column="6" selection-end-line="907" selection-end-column="6" />
+            <state vertical-scroll-proportion="279.34616" vertical-offset="9348" max-vertical-offset="26250">
+              <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -67,7 +64,7 @@
       <file leaf-file-name="header_school.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/beta/php/school_components/header_school.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="3000">
+            <state vertical-scroll-proportion="-18.75" vertical-offset="285" max-vertical-offset="3000">
               <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
               <folding>
                 <marker date="1414003479000" expanded="true" signature="388:410" placeholder="..." />
@@ -162,18 +159,18 @@
         <option value="$PROJECT_DIR$/beta/php/header_school.php" />
         <option value="$PROJECT_DIR$/beta/department.php" />
         <option value="$PROJECT_DIR$/beta/department_header.php" />
-        <option value="$PROJECT_DIR$/beta/school.php" />
         <option value="$PROJECT_DIR$/beta/php/school_components/header_school.php" />
         <option value="$PROJECT_DIR$/beta/school_alpha/school_department.css" />
+        <option value="$PROJECT_DIR$/beta/school.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="53" />
-    <option name="y" value="63" />
+    <option name="x" value="221" />
+    <option name="y" value="138" />
     <option name="width" value="973" />
-    <option name="height" value="734" />
+    <option name="height" value="637" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -289,7 +286,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="63" width="973" height="734" extended-state="0" />
+    <frame x="221" y="138" width="973" height="637" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -349,8 +346,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="11606" max-vertical-offset="15840">
           <caret line="791" column="19" selection-start-line="791" selection-start-column="19" selection-end-line="791" selection-end-column="19" />
           <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
           </folding>
         </state>
       </provider>
@@ -446,8 +443,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="12604" max-vertical-offset="15750">
           <caret line="852" column="37" selection-start-line="852" selection-start-column="30" selection-end-line="852" selection-end-column="37" />
           <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
           </folding>
         </state>
       </provider>
@@ -551,8 +548,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5449" max-vertical-offset="15750">
           <caret line="377" column="0" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
           <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
           </folding>
         </state>
       </provider>
@@ -656,8 +653,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="11887" max-vertical-offset="15795">
           <caret line="809" column="79" selection-start-line="809" selection-start-column="79" selection-end-line="809" selection-end-column="79" />
           <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
           </folding>
         </state>
       </provider>
@@ -761,8 +758,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15795">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
           </folding>
         </state>
       </provider>
@@ -941,7 +938,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/beta/php/school_components/header_school.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="3000">
+        <state vertical-scroll-proportion="-18.75" vertical-offset="285" max-vertical-offset="3000">
           <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
           <folding>
             <marker date="1414003479000" expanded="true" signature="388:410" placeholder="..." />
@@ -1009,22 +1006,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beta/school.php">
+    <entry file="file://$PROJECT_DIR$/beta/school_alpha/school_department.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.791667" vertical-offset="11606" max-vertical-offset="15840">
-          <caret line="791" column="19" selection-start-line="791" selection-start-column="19" selection-end-line="791" selection-end-column="19" />
-          <folding>
-            <marker date="1414002877000" expanded="true" signature="48291:48577" placeholder="SELECT user_..user..." />
-            <marker date="1414002877000" expanded="true" signature="48429:48479" placeholder="SELECT to_us..connect..." />
-          </folding>
+        <state vertical-scroll-proportion="279.34616" vertical-offset="9348" max-vertical-offset="26250">
+          <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beta/school_alpha/school_department.css">
+    <entry file="file://$PROJECT_DIR$/beta/school.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64471406" vertical-offset="13233" max-vertical-offset="26685">
-          <caret line="907" column="6" selection-start-line="907" selection-start-column="6" selection-end-line="907" selection-end-column="6" />
-          <folding />
+        <state vertical-scroll-proportion="0.40350878" vertical-offset="551" max-vertical-offset="16035">
+          <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
+          <folding>
+            <marker date="1414009170000" expanded="true" signature="48646:48932" placeholder="SELECT user_..user..." />
+            <marker date="1414009170000" expanded="true" signature="48784:48834" placeholder="SELECT to_us..connect..." />
+          </folding>
         </state>
       </provider>
     </entry>

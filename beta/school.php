@@ -43,6 +43,19 @@ if(isset($_GET['univ_id'])){
 
 
 $(document).ready(function() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR)
+        },
+        success: function (msg) {
+            console.log(msg);
+        }
+    });
+
     var originalHTML = "";
     $.urlParam = function (sParam) {
 
