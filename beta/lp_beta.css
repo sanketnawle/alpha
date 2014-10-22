@@ -1750,12 +1750,12 @@ font-size: 30px;
 
 .error_text_log_color
 {
-  color: red!important;
+  color: #8B0300!important;
 }
 
 .error_box_log_color
 {
-  border: 1px solid red!important;
+  border: 1px solid #8B0300!important;
   border-radius: 4px!important;
 }
 
@@ -2082,6 +2082,89 @@ font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
   background-image:url(img/nyu.JPG);
 }
 
+.registration-sec-texts span{
+	background-color: #BE4B49;
+	text-align:center;
+	color: #FFF;
+	padding: 9px 5px 9px 5px;
+	z-index: 9999;
+	position:absolute;
+	box-shadow: 0px 3px 3px #888888;
+	border-radius: 3px;
+	font-size: 15px;
+	display:none;
+}
+.registration-sec-texts b{
+	-webkit-background-size: auto;
+	background-image: url("img/error_message.png");
+	background-position: -11px -494px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	display: initial;
+	height: 21px;
+	position: absolute;
+	width: 13px;
+	z-index:9999;
+	display:none;
+}
+.fname_hint{
+	width: 175px;
+	margin-left: -350px;
+}
+.fname_hint_img{
+	top: 8px;
+	left: -8px;
+}
+.lname_hint{
+	width: 200px;
+	top: 45px;
+	right: -50px
+}
+.lname_hint_img{
+	top: 30px;
+	right: 120px;
+	-webkit-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg);
+}
+.email_hint{
+	width: 250px;
+	top: 2px;
+	left: -265px;
+}
+.email_hint_img{
+	top: 10px;
+	left: -7px;
+}
+.password_hint{
+	width: 300px;
+	top: -3px;
+	left: -315px;
+}
+.password_hint_img{
+	top: 10px;
+	left: -7px;
+}
+.registration-sec-texts i{
+	-webkit-background-size: auto;
+	background-image: url("img/error_message.png");
+	background-position: -23.5px -494px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	display: initial;
+	height: 21px;
+	position: absolute;
+	width: 22px;
+	display:none;
+}
+.fname_alert_mark{
+	top: 8px;
+	left: 133px;
+}
+.lname_alert_mark, .email_alert_mark, .password_alert_mark{
+	top:8px;
+	right: 14px;
+}
 /* temp background end*/
 
 
