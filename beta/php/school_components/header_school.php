@@ -42,12 +42,12 @@ echo '
         Submit a photo of this school for a chance to replace its current cover photo.
     </div>
 </div>
-<div class = "location-pic-div-wrap">
-    <div class = "white-wedge-up">
+<div class="location-pic-div-wrap">
+    <!--
+    <div class="location-pic-container">
+        <img class="location_building_pic" src="" class="location-picture" />
     </div>
-    <div class = "location-pic-container">
-        <img class = "location_building_pic" src = "" class = "location-picture">
-    </div>
+    -->
 </div>
 </div>';
 

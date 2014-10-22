@@ -368,7 +368,7 @@ $(document).ready(function() {
             });
 
 
-
+    /*
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
 
@@ -387,7 +387,7 @@ $(document).ready(function() {
         $(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
         $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
-
+    */
 
     $(document).delegate('.group-cover-pic-info',"click", function(){
         $('body,html').animate({
@@ -785,6 +785,12 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+    <svg width="0" height="0">
+        <clipPath id="clipPolygon">
+            <polygon points="135 241,399 241,399 84,326 84,317 66,308 84,135 84">
+            </polygon>
+        </clipPath>
+    </svg>
     <div class = "root">
     <div class='gp_topbar_wrap'>
         <?php include("topbar.php"); ?>
