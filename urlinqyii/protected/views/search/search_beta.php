@@ -1,5 +1,5 @@
 <?php
-include('php/redirect.php');
+//include('php/redirect.php');
 
 //Yii:app()->session['user_id'] = 'user_id';
 //echo Yii::app()->session['user_id']; //prints 'user_id'
@@ -283,7 +283,7 @@ function getNumbers(tag, data)
 <body>
 <div class = "root">
     <div class = "search-top-bar-wrap">
-        <?php include 'topbar.php';?>
+        <?php //include 'topbar.php'; ?>
     </div>
     <div class = "main">
         <div class = "leftsec">
@@ -368,7 +368,7 @@ function getNumbers(tag, data)
         <div id = "result" class = "midsec loadani_parent">
             <section class='loading_animation'>
                 <?php $text = "SEARCH RESULTS";
-                include 'loading.php';?>
+                //include 'loading.php';?>
             </section>
             <!-- insert the results here -->
         </div>
