@@ -866,7 +866,7 @@ div.group_location span.group_location_name{
 
 div.location-pic-div-wrap{
     position: absolute;
-    right: 0;
+    right: 13px;
     opacity: 1;
     //display: none;
     top: 62px;
@@ -874,27 +874,17 @@ div.location-pic-div-wrap{
     background-color: white;
     height: 180px;
     width: 270px;
-    -webkit-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 197px 13px, 210px 0px, 223px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
-    -ms-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 197px 13px, 210px 0px, 223px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
-    -moz-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 197px 13px, 210px 0px, 223px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
-    clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 197px 13px, 210px 0px, 223px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
-    background-image: url(src/nyu_poly_cover.jpg);
+    -webkit-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
+    -ms-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
+    -moz-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
+    clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
+    background-size: cover;
+    overflow: hidden;
+}
+
+div.location-pic-div-wraper img#location_popup {
     background-size: cover;
 }
-
-div.location-pic-div-wrap div.white-wedge-up{
-    border-color: transparent;
-    border-bottom-color: #fff;
-    border-style: dashed dashed solid;
-    border-width: 0 8.5px 8.5px;
-    display: block;
-    height: 0;
-    width: 0;
-    position: relative;
-    margin-top: 188px;
-    margin-left: 186px;
-}
-
 
 div.info-scroll-up {
     background: transparent !important; 
