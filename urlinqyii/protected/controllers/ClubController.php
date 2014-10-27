@@ -221,6 +221,7 @@ class ClubController extends Controller
         $connected_users = $command->queryAll();
 
 
+
 //        $get_admin_flag_query = "SELECT COUNT(*) as admin_flag FROM group_users WHERE group_id = $group_id AND user_id = $user_id AND is_admin = 1";
 //        $get_admin_flag_query_result = mysqli_query($con, $get_admin_flag_query);
 //        $admin_row = mysqli_fetch_array($get_admin_flag_query_result);

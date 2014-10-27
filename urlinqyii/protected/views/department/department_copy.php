@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<?php
-include('php/redirect.php');
-?>
+<?php include('php/redirect.php'); ?>
 <html>
 <head>
 <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
 <link rel='stylesheet' type='text/css' href='school_alpha/backgroundGroup.css'>
 
-<link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/school_alpha/group.css'>
-<link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/school_alpha/school_department.css'>
-<link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/coursesCardUI.css'>
-<link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/dept.css'>
-<link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_dept.css'>
+<link rel='stylesheet' type='text/css' href='school_alpha/group.css'>
+<link rel='stylesheet' type='text/css' href='school_alpha/school_department.css'>
+<link rel='stylesheet' type='text/css' href='css/coursesCardUI.css'>
+<link rel='stylesheet' type='text/css' href='css/dept.css'>
 
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 <link
@@ -24,6 +21,7 @@ include('php/redirect.php');
 
 $(document).ready(function() {
     $.urlParam = function (sParam) {
+
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
         for (var i = 0; i < sURLVariables.length; i++)
@@ -37,18 +35,12 @@ $(document).ready(function() {
 
     }
     var univ_id = $.urlParam('dept_id');
-    /*var orgin="null";
-     var orgin=$.urlParam('orgin');
-     if(orgin=="onboard"){
-     //alert("in if");
-     $('.tabmembers').removeClass('tab-inactive');
-     $('.tabmembers').addClass('group-tab-active');
-     }*/
+
 
     var feed=$('.feed-tab-content').clone();
     var about=$('.about-content').clone();
     var about_text = feed.find(".content-about").text();
-    ////alert(about_text);
+    //alert(about_text);
     if(about_text.length>=73){
         about_text= about_text.substring(0,70)+"..." + "<span class='bh-t2'> <a id = 'group-about-link' class = 'bh-t2'>Read More</a></span>";
         $(".content-about").html(about_text);
@@ -65,6 +57,7 @@ $(document).ready(function() {
         $(".about-content").show();
 
     });
+
 
     $(document).delegate(".studybtn","mouseenter",function(){
         var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
@@ -116,23 +109,23 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function(html){
-                ////alert(html);
-                $ref.closest("form").find(".uploadedPhotoFrame").hide();
                 //alert(html);
-                //alert("ad");
+                $ref.closest("form").find(".uploadedPhotoFrame").hide();
+                alert(html);
+                alert("ad");
                 $ref.closest("form").find(".uploadedPhotoFrame_display").css({"background-image":"url("+html+")"});
                 $ref.closest("form").find(".uploadedPhotoFrame_display").show();
 
             },
             error: function(html){
-                //alert(html);
-                //alert("asfw");
+                alert(html);
+                alert("asfw");
             }
         });
     });
 
     $(document).delegate(".pt_upload_button", "click", function () {
-        //alert("a");
+        alert("a");
         var $ref = $(this);
         var formData = new FormData($ref.closest("form")[0]);
         var editing = "cover";
@@ -140,7 +133,7 @@ $(document).ready(function() {
         formData.append("editing", editing);
         formData.append("id", univ_id);
         formData.append("department",true);
-        //alert("b");
+        alert("b");
         $.ajax({
             type: "POST",
             url: "php/edit_class_pictures.php",
@@ -157,14 +150,14 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function (html) {
-                //alert("4");
+                alert("4");
                 var jsonstring = "";
                 if (html.user_dp.length > 0) {
                     jsonstring = html.user_dp[0]['img_url'];
                 }
-                //alert("c");
+                alert("c");
                 $ref.closest("form").find(".uploadedPhotoFrame").show();
-                //alert("d");
+                alert("d");
                 $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
                 $(".cancelBtn").click();
 
@@ -173,7 +166,7 @@ $(document).ready(function() {
 
             },
             error: function (html) {
-                //alert(html);
+                alert(html);
             }
         });
     });
@@ -210,9 +203,9 @@ $(document).ready(function() {
                 if (html.user_dp.length > 0) {
                     jsonstring = html.user_dp[0]['img_url'];
                 }
-                ////alert(html);
-                $ref.closest("form").find(".uploadedPhotoFrame").show();
                 //alert(html);
+                $ref.closest("form").find(".uploadedPhotoFrame").show();
+                alert(html);
                 $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
                 $(".cancelBtn").click();
 
@@ -221,7 +214,7 @@ $(document).ready(function() {
 
             },
             error: function (html) {
-                //alert(html);
+                alert(html);
             }
         });
     });
@@ -271,18 +264,18 @@ $(document).ready(function() {
 
         var type=$(this).attr('id').replace(/\d+/g, '');
         var dept_id=$(this).attr('id').replace(/[^\d.]/g, '');
-        //alert("selected dept"+dept_id);
+        alert("selected dept"+dept_id);
 
         dept_id=parseInt(dept_id);
         if(type=="major"){
             type=1;
-            //alert("in major"+type);
+            alert("in major"+type);
         }else if(type=="minor"){
             type=2;
-            //alert("in minor"+type);
+            alert("in minor"+type);
         }else{
             type=3;
-            //alert("in interested"+type);
+            alert("in interested"+type);
         }
         $.ajax({
             type: "POST",
@@ -385,7 +378,7 @@ $(document).ready(function() {
     $(window).scroll(function() {
         var y=$(window).scrollTop()*0.32;
         var x=$(window).scrollTop()*1;
-        ////alert(y);
+        //alert(y);
         $(".group-cover-picture").css({"transform":"translateY("+y+"px)"});
         $(".spec-group-header-right").css({"height":y+"px"});
 
@@ -454,16 +447,16 @@ $(document).ready(function() {
     });
 
 
-    $(document).delegate(".dept_fbtn","click",function(){
+    $(document).delegate(".followBtn","click",function(){
 
         if(!$(this).hasClass("unfollowBtn")){
             $(".study_box_open").css("left","112px");
-            $(this).html("<em class = 'unfollow-icon'></em>Following");
+            $(this).html("<em class = 'unfollow-icon'></em>Unfollow");
             $(this).addClass("unfollowBtn");
         }
         else{
             $(".study_box_open").css("left","88px");
-            $(this).html("<em></em>Follow this Department");
+            $(this).html("<em></em>Follow");
             $(this).removeClass("unfollowBtn");
         }
         $.ajax({
@@ -471,10 +464,10 @@ $(document).ready(function() {
             url:'php/course_follow.php',
             data:{id:univ_id, dept: true},
             success: function(response) {
-                //alert("qq");
+                alert("qq");
             },
             error: function(response) {
-                //alert("ww");
+                alert("ww");
             }
         });
     });
@@ -534,10 +527,10 @@ $(document).ready(function() {
             url: "php/course_follow.php",
             data: {id: course_id, course: true},
             success: function (html) {
-                //alert("a");
+                alert("a");
             },
             error: function (html) {
-                //alert("b");
+                alert("b");
             }
         });
     });
@@ -605,7 +598,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","445px");
+            $(".tab-wedge-down").css("left","460px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").hide();
@@ -653,7 +646,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","587px");
+            $(".tab-wedge-down").css("left","591px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -752,9 +745,9 @@ $(document).ready(function() {
         <?php include ("topbar.php");?>
     </div>
 
-    <section>
-        <?php include("leftpanel.php"); ?>
-    </section>
+    <div class='gp_leftbar_wrap'>
+        <?php include("leftmenu.php"); ?>
+    </div>
 
     <div class='modal_coverPhoto_body modal_body'>
         <div class='modal_coverPhoto_container'>
@@ -826,16 +819,9 @@ $(document).ready(function() {
 
 
 </html>
-/* @var $this DepartmentController */
-
-$this->breadcrumbs=array(
-	'Department'=>array('/department'),
-	'Department',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+/**
+ * Created by PhpStorm.
+ * User: Nivedita Sonker
+ * Date: 10/24/2014
+ * Time: 2:38 PM
+ */ 
