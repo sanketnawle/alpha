@@ -1,0 +1,61 @@
+<html>
+
+    <head>
+        <link href='dropdown_style.css' rel='stylesheet' />
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+        <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+        <script>
+            $.ajax({
+                type: 'GET',
+                dataType: 'jsonp',
+                data: {},
+                url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Could not retrieve NYU JSON");
+                    console.log(jqXHR);
+                },
+                success: function (msg) {
+                    var locations_array = msg.locations;
+
+                    for(var i = 0; i < locations_array.length; i++){
+                        var loc = locations_array[i];
+                        loc.label = loc.title;
+                    }
+
+                    $(function() {
+                        $( "#location" ).autocomplete(
+                                {
+                                    source: locations_array,
+                                    select: function( event, ui ) {
+                                        $( "#location_result" ).text( ui.item.address );
+                                        return false;
+                                    }
+                                }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                            return $( "<li></li>" )
+                                    .data( "item.autocomplete", item )
+                                    .append(item.label)
+                                    .appendTo( ul );
+                        };
+                    });
+                }
+            });
+
+        </script>
+    </head>
+
+    <title>Autocomplete Dropdown</title>
+
+    <body>
+        <p>Location Name:</p>
+        <input class="autocomplete_input" type="text" id="location" />
+        <p>Address:</p>
+        <div class="result"><span id="location_result"></span></div>
+    </body>
+
+</html>
