@@ -69,7 +69,7 @@ return array(
                 'club/<id:\d+>/members'=>'club/members',
                 'club/<id:\d+>/member/remove'=>'club/removeMember',
 
-                'search' => 'search/json',
+                'search/<q>' => 'search/json',
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
                 'search/json'=>'search/json'
