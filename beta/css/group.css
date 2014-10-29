@@ -246,17 +246,17 @@ vertical-align: baseline;
 border-radius: 10px;
 }
 
-div.tab-wedge-down{
-background-image: url('../src/tab-wedge-down.png');
-display: block;
-background-repeat: no-repeat;
-background-size: 100% auto;
-width: 21px;
-height: 10px;
-position: absolute;
-bottom: -2px;
-z-index: 200;
-left: 302.5px;
+div.tab-wedge-down {
+    background-image: url('../src/tab-wedge-down.png');
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    width: 21px;
+    height: 10px;
+    position: absolute;
+    bottom: -2px;
+    z-index: 200;
+    left: 302.5px;
 }
 .tab-title{
 	padding-left: 0px !important;

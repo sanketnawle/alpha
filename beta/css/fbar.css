@@ -728,17 +728,10 @@ display:none;
 }
 
 .driveUpload{
-
 	width: 49.5%;
-
-	border-left:1px solid #ddd;
-
 	float:right;
-
 	height: 65px;
-
 	margin-top: 5px;
-
 }
 
 
@@ -1675,120 +1668,61 @@ border-color: #C0C0C0;
 
 
 
-.midfbar-wrap2{
+.midfbar-wrap2 {
 	position: relative;
 	width:97.35%;
-
 	margin-left:auto;
-
 	margin-right:auto;
-
 }
 
 
 
-.quest-wrap
-
-{
-
+.quest-wrap {
 	position:absolute;
-
 	height:39px;
-
 	width:auto;
-
 }
 
 
 
-.who-wrap{
-
+.who-wrap {
 	position:relative;
-
 	height: auto;
-
 	width:auto;
-
 	margin-top:5.5px;
-
 }
 
 
 
-.who-dyn{
-
-	width: 30.5px;
-
+.who-dyn {
+	width: 35px;
 	height: 32px;
-
-	position:absolute;
-
-	display:inline;
-
-	padding-right: 4px;
-
-	border-radius:0px;
-
+	position: absolute;
+	display: inline;
+	border-radius: 0px;
 	border-top-left-radius: 3px;
-
 	border-bottom-left-radius: 3px;
-
 	background-color: #2e78c5;
-
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.48) inset;
-
 	background: -webkit-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -moz-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -o-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -webkit-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -moz-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -o-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -webkit-linear-gradient(top,#4E98E5,#2e78c5);
-
 }
-
-
-
-
-
-
 
 .who-icon{
-
 	background-image: url(../img/who-w.png);
-
-background-repeat: no-repeat;
-
-
-
+    background-repeat: no-repeat;
 	background-size: cover;
-
-
-
-	height: 15px;
-
-
-
-	width: 18px;
-
-
-
-	margin-left: 7px;
-
-
-
-	margin-top: 7.4px;
-
+    height: 18px;
+    width: 20px;
+    margin-left: 7px;
+    margin-top: 7.4px;
 }
 
 
@@ -2591,23 +2525,15 @@ margin-bottom: 4px;
 
 
 .visi_functions_option_fbar{
-
-	font-size: 13.5px;
-
-cursor: pointer;
-
-font-family: 'Open Sans', sans-serif;
-
-padding: 3px 11px;
-
-margin-top: 3px;
-
-margin-bottom: 2px;
-
-border-top: 1px solid transparent;
-
-border-bottom: 1px solid transparent;
-
+	font-size: 14px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    padding: 8px 10px 0;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: -4px;
+    margin-bottom: -3px;
+    height: 26px;
 }
 
 

@@ -276,9 +276,9 @@ div.tab-wedge-down{
     width: 21px;
     height: 15px;
     position: absolute;
-    bottom: -7px;
+    bottom: -6px;
     z-index: 4000;
-    left: 70px;
+    left: 57px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
 background-color:#f6f7f8;

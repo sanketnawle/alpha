@@ -35,8 +35,10 @@ else{
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/fbar.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
+<link rel="stylesheet" type="text/css" href="css/dropdown_style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="filepicker.js"></script>
@@ -100,6 +102,46 @@ else{
 <script>
 $(document).ready(function() {
 
+    $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Could not retrieve NYU JSON");
+            console.log(jqXHR);
+        },
+        success: function (msg) {
+            var locations_array = msg.locations;
+
+            for(var i = 0; i < locations_array.length; i++){
+                var loc = locations_array[i];
+                loc.label = loc.title;
+            }
+
+            $(function() {
+                $( "#event_location" ).autocomplete(
+                    {
+                        source: locations_array,
+                        select: function( event, ui ) {
+                            $( "#event_location" ).text( ui.item.address );
+                            return false;
+                        }
+                    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                        return $( "<li></li>" )
+                        .data( "item.autocomplete", item )
+                        .append(item.label + " / " + item.address)
+                        .appendTo( ul );
+                };
+            });
+
+            $("ul.ui-autocomplete").on("click", "li", function() {
+                var location_text = this.text();
+                alert(location_text);
+                $("#event_location").text(location_text);
+            });
+        }
+    });
 
     $('.post').click(function(){
 
@@ -1091,7 +1133,7 @@ $(document).ready(function() {
     <div class ="textwrap">
         <form id="event_form">
             <textarea name = "event_name" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Name" ></textarea>
-            <textarea name = "event_loc" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Location" ></textarea>
+            <textarea id="event_location" name = "event_loc" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Location" ></textarea>
             <div class="bottom_border date_line event_time">
                 <p class="time_label">Event Date & Time</p>
                 <input class = "set_date" name="event_date" id="add_event_date" readonly />
