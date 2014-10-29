@@ -1,18 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "groups_files".
+ * This is the model class for table "group_file".
  *
- * The followings are the available columns in table 'groups_files':
+ * The followings are the available columns in table 'group_file':
  * @property integer $group_id
- * @property string $file_id
+ * @property integer $file_id
  * @property integer $user_id
  * @property string $file_description
  *
  * The followings are the available model relations:
- * @property Groups $group
  * @property User $user
- * @property FileUpload $file
+ * @property Group $group
+ * @property File $file
  */
 class GroupFile extends CActiveRecord
 {
@@ -21,7 +21,7 @@ class GroupFile extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'groups_files';
+		return 'group_file';
 	}
 
 	/**
@@ -32,10 +32,9 @@ class GroupFile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('group_id, file_id, user_id', 'required'),
-			array('group_id, user_id', 'numerical', 'integerOnly'=>true),
-			array('file_id', 'length', 'max'=>20),
-			array('file_description', 'safe'),
+			array('file_id, user_id, file_description', 'required'),
+			array('file_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('file_description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('group_id, file_id, user_id, file_description', 'safe', 'on'=>'search'),
@@ -50,9 +49,9 @@ class GroupFile extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'group' => array(self::BELONGS_TO, 'Groups', 'group_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'file' => array(self::BELONGS_TO, 'FileUpload', 'file_id'),
+			'group' => array(self::BELONGS_TO, 'Group', 'group_id'),
+			'file' => array(self::BELONGS_TO, 'File', 'file_id'),
 		);
 	}
 
@@ -88,7 +87,7 @@ class GroupFile extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('group_id',$this->group_id);
-		$criteria->compare('file_id',$this->file_id,true);
+		$criteria->compare('file_id',$this->file_id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('file_description',$this->file_description,true);
 

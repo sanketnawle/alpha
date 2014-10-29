@@ -4,12 +4,8 @@
  * This is the model class for table "department_follow".
  *
  * The followings are the available columns in table 'department_follow':
- * @property integer $dept_id
+ * @property integer $department_id
  * @property integer $user_id
- *
- * The followings are the available model relations:
- * @property Department $dept
- * @property User $user
  */
 class DepartmentFollow extends CActiveRecord
 {
@@ -29,11 +25,11 @@ class DepartmentFollow extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dept_id, user_id', 'required'),
-			array('dept_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('department_id, user_id', 'required'),
+			array('department_id, user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('dept_id, user_id', 'safe', 'on'=>'search'),
+			array('department_id, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,8 +41,6 @@ class DepartmentFollow extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'dept' => array(self::BELONGS_TO, 'Department', 'dept_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -56,7 +50,7 @@ class DepartmentFollow extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'dept_id' => 'Dept',
+			'department_id' => 'Department',
 			'user_id' => 'User',
 		);
 	}
@@ -79,7 +73,7 @@ class DepartmentFollow extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('dept_id',$this->dept_id);
+		$criteria->compare('department_id',$this->department_id);
 		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(

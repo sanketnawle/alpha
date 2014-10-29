@@ -1,12 +1,15 @@
 <?php
 
 /**
- * This is the model class for table "user_login_attempts".
+ * This is the model class for table "user_login_attempt".
  *
- * The followings are the available columns in table 'user_login_attempts':
+ * The followings are the available columns in table 'user_login_attempt':
  * @property integer $user_id
  * @property string $attempttime
  * @property string $ipaddress
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserLoginAttempt extends CActiveRecord
 {
@@ -15,7 +18,7 @@ class UserLoginAttempt extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'user_login_attempts';
+		return 'user_login_attempt';
 	}
 
 	/**
@@ -44,6 +47,7 @@ class UserLoginAttempt extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 

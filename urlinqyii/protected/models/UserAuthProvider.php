@@ -4,10 +4,13 @@
  * This is the model class for table "user_auth_provider".
  *
  * The followings are the available columns in table 'user_auth_provider':
- * @property string $user_id
+ * @property integer $user_id
  * @property string $auth_key
  * @property string $auth_provider
  * @property string $fb_email
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserAuthProvider extends CActiveRecord
 {
@@ -28,7 +31,8 @@ class UserAuthProvider extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, auth_key, fb_email', 'required'),
-			array('user_id, auth_key', 'length', 'max'=>255),
+			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('auth_key', 'length', 'max'=>255),
 			array('auth_provider', 'length', 'max'=>8),
 			array('fb_email', 'length', 'max'=>200),
 			// The following rule is used by search().
@@ -45,6 +49,7 @@ class UserAuthProvider extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -79,7 +84,7 @@ class UserAuthProvider extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('auth_key',$this->auth_key,true);
 		$criteria->compare('auth_provider',$this->auth_provider,true);
 		$criteria->compare('fb_email',$this->fb_email,true);

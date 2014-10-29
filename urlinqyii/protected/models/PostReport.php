@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This is the model class for table "posts_reports".
+ * This is the model class for table "post_report".
  *
- * The followings are the available columns in table 'posts_reports':
- * @property string $user_id
- * @property string $post_id
+ * The followings are the available columns in table 'post_report':
+ * @property integer $user_id
+ * @property integer $post_id
  */
 class PostReport extends CActiveRecord
 {
@@ -14,7 +14,7 @@ class PostReport extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts_reports';
+		return 'post_report';
 	}
 
 	/**
@@ -26,7 +26,7 @@ class PostReport extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, post_id', 'required'),
-			array('user_id, post_id', 'length', 'max'=>20),
+			array('user_id, post_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('user_id, post_id', 'safe', 'on'=>'search'),
@@ -73,8 +73,8 @@ class PostReport extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_id',$this->user_id,true);
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('post_id',$this->post_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * This is the model class for table "posts_likes".
+ * This is the model class for table "post_like".
  *
- * The followings are the available columns in table 'posts_likes':
- * @property string $post_id
+ * The followings are the available columns in table 'post_like':
+ * @property integer $post_id
  * @property integer $user_id
  */
 class PostLike extends CActiveRecord
@@ -14,7 +14,7 @@ class PostLike extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts_likes';
+		return 'post_like';
 	}
 
 	/**
@@ -25,8 +25,8 @@ class PostLike extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('post_id, user_id', 'required'),
+			array('post_id, user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('post_id, user_id', 'safe', 'on'=>'search'),
@@ -50,8 +50,8 @@ class PostLike extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'post_id' => 'Post',
-			'user_id' => 'User',
+			'post_id' => 'refers to post(post_id)',
+			'user_id' => 'Refers to user(user_id)',
 		);
 	}
 
@@ -73,7 +73,7 @@ class PostLike extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('post_id',$this->post_id);
 		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(

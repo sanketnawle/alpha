@@ -1,14 +1,14 @@
 <?php
 
 /**
- * This is the model class for table "invites".
+ * This is the model class for table "invite".
  *
- * The followings are the available columns in table 'invites':
+ * The followings are the available columns in table 'invite':
+ * @property integer $invite_id
  * @property integer $user_id
- * @property integer $event_id
- * @property integer $event_type
+ * @property integer $origin_id
+ * @property string $origin_type
  * @property integer $choice
- * @property integer $id
  *
  * The followings are the available model relations:
  * @property User $user
@@ -20,7 +20,7 @@ class Invite extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'invites';
+		return 'invite';
 	}
 
 	/**
@@ -31,11 +31,12 @@ class Invite extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, event_id, event_type, choice', 'required'),
-			array('user_id, event_id, event_type, choice', 'numerical', 'integerOnly'=>true),
+			array('user_id, origin_id, origin_type, choice', 'required'),
+			array('user_id, origin_id, choice', 'numerical', 'integerOnly'=>true),
+			array('origin_type', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, event_id, event_type, choice, id', 'safe', 'on'=>'search'),
+			array('invite_id, user_id, origin_id, origin_type, choice', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,11 +58,11 @@ class Invite extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'invite_id' => 'Invite',
 			'user_id' => 'User',
-			'event_id' => 'Event',
-			'event_type' => 'Event Type',
+			'origin_id' => 'Origin',
+			'origin_type' => 'Origin Type',
 			'choice' => 'Choice',
-			'id' => 'ID',
 		);
 	}
 
@@ -83,11 +84,11 @@ class Invite extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('invite_id',$this->invite_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('event_id',$this->event_id);
-		$criteria->compare('event_type',$this->event_type);
+		$criteria->compare('origin_id',$this->origin_id);
+		$criteria->compare('origin_type',$this->origin_type,true);
 		$criteria->compare('choice',$this->choice);
-		$criteria->compare('id',$this->id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

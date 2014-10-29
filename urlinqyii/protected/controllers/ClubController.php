@@ -63,7 +63,7 @@ class ClubController extends Controller
 
         $is_admin = Yii::app()->db->createCommand()
             ->select('is_admin')
-            ->from('group_users u')
+            ->from('group_user u')
             ->where('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$club->group_id))
             ->queryRow();
 
@@ -91,8 +91,8 @@ class ClubController extends Controller
             }
         }
 
+        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, u.dp_flag, u.dp_link, u.dp_blob, un.univ_name from `user_connection` c, user u, university un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.univ_id = u.univ_id AND u.status = 'active'";
 
-        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, u.dp_flag, u.dp_link, u.dp_blob, un.univ_name from `connect` c, user u, university un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.univ_id = u.univ_id AND u.status = 'active'";
 
 
         $command = Yii::app()->db->createCommand($sql);
@@ -146,7 +146,7 @@ class ClubController extends Controller
 
         $is_admin = Yii::app()->db->createCommand()
             ->select('is_admin')
-            ->from('group_users u')
+            ->from('group_user u')
             ->where('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$club->group_id))
             ->queryRow();
 
@@ -215,11 +215,14 @@ class ClubController extends Controller
 //                    order by last_activity DESC
 //                    LIMIT 0,".self::POST_LIMIT;
 
-        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, u.dp_flag, u.dp_link, u.dp_blob, un.univ_name from `connect` c, user u, university un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.univ_id = u.univ_id AND u.status = 'active'";
+        $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, un.school_name from `user_connection` c, user u, school un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.school_id = u.school_id AND u.status = 'active'";
+
+        $connected_users = User::model()->findAllBySql($sql);
 
 
-        $command = Yii::app()->db->createCommand($sql);
-        $connected_users = $command->queryAll();
+
+//        $command = Yii::app()->db->createCommand($sql);
+//        $connected_users = $command->queryAll();
 
 
 //        $get_admin_flag_query = "SELECT COUNT(*) as admin_flag FROM group_users WHERE group_id = $group_id AND user_id = $user_id AND is_admin = 1";
@@ -236,14 +239,14 @@ class ClubController extends Controller
 
 
 
-        $sql = "SELECT c.course_name, c.course_id, cs.dp_blob_id,cs.professor, cu.class_id, u.lastname
-                 FROM `courses_user` cu
-                 JOIN courses_semester cs
+        $sql = "SELECT c.course_name, c.course_id, cs.professor, cu.class_id, u.lastname
+                 FROM `class_user` cu
+                 JOIN class cs
                  ON (cu.class_id = cs.class_id)
-                 JOIN courses c
+                 JOIN course c
                  ON (cs.course_id = c.course_id
-                 AND cs.dept_id = c.dept_id
-                 AND cs.univ_id = c.univ_id)
+                 AND cs.department_id = c.department_id
+                 AND cs.school_id = c.school_id)
                  LEFT JOIN user u
                  ON (u.user_id = cs.professor)
                  WHERE cu.user_id = " . $user->user_id;

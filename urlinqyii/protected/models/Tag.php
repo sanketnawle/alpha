@@ -1,11 +1,15 @@
 <?php
 
 /**
- * This is the model class for table "tags".
+ * This is the model class for table "tag".
  *
- * The followings are the available columns in table 'tags':
+ * The followings are the available columns in table 'tag':
  * @property integer $tag_id
  * @property string $tag
+ *
+ * The followings are the available model relations:
+ * @property Event[] $events
+ * @property UserTag[] $userTags
  */
 class Tag extends CActiveRecord
 {
@@ -14,7 +18,7 @@ class Tag extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tags';
+		return 'tag';
 	}
 
 	/**
@@ -41,6 +45,8 @@ class Tag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'events' => array(self::MANY_MANY, 'Event', 'event_tag(tag_id, event_id)'),
+			'userTags' => array(self::HAS_MANY, 'UserTag', 'tag_id'),
 		);
 	}
 

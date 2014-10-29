@@ -7,6 +7,9 @@
  * @property integer $user_id
  * @property string $password
  * @property string $salt
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserLogin extends CActiveRecord
 {
@@ -26,7 +29,7 @@ class UserLogin extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, salt', 'required'),
+			array('user_id, password, salt', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('password', 'length', 'max'=>512),
 			array('salt', 'length', 'max'=>256),
@@ -44,6 +47,7 @@ class UserLogin extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 

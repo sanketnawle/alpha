@@ -4,8 +4,8 @@
  * This is the model class for table "class_rating".
  *
  * The followings are the available columns in table 'class_rating':
+ * @property integer $class_id
  * @property integer $user_id
- * @property string $class_id
  * @property integer $rating
  */
 class ClassRating extends CActiveRecord
@@ -26,12 +26,11 @@ class ClassRating extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, class_id', 'required'),
-			array('user_id, rating', 'numerical', 'integerOnly'=>true),
-			array('class_id', 'length', 'max'=>36),
+			array('class_id, user_id', 'required'),
+			array('class_id, user_id, rating', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, class_id, rating', 'safe', 'on'=>'search'),
+			array('class_id, user_id, rating', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +51,8 @@ class ClassRating extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => 'User',
 			'class_id' => 'Class',
+			'user_id' => 'User',
 			'rating' => 'Rating',
 		);
 	}
@@ -76,8 +75,8 @@ class ClassRating extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('class_id',$this->class_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('class_id',$this->class_id,true);
 		$criteria->compare('rating',$this->rating);
 
 		return new CActiveDataProvider($this, array(

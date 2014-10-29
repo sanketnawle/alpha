@@ -1,30 +1,31 @@
 <?php
 
 /**
- * This is the model class for table "university".
+ * This is the model class for table "school".
  *
- * The followings are the available columns in table 'university':
- * @property integer $univ_id
- * @property integer $parent_univ_id
- * @property string $univ_name
- * @property string $univ_location
- * @property string $univ_desc
+ * The followings are the available columns in table 'school':
+ * @property integer $school_id
+ * @property integer $university_id
+ * @property string $school_name
+ * @property integer $school_location
+ * @property string $school_description
  * @property string $fb_link
- * @property string $twitter_link
+ * @property integer $twitter_link
  * @property string $alias
  * @property string $weblink
- * @property string $dp_blob_id
- * @property string $cover_blob_id
+ * @property integer $picture_file_id
+ * @property integer $cover_file_id
  *
  * The followings are the available model relations:
- * @property Courses[] $courses
+ * @property Class[] $classes
+ * @property Course[] $courses
  * @property Department[] $departments
- * @property Groups[] $groups
- * @property UnivSemester[] $univSemesters
- * @property ParentUniversity $parentUniv
- * @property DisplayPicture $dpBlob
- * @property DisplayPicture $coverBlob
- * @property UniversityCover[] $universityCovers
+ * @property Group[] $groups
+ * @property File $coverFile
+ * @property University $university
+ * @property File $pictureFile
+ * @property SchoolSemester[] $schoolSemesters
+ * @property User[] $users
  */
 class School extends CActiveRecord
 {
@@ -33,7 +34,7 @@ class School extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'university';
+		return 'school';
 	}
 
 	/**
@@ -44,17 +45,16 @@ class School extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parent_univ_id, univ_name, univ_location', 'required'),
-			array('parent_univ_id', 'numerical', 'integerOnly'=>true),
-			array('univ_name, univ_location', 'length', 'max'=>255),
-			array('fb_link, twitter_link', 'length', 'max'=>400),
+			array('university_id, school_name, school_location', 'required'),
+			array('university_id, school_location, twitter_link, picture_file_id, cover_file_id', 'numerical', 'integerOnly'=>true),
+			array('school_name', 'length', 'max'=>255),
+			array('school_description', 'length', 'max'=>500),
+			array('fb_link', 'length', 'max'=>400),
 			array('alias', 'length', 'max'=>20),
 			array('weblink', 'length', 'max'=>50),
-			array('dp_blob_id, cover_blob_id', 'length', 'max'=>64),
-			array('univ_desc', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('univ_id, parent_univ_id, univ_name, univ_location, univ_desc, fb_link, twitter_link, alias, weblink, dp_blob_id, cover_blob_id', 'safe', 'on'=>'search'),
+			array('school_id, university_id, school_name, school_location, school_description, fb_link, twitter_link, alias, weblink, picture_file_id, cover_file_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,14 +66,15 @@ class School extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'courses' => array(self::HAS_MANY, 'Courses', 'univ_id'),
-			'departments' => array(self::HAS_MANY, 'Department', 'univ_id'),
-			'groups' => array(self::HAS_MANY, 'Groups', 'univ_id'),
-			'univSemesters' => array(self::HAS_MANY, 'UnivSemester', 'univ_id'),
-			'parentUniv' => array(self::BELONGS_TO, 'ParentUniversity', 'parent_univ_id'),
-			'dpBlob' => array(self::BELONGS_TO, 'DisplayPicture', 'dp_blob_id'),
-			'coverBlob' => array(self::BELONGS_TO, 'DisplayPicture', 'cover_blob_id'),
-			'universityCovers' => array(self::HAS_MANY, 'UniversityCover', 'univ_id'),
+			'classes' => array(self::HAS_MANY, 'Class', 'school_id'),
+			'courses' => array(self::HAS_MANY, 'Course', 'school_id'),
+			'departments' => array(self::HAS_MANY, 'Department', 'school_id'),
+			'groups' => array(self::HAS_MANY, 'Group', 'school_id'),
+			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
+			'university' => array(self::BELONGS_TO, 'University', 'university_id'),
+			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
+			'schoolSemesters' => array(self::HAS_MANY, 'SchoolSemester', 'school_id'),
+			'users' => array(self::HAS_MANY, 'User', 'school_id'),
 		);
 	}
 
@@ -83,17 +84,17 @@ class School extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'univ_id' => 'Univ',
-			'parent_univ_id' => 'Parent Univ',
-			'univ_name' => 'Univ Name',
-			'univ_location' => 'Address of the university',
-			'univ_desc' => 'Univ Desc',
+			'school_id' => 'School',
+			'university_id' => 'University',
+			'school_name' => 'School Name',
+			'school_location' => 'School Location',
+			'school_description' => 'School Description',
 			'fb_link' => 'Fb Link',
 			'twitter_link' => 'Twitter Link',
 			'alias' => 'Alias',
 			'weblink' => 'Weblink',
-			'dp_blob_id' => 'display_picture img_id',
-			'cover_blob_id' => 'display_picture img_id',
+			'picture_file_id' => 'Picture File',
+			'cover_file_id' => 'Cover File',
 		);
 	}
 
@@ -115,17 +116,17 @@ class School extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('univ_id',$this->univ_id);
-		$criteria->compare('parent_univ_id',$this->parent_univ_id);
-		$criteria->compare('univ_name',$this->univ_name,true);
-		$criteria->compare('univ_location',$this->univ_location,true);
-		$criteria->compare('univ_desc',$this->univ_desc,true);
+		$criteria->compare('school_id',$this->school_id);
+		$criteria->compare('university_id',$this->university_id);
+		$criteria->compare('school_name',$this->school_name,true);
+		$criteria->compare('school_location',$this->school_location);
+		$criteria->compare('school_description',$this->school_description,true);
 		$criteria->compare('fb_link',$this->fb_link,true);
-		$criteria->compare('twitter_link',$this->twitter_link,true);
+		$criteria->compare('twitter_link',$this->twitter_link);
 		$criteria->compare('alias',$this->alias,true);
 		$criteria->compare('weblink',$this->weblink,true);
-		$criteria->compare('dp_blob_id',$this->dp_blob_id,true);
-		$criteria->compare('cover_blob_id',$this->cover_blob_id,true);
+		$criteria->compare('picture_file_id',$this->picture_file_id);
+		$criteria->compare('cover_file_id',$this->cover_file_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
