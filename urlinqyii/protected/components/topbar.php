@@ -191,7 +191,7 @@ $(document).ready(function () {
                 //window.location = "search_beta.php?q=" + q;
                 //window.location = <?php echo Yii::app()->getBasePath(true); ?>'/search/q';
 
-                window.location = '../search/q';
+                window.location = '../search/'+q;
             }
 
             return false;
