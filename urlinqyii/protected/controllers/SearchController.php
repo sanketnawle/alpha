@@ -9,36 +9,12 @@ class SearchController extends Controller
 
 
     public function actionJson(){
-        $data = array('success'=>true,'posts'=>array('post1','post2'));
-
+        $q = Yii::app()->getRequest()->getQuery('q');
+        $data = array('success'=>true,'posts'=>array('post1','post2', $q));
 
         $this->renderJSON($data);
     }
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+	//public function actionFilterSearch(){}
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

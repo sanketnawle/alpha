@@ -115,8 +115,51 @@ header('location:home.php');
     }
 
     if(signup_error==2){
-      $(".reg_error_text_prompt").text("All fields are to be filled");
-      $(".registration-sec-texts > input").addClass("error_box_log_color");
+      //$(".reg_error_text_prompt").text("All fields are to be filled");
+      //$(".registration-sec-texts > input").addClass("error_box_log_color");
+      $(".registration-sec-header").addClass("error_text_log_color");
+      $("ul.account-types").addClass("error_box_log_color");
+	  $(".registration-sec-texts i").css("display", "initial");
+	  $(".fname_hint").css("display", "initial");
+	  $('.fname_hint_img').css("display", "initial");
+	  $('.fname_alert_mark').css("display", "none");
+	  $("#fname").trigger("focus");
+	  $('#fname').focus(function(){
+		if( !$(this).val() ){
+			$('.fname_alert_mark').css("display", "none");
+			$('.registration-sec-texts b').css("display", "none");
+			$('.registration-sec-texts span').css("display", "none");
+			$('.fname_hint').css("display", "initial");
+			$('.fname_hint_img').css("display", "initial");
+			}
+	});
+	  $("#lname").focus(function(){
+		if( !$(this).val() ){
+			$('.registration-sec-texts b').css("display", "none");
+			$('.registration-sec-texts span').css("display", "none");
+			$('.lname_hint').css("display", "initial");
+			$('.lname_hint_img').css("display", "initial");
+			$('.lname_alert_mark').css("display", "none");
+			}
+		});
+		$("#email").focus(function(){
+			if( !$(this).val() ){
+				$('.registration-sec-texts b').css("display", "none");
+				$('.registration-sec-texts span').css("display", "none");
+				$('.email_hint').css("display", "initial");
+				$('.email_hint_img').css("display", "initial");
+				$('.email_alert_mark').css("display", "none");
+				}
+		});
+		$("#password").focus(function(){
+			if( !$(this).val() ){
+				$('.registration-sec-texts b').css("display", "none");
+				$('.registration-sec-texts span').css("display", "none");
+				$('.password_hint').css("display", "initial");
+				$('.password_hint_img').css("display", "initial");
+				$('.password_alert_mark').css("display", "none");
+				}
+		});
     }
 
     if(signup_error==3){
@@ -478,12 +521,18 @@ header('location:home.php');
                                         }else{
                                         }                                            
                                   ?>">
+						<span class="fname_hint">What's your name?</span>
+						<b class="fname_hint_img"></b>
+						<i class="fname_alert_mark"></i>
                         <input type = "text" name ="lname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name"
                          value="<?php if(isset($_SESSION['register_lastname'])){
                                              echo $_SESSION['register_lastname'];
                                         }else{
                                         }                                            
                                   ?>">
+						<span class="lname_hint"> What's your last name? </span>
+						<b class="lname_hint_img"></b>
+						<i class="lname_alert_mark"></i>
                       </div>
                       <div class = "registration-sec-texts">
                         <input type = "email" name = "email" autocomplete = "off" id="email" placeholder = "Your School Email"
@@ -492,9 +541,15 @@ header('location:home.php');
                                         }else{
                                         }                                            
                                   ?>">
+						<span class="email_hint" > Please enter your .edu email  </span>
+						<b class="email_hint_img"></b>
+						<i class="email_alert_mark"></i>
                       </div>
                       <div class = "registration-sec-texts">
                         <input type = "password" name = "password" id = "password" placeholder = "Password">
+						<span class="password_hint"> Enter a combination of at least six numbers, letters, and punctuation marks</span>
+						<b class="password_hint_img"></b>
+						<i class="password_alert_mark"></i>
                         <?php 
                            //session_destroy();
                         ?>
@@ -533,7 +588,67 @@ header('location:home.php');
 
           
     </div>
-
+	<script>
+		$('#fname').blur( function(){
+				if( !$(this).val() ){
+					$('.fname_alert_mark').css("display", "initial");
+					$(this).focus(function(){
+						if( !$(this).val() ){
+							$('.fname_alert_mark').css("display", "none");
+							$('.registration-sec-texts b').css("display", "none");
+							$('.registration-sec-texts span').css("display", "none");
+							$('.fname_hint').css("display", "initial");
+							$('.fname_hint_img').css("display", "initial");
+							}
+						});
+				}
+			});
+		$('#lname').blur(function()
+			{
+				if( !$(this).val() ){
+					$('.lname_alert_mark').css("display", "initial");
+					$(this).focus(function(){
+						if( !$(this).val() ){
+							$('.registration-sec-texts b').css("display", "none");
+							$('.registration-sec-texts span').css("display", "none");
+							$('.lname_hint').css("display", "initial");
+							$('.lname_hint_img').css("display", "initial");
+							$('.lname_alert_mark').css("display", "none");
+							}
+						});
+				}
+			});
+		$('#email').blur(function()
+			{
+				if( !$(this).val() ){
+					$('.email_alert_mark').css("display", "initial");
+					$(this).focus(function(){
+						if( !$(this).val() ){
+							$('.registration-sec-texts b').css("display", "none");
+							$('.registration-sec-texts span').css("display", "none");
+							$('.email_hint').css("display", "initial");
+							$('.email_hint_img').css("display", "initial");
+							$('.email_alert_mark').css("display", "none");
+							}
+						});
+				}
+			});
+		$('#password').blur(function()
+			{
+				if( !$(this).val() ){
+					$('.password_alert_mark').css("display", "initial");
+					$(this).focus(function(){
+						if( !$(this).val() ){
+							$('.registration-sec-texts b').css("display", "none");
+							$('.registration-sec-texts span').css("display", "none");
+							$('.password_hint').css("display", "initial");
+							$('.password_hint_img').css("display", "initial");
+							$('.password_alert_mark').css("display", "none");
+							}
+						});
+				}
+			});
+	</script>
     <form name="test" id="test" method="post" action="php/fblogin.php">
       <input id="first" type="hidden" name="first"   value="">
         <input type="hidden" id="last" name="last" value="" >
