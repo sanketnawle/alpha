@@ -2907,3 +2907,23 @@ div.cal-fbar-wrap .month-events{
 }
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+.no_support {
+    font-size: 22px;
+    color: white;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    margin-top: 230px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.black_canvas_sb {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
