@@ -1,13 +1,17 @@
 <?php
 
 /**
- * This is the model class for table "posts_user_inv".
+ * This is the model class for table "post_user_inv".
  *
- * The followings are the available columns in table 'posts_user_inv':
- * @property string $post_id
+ * The followings are the available columns in table 'post_user_inv':
+ * @property integer $post_id
  * @property integer $user_id
  * @property string $inv_type
  * @property string $created_time
+ *
+ * The followings are the available model relations:
+ * @property User $user
+ * @property Post $post
  */
 class PostUserInv extends CActiveRecord
 {
@@ -16,7 +20,7 @@ class PostUserInv extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts_user_inv';
+		return 'post_user_inv';
 	}
 
 	/**
@@ -28,8 +32,7 @@ class PostUserInv extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('post_id, user_id, created_time', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('post_id', 'length', 'max'=>20),
+			array('post_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('inv_type', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -45,6 +48,8 @@ class PostUserInv extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
 		);
 	}
 
@@ -54,7 +59,7 @@ class PostUserInv extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'post_id' => 'Post',
+			'post_id' => 'Im not sure what this table does',
 			'user_id' => 'User',
 			'inv_type' => 'Inv Type',
 			'created_time' => 'Created Time',
@@ -79,7 +84,7 @@ class PostUserInv extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('post_id',$this->post_id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('inv_type',$this->inv_type,true);
 		$criteria->compare('created_time',$this->created_time,true);

@@ -4,18 +4,21 @@
  * This is the model class for table "reply".
  *
  * The followings are the available columns in table 'reply':
- * @property string $reply_id
- * @property string $post_id
- * @property string $user_id
+ * @property integer $reply_id
+ * @property integer $post_id
+ * @property integer $user_id
  * @property string $reply_msg
  * @property integer $up_vote
  * @property integer $down_vote
- * @property string $file_id
+ * @property integer $file_id
  * @property integer $anon
  * @property string $update_timestamp
  *
  * The followings are the available model relations:
- * @property FileUpload $file
+ * @property File $file
+ * @property Post $post
+ * @property User $user
+ * @property User[] $users
  */
 class Reply extends CActiveRecord
 {
@@ -35,10 +38,8 @@ class Reply extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('post_id, user_id, update_timestamp', 'required'),
-			array('up_vote, down_vote, anon', 'numerical', 'integerOnly'=>true),
-			array('post_id, user_id, file_id', 'length', 'max'=>20),
-			array('reply_msg', 'safe'),
+			array('post_id, user_id, reply_msg, anon, update_timestamp', 'required'),
+			array('post_id, user_id, up_vote, down_vote, file_id, anon', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('reply_id, post_id, user_id, reply_msg, up_vote, down_vote, file_id, anon, update_timestamp', 'safe', 'on'=>'search'),
@@ -53,7 +54,10 @@ class Reply extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'file' => array(self::BELONGS_TO, 'FileUpload', 'file_id'),
+			'file' => array(self::BELONGS_TO, 'File', 'file_id'),
+			'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'users' => array(self::MANY_MANY, 'User', 'reply_vote(reply_id, user_id)'),
 		);
 	}
 
@@ -93,13 +97,13 @@ class Reply extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('reply_id',$this->reply_id,true);
-		$criteria->compare('post_id',$this->post_id,true);
-		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('reply_id',$this->reply_id);
+		$criteria->compare('post_id',$this->post_id);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('reply_msg',$this->reply_msg,true);
 		$criteria->compare('up_vote',$this->up_vote);
 		$criteria->compare('down_vote',$this->down_vote);
-		$criteria->compare('file_id',$this->file_id,true);
+		$criteria->compare('file_id',$this->file_id);
 		$criteria->compare('anon',$this->anon);
 		$criteria->compare('update_timestamp',$this->update_timestamp,true);
 

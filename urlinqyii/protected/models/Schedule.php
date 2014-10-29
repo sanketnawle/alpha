@@ -10,7 +10,7 @@
  * @property string $end_time
  *
  * The followings are the available model relations:
- * @property CoursesSemester[] $coursesSemesters
+ * @property Class[] $classes
  */
 class Schedule extends CActiveRecord
 {
@@ -46,7 +46,7 @@ class Schedule extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'coursesSemesters' => array(self::MANY_MANY, 'CoursesSemester', 'courses_semester_schedule(schedule_id, class_id)'),
+			'classes' => array(self::MANY_MANY, 'Class', 'class_schedule(schedule_id, class_id)'),
 		);
 	}
 
@@ -58,8 +58,8 @@ class Schedule extends CActiveRecord
 		return array(
 			'schedule_id' => 'Schedule',
 			'day' => 'Day',
-			'start_time' => 'Start Time',
-			'end_time' => 'End Time',
+			'start_time' => 'start of class',
+			'end_time' => 'end of class',
 		);
 	}
 

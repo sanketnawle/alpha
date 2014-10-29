@@ -72,7 +72,9 @@ return array(
                 'search/<q>' => 'search/json',
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
-                'search/json'=>'search/json'
+                'search/json'=>'search/json',
+
+                'file/upload'=>'site/fileUpload'
                 //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
@@ -86,7 +88,7 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=urlinq_beta',
+			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

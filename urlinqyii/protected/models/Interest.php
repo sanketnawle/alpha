@@ -1,15 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "interests".
+ * This is the model class for table "interest".
  *
- * The followings are the available columns in table 'interests':
+ * The followings are the available columns in table 'interest':
  * @property integer $interest_id
  * @property string $interest_type
  * @property string $interest
- *
- * The followings are the available model relations:
- * @property UserInterests[] $userInterests
  */
 class Interest extends CActiveRecord
 {
@@ -18,7 +15,7 @@ class Interest extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'interests';
+		return 'interest';
 	}
 
 	/**
@@ -46,7 +43,6 @@ class Interest extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'userInterests' => array(self::HAS_MANY, 'UserInterests', 'interest_id'),
 		);
 	}
 
