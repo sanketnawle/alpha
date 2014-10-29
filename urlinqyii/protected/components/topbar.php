@@ -188,8 +188,8 @@ $(document).ready(function () {
             //alert(inputval);
             if (q != "") {
                 var data = 1;
-                window.location = "search_beta.php?q=" + q;
-
+                //window.location = "search_beta.php?q=" + q;
+                window.location = <?php echo Yii::app()->getBaseUrl(true); ?>'/search/q';
             }
 
             return false;
