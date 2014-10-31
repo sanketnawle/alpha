@@ -6,7 +6,7 @@ $user_id = $user->user_id;
 
 
 echo '
-                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $club->cover_blob_id . ') no-repeat scroll 50% center / 100% auto #333;">
+                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(' . $club->pictureFile->file_url . ') no-repeat scroll 50% center / 100% auto #333;">
                             <div class = "group-head-top-sec-shadow">
                             </div>
                             <div class = "info-scroll-up info-shower">   ';

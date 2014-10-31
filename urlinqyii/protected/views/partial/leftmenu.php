@@ -146,7 +146,7 @@
 //                        }
 //                        $select_stmt->free_result();
 //                        $select_stmt->close();
-                        foreach ($club_group as $group) {
+                        foreach ($groups as $group) {
 //                            $admin_names = array();
 //                            $result = $con->query("SELECT CONCAT(u.firstname,' ',u.lastname) as name
 //                                                                 from user u

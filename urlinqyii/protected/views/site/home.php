@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
-    include "php/redirect.php";
-    require_once('php/time_change.php');
+    //include "php/redirect.php";
+    //require_once('php/time_change.php');
    
 ?>
 <html>
@@ -108,9 +108,9 @@ $( document ).ready(function() {
 	<section class='loading_animation'>
         <?php 
 		$text = "HOME"; 
-		include 'loading.php';?>
+		//include 'loading.php';?>
     </section>
-    <section class='popup_section'><?php include "popup.html";?></section>
+    <section class='popup_section'><?php //include "popup.html";?></section>
     <section class='topbar_bag'>
         <?php include 'topbar.php';?>
     </section>
@@ -123,12 +123,12 @@ $( document ).ready(function() {
 
         <div class='midsec_indent'>
         <section class='fbar_bag'>
-            <?php include 'status_bar.php';?>
+            <?php //include 'status_bar.php';?>
         </section>
 
         <section class='feeds_bag'>
             <?php
-            include 'feeds.php';
+            //include 'feeds.php';
             // include "https://urlinq.com/beta/feed_single.php?post_id=341";
             ?>
         </section>
@@ -136,11 +136,11 @@ $( document ).ready(function() {
     </section>
    
     <section class='rightbar_bag'>
-        <?php include 'planner_beta.php';?>
+        <?php //include 'planner_beta.php';?>
     </section>
 
     <section class='leftbar_bag'>
-        <?php include 'leftmenu.php';?>
+        <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
     </section>
 
     </section>
