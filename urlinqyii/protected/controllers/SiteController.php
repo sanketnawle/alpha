@@ -139,8 +139,9 @@ class SiteController extends Controller
 
     public function actionJson(){
         //$data = array('test'=>'lol','test_array'=>array(1,2,3,4));
+        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
-        $data = array('success'=>true,'posts'=>array('post1','post2'));
+        $data = array('success'=>true,'posts'=>array('post1','post2'),'university'=>$this->get_model_associations($university,array('schools'=>array('pictureFile'))));
 
 
         $this->renderJSON($data);
@@ -391,18 +392,21 @@ class SiteController extends Controller
 
 
 
-        if(!isset($_POST['origin_type'])){
-            $this->renderJSON(array('success'=>false,'msg'=>'origin_type is not set'));
-        }
+//        if(!isset($_POST['origin_type'])){
+//            $this->renderJSON(array('success'=>false,'msg'=>'origin_type is not set'));
+//        }
+//
+//        if(!isset($_POST['origin_id'])){
+//            $this->renderJSON(array('success'=>false,'msg'=>'origin_id is not set'));
+//        }
 
-        if(!isset($_POST['origin_id'])){
-            $this->renderJSON(array('success'=>false,'msg'=>'origin_id is not set'));
-        }
+
+
+//        $origin_type = $_POST['origin_type'];
+//        $origin_id = $_POST['origin_id'];
 
 
 
-        $origin_type = $_POST['origin_type'];
-        $origin_id = $_POST['origin_id'];
         //["name"]
         if(isset($_FILES["uploadFile"])){
             include "UniqueTokenGenerator.php";
@@ -430,7 +434,9 @@ class SiteController extends Controller
             $file->save(false);
             //Use the origin and id to add files either to associative table or to a main field
 
-            $this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
+            //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
+            $this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
+
         }else {
             $this->renderJSON(array('success'=>false));
         }
