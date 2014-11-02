@@ -259,10 +259,15 @@ class ClubController extends Controller
 //
 //        $courses = $command->queryAll();
 
-
         $professor = User::model()->find("user_email=:user_email",array(":user_email"=>'lol@asdasd'));
         //$this->render('test',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'is_member'=>$is_member,'connected_users'=>$connected_users,'courses'=>$courses,'professor'=>$professor));
-        $this->render('test',array('professor'=>$professor));
+
+
+        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+        $this->render('test',array('schools'=>$university->pictureFile));
+
+
+
 
     }
 

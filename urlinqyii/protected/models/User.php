@@ -20,6 +20,7 @@
  * The followings are the available model relations:
  * @property Class[] $classes
  * @property Class[] $classes1
+ * @property Class[] $classes2
  * @property ClassReview[] $classReviews
  * @property ClassReview[] $classReviews1
  * @property ClassUser[] $classUsers
@@ -34,6 +35,7 @@
  * @property Post[] $posts
  * @property Post[] $posts1
  * @property Post[] $posts2
+ * @property PostQuestionOptionAnswer[] $postQuestionOptionAnswers
  * @property PostUserInv[] $postUserInvs
  * @property ProfessorAttribute $professorAttribute
  * @property Reply[] $replies
@@ -49,8 +51,10 @@
  * @property UserConnection[] $userConnections1
  * @property UserLogin $userLogin
  * @property UserLoginAttempt $userLoginAttempt
+ * @property UserOnboard $userOnboard
  * @property UserRecovery[] $userRecoveries
  * @property UserTag[] $userTags
+ * @property UserToken[] $userTokens
  */
 class User extends CActiveRecord
 {
@@ -70,7 +74,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_email, user_type, firstname, department_id', 'required'),
+			array('user_email, user_type, firstname', 'required'),
 			array('department_id, school_id, picture_file_id, available', 'numerical', 'integerOnly'=>true),
 			array('user_email', 'length', 'max'=>255),
 			array('user_type, gender', 'length', 'max'=>1),
@@ -91,8 +95,9 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'classes' => array(self::MANY_MANY, 'Class', 'class_bookmark(user_id, class_id)'),
-			'classes1' => array(self::MANY_MANY, 'Class', 'class_rating(user_id, class_id)'),
+			'classes' => array(self::HAS_MANY, 'Class', 'professor'),
+			'classes1' => array(self::MANY_MANY, 'Class', 'class_bookmark(user_id, class_id)'),
+			'classes2' => array(self::MANY_MANY, 'Class', 'class_rating(user_id, class_id)'),
 			'classReviews' => array(self::HAS_MANY, 'ClassReview', 'user_id'),
 			'classReviews1' => array(self::MANY_MANY, 'ClassReview', 'class_review_vote(user_id, review_id)'),
 			'classUsers' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
@@ -107,6 +112,7 @@ class User extends CActiveRecord
 			'posts' => array(self::MANY_MANY, 'Post', 'post_report(user_id, post_id)'),
 			'posts1' => array(self::MANY_MANY, 'Post', 'post_custom_user(user_id, post_id)'),
 			'posts2' => array(self::MANY_MANY, 'Post', 'post_like(user_id, post_id)'),
+			'postQuestionOptionAnswers' => array(self::HAS_MANY, 'PostQuestionOptionAnswer', 'user_id'),
 			'postUserInvs' => array(self::HAS_MANY, 'PostUserInv', 'user_id'),
 			'professorAttribute' => array(self::HAS_ONE, 'ProfessorAttribute', 'professor_id'),
 			'replies' => array(self::HAS_MANY, 'Reply', 'user_id'),
@@ -122,8 +128,10 @@ class User extends CActiveRecord
 			'userConnections1' => array(self::HAS_MANY, 'UserConnection', 'from_user_id'),
 			'userLogin' => array(self::HAS_ONE, 'UserLogin', 'user_id'),
 			'userLoginAttempt' => array(self::HAS_ONE, 'UserLoginAttempt', 'user_id'),
+			'userOnboard' => array(self::HAS_ONE, 'UserOnboard', 'user_id'),
 			'userRecoveries' => array(self::HAS_MANY, 'UserRecovery', 'user_id'),
 			'userTags' => array(self::HAS_MANY, 'UserTag', 'user_id'),
+			'userTokens' => array(self::HAS_MANY, 'UserToken', 'user_id'),
 		);
 	}
 
