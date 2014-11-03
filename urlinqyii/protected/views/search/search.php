@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
@@ -22,7 +23,8 @@
 <body>
 <div class="topbar">
     <div class="left">
-        <a href="../home.php" class="urlinq"></a>
+        <!--<a href="../home.php" class="urlinq"></a>-->
+        <a href="../home" class="urlinq"></a>
         <a class="menu active"></a>
     </div>
     <div class="right">
@@ -203,8 +205,9 @@
         </a>
     </div>
     <div class="center">
-        <form method="get" action="../search_beta.php">
-            <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
+        <!--<form method="get" action="../search_beta.php">-->
+        <form method="get" action="../search/">
+        <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
             <button type="submit" class="submit"></button>
         </form>
         <ul class="prelist">
