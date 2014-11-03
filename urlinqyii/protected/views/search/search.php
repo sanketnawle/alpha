@@ -7,18 +7,18 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/css/topbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/css/leftpanel.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/css/jquery.mCustomScrollbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/css/notify.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/jquery.mCustomScrollbar.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
 
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta//js/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
 <body>
 <div class="topbar">
     <div class="left">
-        <a href="./home.php" class="urlinq"></a>
+        <a href="../home.php" class="urlinq"></a>
         <a class="menu active"></a>
     </div>
     <div class="right">
@@ -200,6 +200,7 @@
     </div>
     <div class="center">
         <form method="get" action="./search_beta.php">
+        <!--<form method = "get" action=" '<?php echo Yii::app()->getBaseUrl(true); ?>/search/q";-->
             <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
             <button type="submit" class="submit"></button>
         </form>
@@ -298,8 +299,9 @@
         </div>
     </div>
 </div>
+<script
+    type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/js/lptopbar.js">
+</script>
 </body>
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
-
 </html>
 
