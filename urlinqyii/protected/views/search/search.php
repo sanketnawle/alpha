@@ -1,3 +1,7 @@
+<php>
+    //
+</php>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,8 +203,7 @@
         </a>
     </div>
     <div class="center">
-        <form method="get" action="./search_beta.php">
-        <!--<form method = "get" action=" '<?php echo Yii::app()->getBaseUrl(true); ?>/search/q";-->
+        <form method="get" action="../search_beta.php">
             <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
             <button type="submit" class="submit"></button>
         </form>
@@ -210,7 +213,11 @@
             <li><a><div class="icon dpt"></div><span>Professors in Your School</span></a></li>
             <li><a><div class="icon cls"></div><span>Courses in Your School</span></a></li>
             <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
+            <li><a><div class="icon clm"></div><span>Find your Classmates</span></a></li>
             <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
+
+            <!--<li><a><div class="icon clb"></div><span></span></a></li>-->
+
         </ul>
         <ul class="postlist">
 
