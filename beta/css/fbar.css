@@ -728,17 +728,10 @@ display:none;
 }
 
 .driveUpload{
-
 	width: 49.5%;
-
-	border-left:1px solid #ddd;
-
 	float:right;
-
 	height: 65px;
-
 	margin-top: 5px;
-
 }
 
 
@@ -1205,90 +1198,45 @@ color: rgba(0, 0, 0, 0.83);
 
 â€‹
 
-input[type="checkbox"]:focus{
-
+input[type="checkbox"]:focus {
 	outline:none;
-
 }
 
 
 
-.anon-setting{
-
+.anon-setting {
 	font-size: 12px;
-
 	width: 180px;
-
 	font-weight: 500;
-
-
-
 	padding-left: 130px;
-
-
-
 	bottom: 1px;
-
 	color: #a79b97;
-
 	position: relative;
-
 }
 
 
 
-.topfbar{
-
-
-
-color: #272727;
-
-
-
-
-
-font-size: 14.5px;
-
-border-radius: 0px;
-
-width: 627px;
-
-border-radius: 3px;
-
-padding-top: 10px;
-
-padding-bottom: 10px;
-
-outline: none;
-
-font-weight: 400;
-
-padding-left: 9.5px;
-
-position: absolute;
-
-padding-right: 3px;
-
-
-
--webkit-transition: .15s;
-
--moz-transition: .15s;
-
--o-transition: .15s;
-
-transition: .15s;
-
-
-
-top:0px;
-
-bottom:0px;
-
-margin:auto;
-
-border:none;
-
+.topfbar {
+    color: #272727;
+    font-size: 15px;
+    border-radius: 0px;
+    width: 627px;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    outline: none;
+    font-weight: 400;
+    padding-left: 9.5px;
+    position: absolute;
+    padding-right: 3px;
+    -webkit-transition: .15s;
+    -moz-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+    top:0px;
+    bottom:0px;
+    margin:auto;
+    border:none;
 }
 
 
@@ -1363,58 +1311,32 @@ margin:auto;
 
 
 
-.tag-option
-
-{
-
+.tag-option {
 	position: absolute;
-
 	background: #FCFDFD;
-
-	max-height: 150px;	
-
+	max-height: 150px;
 	margin-left: 33px;
-
 	width:588px;
-
 	z-index: 700;
-
 	display:none;
-
-	background-color: #fff; border: 1px solid rgba(0, 0, 0, .15); -webkit-border-radius: 3px; 
-
+	background-color: #fff; border: 1px solid rgba(0, 0, 0, .15); -webkit-border-radius: 3px;
 	border-radius: 3px;
-
-	border-width: 1px 1px 2px; 
-
+	border-width: 1px 1px 2px;
 	border-color: #CED2D6 #B1B2B4 #B6B6B6;
-
 	-webkit-box-shadow: 0 0 3px rgba(0,0,0,.3); box-shadow: 0 0 3px rgba(0,0,0,.3);
-
 	border-radius: 0px 0px 2px 2px;
-
 	overflow: scroll;
-
 	overflow-x:hidden;
-
 }
 
 
 
-.tag-col-end
-
-{
-
+.tag-col-end {
 background-color: #f6f7f8;
-
 color: rgba(153, 153, 153, 0.64);
-
 font-size: 14px;
-
 padding: 2px;
-
 padding-left: 260px;
-
 }
 
 
@@ -1444,9 +1366,7 @@ padding-left: 260px;
 
 
 .tag-section::-webkit-scrollbar {
-
     width: 10px;
-
 }
 
  
@@ -1675,120 +1595,61 @@ border-color: #C0C0C0;
 
 
 
-.midfbar-wrap2{
+.midfbar-wrap2 {
 	position: relative;
 	width:97.35%;
-
 	margin-left:auto;
-
 	margin-right:auto;
-
 }
 
 
 
-.quest-wrap
-
-{
-
+.quest-wrap {
 	position:absolute;
-
 	height:39px;
-
 	width:auto;
-
 }
 
 
 
-.who-wrap{
-
+.who-wrap {
 	position:relative;
-
 	height: auto;
-
 	width:auto;
-
 	margin-top:5.5px;
-
 }
 
 
 
-.who-dyn{
-
-	width: 30.5px;
-
+.who-dyn {
+	width: 35px;
 	height: 32px;
-
-	position:absolute;
-
-	display:inline;
-
-	padding-right: 4px;
-
-	border-radius:0px;
-
+	position: absolute;
+	display: inline;
+	border-radius: 0px;
 	border-top-left-radius: 3px;
-
 	border-bottom-left-radius: 3px;
-
 	background-color: #2e78c5;
-
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.48) inset;
-
 	background: -webkit-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -moz-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -o-linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: linear-gradient(top,#4e98e5,#2e78c5);
-
 	background: -webkit-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -moz-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -o-gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: gradient(linear,left top,left bottom,from(#4E98E5),to(#2e78c5));
-
 	background: -webkit-linear-gradient(top,#4E98E5,#2e78c5);
-
 }
-
-
-
-
-
-
 
 .who-icon{
-
 	background-image: url(../img/who-w.png);
-
-background-repeat: no-repeat;
-
-
-
+    background-repeat: no-repeat;
 	background-size: cover;
-
-
-
-	height: 15px;
-
-
-
-	width: 18px;
-
-
-
-	margin-left: 7px;
-
-
-
-	margin-top: 7.4px;
-
+    height: 18px;
+    width: 20px;
+    margin-left: 7px;
+    margin-top: 7.4px;
 }
 
 
@@ -2049,38 +1910,23 @@ cursor:pointer;
 
 
 
-.tag-name
-
-{
-
+.tag-name {
 	float:left;
-
 	margin-left:5px;
-
 	width:auto;
-
 }
 
 
 
 
 
-.add_who{
-
+.add_who {
 	float:left;
-
 	height: 23px;
-
-margin-top: 4px;
-
-border: none;
-
-outline: none;
-
-font-size:13px;
-
-
-
+    margin-top: 4px;
+    border: none;
+    outline: none;
+    font-size:13px;
 }
 
 
@@ -2090,69 +1936,41 @@ font-size:13px;
   /* Note: display:none on the input won't trigger the click event in WebKit.
 
     Setting visibility: hidden and height/width:0 works great. */
-
   visibility: hidden;
-
   width: 0;
-
   height: 0;
-
 }
 
 
 
 .upload_hack {
-
   /* Note: display:none on the input won't trigger the click event in WebKit.
 
     Setting visibility: hidden and height/width:0 works great. */
-
   visibility: hidden;
-
   width: 0;
-
   height: 0;
-
 }
 
 
 
-.attach_form
-
-{
-
+.attach_form {
   visibility: hidden;
-
   width: 0;
-
   height: 0;
-
 }
 
 
 
-.upload_textprompt
-
-{
-
+.upload_textprompt {
 	height:45px;
-
 	width:120px;
-
 	float:left;
-
 	overflow:hidden;
-
 	padding-top: 17px;
-
 	font-size: 12px;
-
 	color:#A79B97;
-
 	text-align: left;
-
-
-
 }
 
 
@@ -2161,126 +1979,188 @@ font-size:13px;
 
 
 
-.candidate_icon
-
-{
-
+.candidate_icon {
 	top:1.5px!important;
-
 }
 
 
 
 .post_options_hr {
-
-width: 97%;
-
-border: none;
-
-border-bottom: 1px solid rgba(232, 233, 235, 0);
-
-width: 94%; border: none; 
-
-border-bottom: 1px solid rgba(192, 192, 192, 0.42); 
-
-margin-top: 4px; margin-bottom: 4px;
-
+    width: 97%;
+    border: none;
+    border-bottom: 1px solid rgba(232, 233, 235, 0);
+    width: 94%;
+    border: none;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.42);
+    margin-top: 4px; margin-bottom: 4px;
 }
 
 
 
-.fbarcheck_wrap
-
-{
-
+.fbarcheck_wrap {
 	float: left;
 	margin-top: 10px;	
-
+    margin-right: 25px;
 }
 
 
 
-.flat7c{
-
+.flat7c {
   display:none;
-
 }
 
 
 
-.flat7b_fbar{
-
+.flat7b_fbar {
   display: inline-block;
-
   border-radius:20px;
-
   float: left;
-
-  width: 37px;
-
-  margin-top: 2px;
-
-  height: 19.5px;
-
+  width: 30px;
+  margin-top: 4px;
+  height: 16px;
   border: 1px solid #C9C9C9;
-
-  cursor:pointer;
-
-  background-color:#E8E8E8;
-
-  
-
+  cursor: pointer;
+  background-color: #E8E8E8;
   -webkit-transition: background-color 0.6s ease, border 0.6s ease;
-
   -moz-transition: background-color 0.6s ease, border 0.6s ease;
-
   -ms-transition: background-color 0.6s ease, border 0.6s ease;
-
   -o-transition: background-color 0.6s ease, border 0.6s ease;
-
   transition: background-color 0.6s ease, border 0.6s ease;
+}
 
+.question_type_wrapper {
+    display: inline-block;
+    margin-top: 13px;
+}
+
+.question_type {
+    font-size: 13px;
+    color: rgba(153, 153, 153, 0.64);
+    font-weight: 500;
+    display: inline-block;
+    width: 100px;
+    margin-left: 4px;
+}
+
+.question_type span:hover {
+    cursor: pointer;
+}
+
+.multiple_type {
+    border-right: 1px solid rgba(153, 153, 153, 0.64);
+}
+
+.multiple_choice {
+    display: none;
+    margin-bottom: -8px;
+}
+
+.true_false {
+    display: none;
+    margin-bottom: -8px;
+}
+
+.question_choice_line {
+    font-size: 15px;
+    color: #272727;
+    clear: both;
+    display: block;
+    margin-left: 6px;
+    margin-right: 6px;
+    border-bottom: 1px solid #ddd;
+    padding: 7px 5px 0;
+    height: 30px;
+}
+
+.correct_check_text {
+    float: right;
+}
+
+.answer_check {
+    margin-right: 5px;
+    float: right;
+    display: none;
+}
+
+.answer_check input {
+    margin-top: -30px;
+}
+
+.answer_check input:checked {
+    display: inline-block !important;
+}
+
+.fixed_choice_prefix {
+    display: inline-block;
+    height: 23px;
+    width: 23px;
+    margin-right: 0px;
+    padding: 3px;
+}
+
+.letter_choice {
+    height: 20px;
+    width: 20px;
+    margin-top: -6px;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.65);
+    display: none;
+    text-align: center;
+}
+
+.add_choice {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+.letter_choice span {
+    color: #FFF;
+    font-weight: 600;
+}
+
+.add_choice span {
+    color: rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+input.multiple_choice_answer {
+    border: none;
+    font-size: 15px;
+    width: 440px;
+    overflow-x: hidden;
 }
 
 
-
-.move{
-
+.move {
   display:block;
-
   border-radius:20px;
-
   width: 17px;
-
   height: 17px;
-
   background-color:white;
-
   border: 1px solid #efefef;
-
   -webkit-box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
-
   box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
-
   margin-left:0px;
-
   margin-left: 1px;
-
   margin-top: 0px;
-
   -webkit-transition: margin-left 0.25s ease;
-
   -moz-transition: margin-left 0.25s ease;
-
   -ms-transition: margin-left 0.25s ease;
-
   -o-transition: margin-left 0.25s ease;
-
   transition: margin-left 0.25s ease;
-
 }
 
+#live_answers_check {
+    margin-left: -110px;
+    margin-right: 10px;
+}
 
+#post_status_check {
+    margin-left: -100px;
+}
 
 .comment_anon_text{
 
@@ -2591,37 +2471,24 @@ margin-bottom: 4px;
 
 
 .visi_functions_option_fbar{
-
-	font-size: 13.5px;
-
-cursor: pointer;
-
-font-family: 'Open Sans', sans-serif;
-
-padding: 3px 11px;
-
-margin-top: 3px;
-
-margin-bottom: 2px;
-
-border-top: 1px solid transparent;
-
-border-bottom: 1px solid transparent;
-
+	font-size: 14px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    padding: 8px 10px 0;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: -4px;
+    margin-bottom: -3px;
+    height: 26px;
 }
 
 
 
 .visi_functions_option_fbar:hover{
-
 	color: white;
-
-background-color: #01e2a7;
-
-border-top: 1px solid #42B67E;
-
-border-bottom: 1px solid #3AC979;
-
+    background-color: #01e2a7;
+    border-top: 1px solid #42B67E;
+    border-bottom: 1px solid #3AC979;
 }
 
 .opt_jshover

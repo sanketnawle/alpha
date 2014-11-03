@@ -18,10 +18,14 @@
     <link rel="stylesheet" type="text/css" href="css/add_event.css"/>
     <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all"/>
 
+    <link rel='stylesheet' type='text/css' href='css/dropdown_style.css'/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="https://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>
+    <script type="text/javascript" src="https://select-box.googlecode.com/svn/tags/0.2/jquery.selectbox-0.2.min.js"></script>
     <script src='js/jquery.min.js'></script>
     <script src='js/jquery-ui.custom.min.js'></script>
     <script src='js/myfullcalendar.js'></script>
@@ -86,6 +90,41 @@
 
         });
     </script>-->
+
+    <script>
+        $.ajax({
+            type: 'GET',
+            dataType: 'jsonp',
+            data: {},
+            url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Could not retrieve NYU JSON");
+                console.log(jqXHR);
+            },
+            success: function (msg) {
+                var locations_array = msg.locations;
+                for(var i = 0; i < locations_array.length; i++){
+                    var loc = locations_array[i];
+                    loc.label = loc.title;
+                }
+                $(function() {
+                    $( "#location" ).autocomplete(
+                        {
+                            source: locations_array,
+                            select: function( event, ui ) {
+                                $( "#nevt-location-1" ).text( ui.item.address );
+                                return false;
+                            }
+                        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                        return $( "<li></li>" )
+                            .data( "item.autocomplete", item )
+                            .append(item.label)
+                            .appendTo( ul );
+                    };
+                });
+            }
+        });
+    </script>
 </head>
 
 
@@ -94,8 +133,8 @@
 <!--temp safariblock-->
 <section class='safari_block'>
     <img src='img/calendar_dummy.jpg'>
-    <div class='black_canvas_sb' style='position:fixed;height:100%;width:100%;background-color:rgba(0,0,0,0.7);z-index:1000;'>
-        <div style='font-size:22px;color:white;position:absolute;left:0px;right:0px;margin:auto;margin-top:230px;padding-left:120px;padding-right:120px;'>Sorry, but your browser currently does not support the Urlinq calendar system. Download one of the other option below to get the most out of your Urlinq experience!</div>
+    <div class='black_canvas_sb'>
+        <div class='no_support'>Sorry, but your browser currently does not support the Urlinq calendar system. Download one of the other option below to get the most out of your Urlinq experience!</div>
         <div class='dl_buttons' style='position:absolute;left:0px;right:0px;margin:auto;margin-top:280px;padding-left:120px;padding-right:120px;'>
             <a href='https://www.mozilla.org/en-US/firefox/new/'><img src='img/firefox.jpg' style='height:55px;width:55px;border-radius:5px;opacity:0.8;left:-60px;'></a>
             <a href='https://support.google.com/chrome/answer/95346?hl=en'><img src='img/chrome.jpg' style='height:55px;width:55px;border-radius:5px;opacity:0.8;left:140px;'></a>
@@ -193,7 +232,7 @@
                class="set_date inp-foc inp-twof event-date inp-icon-left" label="Event date">
         <!--<span class = "event-date-icon"></span>-->
         <div class="calLayer">
-            <section id="mounth" class="mounth" style="margin-left: 190px; margin-top: 35px;">
+            <section id="mounth" class="mounth" >
                 <header class="minical-header">
                     <h1 class="minical-h1">JANUARY 2013</h1>
                     <nav role="padigation">
@@ -368,6 +407,10 @@
         <span class="event-loc-icon"></span>
         <input id="nevt-location-1" type="text" class="inp-foc inp-one event-loc inp-icon-left" label="Event location"
                placeholder="Location (optional)">
+    </div>
+    <div class="add-event-box-main-row">
+        <input id="location" placeholder="NYU Location">
+        <input id="location" placeholder="NYU Location">
     </div>
     <div class="add-event-box-main-row">
         <textarea id="nevt-desc-1" type="text" class="inp-foc inp-one event-details" rows="4"
