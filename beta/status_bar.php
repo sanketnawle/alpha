@@ -116,26 +116,20 @@ $(document).ready(function() {
         $(".multiple_choice").css("display", "none");
     });
 
-
-    $(".multiple_choice").delegate(".answer_check input", "click", function() {
-       if($(".answer_check input").prop("checked", true)) {
-           $(".answer_check input").prop("checked", false);
-           $(".answer_check").removeClass("selected_answer");
-           $(".answer_check").css("display", "none");
-           $(this).prop("checked", true);
-           $(this).parent().addClass("selected_answer");
-           $(this).parent().css("display", "inline-block");
-       }
-    });
-
-    $(".true_false").delegate(".answer_check input", "click", function() {
-        if($(".answer_check input").prop("checked", true)) {
-            $(".answer_check input").prop("checked", false);
-            $(".answer_check").removeClass("selected_answer");
-            $(".answer_check").css("display", "none");
-            $(this).prop("checked", true);
-            $(this).parent().addClass("selected_answer");
-            $(this).parent().css("display", "inline-block");
+    $(".answer_check").delegate("input", "click", function() {
+        if ($(this).parent().hasClass("selected_answer")) {
+            $(this).parent().removeClass("selected_answer");
+            $(this).prop("checked", false);
+        }
+        else {
+            if($(".answer_check input").prop("checked", true)) {
+                $(".answer_check input").prop("checked", false);
+                $(".answer_check").removeClass("selected_answer");
+                $(".answer_check").css("display", "none");
+                $(this).prop("checked", true);
+                $(this).parent().addClass("selected_answer");
+                $(this).parent().css("display", "inline-block");
+            }
         }
     });
 
@@ -169,12 +163,18 @@ $(document).ready(function() {
         return String.fromCharCode(c.charCodeAt(0) + 1);
     }
 
+
     $(".multiple_choice").delegate(".multiple_choice_answer", "change", function() {
         var mult_q_box = $(this).parent().parent();
+        if ($(this).val() != "") {
+            $(this).parent().find(".fixed_choice_prefix .letter_choice").css("display", "inline-block");
+            $(this).parent().find(".fixed_choice_prefix .add_choice").css("display", "none");
+        }
         var all_filled = true;
         mult_q_box.find(".multiple_choice_answer").each(function() {
             if ($(this).val() == "") {
-                all_filled = all_filled & false;
+                all_filled = false;
+                //return false;
             }
         });
         if ($(".multiple_choice").children().length == 26) {
@@ -182,12 +182,19 @@ $(document).ready(function() {
         }
         if (all_filled) {
             var last_letter = $(".multiple_line").last().find(".letter_choice span").text();
+            var letter = nextChar(last_letter);
             var multiple_line_copy = mult_q_box.find(".multiple_line").last().clone();
             mult_q_box.append(multiple_line_copy);
             var last_choice = $(".multiple_choice_answer").last();
             last_choice.val("");
-            last_choice.attr("placeholder", "Add choice " + nextChar(last_letter) + "...(optional)");
-            multiple_line_copy.find(".letter_choice span").text(nextChar(last_letter));
+            last_choice.attr("placeholder", "Add choice " + letter + "...(optional)");
+            multiple_line_copy.find(".letter_choice span").text(letter);
+            multiple_line_copy.find(".answer_check").removeClass("selected_answer");
+            multiple_line_copy.find(".answer_check input").prop("checked", false);
+            multiple_line_copy.find(".answer_check").css("display", "none");
+            var new_id = multiple_line_copy.find(".answer_check input").attr("id");
+            new_id = new_id.substring(0, new_id.length-1)+letter;
+            multiple_line_copy.find(".answer_check input").attr("id", new_id);
         }
     });
 
@@ -1271,7 +1278,7 @@ $(document).ready(function() {
                                     </div>
                                     <input class="multiple_choice_answer" placeholder="Add choice A...">
                                     <div class="answer_check">
-                                        <input id="check_a" type="radio" value="false">
+                                        <input id="check_A" type="radio" value="false">
                                         <label></label>
                                         <span>Correct Answer</span>
                                     </div>
@@ -1283,7 +1290,7 @@ $(document).ready(function() {
                                     </div>
                                     <input class="multiple_choice_answer" placeholder="Add choice B...">
                                     <div class="answer_check">
-                                        <input id="check_b" type="radio" value="false">
+                                        <input id="check_B" type="radio" value="false">
                                         <label></label>
                                         <span>Correct Answer</span>
                                     </div>
@@ -1295,7 +1302,7 @@ $(document).ready(function() {
                                     </div>
                                     <input class="multiple_choice_answer" placeholder="Add choice C...(optional)">
                                     <div class="answer_check">
-                                        <input id="check_c" type="radio" value="false">
+                                        <input id="check_C" type="radio" value="false">
                                         <label></label>
                                         <span>Correct Answer</span>
                                     </div>
@@ -1307,7 +1314,7 @@ $(document).ready(function() {
                                     </div>
                                     <input class="multiple_choice_answer" placeholder="Add choice D...(optional)">
                                     <div class="answer_check">
-                                        <input id="check_c" type="radio" value="false">
+                                        <input id="check_D" type="radio" value="false">
                                         <label></label>
                                         <span>Correct Answer</span>
                                     </div>
