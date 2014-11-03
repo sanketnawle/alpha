@@ -22,7 +22,7 @@
 <div class="topbar">
     <div class="left">
         <!--<a href="../home.php" class="urlinq"></a>-->
-        <a href="home" class="urlinq"></a>
+        <a href="../home" class="urlinq"></a>
         <a class="menu active"></a>
     </div>
     <div class="right">
@@ -204,7 +204,7 @@
     </div>
     <div class="center">
         <!--<form method="get" action="../search_beta.php">-->
-        <form method="request" action="../urlinqyii/search/">
+        <form method="get" action="../search/">
         <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
             <button type="submit" class="submit"></button>
         </form>
