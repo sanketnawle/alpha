@@ -1133,7 +1133,10 @@ $(document).ready(function() {
     <div class ="textwrap">
         <form id="event_form">
             <textarea name = "event_name" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Name" ></textarea>
+            <!--
             <textarea id="event_location" name = "event_loc" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Location" ></textarea>
+            -->
+            <textarea id="location" name="event_loc" class="uploadTxtarea thin_input bottom_border" placeholder="Event Location"></textarea>
             <div class="bottom_border date_line event_time">
                 <p class="time_label">Event Date & Time</p>
                 <input class = "set_date" name="event_date" id="add_event_date" readonly />
