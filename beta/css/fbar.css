@@ -2133,36 +2133,6 @@ input.multiple_choice_answer {
     overflow-x: hidden;
 }
 
-/*
-.answer_check label {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-}
-
-.answer_check input[type=radio] {
-    display: none;
-}
-
-.answer_check label:before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 0px;
-    background-color: #FFF;
-    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-}
-
-.answer_check input[type=radio]:checked + label:before {
-    content: "\2713";
-    color: rgba(0,0,0,0.4);
-    text-align: center;
-    line-height: 18px;
-}
-*/
 
 .move {
   display:block;
@@ -2515,15 +2485,10 @@ margin-bottom: 4px;
 
 
 .visi_functions_option_fbar:hover{
-
 	color: white;
-
-background-color: #01e2a7;
-
-border-top: 1px solid #42B67E;
-
-border-bottom: 1px solid #3AC979;
-
+    background-color: #01e2a7;
+    border-top: 1px solid #42B67E;
+    border-bottom: 1px solid #3AC979;
 }
 
 .opt_jshover

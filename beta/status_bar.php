@@ -1139,13 +1139,13 @@ $(document).ready(function() {
 								
 												<span class='field_fbar'>
 													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
-												<div class='vstt_wedgeDown'></div>
-												<div class = 'card-tag'>
-													<div class = 'tag-wedge'></div>
-													<div class = 'tag-box'>
-														<span>Visible to campus</span>
-													</div>									
-												</div>
+                                                    <div class='vstt_wedgeDown'></div>
+                                                    <div class = 'card-tag'>
+                                                        <div class = 'tag-wedge'></div>
+                                                        <div class = 'tag-box'>
+                                                            <span>Visible to campus</span>
+                                                        </div>
+                                                    </div>
 												</span>
 												<div class = 'visi_functions_box'>
 													<span>
