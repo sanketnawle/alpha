@@ -10,6 +10,7 @@ class SearchController extends Controller
         //$q = Yii::app()->getRequest()->getQuery('q');
 
         $user = User::model()->find('user_id=:id', array(':id'=>1));
+        $this->render('search', array('user'=>$user));
     }
 
     public function actionSuggestion()
@@ -116,3 +117,4 @@ class SearchController extends Controller
         $this->renderJSON($data);
     }
 }
+
