@@ -1,0 +1,472 @@
+body
+{
+background: none repeat scroll 0% 0% #EEE;
+
+font-family: 'Open Sans';
+}
+
+.syla_head
+{
+	width: 960px;
+	height: 40px;
+	margin-bottom: 20px;
+	padding-top: 25px;
+	color: #595959;
+
+	border-bottom: 1px solid #959595;
+}
+
+.syla_title
+{
+	float: left;
+	font-size: 26px;
+	font-weight: 300;
+}
+
+.syla_like
+{
+	float: left;
+	margin-left: 25px;
+	margin-top: 7px;
+}
+
+.like_sign
+{
+	float: left;
+	width: 25px;
+	height: 25px;
+	background: url('../img/syllabusTabImageMap.png') repeat scroll 1px 53px transparent;
+}
+
+.like_num
+{
+	float: left;
+	margin-left: 5px;
+	font-size: 20px;
+	margin-top: -1px;
+}
+
+/*btn start*/
+
+.syla_upload_btn
+{
+	float: right;
+	margin-right: 10.5px;
+
+
+
+	cursor: pointer;
+	text-transform: uppercase;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	text-shadow: 0px 1px 0.5px rgba(203, 204, 203, 0.7);
+	line-height: 34px;
+	height: 33px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 15px;
+	font-weight: 400;
+	color: #FFF;
+	outline: medium none;
+	border: 1px solid transparent;
+	transition: all 0.15s ease 0s;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+	background: none repeat scroll 0% 0% rgba(28, 109, 230, 0.8);
+}
+
+.syla_upload_btn:hover
+{
+	cursor: pointer;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+	background-color: rgba(28, 109, 230, 0.8);
+	background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+}
+
+.syla_upload_btn:active
+{
+	border-color: transparent;
+	background: none repeat scroll 0% 0% rgba(28, 109, 230, 0.8);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3) inset;
+	color: #FFF;
+}
+
+/*btn end*/
+
+.pdf_render
+{
+	float: left;
+	margin-bottom: 20px;
+}
+
+
+.syla_side_card
+{
+	width: 220px;
+	height: 80px;
+	background-color: white;
+	border-radius: 4px; 
+	border-left: 4px solid white;
+	margin-bottom: 20px;
+}
+
+.green_bordered
+{
+	border-left: 4px solid #02E2A7;
+}
+
+.ssc_col
+{
+	height: 40px;
+	width: 100%;
+
+}
+
+.ssc_col0
+{
+	border-bottom: 1px solid #eee;
+}
+
+.ssc_col1
+{
+	border-bottom: 1px solid #eee;
+	background-color: #f9f9f9;
+}
+
+.ssc_col2
+{
+	border-bottom: 1px solid #eee;
+	background-color: #f9f9f9;
+}
+
+.confirm_title
+{
+	height: 16px;
+	width: 16px;
+	margin-top: 12px;
+	margin-left: 8px;
+}
+
+.title_text
+{
+	height: 20px;
+	width: 170px;
+	font-size: 18px;
+	color: #333;
+	margin-left: 5px;
+	border: none;
+}
+
+.title_text:focus
+{
+	outline: 0;
+}
+
+.add_to_cal
+{
+	height: 20px;
+	width: 20px;
+	border-radius: 3px;
+	background: url('../img/white-gradient-100px.png') repeat-x scroll 50% 50% #E6E6E6;
+	border-width: 1px;
+	border-style: solid;
+	border-color:#D6D6D6 #D6D6D6 #C2C2C2; 
+
+	margin-top: 8px;
+	margin-left: 8px;
+
+	float: left;
+	cursor: pointer;
+}
+
+.add_to_cal div
+{
+	width: 12px;
+	height: 12px;
+	background: url('../img/syllabusTabImageMap.png') repeat scroll 1px 1px transparent;
+	margin-left: 3px;
+	margin-top: 3px;
+		cursor: pointer;
+}
+
+.ssc_title
+{
+	float: left;
+	color: #029ACF;
+	margin-top: 7px;
+	margin-left: 10px;
+}
+
+.ssc_help
+{
+	position: absolute;
+	display: none;
+	margin-top: 25px;
+}
+
+.ssc_help_wedge
+{
+	border-color: transparent transparent #FFF;
+	border-style: dashed dashed solid;
+	border-width: 0px 6.5px 6.5px;
+	display: block;
+	z-index: 1;
+	height: 0px;
+	width: 0px;
+	position: relative;
+	border-bottom-color: #575757;
+	margin-top: 3px;
+	margin-left: 13px;
+}
+
+.ssc_help_content
+{
+	width: 160px;
+	background-color: #575757;
+	color: #FFF;
+	font-size: 11px;
+	line-height: 14px;
+	text-align: center;
+	text-shadow: none;
+	padding: 7px;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: "Helvetica Neue",Helvetica,arial,sans-serif;
+	font-weight: 800;
+	border-radius: 4px;
+
+	margin-left: -130px;
+}
+
+.ssc_date_block
+{
+	width: 90px;
+	height: 40px;
+	border-right: 1px solid #EEE;
+	font-size: 14px;
+	line-height: 40px;
+	padding-left: 10px;
+	color: #575757;
+	float: left;
+}
+
+.ssc_type_block
+{
+	float: left;
+	color: #575757;
+	margin-left: 10px;
+	margin-top: 11px;
+}
+
+.upload_syla
+{
+	display: none;
+}
+
+.event_render
+{
+	float: left;
+	width: 240px;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	overflow-x: hidden !important;
+	overflow-y: scroll !important;
+}
+
+.syla_popup
+{
+	width: 220px;
+	height: 160px;
+	background-color: white;
+	border-radius: 4px;
+}
+
+.pup_col0
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	border-bottom: 1px solid #eee;
+	height: 40px;
+}
+
+.pup_col1
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	border-bottom: 1px solid #eee;
+	height: 40px;	
+}
+
+.pup_col0_0
+{
+	float: left;
+	height: 100%;
+	width: auto;
+}
+
+.pup_col2
+{
+	border-bottom: 1px solid #eee;
+	height: 40px;	
+}
+
+.green_circ
+{
+		width: 10px; 
+		height: 10px; 
+		background: #02E2A7; 
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px; 
+		border-radius: 5px;
+		margin-top: 17px;
+		margin-left: 2px;
+}
+
+.pup_title_input
+{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.time_input
+{
+	padding-left: 20px;
+
+	margin-top: 12px;
+	background: url('../img/syllabusTabImageMap.png') no-repeat scroll -1px -17px transparent;
+	height: 18px;
+	width: 70px;
+	font-size: 13px;
+	color: #333;
+	margin-left: 5px;
+	border: none;
+}
+
+.pup_col2_0
+{
+	float: left;
+	color: #BFBFBF;
+	font-size: 15px !important;
+	margin-top: 8px !important;
+	margin-left: 12px !important;
+}
+
+.pup_type_block
+{
+	margin-left: 25px;
+}
+
+.pup_col3
+{
+	height: 40px;
+	width: auto;
+	background-color: #f9f9f9;
+}
+
+/*btn2 start*/
+
+.evt_btn
+{
+	float: left;
+	margin-left: 8px;
+	margin-top: 7px;
+
+
+	cursor: pointer;
+
+	padding-left: 12px;
+	padding-right: 12px;
+
+	text-shadow: 0px 1px 0.5px rgba(203, 204, 203, 0.7);
+	line-height: 23px;
+	height: 23px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 400;
+	color: #FFF;
+	outline: medium none;
+	border: 1px solid transparent;
+	transition: all 0.15s ease 0s;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+	background: none repeat scroll 0% 0% rgba(28, 109, 230, 0.8);
+}
+
+.evt_btn:hover
+{
+	cursor: pointer;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+	background-color: rgba(28, 109, 230, 0.8);
+	background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+}
+
+.evt_btn:active
+{
+	border-color: transparent;
+	background: none repeat scroll 0% 0% rgba(28, 109, 230, 0.8);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3) inset;
+	color: #FFF;
+}
+
+/*btn2 end*/
+
+.syla_block_pup
+{
+	height: auto !important;
+	width: 230px !important;
+	position: absolute;
+	display: none;
+	z-index: 1;
+}
+
+.pup_wedge
+{
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent; 
+	border-right: 10px solid transparent; 
+	border-top: 10px dashed #F9F9F9;
+	margin-left: 30px;
+}
+
+.pup_col3_1
+{
+	float: right;
+	margin-right: 12px;
+	color: rgba(28, 109, 230, 1);
+	text-decoration: underline;
+	font-size: 14px !important;
+	margin-top: 9px!important;
+	cursor: pointer;
+}
+
+.pup_col3_1:hover
+{
+	color: rgba(28, 109, 230, 0.7);
+}
+
+.pup_col3_1:active
+{
+	color: rgba(28, 109, 230, 0.9);
+}
+.ui-menu-item
+{
+	font-size: 12px!important;
+}
+.ui-state-focus
+{
+border: 1px solid #FFF!important;
+background: #DADADA!important;
+font-weight: normal;
+color: #212121;
+border-radius: 0px!important;
+}
+
+input.title_text::-webkit-input-placeholder { color: #bfbfbf; font-size: 14px; }
+input.title_text:-moz-placeholder { color: #bfbfbf; font-size: 14px;}
+input.title_text::-moz-placeholder { color: #bfbfbf; font-size: 14px;}
+input.title_text:-ms-input-placeholder { color: #bfbfbf; font-size: 14px;}
+
+input.time_input::-webkit-input-placeholder { color: #bfbfbf; font-size: 13px; }
+input.time_input:-moz-placeholder { color: #bfbfbf; font-size: 13px;}
+input.time_input::-moz-placeholder { color: #bfbfbf; font-size: 13px;}
+input.time_input:-ms-input-placeholder { color: #bfbfbf; font-size: 13px;}
