@@ -170,7 +170,7 @@ $(document).ready(function() {
 			});
 
 			if (repeat_flag==0){
-				$(".event_render").append("<div class='syla_side_card green_bordered'><div class='ssc_col ssc_col0'><input type='checkbox' class='confirm_title'><input type='text' class='title_text' placeholder='Add a title to this event'></div><div class='ssc_col ssc_col1'><div class='ssc_help'><div class='ssc_help_wedge'></div><div class='ssc_help_content'>Add to Your Calendar</div></div><div class='add_to_cal'><div></div></div><div class='ssc_title'>Dummy Title</div></div><div class='ssc_col ssc_col2'><div class='ssc_date_block'>Wed, 15, Jan</div><div class='ui dropdown ssc_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>HmWork</div><div class='item' data-value='option4'>Project</div></div></div></div></div>");
+				$(".event_render").append("<div class='syla_side_card green_bordered'><div class='ssc_col ssc_col0'><input type='checkbox' class='confirm_title'><input type='text' class='title_text' placeholder='Add a title to this event'></div><div class='ssc_col ssc_col1'><div class='ssc_help'><div class='ssc_help_wedge'></div><div class='ssc_help_content'>Add to Your Calendar</div></div><div class='add_to_cal'><div></div></div><div class='ssc_title'>Dummy Title</div></div><div class='ssc_col ssc_col2'><div class='ssc_date_block'>Wed, 15, Jan</div><div class='ui dropdown ssc_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>Homework</div><div class='item' data-value='option4'>Project</div></div></div></div></div>");
 				var $this_evt= $(".syla_side_card").last();
 				$this_evt.find(".ssc_col1").hide();
 				$this_evt.find(".ui.dropdown").dropdown();
@@ -198,7 +198,7 @@ $(document).ready(function() {
 	<div class="syla_head">
 		<div class='syla_title'>Computer Science 171 Syllabus</div>
 		<div class='syla_like'><div class='like_sign'></div><div class="like_num">4</div></div>
-		<div class='syla_upload_btn'>Upload Syllabus</div>
+		<div class='syla_upload_btn blue_btn'>Upload Syllabus</div>
 		<form>
             <input type="file" name='file' class="upload_syla">
         </form>
@@ -206,17 +206,18 @@ $(document).ready(function() {
 	</div>
 
 	<div class="syla_body">
-		<iframe class='pdf_render' src="" frameBorder="0" width="800" height="800">
+		<iframe class='pdf_render' src="" frameBorder="0" width="700" height="800">
 		</iframe>
 
 		<div class='syla_block_pup'>
 			<div class='syla_popup'>
 				<div class='pup_col0'><div class='pup_col0_0'><div class='green_circ'></div></div><input class='title_text pup_title_input' type='text' placeholder='Add a title to this event'></div>
 				<div class='pup_col1'><div class='ssc_date_block'>Wed, 15, Jan</div><input class='time_input' type='text' placeholder='Add a time'></div>
-				<div class='pup_col2'><div class='pup_col2_0'>Category : </div><div class='ui dropdown ssc_type_block pup_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>HmWork</div><div class='item' data-value='option4'>Project</div></div></div></div>
-				<div class='pup_col3'><div class='evt_btn'>Add Event</div> <div class='pup_col3_1'>Cancel</div></div>
+				<div class='pup_col2'><div class='pup_col2_0'>Category : </div><div class='ui dropdown ssc_type_block pup_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>Homework</div><div class='item' data-value='option4'>Project</div></div></div></div>
+				<div class='pup_col3'><div class='evt_btn blue_btn'>Add Event</div> <div class='pup_col3_1'>Cancel</div></div>
 			</div>
 			<div class='pup_wedge'></div>
+			<div class='pup_wedge_border'></div>
 		</div>
 
 		<div class='event_render' src="" frameBorder="0" width="220" height="1000">

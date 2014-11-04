@@ -16,6 +16,9 @@
 
 .pdfViewer .canvasWrapper {
   overflow: hidden;
+  -webkit-box-shadow: 2px 2px 5px 4px rgba(121, 121, 121, 0.17);
+  -moz-box-shadow: 2px 2px 5px 4px rgba(121, 121, 121, 0.17);
+  box-shadow: 2px 2px 5px 4px rgba(121, 121, 121, 0.17);
 }
 
 .pdfViewer .page {
@@ -27,7 +30,6 @@
   overflow: visible;
   border: 9px solid transparent;
   background-clip: content-box;
-  border-image: url(images/shadow.png) 9 9 repeat;
   background-color: white;
 }
 

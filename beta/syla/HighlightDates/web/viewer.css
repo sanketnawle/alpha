@@ -28,8 +28,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #404040;
-  background-image: url(images/texture.png);
+  background-color:#dedede!important;
 }
 
 body,
@@ -234,7 +233,7 @@ html[dir='rtl'] #sidebarContent {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   position: absolute;
-  top: 32px;
+  top: 12px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -1837,3 +1836,9 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
     display: none;
   }
 }
+
+.toolbar{
+  display:none;
+}
+
+
