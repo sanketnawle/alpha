@@ -133,13 +133,13 @@ class ApiController extends Controller
     }
 
     public function actionGetUserData(){
-        if(!isset($_POST['user_id'])){
+        if(!isset($_GET['user_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $_POST['user_id'];
+        $user_id = $_GET['user_id'];
 
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
 
