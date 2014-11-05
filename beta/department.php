@@ -16,11 +16,44 @@ include('php/redirect.php');
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 <script>
 
 
 $(document).ready(function() {
+
+    var google_maps_embed = "https://maps.googleapis.com/maps/api/staticmap?";
+    var google_maps_web = "https://www.google.com/maps/place/";
+    var map_center = "center=";
+    var map_location = "40.7308,-73.9975";
+    var map_zoom_size = "&zoom=14&size=270x180";
+    var map_marker = "&markers=color:red%7Clabel:%7C";
+
+    $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            $("img#location_popup").attr("src", google_maps_embed+map_center+map_location+map_zoom_size+map_marker+map_location);
+            $("#school_location_link").attr("href", google_maps_web+map_location);
+        },
+        success: function (msg) {
+            var locations_array = msg.locations;
+            for(var i = 0; i < locations_array.length; i++){
+                var loc = locations_array[i];
+                if (loc.title == "2 MetroTech Center") {
+                    map_location = loc.latitude + "," + loc.longitude;
+                    $("img#location_popup").attr("src", google_maps_embed+map_center+map_location+map_zoom_size+map_marker+map_location);
+                    $("#school_location_link").attr("href", google_maps_web+map_location);
+                    break;
+                }
+            }
+        }
+    });
 
     $.urlParam = function (sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -349,7 +382,7 @@ $(document).ready(function() {
             });
 
 
-
+    /*
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
         $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
@@ -357,11 +390,6 @@ $(document).ready(function() {
                 $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
 
         });
-
-
-
-
-
     });
 
 
@@ -371,7 +399,14 @@ $(document).ready(function() {
         $(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
         $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
+    */
 
+    $('.group_location').mouseenter(function(){
+        $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
+    });
+    $('.group_location').mouseleave(function(){
+        $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
+    });
 
 
 

@@ -397,14 +397,13 @@ $(document).ready(function() {
             });
 
 
-    /*
+
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
     });
     $('.group_location').mouseleave(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
     });
-    */
 
 
     $(document).delegate('.group-cover-pic-info',"click", function(){

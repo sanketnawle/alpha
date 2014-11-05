@@ -177,30 +177,18 @@ echo "
     }
 
     echo "
-            <div class = 'group_location'>
-                <em></em>
-                <span class = 'group_location_name'>
-                <a class='location_link' href='http://maps.google.com/?q=' target='_blank'>New York</a>
-                </span>
-            </div>
-
-            <div class = 'help-div' id = 'help-3'>
-
-                <div class = 'help-wedge'>
-
-                </div>
-
-            </div>
-
-        <div class = 'location-pic-div-wrap'>
-
-                <div class = 'location-pic-container'>
-
-                    <img class = 'location_building_pic' src = 'src/polyMT6.jpg' class = 'location-picture'>
-
-                </div>
-
-            </div>
+        <div class = 'group_location'>
+            <em></em>
+            <span class = 'group_location_name'>
+                <a id='school_location_link' href='' target='_blank' style='text-decoration:none;'>New York</a>
+            </span>
+        </div>
+        <div class = 'help-div' id = 'help-3'>
+            <div class = 'help-wedge'></div>
+        </div>
+        <div class='location-pic-div-wrap'>
+            <img id='location_popup' src='' />
+        </div>
 
         </div>
 

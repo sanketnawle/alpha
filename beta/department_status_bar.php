@@ -101,7 +101,7 @@ else{
 </script>
 <script>
 $(document).ready(function() {
-
+    /*
     $.ajax({
         type: 'GET',
         dataType: 'jsonp',
@@ -142,6 +142,7 @@ $(document).ready(function() {
             });
         }
     });
+    */
 
     $('.post').click(function(){
 

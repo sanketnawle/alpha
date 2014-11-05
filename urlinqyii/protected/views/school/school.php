@@ -56,7 +56,7 @@ $(document).ready(function() {
         $(".content-about").html(about_text);
     }
     $(document).delegate(".search-icon","click",function(){
-            $(".inputText").focus();
+        $(".inputText").focus();
     });
     $(document).delegate(".plusIcon","click",function(){
         $(".inviteInput").focus();
@@ -64,33 +64,32 @@ $(document).ready(function() {
      $(document).delegate(".bh-t2","click",function(){
 
         $(".about-content").stop().animate({ opacity: "1"},300);
-            $(".about-content").show();
+        $(".about-content").show();
     
      });
 
 
-         $(document).delegate(".studybtn","mouseenter",function(){
-                var thisBox = $(this).closest(".deptBtns").find(".study_box_open");   
-                $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
-                $(this).closest(".deptBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
-                $(this).closest(".deptBtns").find(".study_box_open").show();
-                setTimeout(
-                    function(){
-                     $(thisBox).stop().css({"top":"3px","height":"18px","opacity": "1"});
-                     setTimeout(
-                    function(){
-                        $(thisBox).stop().css({"height":"150px"});
-                    },
-                    300)
-                    },
-                    250)
+     $(document).delegate(".studybtn","mouseenter",function(){
+            var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
+            $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
+            $(this).closest(".deptBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
+            $(this).closest(".deptBtns").find(".study_box_open").show();
+            setTimeout(
+                function(){
+                 $(thisBox).stop().css({"top":"3px","height":"18px","opacity": "1"});
+                 setTimeout(
+                function(){
+                    $(thisBox).stop().css({"height":"150px"});
+                },
+                300)
+                },
+                250)
 
 
-            });
-
-                  $(document).delegate(".uploadedPhotoFrame","click",function(){
-                    $(this).closest("form").find(".cover_photo_upload").click();
-                  });
+        });
+        $(document).delegate(".uploadedPhotoFrame","click",function(){
+            $(this).closest("form").find(".cover_photo_upload").click();
+        });
             
             $(document).delegate(".cover_photo_upload","change",function(){
                  var $ref= $(this);
