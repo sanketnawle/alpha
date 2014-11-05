@@ -14,13 +14,13 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
     </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="css/waiting_animation.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/topbar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/waiting_animation.css">
     <link
         href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
         rel='stylesheet' type='text/css'>
 
-    <script src="js/preload_img.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/preload_img.js"></script>
 
 </head>
 <script>
@@ -110,7 +110,7 @@ $(document).ready(function () {
         //alert("qq");
         //append animation
         $(".c_noti_window").find(".c_noti_content").empty();
-        $(".c_noti_content").append("<img class='waiting_animation_circletype waiting_animation_circletype_sz45' src='img/waiting_animation_circletype.GIF'>");
+        $(".c_noti_content").append("<img class='waiting_animation_circletype waiting_animation_circletype_sz45' src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/waiting_animation_circletype.GIF'>");
         //append animation end
 
         //alert("beforesuccess");
@@ -188,8 +188,10 @@ $(document).ready(function () {
             //alert(inputval);
             if (q != "") {
                 var data = 1;
-                window.location = "search_beta.php?q=" + q;
+                //window.location = "search_beta.php?q=" + q;
+                //window.location = <?php echo Yii::app()->getBasePath(true); ?>'/search/q';
 
+                window.location = '../search/'+q;
             }
 
             return false;
@@ -269,7 +271,7 @@ function LoadHome() {
 <div class="topbar">
     <div class="topbar_wrapper">
         <div class='topbar_left'>
-            <img class="topbar_logo" src="img/logo.png" onclick="LoadHome();"/>
+            <img class="topbar_logo" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/logo.png" onclick="LoadHome();"/>
         </div>
 
 
@@ -289,7 +291,7 @@ function LoadHome() {
                 </div>
             </div>-->
             <div class="topbar_prof">
-                <div style="background-image: url(<?php echo $user->dp_link ?>);" class="prof-limit">
+                <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
                 </div>
                 <div class="topbar_user_name">
                     <?php echo $user->firstname; ?>

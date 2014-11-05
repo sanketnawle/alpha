@@ -41,13 +41,13 @@
 <div class='root'>
 
     <div class='gp_topbar_wrap'>
-        <?php include("topbar.php"); ?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <div class='gp_leftbar_wrap'>
         <?php
 
-            echo Yii::app()->runController('partial/leftmenu',array('user'=>$user));
+            echo Yii::app()->runController('partial/leftmenu');
 
 
             //echo $this->renderPartial('/partial/leftmenu',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));

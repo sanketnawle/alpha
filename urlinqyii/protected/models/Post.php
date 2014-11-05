@@ -1,29 +1,32 @@
 <?php
 
 /**
- * This is the model class for table "posts".
+ * This is the model class for table "post".
  *
- * The followings are the available columns in table 'posts':
- * @property string $post_id
+ * The followings are the available columns in table 'post':
+ * @property integer $post_id
  * @property integer $user_id
- * @property string $target_type
- * @property string $target_id
- * @property integer $target_univ_id
+ * @property string $origin_type
+ * @property integer $origin_id
  * @property string $post_type
- * @property string $text_msg
+ * @property string $text
  * @property string $sub_text
- * @property string $file_id
- * @property string $file_share_type
+ * @property integer $file_id
  * @property string $privacy
  * @property integer $anon
  * @property integer $like_count
  * @property string $last_activity
- * @property string $update_timestamp
+ * @property string $created_at
  *
  * The followings are the available model relations:
+ * @property File $file
  * @property User $user
- * @property PostsQuestions[] $postsQuestions
  * @property User[] $users
+ * @property User[] $users1
+ * @property PostQuestion $postQuestion
+ * @property PostQuestionOption[] $postQuestionOptions
+ * @property User[] $users2
+ * @property Reply[] $replies
  */
 class Post extends CActiveRecord
 {
@@ -32,7 +35,7 @@ class Post extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts';
+		return 'post';
 	}
 
 	/**
@@ -43,18 +46,14 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, target_univ_id, text_msg, update_timestamp', 'required'),
-			array('user_id, target_univ_id, anon, like_count', 'numerical', 'integerOnly'=>true),
-			array('target_type', 'length', 'max'=>25),
-			array('target_id', 'length', 'max'=>36),
-			array('post_type', 'length', 'max'=>8),
-			array('file_id', 'length', 'max'=>40),
-			array('file_share_type', 'length', 'max'=>7),
-			array('privacy', 'length', 'max'=>11),
+			array('user_id, post_type, text, privacy, created_at', 'required'),
+			array('user_id, origin_id, file_id, anon, like_count', 'numerical', 'integerOnly'=>true),
+			array('origin_type', 'length', 'max'=>30),
+			array('post_type', 'length', 'max'=>10),
 			array('sub_text, last_activity', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('post_id, user_id, target_type, target_id, target_univ_id, post_type, text_msg, sub_text, file_id, file_share_type, privacy, anon, like_count, last_activity, update_timestamp', 'safe', 'on'=>'search'),
+			array('post_id, user_id, origin_type, origin_id, post_type, text, sub_text, file_id, privacy, anon, like_count, last_activity, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,10 +65,14 @@ class Post extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'file' => array(self::BELONGS_TO, 'File', 'file_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'postsQuestions' => array(self::HAS_MANY, 'PostsQuestions', 'post_id'),
-			'users' => array(self::MANY_MANY, 'User', 'posts_user_inv(post_id, user_id)'),
-            //'files' => array(self::HAS_MANY, 'file_upload', 'file_id')
+			'users' => array(self::MANY_MANY, 'User', 'post_user_inv(post_id, user_id)'),
+			'users1' => array(self::MANY_MANY, 'User', 'post_hide(post_id, user_id)'),
+			'postQuestion' => array(self::HAS_ONE, 'PostQuestion', 'post_id'),
+			'postQuestionOptions' => array(self::HAS_MANY, 'PostQuestionOption', 'post_id'),
+			'users2' => array(self::MANY_MANY, 'User', 'post_report(post_id, user_id)'),
+			'replies' => array(self::HAS_MANY, 'Reply', 'post_id'),
 		);
 	}
 
@@ -81,19 +84,17 @@ class Post extends CActiveRecord
 		return array(
 			'post_id' => 'Post',
 			'user_id' => 'User',
-			'target_type' => 'Target Type',
-			'target_id' => 'Target',
-			'target_univ_id' => 'Target Univ',
+			'origin_type' => 'Origin Type',
+			'origin_id' => 'Origin',
 			'post_type' => 'Post Type',
-			'text_msg' => 'Text Msg',
+			'text' => 'Text',
 			'sub_text' => 'Sub Text',
 			'file_id' => 'File',
-			'file_share_type' => 'File Share Type',
 			'privacy' => 'Privacy',
 			'anon' => 'Anon',
 			'like_count' => 'Like Count',
 			'last_activity' => 'Last Activity',
-			'update_timestamp' => 'Update Timestamp',
+			'created_at' => 'Created At',
 		);
 	}
 
@@ -115,21 +116,19 @@ class Post extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('post_id',$this->post_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('target_type',$this->target_type,true);
-		$criteria->compare('target_id',$this->target_id,true);
-		$criteria->compare('target_univ_id',$this->target_univ_id);
+		$criteria->compare('origin_type',$this->origin_type,true);
+		$criteria->compare('origin_id',$this->origin_id);
 		$criteria->compare('post_type',$this->post_type,true);
-		$criteria->compare('text_msg',$this->text_msg,true);
+		$criteria->compare('text',$this->text,true);
 		$criteria->compare('sub_text',$this->sub_text,true);
-		$criteria->compare('file_id',$this->file_id,true);
-		$criteria->compare('file_share_type',$this->file_share_type,true);
+		$criteria->compare('file_id',$this->file_id);
 		$criteria->compare('privacy',$this->privacy,true);
 		$criteria->compare('anon',$this->anon);
 		$criteria->compare('like_count',$this->like_count);
 		$criteria->compare('last_activity',$this->last_activity,true);
-		$criteria->compare('update_timestamp',$this->update_timestamp,true);
+		$criteria->compare('created_at',$this->created_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

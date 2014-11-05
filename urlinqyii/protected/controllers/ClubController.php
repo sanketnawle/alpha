@@ -84,8 +84,8 @@ class ClubController extends Controller
 
         $is_member = false;
 
-        foreach ($club->users as $user) {
-            if($user->user_id == $user['user_id']){
+        foreach ($club->users as $club_user) {
+            if($club_user->user_id == $user['user_id']){
                 $is_member = true;
                 break;
             }
@@ -264,7 +264,17 @@ class ClubController extends Controller
 
 
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
-        $this->render('test',array('schools'=>$university->pictureFile));
+
+
+
+
+
+        //$club_id = $_GET['id'];
+
+
+        $club = Group::model()->find('group_id=:id', array(':id'=>1));
+
+        $this->render('test',array('club'=>$club));
 
 
 

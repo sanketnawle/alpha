@@ -65,7 +65,8 @@ class Group extends CActiveRecord
 			'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'groupFile' => array(self::HAS_ONE, 'GroupFile', 'group_id'),
-			'users' => array(self::HAS_MANY, 'GroupUser', 'group_id'),
+			'users' => array(self::HAS_MANY, 'User', 'group_id', ),
+
 			'groupUserTags' => array(self::HAS_MANY, 'GroupUserTag', 'group_id'),
 		);
 	}

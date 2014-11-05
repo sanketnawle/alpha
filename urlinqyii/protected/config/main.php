@@ -73,17 +73,21 @@ return array(
 
                 'department/test'=>'department/test',
 
-                'club/<id:\d+>/members'=>'club/members',
-                'club/<id:\d+>/member/remove'=>'club/removeMember',
+                //'club/<id:\d+>/members'=>'club/members',
+                //'club/<id:\d+>/member/remove'=>'club/removeMember',
 
                 'search/<q>' => 'search/json',
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
                 'search/'=>'search/view',
 
-                'file/upload'=>'site/fileUpload'
-                //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'file/upload'=>'site/fileUpload',
+
+
+                '<controller:\w+>/<id:\d+>/<action:\w+>/'=>'<controller>/<action>',
+
+
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
             ),
