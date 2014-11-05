@@ -114,29 +114,35 @@ class Controller extends CController
             foreach($model_names as $nested_model_name => $nested_attributes) {
                 $name = trim($nested_model_name); //in case of spaces around commas
                 $model_values = $model->{$name};
-                if(is_array($model_values)){
-                    for($i = 0; $i < count($model_values); ++$i){
-                        $this_model = $model_values[$i];
-                        $row[$name][$i] = array();
-                        foreach($this_model as $key => $value) {
-                            $row[$name][$i][$key] = $value;
+                //Check if the model association data is not null
+                if($model_values){
+                    if(is_array($model_values)){
+                        for($i = 0; $i < count($model_values); ++$i){
+                            $this_model = $model_values[$i];
+                            $row[$name][$i] = array();
+                            foreach($this_model as $key => $value) {
+                                $row[$name][$i][$key] = $value;
+                            }
+                            $row[$name][$i] = $this->walk_model($this_model,$row[$name][$i],$nested_attributes);
                         }
-                        $row[$name][$i] = $this->walk_model($this_model,$row[$name][$i],$nested_attributes);
+                    }else{
+                        foreach($model_values as $key => $value) {
+                            $row[$name][$key] = $value;
+                        }
+                        $row[$name] = $this->walk_model($model_values,$row[$name],$nested_attributes);
                     }
-                }else{
-                    foreach($model_values as $key => $value) {
-                        $row[$name][$key] = $value;
-                    }
-                    $row[$name] = $this->walk_model($model_values,$row[$name],$nested_attributes);
                 }
             }
         }else{
             foreach ($model_names as $attribute) {
                 $name = trim($attribute); //in case of spaces around commas
                 $model_data = $model->{$name};
-                $row[$name] = array();
-                foreach($model_data as $key => $value) {
-                    $row[$name][$key] = $value;
+                //Check if the model association data is not null
+                if($model_data){
+                    $row[$name] = array();
+                    foreach($model_data as $key => $value) {
+                        $row[$name][$key] = $value;
+                    }
                 }
             }
         }

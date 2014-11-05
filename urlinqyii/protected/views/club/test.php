@@ -41,10 +41,16 @@
 //
 
 
+var_dump($club->admins);
+
+
+var_dump($club->members);
+
+
 var_dump($club->users);
 //?>
 
-<form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/file/upload" method="post" enctype="multipart/form-data">
+<form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/api/fileUpload" method="post" enctype="multipart/form-data">
     <input type="text" name="origin_type" value="club">
     <input type="text" name="origin_id" value="1">
     Please choose a file: <input type="file" name="uploadFile"><br>

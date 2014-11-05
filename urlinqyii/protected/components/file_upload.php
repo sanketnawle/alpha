@@ -63,18 +63,21 @@ function file_upload($files) {
         $file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
         $random_name = token($user->user_id,$user->firstname);
 
+
+
+        $local_directory = 'assets/test/';
         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             include "ImageCompress.php";
-            image_compress($files["uploadFile"]["tmp_name"], 'assets/test/' . $random_name . '.jpg', 50);
+            image_compress($files["uploadFile"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
         } else{
-            move_uploaded_file($files["uploadFile"]["tmp_name"], 'assets/test/' . $files["uploadFile"]["name"]);
+            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $files["uploadFile"]["name"]);
         }
 
 
         //Create file in file table here
         $file = new File;
         $file->file_name = $random_name . '.' . $extension;
-        $file->file_url = $file_url = "/assets/" . $random_name . '.' . $extension;
+        $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
         $file->file_type = $file_type;
         $file->file_extension = $extension;
 

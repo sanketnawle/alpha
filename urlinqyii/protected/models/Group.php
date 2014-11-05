@@ -65,8 +65,20 @@ class Group extends CActiveRecord
 			'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'groupFile' => array(self::HAS_ONE, 'GroupFile', 'group_id'),
-			'users' => array(self::HAS_MANY, 'User', 'group_id', ),
 
+            //Gets all users, admins AND members
+            'users' => array(self::MANY_MANY, 'User', 'group_user(group_id, user_id)'),
+
+            //Only gets users that are admins
+            'admins' => array(self::MANY_MANY, 'User', 'group_user(group_id, user_id)', 'condition'=>'is_admin = 1'),
+
+
+            //Only gets non admin users
+            'members' => array(self::MANY_MANY, 'User', 'group_user(group_id, user_id)', 'condition'=>'is_admin = 0'),
+
+
+
+            'events' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'origin_type = "group"'),
 			'groupUserTags' => array(self::HAS_MANY, 'GroupUserTag', 'group_id'),
 		);
 	}
