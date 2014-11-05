@@ -292,7 +292,7 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id', array(':id'=>1));
 
 
-        $data = array('success'=>true,'club'=>$club,'members'=>$club->users);
+        $data = array('success'=>true,'club'=>$club,'members'=>array());
 
         $this->renderJSON($data);
     }
