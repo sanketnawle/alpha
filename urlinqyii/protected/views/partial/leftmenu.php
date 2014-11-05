@@ -188,7 +188,7 @@
 
     <div id="user_control" >
         <h5 id="username"><a id="prof_link"href="https://urlinq.com/beta/profile.php?user_id=285 + $user_id"> <?php echo $user->firstname . ' ' . $user->lastname; ?> </a></h5>
-        <div id="profile_pic" style="background-image: url('http://www.emperor-penguin.com/penguin-chick.jpg');"></div>
+        <div id="profile_pic_div"><img id='profile_pic_img' src="<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>"></div>
         <div class="user_status_image"></div>
         <h6 id="user_status"> Online </h6>
         <p id="user_department"> Computer Science and Engineering</p>

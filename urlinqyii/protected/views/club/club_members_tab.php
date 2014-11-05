@@ -33,6 +33,7 @@ echo '
 
 echo '<div class="members-list-wrap prof-member-list">';
     foreach ($club->users as $row1) {
+        $row1 = $row1->user;
       // if ($user_id == $row1['user_id'])
       // {
       //   $is_admin = true;
@@ -44,7 +45,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                 <div class="member-person prof-member-person">
                   <div class="member-wrap prof-member-wrap">
                     <div class="person-thumb">
-                      <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
+                      <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
                         <span>' . "INTEREST GOES HERE" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
@@ -56,7 +57,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                     echo '</div>
                     <h3 class="person-title">
                     <a href="profile/' . $row1['user_id'] . '"><strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong></a>
-                        <span><a class="search_unit" href="school/' . $row1['univ_id'] . '">' . "$ row1['univ_name']" . '</a></span>
+                        <span><a class="search_unit" href="school/' . $row1['university_id'] . '">' . "$ row1['univ_name']" . '</a></span>
                     </h3>';
         if ($row1['user_id'] != $user->user_id) {
           if ($is_admin){
@@ -103,7 +104,7 @@ if(count($club->users) > 0) {
                 <div class="member-person prof-member-person">
                   <div class="member-wrap prof-member-wrap">
                     <div class="person-thumb">
-                      <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
+                      <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
                         <span>' . "$ row1['interest'] goes here" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';

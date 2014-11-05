@@ -112,7 +112,7 @@ $( document ).ready(function() {
     </section>
     <section class='popup_section'><?php //include "popup.html";?></section>
     <section class='topbar_bag'>
-        <?php include 'topbar.php';?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </section>
 
     

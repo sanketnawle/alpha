@@ -10,63 +10,142 @@ class ApiController extends Controller
     public function actionFileUpload(){
 
 
-
-
-
-
-
         include "file_upload.php";
 
-        file_upload($_FILES);
 
+
+
+        $data = file_upload($_FILES);
+        $this->renderJSON($data);
+        return;
 
     }
 
 
 
+
+
+
+    //Error ids
+    // 1 - all data required is not set
+    // 2 - error saving user to database
     public function actionSignup()
     {
 
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['user_type'])
-        || !isset($_POST['school_id']) || !isset($_POST['department_id']) || isset($_FILES['uploadFile'])){
+          || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
 
+
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
         }
 
 
+        if(isset($_POST['facebook_flag'])){
+            $facebook_email = $_POST['facebook_email'];
+            $facebook_token = $_POST['facebook_token'];
+
+
+        }
+
+        //|| isset($_FILES['uploadFile'])
         $email = $_POST['email'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
         $password = $_POST['password'];
         $user_type = $_POST['user_type'];
         $school_id = $_POST['school_id'];
         $department_id = $_POST['department_id'];
         $picture_file_id = null;
 
-        include "file_upload.php";
-        $file_upload_response = file_upload($_FILES);
 
 
-        if($file_upload_response['success']){
-            $picture_file_id = $file_upload_response['file_id'];
+        if(isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null){
+            include "file_upload.php";
+
+            $file_upload_response = file_upload($_FILES);
+            if($file_upload_response['success']){
+                $picture_file_id = $file_upload_response['file_id'];
+            }else{
+                $picture_file_id = 1;
+            }
         }else{
-
+            $picture_file_id = 1;
         }
 
 
-        //|| !isset($_POST['picture_file_id'])
 
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $user_type = $_POST['user_type'];
-        $gender = $_POST['gender'];
+        $user = new User;
+        try {
+            $user->firstname = $first_name;
+            $user->lastname = $last_name;
+            $user->user_email = $email;
+            $user->user_type = $user_type;
+            $user->school_id = $school_id;
+            $user->department_id = $department_id;
+            $user->picture_file_id = $picture_file_id;
+            $user->save(false);
+        } catch (Exception $e) {
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        include "password_encryption.php";
+
+
+        $salt = salt();
+        $hashed_password = hash_password($password,$salt);
+
+        $user_login = new UserLogin;
+        $user_login->user_id = $user->user_id;
+        $user_login->password = $hashed_password;
+        $user_login->salt = $salt;
+        $user_login->save(false);
 
 
 
-        //USER ID
-        $data = array('token'=>'0298208');
+        //Send email verifications here
+        ////////////////////////////////
 
 
+
+
+
+
+        //$login_data = $this->login($email,$password);
+        $data = array('success'=>true,'user_id'=>$user->user_id,'user_email'=>$user->user_email);
         $this->renderJSON($data);
+        return;
+    }
+
+
+
+    public function actionFacebookLogin(){
+        if(!isset($_POST['facebook_email']) && !isset($_POST['facebook_token'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionGetUserData(){
+        if(!isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+
+        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('pictureFile')));
+        $this->renderJSON($data);
+        return;
     }
 
 
@@ -75,7 +154,7 @@ class ApiController extends Controller
     {
 
         if(!isset($_POST['email'])){
-            $data = array('success'=>'false','error'=>'email not set');
+            $data = array('success'=>false,'error'=>'email not set');
             $this->renderJSON($data);
             return;
         }
@@ -87,13 +166,13 @@ class ApiController extends Controller
             $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
             $base_url = Yii::app()->getBaseUrl(true);
-            $data = array('success'=>'true','base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments','pictureFile'),'pictureFile'=>array())));
+            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments','pictureFile'),'pictureFile'=>array())));
 
 
             $this->renderJSON($data);
             return;
         }else{
-            $data = array('success'=>'false','error_id'=>0,'error'=>'Only NYU email addresses are supported at this time');
+            $data = array('success'=>false,'error_id'=>1,'error'=>'Only NYU email addresses are supported at this time');
             $this->renderJSON($data);
             return;
         }
@@ -101,20 +180,12 @@ class ApiController extends Controller
 
     }
 
-
-
-
-
     //https://urlinq.com/api/login
-	public function actionLogin()
-	{
-        //Error ID's for login
-        // 0 - User with email doesnt exist in our database
-        // 1 - User is not 'active' which means they have not verified their email address
-        // 2 - Credentials are incorrect
+    public function actionLogin()
+    {
 
         if(!isset($_POST['email']) || !isset($_POST['password'])){
-            $data = array('success'=>'false','error'=>'email or password is not set');
+            $data = array('success'=>false,'error'=>'email or password is not set');
             $this->renderJSON($data);
             return;
         }
@@ -122,14 +193,55 @@ class ApiController extends Controller
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        $data = $this->login($email,$password);
+        $this->renderJSON($data);
+    }
+
+
+
+
+    //Error ids
+    // 1 - User with email does not exist
+    public function actionOnboardStatus(){
+        if(!isset($_POST['email'])){
+            $data = array('success'=>false,'error'=>'email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $email = $_POST['email'];
+        $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
+
+        if($user){
+            $data = array('success'=>true,'status'=>$user->status);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1,'error'=>'User with email ' . $email . ' doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+    }
+
+
+    //Error ID's for login
+    // 1 - User with email doesnt exist in our database
+    // 2 - User is not 'active' which means they have not verified their email address
+    // 3 - Credentials are incorrect
+    public function login($email,$password){
         $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
 
         if($user){
 
             if($user->status != 'active'){
-                $data = array('success'=>'false','error_id'=>1);
-                $this->renderJSON($data);
-                return;
+                return array('success'=>false,'error_id'=>2);
+                //$this->renderJSON($data);
+                //return;
             }
 
 
@@ -158,23 +270,24 @@ class ApiController extends Controller
                 $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
                 $user_token->save(false);
 
-                $data = array('success'=>'true','user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
-                $this->renderJSON($data);
-                return;
+                return array('success'=>'true','user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
+                //$this->renderJSON($data);
+
             }else{ //user login failed
-                $data = array('success'=>'false','error_id'=>2,'error'=>'user with email: ' . $email . ' doesnt exist');
-                $this->renderJSON($data);
-                return;
+                return array('success'=>false,'error_id'=>3,'error'=>'user with email: ' . $email . ' doesnt exist');
+                //$this->renderJSON($data);
+
             }
 
         }else{
-            $data = array('success'=>'false','error_id'=>0,'error'=>'user with email: ' . $email . ' doesnt exist');
-            $this->renderJSON($data);
-            return;
+            return array('success'=>false,'error_id'=>1,'error'=>'user with email: ' . $email . ' doesnt exist');
+            //$this->renderJSON($data);
+            //return;
         }
+    }
 
 
-	}
+
 
 
     //https://urlinq.com/api/user/courses

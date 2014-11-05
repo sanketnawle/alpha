@@ -28,13 +28,7 @@ class Controller extends CController
 
 
 
-    public function authenticated(){
-        if(isset(Yii::app()->session['user_id'])){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
     protected function renderJSON($data)
     {
@@ -48,6 +42,35 @@ class Controller extends CController
         }
         Yii::app()->end();
     }
+
+    //Checks to see if current user is authenticated
+    //Returns true or false
+    //Use like this for controller action functions that need to be authenticated
+    //if(!$this->authenticated()){
+    //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+    //}
+    public function authenticated(){
+        if(isset(Yii::app()->session['user_id'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //Returns the current User model
+    //Use like this in the controllers:
+    //$user = $this->get_current_user();
+    //Be sure to check if user is authenticated first by doing
+    //if(!$this->authenticated()){
+    //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+    //}
+    //at the top of your controller's function
+    function get_current_user(){
+        return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
+    }
+
+
+
 
     function is_assoc($array) {
         return (bool)count(array_filter(array_keys($array), 'is_string'));

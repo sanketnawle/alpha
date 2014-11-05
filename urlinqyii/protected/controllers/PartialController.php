@@ -81,11 +81,14 @@ class PartialController extends Controller
 
     public function actionTopbar()
     {
+        $user_id = Yii::app()->session['user_id'];
+
+        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+        $user = User::model()->find('user_id=:id', array(':id'=>1));
 
 
 
-
-        $this->render('topbar');
+        $this->render('topbar',array('user'=>$user));
     }
 
 

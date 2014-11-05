@@ -2,7 +2,38 @@
 
 
 
-function file_upload($_FILES) {
+
+
+function getFileMimeType($file) {
+    if (function_exists('finfo_file')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $type = finfo_file($finfo, $file);
+        finfo_close($finfo);
+    } else {
+        require_once 'upgradephp/ext/mime.php';
+        $type = mime_content_type($file);
+    }
+
+    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+        $secondOpinion = exec('file -b --mime-type ' . escapeshellarg($file), $foo, $returnCode);
+        if ($returnCode === 0 && $secondOpinion) {
+            $type = $secondOpinion;
+        }
+    }
+
+    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+        require_once 'upgradephp/ext/mime.php';
+        $exifImageType = exif_imagetype($file);
+        if ($exifImageType !== false) {
+            $type = image_type_to_mime_type($exifImageType);
+        }
+    }
+
+    return $type;
+}
+
+
+function file_upload($files) {
 
     $user = User::model()->find('user_id=:id', array(':id'=>1));
 
@@ -24,19 +55,19 @@ function file_upload($_FILES) {
 
 
     //["name"]
-    if(isset($_FILES["uploadFile"])){
+    if(isset($files["uploadFile"])){
         include "UniqueTokenGenerator.php";
 
-        $path_parts = pathinfo($_FILES["uploadFile"]["name"]);
+        $path_parts = pathinfo($files["uploadFile"]["name"]);
         $extension = $path_parts['extension'];
-        $file_type = $this->getFileMimeType($_FILES["uploadFile"]['tmp_name']);
+        $file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
         $random_name = token($user->user_id,$user->firstname);
 
         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             include "ImageCompress.php";
-            image_compress($_FILES["uploadFile"]["tmp_name"], 'assets/test/' . $random_name . '.jpg', 50);
+            image_compress($files["uploadFile"]["tmp_name"], 'assets/test/' . $random_name . '.jpg', 50);
         } else{
-            move_uploaded_file($_FILES["uploadFile"]["tmp_name"], 'assets/test/' . $_FILES["uploadFile"]["name"]);
+            move_uploaded_file($files["uploadFile"]["tmp_name"], 'assets/test/' . $files["uploadFile"]["name"]);
         }
 
 

@@ -74,9 +74,9 @@ return array(
                 'getposts'=>'profile/getPosts',
                 'search/json'=>'search/json',
 
-                'file/upload'=>'site/fileUpload'
+                'file/upload'=>'site/fileUpload',
                 //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
             ),

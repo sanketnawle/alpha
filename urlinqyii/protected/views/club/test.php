@@ -41,7 +41,7 @@
 //
 
 
-var_dump($schools);
+var_dump($club->users);
 //?>
 
 <form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/file/upload" method="post" enctype="multipart/form-data">
