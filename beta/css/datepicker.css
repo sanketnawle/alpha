@@ -64,19 +64,24 @@ nav.sections {
 /* Calendar */
 /****/
 section.mounth {
-overflow: hidden;
-display: block;
-float: left;
-margin-left: 38px;
-z-index: 500;
-width: 242px;
-height: auto;
-background: #fff;
-border-radius: 5px;
-position: absolute;
-border: solid; border-width: 1px 1px 2px;  
-border: 1px solid #c4c4c4; border-radius: 2px; box-shadow: 0 0 9px 5px rgba(0,0,0,0.05); background-color: #fff; z-index: 9999999999;
-margin-top: 2px;
+    overflow: hidden;
+    display: block;
+    float: left;
+    z-index: 500;
+    width: 242px;
+    height: auto;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    border: solid;
+    border-width: 1px 1px 2px;
+    border: 1px solid #c4c4c4;
+    border-radius: 2px;
+    box-shadow: 0 0 9px 5px rgba(0,0,0,0.05);
+    background-color: #fff;
+    z-index: 1000;
+    margin-left: 190px;
+    margin-top: 35px;
 }
 .minical-header {
     position: relative;

@@ -100,6 +100,103 @@
 <script>
 $(document).ready(function() {
 
+    $(".multiple_type").on("click", function() {
+        $(".multiple_type").css("color", "#4697C2");
+        $(".truth_type").css("color", "rgba(153, 153, 153, 0.64)");
+        $(".textwrap2").css("display", "none");
+        $(".multiple_choice").css("display", "block");
+        $(".true_false").css("display", "none");
+    });
+
+    $(".truth_type").on("click", function() {
+        $(".truth_type").css("color", "#4697C2");
+        $(".multiple_type").css("color", "rgba(153, 153, 153, 0.64)");
+        $(".textwrap2").css("display", "none");
+        $(".true_false").css("display", "block");
+        $(".multiple_choice").css("display", "none");
+    });
+
+    $(".answer_check").delegate("input", "click", function() {
+        if ($(this).parent().hasClass("selected_answer")) {
+            $(this).parent().removeClass("selected_answer");
+            $(this).prop("checked", false);
+        }
+        else {
+            if($(".answer_check input").prop("checked", true)) {
+                $(".answer_check input").prop("checked", false);
+                $(".answer_check").removeClass("selected_answer");
+                $(".answer_check").css("display", "none");
+                $(this).prop("checked", true);
+                $(this).parent().addClass("selected_answer");
+                $(this).parent().css("display", "inline-block");
+            }
+        }
+    });
+
+    $(".tf_line").mouseenter(function() {
+        $(this).find(".answer_check").css("display", "inline-block");
+    });
+
+    $(".tf_line").mouseleave(function() {
+        if (!($(this).find(".answer_check").hasClass("selected_answer"))) {
+            $(this).find(".answer_check").css("display", "none");
+        }
+    });
+
+    $(".multiple_choice").delegate(".question_choice_line", "mouseenter", function() {
+        $(this).find(".answer_check").css("display", "inline-block");
+        $(this).find(".add_choice").css("display", "none");
+        $(this).find(".letter_choice").css("display", "inline-block");
+    });
+
+    $(".multiple_choice").delegate(".question_choice_line", "mouseleave", function() {
+        if (!($(this).find(".answer_check").hasClass("selected_answer"))) {
+            $(this).find(".answer_check").css("display", "none");
+        }
+        if ($(this).find(".multiple_choice_answer").val() == "") {
+            $(this).find(".letter_choice").css("display", "none");
+            $(this).find(".add_choice").css("display", "inline-block");
+        }
+    });
+
+    function nextChar(c) {
+        return String.fromCharCode(c.charCodeAt(0) + 1);
+    }
+
+
+    $(".multiple_choice").delegate(".multiple_choice_answer", "change", function() {
+        var mult_q_box = $(this).parent().parent();
+        if ($(this).val() != "") {
+            $(this).parent().find(".fixed_choice_prefix .letter_choice").css("display", "inline-block");
+            $(this).parent().find(".fixed_choice_prefix .add_choice").css("display", "none");
+        }
+        var all_filled = true;
+        mult_q_box.find(".multiple_choice_answer").each(function() {
+            if ($(this).val() == "") {
+                all_filled = false;
+                //return false;
+            }
+        });
+        if ($(".multiple_choice").children().length == 26) {
+            all_filled = false;
+        }
+        if (all_filled) {
+            var last_letter = $(".multiple_line").last().find(".letter_choice span").text();
+            var letter = nextChar(last_letter);
+            var multiple_line_copy = mult_q_box.find(".multiple_line").last().clone();
+            mult_q_box.append(multiple_line_copy);
+            var last_choice = $(".multiple_choice_answer").last();
+            last_choice.val("");
+            last_choice.attr("placeholder", "Add choice " + letter + "...(optional)");
+            multiple_line_copy.find(".letter_choice span").text(letter);
+            multiple_line_copy.find(".answer_check").removeClass("selected_answer");
+            multiple_line_copy.find(".answer_check input").prop("checked", false);
+            multiple_line_copy.find(".answer_check").css("display", "none");
+            var new_id = multiple_line_copy.find(".answer_check input").attr("id");
+            new_id = new_id.substring(0, new_id.length-1)+letter;
+            multiple_line_copy.find(".answer_check input").attr("id", new_id);
+        }
+    });
 
                 $('.post').click(function(){
 
@@ -456,7 +553,7 @@ $(document).ready(function() {
 		if(!$(this).hasClass("flat_checked")){
 			
 		$(this).css({"border":"1px solid #00A076","background-color":"#02e2a7"});
-		$(this).closest(".check_wrap").find(".move").css({"margin-left":"19px"});
+		$(this).closest(".check_wrap").find(".move").css({"margin-left":"14px"});
 		$(this).addClass("flat_checked");
 		$(this).closest(".check_wrap").find(".comment_anon_text").css("color","rgba(33,33,33,.85)");
 		$(this).closest(".controlpad").find(".post_anon_val").val("1");
@@ -1027,7 +1124,7 @@ $(document).ready(function() {
 								</div>
 
 									<div class = "lfloat-anon">
-										<div class='check_wrap fbarcheck_wrap'>
+										<div class='check_wrap fbarcheck_wrap' id="post_status_check">
 											<input type='checkbox' id='flat_0' class='flat7c'/>
 												<label for='flat7' class='flat7b_fbar'>
 									    			<span class='move'></span>
@@ -1042,13 +1139,13 @@ $(document).ready(function() {
 								
 												<span class='field_fbar'>
 													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
-												<div class='vstt_wedgeDown'></div>
-												<div class = 'card-tag'>
-													<div class = 'tag-wedge'></div>
-													<div class = 'tag-box'>
-														<span>Visible to campus</span>
-													</div>									
-												</div>
+                                                    <div class='vstt_wedgeDown'></div>
+                                                    <div class = 'card-tag'>
+                                                        <div class = 'tag-wedge'></div>
+                                                        <div class = 'tag-box'>
+                                                            <span>Visible to campus</span>
+                                                        </div>
+                                                    </div>
 												</span>
 												<div class = 'visi_functions_box'>
 													<span>
@@ -1165,34 +1262,84 @@ $(document).ready(function() {
 						<div class = "ask_state fbar_anchor">
 							<div class = "topfbar-wrap">
 								<div class = "quest-wrap">
-									
 									<input placeholder = "What's your question? Be specific" class = "topfbar questtxt"></input>
 								</div>
 							</div>
 
 							<div class ="textwrap2">
 								<textarea name = "q_desc" class = "askTxtArea autogrowth_textarea"placeholder = "Add more details about this question... (Optional)" ></textarea>
-							</div>	
-							<div class = "midfbar-wrap">
-								<div class = "midfbar-wrap2">
-									<div class = "who-wrap">
-										<div class = "who-dyn"><div class = "who-icon"></div></div>
-										<div class = "midfbar-exp">
-											
-											<input placeholder = "+ Ask experts" class = "add_who"></input>
-										</div>
-										
-
-										<div class="tag-option">
-
-											<div class="tag-section tagsec-r">
-												
-											</div>
-										</div>
-
-									</div>
-								</div>
 							</div>
+
+                            <div class="multiple_choice">
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>A</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" placeholder="Add choice A...">
+                                    <div class="answer_check">
+                                        <input id="check_A" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>B</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" placeholder="Add choice B...">
+                                    <div class="answer_check">
+                                        <input id="check_B" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>C</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" placeholder="Add choice C...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_C" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>D</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" placeholder="Add choice D...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_D" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="true_false">
+                                <div class="question_choice_line tf_line">
+                                    <span>True</span>
+                                    <div class="answer_check">
+                                        <input id="check_true" type="radio" value="true">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line tf_line">
+                                    <span>False</span>
+                                    <div class="answer_check">
+                                        <input id="check_false" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                            </div>
+
 							<div class = "btmfbar3 controlpad">
 								<div class='fbar_errorprompt'></div>
 								<div class = "lfloat-mods">
@@ -1210,49 +1357,65 @@ $(document).ready(function() {
 									
 								</div>
 								<div class = "lfloat-anon">
-										<div class='check_wrap fbarcheck_wrap'>
-											<input type='checkbox' id='flat_0' class='flat7c'/>
-												<label for='flat7' class='flat7b_fbar'>
-									    			<span class='move'></span>
-												</label>
-												<span class = 'comment_anon_text'>Post Anonymously</span>
-												<input type='hidden' value='0' class='post_anon_val'>
-										</div>
-										<div class = "post-btn btn-3">Post</div>
+                                    <div class='check_wrap fbarcheck_wrap' id="live_answers_check">
+                                        <input type='checkbox' id='flat_1' class='flat7c'/>
+                                        <label for='flat7' class='flat7b_fbar'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Live Answers</span>
+                                        <input type='hidden' value='0' class='post_anon_val'>
+                                    </div>
+                                    <div class='check_wrap fbarcheck_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                            <label for='flat7' class='flat7b_fbar'>
+                                                <span class='move'></span>
+                                            </label>
+                                            <span class = 'comment_anon_text'>Anonymous</span>
+                                            <input type='hidden' value='0' class='post_anon_val'>
+                                    </div>
+                                    <div class="question_type_wrapper">
+                                        <div class="question_type multiple_type">
+                                            <span>Multiple Choice</span>
+                                        </div>
+                                        <div class="question_type truth_type">
+                                            <span>True or False</span>
+                                        </div>
+                                    </div>
+                                    <div class = "post-btn btn-3">Post</div>
 
-										<div class='select_wrap'>
-											<input type='hidden' class='visi_val' value='campus'/>
-											<div class='posttool-select privacy_canedit'>
-								
-												<span class='field_fbar'>
-													<img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
-												<div class='vstt_wedgeDown'></div>
-												<div class = 'card-tag'>
-													<div class = 'tag-wedge'></div>
-													<div class = 'tag-box'>
-														<span>Visible to campus</span>
-													</div>									
-												</div>
-												</span>
-												<div class = 'visi_functions_box'>
-													<span>
-														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus'></div>Campus</div>
-													<hr class = 'post_options_hr'>
-													</span>
-													<span>
-													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_student'></div>Only Students</div>
-													<hr class = 'post_options_hr'>
-													</span>
-													<span>
-														<div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty'></div>Only Faculty</div>
-													<hr class = 'post_options_hr'>
-													</span>
-													<span>
-													<div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections'></div>My Connections</div>
-													</span>
-												</div>
-											</div>
-										</div>
+                                    <div class='select_wrap'>
+                                        <input type='hidden' class='visi_val' value='campus'/>
+                                        <div class='posttool-select privacy_canedit' id="question_privacy">
+
+                                            <span class='field_fbar'>
+                                                <img class='vstt_icon' src='img/privacy_icons/privacy_status/campus_status.png'>
+                                            <div class='vstt_wedgeDown'></div>
+                                            <div class = 'card-tag'>
+                                                <div class = 'tag-wedge'></div>
+                                                <div class = 'tag-box'>
+                                                    <span>Visible to campus</span>
+                                                </div>
+                                            </div>
+                                            </span>
+                                            <div class = 'visi_functions_box'>
+                                                <span>
+                                                    <div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus'></div>Campus</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_student'></div>Only Students</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                    <div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty'></div>Only Faculty</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections'></div>My Connections</div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
 								</div>
 							</div>	

@@ -194,17 +194,7 @@ echo "
 
         <div class = 'location-pic-div-wrap'>
 
-                <div class = 'white-wedge-up'>
-
-                </div>
-
                 <div class = 'location-pic-container'>
-
-                    <div class = 'modal_loading3'>
-
-                        <img class = 'modal_animation' src = 'src/loadingAnimation.gif'>
-
-                    </div>
 
                     <img class = 'location_building_pic' src = 'src/polyMT6.jpg' class = 'location-picture'>
 

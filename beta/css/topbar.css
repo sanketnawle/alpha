@@ -380,12 +380,12 @@ position: relative;
 }
 
 .topbar_cal:hover > .cal_icon2{
-	background-position: 0px -74px;
+	background-position: 0px -75px;
 }
 
 .topbar_cal_click
 {
-	background-position: 0px -74px;
+	background-position: 0px -75px;
 }
 
 .topbar_noti_click

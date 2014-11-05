@@ -14,10 +14,8 @@ include('php/redirect.php');
 <link rel='stylesheet' type='text/css' href='css/planner_for_dept.css'>
 
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link
-    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
-    rel='stylesheet' type='text/css'>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
 
 <script>
 
@@ -561,7 +559,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","60px");
+            $(".tab-wedge-down").css("left","57px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -734,14 +732,6 @@ $(document).ready(function() {
                               $(".members-tab-content").animate({ opacity: "1"},300);
                             }
                         });
-            
-            
-
-            
-
-            
-            
-            
         }
     });
     $(document).delegate("#group-about-link","click",function(){
