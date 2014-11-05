@@ -270,7 +270,7 @@ class ApiController extends Controller
                 $user_token->expires_at = date("Y-m-d H:i:s",strtotime("+1 week"));
                 $user_token->save(false);
 
-                return array('success'=>'true','user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
+                return array('success'=>true,'user_id'=>$user->user_id,'token'=>$token,'expires_at'=>$user_token->expires_at);
                 //$this->renderJSON($data);
 
             }else{ //user login failed
