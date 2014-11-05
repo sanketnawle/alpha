@@ -1,4 +1,113 @@
+<<<<<<< HEAD
 2014/11/05 23:27:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+=======
+2014/11/05 22:08:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php(270): CController->missingAction('php')
+#1 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(282): CController->run('php')
+#2 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 /Applications/XAMPP/xamppfiles/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/05 22:08:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php(270): CController->missingAction('php')
+#1 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(282): CController->run('php')
+#2 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 /Applications/XAMPP/xamppfiles/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/05 22:09:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php(270): CController->missingAction('php')
+#1 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(282): CController->run('php')
+#2 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 /Applications/XAMPP/xamppfiles/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/05 22:09:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/yii/framework/web/CController.php(270): CController->missingAction('php')
+#1 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(282): CController->run('php')
+#2 /Applications/XAMPP/xamppfiles/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 /Applications/XAMPP/xamppfiles/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+>>>>>>> 4d18e27a2ed57b361eba311de729311e7918aae0
+---
+2014/11/05 23:30:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:31:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:31:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:32:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:32:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/05 23:33:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
 #1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
