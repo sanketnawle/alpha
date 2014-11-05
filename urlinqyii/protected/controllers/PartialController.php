@@ -45,10 +45,12 @@ class PartialController extends Controller
                  LEFT JOIN user u
                  ON (u.user_id = cs.professor)
                  WHERE cu.user_id = " . $user->user_id;
-        $command = Yii::app()->db->createCommand($sql);
+        //$command = Yii::app()->db->createCommand($sql);
 
 
-        $courses = $command->queryAll();
+
+        //$classes = $command->queryAll();
+        $classes = ClassModel::model()->findAllBySql($sql);
 
 
 
@@ -74,7 +76,7 @@ class PartialController extends Controller
 
 
 
-		$this->render('leftmenu',array('user'=>$user,'courses'=>$courses,'groups'=>$groups));
+		$this->render('leftpanel',array('user'=>$user,'classes'=>$classes,'groups'=>$groups));
 	}
 
 

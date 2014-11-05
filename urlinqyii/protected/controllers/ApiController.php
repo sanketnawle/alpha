@@ -150,8 +150,7 @@ class ApiController extends Controller
 
 
     //Checks to see if we support the current univ edu email
-    public function actionGetUniversityDataByEmail()
-    {
+    public function actionGetUniversityDataByEmail() {
 
         if(!isset($_POST['email'])){
             $data = array('success'=>false,'error'=>'email not set');
@@ -166,7 +165,7 @@ class ApiController extends Controller
             $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
             $base_url = Yii::app()->getBaseUrl(true);
-            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments','pictureFile'),'pictureFile'=>array())));
+            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array('pictureFile'),'pictureFile'=>array()),'pictureFile'=>array())));
 
 
             $this->renderJSON($data);

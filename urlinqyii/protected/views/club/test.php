@@ -41,13 +41,7 @@
 //
 
 
-var_dump($club->admins);
-
-
-var_dump($club->members);
-
-
-var_dump($club->users);
+var_dump($classes);
 //?>
 
 <form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/api/fileUpload" method="post" enctype="multipart/form-data">

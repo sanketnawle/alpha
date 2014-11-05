@@ -60,7 +60,7 @@ div.group-cover-pic-info span {
 }
 
 div.group-cover-pic-info em {
-    background-image: url(../../assets/up_icon.png);
+    background-image: url(../src/up_icon.png);
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -75,11 +75,11 @@ div.group-cover-pic-info em {
 }
 
 div.group-cover-pic-info:hover > em {
-    background-image: url(../../assets/up_icon_hover.png);
+    background-image: url(../src/up_icon_hover.png);
 }
 
 div.group-cover-pic-info:active > em {
-    background-image: url(../../assets/up_icon_hover.png);
+    background-image: url(../src/up_icon_hover.png);
     opacity: .7;
 }
 
@@ -109,7 +109,7 @@ div.spec-group-title a.group-id:active {
 
 
 button.upload_cover i, button.upload_dp i {
-    background-image: url(../../assets/add_cover_icon.png);
+    background-image: url(../src/add_cover_icon.png);
     background-size: cover;
     width: 25px;
     height: 15px;
@@ -180,36 +180,36 @@ a.link_website_white:hover {
 
 
 .mid_right_sec_school .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-inactive {
-    background-image: url(../../assets/department_icon.png);
+    background-image: url(../src/department_icon.png);
     width: 17px;
     height: 17px;
     top: 2px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab2-icon-inactive {
-    background-image: url(../../assets/department_icon_hover.png);
+    background-image: url(../src/department_icon_hover.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-active {
-    background-image: url(../../assets/department_icon_hover.png);
+    background-image: url(../src/department_icon_hover.png);
     width: 17px;
     height: 17px;
     top: 2px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab3-icon-inactive {
-    background-image: url(../../assets/members_icon_inactive.png);
+    background-image: url(../src/members_icon_inactive.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab3-icon-inactive {
-    background-image: url(../../assets/members_icon_active.png);
+    background-image: url(../src/members_icon_active.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab3-icon-active {
-    background-image: url(../../assets/members_icon_active.png);
+    background-image: url(../src/members_icon_active.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
@@ -245,18 +245,18 @@ div.post_filter_container header {
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-inactive {
-    background-image: url(../../assets/events_icon_inactive.png);
+    background-image: url(../src/events_icon_inactive.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tabc-icon-inactive {
-    background-image: url(../../assets/events_icon_active.png);
+    background-image: url(../src/events_icon_active.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-active {
-    background-image: url(../../assets/events_icon_active.png);
+    background-image: url(../src/events_icon_active.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
@@ -278,7 +278,7 @@ div.group-head-sec:hover > div.group-head-top-sec div.info-shower button.upload_
     cursor: pointer;
     width: 20px;
     height:20px;
-    background: url(../../assets/remove.png) no-repeat scroll 50% 50% / 100% transparent;
+    background: url(../img/remove.png) no-repeat scroll 50% 50% / 100% transparent;
 }
 
 
@@ -448,7 +448,7 @@ div.group-cover-pic-info span {
 }
 
 div.group-cover-pic-info em {
-    background-image: url(../../assets/up_icon.png);
+    background-image: url(../src/up_icon.png);
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -463,11 +463,11 @@ div.group-cover-pic-info em {
 }
 
 div.group-cover-pic-info:hover > em {
-    background-image: url(../../assets/up_icon_hover.png);
+    background-image: url(../src/up_icon_hover.png);
 }
 
 div.group-cover-pic-info:active > em {
-    background-image: url(../../assets/up_icon_hover.png);
+    background-image: url(../src/up_icon_hover.png);
     opacity: .7;
 }
 
@@ -493,7 +493,7 @@ div.spec-group-title a.group-id:active {
 
 
 button.upload_cover i {
-    background-image: url(../../assets/add_cover_icon.png);
+    background-image: url(../src/add_cover_icon.png);
     background-size: cover;
     width: 25px;
     height: 15px;
@@ -514,36 +514,36 @@ button.upload_cover span {
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-inactive {
-    background-image: url(../../assets/department_icon.png);
+    background-image: url(../src/department_icon.png);
     width: 17px;
     height: 17px;
     top: 2px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab2-icon-inactive {
-    background-image: url(../../assets/department_icon_hover.png);
+    background-image: url(../src/department_icon_hover.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-active {
-    background-image: url(../../assets/department_icon_hover.png);
+    background-image: url(../src/department_icon_hover.png);
     width: 17px;
     height: 17px;
     top: 2px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab3-icon-inactive {
-    background-image: url(../../assets/members_icon_inactive.png);
+    background-image: url(../src/members_icon_inactive.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab3-icon-inactive {
-    background-image: url(../../assets/members_icon_active.png);
+    background-image: url(../src/members_icon_active.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab3-icon-active {
-    background-image: url(../../assets/members_icon_active.png);
+    background-image: url(../src/members_icon_active.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
@@ -579,18 +579,18 @@ div.post_filter_container header {
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-inactive {
-    background-image: url(../../assets/events_icon_inactive.png);
+    background-image: url(../src/events_icon_inactive.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tabc-icon-inactive {
-    background-image: url(../../assets/events_icon_active.png);
+    background-image: url(../src/events_icon_active.png);
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-active {
-    background-image: url(../../assets/events_icon_active.png);
+    background-image: url(../src/events_icon_active.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
@@ -603,7 +603,7 @@ div.group-head-sec:hover > div.group-head-top-sec div.info-shower button.upload_
 
 
 a.school-id em {
-    background-image: url(../../assets/school_icon.png);
+    background-image: url(../src/school_icon.png);
     background-size: cover;
     display: inline-block;
     width: 15px;
@@ -899,7 +899,7 @@ div.departmentsTabTop, div.coursesTabTop {
 button.submitSearch {
     width: 24px;
     height: 24px;
-    background: url(../../assets/search-icon-big.png);
+    background: url(../src/search-icon-big.png);
     display: inline-block;
     text-shadow: none;
     color: transparent;
@@ -1014,7 +1014,7 @@ div.group_location {
 }
 
 div.group_location em {
-    background-image: url(../../assets/location_white.png);
+    background-image: url(../src/location_white.png);
     width: 17px;
     height: 19px;
     position: relative;
@@ -1098,7 +1098,7 @@ div.blackData span.group_members {
 }
 
 div.blackData span.group_members em.members-icon {
-    background-image: url(../../assets/members_icon_white.png);
+    background-image: url(../src/members_icon_white.png);
     display: inline-block;
     width: 14px;
     height: 14px;
@@ -1180,7 +1180,7 @@ button.studybtn {
     border: 1px solid #D6D6D6;
     outline: none;
     border-bottom: 1px solid #C2C2C2;
-    background: #e6e6e6 url(../../assets/white-gradient-100px.png) repeat-x 50% 50%;
+    background: #e6e6e6 url(../src/white-gradient-100px.png) repeat-x 50% 50%;
     -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
     -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1);
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1204,5 +1204,5 @@ div.group-head-top-sec div.group-cover-picture {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0px -150px;
-    /*background-image: url(../../assets/nyu_poly_cover.jpg);*/
+    /*background-image: url(../src/nyu_poly_cover.jpg);*/
 }
