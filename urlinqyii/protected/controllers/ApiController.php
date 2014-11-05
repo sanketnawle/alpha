@@ -239,7 +239,7 @@ class ApiController extends Controller
         if($user){
 
             if($user->status != 'active'){
-                return array('success'=>false,'error_id'=>2);
+                return array('success'=>false,'error_id'=>2,'error'=>'User is not active so they cannot login');
                 //$this->renderJSON($data);
                 //return;
             }
