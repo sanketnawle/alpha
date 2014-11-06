@@ -14107,3 +14107,2358 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+2014/11/06 23:32:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:33:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:33:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:34:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:34:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:34:47 [error] [php] Trying to get property of non-object (D:\xampp\htdocs\alpha\urlinqyii\protected\views\partial\topbar.php:294)
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(869): PartialController->renderFile()
+#1 D:\xampp\yii\framework\web\CController.php(782): PartialController->renderPartial()
+#2 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\PartialController.php(93): PartialController->render()
+#3 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): PartialController->actionTopbar()
+#4 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\xampp\yii\framework\web\CController.php(286): PartialController->runAction()
+#6 D:\xampp\yii\framework\web\CController.php(265): PartialController->runActionWithFilters()
+#7 D:\xampp\yii\framework\web\CWebApplication.php(282): PartialController->run()
+#8 D:\xampp\htdocs\alpha\urlinqyii\protected\views\club\club.php(44): CWebApplication->runController()
+#9 D:\xampp\yii\framework\web\CBaseController.php(126): require()
+#10 D:\xampp\yii\framework\web\CBaseController.php(95): ClubController->renderInternal()
+#11 D:\xampp\yii\framework\web\CController.php(869): ClubController->renderFile()
+#12 D:\xampp\yii\framework\web\CController.php(782): ClubController->renderPartial()
+#13 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ClubController.php(124): ClubController->render()
+#14 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionView()
+#15 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 D:\xampp\yii\framework\web\CController.php(286): ClubController->runAction()
+#17 D:\xampp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#18 D:\xampp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#19 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/1
+in D:\xampp\htdocs\alpha\urlinqyii\protected\views\partial\topbar.php (294)
+in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\PartialController.php (93)
+in D:\xampp\htdocs\alpha\urlinqyii\protected\views\club\club.php (44)
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/HelveticaNeue.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/HelveticaNeue.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/menu-icons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/menu-ic...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/11d7ce150afd753ee01e084d844fd3f5.jpg".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/11d7ce15...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/11d7ce150afd753ee01e084d844fd3f5.jpg
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_inactive.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/events_icon_inactive.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1415313345994
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/Helvetica.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/Helvetica.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_active.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/events_icon_active.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/06 23:36:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:36:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/notificati...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/notifications.php?type=pa&_=1415313345995
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:36:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:37:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:37:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:38:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:38:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:39:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:39:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:40:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:40:31 [error] [exception.CException] exception 'CException' with message 'Property "User.takes" is not defined.' in D:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('takes')
+#1 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php(33): CActiveRecord->__get('takes')
+#2 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ProfileController->actionView()
+#3 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#7 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/view')
+#8 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:40:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:41:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:41:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:42:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:42:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:43:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:44:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:44:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:45:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:45:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:46:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:46:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:47:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:47:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:48:16 [error] [exception.CException] exception 'CException' with message 'Property "User.groups" is not defined.' in D:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('groups')
+#1 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php(34): CActiveRecord->__get('groups')
+#2 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ProfileController->actionView()
+#3 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#7 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/view')
+#8 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:48:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:48:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:49:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:49:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:50:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:50:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:51:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:52:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:53:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:54:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:54:44 [error] [php] include(Groups.php): failed to open stream: No such file or directory (D:\xampp\yii\framework\YiiBase.php:427)
+Stack trace:
+#0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(395): spl_autoload_call()
+#1 D:\xampp\yii\framework\db\ar\CActiveFinder.php(182): model()
+#2 D:\xampp\yii\framework\db\ar\CActiveFinder.php(230): CActiveFinder->getModel()
+#3 D:\xampp\yii\framework\db\ar\CActiveFinder.php(48): CActiveFinder->buildJoinTree()
+#4 D:\xampp\yii\framework\db\ar\CActiveRecord.php(909): CActiveFinder->__construct()
+#5 D:\xampp\yii\framework\db\ar\CActiveRecord.php(280): User->getActiveFinder()
+#6 D:\xampp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#7 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php(34): User->__get()
+#8 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ProfileController->actionView()
+#9 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 D:\xampp\yii\framework\web\CController.php(286): ProfileController->runAction()
+#11 D:\xampp\yii\framework\web\CController.php(265): ProfileController->runActionWithFilters()
+#12 D:\xampp\yii\framework\web\CWebApplication.php(282): ProfileController->run()
+#13 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/profile/2
+in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php (34)
+in D:\xampp\htdocs\alpha\urlinqyii\index.php (17)
+2014/11/06 23:54:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:55:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1).
+in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php (34)
+in D:\xampp\htdocs\alpha\urlinqyii\index.php (17)
+2014/11/06 23:55:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1)' in D:\xampp\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\xampp\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\yii\framework\db\ar\CActiveFinder.php(803): CDbCommand->queryAll()
+#2 D:\xampp\yii\framework\db\ar\CActiveFinder.php(507): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\xampp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(User))
+#4 D:\xampp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind(Object(User))
+#5 D:\xampp\yii\framework\db\ar\CActiveRecord.php(143): CActiveRecord->getRelated('groups')
+#6 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php(34): CActiveRecord->__get('groups')
+#7 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ProfileController->actionView()
+#8 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/view')
+#13 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:55:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:55:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:56:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:56:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:56:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1).
+in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php (34)
+in D:\xampp\htdocs\alpha\urlinqyii\index.php (17)
+2014/11/06 23:56:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1)' in D:\xampp\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\xampp\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\xampp\yii\framework\db\ar\CActiveFinder.php(803): CDbCommand->queryAll()
+#2 D:\xampp\yii\framework\db\ar\CActiveFinder.php(507): CJoinElement->runQuery(Object(CJoinQuery))
+#3 D:\xampp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind(Object(User))
+#4 D:\xampp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind(Object(User))
+#5 D:\xampp\yii\framework\db\ar\CActiveRecord.php(143): CActiveRecord->getRelated('groups')
+#6 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php(34): CActiveRecord->__get('groups')
+#7 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ProfileController->actionView()
+#8 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/view')
+#13 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/scroll/...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/js/jque...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/js/jque...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/scroll/...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/js/jque...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/js/ampm...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "filepicker.js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('filepicker.js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('filepicker.js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/filepic...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/img/lik...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/img/liked-button.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/HelveticaNeue.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/HelveticaNeue.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/white-gradient-200px.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/white-gradi...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/white-gradient-200px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/professor.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/noise-black.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/noise-black...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/noise-black.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/professor.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/profile-header-gradient.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/profile-hea...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/profile-header-gradient.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/professor.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/dept_dp.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/dept_dp.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/link_normal.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/link_normal...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/link_normal.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/professor.css
+---
+2014/11/06 23:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/school.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/school.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/glass.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/glass.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/glass.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/professor.css
+---
+2014/11/06 23:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/Helvetica.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/Helvetica.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:57:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/class.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/class.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/11d7ce150afd753ee01e084d844fd3f5.jpg".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/11d7ce15...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/11d7ce150afd753ee01e084d844fd3f5.jpg
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1415314657209
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:57:40 [error] [exception.CException] exception 'CException' with message 'Property "ClassModel.admins" is not defined.' in D:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('admins')
+#1 D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ClassController.php(49): CActiveRecord->__get('admins')
+#2 D:\xampp\yii\framework\web\actions\CInlineAction.php(49): ClassController->actionView()
+#3 D:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 D:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#7 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/view')
+#8 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/alpha/urlinqyii/class/1
+---
+2014/11/06 23:57:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profile/notific...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/profile/notifications.php?type=pa&_=1415314639658
+HTTP_REFERER=http://localhost/alpha/urlinqyii/profile/2
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/class/class.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/class/class....')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/class/class.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/HelveticaNeue.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/HelveticaNeue.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/menu-icons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/menu-ic...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/class.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/class.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "src/noise-2.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('src/noise-2.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundGroup.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/dept_dp.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/dept_dp.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/06 23:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pl_down_arrow.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/pl_down_arr...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/pl_down_arrow.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/planner.css
+---
+2014/11/06 23:59:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/Helvetica.ttf".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/Helvetica...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/fonts/Helvetica.ttf
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/tb_notification.css
+---
+2014/11/06 23:59:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/06 23:59:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/notificat...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/notifications.php?type=pa&_=1415314745389
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/class.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/class.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/07 00:00:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/07 00:01:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:01:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/dept_dp.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/dept_dp.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:01:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/notificat...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/notifications.php?type=pa&_=1415314836123
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:01:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:01:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:02:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:02:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:03:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:03:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/scroll/jq...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/class.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/class.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/dept_dp.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/dept_dp.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/07 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/07 00:04:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pl_down_arrow.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/pl_down_arr...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/pl_down_arrow.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/planner.css
+---
+2014/11/07 00:04:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/default/user.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/default/...')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/default/user.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/x_icons.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/x_icons....')
+#1 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/assets/x_icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/group.css
+---
+2014/11/07 00:04:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/downl...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/download_file.php?file_id=15
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:04:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/notificat...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/notifications.php?type=pa&_=1415315049347
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:05:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/07 00:05:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
