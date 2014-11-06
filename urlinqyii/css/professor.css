@@ -2940,6 +2940,166 @@ width: 227px;
 margin-left: 0px;
 margin-top: 62px;
 }
+/*profile visibility*/
+.user-class-visibility {
+    margin-bottom: 17px;
+    position: relative;
+    height: 30px;
+    font-family: 'Open sans', sans-serif;
+    font-size: 14px;
+}
+
+.user-class-visibility .container {
+    float: right;
+    margin-right: 21px;
+    right: 0;
+    cursor: default;
+    position: relative;
+}
+
+.user-class-visibility .current {
+    padding: 4px 30px 4px 10px;
+    position: relative;
+    color: rgba(127, 127, 127, 0.4);
+    font-weight: 600;
+    box-shadow: none;
+    background: transparent;
+}
+
+.user-class-visibility .drop, .user-class-visibility .tick {
+    position: absolute;
+    background-image: url(../img/profile-visi.png);
+    background-size: 200% 200%;
+}
+
+.user-class-visibility .drop {
+    background-position: top left;
+    height: 13px;
+    width: 13px;
+    top: 8px;
+    right: 9px;
+}
+
+.user-class-visibility .tick {
+    background-position: bottom left;
+    display: none;
+    height: 17px;
+    width: 15px;
+    top: 7px;
+    left: 8px;
+}
+
+.user-class-visibility .hover {
+    display: none;
+    position: absolute;
+    width: 129px;
+    height: 33px;
+    background-image: url(../img/visi-classes.png);
+    background-repeat: no-repeat;
+    top: 0;
+    left: 100%;
+}
+
+.user-class-visibility .option:hover .tick, .user-class-visibility .option.selected .tick {
+    display: block;
+}
+
+.user-class-visibility .option:hover .tick {
+    background-position: right bottom;
+}
+
+.user-class-visibility .option:hover {
+    background-color: #3c4246;
+    color: #FFF;
+}
+
+.user-class-visibility .current:hover .hover {
+    display: block;
+}
+
+.user-class-visibility .options {
+    position: absolute;
+    background-color: #FFF;
+    min-width: 100%;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+    border-top: 0;
+    display: none;
+    z-index: 4;
+    padding: 3px 0;
+}
+
+.user-class-visibility .container.active .options {
+    display: block;
+}
+
+.user-class-visibility .container.active .drop {
+    background-position: right top;
+}
+
+.user-class-visibility .label {
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.user-class-visibility .container.active .current {
+    color: #FFF;
+    border-radius: 4px 4px 0 0;
+    background-color: #52E0A8;
+    border-color: #2eb892;
+}
+
+.user-class-visibility .option {
+    position: relative;
+    padding: 5px 30px 6px;
+    white-space: nowrap;
+}
+
+.user-groups-courses .user-class-visibility {
+    position: absolute;
+    right: 8;
+    top: 10;
+    font-size: 0.75em;
+}
+
+.user-class-visibility .current > * {
+    display: none;
+}
+
+.user-class-visibility .current.mouseover {
+    background: #F8F8F8;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+    color: #888;
+    font-weight: 600;
+}
+
+.user-class-visibility .current.mouseover > * {
+    display: block;
+}
+
+.user-groups-courses .user-class-visibility .drop {
+    top: 6px;
+}
+
+.user-groups-courses .user-class-visibility .tick {
+    top: 5px;
+}
+
+.user-groups-courses .user-class-visibility .hover {
+    background-image: url(../img/visi-class.png);
+}
+
+.user-groups-courses .user-class-visibility.club .hover {
+    background-image: url(../img/visi-club.png);
+}
+
+.user-class-visibility.club .hover {
+    background-image: url(../img/visi-clubs.png);
+}
+
+.user-groups-courses .user-class-visibility .options {
+    z-index: 2;
+}
 
 
 .form-control

@@ -24,10 +24,18 @@ class ProfileController extends Controller
     //http://localhost/urlinqyii/profile/1
     public function actionView() {
         $user_id = $_GET['id'];
-        $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+        $userProfile = User::model()->find('user_id=:id', array(':id'=>$user_id));
+        $currentUser = User::model()->find('user_id=:id',array(':id'=>2));
+        $school = $userProfile->school;
+        $university = $school->university;
+        $department = $userProfile->department;
+        $is_user = ($userProfile->user_id == $currentUser->user_id);
+        $courses = $userProfile->takes;
+        $clubs = $userProfile->groups;
 
 
-        $this->render('profile',array('user'=>$user));
+        $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
+            ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs));
     }
 
 

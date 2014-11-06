@@ -16,13 +16,13 @@ echo '
         echo '</div>';
         //if(count($admin_array) > 0) {
 
-
-        if(count($club->admins) > 0) {
+        //Change these to admins
+        if(count($club->users) > 0) {
            echo "
                  <div class='blockwrapper'>
                     <div class = 'members-header members-students'>
 
-                        Administrators (" . count($club->admins) . ")
+                        Administrators (" . count($club->users) . ")
                     </div>
                     <div style = 'width: 853px'class = 'members-header-line'></div>
                  </div>";
@@ -32,7 +32,7 @@ echo '
 
 
 echo '<div class="members-list-wrap prof-member-list">';
-    foreach ($club->admins as $row1) {
+    foreach ($club->users as $row1) {
       // if ($user_id == $row1['user_id'])
       // {
       //   $is_admin = true;
@@ -44,7 +44,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                 <div class="member-person prof-member-person">
                   <div class="member-wrap prof-member-wrap">
                     <div class="person-thumb">
-                      <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
+                      <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
                       <div class="member-bio">
                         <span>' . "INTEREST GOES HERE" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
@@ -56,7 +56,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                     echo '</div>
                     <h3 class="person-title">
                     <a href="profile/' . $row1['user_id'] . '"><strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong></a>
-                        <span><a class="search_unit" href="school/' . $row1['school_id'] . '">' . "$ row1['school_name']" . '</a></span>
+                        <span><a class="search_unit" href="school/' . $row1['univ_id'] . '">' . "$ row1['univ_name']" . '</a></span>
                     </h3>';
         if ($row1['user_id'] != $user->user_id) {
           if ($is_admin){
@@ -86,24 +86,24 @@ echo '<div class="members-list-wrap prof-member-list">';
 
 
 //fetching members for the club
-if(count($club->members) > 0) {
+if(count($club->users) > 0) {
    echo "
          <div class='blockwrapper'>
             <div class = 'members-header members-students'>
-                Members (" . count($club->members) . ")
+                Members (" . count($club->users) . ")
             </div>
             <div style = 'width: 853px'class = 'members-header-line'></div>
          </div>
          <div class = 'members-list-wrap student-member-list'>";
 }
 
-    foreach ($club->members as $row1) {
+    foreach ($club->users as $row1) {
         echo '
             <div class="member" id="' . $row1['user_id'] . '">
                 <div class="member-person prof-member-person">
                   <div class="member-wrap prof-member-wrap">
                     <div class="person-thumb">
-                      <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
+                      <div class="picwrap" style="background-image:url(' . $row1['dp_link'] . ')"></div>
                       <div class="member-bio">
                         <span>' . "$ row1['interest'] goes here" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
@@ -116,7 +116,7 @@ if(count($club->members) > 0) {
                         <strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong>
                       </a>
                       <span>
-                        <a class="search_unit" href="school/' . $row1['school_id'] . '">' .  " $ row1[univ_name] goes here" . '</a>
+                        <a class="search_unit" href="school/school.php?univ_id=' . $row1['univ_id'] . '">' .  " $ row1[univ_name] goes here" . '</a>
                       </span>
                       </h3>';
       if ($row1['user_id'] != $user->user_id) {
@@ -146,7 +146,7 @@ if(count($club->members) > 0) {
             </div>
         </div>';
     }
-    if(count($club->members) > 0) {
+    if(count($club->users) > 0) {
       echo '</div>';
     }
 // }

@@ -321,12 +321,11 @@ header('location:home.php');
                     <a class="forgot" href="PasswordReset.php" style="text-decoration: none">Forgot password?</a>
                   </div>
                   <div class = "signin-wrap">
-                    <!-- php/afterlogin.php -->
-                    <form name = "login" id = "login" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/login">
+                    <form name = "login" id = "login" method = "post" action = "php/afterlogin.php">
                       <input type = "text" name = "login_email" id = "login_email" autocomplete = "on" placeholder = "School Email">
                       <input type = "password" name = "login_password" id = "login_password" placeholder = "Password">
                       <input type="hidden" id="offset" name="offset" value="" >
-                       <button name = "submit" id = "submit" type = "submit" class = "rounded Button SignIn smallBtn">
+                       <button name = "submit" id = "submit"type = "submit" class = "rounded Button SignIn smallBtn">
                           <span class = "buttonText">
                             Sign In
                           </span>
@@ -439,7 +438,7 @@ header('location:home.php');
                     </div>
                   </div>
                   <div class = "registration-form">
-                    <form name = "register" id = "register" class = "register" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/register" autocomplete="on">
+                    <form name = "register" id = "register" class = "register" method = "post" action = "php/afteremail_register.php" autocomplete="on">
                       <div class = "registration-sec">
                         <div class="reg_error_text_prompt"></div>
                         <div class = "registration-sec-header">
@@ -473,13 +472,13 @@ header('location:home.php');
                         </ul>
                       </div>
                       <div class = "fname-lname-sec registration-sec-texts">
-                        <input type = "text" name ="firstname" id = "fname" autocomplete = "on" placeholder = "First Name"
+                        <input type = "text" name ="fname" id = "fname" autocomplete = "on" placeholder = "First Name"
                           value="<?php if(isset($_SESSION['register_firstname'])){
                                              echo $_SESSION['register_firstname'];
                                         }else{
                                         }                                            
                                   ?>">
-                        <input type = "text" name ="lastname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name"
+                        <input type = "text" name ="lname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name"
                          value="<?php if(isset($_SESSION['register_lastname'])){
                                              echo $_SESSION['register_lastname'];
                                         }else{

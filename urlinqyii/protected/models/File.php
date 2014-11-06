@@ -89,6 +89,7 @@ class File extends CActiveRecord
 			'universities' => array(self::HAS_MANY, 'University', 'cover_file_id'),
 			'universities1' => array(self::HAS_MANY, 'University', 'picture_file_id'),
 			'users1' => array(self::HAS_MANY, 'User', 'picture_file_id'),
+
 		);
 	}
 

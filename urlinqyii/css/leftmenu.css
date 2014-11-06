@@ -436,9 +436,9 @@ a.group.active-group{
 
 }
 
-#profile_pic_div{
+#profile_pic{
 	display :inline-block;
-	/*background: url('https://urlinq.com/beta/includes/get_blob.php?img_id=218');*/
+	background: url('https://urlinq.com/beta/includes/get_blob.php?img_id=218');
 	width: 45px;
 	height: 45px;
 	left: 10px;
@@ -450,16 +450,6 @@ a.group.active-group{
 	background-size: 100%;  
 
 }
-
-
-#profile_pic_img{
-    display :inline-block;
-    /*background: url('https://urlinq.com/beta/includes/get_blob.php?img_id=218');*/
-    width: 45px;
-    height: 45px;
-
-}
-
 #user_control{
 
 	position: fixed;

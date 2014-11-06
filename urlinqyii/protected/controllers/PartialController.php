@@ -27,15 +27,13 @@ class PartialController extends Controller
 //        }
 
 
-        $user_id = Yii::app()->session['user_id'];
-
-        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
+        $user = User::model()->find('user_id=:id', array(':id'=>2));
 
 
 
-        $sql = "SELECT c.course_name, c.course_id, cs.picture_file_id,cs.professor, cu.class_id, u.lastname
-                 FROM `class_user` cu
+
+        $sql = "SELECT c.course_name, c.course_id, cs.professor, cu.class_id, u.lastname
+                 FROM class_user cu
                  JOIN class cs
                  ON (cu.class_id = cs.class_id)
                  JOIN course c
@@ -45,25 +43,25 @@ class PartialController extends Controller
                  LEFT JOIN user u
                  ON (u.user_id = cs.professor)
                  WHERE cu.user_id = " . $user->user_id;
-        //$command = Yii::app()->db->createCommand($sql);
+        $command = Yii::app()->db->createCommand($sql);
+
+
+        $courses = $command->queryAll();
 
 
 
-        //$classes = $command->queryAll();
-        $classes = ClassModel::model()->findAllBySql($sql);
-
-
-
-        $sql = 'SELECT g.group_id, g.group_name, g.picture_file_id
-                FROM `group` g
-                JOIN group_user gu
+     /*   $sql = 'SELECT g.group_id, g.group_name
+                FROM group g
+                JOIN group_users gu
                 ON gu.group_id = g.group_id
-                WHERE gu.user_id = ' . $user->user_id;
+                WHERE gu.user_id =' . $user->user_id;
 
         $command = Yii::app()->db->createCommand($sql);
 
 
-        $groups = $command->queryAll();
+        $groups = $command->queryAll(); */
+
+      $groups = $user->groups;
 
 
 
@@ -76,18 +74,15 @@ class PartialController extends Controller
 
 
 
-		$this->render('leftpanel',array('user'=>$user,'classes'=>$classes,'groups'=>$groups));
+		$this->render('leftmenu',array('user'=>$user,'courses'=>$courses,'groups'=>$groups));
 	}
 
 
 
     public function actionTopbar()
     {
-        $user_id = Yii::app()->session['user_id'];
 
-        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
-
+        $user = User::model()->find('user_id=:id', array(':id'=>2));
 
 
         $this->render('topbar',array('user'=>$user));

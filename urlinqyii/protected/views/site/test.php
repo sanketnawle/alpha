@@ -8,10 +8,3 @@
 
 
 
-<?php
-
-echo $error;
-
-
-
-?>

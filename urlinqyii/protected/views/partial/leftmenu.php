@@ -1,14 +1,10 @@
 
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftmenu.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css">
 
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
@@ -126,7 +122,7 @@
                 <div class="lb_group_wrap">
                     <?php
 
-                    if($groups){
+                    if(!$groups){
                         echo '<div class = "no_groups_box">
                             <div class = "no_groups_img no_groups_img_club">
                             </div>
@@ -165,10 +161,10 @@
 //                                $admin_names = substr($admin_names, 0, 120);
 //                                $admin_names .= "...";
 //                            }
-                            echo '<a class = "group course-group" href="./clubs.php?group_id=' . $group['group_id'] . '">
+                            echo '<a class = "group course-group" href="./clubs.php?group_id=' . $group->group_id . '">
                                             <div class = "group-pic" style = "background-image:url(' . 'http://www.emperor-penguin.com/penguin-chick.jpg' . ')"></div>
                                             <div class = "details">
-                                                <div class = "group-name search_unit">' . $group['group_name'] . '
+                                                <div class = "group-name search_unit">' . $group->group_name . '
                                                 </div>
                                                 <div class = "group-admin">
                                                     <strong class = "admin-title">President</strong>
@@ -192,7 +188,7 @@
 
     <div id="user_control" >
         <h5 id="username"><a id="prof_link"href="https://urlinq.com/beta/profile.php?user_id=285 + $user_id"> <?php echo $user->firstname . ' ' . $user->lastname; ?> </a></h5>
-        <div id="profile_pic_div"><img id='profile_pic_img' src="<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>"></div>
+        <div id="profile_pic" style="background-image: url('http://www.emperor-penguin.com/penguin-chick.jpg');"></div>
         <div class="user_status_image"></div>
         <h6 id="user_status"> Online </h6>
         <p id="user_department"> Computer Science and Engineering</p>
@@ -369,11 +365,3 @@
 
     });
 </script>
-
-
-
-
-
-
-
-

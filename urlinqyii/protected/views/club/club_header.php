@@ -6,7 +6,7 @@ $user_id = $user->user_id;
 
 
 echo '
-                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(\'' . Yii::app()->getBaseUrl(true) . $club->coverFile->file_url . '\');">
+                        <div class = "group-head-top-sec" style="background-size:cover; background-image:url(includes/get_blob.php?img_id=' . $club->cover_blob_id . ') no-repeat scroll 50% center / 100% auto #333;">
                             <div class = "group-head-top-sec-shadow">
                             </div>
                             <div class = "info-scroll-up info-shower">   ';
@@ -100,7 +100,9 @@ echo '
                                                 MEMBERS
                                                 <span class = "tab-icon tab2-icon-inactive" ></span >
                                             </div >
-                                            <div class = "status tab-number" >' . count($club->users) . '</div >
+                                            <div class = "status tab-number" >
+
+                                            </div >
                                         </a >
                                     </li >
                                     <!--<li class = "group-tab" >
