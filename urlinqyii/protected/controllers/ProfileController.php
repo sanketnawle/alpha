@@ -32,10 +32,12 @@ class ProfileController extends Controller
         $is_user = ($userProfile->user_id == $currentUser->user_id);
         $courses = $userProfile->takes;
         $clubs = $userProfile->groups;
+        $following = $userProfile->usersFollowed;
+        $followers = $userProfile->usersFollowing;
 
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
-            ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs));
+            ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs, 'following'=>$following,'followers'=>$followers));
     }
 
 

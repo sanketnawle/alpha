@@ -104,6 +104,7 @@ class User extends CActiveRecord
 			'groupUsers' => array(self::HAS_MANY, 'GroupUser', 'user_id'),
             'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
             'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id,to_user_id)'),
+            'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id,from_user_id)'),
 			'invites' => array(self::HAS_MANY, 'Invite', 'user_id'),
 			'notifications' => array(self::HAS_MANY, 'Notification', 'actor_id'),
 			'notifications1' => array(self::HAS_MANY, 'Notification', 'user_id'),

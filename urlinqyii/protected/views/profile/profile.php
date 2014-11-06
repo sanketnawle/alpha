@@ -739,11 +739,11 @@ else die("This user doesn't seem to exist in our system");
                 </div>
                 <div class="professor-tab tab-inactive tab-3">
                     <span class="prof-tab-3">Following</span>
-                    <span class="tab-count prof-tab-3" id="followingCount"></span>
+                    <span class="tab-count prof-tab-3" id="followingCount"><?php echo count($following);?></span>
                 </div>
                 <div class="professor-tab tab-inactive tab-4">
                     <span class="prof-tab-4">Followers</span>
-                    <span class="tab-count prof-tab-4" id="followersCount"></span>
+                    <span class="tab-count prof-tab-4" id="followersCount"><?php echo count($followers);?></span>
                 </div>
                 <b class="tab-indicator">
                     <em class="caret-transform">
@@ -818,8 +818,9 @@ else die("This user doesn't seem to exist in our system");
 
                     </div><br>
                 </div>
+                <?php } ?>
             </div>
-            <?php } ?>
+
             <div class="user-tab-clubs-content">
                 <div class="user-class-visibility club">
                     <div class="container">
@@ -869,10 +870,152 @@ else die("This user doesn't seem to exist in our system");
                 <?php } ?>
             </div>
             <div class="user-tab-following-content">
+                <?php
+                if (count($following)  > 0) {
+                    foreach ($following as $followed) {
+                        echo '
+            <div class="member" id="' . $followed->user_id . '">
+                <div class="member-person prof-member-person">
+                  <div class="member-wrap prof-member-wrap">
+                    <div class="person-thumb">';
 
+                        if($followed->picture_file_id){
+                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
+                                $followed->pictureFile->file_url.')"></div>';
+                        }else{
+                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
+                                '/assets/default/user.png)"></div>';
+                        }
+
+                        echo             '  <div class="member-bio">
+                        <span>' . $followed->user_bio . '</span> <a href="profile.php?user_id=' . $followed->user_id . '"><strong>View Profile</strong></a>
+                      </div>
+                    </div>';
+                        if ($followed->user_type == 's') {
+                            echo '
+        <h3 class="person-title">
+                <a href="profile.php?user_id=' . $followed->user_id . ' "><strong class="search_unit">' . $followed->firstname . ' ' . $followed->lastname . ' </strong></a>
+                <span><a class="search_unit">' . $followed->school->school_name . '</a></span></h3>';
+                        } else {
+                            echo '
+                <h3 class="person-title">
+                <a href="profile.php?user_id=' . $followed->user_id . ' "><strong class="search_unit">Professor ' . $followed->lastname . '</strong></a>
+                <span><a class="search_unit">' . $followed->school->school_name . '</a></span></h3>';
+                        }
+                        if ($followed->user_id == $user->user_id) {
+
+                                        echo '
+                                </div>
+                            </div>
+                      </div>';
+                            continue;
+                        }
+//        echo $user_id;
+//        echo $row['user_id'];
+                        /*if (isFollowing($user_id, $row['user_id'])) {
+                            echo '
+                                    <div class="follow-btn">
+                                      <a class="follow tab_followed ready_to_unfollow">Following</a>
+                                    </div>';
+                            if ($admin_flag > 0) {
+                                echo '
+                                        <div class="upgrade-student">TA</div>
+                                ';
+                            }
+                            echo '      </div>
+                                </div>
+                          </div>';
+                        } else { */
+                        echo '
+                    <div class="follow-btn">
+                      <a class="follow">Follow</a>
+                    </div>';
+
+                        echo '    </div>
+                            </div>
+                        </div>';
+                                    }
+                                    // }
+                                }
+
+
+                    echo '</div>';
+
+                ?>
             </div>
             <div class="user-tab-followers-content">
+                <?php
+                if (count($followers)  > 0) {
+                    foreach ($followers as $follower) {
+                        echo '
+            <div class="member" id="' . $follower->user_id . '">
+                <div class="member-person prof-member-person">
+                  <div class="member-wrap prof-member-wrap">
+                    <div class="person-thumb">';
 
+                        if($follower->picture_file_id){
+                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
+                                $follower->pictureFile->file_url.')"></div>';
+                        }else{
+                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
+                                '/assets/default/user.png)"></div>';
+                        }
+
+                        echo             '  <div class="member-bio">
+                        <span>' . $follower->user_bio . '</span> <a href="profile.php?user_id=' . $follower->user_id . '"><strong>View Profile</strong></a>
+                      </div>
+                    </div>';
+                        if ($follower->user_type == 's') {
+                            echo '
+        <h3 class="person-title">
+                <a href="profile.php?user_id=' . $follower->user_id . ' "><strong class="search_unit">' . $follower->firstname . ' ' . $follower->lastname . ' </strong></a>
+                <span><a class="search_unit">' . $follower->school->school_name . '</a></span></h3>';
+                        } else {
+                            echo '
+                <h3 class="person-title">
+                <a href="profile.php?user_id=' . $follower->user_id . ' "><strong class="search_unit">Professor ' . $follower->lastname . '</strong></a>
+                <span><a class="search_unit">' . $follower->school->school_name . '</a></span></h3>';
+                        }
+                        if ($follower->user_id == $user->user_id) {
+
+                            echo '
+                                </div>
+                            </div>
+                      </div>';
+                            continue;
+                        }
+//        echo $user_id;
+//        echo $row['user_id'];
+                        /*if (isFollowing($user_id, $row['user_id'])) {
+                            echo '
+                                    <div class="follow-btn">
+                                      <a class="follow tab_followed ready_to_unfollow">Following</a>
+                                    </div>';
+                            if ($admin_flag > 0) {
+                                echo '
+                                        <div class="upgrade-student">TA</div>
+                                ';
+                            }
+                            echo '      </div>
+                                </div>
+                          </div>';
+                        } else { */
+                        echo '
+                    <div class="follow-btn">
+                      <a class="follow">Follow</a>
+                    </div>';
+
+                        echo '    </div>
+                            </div>
+                        </div>';
+                    }
+                    // }
+                }
+
+
+                echo '</div>';
+
+                ?>
             </div>
         </div>
     </div>

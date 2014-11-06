@@ -39,7 +39,7 @@ class ClassController extends Controller
         $is_member = false;
 
         foreach ($class->users as $student) {
-            if($user->user_id == $student['user_id']){
+            if($user->user_id == $student->user_id){
                 $is_member = true;
                 break;
             }
@@ -47,7 +47,7 @@ class ClassController extends Controller
 
         $is_admin = false;
         foreach ($class->admins as $student) {
-            if($user->user_id == $student['user_id']){
+            if($user->user_id == $student->user_id){
                 $is_admin = true;
                 break;
             }
