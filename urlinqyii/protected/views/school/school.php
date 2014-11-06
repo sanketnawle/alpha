@@ -4,12 +4,12 @@
 <head>
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/backgroundGroup.css">
+<link rel="stylesheet" type="text/css" href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundGroup.css'>
 <!--<link rel = "stylesheet" type = "text/css" href = "school_alpha/feedGroup.css"> -->
 <!--<link rel = "stylesheet" type = "text/css" href = "css/group.css"> --> 
-<link rel = "stylesheet" type = "text/css" href = "school_alpha/group.css"> 
-<link rel = "stylesheet" type = "text/css" href = "school_alpha/school_department.css"> 
-<link rel = "stylesheet" type = "text/css" href = "school_alpha/leftmenu.css">
+<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_alpha/group.css'>
+<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_alpha/school_department.css'>
+<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css'>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/datepicker.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -34,16 +34,17 @@ $(document).ready(function() {
 
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
-        for (var i = 0; i < sURLVariables.length; i++) 
-        {
+        for (var i = 0; i < sURLVariables.length; i++) {
             var sParameterName = sURLVariables[i].split('=');
-            if (sParameterName[0] == sParam) 
-            {
+            if (sParameterName[0] == sParam) {
                 return sParameterName[1];
             }
         }
 
     }
+
+});
+
     var univ_id = $.urlParam('univ_id');
 
 
@@ -101,133 +102,133 @@ $(document).ready(function() {
                     t_univ_id=univ_id;
                 }*/
 
-                formData.append("editing",editing);
-                formData.append("id", univ_id);
-                formData.append("school",true);
-                $.ajax({
-                            type: "POST",
-                            url: "edit_school_pictures.php",
-                            xhr: function() {  // Custom XMLHttpRequest
-                                var myXhr = $.ajaxSettings.xhr();
-                                if(myXhr.upload){ // Check if upload property exists
-                                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
-                                    }
-                             return myXhr;
-                            },
+//                formData.append("editing",editing);
+//                formData.append("id", univ_id);
+//                formData.append("school",true);
+//                $.ajax({
+//                            type: "POST",
+//                            url: "edit_school_pictures.php",
+//                            xhr: function() {  // Custom XMLHttpRequest
+//                                var myXhr = $.ajaxSettings.xhr();
+//                                if(myXhr.upload){ // Check if upload property exists
+//                                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+//                                    }
+//                             return myXhr;
+//                            },
+//
+//                            data: formData,
+//                            contentType: false,
+//                            processData: false,
+//                            success: function(html){
+//                                //alert(html);
+//                                $ref.closest("form").find(".uploadedPhotoFrame").hide();
+//                                alert(html);
+//                                alert("ad");
+//                                $ref.closest("form").find(".uploadedPhotoFrame_display").css({"background-image":"url("+html+")"});
+//                                $ref.closest("form").find(".uploadedPhotoFrame_display").show();
+//
+//                            },
+//                            error: function(html){
+//                                alert(html);
+//                                alert("asfw");
+//                            }
+//                        });
+//            });
 
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            success: function(html){
-                                //alert(html);
-                                $ref.closest("form").find(".uploadedPhotoFrame").hide();
-                                alert(html);
-                                alert("ad");
-                                $ref.closest("form").find(".uploadedPhotoFrame_display").css({"background-image":"url("+html+")"});
-                                $ref.closest("form").find(".uploadedPhotoFrame_display").show();
-
-                            },
-                            error: function(html){
-                                alert(html);
-                                alert("asfw");
-                            }
-                        });
-            });
-
-            $(document).delegate(".pt_upload_button", "click", function () {
-                alert("a");
-                var $ref = $(this);
-                var formData = new FormData($ref.closest("form")[0]);
-                var editing = "cover";
-
-                formData.append("editing", editing);
-                formData.append("id", univ_id);
-                formData.append("school",true);
-                alert("b");
-                $.ajax({
-                    type: "POST",
-                    url: "php/edit_class_pictures.php",
-                    xhr: function () {  // Custom XMLHttpRequest
-                        var myXhr = $.ajaxSettings.xhr();
-                        if (myXhr.upload) { // Check if upload property exists
-                            myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
-                        }
-                        return myXhr;
-                    },
-
-                    data: formData,
-                    dataType: "json",
-                    contentType: false,
-                    processData: false,
-                    success: function (html) {
-                        alert("4");
-                        var jsonstring = "";
-                        if (html.user_dp.length > 0) {
-                            jsonstring = html.user_dp[0]['img_url'];
-                        }
-                        alert("c");
-                        $ref.closest("form").find(".uploadedPhotoFrame").show();
-                        alert("d");
-                        $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
-                        $(".cancelBtn").click();
-
-
-                        $(".group-cover-picture").css({"background-image": "url(" + jsonstring + ")"});
-
-                    },
-                    error: function (html) {
-                        alert(html);
-                    }
-                });
-            });
+//            $(document).delegate(".pt_upload_button", "click", function () {
+//                alert("a");
+//                var $ref = $(this);
+//                var formData = new FormData($ref.closest("form")[0]);
+//                var editing = "cover";
+//
+//                formData.append("editing", editing);
+//                formData.append("id", univ_id);
+//                formData.append("school",true);
+//                alert("b");
+//                $.ajax({
+//                    type: "POST",
+//                    url: "php/edit_class_pictures.php",
+//                    xhr: function () {  // Custom XMLHttpRequest
+//                        var myXhr = $.ajaxSettings.xhr();
+//                        if (myXhr.upload) { // Check if upload property exists
+//                            myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+//                        }
+//                        return myXhr;
+//                    },
+//
+//                    data: formData,
+//                    dataType: "json",
+//                    contentType: false,
+//                    processData: false,
+//                    success: function (html) {
+//                        alert("4");
+//                        var jsonstring = "";
+//                        if (html.user_dp.length > 0) {
+//                            jsonstring = html.user_dp[0]['img_url'];
+//                        }
+//                        alert("c");
+//                        $ref.closest("form").find(".uploadedPhotoFrame").show();
+//                        alert("d");
+//                        $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
+//                        $(".cancelBtn").click();
+//
+//
+//                        $(".group-cover-picture").css({"background-image": "url(" + jsonstring + ")"});
+//
+//                    },
+//                    error: function (html) {
+//                        alert(html);
+//                    }
+//                });
+//            });
 
     $(document).delegate(".group-pic", "click", function () {
         $(this).closest(".group-pic-frame").find(".header_small_img_input").click();
     });
 
-    $(document).delegate(".header_small_img_input", "change", function () {
-        var $ref = $(this);
-        var formData = new FormData($ref.closest("form")[0]);
-        var editing = "display";
-
-        formData.append("editing", editing);
-        formData.append("id", univ_id);
-        formData.append("school",true);
-        $.ajax({
-            type: "POST",
-            url: "php/edit_class_pictures.php",
-            xhr: function () {  // Custom XMLHttpRequest
-                var myXhr = $.ajaxSettings.xhr();
-                if (myXhr.upload) { // Check if upload property exists
-                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
-                }
-                return myXhr;
-            },
-
-            data: formData,
-            dataType: "json",
-            contentType: false,
-            processData: false,
-            success: function (html) {
-                var jsonstring = "";
-                if (html.user_dp.length > 0) {
-                    jsonstring = html.user_dp[0]['img_url'];
-                }
-                //alert(html);
-                $ref.closest("form").find(".uploadedPhotoFrame").show();
-                alert(html);
-                $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
-                $(".cancelBtn").click();
-
-
-                $ref.closest(".group-pic-frame").find(".group-pic").css({"background-image": "url(" + jsonstring + ")"});
-
-            },
-            error: function (html) {
-                alert(html);
-            }
-        });
-    });
+//    $(document).delegate(".header_small_img_input", "change", function () {
+//        var $ref = $(this);
+//        var formData = new FormData($ref.closest("form")[0]);
+//        var editing = "display";
+//
+//        formData.append("editing", editing);
+//        formData.append("id", univ_id);
+//        formData.append("school",true);
+//        $.ajax({
+//            type: "POST",
+//            url: "php/edit_class_pictures.php",
+//            xhr: function () {  // Custom XMLHttpRequest
+//                var myXhr = $.ajaxSettings.xhr();
+//                if (myXhr.upload) { // Check if upload property exists
+//                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+//                }
+//                return myXhr;
+//            },
+//
+//            data: formData,
+//            dataType: "json",
+//            contentType: false,
+//            processData: false,
+//            success: function (html) {
+//                var jsonstring = "";
+//                if (html.user_dp.length > 0) {
+//                    jsonstring = html.user_dp[0]['img_url'];
+//                }
+//                //alert(html);
+//                $ref.closest("form").find(".uploadedPhotoFrame").show();
+//                alert(html);
+//                $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
+//                $(".cancelBtn").click();
+//
+//
+//                $ref.closest(".group-pic-frame").find(".group-pic").css({"background-image": "url(" + jsonstring + ")"});
+//
+//            },
+//            error: function (html) {
+//                alert(html);
+//            }
+//        });
+//    });
 
 
     $(document).delegate(".cancelBtn", "click", function () {
@@ -601,17 +602,17 @@ $(document).ready(function() {
             $(".members-tab-content").hide();
 
 
-            $.ajax({
-                            type: "POST",
-                            url: "php/school_components/department_school.php?university=<?php echo $school->univ_id; ?>",
-                            success: function(html){
-                                $(".departments-tab-content").remove();
-
-                                $(".midsec").append(html);
-                               $(".departments-tab-content").animate({ opacity: "1"},300);
-                               $(".departments-tab-content").show();
-                            }
-                        });
+//            $.ajax({
+//                            type: "POST"
+//                            url: "<?php //echo Yii::app()->getBaseUrl(true); ?>//=<?php //echo $school->school_id; ?>//",
+//                            success: function(html){
+//                                $(".departments-tab-content").remove();
+//
+//                                $(".midsec").append(html);
+//                               $(".departments-tab-content").animate({ opacity: "1"},300);
+//                               $(".departments-tab-content").show();
+//                            }
+//                        });
             
             
         }
@@ -649,17 +650,18 @@ $(document).ready(function() {
             $(".about-content").hide();
             $(".files-tab-content").stop().animate({ opacity: "0"},300);
             $(".files-tab-content").hide()
-             $.ajax({
-                            type: "POST",
-                            url: "php/school_components/professor_school.php?university=<?php echo $university; ?>",
-                            success: function(html){
-                                $(".members-tab-content").remove();
 
-                                $(".midsec").append(html);
-                              $(".members-tab-content").show();
-                              $(".members-tab-content").animate({ opacity: "1"},300);
-                            }
-                        });
+//            $.ajax({
+//                            type: "POST",
+//                            url:  //echo Yii::app()->getBaseUrl(true); ?>//'.=.' //echo $school->school_id; ?>//',
+//                            success: function(html){
+//                                $(".members-tab-content").remove();
+//
+//                                $(".midsec").append(html);
+//                              $(".members-tab-content").show();
+//                              $(".members-tab-content").animate({ opacity: "1"},300);
+//                            }
+//                        });
             
         }
         if($(this).hasClass("tabc")){
@@ -695,21 +697,22 @@ $(document).ready(function() {
             $(".members-tab-content").hide();
             $(".files-tab-content").stop().animate({ opacity: "0"},300);
             $(".files-tab-content").hide();
-             $.ajax({
-                            type: "POST",
-                            url: "php/school_components/events_school.php?university=<?php echo $university; ?>",
-                            success: function(html){
-                                $(".syllabus-tab-content").remove();
 
-                                $(".midsec").append(html);
-                              $(".syllabus-tab-content").show();
-                              $(".syllabus-tab-content").animate({ opacity: "1"},300);
-                            }
-                        });
-            
-            
-        }
-    });
+//             $.ajax({
+//                            type: "POST",
+//                            url:'<?php //echo Yii::app()->getBaseUrl(true); ?>//'.=.'<?php //echo $school->school_id; ?>//',
+//                            success: function(html){
+//                                $(".syllabus-tab-content").remove();
+//
+//                                $(".midsec").append(html);
+//                              $(".syllabus-tab-content").show();
+//                              $(".syllabus-tab-content").animate({ opacity: "1"},300);
+//                            }
+//                        });
+//
+//
+//        }
+//    });
     $(document).delegate("#group-about-link","click",function(){
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
             $(".feed-tab-content").hide();
@@ -749,32 +752,39 @@ $(document).ready(function() {
     });
 
 
-$(document).ready(function() {
+//$(document).ready(function() {
+//
+//       window.scroll(0,175);
+//});
+//
+////    /*progress function for ajax*/
+////    function progressHandlingFunction(e) {
+////        if (e.lengthComputable) {
+////            $('progress').attr({value: e.loaded, max: e.total});
+////        }
+////
+////
+////});
 
-       window.scroll(0,175); 
 
-
-
-});
-
-    /*progress function for ajax*/
-    function progressHandlingFunction(e) {
-        if (e.lengthComputable) {
-            $('progress').attr({value: e.loaded, max: e.total});
-        }
-    }
-
-});
 </script>
 </head>
 <body>
     <div class = "root">
     <div class='gp_topbar_wrap'>
-        <?php include("topbar.php"); ?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <div class='gp_leftbar_wrap'>
-        <?php include("leftmenu.php"); ?>
+        <?php
+
+        echo Yii::app()->runController('partial/leftmenu');
+
+
+        //echo $this->renderPartial('/partial/leftmenu',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+        //include("leftmenu.php");
+        ?>
+
     </div>
 
         <div class = "modal_coverPhoto_body modal_body">
@@ -833,7 +843,9 @@ $(document).ready(function() {
         
                 <div class = "mid_right_sec mid_right_sec_school">
                     <div class = "group-head-sec">
-                        <?php include "php/school_components/header_school.php"; ?>
+                        <?php
+                        echo $this->renderPartial('school_header',array('school'=>$school,'user'=>$user));
+                        ?>
                     </div>
                     
                     <div class = "midsec">
