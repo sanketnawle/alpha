@@ -503,6 +503,26 @@ color: #212121;
 border-radius: 0px!important;
 }
 
+.pdf_loading_animation
+{
+font-size: 18px;
+margin-left: 300px;
+margin-top: 100px;
+position: absolute;
+z-index: 10;
+display: none;
+}
+
+.blockshow
+{
+	display: inline-block!important;
+}
+
+.adot
+{
+	display: none;
+}
+
 input.title_text::-webkit-input-placeholder { color: #bfbfbf; font-size: 14px; }
 input.title_text:-moz-placeholder { color: #bfbfbf; font-size: 14px;}
 input.title_text::-moz-placeholder { color: #bfbfbf; font-size: 14px;}

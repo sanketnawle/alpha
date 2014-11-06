@@ -34,6 +34,22 @@ $(document).ready(function() {
 		$(".event_render").height(fit_height);
 	});
 
+	var animation_interval= setInterval(function(){
+		var c=0;
+	
+		$( ".adot" ).each(function( index ) {
+			if (!$(this).hasClass("blockshow")) {
+				$(this).addClass("blockshow");
+				return false;
+			}else{
+				c++;
+			}
+		});
+		if (c>2) {
+			$( ".adot" ).removeClass("blockshow");
+		};
+	}, 500);
+
 	$(".ui.dropdown").dropdown();
 
 	/*side card js*/
@@ -61,6 +77,8 @@ $(document).ready(function() {
 	$(document).delegate(".upload_syla","change",function(){
 		$ref=$(this);
 		pdfcandidate_name= $(this).val();
+		$(".pdf_loading_animation").show();
+
 
 		var formData= new FormData( $ref.closest("form")[0]);
 		$.ajax({
@@ -86,7 +104,7 @@ $(document).ready(function() {
 			                url: "HighlightDates/web/viewer.php",
 			                success: function () {
 			                    iframe.attr("src","HighlightDates/web/viewer.php?pdf_target="+route);
-			                    
+			                    $(".pdf_loading_animation").hide();
 			                    checkHighlight();
 			                    
 			                },
@@ -118,6 +136,12 @@ $(document).ready(function() {
                $(".pup_title_input").focus();
                $(".syla_block_pup").css({"opacity":"1","z-index":"1"});
                $(".syla_block_pup").offset({top: tt-self_height+small_correction,left: tl});
+
+               var tid=$(this).attr("id");
+               var associate= $.inArray(tid,seed_list_id);
+               var dt= seed_list_dt[associate];
+               $(".syla_block_pup").find(".ssc_date_block").text(dt);
+
                $(".syla_block_pup").show();
         });
 
@@ -156,6 +180,8 @@ $(document).ready(function() {
 		}, 3000);
 	}
 
+	var seed_list_id=[];
+	var seed_list_dt=[];
 	function grow_seed(seed){
 		var seeds= seed.split(";;");
 		
@@ -177,6 +203,8 @@ $(document).ready(function() {
 				var date_str=seedinfo[1];
 				$this_evt.attr("id",seedinfo[0]);
 				$this_evt.find(".ssc_date_block").text(date_str);
+				seed_list_id.push(seedinfo[0]);
+				seed_list_dt.push(seedinfo[1]);
 			}
 		});
 	}
@@ -206,13 +234,14 @@ $(document).ready(function() {
 	</div>
 
 	<div class="syla_body">
+		<div class='pdf_loading_animation'><span>Loading</span><span class='adot'>.</span><span class='adot'>.</span><span class='adot'>.</span></div>
 		<iframe class='pdf_render' src="" frameBorder="0" width="700" height="800">
 		</iframe>
 
 		<div class='syla_block_pup'>
 			<div class='syla_popup'>
 				<div class='pup_col0'><div class='pup_col0_0'><div class='green_circ'></div></div><input class='title_text pup_title_input' type='text' placeholder='Add a title to this event'></div>
-				<div class='pup_col1'><div class='ssc_date_block'>Wed, 15, Jan</div><input class='time_input' type='text' placeholder='Add a time'></div>
+				<div class='pup_col1'><div class='ssc_date_block'>loading...</div><input class='time_input' type='text' placeholder='Add a time'></div>
 				<div class='pup_col2'><div class='pup_col2_0'>Category : </div><div class='ui dropdown ssc_type_block pup_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>Homework</div><div class='item' data-value='option4'>Project</div></div></div></div>
 				<div class='pup_col3'><div class='evt_btn blue_btn'>Add Event</div> <div class='pup_col3_1'>Cancel</div></div>
 			</div>
