@@ -735,7 +735,7 @@ else die("This user doesn't seem to exist in our system");
                 </div>
                 <div class="tab-inactive professor-tab tab-5">
                     <span class="prof-tab-5">Clubs</span>
-                    <span class="tab-count prof-tab-5" id="clubsCount"></span>
+                    <span class="tab-count prof-tab-5" id="clubsCount"><?php echo count($clubs);?></span>
                 </div>
                 <div class="professor-tab tab-inactive tab-3">
                     <span class="prof-tab-3">Following</span>
@@ -861,9 +861,9 @@ else die("This user doesn't seem to exist in our system");
                     </a>
                     <div class="admin-group-functions">
                         <div class="gfunction">
-                            <span>The Student Affiliates of the American Chemical Society at NYU Polytechnic School of Engineering provides a professional network where students are given the opportunity to network with peers and professionals in the fie...</span>
+                            <span><?php echo $club->group_desc;?></span>
                         </div>
-                        <div class="gfunction"><span>5 members</span></div>
+                        <div class="gfunction"><span><?php echo count($club->users); ?> members</span></div>
                     </div>
                 </div>
                 <?php } ?>
