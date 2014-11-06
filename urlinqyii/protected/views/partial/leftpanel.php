@@ -49,7 +49,7 @@
             <ul>
 
                 <?php foreach($classes as $class){
-                    echo '<li><a href="/class/$class->class_id">' . $class->course->course_name . '</a></li>';
+                    echo '<li><a href="' .  Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id . '">' . $class->course->course_name . '</a></li>';
                 } ?>
             </ul>
         </div>

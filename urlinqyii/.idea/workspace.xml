@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/protected/views/club/club_members_tab.php" line="118" mnemonic="4" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="152ef7b0-fe60-41c2-a56e-74e63e8365a3" name="Default" comment="" />
     <ignored path="myapp.iws" />
@@ -23,10 +26,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ApiController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="0" selection-start="0" selection-end="10001" vertical-scroll-proportion="0.7307692" vertical-offset="1887" max-vertical-offset="6613">
+            <state line="234" column="54" selection-start="6785" selection-end="6785" vertical-scroll-proportion="-9.846154" vertical-offset="3722" max-vertical-offset="8007">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kjasd" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/partial/kjasd">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="636" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
@@ -41,36 +53,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leftmenu.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/partial/leftmenu.php">
+      <file leaf-file-name="leftpanel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="24" selection-start="7441" selection-end="7470" vertical-scroll-proportion="-10.480769" vertical-offset="2039" max-vertical-offset="6545">
+            <state line="45" column="41" selection-start="2083" selection-end="2083" vertical-scroll-proportion="-21.423077" vertical-offset="208" max-vertical-offset="2363">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="club_members_tab.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/club/club_members_tab.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="118" column="124" selection-start="5001" selection-end="5001" vertical-scroll-proportion="0.33333334" vertical-offset="1721" max-vertical-offset="2771">
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#2577#2666#0" expanded="true" />
-                <marker date="1415223838738" expanded="true" signature="3584:4429" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="3662:3697" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="3757:3851" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="3924:4398" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="4095:4116" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="4133:4363" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="4203:4326" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6277:7120" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6354:6389" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6449:6546" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6619:7089" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6788:6809" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6826:7054" placeholder="..." />
-                <marker date="1415223838738" expanded="true" signature="6896:7017" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="59:267" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="103:267" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="187:250" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="353:404" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="2655:2672" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="4875:4908" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="5217:5234" placeholder="..." />
+                <marker date="1415300962117" expanded="true" signature="5695:5725" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leftpanel.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
+      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="50" selection-start="2195" selection-end="2195" vertical-scroll-proportion="-18.807692" vertical-offset="361" max-vertical-offset="2363">
+            <state line="112" column="93" selection-start="4448" selection-end="4448" vertical-scroll-proportion="-16.192308" vertical-offset="1483" max-vertical-offset="3587">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/ClassController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="21" selection-start="611" selection-end="611" vertical-scroll-proportion="-20.923077" vertical-offset="0" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
@@ -85,46 +107,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/PostController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3247">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FeedController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/FeedController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="5848">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PartialController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/PartialController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="8" selection-start="1123" selection-end="1824" vertical-scroll-proportion="-7.8461537" vertical-offset="408" max-vertical-offset="2346">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ClubController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="272" column="47" selection-start="12151" selection-end="12151" vertical-scroll-proportion="-15.923077" vertical-offset="4210" max-vertical-offset="6205">
+            <state line="282" column="0" selection-start="12532" selection-end="12532" vertical-scroll-proportion="-20.307692" vertical-offset="4266" max-vertical-offset="6205">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/club/test.php">
+      <file leaf-file-name="CalendarController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/CalendarController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="19" selection-start="563" selection-end="563" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="374">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
@@ -140,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/html/templates/members_tab.html" />
         <option value="$PROJECT_DIR$/html/templates/member.html" />
         <option value="$PROJECT_DIR$/protected/components/tb_settings.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/topbar.php" />
@@ -178,28 +172,27 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/components/Controller.php" />
-        <option value="$PROJECT_DIR$/protected/views/club/club_members_tab.php" />
         <option value="$PROJECT_DIR$/protected/models/Group.php" />
         <option value="$PROJECT_DIR$/protected/components/file_upload.php" />
         <option value="$PROJECT_DIR$/protected/views/club/club_header.php" />
         <option value="$PROJECT_DIR$/css/club/club.css" />
         <option value="$PROJECT_DIR$/css/partial/leftmenu.css" />
         <option value="$PROJECT_DIR$/protected/views/partial/leftmenu.php" />
-        <option value="$PROJECT_DIR$/protected/views/partial/leftpanel.php" />
         <option value="$PROJECT_DIR$/protected/controllers/PartialController.php" />
         <option value="$PROJECT_DIR$/protected/views/club/test.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ClubController.php" />
         <option value="$PROJECT_DIR$/css/partial/leftpanel.css" />
+        <option value="$PROJECT_DIR$/protected/views/partial/leftpanel.php" />
+        <option value="$PROJECT_DIR$/protected/views/partial/kjasd" />
         <option value="$PROJECT_DIR$/protected/controllers/ApiController.php" />
+        <option value="$PROJECT_DIR$/protected/views/club/club_members_tab.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1056" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -353,6 +346,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -435,8 +446,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -444,7 +455,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14091858" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14180672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -478,24 +489,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/components/UniqueTokenGenerator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="37" selection-start="63" selection-end="63" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/file_upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yii_reference.txt">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="3194" selection-end="3194" vertical-scroll-proportion="-54.4" vertical-offset="0" max-vertical-offset="2584" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Event.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="35.307693" vertical-offset="918" max-vertical-offset="2839" />
@@ -591,13 +584,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="37.26923" vertical-offset="969" max-vertical-offset="2856" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="93" selection-start="4448" selection-end="4448" vertical-scroll-proportion="0.14303483" vertical-offset="1789" max-vertical-offset="3587">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/GroupUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1989" />
@@ -632,21 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="28" selection-start="1790" selection-end="1790" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1802">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/club/club_members_tab.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="39" selection-start="2846" selection-end="2846" vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="2771">
-          <folding>
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415216642389" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,29 +754,22 @@
         <state line="152" column="24" selection-start="7441" selection-end="7470" vertical-scroll-proportion="-10.480769" vertical-offset="2039" max-vertical-offset="6545">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#2577#2666#0" expanded="true" />
-            <marker date="1415223838738" expanded="true" signature="3584:4429" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="3662:3697" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="3757:3851" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="3924:4398" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="4095:4116" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="4133:4363" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="4203:4326" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6277:7120" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6354:6389" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6449:6546" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6619:7089" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6788:6809" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6826:7054" placeholder="..." />
-            <marker date="1415223838738" expanded="true" signature="6896:7017" placeholder="..." />
+            <element signature="e#2577#2666#0" expanded="false" />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1415223838738" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="50" selection-start="2195" selection-end="2195" vertical-scroll-proportion="-18.807692" vertical-offset="361" max-vertical-offset="2363">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,16 +794,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
+    <entry file="file://$PROJECT_DIR$/css/partial/leftpanel.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="47" selection-start="12151" selection-end="12151" vertical-scroll-proportion="-15.923077" vertical-offset="4210" max-vertical-offset="6205">
+        <state line="213" column="69" selection-start="5626" selection-end="5626" vertical-scroll-proportion="-11.5" vertical-offset="3322" max-vertical-offset="5423">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/partial/leftpanel.css">
+    <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="69" selection-start="5626" selection-end="5626" vertical-scroll-proportion="-11.5" vertical-offset="3322" max-vertical-offset="5423">
+        <state line="45" column="41" selection-start="2083" selection-end="2083" vertical-scroll-proportion="-21.423077" vertical-offset="208" max-vertical-offset="2363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ClassController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="21" selection-start="611" selection-end="611" vertical-scroll-proportion="-20.923077" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="282" column="0" selection-start="12532" selection-end="12532" vertical-scroll-proportion="-20.307692" vertical-offset="4266" max-vertical-offset="6205">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/CalendarController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/partial/kjasd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="636" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
@@ -853,8 +845,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="0" selection-start="0" selection-end="10001" vertical-scroll-proportion="0.7307692" vertical-offset="1887" max-vertical-offset="6613">
+        <state line="234" column="54" selection-start="6785" selection-end="6785" vertical-scroll-proportion="-9.846154" vertical-offset="3722" max-vertical-offset="8007">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="93" selection-start="4448" selection-end="4448" vertical-scroll-proportion="-16.192308" vertical-offset="1483" max-vertical-offset="3587">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/club/club_members_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="124" selection-start="5001" selection-end="5001" vertical-scroll-proportion="0.33333334" vertical-offset="1721" max-vertical-offset="2771">
+          <folding>
+            <marker date="1415300962117" expanded="true" signature="59:267" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="103:267" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="187:250" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="353:404" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="2655:2672" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="4875:4908" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="5217:5234" placeholder="..." />
+            <marker date="1415300962117" expanded="true" signature="5695:5725" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

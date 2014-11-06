@@ -140,10 +140,92 @@ class ApiController extends Controller
         }
 
         $user_id = $_GET['user_id'];
-
+        //$user = User::model()->findAll(array("select"=>"user_email"));
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
 
-        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('pictureFile')));
+
+
+//        $departments = array();
+//        foreach($school->departments as $department){
+//            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
+//        }
+
+        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array('pictureFile','coverFile'),'pictureFile'=>array(),'school'=>array('pictureFile','coverFile','university'))));
+
+
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+    public function actionGetSchoolData(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $school_id = $_GET['school_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+
+        $departments = array();
+        foreach($school->departments as $department){
+            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
+        }
+
+        $data = array('success'=>true,'school'=>$this->get_model_associations($school,array('pictureFile','coverFile')),'departments'=>$departments);
+
+
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+
+    public function actionGetDepartmentData(){
+        if(!isset($_GET['department_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $department_id = $_GET['department_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
+
+
+        $data = array('success'=>true,'department'=>$this->get_model_associations($department,array('pictureFile','coverFile')));
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+
+    public function actionGetUniversityData(){
+        if(!isset($_GET['university_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'university_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $university_id = $_GET['university_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $university = university::model()->find("university_id=:university_id",array(":university_id"=>$university_id));
+
+
+        $schools = array();
+        foreach($university->schools as $school){
+            array_push($schools,array('school_name'=>$school->school_name,'school_id'=>$school->school_id));
+        }
+
+
+        $data = array('success'=>true,'university'=>$this->get_model_associations($university,array('pictureFile','coverFile')),'schools'=>$schools);
+
+
         $this->renderJSON($data);
         return;
     }
