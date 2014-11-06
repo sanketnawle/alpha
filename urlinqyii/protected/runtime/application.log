@@ -14107,6 +14107,7 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:32:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14437,10 +14438,163 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:16:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+2014/11/06 23:16:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/notificati...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/notifications.php?type=pa&_=1415312181106
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:17:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:17:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:18:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:18:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:19:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:19:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:20:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:21:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:21:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:22:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:22:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+<<<<<<< HEAD
 2014/11/06 23:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_active.png".' in D:\xampp\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
@@ -14457,10 +14611,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:23:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:36:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
@@ -14479,10 +14643,31 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:23:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+2014/11/06 23:24:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+<<<<<<< HEAD
 2014/11/06 23:37:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14490,10 +14675,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:24:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:37:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14501,10 +14696,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:25:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:38:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14512,10 +14717,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:25:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:38:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14523,10 +14738,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:26:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:39:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14534,10 +14759,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:26:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:39:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14545,10 +14780,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:27:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:40:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14556,10 +14801,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:27:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:40:31 [error] [exception.CException] exception 'CException' with message 'Property "User.takes" is not defined.' in D:\xampp\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('takes')
@@ -14582,10 +14837,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:28:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:41:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14725,10 +14990,168 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/css/datepi...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('scroll')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/scroll/jqu...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/scroll/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/calenda...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery-...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/jquery....')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/ampm.js')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/TopBarIcons.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/TopBarIcons...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/TopBarIcons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:28:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/smallSearchIco.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/smallSearch...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/topbar.css
+---
+2014/11/06 23:28:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1415312925016
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:28:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:47:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14736,10 +15159,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:29:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:48:16 [error] [exception.CException] exception 'CException' with message 'Property "User.groups" is not defined.' in D:\xampp\yii\framework\base\CComponent.php:130
 Stack trace:
 #0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('groups')
@@ -14762,10 +15195,31 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:29:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "notifications.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('notifications.p...')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('notifications.p...')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/notificati...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/notifications.php?type=pa&_=1415312925017
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:29:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:48:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14773,10 +15227,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:30:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:49:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14784,10 +15248,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:30:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:49:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14795,10 +15269,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:31:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:50:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14806,10 +15290,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:31:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:50:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14817,10 +15311,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:32:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:51:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14828,10 +15332,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14839,10 +15353,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:33:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14850,10 +15374,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:33:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:52:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14861,10 +15395,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:34:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14872,10 +15416,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:34:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:53:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14883,10 +15437,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:35:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:54:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14894,10 +15458,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:35:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:54:44 [error] [php] include(Groups.php): failed to open stream: No such file or directory (D:\xampp\yii\framework\YiiBase.php:427)
 Stack trace:
 #0 D:\xampp\yii\framework\db\ar\CActiveRecord.php(395): spl_autoload_call()
@@ -14926,10 +15500,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:55:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1).
 in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php (34)
 in D:\xampp\htdocs\alpha\urlinqyii\index.php (17)
@@ -14960,10 +15544,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:36:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:55:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14971,10 +15565,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:37:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:56:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14982,10 +15586,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:56:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
@@ -14993,10 +15607,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:38:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:56:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'groups.group_user(user_id' in 'where clause'. The SQL statement executed was: SELECT `groups`.`group_id` AS `t1_c0`, `groups`.`school_id` AS `t1_c1`, `groups`.`group_name` AS `t1_c2`, `groups`.`group_desc` AS `t1_c3`, `groups`.`color_id` AS `t1_c4`, `groups`.`contact_email` AS `t1_c5`, `groups`.`website` AS `t1_c6`, `groups`.`privacy` AS `t1_c7`, `groups`.`founded_on` AS `t1_c8`, `groups`.`picture_file_id` AS `t1_c9`, `groups`.`cover_file_id` AS `t1_c10` FROM `group` `groups`  WHERE (`groups`.`group_user(user_id`=:ypl0) AND (`groups`.`group_id)`=:ypl1).
 in D:\xampp\htdocs\alpha\urlinqyii\protected\controllers\ProfileController.php (34)
 in D:\xampp\htdocs\alpha\urlinqyii\index.php (17)
@@ -15027,10 +15651,20 @@ Stack trace:
 #2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
 #3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/06 23:38:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
 #5 {main}
 REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
 ---
+<<<<<<< HEAD
 2014/11/06 23:57:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "scroll".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('scroll')
@@ -16452,6 +17086,348 @@ REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
 ---
 2014/11/07 00:05:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 D:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/php/check...')
+#3 D:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+=======
+2014/11/06 23:39:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:39:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:40:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:40:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:41:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:42:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:42:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:43:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:43:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:44:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:44:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:45:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:45:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:46:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:46:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:47:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:47:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:48:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:48:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:49:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:49:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:50:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:50:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:51:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:51:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:52:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:52:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:53:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/06 23:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/check_...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/check_new_notifications.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+>>>>>>> d82a40b50c566bc26d33363f01acb3cea01b9646
+---
+2014/11/07 00:07:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in D:\xampp\yii\framework\web\CController.php:483
 Stack trace:
 #0 D:\xampp\yii\framework\web\CController.php(270): CController->missingAction('php')
 #1 D:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('php')

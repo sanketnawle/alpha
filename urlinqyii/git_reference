@@ -1,3 +1,32 @@
+git clone https://github.com/urlinq/alpha
+
+
+
+//When you want to push your changes do this:
+git add .
+git commit -m 'your commit message here'
+
+//Pull changes before you push ALWAYS
+git pull origin master
+
+//Push your changes
+git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Set your fork URL
 git remote set-url origin https://github.com/yourusername/alpha.git
