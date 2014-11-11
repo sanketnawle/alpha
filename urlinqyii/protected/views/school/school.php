@@ -39,13 +39,13 @@ $(document).ready(function() {
             if (sParameterName[0] == sParam) {
                 return sParameterName[1];
             }
-        }
+        }$
 
     }
 
 });
 
-    var univ_id = $.urlParam('univ_id');
+    var univ_id = 1//$.urlParam('univ_id');
 
 
           var feed=$('.feed-tab-content').clone();
@@ -288,6 +288,8 @@ $(document).ready(function() {
                             type=3;
                             alert("in interested"+type);
                         }
+
+                  /*
                         $.ajax({  
                             type: "POST", 
                                     url:"php/getdepartment.php",
@@ -296,7 +298,7 @@ $(document).ready(function() {
                                         console.log(response);
                                     }
                             });
-                
+                */
                 if(!$(this).hasClass("pressedGraybtn")){
                         /*clean part*/
                         $(this).closest(".study_first_option").find(".majorType").removeClass("pressedGraybtn");
@@ -472,6 +474,7 @@ $(document).ready(function() {
             $(this).html("<em></em>Follow");
             $(this).removeClass("unfollowBtn");
         }
+        /*
         $.ajax({
             type:'post',
             url:'includes/department_follow.php',
@@ -480,6 +483,7 @@ $(document).ready(function() {
 
             }
         });
+        */
     });
     $(document).delegate('.follow',"click", function(){
                 var follow_user=$(this).attr('id').replace(/[^\d.]/g,'');
@@ -488,6 +492,7 @@ $(document).ready(function() {
                 $(this).text("Following");
                 $(this).addClass("tab_followed");          
                 }
+                /*
                 $.ajax({  
                     type: "POST", 
                     url:"includes/followunfollow.php",
@@ -495,7 +500,8 @@ $(document).ready(function() {
                     success: function(response) {
                         console.log(response);
                     }
-                });    
+                });
+                */
             });
 
 
@@ -520,10 +526,6 @@ $(document).ready(function() {
                 $(this).text("Following");
             });
            
-
-
-
-
 
     $(document).delegate(".tab-inactive","click",function(){
         if($(this).hasClass("tab1")){           
@@ -564,6 +566,7 @@ $(document).ready(function() {
         }
 
         if($(this).hasClass("tabDepartments")){
+            console.log("click dept");
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
@@ -665,9 +668,8 @@ $(document).ready(function() {
             
         }
         if($(this).hasClass("tabc")){
-            
-            
-            
+
+        }
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
@@ -711,8 +713,9 @@ $(document).ready(function() {
 //                        });
 //
 //
-//        }
-//    });
+        }
+    });
+
     $(document).delegate("#group-about-link","click",function(){
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
             $(".feed-tab-content").hide();
@@ -787,54 +790,6 @@ $(document).ready(function() {
 
     </div>
 
-        <div class = "modal_coverPhoto_body modal_body">
-            <div class = "modal_coverPhoto_container">
-                <div class = "modal_loading">
-                    <img class = "modal_animation" src = "">
-                </div>
-                <div class = "modal_content">
-                    <div class = "modal_header">
-                        <span class = "floatL white">
-                            Submit Cover Photo
-                        </span>
-                        <em class = "floatR cancelBtn close">
-                        </em>
-                    </div>
-                    <div class = "modal_main">
-                        <form>
-                            <label for = "cover_name" class = "label_left">
-                                Cover Photo Name
-                            </label>
-                            <input class = "inputBig inputPhotoName" id = "cover_name" placeholder = "Enter a name for this photo...">
-                            <input class='cover_photo_upload' name='img' type='file' style='display:none;'>
-
-                            <div class = "uploadedPhotoFrame_display" style="background-size:cover;"></div>
-                            <div class = "uploadedPhotoFrame">
-
-                                <div class = "noPhotoText">
-                                    No photo uploaded
-                                </div>
-                                <div class = "photoicon">
-                                </div>
-                                
-                                <button class = "uploadPhotoBtn">
-                                    Upload Photo
-                                </button> 
-                            </div>
-                            <div class = "btmleft">
-
-                                <button type=  "button" class = "cancelBtn grayBtn">
-                                    Cancel
-                                </button> 
-                                <button type=  "button" class = "blueBtn pt_upload_button">
-                                    Submit
-                                </button> 
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         
         <div class = "main">
             <div class = "leftsec">
@@ -843,112 +798,21 @@ $(document).ready(function() {
         
                 <div class = "mid_right_sec mid_right_sec_school">
                     <div class = "group-head-sec">
-                        <?php
-                        echo $this->renderPartial('school_header',array('school'=>$school,'user'=>$user));
-                        ?>
+                        <?php echo $this->renderPartial('school_header',array('school'=>$school,'user'=>$user)); ?>
                     </div>
-                    
+
                     <div class = "midsec">
-                        <?php include "php/school_components/feed_school.php"; ?> 
-                        
+                        <div class="section group">
+                            <?php echo $this->renderPartial('school_info_tab_about',array('school'=>$school)); ?>
+                            <?php echo $this->renderPartial('school_info_tab_announcements',array()); ?>
+                            <?php echo $this->renderPartial('school_info_tab_students',array()); ?>
 
-                        
-                                    
-                                
-                        
-                        
+                            <?php echo $this->renderPartial('school_departments_tab',array()); ?>
 
-                        
-                           
-                                                 
-                       
-
-                        <div class = "about-content">
-                            <div class = "about-tab-leftsec">
-                                <div class = "about-tab-about about-tab-block">
-                                    <div class = "tab-block-header">
-                                        <div class = "block-head-left">
-                                            About
-                                        </div>
-                                        <div class = "block-head-right">
-                                            <a class = "edit-about">
-                                                Edit
-                                                <i class = "edit-icon">
-
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class = "tab-block-content">
-                                        Receive a potato-salad themed haiku written by me, your name carved into a potato that will be used in the potato salad, a signed jar of mayonnaise, the potato salad recipe, hang out in the kitchen with me while I make the potato salad, choose a potato-salad-appropriate ingredient to add to the potato salad, receive a bite of the potato salad, a photo of me making the potato salad, a 'thank you' posted to our website and I will say your name out loud while making the potato salad.
-                                    </div>
-                                </div>
-                                <div class = "about-tab-members about-tab-block">
-                                    <div class = "tab-block-header">
-                                        <div class = "block-head-left">
-                                            STUDENTS YOU KNOW IN THIS SCHOOL 
-                                            <span> 
-                                             <?php 
-                                                
-                                               echo get_people_know_school($university,$user_id); 
-                                              ?>
-                                            </span>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class = "tab-block-content tab-block-content-scroll">
-                                        <div class = "members-scrollwrap">
-                                            
-                                                <?php
-                                                     include 'php/dbconnection.php';
-                                                     $query=$con->query("SELECT user_id,firstname,lastname FROM user WHERE user_id 
-                                                                           IN (SELECT to_user_id FROM connect WHERE from_user_id=$user_id) 
-                                                                           AND univ_id=$university");
-                                                    ?>
-                                                    <ul class = "people-you-know">
-                                                     <?php while($row=$query->fetch_array()){
-                                                           ?><li class = "people-box">
-                                                           <?php 
-                                                               $dp_link=get_user_dp($con,$row['user_id']);
-                                                               $user_id_know=$row['user_id']; 
-                                                           ?>
-                                                            <div class = "person-pic-wrap" style='background-image:url("<?php echo $dp_link; ?>")'>
-                                                            </div>
-
-                                                            <div class = "person-title-wrap" >
-                                                                <a href='<?php echo "profile?user_id=".$user_id_know; ?>'  style="text-decoration:none;"><p><?php echo $row['firstname'].' '.$row['lastname']?></p></a>
-                                                            </div>
-                                                            <div class = "after-click-effect"></div>
-                                                        </li>
-
-                                                    <?php }
-                                                    ?>
-                                            </ul>
-
-                                        </div>
-                                        <a class = "ddbox-hor-scroller hor-scroller-left" >
-                                            <div class = "ddbox-hor-scroller-cont">
-                                            </div>
-                                            <i class = "ddbox-hor-scroll-icon-left">
-                                            </i>
-                                        </a>
-                                        <a class = "ddbox-hor-scroller hor-scroller-right" >
-                                            <div class = "ddbox-hor-scroller-cont">
-                                            </div>
-                                            <i class = "ddbox-hor-scroll-icon-right">
-                                            </i>
-                                        </a>
-
-                                    </div>
-
-                                </div>
-                                    
-                                </div>
-                                
-                                </div>
-                            </div>
+                            <?php echo $this->renderPartial('school_members_tab',array()); ?>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

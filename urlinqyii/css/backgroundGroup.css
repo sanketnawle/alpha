@@ -136,23 +136,16 @@ padding:0;
 .midsec {
 width: 992px;
 float:left;
-border: 1px solid rgba(0,0,0,.1);
 position:relative;
 height:auto;
 padding-top:10px;
 padding-bottom:20px;
 min-height:500px;
-background: #dadbdd url(../src/noise-2.png);
+background:transparent;
 padding-left: 9px; 
 padding-right: 9px;
-z-index: 2;
--moz-box-shadow:3px 3px 12px -7px rgba(0,0,0,0.7) inset, -3px -3px 12px -7px rgba(0,0,0,0.7) inset; 
--webkit-box-shadow: 3px 3px 12px -7px rgba(0,0,0,0.7) inset, -3px -3px 12px -7px rgba(0,0,0,0.7) inset; 
-box-shadow: 3px 3px 12px -7px rgba(0,0,0,0.7) inset, -3px -3px 12px -7px rgba(0,0,0,0.7) inset;
-border-top: none;
-border: 1px solid rgba(0, 0, 0, .15); border-width: 0 1px 1px 1px;
+z-index:2;
 margin-left: 1px;
-border-radius: 0px 0px 5px 5px;
 }
 
 
