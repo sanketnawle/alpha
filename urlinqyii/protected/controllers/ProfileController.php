@@ -6,6 +6,15 @@ class ProfileController extends Controller
 
     //public $layout='//layouts/main';
 
+    public function addUserFlags($members, $usersFollowed){
+        $newMembers = [];
+        $newMembers['users'] = $members;
+        $newMembers['flags'] = [];
+        foreach($members as $i=>$member){
+            $newMembers['flags'][$i]['following'] = in_array($member->user_id,$usersFollowed);
+        }
+        return $newMembers;
+    }
 
 	public function actionIndex(){
 		$this->render('index');
@@ -24,16 +33,25 @@ class ProfileController extends Controller
     //http://localhost/urlinqyii/profile/1
     public function actionView() {
         $user_id = $_GET['id'];
+        $signedInUser = 2;
         $userProfile = User::model()->find('user_id=:id', array(':id'=>$user_id));
-        $currentUser = User::model()->find('user_id=:id',array(':id'=>2));
+        $currentUser = User::model()->find('user_id=:id',array(':id'=>$signedInUser));
         $school = $userProfile->school;
         $university = $school->university;
         $department = $userProfile->department;
         $is_user = ($userProfile->user_id == $currentUser->user_id);
         $courses = $userProfile->takes;
         $clubs = $userProfile->groups;
+
+        //this is an array of usernames that the signed in user follows
+        $currentUserFollowing = [];
+        foreach($currentUser->usersFollowed as $userFollowed){
+            $currentUserFollowing[] = $userFollowed->user_id;
+        }
+
         $following = $userProfile->usersFollowed;
         $followers = $userProfile->usersFollowing;
+
 
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department

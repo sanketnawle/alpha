@@ -1,31 +1,4 @@
-<script>
-    $(document).ready(function () {
-        $(document).delegate(".block-head-right", "click", function () {
-            $(this).closest(".about-tab-about").find(".about_edit").show();
-            $(this).closest(".about-tab-about").find(".tab-block-content").hide();
-        });
-
-        $(document).delegate(".about_edit_cancel", "click", function () {
-            $(this).closest(".about-tab-about").find(".about_edit").hide();
-            $(this).closest(".about-tab-about").find(".tab-block-content").show();
-        });
-
-        $(document).delegate(".about_edit_done", "click", function () {
-            $(this).closest(".about-tab-about").find(".about_edit").hide();
-            $(this).closest(".about-tab-about").find(".tab-block-content").show();
-
-            /*last step to go*/
-            $(this).closest(".about-tab-about").find(".about_edit").val("");
-        });
-
-        $(document).delegate(".group-tab", "click", function () {
-
-            $(".about-tab-about").find(".about_edit").hide();
-            $(".about-tab-about").find(".tab-block-content").show();
-        });
-
-    });
-</script>
+<script src='<?php echo Yii::app()->getBaseUrl(true);?>/js/class/class_about_tab.js'></script>
 
 <?php
 /**
@@ -106,7 +79,7 @@ echo "
                     echo '<p>Course Description: '.$course->course_desc.'</p>';
                     echo '<p>Users you follow who have taken this course:<br>';
                     foreach($all_following as $user_followed){
-                        if($user_followed['user_type'] == 's'){
+                        if($user_followed->user_type == 's'){
                             echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">'.$user_followed['firstname'].' '.$user_followed['lastname'].'</a><br>';
 
                         }else{
@@ -143,14 +116,14 @@ JOIN user U on CU.user_id = U.user_id AND U.user_type = 's'
 JOIN student_attribs SA on U.user_id = SA.user_id
 WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
     $get_course_connection_query_result = $con->query($get_course_connection_query);
+*/
 
-    $user_count = mysqli_num_rows($get_course_connection_query_result);
-    if ($user_count > 0) {
+    if (count($all_following) > 0) {
         echo "
            <div class = 'about-tab-members about-tab-block'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>
-                        STUDENTS YOU KNOW IN THIS COURSE <span>(" . $user_count . ")</span>
+                        STUDENTS YOU KNOW WHO TOOK THIS COURSE <span>(" . count($all_following). ")</span>
                     </div>
 
                 </div>
@@ -158,14 +131,20 @@ WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
                     <div class = 'members-scrollwrap'>
                         <ul class = 'people-you-know'>
     ";
-        while ($row = $get_course_connection_query_result->fetch_array()) {
+        foreach ($all_following as $user_followed) {
             echo "
                             <li class = 'people-box'>
-                                <div class = 'person-pic-wrap' style='background-image:url(" . get_user_dp($con, $row['user_id']) . ")'>
-                                </div>
-                                <span class = 'grade'>" . strtoupper($row['student_type']) . "</span>
-                                <div class = 'person-title-wrap'>
-                                    <a href='profile.php?user_id=" . $row['user_id'] . "'><p>" . $row['firstname'] . " " . $row['lastname'] . "</p></a>
+                                <div class = 'person-pic-wrap' style='background-image:url(";
+            if($user_followed->picture_file_id) {
+                echo Yii::app()->getBaseUrl(true) . $user_followed->pictureFile->file_url;
+            }else{
+                echo Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            }
+           echo                     ")'>
+                                </div>"
+                              //  <span class = 'grade'>  </span>
+                               . " <div class = 'person-title-wrap'>
+                                    <a href='" .Yii::app()->getBaseUrl(true)."/profile/" . $user_followed->user_id . "'><p>" . $user_followed->firstname . " " . $user_followed->lastname . "</p></a>
                                 </div>
                                 <div class = 'after-click-effect'></div>
                             </li>
@@ -191,7 +170,7 @@ WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
             </div>
     ";
 
-    } else {
+    }   /* else {
         $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
 WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
         $get_course_student_query_result = $con->query($get_course_student_query);
@@ -301,7 +280,7 @@ WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
     }
 
 }
-
+*/
 echo "
     <div class = 'about-tab-prof about-tab-block'>
         <a class = 'prof-header'><div class = 'tab-block-header'>
@@ -312,18 +291,18 @@ echo "
         </div></a>
     </div>
 ";
-*/
+
 //closing about-tab-leftsec
 echo "
         </div>
 ";
-/*
+
 //opening about-tab-rightsec and group-about
 echo "
         <div class = 'about-tab-rightsec'>
             <div class = 'group-about group-about-2'>
 ";
-
+/*
 $get_course_files_query = "SELECT FU.*, U.user_id, U.firstname, U.lastname FROM course_files CF
 LEFT JOIN file_upload FU on FU.file_id = CF.file_id
 LEFT JOIN user U on CF.user_id = CF.user_id
@@ -338,7 +317,7 @@ LIMIT 0,1";
 $get_course_files_query_result = $con->query($get_course_files_query);
 
 if (mysqli_num_rows($get_course_files_query_result) > 0) {
-    echo "
+   */ echo "
                  <div class = 'box-header'>
                     <span class = 'bh-t1'>
                         RECENT UPLOAD
@@ -354,28 +333,32 @@ if (mysqli_num_rows($get_course_files_query_result) > 0) {
                     </form>
                 </div>
     ";
-    $file_row = $get_course_files_query_result->fetch_array();
+/*    $file_row = $get_course_files_query_result->fetch_array();
     $time_string = new DateTime(user_time($file_row['created_timestamp']));
     $time_string = $time_string->format("F j");
 
     //closing group-about
-    echo "
+  */  echo "
                 <div class = 'box-content content-file'>
-                    <a class = 'file-download' href='php/download_file.php?file_id=" . $file_row['file_id'] . "'>
+                    <a class = 'file-download' href='php/download_file.php?file_id="
+                            //. $file_row['file_id'] .
+                        ."derp".
+                        "'>
                     <div class = 'file-icon'>
                     </div>
-                    <div class= 'file-name'>
-                        " . $file_row['file_name'] . "
-                    </div>
-                    </a>
-                    <div class ='file-created'>
-                        <a class = 'file-creator'  href='profile.php?user_id=" . $file_row['user_id'] . "'>" . $file_row['firstname'] . " " . $file_row['lastname'] . "</a> <span> uploaded " . $time_string . "</span>
-                    </div>
-                </div>
+                    <div class= 'file-name'>".
+                       // " . $file_row['file_name'] . "
+                        " derp"
+                   . "</div>
+                    </a>".
+                 //   <div class ='file-created'>
+                 //       <a class = 'file-creator'  href='profile.php?user_id=" . $file_row['user_id'] . "'>" . $file_row['firstname'] . " " . $file_row['lastname'] . "</a> <span> uploaded " . $time_string . "</span>
+                 //   </div>
+            "    </div>
     ";
 
 
-}
+//}
 
 echo "
                 <div class = 'box-header'>
@@ -398,7 +381,7 @@ echo "
                 </div>
             </div>
 ";
-*/
+
 //closing about-content
 echo "
     </div>

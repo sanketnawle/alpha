@@ -118,7 +118,7 @@ class User extends CActiveRecord
 			'replies' => array(self::HAS_MANY, 'Reply', 'user_id'),
 			'replies1' => array(self::MANY_MANY, 'Reply', 'reply_vote(user_id, reply_id)'),
 			'files' => array(self::MANY_MANY, 'File', 'showcase(user_id, file_id)'),
-			'studentAttributes' => array(self::HAS_ONE, 'StudentAttributes', 'user_id'),
+			'studentAttributes' => array(self::HAS_ONE, 'StudentAttrib', 'user_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
@@ -208,4 +208,13 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function isFollowing($otherUser){
+        foreach($this->usersFollowed as $userFollowed){
+            if($userFollowed->user_id == $otherUser->user_id){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/class.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/school.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class_about_tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class_members_tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/loading.php" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_new.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/runtime/application.log" afterPath="$PROJECT_DIR$/urlinqyii/protected/runtime/application.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/class/class.js" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/class_about_tab.php" afterPath="$PROJECT_DIR$/beta/class_about_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" afterPath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/professor.css" afterPath="$PROJECT_DIR$/urlinqyii/css/professor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile_old.php" />
     </list>
     <ignored path="alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,12 +49,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beta/home.php">
+      <file leaf-file-name="class_members_tab.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.153847" vertical-offset="0" max-vertical-offset="2567">
-              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4709">
+              <caret line="0" column="56" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="56" />
+              <folding>
+                <marker date="1415655353454" expanded="true" signature="1557:1879" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="1601:1766" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="1685:1749" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="1817:1864" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="2999:3240" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="3052:3165" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="3210:3228" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="4383:4582" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="4712:4739" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="4712:4800" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="4712:5013" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="5093:5357" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="5731:5843" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="5991:6069" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="6909:7074" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="7159:7403" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="7219:7312" placeholder="..." />
+                <marker date="1415655353454" expanded="false" signature="7340:7352" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="8324:8527" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="8651:8940" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="9020:9290" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="9692:9804" placeholder="..." />
+                <marker date="1415655353454" expanded="true" signature="9952:10030" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,18 +86,38 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.615385" vertical-offset="2036" max-vertical-offset="3689">
-              <caret line="136" column="40" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="3842">
+              <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Interest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Interest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1768">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45333335" vertical-offset="1122" max-vertical-offset="2924">
-              <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="2941">
+              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="87.69231" vertical-offset="2467" max-vertical-offset="3553">
+              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -66,122 +126,139 @@
       <file leaf-file-name="class_header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154" vertical-offset="4998" max-vertical-offset="6375">
-              <caret line="308" column="18" selection-start-line="308" selection-start-column="8" selection-end-line="308" selection-end-column="18" />
+            <state vertical-scroll-proportion="-40.46154" vertical-offset="5085" max-vertical-offset="6375">
+              <caret line="366" column="15" selection-start-line="366" selection-start-column="15" selection-end-line="366" selection-end-column="15" />
               <folding>
-                <marker date="1415302641537" expanded="true" signature="5558:5704" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="5597:5704" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="5637:5704" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6088:6182" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6322:6649" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6362:6603" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6405:6477" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6516:6584" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="6644:6649" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="7641:7722" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="7927:8038" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="7975:8005" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8137:8209" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8170:8193" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8252:8296" placeholder="..." />
-                <marker date="1415302641537" expanded="false" signature="8430:8438" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8439:8640" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8485:8640" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="8543:8573" placeholder="..." />
-                <marker date="1415302641537" expanded="false" signature="9196:9204" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9205:9621" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9255:9597" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9317:9351" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9428:9495" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9684:9934" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9796:9934" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="9845:9934" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="10481:10558" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="10713:10802" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="10759:10802" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="10922:11235" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="10989:11213" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11039:11188" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11347:11757" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11433:11636" placeholder="..." />
-                <marker date="1415302641537" expanded="false" signature="11500:11518" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11519:11602" placeholder="..." />
-                <marker date="1415302641537" expanded="false" signature="11703:11716" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11834:12378" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11902:12351" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="11957:12092" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12154:12321" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12210:12285" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12433:12973" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12501:12946" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12556:12689" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="12751:12916" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="13031:13347" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="13099:13320" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="13154:13290" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="14117:14228" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="14164:14204" placeholder="..." />
-                <marker date="1415302641537" expanded="true" signature="14303:14320" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="5558:5704" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="5597:5704" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="5637:5704" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6088:6182" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6322:6649" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6362:6603" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6405:6477" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6516:6584" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="6644:6649" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="7641:7722" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="7927:8038" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="7975:8005" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8137:8209" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8170:8193" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8252:8296" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8430:8438" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8439:8640" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8485:8640" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="8543:8573" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9196:9204" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9205:9621" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9255:9597" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9317:9351" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9428:9495" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9684:9934" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9796:9934" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="9845:9934" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="10481:10558" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="10713:10802" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="10759:10802" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="10922:11235" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="10989:11213" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11039:11188" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11347:11757" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11433:11636" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11500:11518" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11519:11602" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11703:11716" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11834:12378" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11902:12351" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="11957:12092" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12154:12321" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12210:12285" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12433:12973" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12501:12946" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12556:12689" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="12751:12916" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13031:13347" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13099:13320" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13154:13290" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13558:13576" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13769:13871" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13809:13847" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13954:13964" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="13965:13981" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="14091:14202" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="14138:14178" placeholder="..." />
+                <marker date="1415738025853" expanded="true" signature="14277:14294" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php">
+      <file leaf-file-name="git_reference" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.769231" vertical-offset="459" max-vertical-offset="2431">
-              <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.2712766" vertical-offset="0" max-vertical-offset="1054">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="status_bar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beta/status_bar.php">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="19499" max-vertical-offset="24378">
-              <caret line="1147" column="58" selection-start-line="1147" selection-start-column="58" selection-end-line="1147" selection-end-column="58" />
-              <folding />
+            <state vertical-scroll-proportion="-1.9615384" vertical-offset="11390" max-vertical-offset="20706">
+              <caret line="679" column="82" selection-start-line="679" selection-start-column="82" selection-end-line="679" selection-end-column="82" />
+              <folding>
+                <element signature="e#11#1685#0#PHP" expanded="true" />
+                <element signature="e#48853#49312#0#PHP" expanded="true" />
+                <element signature="e#68961#69001#0#PHP" expanded="true" />
+                <marker date="1415697398849" expanded="true" signature="460:573" placeholder="SELECT user_..user..." />
+                <marker date="1415697398849" expanded="true" signature="42702:42767" placeholder="..." />
+                <marker date="1415697398849" expanded="true" signature="42702:42855" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feed.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beta/css/feed.css">
+      <file leaf-file-name="profile_old.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile_old.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7293" max-vertical-offset="44540">
-              <caret line="429" column="21" selection-start-line="429" selection-start-column="21" selection-end-line="429" selection-end-column="21" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="9860" max-vertical-offset="20842">
+              <caret line="610" column="24" selection-start-line="610" selection-start-column="24" selection-end-line="616" selection-end-column="82" />
+              <folding>
+                <marker date="1415400709365" expanded="true" signature="31252:31338" placeholder="..." />
+                <marker date="1415400709365" expanded="false" signature="44082:44139" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="45531:46473" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="45587:46438" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="45645:45784" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="45842:46399" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="45903:45980" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="46041:46172" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="46233:46356" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="46631:46790" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="49013:49595" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="49036:49564" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="49086:49180" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="49201:49529" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="51073:51258" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="51415:51688" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="51800:52053" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="53288:53440" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="53676:53754" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="55026:55211" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="55368:55641" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="55753:56006" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="56465:56609" placeholder="..." />
+                <marker date="1415400709365" expanded="true" signature="56849:56959" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feeds.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beta/feeds.php">
+      <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="26622" max-vertical-offset="26911">
-              <caret line="1566" column="13" selection-start-line="1566" selection-start-column="13" selection-end-line="1566" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="posts.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beta/includes/posts.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2720" max-vertical-offset="4335">
-              <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/search/search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.153847" vertical-offset="4943" max-vertical-offset="5491">
-              <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1479">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -236,15 +313,28 @@
         <option value="$PROJECT_DIR$/beta/includes/posts.php" />
         <option value="$PROJECT_DIR$/beta/status_bar.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
-        <option value="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/js/class/class_members_tab.js" />
+        <option value="$PROJECT_DIR$/urlinqyii/js/class/class.js" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/class/class.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/js/class/class_about_tab.js" />
+        <option value="$PROJECT_DIR$/beta/class_about_tab.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/css/professor.css" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="489" />
-    <option name="y" value="73" />
+    <option name="x" value="76" />
+    <option name="y" value="96" />
     <option name="width" value="1158" />
     <option name="height" value="723" />
   </component>
@@ -324,28 +414,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlinqyii" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protected" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -362,7 +430,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile" />
+      <recent name="D:\xampp\htdocs\alpha\urlinqyii\assets\default" />
       <recent name="$PROJECT_DIR$/beta/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile" />
     </key>
   </component>
   <component name="RunManager">
@@ -407,7 +480,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="489" y="73" width="1158" height="723" extended-state="0" />
+    <frame x="76" y="96" width="1158" height="723" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -424,7 +497,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25862068" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25853658" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -432,6 +505,29 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25862068" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19877408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -450,191 +546,12 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/club/club.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3600">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/yii_reference.txt">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="2280">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClubController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="4845">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/club/club.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2370" max-vertical-offset="3600">
-          <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/php/dbconnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="300">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/signin_error.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6538463" vertical-offset="8219" max-vertical-offset="11520">
-          <caret line="556" column="5" selection-start-line="556" selection-start-column="5" selection-end-line="556" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/pages/errorPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="480">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/css/search.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30565372" vertical-offset="24832" max-vertical-offset="25665">
-          <caret line="1667" column="15" selection-start-line="1667" selection-start-column="14" selection-end-line="1667" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/yii_reference.txt">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="2280">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2875" max-vertical-offset="3480">
-          <caret line="197" column="5" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/js/club/club.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="18570">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/php/header_school.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.26" vertical-offset="217" max-vertical-offset="3060">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/includes/dbconfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10544816" vertical-offset="0" max-vertical-offset="569">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/php/school_components/header_school.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="2985">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/calendar_beta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375" vertical-offset="15" max-vertical-offset="53160">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/jquery-ui-1.10.2.custom.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0990099" vertical-offset="0" max-vertical-offset="303">
-          <caret line="2" column="85" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/school_alpha/school_department.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2053" max-vertical-offset="26100">
-          <caret line="148" column="102" selection-start-line="148" selection-start-column="91" selection-end-line="148" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Autocomplete_dropdown_UI/dropdown_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/school.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="688" max-vertical-offset="15375">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/css/topbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9234136" vertical-offset="5383" max-vertical-offset="12000">
-          <caret line="387" column="32" selection-start-line="387" selection-start-column="32" selection-end-line="387" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/css/cal_main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.538462" vertical-offset="43553" max-vertical-offset="44010">
-          <caret line="2927" column="13" selection-start-line="2927" selection-start-column="13" selection-end-line="2927" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/css/add_event.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.230769" vertical-offset="19036" max-vertical-offset="19470">
-          <caret line="1292" column="0" selection-start-line="1292" selection-start-column="0" selection-end-line="1292" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/css/datepicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.038462" vertical-offset="876" max-vertical-offset="3405">
-          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/js/calendar_selector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33179724" vertical-offset="4266" max-vertical-offset="5385">
-          <caret line="294" column="48" selection-start-line="294" selection-start-column="45" selection-end-line="294" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beta/js/myfullcalendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33260393" vertical-offset="478" max-vertical-offset="35805">
-          <caret line="42" column="139" selection-start-line="42" selection-start-column="137" selection-end-line="42" selection-end-column="139" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beta/calendar_beta.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.041667" vertical-offset="1493" max-vertical-offset="18075">
@@ -730,7 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16840" max-vertical-offset="20265">
           <caret line="1135" column="16" selection-start-line="1135" selection-start-column="16" selection-end-line="1135" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="36887" max-vertical-offset="37680">
           <caret line="2472" column="15" selection-start-line="2472" selection-start-column="1" selection-end-line="2472" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -753,7 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="23189" max-vertical-offset="23745">
           <caret line="1566" column="13" selection-start-line="1566" selection-start-column="13" selection-end-line="1566" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6317" max-vertical-offset="39300">
           <caret line="429" column="21" selection-start-line="429" selection-start-column="21" selection-end-line="429" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17009" max-vertical-offset="21510">
           <caret line="1147" column="58" selection-start-line="1147" selection-start-column="58" selection-end-line="1147" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -777,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2720" max-vertical-offset="4335">
           <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,7 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.153847" vertical-offset="4943" max-vertical-offset="5491">
           <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,92 +703,333 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.153847" vertical-offset="0" max-vertical-offset="2567">
           <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7476809" vertical-offset="3439" max-vertical-offset="3978">
+          <caret line="226" column="6" selection-start-line="226" selection-start-column="6" selection-end-line="226" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beta/css/professor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="53206" max-vertical-offset="58701">
+          <caret line="3174" column="26" selection-start-line="3174" selection-start-column="26" selection-end-line="3174" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/assets/class-pic.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/club/club_members_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7885714" vertical-offset="1989" max-vertical-offset="2771">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClubController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-105.92308" vertical-offset="1989" max-vertical-offset="6205">
+          <caret line="279" column="55" selection-start-line="279" selection-start-column="55" selection-end-line="279" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/club/club.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="306" max-vertical-offset="4080">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/js/class/class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="19920" max-vertical-offset="22525">
+          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/partial/leftmenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="6358">
+          <caret line="25" column="111" selection-start-line="25" selection-start-column="111" selection-end-line="25" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beta/class_about_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.1771426" vertical-offset="306" max-vertical-offset="6528">
+          <caret line="152" column="14" selection-start-line="152" selection-start-column="14" selection-end-line="152" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/js/class/class_members_tab.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.615385" vertical-offset="2036" max-vertical-offset="3689">
-          <caret line="136" column="40" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/UserInterest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="4998" max-vertical-offset="6375">
-          <caret line="308" column="18" selection-start-line="308" selection-start-column="8" selection-end-line="308" selection-end-column="18" />
-          <folding>
-            <marker date="1415302641537" expanded="true" signature="5558:5704" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="5597:5704" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="5637:5704" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6088:6182" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6322:6649" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6362:6603" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6405:6477" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6516:6584" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="6644:6649" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="7641:7722" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="7927:8038" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="7975:8005" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8137:8209" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8170:8193" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8252:8296" placeholder="..." />
-            <marker date="1415302641537" expanded="false" signature="8430:8438" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8439:8640" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8485:8640" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="8543:8573" placeholder="..." />
-            <marker date="1415302641537" expanded="false" signature="9196:9204" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9205:9621" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9255:9597" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9317:9351" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9428:9495" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9684:9934" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9796:9934" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="9845:9934" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="10481:10558" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="10713:10802" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="10759:10802" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="10922:11235" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="10989:11213" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11039:11188" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11347:11757" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11433:11636" placeholder="..." />
-            <marker date="1415302641537" expanded="false" signature="11500:11518" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11519:11602" placeholder="..." />
-            <marker date="1415302641537" expanded="false" signature="11703:11716" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11834:12378" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11902:12351" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="11957:12092" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12154:12321" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12210:12285" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12433:12973" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12501:12946" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12556:12689" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="12751:12916" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="13031:13347" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="13099:13320" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="13154:13290" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="14117:14228" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="14164:14204" placeholder="..." />
-            <marker date="1415302641537" expanded="true" signature="14303:14320" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/js/class/class_about_tab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_feed_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4571428" vertical-offset="255" max-vertical-offset="1275">
+          <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.769231" vertical-offset="459" max-vertical-offset="2431">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1345" max-vertical-offset="2431">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25904763" vertical-offset="2040" max-vertical-offset="6698">
+          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/loading.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45333335" vertical-offset="1122" max-vertical-offset="2924">
-          <caret line="80" column="65" selection-start-line="80" selection-start-column="65" selection-end-line="80" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="2941">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4709">
+          <caret line="0" column="56" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="56" />
+          <folding>
+            <marker date="1415655353454" expanded="true" signature="1557:1879" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="1601:1766" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="1685:1749" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="1817:1864" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="2999:3240" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="3052:3165" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="3210:3228" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="4383:4582" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="4712:4739" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="4712:4800" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="4712:5013" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="5093:5357" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="5731:5843" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="5991:6069" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="6909:7074" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="7159:7403" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="7219:7312" placeholder="..." />
+            <marker date="1415655353454" expanded="false" signature="7340:7352" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="8324:8527" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="8651:8940" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="9020:9290" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="9692:9804" placeholder="..." />
+            <marker date="1415655353454" expanded="true" signature="9952:10030" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/css/group.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.332696" vertical-offset="12134" max-vertical-offset="65705">
+          <caret line="724" column="21" selection-start-line="724" selection-start-column="20" selection-end-line="724" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/css/professor.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2807016" vertical-offset="57653" max-vertical-offset="63920">
+          <caret line="3399" column="20" selection-start-line="3399" selection-start-column="20" selection-end-line="3399" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Interest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1768">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1479">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="391" max-vertical-offset="1938">
+          <caret line="33" column="61" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="3842">
+          <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile_old.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9860" max-vertical-offset="20842">
+          <caret line="610" column="24" selection-start-line="610" selection-start-column="24" selection-end-line="616" selection-end-column="82" />
+          <folding>
+            <marker date="1415400709365" expanded="true" signature="31252:31338" placeholder="..." />
+            <marker date="1415400709365" expanded="false" signature="44082:44139" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="45531:46473" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="45587:46438" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="45645:45784" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="45842:46399" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="45903:45980" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="46041:46172" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="46233:46356" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="46631:46790" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="49013:49595" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="49036:49564" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="49086:49180" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="49201:49529" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="51073:51258" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="51415:51688" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="51800:52053" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="53288:53440" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="53676:53754" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="55026:55211" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="55368:55641" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="55753:56006" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="56465:56609" placeholder="..." />
+            <marker date="1415400709365" expanded="true" signature="56849:56959" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="11390" max-vertical-offset="20706">
+          <caret line="679" column="82" selection-start-line="679" selection-start-column="82" selection-end-line="679" selection-end-column="82" />
+          <folding>
+            <element signature="e#11#1685#0#PHP" expanded="true" />
+            <element signature="e#48853#49312#0#PHP" expanded="true" />
+            <element signature="e#68961#69001#0#PHP" expanded="true" />
+            <marker date="1415697398849" expanded="true" signature="460:573" placeholder="SELECT user_..user..." />
+            <marker date="1415697398849" expanded="true" signature="42702:42767" placeholder="..." />
+            <marker date="1415697398849" expanded="true" signature="42702:42855" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="87.69231" vertical-offset="2467" max-vertical-offset="3553">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-40.46154" vertical-offset="5085" max-vertical-offset="6375">
+          <caret line="366" column="15" selection-start-line="366" selection-start-column="15" selection-end-line="366" selection-end-column="15" />
+          <folding>
+            <marker date="1415738025853" expanded="true" signature="5558:5704" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="5597:5704" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="5637:5704" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6088:6182" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6322:6649" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6362:6603" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6405:6477" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6516:6584" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="6644:6649" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="7641:7722" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="7927:8038" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="7975:8005" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8137:8209" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8170:8193" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8252:8296" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8430:8438" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8439:8640" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8485:8640" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="8543:8573" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9196:9204" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9205:9621" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9255:9597" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9317:9351" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9428:9495" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9684:9934" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9796:9934" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="9845:9934" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="10481:10558" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="10713:10802" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="10759:10802" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="10922:11235" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="10989:11213" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11039:11188" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11347:11757" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11433:11636" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11500:11518" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11519:11602" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11703:11716" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11834:12378" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11902:12351" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="11957:12092" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12154:12321" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12210:12285" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12433:12973" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12501:12946" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12556:12689" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="12751:12916" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13031:13347" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13099:13320" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13154:13290" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13558:13576" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13769:13871" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13809:13847" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13954:13964" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="13965:13981" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="14091:14202" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="14138:14178" placeholder="..." />
+            <marker date="1415738025853" expanded="true" signature="14277:14294" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2712766" vertical-offset="0" max-vertical-offset="1054">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding />
         </state>
       </provider>

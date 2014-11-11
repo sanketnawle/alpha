@@ -333,7 +333,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
 	}
      echo '</div >
            <div class = "group-footer-functions" >';
-  /*  if ($admin_flag > 0) {
+    if ($is_admin) {
         echo '
             </div >
         </div >
@@ -343,7 +343,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
     </div > ';
     } else {
         //checking enrollment and echoing button accordingly
-        if ($enroll_row["total"] == 0) {
+        if ($is_member) {
             echo '
                 <div class = "join-button" >
                     <a class = "join" >
@@ -356,7 +356,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         </div >
         </div>
     </div > ';
-        } else { */
+        } else {
             echo '
                 <div class = "join-button" >
                     <a class = "join joined" >
@@ -369,7 +369,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         </div >
         </div>
     </div > ';
-      //  }
-    //}
+        }
+    }
 
 ?>
