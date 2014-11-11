@@ -18,7 +18,7 @@
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_modal.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/photo_modal.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/club.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_club.css'>
+<!--    <link rel='stylesheet' type='text/css' href='--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/css/planner_for_club.css'>-->
 
     
     <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
@@ -58,7 +58,7 @@
 
     <button class='email_invite email_invite_simulator'></button>
 
-    <div class='dt_picker_wrap'><?php include("add_group_schedule.php"); ?></div>
+    <div class='dt_picker_wrap'><?php //include("add_group_schedule.php"); ?></div>
 
     <div class="modal_invite_body modal_body">
         <div class="modal_invite_container">
@@ -184,6 +184,15 @@
 
                 </div>
                 <div class='midsec'>
+
+
+                    <?php
+                    echo Yii::app()->runController('partial/planner');
+
+
+                    //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
+
+                    ?>
 	                <?php
 	                if($is_member){
                     ?>
@@ -226,6 +235,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
