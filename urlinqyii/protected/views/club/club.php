@@ -32,6 +32,8 @@
     <script type="text/javascript">
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         club_id = '<?php echo $club->group_id; ?>';
+        origin = 'group';
+        origin_id = '<?php echo $club->group_id; ?>';
     </script>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
@@ -187,8 +189,8 @@
 
 
                     <?php
-                    echo Yii::app()->runController('partial/planner');
-
+                    //echo Yii::app()->runController('partial/planner');
+                    echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user));
 
                     //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
 
