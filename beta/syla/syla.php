@@ -25,6 +25,30 @@
 <script>
 $(document).ready(function() {
 
+
+var month_table = new Array();
+month_table[0] = "Jan";
+month_table[1] = "Feb";
+month_table[2] = "Mar";
+month_table[3] = "Apr";
+month_table[4] = "May";
+month_table[5] = "Jun";
+month_table[6] = "Jul";
+month_table[7] = "Aug";
+month_table[8] = "Sept";
+month_table[9] = "Oct";
+month_table[10] = "Nov";
+month_table[11] = "Dec";
+
+var weekday_table = new Array(7);
+weekday_table[0]=  "Sun";
+weekday_table[1] = "Mon";
+weekday_table[2] = "Tue";
+weekday_table[3] = "Wed";
+weekday_table[4] = "Thur";
+weekday_table[5] = "Fri";
+weekday_table[6] = "Sat";
+
 	var fit_height=$(window).height()-80;
 	$(".pdf_render").height(fit_height);
 	$(".event_render").height(fit_height);
@@ -139,7 +163,7 @@ $(document).ready(function() {
 
                var tid=$(this).attr("id");
                var associate= $.inArray(tid,seed_list_id);
-               var dt= seed_list_dt[associate];
+               var dt= date_process(seed_list_dt[associate]);
                $(".syla_block_pup").find(".ssc_date_block").text(dt);
 
                $(".syla_block_pup").show();
@@ -176,6 +200,8 @@ $(document).ready(function() {
 				previous_flag= flag;
 				
 				grow_seed(flag);
+
+				arrange_events_byweek();
 			}
 		}, 3000);
 	}
@@ -184,8 +210,12 @@ $(document).ready(function() {
 	var seed_list_dt=[];
 	function grow_seed(seed){
 		var seeds= seed.split(";;");
-		
+		var total= seeds.length-1;
 		$.each(seeds, function( index, value ) {
+			if (index==total) {
+				return false;
+			};
+
 			//alert(value);
 			var seedinfo= value.split("::");
 			var repeat_flag=0;
@@ -200,14 +230,84 @@ $(document).ready(function() {
 				var $this_evt= $(".syla_side_card").last();
 				$this_evt.find(".ssc_col1").hide();
 				$this_evt.find(".ui.dropdown").dropdown();
-				var date_str=seedinfo[1];
+
+				//var processed_dt= date_process(seedinfo[1]);
+				
+				var date_str=" ";
+				//alert(seedinfo[1]);
+				date_str=date_process(seedinfo[1]);
+
+
 				$this_evt.attr("id",seedinfo[0]);
+
 				$this_evt.find(".ssc_date_block").text(date_str);
+
 				seed_list_id.push(seedinfo[0]);
 				seed_list_dt.push(seedinfo[1]);
 			}
 		});
 	}
+
+	function date_process(dstr){
+		//alert(dstr);
+		parts = dstr.split('/');
+		fyear= 20+""+parts[2];
+		
+		year = parseInt(fyear);
+    	month = parseInt(parts[0]) - 1;
+    	day = parseInt(parts[1]);
+    	date = new Date(year, month, day);
+    	new_dtstring= weekday_table[date.getDay()]+", "+month_table[date.getMonth()]+" "+date.getDate();
+
+    	return new_dtstring;
+	}
+
+	function arrange_events_byweek(){
+
+		var $rt=$(".event_render");
+		var howmanyweek=0;
+		var lastweek=new Date(1991, 11, 16);
+		var dummyweek= new Date(1991, 11, 16);
+		var weeknum=1;
+
+		$(".syla_side_card").each(function( index ) {
+
+			var $this= $(this);
+
+			var tid= $(this).attr("id");
+
+			var associate= $.inArray(tid,seed_list_id);
+            var dt= seed_list_dt[associate];
+            parts = dt.split('/');
+			fyear= 20+""+parts[2];
+			
+			year = parseInt(fyear);
+	    	month = parseInt(parts[0]) - 1;
+	    	day = parseInt(parts[1]);
+	    	date = new Date(year, month, day);
+	    	//alert(tid);
+
+	    	var thismonday= new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()+1);
+	    	var thissunday= new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()+7);
+
+	    	if (dummyweek==lastweek) {
+	    		lastweek= thissunday;
+	    		$this.before( "<div class='weekbreak'>Week "+weeknum+" ( "+month_table[thismonday.getMonth()]+" "+thismonday.getDate()+" - "+ month_table[thissunday.getMonth()]+" "+thissunday.getDate()+" )</div>" );
+	    		weeknum++;
+	    	}
+
+	    	else if (date>lastweek) {
+	    		lastweek= thissunday;
+	    		$this.before( "<div class='weekbreak'>Week "+weeknum+" ( "+month_table[thismonday.getMonth()]+" "+thismonday.getDate()+" - "+ month_table[thissunday.getMonth()]+" "+thissunday.getDate()+" )</div>" );
+	    		weeknum++;
+	    	}
+
+
+
+
+		});
+	}
+
 
 	/*progress handling function for ajax*/
 	function progressHandlingFunction(e){
