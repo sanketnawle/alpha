@@ -3,8 +3,26 @@
 class ApiController extends Controller
 {
 
+    //Error ids
+    // 1 - file id is not set
+    // 2 - File doesnt exist
+    public function actionGetFileUrl(){
+        if(!isset($_GET['file_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_id isnt set');
+            $this->renderJSON($data);
+        }
 
+        $file_id = $_GET['file_id'];
+        $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
+        if($file){
+            $data = array('success'=>true,'file_url'=>$file->file_url,'base_url'=>Yii::app()->getBaseUrl(true));
+            $this->renderJSON($data);
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
+            $this->renderJSON($data);
+        }
 
+    }
 
 
     public function actionFileUpload(){
