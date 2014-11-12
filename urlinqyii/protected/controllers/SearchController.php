@@ -26,7 +26,7 @@ class SearchController extends Controller
     public function actionResults()
     {
         $user = User::model()->find('user_id=:id', array(':id'=>1));
-        $this->render('search', array('user'=>$user,'q'=>$q));
+        //$this->render('search', array('user'=>$user,'q'=>$q));
         $query = Yii::app()->request->getQuery('q');
 
         $this->render('results', array('user'=>$user, 'query'=>$query));
