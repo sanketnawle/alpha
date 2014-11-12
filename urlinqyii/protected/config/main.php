@@ -59,7 +59,7 @@ return array(
                 '<action:(contact|login|test|json|home|register|logout)>'=>'site/<action>',
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
-
+                'calendar' => 'calendar/view',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
@@ -102,7 +102,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 

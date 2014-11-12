@@ -2,9 +2,9 @@
 
 class CalendarController extends Controller
 {
-	public function actionCalendar()
+	public function actionView()
 	{
-		$this->render('calendar');
+		$this->render('index');
 	}
 
 	// Uncomment the following methods and override them if needed
