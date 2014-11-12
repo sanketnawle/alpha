@@ -1,0 +1,52 @@
+﻿.keyframe(@ss, @se, @os, @oe) {
+    from {
+        transform: translateX(@ss);
+        opacity: @os;
+    }
+
+    to {
+        transform: translateX(@se);
+        opacity: @oe;
+    }
+}
+
+@keyframes come-in {
+    .keyframe(20px,0,0,1);
+}
+
+@-webkit-keyframes come-in {
+    .keyframe(200px,0,0,1);
+}
+
+@keyframes go-out {
+    .keyframe(0,20px,1,0);
+}
+
+@-webkit-keyframes go-out {
+    .keyframe(0,20px,1,0);
+}
+
+.body {
+
+    .animation(@class, @duration, @ease: ease-in-out) {
+        -webkit-animation: @class @duration @ease;
+        -o-animation: @class @duration @ease;
+        -moz-animation: @class @duration @ease;
+        animation: @class @duration @ease;
+    }
+
+    @duration-in: 0.5s;
+    @duration-out: 0.5s;
+    @anime-in: come-in;
+    @anime-out: go-out;
+    @back-color: #F8F8F8;
+
+    &.ng-enter.trans {
+        .animation(@anime-in, @duration-in);
+    }
+
+    &.ng-leave.trans {
+        .animation(@anime-out, @duration-out);
+        overflow: hidden;
+    }
+}
