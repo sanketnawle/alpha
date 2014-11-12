@@ -6,11 +6,14 @@ class SearchController extends Controller
     //public function actionSearch()
     public function actionView()
     {
+
+        //urlinq.com/search?q=lakjsdl
+        $q = $_GET['q'];
         $filter = Yii::app()->session['filter'];
         //$q = Yii::app()->getRequest()->getQuery('q');
 
         $user = User::model()->find('user_id=:id', array(':id'=>1));
-        $this->render('search', array('user'=>$user));
+        $this->render('search', array('user'=>$user,'q'=>$q));
     }
 
     public function actionSuggestion()

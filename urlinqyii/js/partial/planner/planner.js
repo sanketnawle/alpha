@@ -194,6 +194,7 @@ $(document).ready(function(){
                 alert('error getting planner events');
             }
         });
+
     }
 
     //Seperated from show_event so we can send show_events() an array

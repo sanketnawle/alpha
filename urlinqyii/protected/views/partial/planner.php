@@ -145,6 +145,7 @@
                             <script id="event_template" type="text/x-handlebars-template">
                                 <ul class="event" >Past Due
                                     <li>
+
                                         <div class="event_listing_wrap">
                                             <span class="color_border" id="color_border1"></span>
                                             <div class="event_listing" id="pastdue_event">
