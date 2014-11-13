@@ -1,12 +1,14 @@
 <?php
 
 /**
- * This is the model class for table "group_users_tags".
+ * This is the model class for table "group_user_tag".
  *
- * The followings are the available columns in table 'group_users_tags':
- * @property integer $tag_id
- * @property integer $user_id
+ * The followings are the available columns in table 'group_user_tag':
  * @property integer $group_id
+ * @property integer $user_tag_id
+ *
+ * The followings are the available model relations:
+ * @property UserTag $userTag
  */
 class GroupUserTag extends CActiveRecord
 {
@@ -15,7 +17,7 @@ class GroupUserTag extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'group_users_tags';
+		return 'group_user_tag';
 	}
 
 	/**
@@ -26,11 +28,11 @@ class GroupUserTag extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tag_id, user_id, group_id', 'required'),
-			array('tag_id, user_id, group_id', 'numerical', 'integerOnly'=>true),
+			array('group_id, user_tag_id', 'required'),
+			array('group_id, user_tag_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('tag_id, user_id, group_id', 'safe', 'on'=>'search'),
+			array('group_id, user_tag_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -42,6 +44,7 @@ class GroupUserTag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'userTag' => array(self::BELONGS_TO, 'UserTag', 'user_tag_id'),
 		);
 	}
 
@@ -51,9 +54,8 @@ class GroupUserTag extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tag_id' => 'Tag',
-			'user_id' => 'User',
 			'group_id' => 'Group',
+			'user_tag_id' => 'User Tag',
 		);
 	}
 
@@ -75,9 +77,8 @@ class GroupUserTag extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('tag_id',$this->tag_id);
-		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('group_id',$this->group_id);
+		$criteria->compare('user_tag_id',$this->user_tag_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

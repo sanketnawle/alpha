@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This is the model class for table "posts_hide".
+ * This is the model class for table "post_hide".
  *
- * The followings are the available columns in table 'posts_hide':
+ * The followings are the available columns in table 'post_hide':
  * @property integer $user_id
- * @property string $post_id
+ * @property integer $post_id
  */
 class PostHide extends CActiveRecord
 {
@@ -14,7 +14,7 @@ class PostHide extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts_hide';
+		return 'post_hide';
 	}
 
 	/**
@@ -25,8 +25,8 @@ class PostHide extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, post_id', 'required'),
+			array('user_id, post_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('user_id, post_id', 'safe', 'on'=>'search'),
@@ -74,7 +74,7 @@ class PostHide extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('post_id',$this->post_id,true);
+		$criteria->compare('post_id',$this->post_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

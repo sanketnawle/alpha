@@ -218,9 +218,12 @@ pip-log.txt
 #MYConfig
 beta/includes/dbconfig.php
 beta/php/dbconnection.php
-beta/includes/dbconfig.php
-/beta/nbproject/private/
 
-#Netbeans/Intellij project files
-beta/nbproject
-.idea
+# Netbean project
+beta/nbproject/
+beta/includes/dbconfig.php
+
+# Intellij project folder
+.idea/
+
+urlinqyii/protected/runtime/application.log*

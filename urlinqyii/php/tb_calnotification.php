@@ -11,7 +11,7 @@
 
 
 
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/tb_calnotification.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/tb_calnotification.css">
 
     </head>
 

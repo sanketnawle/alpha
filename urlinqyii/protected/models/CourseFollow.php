@@ -4,7 +4,7 @@
  * This is the model class for table "course_follow".
  *
  * The followings are the available columns in table 'course_follow':
- * @property string $course_id
+ * @property integer $course_id
  * @property integer $user_id
  */
 class CourseFollow extends CActiveRecord
@@ -26,8 +26,7 @@ class CourseFollow extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('course_id, user_id', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('course_id', 'length', 'max'=>20),
+			array('course_id, user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('course_id, user_id', 'safe', 'on'=>'search'),
@@ -74,7 +73,7 @@ class CourseFollow extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('course_id',$this->course_id,true);
+		$criteria->compare('course_id',$this->course_id);
 		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(

@@ -5,13 +5,18 @@
  *
  * The followings are the available columns in table 'class_review':
  * @property integer $review_id
+ * @property integer $class_id
  * @property integer $user_id
- * @property string $class_id
  * @property integer $anonymous
  * @property string $review
  * @property integer $agree
  * @property integer $disagree
  * @property string $timestamp
+ *
+ * The followings are the available model relations:
+ * @property Class $class
+ * @property User $user
+ * @property User[] $users
  */
 class ClassReview extends CActiveRecord
 {
@@ -31,13 +36,12 @@ class ClassReview extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, class_id, anonymous, timestamp', 'required'),
-			array('user_id, anonymous, agree, disagree', 'numerical', 'integerOnly'=>true),
-			array('class_id', 'length', 'max'=>36),
+			array('class_id, user_id, anonymous, timestamp', 'required'),
+			array('class_id, user_id, anonymous, agree, disagree', 'numerical', 'integerOnly'=>true),
 			array('review', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('review_id, user_id, class_id, anonymous, review, agree, disagree, timestamp', 'safe', 'on'=>'search'),
+			array('review_id, class_id, user_id, anonymous, review, agree, disagree, timestamp', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +53,9 @@ class ClassReview extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'class' => array(self::BELONGS_TO, 'Class', 'class_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'users' => array(self::MANY_MANY, 'User', 'class_review_vote(review_id, user_id)'),
 		);
 	}
 
@@ -59,8 +66,8 @@ class ClassReview extends CActiveRecord
 	{
 		return array(
 			'review_id' => 'Review',
-			'user_id' => 'User',
 			'class_id' => 'Class',
+			'user_id' => 'User',
 			'anonymous' => 'Anonymous',
 			'review' => 'Review',
 			'agree' => 'Agree',
@@ -88,8 +95,8 @@ class ClassReview extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('review_id',$this->review_id);
+		$criteria->compare('class_id',$this->class_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('class_id',$this->class_id,true);
 		$criteria->compare('anonymous',$this->anonymous);
 		$criteria->compare('review',$this->review,true);
 		$criteria->compare('agree',$this->agree);

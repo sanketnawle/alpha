@@ -23,7 +23,11 @@ require_once("dbconnection.php");
 include_once("../includes/common_functions.php");
 include "school_other_functions.php";
 include_once("signup_functions.php");
+
+
 if(isset($_SESSION['id'])){
+
+
 }else if(isset($_POST['login_email'])){
       $email=input_sanitize($_POST['login_email'],$con);
       $password=input_sanitize($_POST['login_password'],$con);

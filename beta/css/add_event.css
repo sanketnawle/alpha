@@ -725,14 +725,14 @@ span.revert-end-time {
 span.event-loc-icon {
     background-image: url(../img/event-loc-icon.png);
     background-size: cover;
-    width: 20px;
+    width: 22px;
     pointer-events: none;    
     display: block;
     position: relative;
     height: 22px;
     background-repeat: no-repeat;
-    top: 85px;
-
+    top: 87px;
+    left: 2px;
 }
 
 

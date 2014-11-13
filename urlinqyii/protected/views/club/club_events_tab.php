@@ -1,18 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 7/25/14
- * Time: 4:18 PM
- */
 
 
-include 'dbconnection.php';
-include 'time_change.php';
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
+include "time_change.php";
+
+//include 'dbconnection.php';
+//include 'time_change.php';
+
+//if (session_status() == PHP_SESSION_NONE) {
+//    session_start();
+//}
 
 $month_start_timestamp = new DateTime(server_time(date("Y-m-01 00:00:00", strtotime("now"))));
 $month_start_date = $month_start_timestamp->format("Y-m-d");
@@ -21,122 +19,115 @@ $month_end_timestamp = new DateTime(server_time(date("Y-m-t 23:59:59", strtotime
 $month_end_date = $month_end_timestamp->format("Y-m-d");
 $month_end_time = $month_end_timestamp->format("H:i:s");
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-}
-if (isset($_POST['club_id'])) {
-    $group_id = $_POST['club_id'];
-}
-if (isset($_SESSION['user_type'])) {
-    $user_type = $_SESSION['user_type'];
-}
+//if (isset($_SESSION['user_id'])) {
+//    $user_id = $_SESSION['user_id'];
+//}
+//if (isset($_POST['club_id'])) {
+//    $group_id = $_POST['club_id'];
+//}
+//if (isset($_SESSION['user_type'])) {
+//    $user_type = $_SESSION['user_type'];
+//}
 
-$get_types = "SELECT * FROM event_types";
-$get_types_result = mysqli_query($con, $get_types);
+//$get_types = "SELECT * FROM event_types";
+//$get_types_result = mysqli_query($con, $get_types);
+//
+//
+//while ($row = mysqli_fetch_array($get_types_result)) {
+//    $event_name = $row['event_name'];
+//    switch ($event_name) {
+//        case 'to_do':
+//            $to_do_event = $row['type'];
+//            break;
+//        case 'personal':
+//            $personal_event = $row['type'];
+//            break;
+//        case 'personal_invited':
+//            $personal_invited_event = $row['type'];
+//            break;
+//        case 'group':
+//            $group_event = $row['type'];
+//            break;
+//        case 'group_personal':
+//            $group_event_personal = $row['type'];
+//            break;
+//        case 'course':
+//            $course_event = $row['type'];
+//            break;
+//        case 'course_personal':
+//            $course_event_personal = $row['type'];
+//            break;
+//        case 'office timing':
+//            $office_timing = $row['type'];
+//            break;
+//    }
+//}
 
-
-while ($row = mysqli_fetch_array($get_types_result)) {
-    $event_name = $row['event_name'];
-    switch ($event_name) {
-        case 'to_do':
-            $to_do_event = $row['type'];
-            break;
-        case 'personal':
-            $personal_event = $row['type'];
-            break;
-        case 'personal_invited':
-            $personal_invited_event = $row['type'];
-            break;
-        case 'group':
-            $group_event = $row['type'];
-            break;
-        case 'group_personal':
-            $group_event_personal = $row['type'];
-            break;
-        case 'course':
-            $course_event = $row['type'];
-            break;
-        case 'course_personal':
-            $course_event_personal = $row['type'];
-            break;
-        case 'office timing':
-            $office_timing = $row['type'];
-            break;
-    }
-}
-
-$events_array = array();
-$admin_flag = 0;
-
-$get_admin_flag_query = "SELECT COUNT(*) as admin_flag FROM group_users WHERE group_id = $group_id AND user_id = $user_id AND is_admin = 1";
-$get_admin_flag_query_result = mysqli_query($con, $get_admin_flag_query);
-$admin_row = mysqli_fetch_array($get_admin_flag_query_result);
-$admin_flag = $admin_row['admin_flag'];
-
-// add date filter to show the evnts from current month to future 15 events
-$get_admin_event_query = "SELECT GE.* FROM group_event GE WHERE GE.made_by_admin = 1 AND (((start_date = '$month_start_date' AND start_time >= '$month_start_time') OR (start_date > '$month_start_date')) AND ((end_date = '$month_end_date' AND end_time < '$month_end_time') OR (end_date < '$month_end_date')))";
-$get_admin_event_query_result = mysqli_query($con, $get_admin_event_query);
-
-while ($row = mysqli_fetch_array($get_admin_event_query_result)) {
-    $this_event_id = $row['event_id'];
-    if ($admin_flag > 0) {
-        $event_type = $group_event_personal;
-        $choice = -2;
-    } else {
-        $event_type = $group_event;
-        $get_user_choice_query = "SELECT added FROM group_event_invited WHERE user_id = $user_id AND event_id = $this_event_id";
-        $get_user_choice_query_result = mysqli_query($con, $get_user_choice_query);
-        if (mysqli_num_rows($get_user_choice_query_result) > 0) {
-            $choice_row = mysqli_fetch_array($get_user_choice_query_result);
-            $choice = $choice_row['added'];
-            if ($choice >= 0) {
-                $event_class = 'Added';
-            } else {
-                $event_class = 'Add to cal';
-            }
-        } else {
-            $choice = -1;
-            $event_class = 'Add to cal';
-        }
-    }
-
-    if ($row['recurrence'] != 'none') {
-        $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $row['start_date']);
-        foreach ($recurrence_dates as $dates) {
-            $events_array[] = array(
-                'event_id' => $row['event_id'],
-                'title' => $row['title'],
-                'description' => $row['description'],
-                'start_date' => $dates,
-                'start_time' => $row['start_time'],
-                'end_date' => $dates,
-                'choice' => $choice,
-                'end_time' => $row['end_time'],
-                'event_class' => $event_class,
-                'type' => $event_type
-            );
-        }
-    } else {
-        $events_array[] = array(
-            'event_id' => $row['event_id'],
-            'title' => $row['title'],
-            'description' => $row['description'],
-            'start_date' => $row['start_date'],
-            'start_time' => $row['start_time'],
-            'end_date' => $row['end_date'],
-            'choice' => $choice,
-            'end_time' => $row['end_time'],
-            'event_class' => $event_class,
-            'type' => $event_type
-        );
-    }
-}
+//$club->events = array();
+//$is_admin = 0;
+//
+//
+//
+//while ($row = mysqli_fetch_array($get_admin_event_query_result)) {
+//    $this_event_id = $row['event_id'];
+//    if ($is_admin > 0) {
+//        $event_type = $group_event_personal;
+//        $choice = -2;
+//    } else {
+//        $event_type = $group_event;
+//        $get_user_choice_query = "SELECT added FROM group_event_invited WHERE user_id = $user_id AND event_id = $this_event_id";
+//        $get_user_choice_query_result = mysqli_query($con, $get_user_choice_query);
+//        if (mysqli_num_rows($get_user_choice_query_result) > 0) {
+//            $choice_row = mysqli_fetch_array($get_user_choice_query_result);
+//            $choice = $choice_row['added'];
+//            if ($choice >= 0) {
+//                $event_class = 'Added';
+//            } else {
+//                $event_class = 'Add to cal';
+//            }
+//        } else {
+//            $choice = -1;
+//            $event_class = 'Add to cal';
+//        }
+//    }
+//
+//    if ($row['recurrence'] != 'none') {
+//        $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $row['start_date']);
+//        foreach ($recurrence_dates as $dates) {
+//            $club->events[] = array(
+//                'event_id' => $row['event_id'],
+//                'title' => $row['title'],
+//                'description' => $row['description'],
+//                'start_date' => $dates,
+//                'start_time' => $row['start_time'],
+//                'end_date' => $dates,
+//                'choice' => $choice,
+//                'end_time' => $row['end_time'],
+//                'event_class' => $event_class,
+//                'type' => $event_type
+//            );
+//        }
+//    } else {
+//        $club->events[] = array(
+//            'event_id' => $row['event_id'],
+//            'title' => $row['title'],
+//            'description' => $row['description'],
+//            'start_date' => $row['start_date'],
+//            'start_time' => $row['start_time'],
+//            'end_date' => $row['end_date'],
+//            'choice' => $choice,
+//            'end_time' => $row['end_time'],
+//            'event_class' => $event_class,
+//            'type' => $event_type
+//        );
+//    }
+//}
 
 
 echo "
-    
+
         <div class='syla-evt_ctr'>";
-if ($admin_flag > 0) {
+if ($is_admin > 0) {
     echo "<div class='blue_btn create-schedule'>Create Event</div>";
 }
 echo "
@@ -144,20 +135,22 @@ echo "
         <div class='syllabus-canvas'>
 ";
 
-if (count($events_array) > 0) {
-    $sort = array();
-    foreach ($events_array as $k => $v) {
-        $sort['start_date'][$k] = $v['start_date'];
-        $sort['start_time'][$k] = $v['start_time'];
-    }
+if (count($club->events) > 0) {
+//    $sort = array();
+//    foreach ($club->events as $k => $v) {
+//        $sort['start_date'][$k] = $v['start_date'];
+//        $sort['start_time'][$k] = $v['start_time'];
+//    }
+//
+//    array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $club->events);
 
-    array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $events_array);
+
     $prev_week_start_date = "2014-01-01";
     $prev_week_end_date = "2014-01-07";
     $prev_day = "00-00-00";
     $show_count = 0;
 
-    foreach ($events_array as $event) {
+    foreach ($club->events as $event) {
         $user_start_timestamp = new DateTime(user_time($event['start_date'] . "" . $event['start_time']));
         $user_end_timestamp = new DateTime(user_time($event['end_date'] . "" . $event['end_time']));
         if ($user_start_timestamp->format("w") == 0) {
@@ -199,7 +192,7 @@ if (count($events_array) > 0) {
                                 </div>
 
                             </div>";
-            if ($admin_flag > 0) {
+            if ($is_admin > 0) {
 //                echo "
 //                            <div class='a_weekview_right'>
 //                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>
@@ -285,7 +278,7 @@ if (count($events_array) > 0) {
                                 </div>
 
                             </div>";
-            if ($admin_flag > 0) {
+            if ($is_admin > 0) {
 //                echo "
 //                            <div class='a_weekview_right'>
 //                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>

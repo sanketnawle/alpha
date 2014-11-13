@@ -22,39 +22,33 @@ echo '
     ucfirst(get_alias_univ($con, $university)) .
 
     '</b>
-<em class = "em_hide"></em>
 </div>
-<button class = "upload_cover">
-<i></i>
-<span>Submit Cover</span>
-</button>
-<div class = "group_location">
-<em></em>
-<span class = "group_location_name">
-<a href="http://maps.google.com/?q=' . get_univ_add($con, $university) . '" target="_blank" style="text-decoration:none;">
-                                            ' . get_univ_add($con, $university) . '
-                                        </a>    
-                                       
-                                    </span>
-                                </div>
-                                <div class = "help-div" id = "help-3">
-                                    <div class = "help-wedge">
-                                    </div>
-                                    <div class = "help-box">
-                                        Submit a photo of this school for a chance to replace its current cover photo.
-                                    </div>
-                                </div>
-                                <div class = "location-pic-div-wrap">
-                                    <div class = "white-wedge-up">
-                                    </div>
-                                    <div class = "location-pic-container">
-                                        <div class = "modal_loading3">
-                                            <img class = "modal_animation" src = "src/loadingAnimation.gif">
-                                        </div>
-                                        <img class = "location_building_pic" src = "" class = "location-picture">
-                                    </div>
-                                </div>
-                            </div>';
+    <button class = "upload_cover upload_school_cover">
+    <i></i>
+    <span>Submit Cover</span>
+    </button>
+    <div class = "group_location">
+        <em></em>
+        <span class = "group_location_name">
+            <!--
+            <a href="http://maps.google.com/?q=' . get_univ_add($con, $university) . '" target="_blank" style="text-decoration:none;">
+                ' . get_univ_add($con, $university) . '
+            </a>
+            -->
+            <a id="school_location_link" href="" target="_blank" style="text-decoration:none;">New York</a>
+        </span>
+    </div>
+    <div class = "help-div" id = "help-3">
+        <div class = "help-wedge">
+        </div>
+        <div class = "help-box">
+            Submit a photo of this school for a chance to replace its current cover photo.
+        </div>
+    </div>
+    <div class="location-pic-div-wrap">
+        <img id="location_popup" src="" />
+    </div>
+</div>';
 
 $query = $con->query("SELECT dp_blob_id,cover_blob_id FROM university WHERE univ_id =$university");
 while ($row = $query->fetch_array()) {
@@ -102,7 +96,7 @@ echo '</div>
                         <div class = "group-head-footer">
                             <div class = "group-header-tab">
                                 <ul class = "group-nav">
-                                    <li class = "group-tab">
+                                    <li class = "group-tab info-tab">
                                         <a class = "tab1 tabFeed tab-anchor group-tab-active">
                                             <div class = "tab-title">
                                                 SCHOOL INFO
@@ -111,7 +105,7 @@ echo '</div>
 
                                         </a>
                                     </li>
-                                    <li class = "group-tab">
+                                    <li class = "group-tab departments-tab">
                                         <a class = "tabDepartments tab-anchor tab-inactive">
                                             <div class = "tab-title">
                                                 DEPARTMENTS
@@ -125,7 +119,7 @@ echo '</div>
                                             </div>
                                         </a>
                                     </li>
-                                    <li class = "group-tab">
+                                    <li class = "group-tab members-tab">
                                         <a class = "tabmembers tab-anchor tab-inactive">
                                             <div class = "tab-title">
                                                 MEMBERS

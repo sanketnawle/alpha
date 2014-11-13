@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <?php
 //	include('php/redirect.php');
@@ -9,31 +13,47 @@
         href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
         rel='stylesheet' type='text/css'>
     <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/backgroundGroup.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/group.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/invite_modal.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/photo_modal.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/clubs.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->request->baseUrl; ?>/css/planner_for_club.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundGroup.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/group.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_modal.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/photo_modal.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/club.css'>
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_club.css'>
 
     
-    <link rel="shortcut icon" href="img/Ur_FavIcon.jpg" type="image/jpg">
-    <link rel="icon" href="img/Ur_FavIcon.jpg" type="image/jpg">
+    <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
+    <link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-    <script src='jquery-ui-1.11.0/jquery-ui.min.js'></script>
-    <script src='js/clubs.js'></script>
+
+
+    <!--  This allows us to use club_id in our javascript without having to access the url parameter  -->
+    <script type="text/javascript">
+        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        club_id = '<?php echo $club->group_id; ?>';
+    </script>
+
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
 </head>
 <body>
 <div class='root'>
 
     <div class='gp_topbar_wrap'>
-        <?php include("topbar.php"); ?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <div class='gp_leftbar_wrap'>
-        <?php include("leftmenu.php"); ?>
+        <?php
+
+            echo Yii::app()->runController('partial/leftmenu');
+
+
+            //echo $this->renderPartial('/partial/leftmenu',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+            //include("leftmenu.php");
+        ?>
+
     </div>
 
     <button class='email_invite email_invite_simulator'></button>
@@ -43,7 +63,7 @@
     <div class="modal_invite_body modal_body">
         <div class="modal_invite_container">
             <div class="modal_loading">
-                <img class="modal_animation" src="src/loadingAnimation.gif">
+                <img class="modal_animation" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/loadingAnimation.gif">
             </div>
             <div class="modal_content">
                 <div class="modal_header">
@@ -94,7 +114,7 @@
     <div class="modal_coverPhoto_body modal_body">
         <div class="modal_coverPhoto_container">
             <div class="modal_loading">
-                <img class="modal_animation" src="src/loadingAnimation.gif">
+                <img class="modal_animation" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/loadingAnimation.gif">
             </div>
             <div class="modal_content">
                 <div class="modal_header">
@@ -157,41 +177,52 @@
                         //Yii::app()->runController('club/header',array('user'=>$user));
                         //$this->render('//partial/feeds');
                         //echo $this->renderPartial('/partial/feeds',array('posts'=>'lol'));
-                        echo $this->renderPartial('club_header',array('user'=>$user));
 
-
+                        echo $this->renderPartial('club_header',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
 
                     ?>
-                    <?php include "club_header.php"; ?>
+
                 </div>
                 <div class='midsec'>
 	                <?php
-	                if(is_member_of($con,$_SESSION['user_id'],'club',$_GET['group_id']))
-	                {
-		            ?>
-		                <div class='feed-tab-content'>
-                        <?php
-	                            include('php/club_feed_tab.php');
-                        ?>
-                    </div>
-	                <?php
+	                if($is_member){
+                    ?>
+                            <div class='feed-tab-content'>
+
+                            <?php
+                                echo $this->renderPartial('club_feed_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                            ?>
+                            </div>
+                    <?php
 	                }
 	                ?>
-                    <div class="members-tab-content"></div>
-	                <?php
-	                if(is_member_of($con,$_SESSION['user_id'],'club',$_GET['group_id']))
-	                {
-	                ?>
+                    <div class="members-tab-content">
+
+                        <?php
+                            echo $this->renderPartial('club_members_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                        ?>
+
+                    </div>
+
+                    <?php
+	                if($is_member){
+                      ?>
                     <div class='files-tab-content'></div>
-                    <div class='syllabus-tab-content'></div>
-	                <?php
+                    <div class='syllabus-tab-content'>
+                        <?php
+                            echo $this->renderPartial('club_events_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+                        ?>
+
+                    </div>
+
+                    <?php
 	                }
 	                ?>
 	                <div class='analytics-tab'>
-                        <?php include('analytics.php'); ?>
+                        <?php echo $this->renderPartial('club_analytics',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count)); ?>
                     </div>
                     <div class='about-content-tab'>
-                        <?php include('club_about_tab.php'); ?>
+                        <?php echo $this->renderPartial('club_about_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'connected_users'=>$connected_users)); ?>
                     </div>
                 </div>
             </div>

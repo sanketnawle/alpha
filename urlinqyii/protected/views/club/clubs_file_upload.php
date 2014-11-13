@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 7/31/14
- * Time: 11:32 PM
- */
+
 
 require_once 'php/dbconnection.php';
 require_once 'php/file_ops.php';

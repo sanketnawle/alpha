@@ -43,6 +43,37 @@ if(isset($_GET['univ_id'])){
 
 
 $(document).ready(function() {
+    var google_maps_embed = "https://maps.googleapis.com/maps/api/staticmap?";
+    var google_maps_web = "https://www.google.com/maps/place/";
+    var map_center = "center=";
+    var map_location = "40.7308,-73.9975";
+    var map_zoom_size = "&zoom=14&size=270x180";
+    var map_marker = "&markers=color:red%7Clabel:%7C";
+
+    $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        data: {},
+        url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+            $("img#location_popup").attr("src", google_maps_embed+map_center+map_location+map_zoom_size+map_marker+map_location);
+            $("#school_location_link").attr("href", google_maps_web+map_location);
+        },
+        success: function (msg) {
+            var locations_array = msg.locations;
+            for(var i = 0; i < locations_array.length; i++){
+                var loc = locations_array[i];
+                if (loc.title == "2 MetroTech Center") {
+                    map_location = loc.latitude + "," + loc.longitude;
+                    $("img#location_popup").attr("src", google_maps_embed+map_center+map_location+map_zoom_size+map_marker+map_location);
+                    $("#school_location_link").attr("href", google_maps_web+map_location);
+                    break;
+                }
+            }
+        }
+    });
+
     var originalHTML = "";
     $.urlParam = function (sParam) {
 
@@ -185,7 +216,6 @@ $(document).ready(function() {
                         $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
                         $(".cancelBtn").click();
 
-
                         $(".group-cover-picture").css({"background-image": "url(" + jsonstring + ")"});
 
                     },
@@ -227,7 +257,6 @@ $(document).ready(function() {
                 if (html.user_dp.length > 0) {
                     jsonstring = html.user_dp[0]['img_url'];
                 }
-                //alert(html);
                 $ref.closest("form").find(".uploadedPhotoFrame").show();
                 alert(html);
                 $ref.closest("form").find(".uploadedPhotoFrame_display").hide();
@@ -368,28 +397,14 @@ $(document).ready(function() {
             });
 
 
-
+    /*
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
-        $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
-                $(this).closest(".group-head-top-sec").find(".location-pic-container").delay(50).css({"height":"160"});
-                $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
-
-        });
-
-
-
-
-
     });
-
-
     $('.group_location').mouseleave(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
-        $(this).closest(".group-head-top-sec").find(".location-pic-container").css({"height":"60px"});
-        $(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
-        $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
     });
+    */
 
 
     $(document).delegate('.group-cover-pic-info',"click", function(){
@@ -398,51 +413,6 @@ $(document).ready(function() {
             }, 200);
     });
 
-
-    $(window).scroll(function() {
-        var y=$(window).scrollTop()*0.32;
-        var x=$(window).scrollTop()*1;
-        //alert(y);
-        //$(".group-cover-picture").css({"transform":"translateY("+y+"px)"});
-        //$(".spec-group-header-right").css({"height":y+"px"});
-
-        if($(window).scrollTop()>=5){
-            $(".info-scroll-up").css("cursor","pointer");
-            /*
-            $(".em_hide").css({
-                "width":"12px",
-                "opacity":"1"
-            });
-            */
-        }
-        else{
-            $(".info-scroll-up").css("cursor","default");
-            /*
-            $(".em_hide").css({
-                "width":"0",
-                "opacity":"0"
-            });
-            */
-
-        }
-
-
-
-    });
-
-    /***DT***/
-    /*
-    $(window).scroll(function() {
-        if($(window).scrollTop()>175){
-            $(".info-scroll-up").css({"position":"absolute","top":"175px"});
-            $(".spec-group-header-right").css({"position":"absolute","top":"177px","left":"777px"})
-        }
-        else{
-            $(".info-scroll-up").css({"position":"fixed","top":"50px"});
-            $(".spec-group-header-right").css({"position":"fixed","top":"50px","left":"1097px"});
-        }
-    });
-    */
 
     $(".group-head-top-sec").mouseenter(function() { $(".group-cover-pic-info").css("opacity", "0"); });
     $(".group-head-top-sec").mouseleave(function() { $(".group-cover-pic-info").css("opacity", "1"); });
@@ -500,52 +470,48 @@ $(document).ready(function() {
             url:'includes/department_follow.php',
             data:{dept_id:dept_id_follow},
             success: function(response) {
-
             }
         });
     });
+
     $(document).delegate('.follow',"click", function(){
-                var follow_user=$(this).attr('id').replace(/[^\d.]/g,'');
-                console.log(follow_user);
-                if(!$(this).hasClass(".tab_followed")){
-                $(this).text("Following");
-                $(this).addClass("tab_followed");          
-                }
-                $.ajax({  
-                    type: "POST", 
-                    url:"includes/followunfollow.php",
-                    data: {follow_user:follow_user},
-                    success: function(response) {
-                        console.log(response);
-                    }
-                });    
-            });
+        var follow_user=$(this).attr('id').replace(/[^\d.]/g,'');
+        console.log(follow_user);
+        if(!$(this).hasClass(".tab_followed")){
+        $(this).text("Following");
+        $(this).addClass("tab_followed");
+        }
+        $.ajax({
+            type: "POST",
+            url:"includes/followunfollow.php",
+            data: {follow_user:follow_user},
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
 
 
-            $(document).delegate('.tab_followed',"mouseout", function(){
-                if(!$(this).hasClass("ready_to_unfollow")){
-                    $(this).addClass("ready_to_unfollow");
-                }
-            });    
+    $(document).delegate('.tab_followed',"mouseout", function(){
+        if(!$(this).hasClass("ready_to_unfollow")){
+            $(this).addClass("ready_to_unfollow");
+        }
+    });
 
-            $(document).delegate('.ready_to_unfollow',"click", function(){
-                $(this).removeClass("ready_to_unfollow");
-                $(this).removeClass("tab_followed");
-                $(this).text("Follow");
-                var follow_user=$(this).attr('id');
+    $(document).delegate('.ready_to_unfollow',"click", function(){
+        $(this).removeClass("ready_to_unfollow");
+        $(this).removeClass("tab_followed");
+        $(this).text("Follow");
+        var follow_user=$(this).attr('id');
 
-            });
+    });
 
-            $(document).delegate('.ready_to_unfollow',"mouseenter", function(){
-                $(this).text("Unfollow");
-            });
-            $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
-                $(this).text("Following");
-            });
-           
-
-
-
+    $(document).delegate('.ready_to_unfollow',"mouseenter", function(){
+        $(this).text("Unfollow");
+    });
+    $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
+        $(this).text("Following");
+    });
 
     $(document).delegate(".tab-inactive","click",function(){
         if($(this).hasClass("tab1")){  
@@ -567,7 +533,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","310px");
+            $(".tab-wedge-down").css("left","70px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -610,7 +576,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","475px");
+            $(".tab-wedge-down").css("left","240px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -661,7 +627,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","648px");
+            $(".tab-wedge-down").css("left","410px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -777,15 +743,6 @@ $(document).ready(function() {
             
     });
 
-
-$(document).ready(function() {
-
-       window.scroll(0,175); 
-
-
-
-});
-
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {
@@ -797,6 +754,12 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+    <svg width="0" height="0">
+        <clipPath id="clipPolygon">
+            <polygon points="135 241,399 241,399 84,326 84,317 66,308 84,135 84">
+            </polygon>
+        </clipPath>
+    </svg>
     <div class = "root">
     <div class='gp_topbar_wrap'>
         <?php include("topbar.php"); ?>
@@ -816,8 +779,8 @@ $(document).ready(function() {
                         <span class = "floatL white">
                             Submit Cover Photo
                         </span>
-                        <em class = "floatR cancelBtn close">
-                        </em>
+                        <div class = "floatR cancelBtn close school_modal_close">
+                        </div>
                     </div>
                     <div class = "modal_main">
                         <form>
@@ -992,7 +955,6 @@ $(document).ready(function() {
                                     </div>
                                     <div class = "tab-block-content tab-block-content-scroll">
                                         <div class = "members-scrollwrap">
-                                            
                                                 <?php
                                                      include 'php/dbconnection.php';
                                                      $query=$con->query("SELECT user_id,firstname,lastname FROM user WHERE user_id 

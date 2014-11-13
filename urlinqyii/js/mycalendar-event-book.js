@@ -619,7 +619,7 @@ $(document).ready(function () {
         $(".blackcanvasNew").attr("id", tid);
         $(".blackcanvasNew").fadeIn();
         animationflag = 1;
-        //$("#newbc3content").css("margin-right","0px");
+        //$("#newbc3content")club.css("margin-right","0px");
         $("#newbc3content").animate({ marginRight: "+=700px" });
     });
 
@@ -1571,9 +1571,9 @@ $(document).ready(function () {
             // toggle for button type
             $('.fixed-events-tabs').css({ "display": "block", "opacity": "1" });
             $('.event_view').animate({ opacity: '1' }, "medium");
-            //$('.midsec').css({ "height": "540px", "margin-bottom": "20px" });
-            //$('.leftsec').css('height', '574px');
-            //$('.rightsec').css('height', '575px');
+            //$('.midsec')club.css({ "height": "540px", "margin-bottom": "20px" });
+            //$('.leftsec')club.css('height', '574px');
+            //$('.rightsec')club.css('height', '575px');
             $('.cal_view_events').text("Monthly Planner");
             $('.cal_view_monthly').text("Event Book");
 
@@ -1611,9 +1611,9 @@ $(document).ready(function () {
             // toggle for button type
             $('.fixed-events-tabs').css({ "opacity": "0" });
             $('.event_view').animate({ opacity: '0' }, "medium");
-            //$('.midsec').css({ "height": "540px", "margin-bottom": "20px" });
-            //$('.leftsec').css('height', '574px');
-            //$('.rightsec').css('height', '575px');
+            //$('.midsec')club.css({ "height": "540px", "margin-bottom": "20px" });
+            //$('.leftsec')club.css('height', '574px');
+            //$('.rightsec')club.css('height', '575px');
             $('.cal_view_events').text("Event Book");
             $('.cal_view_monthly').text("Monthly Planner");
             $('#calendar').fullCalendar('removeEvents');
@@ -1712,8 +1712,8 @@ $(document).ready(function () {
         var elem = $(e.target);
         if (elem.hasClass("dd-title") || elem.hasClass("event-repeat") || elem.hasClass("down-arrow")) {
             //alert();
-            //$('.repeatoption-1').css('display', 'none');
-            $('.click-out').toggle();//.css('display', 'block');
+            //$('.repeatoption-1')club.css('display', 'none');
+            $('.click-out').toggle();//club.css('display', 'block');
         }
         else {
             $('.click-out').css('display', 'none');
@@ -1729,7 +1729,7 @@ $(document).ready(function () {
             $(".blackcanvas30").fadeOut();
             $("#bc3contentAddEvent").css('display', 'none');
             clearInsertFields();
-            /*$("#bc3contentAddEvent").css('margin-top', '-600px');
+            /*$("#bc3contentAddEvent")club.css('margin-top', '-600px');
             $("#bc3contentAddEvent").animate({ marginTop: "-=600px", marginTop: "transition: all 0.5s ease-in-out;" });*/
         }
         if (!elem.hasClass("fa fa-caret-down open_Menu")) {
@@ -1903,7 +1903,7 @@ $(document).ready(function () {
 
     var tab_active = $(".event_tab_active");
     var active_width = tab_active.width();
-    //$(".tab-indicator").css("width",active_width);
+    //$(".tab-indicator")club.css("width",active_width);
 
     $(document).delegate(".event_tab", "click", function () {
 
@@ -2006,7 +2006,7 @@ $(document).ready(function () {
         $("#bc3contentAddEvent").css('display', 'none');
 
         clearInsertFields();
-        /*$("#bc3contentAddEvent").css('margin-top', '-600px');
+        /*$("#bc3contentAddEvent")club.css('margin-top', '-600px');
         $("#bc3contentAddEvent").animate({ marginTop: "-=600px", marginTop: "transition: all 0.5s ease-in-out;" });*/
 
     });
@@ -2306,17 +2306,17 @@ $(document).ready(function () {
     });
 
     $(document).delegate('#event_date', 'click', function () {
-        //        $('.calLayer').css('display', 'block');
+        //        $('.calLayer')club.css('display', 'block');
         $(this).parents(".header-inp-wrap").children('.calLayer').toggle();
     });
 
     $(document).delegate('#img_cal_filter', 'click', function () {
-        //        $('.calLayer').css('display', 'block');
+        //        $('.calLayer')club.css('display', 'block');
         $(this).parents(".event_view_cal").children('.calLayer').toggle();
     });
 
     $(document).delegate('#repeat_date_icon', 'click', function () {
-        //        $('.calLayer').css('display', 'block');
+        //        $('.calLayer')club.css('display', 'block');
         $(this).parents(".event-repeat").children('.calLayer').toggle();
 
     });
@@ -2866,9 +2866,9 @@ function invite(sender) {
 
         connectionsInvited -= 1;
         checkbox.prop('checked', false);
-        //$(sender).children('.invite_details_box').css('opacity', '1');
-        //$(sender).children('.invite_details_box').css('background-color', 'transparent');
-        //$(sender).children('.invite_details_box').children('.ibNameLink').css('color', '#424141');
+        //$(sender).children('.invite_details_box')club.css('opacity', '1');
+        //$(sender).children('.invite_details_box')club.css('background-color', 'transparent');
+        //$(sender).children('.invite_details_box').children('.ibNameLink')club.css('color', '#424141');
         //$(sender).children('.invite').addClass('toinvite');
         //$(sender).children('.invite').removeClass('invited');
     }
@@ -2878,9 +2878,9 @@ function invite(sender) {
         $(sender).find(".invite-option-checkwrap").css({ "background-image": "url(img/checked-invite.png)", "opacity": "1" });
         connectionsInvited += 1;
         checkbox.prop('checked', true);
-        //$(sender).children('.invite_details_box').css('opacity', '0.5');
-        //$(sender).children('.invite_details_box').css('background-color', '#759E96');
-        //$(sender).children('.invite_details_box').children('.ibNameLink').css('color', '#FFF');
+        //$(sender).children('.invite_details_box')club.css('opacity', '0.5');
+        //$(sender).children('.invite_details_box')club.css('background-color', '#759E96');
+        //$(sender).children('.invite_details_box').children('.ibNameLink')club.css('color', '#FFF');
         //$(sender).children('.invite').addClass('invited');
         //$(sender).children('.invite').removeClass('toinvite');
 

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This is the model class for table "reply_votes".
+ * This is the model class for table "reply_vote".
  *
- * The followings are the available columns in table 'reply_votes':
- * @property string $reply_id
- * @property string $user_id
+ * The followings are the available columns in table 'reply_vote':
+ * @property integer $reply_id
+ * @property integer $user_id
  * @property string $vote_type
  */
 class ReplyVote extends CActiveRecord
@@ -15,7 +15,7 @@ class ReplyVote extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'reply_votes';
+		return 'reply_vote';
 	}
 
 	/**
@@ -27,7 +27,7 @@ class ReplyVote extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('reply_id, user_id, vote_type', 'required'),
-			array('reply_id, user_id', 'length', 'max'=>20),
+			array('reply_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('vote_type', 'length', 'max'=>8),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -76,8 +76,8 @@ class ReplyVote extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('reply_id',$this->reply_id,true);
-		$criteria->compare('user_id',$this->user_id,true);
+		$criteria->compare('reply_id',$this->reply_id);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('vote_type',$this->vote_type,true);
 
 		return new CActiveDataProvider($this, array(

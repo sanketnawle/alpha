@@ -1,0 +1,28 @@
+
+//Set your fork URL
+git remote set-url origin https://github.com/yourusername/alpha.git
+
+
+//Sync your project with your current fork
+git pull origin master
+
+//Push your local project to your current fork
+git push origin master
+
+//Set master project url
+git remote add upstream <path to upstream repo>
+
+//Fetch upstream changes
+
+
+//Merge those upstream changes with your fork
+git merge upstream/master
+
+
+//Push your fork to the master project
+git push upstream
+
+
+$ git fetch upstream
+$ git merge upstream/master
+$ git push origin master

@@ -56,13 +56,38 @@ return array(
             //MUST ENABLE mod_rewrite IN APACHE AND HAVE PROPER .htaccess file FOR CLEAN URLS TO WORK
             'rules'=>array(
                 //Maps multiple views in one line
-                '<action:(contact|login|test|json|home)>'=>'site/<action>',
+                '<action:(contact|login|test|json|home|register|logout)>'=>'site/<action>',
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
+
+
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
-                //'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'home/feed' => 'feed/getHomePosts',
+                'profile/<id:\d+>/feed' => 'feed/getProfilePosts',
+                'class/<id:[\w|-]+>/feed' => 'feed/getClassPosts',
+                'course/<id:[\w|\-|\s]+>/feed' => 'feed/getCoursePosts',
+                'club/<id:[\w|-]+>/feed' => 'feed/getClubPosts',
+                'department/<id:[\w|-]+>/feed' => 'feed/getDepartmentPosts',
+                'school/<id:[\w|-]+>/feed' => 'feed/getSchoolPosts',
+
+                'department/test'=>'department/test',
+
+                //'club/<id:\d+>/members'=>'club/members',
+                //'club/<id:\d+>/member/remove'=>'club/removeMember',
+
+                'search/<q>' => 'search/json',
+                //urlinq.com/getposts
+                'getposts'=>'profile/getPosts',
+                'search/'=>'search/view',
+
+                'file/upload'=>'site/fileUpload',
+
+
+                '<controller:\w+>/<id:\d+>/<action:\w+>/'=>'<controller>/<action>',
+
+
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
             ),
@@ -74,7 +99,7 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=urlinq_beta',
+			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

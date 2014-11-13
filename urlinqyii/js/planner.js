@@ -949,7 +949,7 @@ $(document).ready(function () {
 
 
 
-        //$("#bc3content").css("margin-right","0px");
+        //$("#bc3content")club.css("margin-right","0px");
 
 
 

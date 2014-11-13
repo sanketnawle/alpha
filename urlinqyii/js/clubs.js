@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    //alert(club_id);
     var profileLoadFlag = 1; // to load the profile load if 1 
 
     $(window).scrollTop(155);
@@ -1024,19 +1024,38 @@ $(document).ready(function () {
     });
 
     function FetchMembers(){
-        $.ajax({
-            type: "POST",
-            url: "php/members.php",
-            data: { group_id: qs['group_id'] },
-            success: function (html) {
-                $(".members-tab-content").html(html);
-                $(".members-tab-content").animate({ opacity: "1" }, 300);
-                $(".members-tab-content").show();
-            },
-            error: function (html) {
-                alert("error");
-            }
+        $.get(base_url + '/html/templates/member.html',function(data){
+
+            console.log($(data));
+//            alert($member_div);
         });
+
+
+
+        $.getJSON(base_url + "/club/" + club_id.toString() + '/members', { group_id: club_id }, function(members_json) {
+            alert(JSON.stringify(members_json));
+
+            $member_div = $('<div class="template" ></div>').attrs('user_id',user_id);
+            $member_div.find('.img').attr('src',user['img_url'])
+
+        }).error(function() {
+            alert("error getting club member json");
+        });
+
+//        $.ajax({
+//            type: "POST",
+//            url: base_url + "/club/" + club_id.toString() + '/members',
+//            data: { group_id: club_id },
+//            success: function (html) {
+//                alert(html);
+////                $(".members-tab-content").html(html);
+////                $(".members-tab-content").animate({ opacity: "1" }, 300);
+////                $(".members-tab-content").show();
+//            },
+//            error: function (html) {
+//                alert("error fetching members");
+//            }
+//        });
     }
 
     $(document).delegate('.delete-user', 'click', function () {

@@ -14,15 +14,14 @@ include('php/redirect.php');
 <link rel='stylesheet' type='text/css' href='css/planner_for_dept.css'>
 
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link
-    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
-    rel='stylesheet' type='text/css'>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
 
 <script>
 
 
 $(document).ready(function() {
+
     $.urlParam = function (sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
@@ -382,6 +381,7 @@ $(document).ready(function() {
             }, 200);
     });
 
+    /*
     $(window).scroll(function() {
         var y=$(window).scrollTop()*0.32;
         var x=$(window).scrollTop()*1;
@@ -403,10 +403,7 @@ $(document).ready(function() {
                 "opacity":"0"
             });
         }
-
-
     });
-
     $(window).scroll(function() {
 
         if($(window).scrollTop()>175){
@@ -417,8 +414,8 @@ $(document).ready(function() {
             $(".info-scroll-up").css({"position":"fixed","top":"50px"});
             $(".spec-group-header-right").css({"position":"fixed","top":"50px","left":"1097px"});
         }
-
     });
+    */
 
     $('.cancelBtn').click(function(){
         $(".modal_body").animate({opacity:0},300,function(){
@@ -511,7 +508,7 @@ $(document).ready(function() {
             });
 
             $(document).delegate('.ready_to_unfollow',"mouseenter", function(){
-                $(this).text("Unfollow");
+                $(this).text("Leave");
             });
             $(document).delegate('.ready_to_unfollow',"mouseleave", function(){
                 $(this).text("Member");
@@ -520,10 +517,10 @@ $(document).ready(function() {
 
             $(document).delegate('.joinBtn',"click", function(){
                 if($(this).hasClass("joinedBtn")){
-                    $(this).text("Follow");
+                    $(this).text("Join");
                     $(this).removeClass("joinedBtn");
                 }else{
-                    $(this).text("Followed");
+                    $(this).text("Joined");
                     $(this).addClass("joinedBtn");
                 }
 
@@ -562,7 +559,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","275px");
+            $(".tab-wedge-down").css("left","57px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             
@@ -605,7 +602,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab2-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","410px");
+            $(".tab-wedge-down").css("left","200px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").hide();
@@ -653,7 +650,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","551px");
+            $(".tab-wedge-down").css("left","345px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -709,7 +706,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","697px");
+            $(".tab-wedge-down").css("left","495px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -735,14 +732,6 @@ $(document).ready(function() {
                               $(".members-tab-content").animate({ opacity: "1"},300);
                             }
                         });
-            
-            
-
-            
-
-            
-            
-            
         }
     });
     $(document).delegate("#group-about-link","click",function(){
@@ -783,14 +772,6 @@ $(document).ready(function() {
     });
 
 
-$(document).ready(function() {
-
-       window.scroll(0,175); 
-
-
-
-});
-
     /*progress function for ajax*/
     function progressHandlingFunction(e) {
         if (e.lengthComputable) {
@@ -799,6 +780,7 @@ $(document).ready(function() {
     }
 
 });
+
 </script>
 </head>
 <body>
@@ -821,8 +803,8 @@ $(document).ready(function() {
 						<span class='floatL white'>
 							Submit Cover Photo
 						</span>
-                    <em class='floatR cancelBtn close'>
-                    </em>
+                    <div class='floatR cancelBtn close'>
+                    </div>
                 </div>
                 <div class='modal_main'>
                     <form>

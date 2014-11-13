@@ -27,9 +27,14 @@ echo "
                 <span class='bh-t1'>
                     ABOUT
                 </span>
+            </div>
+            <div class='box-content content-about'>" . $department_about_row['dept_desc'] . "</div>
 
+            <div class='box-header'>
+                <span class='bh-t2'>
+                    Links
+                </span>
             </div>
-            <div class='box-content content-about'>" . $department_about_row['dept_desc'] . "
-            </div>
+            <div class='box-content content-link'>" . $department_about_row['dept_desc'] . "</div>
         </div>
 ";

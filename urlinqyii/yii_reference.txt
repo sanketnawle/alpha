@@ -14,7 +14,13 @@ a) CREATING NEW CONTROLLER / MODEL
         ),
 
     ),
-
+    
+    //if you're using the XAMPP server stack on MAC and you're running into a particular CEXception regarding permissions
+    //terminal into XAMPP/htdocs/alpha/urlinqyii/protected folder and run command 'ls -l' to check group permissions
+    //Assuming its missing a 'w'(write permissions), run command 'sudo chmod 777 runtime' (granting all permissions
+    //You may soon after run into a problem regarding the assets folder in urlinqyii, do the same thing (sudo chmod 777 assets)
+    //rinse and repeat until you're in the gii application page
+    
     Once signed in to /gii/, there are options for
         Controller Generator
         Crud Generator
@@ -111,10 +117,30 @@ d) REFERENCING CSS/JS/IMAGE/ASSETS
     and should be referenced in your html like this:
 
     CSS
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->request->baseUrl; ?>/css/file_name.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/file_name.css'/>
 
     JS
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script_name.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/script_name.js"></script>
 
     Images
-    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
+    <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
+
+
+f) QUERYING SPECIFIC COLUMNS FROM TABLE
+
+
+    examples:
+
+    $is_admin = Yii::app()->db->createCommand()
+        ->select('is_admin')
+        ->from('group_users u')
+        ->where('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$club->group_id))
+        ->queryRow();
+
+    $user = Yii::app()->db->createCommand()
+        ->select('id, username, profile')
+        ->from('tbl_user u')
+        ->join('tbl_profile p', 'u.id=p.user_id')
+        ->where('id=:id', array(':id'=>$id))
+        ->queryRow();
+        
