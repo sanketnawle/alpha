@@ -14,7 +14,8 @@ $(document).ready(function(){
 		$('.span_2_of_3').hide();
 		$('.span_3_of_3').hide();
 		$('.members-tab-content').hide();
-		$('.departments-tab-content').css('display', 'none');
+		$('.departments-tab-content').css('display', 'block');
+		
 		
 	});
 	$('.members-tab').on('click', function() {

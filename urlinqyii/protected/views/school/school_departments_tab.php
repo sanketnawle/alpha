@@ -28,6 +28,7 @@
 <?php
 
 echo '<div class = "departments-tab-content">
+
                             <div class = "departmentsTabTop">
                                <form>
                                   <div class = "searchWrapper">
@@ -38,7 +39,7 @@ echo '<div class = "departments-tab-content">
                                   </button>
                               </form>
                            </div>';
-echo '<div class = "item department-selector"> NO DATA BEING SHOWED - I (Mehul) wrote this';
+echo '<div class = "item department-selector">';
 
 /*
 foreach($dept_array as $key=>$value){

@@ -1484,7 +1484,7 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
 
 div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.about-content,div.departments-tab-content{
 	display:none;
-	opacity:0;
+	
 	
 }
 
