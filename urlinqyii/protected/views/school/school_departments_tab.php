@@ -38,7 +38,8 @@ echo '<div class = "departments-tab-content">
                                   </button>
                               </form>
                            </div>';
-echo '<div class = "item department-selector">';
+echo '<div class = "item department-selector"> NO DATA BEING SHOWED - I (Mehul) wrote this';
+
 /*
 foreach($dept_array as $key=>$value){
     if($key==0){

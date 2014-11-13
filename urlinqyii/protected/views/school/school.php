@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <script src="../protected/js/school.js"></script>
 
 <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 <link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
@@ -605,20 +606,7 @@ $(document).ready(function() {
             $(".members-tab-content").hide();
 
 
-//            $.ajax({
-//                            type: "POST"
-//                            url: "<?php //echo Yii::app()->getBaseUrl(true); ?>//=<?php //echo $school->school_id; ?>//",
-//                            success: function(html){
-//                                $(".departments-tab-content").remove();
-//
-//                                $(".midsec").append(html);
-//                               $(".departments-tab-content").animate({ opacity: "1"},300);
-//                               $(".departments-tab-content").show();
-//                            }
-//                        });
-            
-            
-        }
+        
         if($(this).hasClass("tabmembers")){
             
             
@@ -803,10 +791,11 @@ $(document).ready(function() {
 
                     <div class = "midsec">
                         <div class="section group">
+                           
                             <?php echo $this->renderPartial('school_info_tab_about',array('school'=>$school)); ?>
                             <?php echo $this->renderPartial('school_info_tab_announcements',array()); ?>
                             <?php echo $this->renderPartial('school_info_tab_students',array()); ?>
-
+                            
                             <?php echo $this->renderPartial('school_departments_tab',array()); ?>
 
                             <?php echo $this->renderPartial('school_members_tab',array()); ?>
