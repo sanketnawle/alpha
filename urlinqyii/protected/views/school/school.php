@@ -1,5 +1,4 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -27,11 +26,8 @@
 <script>
 
 
-
-
 $(document).ready(function() {
     $.urlParam = function (sParam) {
-
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
         for (var i = 0; i < sURLVariables.length; i++) {
@@ -39,10 +35,8 @@ $(document).ready(function() {
             if (sParameterName[0] == sParam) {
                 return sParameterName[1];
             }
-        }$
-
+        }
     }
-
 });
 
     var univ_id = 1//$.urlParam('univ_id');

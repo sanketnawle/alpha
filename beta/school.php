@@ -627,7 +627,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tab3-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","410px");
+            $(".tab-wedge-down").css("left","407px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
 
@@ -858,8 +858,8 @@ $(document).ready(function() {
                                 <div class="school_announcements">
                                     <div class="school_announcement">
                                         <h4 class="school_announcer_name"> Announcer Name </h4>
-                                        <div class="school_posted_time"> Posted 2 days ago</div> 
-                                        <p class="school_announcer_position"> Dean of School Of Engineering</p>
+                                        <div class="school_posted_time"><span>Posted 5 days ago</span></div>
+                                        <div class="school_announcer_position"><span>Dean of School Of Engineering</span></div>
                                         <div class="school_the_announcement">
                                             School will be close on this day.School will be close on this day.
                                             School will be close on this day.School will be close on this day.

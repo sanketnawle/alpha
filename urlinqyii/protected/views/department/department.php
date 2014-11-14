@@ -870,7 +870,7 @@ $(document).ready(function() {
         <div class='main-mid-sec'>
 
             <div class='mid_right_sec mid_right_sec_school'>
-                <?php include('department_header.php'); ?>
+                <?php echo $this->renderPartial('department_header',array()); ?>
                 <div class='midsec'>
                     <?php include('department_feed_tab.php'); ?>
 
