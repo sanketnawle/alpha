@@ -291,7 +291,7 @@ function LoadHome() {
                 </div>
             </div>-->
             <div class="topbar_prof">
-                <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
+               <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
                 </div>
                 <div class="topbar_user_name">
                     <?php echo $user->firstname; ?>

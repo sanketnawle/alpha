@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	$('.tabFeed').on('click', function(){
 		$('.departments-tab-content').hide();
 		$('.members-tab-content').hide();
@@ -8,7 +8,6 @@ $(document).ready(function(){
 		$('.span_3_of_3').show();
 
 	});
-
 	$('.tabDepartments').on('click', function() {
 		$('.span_1_of_3').hide();
 		$('.span_2_of_3').hide();

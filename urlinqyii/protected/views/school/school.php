@@ -799,6 +799,7 @@ $(document).ready(function() {
                             <?php echo $this->renderPartial('school_departments_tab',array()); ?>
 
                             <?php echo $this->renderPartial('school_members_tab',array()); ?>
+                            
                         </div>
                     </div>
 
