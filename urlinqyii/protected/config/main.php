@@ -5,6 +5,7 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+include 'db_config.php';
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
@@ -98,14 +99,14 @@ return array(
 //		),
 		// uncomment the following to use a MySQL database
 
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
-			'charset' => 'utf8',
-		),
-
+//		'db'=>array(
+//			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
+//			'emulatePrepare' => true,
+//			'username' => 'root',
+//			'password' => 'root',
+//			'charset' => 'utf8',
+//		),
+        'db'=>get_db_array(),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
