@@ -47,7 +47,7 @@
       <file leaf-file-name="SearchController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="55" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2193">
+            <state line="28" column="55" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2465">
               <folding />
             </state>
           </provider>
@@ -74,7 +74,7 @@
       <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="24" selection-start="256" selection-end="256" vertical-scroll-proportion="0.13266444" vertical-offset="0" max-vertical-offset="2414">
+            <state line="100" column="0" selection-start="3382" selection-end="3382" vertical-scroll-proportion="0.31228474" vertical-offset="1428" max-vertical-offset="2465">
               <folding />
             </state>
           </provider>
@@ -390,7 +390,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296433" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -644,7 +644,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="55" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2193">
+        <state line="28" column="55" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2465">
           <folding />
         </state>
       </provider>
@@ -700,7 +700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="256" selection-end="256" vertical-scroll-proportion="0.13266444" vertical-offset="0" max-vertical-offset="2414">
+        <state line="100" column="0" selection-start="3382" selection-end="3382" vertical-scroll-proportion="0.31228474" vertical-offset="1428" max-vertical-offset="2465">
           <folding />
         </state>
       </provider>

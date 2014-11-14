@@ -7,38 +7,38 @@
 // CWebApplication properties can be configured here.
 include 'db_config.php';
 return array(
-	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+    'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+    'name'=>'My Web Application',
 //    'timeZone' => 'UTC',
-	// preloading 'log' component
-	'preload'=>array('log'),
+    // preloading 'log' component
+    'preload'=>array('log'),
 
-	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-	),
+    // autoloading model and component classes
+    'import'=>array(
+        'application.models.*',
+        'application.components.*',
+    ),
 
-	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		//*
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'test',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-		//*/
-	),
+    'modules'=>array(
+        // uncomment the following to enable the Gii tool
+        //*
+        'gii'=>array(
+            'class'=>'system.gii.GiiModule',
+            'password'=>'test',
+            // If removed, Gii defaults to localhost only. Edit carefully to taste.
+            'ipFilters'=>array('127.0.0.1','::1'),
+        ),
+        //*/
+    ),
 
-	// application components
-	'components'=>array(
-		'user'=>array(
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
-		),
-		// uncomment the following to enable URLs in path-format
-		//*
+    // application components
+    'components'=>array(
+        'user'=>array(
+            // enable cookie-based authentication
+            'allowAutoLogin'=>true,
+        ),
+        // uncomment the following to enable URLs in path-format
+        //*
 //		'urlManager'=>array(
 //            'urlFormat'=>'path',
 //            'showScriptName'=>false,
@@ -77,10 +77,11 @@ return array(
                 //'club/<id:\d+>/members'=>'club/members',
                 //'club/<id:\d+>/member/remove'=>'club/removeMember',
 
-                'search/<q>' => 'search/json',
+                //'search/<q>' => 'search/json', //going to need to redirect to search/view, by passing the JSON there
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
                 'search/'=>'search/view',
+                'search/results'=>'search/results',
 
                 'file/upload'=>'site/fileUpload',
 
@@ -93,10 +94,11 @@ return array(
 
             ),
         ),
-		//*/
+        //*/
 //		'db'=>array(
 //			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 //		),
+
 		// uncomment the following to use a MySQL database
 
 //		'db'=>array(
@@ -134,4 +136,5 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 	),
+
 );

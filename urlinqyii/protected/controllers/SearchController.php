@@ -8,12 +8,28 @@ class SearchController extends Controller
     {
 
         //urlinq.com/search?q=lakjsdl
-        $q = $_GET['q'];
+        //$q = $_GET['q'];
+        //renders the view file protected/views/search
+
+
         $filter = Yii::app()->session['filter'];
         //$q = Yii::app()->getRequest()->getQuery('q');
 
+
         $user = User::model()->find('user_id=:id', array(':id'=>1));
-        $this->render('search', array('user'=>$user,'q'=>$q));
+        $query = Yii::app()->request->getQuery('q');
+
+
+        //Yii::app()->request->getPost('q');
+        $this->render('search', array('user'=>$user, 'query'=>$query));
+    }
+    public function actionResults()
+    {
+        $user = User::model()->find('user_id=:id', array(':id'=>1));
+        //$this->render('search', array('user'=>$user,'q'=>$q));
+        $query = Yii::app()->request->getQuery('q');
+
+        $this->render('results', array('user'=>$user, 'query'=>$query));
     }
 
     public function actionSuggestion()
