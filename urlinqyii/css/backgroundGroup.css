@@ -134,18 +134,16 @@ padding:0;
 }
 
 .midsec {
-width: 992px;
-float:left;
-position:relative;
-height:auto;
-padding-top:10px;
-padding-bottom:20px;
-min-height:500px;
-background:transparent;
-padding-left: 9px; 
-padding-right: 9px;
-z-index:2;
-margin-left: 1px;
+    float: left;
+    position: relative;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    min-height: 500px;
+    background: transparent;
+    z-index: 2;
+    width: 100%;
+    margin-left: -3px;
 }
 
 
