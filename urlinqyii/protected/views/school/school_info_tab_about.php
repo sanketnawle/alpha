@@ -30,11 +30,11 @@ echo '
         <div class="school_info">
             <h3 class="school_name">
                 NEW YORK UNIVERSITY
-            </h3>
-            More about the school.More about the school.More about the school.More about the school.
-            More about the school.More about the school.More about the school.More about the school.
-            More about the school.More about the school.More about the school.More about the school.
-            <div class="school_links">
+            </h3>';
+
+          echo $school->school_description;
+
+  echo'          <div class="school_links">
                 <h3 class="school_links_header">
                     Links
                 </h3>

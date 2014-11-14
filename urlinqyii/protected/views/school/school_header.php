@@ -12,8 +12,15 @@ $cv_link = "includes/get_blob.php?img_id=$cp_id";
 $dp_link = "includes/get_blob.php?img_id=$dp_id";
 
 echo'
+<div class="group-head-top-sec" style="background-size:cover;">
+<div class = "group-head-top-sec-shadow">
+                            </div>
+<div class = "group-cover-picture" style="background-image:url(\'' . Yii::app()->getBaseUrl(true) . $school->coverFile->file_url . '\');background-size:cover;">
+</div>
+</div>
     <div class = "modal_coverPhoto_body modal_body">
         <div class = "modal_coverPhoto_container">
+
             <div class = "modal_loading">
                 <img class = "modal_animation" src = "">
             </div>

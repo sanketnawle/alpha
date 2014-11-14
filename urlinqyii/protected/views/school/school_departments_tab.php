@@ -28,6 +28,7 @@
 <?php
 
 echo '<div class = "departments-tab-content">
+
                             <div class = "departmentsTabTop">
                                <form>
                                   <div class = "searchWrapper">
@@ -39,6 +40,7 @@ echo '<div class = "departments-tab-content">
                               </form>
                            </div>';
 echo '<div class = "item department-selector">';
+
 /*
 foreach($dept_array as $key=>$value){
     if($key==0){

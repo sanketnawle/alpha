@@ -45,7 +45,7 @@ echo '
             Submit a photo of this school for a chance to replace its current cover photo.
         </div>
     </div>
-    <div class="location-pic-div-wrap" style="display:none;">
+    <div class="location-pic-div-wrap">
         <img id="location_popup" src="" />
     </div>
 </div>';

@@ -49,20 +49,11 @@ echo '
         </div>
         <div class="school_students_you_may_know">
             <ul class="school_list_of_students">
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
-                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br><br>Kuan Wang </li>
+                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br>Kuan Wang </li>
+                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br>Kuan Wang </li>
+                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br>Kuan Wang </li>
+                <li class="school_single_student" style="background: url("includes/get_blob.php?img_id=218"); background-size:cover"> <br><br><br>Kuan Wang </li>
+
             </ul>
         </div>
 

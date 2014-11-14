@@ -1554,13 +1554,21 @@ div.group-head-sec div.group-head-top-sec
 }
 
 .school_single_student{
-    border-radius: 3px;
+    border-radius: 2px;
     display: inline-block;
+<<<<<<< HEAD
     width: 85px;
     height: 85px;
     background-size: cover;
     margin: 5px;
     padding-bottom: 5px;
+=======
+    width: 84px;
+    max-width: 90px;
+    height: 84px;
+    background-size: cover;
+    margin: 5px;
+>>>>>>> 72edc3438de02a78880fb51acd5a03faaf0d6abe
     text-align: center;
     font-size: 13px;
     vertical-align: text-bottom;

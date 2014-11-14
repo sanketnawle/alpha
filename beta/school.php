@@ -397,14 +397,14 @@ $(document).ready(function() {
             });
 
 
-
+    /*
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
     });
     $('.group_location').mouseleave(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
     });
-
+    */
 
 
     $(document).delegate('.group-cover-pic-info',"click", function(){
@@ -904,10 +904,21 @@ $(document).ready(function() {
                                         <li class="school_single_student" style="background: url('includes/get_blob.php?img_id=218'); background-size:cover"> <br><br><br><br>Kuan Wang </li>
                                     </ul>
                                 </div> 
-
+                            
                             </div>
                     </div>
                         
+
+                        
+                                    
+                                
+                        
+                        
+
+                        
+                           
+                                                 
+                       
 
                         <div class = "about-content">
                             <div class = "about-tab-leftsec">
