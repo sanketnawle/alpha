@@ -1,4 +1,6 @@
-
+.group {
+    cursor: default !important;
+}
 div.study_box_open{
     width: 205px;
     opacity: 0;
@@ -668,7 +670,7 @@ div.coursesCards div.item div.courses{
 
 div.blackData{
     background: -webkit-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent));
-    background: -moz-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent));
+    background: -moz-linear-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent));
     background: -webkit-linear-gradient(rgba(0, 0, 0, .35),transparent); position: absolute;
     top: 0px; z-index: 10; left: 0px;
     bottom: 240px;
@@ -869,7 +871,7 @@ div.location-pic-div-wrap{
     position: absolute;
     right: 13px;
     opacity: 1;
-//display: none;
+    //display: none;
     top: 62px;
     z-index: 500;
     background-color: white;
@@ -943,7 +945,7 @@ button.followBtn:hover{
 }
 
 button.followBtn:active{
-    inset 0 2px 3px rgba(0, 0, 0, 0.2);
+    inset: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -1408,7 +1410,7 @@ div.uiToggle a.filterselectorBtn:active{
 
 
 div.btmleft button.blueBtn{
-    background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
+    background: -moz-linear-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
     border: 1px solid;
     background: -moz-linear-gradient(#30BBE7, #1DA7D3);
     border-radius: 4px;
@@ -1422,12 +1424,12 @@ div.btmleft button.blueBtn{
 
 button.followBtn em{
     display:inline-block;
-    background-image:url(src/plus_sign_white.png);
+    background-image: url(src/plus_sign_white.png);
     width: 10px;
     height: 10px;
     background-size:cover;
     margin-right: 2px;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 }
 
 button.followBtn em.unfollow-icon{
@@ -1442,7 +1444,12 @@ div.department:hover > div.imageWrapper div.deptImage div.blackData {
 }
 
 div.btmleft button.blueBtn:active{
-    background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); border: 1px solid; background: -moz-linear-gradient(#30BBE7, #1DA7D3); border-radius: 4px; color: white; background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); background: -webkit-linear-gradient(#30BBE7, #1DA7D3);
+    background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
+    border: 1px solid;
+    background: -moz-linear-gradient(#30BBE7, #1DA7D3);
+    border-radius: 4px; color: white;
+    background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
+    background: -webkit-linear-gradient(#30BBE7, #1DA7D3);
     background-color: #22A3CC;
     border-color: #39AACE #0F799B #126F8D;
 
@@ -1556,19 +1563,11 @@ div.group-head-sec div.group-head-top-sec
 .school_single_student{
     border-radius: 2px;
     display: inline-block;
-<<<<<<< HEAD
     width: 85px;
     height: 85px;
     background-size: cover;
     margin: 5px;
     padding-bottom: 5px;
-=======
-    width: 84px;
-    max-width: 90px;
-    height: 84px;
-    background-size: cover;
-    margin: 5px;
->>>>>>> 72edc3438de02a78880fb51acd5a03faaf0d6abe
     text-align: center;
     font-size: 13px;
     vertical-align: text-bottom;

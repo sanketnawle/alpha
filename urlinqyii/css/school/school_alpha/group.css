@@ -175,7 +175,7 @@ div.group-head-sec div.group-head-top-sec div.group-head-top-sec-shadow {
     top: 1.3px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab1-icon-active{
-    background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
+    background-image:url('../../../assets/privacy_icons/privacy_status/campus_status.png');
     width: 13px;
     height: 13px;
 
@@ -186,11 +186,11 @@ div.group-head-sec div.group-head-top-sec div.group-head-top-sec-shadow {
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab1-icon-inactive{
-    background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
+    background-image:url('../../../assets/privacy_icons/privacy_status/campus_status.png');
 }
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab1-icon-inactive{
-    background-image:url(../img/privacy_icons/privacy_status/campus_status.png);
+    background-image:url('../../../assets/privacy_icons/privacy_status/campus_status.png');
     width: 13px;
     height: 13px;
     left: 0px;
@@ -255,30 +255,29 @@ div.group-head-sec div.group-head-top-sec div.group-head-top-sec-shadow {
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.status span.badge{
     font-size: 13.7px;
-
     font-weight: 600;
-    -moz-transition: all .2s ease; -webkit-transition: all .2s ease; transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
     line-height: 14px;
-
     color: #333;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
     white-space: nowrap;
     vertical-align: baseline;
-
     border-radius: 10px;
 }
 
 div.tab-wedge-down{
-    background-image: url('../src/tab-wedge-down.png');
+    background-image: url('../../../assets/tab-wedge-down.png');
     display: block;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     width: 21px;
-    height: 15px;
+    height: 10px;
     position: absolute;
-    bottom: -6px;
-    z-index: 4000;
-    left: 66px;
+    bottom: -1px;
+    z-index: 200;
+    left: 70px;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover{
     background-color:#f6f7f8;
@@ -1483,15 +1482,8 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
 }
 
 div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.about-content,div.departments-tab-content{
-<<<<<<< HEAD
     display:none;
     opacity:0;
-
-=======
-	display:none;
-	
-	
->>>>>>> 72edc3438de02a78880fb51acd5a03faaf0d6abe
 }
 
 div.members-header{
@@ -1814,18 +1806,27 @@ div.members-search-top input.searchMembers:focus{
 
 div.invite-users{
     display: inline-block;
-
     position: absolute;
     top: 26px;
     right: 96px;
     display: inline; min-width: 140px; margin-right: 9.5px; cursor: pointer; outline: 0;
     text-transform: uppercase;
-    padding: 0px 8px; background: #D3D3D3 url(../img/glass.png) repeat-x 0 50%; width: 160px;
+    padding: 0px 8px;
+    background: #D3D3D3 url('../../../assets/glass.png') repeat-x 0 50%;
+    width: 160px;
     text-shadow: 0 1px .5px rgba(203, 204, 203, .7);
     line-height: 34px;
     height: 33px; text-align: center; border-radius: 4px;
     font-size: 15px;
-    font-weight: 600; box-shadow: 0 1px 1px rgba(0,0,0,0.15);   color: white; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15); outline: none; border-color: transparent; border: 1px solid transparent; -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); transition: all 0.15s ease; -moz-transition: all 0.15s ease; border-width: 1px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15); background-color: rgba(28, 109, 230, 0.8);
+    font-weight: 600; box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    color: white; -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    outline: none; border-color: transparent;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    border-width: 1px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+    background-color: rgba(28, 109, 230, 0.8);
     background: rgba(28, 109, 230, 0.8);
 }
 div.invite-users:hover{

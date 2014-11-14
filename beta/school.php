@@ -40,7 +40,7 @@ if(isset($_GET['univ_id'])){
 <link rel="icon" href="img/Ur_FavIcon.jpg" type="image/jpg">
 
 <script>
-
+$id = 1;
 
 $(document).ready(function() {
     var google_maps_embed = "https://maps.googleapis.com/maps/api/staticmap?";
@@ -397,14 +397,14 @@ $(document).ready(function() {
             });
 
 
-    /*
+
     $('.group_location').mouseenter(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
     });
     $('.group_location').mouseleave(function(){
         $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
     });
-    */
+
 
 
     $(document).delegate('.group-cover-pic-info',"click", function(){
@@ -907,16 +907,6 @@ $(document).ready(function() {
                             
                             </div>
                     </div>
-                        
-
-                        
-                                    
-                                
-                        
-                        
-
-                        
-                           
                                                  
                        
 
@@ -965,7 +955,7 @@ $(document).ready(function() {
                                                      <?php while($row=$query->fetch_array()){
                                                            ?><li class = "people-box">
                                                            <?php 
-                                                               $dp_link=get_user_dp($con,$row['user_id']);
+                                                               $dp_link=get_user_dp($con, $row['user_id']);
                                                                $user_id_know=$row['user_id']; 
                                                            ?>
                                                             <div class = "person-pic-wrap" style='background-image:url("<?php echo $dp_link; ?>")'>

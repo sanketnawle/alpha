@@ -668,7 +668,7 @@ div.coursesCards div.item div.courses{
 
 div.blackData{
     background: -webkit-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent)); 
-    background: -moz-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent));
+    background: -moz-linear-gradient(linear, center top, center bottom, from(rgba(0, 0, 0, .35)), to(transparent));
     background: -webkit-linear-gradient(rgba(0, 0, 0, .35),transparent); position: absolute; 
     top: 0px; z-index: 10; left: 0px; 
     bottom: 240px;
@@ -943,7 +943,7 @@ button.followBtn:hover{
 }
 
 button.followBtn:active{
-     inset 0 2px 3px rgba(0, 0, 0, 0.2);
+     inset: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -1408,7 +1408,7 @@ div.uiToggle a.filterselectorBtn:active{
 
 
 div.btmleft button.blueBtn{
-    background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); 
+    background: -moz-linear-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3));
     border: 1px solid;
     background: -moz-linear-gradient(#30BBE7, #1DA7D3); 
     border-radius: 4px;
@@ -1442,7 +1442,7 @@ div.department:hover > div.imageWrapper div.deptImage div.blackData {
 }
 
 div.btmleft button.blueBtn:active{
-    background: -moz-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); border: 1px solid; background: -moz-linear-gradient(#30BBE7, #1DA7D3); border-radius: 4px; color: white; background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); background: -webkit-linear-gradient(#30BBE7, #1DA7D3); 
+    background: -moz-linear-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); border: 1px solid; background: -moz-linear-gradient(#30BBE7, #1DA7D3); border-radius: 4px; color: white; background: -webkit-gradient(linear, center top, center bottom, from(#30BBE7), to(#1DA7D3)); background: -webkit-linear-gradient(#30BBE7, #1DA7D3);
     background-color: #22A3CC; 
     border-color: #39AACE #0F799B #126F8D;
     

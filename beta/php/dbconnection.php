@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "urlinq";
+$database = "urlinq_new";
 
 // if(isset($con))
 // $con->close();

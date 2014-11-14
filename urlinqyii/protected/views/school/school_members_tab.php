@@ -1,6 +1,6 @@
 <?php
 echo '
-    <div class = "members-tab-content">
+    <div class = "members-tab-content" style="display:none;">
 
         <div class = "members-search-top">
 
