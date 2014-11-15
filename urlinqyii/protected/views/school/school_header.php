@@ -10,10 +10,55 @@ $con = 1;
 $cv_link = "includes/get_blob.php?img_id=$cp_id";
 $dp_link = "includes/get_blob.php?img_id=$dp_id";
 
-echo'
-';
-
 echo '
+    <div class = "group-head-top-sec">
+        <div class = "group-head-top-sec-shadow">
+        </div>
+        <div class = "info-scroll-up info-shower">
+            <div class = "group-cover-pic-info">
+                <b>Caption Here</b>
+            </div>
+            <button class = "upload_cover upload_school_cover">
+                <i></i>
+                <span>Submit Cover</span>
+            </button>
+            <div class = "group_location">
+                <em></em>
+                <span class = "group_location_name">
+                    <!--
+                    <a href="http://maps.google.com/?q=1" target="_blank" style="text-decoration:none;">
+                        1
+                    </a>
+                    -->
+                    <a id="school_location_link" href="" target="_blank" style="text-decoration:none;">New York</a>
+                </span>
+            </div>
+            <div class = "help-div" id = "help-3">
+                <div class = "help-wedge">
+                </div>
+                <div class = "help-box">
+                    Submit a photo of this school for a chance to replace its current cover photo.
+                </div>
+            </div>
+            <div class="location-pic-div-wrap"></div>
+        </div>
+
+        <div class = "group-cover-picture"></div>
+    </div>
+
+    <div class = "group-pic-frame">
+        <form>
+        <input class="header_small_img_input" name="img" type="file" style="display:none;">
+        </form>
+        <div class = "group-pic"></div>
+    </div>
+    <div class = "group-header-left group-header-above">
+        <div class = "group-title spec-group-title">
+            <div class = "group-name group-name-mt">New York University School of Engineering</div>
+        </div>
+    </div>
+
+
     <div class = "group-head-footer">
         <div class = "group-header-tab">
             <ul class = "group-nav">
@@ -78,8 +123,6 @@ echo '
         </div>
         <div class = "tab-wedge-down"></div>
     </div>
-
-
 ';
 
 /*
@@ -119,4 +162,5 @@ if (isset($_GET['univ_id'])) {
 ';
 }
 */
+
 ?>
