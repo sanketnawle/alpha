@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "campusla_urlinq_beta";
+$database = "urlinq_new";
 
 // if(isset($con))
 // $con->close();
