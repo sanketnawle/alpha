@@ -1,9 +1,7 @@
-<php>
-    //
-</php>
-
 <!DOCTYPE html>
+
 <html>
+
 <head>
     <title></title>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
@@ -11,20 +9,16 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/jquery.mCustomScrollbar.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
-
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
 </head>
 <body>
 <div class="topbar">
     <div class="left">
-        <!--<a href="../home.php" class="urlinq"></a>-->
-        <a href="../home" class="urlinq"></a>
+        <a href="./home.php" class="urlinq"></a>
         <a class="menu active"></a>
     </div>
     <div class="right">
@@ -65,12 +59,9 @@
                         <li>
                             <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
                             <div class='content'>Study For Exam</div>
-                            <div class='check'>
-                                <input type="checkbox" class="event-check" style="display: none">
-                                <div class="check-square">
-                                    <div class="tick x"></div>
-                                    <div class="tick xx"></div>
-                                </div>
+                            <div class="checkbox_wrapper">
+                                <input type="checkbox" name="event1" id="e1" value="#event_data1">
+                                <label for="e1" id="label1"></label>
                             </div>
                         </li>
                         <li>
@@ -90,7 +81,7 @@
                                 <div class="day">Sep</div><div class="date">12</div>
                             </div>
                             <div class='content'>Study For Exam</div>
-                            <div class='action add' title="Add this to event to Calendar"><div class="icon"></div></div>
+                            <div class='action add' title="Add to Calendar"><div class="icon"></div></div>
                             <div class='footer'>1 Week Away &bull; Jake Invited you</div>
                         </li>
 
@@ -205,22 +196,18 @@
         </a>
     </div>
     <div class="center">
-        <!--<form method="get" action="../search_beta.php">-->
-        <form method="get" action="../search/">
-        <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
+        <!--<form method="get" action="./search_beta.php">-->
+        <form method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search/results">
+            <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
             <button type="submit" class="submit"></button>
         </form>
         <ul class="prelist">
             <li><a><div class="icon dpt"></div><span>Professors in Your Department</span></a></li>
-            <li><a><div class="icon cls"></div><span>Courses in Your Department</span></a></li>
-            <li><a><div class="icon dpt"></div><span>Professors in Your School</span></a></li>
-            <li><a><div class="icon cls"></div><span>Courses in Your School</span></a></li>
+            <li><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
+            <li><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
+            <li><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
             <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
-            <li><a><div class="icon clm"></div><span>Find your Classmates</span></a></li>
             <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
-
-            <!--<li><a><div class="icon clb"></div><span></span></a></li>-->
-
         </ul>
         <ul class="postlist">
 
@@ -228,90 +215,10 @@
     </div>
 </div>
 
-<div class="leftpanel">
-    <div class="profile">
-        <div class="title">
-            Profile
-            <div class="menu"></div>
-        </div>
-        <ul>
-            <li class="profile-panel">
-                <a class="nostyle">
-                    <img class="profile-img" src="http://lorempixel.com/50/70">
-                    <div class="details">
-                        <span class="name">My Very Really Long Name</span>
-                        <!--<span class="status">
-                            <img class="status-img" src="http://lorempixel.com/18/18">
-                            <span class="status-msg">Online</span>
-                        </span>-->
-                    </div>
-                </a>
-            </li>
-            <li><a>Department</a></li>
-            <li><a>Really Long School Name</a></li>
-        </ul>
-        <div class="profile-menu">
-            <ul>
-                <li><a><div class="icon prof"></div>Your Profile</a></li>
-                <li><a><div class="icon edit"></div>Edit Profile</a></li>
-                <li><a><div class="icon sign"></div>Sign Out</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="listing">
-        <div class="class scrollable">
-            <div class="title">
-                <div class="wedge"></div>
-                Classes
-            </div>
-            <ul>
-                <li><a>Subject 1</a></li>
-                <li><a>Subject 2</a></li>
-                <li><a>A Very Very Long Subject 3</a></li>
-                <li><a>Subject 4</a></li>
-                <li><a>Subject 1</a></li>
-                <li><a>Subject 2</a></li>
-                <li><a>A Very Very Long Subject 3</a></li>
-                <li><a>Subject 1</a></li>
-                <li><a>Subject 2</a></li>
-                <li><a>A Very Very Long Subject 3</a></li>
-                <li><a>Subject 1</a></li>
-                <li><a>Subject 2</a></li>
-                <li><a>A Very Very Long Subject 3</a></li>
-                <li><a>Subject 4</a></li>
-                <li><a>Subject 4</a></li>
-                <li><a>Subject 4</a></li>
-            </ul>
-        </div>
-        <div class="club scrollable">
-            <div class="title">
-                <div class="wedge"></div>
-                Clubs
-            </div>
-            <ul>
-                <li><a>Club 1</a></li>
-                <li><a>Club 2</a></li>
-                <li><a>A Very Very Really Lengthy Organisation 1</a></li>
-                <li><a>Organisation 2</a></li>
-                <li><a>Club 1</a></li>
-                <li><a>Club 2</a></li>
-                <li><a>A Very Very Really Lengthy Organisation 1</a></li>
-                <li><a>Organisation 2</a></li>
-                <li><a>Club 1</a></li>
-                <li><a>Club 2</a></li>
-                <li><a>A Very Very Really Lengthy Organisation 1</a></li>
-                <li><a>Organisation 2</a></li>
-                <li><a>Club 1</a></li>
-                <li><a>Club 2</a></li>
-                <li><a>A Very Very Really Lengthy Organisation 1</a></li>
-                <li><a>Organisation 2</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<script
-    type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/js/lptopbar.js">
-</script>
+
+
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
+
 

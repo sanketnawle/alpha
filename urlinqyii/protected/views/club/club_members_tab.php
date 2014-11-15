@@ -8,11 +8,15 @@ echo '
             <input type="text" class="inputText searchMembers" name="Search Users"
             placeholder="Search the members of this club..." />
           </div>';
-          if ($is_admin){
-            echo '<div class="invite-users email_invite">
-              Invite email list
-            </div>';
-          }
+
+
+
+
+//          if ($is_admin){
+//            echo '<div class="invite-users email_invite">
+//              Invite email list
+//            </div>';
+//          }
         echo '</div>';
         //if(count($admin_array) > 0) {
 
@@ -46,7 +50,7 @@ echo '<div class="members-list-wrap prof-member-list">';
                     <div class="person-thumb">
                       <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
-                        <span>' . "INTEREST GOES HERE" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' .  $row1->user_bio . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         if ($row1['user_id'] != $user->user_id) {
@@ -56,8 +60,11 @@ echo '<div class="members-list-wrap prof-member-list">';
                     echo '</div>
                     <h3 class="person-title">
                     <a href="profile/' . $row1['user_id'] . '"><strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong></a>
-                        <span><a class="search_unit" href="school/' . $row1['school_id'] . '">' . "$ row1['school_name']" . '</a></span>
+                        <span><a class="search_unit" href="' . Yii::app()->getBaseUrl(true) . '/school/' . $row1['school_id'] . '">' . $row1->school->alias . '</a></span>
                     </h3>';
+
+
+                    echo '<h2 id="user_followers_count">' . count($row1->usersFollowing) . ' followers</h2>';
         if ($row1['user_id'] != $user->user_id) {
           if ($is_admin){
                 echo '<div class="follow-btn" style="margin-left:auto;">';
@@ -105,7 +112,7 @@ if(count($club->members) > 0) {
                     <div class="person-thumb">
                       <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
-                        <span>' . "$ row1['interest'] goes here" . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' . $row1->user_bio . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         echo '<img class="delete-user" title="delete member"/>';
@@ -116,9 +123,11 @@ if(count($club->members) > 0) {
                         <strong class="search_unit">' . $row1['firstname'] . ' ' . $row1['lastname'] . ' </strong>
                       </a>
                       <span>
-                        <a class="search_unit" href="school/' . $row1['school_id'] . '">' .  " $ row1[univ_name] goes here" . '</a>
+                        <a class="search_unit" href="' . Yii::app()->getBaseUrl(true) . '/school/' . $row1['school_id'] . '">' .  $row1->school->alias . '</a>
                       </span>
                       </h3>';
+
+        echo '<h2 id="user_followers_count">' . count($row1->usersFollowing) . ' followers</h2>';
       if ($row1['user_id'] != $user->user_id) {
         if ($is_admin){
             echo '<div class="follow-btn" style="margin-left:auto;">';
@@ -137,12 +146,12 @@ if(count($club->members) > 0) {
 //          }
 
 
-          if ($is_admin)
-          {
-            echo '<div class="upgrade-admin upgrade-student" style="padding: 0px 16px; width:auto;">Admin</div>';
-          }
+//          if ($is_admin)
+//          {
+//            echo '<div class="upgrade-admin upgrade-student" style="padding: 0px 16px; width:auto;">Admin</div>';
+//          }
         }
-        echo '</div>
+        echo '</div></div>
             </div>
         </div>';
     }

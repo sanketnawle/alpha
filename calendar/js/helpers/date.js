@@ -23,7 +23,8 @@ var DateProvider = function () {
         return short ? day[index].substr(0, 3) : day[index];
     }
 
-    this.getDate = function (month, year, last) { return getFullDate(month, year, last); } 
+    this.getDate = function (month, year, last) { return getFullDate(month, year, last); }
+    this.getDay = function (month, year, last) { return getFullDate(month, year, last).getDay(); }    
 }
 
 ulcal.service("DateService", DateProvider);
