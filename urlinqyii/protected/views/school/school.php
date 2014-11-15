@@ -105,6 +105,20 @@ $(document).ready(function() {
 
     });
 
+    $(document).delegate(".group-header-above.group-header-left", "mouseenter", function() {
+        $(".upload_cover").css("opacity", "1");
+        $(".group-cover-pic-info").css("opacity", "0");
+    });
+
+    $(document).delegate(".group-head-top-sec", "mouseenter", function() {
+        $(".upload_cover").css("opacity", "1");
+        $(".group-cover-pic-info").css("opacity", "0");
+    });
+
+    $(document).delegate(".group-head-top-sec", "mouseleave", function() {
+        $(".upload_cover").css("opacity", "0");
+        $(".group-cover-pic-info").css("opacity", "1");
+    });
 
     $(document).delegate(".studybtn","mouseenter",function(){
         var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
@@ -784,6 +798,7 @@ $(document).ready(function() {
 
     </div>
 
+        <?php echo $this->renderPartial('school_upload_cover_modal',array()); ?>
         
         <div class = "main">
             <div class = "leftsec">
