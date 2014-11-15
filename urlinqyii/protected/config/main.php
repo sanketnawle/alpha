@@ -57,7 +57,7 @@ return array(
             //MUST ENABLE mod_rewrite IN APACHE AND HAVE PROPER .htaccess file FOR CLEAN URLS TO WORK
             'rules'=>array(
                 //Maps multiple views in one line
-                '<action:(contact|login|test|json|home|register|logout)>'=>'site/<action>',
+                '<action:(contact|login|test|json|home|register|logout|timezone)>'=>'site/<action>',
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
                 'calendar' => 'calendar/view',

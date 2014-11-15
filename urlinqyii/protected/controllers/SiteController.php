@@ -357,7 +357,25 @@ class SiteController extends Controller
 
 
 
+    public function actionTimezone() {
+        if(!$this->authenticated()){
+            $data = array('error'=>'not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+        if(!isset($_GET['timezone'])){
+            $data = array('error'=>'timezone not set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        Yii::app()->session['timezone'] = $_GET['timezone'];
+
+
+        $data = array('timezone'=>Yii::app()->session['timezone']);
+        $this->renderJSON($data);
+        return;
+    }
 
 
     public function actionFileUpload() {

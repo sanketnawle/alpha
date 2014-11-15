@@ -5,11 +5,74 @@ class EventController extends Controller
 
 
     public function actionGetPlannerEvents(){
-        $events = Event::model()->findAll();
+        $user = $this->get_current_user();
 
-        $data = array('success'=>true,'events'=>$events);
+
+//        $events = Event::model()->findAll('user_id=:user_id',array(':user_id'=>$user->user_id));
+
+
+//        $sql_str = '';
+//        if (strpos($filter, 'Week') !== FALSE){
+//            $sql_str = "SELECT * FROM group_event WHERE group_id = '$group_id' AND yearweek(`start_date`) = yearweek(curdate())";
+//        }elseif(strpos($filter, 'Month') !== FALSE){
+//            $sql_str = "SELECT * FROM group_event WHERE group_id = '$group_id' AND MONTH(`start_date`) = MONTH(curdate())";
+//        }elseif(strpos($filter, 'Semester') !== FALSE){
+//            $sql_str = "SELECT * FROM group_event WHERE group_id = '$group_id' AND YEAR(`start_date`) = YEAR(curdate())";
+//        }
+
+
+
+        //get current datetime
+//        $date = date("Y-m-d H:i:s", time());
+//        $datetime = new DateTime($date);
+//        $datetime->modify('-1 day');
+//        $date = $datetime->format('Y-m-d H:i:s');
+//        $date_key = $datetime->format('Y-m-d');
+
+        $event_count = 0;
+
+        //Get events that were due yesterday
+        $date = date("Y-m-d H:i:s", time());
+        $datetime = new DateTime($date);
+        $datetime->modify('-1 day');
+        $yesterdays_date = $datetime->format('Y-m-d');
+
+
+        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $yesterdays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+        $past_due_events = Event::model()->findAllBySql($sql);
+        $event_count += count($past_due_events);
+
+        //Get events that are due today
+
+        $datetime = new DateTime($date);
+        $todays_date = $datetime->format('Y-m-d');
+
+        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $todays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+        $todays_events = Event::model()->findAllBySql($sql);
+        $event_count += count($todays_events);
+
+
+        //Get events that are due tomorrow
+
+        $datetime = new DateTime($date);
+        $datetime->modify('+1 day');
+        $tomorrows_date = $datetime->format('Y-m-d');
+
+        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $tomorrows_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+        $tomorrows_events = Event::model()->findAllBySql($sql);
+        $event_count += count($tomorrows_events);
+
+
+        $data = array('success'=>true,'past_due_events'=>$past_due_events,'todays_events'=>$todays_events,'tomorrows_events'=>$tomorrows_events,'event_count'=>$event_count);
         $this->renderJSON($data);
         return;
+
+
+
+        //Or get all events from yesterday till tomorrow and have front end sort it
+
+
+
     }
 
 

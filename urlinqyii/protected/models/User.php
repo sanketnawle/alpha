@@ -131,7 +131,7 @@ class User extends CActiveRecord
 			'userOnboard' => array(self::HAS_ONE, 'UserOnboard', 'user_id'),
 			'userRecoveries' => array(self::HAS_MANY, 'UserRecovery', 'user_id'),
 			'userTags' => array(self::HAS_MANY, 'UserTag', 'user_id'),
-			'userTokens' => array(self::HAS_MANY, 'UserToken', 'user_id'),
+			'token' => array(self::HAS_ONE, 'UserToken', 'user_id'),
 
             //added by Michael
             'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
