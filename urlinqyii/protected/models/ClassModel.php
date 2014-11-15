@@ -78,11 +78,15 @@ class ClassModel extends CActiveRecord
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
 			'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
 			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
-			'users' => array(self::MANY_MANY, 'User', 'class_rating(class_id, user_id)'),
+			'users' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)'),
 			'files' => array(self::MANY_MANY, 'File', 'class_file(class_id, file_id)'),
 			'classReviews' => array(self::HAS_MANY, 'ClassReview', 'class_id'),
 			'schedules' => array(self::MANY_MANY, 'Schedule', 'class_schedule(class_id, schedule_id)'),
 			'classUsers' => array(self::HAS_MANY, 'ClassUser', 'class_id'),
+
+            //added by Michael
+            'admins' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=1'),
+            'students' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=0'),
 		);
 	}
 

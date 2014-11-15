@@ -95,9 +95,9 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'classes' => array(self::HAS_MANY, 'Class', 'professor'),
-			'classes1' => array(self::MANY_MANY, 'Class', 'class_bookmark(user_id, class_id)'),
-			'classes2' => array(self::MANY_MANY, 'Class', 'class_rating(user_id, class_id)'),
+			'classes' => array(self::HAS_MANY, 'ClassModel', 'professor'),
+			'classes1' => array(self::MANY_MANY, 'ClassModel', 'class_bookmark(user_id, class_id)'),
+			'classes2' => array(self::MANY_MANY, 'ClassModel', 'class_rating(user_id, class_id)'),
 			'classReviews' => array(self::HAS_MANY, 'ClassReview', 'user_id'),
 			'classReviews1' => array(self::MANY_MANY, 'ClassReview', 'class_review_vote(user_id, review_id)'),
 			'classUsers' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
@@ -131,7 +131,13 @@ class User extends CActiveRecord
 			'userOnboard' => array(self::HAS_ONE, 'UserOnboard', 'user_id'),
 			'userRecoveries' => array(self::HAS_MANY, 'UserRecovery', 'user_id'),
 			'userTags' => array(self::HAS_MANY, 'UserTag', 'user_id'),
-			'userTokens' => array(self::HAS_MANY, 'UserToken', 'user_id'),
+			'token' => array(self::HAS_ONE, 'UserToken', 'user_id'),
+
+            //added by Michael
+            'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
+            'takes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
+            'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id, to_user_id)'),
+            'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id, from_user_id)'),
 		);
 	}
 

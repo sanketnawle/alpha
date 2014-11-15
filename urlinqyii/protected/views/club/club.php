@@ -18,7 +18,7 @@
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_modal.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/photo_modal.css'>
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/club.css'>
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_club.css'>
+<!--    <link rel='stylesheet' type='text/css' href='--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/css/planner_for_club.css'>-->
 
     
     <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
@@ -32,7 +32,11 @@
     <script type="text/javascript">
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         club_id = '<?php echo $club->group_id; ?>';
+        origin = 'group';
+        origin_id = '<?php echo $club->group_id; ?>';
     </script>
+
+    <?php include "timezone.php" ?>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
@@ -58,7 +62,7 @@
 
     <button class='email_invite email_invite_simulator'></button>
 
-    <div class='dt_picker_wrap'><?php include("add_group_schedule.php"); ?></div>
+    <div class='dt_picker_wrap'><?php //include("add_group_schedule.php"); ?></div>
 
     <div class="modal_invite_body modal_body">
         <div class="modal_invite_container">
@@ -183,7 +187,18 @@
                     ?>
 
                 </div>
-                <div class='midsec'>
+
+
+                        <div class="rightsec" style="position: fixed; margin-top: 200px;">
+                            <?php
+                            //echo Yii::app()->runController('partial/planner');
+                            echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user));
+
+                            //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
+
+                            ?>
+
+                        </div>
 	                <?php
 	                if($is_member){
                     ?>
@@ -226,6 +241,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>

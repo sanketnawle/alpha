@@ -59,12 +59,9 @@
                             <li>
                                 <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
                                 <div class='content'>Study For Exam</div>
-                                <div class='check'>
-                                    <input type="checkbox" class="event-check" style="display: none">
-                                    <div class="check-square">
-                                        <div class="tick x"></div>
-                                        <div class="tick xx"></div>
-                                    </div>
+                                <div class="checkbox_wrapper">
+                                    <input type="checkbox" name="event1" id="e1" value="#event_data1">
+                                    <label for="e1" id="label1"></label>
                                 </div>
                             </li>
                             <li>
@@ -84,7 +81,7 @@
                                     <div class="day">Sep</div><div class="date">12</div>
                                 </div>
                                 <div class='content'>Study For Exam</div>
-                                <div class='action add' title="Add this to event to Calendar"><div class="icon"></div></div>
+                                <div class='action add' title="Add to Calendar"><div class="icon"></div></div>
                                 <div class='footer'>1 Week Away &bull; Jake Invited you</div>
                             </li>
 
@@ -200,14 +197,14 @@
         </div>
         <div class="center">
             <form method="get" action="./search_beta.php">
-                <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search groups and faculty">
+                <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
                 <button type="submit" class="submit"></button>
             </form>
             <ul class="prelist">
                 <li><a><div class="icon dpt"></div><span>Professors in Your Department</span></a></li>
-                <li><a><div class="icon cls"></div><span>Courses in Your Department</span></a></li>
-                <li><a><div class="icon dpt"></div><span>Professors in Your School</span></a></li>
-                <li><a><div class="icon cls"></div><span>Courses in Your School</span></a></li>
+                <li><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
+                <li><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
+                <li><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
                 <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
                 <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
             </ul>
