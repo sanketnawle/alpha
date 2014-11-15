@@ -162,7 +162,7 @@ if ($get_department_details_query_result->num_rows == 0) {
     } else {
 
 //no option to edit cover photo
-//DT Test
+
 echo "
 
             <button class = 'upload_cover upload_department_cover'>

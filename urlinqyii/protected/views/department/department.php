@@ -25,13 +25,9 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script src="../protected/js/department.js"></script>
+
 <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 <link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
-
-
-
-<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 
 
 <script>
@@ -60,7 +56,7 @@ $(document).ready(function() {
      $('.tabmembers').removeClass('tab-inactive');
      $('.tabmembers').addClass('group-tab-active');
      }*/
-    */
+    
     var feed=$('.feed-tab-content').clone();
     var about=$('.about-content').clone();
     var about_text = feed.find(".content-about").text();
@@ -380,12 +376,7 @@ $(document).ready(function() {
         $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
             $(this).closest(".group-head-top-sec").find(".location-pic-container").delay(50).css({"height":"160"});
             $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
-
         });
-
-
-
-
 
     });
 
@@ -450,7 +441,6 @@ $(document).ready(function() {
             $(".modal_content").css("opacity","0");
             $(".main").removeClass("fe");
         });
-
     });
 
     $('.upload_cover').click(function(){
@@ -807,100 +797,64 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class='root'>
-    <div class='gp_topbar_wrap'>
-        <?php include ("topbar.php");?>
-    </div>
 
-    <section>
-        <?php include("leftpanel.php"); ?>
-    </section>
+    <div class = "root">
+        <div class='gp_topbar_wrap'>
+            <?php echo Yii::app()->runController('partial/topbar'); ?>
+        </div>
 
-    <div class='modal_coverPhoto_body modal_body'>
-        <div class='modal_coverPhoto_container'>
-            <div class='modal_loading'>
-                <img class='modal_animation' src='src/loadingAnimation.gif'>
-            </div>
-            <div class='modal_content'>
-                <div class='modal_header'>
-						<span class='floatL white'>
-							Submit Cover Photo
-						</span>
-                    <div class='floatR cancelBtn close'>
+        <div class='gp_leftbar_wrap'>
+            <?php
+
+            echo Yii::app()->runController('partial/leftmenu');
+
+
+            //echo $this->renderPartial('/partial/leftmenu',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
+            //include("leftmenu.php");
+            ?>
+
+        </div>
+
+        <?php echo $this->renderPartial('department_upload_cover_modal',array()); ?>
+
+        <div class='main'>
+
+            <div class = "leftsec"></div>
+
+            <div class='main-mid-sec'>
+
+                <div class='mid_right_sec mid_right_sec_school'>
+
+                    <?php echo $this->renderPartial('department_header',array()); ?>
+
+                    <div class='midsec'>
+                        <div class="section group">
+
+                            <!--
+                            I don't how to do the PHP for this so I am writing the bottome code based on how school.php was written.
+                            I am not sure if the second parameter of render partial has to different or not.
+                            Also for the individual pages - the original ones has a ton of PHP in them and I didn't know which php
+                            I had to get rid off, so I just kept them the same.
+                            But on each of those pages, I comment the master dive for them. So when you remove the unnecessary php, make
+                            sure you have those as parent DIVs so that the tab javascript will work
+                            -->
+                            <?php //echo $this->renderPartial('department_status_bar',array()); ?>
+                            <?php //echo $this->renderPartial('department_feed_tab',array()); ?>
+                            <?php //echo $this->renderPartial('department_feed_right_about',array()); ?>
+                            <?php //echo $this->renderPartial('department_courses_tab',array()); ?>
+                            <!-- could't find the code for faculty and students - instead there was code for a 'Member's tab in the
+                                department.php in localhost/alpha/beta/
+                                These both files are basically empty right now
+                            -->
+                            <?php //echo $this->renderPartial('department_faculty_tab',array()); ?>
+                            <?php //echo $this->renderPartial('department_students_tab',array()); ?>
+
+                        </div>
                     </div>
                 </div>
-                <div class='modal_main'>
-                    <form>
-                        <label for='cover_name' class='label_left'>
-                            Cover Photo Name
-                        </label>
-                        <input class='inputBig inputPhotoName' id='cover_name'
-                               placeholder='Enter a name for this photo...'>
-                        <input class='cover_photo_upload' name='img' type='file' style='display:none;'>
-
-                        <div class = "uploadedPhotoFrame_display" style="background-size:cover;"></div>
-                        <div class='uploadedPhotoFrame'>
-                            <div class='noPhotoText'>
-                                No photo uploaded
-                            </div>
-                            <div class='photoicon'>
-                            </div>
-
-                            <button class='uploadPhotoBtn'>
-                                Upload Photo
-                            </button>
-                        </div>
-                        <div class='btmleft'>
-
-                            <button type='button' class='cancelBtn grayBtn'>
-                                Cancel
-                            </button>
-                            <button type='button' class='blueBtn pt_upload_button'>
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
-
-    <div class='main'>
-
-        <div class='main-mid-sec'>
-
-            <div class='mid_right_sec mid_right_sec_school'>
-                <?php include('department_header.php'); ?>
-                <div class='midsec'>
-                     
-                    <!-- 
-                    I don't how to do the PHP for this so I am writing the bottome code based on how school.php was written. 
-                    I am not sure if the second parameter of render partial has to different or not.
-                    Also for the individual pages - the original ones has a ton of PHP in them and I didn't know which php
-                    I had to get rid off, so I just kept them the same. 
-                    But on each of those pages, I comment the master dive for them. So when you remove the unnecessary php, make 
-                    sure you have those as parent DIVs so that the tab javascript will work
-                -->
-                    <?php echo $this->renderPartial('department_status_bar',array()); ?>
-                    <?php echo $this->renderPartial('department_feed_tab',array()); ?>
-                    <?php echo $this->renderPartial('department_feed_right_about',array()); ?>
-                    <?php echo $this->renderPartial('department_courses_tab',array()); ?>
-                    <!-- could't find the code for faculty and students - instead there was code for a 'Member's tab in the 
-                        department.php in localhost/alpha/beta/ 
-                        These both files are basically empty right now 
-                    -->
-                    <?php echo $this->renderPartial('department_faculty_tab',array()); ?>
-                    <?php echo $this->renderPartial('department_students_tab',array()); ?>
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
 
 </body>
 

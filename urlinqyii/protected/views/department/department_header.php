@@ -8,36 +8,37 @@
 
  */
 
+/*
 if (session_status() == PHP_SESSION_NONE) {
 
     session_start();
 
 }
 
-include 'php/dbconnection.php';
+include "php/dbconnection.php";
 
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION["user_id"])) {
 
-    $user_id = $_SESSION['user_id'];
-
-}
-
-if (isset($_GET['dept_id'])) {
-
-    $dept_id = $_GET['dept_id'];
+    $user_id = $_SESSION["user_id"];
 
 }
 
-if (isset($_SESSION['user_type'])) {
+if (isset($_GET["dept_id"])) {
 
-    $user_type = $_SESSION['user_type'];
+    $dept_id = $_GET["dept_id"];
 
 }
 
-if (isset($_SESSION['univ_id'])) {
+if (isset($_SESSION["user_type"])) {
 
-    $univ_id = $_SESSION['univ_id'];
+    $user_type = $_SESSION["user_type"];
+
+}
+
+if (isset($_SESSION["univ_id"])) {
+
+    $univ_id = $_SESSION["univ_id"];
 
 }
 
@@ -47,7 +48,7 @@ $current_semester = get_current_semester($con, $univ_id);
 $admin_flag = 0;
 
 
-if ($user_type == 'p') {
+if ($user_type == "p") {
 
     $admin_check_query = "SELECT COUNT(*) as admin_flag FROM user WHERE user_id = $user_id AND dept_id = $dept_id";
 
@@ -55,7 +56,7 @@ if ($user_type == 'p') {
 
     $admin_row = $admin_check_query_result->fetch_array();
 
-    $admin_flag = $admin_row['admin_flag'];
+    $admin_flag = $admin_row["admin_flag"];
 
 } else {
 
@@ -64,7 +65,7 @@ if ($user_type == 'p') {
 }
 
 
-$get_department_details_query = "SELECT (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.status = 'active') as user_count, D.*, (SELECT COUNT(*) FROM courses C WHERE C.dept_id = D.dept_id) AS course_count, (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.user_id = $user_id) as join_flag, (SELECT COUNT(*) FROM department_follow DF WHERE DF.dept_id = $dept_id AND DF.user_id = $user_id) as follow_flag FROM department D WHERE D.dept_id = $dept_id";
+$get_department_details_query = "SELECT (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.status = "active") as user_count, D.*, (SELECT COUNT(*) FROM courses C WHERE C.dept_id = D.dept_id) AS course_count, (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.user_id = $user_id) as join_flag, (SELECT COUNT(*) FROM department_follow DF WHERE DF.dept_id = $dept_id AND DF.user_id = $user_id) as follow_flag FROM department D WHERE D.dept_id = $dept_id";
 
 $get_department_details_query_result = $con->query($get_department_details_query);
 
@@ -77,17 +78,17 @@ if ($get_department_details_query_result->num_rows == 0) {
 
     echo "
 
-    <div class = 'group-head-sec'>
+    <div class = "group-head-sec">
 
 ";
 
-    if ($department_row['follow_flag']) {
+    if ($department_row["follow_flag"]) {
 
         echo "
 
-    <div class= 'btnWrap dept_btnWrap'>
+    <div class= "btnWrap dept_btnWrap">
 
-        <button class = 'followBtn dept_fbtn unfollowBtn'>
+        <button class = "followBtn dept_fbtn unfollowBtn">
 
             <em></em>
 
@@ -102,9 +103,9 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         echo "
 
-    <div class= 'btnWrap'>
+    <div class= "btnWrap">
 
-        <button class = 'followBtn dept_fbtn'>
+        <button class = "followBtn dept_fbtn">
 
             <em></em>
 
@@ -120,15 +121,15 @@ if ($get_department_details_query_result->num_rows == 0) {
 
     echo "
 
-    <div class = 'group-head-top-sec'>
+    <div class = "group-head-top-sec">
 
-        <div class = 'group-head-top-sec-shadow'>
+        <div class = "group-head-top-sec-shadow">
 
         </div>
 
-        <div class = 'info-scroll-up info-shower'>
+        <div class = "info-scroll-up info-shower">
 
-            <div class = 'group-cover-pic-info'>
+            <div class = "group-cover-pic-info">
 
                 <b><?php
 
@@ -138,7 +139,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
                 </b>
 
-                <em class = 'em_hide'></em>
+                <em class = "em_hide"></em>
 
             </div>
 
@@ -148,7 +149,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
         echo "
 
-            <button class = 'upload_cover upload_department_cover'>
+            <button class = "upload_cover upload_department_cover">
 
                 <i></i>
 
@@ -165,7 +166,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 //DT Test
 echo "
 
-            <button class = 'upload_cover upload_department_cover'>
+            <button class = "upload_cover upload_department_cover">
 
                 <i></i>
 
@@ -177,26 +178,26 @@ echo "
     }
 
     echo "
-            <div class = 'group_location'>
+            <div class = "group_location">
                 <em></em>
-                <span class = 'group_location_name'>
-                <a class='location_link' href='http://maps.google.com/?q=' target='_blank'>New York</a>
+                <span class = "group_location_name">
+                <a class="location_link" href="http://maps.google.com/?q=" target="_blank">New York</a>
                 </span>
             </div>
 
-            <div class = 'help-div' id = 'help-3'>
+            <div class = "help-div" id = "help-3">
 
-                <div class = 'help-wedge'>
+                <div class = "help-wedge">
 
                 </div>
 
             </div>
 
-        <div class = 'location-pic-div-wrap'>
+        <div class = "location-pic-div-wrap">
 
-                <div class = 'location-pic-container'>
+                <div class = "location-pic-container">
 
-                    <img class = 'location_building_pic' src = 'src/polyMT6.jpg' class = 'location-picture'>
+                    <img class = "location_building_pic" src = "src/polyMT6.jpg" class = "location-picture">
 
                 </div>
 
@@ -207,7 +208,7 @@ echo "
 
     </div>
 
-    <div class = 'group-pic-frame'>
+    <div class = "group-pic-frame">
 
 ";
 
@@ -217,7 +218,7 @@ echo "
 
         <form>
 
-            <input class='header_small_img_input' name='img' type='file' style='display:none;'>
+            <input class="header_small_img_input" name="img" type="file" style="display:none;">
 
         </form>
 
@@ -231,23 +232,23 @@ echo "
 
     echo "
 
-        <div class = 'group-pic' style='background-image:url(" . get_dp($con, $dept_id, 'dept') . ");background-size:cover;'>
+        <div class = "group-pic" style="background-image:url(" . get_dp($con, $dept_id, "dept") . ");background-size:cover;">
 
         </div>
 
     </div>
 
-    <div class = 'group-header-left group-header-above'>
+    <div class = "group-header-left group-header-above">
 
 
 
 
 
-        <div class = 'group-title spec-group-title'>
+        <div class = "group-title spec-group-title">
 
-            <div class = 'group-name group-name-mt'>
+            <div class = "group-name group-name-mt">
 
-                " . $department_row['dept_name'] . "
+                " . $department_row["dept_name"] . "
 
             </div>
 
@@ -259,21 +260,21 @@ echo "
 
 
 
-    <div class = 'group-head-footer'>
+    <div class = "group-head-footer">
 
-        <div class = 'group-header-tab'>
+        <div class = "group-header-tab">
 
-            <ul class = 'group-nav'>
+            <ul class = "group-nav">
 
-                <li class = 'group-tab feed-tab'>
+                <li class = "group-tab feed-tab">
 
-                    <a class = 'tab1 tabFeed tab-anchor group-tab-active'>
+                    <a class = "tab1 tabFeed tab-anchor group-tab-active">
 
-                        <div class = 'tab-title'>
+                        <div class = "tab-title">
 
                             DEPT. FEED
 
-                            <span class = 'tab-icon tab1-icon-active'></span>
+                            <span class = "tab-icon tab1-icon-active"></span>
 
                         </div>
 
@@ -283,23 +284,23 @@ echo "
 
                 </li>
 
-                <li class = 'group-tab courses-tab'>
+                <li class = "group-tab courses-tab">
 
-                    <a class = 'tabDepartments tab-anchor tab-inactive'>
+                    <a class = "tabDepartments tab-anchor tab-inactive">
 
-                        <div class = 'tab-title'>
+                        <div class = "tab-title">
 
                             COURSES
 
-                            <span class = 'tab-icon tab2-icon-inactive'></span>
+                            <span class = "tab-icon tab2-icon-inactive"></span>
 
                         </div>
 
-                        <div class = 'status tab-number'>
+                        <div class = "status tab-number">
 
-                            <span class = 'badge'>
+                            <span class = "badge">
 
-                                " . $department_row['course_count'] . "
+                                " . $department_row["course_count"] . "
 
                             </span>
 
@@ -309,23 +310,23 @@ echo "
 
                 </li>
 
-                <li class = 'group-tab faculty-tab'>
+                <li class = "group-tab faculty-tab">
 
-                    <a class = 'tabmembers tab-anchor tab-inactive'>
+                    <a class = "tabmembers tab-anchor tab-inactive">
 
-                        <div class = 'tab-title'>
+                        <div class = "tab-title">
 
                             Faculty
 
-                            <span class = 'tab-icon tab3-icon-inactive'></span>
+                            <span class = "tab-icon tab3-icon-inactive"></span>
 
                         </div>
 
-                        <div class = 'status tab-number'>
+                        <div class = "status tab-number">
 
-                            <span class = 'badge'>
+                            <span class = "badge">
 
-                                " . $department_row['user_count'] . "
+                                " . $department_row["user_count"] . "
 
                             </span>
 
@@ -334,23 +335,23 @@ echo "
                     </a>
 
                 </li>
-                <li class = 'group-tab students-tab'>
+                <li class = "group-tab students-tab">
 
-                    <a class = 'tabstudents tab-anchor tab-inactive'>
+                    <a class = "tabstudents tab-anchor tab-inactive">
 
-                        <div class = 'tab-title'>
+                        <div class = "tab-title">
 
                             Students
 
-                            <span class = 'tab-icon tab3-icon-inactive'></span>
+                            <span class = "tab-icon tab3-icon-inactive"></span>
 
                         </div>
 
-                        <div class = 'status tab-number'>
+                        <div class = "status tab-number">
 
-                            <span class = 'badge'>
+                            <span class = "badge">
 
-                                " . $department_row['user_count'] . "
+                                " . $department_row["user_count"] . "
 
                             </span>
 
@@ -364,27 +365,27 @@ echo "
 
         </div>";
 
-    if ($department_row['join_flag'] > 0) {
+    if ($department_row["join_flag"] > 0) {
 
         echo "
 
-        <div class = 'group-footer-functions'>
+        <div class = "group-footer-functions">
 
-            <div class = 'join-button'>
+            <div class = "join-button">
 
-                <a class = 'join disabled'>
+                <a class = "join disabled">
 
                     Member
 
                 </a>
 
-                <div class = 'help-div' id = 'help-4'>
+                <div class = "help-div" id = "help-4">
 
-                    <div class = 'help-wedge'>
+                    <div class = "help-wedge">
 
                     </div>
 
-                    <div class = 'help-box'>
+                    <div class = "help-box">
 
                         You are a member of this department. Go to your profile page to change your department.
 
@@ -400,23 +401,23 @@ echo "
 
         echo "
 
-        <div class = 'group-footer-functions'>
+        <div class = "group-footer-functions">
 
-            <div class = 'join-button'>
+            <div class = "join-button">
 
-                <a class = 'join disabled'>
+                <a class = "join disabled">
 
                     Not A Member
 
                 </a>
 
-                <div class = 'help-div' id = 'help-4'>
+                <div class = "help-div" id = "help-4">
 
-                    <div class = 'help-wedge'>
+                    <div class = "help-wedge">
 
                     </div>
 
-                    <div class = 'help-box'>
+                    <div class = "help-box">
 
                         You are not a member of this department. Go to your profile page to change your department.
 
@@ -434,13 +435,139 @@ echo "
 
     </div>
 
-    <div class = 'tab-wedge-down'>
+    <div class = "tab-wedge-down">
 
     </div>
 
 </div>
 
 ";
+    
+    
 }
+*/
+
+$user = 1;
+$user_id = 1;
+$dept_id = 1;
+$user_type = 1;
+$univ_id = 1;
+$current_semester = 1;
+$admin_flag = 0;
+$admin_flag = 1;
+
+
+echo '
+<div class = "group-head-sec">
+    <div class= "btnWrap dept_btnWrap">
+        <button class = "followBtn dept_fbtn unfollowBtn">
+            <em></em>
+            Member
+        </button>
+    </div>
+    
+    <div class = "group-head-top-sec">
+        <div class = "group-head-top-sec-shadow">
+        </div>
+        
+        <div class = "info-scroll-up info-shower">
+            <div class = "group-cover-pic-info">
+                <b>Caption Here</b>
+                <em class = "em_hide"></em>
+            </div>
+            
+            <button class = "upload_cover upload_department_cover">
+                <i></i>
+                <span>Update Cover</span>
+            </button>
+            
+            <div class = "group_location">
+                <em></em>
+                <span class = "group_location_name">
+                <a class="location_link" href="http://maps.google.com/?q=" target="_blank">New York</a>
+                </span>
+            </div>
+
+            <div class = "help-div" id = "help-3">
+                <div class = "help-wedge"></div>
+            </div>
+
+            <div class = "location-pic-div-wrap">
+                <div class = "location-pic-container">
+                    <img class = "location_building_pic" src = "src/polyMT6.jpg" class = "location-picture">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "group-pic-frame">
+        <form>
+            <input class="header_small_img_input" name="img" type="file" style="display:none;">
+        </form>
+        <div class = "group-pic" style="background-image:url(http://picspaper.com/wp-content/uploads/2014/09/Aaron-Rodgers-Green-Bay-Packers-picspaper-com-600x337.jpg);background-size:cover;"></div></div>
+    </div>
+
+    <div class = "group-header-left group-header-above">
+        <div class = "group-title spec-group-title">
+            <div class = "group-name group-name-mt">Computer Science Department</div>
+        </div>
+    </div>
+
+
+
+    <div class = "group-head-footer">
+        <div class = "group-header-tab">
+            <ul class = "group-nav">
+
+                <li class = "group-tab feed-tab">
+                    <a class = "tab1 tabFeed tab-anchor group-tab-active">
+                        <div class = "tab-title">
+                            DEPT. FEED
+                            <span class = "tab-icon tab1-icon-active"></span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class = "group-tab courses-tab">
+                    <a class = "tabDepartments tab-anchor tab-inactive">
+                        <div class = "tab-title">
+                            COURSES
+                            <span class = "tab-icon tab2-icon-inactive"></span>
+                        </div>
+                        <div class = "status tab-number">
+                            <span class = "badge">99</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class = "group-tab faculty-tab">
+                    <a class = "tabmembers tab-anchor tab-inactive">
+                        <div class = "tab-title">
+                            Faculty
+                            <span class = "tab-icon tab3-icon-inactive"></span>
+                        </div>
+
+                        <div class = "status tab-number">
+                            <span class = "badge">99</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class = "group-tab students-tab">
+                    <a class = "tabstudents tab-anchor tab-inactive">
+                        <div class = "tab-title">
+                            Students
+                            <span class = "tab-icon tab3-icon-inactive"></span>
+                        </div>
+                        <div class = "status tab-number">
+                            <span class = "badge">99</span>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+';
 
 ?>

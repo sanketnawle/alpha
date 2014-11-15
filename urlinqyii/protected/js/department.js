@@ -1,8 +1,6 @@
 //I couldn't find the code for faculty and students but for when it's written I am assuming master div's would be named
 //.department_students_tab and .department_faculty_tab
 
-
-
 $(document).ready(function(){
 	
 	$('.tabFeed').on('click', function(){
