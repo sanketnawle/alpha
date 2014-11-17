@@ -30,9 +30,9 @@ var progress_flag=0;
 var progress_bar=["14%","28%","43%","57%","71%","86%","100%"];
 var btn_text=["Join your School","Join your Department","Re-send Verification","Join these Classes","Continue","Continue","Let's Get Started"];
 var hint_text=["Select your School","Join your Department","Verify your Email","Join your Classes","Who do you know on campus?","Find your Clubs","Complete your Profile"]
-var progress_bar_color=["#FFB6C1","#009ed3","#f9e028","#00a68a","#f36d35","#a77ab1","#ec3856"];
+var progress_bar_color=["rgb(39, 178, 78)","#009ed3","rgb(110, 56, 169)","#00a68a","rgb(242, 110, 0)","#ba51e4","#ec3856"];
 
-var canvas_hint=["","","","Here are some of the most popular classes in your department","Share your notes, take part in discussions, and see what they are up to","There are some of the most active clubs at your school",""];
+var canvas_hint=["","","","Here are some of the most popular classes in your department.","Share your notes, take part in discussions, and see what they’re up to.","These are some of the most active clubs at your school.",""];
 
 var searchbar_hint=["Search schools","Search departments", "", "Search classes", "Search people", "Search clubs", ""];
 
@@ -127,7 +127,7 @@ function content_paint(curr){
 		for(var i=0;i<ns;i++){
 			$canvas.removeClass("canvas_adjust");
 			$inner.removeClass("canvas_adjust");
-			$canvas.append("<div class='step_0_card'><div class='card_0_info'><img class='card_0_glyph' src='img/defaultGlyph.png'><div class='card_0_text'><div class='card_0_text_0'>"+department_list[i]+"</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div></div>");
+			$canvas.append("<div class='step_0_card'><div class='card_0_info'><div class='card_0_text'><div class='card_0_text_0'>"+department_list[i]+"</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div></div>");
 		}
 	}
 
@@ -190,7 +190,7 @@ function content_paint(curr){
 				$tthread=$thread1;
 			}
 
-			$tthread.append("<div class='step_4_card'><img class='card_4_glyph' src='img/defaultGlyph.png'><div class='card_4_txt'>"+people_list[i]+"</div><div class='blue_btn card_4_btn'><div class='card_4_btn_glyph'></div> <span>Follow</span></div></div>");
+			$tthread.append("<div class='step_4_card'><img class='card_4_glyph' src='img/defaultGlyph.png'><div class='card_4_txt'>"+people_list[i]+"</div><div class='gray_btn card_4_btn'> <span>Follow</span></div></div>");
 
 		}
 
@@ -307,14 +307,14 @@ function content_paint(curr){
 			$(this).find("span").text("Follow");
 		}else{
 			$(this).addClass("followed");
-			$(this).find("span").text("Followed");
+			$(this).find("span").text("Following");
 		}
 	});
 
 	$(document).delegate(".follow_all_btn","click",function(){
 		$(".card_4_btn").removeClass("followed");
 		$(".card_4_btn").addClass("followed");
-		$(".card_4_btn").find("span").text("Followed");
+		$(".card_4_btn").find("span").text("Following");
 	});
 
 	$(document).delegate(".club_join","click",function(){
