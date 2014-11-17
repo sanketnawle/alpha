@@ -28,9 +28,9 @@ $(document).ready(function(){
 var progress_flag=0;
 
 var progress_bar=["14%","28%","43%","57%","71%","86%","100%"];
-var btn_text=["Join your School","Join your Department","Re-send Verification","Join these Classes","Continue","Continue","Let's Get Started"];
+var btn_text=["Join your School","Join your Department","Resend Verification","Join these Classes","Continue","Continue","Let's Get Started"];
 var hint_text=["Select your School","Join your Department","Verify your Email","Join your Classes","Who do you know on campus?","Find your Clubs","Complete your Profile"]
-var progress_bar_color=["rgb(39, 178, 78)","#009ed3","rgb(110, 56, 169)","#00a68a","rgb(242, 110, 0)","#ba51e4","#ec3856"];
+var progress_bar_color=["rgb(186, 81, 228)","#009ed3","rgb(110, 56, 169)","rgb(0, 173, 61)","rgb(242, 110, 0)","#ec3856","rgb(39, 178, 78)"];
 
 var canvas_hint=["","","","Here are some of the most popular classes in your department.","Share your notes, take part in discussions, and see what they’re up to.","These are some of the most active clubs at your school.",""];
 
@@ -226,7 +226,7 @@ function content_paint(curr){
 		$canvas.removeClass("canvas_adjust");
 		$inner.removeClass("canvas_adjust");
 
-		$canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='img/defaultGlyph.png'><div class='pt_upload_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div>");
+		$canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div>");
 
 		$canvas.find(".ui.dropdown").dropdown();
 	}
