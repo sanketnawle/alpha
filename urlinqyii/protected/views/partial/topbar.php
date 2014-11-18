@@ -1,354 +1,225 @@
-<?php
-//require_once('includes/common_functions.php');
-//include("php/dbconnection.php");
-//$dp_link = get_dp($con, $_SESSION['user_id'], "user");
-//$user_info = get_user_info($con, $_SESSION['user_id']);
-//if (is_array($user_info)) {
-//    $firstname = $user_info['firstname'];
-//}
-//?>
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-    </script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>-->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/waiting_animation.css">
-    <link
-        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
-        rel='stylesheet' type='text/css'>
+    <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    
-
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/jquery.mCustomScrollbar.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
 </head>
-<script>
-
-$(document).ready(function () {
-
-
-    var d = new Date();
-    var t = d.getDate();
-    var nm = "'img/calendar-icons/" + t + ".png'";
-    $(".cal_icon").attr("src", "img/calendar-icons/" + t + ".png");
-
-
-    $(document).delegate(".topbar_search_input", "click", function () {
-        //$(".graph_search").show();
-    });
-
-
-    $(document).delegate(".topbar_search_input", "keydown", function () {
-        $(".graph_search").show();
-        $(".topbar_search_input").css({"border-bottom-left-radius": "0px", "border-bottom-right-radius": "0px"});
-    });
-
-    $(document).delegate(".topbar_qicon img", "click", function () {
-        $(".graph_search").show();
-        $(".card-tag").hide();
-        $(".topbar_search_input").css({"border-bottom-left-radius": "0px", "border-bottom-right-radius": "0px"});
-    });
-
-    $(document).delegate(".gs_col", "mousedown", function () {
-        $(this).addClass("gs_on_active");
-    });
-
-    $(document).delegate(".gs_col", "mouseup", function () {
-        $(this).removeClass("gs_on_active");
-    });
-
-
-    $(document).click(function (event) {
-
-        var $target = $(event.target);
-        var $container = $(".topbar");
-        if (!$container.is($target) && ($container.has($target).length === 0)) {
-
-            if ($(".c_noti_window").find(".complete_tab_noti").hasClass("active_pe_tab")) {
-                $(".topbar").find(".complete_tab_noti").click();
-            }
-            if ($(".c_noti_window").find(".incomplete_tab_noti").hasClass("active_pe_tab")) {
-                $(".topbar").find(".incomplete_tab_noti").click();
-            }
-
-
-            cidiv_flag = 0;
-            gidiv_flag = 0;
-            sidiv_flag = 0;
-            $(".ci_div").hide();
-            $(".gi_div").hide();
-            $(".si_div").hide();
-        }
-
-    });
-
-    $(document).delegate(".topbar_qicon img", "mouseover", function () {
-        $(this).closest(".search_input_wrapper").find(".card-tag").stop().show();
-    });
-
-    /*
-     $(document).delegate(".card-tag","mouseover",function(){
-     $(this).stop().show();
-     });
-     */
-
-    $(document).delegate(".topbar_qicon img", "mouseout", function () {
-        $(this).closest(".search_input_wrapper").find(".card-tag").delay(1).hide(0);
-    });
-
-    /*
-     $(document).delegate(".card-tag","mouseout",function(){
-     $(this).delay(1).hide(0);
-     });
-     */
-
-    var cidiv_flag = 0;
-    var gidiv_flag = 0;
-    var sidiv_flag = 0;
-    $(document).delegate(".topbar_cal", "click", function () {
-        //alert("qq");
-        //append animation
-        $(".c_noti_window").find(".c_noti_content").empty();
-        $(".c_noti_content").append("<img class='waiting_animation_circletype waiting_animation_circletype_sz45' src='<?php echo Yii::app()->getBaseUrl(true); ?>/assets/waiting_animation_circletype.GIF'>");
-        //append animation end
-
-        //alert("beforesuccess");
-        gidiv_flag = 0;
-        sidiv_flag = 0;
-        $(".gi_div").hide();
-        $(".si_div").hide();
-
-        if (cidiv_flag == 0) {
-            var $rt = $(".c_noti_window");
-            $.ajax({
-                type: "POST",
-                url: "tb_calnotification_fetch.php",
-                success: function (html) {
-                    //alert("aftersuccess");
-                    setTimeout(function () {
-                        $rt.find(".c_noti_content").html(html);
-                    }, 1000);
-
-
-                }
-            });
-            $(".ci_div").show();
-            cidiv_flag = 1;
-        } else {
-            if ($(".c_noti_window").find(".complete_tab_noti").hasClass("active_pe_tab")) {
-                $(".topbar").find(".complete_tab_noti").click();
-            }
-            if ($(".c_noti_window").find(".incomplete_tab_noti").hasClass("active_pe_tab")) {
-                $(".topbar").find(".incomplete_tab_noti").click();
-            }
-
-            cidiv_flag = 0;
-            $(".ci_div").hide();
-        }
-    });
-
-//getNewNotifications("kuan");
-    $(document).delegate(".topbar_noti", "click", function () {
-        cidiv_flag = 0;
-        sidiv_flag = 0;
-        $(".ci_div").hide();
-        $(".si_div").hide();
-        if (gidiv_flag == 0) {
-            var $rt = $(".noti_window");
-            getNotifications("kuan");
-            $(".gi_div").show();
-            gidiv_flag = 1;
-        } else {
-            gidiv_flag = 0;
-            $(".gi_div").hide();
-        }
-    });
-
-
-    $(document).delegate(".topbar_prof", "click", function () {
-        cidiv_flag = 0;
-        gidiv_flag = 0;
-        $(".ci_div").hide();
-        $(".gi_div").hide();
-        if (sidiv_flag == 0) {
-            $(".si_div").show();
-            sidiv_flag = 1;
-        } else {
-            sidiv_flag = 0;
-            $(".si_div").hide();
-        }
-    });
-
-
-    $(document).delegate(".topbar_search_input", "keydown", function (e) {
-
-        if (e.which == 13) {
-            var q = $(".topbar_search_input").val().trim();
-            //alert(inputval);
-            if (q != "") {
-                var data = 1;
-                //window.location = "search_beta.php?q=" + q;
-                //window.location = <?php echo Yii::app()->getBasePath(true); ?>'/search/q';
-
-                window.location = '../search/'+q;
-            }
-
-            return false;
-        }
-    });
-
-    setTimeout(function () {
-        countcalNotification();
-    }, 5000);
-    setInterval(function () {
-        countcalNotification();
-    }, 30000);
-
-    setTimeout(function () {
-        getNewNotifications();
-    }, 5000);
-    setInterval(function () {
-        getNewNotifications();
-    }, 30000);
-
-    function countcalNotification() {
-        $.ajax({
-            type: "POST",
-            url: "php/check_new_notifications.php",
-            success: function (html) {
-                if (html != "0") {
-                    $(".rednoti").find("span").text(html);
-                    $(".rednoti").show();
-                }
-            },
-            error: function (x, t, e) {
-
-            }
-        });
-    }
-
-
-    function getNewNotifications(type) {
-        //alert("a");
-        /*$.ajax({
-         type: "GET",
-         url: "newNotifications.php",
-         async: true,
-         cache: false,
-
-         success: function(data){
-         //Display message here
-         //alert(data);
-         $(".noti_icon").find("p").text(data);
-
-         if (data != 0)
-         {
-         //should be the number displayed. $("#nots").prepend(data);
-         $(".noti_icon").find("p").text(data);
-
-         }
-         setTimeout("getNewNotifications('latest')",30000);
-         },
-
-         error: function(XMLHttpRequest,textStatus,errorThrown) {
-         // alert("error: "+textStatus + " "+ errorThrown );
-         setTimeout("getNewNotifications('latest')",30000);
-         }
-         });*/
-    }
-
-
-});
-
-function LoadHome() {
-    window.location = '/beta/home.php';
-}
-</script>
-
 <body>
-
 <div class="topbar">
-    <div class="topbar_wrapper">
-        <div class='topbar_left'>
-            <img class="topbar_logo" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/logo.png" onclick="LoadHome();"/>
-        </div>
-
-
-        <div class='topbar_righttool'>
-            <!--<a href='php/logout.php'>test logout</a>-->
-            <div class='topbar_cal'>
-                <!--
-                <img class='cal_icon' src='img/calendar.png'>
-                -->
-                <div class="cal_icon2">
+    <div class="left">
+        <!--<a href="./home.php" class="urlinq"></a>-->
+        <a href="./" class="urlinq">
+            <a class="menu active"></a>
+    </div>
+    <div class="right">
+        <a class="notify calendar">
+            <div class="button">
+                <div class="day">Tue</div>
+                <div class="date">9</div>
+            </div>
+            <div class='notify-window calendar'>
+                <div class="toolbar">
+                    <ul>
+                        <li class="rem active" data-column="left"><div class="icon"></div></li>
+                        <li class="inv" data-column="middle"><div class="icon"></div></li>
+                        <li class="cal" data-link="link to somewhere"><div class="icon"></div></li>
+                    </ul>
                 </div>
-                <div class='rednoti'><span></span></div>
-            </div>
-
-            <!--<div class='topbar_noti'>
-                <div class="noti_icon2">
-                </div>
-            </div>-->
-            <div class="topbar_prof">
-                <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
-                </div>
-                <div class="topbar_user_name">
-                    <?php echo $user->firstname; ?>
-                </div>
-            </div>
-        </div>
-
-        <div class='noti_includediv'>
-            <div class='ci_div'>
-                <?php include 'tb_calnotification.php' ?>
-            </div>
-            <div class='gi_div'>
-                <?php include 'tb_notification.html'; ?>
-            </div>
-            <div class='si_div'>
-                <?php include 'tb_settings.php'; ?>
-            </div>
-        </div>
-
-
-        <div class='topbar_search'>
-            <div class="topbar_search_container">
-                <div class="notop_padding">
-                    <div class="search_main_div">
-                        <form name="search" method="get">
-                            <div class="search_input_wrapper">
-                                <input class='topbar_search_input' placeholder='Search groups and faculty...'>
-                                <i class="topbar_searchicon">
-                                </i>
-                                <!--
-                                <div class='topbar_qicon'><img src='src/question.png'>
-                                <div class = "card-tag">
-                                    <div class = "tag-wedge"></div>
-                                    <div class = "tag-box">
-                                        <span>Show search options</span>
-                                    </div>
-                                </div>
-                                </div>
-                                -->
-                            </div>
-
-                        </form>
+                <div class='left column active'>
+                    <div class='header'>
+                        <span class='text'>Reminders</span>
+                        <span class='count'>4</span>
                     </div>
+                    <ul>
+                        <li class="unseen">
+                            <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
+                            <div class='content'>Study For Exam</div>
+                            <div class='footer'>1 Week Away &bull; CS Exam</div>
+                        </li>
+                        <li>
+                            <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
+                            <div class='content'>Study For Exam</div>
+                            <div class='footer'>1 Week Away &bull; CS Exam</div>
+                        </li>
+                        <li>
+                            <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
+                            <div class='content'>Study For Exam</div>
+                            <div class='footer'>1 Week Away &bull; CS Exam</div>
+                        </li>
+                        <li>
+                            <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
+                            <div class='content'>Study For Exam</div>
+                            <div class="checkbox_wrapper">
+                                <input type="checkbox" name="event1" id="e1" value="#event_data1">
+                                <label for="e1" id="label1"></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nostyle">No New Event Reminders</div>
+                        </li>
+                    </ul>
                 </div>
 
+                <div class='middle column'>
+                    <div class='header'>
+                        <span class='text'>Suggested/Invited</span>
+                        <span class='count'>2</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
+                                <div class="day">Sep</div><div class="date">12</div>
+                            </div>
+                            <div class='content'>Study For Exam</div>
+                            <div class='action add' title="Add to Calendar"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Invited you</div>
+                        </li>
 
+                        <li>
+                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
+                                <div class="day">Sep</div><div class="date">12</div>
+                            </div>
+                            <div class='content'>Study For Exam</div>
+                            <div class='action add busy' title="Busy at this time"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
+                        </li>
+                        <li>
+                            <div class="nostyle">no new event invitations</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class='right column'>
+                    <ul>
+                        <li><div class='icon mc'></div>Monthly Calendar</li>
+                        <li><div class='icon wc'></div>Weekly Calendar</li>
+                        <li class="underline"><div class='icon pl'></div>Add New Event</li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </a>
+        <a class="notify board">
+            <div class="button">
+                <div class="icon"></div>
+            </div>
+            <div class='notify-window board' style="display: none">
+                <div class="toolbar">
+                    <ul>
+                        <li class="dis active" data-column="left"><div class="icon"></div></li>
+                        <li class="fil" data-column="middle"><div class="icon"></div></li>
+                        <li class="fol" data-column="right"><div class="icon"></div></li>
+                    </ul>
+                </div>
+                <div class='column left active'>
+                    <div class='header'>
+                        <span class='text'>Discussions</span>
+                        <span class='count count-blue'>2</span>
+                    </div>
+                    <ul class='cn_sec_content'>
+                        <li>
+                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
+                            <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
+                            <div class='footer'>September 10 at 5:00pm</div>
+                        </li>
+                        <li>
+                            <div class="nostyle">No New Post Notifications</div>
+                        </li>
+                    </ul>
+                </div>
 
+                <div class='column middle'>
+                    <div class='header'>
+                        <span class='text'>Files</span>
+                        <span class='count count-blue'>2</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class='icon pdf'><div class='file'>.PDF</div></div>
+                            <div class='content'>File Name</div>
+                            <div class='action down' title="Download"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                        </li>
+                        <li>
+                            <div class='icon doc'><div class='file'>.DOC</div></div>
+                            <div class='content'>File Name</div>
+                            <div class='action down' title="Download"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                        </li>
+                        <li>
+                            <div class='icon xls'><div class='file'>.XLS</div></div>
+                            <div class='content'>File Name</div>
+                            <div class='action down' title="Download"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                        </li>
+                        <li>
+                            <div class='icon ppt'><div class='file'>.PPT</div></div>
+                            <div class='content'>File Name</div>
+                            <div class='action down' title="Download"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                        </li>
+                        <li>
+                            <div class='icon zip'><div class='file'>.ZIP</div></div>
+                            <div class='content'>File Name</div>
+                            <div class='action down' title="Download"><div class="icon"></div></div>
+                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
+                        </li>
+                        <li>
+                            <div class="nostyle">no new event invitations</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class='column right'>
+                    <div class='header'>
+                        <span class='text'>Followers</span>
+                        <span class='count count-blue'>1</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class='icon full' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
+                            <div class='content two-lines'>
+                                <div class='line1'>Ross Kopelman</div>
+                                <div class='line2'><div class="follow">Follow</div></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="center">
+        <!--<form method="get" action="./search_beta.php">-->
+        <form method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
+            <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+            <button type="submit" class="submit"></button>
+        </form>
+        <ul class="prelist">
+            <li><a><div class="icon dpt"></div><span>Professors in Your Department</span></a></li>
+            <li><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
+            <li><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
+            <li><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
+            <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
+            <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
+        </ul>
+        <ul class="postlist">
 
+        </ul>
     </div>
 </div>
 
+
+
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
-
-
 </html>
 
 
-					
