@@ -4,6 +4,9 @@
 var MonthGrid = (function (MonthGrid) {
     var dp = new DateProvider();
 
+    var classes = ['a', 'b', 'c', 'd', 'e', 'f'];
+    function getRandomClass() { return classes[Math.floor(Math.random() * classes.length)]; }
+
     var createGridItem = function (text, oor) {
         var item = document.createElement("div");
         var date = document.createElement("div");
@@ -27,9 +30,17 @@ var MonthGrid = (function (MonthGrid) {
         Object.defineProperties(this, {
             addEvent: {
                 value: function (text) {
-                    var event = document.createElement("div");
-                    event.className = "grid-event";
-                    event.innerHTML = text || "Test Event"
+                    var event = new Div("grid-event");
+                    var line = new Div("line");
+                    var title = new Div("title", text || "Test Event");
+                    var time = new Div("time", "10p");
+
+                    line.classList.add(getRandomClass());
+
+                    event.appendChild(line);
+                    event.appendChild(time);
+                    event.appendChild(title);
+
                     this.ele.appendChild(event);
                 }
             }

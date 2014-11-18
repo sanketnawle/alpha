@@ -5,6 +5,7 @@
     <script>
         window.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
         window.views_url = base_url + "/assets/calendar/views";
+        window.css_url = base_url + "/css/calendar";
     </script>
     <!-- Fonts -->
     <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css"><!-- Open Sans:3->8-5 -->
@@ -19,9 +20,11 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/semester.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/header.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/dialog.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/jq-datepicker.css" type="text/css" rel="stylesheet">
 
     <!-- Libraries -->
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jquery.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jq.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jq-datepicker.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng.js"></script>    
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-route.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-animate.js"></script>
@@ -54,6 +57,9 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/range.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/directives.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/printer.js"></script>
+
+    <!-- Main Events -->
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/events.js"></script>
 </head>
 <body>
     <div class="topbar"></div>
@@ -61,9 +67,14 @@
         <div class="toolbar">
             <div class="column left">
                 <button class="full" ng-click="openNewEvent()">Create Event</button>
-                <button class="quick" title="Create Quick Event" ng-uc-check>
+                <button class="quick" ng-uc-check>
                     <div class="quick-dialog">
-
+                        <div class="wedge"></div>
+                        <form>
+                            <div>Quick Add Event</div>
+                            <input type="submit" value="Add">
+                            <input type="text" placeholder="Example: Homework due Tuesday 11pm">
+                        </form>
                     </div>
                 </button>
             </div>

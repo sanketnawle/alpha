@@ -49,4 +49,34 @@
         var std = new Date(2014, 11, 11, st[0], st[1]), etd = new Date(2014, 11, 11, et[0], et[1]);
         return (etd - std) / 1000;
     }
+
+    this.to12Hrs = function (time) {
+        var st = time.split(":");
+        var ap = "am";
+        if (st[0] > 11) ap = "pm";
+        st[0] = st[0] == 12 ? 12 : st[0] % 12;
+        st = st[0] + ":" + st[1] + " " + ap;
+        return st;
+    }
+
+    this.toInputWeekFormat = function (fd, date) {
+        //if (!fd.value) return;
+        //console.log(date);
+        //date = date.split("-");
+        //var date = new Date(date[0], date[1] - 1, date[2]);
+        //if (!date) return;
+        //fd.setAttribute("orig", date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+        //var val = $.datepicker.regional[""].dayNamesShort[date.getDay()];
+        //val += ", " + $.datepicker.regional[""].monthNamesShort[date.getMonth()];
+        //val += " " + date.getDate() + (function (e) {
+        //    switch (parseInt(e)) {
+        //        case 1: return "st";
+        //        case 2: return "nd";
+        //        case 3: return "rd";
+        //        default: return "th";
+        //    }
+        //}(date.getDate().toString().substr(-1)));
+        //return val;
+        return fd.value;
+    }
 }
