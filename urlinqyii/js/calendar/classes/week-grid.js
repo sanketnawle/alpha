@@ -37,19 +37,23 @@ var WeekGrid = (function (WeekGrid) {
                     var st = uce.startTime.split(":");
                     var et = uce.endTime.split(":");
 
-                    var h = dp.diffTime(uce.startTime, uce.endTime) / 3600 * itemHeight;
-
-                    console.log(dp.diffTime(uce.startTime, uce.endTime), h);
+                    var h = dp.diffTime(uce.startTime, uce.endTime) / 3600 * 100;
 
                     var event = new Div("grid-event");
                     var line = new Div("line");
-                    var time = new Div("time", st[0] + ":" + st[1] + "-" + et[0] + et[1]);
+                    var time = new Div("time", st[0] + ":" + st[1] + "-" + et[0] + ":" + et[1]);
                     var title = new Div("title", uce.title);
 
                     event.id = uce.id;
                     event.style.left = (22 * top) + "%";
-                    event.style.top = (22 * top) + "%";
-                    event.style.height = h + "px";
+                    var t1 = 22 * top, t2 = st[1] / 60 * 100, diff = 0;
+                    if (t1 > t2) {
+                        diff = t1 - t2;
+                        event.style.top = t1 + "%";
+                    } else {
+                        event.style.top = t2 + "%";
+                    }
+                    event.style.height = h - (diff) + "%";
 
                     line.classList.add(getRandomClass());
 
