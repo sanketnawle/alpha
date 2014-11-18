@@ -190,6 +190,36 @@ class ApiController extends Controller
         return;
     }
 
+    //ERROR ID's
+    // 1 - all data not set
+    // 2 - User doesnt exist
+    public function actionGetUserClubs(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'clubs'=>$user->groups);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+    public function actionGetUserClasses(){
+
+    }
+
 
 
     //ERROR ID's
