@@ -7,3 +7,30 @@ Stack trace:
 REQUEST_URI=/urlinqyii/php/check_new_notifications.php
 HTTP_REFERER=http://mylinq.com/urlinqyii/home
 ---
+2014/11/18 12:29:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://mylinq.com/urlinqyii/home
+---
+2014/11/18 12:30:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://mylinq.com/urlinqyii/home
+---
+2014/11/18 12:30:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php/check_new_notifications.php".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('php/check_new_n...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/php/check_new_notifications.php
+HTTP_REFERER=http://mylinq.com/urlinqyii/home
+---
