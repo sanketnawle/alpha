@@ -264,7 +264,7 @@ class ClubController extends Controller
 
 
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
-
+        $department = Department::model()->find('department_id=:department_id',array(':department_id'=>1));
         $user = User::model()->find('user_id=:id', array(':id'=>1));
 
         $sql = "SELECT c.course_name, c.course_id, cs.picture_file_id,cs.professor, cu.class_id, u.lastname
@@ -290,7 +290,7 @@ class ClubController extends Controller
 
 //        $club = Group::model()->find('group_id=:id', array(':id'=>1));
 
-        $this->render('test',array('classes'=>$classes));
+        $this->render('test',array('classes'=>$classes,'department'=>$department));
 
 
 

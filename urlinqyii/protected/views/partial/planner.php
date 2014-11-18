@@ -36,8 +36,8 @@
 				</div>
 			</div>
 			<div class="planner_body">
-					<div class="entry_field">
-						<div class="entry_field_placeholder">
+					<div class="entry_field" id="todo_wrap">
+						<div class="entry_field_placeholder" id="add_todo">
 							+ Add a new to-do
 							<i class="help_icon"></i>
 						</div>
@@ -134,7 +134,7 @@
 						</div>
 					</div>
 					<div class="event_body">
-                        <div id="free_planner_wrap">
+                        <div id="free_planner_wrap" style="display: none;">
                             <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
                             <span class="free_planner_message">Your schedule looks free </span>
                             <span class="create_planner_message">Create an event or to-do</span>
@@ -143,13 +143,13 @@
 
                         <div id="event_list">
                             <script id="event_template" type="text/x-handlebars-template">
-                                <ul class="event" >Past Due
+                                <ul class="event">
                                     <li>
 
                                         <div class="event_listing_wrap">
-                                            <span class="color_border" id="color_border1"></span>
-                                            <div class="event_listing" id="pastdue_event">
-                                                <div class="evt_data" id="event_data0">Neurochemistry Reading &#8226; Tue, 11/5</div>
+                                            <span class="color_border " id="color_border1"></span>
+                                            <div class="event_listing {{event_class}}" >
+                                                <div class="evt_data" id="event_data0">{{title}} &#8226; {{end_date}}</div>
                                                 <div class="checkbox_wrapper">
                                                     <input type="checkbox" name="event0" id="e0" value="#event_data0">
                                                     <label for="e0" id="label0"></label>
@@ -167,7 +167,21 @@
                                     </li>
                                 </ul>
                             </script>
+                            <div id='past_due_events_header' style="display: none;">Past Due</div>
+                            <div id='past_events'>
 
+                            </div>
+
+                            <div id='todays_events_header' style="display: none;">Today</div>
+                            <div id='todays_events'>
+
+                            </div>
+
+
+                            <div id='tomorrows_events_header' style="display: none;">Tomorrow</div>
+                            <div id='tomorrows_events'>
+
+                            </div>
 <!--                            <ul class="today_event">Past Due-->
 <!--                                <li>-->
 <!--                                    <div class="event_listing_wrap">-->

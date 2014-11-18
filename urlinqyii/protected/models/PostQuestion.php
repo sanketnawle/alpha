@@ -18,7 +18,7 @@ class PostQuestion extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'posts_questions';
+		return 'post_question';
 	}
 
 	/**

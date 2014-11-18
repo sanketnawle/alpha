@@ -36,6 +36,8 @@
         origin_id = '<?php echo $club->group_id; ?>';
     </script>
 
+    <?php include "timezone.php" ?>
+
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
 </head>
@@ -185,16 +187,18 @@
                     ?>
 
                 </div>
-                <div class='midsec'>
 
 
-                    <?php
-                    //echo Yii::app()->runController('partial/planner');
-                    echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user));
+                        <div class="rightsec" style="position: fixed; margin-top: 200px;">
+                            <?php
+                            //echo Yii::app()->runController('partial/planner');
+                            echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user));
 
-                    //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
+                            //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
 
-                    ?>
+                            ?>
+
+                        </div>
 	                <?php
 	                if($is_member){
                     ?>

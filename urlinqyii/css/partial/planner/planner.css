@@ -45,6 +45,7 @@ body{
     border: 1px solid #e5e5e5;
     border-width: 0px 0px 1px 0px;
     margin-left: 4px;
+    padding-bottom: 5px;
     position: relative;
     -moz-transition: all .5s ease;
     -webkit-transition: all .5s ease;
@@ -311,11 +312,14 @@ body{
     position: relative;
     top: 6px;
 }
-#event{
+
+
+
+.today_event{
     background-color: #fff9ea; color: #000;
 }
 
-#pastdue_event{
+.past_event{
     background: rgba(255, 228, 234, 0.77);
     -webkit-box-shadow: -1px 0px 0px 0px #F56B76 inset;
     -moz-box-shadow: -1px 0px 0px 0px #F56B76 inset;

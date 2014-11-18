@@ -2,13 +2,13 @@ $(document).ready(function(){
 
     init();
     function init(){
-        var events = get_planner_events();
-        show_events(events);
+        var events = handle_planner_events();
+        //show_events(events);
     }
 
     var blinkflag = 0;
 
-
+});
 
     setTimeout(function(){
             $(".free_planner_message").fadeOut(150);
@@ -31,20 +31,14 @@ $(document).ready(function(){
     $('.weekday3').text( y[ d.getDay()+2 ] );
     $('#date3').text( ( d.getMonth() +2 )+ "/" + ( d.getDate()+2 ));
 
-    $("body").on("click", ".entry_field_placeholder", function(){
-        $(this).css("display", "none");
-        $(".entry_field").css("height", "140px");
-        $(".planner_creation_form").fadeIn(500);
-        $("textarea#event_name").focus();
-    });
 
-    $("body").on("click", ".cancel_form", function(){
-        $('.planner_creation_form').css('display', 'none');
-        $(".entry_field").css("height", "36px");
-        $('.entry_field_placeholder').fadeIn(250);
-        $('.timepicker').css('display', 'none');
-        $('.event_time').text('Add a time');
-    });
+
+
+
+//    $("body").on("click", ".entry_field_placeholder", function(){
+//
+//    });
+
 
     $('.checkbox_wrapper label').on("mouseenter", function(){
         if( $(this).parents(".event_listing").find("input:checkbox").is(':checked') ){
@@ -119,11 +113,7 @@ $(document).ready(function(){
         $(sel).text( (0<currHr-12<10 ? '0' : '') + (currHr<12? currHr : currHr-12 ) + ":" + (currMin<12 ? '0' : '') + currMin + (currHr<12 ? 'AM' : 'PM') );
     }
 
-    $('.event_time').on('click', function(){
-        $('.timepicker').fadeToggle(150);
-        $('.tp1').css('display', 'initial');
-        $('.event_time').css('display', 'none');
-    });
+
 
 
 
@@ -181,7 +171,7 @@ $(document).ready(function(){
 
 
 
-    function get_planner_events(){
+    function handle_planner_events(){
         //Default it to hide and fadein if there are no posts
         $('#free_planner_wrap').hide();
 
@@ -189,7 +179,7 @@ $(document).ready(function(){
         $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
-                show_events(json_data['events']);
+                show_events(json_data);
             }else{
                 alert('error getting planner events');
             }
@@ -197,72 +187,91 @@ $(document).ready(function(){
 
     }
 
+
+
+    var weekday = new Array(7);
+    weekday[0]=  "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
     //Seperated from show_event so we can send show_events() an array
     //And send an individual event to show_event() when we only want
     //to display 1 event
-    function show_events(events){
-        if(events.length > 0){
-            $('#free_planner_wrap').hide();
-        }else{
-            $('#free_planner_wrap').fadeIn();
+    function show_events(json_data){
+
+
+//        if(json_data['event_count'] > 0){
+//            $('#free_planner_wrap').hide();
+//        }else{
+//            $('#free_planner_wrap').hide().fadeIn( "slow", function() {
+//                // Animation complete
+//            });
+//        }
+
+
+        console.log(json_data);
+        var past_events = json_data['past_due_events'];
+        if(past_events.length > 0){
+
+            $.each(past_events, function(index, past_event) {
+                past_event['event_class'] = 'past_event';
+                var date = new Date(past_event['end_date']);
+                var formatted_date =  weekday[d.getDay()].substring(0, 3) + ' ' + (date.getDate() + 1).toString() + '/' + (date.getMonth() + 1).toString();
+                past_event['end_date'] = formatted_date;
+                show_event(past_event,'#past_events');
+            });
+
+            $('#past_due_events_header').fadeIn( "slow", function() {
+                // Animation complete
+            });
         }
 
 
-        $.each(events, function(index, event) {
-            show_event(event);
-        });
+
+        var todays_events = json_data['todays_events'];
+        if(todays_events.length > 0){
+
+
+            $.each(todays_events, function(index, todays_event) {
+                todays_event['event_class'] = 'today_event';
+                show_event(todays_event,'#todays_events');
+            });
+
+            $('#todays_events_header').fadeIn( "slow", function() {
+                // Animation complete
+            });
+        }
+
+
+        var tomorrows_events = json_data['tomorrows_events'];
+        if(tomorrows_events.length > 0){
+
+            $.each(tomorrows_events, function(index, tomorrows_event) {
+                tomorrows_event['event_class'] = 'tomorrow_event';
+                show_event(tomorrows_event,'#tomorrows_events');
+            });
+
+
+            $('#tomorrows_events_header').fadeIn( "slow", function() {
+                // Animation complete
+            });
+        }
+
+
+
     }
 
 
-    //Adds a single event to the DOM
-    function show_event(event){
-        var source   = $("#event_template").html();
-        var template = Handlebars.compile(source);
-        $("#event_list").append(template(event)).hide().fadeIn();
+    function format_planner_date(event_date){
+
     }
 
 
-    //Send post request to event/create
-    $('#create_todo_form').submit(function (e) {
-        e.preventDefault();
-        var $form = $(this);
-        var post_url = $form.attr('action');
-        var post_data = $(this).serializeArray();
-        var errors = [];
 
-        var todo_name = $('#event_name').val();
-
-        //Check if user input a name for todo
-        if($('#event_name').val().length == 0){
-            errors.push({name:'event_name_error',value:'You must give a name for this todo'});
-        }
-
-
-        var todo_date = '10/11/2014';
-
-        var todo_time = '10:10:12';
-
-
-        if(errors.length > 0){
-            alert(JSON.stringify(errors));
-            $('#new_listing_text').text(JSON.stringify(errors));
-            return false;
-        }
-
-        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id };
-
-        $.post(
-            post_url,
-            post_data,
-            function(response) {
-                if(response['success']){
-                    alert(JSON.stringify(response));
-                }else{
-                    alert(JSON.stringify(response));
-                }
-            }, 'json'
-        );
-    });
 
 
 
@@ -303,7 +312,83 @@ $(document).ready(function(){
 			}
     });
 
-	});
 
 
+//	});
 
+
+//Adds a single event to the DOM
+//First parameter is the json event
+//Second is the div id to add event to
+function show_event(event,event_div_id){
+    //alert('showing event');
+    var source   = $("#event_template").html();
+    var template = Handlebars.compile(source);
+    $(event_div_id).append(template(event)).hide().fadeIn();
+}
+
+//For somereason these has to be outside of the .ready()
+$(document).on('click','#add_todo',function(){
+    $(this).css("display", "none");
+    $("#todo_wrap").css("height", "140px");
+    $(".planner_creation_form").fadeIn(500);
+    $("textarea#event_name").focus();
+});
+
+$(document).on('click','.cancel_form',function(){
+    $('.planner_creation_form').css('display', 'none');
+    $(".entry_field").css("height", "36px");
+    $('.entry_field_placeholder').fadeIn(250);
+    $('.timepicker').css('display', 'none');
+    $('.event_time').text('Add a time');
+});
+$(document).on('click','.event_time',function(){
+    $('.timepicker').fadeToggle(150);
+    $('.tp1').css('display', 'initial');
+    $('.event_time').css('display', 'none');
+});
+
+//$('#create_todo_form').submit(function (e) {
+$(document).on('click','#create_todo_form',function(e){
+//Send post request to event/create
+
+    e.preventDefault();
+    var $form = $(this);
+    var post_url = $form.attr('action');
+    var post_data = $(this).serializeArray();
+    var errors = [];
+
+    var todo_name = $('#event_name').val();
+
+    //Check if user input a name for todo
+    if($('#event_name').val().length == 0){
+        errors.push({name:'event_name_error',value:'You must give a name for this todo'});
+    }
+
+
+    var todo_date = '10/11/2014';
+
+    var todo_time = '10:10:12';
+
+
+    if(errors.length > 0){
+        alert(JSON.stringify(errors));
+        $('#new_listing_text').text(JSON.stringify(errors));
+        return false;
+    }
+
+    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id };
+
+    $.post(
+        post_url,
+        post_data,
+        function(response) {
+            if(response['success']){
+                alert(JSON.stringify(response));
+                show_event(response['event']);
+            }else{
+                alert(JSON.stringify(response));
+            }
+        }, 'json'
+    );
+});
