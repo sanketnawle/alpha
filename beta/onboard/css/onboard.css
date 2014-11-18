@@ -33,12 +33,13 @@ background-color: #e5e5e5;
 .progress_hint_0
 {
 	color: white;
-	font-weight: 500;
-	font-size: 19px;
+	font-weight: 600;
+	font-size: 18px;
 	float: left;
+	text-shadow: 0 1px black;
 	margin-left: 10px;
 	line-height: 42px;
-	font-family: 'Avenir','Helvetica Neue','Helvetica','Arial',sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .progress_hint_1
@@ -129,18 +130,22 @@ background-color: #e5e5e5;
 {
 	border-radius: 8px;
 	width: 100%;
+	-webkit-box-shadow: inset 0 0 50px rgba(0,0,0,0.5); -moz-box-shadow: inset 0 0 50px rgba(0,0,0,0.5); box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
 	height: 117px;
-	background-color: #57068c;
 
 	margin-top: 12px;
-	border: 2px solid rgba(255, 255, 255, 0);
+	border: 1px solid rgba(255, 255, 255, 0);
 
 	cursor: pointer;
 }
 
+.card_0_info .green_join_btn{
+	margin-top:10px;
+}
+
 .step_0_card:hover
 {
-	border: 2px solid #222222;	
+	border: 1px solid rgba(34, 34, 34, 0.5);	
 	opacity: 0.96;
 }
 
@@ -188,12 +193,13 @@ background-color: #e5e5e5;
 	overflow: hidden;
 	white-space: nowrap;
 
-	text-shadow:0px 1px 2px rgba(0, 0, 0, 0.9);
+	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.54);
 }
 
 .card_0_text_1
 {
 	font-size: 12px;
+	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.54);
 }
 
 .step_2_card
@@ -248,9 +254,10 @@ background-color: #e5e5e5;
 .left_txt
 {
 	float: left;
-	color: #9d9d9d;
+	color: #222;
 	font-size: 14px;
-	font-weight: 300;
+	font-weight: 400;
+	opacity: .7;
 }
 
 .right_txt
@@ -436,18 +443,19 @@ background-color: #e5e5e5;
 	font-size: 12px;
 	margin-left: 5px;
 	white-space: pre-line;
+	margin-top: -3px;
 }
 
 .expanded
 {
-	background-color: #f9f9f9;
+	background-color: #fafafa;
 	border: 1px solid #dbdbdb;
 }
 
 .expanded_pseudo
 {
 	background-color: #f9f9f9;
-	border: 1px solid #dbdbdb;
+	border: 1px solid #eeeeee;
 }
 
 .section_selected
@@ -611,7 +619,7 @@ background-color: #e5e5e5;
 {
 	width: 180px;
 	float: right;
-	margin-right: 18px;
+	margin-right: 12px;
 	margin-top: 14px;
 	padding-left: 30px;
 }
@@ -630,14 +638,14 @@ background-color: #e5e5e5;
 	height: 20px;
 	background: url('../img/OnboardingIconMap.png') repeat scroll 0px 2px transparent;
 	position: absolute;
-	margin-left: 405px;
+	margin-left: 412px;
 	margin-top: 18px;
 	background-size: 120%;
 }
 
 .progress_footer_glyph_1
 {
-	margin-left: 405px;
+	margin-left: 414px;
 	margin-top: 18px;
 }
 
@@ -739,6 +747,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, 1), 
 text-shadow: -1px -1px 0 #fcfcfc, 1px -1px 0 #fcfcfc, -1px 1px 0 #fcfcfc, 1px 1px 0 #fff;
 }
 
+
 .blue_btn{
 	cursor: pointer;
 	padding-left: 16px;
@@ -788,13 +797,13 @@ box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
 	color: #777;
 	line-height: 60px;
 	margin-left: 10px;
-	font-size: 13.5px;
+	font-size: 12.5px;
 }
 
 .skip_progress span
 {
-	text-decoration: underline;
 	cursor: pointer;
+	border-bottom: 1px solid #9B9B9B;
 }
 
 .skip_progress span:active
@@ -804,7 +813,7 @@ box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
 
 .club_join
 {
-	margin-top: -16px!important;
+	margin-top: -17px!important;
 }
 
 .green_join_btn
@@ -815,8 +824,7 @@ box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
 	transition: all 0.5s ease-in 0s;
 	box-sizing: border-box;
 	border-radius: 4px;
-	margin-top: 7px;
-	padding: 7.5px 10px;
+	padding: 5.5px 10px;
 	font-size: 13.5px;
 	font-weight: 600;
 	outline: medium none;
