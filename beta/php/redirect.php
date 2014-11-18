@@ -23,7 +23,7 @@ if (isset($_COOKIE['beta_type'])) {
 // If not, then add a referral URL to get back here after login
 if (!isset($_COOKIE['beta_user_id'])) {
     $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-    header('location:/beta/lp_beta.php');
+    header('location:lp_beta.php');
 } else if (!isset($_SESSION['beta_loggedin'])) {
     $_SESSION['url'] = $_SERVER['REQUEST_URI'];
     header('location:/beta/php/setsession.php');
