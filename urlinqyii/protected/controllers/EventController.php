@@ -4,6 +4,47 @@ class EventController extends Controller
 {
 
 
+    public function actionGetEvents(){
+        $user = $this->get_current_user();
+        $date = '2014-11-12';
+        //$date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+        $events = Event::model()->findAll('start_date=:start_date and user_id=:user_id',array('start_date'=>$date,':user_id'=>7));
+
+
+
+
+        $data = array('success'=>true,'events'=>$events);
+
+
+
+        $this->renderJSON($data);
+        return;
+
+    }
+
+
+    public function actionAttendees(){
+        //$user = $this->get_current_user();
+        $event_id = $_GET['id'];
+        //$date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+        $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
+
+        //$attendees = $event->attendees;
+
+
+        //$data = array('success'=>true,'attendees'=>$attendees);
+
+        $data = array('success'=>true,'attendees'=>$event->attendees);
+
+        $this->renderJSON($data);
+        return;
+
+    }
+
+
+
     public function actionGetPlannerEvents(){
         $user = $this->get_current_user();
 
