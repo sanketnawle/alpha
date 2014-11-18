@@ -36,7 +36,7 @@
         origin_id = '<?php echo $club->group_id; ?>';
     </script>
 
-    <?php include "timezone.php" ?>
+    <?php //include "timezone.php" ?>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
