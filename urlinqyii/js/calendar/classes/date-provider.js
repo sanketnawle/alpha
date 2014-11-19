@@ -60,23 +60,13 @@
     }
 
     this.toInputWeekFormat = function (fd, date) {
-        //if (!fd.value) return;
-        //console.log(date);
-        //date = date.split("-");
-        //var date = new Date(date[0], date[1] - 1, date[2]);
-        //if (!date) return;
-        //fd.setAttribute("orig", date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
-        //var val = $.datepicker.regional[""].dayNamesShort[date.getDay()];
-        //val += ", " + $.datepicker.regional[""].monthNamesShort[date.getMonth()];
-        //val += " " + date.getDate() + (function (e) {
-        //    switch (parseInt(e)) {
-        //        case 1: return "st";
-        //        case 2: return "nd";
-        //        case 3: return "rd";
-        //        default: return "th";
-        //    }
-        //}(date.getDate().toString().substr(-1)));
-        //return val;
-        return fd.value;
+        if (!(date instanceof Date)) {
+            date = date.split("-");
+            date = new Date(date[0], date[1] - 1, date[2]);
+        }
+        var val = $.datepicker.regional[""].dayNamesShort[date.getDay()];
+        val += ", " + $.datepicker.regional[""].monthNamesShort[date.getMonth()];
+        val += " " + date.getDate() + ", " + date.getFullYear();        
+        return val;        
     }
 }

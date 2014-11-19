@@ -22,11 +22,14 @@ ulcal.directive("ngUcCheck", function () {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
+            var a = ["",""];
+            if (attr.ngUcCheck.trim() != "") a = attr.ngUcCheck.split(",", 2);
             var ele = element.context;
-            var t = function (c) { var m = document.createElement("i"); m.className = c; return m; }
-            var x = t("x"), xx = t("xx");
+            var t = function (c, t) { var m = document.createElement("i"); m.className = c; m.innerHTML = t; return m; }
+            var x = t("x", a[0]), xx = t("xx", a[1]);
             ele.appendChild(x);
             ele.appendChild(xx);
+            if (attr.checked != undefined) ele.classList.add("checked");            
             element.bind("click", function () {
                 this.classList.toggle("checked");
             });

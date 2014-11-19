@@ -40,6 +40,11 @@ ulcal.controller("SemesterController", function ($scope, $routeParams, $timeout,
         MonthGrid.createGrid("month-grid", $scope.semMonths[$scope.sem][0], $scope.activeYear, true);
     });
 
+    window.adgrid = AdGrid.createGrid();
+
+    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
+    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
+
     var viewing = 0;
     $(".all-wrapper .arrow .arrow img").click(function () {
         var wrapper = $(this).closest(".all-wrapper").find(".sem-wrapper");

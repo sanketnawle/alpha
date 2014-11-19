@@ -60,6 +60,15 @@ var DayGrid = (function (DayGrid) {
                         this.ele.querySelector(".row1 .location").innerHTML = value;
                 }
             },
+            attending: {
+                get: function () { return this.ele.querySelector(".row2 .att .yesno").classList.contains("checked"); },
+                set: function (value) {
+                    if (value == this.attending) return;
+                    var yesno = this.ele.querySelector(".row2 .att .yesno");
+                    if (value) yesno.classList.add("checked");
+                    else yesno.classList.remove("checked");
+                }
+            },
             color: { set: function (value) { this.ele.querySelector(".row1 .icon").className = "icon " + value; } },
             icon: {
                 set: function (value) {
