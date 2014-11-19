@@ -1,0 +1,140 @@
+$(document).ready(function(){
+	
+
+	
+	//render's a single post to the feed
+	//Discussion 
+		//Status 
+		//Random Post
+	//File 
+
+	
+	
+	
+	/*var postTemplate = '<div id="{{last_activity}}">' + 
+	'<div class = "posts new_fd" id = "{{post_id}}""> ' + 
+		'<div class="post_main">'+
+			'<div class="post_head">'+
+				'<div class="post_title">' + 
+					'{{user_name}} | {{text_msg}}' + 
+				'<div>'+
+			'</div>'+
+		'</div>'+
+	'</div>'+
+'	</div>' ;
+	*/
+	function render_post_with_url(single_post){
+
+	}
+
+
+	//All the Mustache Helpers
+	//Mustache.registerHelper("ifAnonymous", obj) {
+		//if(obj === "0") return flase;
+		//else return true;
+	//}
+
+	function render_post(single_post){
+		//Event Posts
+		//Announcements
+		//Oppurtunities 
+		if(single_post['post_type'] === "status"){
+			
+				var url = single_post['text_msg'];
+				var source   = $("#post_template").html();
+				console.log(source);
+				var template = Handlebars.compile(source);
+				console.log(template);
+				$("#posts").append(template(single_post));
+				
+		}
+		else if(single_post['post_type'] === "notes") {
+			var url = single_post['text_msg'];
+			if(url){
+				render_post_with_url(single_post);
+			}
+			else {
+				
+			}
+		}
+	    else if(single_post['post_type'] === "question") {
+	    	var url = single_post['text_msg'];
+			if(url){
+				render_post_with_url(single_post);
+			}
+			else {
+				
+			}
+	    }
+	    else if(single_post['post_type'] === "discussion") {
+	    	var url = single_post['text_msg'];
+			if(url){
+				render_post_with_url(single_post);
+			}
+			else {
+				
+			}
+	    }
+	}
+
+	//findUrlsInPost("hellllhttps://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll oasdfjlei'dfdfd'https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll");
+
+	
+	//Parsess through a chunck of text to find an url the end is delimitted by a space and the front by either https
+    function findUrlsInPost( text ) {
+	    var source = (text || '').toString();
+	    var urlArray = [];
+	    var url;
+	    var matchArray;
+	    var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+		while( (matchArray = regexToken.exec( source )) !== null ) {
+	        var token = matchArray[0];
+	        urlArray.push( token );
+    	}
+    	console.log(urlArray[8]);
+		return urlArray;
+	}
+
+
+	var jsonData = [{"post_id":"524","user_id":"47","target_type":null,"target_id":null,"target_univ_id":"1","post_type":"status","text_msg":"new","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1411479595000,"update_timestamp":1411479595000,"inv_type":"posted","created_time":"2014-09-23 15:39:55","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":0,"replies":null},{"post_id":"520","user_id":"285","target_type":"class","target_id":"92574d65-f589-11e3-b732-00259022578e","target_univ_id":"1","post_type":"status","text_msg":"sdafg","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1411479365000,"update_timestamp":1411479365000,"inv_type":"posted","created_time":"2014-09-23 15:36:05","user_name":"Kuan Wang","target_name":"PHD DISS IN BIOMEDICAL ENGR","reply_count":0,"replies":null},{"post_id":"484","user_id":"47","target_type":"null","target_id":"null","target_univ_id":"1","post_type":"notes","text_msg":"dsfg","sub_text":null,"file_id":"301","file_share_type":"regular","privacy":"campus","anon":"0","like_count":"0","last_activity":1411145244000,"update_timestamp":1409611521000,"inv_type":"posted","created_time":"2014-09-02 00:45:21","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":1,"replies":{"reply_id":"286","post_id":"484","user_id":"285","reply_msg":"j","up_vote":"0","down_vote":"0","file_id":null,"anon":"0","update_timestamp":"2014-09-06 23:17:39"}},{"post_id":"468","user_id":"47","target_type":null,"target_id":null,"target_univ_id":"1","post_type":"question","text_msg":"dsfg","sub_text":"afe","file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1411143807000,"update_timestamp":1409219257000,"inv_type":"posted","created_time":"2014-08-28 11:47:37","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":1,"replies":{"reply_id":"266","post_id":"468","user_id":"47","reply_msg":"sdf","up_vote":"0","down_vote":"0","file_id":null,"anon":"0","update_timestamp":"2014-08-28 12:53:22"}},{"post_id":"481","user_id":"47","target_type":"class","target_id":"92eb9df7-f589-11e3-b732-00259022578e","target_univ_id":"1","post_type":"status","text_msg":"hey","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410963467000,"update_timestamp":1409512510000,"inv_type":"posted","created_time":"2014-08-31 21:15:10","user_name":"Jin Kim Montclaree","target_name":"COMPUTER SCI AND ENGINEERING","reply_count":1,"replies":{"reply_id":"273","post_id":"481","user_id":"285","reply_msg":"hi","up_vote":"0","down_vote":"0","file_id":null,"anon":"1","update_timestamp":"2014-09-01 13:55:24"}},{"post_id":"437","user_id":"47","target_type":null,"target_id":null,"target_univ_id":"1","post_type":"status","text_msg":"afs","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410901116000,"update_timestamp":1408957604000,"inv_type":"posted","created_time":"2014-08-25 11:06:44","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":0,"replies":null},{"post_id":"463","user_id":"350","target_type":null,"target_id":null,"target_univ_id":"1","post_type":"question","text_msg":"asd","sub_text":"asd","file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410888325000,"update_timestamp":1409060403000,"inv_type":"posted","created_time":"2014-08-26 15:40:03","user_name":"Aditya Nenawati","target_name":null,"reply_count":1,"replies":{"reply_id":"313","post_id":"463","user_id":"285","reply_msg":"final test of comment box","up_vote":"0","down_vote":"0","file_id":"319","anon":"0","update_timestamp":"2014-09-14 16:50:21"}},{"post_id":"312","user_id":"47","target_type":"group","target_id":"2","target_univ_id":"1","post_type":"status","text_msg":"idigo","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410709345000,"update_timestamp":1407860543000,"inv_type":null,"created_time":"0000-00-00 00:00:00","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":1,"replies":{"reply_id":"239","post_id":"312","user_id":"285","reply_msg":"i will get this comment.","up_vote":"0","down_vote":"0","file_id":null,"anon":"0","update_timestamp":"2014-08-13 14:59:52"}},{"post_id":"312","user_id":"350","target_type":"group","target_id":"2","target_univ_id":"1","post_type":"status","text_msg":"idigo","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410709345000,"update_timestamp":1407860543000,"inv_type":"liked","created_time":"2014-08-27 11:48:45","user_name":"Aditya Nenawati","target_name":null,"reply_count":1,"replies":{"reply_id":"239","post_id":"312","user_id":"285","reply_msg":"i will get this comment.","up_vote":"0","down_vote":"0","file_id":null,"anon":"0","update_timestamp":"2014-08-13 14:59:52"}},{"post_id":"428","user_id":"47","target_type":null,"target_id":null,"target_univ_id":"1","post_type":"status","text_msg":"test from home","sub_text":null,"file_id":null,"file_share_type":null,"privacy":"campus","anon":"0","like_count":"0","last_activity":1410708759000,"update_timestamp":1408906595000,"inv_type":"posted","created_time":"2014-08-24 20:56:35","user_name":"Jin Kim Montclaree","target_name":null,"reply_count":1,"replies":{"reply_id":"310","post_id":"428","user_id":"285","reply_msg":"testing comment without attchment","up_vote":"0","down_vote":"0","file_id":null,"anon":"0","update_timestamp":"2014-09-14 16:39:41"}}]
+	$.each(jsonData ,function(key) {
+			console.log(jsonData[key]['anon']);
+			if(jsonData[key]['anon'] === '0'){
+				console.log("anon");
+				jsonData['anon'] = '';
+		    	render_post(jsonData[key]);
+		    	jsonData['anon']
+		    }
+		    else {
+		    	console.log("noteanon");
+		    	render_post(jsonData[key]);
+		    }
+		  });
+	});
+
+
+	//var url = 'data.json';
+	//$.getJSON( url , function( data ) {
+		//Checks if the request was successful 
+		//console.log("called");
+		//if(data['success']){
+	
+		//else{
+
+			//alert("Error loading feed!");
+		//}
+	//});
+
+
+;
+/*function extract_first_link(the_post){
+		var urlRegex = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
+   	    var the_link = the_post.match(urlRegex);
+   	    if(the_link){
+   	    	
+   	    	//console.log();
+   	    }
+   	    	
+		else return "no_link";
+    }*/
+
