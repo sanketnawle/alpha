@@ -103,8 +103,11 @@ class EventController extends Controller
         $tomorrows_events = Event::model()->findAllBySql($sql);
         $event_count += count($tomorrows_events);
 
+        $club = Group::model()->find('group_id=:group_id',array(':group_id'=>1));
+//        $data = array('success'=>true,'past_due_events'=>$past_due_events,'todays_events'=>$todays_events,'tomorrows_events'=>$tomorrows_events,'event_count'=>$event_count);
+        $data = array('success'=>true,'event'=>$this->get_model_associations($club,array('pictureFile')));
 
-        $data = array('success'=>true,'past_due_events'=>$past_due_events,'todays_events'=>$todays_events,'tomorrows_events'=>$tomorrows_events,'event_count'=>$event_count);
+
         $this->renderJSON($data);
         return;
 
