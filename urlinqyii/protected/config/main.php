@@ -81,7 +81,7 @@ return array(
                 //urlinq.com/getposts
                 'getposts'=>'profile/getPosts',
                 'search/'=>'search/view',
-                'search/results'=>'search/results',
+                'search/json'=>'search/json',
 
                 'file/upload'=>'site/fileUpload',
 
