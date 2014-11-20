@@ -185,26 +185,26 @@ class SiteController extends Controller
         $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     }
 
-    public function actionSuggestUsers(){
+//    public function actionSuggestUsers(){
 //        if(!$this->authenticated()){
 //            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
 //        }
 
-        $user_rankings = array();
-
-
-        $user= $this->get_current_user();
-        foreach($user->classes as $class){
-            foreach($class->users as $class_user){
-                if($class_user->user_id != $user->user_id){
-                    if(isset($user_rankings[$class_user->user_id])){
-                        $user_rankings[$class_user->user_id] += 1;
-                    }else{
-                        $user_rankings[$class_user->user_id] = 1;
-                    }
-                }
-            }
-        }
+//        $user_rankings = array();
+//oauth_get_sbs().
+//
+//        $user= $this->get_current_user();
+//        foreach($user->classes as $class){
+//            foreach($class->users as $class_user){
+//                if($class_user->user_id != $user->user_id){
+//                    if(isset($user_rankings[$class_user->user_id])){
+//                        $user_rankings[$class_user->user_id] += 1;
+//                    }else{
+//                        $user_rankings[$class_user->user_id] = 1;
+//                    }
+//                }
+//            }
+//        }
 
         $data = array('success'=>true,'rankings'=>$user_rankings);
 

@@ -815,7 +815,7 @@ $(document).ready(function() {
                            
                             <?php echo $this->renderPartial('school_info_tab_about',array('school'=>$school)); ?>
                             <?php echo $this->renderPartial('school_info_tab_announcements',array()); ?>
-                            <?php echo $this->renderPartial('school_info_tab_students',array()); ?>
+                            <?php echo $this->renderPartial('school_info_tab_students',array('user'=>$user)); ?>
                             
                             <?php echo $this->renderPartial('school_departments_tab',array('departments'=>$school->departments)); ?>
 
