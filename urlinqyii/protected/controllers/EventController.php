@@ -108,6 +108,8 @@ class EventController extends Controller
         //$data = array('success'=>true,'event'=>$this->get_model_associations($club,array('pictureFile')));
 
 
+        //Show 7 days after tomorrow
+
         $this->renderJSON($data);
         return;
 

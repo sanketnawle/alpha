@@ -15,10 +15,16 @@
             font-size: @ideal-font-size;            
         }
 
+        .slimScrollDiv {
+            .absolute(@header-1-height,@ad-width + 3,0,0);
+            position: absolute !important;
+            height: auto !important;
+        }
+
         .day-grid {
-            .absolute(@header-1-height,@ad-width,0,0);
+            .absolute(0, 0, 0, 0);
+            height: auto !important;
             overflow: auto;
-            padding-bottom: 40px;
             @corner: 5px;
             @row-height: 60px; /* 100px original */
             @time-width: 65px;
