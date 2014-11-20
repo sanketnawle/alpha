@@ -61,8 +61,8 @@ else die("This user doesn't seem to exist in our system");
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-        <script src="js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
-        <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/professor-profile.js"></script>
 
