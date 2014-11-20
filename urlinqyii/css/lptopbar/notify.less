@@ -13,7 +13,7 @@
                 width: 0;
                 opacity: 0;
                 height: 0;
-                .transform(scale(.90) translateY(-20px));
+                .transform(scale(.9) translate(2px, -21px));
                 @trans: transform .3s;
                 .transition(@trans);
 
@@ -246,19 +246,11 @@
                 }
             }
 
-            &.active {
-                .notify-window {
-                    opacity: 1;
-                    height: auto;
-                    width: 370px;
-                    .transform(scale(1));
-                }
-            }
-
             &.board {
 
                 .notify-window {
                     left: -232px;
+                    .transform(scale(.9) translate(8px, -21px));
 
                     .wedge {
                         right: 107px;
@@ -269,6 +261,15 @@
                             bottom: 0;
                         }
                     }
+                }
+            }
+
+            &.active {
+                .notify-window {
+                    opacity: 1;
+                    height: auto;
+                    width: 370px;
+                    .transform(scale(1) translate(0px, 0px));
                 }
             }
         }

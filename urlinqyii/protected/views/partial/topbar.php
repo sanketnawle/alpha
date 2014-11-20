@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="notify board active">
+            <div class="notify board">
                 <div class="button">
                     <div class="icon"></div>
                 </div>
