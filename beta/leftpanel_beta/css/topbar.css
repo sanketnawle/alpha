@@ -26,7 +26,7 @@ body {
     top: 0;
     border-bottom: 1px solid #000;
     z-index: 9999;
-    min-width: 700px;
+    min-width: 900px;
     -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
     -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);     
@@ -138,13 +138,13 @@ body {
     .topbar > .right {
         float: right;
         width: 22%;
-        overflow: auto;
+        height: 100%;
     }
 
         .topbar > .right .notify {
-            position: absolute;
+            float: left;
+            position: relative;
             width: 48px;
-            z-index: -1;
             height: 49px;
         
             border-right: 1.5px solid rgba(0, 0, 0, 0.9); 
@@ -156,17 +156,7 @@ body {
 
             .topbar > .right .notify .button {
                 height: 100%;
-                position: absolute;
                 width: 100%;
-                z-index: 10;
-            }
-
-            .topbar > .right .notify:hover .button {
-                background: rgba(255, 255, 255, 0.15);
-            }
-
-            .topbar > .right .notify.active .button {
-                background-color: #FFF;
             }
 
             .topbar > .right .notify.calendar .button {
@@ -178,16 +168,11 @@ body {
                     color: #d6d6d6;
                 }
 
-            .topbar > .right .notify.calendar:hover .notify-window {
-                color: #000;
-            }
-
             .topbar > .right .notify.calendar:hover .button div, .topbar > .right .notify.calendar.active .button div {
                 color: #01ce95;
             }
 
             .topbar > .right .notify.board {
-                margin-left: 48px;
                 border-left: none;
             
                 -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset;
