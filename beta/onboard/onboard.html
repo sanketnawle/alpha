@@ -54,6 +54,17 @@ function progress_check(curr){
 	var b= progress_bar_color[curr];
 	$(".progress").css({width: w, backgroundColor: b});
 	$(".next_progress").text(btn_text[curr]);
+	
+
+	if((progress_flag==0)||(progress_flag==1)||(progress_flag==2)||(progress_flag==6))
+	{
+		$(".next_progress").removeClass("inactive_btn");
+	}else{
+		$(".next_progress").addClass("inactive_btn");
+	}
+		
+	
+
 	$(".onboard_textarea_t1").prop("placeholder",searchbar_hint[curr]);
 	$(".onboard_textarea_t1").show();
 	$(".progress_footer_glyph_0").show();
@@ -228,19 +239,29 @@ function content_paint(curr){
 		$canvas.removeClass("canvas_adjust");
 		$inner.removeClass("canvas_adjust");
 
-		$canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div>");
+		$canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'><span>Female</span></div>");
 
 		$canvas.find(".ui.dropdown").dropdown();
 	}
 
 }
 
+	function is_active_btn(btn){
+		if (btn.hasClass("inactive_btn")) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 
 	$(document).delegate(".next_progress","click",function(){
-		if (progress_flag<6) {
-			progress_flag++;
-			progress_check(progress_flag);
-			content_paint(progress_flag);
+		if (is_active_btn($(this))){
+			if (progress_flag<6) {
+				progress_flag++;
+				progress_check(progress_flag);
+				content_paint(progress_flag);
+			}
 		}
 	});
 
@@ -272,14 +293,22 @@ function content_paint(curr){
 		$(this).removeClass("expanded_pseudo");
 	});
 
-	$(document).delegate(".step_3_card","click",function(){
-		if (!$(this).hasClass("step_5_card")){
-			if ($(this).hasClass("expanded")) {
-				//$(this).removeClass("expanded");
-				//$(this).find(".step_3_hide").hide();
+	$(document).delegate(".step_3_show","click",function(){
+		if (!$(this).closest(".step_3_card").hasClass("step_5_card")){
+			if ($(this).closest(".step_3_card").hasClass("expanded")) {
+				$(this).closest(".step_3_card").removeClass("expanded");
+				$(this).closest(".step_3_card").find(".step_3_hide").hide();
 			}else{
-				$(this).addClass("expanded");
-				$(this).find(".step_3_hide").show();
+				$(this).closest(".step_3_card").addClass("expanded");
+				$(this).closest(".step_3_card").find(".step_3_hide").show();
+			}
+		}
+	});
+
+	$(document).delegate(".step_5_card","click",function(e){
+		if(!$(e.target).hasClass("club_join")){
+			if (!$(this).hasClass("club_join")){
+				$(this).find(".club_join").get(0).click();
 			}
 		}
 	});
@@ -301,15 +330,29 @@ function content_paint(curr){
 			$(".canvas_banner").find(".right_txt").find("span").text(n);
 		}
 		
+		if(n==0){
+			$(".next_progress").addClass("inactive_btn");
+		}else{
+			$(".next_progress").removeClass("inactive_btn");
+		}
 	});
 
+	var flw_n= 0;
 	$(document).delegate(".card_4_btn","click",function(){
 		if ($(this).hasClass("followed")) {
 			$(this).removeClass("followed");
 			$(this).find("span").text("Follow");
+			flw_n--;
 		}else{
 			$(this).addClass("followed");
 			$(this).find("span").text("Following");
+			flw_n++;
+		}
+
+		if(flw_n==0){
+			$(".next_progress").addClass("inactive_btn");
+		}else{
+			$(".next_progress").removeClass("inactive_btn");
 		}
 	});
 
@@ -326,11 +369,19 @@ function content_paint(curr){
 			$(this).text("Join");
 			n--;
 			$(".canvas_banner").find(".right_txt").find("span").text(n);
+			$(this).closest(".step_5_card").removeClass("expanded");
 		}else{
 			$(this).addClass("followed");
 			$(this).text("Joined");
 			n++;
 			$(".canvas_banner").find(".right_txt").find("span").text(n);
+			$(this).closest(".step_5_card").addClass("expanded");
+		}
+
+		if(n==0){
+			$(".next_progress").addClass("inactive_btn");
+		}else{
+			$(".next_progress").removeClass("inactive_btn");
 		}
 	});
 
