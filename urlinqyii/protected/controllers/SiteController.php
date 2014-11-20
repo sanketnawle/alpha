@@ -185,6 +185,22 @@ class SiteController extends Controller
         $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     }
 
+    public function actionSuggestUsers(){
+
+
+
+            $user= $this->get_current_user();
+            foreach($user->classes as $class){
+
+            }
+            $users_same_class = User::model()->find('class_id=:class_id', array(':class_id'=>$class->));
+            $users_same_club = User::model()->find('club_id=:club_id', array(':club_id'=>$user->club_id));
+
+
+
+
+
+    }
 
 
     public function actionRegister(){

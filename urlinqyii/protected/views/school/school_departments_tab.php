@@ -40,6 +40,9 @@ echo '<div class = "departments-tab-content">
               </form>
            </div>';
 
+
+foreach ($departments as $department){
+   // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
 /*
@@ -144,15 +147,17 @@ foreach($dept_array as $key=>$value){
 }
 */
 
+//var_dump($departments);
+    //var_dump($department);
 echo '<div class = "department ajax" id="department-ajax">
     			                                        <a class = "departmentSelectWrapper" id="departmentSelectWrapper">
-    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">Chemistry</a>
+    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $department->department_name; echo '</a>
     			                                           </div>
     			                                           <div class = "imageWrapper">
     			                                             <span class = "hoverMask">
     			                                             </span>
     			                                             <div class = "deptImage deptImage-dos" id="deptimage1">
-    			                                                <img class = "floatL deptImg" src = "">
+//    			                                                <img class = "floatL deptImg" src = "">
     			                                                <div class = "blackData">
     			                                                	<span class = "group_members">
     			                                                		<em class = "members-icon"></em>
@@ -160,12 +165,12 @@ echo '<div class = "department ajax" id="department-ajax">
 
     			                                                	</span>
     			                                                </div>
-    			                                                <div class = "dept-short-wrapper">
+    			                                               <!--  <div class = "dept-short-wrapper">
     				                                                  <div>
     				                                                    <span class="search_unit"><img class="floatL deptImg" src="">
     				                                                    </span>
     				                                                 </div>
-    			                                                </div>
+    			                                                </div>-->
     			                                            </div>
     			                                            <div class = "deptBtns" id="deptBtns1">';
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
@@ -202,7 +207,10 @@ echo '</div>
 ';
 
 echo '
-    </div>
+    </div>';
+
+}
+echo '
     </div>
 ';
 
