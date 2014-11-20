@@ -14,11 +14,11 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/master.css" type="text/css" rel="stylesheet">
     <!--<link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/transition.css" type="text/css" rel="stylesheet">-->
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/leftbar.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/header.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/day.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/week.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/month.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/semester.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/header.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/dialog.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/jq-datepicker.css" type="text/css" rel="stylesheet">
 
@@ -28,6 +28,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng.js"></script>    
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-route.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-animate.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
     <!-- Classes -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/classes/event-target.js"></script>

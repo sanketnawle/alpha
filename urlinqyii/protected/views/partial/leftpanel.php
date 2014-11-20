@@ -3,8 +3,8 @@
 <html>
 <head>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-    <script src="scroll/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link href="scroll/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <script src="js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel.css" rel="stylesheet" type="text/css">
 </head>
 <body>
