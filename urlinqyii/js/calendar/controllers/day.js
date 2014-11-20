@@ -26,7 +26,8 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, UCEv
     }
 
     $scope.getDate = function () {
-        return $scope.getMonthName($scope.activeMonth) + " " + $scope.activeDate + ",";
+        var date = new Date($scope.activeYear, $scope.activeMonth, $scope.activeDate);
+        return $scope.getDayName(date.getDay()) + " " + $scope.getMonthName(date.getMonth()) + " " + date.getDate() + ",";
     }
 
     $scope.getNextLink = function () {
@@ -44,8 +45,12 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, UCEv
         return "#/day/" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
     }
 
-    window.grid =
-        DayGrid.createGrid(document.getElementById("day-grid"), $scope, $compile);
+    window.grid = DayGrid.createGrid(document.getElementById("day-grid"), $scope, $compile);
+    window.adgrid = AdGrid.createGrid();
+
+    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
+    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
+
 
     UCEventData.getData({
         type: "d",

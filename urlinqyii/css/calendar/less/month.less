@@ -59,6 +59,17 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 z-index: 42;
+
+                .line {
+                    .absolute(0, auto, 0, 3px);
+                    width: 2px;
+                    .color-schemes();
+                }
+
+                .time {
+                    float: left;
+                    line-height: 20px;
+                }
             }
         }
     }

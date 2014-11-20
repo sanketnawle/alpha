@@ -4,9 +4,11 @@
 /// <reference path="../helpers/date.js" />
 /// <reference path="../classes/date-provider.js" />
 /// <reference path="../classes/cal-event.js" />
+/// <reference path="../classes/left-panel.js" />
+/// <reference path="../classes/ad-grid.js" />
 
 ulcal.controller("CalController", function (
-    $scope, $location, $routeParams, $timeout,
+    $scope, $location, $routeParams, $timeout, $compile,
     DateService, KeyControlService, PrinterService) {
     $scope.menu = { items: ['day', 'week', 'month', 'semester'], active: 0, old: 0 };
 
@@ -83,8 +85,8 @@ ulcal.controller("CalController", function (
             }
         });
     });
-
-    LeftPanel.init();
+    
+    LeftPanel.init($scope, $compile);
 
     KeyControlService.addListener("UcLeft", function () { $(".body .header.row1 .arrow.left").trigger("click"); });
     KeyControlService.addListener("UcRight", function () { $(".body .header.row1 .arrow.right").trigger("click"); });

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     init();
     function init(){
-        var events = handle_planner_events();
+        handle_planner_events();
         //show_events(events);
     }
 
@@ -202,15 +202,15 @@ $(document).ready(function(){
     //And send an individual event to show_event() when we only want
     //to display 1 event
     function show_events(json_data){
+        //alert(JSON.stringify(json_data));
 
-
-//        if(json_data['event_count'] > 0){
-//            $('#free_planner_wrap').hide();
-//        }else{
-//            $('#free_planner_wrap').hide().fadeIn( "slow", function() {
-//                // Animation complete
-//            });
-//        }
+        if(json_data['event_count'] > 0){
+            $('#free_planner_wrap').hide();
+        }else{
+            $('#free_planner_wrap').hide().fadeIn( "slow", function() {
+                // Animation complete
+            });
+        }
 
 
         console.log(json_data);
@@ -266,10 +266,6 @@ $(document).ready(function(){
     }
 
 
-    function format_planner_date(event_date){
-
-    }
-
 
 
 
@@ -324,8 +320,10 @@ function show_event(event,event_div_id){
     //alert('showing event');
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
-    $(event_div_id).append(template(event)).hide().fadeIn();
+    var generated_html = template(event);
+    $(event_div_id).append(generated_html).hide().fadeIn();
 }
+
 
 //For somereason these has to be outside of the .ready()
 $(document).on('click','#add_todo',function(){

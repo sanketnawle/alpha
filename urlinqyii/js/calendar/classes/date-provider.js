@@ -49,4 +49,24 @@
         var std = new Date(2014, 11, 11, st[0], st[1]), etd = new Date(2014, 11, 11, et[0], et[1]);
         return (etd - std) / 1000;
     }
+
+    this.to12Hrs = function (time) {
+        var st = time.split(":");
+        var ap = "am";
+        if (st[0] > 11) ap = "pm";
+        st[0] = st[0] == 12 ? 12 : st[0] % 12;
+        st = st[0] + ":" + st[1] + " " + ap;
+        return st;
+    }
+
+    this.toInputWeekFormat = function (fd, date) {
+        if (!(date instanceof Date)) {
+            date = date.split("-");
+            date = new Date(date[0], date[1] - 1, date[2]);
+        }
+        var val = $.datepicker.regional[""].dayNamesShort[date.getDay()];
+        val += ", " + $.datepicker.regional[""].monthNamesShort[date.getMonth()];
+        val += " " + date.getDate() + ", " + date.getFullYear();        
+        return val;        
+    }
 }

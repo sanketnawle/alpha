@@ -181,7 +181,7 @@ class ApiController extends Controller
 //            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
 //        }
 
-        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array('pictureFile','coverFile'),'pictureFile'=>array(),'school'=>array('pictureFile','coverFile','university'))));
+        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'))));
 
 
 
@@ -189,6 +189,59 @@ class ApiController extends Controller
         $this->renderJSON($data);
         return;
     }
+
+    //ERROR ID's
+    // 1 - all data not set
+    // 2 - User doesnt exist
+    public function actionGetUserClubs(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'clubs'=>$user->groups);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+
+    //ERROR ID's
+    // 1 - all data not set
+    // 2 - User doesnt exist
+    public function actionGetUserClasses(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'classes'=>$user->classes);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
 
 
 
@@ -233,7 +286,29 @@ class ApiController extends Controller
         $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
 
 
-        $data = array('success'=>true,'department'=>$this->get_model_associations($department,array('pictureFile','coverFile')));
+        $data = array('success'=>true,'department'=>$department);
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetClubData(){
+        if(!isset($_GET['group_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $group_id = $_GET['group_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
+
+
+        $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
 
 
         $this->renderJSON($data);
@@ -288,7 +363,7 @@ class ApiController extends Controller
             $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
             $base_url = Yii::app()->getBaseUrl(true);
-            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array('pictureFile'),'pictureFile'=>array()),'pictureFile'=>array())));
+            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array(),))));
 
 
             $this->renderJSON($data);

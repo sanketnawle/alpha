@@ -3,6 +3,7 @@
 /// <reference path="event-target.js" />
 
 var DayGrid = (function (DayGrid) {
+    var dp = new DateProvider();
     var _scope = null;
     var _compiler = null;
     var _iconbase = "http://lorempixel.com/100/100?";
@@ -59,6 +60,15 @@ var DayGrid = (function (DayGrid) {
                         this.ele.querySelector(".row1 .location").innerHTML = value;
                 }
             },
+            attending: {
+                get: function () { return this.ele.querySelector(".row2 .att .yesno").classList.contains("checked"); },
+                set: function (value) {
+                    if (value == this.attending) return;
+                    var yesno = this.ele.querySelector(".row2 .att .yesno");
+                    if (value) yesno.classList.add("checked");
+                    else yesno.classList.remove("checked");
+                }
+            },
             color: { set: function (value) { this.ele.querySelector(".row1 .icon").className = "icon " + value; } },
             icon: {
                 set: function (value) {
@@ -110,7 +120,7 @@ var DayGrid = (function (DayGrid) {
                         eve.id = uce.id;
                         eve.color = getRandomClass();
                         if (uce.allday) eve.time = "allday";
-                        else eve.time = uce.startTime + " - " + uce.endTime;
+                        else eve.time = dp.to12Hrs(uce.startTime) + " - " + dp.to12Hrs(uce.endTime);
 
                         grid[eve.id] = eve;
                         ++grid.count;

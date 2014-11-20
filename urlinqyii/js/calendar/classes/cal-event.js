@@ -1,7 +1,10 @@
 ﻿/// <reference path="event-target.js" />
+/// <reference path="date-provider.js" />
+/// <reference path="../lib/jquery.js /">
 
 var CalendarEvent = (function (CalendarEvent) {
     var _displayMode = "block";
+    var dp = new DateProvider();
 
     var Tag = {
         createTags: function (nodes) {
@@ -17,6 +20,10 @@ var CalendarEvent = (function (CalendarEvent) {
                 });
                 items.push(obj);
             });
+            items.toStringArray = function () {
+                for (var str = [], i = 0; i < items.length; str.push(items[i].text), ++i);
+                return str;
+            }
             return items;
         },
         createNewTag: function (ctx, text) {
@@ -24,6 +31,7 @@ var CalendarEvent = (function (CalendarEvent) {
             var tag = document.createElement("span");
             tag.className = "tag";
             tag.innerHTML = text;
+            tag.onclick = function () { tags.removeChild(tag); }
             tags.appendChild(tag);
         },
         removeTag: function (ctx, index) {
@@ -67,13 +75,40 @@ var CalendarEvent = (function (CalendarEvent) {
                     var dlg = this, dialog = this.ele;
                     dlg.opened = false;
 
+                    this.wrapper = dialog.querySelector(".wrapper");
+                    this.wrapper.onclick = function (e) {
+                        if (e.target === this) {
+                            dlg.opened = false;
+                            dlg.__fire("cancel");
+                        }
+                    }
+
                     this.closeBtn = dialog.querySelector(".dtitle .close");
                     this.closeBtn.onclick = function () { dlg.opened = false; dlg.__fire("cancel"); }
 
                     this.submitBtn = dialog.querySelector(".row5 .submit");
-                    this.closeBtn.onclick = function () { dlg.opened = false; dlg.__fire("submit"); }
+                    this.submitBtn.onclick = function () { dlg.opened = false; dlg.__fire("submit"); }
+
+                    this.desBtn = dialog.querySelector(".row5 .des-btn");
+                    this.desBtn.onclick = function () {
+                        var cls = "active";
+                        if (this.classList.contains(cls))
+                            this.classList.remove(cls);
+                        else
+                            this.classList.add(cls);
+                    }
 
                     this.tagInput = dialog.querySelector(".row4 .tag-in .txt");
+                    this.tagInput.onkeyup = function (e) {
+                        e = e || event;
+                        if (e.keyCode == 188 || e.keyCode == 13) {
+                            dlg.addTag(this.value.split(",", 1)[0]);
+                            this.value = "";
+                        }
+                    }
+
+                    $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
+                        
 
                     var fdate = new Date();
                     this.fromTime = fdate.toTimeInputValue();
@@ -81,8 +116,8 @@ var CalendarEvent = (function (CalendarEvent) {
 
                     var tdate = new Date(fdate.getTime());
                     tdate.setHours(fdate.getHours() + 1);
-                    this.toTime = tdate.toTimeInputValue();
                     this.toDate = tdate.toDateInputValue();
+                    this.toTime = tdate.toTimeInputValue();
 
                     $(".row1 .cats li", dlg.ele).click(function () {
                         $(" > .cat", $(this).parents(".ecat"))[0].className = $(".cat", this)[0].className;
@@ -95,12 +130,18 @@ var CalendarEvent = (function (CalendarEvent) {
             addTag: { value: function (text) { Tag.createNewTag(this, text); } },
             removeTag: { value: function (index) { Tag.removeTag(this, index); } },
             fromDate: {
-                get: function () { return this.ele.querySelector(".from-ts .date").value; },
-                set: function (date) { return this.ele.querySelector(".from-ts .date").value = date; }
+                get: function () { return this.ele.querySelector(".from-ts .date").getAttribute("orig"); },
+                set: function (date) {
+                    var fd = this.ele.querySelector(".from-ts .date");
+                    fd.value = dp.toInputWeekFormat(fd, date);
+                }
             },
             toDate: {
-                get: function () { return this.ele.querySelector(".to-ts .date").value; },
-                set: function (date) { return this.ele.querySelector(".to-ts .date").value = date; }
+                get: function () { return this.ele.querySelector(".to-ts .date").getAttribute("orig"); },
+                set: function (date) {
+                    var td = this.ele.querySelector(".to-ts .date");
+                    td.value = dp.toInputWeekFormat(td, date);
+                }
             },
             fromTime: {
                 get: function () { return this.ele.querySelector(".from-ts .time").value; },
