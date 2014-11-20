@@ -1,0 +1,50 @@
+﻿@import "import/common.less";
+
+.body {
+    @timestrip-width: 50px;
+    @hour-height: 50px;
+
+    .header.row2.week {
+        margin-left: @timestrip-width;
+        margin-right: 12px;
+    }
+
+    .week-view {
+        overflow: auto;
+        right: 12px;
+        top: 0;
+        bottom: @header-1-height + @header-2-height;
+
+        .time-strip {
+            float: left;
+            width: @timestrip-width;
+            background-color: #FFF;
+
+            .time {
+                text-align: right;
+                height: @hour-height;
+                padding: 0 5px;
+            }
+        }
+
+        .week-grid {
+            overflow: hidden;
+            border-left: 1px solid @border-color;
+            margin-left: @timestrip-width;
+
+            .time-line {
+                .absolute(0, 1px, auto, 0, 200);                
+                border-top: 2px solid @time-line-color;
+                margin-left: @timestrip-width + 1;
+            }
+
+            .grid-item {
+                height: @hour-height;
+            }
+
+            .grid-event {
+                z-index: 170;
+            }
+        }
+    }
+}

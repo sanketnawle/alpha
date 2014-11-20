@@ -20,7 +20,7 @@
         href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300'
         rel='stylesheet' type='text/css'>
 
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/preload_img.js"></script>
+
 
 </head>
 <script>
@@ -291,7 +291,7 @@ function LoadHome() {
                 </div>
             </div>-->
             <div class="topbar_prof">
-                <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
+               <div style="background-image: url(<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>);" class="prof-limit">
                 </div>
                 <div class="topbar_user_name">
                     <?php echo $user->firstname; ?>

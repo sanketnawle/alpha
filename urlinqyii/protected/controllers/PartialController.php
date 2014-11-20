@@ -105,13 +105,13 @@ class PartialController extends Controller
     }
 
 
-    public function actionFeeds(){
+    public function actionFeed(){
 
         $posts = Post::model()->findAll();
 
 
 
-        $this->render('feeds',array('posts'=>$posts));
+        $this->render('feed',array('posts'=>$posts));
     }
 
 	// Uncomment the following methods and override them if needed

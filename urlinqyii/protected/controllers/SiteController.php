@@ -185,6 +185,40 @@ class SiteController extends Controller
         $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     }
 
+    public function actionSuggestUsers(){
+//        if(!$this->authenticated()){
+//            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+//        }
+
+        $user_rankings = array();
+
+
+        $user= $this->get_current_user();
+        foreach($user->classes as $class){
+            foreach($class->users as $class_user){
+                if($class_user->user_id != $user->user_id){
+                    if(isset($user_rankings[$class_user->user_id])){
+                        $user_rankings[$class_user->user_id] += 1;
+                    }else{
+                        $user_rankings[$class_user->user_id] = 1;
+                    }
+                }
+            }
+        }
+
+        $data = array('success'=>true,'rankings'=>$user_rankings);
+
+
+        $this->renderJSON($data);
+        return;
+//        $users_same_class = User::model()->find('class_id=:class_id', array(':class_id'=>$class->));
+//        $users_same_club = User::model()->find('club_id=:club_id', array(':club_id'=>$user->club_id));
+
+
+
+
+
+    }
 
 
     public function actionRegister(){
@@ -357,7 +391,25 @@ class SiteController extends Controller
 
 
 
+    public function actionTimezone() {
+        if(!$this->authenticated()){
+            $data = array('error'=>'not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+        if(!isset($_GET['timezone'])){
+            $data = array('error'=>'timezone not set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        Yii::app()->session['timezone'] = $_GET['timezone'];
+
+
+        $data = array('timezone'=>Yii::app()->session['timezone']);
+        $this->renderJSON($data);
+        return;
+    }
 
 
     public function actionFileUpload() {

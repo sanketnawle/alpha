@@ -74,6 +74,12 @@ class Event extends CActiveRecord
 			'file' => array(self::BELONGS_TO, 'File', 'file_id'),
 			'theme' => array(self::BELONGS_TO, 'Theme', 'theme_id'),
 			'tags' => array(self::MANY_MANY, 'Tag', 'event_tag(event_id, tag_id)'),
+            //'attendees' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'origin_type = "group"'),
+            //'attendees' => array(self::HAS_MANY, 'User', 'invite(:origin_type,:choice,origin_id, tag_id)',array('origin_type'=>'event','choice'=>1)),
+            'invites' => array(self::HAS_MANY,'Invite',array('origin_id'=>'event_id'),'condition'=>'origin_type = "event"'),
+
+
+            'attendees'=>array(self::HAS_MANY, 'User', array('user_id'=>'user_id'), 'through'=>'invites')
 		);
 	}
 
