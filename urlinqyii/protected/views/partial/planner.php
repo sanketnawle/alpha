@@ -6,14 +6,15 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
 <!--		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 <!--		<script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>-->
 
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!--        <script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+<!---->
+<!--        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
 
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js" type="text/javascript"></script>
+<!--        <script src="--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/js/jquery.min.js" type="text/javascript"></script>-->
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar_selector.js" type="text/javascript"></script>

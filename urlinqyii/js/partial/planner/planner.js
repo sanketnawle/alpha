@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     var blinkflag = 0;
 
-});
+
 
     setTimeout(function(){
             $(".free_planner_message").fadeOut(150);
@@ -21,8 +21,24 @@ $(document).ready(function(){
     var s = ["st", "nd", "rd", "th"];
     var d = new Date();
 
-    var dueOn = w[ d.getDay() ] + ", " + z[ d.getMonth() ] + " " + d.getDate() + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ];
+    var dueOn = w[ d.getDay() ] + ", " + z[ d.getMonth() ] + " " + d.getDate() ; //+ s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
     $('.event_date').val(dueOn);
+    //Add todays date to the data-date attribute
+    //So its easy to pull off while sending the post request
+    //to create the event, and it will already be in the proper SQL
+    //format
+    //.getDate() returns the day of the month
+    var formatted_day_date = d.getDate();
+    if(formatted_day_date < 10){
+        formatted_day_date  = '0' + formatted_day_date.toString();
+    }
+    var todays_month = d.getMonth() + 1;
+    if(todays_month < 10){
+        todays_month = '0' + todays_month.toString();
+    }
+    $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+
+
 
     x= w[ d.getDay() ];
     $("#today_date").text( w[ d.getDay() ] + " " + ( d.getMonth() +1 )+ "/" + d.getDate() );
@@ -103,6 +119,17 @@ $(document).ready(function(){
     }
     $('.tp1').val( (0<currHr-12<10 ? '0' : '') + (currHr<12? currHr : currHr-12 ) + ":" + (currMin<12 ? '0' : '') + currMin + (currHr<12 ? 'AM' : 'PM') );
 
+    //Set the event time data attribute to an empty
+    //string for now because we only want to add a time
+    //when the user clicks 'add time'
+    $('.event_time').attr('data-time','');
+
+
+
+
+
+//    alert(currHr);
+//    alert(currMin);
     for(var i = 1; i < 6; i++){
         currMin += 15;
         if(currMin > 59){
@@ -111,6 +138,22 @@ $(document).ready(function(){
         }
         var sel = '.timeslot' + i;
         $(sel).text( (0<currHr-12<10 ? '0' : '') + (currHr<12? currHr : currHr-12 ) + ":" + (currMin<12 ? '0' : '') + currMin + (currHr<12 ? 'AM' : 'PM') );
+
+
+        //Add the time attribute to .event_time
+        //in SQL format HH:MM:SS
+        var formatted_hour = currHr;
+        if(formatted_hour < 10){
+            formatted_hour = '0' + formatted_hour.toString();
+        }
+
+        var formatted_minute = currMin;
+        if(formatted_minute < 10){
+            formatted_minute = '0' + formatted_minute.toString();
+        }
+        $(sel).attr('data-time',formatted_hour + ':' + formatted_minute + ":" + '00');
+
+
     }
 
 
@@ -131,6 +174,9 @@ $(document).ready(function(){
         $('.tp1').css('border-bottom', '1px solid #e5e5e5');
         $('.tp1').css('border-radius', '3px');
         $('.timepicker').fadeToggle(150);
+
+
+        $('.event_time').attr('data-time',$(this).attr('data-time'));
     });
 
 
@@ -294,10 +340,32 @@ $(document).ready(function(){
 			    	if(day === "fr") day = "Fri";
 			    	if(day === "sa") day = "Sat"
 			    	if(day === "su") day = "Sun"
-					var date= $(this).text();
+					var selected_day_date = $(this).text();
+
+
+
+                    //Add the selected date to the data-date attribute
+                    //So its easy to pull off while sending the post request
+                    //to create the event, and it will already be in the proper SQL
+                    //format
+                    var todays_date = new Date();
+                    var formatted_day_date = selected_day_date;
+                    if(formatted_day_date < 10){
+                        formatted_day_date  = '0' + formatted_day_date.toString();
+                    }
+                    var todays_month = todays_date.getMonth() + 1;
+                    if(todays_month < 10){
+                        todays_month = '0' + todays_month.toString();
+                    }
+                    $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+
+
+
+
+
 			    	var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
 			    	var year= yeararr[1];
-			    	var theDate = day +", "+ mon + " " + date + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ];
+			    	var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
 			    	$('.event_date').val(theDate);
 
 			    	
@@ -323,6 +391,46 @@ function show_event(event,event_div_id){
     var generated_html = template(event);
     $(event_div_id).append(generated_html).hide().fadeIn();
 }
+
+//Checks the date of the event and
+//Adds it to the proper DIV
+function add_event(event_json){
+    var event_date = utc_to_local(new Date(event_json['end_date']));
+
+    //Check if the event is today
+    var todays_date = new Date();
+    if(event_date == todays_date){
+        show_event(event_json,'#past_events');
+        return;
+    }
+
+
+    //Check if the even was yesterday
+    var yesterdays_date = new Date(todays_date);
+    yesterdays_date.setDate(todays_date.getDate() - 1);
+    if(event_date == yesterdays_date){
+        show_event(event_json,'todays_events');
+        return;
+    }
+
+    //Check if the event is tomorrow
+    var tomorrows_date = new Date(todays_date);
+    tomorrows_date.setDate(todays_date.getDate() + 1);
+    if(event_date == tomorrows_date){
+        show_event(event_json,'#tomorrows_events');
+        return;
+    }
+
+    //Check if the event is in the next week
+    var week_from_now_date = new Date(todays_date);
+    week_from_now_date.setDate(todays_date.getDate() + 1);
+    if(event_date > tomorrows_date && event_date < week_from_now_date){
+        show_event(event_json,'#future_events');
+        return;
+    }
+}
+
+
 
 
 //For somereason these has to be outside of the .ready()
@@ -351,6 +459,9 @@ $(document).on('click','#create_todo_form',function(e){
 //Send post request to event/create
 
     e.preventDefault();
+
+    //alert($('.event_date').val());
+
     var $form = $(this);
     var post_url = $form.attr('action');
     var post_data = $(this).serializeArray();
@@ -363,10 +474,12 @@ $(document).on('click','#create_todo_form',function(e){
         errors.push({name:'event_name_error',value:'You must give a name for this todo'});
     }
 
+    //Make sure the date is converted to UTC before passing to database
+    var todo_date = new Date($('.event_date').attr('data-date'));
+    todo_date = local_to_utc(todo_date);
+    todo_date = todo_date.getUTCFullYear().toString() + "-" + (todo_date.getMonth()+ 1).toString() + "-" + todo_date.getDate().toString();
 
-    var todo_date = '10/11/2014';
-
-    var todo_time = '10:10:12';
+    var todo_time = $('.event_time').attr('data-time');
 
 
     if(errors.length > 0){
@@ -376,17 +489,21 @@ $(document).on('click','#create_todo_form',function(e){
     }
 
     post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id };
-
+    //alert(JSON.stringify(post_data));
     $.post(
         post_url,
         post_data,
         function(response) {
             if(response['success']){
-                alert(JSON.stringify(response));
-                show_event(response['event']);
+                //alert(JSON.stringify(response));
+                add_event(response['event']);
+                //show_event(response['event'],'#todays_events');
             }else{
                 alert(JSON.stringify(response));
             }
         }, 'json'
     );
+});
+
+
 });
