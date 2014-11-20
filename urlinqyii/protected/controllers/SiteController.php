@@ -186,15 +186,33 @@ class SiteController extends Controller
     }
 
     public function actionSuggestUsers(){
+//        if(!$this->authenticated()){
+//            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+//        }
+
+        $user_rankings = array();
 
 
-
-            $user= $this->get_current_user();
-            foreach($user->classes as $class){
-
+        $user= $this->get_current_user();
+        foreach($user->classes as $class){
+            foreach($class->users as $class_user){
+                if($class_user->user_id != $user->user_id){
+                    if(isset($user_rankings[$class_user->user_id])){
+                        $user_rankings[$class_user->user_id] += 1;
+                    }else{
+                        $user_rankings[$class_user->user_id] = 1;
+                    }
+                }
             }
-            $users_same_class = User::model()->find('class_id=:class_id', array(':class_id'=>$class->));
-            $users_same_club = User::model()->find('club_id=:club_id', array(':club_id'=>$user->club_id));
+        }
+
+        $data = array('success'=>true,'rankings'=>$user_rankings);
+
+
+        $this->renderJSON($data);
+        return;
+//        $users_same_class = User::model()->find('class_id=:class_id', array(':class_id'=>$class->));
+//        $users_same_club = User::model()->find('club_id=:club_id', array(':club_id'=>$user->club_id));
 
 
 
