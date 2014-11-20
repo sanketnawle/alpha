@@ -202,15 +202,15 @@ $(document).ready(function(){
     //And send an individual event to show_event() when we only want
     //to display 1 event
     function show_events(json_data){
+        //alert(JSON.stringify(json_data));
 
-
-//        if(json_data['event_count'] > 0){
-//            $('#free_planner_wrap').hide();
-//        }else{
-//            $('#free_planner_wrap').hide().fadeIn( "slow", function() {
-//                // Animation complete
-//            });
-//        }
+        if(json_data['event_count'] > 0){
+            $('#free_planner_wrap').hide();
+        }else{
+            $('#free_planner_wrap').hide().fadeIn( "slow", function() {
+                // Animation complete
+            });
+        }
 
 
         console.log(json_data);
@@ -265,10 +265,6 @@ $(document).ready(function(){
 
     }
 
-
-    function format_planner_date(event_date){
-
-    }
 
 
 

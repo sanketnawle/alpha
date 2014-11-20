@@ -47,7 +47,7 @@
       <file leaf-file-name="planner.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/partial/planner/planner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="14" selection-start="761" selection-end="761" vertical-scroll-proportion="0.44203684" vertical-offset="0" max-vertical-offset="6817">
+            <state line="204" column="10" selection-start="6324" selection-end="6324" vertical-scroll-proportion="0.26327193" vertical-offset="3225" max-vertical-offset="6749">
               <folding />
             </state>
           </provider>
@@ -56,7 +56,7 @@
       <file leaf-file-name="EventController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="71" selection-start="3533" selection-end="3533" vertical-scroll-proportion="-22.884615" vertical-offset="1190" max-vertical-offset="3587">
+            <state line="107" column="10" selection-start="3728" selection-end="3728" vertical-scroll-proportion="-24.192308" vertical-offset="1190" max-vertical-offset="3587">
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
       <file leaf-file-name="SearchController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="68" selection-start="595" selection-end="595" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="2465">
+            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="714">
               <folding />
             </state>
           </provider>
@@ -185,8 +185,8 @@
         <option value="$PROJECT_DIR$/protected/models/User.php" />
         <option value="$PROJECT_DIR$/protected/controllers/ApiController.php" />
         <option value="$PROJECT_DIR$/protected/views/club/club.php" />
-        <option value="$PROJECT_DIR$/protected/controllers/EventController.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/planner.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/EventController.php" />
         <option value="$PROJECT_DIR$/js/partial/planner/planner.js" />
       </list>
     </option>
@@ -504,7 +504,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1066,7 +1066,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="68" selection-start="595" selection-end="595" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="2465">
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="714">
           <folding />
         </state>
       </provider>
@@ -1115,13 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="71" selection-start="3533" selection-end="3533" vertical-scroll-proportion="-22.884615" vertical-offset="1190" max-vertical-offset="3587">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/planner.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="138" column="79" selection-start="8125" selection-end="8125" vertical-scroll-proportion="-9.807693" vertical-offset="2091" max-vertical-offset="5321">
@@ -1138,9 +1131,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="10" selection-start="3728" selection-end="3728" vertical-scroll-proportion="-24.192308" vertical-offset="1190" max-vertical-offset="3587">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/partial/planner/planner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="14" selection-start="761" selection-end="761" vertical-scroll-proportion="0.44203684" vertical-offset="0" max-vertical-offset="6817">
+        <state line="204" column="10" selection-start="6324" selection-end="6324" vertical-scroll-proportion="0.26327193" vertical-offset="3225" max-vertical-offset="6749">
           <folding />
         </state>
       </provider>
