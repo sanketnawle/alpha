@@ -33,7 +33,7 @@
 <div class='root'>
 
     <div class='gp_topbar_wrap'>
-        <?php include("topbar.php"); ?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <div class='gp_leftbar_wrap'>

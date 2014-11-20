@@ -117,7 +117,6 @@ class User extends CActiveRecord
 			'professorAttribute' => array(self::HAS_ONE, 'ProfessorAttribute', 'professor_id'),
 			'replies' => array(self::HAS_MANY, 'Reply', 'user_id'),
 			'replies1' => array(self::MANY_MANY, 'Reply', 'reply_vote(user_id, reply_id)'),
-			'files' => array(self::MANY_MANY, 'File', 'showcase(user_id, file_id)'),
 			'studentAttributes' => array(self::HAS_ONE, 'StudentAttrib', 'user_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
@@ -135,9 +134,11 @@ class User extends CActiveRecord
 
             //added by Michael
             'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
-            'takes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
+            'userClasses' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
             'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id, to_user_id)'),
             'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id, from_user_id)'),
+            'userInterests' => array(self::MANY_MANY, 'Tag', 'user_interest(user_id, tag_id)'),
+            'showcase' => array(self::MANY_MANY, 'File', 'showcase(user_id, file_id)','order'=>'created_timestamp'),
 		);
 	}
 

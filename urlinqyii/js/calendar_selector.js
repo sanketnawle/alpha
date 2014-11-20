@@ -64,8 +64,177 @@ $(document).ready(function() {
             $(this).show();
         }
     });
+
+    $(document).delegate('.event_date', 'click', function () {
+                    //$('.calLayer').toggle();
+                    $(this).on('keydown', function (evt){
+                        
+                        if(evt.which === 39){
+                            /*archive event*/
+                                    $this = $('.m-next');
+                                    $(".calcell").each(function(index) {
+                                        var iid = $(this).attr("id") + "::" + $m;
+                                        var inact0 = jQuery.inArray(iid, renderEventAct0);
+                                        var inact1 = jQuery.inArray(iid, renderEventAct1);
+
+
+                                        if ($(this).hasClass("active0") && (inact0 == "-1")) {
+                                            renderEventAct0.push(iid);
+                                        }
+                                        if ($(this).hasClass("active1") && (inact1 == "-1")) {
+                                            renderEventAct1.push(iid);
+                                        }
+
+
+                                    });
+                                    /*archive event end*/
+                                    cleanCalendar();
+                                    if ($m < 11) {
+                                        $m = $m + 1;
+                                    } else {
+                                        $y = $y+1;
+                                        $m = 0;
+                                    }
+
+                                    var $M = months[$m];
+                                    var $ds = daysInMonth($m, $y);
+                                    $(".minical-h1").text($M + " " + $y);
+
+                                    var $ds = daysInMonth($m, $y);
+                                    var $w = weekday[startAt($m, $y)];
+                                    $(".calcell").each(function(index) {
+                                        var tid = $(this).attr("id");
+                                        var tidsp = tid.split("_");
+                                        var idx = tidsp[2];
+                                        var td = tidsp[1];
+                                        if ((td == $w) && (idx <= 6)) {
+
+                                            for (var i = idx; i < (parseInt(idx) + parseInt($ds)); i++) {
+                                                $(".cl_" + i).removeClass("disable");
+                                                $(".cl_" + i).text(parseInt(i) - parseInt(idx) + parseInt(1));
+                                            }
+                                        }
+                                        if ($(this).hasClass("disable") && (idx >= parseInt($ds))) {
+                                            $(this).hide();
+                                        }
+                                        else {
+                                            $(this).show();
+                                        }
+                                    });
+
+                                    cleanActive0();
+                                    cleanBlinkActive1();
+                                    cleanBlinkActive2();
+
+                                    /*retreive event*/
+                                    $.each(renderEventAct0, function(index, value) {
+                                        var mth = value.split("::");
+                                        var ind = mth[1];
+                                        var dte = mth[0];
+                                        if (parseInt(ind) == parseInt($m)) {
+                                            $("#" + dte).addClass("active0");
+                                        }
+                                    });
+                                    $.each(renderEventAct1, function(index, value) {
+                                        //alert(value);
+                                        var mth = value.split("::");
+                                        var ind = mth[1];
+                                        var dte = mth[0];
+                                        if (parseInt(ind) == parseInt($m)) {
+                                            $("#" + dte).addClass("active1");
+
+                                        }
+                                    });
+                        }
+                        else if(evt.which === 37){
+                                        $(".calcell").each(function (index) {
+                                        
+                                        var iid = $(this).attr("id") + "::" + $m; 
+                                        var inact0 = jQuery.inArray(iid, renderEventAct0);
+                                        var inact1 = jQuery.inArray(iid, renderEventAct1);
+                                        
+                                         $this = $('.m-prev');
+                                        if ($(this).hasClass("active0") && (inact0 == "-1")) {
+                                            renderEventAct0.push(iid);
+                                        }
+                                        if ($(this).hasClass("active1") && (inact1 == "-1")) {
+                                            renderEventAct1.push(iid);
+                                        }
+
+
+                                    });
+                                    /*archive event end*/
+                                    
+                                    cleanCalendar();
+                                    if ($m > 0) {
+                                        $m = $m - 1;
+                                    } else {
+                                        $y = $y-1;
+                                        $m = 11;
+                                    }
+
+                                    var $M = months[$m];
+                                    var $ds = daysInMonth($m, $y);
+                                    $(".minical-h1").text($M + " " + $y);
+
+                                    var $ds = daysInMonth($m, $y);
+                                    var $w = weekday[startAt($m, $y)];
+                                    $(".calcell").each(function(index) {
+                                        var tid = $(this).attr("id");
+                                        var tidsp = tid.split("_");
+                                        var idx = tidsp[2];
+                                        var td = tidsp[1];
+                                        if ((td == $w) && (idx <= 6)) {
+
+                                            for (var i = idx; i < (parseInt(idx) + parseInt($ds)); i++) {
+
+                                                $(".cl_" + i).removeClass("disable");
+                                                $(".cl_" + i).text(parseInt(i) - parseInt(idx) + parseInt(1));
+                                            }
+                                        }
+                                        if ($(this).hasClass("disable") && (idx >= parseInt($ds))) {
+                                            $(this).hide();
+                                        }
+                                        else {
+                                            $(this).show();
+                                        }
+                                    });
+
+
+                                    cleanActive0();
+                                    cleanBlinkActive1();
+
+
+                                    /*retreive event*/
+                                    $.each(renderEventAct0, function(index, value) {
+                                        var mth = value.split("::");
+                                        var ind = mth[1];
+                                        var dte = mth[0];
+                                        if (parseInt(ind) == parseInt($m)) {
+                                            $("#" + dte).addClass("active0");
+                                        }
+                                    });
+                                    $.each(renderEventAct1, function(index, value) {
+                                        //alert(value);
+                                        var mth = value.split("::");
+                                        var ind = mth[1];
+                                        var dte = mth[0];
+                                        if (parseInt(ind) == parseInt($m)) {
+                                            $("#" + dte).addClass("active1");
+
+                                        }
+                                    });
+
+
+                        }
+
+                        //39-right 37 left
+                    });
+                });
     //mutated
     $(document).delegate(".m-next", "click", function() {
+
+
         /*archive event*/
         $(".calcell").each(function(index) {
             var iid = $(this).attr("id") + "::" + $m;
@@ -87,6 +256,7 @@ $(document).ready(function() {
         if ($m < 11) {
             $m = $m + 1;
         } else {
+            $y = $y+1;
             $m = 0;
         }
 
@@ -168,6 +338,7 @@ $(document).ready(function() {
         if ($m > 0) {
             $m = $m - 1;
         } else {
+            $y = $y-1;
             $m = 11;
         }
 

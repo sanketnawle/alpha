@@ -1,7 +1,7 @@
 
 <?php
-    /*
-    include 'php/redirect.php';
+    
+   /* include 'php/redirect.php';
     require_once('includes/dbconfig.php');
 	if(session_status() == 'PHP_SESSION_NONE'){
 		session_start();
@@ -40,8 +40,8 @@
                     <script src="js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
                     <script src="js/ampm.js" type="text/javascript"></script>';
     
-                    //include_once "professor.php";	*/
-?>
+                    //include_once "professor.php";	
+*/?>
 
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title><?php echo $userProfile->firstname . ' ' . $userProfile->lastname; ?></title>
         <!--<base href='https://urlinq.com/beta/'/>-->
-        <link rel="stylesheet" type="text/css" href="css/backgroundProfile.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundProfile.css" />
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
@@ -62,14 +62,19 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
         <link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 
+        <script type="text/javascript">
+            base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+            user_id = '<?php echo $user->user_id; ?>';
+        </script>
+
         <script src="https://www.google.com/jsapi?key='AIzaSyDXcdGwlZUFArSbExSC81-g4PIlAA6vzD4'"></script>
         <script src="https://apis.google.com/js/client.js?onload=initDrivePicker"></script>
 
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-        <script src="scroll/jquery.mCustomScrollbar.concat.min.js"></script>
-        <link href="scroll/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/professor-profile.js"></script>
 
@@ -80,34 +85,51 @@
         <section class="loading_animation">
             <?php
                 $text = "PROFILE";
-                                  include 'loading.php';
+                               //   include 'loading.php';
             ?>
         </section>
         <section class="topbar_bag">
-            <?php include 'topbar.php';?>
+            <?php echo Yii::app()->runController('partial/topbar'); ?>
         </section>
 		
 		<div class="showcase-form">
-			<div class="showcase-form-header">
-				Adding a New Showcase<i></i>
-				<textarea id="title-entry" name="title-entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you"></textarea>
-				<textarea id="link-entry" name="link-entry" placeholder="Paste a link to your showcase"></textarea>
-				<button type="button" id="upload-link-button"><i></i>Upload Showcase</button>
-				<div class="showcase-submit">
-					<span class="cancel-showcase-form">Cancel</span>
-					<input type="submit" class="create-showcase-form" id="create-showcase-form" name="create-showcase-form" value="+ Add this Showcase">
-				</div>
-				<div class="description-section">
-					<i class="close-description"></i>
-					<div class="top-description">
-						- Show your peers and friends what academic research and articles you're interested in or have contributed to.
-					</div>
-					<div class="bottom-description">
-						- Display presentations or projects that you want to share with the people in your academic network.
-					</div>
-				</div>
-			</div>
+            <form action = "<?php echo Yii::app()->getBaseUrl(true); ?>/profile/showcase" method="POST" enctype="multipart/form-data">
+                <div class="showcase-form-header">
+                    Adding a New Showcase<i></i>
+                    <textarea id="title-entry" name="title-entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you"></textarea>
+                    <textarea id="link-entry" name="link-entry" placeholder="Paste a link to your showcase"></textarea>
+                    <button type="button" id="upload-link-button" ><i></i>Upload Showcase</button>
+                    <div style='height: 0px;width:0px; overflow:hidden;'>
+                        <input id="upfile" type="file" value="upload"/>
+                    </div>
+                    <div class="showcase-submit">
+                        <span class="cancel-showcase-form">Cancel</span>
+                        <input type="submit" class="create-showcase-form" id="create-showcase-form" name="create-showcase-form" value="+ Add this Showcase">
+                    </div>
+                    <div class="description-section">
+                        <i class="close-description"></i>
+                        <div class="top-description">
+                            - Show your peers and friends what academic research and articles you're interested in or have contributed to.
+                        </div>
+                        <div class="bottom-description">
+                            - Display presentations or projects that you want to share with the people in your academic network.
+                        </div>
+                    </div>
+                </div>
+            </form>
 		</div>
+        <div class="edit-showcase-form">
+            <span>Editing this Showcase</span>
+            <input id="showcase-name-edit" name="showcase-name" value="The Neural Tissue of a Hippo">
+            <input id="showcase-link-edit" name="showcase-link" value="http://www.cell.com/trends/cell-biology/pdf"><i></i>
+            <button type="button" id="edit-upload-button"><i></i>Upload Showcase</button>
+            <div class="edit-form-bottom">
+                <span>Cancel</span>
+                <div class="add-showcase-button" id="edit-from-submit">
+                    <button type="button">Done Editing</button>
+                </div>
+            </div>
+        </div>
         <div class="root">
             <div class="blacksheet-main editing-mode">
             </div>
@@ -257,15 +279,19 @@
                 <header class="professor-header professor-header-nothing">
                     <div class="resource-wrapper resources-vacant">
 						<span class="showcase-caption">Your Academic Portfolio</span>
-						<div class="add-showcase-button">
-							<button type="button">+ Add a showcase</button>
-						</div>
+                        <div class="add-showcase-button" id="add-showcase-wrap-id">
+                            <button type="button">+ Add a showcase</button>
+                        </div>
 						<div class="showcase-bar">
-							<img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test_image1.jpg">
-							<img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test_image1.jpg">
-							<img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test_image1.jpg">
-							<img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test_image1.jpg">
-							<img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/test_image1.jpg">
+                            <?php
+                            foreach($showcase as $i=>$image){
+                                echo '<div class="showcase-image" id="img-slot'.$i.'">
+                                          <img src="'.Yii::app()->getBaseUrl(true).$image->file_url.'">
+                                      </div>';
+                            }
+                            ?>
+
+
 						</div>
                         <div class="no-showcase ns-hide" style="display:none;">
                             <div class="ns-title">Add a New Academic Showcase</div>
@@ -421,10 +447,10 @@
                                 </div>
                             </div>
                             <div>
-                                <script src="js/jquery.min.js"></script>
-                                <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
-                                <script src="js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
-                                <script src="js/ampm.js" type="text/javascript"></script>
+                                <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+                                <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
+                                <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
+                                <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/ampm.js" type="text/javascript"></script>
                             </div>
                             <div class="officeHrsContainer">
                                 <div class="oh_day_select">
@@ -454,7 +480,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <div class="officeHrsContainer" style="display:none;">
@@ -485,7 +511,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <div class="officeHrsContainer" style="display:none;">
@@ -516,7 +542,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <div class="officeHrsContainer" style="display:none;">
@@ -547,7 +573,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <div class="officeHrsContainer" style="display:none;">
@@ -578,7 +604,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <div class="officeHrsContainer" style="display:none;">
@@ -609,7 +635,7 @@
                                     <input class="set_time endDate" name="event_time" placeholder="End Time" type="text">
                                 </div>
                                 <div class="oh_day_select">
-                                    <img src="img/liked-button.png" class="addOfficeHrs" width="20" height="20" />
+                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/liked-button.png" class="addOfficeHrs" width="20" height="20" />
                                 </div>
                             </div>
                             <script type="text/javascript">
@@ -644,7 +670,9 @@
 
                 <span class="profpic-container profpic-container-real">
                     <span class="img img-inset user-pic">
-						<i class="camera-icon"></i>
+						<div id="camera-icon-div">
+                            <button class="camera-icon-button-before"></button>
+                        </div>
                         <div class="user-pic-div user-pic-div-my" id="profile_picture" style="background: url(
                         <?php if($userProfile->pictureFile) {
                             echo Yii::app()->getBaseUrl(true).$userProfile->pictureFile->file_url;
@@ -662,28 +690,53 @@
                     <?php if($is_user){
                         echo '<button type="button" class="edit_prof_button"><b></b>Edit Profile</button>';
                     }?>
-					<div class="user-info">
-						<h1>
-							<a href="#">
-								<span class="info_username" id="profile_name"><?php echo $userProfile->firstname.' '.$userProfile->lastname;?></span>
-							</a>
-						</h1>
-						<p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->student_type; ?></p>
-					</div>
+                    <div class="edit-mode-control">
+                        <button type="button" class="finish-edit-button"><i></i>Done Editing</button>
+                        <button type="button" class="cancel-edit-button">Cancel</button>
+                    </div>
+                    <div class="user-information">
+                        <h1>
+                            <a href="#">
+                                <span class="info_username" id="profile_name"><?php echo $userProfile->firstname.' '.$userProfile->lastname;?></span>
+                            </a>
+                        </h1>
+                        <div class="username-entry-field">
+                            <input type="text" class="username-entry" name="username-entry" value="Ross Kopelman">
+                        </div>
+                        <p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->student_type; ?></p>
+                        <p class="school-info-dropdown">
+                            <select class="yearpicker">
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>| University of Rochester |
+                            <select class="levelpicker">
+                                <option value="Freshman">Freshman</option>
+                                <option value="Sophomore">Sophomore</option>
+                                <option value="Junior">Junior</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Master">Master</option>
+                                <option value="PhD">PhD</option>
+                            </select>
+                        </p>
+                    </div>
                     <!--<h5>ABOUT</h5>
                     <span class="profile-bio-container" id="profile_about">
 
                     </span>-->
-					<h3>SCHOOL</h3>
-					<div class="info-block">
-						<div class="info-text-wrapper">
-							<input name="school_name" value="<?php echo $school->school_name ?>" readonly>
-						</div>
-					</div>
-					<h3>MAJOR</h3>
-					<div class="info-block">
-						<input name="major_name" value="<?php echo $userProfile->studentAttributes->major?>" readonly>
-					</div>
+                    <h3 id="school-section">SCHOOL</h3>
+                    <div class="info-block">
+                        <!--	<div class="info-text-wrapper">-->
+                        <input name="school_name" value="<?php echo $school->school_name ?>" readonly>
+                        <!--	</div>-->
+                    </div>
+                    <h3 id="major-section">MAJOR</h3>
+                    <div class="info-block">
+                        <input name="major_name" value="<?php echo $userProfile->studentAttributes->major?>" readonly>
+                    </div>
                     <?php if($userProfile->studentAttributes->minor){
                         echo '
                             <h3>MINOR</h3>
@@ -691,28 +744,29 @@
                                 <input name="minor_name" value="'.$userProfile->studentAttributes->minor.'" readonly>
                             </div>';
                     }?>
+                    <div class="add-interest-button">
+                        <i></i>
+                        <span>Add your research interests</span>
+                    </div>
 
-					<div class="user-info" id="about-section">
-						<h3>ABOUT</h3>
-						<div class="info-block" id="about_textarea">
-							<textarea maxlength="140" readonly><?php echo $userProfile->user_bio;?></textarea>
-						</div>
-					</div>
-					<h3>INTERESTS AND SKILLS</h3>
-					<div class="info-block" id="interest-section">
-						<span class="interest-block">Neuromarketing</span>
-						<span class="interest-block">Seduction</span>
-						<span class="interest-block">Web Development</span>
-						<span class="interest-block">Organic Calculus</span>
-						<span class="interest-block">Tenafly</span>
-						<span class="interest-block">Atlanta</span>
-						<span class="interest-block">Miami</span>
-						<span class="interest-block">Brooklyn</span>
-						<span class="interest-block">Seattle</span>
-					</div>
-					<div class="info-block" id="interest-entry-field">
-						<input name="interest_name" value="" placeholder="+ Add an interest or skill">
-					</div>
+                    <div class="user-info" id="about-section">
+                        <h3>ABOUT</h3>
+                        <div class="info-block" id="about_textarea">
+                            <textarea maxlength="140" readonly><?php echo $userProfile->user_bio;?></textarea>
+                        </div>
+                    </div>
+                    <h3>INTERESTS AND SKILLS</h3>
+                    <div class="info-block" id="interest-section">
+                        <?php
+                        foreach($interests as $interest){
+                            echo '<span class="interest-block">'.$interest->tag.'</span>'."\n";
+                        }
+
+                        ?>
+                    </div>
+                    <div class="info-block" id="interest-entry-field">
+                        <input name="interest_name" value="" placeholder="+ Add an interest or skill">
+                    </div>
                     <!--<span class="user-info-piece" style="margin-top: 20px;">
                         <a id="univ_link" style="text-decoration:none;">
                             <div class="small-icon department_icon" id="university_icon" style="background-image: url(src/);">
@@ -779,19 +833,19 @@
                         </div>
                         <div class="tab-inactive professor-tab tab-2">
                             <span class="prof-tab-2">Courses</span>
-                            <span class="tab-count prof-tab-2" id="courseCount"><?php echo count($courses);?></span>
+                            <span class="tab-count prof-tab-2" id="courseCount"><?php //echo count($courses);?></span>
                         </div>
                         <div class="tab-inactive professor-tab tab-5">
                             <span class="prof-tab-5">Clubs</span>
-                            <span class="tab-count prof-tab-5" id="clubsCount"><?php echo count($clubs);?></span>
+                            <span class="tab-count prof-tab-5" id="clubsCount"><?php// echo count($clubs);?></span>
                         </div>
                         <div class="professor-tab tab-inactive tab-3">
                             <span class="prof-tab-3">Following</span>
-                            <span class="tab-count prof-tab-3" id="followingCount"><?php echo count($following);?></span>
+                            <span class="tab-count prof-tab-3" id="followingCount"><?php// echo count($following);?></span>
                         </div>
                         <div class="professor-tab tab-inactive tab-4">
                             <span class="prof-tab-4">Followers</span>
-                            <span class="tab-count prof-tab-4" id="followersCount"><?php echo count($followers);?></span>
+                            <span class="tab-count prof-tab-4" id="followersCount"><?php// echo count($followers);?></span>
                         </div>
                         <b class="tab-indicator">
                             <em class="caret-transform">
@@ -917,6 +971,7 @@
                                 </div>
                             </div>
                         <?php } ?>
+
                     </div>
                     <div class="user-tab-following-content">
                         <?php
@@ -1000,7 +1055,6 @@
 
 
                         ?>
-
                     </div>
                     <div class="user-tab-followers-content">
                         <?php
@@ -1075,7 +1129,7 @@
     </body>
 </html>
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
-<script src="filepicker.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/filepicker.js"></script>
 <script>
         init = function(appID,fileID) {
         s = new gapi.drive.share.ShareClient(appID);
@@ -1224,7 +1278,7 @@
             // else if($user_type == 's'){
             // 	echo "It's a student";
             // }
-      //  }
-       // else die("Aw Snap! No such user exists....");
+        //}
+    //    else die("Aw Snap! No such user exists....");
 ?>
 
