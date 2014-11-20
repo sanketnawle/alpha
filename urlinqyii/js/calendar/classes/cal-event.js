@@ -107,12 +107,8 @@ var CalendarEvent = (function (CalendarEvent) {
                         }
                     }
 
-                    $(".row2 .date", dlg.ele)
-                        .datepicker({ dateFormat: "D, M dd, yy" })
-                        .blur(function () {
-                            if ($(this).closest(".ts").hasClass("from-ts")) dlg.fromDate = this.value;
-                            else if ($(this).closest(".ts").hasClass("to-ts")) dlg.toDate = this.value;
-                        });
+                    $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
+                        
 
                     var fdate = new Date();
                     this.fromTime = fdate.toTimeInputValue();
@@ -120,6 +116,7 @@ var CalendarEvent = (function (CalendarEvent) {
 
                     var tdate = new Date(fdate.getTime());
                     tdate.setHours(fdate.getHours() + 1);
+                    this.toDate = tdate.toDateInputValue();
                     this.toTime = tdate.toTimeInputValue();
 
                     $(".row1 .cats li", dlg.ele).click(function () {

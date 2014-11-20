@@ -171,6 +171,7 @@
                                     border-radius: 3px;
                                     border: 1px solid @border-color;
                                     box-shadow: 0 0 10px -3px @border-color;
+                                    overflow: hidden;
 
                                     li {
                                         clear: both;
@@ -179,7 +180,12 @@
                                         @size: 30px;
 
                                         &:hover {
-                                            background-color: @border-color;
+                                            background-color: #282828;
+                                            color: #FFF;
+
+                                            .cat {
+                                                background-position-x: right;
+                                            }
                                         }
 
                                         .des {
