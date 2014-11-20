@@ -76,6 +76,12 @@ ulcal.controller("CalController", function (
         var url = $location.$$url.replace(/^\//, "").split("/", 1);
         $scope.menu.active = $scope.menu.items.indexOf(url[0]);
         $scope.setActiveType($scope.menu.items[$scope.menu.active][0]);
+
+        $timeout(function () {
+            var g = $(".toscroll");
+            console.log(g.height());
+            g.slimScroll({ height: g.height() });
+        }, 0);
     });
 
     $scope.$on("ucDialogLoaded", function () {
@@ -85,7 +91,7 @@ ulcal.controller("CalController", function (
             }
         });
     });
-    
+
     LeftPanel.init($scope, $compile);
 
     KeyControlService.addListener("UcLeft", function () { $(".body .header.row1 .arrow.left").trigger("click"); });

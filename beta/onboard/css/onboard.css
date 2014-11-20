@@ -448,8 +448,8 @@ background-color: #e5e5e5;
 
 .expanded
 {
-	background-color: #fafafa;
-	border: 1px solid #dbdbdb;
+	background-color: #f9f9f9;
+	border: 1px solid #eeeeee;
 }
 
 .expanded_pseudo
@@ -545,6 +545,32 @@ background-color: #e5e5e5;
 	width: 100%;
 }
 
+.step_6_card_r4
+{
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 600;
+	padding-left: 75px;
+}
+
+.step_6_card_r4 span
+{
+	float: left;
+	margin-top: 4px;
+	margin-left: 4px;
+}
+
+.step_6_card_r4_input
+{
+	float: left;
+	margin-left: 14px;
+	margin-top: 8px;
+}
+
+	
+
 .step_6_card_r1_choice
 {
 	padding-left: 10px;
@@ -580,6 +606,14 @@ background-color: #e5e5e5;
 }
 
 .step_6_card_r3_txt
+{
+	float: left;
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 4px;
+}
+
+.step_6_card_r4_txt
 {
 	float: left;
 	font-size: 14px;
@@ -648,6 +682,10 @@ background-color: #e5e5e5;
 	margin-left: 414px;
 	margin-top: 18px;
 }
+
+
+
+
 
 input.onboard_textarea_t1::-webkit-input-placeholder { color: #a3a3a3; font-size: 14px; }
 input.onboard_textarea_t1:-moz-placeholder { color: #a3a3a3; font-size: 14px;}
@@ -791,6 +829,8 @@ background-image: linear-gradient( 0deg, rgb(50, 180, 218) 0%, rgb(42, 199, 245)
 box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .skip_progress
 {
 	float: left;
@@ -888,5 +928,28 @@ box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
 .last_step_btn:active
 {
 
+}
+
+
+.inactive_btn
+{
+	background-image: -webkit-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: -moz-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: -ms-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	border-color: #ccc;
+	box-shadow: none;
+
+
+}
+
+.inactive_btn:hover
+{
+	background-image: -webkit-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: -moz-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: -ms-linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	background-image: linear-gradient( 0deg, #ccc 0%, #ccc 100%);
+	border-color: #ccc;
+	box-shadow: none;
 }
 /*btn end*/

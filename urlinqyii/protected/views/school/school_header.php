@@ -54,7 +54,7 @@ echo '
     </div>
     <div class = "group-header-left group-header-above">
         <div class = "group-title spec-group-title">
-            <div class = "group-name group-name-mt">New York University School of Engineering</div>
+            <div class = "group-name group-name-mt">'; echo $school->school_name; echo '</div>
         </div>
     </div>
 
