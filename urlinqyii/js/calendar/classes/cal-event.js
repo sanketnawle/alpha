@@ -107,8 +107,8 @@ var CalendarEvent = (function (CalendarEvent) {
                         }
                     }
 
-                    $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
-                        
+                    if ($(".row2 .date", dlg.ele).datepicker)
+                        $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
 
                     var fdate = new Date();
                     this.fromTime = fdate.toTimeInputValue();

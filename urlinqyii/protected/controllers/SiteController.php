@@ -193,6 +193,7 @@ class SiteController extends Controller
         $user_rankings = array();
 
 
+
         $user= $this->get_current_user();
       // var_dump($user->user_id);
         foreach($user->classes as $class){

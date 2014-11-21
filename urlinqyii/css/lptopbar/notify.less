@@ -14,9 +14,6 @@
                 opacity: 0;
                 height: 0;
                 overflow: hidden;
-                .transform(scale(.9) translate(2px, -21px));
-                @trans: transform .3s;
-                .transition(@trans);
 
                 .wedge {
                     .absolute(0,155px);
@@ -28,15 +25,23 @@
                 }
 
                 .window {
-                    margin-top: 10px;
+                    margin-top: 8px;
                     background-color: white;
                     border-radius: 5px;
-                    box-shadow: 0 0 10px -1px #AAA;
+                    box-shadow: 0 0 10px -1px #999;
+
+                    & * {
+                        opacity: 0;
+                        .transform(scale(.99));
+                        @trans: opacity .1s, transform .2s;
+                        .transition(@trans);
+                    }
 
                     .header {
                         text-align: center;
                         padding: 14px;
-                        border-bottom: 1px solid @border-color;
+                        border-bottom: 2px solid @border-color;
+                        font-family: 'san_francisco';
                     }
 
                     .slimScrollDiv {
@@ -53,6 +58,10 @@
                                 position: relative;
                                 overflow: auto;
                                 .transition(background-color .3s);
+
+                                &:first-child {
+                                    border-top: none;
+                                }
 
                                 > .icon {
                                     float: left;
@@ -103,7 +112,6 @@
                                     }
 
                                     .time {
-                                        font-family: 'Roboto';
                                         clear: left;
                                         margin-left: 50px;
 
@@ -115,6 +123,7 @@
                                         }
 
                                         .stamp {
+                                            font-family: 'Roboto';
                                             margin-top: 4px;
                                             font-size: 75%;
                                             color: #888;
@@ -129,20 +138,26 @@
 
                                         .follow {
                                             font-size: 75%;
-                                            font-weight: bold;
+                                            font-weight: 500;
                                             padding: 3px 5px;
 
                                             &.btn {
-                                                color: #666;
+                                                color: #333;
                                                 border: 1px solid #DDD;
-                                                .gradient(#EEE,#FFF,#DDD);
+                                                border-color: #e5e5e5 #ccc #ccc;
+                                                .gradient(#EEE,#FFF,#EEE);
                                                 border-radius: 4px;
-                                                box-shadow: inset 0 0 5px #FFF;
+                                                box-shadow: 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
 
                                                 &:hover {
-                                                    border-color: #888;
                                                     color: #000;
+                                                    box-shadow: 0 1px 3px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(248, 248, 248, 1), inset 0 -1px 0 rgba(248, 248, 248, .5), inset 1px 0 0 rgba(248, 248, 248, 1);
                                                 }
+                                            }
+
+                                            &.msg {
+                                                color: #000;
+                                                font-weight: 600;
                                             }
                                         }
 
@@ -153,6 +168,7 @@
                                             visibility: hidden;
                                             float: right;
                                             clear: both;
+                                            font-size: @ideal-grid-font-size;
 
                                             &:hover {
                                                 opacity: 1;
@@ -170,6 +186,8 @@
                                         float: right;
                                         margin: 0 12px 0 5px;
                                         overflow: auto;
+                                        position: relative;
+                                        z-index: 10;
                                     }
                                 }
 
@@ -223,7 +241,7 @@
 
                                 &.done {
                                     opacity: .75;
-                                    background-color: #DDD;
+                                    background-color: #EEE;
                                     border-top-color: #BBB;
                                 }
                             }
@@ -251,7 +269,6 @@
 
                 .notify-window {
                     left: -232px;
-                    .transform(scale(.9) translate(8px, -21px));
 
                     .wedge {
                         right: 107px;
@@ -270,7 +287,11 @@
                     opacity: 1;
                     height: auto;
                     width: 370px;
-                    .transform(scale(1) translate(0px, 0px));
+                    
+                    .window * {
+                        opacity: 1;
+                        .transform(scale(1));
+                    }
                 }
             }
         }

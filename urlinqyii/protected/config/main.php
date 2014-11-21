@@ -58,7 +58,7 @@ return array(
             'rules'=>array(
                 //Maps multiple views in one line
                 //'<action:(contact|login|test|json|home|register|logout|timezone|suggestUsers)>'=>'site/<action>',
-
+                'calendar' => 'calendar/view',
                 '<action:\w+>'=>'site/<action>',
 
 

@@ -181,7 +181,7 @@ class ApiController extends Controller
 //            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
 //        }
 
-        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'))));
+        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
 
 
 
