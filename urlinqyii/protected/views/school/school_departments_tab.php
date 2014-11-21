@@ -157,7 +157,7 @@ echo '<div class = "department ajax" id="department-ajax">
     			                                             <span class = "hoverMask">
     			                                             </span>
     			                                             <div class = "deptImage deptImage-dos" id="deptimage1">
-//    			                                                <img class = "floatL deptImg" src = "">
+    			                                                <img class = "floatL deptImg" src = "">
     			                                                <div class = "blackData">
     			                                                	<span class = "group_members">
     			                                                		<em class = "members-icon"></em>

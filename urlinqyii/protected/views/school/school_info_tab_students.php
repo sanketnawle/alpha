@@ -58,11 +58,13 @@ echo '
             <ul class="school_list_of_students">';
 foreach($followed_students as $student_know) {
     echo '
-               <li class="school_single_student" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $student_know->pictureFile->file_url .')"> <br><br><br>'; echo $student_know->firstname; echo '<br></li>';
+               <li class="school_single_student" style=""> <br><br><br>'; echo $student_know->firstname; echo '<br></li>';
 }
 echo '
             </ul>
         </div>
     </div>
 ';
+//background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $student_know->pictureFile->file_url .')
 ?>
+
