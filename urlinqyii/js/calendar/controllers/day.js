@@ -4,7 +4,7 @@
 /// <reference path="../helpers/date.js" />
 /// <reference path="../classes/day-grid.js" />
 
-ulcal.controller("DayController", function ($scope, $routeParams, $compile, UCEventData) {
+ulcal.controller("DayController", function ($scope, $routeParams, $compile, $timeout, UCEventData, UCAdData) {
     var date = new Date($routeParams.year, $routeParams.month - 1, $routeParams.date);
     $scope.setActiveDate(date.getDate());
     $scope.setActiveMonth(date.getMonth());
@@ -48,14 +48,22 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, UCEv
     window.grid = DayGrid.createGrid(document.getElementById("day-grid"), $scope, $compile);
     window.adgrid = AdGrid.createGrid();
 
-    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
-    adgrid.addAd("someone", "http://lorempixel.com/50/50?10");
-
+    UCAdData.getData().success(function (events) {
+        events = events.events;
+        for (e in events) {
+            adgrid.addAd(new AdEvent(events[e]));
+        }
+        $timeout(function () {
+            var g = $(".ad-grid");
+            g.slimScroll({ wrapperClass: "ad-scroll-view" });
+        }, 0);
+    })
 
     UCEventData.getData({
         type: "d",
         date: $scope.activeYear + "-" + ($scope.activeMonth + 1) + "-" + $scope.activeDate
     }).success(function (events) {
+        events = events.events;
         var c = 0;
         for (e in events) {
             grid.addEvent(new UCEvent(events[e]), c);

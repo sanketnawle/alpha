@@ -1,6 +1,21 @@
 /**
  * Created by MikeS on 11/12/14.
  */
+window.forceLeftMenuClose = false;
+function toggleMenu(active) {
+    var menu = $(".topbar .left a.menu");
+    var leftpanel = $(".leftpanel");
+
+    if (active) menu.addClass("active");
+    else menu.removeClass("active");
+
+    menu.hasClass("active") && !forceLeftMenuClose ? (function () {
+        leftpanel.show();
+    }()) : (function () {
+        leftpanel.hide();
+    }());
+}
+
 (function ($) {
     var leftPanelOpen = true;
 
@@ -129,21 +144,9 @@
                 profilemenu.addClass("open");
             }());
         });
-        function toggleMenu(active) {
-            var menu = $(".topbar .left a.menu");
-            var leftpanel = $(".leftpanel");
-
-            if (active) menu.addClass("active");
-            else menu.removeClass("active");
-
-            menu.hasClass("active") ? (function () {
-                leftpanel.show();
-            }()) : (function () {
-                leftpanel.hide();
-            }());
-        }
         $(".topbar .left a.menu").click(function () {
             leftPanelOpen = $(this).toggleClass("active").hasClass("active")
+            forceLeftMenuClose = false;
             toggleMenu(leftPanelOpen);
         });
         $(".topbar .right > .day").html(weekDays[new Date().getDay()]);
@@ -156,7 +159,7 @@
 
         // notification
 
-        $(".entries").slimScroll({ height: 300 });        
+        $(".entries").slimScroll({ height: 300, wrapperClass: "noti-scrollable" });        
         $(document).mouseup(function (e) {
             var container = $(".topbar > .right .notify .notify-window").removeClass("active");;
             if (!container.is(e.target) && container.has(e.target).length === 0) {
