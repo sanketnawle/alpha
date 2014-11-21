@@ -124,7 +124,13 @@ class EventController extends Controller
 
 
 
+    public function actionGetSuggestedEvents(){
+        $events = Event::model()->findAll();
 
+        $data = array('success'=>true,'events'=>$events);
+        $this->renderJSON($data);
+        return;
+    }
 
     //Error ids
     // 1 - All data not set
