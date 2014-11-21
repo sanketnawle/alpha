@@ -160,7 +160,7 @@ body {
             }
 
             .topbar > .right .notify.calendar .button {
-                padding-top: 8px;
+                padding-top: 12px;
             }
 
                 .topbar > .right .notify.calendar .button div {
@@ -185,7 +185,7 @@ body {
                     background-size: 200% auto;
                     background-repeat: no-repeat;
                     background-position: left center;
-                    width: 32px;
+                    width: 28px;
                     margin: auto;
                     height: 48px;
                 }
@@ -290,13 +290,15 @@ body {
             }
 
 div.day {
-    font-size: 10px;
-    line-height: 11px;
+    font-size: 8px;
+    line-height: 9px;
+    font-family: 'san_francisco';
 }
 
 div.date {
-    font-size: 22px;
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 14px;
+    font-family: 'san_francisco';
 }
 
 .mainsearch::-webkit-input-placeholder {
