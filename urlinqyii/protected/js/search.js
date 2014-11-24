@@ -6,14 +6,23 @@ $(document).ready(function(){
             get_search_results(q); //
         }
     }
+
+    function dynamic_dropLists()
+    {
+        //this is for leftsec, to make droplists dynamic...
+        //if($(".dropListItem").parent() == $("#schools")) {}
+
+
+    }
     //acquire JSON from searchController after sending query via get request
     function get_search_results(local_q){
         $.getJSON( base_url + '/search/json', {q:local_q},function( search_json_data )
         {
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+
             if(search_json_data['success']){
-                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                alert(JSON.stringify(search_json_data)); //test, returns JSON object
                 show_search_results(search_json_data);
-                //$.('.leftsec').hide();
             }else{
                 alert('error getting data');
             }
@@ -118,11 +127,6 @@ $(document).ready(function(){
         var generated_html = template(JSON.stringify(result_json));
         $('#deptbox').append(generated_html).hide().fadeIn();
     }
-
-
-
-
-
 });
 
 //For the specific searches (from topbar.js)
@@ -204,3 +208,4 @@ $("#sys").click(function(){
         }
     });
 });
+

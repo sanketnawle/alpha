@@ -89,6 +89,7 @@ JQuery adjusted in search.js to accomodate for new functionality.
                 </div>
                 <div class = "sub_filter">
                     <ul class = "SearchFilterList">
+                        <!--ideally, we want to make these dropLists dynamic via JSON magic-->
                         <li>
                             <span class = "FilterLabel DropdownLabel">School:</span>
                             <div class = "dropOpenBtn">
@@ -96,10 +97,9 @@ JQuery adjusted in search.js to accomodate for new functionality.
                                 <i class = "dwnArrow"></i>
                             </div>
                             <div class = "dropOpenList" id = "dropOpenList">
-                                <ul>
-                                    <li class = "dropListItem"><span>NYU School of Engineering</span></li>
-                                    <li class = "dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                    <li class = "dropListItem"><span>Stern School of Business</span></li>
+                                <ul id = "schools">
+                                    <li class = "dropListItem1"><span>NYU School of Engineering</span></li>
+                                    <li class = "dropListItem"><span>NYU Stern School of Business</span></li>
                                 </ul>
                             </div>
                         </li>

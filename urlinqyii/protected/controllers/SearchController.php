@@ -81,8 +81,8 @@ class SearchController extends Controller
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 'professors'=>$piyd
             );
         }
@@ -91,8 +91,8 @@ class SearchController extends Controller
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 'professors'=>$piys
             );
         }
@@ -101,8 +101,8 @@ class SearchController extends Controller
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 'courses'=>$ciyd
             );
         }
@@ -111,8 +111,8 @@ class SearchController extends Controller
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 'courses'=>$ciys
             );
         }
@@ -121,18 +121,18 @@ class SearchController extends Controller
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 'courses'=>$giys
             );
         }
-        else
+        else if ($filter == "sys")
         {  //return all results, if we don't get a filter
             $data = array
             (
                 'success'=> true,
-                //'query'=>$query,
-                //'filter'=>$filter,
+                'query'=>$query,
+                'filter'=>$filter,
                 //if objects have content, render appropriate categories in search page. else: hide.
                 'users'=>$userContent,
                 //'professors'=>$professorContent, //omitted because we return professors and students simultaneously

@@ -101,7 +101,7 @@ $(function() {
         e.preventDefault();
         window.location = base_url + "/search/json?f=giys";
     });
-    $(document).on('click', '#piys',function(e) {
+    $(document).on('click', '#sys',function(e) {
         e.preventDefault();
         window.location = base_url + "/search/json?f=sys";
     });
