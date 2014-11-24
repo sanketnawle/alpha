@@ -2,38 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/14c5a883935775ba8d4ab214b1d135a1doc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/47b18be9e1439c04910f436e8c2c3c92.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/preview/568c0890b72f65af771cb7d628190745.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/preview/568c0890b72f65af771cb7d628190745.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/57bc7a4a0916809db4e453230217ede5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/874e6da25106ca7140236da119bc938b.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/a6eb93bfcbce0d73c6ce27814b97ef80.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/camera_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/camera_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/f36b7c428e8cc2b7cd2bb4dbd39a48a2doc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/godzilla_1954_poster_03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/preview/godzilla_1954_poster_03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/nwcIQy8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/preview/nwcIQy8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-class.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-classes.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-club.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-clubs.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/join_url.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/simple_html_dom.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/split_url.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/url_to_absolute.php" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\index.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\runtime\application.log" afterPath="" />
       <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_fuck.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/components/file_upload.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/file_upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" afterPath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/professor.css" afterPath="$PROJECT_DIR$/urlinqyii/css/professor.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/professor_old.css" afterPath="$PROJECT_DIR$/urlinqyii/css/professor_old.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="alpha.iws" />
@@ -111,18 +82,8 @@
       <file leaf-file-name="git_reference" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49768874" vertical-offset="0" max-vertical-offset="1054">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="School.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/School.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2584">
-              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.63328195" vertical-offset="405" max-vertical-offset="1054">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -286,8 +247,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="6" />
-    <option name="y" value="42" />
+    <option name="x" value="80" />
+    <option name="y" value="89" />
     <option name="width" value="1556" />
     <option name="height" value="785" />
   </component>
@@ -385,7 +346,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="runtime" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -459,8 +420,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="42" width="1556" height="785" extended-state="0" />
-    <editor active="true" />
+    <frame x="80" y="89" width="1556" height="785" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -469,7 +430,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1590909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1590909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -531,13 +492,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/partial/leftmenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="6358">
-          <caret line="25" column="111" selection-start-line="25" selection-start-column="111" selection-end-line="25" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beta/class_about_tab.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.1771426" vertical-offset="306" max-vertical-offset="6528">
@@ -952,8 +906,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49768874" vertical-offset="0" max-vertical-offset="1054">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.63328195" vertical-offset="405" max-vertical-offset="1054">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
