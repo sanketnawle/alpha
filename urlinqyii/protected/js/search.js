@@ -20,10 +20,10 @@ $(document).ready(function(){
     function get_search_results(local_q){
         $.getJSON( base_url + '/search/json', {q:local_q},function( search_json_data )
         {
-            alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
 
             if(search_json_data['success']){
-                alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
                 show_search_results(search_json_data);
             }else{
                 alert('error getting data');
@@ -114,6 +114,10 @@ $(document).ready(function(){
         var generated_html = template(JSON.stringify(result_json));
         $('.results-main-sec').append(generated_html).hide().fadeIn();
         //alert(generated_html);
+        //alert(JSON.stringify($(".description")));
+
+        $('.description').append(JSON.stringify(result_json['description']));
+
     }
     function show_clubs(result_json){
         //alert('group_id: ' + JSON.stringify(result_json["group_id"]));
@@ -172,7 +176,7 @@ $("#ciyd").click(function(){
 });
 //For the specific searches (from topbar.js)
 $("#ciys").click(function(){
-    alert("ciys");
+    //alert("ciys");
     $.getJSON( base_url + '/search/json', {f:ciys},function( search_json_data )
     {
         if(search_json_data['success']){
@@ -185,7 +189,7 @@ $("#ciys").click(function(){
     });
 });
 $("#giys").click(function(){
-    alert("giys");
+    //alert("giys");
     $.getJSON( base_url + '/search/json', {f:giys},function( search_json_data )
     {
         if(search_json_data['success']){
@@ -198,7 +202,7 @@ $("#giys").click(function(){
     });
 });
 $("#sys").click(function(){
-    alert("sys");
+    //alert("sys");
     $.getJSON( base_url + '/search/json', {f:sys},function( search_json_data )
     {
         if(search_json_data['success']){

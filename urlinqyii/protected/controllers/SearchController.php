@@ -9,7 +9,11 @@ class SearchController extends Controller
         }else{
             $q = '';
         }
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
+        //$user = User::model()->find('user_id=:id', array(':id'=>1));
+        $user = $this->get_current_user();
+        //$uni = $user->school_id->university_id;
+        //$userdepaertment = $user->department_id;
+        //$useruniversity = $user->school_id->university_id;
         $this->render('search', array('user'=>$user, 'q'=>$q));
     }
     public function actionJson()

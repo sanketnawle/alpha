@@ -261,20 +261,21 @@ JQuery adjusted in search.js to accomodate for new functionality.
 
                             <div class = "ContentSlider">
                                 <div class = "slide">
-                                    <script id="user_search_results" type="text/x-handlebars-template">
                                     <div class = "slide-inner">
-                                        <div class = "result-photo">
+                                        <script id="user_search_results" type="text/x-handlebars-template">
+                                            <div class = "result-photo">
                                             <img src = "http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg">
-                                            <h3></h3>
-                                            <p></p>
-                                        </div>
+                                            <h3>Gary</h3>
+                                            <p>Student</p>
+                                        </script>
+
+                                    </div>
                                         <div class = "person-bottom-functions">
                                             <div class = "link-button">
                                                 <a class = "link link-up" data value ="1">Follow</a>
                                             </div>
                                         </div>
                                     </div>
-                                    </script>
                                 </div>
                             </div>
 
@@ -289,33 +290,37 @@ JQuery adjusted in search.js to accomodate for new functionality.
                 <div class = "result-header"></div>
                 <div class = "result-header-right"></div>
                 <!--The template for Courses (not including classes within it) who match up with the search query-->
-                <script id="vertical_search_results" type="text/x-handlebars-template">
+
                     <div class = "results-main-sec">
-                        <p class = "description"></p>
-                        <div class = "lower-info keys">
-                            <div class = "info-key instructor">
-                                Instructor
+                        <script id="vertical_search_results" type="text/x-handlebars-template">
+                            <p class = "description"></p>
+
+                            <div class = "lower-info keys">
+                                <div class = "info-key instructor">
+                                    Instructor
+                                </div>
+                                <div class = "info-key-subject">
+                                    Department
+                                </div>
+                                <div class = "info-key members">
+                                    Members
+                                </div>
                             </div>
-                            <div class = "info-key-subject">
-                                Department
+                            <div class = "lower-info">
+                                <div class = "info-piece instructor">
+
+                                </div>
+                                <div class = "info-piece subject">
+
+                                </div>
+                                <div class = "info-piece members">
+
+                                </div>
                             </div>
-                            <div class = "info-key members">
-                                Members
-                            </div>
-                        </div>
-                        <div class = "lower-info">
-                            <div class = "info-piece instructor">
-                                {{}}
-                            </div>
-                            <div class = "info-piece subject">
-                                {{}}
-                            </div>
-                            <div class = "info-piece members">
-                                {{}}
-                            </div>
-                        </div>
+
+                        </script>
                     </div>
-                </script>
+
             </div>
         </div>
     </div>
