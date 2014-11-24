@@ -2,116 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/test/3ce4b42d5923b71bdd9c833b0f72bbbc.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/posts_beta/src/add_event_icons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/leftpanel/go-arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/leftpanel/menu-icons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/noti_sprite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pulser_master.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-black-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-black-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-black-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-black-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-bold-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-bold-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-bold-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-bold-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-heavy-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-heavy-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-heavy-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-heavy-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-light-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-light-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-light-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-light-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-medium-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-medium-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-medium-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-medium-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-regular-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-regular-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-regular-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-regular-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-semibold-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-semibold-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-semibold-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-semibold-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-thin-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-thin-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-thin-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-thin-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-ultralight-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-ultralight-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-ultralight-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-ultralight-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/san_francisco.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-black-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-bold-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-heavy-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-light-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-medium-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-regular-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-semibold-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-thin-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/font/sanfranciscodisplay-ultralight-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/module/timezone_conversion.js" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover3.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\css\leftpanel.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\css\lptopbar.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\css\notify.css" afterPath="" />
       <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_fuck.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/src/time_icon_busy.png" afterPath="$PROJECT_DIR$/code/posts_beta/src/time_icon_busy.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ApiController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ApiController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/EventController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/EventController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/SearchController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/SearchController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/SiteController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/SiteController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/ad-grid.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/ad-grid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/backgroundSearch.css" afterPath="$PROJECT_DIR$/urlinqyii/css/backgroundSearch.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/cal-event.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/cal-event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/calendar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/calendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/club/club.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/club/club.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/day.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/day.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/day.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/day.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/day.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/day.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/config/db_config.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/config/db_config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/event-div.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/event-div.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/events.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/feed.css" afterPath="$PROJECT_DIR$/code/posts_beta/feed.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/feed_event_post.css" afterPath="$PROJECT_DIR$/code/posts_beta/feed_event_post.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/header.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/header.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/header.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/header.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/index.php" afterPath="$PROJECT_DIR$/urlinqyii/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/calendar/index.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/calendar/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/partial/leftmenu.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/partial/leftmenu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/leftpanel_beta/css/leftpanel.css" afterPath="$PROJECT_DIR$/beta/leftpanel_beta/css/leftpanel.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/partial/leftpanel.css" afterPath="$PROJECT_DIR$/urlinqyii/css/partial/leftpanel.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/lptopbar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/lptopbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/master.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/master.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/master.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/master.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/partial/planner/planner.js" afterPath="$PROJECT_DIR$/urlinqyii/js/partial/planner/planner.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/partial/planner.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/partial/planner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/post_event.html" afterPath="$PROJECT_DIR$/code/posts_beta/post_event.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/school/school.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/school/school.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_departments_tab.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_departments_tab.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_info_tab_students.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_info_tab_students.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" afterPath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/leftpanel_beta/css/topbar.css" afterPath="$PROJECT_DIR$/beta/leftpanel_beta/css/topbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/topbar.css" afterPath="$PROJECT_DIR$/urlinqyii/css/topbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/topbar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/topbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/ulCalendar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/ulCalendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/week.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/week.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/week.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/week.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/week.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/week.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/.idea/workspace.xml" afterPath="$PROJECT_DIR$/urlinqyii/.idea/workspace.xml" />
     </list>
     <ignored path="alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -136,21 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.076923" vertical-offset="2348" max-vertical-offset="4029">
-              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.44262296" vertical-offset="2246" max-vertical-offset="4046">
+              <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.20064205" vertical-offset="1859" max-vertical-offset="2482">
-              <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
+            <state vertical-scroll-proportion="-3.6923077" vertical-offset="1859" max-vertical-offset="2482">
+              <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -356,15 +249,15 @@
         <option value="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
-        <option value="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/config/main.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="80" />
-    <option name="y" value="89" />
+    <option name="x" value="76" />
+    <option name="y" value="57" />
     <option name="width" value="1556" />
     <option name="height" value="785" />
   </component>
@@ -558,7 +451,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="80" y="89" width="1556" height="785" extended-state="0" />
+    <frame x="76" y="57" width="1556" height="785" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -568,7 +461,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1590909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15389611" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1035,18 +928,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.076923" vertical-offset="2348" max-vertical-offset="4029">
-          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.6923077" vertical-offset="1859" max-vertical-offset="2482">
+          <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20064205" vertical-offset="1859" max-vertical-offset="2482">
-          <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.44262296" vertical-offset="2246" max-vertical-offset="4046">
+          <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
           <folding />
         </state>
       </provider>

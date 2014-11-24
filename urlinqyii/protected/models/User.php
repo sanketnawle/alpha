@@ -149,7 +149,8 @@ class User extends CActiveRecord
             'showcase' => array(self::HAS_MANY, 'Showcase', 'user_id'),
             'showcase_files' => array(self::HAS_MANY, 'File', 'file_id','through'=>'showcase','order'=>'created_timestamp'),
             'majors' => array(self::MANY_MANY, 'Major', 'user_major(user_id, id)'),
-		);
+
+            ];
 	}
 
 	/**
