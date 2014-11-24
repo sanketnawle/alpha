@@ -83,7 +83,7 @@ class SearchController extends Controller
                 'success'=> true,
                 //'query'=>$query,
                 //'filter'=>$filter,
-                'professors'=>$piyd,
+                'professors'=>$piyd
             );
         }
         else if($filter == "piys" && !$query)
@@ -103,7 +103,7 @@ class SearchController extends Controller
                 'success'=> true,
                 //'query'=>$query,
                 //'filter'=>$filter,
-                'courses'=>$ciyd,
+                'courses'=>$ciyd
             );
         }
         else if($filter == "ciys" && !$query)

@@ -635,3 +635,156 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
 HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
 ---
+2014/11/24 11:10:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:11:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:11:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:12:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:14:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:16:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:25:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:25:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---
+2014/11/24 11:26:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---
+2014/11/24 11:28:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---
+2014/11/24 11:28:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=[object%20Object]
+---
+2014/11/24 11:28:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=[object%20Object]
+---
+2014/11/24 11:28:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=[object%20Object]
+---
+2014/11/24 11:28:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 11:28:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?f=piyd
+---
+2014/11/24 11:31:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?f=piyd
+---
+2014/11/24 11:32:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---

@@ -1,6 +1,3 @@
-/**
- * Created by MikeS on 11/18/14.
- */
 $(document).ready(function(){
 
     init();
@@ -9,7 +6,6 @@ $(document).ready(function(){
             get_search_results(q); //
         }
     }
-
     //acquire JSON from searchController after sending query via get request
     function get_search_results(local_q){
         $.getJSON( base_url + '/search/json', {q:local_q},function( search_json_data )
@@ -32,6 +28,7 @@ $(document).ready(function(){
         var departments_json = search_json_data['departments'];
         var schools_json = search_json_data['schools'];
         //show_result(schools_json); //test
+
 
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
@@ -123,4 +120,85 @@ $(document).ready(function(){
     }
 
 
+
+
+
+});
+
+//For the specific searches (from topbar.js)
+$("#piyd").click(function(){
+    $.getJSON( base_url + '/search/json', {f:piyd},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
+});
+$("#piys").click(function(){
+    $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
+});
+$("#ciyd").click(function(){
+    $.getJSON( base_url + '/search/json', {f:ciyd},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
+});
+//For the specific searches (from topbar.js)
+$("#ciys").click(function(){
+    alert("ciys");
+    $.getJSON( base_url + '/search/json', {f:ciys},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
+});
+$("#giys").click(function(){
+    alert("giys");
+    $.getJSON( base_url + '/search/json', {f:giys},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
+});
+$("#sys").click(function(){
+    alert("sys");
+    $.getJSON( base_url + '/search/json', {f:sys},function( search_json_data )
+    {
+        if(search_json_data['success']){
+            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            show_search_results(search_json_data);
+            //$.('.leftsec').hide();
+        }else{
+            alert('error getting data');
+        }
+    });
 });

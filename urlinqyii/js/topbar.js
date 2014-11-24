@@ -104,7 +104,7 @@ $(function() {
             else text.closest(".center").find(".postlist").show();
         }).on("blur", function () {
             //alert("on(blur, function()");
-            $(this).closest(".center").find(".prelist").hide();
+            //$(this).closest(".center").find(".prelist").hide();
             $(this).closest(".center").find(".postlist").hide();
         }).on("keyup", function (e) {
             e = e || event;
