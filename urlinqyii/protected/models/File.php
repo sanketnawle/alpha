@@ -59,6 +59,7 @@ class File extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('file_id, file_name, file_url, file_type, file_extension, created_timestamp, origin_type', 'safe', 'on'=>'search'),
+
 		);
 	}
 
@@ -149,4 +150,5 @@ class File extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
 }

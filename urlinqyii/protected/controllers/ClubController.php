@@ -264,17 +264,33 @@ class ClubController extends Controller
 
 
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+        $department = Department::model()->find('department_id=:department_id',array(':department_id'=>1));
+        $user = User::model()->find('user_id=:id', array(':id'=>1));
+
+        $sql = "SELECT c.course_name, c.course_id, cs.picture_file_id,cs.professor, cu.class_id, u.lastname
+                 FROM `class_user` cu
+                 JOIN class cs
+                 ON (cu.class_id = cs.class_id)
+                 JOIN course c
+                 ON (cs.course_id = c.course_id
+                 AND cs.department_id = c.department_id
+                 AND cs.school_id = c.school_id)
+                 LEFT JOIN user u
+                 ON (u.user_id = cs.professor)
+                 WHERE cu.user_id = " . $user->user_id;
+        //$command = Yii::app()->db->createCommand($sql);
 
 
 
-
+        //$classes = $command->queryAll();
+        $classes = ClassModel::model()->findAllBySql($sql);
 
         //$club_id = $_GET['id'];
 
 
-        $club = Group::model()->find('group_id=:id', array(':id'=>1));
+//        $club = Group::model()->find('group_id=:id', array(':id'=>1));
 
-        $this->render('test',array('club'=>$club));
+        $this->render('test',array('classes'=>$classes,'department'=>$department));
 
 
 

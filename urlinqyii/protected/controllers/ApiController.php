@@ -3,8 +3,29 @@
 class ApiController extends Controller
 {
 
+    //Error ids
+    // 1 - file id is not set
+    // 2 - File doesnt exist
+    public function actionGetFileUrl(){
+        if(!isset($_GET['file_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_id isnt set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        $file_id = $_GET['file_id'];
+        $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
+        if($file){
+            $data = array('success'=>true,'file_url'=>$file->file_url,'base_url'=>Yii::app()->getBaseUrl(true));
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
+            $this->renderJSON($data);
+            return;
+        }
 
+    }
 
 
     public function actionFileUpload(){
@@ -87,6 +108,17 @@ class ApiController extends Controller
             $user->department_id = $department_id;
             $user->picture_file_id = $picture_file_id;
             $user->save(false);
+
+            include "password_encryption.php";
+            $salt = salt();
+            $hashed_password = hash_password($password,$salt);
+
+            $user_login = new UserLogin;
+            $user_login->user_id = $user->user_id;
+            $user_login->password = $hashed_password;
+            $user_login->salt = $salt;
+            $user_login->save(false);
+
         } catch (Exception $e) {
             $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
             $this->renderJSON($data);
@@ -94,17 +126,7 @@ class ApiController extends Controller
         }
 
 
-        include "password_encryption.php";
 
-
-        $salt = salt();
-        $hashed_password = hash_password($password,$salt);
-
-        $user_login = new UserLogin;
-        $user_login->user_id = $user->user_id;
-        $user_login->password = $hashed_password;
-        $user_login->salt = $salt;
-        $user_login->save(false);
 
 
 
@@ -117,13 +139,19 @@ class ApiController extends Controller
 
 
         //$login_data = $this->login($email,$password);
-        $data = array('success'=>true,'user_id'=>$user->user_id,'user_email'=>$user->user_email);
+
+//        $data = array('success'=>true,'user_id'=>$user->user_id,'user_email'=>$user->user_email);
+//        $this->renderJSON($data);
+
+        //Remove this once email verification is completed
+        $data = $this->login($email,$password);
         $this->renderJSON($data);
         return;
     }
 
 
-
+    //ERROR ID's
+    // 1 - All data is not set
     public function actionFacebookLogin(){
         if(!isset($_POST['facebook_email']) && !isset($_POST['facebook_token'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -132,29 +160,198 @@ class ApiController extends Controller
         }
     }
 
+
+    //ERROR ID's
+    // 1 - All data is not set
     public function actionGetUserData(){
-        if(!isset($_POST['user_id'])){
+        if(!isset($_GET['user_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $_POST['user_id'];
-
+        $user_id = $_GET['user_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
 
-        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('pictureFile')));
+
+
+//        $departments = array();
+//        foreach($school->departments as $department){
+//            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
+//        }
+
+        $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
+
+
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+    //ERROR ID's
+    // 1 - all data not set
+    // 2 - User doesnt exist
+    public function actionGetUserClubs(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'clubs'=>$user->groups);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+
+    //ERROR ID's
+    // 1 - all data not set
+    // 2 - User doesnt exist
+    public function actionGetUserClasses(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'classes'=>$user->classes);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetSchoolData(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $school_id = $_GET['school_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+
+        $departments = array();
+        foreach($school->departments as $department){
+            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
+        }
+
+        $data = array('success'=>true,'school'=>$this->get_model_associations($school,array('pictureFile','coverFile')),'departments'=>$departments);
+
+
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetDepartmentData(){
+        if(!isset($_GET['department_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $department_id = $_GET['department_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
+
+
+        $data = array('success'=>true,'department'=>$department);
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetClubData(){
+        if(!isset($_GET['group_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $group_id = $_GET['group_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
+
+
+        $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
+
+
+        $this->renderJSON($data);
+        return;
+    }
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetUniversityData(){
+        if(!isset($_GET['university_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'university_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $university_id = $_GET['university_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $university = university::model()->find("university_id=:university_id",array(":university_id"=>$university_id));
+
+
+        $schools = array();
+        foreach($university->schools as $school){
+            array_push($schools,array('school_name'=>$school->school_name,'school_id'=>$school->school_id));
+        }
+
+
+        //$data = array('success'=>true,'university'=>$this->get_model_associations($university,array('pictureFile','coverFile')),'schools'=>$schools);
+        $data = array('success'=>true,'university'=>$university,'schools'=>$schools);
+
+
         $this->renderJSON($data);
         return;
     }
 
 
     //Checks to see if we support the current univ edu email
-    public function actionGetUniversityDataByEmail()
-    {
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - Not a valid nyu email
+    public function actionGetUniversityDataByEmail() {
 
         if(!isset($_POST['email'])){
-            $data = array('success'=>false,'error'=>'email not set');
+            $data = array('success'=>false,'error_id'=>1,'error'=>'email not set');
             $this->renderJSON($data);
             return;
         }
@@ -166,13 +363,13 @@ class ApiController extends Controller
             $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
 
             $base_url = Yii::app()->getBaseUrl(true);
-            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments','pictureFile'),'pictureFile'=>array())));
+            $data = array('success'=>true,'base_url'=>$base_url,'university'=> $this->get_model_associations($university,array('schools'=>array('departments'=>array(),))));
 
 
             $this->renderJSON($data);
             return;
         }else{
-            $data = array('success'=>false,'error_id'=>1,'error'=>'Only NYU email addresses are supported at this time');
+            $data = array('success'=>false,'error_id'=>2,'error'=>'Only NYU email addresses are supported at this time');
             $this->renderJSON($data);
             return;
         }
@@ -181,6 +378,8 @@ class ApiController extends Controller
     }
 
     //https://urlinq.com/api/login
+    //ERROR ID's
+    // 1 - all data is not set
     public function actionLogin()
     {
 
@@ -199,6 +398,45 @@ class ApiController extends Controller
 
 
 
+    //ERROR ID's
+    // 1 - all data is not set
+    // 2 - User doesnt exist
+    public function actionValidToken(){
+        if(!isset($_GET['email'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $email = $_GET['email'];
+
+        $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
+        if($user){
+            $current_datetime = date("Y-m-d H:i:s", time());
+            $token = $user->token;
+
+            if($token){
+                if($token->expires_at < $current_datetime){
+                    $data = array('success'=>true,'status'=>'valid');
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>true,'status'=>'expired');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>true,'status'=>'not_verified');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error'=>'User does not exist');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     //Error ids
     // 1 - User with email does not exist

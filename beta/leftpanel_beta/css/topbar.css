@@ -1,8 +1,3 @@
-body {
-    margin: 0;
-    background-color: #EEE;
-}
-
 .topbar * {
     box-sizing: border-box;
     margin: 0;
@@ -25,17 +20,24 @@ body {
     right: 0;
     top: 0;
     border-bottom: 1px solid #000;
-    z-index: 1000;
+    z-index: 9999;
     min-width: 900px;
     -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
     -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
+    background-color: #565a5c;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#27292B),to(#121314));
+    background-image: -webkit-linear-gradient(top,#27292B,#121314);
+    background-image: -moz-linear-gradient(top,#27292B,#121314);
+    background-image: -o-linear-gradient(top,#27292B,#121314);
+    background-image: -ms-linear-gradient(top,#27292B,#121314);
+    background-image: linear-gradient(top,#27292B,#121314);
 }
 
     .topbar > .left {
         overflow: auto;
         float: left;
-        margin-right: 25px;
+        margin-right: 18px;
     }
 
         .topbar > .left a {
@@ -53,26 +55,26 @@ body {
                 background-size: auto 25px;
                 background-repeat: no-repeat;
                 background-position: center 12px;
-                border-right: 1px solid rgba(0, 0, 0, 0.1);
-                -webkit-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-                -moz-box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
+                border-right: 1.5px solid rgba(0, 0, 0, 0.9);
+                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset;
             }
 
             .topbar > .left a.menu {
                 background-image: url(../img/menu-toggle.png);
-                background-size: 300% auto;
-                background-repeat: no-repeat;
-                background-position: right center;
-                width: 42px;
-                height: 28px;
-                margin: 11px 0;
+                margin: 13px 0;
                 border-radius: 4px;
                 margin-left: 10px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 24px;
+                width: 24px;
+                height: 24px;
+                opacity: 0.6;
+                display: inline-block;
             }
 
                 .topbar > .left a.menu:hover {
-                    background-position: left center !important;
+                    opacity: 1;
                 }
 
     .topbar:hover > .left a.menu.active {
@@ -84,7 +86,7 @@ body {
     }
 
     .topbar .center {
-        width: 55%;
+        width: 50%;
         max-width: 600px;
         margin: auto;
     }
@@ -92,11 +94,11 @@ body {
         .topbar .center form {
             background-color: white;
             position: relative;
-            margin-top: 10px;
+            margin-top: 11px;
             padding: 6px 10px 4px;
             border-radius: 3px;
-            box-shadow: 0 2px 3px rgba(0,0,0,0.35) inset;
             overflow: hidden;
+            box-shadow: inset 0 0 0 1px #f9f9f9, inset 0 1px 0 0 #e5e5e5, 0 -1px 0 0 #3F3F3F;
         }
 
             .topbar .center form .text {
@@ -104,8 +106,10 @@ body {
                 float: left;
                 margin-right: -25px;
                 padding-right: 25px;
-                font-size: 15px;
-                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-family: 'Open Sans';
                 border: none;
                 font-weight: 500;
                 line-height: 18px;
@@ -115,7 +119,7 @@ body {
                 width: 30px;
                 position: absolute;
                 height: 30px;
-                top: 1px;
+                top: 0px;
                 right: 0;
                 border: none;
                 background: none;
@@ -128,37 +132,26 @@ body {
     .topbar > .right {
         float: right;
         width: 22%;
-        overflow: auto;
+        height: 100%;
     }
 
         .topbar > .right .notify {
-            position: absolute;
+            float: left;
+            position: relative;
             width: 48px;
             height: 49px;
-            z-index: 10;
-            -webkit-box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-            box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.03) inset, -1px 0px 0px rgba(255, 255, 255, 0.03) inset;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            border-right: 1.5px solid rgba(0, 0, 0, 0.9);
+            border-left: 1.5px solid rgba(0, 0, 0, 0.9);
+            box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset,1px 0px 0px rgba(255, 255, 255, 0.1) inset;
         }
 
             .topbar > .right .notify .button {
                 height: 100%;
-                position: absolute;
                 width: 100%;
-                z-index: 10;
-            }
-
-            .topbar > .right .notify:hover .button {
-                background: rgba(255, 255, 255, 0.15);
-            }
-
-            .topbar > .right .notify.active .button {
-                background-color: #FFF;
             }
 
             .topbar > .right .notify.calendar .button {
-                padding-top: 8px;
+                padding-top: 12px;
             }
 
                 .topbar > .right .notify.calendar .button div {
@@ -166,17 +159,13 @@ body {
                     color: #d6d6d6;
                 }
 
-            .topbar > .right .notify.calendar:hover .notify-window {
-                color: #000;
-            }
-
             .topbar > .right .notify.calendar:hover .button div, .topbar > .right .notify.calendar.active .button div {
                 color: #01ce95;
             }
 
             .topbar > .right .notify.board {
-                margin-left: 48px;
                 border-left: none;
+                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset;
             }
 
                 .topbar > .right .notify.board .button .icon {
@@ -184,7 +173,7 @@ body {
                     background-size: 200% auto;
                     background-repeat: no-repeat;
                     background-position: left center;
-                    width: 32px;
+                    width: 28px;
                     margin: auto;
                     height: 48px;
                 }
@@ -200,13 +189,16 @@ body {
     .topbar .center ul {
         background-color: #FFF;
         position: absolute;
-        top: 44px;
+        top: 40px;
         width: 55%;
         max-width: 600px;
         border-radius: 4px;
         padding: 4px 0px 4px;
         border-top: none;
-        box-shadow: 0 0 8px -1px #414141;
+        border: 1px solid #ccc;
+        border-color: rgba(0, 0, 0, .15);
+        -webkit-border-radius: 4px;
+        -webkit-box-shadow: 0 1px 8px 0px rgba(0, 0, 0, .10);
     }
 
         .topbar .center ul li a {
@@ -215,20 +207,19 @@ body {
             padding: 5px 8px;
             border-left: 2px solid transparent;
             cursor: pointer;
-            color: #555;
+            color: #333;
         }
 
             .topbar .center ul li a:hover {
-                background-color: #DDD;
-                border-left: 2px solid #222;
+                background-color: #f1f1f1;
             }
 
             .topbar .center ul li a .icon {
                 background-image: url(../img/search-icons.png);
-                background-size: 100% 500%;
+                background-size: 100%;
                 float: left;
-                width: 30px;
-                height: 30px;
+                width: 40px;
+                height: 40px;
                 clear: both;
                 margin-right: 10px;
             }
@@ -238,24 +229,37 @@ body {
                 }
 
                 .topbar .center ul li a .icon.sch {
-                    background-position-y: 75%;
+                    background-position-y: 38.3%;
+                }
+
+                .topbar .center ul li a .icon.prof {
+                    background-position-y: 64.2%;
                 }
 
                 .topbar .center ul li a .icon.dpt {
-                    background-position-y: 25%;
+                    background-position-y: 13%;
                 }
 
                 .topbar .center ul li a .icon.cls {
                     background-position-y: 0%;
                 }
 
+                .topbar .center ul li a .icon.crs {
+                    background-position-y: 77.2%;
+                }
+
+                .topbar .center ul li a .icon.srch {
+                    background-position-y: 77.2%;
+                }
+
+
                 .topbar .center ul li a .icon.clb {
-                    background-position-y: 50%;
+                    background-position-y: 25.3%;
                 }
 
             .topbar .center ul li a span {
                 display: table-cell;
-                height: 30px;
+                height: 40px;
                 vertical-align: middle;
             }
 
@@ -274,15 +278,17 @@ body {
                 background-color: #DDD;
             }
 
-div.day {
-    font-size: 10px;
-    line-height: 11px;
-}
+    .topbar div.day {
+        font-size: 8px;
+        line-height: 9px;
+        font-family: 'san_francisco';
+    }
 
-div.date {
-    font-size: 22px;
-    line-height: 23px;
-}
+    .topbar div.date {
+        font-size: 16px;
+        line-height: 14px;
+        font-family: 'san_francisco';
+    }
 
 .mainsearch::-webkit-input-placeholder {
     color: #999;

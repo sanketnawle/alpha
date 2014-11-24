@@ -239,9 +239,7 @@ if (!function_exists('get_club_dp')) {
 }
 
 if (!function_exists('get_user_info')) {
-    function get_user_info($con, $id)
-    {
-
+    function get_user_info($con, $id) {
         $user_info = $con->prepare("SELECT U.firstname, U.lastname, U.user_type, U.dept_id, U.gender, U.univ_id, U.user_bio, U.user_email FROM user U
                         WHERE user_id = ?");
         $user_info->bind_param('i', $id);

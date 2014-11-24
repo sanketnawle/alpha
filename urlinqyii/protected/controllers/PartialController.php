@@ -45,10 +45,12 @@ class PartialController extends Controller
                  LEFT JOIN user u
                  ON (u.user_id = cs.professor)
                  WHERE cu.user_id = " . $user->user_id;
-        $command = Yii::app()->db->createCommand($sql);
+        //$command = Yii::app()->db->createCommand($sql);
 
 
-        $courses = $command->queryAll();
+
+        //$classes = $command->queryAll();
+        $classes = ClassModel::model()->findAllBySql($sql);
 
 
 
@@ -74,7 +76,7 @@ class PartialController extends Controller
 
 
 
-		$this->render('leftmenu',array('user'=>$user,'courses'=>$courses,'groups'=>$groups));
+		$this->render('leftpanel',array('user'=>$user,'classes'=>$classes,'groups'=>$groups));
 	}
 
 
@@ -90,16 +92,26 @@ class PartialController extends Controller
 
         $this->render('topbar',array('user'=>$user));
     }
+    public function actionPlanner()
+    {
+//        $user_id = Yii::app()->session['user_id'];
+//
+//        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+//        $user = User::model()->find('user_id=:id', array(':id'=>1));
+//
+//
+
+        $this->render('homePlanner');
+    }
 
 
-
-    public function actionFeeds(){
+    public function actionFeed(){
 
         $posts = Post::model()->findAll();
 
 
 
-        $this->render('feeds',array('posts'=>$posts));
+        $this->render('feed',array('posts'=>$posts));
     }
 
 	// Uncomment the following methods and override them if needed

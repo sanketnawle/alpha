@@ -1,120 +1,166 @@
 <?php
-
 class SearchController extends Controller
 {
-
     //public function actionSearch()
     public function actionView()
     {
-        $filter = Yii::app()->session['filter'];
-        //$q = Yii::app()->getRequest()->getQuery('q');
-
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
-        $this->render('search', array('user'=>$user));
-    }
-
-    public function actionSuggestion()
-    {
-        //Much of this dynamic query algorithm was refactored from the lptopbar_search.php file in beta, to fit the urlinq_new database
-        //A search query is passed in through the query and stored in a variable via a GET request. All tables are searched and sends
-        //Suggestions to the front-end via AJAX.
-
-        //$con = Yii::app()->db;
-        $con = Yii::app()->db->connectionString;
-
-        $search = Yii::app()->getRequest()->getQuery('q');
-        //$search .= "| ".$search;
-        //$search = "^".$search;
-
-        $count = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 6;
-        $limit = " LIMIT ".$count;
-        $rows = array();
-        $table_i = 0;
-
-        $tables = array();
-
-        //$r = new CDbCriteria();
-        //$r->addSearchCondition('firstname', $q);
-        //$query = "select firstname from User where ";
-        //$user = User::model()->findAll( $r );
-        //$user = User::model()->find('firstname=:firstname and lastname=:lastname',array(User::Model()->getFullName()=>$q));
-
-        $tables[] = [
-            "tlb" => "user",
-            "fld" => "concat(firstname, ' ', lastname) as name, user_id as id",
-            "con" => "concat(firstname, ' ', lastname) REGEXP '".$search."' AND user_type = 'p' AND department_id = 5",
-            "typ" => "pro"
-        ];
-        $tables[] = [
-            "tlb" => "user",
-            "fld" => "concat(firstname, ' ', lastname) as name, user_id as id",
-            "con" => "concat(firstname, ' ', lastname) REGEXP '".$search."' AND user_type = 's' AND department_id = 5",
-            "typ" => "stu"
-        ];
-        $tables[] = $tables[0];
-        $tables[2]["con"] = "concat(firstname, ' ', lastname) REGEXP '".$search."' AND user_type = 'p'";
-        // $tables[2]["typ"] = "prod"; // debug: without dept id
-
-        $tables[] = $tables[1];
-        $tables[3]["con"] = "concat(firstname, ' ', lastname) REGEXP '".$search."' AND user_type = 's'";
-        // $tables[3]["typ"] = "stud"; // debug: without dept id
-
-        $tables[] = [
-            "tlb" => "course",
-            "fld" => "course_name as name, course_id as id",
-            "con" => "course_name REGEXP '".$search."' AND department_id = 5",
-            "typ" => "cls"
-        ];
-
-        $tables[] = $tables[4];
-        $tables[5]["con"] = "course_name REGEXP '".$search."'";
-        // $tables[5]["typ"] = "clsd"; // debug: without dept id
-
-        $tables[] = [
-            "tlb" => "group",
-            "fld" => "group_name as name, group_id as id",
-            "con" => "group_name REGEXP '".$search."'",
-            "typ" => "clb"
-        ];
-        $tables[] = [
-            "tlb" => "department",
-            "fld" => "dept_name as name, department_id as id",
-            "con" => "dept_name REGEXP '".$search."'",
-            "typ" => "dpt"
-        ];
-
-
-        while(sizeof($rows) < $count && $table_i < sizeof($tables)) {
-            $query = "SELECT ".$tables[$table_i]["fld"]." FROM ".$tables[$table_i]["tlb"]." WHERE ".$tables[$table_i]["con"].$limit;
-
-            //$result = mysqli_query($con, $query) or die(mysqli_error($con));
-
-            $command = Yii::app()->db->createCommand($query);
-            //$sql = "SELECT * FROM common_attributes_locale WHERE category_id=:category_id";
-            //$command->bindParam("category_id", $categoryId, PDO::PARAM_INT);
-            $rows = $command->queryAll();
-
-            //$row_i = 0;
-            //while(($row = mysqli_fetch_assoc($result)) && sizeof($rows) < $count && $row_i <= $count / 2) {
-            //    $row["type"] = $tables[$table_i]["typ"];
-            //    $rows[] = $row;
-            //    ++$row_i;
-            //}
-            ++$table_i;
+        if (isset ($_GET["q"])){
+            $q = Yii::app()->request->getQuery('q');
+        }else{
+            $q = '';
         }
-
-
-        //$data = array('success'=>true,'posts'=>array('post1','post2', $q, $limit, $tables)); //Test
-        $data = array('success'=>true,'posts'=>array('post1','post2', $search));
-        $this->renderJSON($rows);
+        //$user = User::model()->find('user_id=:id', array(':id'=>1));
+        $user = $this->get_current_user();
+        //$uni = $user->school_id->university_id;
+        //$userdepaertment = $user->department_id;
+        //$useruniversity = $user->school_id->university_id;
+        $this->render('search', array('user'=>$user, 'q'=>$q));
     }
-
     public function actionJson()
-    {
-        $q = Yii::app()->getRequest()->getQuery('q');
-        $data = array('success'=> true, 'posts'=>array('post1','post2', $q));
+    { //We want to render JSON to the front-end so search.js can decode it
+        $query = Yii::app()->request->getQuery('q');
+        $filter = Yii::app()->request->getQuery('f');
+        $user = $this->get_current_user();
+        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+        //$user = User::model()->find('user_id=:id', array(':id'=>1)); //temporary...
+        $date = date("Y-m-d H:i:s", time());
+        $datetime = new DateTime($date);
+        $datetime->modify('+1 day');
+        //just gets everything that contains the search string (unspecific search)
+        $usql = "Select *  from `user` Where firstname LIKE '%".$query."%' OR firstname LIKE '%".$query.
+            "%' OR concat(firstname, ' ' ,lastname) LIKE '%".$query."%' AND school_id = ".$user->school_id.
+            " AND user_type = 's'";
+        $csql = "Select * from course Where course_name LIKE '%".$query."%' OR course_desc LIKE '%".$query."%'";
+        $ssql = "Select * from school where school_name LIKE '%".$query."%'";
+        $dsql = "Select * from department where department_name LIKE '%".$query."%'";
+        $gsql = "Select * from `group` where group_name LIKE '%.$query.%'";
+        //specific queries
+        $piyd = Yii::app()->db->createCommand()
+            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->from('user u')
+            ->where('school_id=:sid and user_type=:type and department_id = :did', array(':sid'=>$user->school_id, ':type'=>"p", ':did'=>$user->department_id))
+            ->queryRow();
+        $piys = Yii::app()->db->createCommand()
+            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->from('user u')
+            ->where('school_id=:sid and user_type=:type', array(':sid'=>$user->school_id, ':type'=>"p"))
+            ->queryRow();
+        $ciyd = Yii::app()->db->createCommand()
+            ->select('course_id, course_name, school_id, department_id, picture_file_id')
+            ->from('course')
+            ->where('school_id=:sid and department_id = :did', array(':sid'=>$user->school_id, ':did'=>$user->department_id))
+            ->queryRow();
+        $ciys = Yii::app()->db->createCommand()
+            ->select('course_id, course_name, school_id, department_id, picture_file_id')
+            ->from('course')
+            ->where('school_id=:sid', array(':sid'=>$user->school_id))
+            ->queryRow();
+        $giys = Yii::app()->db->createCommand()
+            ->select('group_id, group_name, picture_file_id')
+            ->from('group')
+            ->where('school_id=:sid', array(':sid'=>$user->school_id))
+            ->queryRow();
+        $userContent = User::model()->findAllBySql($usql);
+        $courseContent = Course::model()->findAllBySql($csql);
+        $schoolContent = School::model()->findAllBySql($ssql);
+        $departmentContent = Department::model()->findAllBySQL($dsql);
+        $groupContent = Group::model()->findAllBySQL($gsql);
+        if($filter == "piyd" && !$query)
+        {   //professors in your department
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                'professors'=>$piyd
+            );
+        }
+        else if($filter == "piys" && !$query)
+        {   //professors in your school
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                'professors'=>$piys
+            );
+        }
+        else if($filter == "ciyd" && !$query)
+        {   //courses in your department
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                'courses'=>$ciyd
+            );
+        }
+        else if($filter == "ciys" && !$query)
+        {   //courses in your school
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                'courses'=>$ciys
+            );
+        }
+        if($filter == "giys" && !$query)
+        {   //clubs(groups) in your school
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                'courses'=>$giys
+            );
+        }
+        else if ($filter == "sys" || $filter == null || $query != null)
+        {  //return all results, if we don't get a filter
+            $data = array
+            (
+                'success'=> true,
+                'query'=>$query,
+                'filter'=>$filter,
+                //if objects have content, render appropriate categories in search page. else: hide.
+                'users'=>$userContent,
+                //'professors'=>$professorContent, //omitted because we return professors and students simultaneously
+                'courses'=>$courseContent,
+                'schools'=>$schoolContent,
+                'departments'=>$departmentContent,
+                'clubs'=>$groupContent
+                //'university'=>$this->get_model_associations($university,array('schools'=>array('pictureFile')))
+                //'posts'=>$postContent
+            );
+        }
 
         $this->renderJSON($data);
     }
 }
-
+/*
+ *      //get classes with course name and course id matching the search term
+ *      //apparently I'm not supposed to return posts or events...
+        //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
+        //$postContent = Post::model()->findAllBySQL($psql);
+        //$event_count += count($userContent);
+        $matchingClasses = "SELECT cl.course_id, cl.department_id, co.course_name, co.course_desc, co.course_credits, cl.class_id, cl.section_id, cl.location, cl.professor
+                            FROM classes AS cl JOIN courses AS co
+                            ON (cl.school_id = co.school_id AND cl.department_id = co.department_id AND cl.course_id = co.course_id)
+                            WHERE cl.school_id = ? AND (upper(co.course_name) LIKE ? OR upper(co.course_id) LIKE ?)
+                            AND cl.year =  2014  AND cs.semester = 'fall' "; //.$course_filter . $filter (add this in the view)
+        //get courses with search term in description
+        $inCourseDescription = "SELECT co.course_id, cl.department_id, co.course_name, co.course_desc, co.course_credits, cl.class_id, cl.section_id, cl.location, cl.professor
+                            FROM courses AS co JOIN classes AS cl
+                            ON (cl.school_id = co.school_id AND cl.department_id = co.department_id AND cl.course_id = co.course_id)
+                            WHERE cl.school_id = ? AND (upper(co.course_desc) LIKE ?
+                            AND cl.year =  2014  AND cs.semester = 'fall' "; //.$course_filter . $filter (add this in the view)";
+        //get courses a professor is teaching
+        $professorSearch = "SELECT co.course_id, cl.department_id, co.course_name, co.course_desc, co.course_credits, cl.professor
+                            FROM courses AS co JOIN classes AS cl
+                            ON (cl.school_id = co.school_id AND cl.professor_id = co.department_id AND cl.course_id = co.course_id)
+                            WHERE cl.school_id = ? AND cl.professor IN (SELECT user_id from user where uPPER(firstname) LIKE ? OR UPPER(lastname) LIKE ?)
+                            AND cl.year =  2014  AND cs.semester = 'fall' "; //.$course_filter . $filter (add this in the view)";
+        $profsql = "Select *  from `user` Where firstname LIKE '%".$query."%' OR firstname LIKE '%".$query.
+                "%' OR concat(firstname, ' ' ,lastname) LIKE '%".$query."%' AND school_id = ".$user->school_id.
+                " AND user_type = 'p'";
+ * */

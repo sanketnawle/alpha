@@ -29,8 +29,8 @@ border-bottom: 1px solid;
 -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 background-color: #FFFFFF;
-border-color: #DBE0E6 #D4D6DB #B9BCC5;
 float: left;
+border: 1px solid #ccc; border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
 margin-left: 18px;
 }
 
@@ -75,11 +75,13 @@ background-color: #F8F8F8;
 
 	margin-left: -91px;
 	border-radius: 2px;
-height: 71px;
--webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
--moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+
+	height: 71px;
+
+
+
 cursor:pointer;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18); -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18);
 }
 
 .post_tag{

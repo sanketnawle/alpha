@@ -6,13 +6,16 @@ var MonthGrid = (function (MonthGrid) {
 
     var createGridItem = function (text, oor) {
         var item = document.createElement("div");
+        var date = document.createElement("div");
+        date.innerHTML = text;
+        date.className = "date";
         item.className = "grid-item";
         if (oor) item.classList.add("out-of-range")
-        item.innerHTML = text;
+        item.appendChild(date);
         return item;
     }
 
-    var getGridItems = function (itemNodes) {        
+    var getGridItems = function (itemNodes) {
         var items = [];
         [].forEach.call(itemNodes, function (ele, i, array) { items.push(new GridItem(ele)); });
         return items;
@@ -39,7 +42,8 @@ var MonthGrid = (function (MonthGrid) {
             ele: { value: grid },
             populate: {
                 value: function () {
-                    var hasweek = [false, 0];
+                    var premature = false;
+                    var prem_plus = false;
                     var start = dp.getDate(month, year, false).getDay();
                     var end = dp.getDate(month, year, true).getDate();
 
@@ -48,40 +52,73 @@ var MonthGrid = (function (MonthGrid) {
                     for (var i = 1 - start, text = "", gc = 1; i <= 42 - start; ++i, text = "", gc += 1) {
                         if (i < 1) text = dp.getMonthName(month == 0 ? 11 : month - 1, true);
                         else if (i > end) text = dp.getMonthName((month + 1) % 12, true);
+                        text += " " + new Date(year, month, i).getDate();
 
-                        var date = new Date(year, month, i);
-                        text += " " + date.getDate();
+                        var gi = new GridItem(null, text, i < 1 || i > end).ele;
 
-                        this.ele.appendChild(new GridItem(null, text, i < 1 || i > end).ele);
+                        // find today                        
+                        if (dp.getCurrentMonth() == month &&
+                            dp.getCurrentYear() == year &&
+                            dp.getCurrentDate() == i) {
+                            gi.classList.add("td");
+                        }
 
-                        if (gc % 7 == 1 && date.getWeek() == new Date().getWeek()) hasweek = [true, gc % 6];
+                        this.ele.appendChild(gi);
+
+                        if (gc % 7 == 0 && gc / 7 < 6 && i >= end) {
+                            if (i == end && i == 28) prem_plus = true;
+                            premature = true; break;
+                        }
                     }
 
-                    if (hasweek[0]) this.drawWeek(hasweek[1]);
+                    // customization
+                    if (premature) {
+                        var cls = prem_plus ? "prem-plus" : "prem";
+                        for (i = 0; i < this.items.length; ++i) {
+                            this.items[i].ele.classList.add(cls);
+                        }
+                    }
+
+                    var diff = new Date().getWeek() - dp.getDate(month, year, false).getWeek();
+                    var factor = premature ? prem_plus ? 4 : 5 : 6;
+                    for (i = 0; i < this.items.length; ++i) {
+                        if ((diff > 0 && diff < factor) || (diff == 0 && new Date().getDate() < 7))
+                            if (Math.floor(i / 7) == diff) this.items[i].ele.classList.add("tl");
+                        if (Math.floor(i / 7) + 1 == factor) this.items[i].ele.classList.add("ll");
+                    }
                 }
             },
             children: { get: function () { return this.ele.querySelectorAll(".grid-item"); } },
             items: { get: function () { return getGridItems(this.children); } },
-            drawWeek: {
-                value: function (i) {
-                    i = (i == 0 ? 6 : i) - 1;
-                    var hr = document.createElement("hr");
-                    hr.className = "week-line";
-                    hr.style.top = Math.floor((1 / 6) * i * this.ele.offsetHeight) + "px";
-                    this.ele.appendChild(hr);
-                }
-            }
         });
 
         // intialize
         this.populate();
     }
 
-    MonthGrid.createGrid = function (elementId, month, year) {
-        if (month === undefined) month = new Date().getMonth();
-        if (year === undefined) year = new Date().getFullYear();
+    MonthGrid.Grid = Grid;
+    MonthGrid.GridItem = GridItem;
 
-        return new Grid(document.getElementById(elementId), month, year);
+    MonthGrid.createGrid = function (object, month, year, isclass) {
+        if (isclass === undefined) isclass = false;
+
+        if (month === undefined) month = dp.getCurrentMonth();
+        if (year === undefined) year = dp.getCurrentYear();
+
+        var grid = [];
+        var ele = typeof object == "string" ? (isclass ?
+            document.getElementsByClassName(object) :
+            document.getElementById(object)) :
+            object;
+        if (ele === null || ele === undefined) return null;
+
+        if (isclass) {
+            for (var i = 0; i < ele.length; grid.push(new Grid(ele[i], (month + i) % 12, year)), ++i);
+        } else {
+            grid = new Grid(ele, month, year);
+        }
+
+        return grid;
     }
 
     return MonthGrid;

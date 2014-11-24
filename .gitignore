@@ -225,3 +225,7 @@ beta/includes/dbconfig.php
 
 # Intellij project folder
 .idea/
+
+urlinqyii/protected/runtime/application.log*
+urlinqyii/protected/runtime/application.log
+urlinqyii/index.php

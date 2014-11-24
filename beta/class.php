@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<?php include('php/redirect.php');?>
+<?php// include('php/redirect.php');?>
 <html>
 <head>
 

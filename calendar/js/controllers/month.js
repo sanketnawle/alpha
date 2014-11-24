@@ -4,15 +4,25 @@
 /// <reference path="../classes/month-grid.js" />
 
 ulcal.controller("MonthController", function ($scope, $routeParams) {
-    $scope.setActiveDate($routeParams.month - 1, $routeParams.year);
+    LeftPanel.hidden = false;
 
-    $scope.getNextMonthLink = function () {
+    $scope.class = "month";
+    $scope.title = "Month";
+
+    $scope.setActiveMonth($routeParams.month - 1);
+    $scope.setActiveYear($routeParams.year);
+
+    var givdate = new Date($scope.activeYear, $scope.activeMonth, 1), curdate = new Date();
+    $scope.setActiveSem(givdate.getSemester());
+    $scope.setActiveWeek((curdate.getMonth() == givdate.getMonth() ? curdate : givdate).getWeek());
+
+    $scope.getNextLink = function () {
         var month = (parseInt($scope.activeMonth) + 1) % 12, year = parseInt($scope.activeYear);
         if (month == 0) year += 1;
         return "#/month/" + (month + 1) + "/" + year;
     }
 
-    $scope.getPrevMonthLink = function () {
+    $scope.getPrevLink = function () {
         var month = (parseInt($scope.activeMonth) - 1) % 12, year = parseInt($scope.activeYear);
         if (month == -1) { month = 11, year -= 1; }
         return "#/month/" + (month + 1) + "/" + year;
@@ -23,6 +33,8 @@ ulcal.controller("MonthController", function ($scope, $routeParams) {
         return "#/month/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     }
 
-     //window.grid = // for debugging
-        MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear)
+    //window.grid = // for debugging
+    MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear);
+
+    $scope.setMiniMonth($scope.activeMonth, $scope.activeYear, "m");
 });

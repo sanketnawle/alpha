@@ -66,6 +66,8 @@ $(document).ready(function() {
     });
     //mutated
     $(document).delegate(".m-next", "click", function() {
+
+
         /*archive event*/
         $(".calcell").each(function(index) {
             var iid = $(this).attr("id") + "::" + $m;
@@ -87,6 +89,7 @@ $(document).ready(function() {
         if ($m < 11) {
             $m = $m + 1;
         } else {
+            $y = $y+1;
             $m = 0;
         }
 
@@ -168,6 +171,7 @@ $(document).ready(function() {
         if ($m > 0) {
             $m = $m - 1;
         } else {
+            $y = $y-1;
             $m = 11;
         }
 
