@@ -1,38 +1,27 @@
 <?php
-
 class SearchController extends Controller
 {
-
     //public function actionSearch()
     public function actionView()
     {
         if (isset ($_GET["q"])){
             $q = Yii::app()->request->getQuery('q');
-
         }else{
             $q = '';
         }
         $user = User::model()->find('user_id=:id', array(':id'=>1));
         $this->render('search', array('user'=>$user, 'q'=>$q));
     }
-
-
     public function actionJson()
     { //We want to render JSON to the front-end so search.js can decode it
-
         $query = Yii::app()->request->getQuery('q');
         $filter = Yii::app()->request->getQuery('f');
         $user = $this->get_current_user();
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
-
         //$user = User::model()->find('user_id=:id', array(':id'=>1)); //temporary...
-
-
         $date = date("Y-m-d H:i:s", time());
         $datetime = new DateTime($date);
         $datetime->modify('+1 day');
-
-
         //just gets everything that contains the search string (unspecific search)
         $usql = "Select *  from `user` Where firstname LIKE '%".$query."%' OR firstname LIKE '%".$query.
             "%' OR concat(firstname, ' ' ,lastname) LIKE '%".$query."%' AND school_id = ".$user->school_id.
@@ -41,7 +30,6 @@ class SearchController extends Controller
         $ssql = "Select * from school where school_name LIKE '%".$query."%'";
         $dsql = "Select * from department where department_name LIKE '%".$query."%'";
         $gsql = "Select * from `group` where group_name LIKE '%.$query.%'";
-
         //specific queries
         $piyd = Yii::app()->db->createCommand()
             ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
@@ -68,14 +56,11 @@ class SearchController extends Controller
             ->from('group')
             ->where('school_id=:sid', array(':sid'=>$user->school_id))
             ->queryRow();
-
         $userContent = User::model()->findAllBySql($usql);
         $courseContent = Course::model()->findAllBySql($csql);
         $schoolContent = School::model()->findAllBySql($ssql);
         $departmentContent = Department::model()->findAllBySQL($dsql);
         $groupContent = Group::model()->findAllBySQL($gsql);
-
-
         if($filter == "piyd" && !$query)
         {   //professors in your department
             $data = array
@@ -126,7 +111,7 @@ class SearchController extends Controller
                 'courses'=>$giys
             );
         }
-        else if ($filter == "sys")
+        else if ($filter == "sys" || $filter == null || $query != null)
         {  //return all results, if we don't get a filter
             $data = array
             (
@@ -145,16 +130,9 @@ class SearchController extends Controller
             );
         }
 
-
-
-
         $this->renderJSON($data);
     }
 }
-
-
-
-
 /*
  *      //get classes with course name and course id matching the search term
  *      //apparently I'm not supposed to return posts or events...
@@ -181,6 +159,4 @@ class SearchController extends Controller
         $profsql = "Select *  from `user` Where firstname LIKE '%".$query."%' OR firstname LIKE '%".$query.
                 "%' OR concat(firstname, ' ' ,lastname) LIKE '%".$query."%' AND school_id = ".$user->school_id.
                 " AND user_type = 'p'";
-
-
  * */

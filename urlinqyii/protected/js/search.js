@@ -7,6 +7,8 @@ $(document).ready(function(){
         }
     }
 
+
+
     function dynamic_dropLists()
     {
         //this is for leftsec, to make droplists dynamic...
@@ -18,7 +20,7 @@ $(document).ready(function(){
     function get_search_results(local_q){
         $.getJSON( base_url + '/search/json', {q:local_q},function( search_json_data )
         {
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+            alert(JSON.stringify(search_json_data)); //test, returns JSON object
 
             if(search_json_data['success']){
                 alert(JSON.stringify(search_json_data)); //test, returns JSON object

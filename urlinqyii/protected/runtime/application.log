@@ -1414,3 +1414,995 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
 in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
 in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:38:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 14:38:00 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:44:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 14:44:02 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:44:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:44:19 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:44:32 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:48:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:48:56 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:49:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:49:52 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:51:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:51:02 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:51:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at
+---
+2014/11/24 14:51:05 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:51:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+at+NYU
+---
+2014/11/24 14:51:09 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:51:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=[object%20Object]
+---
+2014/11/24 14:51:21 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=%5Bobject+Object%5D
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:51:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=John+at+NYU
+---
+2014/11/24 14:51:30 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=John+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:52:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=John+at+NYU
+---
+2014/11/24 14:52:41 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=John+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 14:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=John+at+NYU
+---
+2014/11/24 14:52:47 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=John+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:03:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=John+at+NYU
+---
+2014/11/24 15:03:25 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:151)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=John+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (151)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:25:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=John+at+NYU
+---
+2014/11/24 15:25:11 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=John+at+NYU
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:25:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 15:25:20 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:25:29 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:25:34 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?f=piyd
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:26:10 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?f=piyd
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:26:13 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?f=piyd
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:26:35 [error] [php] Missing argument 2 for CDbCommand::join(), called in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php on line 48 and defined (/Applications/XAMPP/yii/framework/db/CDbCommand.php:870)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#2 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#4 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?f=piyd
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:28:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 15:28:14 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:29:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 15:29:09 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:29:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=gary
+---
+2014/11/24 15:29:42 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=gary
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:30:05 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:30:14 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex+lopez
+---
+2014/11/24 15:30:16 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+lopez
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:30:26 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---
+2014/11/24 15:30:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/noise-2.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/src/noise-2...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundSearch.css
+---
+2014/11/24 15:30:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:30:43 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:30:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/DwnArrow444.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/DwnArrow444...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/DwnArrow444.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/search.css
+---
+2014/11/24 15:30:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/24 15:30:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/menu-icons.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/img/menu-ic...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel.css
+---
+2014/11/24 15:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:30:49 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:31:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:31:22 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:31:26 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:31:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=[object%20Object]
+---
+2014/11/24 15:31:28 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=%5Bobject+Object%5D
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:31:40 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=%5Bobject+Object%5D
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:31:44 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=%5Bobject+Object%5D
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:33:22 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=%5Bobject+Object%5D
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:38:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search
+---
+2014/11/24 15:38:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/noise-2.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/src/noise-2...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundSearch.css
+---
+2014/11/24 15:38:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:38:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/noise-2.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/src/noise-2...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundSearch.css
+---
+2014/11/24 15:38:20 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:38:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:38:38 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:38:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:38:41 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:39:04 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex%20lope
+---
+2014/11/24 15:39:08 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex+lope
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:39:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/noise-2.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/src/noise-2...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundSearch.css
+---
+2014/11/24 15:39:12 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "filter".' in /Applications/XAMPP/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(270): CController->missingAction('filter')
+#1 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): CController->run('filter')
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('search/filter')
+#3 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/search/filter
+---
+2014/11/24 15:39:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "filter".' in /Applications/XAMPP/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(270): CController->missingAction('filter')
+#1 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): CController->run('filter')
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('search/filter')
+#3 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/search/filter?q=alex
+---
+2014/11/24 15:39:21 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:26 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:29 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:39:33 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:168)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (168)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:40:26 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:132)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (132)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:40:29 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:132)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (132)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:40:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=a
+---
+2014/11/24 15:40:40 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:132)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=a
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (132)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:40:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.mCustomScrollbar.concat.min.js".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.mCust...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/jquery.mCustomScrollbar.concat.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/search?q=alex
+---
+2014/11/24 15:40:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/noise-2.png".' in /Applications/XAMPP/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/src/noise-2...')
+#1 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/noise-2.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/backgroundSearch.css
+---
+2014/11/24 15:40:45 [error] [php] Undefined variable: data (/Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php:132)
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(286): SearchController->runAction()
+#1 /Applications/XAMPP/yii/framework/web/CController.php(265): SearchController->runActionWithFilters()
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): SearchController->run()
+#3 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/search/json?q=alex
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/protected/controllers/SearchController.php (132)
+in /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php (17)
+2014/11/24 15:41:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "filter".' in /Applications/XAMPP/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/yii/framework/web/CController.php(270): CController->missingAction('filter')
+#1 /Applications/XAMPP/yii/framework/web/CWebApplication.php(282): CController->run('filter')
+#2 /Applications/XAMPP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('search/filter')
+#3 /Applications/XAMPP/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/alpha/urlinqyii/index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/search/filter?f=piyd
+---

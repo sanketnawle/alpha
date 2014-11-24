@@ -6,6 +6,11 @@ $(function() {
     var nm= "'img/calendar-icons/"+t+".png'";
     $(".cal_icon").attr("src","img/calendar-icons/"+t+".png");
 
+    //Testing out the split function
+    //var split = "NYU Poly at New York University".split("at");
+    //var school = split[0];
+    //var university = split[1];
+    //alert("school: " + school + "university: " + university);
 
 
 
