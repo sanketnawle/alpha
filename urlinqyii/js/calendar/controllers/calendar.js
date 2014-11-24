@@ -78,9 +78,8 @@ ulcal.controller("CalController", function (
         $scope.setActiveType($scope.menu.items[$scope.menu.active][0]);
 
         $timeout(function () {
-            var g = $(".toscroll");
-            console.log(g.height());
-            g.slimScroll({ height: g.height() });
+            var g = $(".toscroll");            
+            g.slimScroll({ wrapperClass: "scroll-view" });
         }, 0);
     });
 

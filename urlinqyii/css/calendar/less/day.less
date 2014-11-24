@@ -8,14 +8,21 @@
     }
 
     .day-view {
-        .ad-grid {
+        .ad-scroll-view {
             .absolute(0,0,0);
-            width: @ad-width;
+            position: absolute !important;
             border-left: 1px solid @border-color;
-            font-size: @ideal-font-size;            
+            width: @ad-width !important;
+            height: auto !important;
+
+            .ad-grid {
+                .absolute(0,0,0);
+                height: auto !important;
+                font-size: @ideal-font-size;
+            }
         }
 
-        .slimScrollDiv {
+        .scroll-view {
             .absolute(@header-1-height,@ad-width + 3,0,0);
             position: absolute !important;
             height: auto !important;

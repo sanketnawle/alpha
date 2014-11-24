@@ -97,6 +97,14 @@ echo '
                         </div>
                     </a>
                 </li>
+                <li class="group-tab club-tab">
+                    <a class="tabmembers tab-anchor tab-inactive">
+                        <div class="tab-title">
+                            CLUBS
+                            <span class="tab-icon tab3-icon-inactive"></span>
+                        </div>                        
+                    </a>
+                </li>
                 <!--
                 <li class = "tab-no-badge group-tab">
                     <a class = "tabc tabevents tab-anchor tab-inactive">

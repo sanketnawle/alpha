@@ -55,6 +55,7 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
         if (i == 7) return;
         (function (i) {
             UCEventData.getData({ date: addDate(i).toDateInputValue() }).success(function (events) {
+                events = events.events;
                 for (e in events) {
                     grid.addEvent(new UCEvent(events[e]), i);
                 }

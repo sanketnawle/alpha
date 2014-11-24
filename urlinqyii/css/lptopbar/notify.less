@@ -14,9 +14,10 @@
                 opacity: 0;
                 height: 0;
                 overflow: hidden;
+                padding: 0 5px 5px;
 
                 .wedge {
-                    .absolute(0,155px);
+                    .absolute(0,165px);
                     height: 12px;
                     width: 14px;
                     background-image: @sprite-image;
@@ -44,7 +45,7 @@
                         font-family: 'san_francisco';
                     }
 
-                    .slimScrollDiv {
+                    .noti-scrollable {
                         overflow: auto;
 
                         .entries {
@@ -271,11 +272,11 @@
                     left: -232px;
 
                     .wedge {
-                        right: 107px;
+                        right: 117px;
                     }
 
                     .window {
-                        .slimScrollDiv {
+                        .noti-scrollable {
                             bottom: 0;
                         }
                     }
@@ -286,7 +287,7 @@
                 .notify-window {
                     opacity: 1;
                     height: auto;
-                    width: 370px;
+                    width: 380px;
                     
                     .window * {
                         opacity: 1;

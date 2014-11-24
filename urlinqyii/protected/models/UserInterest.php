@@ -14,7 +14,7 @@ class UserInterest extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'user_interests';
+		return 'user_interest';
 	}
 
 	/**
@@ -25,11 +25,11 @@ class UserInterest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, interest_id', 'required'),
-			array('user_id, interest_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, tag_id', 'required'),
+			array('user_id, tag_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, interest_id', 'safe', 'on'=>'search'),
+			array('user_id, tag_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +51,7 @@ class UserInterest extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'interest_id' => 'Interest',
+			'tag_id' => 'Interest',
 		);
 	}
 
@@ -74,7 +74,7 @@ class UserInterest extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('interest_id',$this->interest_id);
+		$criteria->compare('tag_id',$this->tag_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

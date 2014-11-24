@@ -57,11 +57,7 @@ return array(
             //MUST ENABLE mod_rewrite IN APACHE AND HAVE PROPER .htaccess file FOR CLEAN URLS TO WORK
             'rules'=>array(
                 //Maps multiple views in one line
-                //'<action:(contact|login|test|json|home|register|logout|timezone|suggestUsers)>'=>'site/<action>',
-                'calendar' => 'calendar/view',
-                '<action:\w+>'=>'site/<action>',
-
-
+                '<action:(contact|login|test|json|home|register|logout|timezone)>'=>'site/<action>',
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
                 'calendar' => 'calendar/view',
@@ -103,20 +99,20 @@ return array(
 //			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 //		),
 
-		// uncomment the following to use a MySQL database
+        // uncomment the following to use a MySQL database
 
-//		'db'=>array(
-//			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
-//			'emulatePrepare' => true,
-//			'username' => 'root',
-//			'password' => 'root',
-//			'charset' => 'utf8',
-//		),
-        'db'=>get_db_array(),
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+		),
+        /*'db'=>get_db_array(),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
-		),
+		),*/
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
@@ -140,5 +136,6 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 	),
+
 
 );

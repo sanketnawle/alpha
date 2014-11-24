@@ -9,11 +9,17 @@
         margin-right: 12px;
     }
 
+    .scroll-view {
+        .absolute(@header-1-height + @header-2-height,0,0,0);
+        position: absolute !important;
+        height: auto !important;
+    }
+
     .week-view {
         overflow: auto;
         right: 12px;
-        top: 0;
-        bottom: @header-1-height + @header-2-height;
+        height: auto !important;
+        top: 0;        
 
         .time-strip {
             float: left;
@@ -33,7 +39,7 @@
             margin-left: @timestrip-width;
 
             .time-line {
-                .absolute(0, 1px, auto, 0, 200);                
+                .absolute(0, 1px, auto, 0, 200);
                 border-top: 2px solid @time-line-color;
                 margin-left: @timestrip-width + 1;
             }

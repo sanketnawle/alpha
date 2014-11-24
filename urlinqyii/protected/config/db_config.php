@@ -1,6 +1,5 @@
 <?php
 
-
 function get_db_array(){
     return array(
         'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
@@ -10,6 +9,5 @@ function get_db_array(){
         'charset' => 'utf8',
     );
 }
-
 
 ?>

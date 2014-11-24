@@ -1,92 +1,4 @@
-<script>
-    $(document).ready(function () {
-        $.urlParam = function (sParam) {
-
-            var sPageURL = window.location.search.substring(1);
-            var sURLVariables = sPageURL.split('&');
-            for (var i = 0; i < sURLVariables.length; i++) {
-                var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] == sParam) {
-                    return sParameterName[1];
-                }
-            }
-
-        }
-        var class_id = $.urlParam('class_id');
-
-
-        $(document).delegate(".searchMembers", "keyup", function (e) {
-
-            var curstring = $(this).val().toLowerCase().trim();
-            if (curstring.length >= 2) {
-                $(".member").each(function () {
-                    var tagstring_obj = $(this).find(".search_unit");
-                    var tagstring = tagstring_obj.text().toLowerCase().trim();
-
-                    if (tagstring.indexOf(curstring) >= 0) {
-                        $(this).removeClass("hidden_result");
-                    } else {
-                        $(this).addClass("hidden_result");
-                    }
-
-
-                    /*control the text prompt of the div*/
-                    $(".members-list-wrap").each(function (index) {
-                        var l = $(this).find(".member").not('.hidden_result').length;
-                        if (l == 0) {
-                            $(this).prev(".blockwrapper").addClass("hidden_result");
-                        } else {
-                            $(this).prev(".blockwrapper").removeClass("hidden_result");
-                        }
-                    });
-                    /*control the text prompt of the div end*/
-
-                });
-
-            } else {
-                $(".hidden_result").removeClass("hidden_result");
-            }
-
-        });
-
-
-        $(document).delegate(".upgrade-student", "click", function () {
-
-            var ta_user_id = $(this).closest(".member").attr("id");
-
-            $.ajax({
-                type: "POST",
-                url: "php/add_class_ta.php",
-                data: {ta_user_id: ta_user_id, class_id: class_id},
-                success: function (html) {
-                    alert(html);
-                    alert(class_id);
-                },
-                error: function (html) {
-                    alert(html);
-                }
-            });
-
-            if ($(this).hasClass("ta_already")) {
-                $(this).removeClass("ta_already");
-                var clone = $(this).closest(".member").clone();
-                $(this).closest(".member").remove();
-                $(".student-member-list").append(clone);
-
-                //$(".members-admin").find("span").text();
-            } else {
-                $(this).addClass("ta_already");
-                var clone = $(this).closest(".member").clone();
-                $(this).closest(".member").remove();
-                $(".prof-member-list").append(clone);
-            }
-
-
-        });
-
-
-    });
-</script>
+<script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/class/class_members_tab.js'></script>
 
 
 <?php
@@ -174,7 +86,7 @@ echo '
     <div class="blockwrapper">
           <div class="members-header members-admin">
             Professors and TAs (<span>'
-             . (1+count($class->admins)) .
+             . (count($admins)) .
             '</span>)
           </div>
 
@@ -189,7 +101,7 @@ echo '
 
 
 //THIS IS FOR TAs and the Professor
-    foreach ($class->admins as $admin) {
+    foreach ($admins as $admin) {
         echo '
             <div class="member" id="' . $admin->user_id . '">
                 <div class="member-person prof-member-person">
@@ -207,19 +119,19 @@ echo '
                                 '/assets/default/user.png)"></div>';
                         }
       echo               ' <div class="member-bio">
-                        <span>' . $admin->user_bio . '</span> <a href="profile.php?user_id=' . $admin->user_id . '"><strong>View Profile</strong></a>
+                        <span>' . $admin->user_bio . '</span> <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$admin->user_id . '"><strong>View Profile</strong></a>
                       </div>
                     </div>';
         if ($admin->user_type == 's') {
             echo '
                 <h3 class="person-title">
-                <a href="profile.php?user_id=' . $admin->user_id . '"><strong class="search_unit">' . $admin->firstname . ' ' . $admin->lastname . ' </strong></a>
+                <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$admin->user_id . '"><strong class="search_unit">' . $admin->firstname . ' ' . $admin->lastname . ' </strong></a>
                     <span><a class="search_unit">' . $admin->school->school_name . '</a></span>
                 </h3>';
         } else {
             echo '
                 <h3 class="person-title">
-                <a href="profile.php?user_id=' . $admin->user_id . ' "><strong class="search_unit">Professor ' . $admin->lastname . '</strong></a>
+                <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$admin->user_id . ' "><strong class="search_unit">Professor ' . $admin->lastname . '</strong></a>
                 <span><a class="search_unit">' . $admin->school->school_name . '</a></span></h3>';
         }
         // if you ARE the TA or if the TA is not active
@@ -231,7 +143,7 @@ echo '
             continue;
         }
 
-        if (in_array($admin->user_id,$following)) {
+        if ($user->isFollowing($admin)) {
             echo '
                     <div class="follow-btn">
                       <a class="follow tab_followed ready_to_unfollow">Following</a>
@@ -245,11 +157,11 @@ echo '
                       <a class="follow">Follow</a>
                     </div>';
 
-            if ($is_admin && $admin->user_type == 's') {
+           /* if ($is_admin && $admin->user_type == 's') {
                 echo '
                     <div class="upgrade-student">TA</div>
                 ';
-            }
+            }*/
           echo '      </div>
             </div>
         </div>';
@@ -268,7 +180,7 @@ $get_student_query = "SELECT U.*, UN.univ_name FROM university UN, user U WHERE 
 $get_student_query_result = $con->query($get_student_query);
 
 $count_student = mysqli_num_rows($get_student_query_result);*/
-if(count($class->students)  == 0){
+if(count($students)  == 0){
     echo"
         <h2 id='noMembers'> Members </h2>
          <div class='noInfoBox' id='noInfoMemberBox'>
@@ -277,24 +189,20 @@ if(count($class->students)  == 0){
     ";
 }
 
-if (count($class->students)  > 0) {
-echo "
-    <div class='blockwrapper'>
-        <div class = 'members-header members-students'>
-            Enrolled Members (<span>" . count($class->students)  . "</span>)
+if (count($students)  > 0) {
+    echo "
+        <div class='blockwrapper'>
+            <div class = 'members-header members-students'>
+                Enrolled Members (<span>" . count($students)  . "</span>)
+            </div>
+            <div style = 'width: 853px'class = 'members-header-line'></div>
         </div>
-        <div style = 'width: 853px'class = 'members-header-line'></div>
-    </div>
-";
+    ";
 
-echo "
-         <div class = 'members-list-wrap student-member-list'>";
-}
+    echo "
+             <div class = 'members-list-wrap student-member-list'>";
 
-
-
-if (count($class->students)  > 0) {
-    foreach ($class->students as $student) {
+    foreach ($students as $student) {
         echo '
             <div class="member" id="' . $student->user_id . '">
                 <div class="member-person prof-member-person">
@@ -310,67 +218,57 @@ if (count($class->students)  > 0) {
                         }
 
        echo             '  <div class="member-bio">
-                        <span>' . $student->user_bio . '</span> <a href="profile.php?user_id=' . $student->user_id . '"><strong>View Profile</strong></a>
+                        <span>' . $student->user_bio . '</span> <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$student->user_id . '"><strong>View Profile</strong></a>
                       </div>
                     </div>';
         if ($student->user_type == 's') {
             echo '
         <h3 class="person-title">
-                <a href="profile.php?user_id=' . $student->user_id . ' "><strong class="search_unit">' . $student->firstname . ' ' . $student->lastname . ' </strong></a>
+                <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$student->user_id . ' "><strong class="search_unit">' . $student->firstname . ' ' . $student->lastname . ' </strong></a>
                 <span><a class="search_unit">' . $student->school->school_name . '</a></span></h3>';
         } else {
             echo '
                 <h3 class="person-title">
-                <a href="profile.php?user_id=' . $student->user_id . ' "><strong class="search_unit">Professor ' . $student->lastname . '</strong></a>
+                <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$student->user_id . ' "><strong class="search_unit">Professor ' . $student->lastname . '</strong></a>
                 <span><a class="search_unit">' . $student->school->school_name . '</a></span></h3>';
     }
     if ($student->user_id == $user->user_id) {
-        if ($is_admin) {
+        /*if ($is_admin) {
             echo '
                         <div class="upgrade-student">TA</div>
         ';
-        }
+        }*/
         echo '
                     </div>
                 </div>
           </div>';
         continue;
     }
-//        echo $user_id;
-//        echo $row['user_id'];
-        /*if (isFollowing($user_id, $row['user_id'])) {
+        if ($user->isFollowing($student)) {
             echo '
                     <div class="follow-btn">
                       <a class="follow tab_followed ready_to_unfollow">Following</a>
-                    </div>';
-            if ($admin_flag > 0) {
-                echo '
-                        <div class="upgrade-student">TA</div>
-                ';
-            }
-            echo '      </div>
+                    </div>
+                  </div>
                 </div>
           </div>';
-        } else { */
+        } else {
             echo '
                     <div class="follow-btn">
                       <a class="follow">Follow</a>
                     </div>';
-            if ($is_admin) {
+       /*     if ($is_admin) {
                 echo '
                         <div class="upgrade-student">TA</div>
                 ';
-            }
+            }*/
             echo '    </div>
             </div>
         </div>';
         }
-   // }
-}
+    }
 
-if (count($class->students) > 0) {
-//closing member list w
-echo '</div>';
+    echo '</div>';
 }
 
 
