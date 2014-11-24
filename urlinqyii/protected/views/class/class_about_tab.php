@@ -86,6 +86,60 @@ echo "
                     echo '<div class="desc-icon" id="sched-icon"></div><p>Monday 08:00 am-09:20 am, Wednesday 08:00 am-09:20 am</p>';
                     echo '<div class="desc-icon" id="loc-icon"></div><p>Class Location</p>';
                     echo '<div class="desc-icon" id="dept-icon"></div><p><a href="'.Yii::app()->getBaseUrl(true).'/user/'.$department->department_id.'">'.$department->department_name.'</a></p>';
+echo'
+            </div>
+';
+
+echo "
+           <div class = 'about-tab-members about-tab-block'>
+                <div class = 'tab-block-header'>
+                    <div class = 'block-head-left'>
+                        STUDENTS YOU KNOW WHO TOOK THIS COURSE <span>(" . count($all_following). ")</span>
+                    </div>
+                </div>
+                <div class = 'tab-block-content tab-block-content-scroll'>
+                    <div class = 'members-scrollwrap'>
+                        <ul class = 'people-you-know'>
+    ";
+foreach ($all_following as $user_followed) {
+    echo "
+                            <li class = 'people-box'>
+                                <div class = 'person-pic-wrap' style='background-image:url(";
+    if($user_followed->picture_file_id) {
+        echo Yii::app()->getBaseUrl(true) . $user_followed->pictureFile->file_url;
+    }else{
+        echo Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+    }
+    echo                     ")'>
+                                </div>"
+        //  <span class = 'grade'>  </span>
+        . " <div class = 'person-title-wrap'>
+                                    <a href='" .Yii::app()->getBaseUrl(true)."/profile/" . $user_followed->user_id . "'><p>" . $user_followed->firstname . " " . $user_followed->lastname . "</p></a>
+                                </div>
+                                <div class = 'after-click-effect'></div>
+                            </li>
+        ";
+}
+
+echo "
+                        </ul>
+                    </div>
+                    <a class = 'ddbox-hor-scroller hor-scroller-left'>
+                        <div class = 'ddbox-hor-scroller-cont'>
+                        </div>
+                        <i class = 'ddbox-hor-scroll-icon-left'>
+                        </i>
+                    </a>
+                    <a class = 'ddbox-hor-scroller hor-scroller-right'>
+                        <div class = 'ddbox-hor-scroller-cont'>
+                        </div>
+                        <i class = 'ddbox-hor-scroll-icon-right'>
+                        </i>
+                    </a>
+                </div>
+            </div>
+";
+
                     /*
                     echo '<p>Users you follow who have taken this course:<br>';
                     foreach($all_following as $user_followed){
@@ -106,6 +160,8 @@ echo "
                     echo '</p>';
                     */
 
+
+/*
 echo "
                 </div>
                     <div class = 'about_edit'>
@@ -115,8 +171,11 @@ echo "
                                 <button class = 'about_edit_cancel'>Cancel</button>
                             </div>
                     </div>
-            </div>
+                </div>
 ";
+*/
+
+
 /*
 $connected_users = get_connected_users($user_id);
 if (count($connected_users) > 0) {
@@ -126,7 +185,7 @@ JOIN user U on CU.user_id = U.user_id AND U.user_type = 's'
 JOIN student_attribs SA on U.user_id = SA.user_id
 WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
     $get_course_connection_query_result = $con->query($get_course_connection_query);
-*/
+
 
     if (count($all_following) > 0) {
         echo "
@@ -180,7 +239,10 @@ WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
             </div>
     ";
 
-    }   /* else {
+    }
+    */
+
+   /* else {
         $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
 WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
         $get_course_student_query_result = $con->query($get_course_student_query);
@@ -291,6 +353,9 @@ WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
 
 }
 */
+
+// Professor User
+/*
 echo "
     <div class = 'about-tab-prof about-tab-block'>
         <a class = 'prof-header'><div class = 'tab-block-header'>
@@ -301,9 +366,11 @@ echo "
         </div></a>
     </div>
 ";
+*/
 
 //closing about-tab-leftsec
 echo "
+        </div>
         </div>
 ";
 
@@ -311,6 +378,8 @@ echo "
 echo "
         <div class = 'about-tab-rightsec'>
             <div class = 'group-about group-about-2'>
+            </div>
+        </div>
 ";
 /*
 $get_course_files_query = "SELECT FU.*, U.user_id, U.firstname, U.lastname FROM course_files CF
@@ -327,7 +396,8 @@ LIMIT 0,1";
 $get_course_files_query_result = $con->query($get_course_files_query);
 
 if (mysqli_num_rows($get_course_files_query_result) > 0) {
-   */ echo "
+
+    echo "
                  <div class = 'box-header'>
                     <span class = 'bh-t1'>
                         RECENT UPLOAD
@@ -343,12 +413,14 @@ if (mysqli_num_rows($get_course_files_query_result) > 0) {
                     </form>
                 </div>
     ";
+*/
+
 /*    $file_row = $get_course_files_query_result->fetch_array();
     $time_string = new DateTime(user_time($file_row['created_timestamp']));
     $time_string = $time_string->format("F j");
 
     //closing group-about
-  */  echo "
+    echo "
                 <div class = 'box-content content-file'>
                     <a class = 'file-download' href='php/download_file.php?file_id="
                             //. $file_row['file_id'] .
@@ -366,6 +438,7 @@ if (mysqli_num_rows($get_course_files_query_result) > 0) {
                  //   </div>
             "    </div>
     ";
+
 
 
 //}
@@ -391,6 +464,7 @@ echo "
                 </div>
             </div>
 ";
+*/
 
 //closing about-content
 echo "
