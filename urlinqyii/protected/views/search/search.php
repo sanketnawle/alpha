@@ -294,34 +294,41 @@
                 <div class="vert-area">
                     <div class="course vert-results-wrapper">
                         <div class=results-top-sec>
-                            <div class="result-header"></div>
-                            <div class="result-header-right"></div>
-                            <!--The template for Courses (not including classes within it) who match up with the search query-->
+                            <script id="vertical_search_results_top" type="text/x-handlebars-template">
+                                <div class="result-header">
+                                    {{rname}}
+                                </div>
+                                <div class="result-header-right">
 
+                                </div>
+                            <!--The template for Courses (not including classes within it) who match up with the search query-->
+                            </script>
                             <div class="results-main-sec">
                                 <script id="vertical_search_results" type="text/x-handlebars-template">
-                                    <p class="description"></p>
+                                    <p class="description">
+                                        {{description}}
+                                    </p>
 
                                     <div class="lower-info keys">
-                                        <div class="info-key instructor">
-                                            Instructor
+                                        <div class="info-key adminr">
+                                            {{admin_key}}
                                         </div>
                                         <div class="info-key-subject">
-                                            Department
+                                            {{department_key}}
                                         </div>
                                         <div class="info-key members">
-                                            Members
+                                            {{members_key}}
                                         </div>
                                     </div>
                                     <div class="lower-info">
-                                        <div class="info-piece instructor">
-
+                                        <div class="info-piece admin">
+                                            {{admin_value}}
                                         </div>
                                         <div class="info-piece subject">
-
+                                            {{department_value}}
                                         </div>
                                         <div class="info-piece members">
-
+                                            {{members_value}}
                                         </div>
                                     </div>
 

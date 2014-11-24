@@ -7,6 +7,7 @@ $(document).ready(function(){
         }
     }
 
+    forceLeftMenuClose = true;
 
 
     function dynamic_dropLists()
@@ -49,6 +50,7 @@ $(document).ready(function(){
         //Get each course attribute and generate HTML!
         $.each(courses_json, function(index, course){
             //alert(JSON.stringify(courses_json[index]));
+            show_courses_head(courses_json[index]);
             show_courses(courses_json[index]);
         });
         //Get each clubs attribute and generate HTML!
@@ -111,12 +113,38 @@ $(document).ready(function(){
         //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_search_results").html();
         var template = Handlebars.compile(source);
-        var generated_html = template(JSON.stringify(result_json));
+        //var generated_html = template(result_json);
+        var context =
+        {
+            description: result_json["course_desc"],
+            admin_key: "School",
+            department_key: "Department",
+            members_key: "Members",
+            admin_value: result_json["school_id"],
+            department_value: result_json["dept_id"],
+            members_value: 5
+        }
+        var generated_html = template(context);
         $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(generated_html);
         //alert(JSON.stringify($(".description")));
 
-        $('.description').append(JSON.stringify(result_json['description']));
+        //$('.description').append(JSON.stringify(result_json['description']));
+
+    }
+    function show_courses_head(result_json) {
+        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
+        var source   = $("#vertical_search_results_top").html();
+        var template = Handlebars.compile(source);
+        //var generated_html = template(result_json);
+        var context =
+        {
+            rname: result_json['course_name']
+        }
+        var generated_html = template(context);
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        //alert(JSON.stringify($(".description")));
+
+        //$('.description').append(JSON.stringify(result_json['description']));
 
     }
     function show_clubs(result_json){
@@ -174,6 +202,7 @@ $("#ciyd").click(function(){
         }
     });
 });
+
 //For the specific searches (from topbar.js)
 $("#ciys").click(function(){
     //alert("ciys");
