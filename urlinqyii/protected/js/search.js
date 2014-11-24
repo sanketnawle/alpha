@@ -97,26 +97,26 @@ $(document).ready(function(){
         var source   = $("#user_search_results").html();
         var template = Handlebars.compile(source);
         var generated_html = template(JSON.stringify(result_json));
-        $('#userbox').append(generated_html).hide().fadeIn();
-        alert(generated_html);
+        $('.slide-inner').append(generated_html).hide().fadeIn();
     }
     function show_courses(result_json) {
         //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
-        var source   = $("#course_search_results").html();
+        var source   = $("#vertical_search_results").html();
         var template = Handlebars.compile(source);
         var generated_html = template(JSON.stringify(result_json));
-        $('#coursebox').append(generated_html).hide().fadeIn();
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        //alert(generated_html);
     }
     function show_clubs(result_json){
         //alert('group_id: ' + JSON.stringify(result_json["group_id"]));
-        var source   = $("#club_search_results").html();
+        var source   = $("#vertical_search_results").html();
         var template = Handlebars.compile(source);
         var generated_html = template(JSON.stringify(result_json));
         $('#clubbox').append(generated_html).hide().fadeIn();
     }
     function show_departments(result_json){
         //alert('department_id: ' + JSON.stringify(result_json["department_id"]));
-        var source   = $("#department_search_results").html();
+        var source   = $("#vertical_search_results").html();
         var template = Handlebars.compile(source);
         var generated_html = template(JSON.stringify(result_json));
         $('#deptbox').append(generated_html).hide().fadeIn();

@@ -241,53 +241,87 @@ JQuery adjusted in search.js to accomodate for new functionality.
         <hr class = "hr-divider">
 
 
-
         <button class = "search-btn" name = "commit" id ="search" >Search</button>
 
     </div>
 </div>
-
 <!--
 ================================================================================================================================
                                                 Templates
 ================================================================================================================================
 -->
-<div class = "results-main-sec" class = "midsec loadani_parent">
 
-    <!--The template for users (be it student or professor) who match up with the search query-->
-    <script id="user_search_results" type="text/x-handlebars-template">
-        <div class = "all_results_active">
-            <div class = "horiz-area">
-                <div class = "horiz-wrapper">
-                    <div class = "horiz-mask">
-                        <div class = "content-area">
-                            <div class = "ContentSlider">';
-                                <div class = "slide" style = "transform: matrix(1,0,0,1,' . $photo_position . ',0); -webkit-transform: matrix(1,0,0,1,' . $photo_position . ',0)">
+<div id = "result"  class = "midsec loadani_parent" style="zoom:1;">
+    <div class="all_results_active" style ="opacity:1;">
+        <div class = "horiz-area">
+            <div class ="horiz-wrapper">
+                <div class = "horiz-mask">
+                    <div class = "content-area">
+                        <!--The template for users (be it student or professor) who match up with the search query-->
+
+                            <div class = "ContentSlider">
+                                <div class = "slide">
+                                    <script id="user_search_results" type="text/x-handlebars-template">
                                     <div class = "slide-inner">
                                         <div class = "result-photo">
-                                            <h3>GARY</h3>
-                                            <p>shhdhd</p>
+                                            <img src = "http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg">
+                                            <h3></h3>
+                                            <p></p>
                                         </div>
-                                        <div class = "person-bottom-functions">';
+                                        <div class = "person-bottom-functions">
                                             <div class = "link-button">
+                                                <a class = "link link-up" data value ="1">Follow</a>
                                             </div>
                                         </div>
                                     </div>
+                                    </script>
                                 </div>
                             </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </script>
-
-    <!--The template for Courses (not including classes within it) who match up with the search query-->
-    <script id="course_search_results" type="text/x-handlebars-template">
-        <div id = "coursebox">
-
+    </div>
+    <div class = "vert-area">
+        <div class = "course vert-results-wrapper">
+            <div class = results-top-sec>
+                <div class = "result-header"></div>
+                <div class = "result-header-right"></div>
+                <!--The template for Courses (not including classes within it) who match up with the search query-->
+                <script id="vertical_search_results" type="text/x-handlebars-template">
+                    <div class = "results-main-sec">
+                        <p class = "description"></p>
+                        <div class = "lower-info keys">
+                            <div class = "info-key instructor">
+                                Instructor
+                            </div>
+                            <div class = "info-key-subject">
+                                Department
+                            </div>
+                            <div class = "info-key members">
+                                Members
+                            </div>
+                        </div>
+                        <div class = "lower-info">
+                            <div class = "info-piece instructor">
+                                {{}}
+                            </div>
+                            <div class = "info-piece subject">
+                                {{}}
+                            </div>
+                            <div class = "info-piece members">
+                                {{}}
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
         </div>
-    </script>
+    </div>
+
+
+
 
     <!--The template for Clubs  who match up with the search query-->
     <script id="club_search_results" type="text/x-handlebars-template">
@@ -305,7 +339,16 @@ JQuery adjusted in search.js to accomodate for new functionality.
 
 </div>
 
+
 </div>
+</div>
+<div id = "fb-root" class = "fb_reset">
+    <div style = "position: absolute; top: -100000px; height: 0px; width: 0px;">
+        <div></div>
+    </div>
+    <div style = "position: absolute; top: -100000px; height:0px; width:0px;">
+
+    </div>
 </div>
 </body>
 </html>
@@ -449,11 +492,9 @@ JQuery adjusted in search.js to accomodate for new functionality.
      */
 
 
-
-
-
-
 </script>
+
+
 
 
 
