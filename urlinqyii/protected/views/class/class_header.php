@@ -337,7 +337,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         echo '
             </div >
         </div >
-        <div class = "tab-wedge-down"  >
+        <div class = "tab-wedge-down">
         </div >
         </div>
     </div > ';

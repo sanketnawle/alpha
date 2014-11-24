@@ -55,6 +55,17 @@ echo "
     <div class = 'about-content'>
 ";
 
+//About this Class header
+echo '
+    <div class = "about-header">
+        <div class="about-info-img"></div>
+        <div class="about-info-txt">About this Class &mdash; </div>
+        <div class="about-info-title">'.$course->course_name.'</div>
+        <a href="'.Yii::app()->getBaseUrl(true).'/class/1"><div class="about-back">Back</div><div class="about-back-img"></div></a>
+    </div>
+    <hr>
+';
+
 //about left section starts
 echo "
         <div class = 'about-tab-leftsec'>
@@ -66,17 +77,16 @@ echo "
             <div class = 'about-tab-about about-tab-block'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>
-                        About
+                        Class Description
                     </div>
                 </div>
                 <div class = 'tab-block-content'>";
-                    echo '<p>Schedule: <br>';
-                    foreach($schedules as $schedule){
-                        echo $schedule.'<br>';
-                    }
-                    echo '</p>';
-                    echo '<p>Course Name: <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$course->course_id.'">'.$course->course_name.'</a></p>';
-                    echo '<p>Course Description: '.$course->course_desc.'</p>';
+                    echo '<p>'.$course->course_desc.'</p>';
+                    echo '<hr>';
+                    echo '<div class="desc-icon" id="sched-icon"></div><p>Monday 08:00 am-09:20 am, Wednesday 08:00 am-09:20 am</p>';
+                    echo '<div class="desc-icon" id="loc-icon"></div><p>Class Location</p>';
+                    echo '<div class="desc-icon" id="dept-icon"></div><p><a href="'.Yii::app()->getBaseUrl(true).'/user/'.$department->department_id.'">'.$department->department_name.'</a></p>';
+                    /*
                     echo '<p>Users you follow who have taken this course:<br>';
                     foreach($all_following as $user_followed){
                         if($user_followed->user_type == 's'){
@@ -86,7 +96,6 @@ echo "
                             echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">Professor '.$user_followed['lastname'].'</a><br>';
                         }
                     }
-                    echo '<p>Department Name: <a href="'.Yii::app()->getBaseUrl(true).'/user/'.$department->department_id.'">'.$department->department_name.'</a></p>';
                     echo '<p>Department description: '.$department->department_description.'</p>';
                     echo '<p>Professor Name: <a href="'.Yii::app()->getBaseUrl(true).'/user/'.$professor->user_id.'"> Professor '.$professor->firstname.' '.$professor->lastname.'</a></p>';
                     echo '<p>Professor Bio: '.$professor->user_bio.'</p>';
@@ -95,6 +104,7 @@ echo "
                         echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$other_course['course_id'].'">'.$other_course['course_name'].'</a><br>';
                     }
                     echo '</p>';
+                    */
 
 echo "
                 </div>
