@@ -140,7 +140,10 @@ class User extends CActiveRecord
             'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id, to_user_id)'),
             'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id, from_user_id)'),
             'userInterests' => array(self::MANY_MANY, 'Tag', 'user_interest(user_id, tag_id)'),
-            'showcase' => array(self::MANY_MANY, 'File', 'showcase(user_id, file_id)','order'=>'created_timestamp'),
+
+            'showcase' => array(self::HAS_MANY, 'Showcase', 'user_id'),
+            'showcase_files' => array(self::HAS_MANY, 'File', 'file_id','through'=>'showcase','order'=>'created_timestamp'),
+            'majors' => array(self::MANY_MANY, 'Major', 'user_major(user_id, id)'),
 		);
 	}
 

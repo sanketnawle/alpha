@@ -41,30 +41,36 @@
                     // Create a formdata object and add the files
                     var data = new FormData();
                     if(upload_file){
-                        data.append("file", upload_file);
+                        data.append("uploadFile", upload_file);
                     }else if($('#link-entry').val() != ''){
                         data.append("link_url",$('#link-entry').val());
                     }else{
                         alert('Please upload a file or provide a link to your file');
                     }
                     data.append("title", $('#title-entry').val());
+                    data.append("desc", $('#desc-entry').val());
                     data.append("user", user_id);
                     $.ajax({
                         url: base_url+'/profile/addShowcase',
                         type: 'POST',
                         data: data,
                         cache: false,
-                        //dataType: 'json',
+                        dataType: 'json',
                         processData: false, // Don't process the files
                         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
                         success: function(data)
                         {
-                            if(!(/error/i.exec(data))){
-                                $('.showcase-bar').prepend('<img src="'+base_url+data+'">');
+                            if(data.status == "success"){
+                                //$('.showcase-bar').prepend('<img src="'+base_url+data.message+'">');
                                 $('.showcase-form').hide();
                                 $('.root').css('opacity', '1');
+                                //reset form
+                                $('#link-entry').val('');
+                                $('#title-entry').val('');
+                                $('#link-entry').prop('disabled',false);
+                                alert(data.message);
                             }else{
-                                alert(data);
+                                alert(data.message);
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown)
@@ -2315,6 +2321,8 @@
                     $('.info-block textarea').attr("readonly", false);
                     $('p.school-info').css('margin-top', '-20px');
                     $('.showcase-image-control').css('visibility', 'visible');
+                    $('.user-groups, .showcase-image').css('opacity', '0.2');
+                    $('.center-image').css('opacity', '1');
 
                     //save current info
                     school = $('input[name=school_name]').val();
@@ -2347,6 +2355,8 @@
                     $('.info-block input').attr("readonly", true);
                     $('.info-block textarea').attr("readonly", true);
                     $('.showcase-image-control').css('visibility', 'hidden');
+                    $('.user-groups').css('opacity', '1');
+                    $('.showcase-image').css('opacity', '1');
 
                     //load saved inputs
                     $('input[name=school_name]').val(school);
@@ -2372,25 +2382,52 @@
                 });
 
                 //autocomplete majors
-                /*$('input[name=major_name]').on('change',function(){
+                var index;
+                var new_majors=[];
+                $('input[name=major_name]').on('keyup',function(){
+                    index = $('input[name=major_name]').index(this)
+                    new_majors[index] = $(this).val();
                     $.ajax({
                         url: base_url+'/profile/autoComplete',
                         type: 'GET',
-                        data: {'text': $(this).val()},
-                        cache: false,
+                        data: {major: new_majors[index]},
+                      //  cache: false,
                         dataType: 'json',
-                        processData: false, // Don't process the files
-                        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                       // processData: false, // Don't process the files
+                       // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
                         success: function(result)
                         {
-                            $('input[name=major_name]').autocomplete({source:data});
+
+                            $('input[name=major_name]').eq(index).autocomplete({source:result});
                         },
                         error: function(jqXHR, textStatus, errorThrown)
                         {
                             alert(errorThrown);
                         }
                     });
-                })*/
+                })
+                var new_school;
+                $('input[name=school_name]').on('keyup',function(){
+                    new_school = $(this).val();
+                    $.ajax({
+                        url: base_url+'/profile/autoComplete',
+                        type: 'GET',
+                        data: {school: new_school},
+                        //  cache: false,
+                        dataType: 'json',
+                        // processData: false, // Don't process the files
+                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function(result)
+                        {
+
+                            $('input[name=school_name]').autocomplete({source:result});
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(errorThrown);
+                        }
+                    });
+                })
                 $('body').on('click', '.finish-edit-button', function(){
                     $('.user-information h1, .edit_prof_button').css('display', 'initial');
                     $('.user-information .school-info').css('opacity', '1');
@@ -2418,7 +2455,12 @@
                     if(new_bio){
                         data.append('bio',new_bio);
                     }
-
+                    if(new_major){
+                        data.append('major',new_major);
+                    }
+                    if(new_school){
+                        data.append('major',new_school);
+                    }
                     $.ajax({
                         url: base_url+'/profile/editProfile',
                         type: 'POST',
@@ -2437,6 +2479,10 @@
                             if(result.bio != "success"){
                                 alert(result.bio);
                                 $('.info-block textarea').val(bio);
+                            }
+                            if(result.major != "success"){
+                                alert(result.major);
+                                $('input[name=major_name]').val(majors[0]);
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown)
@@ -2463,24 +2509,121 @@
                         $('.edit-showcase-form').css('display', 'none');
                     });
                 });
+                $("body").on("mouseenter", ".profpic-container-real", function(){
+                    $("#camera-icon-div").addClass("camera-icon-div");
+                    $("#camera-icon-div").removeClass("camera-icon-div-before");
+                    $(".camera-icon-div button").addClass("camera-icon-button");
+                    $(".camera-icon-div button").removeClass("camera-icon-button-before");
+                    $('.camera-icon-button span').text('Update Profile Picture');
+                });
+                $("body").on("mouseleave", ".profpic-container-real", function(){
+                    $("#camera-icon-div").removeClass("camera-icon-div");
+                    $("#camera-icon-div").addClass("camera-icon-div-before");
+                    $("#camera-icon-div button").removeClass("camera-icon-button");
+                    $("#camera-icon-div button").addClass("camera-icon-button-before");
+                    $('.camera-icon-div-before span').text('');
+                });
                 $('body').on('mouseenter', '#circle-div-delete', function(){
                     $('#delete-on-hover-before').addClass('delete-on-hover');
+                    $('#delete-on-hover-before').css('visibility', 'visible');
                     $('#hint_wedge-before').addClass('hint_wedge');
                 });
                 $('body').on('mouseleave', '#circle-div-delete', function(){
                     $('#delete-on-hover-before').removeClass('delete-on-hover');
+                    $('#delete-on-hover-before').css('visibility', 'hidden');
                     $('#hint_wedge-before').removeClass('hint_wedge');
                 });
                 $('body').on('mouseenter', '.center-image', function(){
-                    $('.circle-div').css('visibility', 'visible');
+                    //$('.circle-div').css('visibility', 'visible');
+                    $('.image-panel-wrapper').css('visibility', 'visible');
                 });
                 $('body').on('mouseleave', '.center-image', function(){
-                    $('.circle-div').css('visibility', 'hidden');
+                    //$('.circle-div').css('visibility', 'hidden');
+                    $('.image-panel-wrapper').css('visibility', 'hidden');
+                });
+                var index = 0;
+                while( ($('#img-slot' + index).length) != 0){
+                    var showcaseType = $('#img-slot' + index). attr('data-file-type');
+                    if(showcaseType == '.pdf'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#f15c61');
+                        $('#img-slot' + index + ' .showcase-label span').text('.pdf');
+                    }
+                    else if(showcaseType == 'url'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', 'transparent');
+                        $('#img-slot' + index + ' .download-showcase-button').css('width', '50px');
+                        $('#img-slot' + index + ' .download-showcase-button i').removeClass('download_button_icon');
+                        $('#img-slot' + index + ' .download-showcase-button i').addClass('link_button_icon');
+                    }
+                    else if(showcaseType == '.doc'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#2a5896');
+                        $('#img-slot' + index + ' .showcase-label span').text('.doc');
+                    }
+                    else if(showcaseType == '.ppt'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#d04525');
+                        $('#img-slot' + index + ' .showcase-label span').text('.ppt');
+                    }
+
+                    var imgWidth = $('#img-slot' + index + ' img').width();
+                    if(index == 0){
+                        $('#img-slot' + index).css( 'margin-left',  (($(window).width()/2) - (487/2)) );
+                    }
+                    else{
+                        $('#img-slot' + index).css( 'margin-left', '7px' );
+                    }
+                    ++index;
+                }
+                $('body').on('click', '#circle-div-switch-left', function(){
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
+                    if( $('#' + siblingID).length != 0 ){
+                        var parentWidth = $(this).parents('.showcase-image').width();
+                        var prevImgWidth = $('#' + siblingID).width();
+                        var originalMargin = parseInt( $('#img-slot0').css('margin-left') );
+                        var newMargin = parentWidth/2 + 7 + prevImgWidth/2;
+                        $('#' + parentID).removeClass('center-image');
+                        $('#' + siblingID).addClass('center-image');
+                        $('#img-slot0').css('margin-left', (originalMargin + newMargin) );
+                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        $('#download-showcase-button').css('background-position', '-28px -100px');
+                    }
+                });
+
+                $('body').on('click', '#circle-div-switch', function(){
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
+                    if( $('#' + siblingID).length != 0 ){
+                        var parentWidth = $(this).parents('.showcase-image').width();
+                        var nextImgWidth = $(this).parents('.showcase-image').next('.showcase-image').width();
+                        var originalMargin = parseInt( $('#img-slot0').css('margin-left') );
+                        var newMargin = parentWidth/2 + 7 + nextImgWidth/2;
+                        $('#' + parentID).removeClass('center-image');
+                        $('#' + siblingID).addClass('center-image');
+                        if(parentID == 'img-slot0'){
+                            $(this).parents('.showcase-image').css('margin-left', (originalMargin - newMargin) );
+                        }
+                        else{
+                            $('#img-slot0').css('margin-left', (originalMargin - newMargin) );
+                        }
+                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        $('#download-showcase-button').css('background-position', '-28px -100px');
+                    }
+                });
+                $('body').on('click', '#circle-div-delete', function(){
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
+                    if( $('#' + siblingID).length != 0 ){
+                        $('#' + siblingID).addClass('center-image');
+                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        $('#' + parentID).remove();
+                    }
+                    else{
+
+                    }
                 });
                 /*Code that handles images on showcase bar*/
-                var imgList= ["../assets/nyu.jpg", "../assets/person3.jpg", "../assets/person4.jpg", "../assets/link_photo.jpg"];
-                var centerImg = imgList[0];
-                $(document).ready(function(){
+               // var imgList= ["../assets/nyu.jpg", "../assets/person3.jpg", "../assets/person4.jpg", "../assets/link_photo.jpg"];
+             //   var centerImg = imgList[0];
+               /* $(document).ready(function(){
                     $('.center-image img').attr('src', centerImg);
                     $('.center-image img').on('load', function(){
                         var newWidth = $(this).width();
@@ -2497,7 +2640,7 @@
                             $('#img-slot1').css('margin-left', 'calc(50% + ' + (( $('.center-image img').width() )/2 + 7) + 'px)');
                         });
                     }
-                });
+                });*/
 
             });
 

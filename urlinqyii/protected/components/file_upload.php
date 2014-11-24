@@ -7,34 +7,34 @@
 function getFileMimeType($file) {
     if (function_exists('finfo_file')) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $type = finfo_file($finfo, $file);
-        finfo_close($finfo);
-    } else {
-        require_once 'upgradephp/ext/mime.php';
-        $type = mime_content_type($file);
-    }
+    $type = finfo_file($finfo, $file);
+    finfo_close($finfo);
+} else {
+    require_once 'upgradephp/ext/mime.php';
+    $type = mime_content_type($file);
+}
 
-    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
-        $secondOpinion = exec('file -b --mime-type ' . escapeshellarg($file), $foo, $returnCode);
-        if ($returnCode === 0 && $secondOpinion) {
-            $type = $secondOpinion;
-        }
+if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+    $secondOpinion = exec('file -b --mime-type ' . escapeshellarg($file), $foo, $returnCode);
+    if ($returnCode === 0 && $secondOpinion) {
+        $type = $secondOpinion;
     }
+}
 
-    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
-        require_once 'upgradephp/ext/mime.php';
-        $exifImageType = exif_imagetype($file);
-        if ($exifImageType !== false) {
-            $type = image_type_to_mime_type($exifImageType);
-        }
+if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+    require_once 'upgradephp/ext/mime.php';
+    $exifImageType = exif_imagetype($file);
+    if ($exifImageType !== false) {
+        $type = image_type_to_mime_type($exifImageType);
     }
+}
 
     return $type;
 }
 
 
-function file_upload($files) {
-
+function file_upload($files, $path="") {
+    //example of path: 'uploads/preview/'
     $user = User::model()->find('user_id=:id', array(':id'=>1));
 
 
@@ -60,17 +60,21 @@ function file_upload($files) {
 
         $path_parts = pathinfo($files["uploadFile"]["name"]);
         $extension = $path_parts['extension'];
-        $file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
+        //$file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
+        $file_type = $extension;
         $random_name = token($user->user_id,$user->firstname);
 
 
 
-        $local_directory = 'assets/test/';
+        $local_directory = 'assets/'.$path;
+        if(!is_dir($local_directory)) {
+            mkdir($local_directory);
+        }
         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             include "ImageCompress.php";
             image_compress($files["uploadFile"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
         } else{
-            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $files["uploadFile"]["name"]);
+            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $random_name.$extension);
         }
 
 

@@ -105,18 +105,18 @@ return array(
 
 		// uncomment the following to use a MySQL database
 
-//		'db'=>array(
-//			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
-//			'emulatePrepare' => true,
-//			'username' => 'root',
-//			'password' => 'root',
-//			'charset' => 'utf8',
-//		),
-        'db'=>get_db_array(),
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+		),
+        /*'db'=>get_db_array(),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
-		),
+		),*/
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

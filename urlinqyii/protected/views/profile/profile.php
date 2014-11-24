@@ -51,11 +51,11 @@
         <!--<base href='https://urlinq.com/beta/'/>-->
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundProfile.css" />
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300,200" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/add_event.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/professor.css" />
-
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 
 
@@ -98,6 +98,7 @@
                 <div class="showcase-form-header">
                     Adding a New Showcase<i></i>
                     <textarea id="title-entry" name="title-entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you"></textarea>
+                    <textarea id="desc-entry" name="desc-entry" placeholder="Add a description"></textarea>
                     <textarea id="link-entry" name="link-entry" placeholder="Paste a link to your showcase"></textarea>
                     <button type="button" id="upload-link-button" ><i></i>Upload Showcase</button>
                     <div style='height: 0px;width:0px; overflow:hidden;'>
@@ -285,13 +286,173 @@
                         </div>
 						<div class="showcase-bar">
                             <?php
-                            foreach($showcase as $i=>$image){
-                                echo '<div class="showcase-image" id="img-slot'.$i.'">
-                                          <img src="'.Yii::app()->getBaseUrl(true).$image->file_url.'">
-                                      </div>';
-                            }
-                            ?>
+                           /* foreach($showcase as $i=>$entry){
+                                $ext = $entry->file->file_extension;
+                                if($ext != 'url'){
+                                    $ext = '.'.$ext;
+                                }
+                                if($i == 0){
+                                    echo '<div class="showcase-image center-image" id="img-slot0" data-file-type="'.$ext.'">';
+                                }else{
+                                    echo '<div class="showcase-image" id="img-slot'.$i.'" data-file-type="'.$ext.'">';
+                                }
+                                if($entry->preview_file_id){
+                                    echo 'style="background-image: url('.$entry->preview_file->file_url.');">';
+                                }
+                                echo '
+                                        <div class="showcase-label"><span>';
+                                if($entry->origin == 'link'){
+                                    echo $entry->file->file_name;
+                                }
+                                echo '
+                                        </span>
+                                        </div>
+                                        <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                        <div class="showcase-description-wrap">
+                                            <div class="showcase-title">'.
+                                               $entry->title
+                                            .'</div>
+                                            <div class="showcase-description">'.
+                                                $entry->desc
+                                           .' </div>
+                                        </div>';
+                                if($i==0){
+                                    echo '<div class="image-panel-wrapper">
+                                                <div class="circle-div" id="circle-div-delete">
+                                                </div>
+                                                <i></i>
+                                                <div id="hint_wedge-before">
 
+                                                </div>
+                                                <div id="delete-on-hover-before">
+                                                    Delete
+                                                </div>
+                                                <div class="showcase-image-control">
+                                                    <div class="add-showcase-button" id="edit-showcase-button">
+                                                        <i></i>
+                                                        <button type="button"> Edit </button>
+                                                    </div>
+                                                    <div class="add-showcase-button" id="remove-showcase-button">
+                                                        <i></i>
+                                                        <button type="button" id="remove-showcase-button-id"> Remove </button>
+                                                    </div>
+                                                </div>
+                                                <div class="switch-image-panel">
+                                                    <div class="circle-div" id="circle-div-switch">
+                                                        <div class="triangle-wedge">
+                                                        </div>
+                                                        <div class="square-wedge">
+                                                        </div>
+                                                    </div>
+                                                    <div class="circle-div" id="circle-div-switch-left">
+                                                        <div class="triangle-wedge" id="triangle-wedge-left">
+                                                        </div>
+                                                        <div class="square-wedge" id="square-wedge-left">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+
+                                }
+                                echo '</div>';
+
+                            }*/
+
+                            ?>
+                            <div class="showcase-image center-image" id="img-slot0" data-file-type=".pdf">
+                                <div class="showcase-label">
+                                    <span></span>
+                                </div>
+                                <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                <div class="showcase-description-wrap">
+                                    <div class="showcase-title">
+                                        Adtech and Big Data
+                                    </div>
+                                    <div class="showcase-description">
+                                        This is a paper on the use of big data in digital marketing.
+                                    </div>
+                                </div>
+                                <div class="image-panel-wrapper">
+                                    <div class="circle-div" id="circle-div-delete">
+                                    </div>
+                                    <i></i>
+                                    <div id="hint_wedge-before">
+
+                                    </div>
+                                    <div id="delete-on-hover-before">
+                                        Delete
+                                    </div>
+                                    <div class="showcase-image-control">
+                                        <div class="add-showcase-button" id="edit-showcase-button">
+                                            <i></i>
+                                            <button type="button"> Edit </button>
+                                        </div>
+                                        <div class="add-showcase-button" id="remove-showcase-button">
+                                            <i></i>
+                                            <button type="button" id="remove-showcase-button-id"> Remove </button>
+                                        </div>
+                                    </div>
+                                    <div class="switch-image-panel">
+                                        <div class="circle-div" id="circle-div-switch">
+                                            <div class="triangle-wedge">
+                                            </div>
+                                            <div class="square-wedge">
+                                            </div>
+                                        </div>
+                                        <div class="circle-div" id="circle-div-switch-left">
+                                            <div class="triangle-wedge" id="triangle-wedge-left">
+                                            </div>
+                                            <div class="square-wedge" id="square-wedge-left">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="showcase-image" id="img-slot1" data-file-type="url" style="background-image: url('img/test_image5.jpg');">
+                                <div class="showcase-label">
+                                    <span>http://www.nytimes.com/video/science/100...</span>
+                                </div>
+                                <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                <div class="showcase-description-wrap">
+                                    <div class="showcase-title">
+                                        Economics on the Moon
+                                    </div>
+                                    <div class="showcase-description">
+                                        I released this article on the New York Times back in my first year of tenure. Boy were those the days.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="showcase-image" id="img-slot2" data-file-type=".doc">
+                                <div class="showcase-label">
+                                    <span></span>
+                                </div>
+                                <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                <div class="showcase-description-wrap">
+                                    <div class="showcase-title">
+                                        A Test Document
+                                    </div>
+                                    <div class="showcase-description">
+                                        This is a paper about the possibility of time travelling.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="showcase-image" id="img-slot3" data-file-type=".ppt">
+                                <div class="showcase-label">
+                                    <span></span>
+                                </div>
+                                <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                <div class="showcase-description-wrap">
+                                    <div class="showcase-title">
+                                        Quantum Physics
+                                    </div>
+                                    <div class="showcase-description">
+                                        This is a PowerPoint lecture I did on Quantum Physics.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="showcase-image" id="img-slot4" style="background-image: url('img/person5.jpg')">
+                                <!--<img src="img/person5.jpg">-->
+                            </div>
 
 						</div>
                         <div class="no-showcase ns-hide" style="display:none;">
@@ -735,9 +896,13 @@
                         <!--	</div>-->
                     </div>
                     <h3 id="major-section">MAJOR</h3>
-                    <div class="info-block">
-                        <input name="major_name" value="<?php echo $userProfile->studentAttributes->major?>" readonly>
-                    </div>
+                    <?php foreach($majors as $major){
+                        echo ' <div class="info-block">
+                                    <input name="major_name" value="'.$major['name'].'" readonly>
+                                </div>';
+                    }
+                    ?>
+
                     <?php if($userProfile->studentAttributes->minor){
                         echo '
                             <h3>MINOR</h3>
@@ -867,7 +1032,7 @@
                         echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'profile.php','target_type'=>'user','target_id'=>$user->user_id));
                         echo "</div>";
                         echo "<div class='group_feed_wrap'>";
-                        Yii::app()->runController('partial/feeds',array('user'=>$user));
+                        Yii::app()->runController('partial/feed',array('user'=>$user));
 
                         echo "</div>";
                         ?>

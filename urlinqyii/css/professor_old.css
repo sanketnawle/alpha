@@ -1,7 +1,7 @@
 header.professor-header {
     margin: 0;    
     background: #333 url(../assets/noise-black.png);
-    background-image: url(../assets/profile-header-gradient.png), url(../assets/noise-black.png);
+    /*background-image: url(../assets/profile-header-gradient.png), url(../assets/noise-black.png);*/
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
     -moz-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
     box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
@@ -651,6 +651,9 @@ div.user-groups {
     margin-top: -10px;
     padding-left: 7px;
     height: auto;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .user-groups .user-groups-tabs {
@@ -3451,6 +3454,7 @@ button.edit_prof_button{
 	padding-left: 27px;
 	padding-top: 2px;
 	margin-top: 19px;
+	font-family: 'OpenSans', sans-serif;
 }
 button.edit_prof_button b{
 	-webkit-background-size: auto;
@@ -3562,12 +3566,62 @@ p.school-info {
 	cursor: text;
 }
 .showcase-bar{
-	display: inline-block;
 	white-space: nowrap;
 }
-.showcase-bar img{
+.showcase-image-wrapper{
+	display: inline-block;
+}
+.showcase-image-wrapper img{
 	height: 224px;
 	margin-top: 3px;
+}
+.showcase-image-control{
+	position: absolute;
+	top: 0;
+	z-index: 99;
+	width: inherit;
+	visibility: hidden;
+}
+#edit-showcase-button{
+	width: 107px;
+	height: 107px;
+	right: 50%;
+	top: 50px;
+}
+#edit-showcase-button button, #remove-showcase-button button{
+	width: 103px;
+	height: 103px;
+	margin-left: 1px;
+	margin-top: 2px;
+	padding-top: 55px;
+	font-size: 17.05px;
+	font-weight: 600;
+}
+#edit-showcase-button i, #remove-showcase-button i{
+	position: absolute;
+	-webkit-background-size: auto;
+	background-image: url('../assets/ProfilePageIconMap.png');
+	background-position: 1px -126px;
+	background-repeat: no-repeat;
+	background-size: 125%;
+	height: 38px;
+	width: 38px;
+	margin-top: 22px;
+	margin-left: 34px;
+}
+#remove-showcase-button{
+	width: 107px;
+	height: 107px;
+	right: calc(50% - 121px);
+	top: 50px;
+}
+#remove-showcase-button i{
+	background-position: 0px -165px;
+	background-size: 100%;
+	height: 6px;
+	width: 48px;
+	margin-left: 30px;
+	margin-top: 40px;
 }
 .showcase-caption{
   font-size: 15.28px;
@@ -3586,6 +3640,8 @@ p.school-info {
 	top: 37px;
 	right: 9px;
 	border-radius: 4px;
+	display: inline-block;
+	z-index: 999;
 }
 .add-showcase-button button{
 	background-color: transparent;
@@ -3666,7 +3722,7 @@ p.school-info {
 	background-repeat: no-repeat;
 	padding-left: 25px;
 }
-.showcase-form-header button{
+.showcase-form-header button, .edit-showcase-form button{
 	background-color: #e9e9e9;
 	color: #444;
 	width: 167px;
@@ -3678,14 +3734,14 @@ p.school-info {
 	position: absolute;
 	top: 99px;
 }
-.showcase-form-header button, .showcase-form-header input{
+.showcase-form-header button, .showcase-form-header input, .edit-showcase-form button{
 	border-radius: 4px;
 	font-weight: 600;
 	font-family: 'OpenSans', sans-serif;
 	cursor: pointer;
 }
 	
-.showcase-form-header button i{
+.showcase-form-header button i, .edit-showcase-form button i{
 	-webkit-background-size: auto;
 	background-image: url('../assets/ProfilePageIconMap.png');
 	background-position: -24px -74px;
@@ -3928,6 +3984,222 @@ select.levelpicker{
 	position: absolute;
 	margin-top: 15px;
 	display: none;
+}
+.edit-showcase-form{
+	position: fixed;
+	width: 476px;
+	height: auto;
+	padding-left: 11px;
+	padding-top: 16px;
+	top: 50px;
+	left: 550px;
+	z-index: 9999;
+	color: white;
+	display: none;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.edit-showcase-form span{
+	font-size: 18.14px;
+	font-family: 'Nunito', sans-serif;
+}
+.edit-showcase-form input{
+	border-radius: 4px;
+	border: 1px solid #b2b2b2;
+	height: 29px;
+	font-size: 12.2px;
+	font-family: 'OpenSans', sans-serif;
+}
+#showcase-name-edit{
+	width: 458px;
+	margin-top: 20px;
+	padding-left: 9px;
+	padding-top: 5px;
+}
+#showcase-link-edit{
+	width: 269px;
+	margin-top: 14px;
+	overflow: hidden;
+	padding-left: 30px;
+	background-color: #f5f4f4;
+}
+#showcase-link-edit + i{
+	position: absolute;
+	-webkit-background-size: auto;
+	background-image: url('../assets/ProfilePageIconMap.png');
+	background-position: -20px -55px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	height: 18px;
+	width: 18px;
+	left: 18px;
+	top: 109px;
+}
+.edit-showcase-form button i{
+	position: absolute;
+	height: 18px;
+	width: 18px;
+}
+.edit-form-bottom{
+	height: 40px;
+	width: 487px;
+	margin-left: -11px;
+	margin-top: 34px;
+	padding-top: 30px;
+	background-color: rgba(17,17,17,0.5);
+	color: white;
+}
+.edit-form-bottom span{
+	font-size: 14.1;
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 600;
+	margin-left: 278px;
+	cursor: pointer;
+}
+.edit-form-bottom span:hover{
+	text-decoration: underline;
+}
+div#edit-from-submit {
+	top: 186px;
+}
+#edit-from-submit button {
+	width: 134px;
+	height: 28px;
+	top: 0;
+	margin-left: 3px;
+	padding-left: 10;
+	background-color: transparent;
+	border: 1px solid #e0e0e0;
+	color: white;
+	font-size: 14.1px;
+}
+#edit-upload-button{
+	margin-top: 4px;
+}
+.center-image{
+	text-align: center;
+	width: 782px;
+	margin-left: calc(50% - 391px);
+	margin-top: 3px;
+	position: relative;
+}
+.showcase-image{
+	margin-top: -224px;
+	margin-left: calc(50% + 398px);
+	width: 782px;
+	position: relative;
+}
+.showcase-image img, .center-image img {
+	height: 224px;
+}
+#img-slot2{
+	margin-left: calc(50% - 782px - 398px);
+}
+.circle-div{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	background-color: #444;
+	top: 7px;
+	right: 7px;
+	border-radius: 50%;
+	-webkit-background-size: auto;
+	background-image: url('../assets/ProfilePageIconMap.png');
+	background-position: 4px -17px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	position: absolute;
+	cursor: pointer;
+	opacity: 0.7;
+	visibility: hidden;
+	-webkit-transition: all ease-in-out 0.1s;
+    -moz-transition: all ease-in-out 0.1s;
+    -o-transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.1s;
+}
+#delete-on-hover-before, #hint_wedge-before{
+	position: absolute;
+}
+.delete-on-hover{
+	display: initial;
+	position: absolute;
+	top: 7px;
+	right: -70px;
+	background-color: #242424;
+	border: 1px solid #111;
+	border-radius: 4px;
+	color: white;
+	z-index: 9999;
+	width: 65px;
+	height: 23px;
+	font-size: 13.14px;
+	font-weight: 600;
+	padding-top: 3px;
+	-moz-transition: all .1s ease-in-out;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+.hint_wedge{
+	display: initial;
+	border-color: transparent;
+	border-right-color: #242424;
+	border-style: dashed dashed solid;
+	border-width: 8.5px;
+	display: block;
+	z-index: 99999;
+	height: 1;
+	width: 1;
+	position: absolute;
+	top: 12px;
+	right: -5px;
+	-moz-transition: all .1s ease-in-out;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+div#circle-div-switch, div#circle-div-switch-left {
+	position: absolute;
+	top: 180px;
+	right: 9px;
+	visibility: hidden;
+	width: 40px;
+	height: 40px;
+	background-image: none;
+	-moz-transition: all .1s ease-in-out;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+.triangle-wedge {
+	border-color: transparent;
+	border-left-color: #838084;
+	border-style: dashed dashed solid;
+	border-width: 8.5px;
+	top: 12px;
+	left: 21px;
+}
+.square-wedge {
+	border-color: #838084;
+	border-style: dashed solid solid;
+	border-width: 4.5px;
+	top: 16px;
+	left: 14px;
+}
+.triangle-wedge, .square-wedge{
+	display: initial;
+	height: 0;
+	width: 0;
+	position: absolute;
+	z-index: 99999;
+}
+div#triangle-wedge-left {
+	border-right-color: #838084;
+	border-left-color: transparent;
+	left: 2px;
+}
+div#square-wedge-left {
+	left: 18px;
+}
+div#circle-div-switch-left {
+	left: 9px;
 }
 /*
 .yp1{

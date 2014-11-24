@@ -50,6 +50,7 @@ class Showcase extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+            'file' => array(self::BELONGS_TO, 'File', 'file_id'),
 		);
 	}
 
