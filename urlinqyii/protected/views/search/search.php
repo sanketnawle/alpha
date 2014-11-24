@@ -1,223 +1,367 @@
-<!DOCTYPE html>
-
-<html>
-
+﻿<html>
 <head>
-    <title></title>
-    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundSearch.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/feed.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/search.css' />
+    <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+    <script>
+        base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
+        q = "<?php echo $q ?>";
+    </script>
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/search.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js"> </script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/protected/js/search.js"> </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        //For more general functions, refer to /alpha/beta/search_beta.php
+        $(function () {
+            //For the credits slider under the courses category.
+            var mySlider = new range_slider(
+                {
+                    selector: '.scrubber_slider',
+                    unit: ' credits',
+                    min: 0,
+                    max: 4,
+                    left_scrubber_pos: 2,
+                    right_scrubber_pos: 7,
+                    round_by: 1,
+                    rounded: true,
+                    // Event during initialization
+                    release: function (e) {
+                        // custom function for this event
+                        console.log("Event happened, this object contains: \n\n { \n min : " + e.min + ",\nmax : " + e.max + "\n");
+                    }
+                });
+        });
+    </script>
 </head>
 <body>
-<div class="topbar">
-    <div class="left">
-        <a href="./home.php" class="urlinq"></a>
-        <a class="menu active"></a>
+
+
+    <!--
+    Feel free to stick this in the appropriate CSS file
+    Comment out the .sub_filter style to edit its UI
+    -->
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        .search_category + .sub_filter {
+            display: none;
+        }
+
+        .search_category.active + .sub_filter {
+            display: block;
+        }
+    </style>
+
+
+    <!--
+    Filter in LeftSide Starts here
+    JQuery adjusted in search.js to accomodate for new functionality.
+     -->
+    <div class="root">
+        <div class="search-top-bar-wrap">
+            <?php echo Yii::app()->runController('partial/topbar'); ?>
+        </div>
+        <div class="main">
+            <div class="leftsec">
+                <div class="visible-lg">
+                    <div class="searchType">
+                        <!-- All searchTypes have sub_filters, which are Advanced Searches   -->
+                        <span class="wedgeRight"></span>
+                        <div>
+                            <div class="search_category active">
+                                <a class="type" data-value="All"><span id="category1" class="resultNum pull-right"></span>All Results</a>
+                            </div>
+                        </div>
+
+
+                        <!--  Courses can be filtered by School, department, and professor -->
+                        <div>
+                            <div class="search_category">
+                                <a class="type" data-value="Courses"><span id="category2" class="resultNum pull-right"></span>Courses</a>
+                            </div>
+                            <div class="sub_filter">
+                                <ul class="SearchFilterList">
+                                    <!--ideally, we want to make these dropLists dynamic via JSON magic-->
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">School:</span>
+                                        <div class="dropOpenBtn">
+                                            NYU School of Engineering
+                                            <i class="dwnArrow"></i>
+                                        </div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul id="schools">
+                                                <li class="dropListItem1"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">Department:</span>
+                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="FilterLabel">Professor:</span> <input class="filterTextinput" type="text" name="prof">
+                                    </li>
+                                    <li class="scrubberLi">
+                                        <span class="FilterLabel">Credits:</span>
+                                        <div class="scrubber_slider">
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!--  Professors can be filtered by School and Department -->
+                        <div>
+                            <div class="search_category">
+                                <a class="type" data-value="Professor"><span id="category3" class="resultNum pull-right"></span>Professors</a>
+                            </div>
+                            <div class="sub_filter">
+                                <ul class="SearchFilterList">
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">School:</span>
+                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">Department:</span>
+                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--  Students can be filtered by School and Major -->
+                        <div>
+                            <div class="search_category">
+                                <a class="type" data-value="Student"><span id="category4" class="resultNum pull-right"></span>Students</a>
+                            </div>
+                            <div class="sub_filter">
+                                <ul class="SearchFilterList">
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">School:</span>
+                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">Major:</span>
+                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--  Clubs can be filtered by School -->
+                        <div>
+                            <div class="search_category">
+                                <a class="type" data-value="Clubs"><span id="category5" class="resultNum pull-right"></span>Clubs</a>
+                            </div>
+                            <div class="sub_filter">
+                                <ul class="SearchFilterList">
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">School:</span>
+                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--  Departments can be filtered by School -->
+                        <div>
+                            <div class="search_category">
+                                <a class="type" data-value="Departments"><span id="category6" class="resultNum pull-right"></span>Departments</a>
+                            </div>
+                            <div class="sub_filter">
+                                <ul class="SearchFilterList">
+                                    <li>
+                                        <span class="FilterLabel DropdownLabel">School:</span>
+                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenList" id="dropOpenList">
+                                            <ul>
+                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
+                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
+                                                <li class="dropListItem"><span>Stern School of Business</span></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hr-divider">
+
+
+                    <button class="search-btn" name="commit" id="search">Search</button>
+
+                </div>
+            </div>
+            <!--
+            ================================================================================================================================
+                                                            Templates
+            ================================================================================================================================
+            -->
+
+            <div class="mainsec">
+                <div id="result" class="midsec loadani_parent" style="zoom:1;">
+                    <div class="all_results_active" style="opacity:1;">
+                        <div class="horiz-area">
+                            <div class="horiz-wrapper">
+                                <div class="horiz-mask">
+                                    <div class="content-area">
+                                        <!--The template for users (be it student or professor) who match up with the search query-->
+
+                                        <div class="ContentSlider">
+                                            <div class="slide">
+                                                <div class="slide-inner">
+                                                    <script id="user_search_results" type="text/x-handlebars-template">
+                                                        <div class="result-photo">
+                                                            <img src="http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg">
+                                                            <h3>Gary</h3>
+                                                            <p>Student</p>
+                                                    </script>
+
+                                                </div>
+                                                <div class="person-bottom-functions">
+                                                    <div class="link-button">
+                                                        <a class="link link-up" data value="1">Follow</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vert-area">
+                    <div class="course vert-results-wrapper">
+                        <div class=results-top-sec>
+                            <div class="result-header"></div>
+                            <div class="result-header-right"></div>
+                            <!--The template for Courses (not including classes within it) who match up with the search query-->
+
+                            <div class="results-main-sec">
+                                <script id="vertical_search_results" type="text/x-handlebars-template">
+                                    <p class="description"></p>
+
+                                    <div class="lower-info keys">
+                                        <div class="info-key instructor">
+                                            Instructor
+                                        </div>
+                                        <div class="info-key-subject">
+                                            Department
+                                        </div>
+                                        <div class="info-key members">
+                                            Members
+                                        </div>
+                                    </div>
+                                    <div class="lower-info">
+                                        <div class="info-piece instructor">
+
+                                        </div>
+                                        <div class="info-piece subject">
+
+                                        </div>
+                                        <div class="info-piece members">
+
+                                        </div>
+                                    </div>
+
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--The template for Clubs  who match up with the search query-->
+            <script id="club_search_results" type="text/x-handlebars-template">
+                <div id="clubbox">
+
+                </div>
+            </script>
+
+            <!--The template for departments who match up with the search query-->
+            <script id="department_search_results" type="text/x-handlebars-template">
+                <div id="deptbox">
+
+                </div>
+            </script>
+
+        </div>
+
+
     </div>
-    <div class="right">
-        <a class="notify calendar">
-            <div class="button">
-                <div class="day">Tue</div>
-                <div class="date">9</div>
-            </div>
-            <div class='notify-window calendar'>
-                <div class="toolbar">
-                    <ul>
-                        <li class="rem active" data-column="left"><div class="icon"></div></li>
-                        <li class="inv" data-column="middle"><div class="icon"></div></li>
-                        <li class="cal" data-link="link to somewhere"><div class="icon"></div></li>
-                    </ul>
-                </div>
-                <div class='left column active'>
-                    <div class='header'>
-                        <span class='text'>Reminders</span>
-                        <span class='count'>4</span>
-                    </div>
-                    <ul>
-                        <li class="unseen">
-                            <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class="checkbox_wrapper">
-                                <input type="checkbox" name="event1" id="e1" value="#event_data1">
-                                <label for="e1" id="label1"></label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nostyle">No New Event Reminders</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class='middle column'>
-                    <div class='header'>
-                        <span class='text'>Suggested/Invited</span>
-                        <span class='count'>2</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
-                                <div class="day">Sep</div><div class="date">12</div>
-                            </div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='action add' title="Add to Calendar"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Invited you</div>
-                        </li>
-
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
-                                <div class="day">Sep</div><div class="date">12</div>
-                            </div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='action add busy' title="Busy at this time"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">no new event invitations</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class='right column'>
-                    <ul>
-                        <li><div class='icon mc'></div>Monthly Calendar</li>
-                        <li><div class='icon wc'></div>Weekly Calendar</li>
-                        <li class="underline"><div class='icon pl'></div>Add New Event</li>
-                    </ul>
-                </div>
-            </div>
-        </a>
-        <a class="notify board">
-            <div class="button">
-                <div class="icon"></div>
-            </div>
-            <div class='notify-window board' style="display: none">
-                <div class="toolbar">
-                    <ul>
-                        <li class="dis active" data-column="left"><div class="icon"></div></li>
-                        <li class="fil" data-column="middle"><div class="icon"></div></li>
-                        <li class="fol" data-column="right"><div class="icon"></div></li>
-                    </ul>
-                </div>
-                <div class='column left active'>
-                    <div class='header'>
-                        <span class='text'>Discussions</span>
-                        <span class='count count-blue'>2</span>
-                    </div>
-                    <ul class='cn_sec_content'>
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
-                            <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
-                            <div class='footer'>September 10 at 5:00pm</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">No New Post Notifications</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class='column middle'>
-                    <div class='header'>
-                        <span class='text'>Files</span>
-                        <span class='count count-blue'>2</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon pdf'><div class='file'>.PDF</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon doc'><div class='file'>.DOC</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon xls'><div class='file'>.XLS</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon ppt'><div class='file'>.PPT</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon zip'><div class='file'>.ZIP</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">no new event invitations</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class='column right'>
-                    <div class='header'>
-                        <span class='text'>Followers</span>
-                        <span class='count count-blue'>1</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon full' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
-                            <div class='content two-lines'>
-                                <div class='line1'>Ross Kopelman</div>
-                                <div class='line2'><div class="follow">Follow</div></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </a>
     </div>
-    <div class="center">
-        <!--<form method="get" action="./search_beta.php">-->
-        <form method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search/results">
-            <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
-            <button type="submit" class="submit"></button>
-        </form>
-        <ul class="prelist">
-            <li><a><div class="icon dpt"></div><span>Professors in Your Department</span></a></li>
-            <li><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
-            <li><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
-            <li><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
-            <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
-            <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
-        </ul>
-        <ul class="postlist">
+    <div id="fb-root" class="fb_reset">
+        <div style="position: absolute; top: -100000px; height: 0px; width: 0px;">
+            <div></div>
+        </div>
+        <div style="position: absolute; top: -100000px; height:0px; width:0px;">
 
-        </ul>
+        </div>
     </div>
-</div>
-
-
-
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
-
-

@@ -64,7 +64,8 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/events.js"></script>
 </head>
 <body>
-    <div class="topbar"></div>
+    <?php echo Yii::app()->runController('partial/topbar'); ?>
+    <?php echo Yii::app()->runController('partial/leftmenu'); ?>
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
             <div class="column left">

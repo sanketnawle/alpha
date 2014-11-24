@@ -1,10 +1,23 @@
 /**
  * Created by MikeS on 11/12/14.
  */
+window.forceLeftMenuClose = false;
+function toggleMenu(active) {
+    var menu = $(".topbar .left a.menu");
+    var leftpanel = $(".leftpanel");
+
+    if (active) menu.addClass("active");
+    else menu.removeClass("active");
+
+    menu.hasClass("active") && !forceLeftMenuClose ? (function () {
+        leftpanel.show();
+    }()) : (function () {
+        leftpanel.hide();
+    }());
+}
+
 (function ($) {
     var leftPanelOpen = true;
-    openNotify = null;
-    var actionTitle = "";
 
     var weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     $(function () {
@@ -118,14 +131,6 @@
                 }
             })();
         });
-        $(".notify-window .column ul .check").click(function () {
-            $(this).toggleClass("done")
-            $(".event-check", $(this))[0].checked = $(this).hasClass("done");
-        })
-        $(".leftpanel .scrollable ul, .notify-window .column ul").mCustomScrollbar({
-            theme: "minimal-dark",
-            scrollInertia: 100
-        })
         $(".leftpanel .profile .title").click(function () {
             var menu = $(".menu", $(this));
             var profilemenu = $(".profile-menu", $(this).parents(".profile"));
@@ -139,77 +144,47 @@
                 profilemenu.addClass("open");
             }());
         });
-        function toggleMenu(active) {
-            var menu = $(".topbar .left a.menu");
-            var leftpanel = $(".leftpanel");
-
-            if (active) menu.addClass("active");
-            else menu.removeClass("active");
-
-            menu.hasClass("active") ? (function () {
-                leftpanel.show();
-            }()) : (function () {
-                leftpanel.hide();
-            }());
-        }
         $(".topbar .left a.menu").click(function () {
             leftPanelOpen = $(this).toggleClass("active").hasClass("active")
+            forceLeftMenuClose = false;
             toggleMenu(leftPanelOpen);
         });
-        $(".topbar .right .day").html(weekDays[new Date().getDay()]);
-        $(".topbar .right .date").html(new Date().getDate());
+        $(".topbar .right > .day").html(weekDays[new Date().getDay()]);
+        $(".topbar .right > .date").html(new Date().getDate());
         $(window).resize(function () {
             if ($(window).width() < 1250) toggleMenu(false);
             else if (leftPanelOpen) toggleMenu(true);
         })
-        $(".notify-window .column ul li .action").hover(function () {
-            var action = $(this);
-            actionTitle = action.attr("title");
-            action.removeAttr("title");
-            var nottooltip = $("<div class='nottooltip' />").html(
-                '<div class="tooltip">' +
-                '<div class="ttwedge"></div>' +
-                '<div class="ttcontent">' + actionTitle + '</div>' +
-                '</div>');
-            var icon = $(this);
-            nottooltip.css({ "top": icon.offset().top, "left": icon.offset().left + icon.outerWidth() });
-            $("body").append(nottooltip);
-        }, function () {
-            $(this).attr("title", actionTitle);
-            $("div.nottooltip").remove();
-        });
-        $(".topbar .notify").mouseenter(function (e) {
-            var notify = $(this);//.parents(".notify");
-            if (openNotify !== notify[0]) {
-                var window = null;
-                $(".topbar .notify").removeClass("active");
-                $(".topbar .notify-window").hide();
-                notify.addClass("active");
-                if (notify.hasClass("calendar")) window = $(".topbar .notify-window.calendar");
-                else if (notify.hasClass("board")) window = $(".topbar .notify-window.board");
-
-                if (openNotify === null) window.slideDown(150);
-                else window.show();
-
-                openNotify = notify[0];
-            }
-        })
-        $(".topbar .right").mouseleave(function () {
-            $(".topbar .notify").removeClass("active");
-            $(".topbar .notify-window").slideUp(150);
-            openNotify = null;
-        })
-
-        $(".notify-window .toolbar li").click(function () {
-            $(".notify-window .toolbar li").removeClass("active");
-            $(this).addClass("active");
-            var col = $(this).data("column");
-            if (col) {
-                var window = $(this).parents(".notify-window");
-                $(".column", window).hide();
-                $(".column." + col, window).show();
-            }
-        })
         $(window).resize();
+
+        // notification
+
+        $(".entries").slimScroll({ height: 300, wrapperClass: "noti-scrollable" });        
+        $(document).mouseup(function (e) {
+            var container = $(".topbar > .right .notify .notify-window").removeClass("active");;
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $(".topbar > .right .notify").removeClass("active");
+            }
+        });
+        $(".topbar > .right .notify").click(function () {
+            if (!$(this).hasClass("active")) {
+                $(".topbar > .right .notify").removeClass("active");
+                $(this).addClass("active");
+            }
+        });
+        $(".topbar > .right .notify .notify-window li .dismiss").click(function () {
+            $(this).closest("li").addClass("done");
+        });
+        $(".topbar > .right .notify .notify-window li .close").click(function () {
+            $(this).closest("li").remove();
+        });
+        $(".topbar > .right .notify.calendar .notify-window li .follow").click(function () {
+            $(this).closest("li").addClass("done");
+            $(this).closest(".right").html("").html("<div class='follow msg'>Event Added</div>");
+        });
+        $(".topbar > .right .notify.board .notify-window li .follow").click(function () {
+            $(this).closest("li").addClass("done");
+            $(this).closest(".right").html("").html("<div class='follow msg'>Following</div>");
+        });
     });
 })(jQuery);

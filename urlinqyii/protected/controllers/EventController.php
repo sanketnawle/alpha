@@ -6,10 +6,10 @@ class EventController extends Controller
 
     public function actionGetEvents(){
         $user = $this->get_current_user();
-        $date = '2014-11-12';
-        //$date = $_GET['date'];
+//        $date = '2014-11-12';
+        $date = $_GET['date'];
         //user_id=:user_id AND  //':user_id'=>1,
-        $events = Event::model()->findAll('start_date=:start_date and user_id=:user_id',array('start_date'=>$date,':user_id'=>7));
+        $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
 
 
 
@@ -108,6 +108,8 @@ class EventController extends Controller
         //$data = array('success'=>true,'event'=>$this->get_model_associations($club,array('pictureFile')));
 
 
+        //Show 7 days after tomorrow
+
         $this->renderJSON($data);
         return;
 
@@ -122,7 +124,13 @@ class EventController extends Controller
 
 
 
+    public function actionGetSuggestedEvents(){
+        $events = Event::model()->findAll();
 
+        $data = array('success'=>true,'events'=>$events);
+        $this->renderJSON($data);
+        return;
+    }
 
     //Error ids
     // 1 - All data not set

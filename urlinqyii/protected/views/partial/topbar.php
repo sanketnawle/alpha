@@ -8,8 +8,13 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!--script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/protected/js/search.js"></script>-->
 
+    <script>
+        base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
+    </script>
+    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/jquery.mCustomScrollbar.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
     <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
@@ -18,7 +23,7 @@
 <div class="topbar">
     <div class="left">
         <!--<a href="./home.php" class="urlinq"></a>-->
-        <a href="./" class="urlinq">
+        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/home" class="urlinq">
             <a class="menu active"></a>
     </div>
     <div class="right">
@@ -197,27 +202,25 @@
     </div>
     <div class="center">
         <!--<form method="get" action="./search_beta.php">-->
-        <form method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-            <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+        <form id = "search_form" method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
+            <input id = "search_bar_input" type="text" name="q" class="mainsearch text" autocomplete="on" placeholder="Search courses, clubs, and people">
             <button type="submit" class="submit"></button>
         </form>
         <ul class="prelist">
-            <li><a><div class="icon dpt"></div><span>Professors in Your Department</span></a></li>
-            <li><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
-            <li><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
-            <li><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
-            <li><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
-            <li><a><div class="icon sch"></div><span>Search Your School</span></a></li>
+            <li id = "piyd"><a><div class = "icon dpt"></div><span>Professors in Your Department</span></a></li>
+            <li id = "ciyd"><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
+            <li id = "piys"><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
+            <li id = "ciys"><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
+            <li id = "giys"><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
+            <li id = "sys"><a><div class="icon sch"></div><span>Search Your School</span></a></li>
         </ul>
         <ul class="postlist">
-
         </ul>
     </div>
 </div>
 
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/topbar.js"></script>
 
-
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
 
