@@ -81,11 +81,11 @@ cursor: pointer;
 div.add_event_btn em{
 	background-image:url(src/add_event_icons.png);
 	width: 27px;
-	height: 15px;
+	height: 14px;
 	opacity: 1;
 	position: relative;
 	top: 2px;
-	background-position: 0px -2px;
+	background-position: 0px -3px;
 	margin-right: 3px;
 	background-size: 102%;
 	display: inline-block;
