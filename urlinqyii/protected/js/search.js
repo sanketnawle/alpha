@@ -131,8 +131,10 @@ $("#piyd").click(function(){
     {
         if(search_json_data['success']){
             //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+
             show_search_results(search_json_data);
             //$.('.leftsec').hide();
+
         }else{
             alert('error getting data');
         }

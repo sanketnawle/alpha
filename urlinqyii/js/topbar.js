@@ -79,7 +79,32 @@ $(function() {
         var q = $("#search_button_input");
         window.location = base_url + "/search?q=" + q;
     });
-//});
+
+    //prelist functionality
+    $(document).on('click', '#piyd',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=piyd";
+    });
+    $(document).on('click', '#piys',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=piys";
+    });
+    $(document).on('click', '#ciyd',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=ciyd";
+    });
+    $(document).on('click', '#ciys',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=ciys";
+    });
+    $(document).on('click', '#giys',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=giys";
+    });
+    $(document).on('click', '#piys',function(e) {
+        e.preventDefault();
+        window.location = base_url + "/search/json?f=sys";
+    });
 
 
 //$(function ($) {
