@@ -37,17 +37,10 @@
     </div>
 
     <div class='gp_leftbar_wrap'>
-        <?php
-
-        echo Yii::app()->runController('partial/leftmenu',array('user'=>$user));
-
-
-        ?>
+        <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
 
     </div>
-  <!--  <section>
-        <?php// include("leftpanel.php"); ?>
-    </section> -->
+
 
     <button class='email_invite email_invite_simulator'></button>
 
@@ -197,7 +190,7 @@
         </div>
     </div>
 </div>
-<!--<?php// $con->close(); ?>-->
+
 
 </body>
 
