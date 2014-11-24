@@ -2,9 +2,228 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_fuck.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/14c5a883935775ba8d4ab214b1d135a1doc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2IMG_0223.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2IMG_6853.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2hussars 835.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/47b18be9e1439c04910f436e8c2c3c92.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/preview/568c0890b72f65af771cb7d628190745.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/preview/568c0890b72f65af771cb7d628190745.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/57bc7a4a0916809db4e453230217ede5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/874e6da25106ca7140236da119bc938b.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beta/syla/pdfrepo/9f0d22b292b67587ebabe2e987742b8a.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/IMG_0223.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/IMG_6853.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/ProfilePageIconMap.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/ZPXIw.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/a6eb93bfcbce0d73c6ce27814b97ef80.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/posts_beta/src/add_event_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/ajax-loader.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/camera_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/camera_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/class.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/dRMIpvS.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/rating/delete.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/dept_dp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/showcase/f36b7c428e8cc2b7cd2bb4dbd39a48a2doc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_loading.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_nav_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_nav_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_e.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_n.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_ne.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_nw.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_s.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_se.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_sw.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_shadow_w.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_title_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_title_main.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_title_over.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancy_title_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancybox-x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancybox-y.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/fancybox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/file.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/folder-closed.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/folder.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/godzilla_1954_poster_03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/preview/godzilla_1954_poster_03.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/autocomplete/indicator.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/khfm.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/link_icon_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/images/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/minus.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/nwcIQy8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/uploads/2/preview/nwcIQy8.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/plus.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/profile-visi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pulser_master.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/school.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/rating/star.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/test_image1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/test_img.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-black-line.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-black.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-default-line.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-default.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-famfamfam-line.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-famfamfam.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-gray-line.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-gray.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-red-line.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/images/treeview-red.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_flat_0_aaaaaa_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_flat_75_ffffff_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_glass_55_fbf9ee_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_glass_75_dadada_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_glass_75_e6e6e6_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_glass_95_fef1ec_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-icons_222222_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-icons_2e83ff_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-icons_454545_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-icons_888888_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/images/ui-icons_cd0a0a_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/default/user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-class.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-classes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-club.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/visi-clubs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class_about_tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class_members_tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/css/ie.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/js/jblockUI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/join_url.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/js/jquery-ui-i18n.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/js/jquery-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.ajaxqueue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/autocomplete/jquery.autocomplete.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.autocomplete.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.ba-bbq.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.ba-bbq.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.bgiframe.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/jquery.fancybox-1.3.1.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/fancybox/jquery.fancybox-1.3.1.pack.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.history.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.maskedinput.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.maskedinput.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.metadata.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.multifile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/rating/jquery.rating.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.rating.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.treeview.async.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/treeview/jquery.treeview.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.treeview.edit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.treeview.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.autocomplete.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.button.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.core.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.datepicker.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.resizable.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.selectable.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jui/css/base/jquery.ui.tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.yii.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.yiiactiveform.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/yiitab/jquery.yiitab.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/jquery.yiitab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/loading.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/loading.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/css/print.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/css/professor_old.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/punycode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/bc505dd7/punycode.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/css/screen.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/simple_html_dom.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/split_url.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/assets/dc885735/js/tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/url_to_absolute.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\code\posts_beta\src\addEventIcon_hover3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\urlinqyii\css\leftpanel.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\urlinqyii\protected\runtime\application.log" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_old.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\alpha\beta\css\feed.css" afterPath="$PROJECT_DIR$/beta/css/feed2.css" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\alpha\urlinqyii\protected\views\profile\profile_new.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile_fuck.php" />
+      <change type="MOVED" beforePath="C:\xampp\htdocs\alpha\urlinqyii\protected\views\search\search.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/src/time_icon_busy.png" afterPath="$PROJECT_DIR$/code/posts_beta/src/time_icon_busy.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ClassController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/File.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/File.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/SearchController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/SearchController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/StudentAttrib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/models/UserInterest.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/models/UserInterest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/ad-grid.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/ad-grid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/backgroundProfile.css" afterPath="$PROJECT_DIR$/urlinqyii/css/backgroundProfile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/backgroundSearch.css" afterPath="$PROJECT_DIR$/urlinqyii/css/backgroundSearch.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/calendar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/calendar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/class/class.js" afterPath="$PROJECT_DIR$/urlinqyii/js/class/class.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/class.php" afterPath="$PROJECT_DIR$/beta/class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/class_about_tab.php" afterPath="$PROJECT_DIR$/beta/class_about_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/day.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/day.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/day.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/day.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/day.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/day.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/config/db_config.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/config/db_config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/event-div.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/classes/event-div.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/events.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/events.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/feed.css" afterPath="$PROJECT_DIR$/code/posts_beta/feed.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/feed_event_post.css" afterPath="$PROJECT_DIR$/code/posts_beta/feed_event_post.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/components/file_upload.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/components/file_upload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/header.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/header.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/header.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/header.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/index.php" afterPath="$PROJECT_DIR$/urlinqyii/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/partial/leftpanel.css" afterPath="$PROJECT_DIR$/urlinqyii/css/partial/leftpanel.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/lptopbar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/lptopbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/config/main.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/master.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/master.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/master.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/master.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.css" afterPath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.less" afterPath="$PROJECT_DIR$/urlinqyii/css/lptopbar/notify.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/posts_beta/post_event.html" afterPath="$PROJECT_DIR$/code/posts_beta/post_event.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/js/professor-profile.js" afterPath="$PROJECT_DIR$/beta/js/professor-profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" afterPath="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/css/professor.css" afterPath="$PROJECT_DIR$/beta/css/professor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/professor.css" afterPath="$PROJECT_DIR$/urlinqyii/css/professor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/profile.php" afterPath="$PROJECT_DIR$/beta/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/js/school.js" afterPath="$PROJECT_DIR$/urlinqyii/protected/js/school.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_header.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/school/school_header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/search.css" afterPath="$PROJECT_DIR$/urlinqyii/css/search.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" afterPath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beta/leftpanel_beta/css/topbar.css" afterPath="$PROJECT_DIR$/beta/leftpanel_beta/css/topbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/topbar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/topbar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/ulCalendar.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/ulCalendar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/week.css" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/week.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/week.js" afterPath="$PROJECT_DIR$/urlinqyii/js/calendar/controllers/week.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/css/calendar/less/week.less" afterPath="$PROJECT_DIR$/urlinqyii/css/calendar/less/week.less" />
     </list>
     <ignored path="alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,20 +248,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44262296" vertical-offset="2246" max-vertical-offset="4046">
+            <state vertical-scroll-proportion="-10.384615" vertical-offset="2246" max-vertical-offset="4046">
               <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6923077" vertical-offset="1859" max-vertical-offset="2482">
+            <state vertical-scroll-proportion="1.600243" vertical-offset="638" max-vertical-offset="2482">
               <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
               <folding />
             </state>
@@ -52,7 +271,7 @@
       <file leaf-file-name="Showcase.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="884" max-vertical-offset="1938">
+            <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1938">
               <caret line="74" column="51" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
               <folding />
             </state>
@@ -64,11 +283,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="41769" max-vertical-offset="47209">
               <caret line="2469" column="70" selection-start-line="2469" selection-start-column="70" selection-end-line="2469" selection-end-column="70" />
-              <folding>
-                <marker date="1416829780918" expanded="true" signature="6140:6225" placeholder="..." />
-                <marker date="1416829780918" expanded="true" signature="101540:101552" placeholder="..." />
-                <marker date="1416829780918" expanded="true" signature="130512:130549" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,14 +291,9 @@
       <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.3703704" vertical-offset="6283" max-vertical-offset="7242">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6283" max-vertical-offset="7242">
               <caret line="393" column="9" selection-start-line="393" selection-start-column="9" selection-end-line="393" selection-end-column="9" />
-              <folding>
-                <marker date="1416852594523" expanded="true" signature="1250:1310" placeholder="select m.nam..user_major..." />
-                <marker date="1416852594523" expanded="true" signature="1250:1311" placeholder="select m.nam..user_major..." />
-                <marker date="1416852594523" expanded="true" signature="1250:1346" placeholder="select m.nam..user_major..." />
-                <marker date="1416852594523" expanded="true" signature="1250:1348" placeholder="select m.nam..user_major..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,7 +301,7 @@
       <file leaf-file-name="git_reference" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1054">
+            <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1054">
               <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
@@ -101,7 +311,7 @@
       <file leaf-file-name="ClubController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClubController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.884615" vertical-offset="3533" max-vertical-offset="6205">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3533" max-vertical-offset="6205">
               <caret line="226" column="12" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="52" />
               <folding />
             </state>
@@ -111,57 +321,11 @@
       <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3333333" vertical-offset="4770" max-vertical-offset="24650">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4896" max-vertical-offset="24446">
               <caret line="288" column="63" selection-start-line="288" selection-start-column="63" selection-end-line="288" selection-end-column="63" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#span#0;n#span#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#64098#64557#0#PHP" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#5;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#84252#84292#0#PHP" expanded="true" />
-                <marker date="1416852055835" expanded="true" signature="57418:57555" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="57800:57953" placeholder="..." />
-                <marker date="1416852055835" expanded="false" signature="64624:64681" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66328:67270" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66384:67235" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66442:66581" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66639:67196" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66700:66777" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="66838:66969" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="67030:67153" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="67478:67637" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="70228:70810" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="70251:70779" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="70301:70395" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="70416:70744" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="72517:72702" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="72875:73148" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="73276:73529" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="74920:75072" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="75328:75406" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="76790:76975" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="77148:77421" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="77549:77802" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="78317:78461" placeholder="..." />
-                <marker date="1416852055835" expanded="true" signature="78721:78831" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -170,7 +334,7 @@
       <file leaf-file-name="ClassModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846" vertical-offset="1122" max-vertical-offset="2941">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2941">
               <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
               <folding />
             </state>
@@ -180,7 +344,7 @@
       <file leaf-file-name="Major.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Major.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.615385" vertical-offset="357" max-vertical-offset="1768">
+            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
               <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
               <folding />
             </state>
@@ -256,10 +420,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="76" />
-    <option name="y" value="57" />
-    <option name="width" value="1556" />
-    <option name="height" value="785" />
+    <option name="x" value="-33" />
+    <option name="y" value="3" />
+    <option name="width" value="1678" />
+    <option name="height" value="1008" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -424,15 +588,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -451,54 +615,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="76" y="57" width="1556" height="785" extended-state="0" />
-    <editor active="true" />
+    <frame x="-33" y="3" width="1678" height="1008" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15389611" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16842106" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25862068" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19877408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15327565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16842106" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -523,6 +664,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Major.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/beta/class_about_tab.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.1771426" vertical-offset="306" max-vertical-offset="6528">
@@ -778,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="425">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="72434" max-vertical-offset="73287">
           <caret line="4290" column="33" selection-start-line="4290" selection-start-column="33" selection-end-line="4290" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -794,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1870">
           <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2584">
           <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -810,17 +955,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="41769" max-vertical-offset="47209">
           <caret line="2469" column="70" selection-start-line="2469" selection-start-column="70" selection-end-line="2469" selection-end-column="70" />
-          <folding>
-            <marker date="1416829780918" expanded="true" signature="6140:6225" placeholder="..." />
-            <marker date="1416829780918" expanded="true" signature="101540:101552" placeholder="..." />
-            <marker date="1416829780918" expanded="true" signature="130512:130549" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="884" max-vertical-offset="1938">
+        <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1938">
           <caret line="74" column="51" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
           <folding />
         </state>
@@ -828,7 +969,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="1122" max-vertical-offset="2941">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2941">
           <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
           <folding />
         </state>
@@ -836,7 +977,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Major.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385" vertical-offset="357" max-vertical-offset="1768">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
           <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
           <folding />
         </state>
@@ -844,7 +985,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ClubController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.884615" vertical-offset="3533" max-vertical-offset="6205">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3533" max-vertical-offset="6205">
           <caret line="226" column="12" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="52" />
           <folding />
         </state>
@@ -852,71 +993,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3333333" vertical-offset="4770" max-vertical-offset="24650">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4896" max-vertical-offset="24446">
           <caret line="288" column="63" selection-start-line="288" selection-start-column="63" selection-end-line="288" selection-end-column="63" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#3;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#0;n#header#0;n#div#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#span#0;n#span#0;n#div#4;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#64098#64557#0#PHP" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#5;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#84252#84292#0#PHP" expanded="true" />
-            <marker date="1416852055835" expanded="true" signature="57418:57555" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="57800:57953" placeholder="..." />
-            <marker date="1416852055835" expanded="false" signature="64624:64681" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66328:67270" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66384:67235" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66442:66581" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66639:67196" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66700:66777" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="66838:66969" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="67030:67153" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="67478:67637" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="70228:70810" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="70251:70779" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="70301:70395" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="70416:70744" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="72517:72702" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="72875:73148" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="73276:73529" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="74920:75072" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="75328:75406" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="76790:76975" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="77148:77421" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="77549:77802" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="78317:78461" placeholder="..." />
-            <marker date="1416852055835" expanded="true" signature="78721:78831" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3703704" vertical-offset="6283" max-vertical-offset="7242">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6283" max-vertical-offset="7242">
           <caret line="393" column="9" selection-start-line="393" selection-start-column="9" selection-end-line="393" selection-end-column="9" />
-          <folding>
-            <marker date="1416852594523" expanded="true" signature="1250:1310" placeholder="select m.nam..user_major..." />
-            <marker date="1416852594523" expanded="true" signature="1250:1311" placeholder="select m.nam..user_major..." />
-            <marker date="1416852594523" expanded="true" signature="1250:1346" placeholder="select m.nam..user_major..." />
-            <marker date="1416852594523" expanded="true" signature="1250:1348" placeholder="select m.nam..user_major..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,18 +1018,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6923077" vertical-offset="1859" max-vertical-offset="2482">
-          <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+        <state vertical-scroll-proportion="-10.384615" vertical-offset="2246" max-vertical-offset="4046">
+          <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44262296" vertical-offset="2246" max-vertical-offset="4046">
-          <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
+        <state vertical-scroll-proportion="1.600243" vertical-offset="638" max-vertical-offset="2482">
+          <caret line="115" column="16" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
           <folding />
         </state>
       </provider>
