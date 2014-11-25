@@ -18,7 +18,7 @@ class StudentAttrib extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'student_attribs';
+		return 'student_attributes';
 	}
 
 	/**

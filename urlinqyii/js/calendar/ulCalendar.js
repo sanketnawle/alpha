@@ -28,11 +28,21 @@ ulcal.config(function ($routeProvider) {
 
 // jquery dependent;
 ulcal.factory("UCEventData", function ($http) {
-
     return {
         getData: function (params) {
             return $http({
-                url: "model.php",
+                url: base_url + "/event/getEvents",
+                params: params
+            });
+        }
+    }
+});
+
+ulcal.factory("UCAdData", function ($http) {
+    return {
+        getData: function (params) {
+            return $http({
+                url: base_url + "/event/getSuggestedEvents",
                 params: params
             });
         }

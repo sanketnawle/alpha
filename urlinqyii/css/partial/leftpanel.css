@@ -1,6 +1,5 @@
 body {
-    margin: 0;
-    background: #EEE;
+    margin: 0;    
 }
 
 .leftpanel * {
@@ -20,10 +19,13 @@ body {
     position: fixed;
     bottom: 0;
     top: 48px;
-    background-color: #313234;
-    color: #DDD;
+    background-color: rgba(228, 228, 228, 0);
+    color: #333;
     width: 240px;
     z-index: 1000;
+    border-right: 1px solid #cbcbcb; 
+    background-color: #F0F0F0; 
+    -webkit-box-shadow: -1px 0 #FFFFFF inset;
 }
 
     .leftpanel .profile-panel {
@@ -32,21 +34,24 @@ body {
 
         .leftpanel .profile-panel .profile-img {
             background-size: cover;
-            height: 40px;
-            width: 40px;
+            height: 42px;
+            width: 42px;
             float: left;
             margin-right: 10px;
             border-radius: 2px;
             margin-top: 5px;            
-        }
+        
+            border: 1px solid rgba(0, 0, 0, .10);
+}
 
         .leftpanel .profile-panel .details span {
             display: table-cell;
-            color: #FFF;
+            color: #444;
             height: 50px;
             vertical-align: middle;
             font-size: 14px;
-        }
+        
+}
 
         .leftpanel .profile-panel .details .status-img {
             float: left;
@@ -76,10 +81,10 @@ body {
         }
 
             .leftpanel ul li a:not(.nostyle) {
-                cursor: default;
+                cursor: pointer;
                 padding: 7px 10px;
                 display: block;
-                background-color: #34393d;
+                background-color: rgba(183, 204, 221, 0);
                 border-radius: 4px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -87,14 +92,14 @@ body {
             }
 
                 .leftpanel ul li a:not(.nostyle):hover {
-                    background-color: #52575b;
+                    background-color: #dddee0;
                 }
 
     .leftpanel .listing {
         position: absolute;
         bottom: 0;
         top: 170px;
-        width: 100%;
+        width: 241px;
     }
 
         .leftpanel .listing > div {
@@ -114,7 +119,7 @@ body {
 
         .leftpanel .listing .scrollable .wedge {
             float: right;
-            background-image: url(../../assets/leftpanel/wedge_down.png);
+            background-image: url(../img/wedge_down.png);
             width: 12px;
             height: 20px;
             margin-right: -1px;
@@ -200,7 +205,9 @@ body {
         text-transform: uppercase;
         font-size: 15px;
         cursor: default;
-    }
+    
+        width: 241px;
+}
 
     .leftpanel .profile .title {
         background-color: #f16b6a;
@@ -211,7 +218,7 @@ body {
             width: 18px;
             height: 19px;
             float: right;
-            background-image: url(../../assets/leftpanel/menu-bar.gif);
+            background-image: url(../img/menu-bar.gif);
             background-size: 100% auto;
             cursor: pointer;
             background-position: center center;
@@ -220,7 +227,9 @@ body {
 
     .leftpanel .class .title {
         background-color: #54c594;
-    }
+    
+        width: 241px;
+}
 
     .leftpanel .club .title {
         background-color: #45a8cf;
@@ -284,7 +293,7 @@ body {
                     width: 15px;
                     height: 15px;
                     margin-right: 10px;
-                    background-image: url(../../assets/leftpanel/menu-icons.png);
+                    background-image: url(../img/menu-icons.png);
                     background-size: 30px 60px;
                 }
 

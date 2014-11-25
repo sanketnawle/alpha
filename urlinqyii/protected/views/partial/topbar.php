@@ -9,19 +9,19 @@
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/san_francisco.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/lptopbar/notify.css' />
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel.css' />
 </head>
 <body>
     <div class="topbar">
         <div class="left">
             <!--<a href="./home.php" class="urlinq"></a>-->
-            <a href="./" class="urlinq">
-                <a class="menu active"></a>
+            <a href="./" class="urlinq"></a>
+            <a class="menu active"></a>
         </div>
         <div class="right">
             <div class="notify calendar">
@@ -97,8 +97,9 @@
                             </li>
                         </ul>
                         <div class="footer">
-                            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">See full calendar
-                        <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/leftpanel/go-arrow.png">
+                            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
+                                See full calendar
+                                <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/leftpanel/go-arrow.png">
                             </a>
                         </div>
                     </div>
@@ -181,31 +182,47 @@
                 <button type="submit" class="submit"></button>
             </form>
             <ul class="prelist">
-                <li><a>
-                    <div class="icon dpt"></div>
-                    <span>Professors in Your Department</span></a></li>
-                <li><a>
-                    <div class="icon crs"></div>
-                    <span>Courses in Your Department</span></a></li>
-                <li><a>
-                    <div class="icon prof"></div>
-                    <span>Professors in Your School</span></a></li>
-                <li><a>
-                    <div class="icon crs"></div>
-                    <span>Courses in Your School</span></a></li>
-                <li><a>
-                    <div class="icon clb"></div>
-                    <span>Clubs in Your School</span></a></li>
-                <li><a>
-                    <div class="icon sch"></div>
-                    <span>Search Your School</span></a></li>
+                <li>
+                    <a>
+                        <div class="icon dpt"></div>
+                        <span>Professors in Your Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses in Your Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon prof"></div>
+                        <span>Professors in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon clb"></div>
+                        <span>Clubs in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon sch"></div>
+                        <span>Search Your School</span>
+                    </a>
+                </li>
             </ul>
-            <ul class="postlist">
-            </ul>
+            <ul class="postlist"></ul>
         </div>
     </div>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
-
 

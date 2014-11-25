@@ -94,7 +94,7 @@ class User extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
+		return [
 //			'classes' => array(self::HAS_MANY, 'ClassModel', 'professor'),
 //			'classes1' => array(self::MANY_MANY, 'ClassModel', 'class_bookmark(user_id, class_id)'),
 //			'classes2' => array(self::MANY_MANY, 'ClassModel', 'class_rating(user_id, class_id)'),
@@ -117,8 +117,7 @@ class User extends CActiveRecord
 			'professorAttribute' => array(self::HAS_ONE, 'ProfessorAttribute', 'professor_id'),
 			'replies' => array(self::HAS_MANY, 'Reply', 'user_id'),
 			'replies1' => array(self::MANY_MANY, 'Reply', 'reply_vote(user_id, reply_id)'),
-			'files' => array(self::MANY_MANY, 'File', 'showcase(user_id, file_id)'),
-			'studentAttributes' => array(self::HAS_ONE, 'StudentAttributes', 'user_id'),
+			'studentAttributes' => array(self::HAS_ONE, 'StudentAttrib', 'user_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
@@ -133,12 +132,25 @@ class User extends CActiveRecord
 			'userTags' => array(self::HAS_MANY, 'UserTag', 'user_id'),
 			'token' => array(self::HAS_ONE, 'UserToken', 'user_id'),
 
+            //added by reeshi
+            'interests'=>array(self::HAS_MANY, 'Interests', 'user_interest(interest_id, user_id)'),
+
+
             //added by Michael
             'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
+
             'classes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
+
             'usersFollowed' => array(self::MANY_MANY, 'User', 'user_connection(from_user_id, to_user_id)'),
             'usersFollowing' => array(self::MANY_MANY, 'User', 'user_connection(to_user_id, from_user_id)'),
-		);
+
+            'userInterests' => array(self::MANY_MANY, 'Tag', 'user_interest(user_id, tag_id)'),
+
+            'showcase' => array(self::HAS_MANY, 'Showcase', 'user_id'),
+            'showcase_files' => array(self::HAS_MANY, 'File', 'file_id','through'=>'showcase','order'=>'created_timestamp'),
+            'majors' => array(self::MANY_MANY, 'Major', 'user_major(user_id, id)'),
+
+            ];
 	}
 
 	/**
@@ -208,4 +220,13 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function isFollowing($otherUser){
+        foreach($this->usersFollowed as $userFollowed){
+            if($userFollowed->user_id == $otherUser->user_id){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -191,10 +191,13 @@ class SiteController extends Controller
         }
 
         $user_rankings = array();
-//oauth_get_sbs().
+
+
 
         $user= $this->get_current_user();
+      // var_dump($user->user_id);
         foreach($user->classes as $class){
+         //   var_dump($user->classes);
             foreach($class->users as $class_user){
                 if($class_user->user_id != $user->user_id){
                     if(isset($user_rankings[$class_user->user_id])){
@@ -206,6 +209,31 @@ class SiteController extends Controller
             }
         }
 
+        foreach($user->groups as $group){
+            //   var_dump($user->classes);
+            foreach($group->users as $group_user){
+                if($group_user->user_id != $user->user_id){
+                    if(isset($user_rankings[$group_user->user_id])){
+                        $user_rankings[$group_user->user_id] += 1;
+                    }else{
+                        $user_rankings[$group_user->user_id] = 1;
+                    }
+                }
+            }
+        }
+        foreach($user->usersFollowed as $userFollowed){
+          //  var_dump($userFollowed);
+            foreach($userFollowed->usersFollowed as $followed_user){
+              if($followed_user->user_id!= $user->user_id) {
+                  if (isset($user_rankings[$followed_user->user_id])) {
+                      $user_rankings[$followed_user->user_id] += 1;
+                  } else {
+                      $user_rankings[$followed_user->user_id] = 1;
+                  }
+              }
+            }
+
+        }
         $data = array('success'=>true,'rankings'=>$user_rankings);
 
 

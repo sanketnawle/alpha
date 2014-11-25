@@ -8,7 +8,7 @@ header.professor-header {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 300px;
+    height: 230px;
     display: block;
 }
 
@@ -48,10 +48,10 @@ header.professor-header {
 
 .profile-main {
     position: relative;
-    width: 990px;
-    height: 75px;
+    width: 100%;
+    height: 38px;
     margin: 0 auto;
-    padding: 10px 30px 15px;
+    padding: 10px 30px 15px 154px;
     border-bottom: 1px solid #d9d9d9;
     background: #eee url(../src/white-gradient-200px.png) repeat-x 50% 50%;
     -webkit-box-shadow: 1px 0 0 rgba(0,0,0,.05),-1px 0 0 rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.05);
@@ -108,10 +108,10 @@ header.professor-header {
 
 .profpic-container {
     position: absolute;
-    left: 25px;
-    bottom: 11px;
+    left: 154px;
+    bottom: -34px;
     margin: 0;
-    padding: 5px 5px 52px;
+    padding: 2px;
     background: #fff;
     z-index: 2;
     -webkit-border-radius: 8px;
@@ -246,19 +246,19 @@ span.link-button {
 }
 
 .profile-content {
-    background: #eaeaea;
+    /*background: #eaeaea;
     -webkit-border-radius: 0 0 4px 4px;
-    border-radius: 0 0 4px 4px;
-    padding: 14px 30px;
-    max-width: 1020px;
+    border-radius: 0 0 4px 4px;*/
+    padding: 14px 0px 14px 0px;
+    /*max-width: 1020px;*/
     min-width: 1000px;
-    margin: 22px auto;
+    margin: -44px 0px 22px 154px;
     -webkit-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
     text-shadow: 0 1px 1px rgba(255,255,255,.8);
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.15),0 1px 5px rgba(0,0,0,.05);
+    /*-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.15),0 1px 5px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.15),0 1px 5px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.15),0 1px 5px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.15),0 1px 5px rgba(0,0,0,.05);*/
     min-height: 380px;
     padding-right: 0px;
 }
@@ -303,16 +303,18 @@ span.link-button {
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 300px;
+    width: 333px;
     -webkit-box-shadow: rgba(207, 203, 203, 0.29) 1px 0px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
     -moz-box-shadow: rgba(207, 203, 203, 0.29) 1px 0px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
     box-shadow: rgba(207, 203, 203, 0.29) 1px 0px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
     text-overflow: ellipsis;
     padding-right: 5px;
-    padding-top: 4px;
+    padding-top: 33px;
     border-right: 1px solid rgba(243, 242, 242, 0.89);
     padding-bottom: 4px;
     overflow: hidden;
+	margin-top: 52px;
+	margin-left: 2px;
 }
 
 .user-info-wrapper-2 {
@@ -818,6 +820,7 @@ div.group-pic {
     margin-bottom: 0px;
     text-transform: uppercase;
     font-size: 12px;
+	margin-top: 15px;
 }
 
 .info-piece-text-wrapper {
@@ -2270,7 +2273,7 @@ div.personal-website-wrap div.website-inp-wrap input:focus ~ .dropdown {
     }
 
 .profpic-container-real {
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 span.ns-title {
@@ -3427,21 +3430,98 @@ a#univ_link {
     transform: rotateY(180deg);
 }
 
-
-
-/*char counter*/
-
-.char_reminder
-{
-float: right;
-font-size: 11px;
-margin-right: 5px;
-margin-top: -1px;
-color: #333;
+.user-info-wrapper h1 a{
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  color: rgb(34, 34, 34);
+  line-height: 1.2;
+  text-align: left;
+}	
+button.edit_prof_button{
+	width: 127px;
+	height: 34px;
+	background-color: white;
+	font-weight: 600;
+	color: #444;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	padding-left: 27px;
+	padding-top: 2px;
+	margin-top: 19px;
 }
-
-.about_to_exceed
-{
-    color: red!important;
+button.edit_prof_button b{
+	-webkit-background-size: auto;
+	background-image: url('../img/ProfilePageIconMap.png');
+	background-position: 1px 1px;
+	background-repeat: no-repeat;
+	background-size: auto;
+	display: initial;
+	height: 19px;
+	position: absolute;
+	width: 19px;
+	z-index: 9;
+	left: 8px;
+	top: 57px;
 }
-/*char counter end*/
+p.school-info {
+	font-weight: 600;
+	font-size: 14px;
+	margin-top: -15px;
+}
+.user-info{
+	border-bottom: 1px solid rgba(243, 242, 242, 0.89);
+	margin-right: 17px;
+	-webkit-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
+	-moz-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
+	box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
+}
+.user-info-wrapper h3{
+	font-family: 'Nunito', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	margin-left: 9px
+}
+.user-info-wrapper .info-block{
+	margin-top: -12px;
+	margin-left: 5px;
+	width: 310px;
+	height: 38px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+	background-color: white;
+}
+.info-block input{
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-radius: 4px;
+	background-image: url('../img/test_img.png');
+	background-repeat: no-repeat;
+	background-position: 1px 1.5px;
+	padding-left: 49px;
+	color: #029acf;
+	font-size: 15px;
+}
+.info-block input:hover{
+	text-decoration: underline;
+	cursor:pointer;
+}
+.info-block textarea{
+	border-radius: 4px;
+	resize: none;
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	border: none;
+	white-space: normal;
+	font-size: 12px;
+	font-family: 'OpenSans', sans-serif;
+	padding: 9px;
+	text-overflow: ellipsis;
+}
+#about_textarea{
+	height: 59px;
+}
