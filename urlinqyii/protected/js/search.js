@@ -158,6 +158,21 @@ $(document).ready(function(){
         //alert(JSON.stringify($(".description")));
         //$('.description').append(JSON.stringify(result_json['description']));
     }
+    function show_clubs_image(result_json) {
+        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
+        var source   = $("#vertical_club_results_img").html();
+        var template = Handlebars.compile(source);
+        //var generated_html = template(result_json);
+        var context =
+        {
+            //url: base_url + "/search/" + result_json['group_id']
+        }
+        var generated_html = template(context);
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        alert("check me out, it works!");
+        //alert(JSON.stringify($(".description")));
+        //$('.description').append(JSON.stringify(result_json['description']));
+    }
     function show_clubs(result_json) {
         //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_club_results").html();
@@ -219,6 +234,32 @@ $(document).ready(function(){
                 }
             }
         });
+    });
+
+    //search filter on the left
+    $('#allResults').click(function(){
+        alert("cat1");
+        //get_search_results(q);
+    });
+    $('#courses').click(function(){
+        alert("cat2");
+        //get_search_results(q);
+    });
+    $('#professors').click(function(){
+        alert("cat3");
+        //get_search_results(q);
+    });
+    $('#students').click(function(){
+        alert("cat4");
+        //get_search_results(q);
+    });
+    $('#clubs').click(function(){
+        alert("cat5");
+        //get_search_results(q);
+    });
+    $('#departments').click(function(){
+        alert("cat6");
+        //get_search_results(q);
     });
 
 //    $("#piys").click(function(){
