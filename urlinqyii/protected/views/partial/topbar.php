@@ -207,17 +207,18 @@
             <button type="submit" class="submit"></button>
         </form>
         <ul class="prelist">
-            <li id = "piyd"><a><div class = "icon dpt"></div><span>Professors in Your Department</span></a></li>
-            <li id = "ciyd"><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
-            <li id = "piys"><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
-            <li id = "ciys"><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
-            <li id = "giys"><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
-            <li id = "sys"><a><div class="icon sch"></div><span>Search Your School</span></a></li>
+            <li class="topbar_graph_search" id = "piyd"><a><div class = "icon dpt"></div><span>Professors in Your Department</span></a></li>
+            <li class="topbar_graph_search" id = "ciyd"><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
+            <li class="topbar_graph_search" id = "piys"><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
+            <li class="topbar_graph_search" id = "ciys"><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
+            <li class="topbar_graph_search" id = "giys"><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
+            <li class="topbar_graph_search" id = "sys"><a><div class="icon sch"></div><span>Search Your School</span></a></li>
         </ul>
         <ul class="postlist">
         </ul>
     </div>
 </div>
+
 
 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/topbar.js"></script>
 

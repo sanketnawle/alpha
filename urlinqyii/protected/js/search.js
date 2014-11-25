@@ -34,11 +34,11 @@ $(document).ready(function(){
 
     function show_search_results(search_json_data){
         //stick all JSON in appropriate JSON object (by type)
-        var users_json = search_json_data['users'];
-        var courses_json = search_json_data['courses'];
-        var clubs_json = search_json_data['clubs'];
-        var departments_json = search_json_data['departments'];
-        var schools_json = search_json_data['schools'];
+        var users_json = search_json_data['users'] != undefined ? search_json_data['users'] : [];
+        var courses_json = search_json_data['courses'] != undefined ? search_json_data['courses'] : [];
+        var clubs_json = search_json_data['clubs'] != undefined ? search_json_data['clubs'] : [];
+        var departments_json = search_json_data['departments'] != undefined ? search_json_data['departments'] : [];
+        var schools_json = search_json_data['schools'] != undefined ? search_json_data['schools'] : [];
         //show_result(schools_json); //test
 
 
@@ -161,86 +161,91 @@ $(document).ready(function(){
         var generated_html = template(JSON.stringify(result_json));
         $('#deptbox').append(generated_html).hide().fadeIn();
     }
-});
 
 //For the specific searches (from topbar.js)
-$("#piyd").click(function(){
-    $.getJSON( base_url + '/search/json', {f:piyd},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+    $(".topbar_graph_search").click(function(e){
+        e.stopPropagation();
+        $.ajax({url:base_url + '/search/json?f='+e.currentTarget.id,
+            type : 'json',
+            success:function(search_json_data){
+                search_json_data = JSON.parse(search_json_data);
+                if(search_json_data['success']){
+                    //alert(JSON.stringify(search_json_data)); //test, returns JSON object
 
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
+                    show_search_results(search_json_data);
+                    //$('.leftsec').hide();
 
-        }else{
-            alert('error getting data');
-        }
+                }else{
+                    alert('error getting data');
+                }
+            }
+        });
     });
-});
-$("#piys").click(function(){
-    $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
-        }else{
-            alert('error getting data');
-        }
-    });
-});
-$("#ciyd").click(function(){
-    $.getJSON( base_url + '/search/json', {f:ciyd},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
-        }else{
-            alert('error getting data');
-        }
-    });
-});
+//    $("#piys").click(function(){
+//        $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
+//        {
+//            if(search_json_data['success']){
+//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+//                show_search_results(search_json_data);
+//                //$.('.leftsec').hide();
+//            }else{
+//                alert('error getting data');
+//            }
+//        });
+//    });
+//    $("#ciyd").click(function(){
+//        $.getJSON( base_url + '/search/json', {f:ciyd},function( search_json_data )
+//        {
+//            if(search_json_data['success']){
+//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+//                show_search_results(search_json_data);
+//                //$.('.leftsec').hide();
+//            }else{
+//                alert('error getting data');
+//            }
+//        });
+//    });
+//
+////For the specific searches (from topbar.js)
+//    $("#ciys").click(function(){
+//        //alert("ciys");
+//        $.getJSON( base_url + '/search/json', {f:ciys},function( search_json_data )
+//        {
+//            if(search_json_data['success']){
+//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+//                show_search_results(search_json_data);
+//                //$.('.leftsec').hide();
+//            }else{
+//                alert('error getting data');
+//            }
+//        });
+//    });
+//    $("#giys").click(function(){
+//        //alert("giys");
+//        $.getJSON( base_url + '/search/json', {f:giys},function( search_json_data )
+//        {
+//            if(search_json_data['success']){
+//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+//                show_search_results(search_json_data);
+//                //$.('.leftsec').hide();
+//            }else{
+//                alert('error getting data');
+//            }
+//        });
+//    });
+//    $("#sys").click(function(){
+//        //alert("sys");
+//        $.getJSON( base_url + '/search/json', {f:sys},function( search_json_data )
+//        {
+//            if(search_json_data['success']){
+//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+//                show_search_results(search_json_data);
+//                //$.('.leftsec').hide();
+//            }else{
+//                alert('error getting data');
+//            }
+//        });
+//    });
 
-//For the specific searches (from topbar.js)
-$("#ciys").click(function(){
-    //alert("ciys");
-    $.getJSON( base_url + '/search/json', {f:ciys},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
-        }else{
-            alert('error getting data');
-        }
-    });
-});
-$("#giys").click(function(){
-    //alert("giys");
-    $.getJSON( base_url + '/search/json', {f:giys},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
-        }else{
-            alert('error getting data');
-        }
-    });
-});
-$("#sys").click(function(){
-    //alert("sys");
-    $.getJSON( base_url + '/search/json', {f:sys},function( search_json_data )
-    {
-        if(search_json_data['success']){
-            //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-            show_search_results(search_json_data);
-            //$.('.leftsec').hide();
-        }else{
-            alert('error getting data');
-        }
-    });
-});
 
+});
