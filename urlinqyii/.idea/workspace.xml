@@ -35,10 +35,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_config.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="db_config.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/config/db_config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.25697675" vertical-offset="0" max-vertical-offset="860">
+            <state line="5" column="14" selection-start="136" selection-end="136" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="323">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="29" selection-start="0" selection-end="4270" vertical-scroll-proportion="0.6127907" vertical-offset="1343" max-vertical-offset="2482">
               <folding />
             </state>
           </provider>
@@ -444,7 +453,6 @@
         <option value="$PROJECT_DIR$/protected/views/club/test.php" />
         <option value="$PROJECT_DIR$/js/bootstrap-timepicker.js" />
         <option value="$PROJECT_DIR$/protected/models/Event.php" />
-        <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/feed.php" />
         <option value="$PROJECT_DIR$/js/set_timezone.js" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
@@ -461,6 +469,7 @@
         <option value="$PROJECT_DIR$/protected/config/db_config.php" />
         <option value="$PROJECT_DIR$/protected/js/search.js" />
         <option value="$PROJECT_DIR$/protected/views/site/home.php" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
       </list>
     </option>
   </component>
@@ -746,20 +755,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlinqyii" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urlinqyii" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -829,7 +824,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22699386" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22699386" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -971,11 +966,6 @@
     <entry file="file://$PROJECT_DIR$/protected/models/Event.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="90" column="21" selection-start="3286" selection-end="3286" vertical-scroll-proportion="-28.76923" vertical-offset="782" max-vertical-offset="2941" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="40" selection-start="1420" selection-end="1420" vertical-scroll-proportion="-5.230769" vertical-offset="663" max-vertical-offset="2465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
@@ -1437,7 +1427,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/config/db_config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.25697675" vertical-offset="0" max-vertical-offset="860">
+        <state line="5" column="14" selection-start="136" selection-end="136" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="29" selection-start="0" selection-end="4270" vertical-scroll-proportion="0.6127907" vertical-offset="1343" max-vertical-offset="2482">
           <folding />
         </state>
       </provider>
