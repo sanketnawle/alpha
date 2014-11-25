@@ -815,11 +815,11 @@
                                     <div class="option">People I Follow<div class="tick"></div></div>
                                     <div class="option">Just Me<div class="tick"></div></div>
                                 </div>
-                            </div>
-                            <div class="label">Who Can See My Clubs:</div>
-                        </div>
+                                 </div>
+                                    <div class="label">Who Can See My Clubs:</div>
+                                </div>
 
-                    </div>
+                             </div>
                     <div class="user-tab-following-content">
 
                     </div>

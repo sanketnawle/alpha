@@ -1052,13 +1052,13 @@
                                             ) no-repeat scroll center center / cover transparent">
                                         </div>
                                         <h3 class="classlink"><?php echo $class->course->course_name;?></h3>
-                                        <?php  if($is_user) {
+                                        <?php
                                             echo '<div class="user-class-visibility undefined">
-                                <div class="container">
-                                    <div class="current">Public<div class="drop"></div>
-                                        <div class="hover"></div>
-                                    </div>
-                                    <div class="options">
+                                                     <div class="container">
+                                                     <div class="current">Public<div class="drop"></div>
+                                                <div class="hover"></div>
+                                                </div>
+                                         <div class="options">
                                         <div class="option">Public<div class="tick"></div>
                                         </div>
                                         <div class="option">People I Follow
@@ -1070,7 +1070,7 @@
                                     </div>
                                 </div>
                             </div>';
-                                        } ?>
+                                         ?>
                                     </a>
                                     <?php
                                     echo '<div class="admin-group-functions">
