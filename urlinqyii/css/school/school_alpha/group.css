@@ -273,9 +273,9 @@ div.tab-wedge-down{
     background-repeat: no-repeat;
     background-size: 100% auto;
     width: 21px;
-    height: 10px;
+    height: 12px;
     position: absolute;
-    bottom: -1px;
+    bottom: -4px;
     z-index: 200;
     left: 70px;
 }

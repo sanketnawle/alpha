@@ -1,7 +1,10 @@
+body {
+    background: #d8d8d8 url(../assets/noise-2.png);
+}
 header.professor-header {
     margin: 0;    
     background: #333 url(../assets/noise-black.png);
-    /*background-image: url(../assets/profile-header-gradient.png), url(../assets/noise-black.png);*/
+    background-image: url(../assets/profile-header-gradient2.png), url(../assets/noise-black.png);
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
     -moz-box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
     box-shadow: 0 1px 0 rgba(255,255,255,.2),0 1px 3px rgba(0,0,0,.5)inset;
@@ -586,8 +589,8 @@ span.office-hours {
     -ms-transition: all 120ms ease-in-out;
     -o-transition: all 120ms ease-in-out;
     transition: all 120ms ease-in-out;
-    background: rgba(15, 15, 15, 0.9);
-    height: 18px;
+    /*background: rgba(15, 15, 15, 0.9);
+    height: 18px;*/
 }
 
 
@@ -3435,7 +3438,7 @@ a#univ_link {
 }
 
 .user-info-wrapper h1 a{
-  font-size: 20px;
+  font-size: 23px;
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
   color: rgb(34, 34, 34);
@@ -3476,6 +3479,7 @@ p.school-info {
 	margin-top: -15px;
 }
 .user-information{
+	padding-bottom: 11px;
 	border-bottom: 1px solid rgba(243, 242, 242, 0.89);
 	/*margin-right: 17px;*/
 	-webkit-box-shadow: rgba(207, 203, 203, 0.29) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 1px 0px 0px 1px;
@@ -3877,7 +3881,7 @@ p.school-info {
 	background-color: white;
 	border-radius: 4px;
 	border: 1px solid #00d797;
-	color: 00d797;
+	color: #00d797;
 	font-size: 19.14px;
 	padding-left: 20px;
 	margin-top: 19px;
@@ -4234,7 +4238,7 @@ div#circle-div-switch-left {
     text-align: right;
 }
 .showcase-label span{
-    padding-right: 10;
+    padding-right: 10px;
     line-height: 2.3;
     font-family: 'Roboto', sans-serif;
     text-overflow: ellipsis;
@@ -4270,15 +4274,15 @@ button.download-showcase-button {
 }
 .showcase-title {
     font-family: 'Nunito', sans-serif;
-    font-size: 29px;
+    font-size: 24px;
     font-weight: 200;
     border-bottom: 1px solid white;
     line-height: 1.5;
 }
 .showcase-description {
     margin-top: 10px;
-    letter-spacing: 0.5;
-    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-size: 15px;
 }
 .download_button_icon{
     width: 21px;
@@ -4304,3 +4308,54 @@ button.download-showcase-button {
     left: 10px;
     top: 5px;
 }
+.visible_class{
+	visibility: visible;
+}
+.hidden_class{
+	visibility: hidden;
+}
+.blur_class{
+	opacity: 0.2;
+}
+.opacity_class{
+	opacity: 1;
+}
+.follow_prof_button {
+	width: 125px;
+	height: 34px;
+	border: 1px solid #2d92b2;
+	background-color: #3db5d8;
+	border-radius: 4px;
+	color: white;
+	font-size: 17px;
+	font-weight: 600;
+	padding-left: 28px;
+	padding-top: 3px;
+}
+.follow_prof_button i, .email_button i {
+	width: 21px;
+	height: 21px;
+	left: 25px;
+	position: absolute;
+	background-image: url('../assets/ProfilePageIconMap.png');
+	background-position: -5px -129px;
+	background-repeat: no-repeat;
+	background-size: 260%;
+}
+.follow_email_wrapper{
+	display: inline-flex;
+}
+.email_button{
+	width: 48px;
+	height: 34px;
+	margin-left: 11px;
+	border: 1px solid #e8e8e8;
+	border-radius: 4px;
+	background-color: white;
+}
+.email_button i{
+	left: initial;
+	background-position: -26px -127px;
+	margin-top: -9px;
+	margin-left: -11px;
+}	

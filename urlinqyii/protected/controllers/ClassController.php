@@ -27,7 +27,7 @@ class ClassController extends Controller
 
         $course = $class->course;
 
-        $professor = User::model()->find('user_id=:id', array(':id'=>$class->professor));
+        $professor = User::model()->find('user_id = :id',array(':id'=>$class->professor));
 
         $department = $class->department;
         $university = $class->school;
@@ -85,7 +85,7 @@ class ClassController extends Controller
             ->select('co.course_id,co.course_name')
             ->from('course co, class cl')
             ->where('cl.professor = :pid and cl.course_id = co.course_id and cl.class_id != :cid',
-                    array(':pid'=>$professor->user_id,'cid'=>$class_id))
+                    array(':pid'=>$professor->user_id,':cid'=>$class_id))
             ->queryAll();
 
         $students_following_that_took_course = User::model()->findAllBySql(' select u.*
@@ -94,7 +94,7 @@ class ClassController extends Controller
                 and cu.user_id = u.user_id and u.user_id = uc.to_user_id and uc.from_user_id = :uid
                 and (c2.year<c1.year or (c2.year=c1.year and ((c2.semester="spring" and (c1.semester = "summer"
                 or c1.semester = "fall")) or (c2.semester="summer" and c1.semester="fall"))))'
-                ,array(':uid'=>$user_id,'cid'=>$class_id));
+                ,array(':uid'=>$user_id,':cid'=>$class_id));
 
         $this->render('class',array('all_following'=>$students_following_that_took_course, 'students'=>$students,'admins'=>$admins, 'user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
             , 'department'=>$department, 'is_member'=>$is_member, 'university'=>$university, 'is_admin'=>$is_admin

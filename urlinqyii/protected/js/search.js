@@ -2,9 +2,14 @@ $(document).ready(function(){
 
     init();
     function init(){
-        if(q != ""){
-            get_search_results(q); //
+        get_search_results(q);
+        /*if(q != ""){
+            get_search_results(q);
         }
+        else
+        {
+            get_search_results(q);
+        }*/
     }
 
     forceLeftMenuClose = true;
@@ -25,6 +30,7 @@ $(document).ready(function(){
 
             if(search_json_data['success']){
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                alert(search_json_data);
                 show_search_results(search_json_data);
             }else{
                 alert('error getting data');
@@ -120,7 +126,61 @@ $(document).ready(function(){
 
     function show_courses(result_json) {
         //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
-        var source   = $("#vertical_search_results").html();
+        var source   = $("#vertical_course_results").html();
+        var template = Handlebars.compile(source);
+        //var generated_html = template(result_json);
+        var context =
+        {
+            description: result_json["course_desc"],
+            admin_key: "School",
+            department_key: "Department",
+            members_key: "Members",
+            admin_value: result_json["school_id"],
+            department_value: result_json["dept_id"],
+            members_value: "Be the first to join"
+        }
+        var generated_html = template(context);
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        //alert(JSON.stringify($(".description")));
+        //$('.description').append(JSON.stringify(result_json['description']));
+    }
+    function show_courses_head(result_json) {
+        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
+        var source   = $("#vertical_course_results_top").html();
+        var template = Handlebars.compile(source);
+        //var generated_html = template(result_json);
+        var context =
+        {
+            rname: result_json['course_name']
+        }
+        var generated_html = template(context);
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        //alert(JSON.stringify($(".description")));
+        //$('.description').append(JSON.stringify(result_json['description']));
+    }
+    function show_clubs(result_json) {
+        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
+        var source   = $("#vertical_club_results").html();
+        var template = Handlebars.compile(source);
+        //var generated_html = template(result_json);
+        var context =
+        {
+            description: result_json["Name"],
+            admin_key: "Name",
+            department_key: "School",
+            members_key: "Members",
+            admin_value: result_json["group_name"],
+            department_value: result_json["school_id"],
+            members_value: "Be the first to join"
+        }
+        var generated_html = template(context);
+        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        //alert(JSON.stringify($(".description")));
+        //$('.description').append(JSON.stringify(result_json['description']));
+    }
+    function show_departments(result_json) {
+        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
+        var source   = $("#vertical_dept_results").html();
         var template = Handlebars.compile(source);
         //var generated_html = template(result_json);
         var context =
@@ -140,38 +200,8 @@ $(document).ready(function(){
         //$('.description').append(JSON.stringify(result_json['description']));
 
     }
-    function show_courses_head(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
-        var source   = $("#vertical_search_results_top").html();
-        var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
-        var context =
-        {
-            rname: result_json['course_name']
-        }
-        var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(JSON.stringify($(".description")));
 
-        //$('.description').append(JSON.stringify(result_json['description']));
-
-    }
-    function show_clubs(result_json){
-        //alert('group_id: ' + JSON.stringify(result_json["group_id"]));
-        var source   = $("#vertical_search_results").html();
-        var template = Handlebars.compile(source);
-        var generated_html = template(JSON.stringify(result_json));
-        $('#clubbox').append(generated_html).hide().fadeIn();
-    }
-    function show_departments(result_json){
-        //alert('department_id: ' + JSON.stringify(result_json["department_id"]));
-        var source   = $("#vertical_search_results").html();
-        var template = Handlebars.compile(source);
-        var generated_html = template(JSON.stringify(result_json));
-        $('#deptbox').append(generated_html).hide().fadeIn();
-    }
-
-//For the specific searches (from topbar.js)
+    //For the specific searches (from topbar.js)
     $(".topbar_graph_search").click(function(e){
         e.stopPropagation();
         $.ajax({url:base_url + '/search/json?f='+e.currentTarget.id,
@@ -190,6 +220,7 @@ $(document).ready(function(){
             }
         });
     });
+
 //    $("#piys").click(function(){
 //        $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
 //        {
