@@ -128,8 +128,7 @@ $( document ).ready(function() {
 
         <section class='feeds_bag'>
             <?php
-            //include 'feeds.php';
-            // include "https://urlinq.com/beta/feed_single.php?post_id=341";
+            echo Yii::app()->runController('partial/feed',array('user'=>$user));
             ?>
         </section>
         </div>

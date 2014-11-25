@@ -30,6 +30,7 @@ $(document).ready(function(){
 
             if(search_json_data['success']){
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                alert(search_json_data);
                 show_search_results(search_json_data);
             }else{
                 alert('error getting data');
