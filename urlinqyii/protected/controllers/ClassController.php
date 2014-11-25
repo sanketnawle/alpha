@@ -109,6 +109,7 @@ class ClassController extends Controller
 
 
 
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
