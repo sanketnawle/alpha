@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ed6a8d-48e3-4594-96cf-d04e9fa439f4" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" afterPath="$PROJECT_DIR$/urlinqyii/protected/js/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" afterPath="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="alpha.iws" />
@@ -28,16 +34,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-23.846153" vertical-offset="791" max-vertical-offset="2482">
               <caret line="83" column="19" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+=======
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/js/search.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3915">
+              <caret line="253" column="3" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/search/search.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.78" vertical-offset="1361" max-vertical-offset="6480">
+              <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -151,6 +176,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-25.107143" vertical-offset="24763" max-vertical-offset="38845">
               <caret line="1498" column="5" selection-start-line="1433" selection-start-column="4" selection-end-line="1498" selection-end-column="5" />
+=======
+      <file leaf-file-name="topbar.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.41121495" vertical-offset="2960" max-vertical-offset="3495">
+              <caret line="212" column="18" selection-start-line="212" selection-start-column="18" selection-end-line="212" selection-end-column="18" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
               <folding />
             </state>
           </provider>
@@ -192,7 +224,6 @@
         <option value="$PROJECT_DIR$/beta/css/fbar.css" />
         <option value="$PROJECT_DIR$/beta/includes/posts.php" />
         <option value="$PROJECT_DIR$/beta/status_bar.php" />
-        <option value="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php" />
         <option value="$PROJECT_DIR$/urlinqyii/js/class/class_members_tab.js" />
         <option value="$PROJECT_DIR$/urlinqyii/js/class/class.js" />
@@ -215,20 +246,32 @@
         <option value="$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/config/main.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/models/User.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/urlinqyii/protected/views/profile/profile.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/views/profile/_ajaxContent.php" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/views/profile/indextest.php" />
         <option value="$PROJECT_DIR$/urlinqyii/js/professor-profile.js" />
         <option value="$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php" />
+=======
+        <option value="$PROJECT_DIR$/urlinqyii/protected/js/search.js" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/search/search.php" />
+        <option value="$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
+=======
+    <option name="y" value="23" />
+    <option name="width" value="1366" />
+    <option name="height" value="677" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -256,6 +299,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -325,6 +369,8 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+<<<<<<< HEAD
+=======
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -350,7 +396,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="partial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runtime" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="profile" />
+=======
+              <option name="myItemId" value="js" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,6 +489,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -419,6 +519,31 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+=======
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alpha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -428,7 +553,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -470,15 +594,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -497,7 +621,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+=======
+    <frame x="0" y="23" width="1366" height="677" extended-state="6" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -507,7 +635,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20721272" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21903323" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -515,7 +648,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16842106" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -546,6 +678,30 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/js/class/class_about_tab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_feed_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4571428" vertical-offset="255" max-vertical-offset="1275">
+          <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_about_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25904763" vertical-offset="2040" max-vertical-offset="6698">
+          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/class/class_members_tab.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4709">
@@ -634,13 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769" vertical-offset="595" max-vertical-offset="4301">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.192307" vertical-offset="4079" max-vertical-offset="5984">
-          <caret line="261" column="3" selection-start-line="261" selection-start-column="3" selection-end-line="261" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -744,7 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6966" max-vertical-offset="8381">
           <caret line="416" column="16" selection-start-line="416" selection-start-column="16" selection-end-line="416" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,6 +933,17 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-75.625" vertical-offset="90" max-vertical-offset="2190">
+          <caret line="127" column="16" selection-start-line="127" selection-start-column="16" selection-end-line="127" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
     <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Showcase.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1938">
@@ -793,18 +952,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2941">
-          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="3570">
+          <caret line="148" column="55" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Major.php">
+    <entry file="file://$PROJECT_DIR$/urlinqyii/js/professor-profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="41769" max-vertical-offset="47209">
+          <caret line="2469" column="70" selection-start-line="2469" selection-start-column="70" selection-end-line="2469" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07476635" vertical-offset="5855" max-vertical-offset="6390">
+          <caret line="393" column="9" selection-start-line="393" selection-start-column="9" selection-end-line="393" selection-end-column="9" />
+          <folding>
+            <marker date="1416854594000" expanded="true" signature="-1:-1" placeholder="select m.nam..user_major..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/git_reference">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62432915" vertical-offset="371" max-vertical-offset="930">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -846,40 +1023,95 @@
         <state vertical-scroll-proportion="-253.74074" vertical-offset="204" max-vertical-offset="16898">
           <caret line="818" column="57" selection-start-line="818" selection-start-column="57" selection-end-line="818" selection-end-column="57" />
           <folding>
+<<<<<<< HEAD
             <marker date="1416855149218" expanded="true" signature="450:563" placeholder="SELECT user_..user..." />
             <marker date="1416855149218" expanded="false" signature="47502:47559" placeholder="..." />
+=======
+            <element signature="e#64098#64557#0#PHP" expanded="false" />
+            <element signature="e#84252#84292#0#PHP" expanded="false" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beta/js/add_event.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2142857" vertical-offset="0" max-vertical-offset="4590">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="6" />
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/ClassModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2941">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beta/js/ampm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="7327">
           <caret line="0" column="5" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/models/Major.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1768">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beta/js/bgcl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="854">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/controllers/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.875" vertical-offset="45" max-vertical-offset="2565">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1416846345000" expanded="true" signature="-1:-1" placeholder="Select * fro..." />
+            <marker date="1416846345000" expanded="true" signature="-1:-1" placeholder="Select * fro..course..." />
+            <marker date="1416846345000" expanded="true" signature="-1:-1" placeholder="Select * fro..school..." />
+            <marker date="1416846345000" expanded="true" signature="-1:-1" placeholder="Select * fro..department..." />
+            <marker date="1416846345000" expanded="true" signature="-1:-1" placeholder="Select * fro..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/js/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3915">
+          <caret line="253" column="3" selection-start-line="253" selection-start-column="3" selection-end-line="253" selection-end-column="3" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beta/js/professor-profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.107143" vertical-offset="24763" max-vertical-offset="38845">
           <caret line="1498" column="5" selection-start-line="1433" selection-start-column="4" selection-end-line="1498" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/search/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.78" vertical-offset="1361" max-vertical-offset="6480">
+          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urlinqyii/protected/views/partial/topbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41121495" vertical-offset="2960" max-vertical-offset="3495">
+          <caret line="212" column="18" selection-start-line="212" selection-start-column="18" selection-end-line="212" selection-end-column="18" />
+>>>>>>> 5fe67fbf97a83373645760911e2b0a88edc62c3e
           <folding />
         </state>
       </provider>
