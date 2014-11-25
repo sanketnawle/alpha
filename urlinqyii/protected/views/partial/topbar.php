@@ -5,224 +5,224 @@
 <head>
     <title></title>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/san_francisco.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!--script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/protected/js/search.js"></script>-->
 
-    <script>
-        base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
-    </script>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/jquery.mCustomScrollbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/notify.css'/>
-    <link rel = 'stylesheet' type = 'text/css' href = '<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css'/>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
+
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/lptopbar/notify.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/leftpanel.css' />
 </head>
 <body>
-<div class="topbar">
-    <div class="left">
-        <!--<a href="./home.php" class="urlinq"></a>-->
-        <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/home" class="urlinq">
+    <div class="topbar">
+        <div class="left">
+            <!--<a href="./home.php" class="urlinq"></a>-->
+            <a href="./" class="urlinq"></a>
             <a class="menu active"></a>
+        </div>
+        <div class="right">
+            <div class="notify calendar">
+                <div class="button">
+                    <div class="day">Tue</div>
+                    <div class="date">9</div>
+                </div>
+                <div class="notify-window">
+                    <div class="wedge"></div>
+                    <div class="window">
+                        <div class="header">Invitations and Reminders</div>
+                        <ul class="entries">
+                            <li class="eve">
+                                <div class="icon"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="follow btn">Add to calendar</div>
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">Rachel Borowitz invited you to  the event, Cheese Club Bake Sale.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">10 mins ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tdo">
+                                <div class="icon text">
+                                    <div>Exam</div>
+                                </div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">In 1 week, you have a Supply and Demand Exam in the class, Principles of Economics.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 day ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tdo">
+                                <div class="icon date">
+                                    <div class="month">Nov</div>
+                                    <div class="day">20</div>
+                                </div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">On Thursday, you have a reading due in the class, Principles of Economics.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 day ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="eve done">
+                                <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="follow msg">Event Added</div>
+                                    </div>
+                                    <div class="message">MapReduce Gene Analysis was added to Computational Biology's calendar.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 hour ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="footer">
+                            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
+                                See full calendar
+                                <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/leftpanel/go-arrow.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="notify board">
+                <div class="button">
+                    <div class="icon"></div>
+                </div>
+                <div class="notify-window">
+                    <div class="wedge"></div>
+                    <div class="window">
+                        <div class="header">Announcements, Questions and Followers</div>
+                        <ul class="entries">
+                            <li class="per">
+                                <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="follow btn">Follow</div>
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">Shaleen Smith is now following you.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">10 mins ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="inf">
+                                <div class="icon" style="background-image: url(http://lorempixel.com/34/34?2)"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">Professor Wolfram has made an announcement in your class, Theories of the French Republic.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 day ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="qus done">
+                                <div class="icon" style="background-image: url(http://lorempixel.com/34/34?3)"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="dismiss">Dismiss</div>
+                                        <div class="close"></div>
+                                    </div>
+                                    <div class="message">Jenna Appleseed has asked a question in your class, Computational Biology.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 day ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="per done">
+                                <div class="icon"></div>
+                                <div class="content">
+                                    <div class="right">
+                                        <div class="follow msg">Following</div>
+                                    </div>
+                                    <div class="message">Dante Aligheri is now following you.</div>
+                                    <div class="time">
+                                        <div class="icon"></div>
+                                        <div class="stamp">1 hour ago</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <!--<form method="get" action="./search_beta.php">-->
+            <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
+                <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+                <button type="submit" class="submit"></button>
+            </form>
+            <ul class="prelist">
+                <li>
+                    <a>
+                        <div class="icon dpt"></div>
+                        <span>Professors in Your Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses in Your Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon prof"></div>
+                        <span>Professors in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon clb"></div>
+                        <span>Clubs in Your School</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon sch"></div>
+                        <span>Search Your School</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="postlist"></ul>
+        </div>
     </div>
-    <div class="right">
-        <a class="notify calendar">
-            <div class="button">
-                <div class="day">Tue</div>
-                <div class="date">9</div>
-            </div>
-            <div class='notify-window calendar'>
-                <div class="toolbar">
-                    <ul>
-                        <li class="rem active" data-column="left"><div class="icon"></div></li>
-                        <li class="inv" data-column="middle"><div class="icon"></div></li>
-                        <li class="cal" data-link="link to somewhere"><div class="icon"></div></li>
-                    </ul>
-                </div>
-                <div class='left column active'>
-                    <div class='header'>
-                        <span class='text'>Reminders</span>
-                        <span class='count'>4</span>
-                    </div>
-                    <ul>
-                        <li class="unseen">
-                            <div class='icon exam'><div class='day'>Sep</div><div class="date">12</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon club'><div class='day'>Sep</div><div class="date">11</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon class'><div class='day'>Sep</div><div class="date">9</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='footer'>1 Week Away &bull; CS Exam</div>
-                        </li>
-                        <li>
-                            <div class='icon event'><div class='day'>Sep</div><div class="date">1</div></div>
-                            <div class='content'>Study For Exam</div>
-                            <div class="checkbox_wrapper">
-                                <input type="checkbox" name="event1" id="e1" value="#event_data1">
-                                <label for="e1" id="label1"></label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nostyle">No New Event Reminders</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class='middle column'>
-                    <div class='header'>
-                        <span class='text'>Suggested/Invited</span>
-                        <span class='count'>2</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=1)">
-                                <div class="day">Sep</div><div class="date">12</div>
-                            </div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='action add' title="Add to Calendar"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Invited you</div>
-                        </li>
-
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50?id=2)">
-                                <div class="day">Sep</div><div class="date">12</div>
-                            </div>
-                            <div class='content'>Study For Exam</div>
-                            <div class='action add busy' title="Busy at this time"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; In Biosensor CS3441</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">no new event invitations</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class='right column'>
-                    <ul>
-                        <li><div class='icon mc'></div>Monthly Calendar</li>
-                        <li><div class='icon wc'></div>Weekly Calendar</li>
-                        <li class="underline"><div class='icon pl'></div>Add New Event</li>
-                    </ul>
-                </div>
-            </div>
-        </a>
-        <a class="notify board">
-            <div class="button">
-                <div class="icon"></div>
-            </div>
-            <div class='notify-window board' style="display: none">
-                <div class="toolbar">
-                    <ul>
-                        <li class="dis active" data-column="left"><div class="icon"></div></li>
-                        <li class="fil" data-column="middle"><div class="icon"></div></li>
-                        <li class="fol" data-column="right"><div class="icon"></div></li>
-                    </ul>
-                </div>
-                <div class='column left active'>
-                    <div class='header'>
-                        <span class='text'>Discussions</span>
-                        <span class='count count-blue'>2</span>
-                    </div>
-                    <ul class='cn_sec_content'>
-                        <li>
-                            <div class='icon' style="background-image: url(http://lorempixel.com/50/50)"></div>
-                            <div class='content'><span>Professor Lai</span> made an announcement in <span>Biosensor and Entrepreneurship</span></div>
-                            <div class='footer'>September 10 at 5:00pm</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">No New Post Notifications</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class='column middle'>
-                    <div class='header'>
-                        <span class='text'>Files</span>
-                        <span class='count count-blue'>2</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon pdf'><div class='file'>.PDF</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon doc'><div class='file'>.DOC</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon xls'><div class='file'>.XLS</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon ppt'><div class='file'>.PPT</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class='icon zip'><div class='file'>.ZIP</div></div>
-                            <div class='content'>File Name</div>
-                            <div class='action down' title="Download"><div class="icon"></div></div>
-                            <div class='footer'>1 Week Away &bull; Jake Lazarus</div>
-                        </li>
-                        <li>
-                            <div class="nostyle">no new event invitations</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class='column right'>
-                    <div class='header'>
-                        <span class='text'>Followers</span>
-                        <span class='count count-blue'>1</span>
-                    </div>
-                    <ul>
-                        <li>
-                            <div class='icon full' style='background-image:url(http://lorempixel.com/50/50?dm.jpg);'></div>
-                            <div class='content two-lines'>
-                                <div class='line1'>Ross Kopelman</div>
-                                <div class='line2'><div class="follow">Follow</div></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="center">
-        <!--<form method="get" action="./search_beta.php">-->
-        <form id = "search_form" method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-            <input id = "search_bar_input" type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
-            <button type="submit" class="submit"></button>
-        </form>
-        <ul class="prelist">
-            <li class="topbar_graph_search" id = "piyd"><a><div class = "icon dpt"></div><span>Professors in Your Department</span></a></li>
-            <li class="topbar_graph_search" id = "ciyd"><a><div class="icon crs"></div><span>Courses in Your Department</span></a></li>
-            <li class="topbar_graph_search" id = "piys"><a><div class="icon prof"></div><span>Professors in Your School</span></a></li>
-            <li class="topbar_graph_search" id = "ciys"><a><div class="icon crs"></div><span>Courses in Your School</span></a></li>
-            <li class="topbar_graph_search" id = "giys"><a><div class="icon clb"></div><span>Clubs in Your School</span></a></li>
-            <li class="topbar_graph_search" id = "sys"><a><div class="icon sch"></div><span>Search Your School</span></a></li>
-        </ul>
-        <ul class="postlist">
-        </ul>
-    </div>
-</div>
-
-
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/topbar.js"></script>
-
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
-
 
