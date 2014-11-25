@@ -257,7 +257,6 @@
             ================================================================================================================================
             -->
 
-
             <div class="mainsec">
                 <div id="result" class="midsec loadani_parent" style="zoom:1;">
                     <div class="all_results_active" style="opacity:1;">
@@ -280,7 +279,7 @@
                                                 </div>
                                                 <div class="person-bottom-functions">
                                                     <div class="link-button">
-                                                        <a class="link link-up" data value="1"}>Follow</a>
+                                                        <a class="link link-up" data value="1">Follow</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -345,58 +344,7 @@
 
 
             <!--The template for Clubs  who match up with the search query-->
-            <div class="vert-area">
-                <div class="course vert-results-wrapper">
-                    <div class=results-top-sec>
-                        <script id="vertical_search_results_top" type="text/x-handlebars-template">
-                            <div class="result-header">
-                                {{rname}}
-                            </div>
-                            <div class="result-header-right">
-
-                            </div>
-                            <!--The template for Courses (not including classes within it) who match up with the search query-->
-                        </script>
-                        <div class="results-main-sec">
-                            <script id="club_search_results" type="text/x-handlebars-template">
-                                <p class="description">
-                                    {{description}}
-                                </p>
-
-                                <div class="lower-info-keys">
-                                    <div class="info-key admin">
-                                        {{admin_key}}
-                                    </div>
-                                    <div class="info-key subject">
-                                        {{department_key}}
-                                    </div>
-                                    <div class="info-key members">
-                                        {{members_key}}
-                                    </div>
-                                </div>
-                                <div class="lower-info">
-                                    <div class="info-piece admin">
-                                        {{admin_value}}
-                                    </div>
-                                    <div class="info-piece subject">
-                                        {{department_value}}
-                                    </div>
-                                    <div class="info-piece members">
-                                        {{members_value}}
-                                    </div>
-                                </div>
-
-                            </script>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <script id="club_search_results" type="text/x-handlebars-template">
+            <script id="club_search_results" type="text/x-handlebars-template">
                 <div id="clubbox">
 
                 </div>
