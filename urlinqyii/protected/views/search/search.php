@@ -272,8 +272,8 @@
                                                     <script id="user_search_results" type="text/x-handlebars-template">
                                                         <div class="result-photo">
                                                             <img src="http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg">
-                                                            <h3>Gary</h3>
-                                                            <p>Student</p>
+                                                            <h3>{{fullname}}</h3>
+                                                            <p>{{department}}</p>
                                                     </script>
 
                                                 </div>
@@ -309,11 +309,11 @@
                                         {{description}}
                                     </p>
 
-                                    <div class="lower-info keys">
-                                        <div class="info-key adminr">
+                                    <div class="lower-info-keys">
+                                        <div class="info-key admin">
                                             {{admin_key}}
                                         </div>
-                                        <div class="info-key-subject">
+                                        <div class="info-key subject">
                                             {{department_key}}
                                         </div>
                                         <div class="info-key members">

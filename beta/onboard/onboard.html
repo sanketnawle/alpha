@@ -1,16 +1,16 @@
-<!DOCTYPE html> 
-<html>
-<head>
+<html style="
+    height: 100%;
+"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<link rel = "stylesheet" type = "text/css" href = "css/onboard.css"> 
-<link rel = "stylesheet" type = "text/css" href = "css/progressbar.css"> 
+<link rel="stylesheet" type="text/css" href="css/onboard.css"> 
+<link rel="stylesheet" type="text/css" href="css/progressbar.css"> 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
-<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css">
 
 <!--<script src="js/progressbar.js"></script>-->
 
@@ -396,15 +396,19 @@ function content_paint(curr){
 </head>
 <body>
 
-<div class='progress_frame'>
-	<div class='progress_header'>
-		<div class='progress_hint_0'>Join your Classes</div>
+<div style="
+    display: table-cell;
+    vertical-align: middle;
+">
+<div class="progress_frame">
+	<div class="progress_header">
+		<div class="progress_hint_0">Select your School</div>
 		
-		<div class='progress_hint_2'>
+		<div class="progress_hint_2">
 			<div class="devbox">
 			  <div class="wrap">
 			    <div class="progress-wrap">
-			      <div class="progress">
+			      <div class="progress" style="width: 14%; background-color: rgb(186, 81, 228);">
 			        <!--<span class="countup"></span>-->
 			      </div>  
 			    </div>
@@ -412,30 +416,31 @@ function content_paint(curr){
 			</div>
 		</div>
 
-		<div class='progress_hint_1'>Step <span class='curr_step'>4</span> of <span>7</span></div>
+		<div class="progress_hint_1">Step <span class="curr_step">1</span> of <span>7</span></div>
 
-		<div class='progress_goback'></div>
+		<div class="progress_goback" style="display: none;"></div>
 	</div>
 
 
 
-	<div class='progress_content'>
-		<div class='content_inner'>
-			<div class='content_canvas'></div>
+	<div class="progress_content">
+		<div class="content_inner">
+			<div class="content_canvas"><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Stern School of Business</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div></div>
 		</div>
 	</div>
 
-	<div class='progress_footer'>
-		<div class='progress_footer_glyph_0'></div>
-		<div class='next_progress blue_btn'>Join these Classes</div>
-		<div class='skip_progress'>or <span>skip this step</span></div>
+	<div class="progress_footer">
+		<div class="progress_footer_glyph_0 progress_footer_glyph_1"></div>
+		<div class="next_progress blue_btn" style="display: none;">Join your School</div>
+		<div class="skip_progress" style="display: none;">or <span>skip this step</span></div>
 
-		<input type='text' placeholder='Search' class='onboard_textarea_t0 onboard_textarea_t1'>
+		<input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
 	</div>
+</div>
 </div>
 
 
-</body>
 
 
-</html>
+
+</body></html>

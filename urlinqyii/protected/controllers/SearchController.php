@@ -133,8 +133,11 @@ class SearchController extends Controller
                 //'posts'=>$postContent
             );
         }
+        echo CJSON::encode($data);
+        Yii::app()->end();
 
-        $this->renderJSON($data);
+//        $this->renderPartial('search', $data, false, true);
+//        $this->renderJSON($data);
     }
 }
 /*
