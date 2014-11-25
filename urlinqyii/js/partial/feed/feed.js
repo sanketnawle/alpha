@@ -4,6 +4,33 @@ $(document).ready(function(){
     $ = jQuery.noConflict();
     //Handlebars helpers
 
+    init();
+    function init(){
+        alert(base_url);
+    }
+
+
+    
+
+    $.each(jsonData ,function(key) {
+
+        //jsonData['key'].jsonData[key]['replies'][0]);
+        //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
+        //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
+        //var time = new Date(jsonData[key]['created_time']);
+        //jsonData[key]['created_time'] = time
+        if(jsonData[key]['reply_count'] >  2) {
+            jsonData[key].show_more = true;
+            var post_id = jsonData[key]['post_id'];
+            var theReplies = jsonData[key]['replies'];
+            replies[post_id.toString()] = theReplies;
+            jsonData[key]['replies'] = [jsonData[key]['replies'][0], jsonData[key]['replies'][1]];
+        }
+
+        render_post(jsonData[key]);
+    });
+
+
 
     Handlebars.registerHelper("theFileType", function(type, id){
         if(type === 'image') return new Handlebars.SafeString("class='post_attachment_review_img' src='https://urlinq.com/beta/includes/getimage.php?id={{file_id}}'>");
@@ -104,23 +131,7 @@ $(document).ready(function(){
     });
 
 
-    $.each(jsonData ,function(key) {
 
-        //jsonData['key'].jsonData[key]['replies'][0]);
-        //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
-        //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
-        //var time = new Date(jsonData[key]['created_time']);
-        //jsonData[key]['created_time'] = time
-        if(jsonData[key]['reply_count'] >  2) {
-            jsonData[key].show_more = true;
-            var post_id = jsonData[key]['post_id'];
-            var theReplies = jsonData[key]['replies'];
-            replies[post_id.toString()] = theReplies;
-            jsonData[key]['replies'] = [jsonData[key]['replies'][0], jsonData[key]['replies'][1]];
-        }
-
-        render_post(jsonData[key]);
-    });
 
 
 
