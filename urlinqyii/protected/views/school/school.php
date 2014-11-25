@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 
@@ -680,9 +680,6 @@ $(document).ready(function() {
 
         }
         if($(this).hasClass("tabc")){
-
-
-
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
