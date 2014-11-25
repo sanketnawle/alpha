@@ -128,8 +128,24 @@ $( document ).ready(function() {
 
         <section class='feeds_bag'>
             <?php
-            //include 'feeds.php';
-            // include "https://urlinq.com/beta/feed_single.php?post_id=341";
+
+
+            echo "<div class='feed-tab-content'>";
+
+            echo "<div class='group_fbar_wrap'>";
+
+            echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
+
+            echo "</div>";
+
+            echo "<div class='group_feed_wrap'>";
+
+            echo Yii::app()->runController('partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
+
+            echo "</div>";
+
+
+            echo "</div>";
             ?>
         </section>
         </div>

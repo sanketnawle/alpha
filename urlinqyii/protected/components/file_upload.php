@@ -74,7 +74,8 @@ function file_upload($files, $path="") {
             include "ImageCompress.php";
             image_compress($files["uploadFile"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
         } else{
-            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $random_name.$extension);
+            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $random_name. '.'.$extension);
+            $extension = 'jpg';
         }
 
 
