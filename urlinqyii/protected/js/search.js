@@ -42,6 +42,8 @@ $(document).ready(function(){
         //show_result(schools_json); //test
 
 
+        var deptname = "";
+
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
             //alert(JSON.stringify(users_json[index]));
@@ -104,11 +106,18 @@ $(document).ready(function(){
     function show_users(result_json){
         //We present users and professors in the same place, but label them by type (s or p)
         //alert('user_id: ' + JSON.stringify(result_json["user_id"]));
+
         var source   = $("#user_search_results").html();
         var template = Handlebars.compile(source);
-        var generated_html = template(JSON.stringify(result_json));
+        var context = {
+            fullname: result_json['firstname'] + " " + result_json['lastname'],
+            department: result_json['department_id']
+        }
+       // var generated_html = template(JSON.stringify(result_json));
+        var generated_html = template(context);
         $('.slide-inner').append(generated_html).hide().fadeIn();
     }
+
     function show_courses(result_json) {
         //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_search_results").html();
@@ -122,7 +131,7 @@ $(document).ready(function(){
             members_key: "Members",
             admin_value: result_json["school_id"],
             department_value: result_json["dept_id"],
-            members_value: 5
+            members_value: "Be the first to join"
         }
         var generated_html = template(context);
         $('.results-main-sec').append(generated_html).hide().fadeIn();

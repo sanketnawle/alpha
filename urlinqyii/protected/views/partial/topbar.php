@@ -203,7 +203,7 @@
     <div class="center">
         <!--<form method="get" action="./search_beta.php">-->
         <form id = "search_form" method ="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-            <input id = "search_bar_input" type="text" name="q" class="mainsearch text" autocomplete="on" placeholder="Search courses, clubs, and people">
+            <input id = "search_bar_input" type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
             <button type="submit" class="submit"></button>
         </form>
         <ul class="prelist">
