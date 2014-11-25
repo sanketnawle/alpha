@@ -32,12 +32,16 @@ echo '
                 NEW YORK UNIVERSITY
             </h3>';
 
-          echo $school->school_description;
+            echo $school->school_description;
 
-  echo'          <div class="school_links">
+echo '
+            <div class="school_links">
                 <h3 class="school_links_header">
                     Links
-                </h3>
+                </h3>';
+        echo $school->weblink;
+
+echo '
 
             </div>
 

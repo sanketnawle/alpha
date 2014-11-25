@@ -28,17 +28,23 @@
 <?php
 
 echo '<div class = "departments-tab-content">
-                            <div class = "departmentsTabTop">
-                               <form>
-                                  <div class = "searchWrapper">
-                                     <input placeholder = "Search the departments at New York University (placeholder)" class = "tabSearcher dept_search ajax">
-                                     </input>
-                                  </div>
-                                  <button class = "submitSearch">
-                                  </button>
-                              </form>
-                           </div>';
+
+            <div class = "departmentsTabTop">
+               <form>
+                  <div class = "searchWrapper">
+                     <input placeholder = "Search the departments at New York University (placeholder)" class = "tabSearcher dept_search ajax">
+                     </input>
+                  </div>
+                  <button class = "submitSearch">
+                  </button>
+              </form>
+           </div>';
+
+
+foreach ($departments as $department){
+   // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
+
 /*
 foreach($dept_array as $key=>$value){
     if($key==0){
@@ -140,7 +146,72 @@ foreach($dept_array as $key=>$value){
     }
 }
 */
+
+//var_dump($departments);
+    //var_dump($department);
+echo '<div class = "department ajax" id="department-ajax">
+    			                                        <a class = "departmentSelectWrapper" id="departmentSelectWrapper">
+    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $department->department_name; echo '</a>
+    			                                           </div>
+    			                                           <div class = "imageWrapper">
+    			                                             <span class = "hoverMask">
+    			                                             </span>
+    			                                             <div class = "deptImage deptImage-dos" id="deptimage1">
+    			                                                <img class = "floatL deptImg" src = "">
+    			                                                <div class = "blackData">
+    			                                                	<span class = "group_members">
+    			                                                		<em class = "members-icon"></em>
+    			                                                		<span>99</span>
+
+    			                                                	</span>
+    			                                                </div>
+    			                                               <!--  <div class = "dept-short-wrapper">
+    				                                                  <div>
+    				                                                    <span class="search_unit"><img class="floatL deptImg" src="">
+    				                                                    </span>
+    				                                                 </div>
+    			                                                </div>-->
+    			                                            </div>
+    			                                            <div class = "deptBtns" id="deptBtns1">';
+//<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
+
+echo '<button class = "followBtn unfollowBtn" id="followBtn1">
+    <em class = "unfollow-icon"></em>Unfollow
+    </button>
+';
+
+echo '<button class = "studybtn btn_mymajor" id="studybtn1">My Major';
+
+
+echo'</button>
+    			                                            	<div class = "study_box_open" id="study_box_open1">
+    			                                            		<div class = "js_wrap" id="js_wrap1">
+    																	<span>I am...</span>
+    																	<div class = "study_first_option" id="study_first_option1">
+';
+
+
+echo '<button class = "majorType study_type_btn pressedGraybtn" id="major1" type = "button"><em class="check" style="left: 16px; opacity: 1;"></em>Majoring in this subject</button>
+';
+
+echo '</div>
+    																</div>
+    																<div class = "modal_loading2" id="modal_loading21" >
+    																	<img class = "modal_animation" src = "school/src/loadingAnimation.gif">
+    																</div>
+    															</div>
+    			                                            </div>
+    			                                        </div>
+    			                                    </a>
+    			                                </div>
+';
+
+echo '
+    </div>';
+
+}
 echo '
     </div>
-    </div>
-'; ?>
+';
+
+?>

@@ -112,7 +112,7 @@ echo "          </div>
                     </div>
             </div>
 ";
-
+/*
 $connected_users = get_connected_users($user_id);
 if (count($connected_users) > 0) {
     $connected_users = join(', ', $connected_users);
@@ -121,7 +121,7 @@ JOIN user U on CU.user_id = U.user_id AND U.user_type = 's'
 JOIN student_attribs SA on U.user_id = SA.user_id
 WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
     $get_course_connection_query_result = $con->query($get_course_connection_query);
-
+*/
     $user_count = mysqli_num_rows($get_course_connection_query_result);
     if ($user_count > 0) {
         echo "

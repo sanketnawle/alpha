@@ -3,15 +3,17 @@
     
     include 'php/redirect.php';
     require_once('includes/dbconfig.php');
-    session_start();
-    
+	if(session_status() == 'PHP_SESSION_NONE'){
+		session_start();
+	}
+
     if(isset($_GET['user_id'])){
         $user_id = $_GET['user_id'];
     }
     else{
         header("Location:".$_SERVER['PHP_SELF']."?user_id=".$_SESSION['user_id']);
     }
-    
+
     if(isset($user_id)){
         if(!is_null($user_id) AND !trim($user_id)==""){
             $p_query = $con->prepare("SELECT user_email, user_type, firstname, lastname, univ_id, dept_id, user_bio, status FROM user WHERE user_id = ?");
@@ -38,18 +40,19 @@
                     <script src="js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
                     <script src="js/ampm.js" type="text/javascript"></script>';
     
-                    //include_once "professor.php";	
+                    //include_once "professor.php";
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <title><?php echo $firstname . ' ' . $lastname; ?></title>
+        <title><?php echo herp . ' ' . derp; ?></title>
         <!--<base href='https://urlinq.com/beta/'/>-->
         <link rel="stylesheet" type="text/css" href="css/backgroundProfile.css" />
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/add_event.css" />
         <link rel="stylesheet" type="text/css" href="css/professor.css" />
 
@@ -77,18 +80,40 @@
         <section class="loading_animation">
             <?php
                 $text = "PROFILE";
-                                  include 'loading.php';
+                     //             include 'loading.php';
             ?>
         </section>
         <section class="topbar_bag">
-            <?php include 'topbar.php';?>
+            <?php //include 'topbar.php';?>
         </section>
-
+		
+		<div class="showcase-form">
+			<div class="showcase-form-header">
+				Adding a New Showcase<i></i>
+				<textarea id="title-entry" name="title-entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you"></textarea>
+				<textarea id="link-entry" name="link-entry" placeholder="Paste a link to your showcase"></textarea>
+				<button type="button" id="upload-link-button"><i></i>Upload Showcase</button>
+				<div class="showcase-submit">
+					<span class="cancel-showcase-form">Cancel</span>
+					<input type="submit" class="create-showcase-form" id="create-showcase-form" name="create-showcase-form" value="+ Add this Showcase">
+				</div>
+				<div class="description-section">
+					<i class="close-description"></i>
+					<div class="top-description">
+						- Show your peers and friends what academic research and articles you're interested in or have contributed to.
+					</div>
+					<div class="bottom-description">
+						- Display presentations or projects that you want to share with the people in your academic network.
+					</div>
+				</div>
+			</div>
+		</div>
         <div class="root">
             <div class="blacksheet-main editing-mode">
             </div>
             <div class="showcaser">
                 <div class="showcase_box">
+					
                 </div>
             </div>
             <div class="main-2">
@@ -175,9 +200,8 @@
                         <div class="user-title">
 							About
                         </div>
-                        <div class='char_reminder'><span>0</span></div>
                         <div class="user-info-editable about-editable">
-                            <textarea id="user_about" name="user_about" class="user_about user_inp_big autogrowth_textarea" placeholder="Bio" maxlength="300"></textarea>
+                            <textarea id="user_about" name="user_about" class="user_about user_inp_big" placeholder="Bio" maxlength="250"></textarea>
                         </div>
 
                         <div class="user-title">
@@ -232,6 +256,17 @@
             <div class="main">
                 <header class="professor-header professor-header-nothing">
                     <div class="resource-wrapper resources-vacant">
+						<span class="showcase-caption">Your Academic Portfolio</span>
+						<div class="add-showcase-button">
+							<button type="button">+ Add a showcase</button>
+						</div>
+						<div class="showcase-bar">
+							<img src="img/test_image1.jpg">
+							<img src="img/test_image1.jpg">
+							<img src="img/test_image1.jpg">
+							<img src="img/test_image1.jpg">
+							<img src="img/test_image1.jpg">
+						</div>
                         <div class="no-showcase ns-hide" style="display:none;">
                             <div class="ns-title">Add a New Academic Showcase</div>
                             <img src="img/bigno_showcase_arrow.png" id="showcase_arrow" alt="h">
@@ -325,7 +360,7 @@
                 <a class="office-hours-editor oh-editor-fx" id="edit_office_hours_btn" style="display:none;">
 						Edit Office Hours
                 </a>
-                <div class="profile-options has-dropdown">
+                <!--<div class="profile-options has-dropdown">
                     <h1>
                         <a href="#">
                             <span class="info_username" id="profile_name"></span>
@@ -352,7 +387,7 @@
                         <b style="position: relative; float: left; margin-left: 0px; margin-top: -4px;">Graduating on</b><b id="graduatingOn"></b>
                     </span>
 
-                </div>
+                </div>-->
 
                 <div class="blacksheet">
 
@@ -604,13 +639,13 @@
 
                 </div>
 
-                <div class="follow-btn user_connection follow" id="user_connection" style="display:none;">
-                </div>
+                <!--<div class="follow-btn user_connection follow" id="user_connection" style="display:none;">
+                </div>-->
 
                 <span class="profpic-container profpic-container-real">
                     <span class="img img-inset user-pic">
+						<i class="camera-icon"></i>
                         <div class="user-pic-div user-pic-div-my" id="profile_picture"></div>
-
                     </span>
 
                 </span>
@@ -618,17 +653,55 @@
             </div>
             <div class="profile-content">
                 <div class="user-info-wrapper">
-                    <h5>ABOUT</h5>
+					<button type="button" class="edit_prof_button"><b></b>Edit Profile</button>
+					<div class="user-info">
+						<h1>
+							<a href="#">
+								<span class="info_username" id="profile_name">Ross Kopelman</span>
+							</a>
+						</h1>
+						<p class="school-info">2015 | University of Rochester | Senior</p>
+					</div>
+                    <!--<h5>ABOUT</h5>
                     <span class="profile-bio-container" id="profile_about">
 
-                    </span>
-
-                    <h5 class="secondh5">Interests</h5>
-                    <span class="profile-ints-container" id="profile_interests">
-
-                    </span>
-
-                    <span class="user-info-piece" style="margin-top: 20px;">
+                    </span>-->
+					<h3>SCHOOL</h3>
+					<div class="info-block">
+						<div class="info-text-wrapper">
+							<input name="school_name" value="College of Arts and Sciences" readonly>
+						</div>
+					</div>
+					<h3>MAJOR</h3>
+					<div class="info-block">
+						<input name="major_name" value="Computer Science" readonly>
+					</div>
+					<h3>MINOR</h3>
+					<div class="info-block">
+						<input name="minor_name" value="Spanish" readonly>
+					</div>
+					<div class="user-info" id="about-section">
+						<h3>ABOUT</h3>
+						<div class="info-block" id="about_textarea">
+							<textarea maxlength="140" readonly>"The Dude" Lebowski mistaken for a millionaire Lebowski, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.</textarea>
+						</div>
+					</div>
+					<h3>INTERESTS AND SKILLS</h3>
+					<div class="info-block" id="interest-section">
+						<span class="interest-block">Neuromarketing</span>
+						<span class="interest-block">Seduction</span>
+						<span class="interest-block">Web Development</span>
+						<span class="interest-block">Organic Calculus</span>
+						<span class="interest-block">Tenafly</span>
+						<span class="interest-block">Atlanta</span>
+						<span class="interest-block">Miami</span>
+						<span class="interest-block">Brooklyn</span>
+						<span class="interest-block">Seattle</span>
+					</div>
+					<div class="info-block" id="interest-entry-field">
+						<input name="interest_name" value="" placeholder="+ Add an interest or skill">
+					</div>
+                    <!--<span class="user-info-piece" style="margin-top: 20px;">
                         <a id="univ_link" style="text-decoration:none;">
                             <div class="small-icon department_icon" id="university_icon" style="background-image: url(src/);">
                             </div>
@@ -681,7 +754,7 @@
                         <div class="info-piece-text-wrapper">
                             <h4 class="info_field_3 plainText" id="profile_office_location"></h4>
                         </div>
-                    </span>
+                    </span>-->
                     <br />
                     <div class="user-events">
                     </div>

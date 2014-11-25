@@ -1,314 +1,307 @@
+
+
+
 $(document).ready(function() {
-	$(document).delegate(".inactiveType","click",function(){
-		$('.activeType').addClass("inactiveType");
-		$('.activeType').removeClass("activeType");
-		$(this).addClass("activeType");
-		$(this).removeClass("inactiveType");
-	});
-	
-	$(document).delegate(".activeType","click",function(){
-		$(this).addClass("activeType");
-		$(this).removeClass("inactiveType");
-	});
+    $(".search_category").click(function(){
+        $(".search_category").removeClass("active");
+        $(this).addClass("active");
+    });
 
-	
-	$(document).delegate(".inactiveType","click",function(){
-		var cat = $(this).data("value");
-		var ind = 0;
-		$(".search_category").each(function(index) {
-			if($(this).children().length > 0)
-			{
-				if($(this).children().data("value") == cat)
-					$(".wedgeRight").animate({top:(ind * 43.5)+'px'},'fast');
-				else if($(this).css('display') != 'none')
-					ind++;
-			}
-		});
-			
-		});
-	$(document).delegate(".fav","mouseover",function(){
-		$(this).closest(".result-functions-wrapper").find(".tooltip").stop().show();
-	});
-	$(document).delegate(".fav","mouseout",function(){
-		$(this).closest(".result-functions-wrapper").find(".tooltip").hide();
-	});
-	$(document).delegate(".tooltip","mouseover",function(){
-		$(this).stop().show();
-	});
-	$(document).delegate(".tooltip","mouseout",function(){
-		$(this).hide();
-	});
-	
-	$(document).delegate(".advancedShow","click",function(){
-		$(".advancedToggle").removeClass("advancedShow");
-		$(".advancedToggle").addClass("advancedHide");
-		$(".advancedOptions").animate({height:'80px',opacity:'1'},100,function(){});
-	});	
-	$(document).delegate(".advancedHide","click",function(){
-		$(".advancedToggle").removeClass("advancedHide");
-		$(".advancedToggle").addClass("advancedShow");
-		$(".advancedOptions").animate({height:'0px',opacity:'0'},100,function(){});
-	});	
-
-	$(document).delegate(".link","click",function(){
-			$(this).text("Following");
-			$(this).removeClass("link");
-			$(this).addClass("pre-linked");
-			var follow_user=$(this).data('value');
-			$.ajax({
-				type: "POST", 
-				url:"includes/followunfollow.php",
-				data: {follow_user:follow_user},
-				success: function(response) {
-					
-				}
-			});
-	});
-
-	$(document).delegate(".pre-linked","mouseout",function(){
-			$(this).text("Following");
-			$(this).removeClass("pre-linked");
-			$(this).addClass("linked");		
-	});
-
-	$(document).delegate(".linked","mouseover",function(){
-			$(this).text("Unfollow");
-	});
-
-	$(document).delegate(".linked","mouseout",function(){
-			$(this).text("Following");
-	});
-
-	$(document).delegate(".linked","click",function(){
-			$(this).text("Follow")
-			$(this).removeClass("linked");
-			$(this).addClass("link");
-			var follow_user=$(this).data('value');
-			$.ajax({
-				type: "POST", 
-				url:"includes/followunfollow.php",
-				data: {follow_user:follow_user},
-				success: function(response) {
-					
-				}
-			});
-	});	
+    $(document).delegate(".fav","mouseover",function(){
+        $(this).closest(".result-functions-wrapper").find(".tooltip").stop().show();
+    });
+    $(document).delegate(".fav","mouseout",function(){
+        $(this).closest(".result-functions-wrapper").find(".tooltip").hide();
+    });
+    $(document).delegate(".tooltip","mouseover",function(){
+        $(this).stop().show();
+    });
+    $(document).delegate(".tooltip","mouseout",function(){
+        $(this).hide();
+    });
+    $(document).delegate(".dropOpenBtn","click",function(){
+        $(this).closest("li").find("#dropOpenList").show();
+    });
+    $('html').click(function (e) {
+        if (e.target.id == '.dropOpenList') {
+            $(".dropOpenList").show();
+        } else {
+            $(".dropOpenList").hide();
+        }
+    });
 
 
-	$(document).delegate(".join","click",function(){
-		var class_id = $(this).data("value");
-		var but = $(this);
-		$.ajax({
-			type: "POST",
-			url: "php/class_enroll.php",
-			data: {class_id: class_id},
-			success: function (html) {
-				but.text("Enrolled");
-				but.removeClass("join");
-				but.addClass("pre-joined");
-			}
-		});
-	});
+    $(document).delegate(".advancedShow","click",function(){
+        $(".advancedToggle").removeClass("advancedShow");
+        $(".advancedToggle").addClass("advancedHide");
+        $(".advancedOptions").animate({height:'80px',opacity:'1'},100,function(){});
+    });
+    $(document).delegate(".advancedHide","click",function(){
+        $(".advancedToggle").removeClass("advancedHide");
+        $(".advancedToggle").addClass("advancedShow");
+        $(".advancedOptions").animate({height:'0px',opacity:'0'},100,function(){});
+    });
 
-	$(document).delegate(".pre-joined","mouseout",function(){
-			$(this).text("Enrolled");
-			$(this).removeClass("pre-joined");
-			$(this).addClass("joined");		
-	});
+    $(document).delegate(".link","click",function(){
+        $(this).text("Following");
+        $(this).removeClass("link");
+        $(this).addClass("pre-linked");
+        var follow_user=$(this).data('value');
+        $.ajax({
+            type: "POST",
+            url:"includes/followunfollow.php",
+            data: {follow_user:follow_user},
+            success: function(response) {
 
-	$(document).delegate(".joined","mouseover",function(){
-			$(this).text("Leave Class");
-	});
+            }
+        });
+    });
 
-	$(document).delegate(".joined","mouseout",function(){
-			$(this).text("Enrolled");
-	});
+    $(document).delegate(".pre-linked","mouseout",function(){
+        $(this).text("Following");
+        $(this).removeClass("pre-linked");
+        $(this).addClass("linked");
+    });
 
-	$(document).delegate(".joined","click",function(){
-		var class_id = $(this).data("value");
-		var but = $(this);
-		$.ajax({
-			type: "POST",
-			url: "php/class_enroll.php",
-			data: {class_id: class_id},
-			success: function (html) {
-				but.text("Join Class")
-				but.removeClass("joined");
-				but.addClass("join");
-			}
-		});
-	});		
+    $(document).delegate(".linked","mouseover",function(){
+        $(this).text("Unfollow");
+    });
 
-	$(document).delegate(".unfollowCourse","click",function(){
-			$(this).text("Follow Course")
-			$(this).removeClass("unfollowCourse");
-			$(this).addClass("followCourse");
-			var follow_user=$(this).data('value');
-			$.ajax({
-				type: "POST", 
-				url:"php/course_follow.php",
-				data: {id:follow_user,course:'X'},
-				success: function(response) {
-					
-				}
-			});
-	});	
-	
-	$(document).delegate(".followCourse","click",function(){
-			$(this).text("Following")
-			$(this).removeClass("followCourse");
-			$(this).addClass("unfollowCourse");
-			var follow_user=$(this).data('value');
-			$.ajax({
-				type: "POST", 
-				url:"php/course_follow.php",
-				data: {id:follow_user,course:'X'},
-				success: function(response) {
-					
-				}
-			});
-	});
+    $(document).delegate(".linked","mouseout",function(){
+        $(this).text("Following");
+    });
 
-	var matrix_x = 0;
-	$(document).delegate(".ar-right","mouseover",function(){
-		$(".slide").each(function( index ) {
-			var x= 250*index;
-			lastslide_pos=x-250;
-		});
-		if($(this).hasClass("ar-disabled")){
-			return
-		}
-		if(!$(this).hasClass("ar-disabled")){
-		matrix_x = matrix_x - 15; 
-		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-		}
-	});	
-	$(document).delegate(".ar-right","mouseout",function(){
-		if($(this).hasClass("ar-disabled")){
-			return
-		}
-		if(!$(this).hasClass("ar-disabled")){
-		matrix_x = matrix_x + 15; 
-		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-		}
-	});	
-	$(document).delegate(".ar-left","mouseover",function(){
-		if($(this).hasClass("ar-disabled")){
-			return
-		}
-		if(!$(this).hasClass("ar-disabled")){
-		matrix_x = matrix_x + 15; 
-		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-		}
-	});	
-	$(document).delegate(".ar-left","mouseout",function(){
-		if($(this).hasClass("ar-disabled")){return;}
-		if(!$(this).hasClass("ar-disabled")){
-		matrix_x = matrix_x - 15; 
-		var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-		$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-		}
-	});	
+    $(document).delegate(".linked","click",function(){
+        $(this).text("Follow")
+        $(this).removeClass("linked");
+        $(this).addClass("link");
+        var follow_user=$(this).data('value');
+        $.ajax({
+            type: "POST",
+            url:"includes/followunfollow.php",
+            data: {follow_user:follow_user},
+            success: function(response) {
 
-	$(document).delegate(".ar-right","click",function(){
-			matrix_x = matrix_x - 250;
-			if(matrix_x>=0){matrix_x=0;}
-			if((0-matrix_x) >= lastslide_pos){
-				matrix_x=0-lastslide_pos;
-				$(".arrow-next").addClass("arrow-disabled");
-				$(".ar-right").addClass("ar-disabled");
-			}
-
-			var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-			$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-			$(".arrow-prev").removeClass("arrow-disabled");
-			$(".ar-left").removeClass("ar-disabled");
-		
-
-	});
-
-	$(document).delegate(".ar-left","click",function(){
-
-		
-			matrix_x = matrix_x + 250;
-			if(matrix_x>=0){matrix_x=0;}
-			var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-			$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-			if(matrix_x == 0){
-					$(".arrow-prev").addClass("arrow-disabled");
-					$(".ar-left").addClass("ar-disabled");
-			}	
-		
-		$(".arrow-next").removeClass("arrow-disabled");
-		$(".ar-right").removeClass("ar-disabled");
-
-	});
+            }
+        });
+    });
 
 
-	/*drag below*/
-	/*
-	$('img').on('dragstart', function(event) { event.preventDefault(); });
+    $(document).delegate(".join","click",function(){
+        var class_id = $(this).data("value");
+        var but = $(this);
+        $.ajax({
+            type: "POST",
+            url: "php/class_enroll.php",
+            data: {class_id: class_id},
+            success: function (html) {
+                but.text("Enrolled");
+                but.removeClass("join");
+                but.addClass("pre-joined");
+            }
+        });
+    });
 
-	var ondrag=0;
-	var originX=0;
-	$(document).delegate(".ContentSlider","mousedown",function(e){
-		$(".slide").each(function( index ) {
-			var x= 250*index;
-			lastslide_pos=x-250;
-		});
-		ondrag=1;
-		originX=e.clientX;
-	});
+    $(document).delegate(".pre-joined","mouseout",function(){
+        $(this).text("Enrolled");
+        $(this).removeClass("pre-joined");
+        $(this).addClass("joined");
+    });
 
-	$(document).mouseup(function(){
-    	ondrag= 0;
-	});
+    $(document).delegate(".joined","mouseover",function(){
+        $(this).text("Leave Class");
+    });
 
-	$(document).mousemove(function(e){
-    if(ondrag==1){
-    	curX=e.clientX;
-    	diffX=(curX-originX)/3;
-    	if((diffX<=15)&&(diffX>=-15)){
-    	diffX=(curX-originX)/2;	
-    	}
-    	if((diffX<=5)&&(diffX>=-5)){
-    	diffX=(curX-originX)/1.5;	
-    	}
-    	//alert(matrix_x);
+    $(document).delegate(".joined","mouseout",function(){
+        $(this).text("Enrolled");
+    });
 
-    	if(diffX<=0){
-    		matrix_x = matrix_x + diffX;
-			if(matrix_x>=0){matrix_x=0;}
-			if((0-matrix_x)>=lastslide_pos){
-				matrix_x=0-lastslide_pos;
-				$(".arrow-next").addClass("arrow-disabled");
-				$(".ar-right").addClass("ar-disabled");
-			}
+    $(document).delegate(".joined","click",function(){
+        var class_id = $(this).data("value");
+        var but = $(this);
+        $.ajax({
+            type: "POST",
+            url: "php/class_enroll.php",
+            data: {class_id: class_id},
+            success: function (html) {
+                but.text("Join Class")
+                but.removeClass("joined");
+                but.addClass("join");
+            }
+        });
+    });
 
-			var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-			$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-			$(".arrow-prev").removeClass("arrow-disabled");
-			$(".ar-left").removeClass("ar-disabled");
-    	}
+    $(document).delegate(".unfollowCourse","click",function(){
+        $(this).text("Follow Course")
+        $(this).removeClass("unfollowCourse");
+        $(this).addClass("followCourse");
+        var follow_user=$(this).data('value');
+        $.ajax({
+            type: "POST",
+            url:"php/course_follow.php",
+            data: {id:follow_user,course:'X'},
+            success: function(response) {
 
-    	if(diffX>0){
-    		matrix_x = matrix_x + diffX;
-			if(matrix_x>=0){matrix_x=0;}
-			var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
-			$(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
-			if(matrix_x == 0){
-					$(".arrow-prev").addClass("arrow-disabled");
-					$(".ar-left").addClass("ar-disabled");
-			}	
-		
-			$(".arrow-next").removeClass("arrow-disabled");
-			$(".ar-right").removeClass("ar-disabled");
-    	}
-    }
-	});*/
+            }
+        });
+    });
+
+    $(document).delegate(".followCourse","click",function(){
+        $(this).text("Following")
+        $(this).removeClass("followCourse");
+        $(this).addClass("unfollowCourse");
+        var follow_user=$(this).data('value');
+        $.ajax({
+            type: "POST",
+            url:"php/course_follow.php",
+            data: {id:follow_user,course:'X'},
+            success: function(response) {
+
+            }
+        });
+    });
+
+    var matrix_x = 0;
+    $(document).delegate(".ar-right","mouseover",function(){
+        $(".slide").each(function( index ) {
+            var x= 250*index;
+            lastslide_pos=x-250;
+        });
+        if($(this).hasClass("ar-disabled")){
+            return
+        }
+        if(!$(this).hasClass("ar-disabled")){
+            matrix_x = matrix_x - 15;
+            var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+            $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        }
+    });
+    $(document).delegate(".ar-right","mouseout",function(){
+        if($(this).hasClass("ar-disabled")){
+            return
+        }
+        if(!$(this).hasClass("ar-disabled")){
+            matrix_x = matrix_x + 15;
+            var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+            $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        }
+    });
+    $(document).delegate(".ar-left","mouseover",function(){
+        if($(this).hasClass("ar-disabled")){
+            return
+        }
+        if(!$(this).hasClass("ar-disabled")){
+            matrix_x = matrix_x + 15;
+            var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+            $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        }
+    });
+    $(document).delegate(".ar-left","mouseout",function(){
+        if($(this).hasClass("ar-disabled")){return;}
+        if(!$(this).hasClass("ar-disabled")){
+            matrix_x = matrix_x - 15;
+            var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+            $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        }
+    });
+
+
+    $(document).delegate(".ar-right","click",function(){
+        matrix_x = matrix_x - 250;
+        if(matrix_x>=0){matrix_x=0;}
+        if((0-matrix_x) >= lastslide_pos){
+            matrix_x=0-lastslide_pos;
+            $(".arrow-next").addClass("arrow-disabled");
+            $(".ar-right").addClass("ar-disabled");
+        }
+
+        var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+        $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        $(".arrow-prev").removeClass("arrow-disabled");
+        $(".ar-left").removeClass("ar-disabled");
+
+
+    });
+
+    $(document).delegate(".ar-left","click",function(){
+
+
+        matrix_x = matrix_x + 250;
+        if(matrix_x>=0){matrix_x=0;}
+        var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+        $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+        if(matrix_x == 0){
+            $(".arrow-prev").addClass("arrow-disabled");
+            $(".ar-left").addClass("ar-disabled");
+        }
+
+        $(".arrow-next").removeClass("arrow-disabled");
+        $(".ar-right").removeClass("ar-disabled");
+
+    });
+
+
+    /*drag below*/
+    /*
+     $('img').on('dragstart', function(event) { event.preventDefault(); });
+
+     var ondrag=0;
+     var originX=0;
+     $(document).delegate(".ContentSlider","mousedown",function(e){
+     $(".slide").each(function( index ) {
+     var x= 250*index;
+     lastslide_pos=x-250;
+     });
+     ondrag=1;
+     originX=e.clientX;
+     });
+
+     $(document).mouseup(function(){
+     ondrag= 0;
+     });
+
+     $(document).mousemove(function(e){
+     if(ondrag==1){
+     curX=e.clientX;
+     diffX=(curX-originX)/3;
+     if((diffX<=15)&&(diffX>=-15)){
+     diffX=(curX-originX)/2;
+     }
+     if((diffX<=5)&&(diffX>=-5)){
+     diffX=(curX-originX)/1.5;
+     }
+     //alert(matrix_x);
+
+     if(diffX<=0){
+     matrix_x = matrix_x + diffX;
+     if(matrix_x>=0){matrix_x=0;}
+     if((0-matrix_x)>=lastslide_pos){
+     matrix_x=0-lastslide_pos;
+     $(".arrow-next").addClass("arrow-disabled");
+     $(".ar-right").addClass("ar-disabled");
+     }
+
+     var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+     $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+     $(".arrow-prev").removeClass("arrow-disabled");
+     $(".ar-left").removeClass("ar-disabled");
+     }
+
+     if(diffX>0){
+     matrix_x = matrix_x + diffX;
+     if(matrix_x>=0){matrix_x=0;}
+     var SliderMatrix= "matrix(1,0,0,1,"+matrix_x+",0)";
+     $(".ContentSlider").css({"transform":SliderMatrix,"-webkit-transform":SliderMatrix});
+     if(matrix_x == 0){
+     $(".arrow-prev").addClass("arrow-disabled");
+     $(".ar-left").addClass("ar-disabled");
+     }
+
+     $(".arrow-next").removeClass("arrow-disabled");
+     $(".ar-right").removeClass("ar-disabled");
+     }
+     }
+     });*/
 
 });
 
@@ -346,117 +339,117 @@ var range_slider = function (params) {
         throw "The value inside left_scrubber_pos is not a number"
 
     /*
-	
-	<span class="left-label"></span>
-	<span class="right-label"></span>
-	<div class="slider-bar">
-		<div class="left-scrubber scrubber"></div>
-		<div class="range"></div>
-		<div class="right-scrubber scrubber"></div>
-	</div>
-	
-	*/
+
+     <span class="left-label"></span>
+     <span class="right-label"></span>
+     <div class="slider-bar">
+     <div class="left-scrubber scrubber"></div>
+     <div class="range"></div>
+     <div class="right-scrubber scrubber"></div>
+     </div>
+
+     */
 
     // Variables declarations
     var that = this,
 
-		// Elements
-		$_parent = $(params.selector).empty(),
-		$_labels = $('<div />').addClass('labels').appendTo($_parent),
-		$_left_label = $('<span />').attr('id', 'left-label').appendTo($_labels),
-		$_right_label = $('<span />').addClass('right-label').appendTo($_labels),
-		$_slider_bar = $('<div />').addClass('slider-bar').appendTo($_parent),
-		$_left_scrubber = $('<div />').addClass('left-scrubber scrubber').appendTo($_slider_bar),
-		$_right_scrubber = $('<div />').addClass('right-scrubber scrubber').appendTo($_slider_bar),
-		$_range_bar = $('<div />').addClass('range').appendTo($_slider_bar),
+    // Elements
+        $_parent = $(params.selector).empty(),
+        $_labels = $('<div />').addClass('labels').appendTo($_parent),
+        $_left_label = $('<span />').attr('id', 'left-label').appendTo($_labels),
+        $_right_label = $('<span />').addClass('right-label').appendTo($_labels),
+        $_slider_bar = $('<div />').addClass('slider-bar').appendTo($_parent),
+        $_left_scrubber = $('<div />').addClass('left-scrubber scrubber').appendTo($_slider_bar),
+        $_right_scrubber = $('<div />').addClass('right-scrubber scrubber').appendTo($_slider_bar),
+        $_range_bar = $('<div />').addClass('range').appendTo($_slider_bar),
 
-		// Functions used for calculations
-		pxToUnits = function (pixel_pos) {
-		    var percentage_pos = pixel_pos / ($_slider_bar.width() - (scrubber_width * 2)),
-				range_in_units = max - min;
+    // Functions used for calculations
+        pxToUnits = function (pixel_pos) {
+            var percentage_pos = pixel_pos / ($_slider_bar.width() - (scrubber_width * 2)),
+                range_in_units = max - min;
 
-		    if (percentage_pos == Infinity)
-		        percentage_pos = 0;
+            if (percentage_pos == Infinity)
+                percentage_pos = 0;
 
-		    return min + (range_in_units * percentage_pos);
-		},
+            return min + (range_in_units * percentage_pos);
+        },
 
-		unitsToPx = function (unit_pos) {
-		    return (unit_pos - min) / (max - min) * ($_slider_bar.width() - (scrubber_width * 2));
-		},
+        unitsToPx = function (unit_pos) {
+            return (unit_pos - min) / (max - min) * ($_slider_bar.width() - (scrubber_width * 2));
+        },
 
-		round = function (unit_value) {
-		    return Math.round(unit_value / round_by) * round_by;
-		},
+        round = function (unit_value) {
+            return Math.round(unit_value / round_by) * round_by;
+        },
 
-		floor = function (unit_value) {
-		    return Math.floor(unit_value / round_by) * round_by;
-		},
+        floor = function (unit_value) {
+            return Math.floor(unit_value / round_by) * round_by;
+        },
 
-		ceil = function (unit_value) {
+        ceil = function (unit_value) {
 
-		    return Math.ceil(unit_value / round_by) * round_by;
-		},
-		
-		thousandSeparator = function (value) {
-			// Thousand separator check
-			if (typeof params.thousand_separator !== "string")
-			{
-				// Warn
-				console.warn("thousand_separator needs to be of type String");
-				return value;
-			}
-			else
-			{
-				// Thanks to: http://darklaunch.com/2013/05/09/javascript-thousands-separator-function
-				return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1"+params.thousand_separator);
-			}
-		},
+            return Math.ceil(unit_value / round_by) * round_by;
+        },
 
-		// Void functions for visuals stuff
-		updateRangeBar = function () {
-		    // Sets the position and size of the bar between the scrubbers
+        thousandSeparator = function (value) {
+            // Thousand separator check
+            if (typeof params.thousand_separator !== "string")
+            {
+                // Warn
+                console.warn("thousand_separator needs to be of type String");
+                return value;
+            }
+            else
+            {
+                // Thanks to: http://darklaunch.com/2013/05/09/javascript-thousands-separator-function
+                return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1"+params.thousand_separator);
+            }
+        },
 
-		    if (params.rounded) {
-		        // Version in the center of the scrubbers
-		        $_range_bar.css(
-					{
-					    left: left_scrubber_pos + scrubber_width - (scrubber_width / 2),
-					    width: (right_scrubber_pos - left_scrubber_pos)
-					}
-				);
-		    }
-		    else {
-		        // Version between the scrubbers
-		        $_range_bar.css(
-					{
-					    left: left_scrubber_pos + scrubber_width,
-					    width: (right_scrubber_pos - left_scrubber_pos - scrubber_width)
-					}
-				);
-		    }
-		},
+    // Void functions for visuals stuff
+        updateRangeBar = function () {
+            // Sets the position and size of the bar between the scrubbers
 
-		// Assumed constants
-		min = params.min,
-		max = params.max,
-		scrubber_width = $_left_scrubber.width(),
-		unit = typeof params.unit === "string" ? params.unit : "",
-		round_by = typeof params.round_by === "number" ? params.round_by : 1,
+            if (params.rounded) {
+                // Version in the center of the scrubbers
+                $_range_bar.css(
+                    {
+                        left: left_scrubber_pos + scrubber_width - (scrubber_width / 2),
+                        width: (right_scrubber_pos - left_scrubber_pos)
+                    }
+                );
+            }
+            else {
+                // Version between the scrubbers
+                $_range_bar.css(
+                    {
+                        left: left_scrubber_pos + scrubber_width,
+                        width: (right_scrubber_pos - left_scrubber_pos - scrubber_width)
+                    }
+                );
+            }
+        },
 
-		// Changing variables
-		left_scrubber_pos,
-		right_scrubber_pos,
-		left_scrubber_hover = false,
-		right_scrubber_hover = false,
-		dragging_left = false,
-		dragging_right = false,
-		initial_x_pos_in_scrubber;
-    
+    // Assumed constants
+        min = params.min,
+        max = params.max,
+        scrubber_width = $_left_scrubber.width(),
+        unit = typeof params.unit === "string" ? params.unit : "",
+        round_by = typeof params.round_by === "number" ? params.round_by : 1,
+
+    // Changing variables
+        left_scrubber_pos,
+        right_scrubber_pos,
+        left_scrubber_hover = false,
+        right_scrubber_hover = false,
+        dragging_left = false,
+        dragging_right = false,
+        initial_x_pos_in_scrubber;
+
     // Correct rounding before init
     min = floor(min);
     max = ceil(max);
-   
+
     /* ----- Element specific error handling -----*/
 
     // Scrubber width do not match
@@ -476,13 +469,13 @@ var range_slider = function (params) {
         if (!isNaN(unit_value)) {
             // Store the current positions in units
             var left_unit = pxToUnits(left_scrubber_pos),
-				right_unit = pxToUnits(right_scrubber_pos);
-				
-			// Just in case pxToUnits doesnt work due to min and max being equal
-			if(isNaN(left_unit))
-				left_unit = min;
-			if(isNaN(right_unit))
-				right_unit = max;
+                right_unit = pxToUnits(right_scrubber_pos);
+
+            // Just in case pxToUnits doesnt work due to min and max being equal
+            if(isNaN(left_unit))
+                left_unit = min;
+            if(isNaN(right_unit))
+                right_unit = max;
 
             // Update the min
             min = floor(unit_value);
@@ -494,29 +487,29 @@ var range_slider = function (params) {
             console.error("value parsed in is not a number.");
         }
     };
-  //Added by Kushal
+    //Added by Kushal
     /*---- Get the left and right values -----*/
     that.getLeftScrubber = function()
     {
-    	var lower = $_left_label.get(0).innerHTML;
-    	return lower.replace(unit,"").trim();
+        var lower = $_left_label.get(0).innerHTML;
+        return lower.replace(unit,"").trim();
     };
-    
+
     that.getRightScrubber = function()
     {
-    	var higher = $_right_label.get(0).innerHTML;
-    	return higher.replace(unit,"").trim();
+        var higher = $_right_label.get(0).innerHTML;
+        return higher.replace(unit,"").trim();
     };
-	that.getMin = function()
+    that.getMin = function()
     {
-    	return min;
+        return min;
     };
-    
+
     that.getMax = function()
     {
-    	return max;
+        return max;
     };
-/*----------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------*/
     that.updateMax = function (unit_value) {
         // Force to be a number
         unit_value = parseFloat(unit_value);
@@ -528,14 +521,14 @@ var range_slider = function (params) {
         if (!isNaN(unit_value)) {
             // Store the current positions in units
             var left_unit = pxToUnits(left_scrubber_pos),
-				right_unit = pxToUnits(right_scrubber_pos - scrubber_width);
-				
-			// Just in case pxToUnits doesnt work due to min and max being equal
-			if(isNaN(left_unit))
-				left_unit = min;
-			if(isNaN(right_unit))
-				right_unit = max;
-			
+                right_unit = pxToUnits(right_scrubber_pos - scrubber_width);
+
+            // Just in case pxToUnits doesnt work due to min and max being equal
+            if(isNaN(left_unit))
+                left_unit = min;
+            if(isNaN(right_unit))
+                right_unit = max;
+
             // Update the max
             max = ceil(unit_value);
 
@@ -583,27 +576,27 @@ var range_slider = function (params) {
         // Make sure a number has been parsed through
         if (!isNaN(parseFloat(unit_value))) {
             //if (max - min > round_by) {
-                // Snap to minimum
-                left_scrubber_pos = unitsToPx(unit_value <= min ? min : unit_value);
+            // Snap to minimum
+            left_scrubber_pos = unitsToPx(unit_value <= min ? min : unit_value);
 
-                // Snap to right scrubber
-                left_scrubber_pos = left_scrubber_pos >= right_scrubber_pos - scrubber_width - unitsToPx(min + round_by) ?
+            // Snap to right scrubber
+            left_scrubber_pos = left_scrubber_pos >= right_scrubber_pos - scrubber_width - unitsToPx(min + round_by) ?
 
-							right_scrubber_pos - scrubber_width - unitsToPx(min + round_by) :
+            right_scrubber_pos - scrubber_width - unitsToPx(min + round_by) :
 
-							left_scrubber_pos;
+                left_scrubber_pos;
 
-                // Make sure it visually does not go minus px
-                left_scrubber_pos = left_scrubber_pos > 0 ? left_scrubber_pos : 0;
+            // Make sure it visually does not go minus px
+            left_scrubber_pos = left_scrubber_pos > 0 ? left_scrubber_pos : 0;
 
-                // Set its text value to be min and max param
-                $_left_label.get(0).innerHTML = thousandSeparator(round(pxToUnits(left_scrubber_pos))) + unit;
-                //$_left_label.text(round(pxToUnits(left_scrubber_pos)) + unit);	
+            // Set its text value to be min and max param
+            $_left_label.get(0).innerHTML = thousandSeparator(round(pxToUnits(left_scrubber_pos))) + unit;
+            //$_left_label.text(round(pxToUnits(left_scrubber_pos)) + unit);
 
-                // Set scrubber start position
-                $_left_scrubber.css('left', left_scrubber_pos);
+            // Set scrubber start position
+            $_left_scrubber.css('left', left_scrubber_pos);
 
-                updateRangeBar();
+            updateRangeBar();
             //}
         }
         else {
@@ -615,28 +608,28 @@ var range_slider = function (params) {
         // Make sure a number has been parsed through
         if (!isNaN(parseFloat(unit_value))) {
             //if (max - min > round_by) {
-                // Snap to the maximum
-                right_scrubber_pos = unitsToPx(unit_value >= max ? max : unit_value) + scrubber_width;
+            // Snap to the maximum
+            right_scrubber_pos = unitsToPx(unit_value >= max ? max : unit_value) + scrubber_width;
 
-                // Snap to left scrubber + round_by
-                right_scrubber_pos = right_scrubber_pos <= left_scrubber_pos + scrubber_width + unitsToPx(min + round_by) ?
+            // Snap to left scrubber + round_by
+            right_scrubber_pos = right_scrubber_pos <= left_scrubber_pos + scrubber_width + unitsToPx(min + round_by) ?
 
-							left_scrubber_pos + scrubber_width + unitsToPx(min + round_by) :
+            left_scrubber_pos + scrubber_width + unitsToPx(min + round_by) :
 
-							right_scrubber_pos;
-				
-				// just in case unitsToPx doesnt work due to min being the same as max
-				if(isNaN(right_scrubber_pos))
-					right_scrubber_pos = $_slider_bar.width() - scrubber_width;
+                right_scrubber_pos;
 
-                // Set its text value to be min and max param
-                $_right_label.get(0).innerHTML = thousandSeparator(round(pxToUnits(right_scrubber_pos - scrubber_width))) + unit;
-                //$_right_label.text(round(pxToUnits(right_scrubber_pos - scrubber_width)) + unit);
+            // just in case unitsToPx doesnt work due to min being the same as max
+            if(isNaN(right_scrubber_pos))
+                right_scrubber_pos = $_slider_bar.width() - scrubber_width;
 
-                // Set scrubber start position
-                $_right_scrubber.css('left', right_scrubber_pos);
+            // Set its text value to be min and max param
+            $_right_label.get(0).innerHTML = thousandSeparator(round(pxToUnits(right_scrubber_pos - scrubber_width))) + unit;
+            //$_right_label.text(round(pxToUnits(right_scrubber_pos - scrubber_width)) + unit);
 
-                updateRangeBar();
+            // Set scrubber start position
+            $_right_scrubber.css('left', right_scrubber_pos);
+
+            updateRangeBar();
             //}
         }
         else {
@@ -645,21 +638,21 @@ var range_slider = function (params) {
     };
 
     that.updateScrubbers = function (left, right) {
-	
+
         left = parseFloat(left);
         right = parseFloat(right);
-        
+
         // Make sure a number has been parsed through
         if (!isNaN(left) && !isNaN(right) && left <= right) {
             left_scrubber_pos = unitsToPx(min);
             right_scrubber_pos = unitsToPx(max);
-			
-			// Just incase the min and max are the same 
-			// unitsToPx will not work... so revert to min and max snapping
-			if(isNaN(left_scrubber_pos))
-				left_scrubber_pos = 0;
-			if(isNaN(right_scrubber_pos))
-				right_scrubber_pos = $_slider_bar.width() - scrubber_width;
+
+            // Just incase the min and max are the same
+            // unitsToPx will not work... so revert to min and max snapping
+            if(isNaN(left_scrubber_pos))
+                left_scrubber_pos = 0;
+            if(isNaN(right_scrubber_pos))
+                right_scrubber_pos = $_slider_bar.width() - scrubber_width;
 
             that.updateLeftScrubber(left);
             that.updateRightScrubber(right);
@@ -679,37 +672,37 @@ var range_slider = function (params) {
 
     /* ----- MAIN INIT -----*/
     this.updateScrubbers(	typeof params.left_scrubber_pos === "number" ? params.left_scrubber_pos : min,
-							typeof params.right_scrubber_pos === "number" ? params.right_scrubber_pos : max);
+        typeof params.right_scrubber_pos === "number" ? params.right_scrubber_pos : max);
 
     /* ----- Events initialization -----*/
 
     $_left_scrubber.mouseover(
 
-		function () {
-		    left_scrubber_hover = true;
-		}
-	);
+        function () {
+            left_scrubber_hover = true;
+        }
+    );
 
     $_right_scrubber.mouseover(
 
-		function () {
-		    right_scrubber_hover = true;
-		}
-	);
+        function () {
+            right_scrubber_hover = true;
+        }
+    );
 
     $_left_scrubber.mouseout(
 
-		function () {
-		    left_scrubber_hover = false;
-		}
-	);
+        function () {
+            left_scrubber_hover = false;
+        }
+    );
 
     $_right_scrubber.mouseout(
 
-		function () {
-		    right_scrubber_hover = false;
-		}
-	);
+        function () {
+            right_scrubber_hover = false;
+        }
+    );
 
     // Use 
     //document.addEventListener("MSPointerDown", ctrl.handleMSEvents);	
@@ -718,110 +711,110 @@ var range_slider = function (params) {
 
     $_slider_bar.bind(
 
-		'mousedown touchstart',
+        'mousedown touchstart',
 
-		function (e) {
-		    e.preventDefault(); // disable selection
+        function (e) {
+            e.preventDefault(); // disable selection
 
-		    // Performance purposes
-		    var mathAbs = Math.abs,
+            // Performance purposes
+            var mathAbs = Math.abs,
 
-				// Support for touch devices
-				clientX = e.clientX ? e.clientX : e.originalEvent.touches[0].pageX,
+            // Support for touch devices
+                clientX = e.clientX ? e.clientX : e.originalEvent.touches[0].pageX,
 
-				// Store the moust position in relation to the parent element (slider bar)
-				mouse_position_x_in_slider = (clientX - $_slider_bar.offset().left),
+            // Store the moust position in relation to the parent element (slider bar)
+                mouse_position_x_in_slider = (clientX - $_slider_bar.offset().left),
 
-				// Work out the distance from each scrubber
-				distance_from_left_scrubber = mathAbs(mouse_position_x_in_slider - left_scrubber_pos),
-				distance_from_right_scrubber = mathAbs(mouse_position_x_in_slider - right_scrubber_pos);
+            // Work out the distance from each scrubber
+                distance_from_left_scrubber = mathAbs(mouse_position_x_in_slider - left_scrubber_pos),
+                distance_from_right_scrubber = mathAbs(mouse_position_x_in_slider - right_scrubber_pos);
 
-		    // Reset the drag statuses
-		    dragging_right = false;
-		    dragging_left = false;
+            // Reset the drag statuses
+            dragging_right = false;
+            dragging_left = false;
 
-		    // If clicked on left scrubber
-		    if (left_scrubber_hover) {
-		        // Store the position of where the mouse was in relation to the scrubber at the time of the click
-		        initial_x_pos_in_scrubber = mouse_position_x_in_slider - parseFloat($_left_scrubber.css('left'));
-		        dragging_left = true;
-		    }
+            // If clicked on left scrubber
+            if (left_scrubber_hover) {
+                // Store the position of where the mouse was in relation to the scrubber at the time of the click
+                initial_x_pos_in_scrubber = mouse_position_x_in_slider - parseFloat($_left_scrubber.css('left'));
+                dragging_left = true;
+            }
 
-		        // If clicked on right scrubber
-		    else if (right_scrubber_hover) {
-		        // Store the position of where the mouse was in relation to the scrubber at the time of the click
-		        initial_x_pos_in_scrubber = mouse_position_x_in_slider - parseFloat($_right_scrubber.css('left'));
-		        dragging_right = true;
-		    }
+            // If clicked on right scrubber
+            else if (right_scrubber_hover) {
+                // Store the position of where the mouse was in relation to the scrubber at the time of the click
+                initial_x_pos_in_scrubber = mouse_position_x_in_slider - parseFloat($_right_scrubber.css('left'));
+                dragging_right = true;
+            }
 
-		        // If clicked on slider but on no scrubber
-		    else {
-		        // Make the position of the scrubber centered to the mouse
-		        initial_x_pos_in_scrubber = scrubber_width / 2;
+            // If clicked on slider but on no scrubber
+            else {
+                // Make the position of the scrubber centered to the mouse
+                initial_x_pos_in_scrubber = scrubber_width / 2;
 
-		        // If nearer the left scrubber
-		        if (distance_from_left_scrubber < distance_from_right_scrubber) {
-		            dragging_left = true;
+                // If nearer the left scrubber
+                if (distance_from_left_scrubber < distance_from_right_scrubber) {
+                    dragging_left = true;
 
-		            // Move the scrubber
-		            that.updateLeftScrubber(pxToUnits(mouse_position_x_in_slider - initial_x_pos_in_scrubber));
-		        }
-		        else {
-		            dragging_right = true;
+                    // Move the scrubber
+                    that.updateLeftScrubber(pxToUnits(mouse_position_x_in_slider - initial_x_pos_in_scrubber));
+                }
+                else {
+                    dragging_right = true;
 
-		            // Move the scrubber
-		            that.updateRightScrubber(pxToUnits(mouse_position_x_in_slider - scrubber_width - initial_x_pos_in_scrubber));
-		        }
-		    }
-		}
-	);
-
-    $(document).bind(
-
-		'mousemove touchmove',
-
-		function (e) {
-		    // Support for touch devices
-		    var clientX = e.clientX ? e.clientX : e.originalEvent.touches[0].pageX,
-
-				// Store the moust position in relation to the parent element (slider bar)
-				mouse_position_x_in_slider = clientX - $_slider_bar.offset().left;
-
-		    // Left scrubber drag
-		    if (dragging_left) {
-		        var left_position = mouse_position_x_in_slider - initial_x_pos_in_scrubber;
-
-		        that.updateLeftScrubber(pxToUnits(left_position));
-		    }
-
-		    // Right scrubber drag
-		    if (dragging_right) {
-		        var right_position = mouse_position_x_in_slider - initial_x_pos_in_scrubber - scrubber_width;
-
-		        that.updateRightScrubber(pxToUnits(right_position));
-		    }
-
-		}
-	);
+                    // Move the scrubber
+                    that.updateRightScrubber(pxToUnits(mouse_position_x_in_slider - scrubber_width - initial_x_pos_in_scrubber));
+                }
+            }
+        }
+    );
 
     $(document).bind(
 
-		'mouseup touchend',
+        'mousemove touchmove',
 
-		function (e) {
-		    // Trigger the defined release event if they were dragging
-		    if (dragging_left || dragging_right)
-		        that.release(
-					{
-					    min: round(pxToUnits(left_scrubber_pos)),
-					    max: round(pxToUnits(right_scrubber_pos - scrubber_width))
-					}
-				);
+        function (e) {
+            // Support for touch devices
+            var clientX = e.clientX ? e.clientX : e.originalEvent.touches[0].pageX,
 
-		    dragging_left = false;
-		    dragging_right = false;
-		}
-	);
-    
+            // Store the moust position in relation to the parent element (slider bar)
+                mouse_position_x_in_slider = clientX - $_slider_bar.offset().left;
+
+            // Left scrubber drag
+            if (dragging_left) {
+                var left_position = mouse_position_x_in_slider - initial_x_pos_in_scrubber;
+
+                that.updateLeftScrubber(pxToUnits(left_position));
+            }
+
+            // Right scrubber drag
+            if (dragging_right) {
+                var right_position = mouse_position_x_in_slider - initial_x_pos_in_scrubber - scrubber_width;
+
+                that.updateRightScrubber(pxToUnits(right_position));
+            }
+
+        }
+    );
+
+    $(document).bind(
+
+        'mouseup touchend',
+
+        function (e) {
+            // Trigger the defined release event if they were dragging
+            if (dragging_left || dragging_right)
+                that.release(
+                    {
+                        min: round(pxToUnits(left_scrubber_pos)),
+                        max: round(pxToUnits(right_scrubber_pos - scrubber_width))
+                    }
+                );
+
+            dragging_left = false;
+            dragging_right = false;
+        }
+    );
+
 
 }

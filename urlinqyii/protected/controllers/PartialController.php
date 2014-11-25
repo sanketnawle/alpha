@@ -92,16 +92,26 @@ class PartialController extends Controller
 
         $this->render('topbar',array('user'=>$user));
     }
+    public function actionPlanner()
+    {
+//        $user_id = Yii::app()->session['user_id'];
+//
+//        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+//        $user = User::model()->find('user_id=:id', array(':id'=>1));
+//
+//
+
+        $this->render('homePlanner');
+    }
 
 
-
-    public function actionFeeds(){
+    public function actionFeed(){
 
         $posts = Post::model()->findAll();
 
 
 
-        $this->render('feeds',array('posts'=>$posts));
+        $this->render('feed',array('posts'=>$posts));
     }
 
 	// Uncomment the following methods and override them if needed

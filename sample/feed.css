@@ -23,6 +23,7 @@ body
 	margin-left: 10px;
 }
 .true_or_false_span{
+	text-align: center;
 	padding:3px;
 	background-color: #666666;
 	width: 30px;
