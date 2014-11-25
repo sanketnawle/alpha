@@ -9,9 +9,21 @@ class ProfileController extends Controller
 
 	public function actionIndex(){
 		$this->render('index');
+
 	}
 
-
+//   public function actionUpdateAjax(){
+//
+//
+//       $class_user =  ClassUser:: Model()->findByAttributes(array('user_id'=>1));
+//       $class_user->privacy = "private";
+//       $class_user->save();
+//
+////       $data = array();
+////       $data["myValue"] = "Content updated in AJAX";
+////       $this->renderPartial('_ajaxContent', $data, false, true);
+//
+//   }
 
     public function actionGetPosts(){
 
@@ -51,6 +63,11 @@ class ProfileController extends Controller
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
             ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs, 'following'=>$following,'followers'=>$followers, 'interests'=>$interests
             , 'showcase'=>$showcase_info, 'majors'=>$majors));
+
+//        $data = array();
+//        $data["myValue"]="Content Loaded";
+//        $this->render('indextest', $data);
+
     }
 
     public function actionAddInterest(){
