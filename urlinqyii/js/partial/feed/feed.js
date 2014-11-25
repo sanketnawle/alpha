@@ -6,29 +6,43 @@ $(document).ready(function(){
 
     init();
     function init(){
-        alert(base_url);
+        var feed_json_data = get_post_data(base_url,feed_url);
+        if(feed_json_data['success']){
+            render_posts(feed_json_data);
+        }else{
+            alert('failed to get feed');
+        }
+
     }
 
 
+    function get_post_data(base_url,feed_url){
 
+        $.getJSON( base_url + feed_url, function( data ) {
+            alert(JSON.stringify(data));
+            return data;
+        });
+    }
 
-    $.each(jsonData ,function(key) {
+    function render_posts(jsonData){
+        $.each(jsonData ,function(key) {
 
-        //jsonData['key'].jsonData[key]['replies'][0]);
-        //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
-        //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
-        //var time = new Date(jsonData[key]['created_time']);
-        //jsonData[key]['created_time'] = time
-        if(jsonData[key]['reply_count'] >  2) {
-            jsonData[key].show_more = true;
-            var post_id = jsonData[key]['post_id'];
-            var theReplies = jsonData[key]['replies'];
-            replies[post_id.toString()] = theReplies;
-            jsonData[key]['replies'] = [jsonData[key]['replies'][0], jsonData[key]['replies'][1]];
-        }
+            //jsonData['key'].jsonData[key]['replies'][0]);
+            //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
+            //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
+            //var time = new Date(jsonData[key]['created_time']);
+            //jsonData[key]['created_time'] = time
+            if(jsonData[key]['reply_count'] >  2) {
+                jsonData[key].show_more = true;
+                var post_id = jsonData[key]['post_id'];
+                var theReplies = jsonData[key]['replies'];
+                replies[post_id.toString()] = theReplies;
+                jsonData[key]['replies'] = [jsonData[key]['replies'][0], jsonData[key]['replies'][1]];
+            }
 
-        render_post(jsonData[key]);
-    });
+            render_post(jsonData[key]);
+        });
+    }
 
 
 
@@ -146,16 +160,6 @@ $(document).ready(function(){
 
 
 
-//var url = 'data.json';
-//$.getJSON( url , function( data ) {
-//Checks if the request was successful
-//console.log("called");
-//if(data['success']){
 
-//else{
-
-//alert("Error loading feed!");
-//}
-//});
 
 
