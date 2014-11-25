@@ -1,3 +1,111 @@
+.prof-courses-heading hr {
+    width: 176px;
+    float: right;
+    margin-left: -21px;
+    margin-top: -21px;
+}
+
+.prof-courses-heading {
+    width: 100%;
+    height: 31px;
+}
+
+img.class-icon {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 3px;
+}
+
+.class-list-wrapper p {
+    float: left;
+    color: rgba(0,0,0,0.5);
+}
+
+ul.class-list {
+    clear: both;
+    color: rgba(0,0,0,0.8);
+    margin-left: -40px;
+    height: auto;
+    overflow-x: hidden;
+    width: 303px;
+}
+
+ul.class-list li {
+    list-style-type: none;
+    width: 100%;
+}
+
+.class-list p {
+    float: left;
+    margin-top: 10px;
+    width: 260px;
+}
+
+.about-dept-name a {
+    color: #029acf;
+    font-weight: 600;
+}
+
+.prof-header {
+    padding: 5px !important;
+    height: 120px;
+}
+
+.prof-img {
+    height: 119px;
+    background-image: url(../assets/obama.png);
+    width: 90px;
+    border-top-left-radius: 6px;
+    background-size: cover;
+    display: inline-block;
+}
+
+.prof-info {
+    height: auto;
+    width: 220px;
+    display: inline-block;
+}
+
+.prof-info div {
+    width: 100%;
+    display: inline-block;
+}
+
+.prof-hours, .prof-loc {
+    color: rgba(0,0,0,0.3);
+}
+
+.prof-hours, .prof-loc, .prof-hours-input, .prof-loc-input {
+    font-size: 13px;
+}
+
+.prof-name {
+    color: #029acf;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.members-scroller {
+    right: 20px;
+    top: 56px;
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    display: block;
+    z-index: 100;
+    background-image: url(../assets/arrow-next-sprite.png);
+    background-position: 0 0;
+    background-size: 44px auto;
+    background-color: transparent;
+    opacity: 0.7;
+}
+.members-scroller:hover {
+    background-position: 0 44px;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
 .desc-icon {
     display: inline-block;
     float: left;
@@ -51,7 +159,7 @@
     color: rgba(0, 0, 0, .8);
 }
 .about-back:hover {
-    color: #029acf;
+    color: rgba(0, 0, 0, .8);
 }
 
 .about-content hr {
@@ -1433,13 +1541,19 @@ span.sticky-fx-cont div.fx-title{
 div.feed-tab-rightsec,div.about-tab-rightsec{
     display: inline-block;
     position: relative;
-    margin-left: 19px;
+    margin-left: -6px;
+    width: 295px;
+}
+
+div.prof-rightsec {
+    margin-left: 24px;
 }
 
 div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
-    width: 287px;
-
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05); background-color: #FFFFFF;
+    width: 327px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    background-color: #FFFFFF;
     height: auto;
     padding-bottom: 10px;
     border: 1px solid;
@@ -1448,7 +1562,7 @@ div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
 }
 
 div.about-tab-rightsec div.group-about-2{
-    height:140px;
+    height: auto;
 }
 
 div.feed-tab-rightsec div.group-about div.box-header,div.about-tab-rightsec div.group-about div.box-header{
@@ -2470,10 +2584,9 @@ div.file-wrap div.file-info-area div.file-info-areabtm div.download-btn1:active{
 
 div.about-content div.about-tab-leftsec{
     display: inline-block;
-
     float: left;
     position: relative;
-    width: 687px;
+    width: 640px;
 }
 
 div.about-content div.about-tab-rightsec div.group-about-subjects{
@@ -2482,8 +2595,7 @@ div.about-content div.about-tab-rightsec div.group-about-subjects{
 }
 div.about-content div.about-tab-leftsec div.about-tab-about{
     position: relative;
-
-    width: 660px;
+    width: 100%;
     height: auto;
     margin-left: 13px;
 }
@@ -2512,7 +2624,6 @@ div.about-tab-prof{
     margin-left: 10px;
     border: 1px solid; margin-top: 10px;
     border-color: #E0E0E0 #D5D5D5 #B7C3CA;
-
 }
 
 div.about-content div.about-tab-leftsec div.about-tab-members{
@@ -2522,12 +2633,12 @@ div.about-content div.about-tab-leftsec div.about-tab-members{
     height: 130px;
     float: left;
     margin-top: 10px;
+    margin-left: 13px;
 }
 
 div.group-about-subjects div.box-header{
     color: rgba(104, 104, 104, 0.15);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
     padding: 10px 0px;
     border-bottom: 1px solid rgba(175, 175, 175, 0.89);  margin-bottom: 4px;
     -webkit-box-shadow: rgba(167, 164, 164, 0.57) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px;
@@ -2804,12 +2915,13 @@ div.about-tab-block div.tab-block-header div.block-head-right a.edit-about i.edi
 }
 
 div.tab-block-content div.members-scrollwrap{
+    overflow-x: hidden;
     position: relative;
-
     white-space: nowrap;
     overflow: hidden;
     margin-top: 4px;
-    min-height: 122px;
+    margin-left: 7px;
+    height: 81px;
 }
 
 div.tab-block-content div.members-scrollwrap ul.people-you-know{
@@ -2955,7 +3067,9 @@ a.ddbox-hor-scroller i.ddbox-hor-scroller-icon{
 }
 
 .ddbox-hor-scroll-icon-left{
-    background-image:url(../assets/left-scroll-icon.png);
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -20px;
+    background-size: 32px auto;
     width: 27px;
     background-repeat: no-repeat;
     height: 45px;
@@ -2966,7 +3080,9 @@ a.ddbox-hor-scroller i.ddbox-hor-scroller-icon{
     background-size: cover;
 }
 .ddbox-hor-scroll-icon-right{
-    background-image:url(../assets/right-scroll-icon.png);
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -20px;
+    background-size: 32px auto;
     width: 27px;
     background-repeat: no-repeat;
     height: 45px;

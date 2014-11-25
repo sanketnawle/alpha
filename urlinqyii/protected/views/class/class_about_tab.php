@@ -85,8 +85,9 @@ echo "
                     echo '<hr>';
                     echo '<div class="desc-icon" id="sched-icon"></div><p>Monday 08:00 am-09:20 am, Wednesday 08:00 am-09:20 am</p>';
                     echo '<div class="desc-icon" id="loc-icon"></div><p>Class Location</p>';
-                    echo '<div class="desc-icon" id="dept-icon"></div><p><a href="'.Yii::app()->getBaseUrl(true).'/user/'.$department->department_id.'">'.$department->department_name.'</a></p>';
+                    echo '<div class="desc-icon" id="dept-icon"></div><p class="about-dept-name"><a href="'.Yii::app()->getBaseUrl(true).'/user/'.$department->department_id.'">'.$department->department_name.'</a></p>';
 echo'
+            </div>
             </div>
 ';
 
@@ -124,18 +125,7 @@ foreach ($all_following as $user_followed) {
 echo "
                         </ul>
                     </div>
-                    <a class = 'ddbox-hor-scroller hor-scroller-left'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-left'>
-                        </i>
-                    </a>
-                    <a class = 'ddbox-hor-scroller hor-scroller-right'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-right'>
-                        </i>
-                    </a>
+                    <div class='members-scroller'></div>
                 </div>
             </div>
 ";
@@ -371,13 +361,35 @@ echo "
 //closing about-tab-leftsec
 echo "
         </div>
-        </div>
 ";
 
 //opening about-tab-rightsec and group-about
 echo "
-        <div class = 'about-tab-rightsec'>
-            <div class = 'group-about group-about-2'>
+        <div class = 'about-tab-rightsec prof-rightsec'>
+            <div class = 'about-tab-block group-about group-about-2'>
+                <div class = 'tab-block-header prof-header'>
+                    <div class = 'block-head-left'>
+                        <div class='prof-img'></div>
+                    </div>
+                    <div class='block-head-right'>
+                        <div class='prof-info'>
+                            <div class='prof-name'>Professor Barrack Obama</div>
+                            <div class='prof-hours'>OFFICE HOURS:</div>
+                            <div class='prof-hours-input'>Monday 08:00pm - 09:00pm</div>
+                            <div class='prof-loc'>OFFICE LOCATION:</div>
+                            <div class='prof-loc-input'>Washington, DC</div>
+                        </div>
+                    </div>
+                </div>
+                <div class = 'tab-block-content class-list-wrapper'>
+                    <div class='prof-courses-heading'><p>Other classes taught</p><hr></div>
+                    <ul class='class-list'>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>MS Thesis in Biomedical Engineering</p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>PHD Dissertation in Biomedical Engineering</p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>Biostatistics</p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>Guided Studies in Biomedical Engineering</p></li>
+                    </ul>
+                </div>
             </div>
         </div>
 ";
