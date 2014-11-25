@@ -32,6 +32,7 @@
     background: white;
     width: 7%;
     height: 19px;
+    transition: width 0.35s linear;
     border-radius: 3px 1px 1px 3px;
     position: absolute;
     text-align: center;
