@@ -310,6 +310,7 @@ class ProfileController extends Controller
         $showcase->file_share_type=$share_type;
         $showcase->file_desc = $_POST['desc'];
         $showcase->title = $_POST['title'];
+        $showcase->created_timestamp = new CDbExpression('NOW()');
         if(isset($preview_image)){
             $showcase->preview_file_id = $preview_image['file_id'] ;
         }
@@ -555,6 +556,9 @@ class ProfileController extends Controller
         }
     }
     public function actionDownloadShowcase(){
+        if( file_exists( Yii::getPathOfAlias('webroot').$_POST['file_url'] ) ){
+            Yii::app()->getRequest()->sendFile( basename($_POST['file_url']) , file_get_contents( Yii::getPathOfAlias('webroot').$_POST['file_url'] ) );
+        }
 
     }
     public function actionChangeVisibility(){
