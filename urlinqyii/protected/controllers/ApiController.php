@@ -258,11 +258,20 @@ class ApiController extends Controller
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
         if($school){
+            $data = array('success'=>true,'school'=>$this->model_to_array($school));
+
+
             $sql = "SELECT *
-                FROM user
+                FROM user WHERE school_id = $school_id
                 LIMIT 10;";
+
             $users = User::model()->findAllBySql($sql);
-            $data = array('success'=>true,'school'=>$school,'admins'=>$school->admins,'members'=>$users);
+
+
+            $data['school']['admins'] = $school->admins;
+            $data['school']['members'] = $users;
+
+
             $this->renderJSON($data);
             return;
         }else{
@@ -287,15 +296,20 @@ class ApiController extends Controller
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
         if($department){
-            $sql = "SELECT *
-                FROM user
-                LIMIT 10;";
-            $users = User::model()->findAllBySql($sql);
-            $data = array('success'=>true,'department'=>$department,'admins'=>$department->admins,'members'=>$users);
+            $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
+
+            $sql = "SELECT *
+                FROM user WHERE department_id = $department_id
+                LIMIT 10;";
+
+            $users = User::model()->findAllBySql($sql);
+
+
+            $data['department']['admins'] = $department->admins;
+            $data['department']['members'] = $users;
 
             $this->renderJSON($data);
-            return;
         }else{
             $data = array('success'=>false,'error_id'=>2);
             $this->renderJSON($data);
@@ -458,7 +472,9 @@ class ApiController extends Controller
         $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
 
         if($class){
-            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('members','admins')));
+            $data = array('success'=>true);
+
+            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('students','admins')));
             $this->renderJSON($data);
             return;
         }else{
