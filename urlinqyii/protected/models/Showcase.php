@@ -25,21 +25,21 @@ class Showcase extends CActiveRecord
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('user_id, file_share_type', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('file_id', 'length', 'max'=>20),
-			array('file_share_type', 'length', 'max'=>7),
-			array('file_desc', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('user_id, file_id, file_share_type, file_desc', 'safe', 'on'=>'search'),
-		);
-	}
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('user_id, file_share_type', 'required'),
+            array('user_id, file_id, preview_file_id', 'numerical', 'integerOnly'=>true),
+            array('file_share_type', 'length', 'max'=>7),
+            array('title', 'length', 'max'=>100),
+            array('file_desc', 'safe'),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('user_id, file_id, file_share_type, file_desc, title, preview_file_id', 'safe', 'on'=>'search'),
+        );
+    }
 
 	/**
 	 * @return array relational rules.
@@ -51,21 +51,24 @@ class Showcase extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
             'file' => array(self::BELONGS_TO, 'File', 'file_id'),
+            'preview_image' => array(self::BELONGS_TO, 'File', 'preview_file_id'),
 		);
 	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels()
-	{
-		return array(
-			'user_id' => 'User',
-			'file_id' => 'File',
-			'file_share_type' => 'File Share Type',
-			'file_desc' => 'File Desc',
-		);
-	}
+    public function attributeLabels()
+    {
+        return array(
+            'user_id' => 'User',
+            'file_id' => 'File',
+            'file_share_type' => 'File Share Type',
+            'file_desc' => 'File Desc',
+            'title' => 'Title',
+            'preview_file_id' => 'Preview File',
+        );
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -79,21 +82,23 @@ class Showcase extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    public function search()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+        $criteria=new CDbCriteria;
 
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('file_id',$this->file_id,true);
-		$criteria->compare('file_share_type',$this->file_share_type,true);
-		$criteria->compare('file_desc',$this->file_desc,true);
+        $criteria->compare('user_id',$this->user_id);
+        $criteria->compare('file_id',$this->file_id);
+        $criteria->compare('file_share_type',$this->file_share_type,true);
+        $criteria->compare('file_desc',$this->file_desc,true);
+        $criteria->compare('title',$this->title,true);
+        $criteria->compare('preview_file_id',$this->preview_file_id);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

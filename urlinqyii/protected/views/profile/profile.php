@@ -65,6 +65,7 @@
         <script type="text/javascript">
             base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
             user_id = '<?php echo $user->user_id; ?>';
+            user_profile_id = '<?php echo $userProfile->user_id; ?>';
         </script>
 
         <script src="https://www.google.com/jsapi?key='AIzaSyDXcdGwlZUFArSbExSC81-g4PIlAA6vzD4'"></script>
@@ -94,7 +95,7 @@
         </section>
 		
 		<div class="showcase-form">
-            <form action = "<?php echo Yii::app()->getBaseUrl(true); ?>/profile/showcase" method="POST" enctype="multipart/form-data">
+            <form id="add-showcase">
                 <div class="showcase-form-header">
                     Adding a New Showcase<i></i>
                     <textarea id="title-entry" name="title-entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you"></textarea>
@@ -122,9 +123,9 @@
 		</div>
         <div class="edit-showcase-form">
             <span>Editing this Showcase</span>
-            <input id="showcase-name-edit" name="showcase-name" value="The Neural Tissue of a Hippo">
-            <input id="showcase-link-edit" name="showcase-link" value="http://www.cell.com/trends/cell-biology/pdf"><i></i>
-            <button type="button" id="edit-upload-button"><i></i>Upload Showcase</button>
+            <input id="showcase-name-edit" name="showcase-name" placeholder="change title">
+            <input id="showcase-desc-edit" name="showcase-desc" placeholder="change description"><i></i>
+        <!--    <button type="button" id="edit-upload-button"><i></i>Upload Showcase</button>-->
             <div class="edit-form-bottom">
                 <span>Cancel</span>
                 <div class="add-showcase-button" id="edit-from-submit">
@@ -281,47 +282,62 @@
                 <header class="professor-header professor-header-nothing">
                     <div class="resource-wrapper resources-vacant">
 						<span class="showcase-caption">Your Academic Portfolio</span>
-                        <div class="add-showcase-button" id="add-showcase-wrap-id">
-                            <button type="button">+ Add a showcase</button>
-                        </div>
+                        <?php if($is_user){
+                           echo '<div class="add-showcase-button" id="add-showcase-wrap-id">
+                                    <button type="button">+ Add a showcase</button>
+                                </div>';
+                        }?>
+
 						<div class="showcase-bar">
                             <?php
-                           /* foreach($showcase as $i=>$entry){
+                            foreach($showcase as $i=>$entry){
                                 $ext = $entry->file->file_extension;
                                 if($ext != 'url'){
                                     $ext = '.'.$ext;
                                 }
+
                                 if($i == 0){
                                     echo '<div class="showcase-image center-image" id="img-slot0" data-file-type="'.$ext.'">';
                                 }else{
-                                    echo '<div class="showcase-image" id="img-slot'.$i.'" data-file-type="'.$ext.'">';
+                                    echo '<div class="showcase-image" id="img-slot'.$i.'" data-file-type="'.$ext.'"';
                                 }
                                 if($entry->preview_file_id){
-                                    echo 'style="background-image: url('.$entry->preview_file->file_url.');">';
+                                    echo " style=\"background-image: url('..".$entry->preview_image->file_url."');\">";
+                                }else{
+                                    echo '>';
                                 }
                                 echo '
                                         <div class="showcase-label"><span>';
-                                if($entry->origin == 'link'){
+                                if($entry->file->origin_type == 'link'){
                                     echo $entry->file->file_name;
                                 }
                                 echo '
                                         </span>
                                         </div>
-                                        <button type="button" class="download-showcase-button"><i class="download_button_icon"></i></button>
+                                        <button type="button" onclick="';
+                                if($entry->file->origin_type == 'link'){
+                                    echo 'windows.open('.$entry->file->file_url.')';
+                                }
+                                else{
+                                    echo 'download_file('.$entry->file->file_url.')';
+                                }
+                                echo '" class="download-showcase-button"><i class="download_button_icon"></i></button>
                                         <div class="showcase-description-wrap">
                                             <div class="showcase-title">'.
                                                $entry->title
                                             .'</div>
                                             <div class="showcase-description">'.
-                                                $entry->desc
+                                                $entry->file_desc
                                            .' </div>
                                         </div>';
                                 if($i==0){
-                                    echo '<div class="image-panel-wrapper">
-                                                <div class="circle-div" id="circle-div-delete">
+                                    echo '<div class="image-panel-wrapper">';
+                                      if($is_user){
+                                          echo '<div class="circle-div" id="circle-div-delete">
                                                 </div>
-                                                <i></i>
-                                                <div id="hint_wedge-before">
+                                                <i></i>';
+                                      }
+                                    echo  '     <div id="hint_wedge-before">
 
                                                 </div>
                                                 <div id="delete-on-hover-before">
@@ -356,10 +372,10 @@
                                 }
                                 echo '</div>';
 
-                            }*/
+                            }
 
                             ?>
-                            <div class="showcase-image center-image" id="img-slot0" data-file-type=".pdf">
+                         <!--   <div class="showcase-image center-image" id="img-slot0" data-file-type=".pdf">
                                 <div class="showcase-label">
                                     <span></span>
                                 </div>
@@ -450,10 +466,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="showcase-image" id="img-slot4" style="background-image: url('img/person5.jpg')">
-                                <!--<img src="img/person5.jpg">-->
-                            </div>
 
+                        -->
 						</div>
                         <div class="no-showcase ns-hide" style="display:none;">
                             <div class="ns-title">Add a New Academic Showcase</div>
@@ -834,6 +848,9 @@
                     <span class="img img-inset user-pic">
 						<div id="camera-icon-div">
                             <button class="camera-icon-button-before"></button>
+                            <div style='height: 0px;width:0px; overflow:hidden;'>
+                                <input id="picture-upfile" type="file" value="upload"/>
+                            </div>
                         </div>
                         <div class="user-pic-div user-pic-div-my" id="profile_picture" style="background: url(
                         <?php if($userProfile->pictureFile) {
@@ -865,7 +882,7 @@
                         <div class="username-entry-field">
                             <input type="text" class="username-entry" name="username-entry" value="Ross Kopelman">
                         </div>
-                        <p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->student_type; ?></p>
+                        <p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->year_name; ?></p>
                         <p class="school-info-dropdown">
                             <select class="yearpicker">
                                 <option value="2015">2015</option>
@@ -874,7 +891,7 @@
                                 <option value="2018">2018</option>
                                 <option value="2019">2019</option>
                                 <option value="2020">2020</option>
-                            </select>| University of Rochester |
+                            </select>| <?php echo $university->university_name; ?> |
                             <select class="levelpicker">
                                 <option value="Freshman">Freshman</option>
                                 <option value="Sophomore">Sophomore</option>
@@ -884,7 +901,19 @@
                                 <option value="PhD">PhD</option>
                             </select>
                         </p>
+                        <?php
+                            if(!$is_user){
+                                echo '<div class="follow_email_wrapper">
+                                    <button type="button" class="follow_prof_button">
+                                        <i></i>
+                                        Follow
+                                    </button>
+                                    <button type="button" class="email_button"><i></i></button>
+                                </div>';
+                            }
+                        ?>
                     </div>
+
                     <!--<h5>ABOUT</h5>
                     <span class="profile-bio-container" id="profile_about">
 
@@ -898,17 +927,18 @@
                     <h3 id="major-section">MAJOR</h3>
                     <?php foreach($majors as $major){
                         echo ' <div class="info-block">
-                                    <input name="major_name" value="'.$major['name'].'" readonly>
+                                    <input name="major_name" value="'.$major->name.'" readonly>
                                 </div>';
                     }
                     ?>
 
-                    <?php if($userProfile->studentAttributes->minor){
-                        echo '
-                            <h3>MINOR</h3>
-                            <div class="info-block">
-                                <input name="minor_name" value="'.$userProfile->studentAttributes->minor.'" readonly>
-                            </div>';
+                    <?php if($minors){
+                        echo '<h3 id="minor-section">MINOR</h3>';
+                        foreach($minors as $minor) {
+                            echo '  <div class="info-block">
+                                    <input name="minor_name" value="' . $minor->name . '" readonly>
+                                </div>';
+                        }
                     }?>
                     <div class="add-interest-button">
                         <i></i>
@@ -1052,13 +1082,13 @@
                                             ) no-repeat scroll center center / cover transparent">
                                         </div>
                                         <h3 class="classlink"><?php echo $class->course->course_name;?></h3>
-                                        <?php  if($is_user) {
+                                        <?php
                                             echo '<div class="user-class-visibility undefined">
-                                <div class="container">
-                                    <div class="current">Public<div class="drop"></div>
-                                        <div class="hover"></div>
-                                    </div>
-                                    <div class="options">
+                                                     <div class="container">
+                                                     <div class="current">Public<div class="drop"></div>
+                                                <div class="hover"></div>
+                                                </div>
+                                         <div class="options">
                                         <div class="option">Public<div class="tick"></div>
                                         </div>
                                         <div class="option">People I Follow
@@ -1070,7 +1100,7 @@
                                     </div>
                                 </div>
                             </div>';
-                                        } ?>
+                                         ?>
                                     </a>
                                     <?php
                                     echo '<div class="admin-group-functions">
@@ -1096,10 +1126,15 @@
                                     <div class="drop"></div>
                                     <div class="hover"></div>
                                 </div>
-                                <div class="options">
-                                    <div class="option">Public<div class="tick"></div></div>
-                                    <div class="option">People I Follow<div class="tick"></div></div>
-                                    <div class="option">Just Me<div class="tick"></div></div>
+                                <div class="new">
+                                    <select id="visibilty">
+<!--                                    <div class="option" >Public<div class="tick"></div></div>-->
+<!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
+<!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
+                                        <option value="Public" class="option">Public<div class="tick"></div></option>
+                                        <option value="Followed" class="option">People I Follow<div class="tick"></div></option>
+                                        <option value="Me" class="option">Just Me<div class="tick"></div></option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="label">Who Can See My Clubs:</div>

@@ -11,7 +11,7 @@ echo "</div>";
 
 echo "<div class='group_feed_wrap'>";
 
-    echo Yii::app()->runController('partial/feed',array('user'=>$user));
+    echo Yii::app()->runController('partial/feed',array('user'=>$user,'feed_url'=>'/club/' . $club->group_id . '/feed'));
 
 echo "</div>";
 
