@@ -95,7 +95,7 @@ echo "
            <div class = 'about-tab-members about-tab-block'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>
-                        STUDENTS YOU KNOW WHO TOOK THIS COURSE <span>(" . count($all_following). ")</span>
+                        Students You Know Who Have Taken This Class
                     </div>
                 </div>
                 <div class = 'tab-block-content tab-block-content-scroll'>
@@ -123,7 +123,7 @@ foreach ($all_following as $user_followed) {
 }
 
 echo "
-                        </ul>
+                        <!--</ul>-->
                     </div>
                     <div class='members-scroller'></div>
                 </div>
@@ -384,10 +384,10 @@ echo "
                 <div class = 'tab-block-content class-list-wrapper'>
                     <div class='prof-courses-heading'><p>Other classes taught</p><hr></div>
                     <ul class='class-list'>
-                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>MS Thesis in Biomedical Engineering</p></li>
-                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>PHD Dissertation in Biomedical Engineering</p></li>
-                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>Biostatistics</p></li>
-                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p>Guided Studies in Biomedical Engineering</p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p><a href=''>MS Thesis in Biomedical Engineering</a></p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p><a href=''>PHD Dissertation in Biomedical Engineering</a></p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p><a href=''>Biostatistics</a></p></li>
+                        <li><img class='class-icon' src='../assets/photo_icon.png'/><p><a href=''>Guided Studies in Biomedical Engineering</a></p></li>
                     </ul>
                 </div>
             </div>
