@@ -1,29 +1,20 @@
 //ERROR ID's
     // 1 - All data is not set
-    public function actionGetSchoolData(){
-        if(!isset($_GET['school_id'])){
-            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+    public function actionGetClassData(){
+        if(!isset($_GET['class_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
             $this->renderJSON($data);
             return;
         }
 
-        $school_id = $_GET['school_id'];
+        $class_id = $_GET['class_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
-        $school = school::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
-        if($school){
-            $sql = "SELECT *
-                FROM user
-                LIMIT 10;";
-            $users = User::model()->findAllBySql($sql);
-            $data = array('success'=>true,'school'=>$school,'admins'=>$school->admins,'members'=>$users);
+        $class = class::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
 
 
-            $this->renderJSON($data);
-            return;
-        }else{
-            $data = array('success'=>false,'error_id'=>2);
-            $this->renderJSON($data);
-            return;
-        }
+        $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('members','admins')));
 
+
+        $this->renderJSON($data);
+        return;
     }

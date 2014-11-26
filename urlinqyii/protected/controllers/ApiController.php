@@ -417,6 +417,7 @@ class ApiController extends Controller
 
     //ERROR ID's
     // 1 - All data is not set
+    // 2 - Club doesnt exist
     public function actionGetClubData(){
         if(!isset($_GET['group_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
@@ -427,15 +428,47 @@ class ApiController extends Controller
         $group_id = $_GET['group_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
+        if($group){
+            $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
 
 
-        $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
-
-
-        $this->renderJSON($data);
-        return;
     }
 
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - Club doesnt exist
+    public function actionGetClassData(){
+        if(!isset($_GET['class_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
+
+        if($class){
+            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('members','admins')));
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
 
     //ERROR ID's
     // 1 - All data is not set

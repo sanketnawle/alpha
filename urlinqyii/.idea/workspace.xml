@@ -29,11 +29,20 @@
       <file leaf-file-name="ApiController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="371" column="9" selection-start="10682" selection-end="10682" vertical-scroll-proportion="0.49822906" vertical-offset="5885" max-vertical-offset="13651">
+            <state line="449" column="38" selection-start="13029" selection-end="13029" vertical-scroll-proportion="0.6587958" vertical-offset="7075" max-vertical-offset="14212">
               <folding>
-                <marker date="1417031721745" expanded="true" signature="7251:7310" placeholder="SELECT * FRO..user..." />
-                <marker date="1417031721745" expanded="true" signature="8311:8370" placeholder="SELECT * FRO..user..." />
+                <marker date="1417032165429" expanded="true" signature="7251:7310" placeholder="SELECT * FRO..user..." />
+                <marker date="1417032165429" expanded="true" signature="8311:8370" placeholder="SELECT * FRO..user..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SiteController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="189" column="64" selection-start="5360" selection-end="5360" vertical-scroll-proportion="156.26923" vertical-offset="7276" max-vertical-offset="8857">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,7 +68,7 @@
       <file leaf-file-name="test" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="25" selection-start="0" selection-end="973" vertical-scroll-proportion="-4.327273" vertical-offset="0" max-vertical-offset="578">
+            <state line="19" column="5" selection-start="0" selection-end="665" vertical-scroll-proportion="-5.8727274" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
@@ -87,15 +96,6 @@
         <entry file="file://$PROJECT_DIR$/protected/models/School.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="77" column="135" selection-start="2791" selection-end="2915" vertical-scroll-proportion="-15.038462" vertical-offset="918" max-vertical-offset="2601">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="topbar.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/partial/topbar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="75" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-8.5" vertical-offset="153" max-vertical-offset="3978">
               <folding />
             </state>
           </provider>
@@ -176,10 +176,10 @@
         <option value="$PROJECT_DIR$/protected/views/class/class.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/topbar.php" />
         <option value="$PROJECT_DIR$/protected/models/Group.php" />
-        <option value="$PROJECT_DIR$/test" />
-        <option value="$PROJECT_DIR$/protected/controllers/ApiController.php" />
         <option value="$PROJECT_DIR$/protected/models/School.php" />
         <option value="$PROJECT_DIR$/protected/models/Department.php" />
+        <option value="$PROJECT_DIR$/test" />
+        <option value="$PROJECT_DIR$/protected/controllers/ApiController.php" />
       </list>
     </option>
   </component>
@@ -353,6 +353,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -414,7 +432,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="584" y="0" width="1336" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -427,7 +445,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22348484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22348484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -542,13 +560,6 @@
     <entry file="file://$PROJECT_DIR$/js/module/timezone_conversion.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="1" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="64" selection-start="5360" selection-end="5360" vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="8381">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/planner.php">
@@ -1020,13 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="0" selection-end="973" vertical-scroll-proportion="-4.327273" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/School.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="135" selection-start="2791" selection-end="2915" vertical-scroll-proportion="-15.038462" vertical-offset="918" max-vertical-offset="2601">
@@ -1041,12 +1045,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="64" selection-start="5360" selection-end="5360" vertical-scroll-proportion="156.26923" vertical-offset="7276" max-vertical-offset="8857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="5" selection-start="0" selection-end="665" vertical-scroll-proportion="-5.8727274" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="9" selection-start="10682" selection-end="10682" vertical-scroll-proportion="0.49822906" vertical-offset="5885" max-vertical-offset="13651">
+        <state line="449" column="38" selection-start="13029" selection-end="13029" vertical-scroll-proportion="0.6587958" vertical-offset="7075" max-vertical-offset="14212">
           <folding>
-            <marker date="1417031721745" expanded="true" signature="7251:7310" placeholder="SELECT * FRO..user..." />
-            <marker date="1417031721745" expanded="true" signature="8311:8370" placeholder="SELECT * FRO..user..." />
+            <marker date="1417032165429" expanded="true" signature="7251:7310" placeholder="SELECT * FRO..user..." />
+            <marker date="1417032165429" expanded="true" signature="8311:8370" placeholder="SELECT * FRO..user..." />
           </folding>
         </state>
       </provider>
