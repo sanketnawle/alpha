@@ -284,9 +284,11 @@ class ApiController extends Controller
         $department_id = $_GET['department_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
-
-
-        $data = array('success'=>true,'department'=>$department);
+        $sql = "SELECT *
+                FROM user
+                LIMIT 10;";
+        $users = User::model()->findAllBySql($sql);
+        $data = array('success'=>true,'department'=>$department,'admins'=>$department->admins,'members'=>$users);
 
 
         $this->renderJSON($data);

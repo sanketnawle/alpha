@@ -16,7 +16,7 @@
         </div>
         <ul>
             <li class="profile-panel">
-                <a class="nostyle" href="./profile.php?user_id=<?php echo $user->user_id; ?>">
+                <a class="nostyle" href="<?php echo Yii::app()->getBaseUrl(true) . '/profile/' . $user->user_id; ?>">
                     <img class="profile-img" src="<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>">
                     <div class="details">
                         <span class="name"><?php echo $user->firstname." ".$user->lastname; ?></span>
@@ -27,8 +27,8 @@
                     </div>
                 </a>
             </li>
-            <li><a>Department</a></li>
-            <li><a>Really Long School Name</a></li>
+            <li><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $user->department_id ?>"><?php echo $user->department->department_name ?></a></li>
+            <li><a href="<?php echo Yii::app()->getBaseUrl(true) . '/school/' . $user->school_id ?>"><?php echo $user->school->school_name ?></a></li>
         </ul>
         <div class="profile-menu">
             <ul>
@@ -64,7 +64,7 @@
             </div>
             <ul>
                 <?php foreach ($groups as $group) {
-                    echo '<li><a href="./clubs.php?group_id=<?php echo $gid; ?>"><?php echo $gname; ?></a></li>';
+                    echo '<li><a href="'.  Yii::app()->getBaseUrl(true) . '/club/' . $group->group_id . '">' . $group->group_name . '</a></li>';
                 }
                 ?>
             </ul>

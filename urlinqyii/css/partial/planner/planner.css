@@ -3,6 +3,7 @@ body{
 }
 .planner_container{
     position: fixed;
+    right: 200px;
     width: 280px;
     height: auto;
     font-family: 'Open Sans', sans-serif;
