@@ -293,6 +293,31 @@ class ApiController extends Controller
         return;
     }
 
+    public function actionGetDepartmentMembers(){
+        if(!isset($_GET['department_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $department_id = $_GET['department_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $users = User::model()->findAll("department_id=:department_id",array(":department_id"=>$department_id));
+
+
+        if($users){
+            $data = array('success'=>true,'members'=>$users);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
 
     //ERROR ID's
     // 1 - All data is not set
