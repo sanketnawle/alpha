@@ -2,6 +2,10 @@
 
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/file_upload.js'></script>
 
+
+
+I MADE A CHANGE
+
 <?php
 //
 //
