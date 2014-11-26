@@ -210,7 +210,7 @@ body {
 }
 
     .leftpanel .profile .title {
-        background-color: #f16b6a;
+        background-color: #ed4f68;
         padding-right: 8px;
     }
 
@@ -226,13 +226,13 @@ body {
         }
 
     .leftpanel .class .title {
-        background-color: #54c594;
+        background-color: #2cc185;
     
         width: 241px;
 }
 
     .leftpanel .club .title {
-        background-color: #45a8cf;
+        background-color: #1da7d2;
     }
 
     .leftpanel .profile-menu {
