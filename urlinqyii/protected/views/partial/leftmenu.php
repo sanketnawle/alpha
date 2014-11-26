@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftmenu.css">    
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftmenu.css">
     <link type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.jscrollpane.css" rel="stylesheet" media="all"/>
     <!--<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
     <script type="text/javascript" src="js/jquery.mousewheel.js"></script>-->
