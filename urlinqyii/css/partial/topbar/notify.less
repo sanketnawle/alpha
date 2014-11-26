@@ -1,12 +1,12 @@
-﻿@import "../calendar/less/import/prefixer.less";
-@import "../calendar/less/import/common.less";
+﻿@import "../../calendar/less/import/prefixer";
+@import "../../calendar/less/import/common";
 
 .topbar {
     font-family: 'Open Sans';
 
     > .right {
         .notify {
-            @sprite-image: url(../../assets/noti_sprite.png);
+            @sprite-image: url(../../../assets/noti_sprite.png);
 
             .notify-window {
                 .absolute(75%,auto,auto,-185px,10);
@@ -119,7 +119,7 @@
                                         .icon {
                                             height: 12px;
                                             float: left;
-                                            background-image: url(../../assets/noti_sprite.png);
+                                            background-image: url(../../../assets/noti_sprite.png);
                                             margin: 1px 3px;
                                         }
 
