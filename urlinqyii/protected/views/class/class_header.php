@@ -270,7 +270,6 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
                 <ul class = "group-nav" >';
                 /* for non-member view there is a class */
 				if ($is_member) {
-
 					echo '<li class = "group-tab" >
 			                <a class = "tab1 tab-anchor group-tab-active" >
 			                    <div class = "tab-title" >
@@ -286,22 +285,22 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
 					echo '<li class = "group-tab" >
                             <a class = "tab1 tab-anchor group-tab-active about-tab" >
                                 <div class = "tab-title" style="padding-left:25px;" >
-                                    About
+                                    ABOUT
                                 </div >
                             </a >
                             <button id="group-about-link" style="display:none;"></button>
                         </li >';
 				}
-                 echo '
+                echo '
                     <li class = "group-tab" >
                         <a class = "tab2 tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    MEMBERS
+                                MEMBERS
                                 <span class = "tab-icon tab2-icon-inactive" ></span >
                             </div >
                             <div class = "status tab-number" >
                                 <span class = "badge" >
-    ' . count($class->users) . '
+                                    ' . count($class->users) . '
                                 </span >
                             </div >
                         </a >
@@ -311,7 +310,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
 		echo '<li class = "group-tab" >
                         <a class = "tab3 tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    FILES
+                                FILES
                                 <span class = "tab-icon tab3-icon-inactive" ></span >
                             </div >
                             <div class = "status tab-number" >
@@ -324,7 +323,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
                     <li class = "tab-no-badge group-tab" >
                         <a class = "tabc tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    SYLLABUS
+                                SYLLABUS
                                 <span class = "tab-icon tabc-icon-inactive" ></span >
                             </div >
                         </a >
@@ -342,6 +341,7 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         </div>
     </div > ';
     } else {
+
         //checking enrollment and echoing button accordingly
         if ($is_member) {
             echo '
@@ -350,9 +350,12 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
     Enroll
                     </a >
                 </div >
+                <div class="settings-button">
+                    <a class="class-settings"><div class="settings-bg"></div></a>
+                </div>
             </div >
         </div >
-        <div class = "tab-wedge-down" style="left:280px">
+        <div class = "tab-wedge-down" style="left:303px">
         </div >
         </div>
     </div > ';
@@ -363,6 +366,9 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
     Enrolled
                     </a >
                 </div >
+                <div class="settings-button">
+                    <a class="class-settings"></a>
+                </div>
             </div >
         </div >
         <div class = "tab-wedge-down" >
@@ -371,5 +377,6 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
     </div > ';
         }
     }
+
 
 ?>

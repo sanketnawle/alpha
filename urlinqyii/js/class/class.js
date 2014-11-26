@@ -438,9 +438,8 @@ $(document).ready(function () {
             // });
 
         }
+
         if ($(this).hasClass("tab1")) {
-
-
             if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")) {
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
@@ -642,8 +641,6 @@ $(document).ready(function () {
 
         $(".about-content").animate({opacity: "1"}, 300);
         $(".about-content").show();
-
-
     });
 
     $(window).scroll(function () {

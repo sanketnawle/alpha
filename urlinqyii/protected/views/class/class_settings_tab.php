@@ -166,25 +166,25 @@ echo "
             </div>
 ";
 
-                    /*
-                    echo '<p>Users you follow who have taken this course:<br>';
-                    foreach($all_following as $user_followed){
-                        if($user_followed->user_type == 's'){
-                            echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">'.$user_followed['firstname'].' '.$user_followed['lastname'].'</a><br>';
+/*
+echo '<p>Users you follow who have taken this course:<br>';
+foreach($all_following as $user_followed){
+    if($user_followed->user_type == 's'){
+        echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">'.$user_followed['firstname'].' '.$user_followed['lastname'].'</a><br>';
 
-                        }else{
-                            echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">Professor '.$user_followed['lastname'].'</a><br>';
-                        }
-                    }
-                    echo '<p>Department description: '.$department->department_description.'</p>';
-                    echo '<p>Professor Name: <a href="'.Yii::app()->getBaseUrl(true).'/user/'.$professor->user_id.'"> Professor '.$professor->firstname.' '.$professor->lastname.'</a></p>';
-                    echo '<p>Professor Bio: '.$professor->user_bio.'</p>';
-                    echo '<p>Other courses taught by this professor:<br>';
-                    foreach($other_courses as $other_course){
-                        echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$other_course['course_id'].'">'.$other_course['course_name'].'</a><br>';
-                    }
-                    echo '</p>';
-                    */
+    }else{
+        echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$user_followed['user_id'].'">Professor '.$user_followed['lastname'].'</a><br>';
+    }
+}
+echo '<p>Department description: '.$department->department_description.'</p>';
+echo '<p>Professor Name: <a href="'.Yii::app()->getBaseUrl(true).'/user/'.$professor->user_id.'"> Professor '.$professor->firstname.' '.$professor->lastname.'</a></p>';
+echo '<p>Professor Bio: '.$professor->user_bio.'</p>';
+echo '<p>Other courses taught by this professor:<br>';
+foreach($other_courses as $other_course){
+    echo '    <a href="'.Yii::app()->getBaseUrl(true).'/course/'.$other_course['course_id'].'">'.$other_course['course_name'].'</a><br>';
+}
+echo '</p>';
+*/
 
 
 /*
@@ -268,114 +268,114 @@ WHERE CU.user_id IN ($connected_users) AND CU.class_id = '$class_id' LIMIT 0,8";
     }
     */
 
-   /* else {
-        $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
+/* else {
+     $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
 WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
-        $get_course_student_query_result = $con->query($get_course_student_query);
-        $user_count = 0;
-        if ($get_course_student_query_result) {
-            $user_count = $get_course_student_query_result->num_rows;
-        }
-        if ($user_count > 0) {
-            echo "
-           <div class = 'about-tab-members about-tab-block'>
-                <div class = 'tab-block-header'>
-                    <div class = 'block-head-left'>
-                        STUDENTS IN THIS COURSE <span>(" . $user_count . ")</span>
-                    </div>
+     $get_course_student_query_result = $con->query($get_course_student_query);
+     $user_count = 0;
+     if ($get_course_student_query_result) {
+         $user_count = $get_course_student_query_result->num_rows;
+     }
+     if ($user_count > 0) {
+         echo "
+        <div class = 'about-tab-members about-tab-block'>
+             <div class = 'tab-block-header'>
+                 <div class = 'block-head-left'>
+                     STUDENTS IN THIS COURSE <span>(" . $user_count . ")</span>
+                 </div>
 
-                </div>
-                <div class = 'tab-block-content tab-block-content-scroll'>
+             </div>
+             <div class = 'tab-block-content tab-block-content-scroll'>
 
-                    <div class = 'members-scrollwrap'>
-                        <ul class = 'people-you-know'>
-    ";
-            while ($row = $get_course_student_query_result->fetch_array()) {
-                echo "
-                            <li class = 'people-box'>
-                                <div class = 'person-pic-wrap' style='background-image:url(" . get_user_dp($con, $row['user_id']) . ")'>
-                                </div>
-                                <span class = 'grade'>Grad</span>
-                                <div class = 'person-title-wrap'>
-                                    <a href='profile.php?user_id=" . $row['user_id'] . "'><p></a>" . $row['firstname'] . " " . $row['lastname'] . "</p>
-                                </div>
-                                <div class = 'after-click-effect'></div>
-                            </li>
-        ";
-            }
-            echo "
-                        </ul>
-                    </div>
-                    <a class = 'ddbox-hor-scroller hor-scroller-left'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-left'>
-                        </i>
-                    </a>
-                    <a class = 'ddbox-hor-scroller hor-scroller-right'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-right'>
-                        </i>
-                    </a>
-                </div>
-            </div>
-    ";
-        }
+                 <div class = 'members-scrollwrap'>
+                     <ul class = 'people-you-know'>
+ ";
+         while ($row = $get_course_student_query_result->fetch_array()) {
+             echo "
+                         <li class = 'people-box'>
+                             <div class = 'person-pic-wrap' style='background-image:url(" . get_user_dp($con, $row['user_id']) . ")'>
+                             </div>
+                             <span class = 'grade'>Grad</span>
+                             <div class = 'person-title-wrap'>
+                                 <a href='profile.php?user_id=" . $row['user_id'] . "'><p></a>" . $row['firstname'] . " " . $row['lastname'] . "</p>
+                             </div>
+                             <div class = 'after-click-effect'></div>
+                         </li>
+     ";
+         }
+         echo "
+                     </ul>
+                 </div>
+                 <a class = 'ddbox-hor-scroller hor-scroller-left'>
+                     <div class = 'ddbox-hor-scroller-cont'>
+                     </div>
+                     <i class = 'ddbox-hor-scroll-icon-left'>
+                     </i>
+                 </a>
+                 <a class = 'ddbox-hor-scroller hor-scroller-right'>
+                     <div class = 'ddbox-hor-scroller-cont'>
+                     </div>
+                     <i class = 'ddbox-hor-scroll-icon-right'>
+                     </i>
+                 </a>
+             </div>
+         </div>
+ ";
+     }
 
-    }
+ }
 } else {
-    $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
+ $get_course_student_query = "SELECT U.* FROM user U WHERE U.user_id IN(SELECT user_id from courses_user
 WHERE class_id = '$class_id' AND is_admin = 0 LIMIT 0,8)";
-    $get_course_student_query_result = $con->query($get_course_student_query);
+ $get_course_student_query_result = $con->query($get_course_student_query);
 
-    $user_count = mysqli_num_rows($get_course_student_query_result);
-    if ($user_count > 0) {
-        echo "
-           <div class = 'about-tab-members about-tab-block'>
-                <div class = 'tab-block-header'>
-                    <div class = 'block-head-left'>
-                        STUDENTS IN THIS COURSE <span>(" . $user_count . ")</span>
-                    </div>
+ $user_count = mysqli_num_rows($get_course_student_query_result);
+ if ($user_count > 0) {
+     echo "
+        <div class = 'about-tab-members about-tab-block'>
+             <div class = 'tab-block-header'>
+                 <div class = 'block-head-left'>
+                     STUDENTS IN THIS COURSE <span>(" . $user_count . ")</span>
+                 </div>
 
-                </div>
-                <div class = 'tab-block-content tab-block-content-scroll'>
+             </div>
+             <div class = 'tab-block-content tab-block-content-scroll'>
 
-                    <div class = 'members-scrollwrap'>
-                        <ul class = 'people-you-know'>
-    ";
-        while ($row = $get_course_student_query_result->fetch_array()) {
-            echo "
-                            <li class = 'people-box'>
-                                <div class = 'person-pic-wrap' style='background-image:url(" . get_user_dp($con, $row['user_id']) . ")'>
-                                </div>
-                                <span class = 'grade'>Grad</span>
-                                <div class = 'person-title-wrap'>
-                                    <a href='profile.php?user_id=" . $row['user_id'] . "'><p></a>" . $row['firstname'] . " " . $row['lastname'] . "</p>
-                                </div>
-                                <div class = 'after-click-effect'></div>
-                            </li>
-        ";
-        }
-        echo "
-                        </ul>
-                    </div>
-                    <a class = 'ddbox-hor-scroller hor-scroller-left'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-left'>
-                        </i>
-                    </a>
-                    <a class = 'ddbox-hor-scroller hor-scroller-right'>
-                        <div class = 'ddbox-hor-scroller-cont'>
-                        </div>
-                        <i class = 'ddbox-hor-scroll-icon-right'>
-                        </i>
-                    </a>
-                </div>
-            </div>
-    ";
-    }
+                 <div class = 'members-scrollwrap'>
+                     <ul class = 'people-you-know'>
+ ";
+     while ($row = $get_course_student_query_result->fetch_array()) {
+         echo "
+                         <li class = 'people-box'>
+                             <div class = 'person-pic-wrap' style='background-image:url(" . get_user_dp($con, $row['user_id']) . ")'>
+                             </div>
+                             <span class = 'grade'>Grad</span>
+                             <div class = 'person-title-wrap'>
+                                 <a href='profile.php?user_id=" . $row['user_id'] . "'><p></a>" . $row['firstname'] . " " . $row['lastname'] . "</p>
+                             </div>
+                             <div class = 'after-click-effect'></div>
+                         </li>
+     ";
+     }
+     echo "
+                     </ul>
+                 </div>
+                 <a class = 'ddbox-hor-scroller hor-scroller-left'>
+                     <div class = 'ddbox-hor-scroller-cont'>
+                     </div>
+                     <i class = 'ddbox-hor-scroll-icon-left'>
+                     </i>
+                 </a>
+                 <a class = 'ddbox-hor-scroller hor-scroller-right'>
+                     <div class = 'ddbox-hor-scroller-cont'>
+                     </div>
+                     <i class = 'ddbox-hor-scroll-icon-right'>
+                     </i>
+                 </a>
+             </div>
+         </div>
+ ";
+ }
 
 }
 */

@@ -1,3 +1,50 @@
+.class-settings {
+    cursor: pointer;
+    border: 1px solid #e1e8ed;
+    height:34px;
+    width: 40px;
+    margin-right: 8px;
+    font-size: 15px;
+    color: #029acf;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    float:right;
+    right: 5px;
+    border-radius: 4px;
+    bottom: 3px;
+    line-height:36px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-color: #e1e8ed;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-image: linear-gradient(#fff,#E9ECEE);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+    border-color: #e1e8ed;
+}
+
+.settings-bg {
+    background-image: url(../assets/classMoreDropdown.png);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 8px 8px;
+    background-size: 25px;
+}
+
+.class-settings:hover {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    background-color: #E0E4E7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    background-image: linear-gradient(#F8F7F7,#E0E4E7);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+    border-color: #D4DBE0;
+    color: #50BCE0;
+}
+
+.members-scroll {
+    padding: 8px 0 0 4px !important;
+}
+
 .about-content .tab-block-content p {
     font-size: 14px;
 }
@@ -97,8 +144,8 @@ ul.class-list li {
 }
 
 .members-scroller {
-    right: 20px;
-    top: 56px;
+    right: 10px;
+    top: 40px;
     height: 44px;
     width: 44px;
     position: absolute;
@@ -114,6 +161,7 @@ ul.class-list li {
     background-position: 0 44px;
     cursor: pointer;
     opacity: 0.75;
+    top: 39px;
 }
 
 .desc-icon {
@@ -376,11 +424,23 @@ ul.group-nav li:last-child a.tab-anchor{
     height: 14px!important;
     top: 1px!important;
 }
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab5-icon-active{
+    background-image: url(../assets/members_icon_active.png)!important;
+    width: 14px!important;
+    height: 14px!important;
+    top: 1px!important;
+}
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab2-icon-inactive{
     background-image: url(../assets/members_icon_active.png)!important;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-inactive{
+    background-image: url(../assets/members_icon_inactive.png)!important;
+    width: 14px!important;
+    height: 14px!important;
+    top: 1px!important;
+}
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab5-icon-inactive{
     background-image: url(../assets/members_icon_inactive.png)!important;
     width: 14px!important;
     height: 14px!important;
@@ -534,9 +594,7 @@ div.tab-wedge-down{
     color: #029acf;
     text-align: center;
     font-weight: 600;
-
     position: relative;
-
     float:right;
     right: 5px;
     border-radius: 4px;
@@ -1560,7 +1618,7 @@ div.prof-rightsec {
 }
 
 div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
-    width: 327px;
+    width: 315px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     background-color: #FFFFFF;
@@ -1573,6 +1631,7 @@ div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
 
 div.about-tab-rightsec div.group-about-2{
     height: auto;
+    width: 327px !important;
 }
 
 div.feed-tab-rightsec div.group-about div.box-header,div.about-tab-rightsec div.group-about div.box-header{
@@ -2640,7 +2699,7 @@ div.about-content div.about-tab-leftsec div.about-tab-members{
     position: relative;
     width: 100%;
     display: inline-block;
-    height: 130px;
+    height: 175px;
     float: left;
     margin-top: 10px;
     margin-left: 13px;
@@ -2929,29 +2988,24 @@ div.tab-block-content div.members-scrollwrap{
     position: relative;
     white-space: nowrap;
     overflow: hidden;
-    margin-top: 4px;
-    margin-left: 7px;
-    height: 81px;
+    height: auto;
 }
 
 div.tab-block-content div.members-scrollwrap ul.people-you-know{
     display: inline-block;
     position: relative;
-    top: 0;
     -webkit-transition: .4s ease-in-out;
-
     -moz-transition: .4s ease-in-out;
     transition: .4s ease-in-out;
     margin: 0;
     padding: 0;
-    left: 8.5px;
     list-style-type: none;
 }
 
 div.tab-block-content div.members-scrollwrap ul.people-you-know li.people-box{
     height: 130px;
     cursor: pointer;
-    margin: 0 16px 0 0;
+    margin-right: 4px;
     padding: 0;
     display: inline-block;
     position: relative;
@@ -2963,7 +3017,7 @@ div.tab-block-content div.members-scrollwrap ul.people-you-know li.people-box di
     position: relative;
     background-size: cover;
     border: 0;
-    background-image: url(../assets/test.jpg);
+    background-image: url(../assets/obama.png);
     cursor: pointer;
 }
 
