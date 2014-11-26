@@ -84,8 +84,8 @@ body {
                 cursor: pointer;
                 padding: 7px 10px;
                 display: block;
-                background-color: rgba(183, 204, 221, 0);
-                border-radius: 4px;
+                background-color: #eaeaeb;
+                border-radius: 2px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;

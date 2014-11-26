@@ -145,6 +145,13 @@
             box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset,1px 0px 0px rgba(255, 255, 255, 0.1) inset;
         }
 
+        .topbar > .right .notify:hover,.topbar > .right .notify.active{
+            background: rgba(255, 255, 255, 0.045); 
+            -moz-transition: all .1s ease;
+            -webkit-transition: all .1s ease;
+            transition: all .1s ease;
+        }
+
             .topbar > .right .notify .button {
                 height: 100%;
                 width: 100%;
@@ -279,8 +286,8 @@
             }
 
     .topbar div.day {
-        font-size: 8px;
-        line-height: 9px;
+        font-size: 10px;
+        line-height: 12px;
         font-family: 'san_francisco';
     }
 
