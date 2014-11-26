@@ -60,10 +60,7 @@ class PartialController extends Controller
                 ON gu.group_id = g.group_id
                 WHERE gu.user_id = ' . $user->user_id;
 
-        $command = Yii::app()->db->createCommand($sql);
-
-
-        $groups = $command->queryAll();
+        $groups = Group::model()->findAllBySql($sql);
 
 
 
