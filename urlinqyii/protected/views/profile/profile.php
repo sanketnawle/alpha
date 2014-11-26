@@ -1126,10 +1126,15 @@
                                     <div class="drop"></div>
                                     <div class="hover"></div>
                                 </div>
-                                <div class="options">
-                                    <div class="option">Public<div class="tick"></div></div>
-                                    <div class="option">People I Follow<div class="tick"></div></div>
-                                    <div class="option">Just Me<div class="tick"></div></div>
+                                <div class="new">
+                                    <select id="visibilty">
+<!--                                    <div class="option" >Public<div class="tick"></div></div>-->
+<!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
+<!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
+                                        <option value="Public" class="option">Public<div class="tick"></div></option>
+                                        <option value="Followed" class="option">People I Follow<div class="tick"></div></option>
+                                        <option value="Me" class="option">Just Me<div class="tick"></div></option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="label">Who Can See My Clubs:</div>
