@@ -12,10 +12,13 @@
     cursor: pointer;
 }
 
+
+
 .topbar {
     background-color: #313234;
     height: 48px;
     position: fixed;
+
     left: 0;
     right: 0;
     top: 0;
@@ -143,6 +146,13 @@
             border-right: 1.5px solid rgba(0, 0, 0, 0.9);
             border-left: 1.5px solid rgba(0, 0, 0, 0.9);
             box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset,1px 0px 0px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        .topbar > .right .notify:hover,.topbar > .right .notify.active{
+            background: rgba(255, 255, 255, 0.045); 
+            -moz-transition: all .1s ease;
+            -webkit-transition: all .1s ease;
+            transition: all .1s ease;
         }
 
             .topbar > .right .notify .button {
@@ -279,8 +289,8 @@
             }
 
     .topbar div.day {
-        font-size: 8px;
-        line-height: 9px;
+        font-size: 10px;
+        line-height: 12px;
         font-family: 'san_francisco';
     }
 
