@@ -439,6 +439,7 @@ class ApiController extends Controller
             return;
         }
 
+
         $group_id = $_GET['group_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));

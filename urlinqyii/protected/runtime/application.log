@@ -14305,3 +14305,12 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/img/attach1.png
 HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
 ---
+2014/11/26 22:30:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
