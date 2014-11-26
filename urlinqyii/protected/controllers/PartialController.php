@@ -89,8 +89,13 @@ class PartialController extends Controller
 
         $this->render('topbar',array('user'=>$user));
     }
+
+
+
     public function actionPlanner()
     {
+
+
 //        $user_id = Yii::app()->session['user_id'];
 //
 //        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
@@ -98,7 +103,7 @@ class PartialController extends Controller
 //
 //
 
-        $this->render('homePlanner');
+        $this->render('homePlanner',array('file_url'=>$file_url));
     }
 
 

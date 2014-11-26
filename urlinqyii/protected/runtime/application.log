@@ -13479,3 +13479,829 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/alpha/urlinqyii/home/feed
 ---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/26 22:00:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:01:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:02:25 [error] [php] Undefined variable: feed_url (C:\wamp\www\alpha\urlinqyii\protected\views\partial\feed.php:5)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): PartialController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): PartialController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\PartialController.php(111): PartialController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): PartialController->actionFeed()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): PartialController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): PartialController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): PartialController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php(143): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): SiteController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\SiteController.php(62): SiteController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionHome()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): SiteController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home
+in C:\wamp\www\alpha\urlinqyii\protected\views\partial\feed.php (5)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PartialController.php (111)
+in C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php (143)
+2014/11/26 22:06:17 [error] [php] Undefined variable: feed_url (C:\wamp\www\alpha\urlinqyii\protected\views\partial\feed.php:5)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(869): PartialController->renderFile()
+#1 C:\wamp\yii\framework\web\CController.php(782): PartialController->renderPartial()
+#2 C:\wamp\www\alpha\urlinqyii\protected\controllers\PartialController.php(116): PartialController->render()
+#3 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): PartialController->actionFeed()
+#4 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\yii\framework\web\CController.php(286): PartialController->runAction()
+#6 C:\wamp\yii\framework\web\CController.php(265): PartialController->runActionWithFilters()
+#7 C:\wamp\yii\framework\web\CWebApplication.php(282): PartialController->run()
+#8 C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php(143): CWebApplication->runController()
+#9 C:\wamp\yii\framework\web\CBaseController.php(126): require()
+#10 C:\wamp\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#11 C:\wamp\yii\framework\web\CController.php(869): SiteController->renderFile()
+#12 C:\wamp\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#13 C:\wamp\www\alpha\urlinqyii\protected\controllers\SiteController.php(62): SiteController->render()
+#14 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionHome()
+#15 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\wamp\yii\framework\web\CController.php(286): SiteController->runAction()
+#17 C:\wamp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#18 C:\wamp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#19 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home
+in C:\wamp\www\alpha\urlinqyii\protected\views\partial\feed.php (5)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PartialController.php (116)
+in C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php (143)
+2014/11/26 22:06:58 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "renderPartial".' in C:\wamp\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php(143): CComponent->__call('renderPartial', Array)
+#1 C:\wamp\www\alpha\urlinqyii\protected\views\site\home.php(143): CWebApplication->renderPartial('/partial/feed', Array)
+#2 C:\wamp\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\alp...')
+#3 C:\wamp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\alp...', Array, true)
+#4 C:\wamp\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\alp...', Array, true)
+#5 C:\wamp\yii\framework\web\CController.php(782): CController->renderPartial('home', Array, true)
+#6 C:\wamp\www\alpha\urlinqyii\protected\controllers\SiteController.php(62): CController->render('home', Array)
+#7 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionHome()
+#8 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\wamp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\wamp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('home')
+#12 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/home')
+#13 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/alpha/urlinqyii/home
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:07:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:07:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:09:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/attach.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/attach.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/attach.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/26 22:09:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:09:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:09:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:09:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:10:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:10:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:11:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:11:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:11:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:11:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:12:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:12:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:13:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:13:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:13:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:13:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:17:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:17:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:17:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:17:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:18:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:18:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:18:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:18:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:19:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:19:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:21:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:21:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:21:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:21:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:23:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:23:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:23:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/11/26 22:23:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "oldfeed.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('oldfeed.php')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:24:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:24:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:24:04 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php:263)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\yii\framework\web\CController.php(286): FeedController->runAction()
+#2 C:\wamp\yii\framework\web\CController.php(265): FeedController->runActionWithFilters()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(282): FeedController->run()
+#4 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home/feed
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (263)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (337)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/26 22:24:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:24:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:24:06 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php:263)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\yii\framework\web\CController.php(286): FeedController->runAction()
+#2 C:\wamp\yii\framework\web\CController.php(265): FeedController->runActionWithFilters()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(282): FeedController->run()
+#4 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home/feed
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (263)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (337)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/26 22:24:09 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php:263)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\yii\framework\web\CController.php(286): FeedController->runAction()
+#2 C:\wamp\yii\framework\web\CController.php(265): FeedController->runActionWithFilters()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(282): FeedController->run()
+#4 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home/feed
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (263)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (337)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/26 22:25:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:25:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:25:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/grey_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/grey_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/11/26 22:25:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/white_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/white_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/11/26 22:27:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:27:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:28:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:29:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:29:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/26 22:29:35 [error] [php] Undefined variable: user (C:\wamp\www\alpha\urlinqyii\protected\components\topbar.php:294)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#1 C:\wamp\yii\framework\web\CController.php(869): DepartmentController->renderFile()
+#2 C:\wamp\yii\framework\web\CController.php(782): DepartmentController->renderPartial()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\DepartmentController.php(11): DepartmentController->render()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): DepartmentController->actionView()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): DepartmentController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): DepartmentController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/department/1
+in C:\wamp\www\alpha\urlinqyii\protected\components\topbar.php (294)
+in C:\wamp\www\alpha\urlinqyii\protected\views\department\department.php (812)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\DepartmentController.php (11)
+2014/11/26 22:29:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/attach1.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/attach1.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/attach1.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
