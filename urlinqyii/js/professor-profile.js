@@ -1656,34 +1656,34 @@
                     /*$(".user-class-visibility .container .current .drop").click(function(e){
                      $(e.target).parent().parent().trigger("click");
                      });*/
-                    $(".user-class-visibility .container .current").on("mouseover", function () {
+                    $(".user-class-visibility .container .current").on("mouseover",function(){
                         $(this).addClass("mouseover");
                     }); // When the user hovers on the privacy button the dropdown should be visible
 
-                    $(".user-class-visibility .container .current").on("mouseout", function (e) {
-                        if (!$(e.target).parent().find(".options").is(":visible")) {
+                    $(".user-class-visibility .container .current").on("mouseout",function(e){
+                        if ( !$(e.target).parent().find(".options").is(":visible")){
                             $(this).removeClass("mouseover");
                         }
                     });// when the user mouse outs from the privacy button all other elements except the privacy label ( like public ) should be seen
 
-                    $(".user-class-visibility .container").click(function (e) {
+                    $(".user-class-visibility .container").click(function(e) {
                         var container = $(e.target);
-                        while (!container.is(".user-class-visibility .container")) {
+                        while(!container.is(".user-class-visibility .container")){
                             container = container.parent();
                         }
                         var addClass = true;
-                        if (container.hasClass("active")) {
+                        if(container.hasClass("active")){
                             addClass = false;
                         }
                         $(".user-class-visibility .container").removeClass("active");
-                        if (addClass) {
+                        if(addClass){
                             container.addClass("active");
                             $(".user-class-visibility .container .current").removeClass("mouseover");
                             container.find(".current").addClass("mouseover");
                         }
                     });
 
-                    $(".user-class-visibility .option").click(function (e) {
+                    $(".user-class-visibility .option").click(function(e) {
                         e.stopPropagation();
                         e.preventDefault();
                         var container = $(this).closest(".container");
@@ -1692,9 +1692,9 @@
                         $(this).addClass("selected");
                         container.removeClass("active");
                         $(".user-class-visibility .container .current").removeClass("mouseover");
-                        var isItem = $(this).closest(".user-groups-courses").length;
+                        var isItem  = $(this).closest(".user-groups-courses").length;
 
-                        if (isItem === 0) {
+                        if(isItem === 0) {
                             console.log("Global");
                             /* Handle Global visibility AJAX here */
                         } else {
@@ -1705,9 +1705,9 @@
                         return false;
                     });
 
-                    $(document).click(function (e) {
+                    $(document).click(function(e) {
                         var container = $(".user-class-visibility .container")
-                        if ((!container.is(e.target) && container.has(e.target).length === 0)) {
+                        if((!container.is(e.target) && container.has(e.target).length === 0)){
                             container.removeClass("active");
                             container.find(".current").removeClass("mouseover");
                         }

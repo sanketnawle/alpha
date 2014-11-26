@@ -1082,13 +1082,13 @@
                                             ) no-repeat scroll center center / cover transparent">
                                         </div>
                                         <h3 class="classlink"><?php echo $class->course->course_name;?></h3>
-                                        <?php  if($is_user) {
+                                        <?php
                                             echo '<div class="user-class-visibility undefined">
-                                <div class="container">
-                                    <div class="current">Public<div class="drop"></div>
-                                        <div class="hover"></div>
-                                    </div>
-                                    <div class="options">
+                                                     <div class="container">
+                                                     <div class="current">Public<div class="drop"></div>
+                                                <div class="hover"></div>
+                                                </div>
+                                         <div class="options">
                                         <div class="option">Public<div class="tick"></div>
                                         </div>
                                         <div class="option">People I Follow
@@ -1100,7 +1100,7 @@
                                     </div>
                                 </div>
                             </div>';
-                                        } ?>
+                                         ?>
                                     </a>
                                     <?php
                                     echo '<div class="admin-group-functions">
@@ -1126,10 +1126,15 @@
                                     <div class="drop"></div>
                                     <div class="hover"></div>
                                 </div>
-                                <div class="options">
-                                    <div class="option">Public<div class="tick"></div></div>
-                                    <div class="option">People I Follow<div class="tick"></div></div>
-                                    <div class="option">Just Me<div class="tick"></div></div>
+                                <div class="new">
+                                    <select id="visibilty">
+<!--                                    <div class="option" >Public<div class="tick"></div></div>-->
+<!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
+<!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
+                                        <option value="Public" class="option">Public<div class="tick"></div></option>
+                                        <option value="Followed" class="option">People I Follow<div class="tick"></div></option>
+                                        <option value="Me" class="option">Just Me<div class="tick"></div></option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="label">Who Can See My Clubs:</div>
