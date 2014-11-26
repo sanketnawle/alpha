@@ -20,7 +20,7 @@
     <div class="topbar">
         <div class="left">
             <!--<a href="./home.php" class="urlinq"></a>-->
-            <a href="./" class="urlinq"></a>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"></a>
             <a class="menu active"></a>
         </div>
         <div class="right">
