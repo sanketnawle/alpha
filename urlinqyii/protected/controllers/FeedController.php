@@ -202,7 +202,7 @@ class FeedController extends Controller
                 $posts[$i]['pownership'] = FALSE;
 
             // getting and appending the origin
-            if($post['origin_type']=="profile"){
+            if($post['origin_type']=="user"){
                 $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
                 $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
             }
@@ -247,7 +247,7 @@ class FeedController extends Controller
                 $posts [$i] ['like_status'] = FALSE;
 
             if($post['file_id'] != NULL) {
-                if ($file = PostLike::model()->findbypk($post['file_id']))
+                if ($file = File::model()->findbypk($post['file_id']))
                     $posts [$i] ['file'] = array('success' => TRUE, 'file_contents' => $file);
                 else
                     $posts [$i] ['file'] = array('success'=>FALSE, 'msg'=>'provided file id does not exist');
