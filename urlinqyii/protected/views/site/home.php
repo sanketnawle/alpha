@@ -140,7 +140,7 @@ $( document ).ready(function() {
 
             echo "<div class='group_feed_wrap'>";
 
-            echo Yii::app()->runController('partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
+            echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
 
             echo "</div>";
 

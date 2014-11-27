@@ -151,7 +151,9 @@
         <div class='main-mid-sec'>
 
             <div class='mid_right_sec'>
-
+                <?php
+                echo $this->renderPartial('/partial/planner',array());
+                ?>
                 <?php $this->renderPartial('class_header',array('user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
                 , 'department'=>$department, 'is_member'=>$is_member,'is_admin'=>$is_admin, 'schedules'=>$schedules)); ?>
                 <div class='midsec'>

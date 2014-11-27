@@ -257,23 +257,34 @@ class ApiController extends Controller
         $school_id = $_GET['school_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+        if($school){
+            $data = array('success'=>true,'school'=>$this->model_to_array($school));
 
-        $departments = array();
-        foreach($school->departments as $department){
-            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
+
+            $sql = "SELECT *
+                FROM user WHERE school_id = $school_id
+                LIMIT 10;";
+
+            $users = User::model()->findAllBySql($sql);
+
+
+            $data['school']['admins'] = $school->admins;
+            $data['school']['members'] = $users;
+
+
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
         }
 
-        $data = array('success'=>true,'school'=>$this->get_model_associations($school,array('pictureFile','coverFile')),'departments'=>$departments);
-
-
-
-
-        $this->renderJSON($data);
-        return;
     }
 
     //ERROR ID's
     // 1 - All data is not set
+    // 2 - Department doesnt exist
     public function actionGetDepartmentData(){
         if(!isset($_GET['department_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
@@ -284,14 +295,88 @@ class ApiController extends Controller
         $department_id = $_GET['department_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
+        if($department){
+            $data = array('success'=>true,'department'=>$this->model_to_array($department));
 
 
-        $data = array('success'=>true,'department'=>$department);
+            $sql = "SELECT *
+                FROM user WHERE department_id = $department_id
+                LIMIT 10;";
+
+            $users = User::model()->findAllBySql($sql);
 
 
-        $this->renderJSON($data);
-        return;
+            $data['department']['admins'] = $department->admins;
+            $data['department']['members'] = $users;
+
+            $this->renderJSON($data);
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
     }
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - School doesnt exist
+    public function actionGetSchoolDepartments(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $school_id = $_GET['school_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+
+
+        if($school){
+            $data = array('success'=>true,'departments'=>$school->departments);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - School doesnt exist
+    public function actionGetSchoolGroups(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $school_id = $_GET['school_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+
+
+        if($school){
+            $data = array('success'=>true,'groups'=>$school->groups);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
 
     public function actionGetDepartmentMembers(){
         if(!isset($_GET['department_id'])){
@@ -318,10 +403,94 @@ class ApiController extends Controller
     }
 
 
+    public function actionGetDepartmentClasses(){
+        if(!isset($_GET['department_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $department_id = $_GET['department_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
+
+
+        if($department){
+            $data = array('success'=>true,'classes'=>$department->classes);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
 
     //ERROR ID's
     // 1 - All data is not set
+    // 2 - Club doesnt exist
     public function actionGetClubData(){
+        if(!isset($_GET['group_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $group_id = $_GET['group_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
+        if($group){
+            $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - Club doesnt exist
+    public function actionGetClassData(){
+        if(!isset($_GET['class_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
+
+        if($class){
+            $data = array('success'=>true);
+
+            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('students','admins')));
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - group doesnt exist
+    public function actionGetClubFiles(){
         if(!isset($_GET['group_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
             $this->renderJSON($data);
@@ -331,13 +500,44 @@ class ApiController extends Controller
         $group_id = $_GET['group_id'];
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
+        if($group){
+            $data = array('success'=>true,'pictures'=>$group->files);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
 
 
-        $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
+    }
 
 
-        $this->renderJSON($data);
-        return;
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - class doesnt exist
+    public function actionGetClassFiles(){
+        if(!isset($_GET['class_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class_id is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
+        if($class){
+            $data = array('success'=>true,'pictures'=>$class->files);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
     }
 
     //ERROR ID's

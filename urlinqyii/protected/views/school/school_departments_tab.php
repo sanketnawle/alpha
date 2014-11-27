@@ -180,34 +180,10 @@ echo '<button class = "followBtn unfollowBtn" id="followBtn1">
     </button>
 ';
 
-echo '<button class = "studybtn btn_mymajor" id="studybtn1">My Major';
+echo '<button class = "studybtn btn_mymajor" id="studybtn1">Follow</button>';
 
 
-echo'</button>
-    			                                            	<div class = "study_box_open" id="study_box_open1">
-    			                                            		<div class = "js_wrap" id="js_wrap1">
-    																	<span>I am...</span>
-    																	<div class = "study_first_option" id="study_first_option1">
-';
-
-
-echo '<button class = "majorType study_type_btn pressedGraybtn" id="major1" type = "button"><em class="check" style="left: 16px; opacity: 1;"></em>Majoring in this subject</button>
-';
-
-echo '</div>
-    																</div>
-    																<div class = "modal_loading2" id="modal_loading21" >
-    																	<img class = "modal_animation" src = "school/src/loadingAnimation.gif">
-    																</div>
-    															</div>
-    			                                            </div>
-    			                                        </div>
-    			                                    </a>
-    			                                </div>
-';
-
-echo '
-    </div>';
+echo'</div></div></a></div></div>';
 
 }
 echo '

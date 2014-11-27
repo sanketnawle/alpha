@@ -60,10 +60,7 @@ class PartialController extends Controller
                 ON gu.group_id = g.group_id
                 WHERE gu.user_id = ' . $user->user_id;
 
-        $command = Yii::app()->db->createCommand($sql);
-
-
-        $groups = $command->queryAll();
+        $groups = Group::model()->findAllBySql($sql);
 
 
 
@@ -92,8 +89,13 @@ class PartialController extends Controller
 
         $this->render('topbar',array('user'=>$user));
     }
+
+
+
     public function actionPlanner()
     {
+
+
 //        $user_id = Yii::app()->session['user_id'];
 //
 //        //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
@@ -101,7 +103,7 @@ class PartialController extends Controller
 //
 //
 
-        $this->render('homePlanner');
+        $this->render('homePlanner',array('file_url'=>$file_url));
     }
 
 

@@ -75,6 +75,7 @@ class School extends CActiveRecord
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'schoolSemesters' => array(self::HAS_MANY, 'SchoolSemester', 'school_id'),
 			'users' => array(self::HAS_MANY, 'User', 'school_id'),
+            'admins' => array(self::HAS_MANY,'User',array('school_id'=>'school_id'),'condition'=>'user_type = "p" or user_type = "f"'),
 		);
 	}
 
