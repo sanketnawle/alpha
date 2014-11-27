@@ -35,6 +35,23 @@
                 });
 
 
+                $(".visibility_new").change(function(){
+                var selected_val = $("#visibility_new").val();
+                  //  alert (selected_val);
+                $.ajax({
+                        type: "POST",
+                        url: base_url + '/profile/updateHere',
+                        data: {selected: selected_val},
+                        success: function(data) {
+                            alert("updated")
+                        },
+                        error: function(data) {
+                            alert ("error")
+                        }
+                    });
+
+                });
+
                 $('form[id=add-showcase]').on('submit', function (event) {
                     event.stopPropagation(); // Stop stuff happening
                     event.preventDefault(); // Totally stop stuff happening
