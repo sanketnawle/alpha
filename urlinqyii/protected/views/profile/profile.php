@@ -1,5 +1,11 @@
 
 <?php
+
+$user_id=1;
+$user_group = GroupUser::model()->find('user_id=:id', array(':id'=>$user_id));
+$default_privacy = $user_group->privacy;
+$default_privacy=(string)$default_privacy;
+
     
    /* include 'php/redirect.php';
     require_once('includes/dbconfig.php');
@@ -1126,14 +1132,15 @@
                                     <div class="drop"></div>
                                     <div class="hover"></div>
                                 </div>
-                                <div class="new">
-                                    <select id="visibilty">
+                                <div class="visibility_new">
+
+                                    <select id="visibility_new">
 <!--                                    <div class="option" >Public<div class="tick"></div></div>-->
 <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
 <!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
-                                        <option value="Public" class="option">Public<div class="tick"></div></option>
-                                        <option value="Followed" class="option">People I Follow<div class="tick"></div></option>
-                                        <option value="Me" class="option">Just Me<div class="tick"></div></option>
+                                        <option value="public" class="option" <?php echo ($default_privacy == "public")?"selected":"" ?>>Public<div class="tick"></div></option>
+                                        <option value="following" class="option" <?php echo ($default_privacy =="following")?"selected":"" ?>>People I Follow<div class="tick"></div></option>
+                                        <option value="only_me" class="option" <?php echo ($default_privacy =="only_me")?"selected":"" ?>>Just Me<div class="tick"></div></option>
                                     </select>
                                 </div>
                             </div>
