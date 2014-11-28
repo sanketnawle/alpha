@@ -240,6 +240,10 @@
 
                     </div>
 
+                    <div class='analytics-tab'>
+                        <?php echo $this->renderPartial('club_analytics',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count)); ?>
+                    </div>
+
                     <?php
 	                if($is_member){
                       ?>
@@ -254,9 +258,7 @@
                     <?php
 	                }
 	                ?>
-	                <div class='analytics-tab'>
-                        <?php echo $this->renderPartial('club_analytics',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count)); ?>
-                    </div>
+
                     <div class='about-content-tab'>
                         <?php echo $this->renderPartial('club_about_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'connected_users'=>$connected_users)); ?>
                     </div>
