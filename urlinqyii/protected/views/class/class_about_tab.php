@@ -52,7 +52,7 @@ $get_course_about_query_result = $con->query($get_course_about_query);
 */
 //about content starts here
 echo "
-    <div class = 'about-content'>
+    <div class ='class-tab-content about-content'>
 ";
 
 //About this Class header
@@ -61,7 +61,7 @@ echo '
         <div class="about-info-img"></div>
         <div class="about-info-txt">About this Class &mdash; </div>
         <div class="about-info-title">'.$course->course_name.'</div>
-        <a href="'.Yii::app()->getBaseUrl(true).'/class/1"><div class="about-back">Back</div><div class="about-back-img"></div></a>
+        <div id="about-back"><div class="about-back">Back</div><div class="about-back-img"></div></div>
     </div>
     <hr>
 ';

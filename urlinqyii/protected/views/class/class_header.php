@@ -353,6 +353,17 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
                 <div class="settings-button">
                     <a class="class-settings"><div class="settings-bg"></div></a>
                 </div>
+                <div class="settings-hover">
+                    <div class="settings-hover-tip"></div>
+                    <div class="settings-hover-body">Adjust settings and invite people</div>
+                </div>
+                <div class="settings-menu">
+                    <div class="settings-drop">
+                        <div class ="settings-item" id="show-class-settings"><div class="class-menu-icon" id="class-settings"></div>Class settings</div>
+                        <hr class = "hr">
+                        <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
+                    </div>
+                </div>
             </div >
         </div >
         <div class = "tab-wedge-down" style="left:303px">
@@ -367,7 +378,18 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
                     </a >
                 </div >
                 <div class="settings-button">
-                    <a class="class-settings"></a>
+                    <a class="class-settings"><div class="settings-bg"></div></a>
+                </div>
+                <div class="settings-hover">
+                    <div class="settings-hover-tip"></div>
+                    <div class="settings-hover-body">Adjust settings and invite people</div>
+                </div>
+                <div class="settings-menu">
+                    <div class="settings-drop">
+                        <div class ="settings-item" id="show-class-settings"><div class="class-menu-icon" id="class-settings"></div>Class settings</div>
+                        <hr class = "hr">
+                        <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
+                    </div>
                 </div>
             </div >
         </div >

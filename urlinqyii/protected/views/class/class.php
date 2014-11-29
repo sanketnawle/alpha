@@ -183,6 +183,12 @@
                             ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules
                             ,'all_following'=>$all_following)); ?>
                     </div>
+
+                    <div class='settings-content-tab'>
+                        <?php echo $this->renderPartial('class_settings_tab',array('class'=>$class,'user'=>$user, 'professor'=>$professor
+                        ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules
+                        ,'all_following'=>$all_following)); ?>
+                    </div>
                 </div>
 
 
