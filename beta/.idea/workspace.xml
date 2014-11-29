@@ -26,7 +26,7 @@
       <file leaf-file-name="leftpanel.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leftpanel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="-12.307693" vertical-offset="853" max-vertical-offset="3179">
+            <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="feeds_priority.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/feeds/feeds_priority.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="-0.0" vertical-offset="306" max-vertical-offset="8024">
+            <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="8024">
               <folding>
                 <marker date="1412179675621" expanded="true" signature="1065:1110" placeholder="SELECT EXTRA..." />
                 <marker date="1412179675621" expanded="true" signature="1346:2052" placeholder="SELECT disti..posts..." />
@@ -55,7 +55,7 @@
       <file leaf-file-name="club_attendance_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="-5.076923" vertical-offset="497" max-vertical-offset="1394">
+            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1394">
               <folding>
                 <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
@@ -68,7 +68,7 @@
       <file leaf-file-name="club_page_view_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_page_view_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="54" selection-start="243" selection-end="243" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="3740">
+            <state line="14" column="54" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="3740">
               <folding />
             </state>
           </provider>
@@ -77,7 +77,7 @@
       <file leaf-file-name="club_member_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_member_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="49" selection-start="773" selection-end="773" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1564">
+            <state line="24" column="49" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1564">
               <folding>
                 <marker date="1412179675569" expanded="true" signature="316:370" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675569" expanded="true" signature="546:602" placeholder="SELECT * FRO..." />
@@ -90,10 +90,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="club_member_count_data.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="club_member_count_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_member_count_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="7" selection-end="2085" vertical-scroll-proportion="0.039397452" vertical-offset="0" max-vertical-offset="863">
+            <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="765">
               <folding>
                 <marker date="1412179675568" expanded="true" signature="522:641" placeholder="SELECT * FRO..group_users..." />
                 <marker date="1412179675568" expanded="true" signature="1721:1882" placeholder="SELECT * FRO..group_users..." />
@@ -102,10 +102,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="club_class_rank_data.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="54" selection-start="906" selection-end="906" vertical-scroll-proportion="0.5045662" vertical-offset="0" max-vertical-offset="1343">
+              <folding>
+                <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
+                <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="club_line_graph_semester_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_line_graph_semester_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="34" selection-start="435" selection-end="435" vertical-scroll-proportion="-0.0" vertical-offset="272" max-vertical-offset="1190">
+            <state line="16" column="34" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1190">
               <folding>
                 <marker date="1412179675567" expanded="true" signature="986:1092" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675567" expanded="true" signature="1338:1414" placeholder="SELECT * FRO..group_event_invited..." />
@@ -118,7 +130,7 @@
       <file leaf-file-name="clubs.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/clubs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="1191.9615" vertical-offset="31518" max-vertical-offset="40341">
+            <state line="31" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0" vertical-offset="31518" max-vertical-offset="40341">
               <folding>
                 <marker date="1412179675377" expanded="false" signature="4402:4460" placeholder="..." />
                 <marker date="1412179675377" expanded="false" signature="4504:4519" placeholder="..." />
@@ -135,13 +147,6 @@
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="5423">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu-bar.gif" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/img/menu-bar.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -269,7 +274,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../urlinqyii" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
   </component>
@@ -304,23 +309,23 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1640625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -340,11 +345,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/group.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="65552" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/clubs.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="21" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="20621" />
@@ -507,39 +507,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/afterlogin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="47" selection-start="3198" selection-end="3198" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="2023">
-          <folding>
-            <marker date="1414685880090" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-            <marker date="1414685880090" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user_login..." />
-          </folding>
-        </state>
+        <state line="70" column="47" selection-start="3198" selection-end="3198" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="2023" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/afterselect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="2839">
-          <folding>
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="UPDATE user ..." />
-            <marker date="1412179675563" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="2839" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/sendconfirmmail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2958">
-          <folding>
-            <marker date="1412179675658" expanded="true" signature="-1:-1" placeholder="SELECT user_..confirmation..." />
-            <marker date="1412179675658" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2958" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leftmenu.php">
@@ -566,7 +544,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leftpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="-12.307693" vertical-offset="853" max-vertical-offset="3179">
+        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179">
           <folding />
         </state>
       </provider>
@@ -589,16 +567,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/clubs.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="0" selection-start="0" selection-end="29435" vertical-scroll-proportion="0.5709643" vertical-offset="3757" max-vertical-offset="20621">
-          <folding />
-        </state>
+        <state line="252" column="0" selection-start="0" selection-end="29435" vertical-scroll-proportion="0.5709643" vertical-offset="3757" max-vertical-offset="20621" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/clubs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.5875139" vertical-offset="102" max-vertical-offset="3417">
-          <folding />
-        </state>
+        <state line="37" column="0" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.5875139" vertical-offset="102" max-vertical-offset="3417" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/feeds/feeds_priority.php">
@@ -621,7 +595,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="-5.076923" vertical-offset="497" max-vertical-offset="1394">
+        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1394">
           <folding>
             <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
             <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
@@ -632,14 +606,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_page_view_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="54" selection-start="243" selection-end="243" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="3740">
+        <state line="14" column="54" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="3740">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/clubs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="1191.9615" vertical-offset="31518" max-vertical-offset="40341">
+        <state line="31" column="0" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0" vertical-offset="31518" max-vertical-offset="40341">
           <folding>
             <marker date="1412179675377" expanded="false" signature="4402:4460" placeholder="..." />
             <marker date="1412179675377" expanded="false" signature="4504:4519" placeholder="..." />
@@ -651,7 +625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_member_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="49" selection-start="773" selection-end="773" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1564">
+        <state line="24" column="49" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1564">
           <folding>
             <marker date="1412179675569" expanded="true" signature="316:370" placeholder="SELECT * FRO..group_event..." />
             <marker date="1412179675569" expanded="true" signature="546:602" placeholder="SELECT * FRO..." />
@@ -665,10 +639,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_member_count_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="7" selection-end="2085" vertical-scroll-proportion="0.039397452" vertical-offset="0" max-vertical-offset="863">
+        <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="765">
           <folding>
             <marker date="1412179675568" expanded="true" signature="522:641" placeholder="SELECT * FRO..group_users..." />
             <marker date="1412179675568" expanded="true" signature="1721:1882" placeholder="SELECT * FRO..group_users..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="54" selection-start="906" selection-end="906" vertical-scroll-proportion="0.5045662" vertical-offset="0" max-vertical-offset="1343">
+          <folding>
+            <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
+            <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />
           </folding>
         </state>
       </provider>
