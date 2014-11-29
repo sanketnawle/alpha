@@ -76,7 +76,7 @@ class Group extends CActiveRecord
             //Only gets non admin users
             'members' => array(self::MANY_MANY, 'User', 'group_user(group_id, user_id)', 'condition'=>'is_admin = 0'),
 
-
+            'files' => array(self::MANY_MANY, 'File', 'group_file(group_id, file_id)'),
 
             'events' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'origin_type = "group"'),
 			'groupUserTags' => array(self::HAS_MANY, 'GroupUserTag', 'group_id'),

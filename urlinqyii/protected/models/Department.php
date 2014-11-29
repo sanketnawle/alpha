@@ -65,6 +65,9 @@ class Department extends CActiveRecord
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'members' => array(self::MANY_MANY, 'User', 'user(user_id,department_id)'),
+            'admins' => array(self::HAS_MANY,'User',array('school_id'=>'school_id'),'condition'=>'user_type = "p" or user_type = "f"'),
+
+
 			'users1' => array(self::HAS_MANY, 'User', 'department_id'),
 		);
 	}

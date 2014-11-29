@@ -150,4 +150,13 @@ class Controller extends CController
         return $row;
     }
 
+
+    function model_to_array($this_model){
+        $row = array();
+        foreach($this_model as $key => $value) {
+            $row[$key] = $value;
+        }
+        return $row;
+    }
+
 }

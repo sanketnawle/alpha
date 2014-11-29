@@ -71,6 +71,17 @@ return array(
                 'club/<id:[\w|-]+>/feed' => 'feed/getClubPosts',
                 'department/<id:[\w|-]+>/feed' => 'feed/getDepartmentPosts',
                 'school/<id:[\w|-]+>/feed' => 'feed/getSchoolPosts',
+                'post/<id:\d+>/feed' => 'feed/getPost',
+//                'post/create'=> 'post/create',
+                'post/<id:\d+>/update' => 'post/update',
+                'post/<id:\d+>/delete' => 'post/delete',
+                'post/<id:\d+>/like' => 'post/like',
+                'post/<id:\d+>/unlike' => 'post/unlike',
+
+                'reply/<id:\d+>/update' => 'reply/update',
+                'reply/<id:\d+>/delete' => 'reply/delete',
+                'reply/<id:\d+>/upvote' => 'reply/upvote',
+                'reply/<id:\d+>/downvote' => 'reply/downvote',
 
                 'department/test'=>'department/test',
 

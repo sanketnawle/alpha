@@ -330,6 +330,157 @@ class ClubController extends Controller
 
         $this->render('club_header',array());
     }
+
+
+
+//    club analytics functions
+
+
+    public function actionGetPageViewData(){
+        define('ga_email','urlinq5@gmail.com');
+        define('ga_password','Daisy@619');
+        define('ga_profile_id','78486849');
+
+        require 'gapi.class.php';
+
+        $ga = new gapi(ga_email,ga_password);
+
+
+
+        if (isset($_GET['group_id']) && isset($_GET['filter'])) {
+            require 'club/analytics_helpers.php';
+            $group_id = $_GET['group_id'];
+            $filter = $_GET['filter'];
+
+            $json_data_array = array('total_page_views' => 0,'new_page_views' => 0);
+            $json_data_array['total_page_views'] = get_all_views($group_id);
+
+            if (strpos($filter, 'Week') !== FALSE){
+                $json_data_array['new_page_views'] = get_this_week_views($group_id);
+            }elseif(strpos($filter, 'Month') !== FALSE){
+                $json_data_array['new_page_views'] = get_this_month_views($group_id);
+            }elseif(strpos($filter, 'Semester') !== FALSE){
+                $json_data_array['new_page_views'] = get_this_year_views($group_id);
+            }
+
+
+
+
+            echo json_encode($json_data_array);
+        }
+
+
+
+
+
+    }
+
+    public function actionGetMemberData(){
+        if (!isset($_GET['group_id'])) {
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $group_id = $_GET['group_id'];
+//        $club = Group::model()->find('group_id=:id', array(':id'=>$group_id));
+
+            try {
+                $json_data_array = array('users' => array());
+
+                $club = Group::model()->findBySql("SELECT * FROM `group` WHERE group_id = $group_id");
+                //Get the # of events that this club/group has had
+                $json_data_array['event_count'] = count($club->events);
+
+
+                $group_users = GroupUser::model()->findAllBySql("SELECT * FROM `group_user` WHERE group_id = '$group_id'");
+                foreach($group_users as $group_user){
+                    $user = User::model()->findBySql("SELECT * FROM user WHERE user_id = " . $group_user->user_id);
+                    $user_json = array('id' => $user->user_id,'name' => '', 'attendance_count' => 0,'attendance_percent_str' => '','join_time' => 0,'tags'=>array());
+                    $user_json['name'] = $user['firstname'] . ' ' . $user['lastname'];
+
+                    //get users tags for this club/group
+                    //$user_tags = mysqli_query($con,"SELECT * FROM `group_users_tags` WHERE group_id = '$group_id' AND user_id = '$user_id'");
+                    $group_user_tags = GroupUserTag::model()->findAllBySql("SELECT * FROM `group_user_tag` WHERE group_id = '$group_id' AND user_id = '" . $group_user->user_id . "'");
+                    foreach($group_user_tags as $group_user_tag){
+                        array_push($user_json['tags'], $group_user_tag->tag->tag);
+                    }
+
+                    //Convert php datetime to milliseconds for the javascript new Date(milliseconds) function
+                    $user_json['join_time'] = strtotime($group_user->join_time)*1000;
+                    //make sure user is student
+                    if($user->user_type == 's'){
+                        foreach($club->events as $event){
+                            $event_id = $event->event_id;
+                            //Gets the invite for specific user
+                            $user_json['attendance_count'] = count($event->acceptedInvites);
+                        }
+                    }
+
+                    $attendance_percent = round(($user_json['attendance_count'] / $json_data_array['event_count']),2);
+                    $user_json['attendance_percent_str'] = strval($attendance_percent * 100) . '%';
+
+                    //Add $user_json to the json data being passed back to javascript
+                    array_push($json_data_array['users'], $user_json);
+                }
+
+                $json_data_array['success'] = true;
+                $this->renderJSON($json_data_array);
+                return;
+
+            } catch (Exception $e) {
+                $json_data_array['success'] = false;
+                $this->renderJSON($json_data_array);
+                return;
+            }
+    }
+
+
+
+
+
+
+    public function actionGetMemberCountData(){
+        if (!isset($_GET['group_id'])) {
+            $this->renderJSON(array('success'=>'false','error_id'=>1));
+            return;
+        }
+
+
+        $group_id = $_GET['group_id'];
+        $json_data_array = array('members_count'=>0,'joined_this_week' => 0,'joined_this_month' => 0,'joined_this_year' => 0);
+
+
+        //Get total # of members (students)
+        $group_users = GroupUser::model()->findAllBySql("SELECT * FROM group_user gu JOIN user u ON (gu.user_id = u.user_id AND u.user_type = 's') WHERE group_id = '$group_id'");
+        $json_data_array['members_count'] = count($group_users);
+
+
+        //Get # of members who joined this week
+        $members_joined_this_week = GroupUser::model()->findAllBySql("SELECT * FROM group_user gu JOIN user u ON (gu.user_id = u.user_id AND u.user_type = 's') WHERE yearweek(`join_time`) = yearweek(curdate()) AND `group_id` = '$group_id'");
+        $json_data_array['joined_this_week'] = count($members_joined_this_week);
+
+
+
+        //Get # of members who joined this month
+        $members_joined_this_month = GroupUser::model()->findAllBySql("SELECT * FROM group_user gu JOIN user u ON (gu.user_id = u.user_id AND u.user_type = 's') WHERE MONTH(`join_time`) = MONTH(curdate()) AND `group_id` = '$group_id'");
+        $json_data_array['joined_this_month'] = count($members_joined_this_month);
+
+
+
+        //Get # of members who joined this year
+        $members_joined_this_year = GroupUser::model()->findAllBySql("SELECT * FROM group_user gu JOIN user u ON (gu.user_id = u.user_id AND u.user_type = 's') WHERE YEAR(`join_time`) = YEAR(curdate()) AND `group_id` = '$group_id'");
+        $json_data_array['joined_this_year'] = count($members_joined_this_year);
+
+
+        $json_data_array['success'] = true;
+        $this->renderJSON($json_data_array);
+        return;
+
+    }
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

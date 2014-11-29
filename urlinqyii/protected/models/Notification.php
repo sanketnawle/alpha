@@ -5,17 +5,13 @@
  *
  * The followings are the available columns in table 'notification':
  * @property string $notification_id
- * @property integer $user_id
  * @property integer $actor_id
- * @property string $notification_type
+ * @property integer $trigger_id
+ * @property string $trigger_type
  * @property integer $status
  * @property string $check_point
  * @property integer $group_check_pt
  * @property string $created_time
- *
- * The followings are the available model relations:
- * @property User $actor
- * @property User $user
  */
 class Notification extends CActiveRecord
 {
@@ -35,13 +31,14 @@ class Notification extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, actor_id, notification_type, created_time', 'required'),
-			array('user_id, actor_id, status, group_check_pt', 'numerical', 'integerOnly'=>true),
-			array('notification_type', 'length', 'max'=>50),
+			array('actor_id, trigger_id, trigger_type', 'required'),
+			array('actor_id, trigger_id, status, group_check_pt', 'numerical', 'integerOnly'=>true),
+			array('notification_id', 'length', 'max'=>11),
+			array('trigger_type', 'length', 'max'=>50),
 			array('check_point', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('notification_id, user_id, actor_id, notification_type, status, check_point, group_check_pt, created_time', 'safe', 'on'=>'search'),
+			array('notification_id, actor_id, trigger_id, trigger_type, status, check_point, group_check_pt, created_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,8 +50,6 @@ class Notification extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'actor' => array(self::BELONGS_TO, 'User', 'actor_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -65,9 +60,9 @@ class Notification extends CActiveRecord
 	{
 		return array(
 			'notification_id' => 'Notification',
-			'user_id' => 'user who notification is for',
 			'actor_id' => 'user whose action created this notification',
-			'notification_type' => 'determines the type of notification; cr_invite->course_invite;gr_invite->group_invite;',
+			'trigger_id' => 'Trigger',
+			'trigger_type' => 'determines the type of notification; cr_invite->course_invite;gr_invite->group_invite;',
 			'status' => 'Status',
 			'check_point' => 'Check Point',
 			'group_check_pt' => 'Group Check Pt',
@@ -94,9 +89,9 @@ class Notification extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('notification_id',$this->notification_id,true);
-		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('actor_id',$this->actor_id);
-		$criteria->compare('notification_type',$this->notification_type,true);
+		$criteria->compare('trigger_id',$this->trigger_id);
+		$criteria->compare('trigger_type',$this->trigger_type,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('check_point',$this->check_point,true);
 		$criteria->compare('group_check_pt',$this->group_check_pt);

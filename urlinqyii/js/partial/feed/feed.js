@@ -6,41 +6,41 @@ $(document).ready(function(){
 
     init();
     function init(){
-        var feed_json_data = get_post_data(base_url,feed_url);
-        if(feed_json_data['success']){
-            render_posts(feed_json_data);
-        }else{
-            alert('failed to get feed');
-        }
-
+        get_post_data(base_url,feed_url);
     }
 
 
     function get_post_data(base_url,feed_url){
 
-        $.getJSON( base_url + feed_url, function( data ) {
-            alert(JSON.stringify(data));
-            return data;
+        $.getJSON( base_url + feed_url, function( json_feed_data ) {
+            if(json_feed_data['success']){
+                //alert(JSON.stringify(json_feed_data));
+                alert(JSON.stringify(json_feed_data));
+                render_posts(json_feed_data['feed']);
+            }else{
+                alert('failed to get feed');
+            }
         });
+
     }
 
     function render_posts(jsonData){
-        $.each(jsonData ,function(key) {
-
+        $.each(jsonData ,function(key,post) {
+            //alert(JSON.stringify(post));
             //jsonData['key'].jsonData[key]['replies'][0]);
             //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
             //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
             //var time = new Date(jsonData[key]['created_time']);
             //jsonData[key]['created_time'] = time
-            if(jsonData[key]['reply_count'] >  2) {
-                jsonData[key].show_more = true;
-                var post_id = jsonData[key]['post_id'];
-                var theReplies = jsonData[key]['replies'];
+            if(post['reply_count'] >  2) {
+                post.show_more = true;
+                var post_id = post['post_id'];
+                var theReplies = post['replies'];
                 replies[post_id.toString()] = theReplies;
-                jsonData[key]['replies'] = [jsonData[key]['replies'][0], jsonData[key]['replies'][1]];
+                post['replies'] = [post['replies'][0], post['replies'][1]];
             }
 
-            render_post(jsonData[key]);
+            render_post(post);
         });
     }
 
@@ -65,7 +65,7 @@ $(document).ready(function(){
         if(findUrlInPost(single_post['text_msg'])) {
             single_post.embed_link = findUrlInPost(single_post['text_msg']);
         }
-        if(single_post['post_type'] === "status"){
+        if(single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
             $("#posts").append(template(single_post));

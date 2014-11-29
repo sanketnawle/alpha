@@ -886,6 +886,7 @@ $(document).ready(function() {
                             <?php echo $this->renderPartial('school_info_tab_students',array('user'=>$user)); ?>
                             
                             <?php echo $this->renderPartial('school_departments_tab',array('departments'=>$school->departments)); ?>
+                            <?php echo $this->renderPartial('school_clubs_tab',array('departments'=>$school->departments)); ?>
 
                             <?php echo $this->renderPartial('school_members_tab',array()); ?>
                             
