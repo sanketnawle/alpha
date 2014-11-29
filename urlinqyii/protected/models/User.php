@@ -100,7 +100,7 @@ class User extends CActiveRecord
 //			'classes2' => array(self::MANY_MANY, 'ClassModel', 'class_rating(user_id, class_id)'),
 			'classReviews' => array(self::HAS_MANY, 'ClassReview', 'user_id'),
 			'classReviews1' => array(self::MANY_MANY, 'ClassReview', 'class_review_vote(user_id, review_id)'),
-			'classUsers' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
+			//'classUsers' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
 			'courses' => array(self::MANY_MANY, 'Course', 'course_follow(user_id, course_id)'),
 			'departments' => array(self::MANY_MANY, 'Department', 'department_follow(user_id, department_id)'),
 			'events' => array(self::HAS_MANY, 'Event', 'user_id'),
@@ -137,6 +137,9 @@ class User extends CActiveRecord
 
 
             //added by Michael
+            'classUsersAll' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
+            'classUsersForFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
+            'classUsersForNonFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="public"'),
             'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
 
             'classes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
@@ -146,7 +149,7 @@ class User extends CActiveRecord
 
             'userInterests' => array(self::MANY_MANY, 'Tag', 'user_interest(user_id, tag_id)'),
 
-            'showcase' => array(self::HAS_MANY, 'Showcase', 'user_id','order'=>'showcase.created_timestamp ASC'),
+            'showcase' => array(self::HAS_MANY, 'Showcase', 'user_id','order'=>'showcase.created_timestamp DESC'),
 
             'majors' => array(self::MANY_MANY, 'Major', 'user_major(user_id,major_id)', 'on'=>'focus="major"'),
             'minors' => array(self::MANY_MANY, 'Major', 'user_major(user_id,major_id)', 'on'=>'focus="minor"'),
