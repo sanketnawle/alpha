@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $university = $school->university;
         $department = $userProfile->department;
         $is_user = ($userProfile->user_id == $currentUser->user_id);
-        $courses = $userProfile->classes;
+
         $clubs = $userProfile->groups;
 
         $following = $userProfile->usersFollowed;
@@ -42,6 +42,35 @@ class ProfileController extends Controller
         $showcase_info = $userProfile->showcase;
         $majors = $userProfile->majors;
         $minors = $userProfile->minors;
+        $closedInstructions = $userProfile->closed_showcase_instructions;
+        $random_image_url = 'https://s3.amazonaws.com/suh-s3-nfs/static/images/Profile_Backgrounds/'.rand(1, 120).'.jpg';
+       // $default_privacy = $userProfile->privacy;
+
+
+        $you_follow = false;
+        foreach($followers as $follower){
+            if($follower->user_id == $signedInUser){
+                $you_follow = true;
+                break;
+            }
+        }
+        $follows_you = false;
+        foreach($following as $followed){
+            if($followed->user_id == $signedInUser){
+                $follows_you = true;
+                break;
+            }
+        }
+        if($is_user) {
+            $courses = $userProfile->classUsersAll;
+        }
+        else if($you_follow){
+            $courses = $userProfile->classUsersForFollowers;
+        }else{
+            $courses = $userProfile->classUsersForNonFollowers;
+        }
+
+
 
       //  $command = Yii::app()->db->createCommand('select m.name from user_major um, major m where um.user_id = '.$user_id.' and um.major_id = m.id');
       //  $majors = $command->queryAll();
@@ -51,39 +80,43 @@ class ProfileController extends Controller
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
             ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs, 'following'=>$following,'followers'=>$followers, 'interests'=>$interests
-            , 'showcase'=>$showcase_info, 'majors'=>$majors, 'minors'=>$minors));
+            , 'showcase'=>$showcase_info, 'majors'=>$majors, 'minors'=>$minors, 'you_follow'=>$you_follow, 'both_follow'=>$you_follow&&$follows_you
+            , 'closedInstructions'=>$closedInstructions, 'random_image_url'=>$random_image_url));
     }
 
-    public function actionAddInterest(){
+    public function actionAddInterest($interests,$user_id){
 
-        if (isset($_POST['name'])) {
-            $interest = Tag::model()->find('tag=:name', array(':name' => $_POST['name']));
-            if (!$interest) {
-                $interest = new Tag();
-                $interest->tag = $_POST['name'];
+        //if (isset($_POST['interests'])) {
+            foreach($interests as $name){
+                $interest = Tag::model()->find('tag=:name', array(':name' => $name));
+                if (!$interest) {
+                    $interest = new Tag();
+                    $interest->tag = $name;
 
-                if (!$interest->save()) {
-                    echo 'error: could not create new tag';
-                    return;
+                    if (!$interest->save()) {
+                       // $this->renderJSON(array('status'=>'error','message'=>'could not create new tag'));
+                        return 'error: could not create new tag';
+                    }
+                }
+                $userInterest = UserInterest::model()->find('tag_id=:tid and user_id=:uid'
+                    , array(':tid' => $interest->tag_id, 'uid' => $user_id));
+                if ($userInterest) {
+                    return 'error: already in interests';
+
+                } else {
+                    $userInterest = new UserInterest();
+                    $userInterest->user_id = $user_id;
+                    $userInterest->tag_id = $interest->tag_id;
+                    if (!$userInterest->save()) {
+                        return 'error: could not create new user-tag connection';
+                    }
+                    return 'success';
                 }
             }
-            $userInterest = UserInterest::model()->find('tag_id=:tid and user_id=:uid'
-                , array(':tid' => $interest->tag_id, 'uid' => $_POST['user_id']));
-            if ($userInterest) {
-                echo 'error: already in interests';
-            } else {
-                $userInterest = new UserInterest();
-                $userInterest->user_id = $_POST['user_id'];
-                $userInterest->tag_id = $interest->tag_id;
-                if (!$userInterest->save()) {
-                    echo 'error:could not create new user-tag connection';
-                    return;
-                }
-                echo $_POST['name'];
-            }
-        }else{
-            echo 'error: did not receive data';
-        }
+
+      //  }else{
+     //       $this->renderJSON(array('status'=>'error','message'=>'no post interest'));
+      //  }
     }
    /* public function actionProcessThumbify(){
         file_put_contents(Yii::getPathOfAlias('webroot') . '/assets/uploads/2/test/stuff.txt', "in method");
@@ -150,86 +183,127 @@ class ProfileController extends Controller
 
         //should pick which image somehow
 
-        $html = file_get_html($url);
-        $preview_image = url_to_absolute($url,$html->find('img')[0]->src);
+       $html = file_get_html($url);
+         /*      $image_files = array();
+             $image_urls = array();
+            foreach($html->find('img') as $i=>$element) {
+                 $image_files[$i]['url'] = url_to_absolute($url,$element->src);
+                 $question_mark_index = strpos($image_files[$i]['url'],'?');
+                 if($question_mark_index != false){
+                     $image_files[$i]['url'] = substr($url,0,$question_mark_index);
+                 }
+                 $file_name = basename($image_files[$i]['url']);
+                 $image_files[$i]['file_path'] = '/assets/temp/'.$file_name;
+                 file_put_contents(Yii::getPathOfAlias('webroot') .'/assets/temp/'.$file_name, file_get_contents($image_files[$i]['url']));
+             }
+             $max_size = 0;
+             foreach($image_files as $i=>$image_file){
+                 list($width, $height, $type, $attr) = getimagesize(Yii::getPathOfAlias('webroot') .$image_file['file_path']);
+                 if($width*$height>$max_size){
+                     $max_size = $width*$height;
+                     $best_image_index = $i;
+                 }
+             }
+
+
+             //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
+             //returns largest image
+             return $image_files[$best_image_index]['url'];*/
+        try {
+            $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
+        }catch(Exception $e){
+            return null;
+        }
         return $preview_image;
-    }
-    //creates a record of a file from a link
-    public function fileFromLink($url, $path, $user_id){
-        //example of path: 'uploads/preview/'
-        $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+     }
+     //creates a record of a file from a link
+     public function fileFromLink($url, $path, $user_id){
+         //example of path: 'uploads/preview/'
+         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
 
-        include "UniqueTokenGenerator.php";
-        //preg_match('/[.]([a-zA-Z]{3,4})$/',$url,$match);
-        $path_parts = pathinfo(basename($url));
-        if(isset($path_parts['extension'])){
-            $extension = $path_parts['extension'];
-        }
-        else{
-            $extension = 'jpg';
-        }
-        $question_mark_index = strpos($extension,'?');
-        if($question_mark_index != false){
-            $extension = substr($extension,0,$question_mark_index);
-        }
-        //$extension = $match[1];
+         include "UniqueTokenGenerator.php";
+         //preg_match('/[.]([a-zA-Z]{3,4})$/',$url,$match);
+         $path_parts = pathinfo(basename($url));
+         if(isset($path_parts['extension'])){
+             $extension = $path_parts['extension'];
+         }
+         else{
+             $extension = 'jpg';
+         }
+         $question_mark_index = strpos($extension,'?');
+         if($question_mark_index != false){
+             $extension = substr($extension,0,$question_mark_index);
+         }
 
-
-        //$file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
-        $file_type = $extension; //temporary
-        $random_name = token($user->user_id,$user->firstname);
-
-
-
-        $local_directory = 'assets/'.$path;
-        if(!is_dir($local_directory)) {
-            mkdir($local_directory);
-        }
-        file_put_contents($local_directory . $random_name .'.' .  $extension, file_get_contents($url));
-        if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
-            include "ImageCompress.php";
-            image_compress($local_directory . $random_name .'.' .  $extension, $local_directory . $random_name . '.jpg', 50);
-            unlink($local_directory . $random_name .'.' .  $extension);
-            $extension = 'jpg';
-        }
+         $question_mark_index = strpos($url,'?');
+         if($question_mark_index != false){
+             $url = substr($url,0,$question_mark_index);
+         }
+         //$extension = $match[1];
 
 
-        //Create file in file table here
-        $file = new File;
-        $file->file_name = $random_name . '.' . $extension;
-        $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
-        $file->file_type = $file_type;
-        $file->file_extension = $extension;
+         //$file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
+         $file_type = $extension; //temporary
+         $random_name = token($user->user_id,$user->firstname);
 
-        $file->save(false);
-        //Use the origin and id to add files either to associative table or to a main field
 
-        //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
-        //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
-        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,
-            'file_url'=>$file->file_url,'extension'=>$extension);
 
-    }
-  //  public function updateMajorMinor
-    public function actionAddShowcase(){
-        include "file_upload.php";
-        if (isset($_FILES['uploadFile'])) {
-            $result = file_upload($_FILES,"showcase/");
-            if($result['extension']=='jpg'||$result['extension']=='png'||$result['extension']=='gif'){
-                $preview_image = $result;
-            }
-            $share_type='regular';
-           /* $file_name = basename($file['name']);
-            $previous_record = File::model()->find('file_url=:furl',array(':furl'=>$uploaddir.$file_name));
-            if($previous_record) {
-                $this->renderJSON(array('status'=>'error','message'=>'there is already a file of the same name in your showcase'));
-                return;
-            }else{
-                if(!move_uploaded_file($file['tmp_name'], Yii::getPathOfAlias('webroot').$uploaddir.$file_name)) {
-                    $this->renderJSON(array('status'=>'error','message'=>'could not upload file'));
-                    return;
-                }
-            }*/
+         $local_directory = 'assets/'.$path;
+         if(!is_dir($local_directory)) {
+             mkdir($local_directory);
+         }
+         try{
+            file_put_contents($local_directory . $random_name .'.' .  $extension, file_get_contents($url));
+         }catch(Exception $e){
+             return null;
+         }
+         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
+             include "ImageCompress.php";
+             image_compress($local_directory . $random_name .'.' .  $extension, $local_directory . $random_name . '.jpg', 50);
+             if($extension != 'jpg'){
+                 unlink($local_directory . $random_name .'.' .  $extension);
+             }
+
+             $extension = 'jpg';
+         }
+
+
+         //Create file in file table here
+         $file = new File;
+         $file->file_name = $random_name . '.' . $extension;
+         $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
+         $file->file_type = $file_type;
+         $file->file_extension = $extension;
+
+         $file->save(false);
+         //Use the origin and id to add files either to associative table or to a main field
+
+         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
+         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
+         return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,
+             'file_url'=>$file->file_url,'extension'=>$extension);
+
+     }
+   //  public function updateMajorMinor
+     public function actionAddShowcase(){
+         include "file_upload.php";
+         if (isset($_FILES['uploadFile'])) {
+             $result = file_upload($_FILES,"showcase/");
+             if($result['extension']=='jpg'||$result['extension']=='png'||$result['extension']=='gif'){
+                 $preview_image = $result;
+             }
+             $share_type='regular';
+            /* $file_name = basename($file['name']);
+             $previous_record = File::model()->find('file_url=:furl',array(':furl'=>$uploaddir.$file_name));
+             if($previous_record) {
+                 $this->renderJSON(array('status'=>'error','message'=>'there is already a file of the same name in your showcase'));
+                 return;
+             }else{
+                 if(!move_uploaded_file($file['tmp_name'], Yii::getPathOfAlias('webroot').$uploaddir.$file_name)) {
+                     $this->renderJSON(array('status'=>'error','message'=>'could not upload file'));
+                     return;
+                 }
+             }*/
 
         }else if(isset($_POST['link_url'])){
             $file_name = basename($_POST['link_url']);
@@ -240,7 +314,9 @@ class ProfileController extends Controller
                 $preview_url = $this->getImageFromWebsite($_POST['link_url']);
               //  $this->renderJSON(array('status'=>'error','message'=>$preview_url));
                // return;
-                $preview_image = $this->fileFromLink($preview_url,'showcase/preview/', $_POST['user']);
+                    $preview_image = $this->fileFromLink($preview_url,'showcase/preview/', $_POST['user']);
+
+
 
                 //temporary. Possibly should use showcase_link table
                 $file = new File;
@@ -255,6 +331,7 @@ class ProfileController extends Controller
                 $share_type = 'link';
             }
             else{
+
                 $result = $this->fileFromLink($_POST['link_url'],'showcase/',$_POST['user']);
                 if($result['extension']=='jpg'||$result['extension']=='png'||$result['extension']=='gif'){
                     $preview_image = $result;
@@ -464,14 +541,26 @@ class ProfileController extends Controller
 
         }
         if(isset($_POST['majors'])){
+            if($_POST['majors'][0] == 'none'){
+                UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
+                $new_data['major'] = 'success';
+            }
             $new_data['major']= $this->updateMajorsMinors($_POST['majors'],'major',$user_id);
         }
         if(isset($_POST['minors'])){
+            if($_POST['majors'][0] == 'none'){
+                UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'minor'));
+                $new_data['minor'] = 'success';
+            }
             $new_data['minor']= $this->updateMajorsMinors($_POST['minors'],'minor',$user_id);
+        }
+        if(isset($_POST['interests'])){
+            $new_data['interests']= $this->actionAddInterest($_POST['interests'],$user_id);
+
         }
         $this->renderJSON($new_data);
     }
-    public function editShowcase(){
+    public function actionEditShowcase(){
         if($_POST['old_title']){
             $showcase = Showcase::model()->find('title = :title',array(':title'=>$_POST['old_title']));
             if($_POST['title']){
@@ -495,7 +584,8 @@ class ProfileController extends Controller
         if($showcase){
             $fileRecord = $showcase->file;
             $fileUrl  = $fileRecord->file_url;
-            if($showcase->preview_file_id){
+
+            if($showcase->preview_file_id && $showcase->preview_file_id !=$fileRecord->file_id){
                 $previewFile = $showcase->preview_image;
                 $previewUrl = $previewFile->file_url;
             }
@@ -505,7 +595,9 @@ class ProfileController extends Controller
             }
             if($fileRecord->delete()) {
                 if(!preg_match('/http/',$fileUrl)){
-                    unlink(Yii::getPathOfAlias('webroot') .$fileUrl);
+                    try {
+                        unlink(Yii::getPathOfAlias('webroot') . $fileUrl);
+                    }catch(Exception $e){}
                 }
             }else{
                 $result['status'] .= 'failure: could not delete file record';
@@ -524,10 +616,10 @@ class ProfileController extends Controller
         $this->renderJSON($result);
     }
     public function actionFollowUser(){
-        if(isset($_POST['user']) && isset($_POST['user_to_follow'])){
+        if(isset($_POST['user']) && isset($_POST['user_to_follow'])&& isset($_POST['follow_unfollow'])){
             $userFollow = UserConnection::model()->find('from_user_id = :u1 and to_user_id = :u2 ',
                 array(':u1'=>$_POST['user'],':u2'=>$_POST['user_to_follow']));
-            if(!$userFollow){
+            if(!$userFollow && $_POST['follow_unfollow'] == 'follow'){
                 $userFollow = new UserConnection();
                 $userFollow->from_user_id = $_POST['user'];
                 $userFollow->to_user_id = $_POST['user_to_follow'];
@@ -538,7 +630,15 @@ class ProfileController extends Controller
                 else{
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
                 }
-
+            }elseif($userFollow && $_POST['follow_unfollow'] == 'unfollow'){
+                if($userFollow->delete()){
+                    $this->renderJSON(array('status'=>'success'));
+                }
+                else{
+                    $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
+                }
+            }else{
+                $this->renderJSON(array('status'=>'failure','message'=>'buttons'));
             }
         }
     }
@@ -555,26 +655,67 @@ class ProfileController extends Controller
             }
         }
     }
-    public function actionDownloadShowcase(){
-        if( file_exists( Yii::getPathOfAlias('webroot').$_POST['file_url'] ) ){
-            Yii::app()->getRequest()->sendFile( basename($_POST['file_url']) , file_get_contents( Yii::getPathOfAlias('webroot').$_POST['file_url'] ) );
+    public function actionDownloadShowcase()
+    {
+        $file = File::model()->find('file_id=:fid', array(':fid' => $_GET['file_id']));
+
+        if (file_exists(Yii::getPathOfAlias('webroot') . $file->file_url)) {
+
+            header('Content-Description: File Transfer');
+            header("Content-disposition: attachment; filename=" . basename($file->file_url));
+            header("Content-type: application/octet-stream");
+            readfile(Yii::getPathOfAlias('webroot') . $file->file_url);
+
+            // Yii::app()->getRequest()->sendFile( basename($url) , @file_get_contents( Yii::getPathOfAlias('webroot').$url ) );
+            $this->renderJSON(array('status' => 'success'));
+        }else{
+            $this->renderJSON(array('status' => 'failure: file no longer exists'));
         }
 
     }
-    public function actionChangeVisibility(){
+    public function actionCloseShowcaseInstructions(){
+        $user = User::model()->find('user_id=:uid',array(':uid'=>$_POST['user']));
+        if($user->closed_showcase_instructions == 0){
+            $user->closed_showcase_instructions=1;
+            if($user->save()){
+                $this->renderJSON(array('status' => 'success'));
+            }
+            $this->renderJSON(array('status' => 'failure: did not update'));
+        }
+        $this->renderJSON(array('status' => 'failure: already closed'));
+    }
+    public function actionChangeClassVisibility(){
         //public , just me, followers
 
-        $user_id = Yii::app()->session['user_id'];
+       // $user_id = Yii::app()->session['user_id'];
+        if(isset($_POST['user'])&&isset($_POST['class'])&&isset($_POST['visibility'])){
+            $user_id = $_POST['user'];
+            $class_id = $_POST['class'];
+            $visibility_id = $_POST['visibility'];
+
+            $course_user = ClassUser::model()->find('user_id=:id  and class_id=:class_id', array(':id'=>$user_id,':class_id'=>$class_id));
+
+            $course_user->privacy = trim($visibility_id);
+            if($course_user->save()){
+                $this->renderJSON(array('status' => 'success'));
+            }else{
+                $this->renderJSON(array('status' => $course_user->getErrors()));
+            }
+
+        }
 
 
-        $course_id = $_POST['course_id'];
-        $visibility_id = $_POST['visibility_id'];
-
-        $course_user = CourseUser::model()->find('user_id=:id,course_id=:course_id', array(':id'=>$user_id,':course_id'=>$course_id));
-
-        $course_user->visibility_id = $visibility_id;
-
-        $course_user->save();
+    }
+    public function actionUpdateHere(){
+        $vis_var=$_POST['selected'];
+        //  echo $vis_var;
+        $vis_var=(string)$vis_var;
+        $user_id=1;
+        $user_group = GroupUser::model()->find('user_id=:id', array(':id'=>$user_id));
+//      $user_group = $user->group_user;
+//        var_dump($user_group);
+        $user_group->attributes=array('privacy'=>$vis_var);
+        $user_group->save();
 
     }
 
