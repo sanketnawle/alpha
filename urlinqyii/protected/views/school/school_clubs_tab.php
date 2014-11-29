@@ -41,7 +41,7 @@ echo '<div class = "clubs-tab-content">
            </div>';
 
 
-foreach ($departments as $department){
+foreach ($groups as $group){
    // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
@@ -151,7 +151,7 @@ foreach($dept_array as $key=>$value){
     //var_dump($department);
 echo '<div class = "department ajax" id="department-ajax">
     			                                        <a class = "departmentSelectWrapper" id="departmentSelectWrapper">
-    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $department->department_name; echo '</a>
+    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $group->group_name; echo '</a>
     			                                           </div>
     			                                           <div class = "imageWrapper">
     			                                             <span class = "hoverMask">
