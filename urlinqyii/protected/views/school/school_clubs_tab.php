@@ -41,7 +41,7 @@ echo '<div class = "clubs-tab-content">
            </div>';
 
 
-foreach ($departments as $department){
+foreach ($groups as $group){
    // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
@@ -151,7 +151,7 @@ foreach($dept_array as $key=>$value){
     //var_dump($department);
 echo '<div class = "department ajax" id="department-ajax">
     			                                        <a class = "departmentSelectWrapper" id="departmentSelectWrapper">
-    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $department->department_name; echo '</a>
+    			                                           <div class = "name search_unit"><a href="/beta/department.php?dept_id=1" style="text-decoration:none;">';  echo $group->group_name; echo '</a>
     			                                           </div>
     			                                           <div class = "imageWrapper">
     			                                             <span class = "hoverMask">
@@ -171,43 +171,19 @@ echo '<div class = "department ajax" id="department-ajax">
     				                                                    </span>
     				                                                 </div>
     			                                                </div>-->
-    			                                            </div>
-    			                                            <div class = "deptBtns" id="deptBtns1">';
+    			                                            </div>';
+echo '<div class="club-members-wrapper">';
+echo '<a href="#"><img class="club-member" src="http://lorempixel.com/30/30"></a>';
+echo '<a href="#"><img class="club-member" src="http://lorempixel.com/30/30"></a>';
+echo '<a href="#"><img class="club-member" src="http://lorempixel.com/30/30"></a>';
+echo '</div>';
+echo '<div class = "deptBtns" id="deptBtns1">';
+
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
 
-echo '<button class = "followBtn unfollowBtn" id="followBtn1">
-    <em class = "unfollow-icon"></em>Unfollow
-    </button>
-';
+echo '<button class = "studybtn btn_join" id="studybtn1">Join</button>'; // add a class joined if joined
 
-echo '<button class = "studybtn btn_mymajor" id="studybtn1">My Major';
-
-
-echo'</button>
-    			                                            	<div class = "study_box_open" id="study_box_open1">
-    			                                            		<div class = "js_wrap" id="js_wrap1">
-    																	<span>I am...</span>
-    																	<div class = "study_first_option" id="study_first_option1">
-';
-
-
-echo '<button class = "majorType study_type_btn pressedGraybtn" id="major1" type = "button"><em class="check" style="left: 16px; opacity: 1;"></em>Majoring in this subject</button>
-';
-
-echo '</div>
-    																</div>
-    																<div class = "modal_loading2" id="modal_loading21" >
-    																	<img class = "modal_animation" src = "school/src/loadingAnimation.gif">
-    																</div>
-    															</div>
-    			                                            </div>
-    			                                        </div>
-    			                                    </a>
-    			                                </div>
-';
-
-echo '
-    </div>';
+echo '</div></div></a></div></div>';
 
 }
 echo '
@@ -215,3 +191,16 @@ echo '
 ';
 
 ?>
+<script>
+    $(function () {
+        $(".btn_join").click(function () {            
+            if ($(this).hasClass("joined")) {
+                $(this).removeClass("joined");
+                $(this).html("Join");
+            } else {
+                $(this).addClass("joined");
+                $(this).html("Leave");
+            }
+        });
+    })
+</script>

@@ -105,7 +105,7 @@
       <file leaf-file-name="club_class_rank_data.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="54" selection-start="906" selection-end="906" vertical-scroll-proportion="0.5045662" vertical-offset="0" max-vertical-offset="1343">
+            <state line="25" column="69" selection-start="851" selection-end="851" vertical-scroll-proportion="0.4851598" vertical-offset="0" max-vertical-offset="1343">
               <folding>
                 <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
                 <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />
@@ -649,7 +649,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="54" selection-start="906" selection-end="906" vertical-scroll-proportion="0.5045662" vertical-offset="0" max-vertical-offset="1343">
+        <state line="25" column="69" selection-start="851" selection-end="851" vertical-scroll-proportion="0.4851598" vertical-offset="0" max-vertical-offset="1343">
           <folding>
             <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
             <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />

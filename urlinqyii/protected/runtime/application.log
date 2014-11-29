@@ -2143,7 +2143,7 @@ REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
 HTTP_REFERER=http://localhost:8888/alpha/urlinqyii/class/1
 ---
 2014/11/26 18:05:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in /Applications/MAMP/yii/framework/web/CController.php:483
-Stack trace:
+Stack trace:rested in doing/designing reactions, I don't think yo
 #0 /Applications/MAMP/yii/framework/web/CController.php(270): CController->missingAction('assets')
 #1 /Applications/MAMP/yii/framework/web/CWebApplication.php(282): CController->run('assets')
 #2 /Applications/MAMP/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
@@ -21144,6 +21144,7 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
 HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
 ---
+<<<<<<< HEAD
 2014/11/29 20:27:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
@@ -21455,19 +21456,557 @@ Stack trace:
 #0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
 #1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "jquery-ui-1.11.0/jquery-ui.min.js".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('jquery-ui-1.11....')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/jquery-ui-1.11.0/jquery-ui.min.js
+HTTP_REFERER=http://mylinq.com/urlinqyii/
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/fb_icon_small.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/fb_icon...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/src/fb_icon_small.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/nyu.JPG".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/nyu.JPG')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/img/nyu.JPG
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/student-icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/student...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/src/student-icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/facebook-icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/faceboo...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/src/facebook-icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/signup-icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/signup-...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/src/signup-icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/teacher-icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/teacher...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/src/teacher-icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/lp_beta.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://mylinq.com/urlinqyii/home
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://mylinq.com/urlinqyii/home
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/img/post.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/fbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/img/upload.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/fbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/img/ask.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/fbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/img/wedge.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/fbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "school".' in D:\Projects\urlinqgh\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CController.php(270): CController->missingAction('school')
+#1 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): CController->run('school')
+#2 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('school/school/s...')
+#3 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/urlinqyii/school/school/src/loadingAnimation.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/school/1
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "school".' in D:\Projects\urlinqgh\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CController.php(270): CController->missingAction('school')
+#1 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): CController->run('school')
+#2 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('school/school/s...')
+#3 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/urlinqyii/school/school/src/loadingAnimation.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/school/1
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:48:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 11:50:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in D:\Projects\urlinqgh\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CController.php(270): CController->missingAction('')
+#1 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): CController->run('')
+#2 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department')
+#3 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/urlinqyii/department/
+---
+2014/11/29 11:51:01 [error] [php] Undefined variable: user (D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php:294)
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#1 D:\Projects\urlinqgh\yii\framework\web\CController.php(869): DepartmentController->renderFile()
+#2 D:\Projects\urlinqgh\yii\framework\web\CController.php(782): DepartmentController->renderPartial()
+#3 D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php(11): DepartmentController->render()
+#4 D:\Projects\urlinqgh\yii\framework\web\actions\CInlineAction.php(49): DepartmentController->actionView()
+#5 D:\Projects\urlinqgh\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\Projects\urlinqgh\yii\framework\web\CController.php(286): DepartmentController->runAction()
+#7 D:\Projects\urlinqgh\yii\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#8 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): DepartmentController->run()
+#9 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/urlinqyii/department/1
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php (294)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\views\department\department.php (812)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php (11)
+2014/11/29 11:51:22 [error] [php] Undefined variable: user (D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php:294)
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#1 D:\Projects\urlinqgh\yii\framework\web\CController.php(869): DepartmentController->renderFile()
+#2 D:\Projects\urlinqgh\yii\framework\web\CController.php(782): DepartmentController->renderPartial()
+#3 D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php(11): DepartmentController->render()
+#4 D:\Projects\urlinqgh\yii\framework\web\actions\CInlineAction.php(49): DepartmentController->actionView()
+#5 D:\Projects\urlinqgh\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\Projects\urlinqgh\yii\framework\web\CController.php(286): DepartmentController->runAction()
+#7 D:\Projects\urlinqgh\yii\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#8 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): DepartmentController->run()
+#9 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/urlinqyii/department/1
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php (294)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\views\department\department.php (812)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php (11)
+2014/11/29 11:51:25 [error] [php] Undefined variable: user (D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php:294)
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CBaseController.php(95): DepartmentController->renderInternal()
+#1 D:\Projects\urlinqgh\yii\framework\web\CController.php(869): DepartmentController->renderFile()
+#2 D:\Projects\urlinqgh\yii\framework\web\CController.php(782): DepartmentController->renderPartial()
+#3 D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php(11): DepartmentController->render()
+#4 D:\Projects\urlinqgh\yii\framework\web\actions\CInlineAction.php(49): DepartmentController->actionView()
+#5 D:\Projects\urlinqgh\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 D:\Projects\urlinqgh\yii\framework\web\CController.php(286): DepartmentController->runAction()
+#7 D:\Projects\urlinqgh\yii\framework\web\CController.php(265): DepartmentController->runActionWithFilters()
+#8 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): DepartmentController->run()
+#9 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/urlinqyii/department/1
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\components\topbar.php (294)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\views\department\department.php (812)
+in D:\Projects\urlinqgh\site\alpha\urlinqyii\protected\controllers\DepartmentController.php (11)
+2014/11/29 11:58:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "school".' in D:\Projects\urlinqgh\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CController.php(270): CController->missingAction('school')
+#1 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): CController->run('school')
+#2 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('school/school/s...')
+#3 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/urlinqyii/school/school/src/loadingAnimation.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/school/1
+---
+2014/11/29 11:58:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "school".' in D:\Projects\urlinqgh\yii\framework\web\CController.php:483
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CController.php(270): CController->missingAction('school')
+#1 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(282): CController->run('school')
+#2 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('school/school/s...')
+#3 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/urlinqyii/school/school/src/loadingAnimation.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/school/1
+---
+2014/11/29 12:22:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:22:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:22:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:22:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:22:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:22:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:22:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 12:36:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Projects\urlinqgh\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 D:\Projects\urlinqgh\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Projects\urlinqgh\site\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://mylinq.com/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> 3435dfa4b520332941ab21a8838dd4e59b4a732e
 #3 {main}
 REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-icons.png
 HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
 ---
+<<<<<<< HEAD
 2014/11/29 20:28:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
 #1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+=======
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 18:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 18:50:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in C:\xampp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+>>>>>>> 3435dfa4b520332941ab21a8838dd4e59b4a732e
 #3 {main}
 REQUEST_URI=/alpha/urlinqyii/css/partial/img/wedge_down.png
 HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
 ---
+<<<<<<< HEAD
 2014/11/29 20:28:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
@@ -21504,3 +22043,522 @@ REQUEST_URI=/alpha/urlinqyii/department/1
 in C:\wamp\www\alpha\urlinqyii\protected\components\topbar.php (294)
 in C:\wamp\www\alpha\urlinqyii\protected\views\department\department.php (812)
 in C:\wamp\www\alpha\urlinqyii\protected\controllers\DepartmentController.php (11)
+=======
+2014/11/29 18:51:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\xampp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+>>>>>>> 3435dfa4b520332941ab21a8838dd4e59b4a732e
+2014/11/29 20:32:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 20:32:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 20:38:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 20:54:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 20:56:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 20:56:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_inactive.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/events_icon_inactive.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/ask.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/ask.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/ask.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/upload.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/upload.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/upload.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/wedge.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/wedge.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/wedge.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:10:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/post.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/post.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/post.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:10:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:24 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:497)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (497)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:10:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299022669
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299022670
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299022671
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299022672
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/11/29 23:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/remove.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/remove....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/remove.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/29 23:10:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_active.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/events_icon_active.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/29 23:10:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/src/events_icon_active.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/src/events_...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/src/events_icon_active.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/club.css
+---
+2014/11/29 23:10:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/club_e...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/club_events_tab.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/img/add.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/img/add.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/img/add.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/club/analytics.css
+---
+2014/11/29 23:10:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/pl_down_arrow.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/pl_down_arr...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/pl_down_arrow.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/planner.css
+---
+2014/11/29 23:10:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/oldfeed.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:10:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
