@@ -58,7 +58,7 @@ echo "</div>";
 
 echo "<div class='group_feed_wrap'>";
 
-Yii::app()->runController('partial/feed',array('user'=>$user));
+echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed'));
 
 echo "</div>";
 

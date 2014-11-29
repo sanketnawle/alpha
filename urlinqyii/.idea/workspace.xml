@@ -29,16 +29,8 @@
       <file leaf-file-name="club_analytics.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/club/club_analytics.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="46" selection-start="158" selection-end="158" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="5967">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1417208708709" expanded="true" signature="592:626" placeholder="..." />
-              </folding>
+            <state line="7" column="46" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="5967">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,95 +38,97 @@
       <file leaf-file-name="analytics.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/club/analytics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="54" selection-start="4529" selection-end="4529" vertical-scroll-proportion="-14.153846" vertical-offset="1774" max-vertical-offset="18751">
+            <state line="737" column="45" selection-start="26762" selection-end="26762" vertical-scroll-proportion="0.0" vertical-offset="12289" max-vertical-offset="18683">
               <folding>
-                <marker date="1417212206155" expanded="true" signature="38202:38753" placeholder="..." />
-                <marker date="1417212206155" expanded="true" signature="38263:38526" placeholder="..." />
-                <marker date="1417212206155" expanded="false" signature="38355:38388" placeholder="..." />
-                <marker date="1417212206155" expanded="true" signature="45330:45487" placeholder="..." />
-                <marker date="1417212206155" expanded="false" signature="45393:45426" placeholder="..." />
-                <marker date="1417212206155" expanded="true" signature="45784:45983" placeholder="..." />
+                <marker date="1417222410879" expanded="true" signature="38030:38581" placeholder="..." />
+                <marker date="1417222410879" expanded="true" signature="38091:38354" placeholder="..." />
+                <marker date="1417222410879" expanded="false" signature="38183:38216" placeholder="..." />
+                <marker date="1417222410879" expanded="true" signature="45158:45315" placeholder="..." />
+                <marker date="1417222410879" expanded="false" signature="45221:45254" placeholder="..." />
+                <marker date="1417222410879" expanded="true" signature="45612:45811" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClubController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ClubController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="470" column="0" selection-start="19122" selection-end="19122" vertical-scroll-proportion="0.61538464" vertical-offset="7446" max-vertical-offset="8772">
+            <state line="58" column="9" selection-start="2197" selection-end="2197" vertical-scroll-proportion="-10.461538" vertical-offset="714" max-vertical-offset="9945">
               <folding>
-                <marker date="1417212787000" expanded="true" signature="15094:15142" placeholder="SELECT * FRO..." />
-                <marker date="1417212787000" expanded="true" signature="15352:15407" placeholder="SELECT * FRO..." />
-                <marker date="1417212787000" expanded="true" signature="15519:15553" placeholder="SELECT * FRO..user..." />
-                <marker date="1417212787000" expanded="true" signature="15946:16032" placeholder="SELECT * FRO..." />
-                <marker date="1417212787000" expanded="true" signature="18188:18306" placeholder="SELECT * FRO..group_user..." />
-                <marker date="1417212787000" expanded="true" signature="18495:18663" placeholder="SELECT * FRO..group_user..." />
-                <marker date="1417212787000" expanded="true" signature="18871:19033" placeholder="SELECT * FRO..group_user..." />
-                <marker date="1417212787000" expanded="true" signature="19241:19401" placeholder="SELECT * FRO..group_user..." />
+                <marker date="1417278938965" expanded="true" signature="15184:15232" placeholder="SELECT * FRO..." />
+                <marker date="1417278938965" expanded="true" signature="15442:15497" placeholder="SELECT * FRO..." />
+                <marker date="1417278938965" expanded="true" signature="15609:15643" placeholder="SELECT * FRO..user..." />
+                <marker date="1417278938965" expanded="true" signature="16036:16122" placeholder="SELECT * FRO..." />
+                <marker date="1417278938965" expanded="true" signature="18278:18396" placeholder="SELECT * FRO..group_user..." />
+                <marker date="1417278938965" expanded="true" signature="18585:18753" placeholder="SELECT * FRO..group_user..." />
+                <marker date="1417278938965" expanded="true" signature="18961:19123" placeholder="SELECT * FRO..group_user..." />
+                <marker date="1417278938965" expanded="true" signature="19331:19491" placeholder="SELECT * FRO..group_user..." />
+                <marker date="1417278938965" expanded="true" signature="19996:20052" placeholder="SELECT * FRO..." />
+                <marker date="1417278938965" expanded="true" signature="20672:20730" placeholder="SELECT * FRO..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Event.php">
+      <file leaf-file-name="class_feed_tab.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/class/class_feed_tab.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="144" selection-start="3190" selection-end="3190" vertical-scroll-proportion="-16.346153" vertical-offset="918" max-vertical-offset="2958">
+            <state line="32" column="0" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.32218507" vertical-offset="255" max-vertical-offset="1275">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Post.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Post.php">
+      <file leaf-file-name="club.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="26.961538" vertical-offset="701" max-vertical-offset="2618">
+            <state line="216" column="146" selection-start="8819" selection-end="8933" vertical-scroll-proportion="-22.26923" vertical-offset="3042" max-vertical-offset="4760">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisplayPicture.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/DisplayPicture.php">
+      <file leaf-file-name="class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/class/class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.692307" vertical-offset="408" max-vertical-offset="2261">
+            <state line="160" column="90" selection-start="6924" selection-end="6924" vertical-scroll-proportion="-5.9038463" vertical-offset="2413" max-vertical-offset="3468">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserTag.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/UserTag.php">
+      <file leaf-file-name="club_feed_tab.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/club/club_feed_tab.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.807693" vertical-offset="255" max-vertical-offset="1887">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupUserTag.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/GroupUserTag.php">
+      <file leaf-file-name="SiteController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.807693" vertical-offset="255" max-vertical-offset="1887">
+            <state line="52" column="8" selection-start="1366" selection-end="1445" vertical-scroll-proportion="-4.5526314" vertical-offset="538" max-vertical-offset="8857">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/User.php">
+      <file leaf-file-name="EventController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="93" selection-start="6392" selection-end="6392" vertical-scroll-proportion="27.615385" vertical-offset="3149" max-vertical-offset="4046">
+            <state line="139" column="45" selection-start="5178" selection-end="5178" vertical-scroll-proportion="-18.961538" vertical-offset="1870" max-vertical-offset="5287">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Group.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Group.php">
+      <file leaf-file-name="planner.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/partial/planner/planner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="39" selection-start="2559" selection-end="2559" vertical-scroll-proportion="-13.576923" vertical-offset="922" max-vertical-offset="2635">
+            <state line="257" column="38" selection-start="8007" selection-end="8007" vertical-scroll-proportion="0.0" vertical-offset="3621" max-vertical-offset="8755">
               <folding />
             </state>
           </provider>
@@ -150,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/protected/views/club/club_members_tab.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/homePlanner.php" />
         <option value="$PROJECT_DIR$/protected/controllers/SearchController.php" />
         <option value="$PROJECT_DIR$/protected/views/club/club_events_tab.php" />
@@ -167,7 +160,6 @@
         <option value="$PROJECT_DIR$/js/timezone_conversion.js" />
         <option value="$PROJECT_DIR$/js/module/timezone_conversion.js" />
         <option value="$PROJECT_DIR$/protected/views/partial/planner.php" />
-        <option value="$PROJECT_DIR$/js/partial/planner/planner.js" />
         <option value="$PROJECT_DIR$/protected/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/protected/config/db_config.php" />
         <option value="$PROJECT_DIR$/protected/js/search.js" />
@@ -175,7 +167,6 @@
         <option value="$PROJECT_DIR$/css/partial/topbar/topbar.css" />
         <option value="$PROJECT_DIR$/css/partial/planner/planner.css" />
         <option value="$PROJECT_DIR$/protected/views/partial/leftpanel.php" />
-        <option value="$PROJECT_DIR$/protected/views/class/class.php" />
         <option value="$PROJECT_DIR$/protected/views/partial/topbar.php" />
         <option value="$PROJECT_DIR$/protected/models/Group.php" />
         <option value="$PROJECT_DIR$/protected/models/School.php" />
@@ -200,7 +191,10 @@
         <option value="$PROJECT_DIR$/protected/components/club/analytics_helpers.php" />
         <option value="$PROJECT_DIR$/protected/models/Event.php" />
         <option value="$PROJECT_DIR$/js/club/analytics.js" />
+        <option value="$PROJECT_DIR$/js/partial/planner/planner.js" />
         <option value="$PROJECT_DIR$/protected/controllers/ClubController.php" />
+        <option value="$PROJECT_DIR$/protected/views/class/class.php" />
+        <option value="$PROJECT_DIR$/protected/views/class/class_feed_tab.php" />
       </list>
     </option>
   </component>
@@ -237,9 +231,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files" />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -282,7 +273,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,7 +291,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -304,12 +303,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="class" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urlinqyii" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../beta" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -356,24 +398,24 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15364583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -395,21 +437,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/views/class/class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="21" selection-start="6445" selection-end="6445" vertical-scroll-proportion="-2.3846154" vertical-offset="2477" max-vertical-offset="3468" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/partial/topbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="75" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-8.5" vertical-offset="153" max-vertical-offset="3978" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/git_reference">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1054" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vwd.webinfo">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="21" selection-start="241" selection-end="241" vertical-scroll-proportion="0.13431151" vertical-offset="0" max-vertical-offset="886" />
@@ -428,11 +455,6 @@
     <entry file="file://$PROJECT_DIR$/protected/models/Department.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="66" selection-start="1784" selection-end="1784" vertical-scroll-proportion="-21.423077" vertical-offset="429" max-vertical-offset="2380" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="64" selection-start="5360" selection-end="5360" vertical-scroll-proportion="156.26923" vertical-offset="7276" max-vertical-offset="8857" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test">
@@ -475,11 +497,6 @@
         <state line="128" column="49" selection-start="3951" selection-end="3951" vertical-scroll-proportion="0.0" vertical-offset="1942" max-vertical-offset="3196" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="38" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="5287" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="427" column="5" selection-start="12230" selection-end="12230" vertical-scroll-proportion="-3.3846154" vertical-offset="7171" max-vertical-offset="14501" />
@@ -495,13 +512,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10098" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/club/club_feed_tab.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/ampm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7327" />
@@ -509,9 +519,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/partial/feed/feed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="42" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2907">
-          <folding />
-        </state>
+        <state line="34" column="42" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2907" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/kjasd">
@@ -521,539 +529,218 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/leftpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="10" selection-start="3271" selection-end="3271" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="2363">
-          <folding />
-        </state>
+        <state line="71" column="10" selection-start="3271" selection-end="3271" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="2363" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/members_tab.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2771">
-          <folding>
-            <marker date="1415397430364" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1415397430364" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2771" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/planner.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="51" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="5338">
-          <folding>
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416522668555" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="25" column="51" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="5338" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/status_bar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="39" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="21964">
-          <folding />
-        </state>
+        <state line="43" column="39" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="21964" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/site/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="12" selection-start="3911" selection-end="3911" vertical-scroll-proportion="0.0" vertical-offset="1721" max-vertical-offset="2873">
-          <folding />
-        </state>
+        <state line="133" column="12" selection-start="3911" selection-end="3911" vertical-scroll-proportion="0.0" vertical-offset="1721" max-vertical-offset="2873" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/FeedController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="39" selection-start="2647" selection-end="2647" vertical-scroll-proportion="-40.53846" vertical-offset="153" max-vertical-offset="8806">
-          <folding />
-        </state>
+        <state line="71" column="39" selection-start="2647" selection-end="2647" vertical-scroll-proportion="-40.53846" vertical-offset="153" max-vertical-offset="8806" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/club/club_about_tab.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="923">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="923" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/club/club.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="57" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="20621">
-          <folding />
-        </state>
+        <state line="29" column="57" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="20621" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/club/club.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2367" column="3" selection-start="51878" selection-end="51878" vertical-scroll-proportion="0.0" vertical-offset="39418" max-vertical-offset="40341">
-          <folding>
-            <marker date="1417198983882" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417198983882" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417198983882" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417198983882" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="2367" column="3" selection-start="51878" selection-end="51878" vertical-scroll-proportion="0.0" vertical-offset="39418" max-vertical-offset="40341" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/club/club_header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="49" selection-start="7690" selection-end="7690" vertical-scroll-proportion="-3.8653846" vertical-offset="1941" max-vertical-offset="3094">
-          <folding>
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417199226807" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="126" column="49" selection-start="7690" selection-end="7690" vertical-scroll-proportion="-3.8653846" vertical-offset="1941" max-vertical-offset="3094" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/club/analytics.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="1662" max-vertical-offset="18853">
-          <folding />
-        </state>
+        <state line="4" column="1" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="1662" max-vertical-offset="18853" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/partial/feed.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="18" selection-end="154" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="15606">
-          <folding>
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1417114594430" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="65" selection-start="9760" selection-end="9760" vertical-scroll-proportion="-19.961538" vertical-offset="3042" max-vertical-offset="4760">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="2" column="4" selection-start="18" selection-end="154" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="15606" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/components/club/analytics_helpers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="2" selection-start="3750" selection-end="3750" vertical-scroll-proportion="-33.192307" vertical-offset="1483" max-vertical-offset="2448">
-          <folding />
-        </state>
+        <state line="138" column="2" selection-start="3750" selection-end="3750" vertical-scroll-proportion="-33.192307" vertical-offset="1483" max-vertical-offset="2448" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/components/gapi.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13668">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13668" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/GroupUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1989">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1989" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/class/class_members_tab.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="47.076923" vertical-offset="1224" max-vertical-offset="4709">
-          <folding>
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416946132547" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="47.076923" vertical-offset="1224" max-vertical-offset="4709" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/UserTag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.807693" vertical-offset="255" max-vertical-offset="1887">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1887">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/GroupUserTag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.807693" vertical-offset="255" max-vertical-offset="1768">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1887">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/DisplayPicture.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.692307" vertical-offset="408" max-vertical-offset="2261">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="2261">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Group.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="39" selection-start="2559" selection-end="2559" vertical-scroll-proportion="-13.576923" vertical-offset="922" max-vertical-offset="2635">
+        <state line="75" column="39" selection-start="2559" selection-end="2559" vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2635">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="26.961538" vertical-offset="701" max-vertical-offset="2618">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="2618">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="93" selection-start="6392" selection-end="6392" vertical-scroll-proportion="27.615385" vertical-offset="3149" max-vertical-offset="4046">
+        <state line="143" column="93" selection-start="6392" selection-end="6392" vertical-scroll-proportion="0.0" vertical-offset="3149" max-vertical-offset="4046">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/Event.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="144" selection-start="3190" selection-end="3190" vertical-scroll-proportion="-16.346153" vertical-offset="918" max-vertical-offset="2958">
+        <state line="79" column="144" selection-start="3190" selection-end="3190" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="2958">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/views/club/club_analytics.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="46" selection-start="158" selection-end="158" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="5967">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1417208708709" expanded="true" signature="592:626" placeholder="..." />
-          </folding>
+        <state line="7" column="46" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="5967">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/club/analytics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="54" selection-start="4529" selection-end="4529" vertical-scroll-proportion="-14.153846" vertical-offset="1774" max-vertical-offset="18751">
+        <state line="737" column="45" selection-start="26762" selection-end="26762" vertical-scroll-proportion="0.0" vertical-offset="12289" max-vertical-offset="18683">
           <folding>
-            <marker date="1417212206155" expanded="true" signature="38202:38753" placeholder="..." />
-            <marker date="1417212206155" expanded="true" signature="38263:38526" placeholder="..." />
-            <marker date="1417212206155" expanded="false" signature="38355:38388" placeholder="..." />
-            <marker date="1417212206155" expanded="true" signature="45330:45487" placeholder="..." />
-            <marker date="1417212206155" expanded="false" signature="45393:45426" placeholder="..." />
-            <marker date="1417212206155" expanded="true" signature="45784:45983" placeholder="..." />
+            <marker date="1417222410879" expanded="true" signature="38030:38581" placeholder="..." />
+            <marker date="1417222410879" expanded="true" signature="38091:38354" placeholder="..." />
+            <marker date="1417222410879" expanded="false" signature="38183:38216" placeholder="..." />
+            <marker date="1417222410879" expanded="true" signature="45158:45315" placeholder="..." />
+            <marker date="1417222410879" expanded="false" signature="45221:45254" placeholder="..." />
+            <marker date="1417222410879" expanded="true" signature="45612:45811" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/partial/planner/planner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="38" selection-start="8007" selection-end="8007" vertical-scroll-proportion="0.0" vertical-offset="3621" max-vertical-offset="8755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/EventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="45" selection-start="5178" selection-end="5178" vertical-scroll-proportion="-18.961538" vertical-offset="1870" max-vertical-offset="5287">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="8" selection-start="1366" selection-end="1445" vertical-scroll-proportion="-4.5526314" vertical-offset="538" max-vertical-offset="8857">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/controllers/ClubController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="470" column="0" selection-start="19122" selection-end="19122" vertical-scroll-proportion="0.61538464" vertical-offset="7446" max-vertical-offset="8772">
+        <state line="58" column="9" selection-start="2197" selection-end="2197" vertical-scroll-proportion="-10.461538" vertical-offset="714" max-vertical-offset="9945">
           <folding>
-            <marker date="1417212787000" expanded="true" signature="15094:15142" placeholder="SELECT * FRO..." />
-            <marker date="1417212787000" expanded="true" signature="15352:15407" placeholder="SELECT * FRO..." />
-            <marker date="1417212787000" expanded="true" signature="15519:15553" placeholder="SELECT * FRO..user..." />
-            <marker date="1417212787000" expanded="true" signature="15946:16032" placeholder="SELECT * FRO..." />
-            <marker date="1417212787000" expanded="true" signature="18188:18306" placeholder="SELECT * FRO..group_user..." />
-            <marker date="1417212787000" expanded="true" signature="18495:18663" placeholder="SELECT * FRO..group_user..." />
-            <marker date="1417212787000" expanded="true" signature="18871:19033" placeholder="SELECT * FRO..group_user..." />
-            <marker date="1417212787000" expanded="true" signature="19241:19401" placeholder="SELECT * FRO..group_user..." />
+            <marker date="1417278938965" expanded="true" signature="15184:15232" placeholder="SELECT * FRO..." />
+            <marker date="1417278938965" expanded="true" signature="15442:15497" placeholder="SELECT * FRO..." />
+            <marker date="1417278938965" expanded="true" signature="15609:15643" placeholder="SELECT * FRO..user..." />
+            <marker date="1417278938965" expanded="true" signature="16036:16122" placeholder="SELECT * FRO..." />
+            <marker date="1417278938965" expanded="true" signature="18278:18396" placeholder="SELECT * FRO..group_user..." />
+            <marker date="1417278938965" expanded="true" signature="18585:18753" placeholder="SELECT * FRO..group_user..." />
+            <marker date="1417278938965" expanded="true" signature="18961:19123" placeholder="SELECT * FRO..group_user..." />
+            <marker date="1417278938965" expanded="true" signature="19331:19491" placeholder="SELECT * FRO..group_user..." />
+            <marker date="1417278938965" expanded="true" signature="19996:20052" placeholder="SELECT * FRO..." />
+            <marker date="1417278938965" expanded="true" signature="20672:20730" placeholder="SELECT * FRO..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/club/club_feed_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/club/club.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="216" column="146" selection-start="8819" selection-end="8933" vertical-scroll-proportion="-22.26923" vertical-offset="3042" max-vertical-offset="4760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/class/class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="90" selection-start="6924" selection-end="6924" vertical-scroll-proportion="-5.9038463" vertical-offset="2413" max-vertical-offset="3468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/class/class_feed_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.32218507" vertical-offset="255" max-vertical-offset="1275">
+          <folding />
         </state>
       </provider>
     </entry>

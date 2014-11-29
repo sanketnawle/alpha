@@ -219,7 +219,7 @@ $(document).ready(function(){
 
     function handle_planner_events(){
         //Default it to hide and fadein if there are no posts
-        $('#free_planner_wrap').hide();
+        //$('#free_planner_wrap').hide();
 
 
         $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
@@ -255,6 +255,7 @@ $(document).ready(function(){
         }else{
             $('#free_planner_wrap').hide().fadeIn( "slow", function() {
                 // Animation complete
+                alert('show planner');
             });
         }
 
