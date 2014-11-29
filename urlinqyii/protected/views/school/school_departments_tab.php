@@ -175,12 +175,7 @@ echo '<div class = "department ajax" id="department-ajax">
     			                                            <div class = "deptBtns" id="deptBtns1">';
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
 
-echo '<button class = "followBtn unfollowBtn" id="followBtn1">
-    <em class = "unfollow-icon"></em>Unfollow
-    </button>
-';
-
-echo '<button class = "studybtn btn_mymajor" id="studybtn1">Follow</button>';
+echo '<button class = "studybtn btn_follow" id="studybtn1">Follow</button>'; // add a class followed if followed
 
 
 echo'</div></div></a></div></div>';
@@ -191,3 +186,16 @@ echo '
 ';
 
 ?>
+<script>
+    $(function () {
+        $(".btn_follow").click(function () {
+            if ($(this).hasClass("followed")) {
+                $(this).removeClass("followed");
+                $(this).html("Follow");
+            } else {
+                $(this).addClass("followed");
+                $(this).html("Unfollow");
+            }
+        });
+    })
+</script>
