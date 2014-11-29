@@ -22562,3 +22562,1880 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
 HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
 ---
+2014/11/29 23:13:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 23:13:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 23:14:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/29 23:14:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/29 23:14:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/grey_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/grey_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/11/29 23:14:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "oldfeed.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('oldfeed.php')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/11/29 23:14:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/attach.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/attach.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/attach.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/oldfeed.p...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/who-w.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/who-w.png')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/who-w.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/fbar.css
+---
+2014/11/29 23:14:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "src".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('src')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('src')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('department/src/...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/department/src/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/department/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/datep...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/datepicker.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.datepick.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/calend...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/calendar_selector.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui-1.10.2.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery-ui.custom.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "css".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/css/bg_ho...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/css/bg_home.css
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/jquery...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/jquery.timeAutocomplete.min.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/planne...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/planner.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/js/ampm.j...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/js/ampm.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('class/assets/lo...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/class/assets/loadingAnimation.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/class/1
+---
+2014/11/29 23:14:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299277437
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:38 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:497)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (497)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:14:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299277438
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299277439
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417299277440
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:14:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:16:35 [error] [php] Undefined variable: con (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:497)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (497)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:19:49 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'urlinq_new.group_users' doesn't exist. The SQL statement executed was: SELECT * FROM `group_users` WHERE group_id = '1'.
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (497)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:19:58 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:21:40 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:24:30 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:24:30 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:24:31 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:24:31 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:24:31 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:25:10 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:25:20 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:25:45 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:26:47 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:28:57 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:29:53 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:04 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:05 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:05 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:05 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:06 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:06 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:06 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:49 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:50 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:50 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:30:50 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:31:52 [error] [php] Invalid argument supplied for foreach() (C:\wamp\yii\framework\db\ar\CActiveFinder.php:826)
+Stack trace:
+#0 C:\wamp\yii\framework\db\ar\CActiveFinder.php(163): CJoinElement->lazyFind()
+#1 C:\wamp\yii\framework\db\ar\CActiveRecord.php(281): CActiveFinder->lazyFind()
+#2 C:\wamp\yii\framework\db\ar\CActiveRecord.php(143): User->getRelated()
+#3 C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php(508): User->__get()
+#4 C:\wamp\yii\framework\web\actions\CInlineAction.php(49): ClubController->actionGetMemberBreakdown()
+#5 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#7 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#8 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#9 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (508)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:32:52 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:38:30 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php:514)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): ClubController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): ClubController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): ClubController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/club/getMemberBreakdown?group_id=1
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\ClubController.php (514)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/11/29 23:40:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300832535
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300832536
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300832537
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300832538
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:40:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300860302
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300860303
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300860304
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300860305
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:41:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300944153
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300944154
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300944155
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300944156
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300972931
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300972932
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300972933
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300972934
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:42:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300996104
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300996105
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300996106
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417300996107
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301005157
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301005158
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301005159
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301005160
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301034411
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301034412
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301034413
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301034414
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:43:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301047076
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301047077
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301047078
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301047079
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301064970
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301064971
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301064972
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301064973
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301075018
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301075019
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301075020
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301075021
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:44:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/filepicker.j...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/partial/feed/moment.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/partial/feed...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/js/partial/feed/moment.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/php/analyt...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/php/analytics/club_attendance_data.php?group_id=1&filter=This+Week
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301113710
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301113711
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301113712
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/js/getURLP...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/js/getURLPara.js?_=1417301113713
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "google.com".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('google.com')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('google.com')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/google.com')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/google.com
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---
+2014/11/29 23:45:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "oldfeed.php".' in C:\wamp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(270): CController->missingAction('oldfeed.php')
+#1 C:\wamp\yii\framework\web\CWebApplication.php(282): CController->run('oldfeed.php')
+#2 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('club/oldfeed.ph...')
+#3 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/alpha/urlinqyii/club/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/club/1
+---

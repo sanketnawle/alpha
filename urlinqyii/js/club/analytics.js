@@ -739,11 +739,11 @@ $(document).delegate(".ga_option","click",function(){
 
 
                 $.getJSON(base_url + '/club/getMemberBreakdown', { group_id: group_id}, function(json_data) {
-                    var freshman_percent_str = (json_data['freshman_count'] / json_data['total_count'] * 100).toString() + '%';
-                    var sophomore_percent_str = (json_data['sophomore_count'] / json_data['total_count'] * 100).toString() + '%';
-                    var junior_percent_str = (json_data['junior_count'] / json_data['total_count'] * 100).toString() + '%';
-                    var senior_percent_str = (json_data['senior_count'] / json_data['total_count'] * 100).toString() + '%';
-                    var graduate_percent_str = (json_data['graduate_count'] / json_data['total_count'] * 100).toString() + '%';
+                    var freshman_percent_str = (Math.round(json_data['freshman_count'] / json_data['total_count'] * 100) / 100).toString() + '%';
+                    var sophomore_percent_str = (Math.round((json_data['sophomore_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var junior_percent_str = (Math.round((json_data['junior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var senior_percent_str = (Math.round((json_data['senior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var graduate_percent_str = (Math.round((json_data['graduate_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
 
                     //Set the width of the horizontal bar graphs
                     $('#freshman_percent_bar').width(freshman_percent_str);
