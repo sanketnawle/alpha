@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<?php
-    //include "php/redirect.php";
-    //require_once('php/time_change.php');
-   
-?>
+
 <html>
 
     <head>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-        </script>
+
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
         <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/home.css">
 
 
@@ -140,7 +137,7 @@ $( document ).ready(function() {
 
             echo "<div class='group_feed_wrap'>";
 
-            echo Yii::app()->runController('partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
+            echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
 
             echo "</div>";
 
@@ -152,7 +149,7 @@ $( document ).ready(function() {
     </section>
    
     <section class='rightbar_bag'>
-        <?php //include 'planner_beta.php';?>
+        <?php //include 'planner_beta.php'; ?>
     </section>
 
     <section class='leftbar_bag'>

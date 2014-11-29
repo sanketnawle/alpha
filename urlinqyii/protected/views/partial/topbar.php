@@ -12,15 +12,15 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/../beta/leftpanel_beta/css/topbar.css' />
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/lptopbar/notify.css' />
-    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/topbar.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/notify.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css' />
 </head>
 <body>
     <div class="topbar">
         <div class="left">
             <!--<a href="./home.php" class="urlinq"></a>-->
-            <a href="./" class="urlinq"></a>
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"></a>
             <a class="menu active"></a>
         </div>
         <div class="right">

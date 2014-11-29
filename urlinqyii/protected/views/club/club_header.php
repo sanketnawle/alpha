@@ -124,7 +124,7 @@ echo '
                                             </div >
                                         </a >
                                     </li >';
-                                    if ($is_admin == "1")
+                                    if ($is_admin)
                                     {
                                         echo '<li class = "tab-no-badge group-tab" >
                                             <a class = "tab4 tab-anchor tab-inactive" >

@@ -1082,6 +1082,7 @@
                                         } ?>
                                             ) no-repeat scroll center center / cover transparent">
                                         </div>
+
                                         <h3 id="<?php echo $class->class_id;?>" class="classlink"><?php echo $class->course->course_name;?></h3>
                                         <?php  if($is_user) {
                                             echo '<div class="user-class-visibility undefined">
@@ -1098,6 +1099,7 @@
                                         <div class="hover"></div>
                                     </div>
                                     <div class="options">
+
                                         <div class="option">Public<div class="tick"></div>
                                         </div>
                                         <div class="option">People I Follow
@@ -1109,7 +1111,7 @@
                                     </div>
                                 </div>
                             </div>';
-                                        } ?>
+                                         ?>
                                     </a>
                                     <?php
                                     echo '<div class="admin-group-functions">
@@ -1138,12 +1140,14 @@
                                 <div class="visibility_new">
 
                                     <select id="visibility_new">
+
                                         <!--                                    <div class="option" >Public<div class="tick"></div></div>-->
                                         <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
                                         <!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
                                         <option value="public" class="option" <?php// echo ($default_privacy == "public")?"selected":"" ?>>Public<div class="tick"></div></option>
                                         <option value="following" class="option" <?php //echo ($default_privacy =="following")?"selected":"" ?>>People I Follow<div class="tick"></div></option>
                                         <option value="only_me" class="option" <?php// echo ($default_privacy =="only_me")?"selected":"" ?>>Just Me<div class="tick"></div></option>
+
                                     </select>
                                 </div>
                             </div>

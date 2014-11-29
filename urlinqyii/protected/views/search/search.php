@@ -80,8 +80,9 @@
                 <div class="visible-lg">
                     <div class="searchType">
                         <!-- All searchTypes have sub_filters, which are Advanced Searches   -->
+
                         <span class="wedgeRight"></span>
-                        <div>
+                        <div id = "allResults">
                             <div class="search_category active">
                                 <a class="type" data-value="All"><span id="category1" class="resultNum pull-right"></span>All Results</a>
                             </div>
@@ -89,7 +90,7 @@
 
 
                         <!--  Courses can be filtered by School, department, and professor -->
-                        <div>
+                        <div id = "courses">
                             <div class="search_category">
                                 <a class="type" data-value="Courses"><span id="category2" class="resultNum pull-right"></span>Courses</a>
                             </div>
@@ -135,7 +136,7 @@
                         </div>
 
                         <!--  Professors can be filtered by School and Department -->
-                        <div>
+                        <div id ="professors">
                             <div class="search_category">
                                 <a class="type" data-value="Professor"><span id="category3" class="resultNum pull-right"></span>Professors</a>
                             </div>
@@ -168,7 +169,7 @@
                         </div>
 
                         <!--  Students can be filtered by School and Major -->
-                        <div>
+                        <div id = "students">
                             <div class="search_category">
                                 <a class="type" data-value="Student"><span id="category4" class="resultNum pull-right"></span>Students</a>
                             </div>
@@ -201,7 +202,7 @@
                         </div>
 
                         <!--  Clubs can be filtered by School -->
-                        <div>
+                        <div id = "clubs">
                             <div class="search_category">
                                 <a class="type" data-value="Clubs"><span id="category5" class="resultNum pull-right"></span>Clubs</a>
                             </div>
@@ -223,7 +224,7 @@
                         </div>
 
                         <!--  Departments can be filtered by School -->
-                        <div>
+                        <div id = "departments">
                             <div class="search_category">
                                 <a class="type" data-value="Departments"><span id="category6" class="resultNum pull-right"></span>Departments</a>
                             </div>
@@ -333,12 +334,12 @@
                     <!--</div>-->
                     <!--The template for Clubs  who match up with the search query-->
                     <div class="vert-area">
-                        <div class="course vert-results-wrapper">
+                        <div class="person vert-results-wrapper">
                             <div class=results-top-sec>
-                                <script id="vertical_club_results_top" type="text/x-handlebars-template">
-                                    <div class="result-header">
-                                        {{rname}}
-                                    </div>
+                                <script id="vertical_club_results_img" type="text/x-handlebars-template">
+                                    <a class="person-result-images" href= }>
+                                        <div style="background-image: url('http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg');" class="img"></div>
+                                    </a>
                                     <div class="result-header-right"></div>
                                 </script>
                                 <div class="results-main-sec">

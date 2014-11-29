@@ -177,6 +177,19 @@ class ProfileController extends Controller
 
 
     }*/
+    public function actionUpdateHere(){
+        $vis_var=$_POST['selected'];
+      //  echo $vis_var;
+        $vis_var=(string)$vis_var;
+       $user_id=1;
+        $user_group = GroupUser::model()->find('user_id=:id', array(':id'=>$user_id));
+//      $user_group = $user->group_user;
+//        var_dump($user_group);
+        $user_group->attributes=array('privacy'=>$vis_var);
+        $user_group->save();
+
+    }
+
     public function getImageFromWebsite($url){
         include 'simple_html_dom.php';
         include 'url_to_absolute.php';
@@ -655,6 +668,7 @@ class ProfileController extends Controller
             }
         }
     }
+
     public function actionDownloadShowcase()
     {
         $file = File::model()->find('file_id=:fid', array(':fid' => $_GET['file_id']));
@@ -670,6 +684,7 @@ class ProfileController extends Controller
             $this->renderJSON(array('status' => 'success'));
         }else{
             $this->renderJSON(array('status' => 'failure: file no longer exists'));
+
         }
 
     }
