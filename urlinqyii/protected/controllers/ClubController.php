@@ -486,12 +486,12 @@ class ClubController extends Controller
     }
 
     public function actionGetMemberBreakdown(){
-        if (!isset($_GET['group_id'])) {
+        if (!isset($_GET['id'])) {
             $this->renderJSON(array('success'=>'false','error_id'=>1));
             return;
         }
             // ../ goes to parent directory
-        $group_id = $_GET['group_id'];
+        $group_id = $_GET['id'];
         try {
 
             $group_users = GroupUser::model()->findAllbySql("SELECT * FROM `group_user` WHERE group_id = '$group_id'");

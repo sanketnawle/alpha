@@ -26,7 +26,7 @@
       <file leaf-file-name="leftpanel.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leftpanel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179">
+            <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="-12.307693" vertical-offset="853" max-vertical-offset="3179">
               <folding />
             </state>
           </provider>
@@ -52,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="club_attendance_data.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="club_attendance_data.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1394">
+            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.14715719" vertical-offset="497" max-vertical-offset="1394">
               <folding>
                 <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
@@ -93,22 +93,12 @@
       <file leaf-file-name="club_member_count_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_member_count_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="765">
+            <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="765">
               <folding>
                 <marker date="1412179675568" expanded="true" signature="522:641" placeholder="SELECT * FRO..group_users..." />
+                <marker date="1412179675568" expanded="true" signature="874:1043" placeholder="SELECT * FRO..group_users..." />
+                <marker date="1412179675568" expanded="true" signature="1302:1465" placeholder="SELECT * FRO..group_users..." />
                 <marker date="1412179675568" expanded="true" signature="1721:1882" placeholder="SELECT * FRO..group_users..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="club_class_rank_data.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="69" selection-start="851" selection-end="851" vertical-scroll-proportion="0.4851598" vertical-offset="0" max-vertical-offset="1343">
-              <folding>
-                <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
-                <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />
               </folding>
             </state>
           </provider>
@@ -544,7 +534,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leftpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179">
+        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="-12.307693" vertical-offset="853" max-vertical-offset="3179">
           <folding />
         </state>
       </provider>
@@ -593,17 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1394">
-          <folding>
-            <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
-            <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
-            <marker date="1412179675564" expanded="true" signature="1755:1817" placeholder="SELECT * FRO..group_event_invited..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_page_view_data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="54" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="3740">
@@ -637,22 +616,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="69" selection-start="851" selection-end="851" vertical-scroll-proportion="0.4851598" vertical-offset="0" max-vertical-offset="1343">
+          <folding>
+            <marker date="1412179675565" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1412179675565" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_member_count_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="765">
+        <state line="39" column="2" selection-start="2090" selection-end="2090" vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="765">
           <folding>
             <marker date="1412179675568" expanded="true" signature="522:641" placeholder="SELECT * FRO..group_users..." />
+            <marker date="1412179675568" expanded="true" signature="874:1043" placeholder="SELECT * FRO..group_users..." />
+            <marker date="1412179675568" expanded="true" signature="1302:1465" placeholder="SELECT * FRO..group_users..." />
             <marker date="1412179675568" expanded="true" signature="1721:1882" placeholder="SELECT * FRO..group_users..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/analytics/club_class_rank_data.php">
+    <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="69" selection-start="851" selection-end="851" vertical-scroll-proportion="0.4851598" vertical-offset="0" max-vertical-offset="1343">
+        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.14715719" vertical-offset="497" max-vertical-offset="1394">
           <folding>
-            <marker date="1412179675565" expanded="true" signature="297:353" placeholder="SELECT * FRO..." />
-            <marker date="1412179675565" expanded="true" signature="909:967" placeholder="SELECT * FRO..." />
+            <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
+            <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
+            <marker date="1412179675564" expanded="true" signature="1755:1817" placeholder="SELECT * FRO..group_event_invited..." />
           </folding>
         </state>
       </provider>
