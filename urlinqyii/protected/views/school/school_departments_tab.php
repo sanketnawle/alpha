@@ -179,10 +179,10 @@ echo '<div class = "department ajax" id="department-ajax">
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
 
 echo '
-    <div class="dept_following" >
-        <select id="dept_following">
-             <option value="follow" class="follow_option" data-deptid="<?php echo $department->department_id ?>">follow</option>
-             <option value="unfollow" class="follow_option" data-deptid="<?php echo $department->department_id ?>">unfollow</option>
+    <div class="dept_following_wrap" >
+        <select class="dept_following" data-department_id="' . $department->department_id . '">
+             <option value="follow" class="follow_option">follow</option>
+             <option value="unfollow" class="follow_option">unfollow</option>
         </select>
     </div>';
 
@@ -211,10 +211,11 @@ echo '
 //        });
 
         $(".dept_following").change(function(){
-            var my_div= $( ".follow_option" ).attr('data-depid');
-            var selected_val = $("#dept_following").val();
+            var department_id = $(this).attr('data-department_id');
+            var option = $(this).find('option:selected');
+            var selected_val = $(option).text();
            // var dept_id = mydiv.getAttribute("data-deptid");
-            alert(selected_val, my_div);
+            alert(selected_val + ' ' +  department_id);
             ////  alert (selected_val);
             //$.ajax({
             //    type: "POST",

@@ -86,7 +86,7 @@ class PartialController extends Controller
         $user = $this->get_current_user();
         $school = $user->school->school_name;
         //Changed by Alex. This line was causing errors lkajsdl
-        
+
         //$department = $user->department->department_name;
         $department = $user->department['department_name'];
         //$department = $user->department;

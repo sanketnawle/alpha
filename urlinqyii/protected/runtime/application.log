@@ -28057,3 +28057,75 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/oldfeed.php
 HTTP_REFERER=http://localhost/alpha/urlinqyii/home
 ---
+2014/11/30 02:38:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/search-icons.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/search-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/logo.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/logo.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-toggle.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-toggle.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/smallSearchIco.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/smallSearchIco.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/board_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/board_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/topbar/topbar.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-bar.gif".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-bar.gif
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/menu-icons.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/menu-icons.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
+2014/11/30 02:49:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/wedge_down.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/wedge_down.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
+---
