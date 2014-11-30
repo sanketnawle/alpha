@@ -2075,7 +2075,7 @@ $(document).ready(function () {
 
         if (profileLoadFlag == 1) {
 
-            window.location = "profile.php?user_id=" + $(this).parents('.member').prop('id').trim();
+            window.location = base_url + "/profile/" + $(this).parents('.member').prop('id').trim();
 
         }
 

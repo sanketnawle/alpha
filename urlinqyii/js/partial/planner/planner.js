@@ -255,7 +255,7 @@ $(document).ready(function(){
         }else{
             $('#free_planner_wrap').hide().fadeIn( "slow", function() {
                 // Animation complete
-                alert('show planner');
+//                alert('show planner');
             });
         }
 
@@ -484,7 +484,7 @@ $(document).on('click','#create_todo_form',function(e){
 
 
     if(errors.length > 0){
-        alert(JSON.stringify(errors));
+//        alert(JSON.stringify(errors));
         $('#new_listing_text').text(JSON.stringify(errors));
         return false;
     }

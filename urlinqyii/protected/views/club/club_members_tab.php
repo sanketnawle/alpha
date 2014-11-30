@@ -34,6 +34,7 @@ echo '
 
 //$admin_array = array();
 
+$base_url = Yii::app()->getBaseUrl(true);
 
 echo '<div class="members-list-wrap prof-member-list">';
     foreach ($club->admins as $row1) {
@@ -42,15 +43,15 @@ echo '<div class="members-list-wrap prof-member-list">';
       //   $is_admin = true;
       // }
 
-        // <span>' . $row1['interest'] . '</span> <a href="profile.php?user_id=' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+
         echo '
             <div class="member" id="' . $row1['user_id'] . '">
                 <div class="member-person prof-member-person">
                   <div class="member-wrap prof-member-wrap">
                     <div class="person-thumb">
-                      <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
+                      <div class="picwrap" style="background-image:url(' . $base_url . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
-                        <span>' .  $row1->user_bio . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' .  $row1->user_bio . '</span> <a href="' . $base_url . '/profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         if ($row1['user_id'] != $user->user_id) {
@@ -112,7 +113,7 @@ if(count($club->members) > 0) {
                     <div class="person-thumb">
                       <div class="picwrap" style="background-image:url(' . Yii::app()->getBaseUrl(true) . '' . $row1->pictureFile->file_url .')"></div>
                       <div class="member-bio">
-                        <span>' . $row1->user_bio . '</span> <a href="profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
+                        <span>' .  $row1->user_bio . '</span> <a href="' . $base_url . '/profile/' . $row1['user_id'] . '"><strong>View Profile</strong></a>
                       </div>';
                       if ($is_admin){
                         echo '<img class="delete-user" title="delete member"/>';

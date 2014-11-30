@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     var current_option = $('.ga_option_cur').text();
 
-    alert(group_id);
+//    alert(group_id);
     //    $.getScript('js/getURLPara.js', function(){
 //        var group_id = '';
 //        if ($.getUrlVar("group_id") != null) {
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
         $.getJSON(base_url + "/club/" + group_id.toString() + "/getMemberCountData", { group_id: group_id}, function(json_data) {
             console.log(json_data);
-            alert(JSON.stringify(json_data));
+//            alert(JSON.stringify(json_data));
             var current_option = $('.ga_option_cur').text().toLowerCase();
             var percent_increase = 0.0;
             var old_members_count = 0;
