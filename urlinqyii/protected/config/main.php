@@ -58,11 +58,10 @@ return array(
             'rules'=>array(
                 //Maps multiple views in one line
                 '<action:(contact|login|test|json|home|register|logout|timezone)>'=>'site/<action>',
-                'post/json' => '/post/index',
-                'about' => '/site/page/view/about',
-                'calendar' => 'calendar/view',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+
+
 
                 'home/feed' => 'feed/getHomePosts',
                 'profile/<id:\d+>/feed' => 'feed/getProfilePosts',
@@ -72,6 +71,22 @@ return array(
                 'department/<id:[\w|-]+>/feed' => 'feed/getDepartmentPosts',
                 'school/<id:[\w|-]+>/feed' => 'feed/getSchoolPosts',
                 'post/<id:\d+>/feed' => 'feed/getPost',
+
+
+
+                '<controller:\w+>/<id:\d+>/<action:\w+>/'=>'<controller>/<action>',
+
+
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
+
+                'post/json' => '/post/index',
+                'about' => '/site/page/view/about',
+                'calendar' => 'calendar/view',
+
+
+
+
 //                'post/create'=> 'post/create',
                 'post/<id:\d+>/update' => 'post/update',
                 'post/<id:\d+>/delete' => 'post/delete',
@@ -97,10 +112,7 @@ return array(
                 'file/upload'=>'site/fileUpload',
 
 
-                '<controller:\w+>/<id:\d+>/<action:\w+>/'=>'<controller>/<action>',
 
-
-                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
 
             ),

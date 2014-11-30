@@ -1,23 +1,33 @@
 (function($) {
     var j$ = $.noConflict();
             $(document).ready(function () {
-
-
+                //close description
                 //add interest
+
+                $(".visibility_new").change(function(){
+                    var selected_val = $("#visibility_new").val();
+                    //  alert (selected_val);
+                    $.ajax({
+                        type: "POST",
+                        url: base_url + '/profile/updateHere',
+                        data: {selected: selected_val},
+                        success: function(data) {
+                            alert("updated")
+                        },
+                        error: function(data) {
+                            alert ("error")
+                        }
+                    });
+
+                });
+
+                var new_interests = new Array();
                 $('input[name=interest_name]').bind('keypress', function(e) {
 
                     if(e.keyCode==13) {//if enter key is pressed
-                        $.post(base_url + "/profile/addInterest", {
-                                name: $('input[name=interest_name]').val(),
-                                user_id: user_id
-                            }, function (data) {
-                                if(!(/error/i.exec(data))){
-                                    $('#interest-section').append('<span class="interest-block">'+data+'</span>\n')
-                                }else{
-                                    alert(data);
-                                }
-                            });
-
+                        new_interests.push($('input[name=interest_name]').val());
+                        $('#interest-section').append('<span class="interest-block">'+$('input[name=interest_name]').val()+'</span>\n')
+                        $('input[name=interest_name]').val('');
                     }
                 });
 
@@ -102,10 +112,12 @@
                 //edit showcase
                 var new_showcase_title;
                 var new_showcase_desc;
-                $('#edit-from-showcase').on('click',function(){
-                    alert('hi');
-                    new_showcase_desc = $('#showcase-desc-edit').val();
+                $('#edit-from-submit').on('click',function(){
+
+                    new_showcase_desc = $('#showcase-link-edit').val();
                     new_showcase_title = $('#showcase-name-edit').val();
+                    $('.root').css('opacity', '1');
+                    $('.edit-showcase-form').css('display', 'none');
                     $.ajax({
                         url: base_url+'/profile/editShowcase',
                         type: 'POST',
@@ -131,19 +143,22 @@
                         }
                     });
                 });
-                //follow user
+                //follow or unfollow user
+                var follow_unfollow;
                 $('.follow_prof_button').on('click',function(){
+                    if($.trim($(this).text()) == 'Follow'){
+                        follow_unfollow = 'follow';
+                    }else{
+                        follow_unfollow = 'unfollow';
+                    }
                     $.ajax({
                         url: base_url+'/profile/followUser',
                         type: 'POST',
-                        data: {user_to_follow:user_profile_id,user:user_id},
+                        data: {user_to_follow:user_profile_id,user:user_id,follow_unfollow:follow_unfollow},
                         dataType: 'json',
                         success: function(data)
                         {
-                            if(data.status == "success"){
-                                //change to following kinyi
-
-                            }else{
+                            if(data.status != "success"){
                                 alert(data.message);
                             }
                         },
@@ -153,9 +168,42 @@
                         }
                     });
                 });
+                var follow_unfollow_user;
+
+                $('.follow-btn').on('click',function(){
+                    if($.trim($(this).find('a').text()) == 'Follow'){
+                        follow_unfollow_user = 'follow';
+                    }else{
+                        follow_unfollow_user = 'unfollow';
+                    }
+                    var user_to_follow = $(this).parent().parent().parent().attr('id');
+                    $.ajax({
+                        url: base_url+'/profile/followUser',
+                        type: 'POST',
+                        data: {user_to_follow:user_to_follow,user:user_id,follow_unfollow:follow_unfollow_user},
+                        dataType: 'json',
+                        success: function(data)
+                        {
+                            if(data.status != "success"){
+                                alert(data.message);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert('err'+errorThrown);
+                        }
+                    });
+                });
+
+              /*  $('.download-showcase-button').on('click',function(){
+                    alert('download');
+                    $type = $('.showcase-image.center-image').attr('data-file-type');
+                    if($type == 'url'){
+                        window.open()
+                    }
+                });*/
                 //change profile pic
                 $('.camera-icon-button,.camera-icon-button-before').on('click',function(){
-                    alert('herp');
                     $('#picture-upfile').click();
                 });
                 var upload_file;
@@ -190,6 +238,661 @@
                             alert('err'+errorThrown);
                         }
                     });
+                });
+                $("body").on("click", "#add-showcase-wrap-id button", function () {
+                    $('.root').css('opacity', '0.1');
+                    $('.showcase-form').css('display', 'initial');
+                    $(".showcase-form").on("click", ".cancel-showcase-form", function () {
+                        $('.root').css('opacity', '1');
+                        $('.showcase-form').css('display', 'none');
+
+                        //reset form
+                        $('#link-entry').val('');
+                        $('#title-entry').val('');
+                        $('#link-entry').prop('disabled',false);
+                        upload_file = null;
+                    });
+
+                    $(".showcase-form").on("click", ".close-description", function () {
+                        $('.description-section').css('display', 'none');
+                        $.post( base_url+"/profile/closeShowcaseInstructions", {user: user_id}, function( data ) {
+                            if(data.status != "success"){
+                                alert(data.status);
+                            }
+                        },"json");
+                    });
+                });
+               /* $("body").on("mouseenter", ".profpic-container-real", function(){
+                    $("#camera-icon-div").addClass("camera-icon-div");
+                    $(".camera-icon-div button").addClass("camera-icon-button");
+                    $(".camera-icon-div button").removeClass("camera-icon-button-before");
+                });
+                $("body").on("mouseleave", ".profpic-container-real", function(){
+                    $("#camera-icon-div").removeClass("camera-icon-div");
+                    $("#camera-icon-div button").removeClass("camera-icon-button");
+                    $("#camera-icon-div button").addClass("camera-icon-button-before");
+                });*/
+                var school ='';
+                var majors = new Array();
+                var minors = new Array();
+
+                var bio;
+                var name;
+                $("body").on("click", '.edit_prof_button', function(){
+                    $('.user-information h1, .edit_prof_button').css('display', 'none');
+                    $('.user-information .school-info').css('opacity', '0');
+                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'initial');
+                    $('#school-section').text('UPDATE YOUR SCHOOL');
+                    $('#major-section').text('UPDATE YOUR MAJOR');
+                    $('#minor-section').text('UPDATE YOUR MINOR');
+                    $('#about-section h3').text('UPDATE YOUR BIO');
+                    $('#about-section').css('margin-top', '50px');
+                    $('h3 + i').addClass('add-major-minor');
+                    $('#major-section + i').attr('id','major');
+                    $('#minor-section + i').attr('id','minor');
+                    $('h3').css('margin-left', '9px');
+                    $('.info-block').css('margin-left', '5px');
+                    $('.info-block input + i').addClass('delete-major-minor');
+                    $('.info-block input').attr("readonly", false);
+                    $('.info-block textarea').attr("readonly", false);
+                    $('p.school-info').css('margin-top', '-20px');
+                    $('.showcase-image-control').css('visibility', 'visible');
+                    $('.user-groups, .showcase-image').addClass('blur_class');
+                    $('.center-image').addClass('opacity_class');
+                    $('.switch-image-panel').addClass('visible_class');
+                    $('#circle-div-delete').addClass('hidden_class');
+                    $('body').on('click', '#circle-div-switch-left, #circle-div-switch, #remove-showcase-button', function(){
+                        $('.showcase-image').removeClass('opacity_class');
+                        $('.showcase-image').addClass('blur_class');
+                        $('.center-image').addClass('opacity_class');
+                    });
+
+                    $('input[name=username-entry]').val($('.info_username').text());
+
+                    //save current info
+                    school = $('input[name=school_name]').val();
+
+                    $('input[name=major_name]').each(function(){
+                        majors.push($(this).val());
+                    });
+
+                    $('input[name=minor_name]').each(function(){
+                        minors.push($(this).val());
+                    });
+                    bio = $('.info-block textarea').val();
+                    name = $('input[name=username-entry]').val();
+                    new_interests = new Array();
+
+                });
+                $('body').on('click', '.cancel-edit-button', function(){
+                    $('.user-information h1, .edit_prof_button').css('display', 'initial');
+                    $('.user-information .school-info').css('opacity', '1');
+                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'none');
+                    $('.user-information').css('margin-top', '16px');
+                    $('p.school-info').css('margin-top', '4px');
+                    $('#school-section').text('SCHOOL');
+                    $('#major-section').text('MAJOR');
+                    $('#minor-section').text('MINOR');
+                    $('#about-section h3').text('ABOUT');
+                    $('#about-section').css('margin-top', '0px');
+                    $('h3 + i').removeClass('add-major-minor');
+                    $('h3').css('margin-left', '6px');
+                    $('.info-block').css('margin-left', '2px');
+                    $('.info-block input + i').removeClass('delete-major-minor');
+                    $('.info-block input').attr("readonly", true);
+                    $('.info-block textarea').attr("readonly", true);
+                    $('.showcase-image-control').css('visibility', 'hidden');
+                    // $('.user-groups').css('opacity', '1');
+                    //$('.showcase-image').css('opacity', '1');
+                    $('.user-groups').removeClass('blur_class');
+                    $('.switch-image-panel').removeClass('visible_class');
+                    $('#circle-div-delete').removeClass('hidden_class');
+                    if(!$('input[name=major_name]').length){
+                        $('#major-section').text('');
+                    }
+                    if(!$('input[name=minor_name]').length){
+                        $('#minor-section').text('');
+                    }
+
+                    //load saved inputs
+                    $('input[name=school_name]').val(school);
+
+                    $('input[name=major_name]').parent().remove();
+                    for(var i = 0;i<majors.length;i++){
+                        $('#major-section').next().after( '<div class="info-block">'+
+                        '<input name="major_name" value="'+majors[i]+'" title="'+majors[i]+'" readonly><i></i>'+
+                        '</div>');
+                    }
+                    $('input[name=minor_name]').parent().remove();
+                    for(var i = 0;i<minors.length;i++){
+                        $('#minor-section').next().after( '<div class="info-block">'+
+                        '<input name="minor_name" value="'+minors[i]+'" title="'+minors[i]+'" readonly><i></i>'+
+                        '</div>');
+                    }
+                    majors=new Array();
+                    minors=new Array();
+                    $('.interest-block').each(function(){
+                        if(new_interests.indexOf($(this).text()) != -1){
+                            $(this).remove();
+                        }
+                    });
+                    $('.info-block textarea').val(bio);
+                    $('input[name=username-entry]').val(name);
+
+
+                });
+                //handle dropdowns
+                var new_year;
+                $('.yearpicker').on('change',function(){
+                    new_year = $(this).val();
+                });
+                var new_year_name;
+                $('.levelpicker').on('change',function(){
+                    new_year_name = $(this).val();
+                });
+                //handle bio
+                var new_bio;
+                $('.info-block textarea').on('change',function(){
+                    new_bio = $(this).val();
+                });
+                var new_name;
+                $('input[name=username-entry]').on('change',function(){
+                    new_name = $(this).val();
+                });
+
+                //autocomplete majors
+                var major_text;
+                var major_changed = false;
+                var minor_changed = false;
+                var index;
+                $('body').on('keyup','input[name=major_name]', function () {
+                    index = $('input[name=major_name]').index(this);
+                    major_changed = true;
+                    major_text = $(this).val();
+                    $.ajax({
+                        url: base_url + '/profile/autoComplete',
+                        type: 'GET',
+                        data: {major: major_text},
+                        //  cache: false,
+                        dataType: 'json',
+                        // processData: false, // Don't process the files
+                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function (result) {
+
+                            $('input[name=major_name]').eq(index).autocomplete({source: result});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                });
+                $('body').on('keyup', 'input[name=minor_name]', function () {
+                    index = $('input[name=minor_name]').index(this);
+                    minor_changed = true;
+                    major_text = $(this).val();
+                    $.ajax({
+                        url: base_url + '/profile/autoComplete',
+                        type: 'GET',
+                        data: {major: major_text},
+                        //  cache: false,
+                        dataType: 'json',
+                        // processData: false, // Don't process the files
+                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function (result) {
+
+                            $('input[name=minor_name]').eq(index).autocomplete({source: result});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                });
+
+                var new_school;
+                $('input[name=school_name]').on('keyup',function(){
+                    new_school = $(this).val();
+                    $.ajax({
+                        url: base_url+'/profile/autoComplete',
+                        type: 'GET',
+                        data: {school: new_school},
+                        //  cache: false,
+                        dataType: 'json',
+                        // processData: false, // Don't process the files
+                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function(result)
+                        {
+                            $('input[name=school_name]').autocomplete({source:result});
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(errorThrown);
+                        }
+                    });
+                });
+                //var deleted_majors = [];
+                // var new_majors=[];
+                $('body').on('click', '.finish-edit-button', function(){
+                    $('.user-information h1, .edit_prof_button').css('display', 'initial');
+                    $('.user-information .school-info').css('opacity', '1');
+                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'none');
+                    $('.user-information').css('margin-top', '16px');
+                    $('p.school-info').css('margin-top', '4px');
+                    $('#school-section').text('SCHOOL');
+                    $('#major-section').text('MAJOR');
+                    $('#minor-section').text('MINOR');
+                    $('#about-section h3').text('ABOUT');
+                    $('#about-section').css('margin-top', '0px');
+                    $('h3 + i').removeClass('add-major-minor');
+                    $('h3').css('margin-left', '6px');
+                    $('.info-block').css('margin-left', '2px');
+                    $('.info-block input + i').removeClass('delete-major-minor');
+                    $('.info-block input').attr("readonly", true);
+                    $('.info-block textarea').attr("readonly", true);
+                    $('.showcase-image-control').css('visibility', 'hidden');
+                    // $('.user-groups').css('opacity', '1');
+                    //  $('.showcase-image').css('opacity', '1');
+                    $('.user-groups').removeClass('blur_class');
+                    $('.switch-image-panel').removeClass('visible_class');
+                    $('#circle-div-delete').removeClass('hidden_class');
+                    if(!$('input[name=major_name]').length){
+                        $('#major-section').text('');
+                    }
+                    if(!$('input[name=minor_name]').length){
+                        $('#minor-section').text('');
+                    }
+
+                    var data = new FormData();
+                    data.append('user',user_id);
+                    if(new_year){
+                        data.append('year',new_year);
+                    }
+                    if(new_bio){
+                        data.append('bio',new_bio);
+                    }
+                    new_school = $('input[name=school_name]').val();
+                    if(new_school){
+                        data.append('school',new_school);
+                    }
+                 //   $('input[name=major_name]')
+                    if(major_changed == true){
+                        if(!$('input[name=major_name]').length){
+                            data.append('majors[0]', 'none');
+                        }else{
+                            $('input[name=major_name]').each(function(index){
+                                data.append('majors['+index+']', $(this).val());
+                            });
+                        }
+                    }
+                    if(minor_changed == true){
+                        if(!$('input[name=minor_name]').length){
+                            data.append('minors[0]', 'none');
+                        }else{
+                            $('input[name=minor_name]').each(function(index){
+                                data.append('minors['+index+']', $(this).val());
+                            });
+                        }
+                    }
+                    if(new_year_name){
+                        data.append('year_name',new_year_name);
+                    }
+                    if(new_school){
+                        data.append('school',new_school);
+                    }
+                    if(new_name){
+                        data.append('name',new_name);
+                    }
+                    if(new_interests.length>0){
+                        for(var i=0;i<new_interests.length;i++){
+                            data.append('interests['+i+']',new_interests[i]);
+                        }
+                    }
+                    $.ajax({
+                        url: base_url+'/profile/editProfile',
+                        type: 'POST',
+                        data: data,
+                        cache: false,
+                        dataType: 'json',
+                        processData: false, // Don't process the files
+                        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: function(result)
+                        {
+                            if(result.year == "success"){
+                                if(new_year){
+                                    $('.school-info').text($('.school-info').text().replace(/\d{4}/,new_year));
+                                }
+                            }else if(result.year){
+                                alert(result.year);
+                            }
+                            if(result.year_name == "success"){
+                                $('.school-info').text($('.school-info').text().replace(/(Freshman|Sophomore|Junior|Senior|Master|PhD)/,new_year_name));
+                            }else if(result.year_name){
+                                alert(result.year_name);
+                            }
+                            if(result.bio && result.bio != "success"){
+                                alert(result.bio);
+                                $('.info-block textarea').val(bio);
+                            }
+                            if(result.major && result.major != "success"){
+                                alert(result.major);
+                                // $('input[name=major_name]').val(majors[0]);
+                            }
+                            if(result.minor && result.minor != "success"){
+                                alert(result.minor);
+                                // $('input[name=major_name]').val(majors[0]);
+                            }
+                            if(result.name == "success"){
+                                $('.info-username').text(new_name);
+                            }else if(result.name){
+                                alert(result.name);
+                                $('input[name=username-entry]').val(name);
+                            }
+                            if(result.school && result.school != "success"){
+                                alert(result.school);
+                                $('input[name=school_name]').val(school);
+                            }
+                            if(result.interests && result.interests != "success"){
+                                alert(result.school);
+                               // $('input[name=school_name]').val(school);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(errorThrown);
+                        }
+                    });
+                    //alert(new_interests);
+
+                    //add_interests(new_interests);
+                    majors=new Array();
+                    minors=new Array();
+
+                });
+
+                $('body').on('click', '.add-major-minor', function(){
+                    var name = $(this).attr('id');
+                    if(name == 'major'){
+                        $(this).next().before("<div class=\"info-block\" style=\"margin-bottom: 20px; margin-left: 5px\"> <input name=\"major_name\"" +
+                        " value=\"\"><i class=\"delete-major-minor\"></i></div>");
+                    }else{
+                        $(this).next().before("<div class=\"info-block\" style=\"margin-bottom: 20px; margin-left: 5px\"> <input name=\"minor_name\"" +
+                        " value=\"\"><i class=\"delete-major-minor\"></i></div>");
+                    }
+
+
+                });
+
+                $('body').on('click', '.delete-major-minor', function(){
+                    minor_changed = true;
+                    major_changed = true;
+                    $(this).parent().remove();
+                });
+                var old_showcase_title;
+                $('body').on('click', '#edit-showcase-button button', function(){
+                    $('.root').css('opacity', '0.1');
+                    $('.edit-showcase-form').css('display', 'initial');
+
+                    var background = $(this).closest('.center-image').css('background-image');
+                    var color = $(this).closest('.center-image').find('.showcase-label').css('background-color');
+                    if(background != 'none'){
+                        $('.edit-showcase-form').css('background-image', background );
+                        $('.edit-showcase-form').css('background-color', 'none');
+                    }
+                    else{
+                        $('.edit-showcase-form').css('background-image', 'none');
+                        $('.edit-showcase-form').css('background-color', color );
+                    }
+
+                    var title = $(this).closest('.center-image').find('.showcase-title').text();
+                    var description = $(this).closest('.center-image').find('.showcase-description').text();
+                    $('.edit-showcase-form input[name=showcase-name]').val($.trim(title) );
+                    $('.edit-showcase-form input[name=showcase-link]').val($.trim(description) );
+
+                    $('body').on('click', '.edit-form-bottom span', function(){
+                        $('.root').css('opacity', '1');
+                        $('.edit-showcase-form').css('display', 'none');
+                    });
+                    old_showcase_title = $('.showcase-image.center-image > .showcase-description-wrap > .showcase-title').text();
+                    $('#showcase-name-edit').val(old_showcase_title);
+                    $('#showcase-desc-edit').val($('.showcase-image.center-image > .showcase-description-wrap > .showcase-description').text());
+                });
+                $("body").on("mouseenter", ".profpic-container-real", function(){
+                    $("#camera-icon-div").addClass("camera-icon-div");
+
+                    $(".camera-icon-div button").addClass("camera-icon-button");
+
+                    setTimeout(function(){ $('.camera-icon-button span').text('Update Profile Picture'); }, 200);
+                });
+                $("body").on("mouseleave", ".profpic-container-real", function(){
+                    $("#camera-icon-div").removeClass("camera-icon-div");
+                    $("#camera-icon-div").addClass("camera-icon-div-before");
+                    $("#camera-icon-div button").removeClass("camera-icon-button");
+                    $("#camera-icon-div button").addClass("camera-icon-button-before");
+                    $('.camera-icon-div-before span').text('');
+                });
+                $('body').on('mouseenter', '#circle-div-delete', function(){
+                    $('#delete-on-hover-before').addClass('delete-on-hover');
+                    $('#delete-on-hover-before').css('visibility', 'visible');
+                    $('#hint_wedge-before').addClass('hint_wedge');
+                });
+                $('body').on('mouseleave', '#circle-div-delete', function(){
+                    $('#delete-on-hover-before').removeClass('delete-on-hover');
+                    $('#delete-on-hover-before').css('visibility', 'hidden');
+                    $('#hint_wedge-before').removeClass('hint_wedge');
+                });
+                $('body').on('mouseenter', '.center-image', function(){
+                    //$('.circle-div').css('visibility', 'visible');
+                    $('.image-panel-wrapper').css('visibility', 'visible');
+                });
+                $('body').on('mouseleave', '.center-image', function(){
+                    //$('.circle-div').css('visibility', 'hidden');
+                    $('.image-panel-wrapper').css('visibility', 'hidden');
+                });
+                var index = 0;
+                var frontImgIdx = getFrontImage(index);
+                while( ($('#img-slot' + index).length) != 0){
+                    var showcaseType = $('#img-slot' + index). attr('data-file-type');
+                    if(showcaseType == '.pdf'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#f15c61');
+                        $('#img-slot' + index + ' .showcase-label span').text('.pdf');
+                    }
+                    else if(showcaseType == 'url'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', 'transparent');
+                        $('#img-slot' + index + ' .download-showcase-button').css('width', '48px');
+                        $('#img-slot' + index + ' .download-showcase-button i').removeClass('download_button_icon');
+                        $('#img-slot' + index + ' .download-showcase-button i').addClass('link_button_icon');
+                        $('#img-slot' + index + ' .download-button-div').css('width','50px');
+                        $('#img-slot' + index + ' .download-showcase-button').css('top','-1px');
+                    }
+                    else if(showcaseType == '.doc'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#2a5896');
+                        $('#img-slot' + index + ' .showcase-label span').text('.doc');
+                    }
+                    else if(showcaseType == '.ppt'){
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#d04525');
+                        $('#img-slot' + index + ' .showcase-label span').text('.ppt');
+                    }
+
+                    var imgWidth = $('#img-slot' + index + ' img').width();
+                    if(index == frontImgIdx){
+                        $('#img-slot' + index).css( 'margin-left',  (($(window).width()/2) - (487/2)) );
+                    }
+                    else{
+                        $('#img-slot' + index).css( 'margin-left', '7px' );
+                    }
+                    ++index;
+                }
+                $('body').on('click', '#circle-div-switch-left', function(){
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
+                    if( $('#' + siblingID).length != 0 ){
+                        var parentWidth = $(this).parents('.showcase-image').width();
+                        var prevImgWidth = $('#' + siblingID).width();
+                        var originalMargin = parseInt( $('#img-slot'+frontImgIdx).css('margin-left') );
+                        var newMargin = parentWidth/2 + 7 + prevImgWidth/2;
+                        $('#' + parentID).removeClass('center-image');
+                        $('#' + siblingID).addClass('center-image');
+                        $('#img-slot'+frontImgIdx).css('margin-left', (originalMargin + newMargin) );
+                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        $('#download-showcase-button').css('background-position', '-28px -100px');
+                        $('.showcase-image').removeClass('opacity_class');
+                        $('.showcase-image').addClass('blur_class');
+                        $('.center-image').addClass('opacity_class');
+                    }
+                });
+
+                $('body').on('click', '#circle-div-switch', function(){
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
+                    if( $('#' + siblingID).length != 0 ){
+                        var parentWidth = $(this).parents('.showcase-image').width();
+                        var nextImgWidth = $(this).parents('.showcase-image').next('.showcase-image').width();
+                        var originalMargin = parseInt( $('#img-slot'+frontImgIdx).css('margin-left') );
+                        var newMargin = parentWidth/2 + 7 + nextImgWidth/2;
+                        $('#' + parentID).removeClass('center-image');
+                        $('#' + siblingID).addClass('center-image');
+                        $('#img-slot' + frontImgIdx).css('margin-left', (originalMargin - newMargin) );
+                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        $('#download-showcase-button').css('background-position', '-28px -100px');
+                        $('.showcase-image').removeClass('opacity_class');
+                        $('.showcase-image').addClass('blur_class');
+                        $('.center-image').addClass('opacity_class');
+                    }
+                });
+                $('body').on('click', '#circle-div-delete, #remove-showcase-button', function(){
+                    var title = $('.showcase-image.center-image > .showcase-description-wrap > .showcase-title').text();
+                    $.ajax({
+                        url: base_url+'/profile/deleteShowcase',
+                        type: 'POST',
+                        data: {title:title},
+                        dataType: 'json',
+                        success: function(result)
+                        {
+                            if(result.status != "success"){
+                                alert(result.status);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(errorThrown);
+                        }
+                    });
+                    var parentID = $(this).parents('.showcase-image').attr('id');
+                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
+
+                    if( $('#' + siblingID).length != 0 ){
+                        if(parentID == 'img-slot' + frontImgIdx ){
+                            var newFrontIdx = siblingID.replace( /[^\d.]/g, '' );
+                            frontImgIdx =  parseInt(newFrontIdx);
+                            var originalMargin = parseInt( $('#img-slot' + frontImgIdx).css('margin-left') );
+                            $('#img-slot' + frontImgIdx).css('margin-left', (($(window).width()/2) - (480/2)) );
+                        }
+                        $('#img-slot' + frontImgIdx).addClass('center-image');
+                        $('.image-panel-wrapper').detach().appendTo('#img-slot' + frontImgIdx);
+                        $('#' + parentID).remove();
+                        $('.showcase-image').removeClass('opacity_class');
+                        $('.showcase-image').addClass('blur_class');
+                        $('.center-image').addClass('opacity_class');
+                    }
+                    else{
+                        var prevID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
+                        $('#' + prevID).addClass('center-image');
+                        $('.image-panel-wrapper').detach().appendTo('#' + prevID);
+                        var originalMargin = parseInt( $('#img-slot' + frontImgIdx).css('margin-left') );
+                        $('#img-slot' + frontImgIdx).css('margin-left', (originalMargin + 480 + 'px') );
+                        $('#' + parentID).remove();
+                    }
+
+                });
+
+                $('body').on('click', '.follow_prof_button', function(){
+                    $(this).addClass('following_prof_button');
+                    $(this).next('i').remove();
+                    $(this).text('Following');
+                });
+                $('body').on('click', '.following_prof_button', function(){
+                    $(this).removeClass('following_prof_button');
+                    $('.follow_prof_button').text('Follow');
+                    $('<i></i>').appendTo('.follow_prof_button');
+                });
+
+                /*$(".user-class-visibility .container .current .drop").click(function(e){
+                 $(e.target).parent().parent().trigger("click");
+                 });*/
+                $(".user-class-visibility .container .current").on("mouseover", function () {
+                    $(this).addClass("mouseover");
+                }); // When the user hovers on the privacy button the dropdown should be visible
+
+                $(".user-class-visibility .container .current").on("mouseout", function (e) {
+                    if (!$(e.target).parent().find(".options").is(":visible")) {
+                        $(this).removeClass("mouseover");
+                    }
+                });// when the user mouse outs from the privacy button all other elements except the privacy label ( like public ) should be seen
+
+                $(".user-class-visibility .container").click(function (e) {
+                    var container = $(e.target);
+                    while (!container.is(".user-class-visibility .container")) {
+                        container = container.parent();
+                    }
+                    var addClass = true;
+                    if (container.hasClass("active")) {
+                        addClass = false;
+                    }
+                    $(".user-class-visibility .container").removeClass("active");
+                    if (addClass) {
+                        container.addClass("active");
+                        $(".user-class-visibility .container .current").removeClass("mouseover");
+                        container.find(".current").addClass("mouseover");
+                    }
+                });
+
+                $(".user-class-visibility .option").click(function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    var visibility = $.trim($(this).text());
+                    if(visibility == "Public"){
+                        visibility =  "ublic";
+                    }else if(visibility == "Just Me"){
+                        visibility = "only_me";
+                    }else if(visibility == "People I Follow"){
+                        visibility = "following";
+                    }
+                    var class_id = $(this).parent().parent().parent().prev().attr('id');
+                    $.ajax({
+                        url: base_url+'/profile/changeClassVisibility',
+                        type: 'POST',
+                        data: {class:class_id,visibility:visibility,user:user_id},
+                        dataType: 'json',
+                        success: function(result)
+                        {
+                            if(result.status != "success"){
+                                alert(result.status);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(errorThrown);
+                        }
+                    });
+                    var container = $(this).closest(".container");
+                    $(".current", container)[0].firstChild.data = $(this)[0].firstChild.data;
+                    $(".option", container).removeClass("selected");
+                    $(this).addClass("selected");
+                    container.removeClass("active");
+                    $(".user-class-visibility .container .current").removeClass("mouseover");
+
+                    return false;
+                });
+
+                $(document).click(function (e) {
+                    var container = $(".user-class-visibility .container")
+                    if ((!container.is(e.target) && container.has(e.target).length === 0)) {
+                        container.removeClass("active");
+                        container.find(".current").removeClass("mouseover");
+                    }
+                    /*if(!(container.is(e.target) || container.has(e.target).length != 0 || container.hasClass("active"))) {
+                     $(".user-class-visibility .container .current").removeClass("mouseover");
+                     container.removeClass("active");
+                     } */
                 });
 
                 /* Embedly for the showcase */
@@ -1615,7 +2318,7 @@
                     FollowUnfollow(targetID);
                 });
 
-                function FollowUnfollow(targetID) {
+               /* function FollowUnfollow(targetID) {
                     // Ajax call to follow and unfollow a person
                     $.ajax({
                         type: "POST",
@@ -1629,7 +2332,7 @@
                             alert(responseText);
                         }
                     });
-                }
+                }*/
 
                 // Fetch the courses the current user is part of
                 function FetchCourses(type) {
@@ -1858,9 +2561,9 @@
                 }
 
                 // Function to display the selected class
-                $(document).delegate('.group-link', 'click', function () {
+            /*    $(document).delegate('.group-link', 'click', function () {
                     window.location = "clubs.php?group_id=" + $(this).prop('id').split('_')[1].trim();
-                });
+                });*/
 
 
                 // To add more rows to edit the office hours
@@ -2379,503 +3082,7 @@
                 });
 
                 /* Code to manage the dropdowns end here*/
-                $("body").on("click", "#add-showcase-wrap-id button", function () {
-                    $('.root').css('opacity', '0.1');
-                    $('.showcase-form').css('display', 'initial');
-                    $(".showcase-form").on("click", ".cancel-showcase-form", function () {
-                        $('.root').css('opacity', '1');
-                        $('.showcase-form').css('display', 'none');
 
-                        //reset form
-                        $('#link-entry').val('');
-                        $('#title-entry').val('');
-                        $('#link-entry').prop('disabled',false);
-                        upload_file = null;
-                    });
-
-                    $(".showcase-form").on("click", ".close-description", function () {
-                        $('.description-section').css('display', 'none');
-                    });
-                });
-                $("body").on("mouseenter", ".profpic-container-real", function(){
-                    $("#camera-icon-div").addClass("camera-icon-div");
-                    $(".camera-icon-div button").addClass("camera-icon-button");
-                    $(".camera-icon-div button").removeClass("camera-icon-button-before");
-                });
-                $("body").on("mouseleave", ".profpic-container-real", function(){
-                    $("#camera-icon-div").removeClass("camera-icon-div");
-                    $("#camera-icon-div button").removeClass("camera-icon-button");
-                    $("#camera-icon-div button").addClass("camera-icon-button-before");
-                });
-                var school ='';
-                var majors = [];
-                var minors = [];
-                var bio;
-                var name;
-                $("body").on("click", '.edit_prof_button', function(){
-                    $('.user-information h1, .edit_prof_button').css('display', 'none');
-                    $('.user-information .school-info').css('opacity', '0');
-                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'initial');
-                    $('#school-section').text('UPDATE YOUR SCHOOL');
-                    $('#major-section').text('UPDATE YOUR MAJOR');
-                    $('#minor-section').text('UPDATE YOUR MINOR');
-                    $('#about-section h3').text('UPDATE YOUR BIO');
-                    $('#about-section').css('margin-top', '50px');
-                    $('h3 + i').addClass('add-major-minor');
-                    $('h3').css('margin-left', '9px');
-                    $('.info-block').css('margin-left', '5px');
-                    $('.info-block input + i').addClass('delete-major-minor');
-                    $('.info-block input').attr("readonly", false);
-                    $('.info-block textarea').attr("readonly", false);
-                    $('p.school-info').css('margin-top', '-20px');
-                    $('.showcase-image-control').css('visibility', 'visible');
-                    $('.user-groups, .showcase-image').addClass('blur_class');
-                    $('.center-image').addClass('opacity_class');
-                    $('.switch-image-panel').addClass('visible_class');
-                    $('#circle-div-delete').addClass('hidden_class');
-                    $('body').on('click', '#circle-div-switch-left, #circle-div-switch, #remove-showcase-button', function(){
-                        $('.showcase-image').removeClass('opacity_class');
-                        $('.showcase-image').addClass('blur_class');
-                        $('.center-image').addClass('opacity_class');
-                    });
-
-                    $('input[name=username-entry]').val($('.info_username').text());
-
-                    //save current info
-                    school = $('input[name=school_name]').val();
-
-                    $('input[name=major_name]').each(function(index){
-                        majors[index]=$(this).val();
-                    });
-
-                    $('input[name=minors_name]').each(function(index){
-                        minors[index]=$(this).val();
-                    });
-                    bio = $('.info-block textarea').val();
-                    name = $('input[name=username-entry]').val();
-
-                });
-                $('body').on('click', '.cancel-edit-button', function(){
-                    $('.user-information h1, .edit_prof_button').css('display', 'initial');
-                    $('.user-information .school-info').css('opacity', '1');
-                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'none');
-                    $('.user-information').css('margin-top', '16px');
-                    $('p.school-info').css('margin-top', '4px');
-                    $('#school-section').text('SCHOOL');
-                    $('#major-section').text('MAJOR');
-                    $('#minor-section').text('MINOR');
-                    $('#about-section h3').text('ABOUT');
-                    $('#about-section').css('margin-top', '0px');
-                    $('h3 + i').removeClass('add-major-minor');
-                    $('h3').css('margin-left', '6px');
-                    $('.info-block').css('margin-left', '2px');
-                    $('.info-block input + i').removeClass('delete-major-minor');
-                    $('.info-block input').attr("readonly", true);
-                    $('.info-block textarea').attr("readonly", true);
-                    $('.showcase-image-control').css('visibility', 'hidden');
-                   // $('.user-groups').css('opacity', '1');
-                    //$('.showcase-image').css('opacity', '1');
-                    $('.user-groups, .showcase-image').removeClass('blur_class');
-                    $('.switch-image-panel').removeClass('visible_class');
-                    $('#circle-div-delete').removeClass('hidden_class');
-
-                    //load saved inputs
-                    $('input[name=school_name]').val(school);
-                    $('input[name=major_name]').each(function(index){
-                        $(this).val(majors[index]);
-                    });
-                    $('input[name=minors_name]').each(function(index){
-                        $(this).val(minors[index]);
-                    });
-                    $('.info-block textarea').val(bio);
-                    $('input[name=username-entry]').val(name);
-
-
-                });
-                //handle dropdowns
-                var new_year;
-                $('.yearpicker').on('change',function(){
-                    new_year = $(this).val();
-                });
-                var new_year_name;
-                $('.levelpicker').on('change',function(){
-                    new_year_name = $(this).val();
-                });
-                //handle bio
-                var new_bio;
-                $('.info-block textarea').on('change',function(){
-                    new_bio = $(this).val();
-                });
-                var new_name;
-                $('input[name=username-entry]').on('change',function(){
-                    new_name = $(this).val();
-                });
-
-                //autocomplete majors
-                var major_text;
-                var major_changed = false;
-                var minor_changed = false;
-                var index;
-                $('input[name=major_name]').on('keyup',function(){
-                    index = $('input[name=major_name]').index(this);
-                    major_changed = true;
-                    major_text = $(this).val();
-                    $.ajax({
-                        url: base_url+'/profile/autoComplete',
-                        type: 'GET',
-                        data: {major: major_text},
-                      //  cache: false,
-                        dataType: 'json',
-                       // processData: false, // Don't process the files
-                       // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                        success: function(result)
-                        {
-
-                            $('input[name=major_name]').eq(index).autocomplete({source:result});
-                        },
-                        error: function(jqXHR, textStatus, errorThrown)
-                        {
-                            alert(errorThrown);
-                        }
-                    });
-                });
-                $('input[name=minor_name]').on('keyup',function(){
-                    index = $('input[name=major_name]').index(this);
-                    minor_changed = true;
-                    major_text = $(this).val();
-                    $.ajax({
-                        url: base_url+'/profile/autoComplete',
-                        type: 'GET',
-                        data: {major: major_text},
-                        //  cache: false,
-                        dataType: 'json',
-                        // processData: false, // Don't process the files
-                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                        success: function(result)
-                        {
-
-                            $('input[name=minor_name]').eq(index).autocomplete({source:result});
-                        },
-                        error: function(jqXHR, textStatus, errorThrown)
-                        {
-                            alert(errorThrown);
-                        }
-                    });
-                });
-                var new_school;
-                $('input[name=school_name]').on('keyup',function(){
-                    new_school = $(this).val();
-                    $.ajax({
-                        url: base_url+'/profile/autoComplete',
-                        type: 'GET',
-                        data: {school: new_school},
-                        //  cache: false,
-                        dataType: 'json',
-                        // processData: false, // Don't process the files
-                        // contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                        success: function(result)
-                        {
-                            $('input[name=school_name]').autocomplete({source:result});
-                        },
-                        error: function(jqXHR, textStatus, errorThrown)
-                        {
-                            alert(errorThrown);
-                        }
-                    });
-                });
-                //var deleted_majors = [];
-               // var new_majors=[];
-                $('body').on('click', '.finish-edit-button', function(){
-                    $('.user-information h1, .edit_prof_button').css('display', 'initial');
-                    $('.user-information .school-info').css('opacity', '1');
-                    $('.edit-mode-control, .username-entry-field, .school-info-dropdown, .add-interest-button').css('display', 'none');
-                    $('.user-information').css('margin-top', '16px');
-                    $('p.school-info').css('margin-top', '4px');
-                    $('#school-section').text('SCHOOL');
-                    $('#major-section').text('MAJOR');
-                    $('#minor-section').text('MINOR');
-                    $('#about-section h3').text('ABOUT');
-                    $('#about-section').css('margin-top', '0px');
-                    $('h3 + i').removeClass('add-major-minor');
-                    $('h3').css('margin-left', '6px');
-                    $('.info-block').css('margin-left', '2px');
-                    $('.info-block input + i').removeClass('delete-major-minor');
-                    $('.info-block input').attr("readonly", true);
-                    $('.info-block textarea').attr("readonly", true);
-                    $('.showcase-image-control').css('visibility', 'hidden');
-                   // $('.user-groups').css('opacity', '1');
-                  //  $('.showcase-image').css('opacity', '1');
-                    $('.user-groups, .showcase-image').removeClass('blur_class');
-                    $('.switch-image-panel').removeClass('visible_class');
-                    $('#circle-div-delete').removeClass('hidden_class');
-
-                    var data = new FormData();
-                    data.append('user',user_id);
-                    if(new_year){
-                        data.append('year',new_year);
-                    }
-                    if(new_bio){
-                        data.append('bio',new_bio);
-                    }
-                    new_school = $('input[name=school_name]').val();
-                    if(new_school!=school){
-                        data.append('school',new_school);
-                    }
-
-                    if(major_changed == true){
-                        //majors
-                        $('input[name=major_name]').each(function(index){
-                            data.append('majors['+index+']', $(this).val());
-                        });
-
-                    }
-                    if(minor_changed == true){
-                        $('input[name=minor_name]').each(function(index){
-                            data.append('minors['+index+']', $(this).val());
-                        });
-                    }
-                    if(new_year_name){
-                        data.append('year_name',new_year_name);
-                    }
-                    if(new_school){
-                        data.append('school',new_school);
-                    }
-                    if(new_name){
-                        data.append('name',new_name);
-                    }
-                    $.ajax({
-                        url: base_url+'/profile/editProfile',
-                        type: 'POST',
-                        data: data,
-                        cache: false,
-                        dataType: 'json',
-                        processData: false, // Don't process the files
-                        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                        success: function(result)
-                        {
-                            if(result.year == "success"){
-                                if(new_year){
-                                    $('.school-info').text($('.school-info').text().replace(/\d{4}/,new_year));
-                                }
-                            }else if(result.year){
-                                alert(result.year);
-                            }
-                            if(result.year_name == "success"){
-                                $('.school-info').text($('.school-info').text().replace(/(Freshman|Sophomore|Junior|Senior|Master|PhD)/,new_year_name));
-                            }else if(result.year_name){
-                                alert(result.year_name);
-                            }
-                            if(result.bio && result.bio != "success"){
-                                alert(result.bio);
-                                $('.info-block textarea').val(bio);
-                            }
-                            if(result.major && result.major != "success"){
-                                alert(result.major);
-                               // $('input[name=major_name]').val(majors[0]);
-                            }
-                            if(result.minor && result.minor != "success"){
-                                alert(result.minor);
-                                // $('input[name=major_name]').val(majors[0]);
-                            }
-                            if(result.name && result.name != "success"){
-                                alert(result.name);
-                                $('input[name=username-entry]').val(name);
-                            }
-                            if(result.school && result.school != "success"){
-                                alert(result.school);
-                                $('input[name=school_name]').val(school);
-                            }
-                        },
-                        error: function(jqXHR, textStatus, errorThrown)
-                        {
-                            alert(errorThrown);
-                        }
-                    });
-
-                });
-
-                $('body').on('click', '.add-major-minor', function(){
-                    $(this).next().before("<div class=\"info-block\" style=\"margin-bottom: 20px; margin-left: 5px\"> <input type=\"text\"><i></i></div>");
-                });
-
-                $('body').on('click', '.delete-major-minor', function(){
-                    major_changed = true;
-                    $(this).parent().remove();
-                });
-                var old_showcase_title;
-                $('body').on('click', '#edit-showcase-button button', function(){
-                    $('.root').css('opacity', '0.1');
-                    $('.edit-showcase-form').css('display', 'initial');
-                    var img = $(this).closest('.center-image').find('img').attr('src');
-                    $('.edit-showcase-form').css('background-image', 'url(' + img + ')' );
-                    $('body').on('click', '.edit-form-bottom span', function(){
-                        $('.root').css('opacity', '1');
-                        $('.edit-showcase-form').css('display', 'none');
-                    });
-                    old_showcase_title = $('.showcase-image.center-image > .showcase-description-wrap > .showcase-title').text();
-                    $('#showcase-name-edit').val(old_showcase_title);
-                    $('#showcase-desc-edit').val($('.showcase-image.center-image > .showcase-description-wrap > .showcase-description').text());
-                });
-                $("body").on("mouseenter", ".profpic-container-real", function(){
-                    $("#camera-icon-div").addClass("camera-icon-div");
-                    $("#camera-icon-div").removeClass("camera-icon-div-before");
-                    $(".camera-icon-div button").addClass("camera-icon-button");
-                    $(".camera-icon-div button").removeClass("camera-icon-button-before");
-                    $('.camera-icon-button span').text('Update Profile Picture');
-                });
-                $("body").on("mouseleave", ".profpic-container-real", function(){
-                    $("#camera-icon-div").removeClass("camera-icon-div");
-                    $("#camera-icon-div").addClass("camera-icon-div-before");
-                    $("#camera-icon-div button").removeClass("camera-icon-button");
-                    $("#camera-icon-div button").addClass("camera-icon-button-before");
-                    $('.camera-icon-div-before span').text('');
-                });
-                $('body').on('mouseenter', '#circle-div-delete', function(){
-                    $('#delete-on-hover-before').addClass('delete-on-hover');
-                    $('#delete-on-hover-before').css('visibility', 'visible');
-                    $('#hint_wedge-before').addClass('hint_wedge');
-                });
-                $('body').on('mouseleave', '#circle-div-delete', function(){
-                    $('#delete-on-hover-before').removeClass('delete-on-hover');
-                    $('#delete-on-hover-before').css('visibility', 'hidden');
-                    $('#hint_wedge-before').removeClass('hint_wedge');
-                });
-                $('body').on('mouseenter', '.center-image', function(){
-                    //$('.circle-div').css('visibility', 'visible');
-                    $('.image-panel-wrapper').css('visibility', 'visible');
-                });
-                $('body').on('mouseleave', '.center-image', function(){
-                    //$('.circle-div').css('visibility', 'hidden');
-                    $('.image-panel-wrapper').css('visibility', 'hidden');
-                });
-                var index = 0;
-                var frontImgIdx = getFrontImage(index);
-                while( ($('#img-slot' + index).length) != 0){
-                    var showcaseType = $('#img-slot' + index). attr('data-file-type');
-                    if(showcaseType == '.pdf'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#f15c61');
-                        $('#img-slot' + index + ' .showcase-label span').text('.pdf');
-                    }
-                    else if(showcaseType == 'url'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', 'transparent');
-                        $('#img-slot' + index + ' .download-showcase-button').css('width', '50px');
-                        $('#img-slot' + index + ' .download-showcase-button i').removeClass('download_button_icon');
-                        $('#img-slot' + index + ' .download-showcase-button i').addClass('link_button_icon');
-                    }
-                    else if(showcaseType == '.doc'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#2a5896');
-                        $('#img-slot' + index + ' .showcase-label span').text('.doc');
-                    }
-                    else if(showcaseType == '.ppt'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#d04525');
-                        $('#img-slot' + index + ' .showcase-label span').text('.ppt');
-                    }
-
-                    var imgWidth = $('#img-slot' + index + ' img').width();
-                    if(index == frontImgIdx){
-                        $('#img-slot' + index).css( 'margin-left',  (($(window).width()/2) - (487/2)) );
-                    }
-                    else{
-                        $('#img-slot' + index).css( 'margin-left', '7px' );
-                    }
-                    ++index;
-                }
-                $('body').on('click', '#circle-div-switch-left', function(){
-                    var parentID = $(this).parents('.showcase-image').attr('id');
-                    var siblingID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
-                    if( $('#' + siblingID).length != 0 ){
-                        var parentWidth = $(this).parents('.showcase-image').width();
-                        var prevImgWidth = $('#' + siblingID).width();
-                        var originalMargin = parseInt( $('#img-slot0').css('margin-left') );
-                        var newMargin = parentWidth/2 + 7 + prevImgWidth/2;
-                        $('#' + parentID).removeClass('center-image');
-                        $('#' + siblingID).addClass('center-image');
-                        $('#img-slot'+frontImgIdx).css('margin-left', (originalMargin + newMargin) );
-                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
-                        $('#download-showcase-button').css('background-position', '-28px -100px');
-                    }
-                });
-
-                $('body').on('click', '#circle-div-switch', function(){
-                    var parentID = $(this).parents('.showcase-image').attr('id');
-                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
-                    if( $('#' + siblingID).length != 0 ){
-                        var parentWidth = $(this).parents('.showcase-image').width();
-                        var nextImgWidth = $(this).parents('.showcase-image').next('.showcase-image').width();
-                        var originalMargin = parseInt( $('#img-slot0').css('margin-left') );
-                        var newMargin = parentWidth/2 + 7 + nextImgWidth/2;
-                        $('#' + parentID).removeClass('center-image');
-                        $('#' + siblingID).addClass('center-image');
-                        /*if(parentID == 'img-slot0'){
-                            $(this).parents('.showcase-image').css('margin-left', (originalMargin - newMargin) );
-                        }
-                        else{
-                            $('#img-slot0').css('margin-left', (originalMargin - newMargin) );
-                        }*/
-                        $('#img-slot' + frontImgIdx).css('margin-left', (originalMargin - newMargin) );
-                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
-                        $('#download-showcase-button').css('background-position', '-28px -100px');
-                    }
-                });
-                $('body').on('click', '#circle-div-delete, #remove-showcase-button', function(){
-                    var title = $('.showcase-image.center-image > .showcase-description-wrap > .showcase-title').text();
-                    $.ajax({
-                        url: base_url+'/profile/deleteShowcase',
-                        type: 'POST',
-                        data: {title:title},
-                        dataType: 'json',
-                        success: function(result)
-                        {
-                            if(result.status != "success"){
-                                alert(result.status);
-                            }
-                        },
-                        error: function(jqXHR, textStatus, errorThrown)
-                        {
-                            alert(errorThrown);
-                        }
-                    });
-
-                    var parentID = $(this).parents('.showcase-image').attr('id');
-                    var siblingID = $(this).parents('.showcase-image').next('.showcase-image').attr('id');
-
-                    if( $('#' + siblingID).length != 0 ){
-                        if(parentID == 'img-slot' + frontImgIdx ){
-                            var newFrontIdx = siblingID.replace( /[^\d.]/g, '' );
-                            frontImgIdx =  parseInt(newFrontIdx);
-                            //var originalPosition = $('#img-slot' + frontImgIdx).width()
-                            var originalMargin = parseInt( $('#img-slot' + frontImgIdx).css('margin-left') );
-                            /*$.when( function(){
-                             var dfd = $.Deferred();
-                             $('#img-slot' + frontImgIdx).css('margin-left', (($(window).width()/2) - (480/2)) );
-                             alert('test');
-                             dfd.resolve();
-                             }).done( function(){
-                             //$('#' + parentID).remove();
-                             alert('good');
-                             });*/
-                            var dfd = $.Deferred();
-                            dfd.done(function(){
-                                $('#img-slot' + frontImgIdx).css('margin-left', (($(window).width()/2) - (480/2)) );
-                            }, function(){
-                                $('#' + parentID).remove();
-                            });
-                            dfd.resolved();
-                        }
-                        $('#' + siblingID).addClass('center-image');
-                        $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
-                        $('#' + parentID).remove();
-                    }
-                    else{
-                        var prevID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
-                        $('#' + prevID).addClass('center-image');
-                        $('.image-panel-wrapper').detach().appendTo('#' + prevID);
-                        var originalMargin = parseInt( $('#img-slot' + frontImgIdx).css('margin-left') );
-                        $('#img-slot' + frontImgIdx).css('margin-left', (originalMargin + 480 + 'px') );
-                        $('#' + parentID).remove();
-                    }
-
-                });
                 /*Code that handles images on showcase bar*/
                // var imgList= ["../assets/nyu.jpg", "../assets/person3.jpg", "../assets/person4.jpg", "../assets/link_photo.jpg"];
              //   var centerImg = imgList[0];
@@ -3035,3 +3242,68 @@ function getFrontImage(index){
         }
     }
 }
+
+/*function download_file(url){
+    $.ajax({
+        url: base_url+'/profile/downloadShowcase',
+        type: 'POST',
+        data: {file_url:url},
+        //dataType: 'json',
+        success: function(result)
+        {
+            if(result.status != "success"){
+                alert(result.status);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert(errorThrown);
+        }
+    });
+}
+function alert(message) {
+    var x = 'whatever';
+}*/
+function add_interests(new_interests){
+    alert('hi');
+    if(new_interests.length>0){
+        alert('in');
+        var interestData = new FormData();
+        for(var i=0;i<new_interests.length;i++){
+            interestData.append('interests['+i+']',new_interests[i]);
+        }
+        interestData.append('user_id',user_id);
+        $.ajax({
+            url: base_url+'/profile/addInterest',
+            type: 'POST',
+            data: interestData,
+            //  cache: false,
+            dataType: 'json',
+            //   processData: false, // Don't process the files
+            //  contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+            success: function(result)
+            {
+                if(result.status == "success") {
+                    alert('good');
+                }else{
+                    alert(result.message);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown)
+            {
+                alert(errorThrown);
+            }
+        });
+        /*$.post(base_url + "/profile/addInterest", interestData, function (data) {
+         if(!(/error/i.exec(data))){
+
+         //  $('input[name=interest_name]').val('');
+         }else{
+         alert(data);
+         }
+         });*/
+    }else{
+        alert('no new interests');
+    }
+}
+

@@ -100,7 +100,7 @@
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
                                         <div class="dropOpenBtn">
-                                            NYU School of Engineering
+                                            <?php echo $school; ?>
                                             <i class="dwnArrow"></i>
                                         </div>
                                         <div class="dropOpenList" id="dropOpenList">
@@ -261,46 +261,51 @@
             <div class="mainsec">
                 <div id="result" class="midsec loadani_parent" style="zoom:1;">
                     <div class="all_results_active" style="opacity:1;">
+
                         <!--The template for users (be it student or professor) who match up with the search query-->
                         <div class="horiz-area">
                             <div class="horiz-wrapper">
                                 <div class="horiz-mask">
                                     <div class="content-area">
                                         <div class="ContentSlider">
-                                            <div class="slide">
-                                                <div class="slide-inner">
-                                                    <script id="user_search_results" type="text/x-handlebars-template">
+                                            <script id="user_search_results" type="text/x-handlebars-template">
+                                                <div class="slide" style="transform: matrix(1,0,0,1,0,0); -webkit-transform: matrix(1,0,0,1,0,0)">
+                                                    <div class="slide-inner">
                                                         <div class="result-photo">
-                                                            <img src="http://img1.wikia.nocookie.net/__cb20120412051836/suburgatory/images/5/52/Happy_face.jpg">
-                                                            <h3>{{fullname}}</h3>
+                                                            <img src= "{{url}}">
+                                                            <h3><a href="profile/{{id}}">{{fullname}}</a></h3>
                                                             <p>{{department}}</p>
                                                         </div>
-                                                    </script>
-                                                    <div class="person-bottom-functions">
-                                                        <div class="link-button">
-                                                            <a class="link link-up" data value="1">Follow</a>
-                                                        </div>
+                                                        <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="{{id}}">Follow</a></div></div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="arrow-disabled arrow-container arrow-prev">
+                                    <a class="ar-disabled ar-left"></a>
+                                </div>
                             </div>
+                            <div class="arrow-container arrow-next">
+                                <a id="ar-right" class="ar-right"></a></div>
                         </div>
+
                     </div>
+
                     <!--The template for courses who match up with the search query-->
+
                     <div class="vert-area">
-                        <div class="course vert-results-wrapper">
-                            <div class=results-top-sec>
-                                <script id="vertical_course_results_top" type="text/x-handlebars-template">
+                        <!--Course Search Results-->
+                        <script id="vertical_course_results" type="text/x-handlebars-template">
+                            <div class="course vert-results-wrapper">
+
+                                <div class=results-top-sec>
                                     <div class="result-header">
-                                        {{rname}}
+                                        <a href = {{url}}>{{name}}</a>
                                     </div>
                                     <div class="result-header-right"></div>
-                                </script>
-                                <div class="results-main-sec">
-                                    <script id="vertical_course_results" type="text/x-handlebars-template">
+                                    <div class="results-main-sec">
                                         <p class="description">
                                             {{description}}
                                         </p>
@@ -320,20 +325,113 @@
                                                 {{admin_value}}
                                             </div>
                                             <div class="info-piece subject">
-                                                {{department_value}}
+                                                <a href = "{{department_url}}">{{department_value}}</a>
                                             </div>
                                             <div class="info-piece members">
                                                 {{members_value}}
                                             </div>
+                                            <div class="result-bottom">
+                                                <div class="course-schedule"></div>
+                                                <div class="course-bottom-functions"><div class="join-button">
+                                                    <!--<a class="followCourse sign-up" data-value="BMS3314"></a>-->
+                                                    </div></div>
+                                            </div>
                                         </div>
-                                    </script>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </script>
+
+                        <!--Club Search Results-->
+                        <script id="vertical_club_results" type="text/x-handlebars-template">
+                            <div class="person vert-results-wrapper">
+                                <a class="person-result-image" href="clubs.php?group_id=17">
+                                    <div style="background-image: url({{imgurl}});" class="img"></div>
+                                </a>
+                                <div class="person-main">
+                                    <div class="person-header">
+                                        <div class="result-header">
+                                            <a href="{{cluburl}}"><h2>{{name}}</h2></a>
+                                            <a href="department.php?dept_id="><p></p></a>
+                                        </div>
+                                        <div class="result-header-right">
+                                            <div class="result-functions-wrapper">
+                                                <div class="prof-tooltip tooltip">
+                                                    <div class="tool-wedge"></div>
+                                                    <div class="prof-tool-box tool-box">
+                                                        <span>Add This Professor To My Bookmarks</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="person-result-main">
+                                        <a href="school.php?univ_id="><div class="person-info">
+                                                <div style="background-image: url(DefaultImages/school.png);" class="title-limit"></div>
+                                                <h4></h4>
+                                            </div>
+                                        </a>
+                                        <div class="person-info">
+                                            <div class="title-limit mail"></div>
+                                        <a href="mailto:idmclub@polyidm.com"><h4>idmclub@polyidm.com</h4></a>
+                                        </div></div>
+                                    <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
                                 </div>
                             </div>
-                        </div>
+                        </script>
+
+                        <!--Department Search Results-->
+                        <script id="vertical_dept_results" type="text/x-handlebars-template">
+                            <div class="person vert-results-wrapper">
+                                <a class="person-result-image" href="clubs.php?group_id=17">
+                                    <div style="background-image: url({{imgurl}});" class="img"></div>
+                                </a>
+                                <div class="person-main">
+                                    <div class="person-header">
+                                        <div class="result-header">
+                                            <a href="{{cluburl}}"><h2>{{name}}</h2></a>
+                                            <a href="department.php?dept_id="><p></p></a>
+                                        </div>
+                                        <div class="result-header-right">
+                                            <div class="result-functions-wrapper">
+                                                <div class="prof-tooltip tooltip">
+                                                    <div class="tool-wedge"></div>
+                                                    <div class="prof-tool-box tool-box">
+                                                        <span>Add This Professor To My Bookmarks</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="person-result-main">
+                                        <a href="school.php?univ_id="><div class="person-info">
+                                                <div style="background-image: url(DefaultImages/school.png);" class="title-limit"></div>
+                                                <h4></h4>
+                                            </div>
+                                        </a>
+                                        <div class="person-info">
+                                            <div class="title-limit mail"></div>
+                                        </div></div>
+                                    <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
+                                </div>
+                            </div>
+                        </script>
+
                     </div>
-                    <!--</div>-->
-                    <!--The template for Clubs  who match up with the search query-->
-                    <div class="vert-area">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fb-root" class="fb_reset">
+        <div style="position: absolute; top: -100000px; height: 0px; width: 0px;"><div></div></div>
+        <div style="position: absolute; top: -100000px; height:0px; width:0px;"></div>
+    </div>
+</body>
+</html>
+
+<!--
+<div class="vert-area">
                         <div class="person vert-results-wrapper">
                             <div class=results-top-sec>
                                 <script id="vertical_club_results_img" type="text/x-handlebars-template">
@@ -374,56 +472,46 @@
                             </div>
                         </div>
                     </div>
-                    <!--</div>-->
-                    <!--The template for departments who match up with the search query-->
-                    <div class="vert-area">
-                        <div class="course vert-results-wrapper">
-                            <div class=results-top-sec>
-                                <script id="vertical_dept_results_top" type="text/x-handlebars-template">
-                                    <div class="result-header">
-                                        {{rname}}
-                                    </div>
-                                    <div class="result-header-right"></div>
-                                </script>
-                                <div class="results-main-sec">
-                                    <script id="vertical_dept_results" type="text/x-handlebars-template">
-                                        <p class="description">
-                                            {{description}}
-                                        </p>
-                                        <div class="lower-info-keys">
-                                            <div class="info-key admin">
-                                                {{admin_key}}
-                                            </div>
-                                            <div class="info-key subject">
-                                                {{department_key}}
-                                            </div>
-                                            <div class="info-key members">
-                                                {{members_key}}
-                                            </div>
-                                        </div>
-                                        <div class="lower-info">
-                                            <div class="info-piece admin">
-                                                {{admin_value}}
-                                            </div>
-                                            <div class="info-piece subject">
-                                                {{department_value}}
-                                            </div>
-                                            <div class="info-piece members">
-                                                {{members_value}}
-                                            </div>
-                                        </div>
-                                    </script>
-                                </div>
-                            </div>
+<div class="vert-area">
+    <div class="course vert-results-wrapper">
+        <div class=results-top-sec>
+            <script id="vertical_dept_results_top" type="text/x-handlebars-template">
+                <div class="result-header">
+                    {{rname}}
+                </div>
+                <div class="result-header-right"></div>
+            </script>
+            <div class="results-main-sec">
+                <script id="vertical_dept_results" type="text/x-handlebars-template">
+                    <p class="description">
+                        {{description}}
+                    </p>
+                    <div class="lower-info-keys">
+                        <div class="info-key admin">
+                            {{admin_key}}
+                        </div>
+                        <div class="info-key subject">
+                            {{department_key}}
+                        </div>
+                        <div class="info-key members">
+                            {{members_key}}
                         </div>
                     </div>
-                </div>
+                    <div class="lower-info">
+                        <div class="info-piece admin">
+                            {{admin_value}}
+                        </div>
+                        <div class="info-piece subject">
+                            {{department_value}}
+                        </div>
+                        <div class="info-piece members">
+                            {{members_value}}
+                        </div>
+                    </div>
+                </script>
             </div>
         </div>
-        <!--</div></div>-->
-        <div id="fb-root" class="fb_reset">
-            <div style="position: absolute; top: -100000px; height: 0px; width: 0px;"><div></div></div>
-            <div style="position: absolute; top: -100000px; height:0px; width:0px;"></div>
-        </div>
-</body>
-</html>
+    </div>
+</div>
+
+-->
