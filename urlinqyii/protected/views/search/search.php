@@ -333,9 +333,7 @@
                                             <div class="result-bottom">
                                                 <div class="course-schedule"></div>
                                                 <div class="course-bottom-functions"><div class="join-button">
-                                                        <a class="followCourse sign-up" data-value="BMS3314">
-                                                            Follow Course
-                                                        </a>
+                                                    <!--<a class="followCourse sign-up" data-value="BMS3314"></a>-->
                                                     </div></div>
                                             </div>
                                         </div>
@@ -414,7 +412,6 @@
                                         </a>
                                         <div class="person-info">
                                             <div class="title-limit mail"></div>
-                                            <a><h4>{{description}}</h4></a>
                                         </div></div>
                                     <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
                                 </div>

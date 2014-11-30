@@ -226,32 +226,34 @@ $(document).ready(function(){
         //get_search_results(q);
     });
 
-//    $("#piys").click(function(){
-//        $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
-//        {
-//            if(search_json_data['success']){
-//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-//                show_search_results(search_json_data);
-//                //$.('.leftsec').hide();
-//            }else{
-//                alert('error getting data');
-//            }
-//        });
-//    });
-//    $("#ciyd").click(function(){
-//        $.getJSON( base_url + '/search/json', {f:ciyd},function( search_json_data )
-//        {
-//            if(search_json_data['success']){
-//                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-//                show_search_results(search_json_data);
-//                //$.('.leftsec').hide();
-//            }else{
-//                alert('error getting data');
-//            }
-//        });
-//    });
-//
-////For the specific searches (from topbar.js)
+
+
+////For the specific searches (from topbar.js)////
+    $("#piys").click(function(){
+        $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
+        {
+            if(search_json_data['success']){
+                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                show_search_results(search_json_data);
+                //$.('.leftsec').hide();
+            }else{
+                alert('error getting data');
+            }
+        });
+    });
+    $("#ciyd").click(function(){
+        $.getJSON( base_url + '/search/json', {f:ciyd},function( search_json_data )
+        {
+            if(search_json_data['success']){
+                //alert(JSON.stringify(search_json_data)); //test, returns JSON object
+                show_search_results(search_json_data);
+                //$.('.leftsec').hide();
+            }else{
+                alert('error getting data');
+            }
+        });
+    });
+
 //    $("#ciys").click(function(){
 //        //alert("ciys");
 //        $.getJSON( base_url + '/search/json', {f:ciys},function( search_json_data )

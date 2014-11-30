@@ -21,8 +21,8 @@ class SearchController extends Controller
         $user = $this->get_current_user();
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
         //$user = User::model()->find('user_id=:id', array(':id'=>1)); //temporary...
-        //just gets everything that contains the search string (unspecific search)
 
+        //just gets everything that contains the search string (unspecific search)
         $usql = Yii::app()->db->createCommand()
             ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
             ->from('user u')
@@ -46,8 +46,6 @@ class SearchController extends Controller
             ->andWhere("u.user_type = 'p'")
             ->limit(30)
             ->queryAll();
-
-        //$csql = "Select * from course Where course_name LIKE '%".$query."%' OR course_desc LIKE '%".$query."%' LIMIT 30";
         $csql = Yii::app()->db->createCommand()
             ->select('c.course_name, c.course_id, c.course_desc, d.department_name, d.department_id, s.school_name, s.school_id, c.picture_file_id')
             ->from('course c')
@@ -56,7 +54,6 @@ class SearchController extends Controller
             ->where(array('like', "c.course_name", '%'.$query.'%'))
             ->limit(30)
             ->queryAll();
-
         $dsql = Yii::app()->db->createCommand()
             ->select('d.department_name, d.department_id, d.department_description, s.school_name, s.school_id, d.picture_file_id')
             ->from('department d')
@@ -76,15 +73,19 @@ class SearchController extends Controller
 
         //specific queries
         $piyd = Yii::app()->db->createCommand()
-            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->select('u.user_id, u.firstname, u.lastname, u.school_id, u.department_id, u.picture_file_id, s.school_name, d.department_name')
             ->from('user u')
-            ->where('school_id=:sid and user_type=:type and department_id = :did', array(':sid'=>$user->school_id, ':type'=>"p", ':did'=>$user->department_id))
+            ->join('department d','u.department_id = d.department_id')
+            ->join('school s','u.school_id = s.school_id')
+            ->where('u.school_id=:sid and u.user_type=:type and u.department_id = :did', array(':sid'=>$user->school_id, ':type'=>"p", ':did'=>$user->department_id))
             ->limit(30)
             ->queryAll();
         $piys = Yii::app()->db->createCommand()
-            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->select('u.user_id, u.firstname, u.lastname, u.school_id, u.department_id, u.picture_file_id, s.school_name, d.department_name')
             ->from('user u')
-            ->where('school_id=:sid and user_type=:type', array(':sid'=>$user->school_id, ':type'=>"p"))
+            ->join('department d','u.department_id = d.department_id')
+            ->join('school s','u.school_id = s.school_id')
+            ->where('u.school_id=:sid and u.user_type=:type', array(':sid'=>$user->school_id, ':type'=>"p"))
             ->limit(30)
             ->queryAll();
         $ciyd = Yii::app()->db->createCommand()
@@ -105,13 +106,10 @@ class SearchController extends Controller
             ->where('school_id=:sid', array(':sid'=>$user->school_id))
             ->limit(30)
             ->queryAll();
-        //$userContent = User::model()->findAllBySql($usql);
-        //$courseContent = Course::model()->findAllBySql($csql);
         $schoolContent = School::model()->findAllBySql($ssql);
-        //$departmentContent = Department::model()->findAllBySQL($dsql);
         $groupContent = Group::model()->findAllBySQL($gsql);
 
-        if($filter == "piyd" && !$query)
+        if($query == "piyd")
         {   //professors in your department
             $data = array
             (
@@ -121,7 +119,7 @@ class SearchController extends Controller
                 'professors'=>$piyd
             );
         }
-        else if($filter == "piys" && !$query)
+        else if($query == "piys")
         {   //professors in your school
             $data = array
             (
@@ -131,7 +129,7 @@ class SearchController extends Controller
                 'professors'=>$piys
             );
         }
-        else if($filter == "ciyd" && !$query)
+        else if($query == "ciyd")
         {   //courses in your department
             $data = array
             (
@@ -141,7 +139,7 @@ class SearchController extends Controller
                 'courses'=>$ciyd
             );
         }
-        else if($filter == "ciys" && !$query)
+        else if($query == "ciys")
         {   //courses in your school
             $data = array
             (
@@ -151,7 +149,7 @@ class SearchController extends Controller
                 'courses'=>$ciys
             );
         }
-        if($filter == "giys" && !$query)
+        else if($query == "giys")
         {   //clubs(groups) in your school
             $data = array
             (
@@ -161,25 +159,19 @@ class SearchController extends Controller
                 'groups'=>$giys
             );
         }
-        else if ($filter == "sys" || $filter == null || $query != null)
+        //else if ($query == "sys" || $query != null)
+        else
         {  //return all results, if we don't get a filter
             $data = array
             (
                 'success'=> true,
                 'query'=>$query,
                 'filter'=>$filter,
-                //if objects have content, render appropriate categories in search page. else: hide.
-                //'users'=>$userContent,
                 'users'=>$usql,
-                //'professors'=>$professorContent, //omitted because we return professors and students simultaneously
-                //'courses'=>$courseContent,
                 'courses'=>$csql,
                 'schools'=>$schoolContent,
-                //'departments'=>$departmentContent,
                 'departments'=>$dsql,
                 'clubs'=>$groupContent,
-                //'university'=>$this->get_model_associations($university,array('schools'=>array('pictureFile')))
-                //'posts'=>$postContent
                 'students'=>$students,
                 'professors'=>$professors
             );
