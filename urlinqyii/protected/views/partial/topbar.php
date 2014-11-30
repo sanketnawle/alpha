@@ -185,31 +185,33 @@
                 <li>
                     <a>
                         <div class="icon dpt"></div>
-                        <span>Professors in Your Department</span>
+                        <span><?php echo $department?> Professors</span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <div class="icon crs"></div>
-                        <span>Courses in Your Department</span>
+                        <span>Courses in the <?php echo $department?> Department</span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <div class="icon prof"></div>
-                        <span>Professors in Your School</span>
+                        <!--<span>Professors in Your School</span>-->
+                        <span>Professors at The <?php echo $school?></span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <div class="icon crs"></div>
-                        <span>Courses in Your School</span>
+                        <span>Courses at The <?php echo $school?></span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <div class="icon clb"></div>
-                        <span>Clubs in Your School</span>
+                        <!--<span>Clubs at The <?php echo $school?></span>-->
+                        <span>Clubs Your Friends Are In</span>
                     </a>
                 </li>
                 <li>

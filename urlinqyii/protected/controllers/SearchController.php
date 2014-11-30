@@ -11,10 +11,8 @@ class SearchController extends Controller
         }
         //$user = User::model()->find('user_id=:id', array(':id'=>1));
         $user = $this->get_current_user();
-        //$uni = $user->school_id->university_id;
-        //$userdepaertment = $user->department_id;
-        //$useruniversity = $user->school_id->university_id;
-        $this->render('search', array('user'=>$user, 'q'=>$q));
+        $school = $user->school->school_name;
+        $this->render('search', array('user'=>$user,'school' =>$school, 'q'=>$q));
     }
     public function actionJson()
     { //We want to render JSON to the front-end so search.js can decode it
@@ -23,49 +21,95 @@ class SearchController extends Controller
         $user = $this->get_current_user();
         $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
         //$user = User::model()->find('user_id=:id', array(':id'=>1)); //temporary...
-        $date = date("Y-m-d H:i:s", time());
-        $datetime = new DateTime($date);
-        $datetime->modify('+1 day');
+
         //just gets everything that contains the search string (unspecific search)
-        $usql = "Select *  from `user` Where firstname LIKE '%".$query."%' OR firstname LIKE '%".$query.
-            "%' OR concat(firstname, ' ' ,lastname) LIKE '%".$query."%' AND school_id = ".$user->school_id.
-            " AND user_type = 's'";
-        $csql = "Select * from course Where course_name LIKE '%".$query."%' OR course_desc LIKE '%".$query."%'";
-        $ssql = "Select * from school where school_name LIKE '%".$query."%'";
-        $dsql = "Select * from department where department_name LIKE '%".$query."%'";
-        $gsql = "Select * from `group` where group_name LIKE '%.$query.%'";
+        $usql = Yii::app()->db->createCommand()
+            ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
+            ->from('user u')
+            ->join('department d','u.department_id = d.department_id')
+            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
+            ->limit(30)
+            ->queryAll();
+        $students = Yii::app()->db->createCommand()
+            ->select('u.firstname, u.lastname, u.user_id, u.user_type, d.department_name, d.department_id, u.picture_file_id')
+            ->from('user u')
+            ->join('department d','u.department_id = d.department_id')
+            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
+            ->andWhere("u.user_type = 's'")
+            ->limit(30)
+            ->queryAll();
+        $professors = Yii::app()->db->createCommand()
+            ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
+            ->from('user u')
+            ->join('department d','u.department_id = d.department_id')
+            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
+            ->andWhere("u.user_type = 'p'")
+            ->limit(30)
+            ->queryAll();
+        $csql = Yii::app()->db->createCommand()
+            ->select('c.course_name, c.course_id, c.course_desc, d.department_name, d.department_id, s.school_name, s.school_id, c.picture_file_id')
+            ->from('course c')
+            ->join('department d','c.department_id = d.department_id')
+            ->join('school s', 's.school_id = d.school_id')
+            ->where(array('like', "c.course_name", '%'.$query.'%'))
+            ->limit(30)
+            ->queryAll();
+        $dsql = Yii::app()->db->createCommand()
+            ->select('d.department_name, d.department_id, d.department_description, s.school_name, s.school_id, d.picture_file_id')
+            ->from('department d')
+            ->join('school s', 's.school_id = d.school_id')
+            ->where(array('like', "d.department_name", '%'.$query.'%'))
+            ->limit(30)
+            ->queryAll();
+
+
+        $ssql = "Select * from school where school_name LIKE '%".$query."%' LIMIT 30";
+        //$dsql = "Select * from department where department_name LIKE '%".$query."%' LIMIT 30";
+
+
+        //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
+        $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%'";
+
+
         //specific queries
         $piyd = Yii::app()->db->createCommand()
-            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->select('u.user_id, u.firstname, u.lastname, u.school_id, u.department_id, u.picture_file_id, s.school_name, d.department_name')
             ->from('user u')
-            ->where('school_id=:sid and user_type=:type and department_id = :did', array(':sid'=>$user->school_id, ':type'=>"p", ':did'=>$user->department_id))
-            ->queryRow();
+            ->join('department d','u.department_id = d.department_id')
+            ->join('school s','u.school_id = s.school_id')
+            ->where('u.school_id=:sid and u.user_type=:type and u.department_id = :did', array(':sid'=>$user->school_id, ':type'=>"p", ':did'=>$user->department_id))
+            ->limit(30)
+            ->queryAll();
         $piys = Yii::app()->db->createCommand()
-            ->select('user_id, firstname, lastname, school_id, department_id, picture_file_id')
+            ->select('u.user_id, u.firstname, u.lastname, u.school_id, u.department_id, u.picture_file_id, s.school_name, d.department_name')
             ->from('user u')
-            ->where('school_id=:sid and user_type=:type', array(':sid'=>$user->school_id, ':type'=>"p"))
-            ->queryRow();
+            ->join('department d','u.department_id = d.department_id')
+            ->join('school s','u.school_id = s.school_id')
+            ->where('u.school_id=:sid and u.user_type=:type', array(':sid'=>$user->school_id, ':type'=>"p"))
+            ->limit(30)
+            ->queryAll();
         $ciyd = Yii::app()->db->createCommand()
             ->select('course_id, course_name, school_id, department_id, picture_file_id')
             ->from('course')
             ->where('school_id=:sid and department_id = :did', array(':sid'=>$user->school_id, ':did'=>$user->department_id))
-            ->queryRow();
+            ->limit(30)
+            ->queryAll();
         $ciys = Yii::app()->db->createCommand()
             ->select('course_id, course_name, school_id, department_id, picture_file_id')
             ->from('course')
             ->where('school_id=:sid', array(':sid'=>$user->school_id))
-            ->queryRow();
+            ->limit(30)
+            ->queryAll();
         $giys = Yii::app()->db->createCommand()
             ->select('group_id, group_name, picture_file_id')
             ->from('group')
             ->where('school_id=:sid', array(':sid'=>$user->school_id))
-            ->queryRow();
-        $userContent = User::model()->findAllBySql($usql);
-        $courseContent = Course::model()->findAllBySql($csql);
+            ->limit(30)
+            ->queryAll();
         $schoolContent = School::model()->findAllBySql($ssql);
-        $departmentContent = Department::model()->findAllBySQL($dsql);
         $groupContent = Group::model()->findAllBySQL($gsql);
-        if($filter == "piyd" && !$query)
+
+        if($query == "piyd")
         {   //professors in your department
             $data = array
             (
@@ -75,7 +119,7 @@ class SearchController extends Controller
                 'professors'=>$piyd
             );
         }
-        else if($filter == "piys" && !$query)
+        else if($query == "piys")
         {   //professors in your school
             $data = array
             (
@@ -85,7 +129,7 @@ class SearchController extends Controller
                 'professors'=>$piys
             );
         }
-        else if($filter == "ciyd" && !$query)
+        else if($query == "ciyd")
         {   //courses in your department
             $data = array
             (
@@ -95,7 +139,7 @@ class SearchController extends Controller
                 'courses'=>$ciyd
             );
         }
-        else if($filter == "ciys" && !$query)
+        else if($query == "ciys")
         {   //courses in your school
             $data = array
             (
@@ -105,32 +149,31 @@ class SearchController extends Controller
                 'courses'=>$ciys
             );
         }
-        if($filter == "giys" && !$query)
+        else if($query == "giys")
         {   //clubs(groups) in your school
             $data = array
             (
                 'success'=> true,
                 'query'=>$query,
                 'filter'=>$filter,
-                'courses'=>$giys
+                'groups'=>$giys
             );
         }
-        else if ($filter == "sys" || $filter == null || $query != null)
+        //else if ($query == "sys" || $query != null)
+        else
         {  //return all results, if we don't get a filter
             $data = array
             (
                 'success'=> true,
                 'query'=>$query,
                 'filter'=>$filter,
-                //if objects have content, render appropriate categories in search page. else: hide.
-                'users'=>$userContent,
-                //'professors'=>$professorContent, //omitted because we return professors and students simultaneously
-                'courses'=>$courseContent,
+                'users'=>$usql,
+                'courses'=>$csql,
                 'schools'=>$schoolContent,
-                'departments'=>$departmentContent,
-                'clubs'=>$groupContent
-                //'university'=>$this->get_model_associations($university,array('schools'=>array('pictureFile')))
-                //'posts'=>$postContent
+                'departments'=>$dsql,
+                'clubs'=>$groupContent,
+                'students'=>$students,
+                'professors'=>$professors
             );
         }
         echo CJSON::encode($data);

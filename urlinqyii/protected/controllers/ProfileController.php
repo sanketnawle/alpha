@@ -721,18 +721,6 @@ class ProfileController extends Controller
 
 
     }
-    public function actionUpdateHere(){
-        $vis_var=$_POST['selected'];
-        //  echo $vis_var;
-        $vis_var=(string)$vis_var;
-        $user_id=1;
-        $user_group = GroupUser::model()->find('user_id=:id', array(':id'=>$user_id));
-//      $user_group = $user->group_user;
-//        var_dump($user_group);
-        $user_group->attributes=array('privacy'=>$vis_var);
-        $user_group->save();
-
-    }
 
 
 

@@ -45,6 +45,9 @@ foreach ($departments as $department){
    // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
+
+
+
 /*
 foreach($dept_array as $key=>$value){
     if($key==0){
@@ -175,8 +178,13 @@ echo '<div class = "department ajax" id="department-ajax">
     			                                            <div class = "deptBtns" id="deptBtns1">';
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
 
-echo '<button class = "studybtn btn_follow" id="studybtn1">Follow</button>'; // add a class followed if followed
-
+echo '
+    <div class="dept_following" >
+        <select id="dept_following">
+             <option value="follow" class="follow_option" data-deptid="<?php echo $department->department_id ?>">follow</option>
+             <option value="unfollow" class="follow_option" data-deptid="<?php echo $department->department_id ?>">unfollow</option>
+        </select>
+    </div>';
 
 echo'</div></div></a></div></div>';
 
@@ -186,16 +194,40 @@ echo '
 ';
 
 ?>
+
+
 <script>
     $(function () {
-        $(".btn_follow").click(function () {
-            if ($(this).hasClass("followed")) {
-                $(this).removeClass("followed");
-                $(this).html("Follow");
-            } else {
-                $(this).addClass("followed");
-                $(this).html("Unfollow");
-            }
+//        $(".btn_follow").click(function () {
+//
+//
+//            if ($(this).hasClass("followed")) {
+//                $(this).removeClass("followed");
+//                $(this).html("Follow");
+//            } else {
+//                $(this).addClass("followed");
+//                $(this).html("Unfollow");
+//            }
+//        });
+
+        $(".dept_following").change(function(){
+            var my_div= $( ".follow_option" ).attr('data-depid');
+            var selected_val = $("#dept_following").val();
+           // var dept_id = mydiv.getAttribute("data-deptid");
+            alert(selected_val, my_div);
+            ////  alert (selected_val);
+            //$.ajax({
+            //    type: "POST",
+            //    url: base_url + '/profile/updateHere',
+            //    data: {selected: selected_val},
+            //    success: function(data) {
+            //        alert("updated")
+            //    },
+            //    error: function(data) {
+            //        alert ("error")
+            //    }
+            //});
+
         });
     })
 </script>
