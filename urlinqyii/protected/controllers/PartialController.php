@@ -85,7 +85,8 @@ class PartialController extends Controller
         //$user = User::model()->find('user_id=:id', array(':id'=>1));
         $user = $this->get_current_user();
         $school = $user->school->school_name;
-        //Changed by Alex. This line is causing errors
+        //Changed by Alex. This line was causing errors
+        //$department = $user->department->department_name;
         $department = $user->department['department_name'];
         //$department = $user->department;
 
