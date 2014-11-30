@@ -94,7 +94,7 @@ class User extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return [
+		return array(
 //			'classes' => array(self::HAS_MANY, 'ClassModel', 'professor'),
 //			'classes1' => array(self::MANY_MANY, 'ClassModel', 'class_bookmark(user_id, class_id)'),
 //			'classes2' => array(self::MANY_MANY, 'ClassModel', 'class_rating(user_id, class_id)'),
@@ -117,7 +117,7 @@ class User extends CActiveRecord
 			'professorAttribute' => array(self::HAS_ONE, 'ProfessorAttribute', 'professor_id'),
 			'replies' => array(self::HAS_MANY, 'Reply', 'user_id'),
 			'replies1' => array(self::MANY_MANY, 'Reply', 'reply_vote(user_id, reply_id)'),
-			'studentAttributes' => array(self::HAS_ONE, 'StudentAttrib', 'user_id'),
+            'studentAttributes' => array(self::HAS_ONE, 'StudentAttributes', 'user_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
@@ -153,7 +153,7 @@ class User extends CActiveRecord
 
             'majors' => array(self::MANY_MANY, 'Major', 'user_major(user_id,major_id)', 'on'=>'focus="major"'),
             'minors' => array(self::MANY_MANY, 'Major', 'user_major(user_id,major_id)', 'on'=>'focus="minor"'),
-            ];
+        );
 	}
 
 	/**

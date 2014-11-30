@@ -30,7 +30,7 @@ $(document).ready(function(){
 
             if(search_json_data['success']){
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-                alert(search_json_data);
+                //alert(JSON.stringify(search_json_data));
                 show_search_results(search_json_data);
             }else{
                 alert('error getting data');
@@ -41,14 +41,14 @@ $(document).ready(function(){
     function show_search_results(search_json_data){
         //stick all JSON in appropriate JSON object (by type)
         var users_json = search_json_data['users'] != undefined ? search_json_data['users'] : [];
+        var students_json = search_json_data['students'] != undefined ? search_json_data['students'] : [];
+        var professors_json = search_json_data['professors'] != undefined ? search_json_data['professors'] : [];
         var courses_json = search_json_data['courses'] != undefined ? search_json_data['courses'] : [];
         var clubs_json = search_json_data['clubs'] != undefined ? search_json_data['clubs'] : [];
         var departments_json = search_json_data['departments'] != undefined ? search_json_data['departments'] : [];
         var schools_json = search_json_data['schools'] != undefined ? search_json_data['schools'] : [];
         //show_result(schools_json); //test
 
-
-        var deptname = "";
 
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
@@ -57,20 +57,24 @@ $(document).ready(function(){
         });
         //Get each course attribute and generate HTML!
         $.each(courses_json, function(index, course){
-            //alert(JSON.stringify(courses_json[index]));
-            show_courses_head(courses_json[index]);
+            //alert("Show Courses!");
+            //show_courses_head(courses_json[index]);
             show_courses(courses_json[index]);
         });
+
         //Get each clubs attribute and generate HTML!
         $.each(clubs_json, function(index, club){
-            //alert(JSON.stringify(clubs_json[index]));
+            //alert("Show Clubs!");
+            //show_clubs_image((clubs_json[index]));
             show_clubs(clubs_json[index]);
         });
+
         //Get each department attribute and generate HTML!
         $.each(departments_json, function(index, dept){
-            //alert(JSON.stringify(users_json[index]));
+            //alert("Show Departments!");
             show_departments(departments_json[index]);
         });
+
         //alert("length: " + users_json.length);
 
         //Appropriate filters rendered as results come in
@@ -86,12 +90,12 @@ $(document).ready(function(){
             $('#category2').parent().parent().show(); //courses
             //alert("courses react");
         }
-        if(users_json.length != 0) {
+        if(professors_json.length != 0) {
             $('#category1').parent().parent().show(); //all
             $('#category3').parent().parent().show(); //professors
             //alert("professors react");
         }
-        if(users_json.length != 0) {
+        if(students_json.length != 0) {
             $('#category1').parent().parent().show(); //all
             $('#category4').parent().parent().show(); //students
             //alert("students react");
@@ -117,104 +121,63 @@ $(document).ready(function(){
         var template = Handlebars.compile(source);
         var context = {
             fullname: result_json['firstname'] + " " + result_json['lastname'],
-            department: result_json['department_id']
+            department: result_json['department_name'],
+            url: base_url + "/assets/default/user.png",
+            id: result_json["user_id"]
         }
-       // var generated_html = template(JSON.stringify(result_json));
         var generated_html = template(context);
-        $('.slide-inner').append(generated_html).hide().fadeIn();
+        $('.ContentSlider').append(generated_html).hide().fadeIn();
     }
+
 
     function show_courses(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_course_results").html();
         var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
         var context =
         {
             description: result_json["course_desc"],
             admin_key: "School",
             department_key: "Department",
             members_key: "Members",
-            admin_value: result_json["school_id"],
-            department_value: result_json["dept_id"],
-            members_value: "Be the first to join"
+            admin_value: result_json["school_name"],
+            department_value: result_json["department_name"],
+            department_url: base_url + '/department/' + result_json['department_id'],
+            members_value: "Be the first to join",
+            name: result_json['course_name'],
+            url: base_url + "/course/" + result_json['course_id']
         }
         var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(JSON.stringify($(".description")));
-        //$('.description').append(JSON.stringify(result_json['description']));
+        $('.vert-area').append(generated_html).hide().fadeIn();
     }
-    function show_courses_head(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
-        var source   = $("#vertical_course_results_top").html();
-        var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
-        var context =
-        {
-            rname: result_json['course_name']
-        }
-        var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(JSON.stringify($(".description")));
-        //$('.description').append(JSON.stringify(result_json['description']));
-    }
-    function show_clubs_image(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
-        var source   = $("#vertical_club_results_img").html();
-        var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
-        var context =
-        {
-            //url: base_url + "/search/" + result_json['group_id']
-        }
-        var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
-        alert("check me out, it works!");
-        //alert(JSON.stringify($(".description")));
-        //$('.description').append(JSON.stringify(result_json['description']));
-    }
+
     function show_clubs(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_club_results").html();
         var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
         var context =
         {
-            description: result_json["Name"],
-            admin_key: "Name",
-            department_key: "School",
-            members_key: "Members",
-            admin_value: result_json["group_name"],
-            department_value: result_json["school_id"],
-            members_value: "Be the first to join"
+            imgurl: base_url + "/assets/default/user.png",
+            cluburl: base_url + "/club/" + result_json['group_id'],
+            name: result_json['group_name']
         }
         var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(JSON.stringify($(".description")));
-        //$('.description').append(JSON.stringify(result_json['description']));
+        $('.vert-area').append(generated_html).hide().fadeIn();
     }
+
     function show_departments(result_json) {
-        //alert('course_id: ' + JSON.stringify(result_json["course_id"]));
         var source   = $("#vertical_dept_results").html();
         var template = Handlebars.compile(source);
-        //var generated_html = template(result_json);
         var context =
         {
-            description: result_json["course_desc"],
-            admin_key: "School",
-            department_key: "Department",
-            members_key: "Members",
-            admin_value: result_json["school_id"],
-            department_value: result_json["dept_id"],
-            members_value: "Be the first to join"
+            imgurl: base_url + "/assets/default/dept_dp.png",
+            cluburl: base_url + "/department/" + result_json['department_id'],
+            name: result_json['department_name'],
+            description: result_json['description_name']
         }
+
         var generated_html = template(context);
         $('.results-main-sec').append(generated_html).hide().fadeIn();
-        //alert(JSON.stringify($(".description")));
-
-        //$('.description').append(JSON.stringify(result_json['description']));
-
     }
+
 
     //For the specific searches (from topbar.js)
     $(".topbar_graph_search").click(function(e){
@@ -238,27 +201,28 @@ $(document).ready(function(){
 
     //search filter on the left
     $('#allResults').click(function(){
-        alert("cat1");
+        //alert("cat1");
         //get_search_results(q);
     });
     $('#courses').click(function(){
-        alert("cat2");
+        //alert("cat2");
         //get_search_results(q);
     });
     $('#professors').click(function(){
-        alert("cat3");
+        //alert("cat3");
         //get_search_results(q);
     });
     $('#students').click(function(){
-        alert("cat4");
+       // alert("cat4");
         //get_search_results(q);
     });
     $('#clubs').click(function(){
-        alert("cat5");
+       // alert("cat5");
+        show_clubs(result_json);
         //get_search_results(q);
     });
     $('#departments').click(function(){
-        alert("cat6");
+       // alert("cat6");
         //get_search_results(q);
     });
 
