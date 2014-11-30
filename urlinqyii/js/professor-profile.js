@@ -37,7 +37,7 @@
 
                 $(".visibility_new").change(function(){
                 var selected_val = $("#visibility_new").val();
-                  //  alert (selected_val);
+                   //alert (selected_val);
                 $.ajax({
                         type: "POST",
                         url: base_url + '/profile/updateHere',
