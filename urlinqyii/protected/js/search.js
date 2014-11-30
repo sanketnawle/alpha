@@ -47,8 +47,27 @@ $(document).ready(function(){
         var clubs_json = search_json_data['clubs'] != undefined ? search_json_data['clubs'] : [];
         var departments_json = search_json_data['departments'] != undefined ? search_json_data['departments'] : [];
         var schools_json = search_json_data['schools'] != undefined ? search_json_data['schools'] : [];
-        //show_result(schools_json); //test
+        var majors_json = search_json_data['majors'] != undefined ? search_json_data['majors'] : [];
+        var alldepts_json = search_json_data['allDepartments'] != undefined ? search_json_data['allDepartments'] : [];
 
+        //for the left sidebar
+        $.each(schools_json, function(index, course){
+            //alert(JSON.stringify(schools_json[index]['school_name']));
+            $('#courseschool').append('<li>'+schools_json[index]['school_name']+'</li>');
+            $('#professorschool').append('<li>'+schools_json[index]['school_name']+'</li>');
+            $('#studentschool').append('<li>'+schools_json[index]['school_name']+'</li>');
+            $('#clubschool').append('<li>'+schools_json[index]['school_name']+'</li>');
+            $('#departmentschool').append('<li>'+schools_json[index]['school_name']+'</li>');
+        });
+        $.each(majors_json, function(index, major){
+            //alert(JSON.stringify(majors_json[index]['name']));
+            $('#studentmajor').append('<li>'+majors_json[index]['name']+'</li>');
+        });
+        $.each(alldepts_json, function(index, dept){
+            //alert(JSON.stringify(alldepts_json[index]['department_name']));
+            $('#coursedepartment').append('<li>'+alldepts_json[index]['department_name']+'</li>');
+            $('#professordepartment').append('<li>'+alldepts_json[index]['department_name']+'</li>');
+        });
 
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
@@ -201,34 +220,17 @@ $(document).ready(function(){
 
     //search filter on the left
     $('#allResults').click(function(){
-        //alert("cat1");
-        //get_search_results(q);
+        get_search_results(q);
     });
-    $('#courses').click(function(){
-        //alert("cat2");
-        //get_search_results(q);
-    });
-    $('#professors').click(function(){
-        //alert("cat3");
-        //get_search_results(q);
-    });
-    $('#students').click(function(){
-       // alert("cat4");
-        //get_search_results(q);
-    });
-    $('#clubs').click(function(){
-       // alert("cat5");
-        show_clubs(result_json);
-        //get_search_results(q);
-    });
-    $('#departments').click(function(){
-       // alert("cat6");
-        //get_search_results(q);
-    });
+    $('#courses').click(function(){});
+    $('#professors').click(function(){});
+    $('#students').click(function(){});
+    $('#clubs').click(function(){});
+    $('#departments').click(function(){});
 
 
 
-////For the specific searches (from topbar.js)////
+    ////For the specific searches (from topbar.js)////
     $("#piys").click(function(){
         $.getJSON( base_url + '/search/json', {f:piys},function( search_json_data )
         {
