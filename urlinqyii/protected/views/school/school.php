@@ -780,7 +780,7 @@ $(document).ready(function() {
 <body>
     <div class = "root">
     <div class='gp_topbar_wrap'>
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
+
     </div>
 
     <div class='gp_leftbar_wrap'>
