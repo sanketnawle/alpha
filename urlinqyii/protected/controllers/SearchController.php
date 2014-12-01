@@ -63,9 +63,21 @@ class SearchController extends Controller
             ->queryAll();
 
 
-        $ssql = "Select * from school where school_name LIKE '%".$query."%' LIMIT 30";
+        $schools = Yii::app()->db->createCommand()
+            ->select('school_name')
+            ->from('school s')
+            //->where('university_id=:uid', array(':uid'=>$university->university_id))
+            ->queryAll();
         //$dsql = "Select * from department where department_name LIKE '%".$query."%' LIMIT 30";
-
+        $majors = Yii::app()->db->createCommand()
+            ->select('name')
+            ->from('major')
+            ->queryAll();
+        $departments = Yii::app()->db->createCommand()
+            ->select('department_name')
+            ->from('department')
+            ->where('school_id=:sid', array(':sid'=>$user->school->school_id))
+            ->queryAll();
 
         //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
         $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%'";
@@ -106,7 +118,7 @@ class SearchController extends Controller
             ->where('school_id=:sid', array(':sid'=>$user->school_id))
             ->limit(30)
             ->queryAll();
-        $schoolContent = School::model()->findAllBySql($ssql);
+        //$schoolContent = School::model()->findAllBySql($ssql);
         $groupContent = Group::model()->findAllBySQL($gsql);
 
         if($query == "piyd")
@@ -116,7 +128,7 @@ class SearchController extends Controller
                 'success'=> true,
                 'query'=>$query,
                 'filter'=>$filter,
-                'professors'=>$piyd
+                'users'=>$piyd
             );
         }
         else if($query == "piys")
@@ -126,7 +138,7 @@ class SearchController extends Controller
                 'success'=> true,
                 'query'=>$query,
                 'filter'=>$filter,
-                'professors'=>$piys
+                'users'=>$piys
             );
         }
         else if($query == "ciyd")
@@ -169,11 +181,13 @@ class SearchController extends Controller
                 'filter'=>$filter,
                 'users'=>$usql,
                 'courses'=>$csql,
-                'schools'=>$schoolContent,
                 'departments'=>$dsql,
                 'clubs'=>$groupContent,
                 'students'=>$students,
-                'professors'=>$professors
+                'professors'=>$professors,
+                'schools'=>$schools,
+                'majors'=>$majors,
+                'allDepartments'=>$departments //as opposed to 'departments' from dsql which takes query
             );
         }
         echo CJSON::encode($data);
