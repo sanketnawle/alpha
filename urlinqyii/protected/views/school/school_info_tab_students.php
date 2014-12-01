@@ -52,7 +52,7 @@ $followed_students=$user->usersFollowed;
 echo '
     <div class="col span_1_of_3">
         <div class="school_header">
-            STUDENTS YOU MAY KNOW
+            STUDENTS YOU FOLLOW HERE
          </div>
         <div class="school_students_you_may_know">
             <ul class="school_list_of_students">';
