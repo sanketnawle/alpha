@@ -158,7 +158,7 @@
                 , 'department'=>$department, 'is_member'=>$is_member,'is_admin'=>$is_admin, 'schedules'=>$schedules)); ?>
                 <div class='midsec'>
 
-                    <?php echo $this->renderPartial('class_feed_tab',array('course'=>$course,'user'=>$user)); ?>
+                    <?php echo $this->renderPartial('class_feed_tab',array('class'=>$class,'course'=>$course,'user'=>$user)); ?>
 
 
                     <div class="members-tab-content">

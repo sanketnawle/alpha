@@ -284,6 +284,8 @@ class FeedController extends Controller
 
             elseif($post['post_type'] == 'event'){
                 $post_event = Event::model()->findbypk('event_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['event'] = get_model_associations($post_event, array('tags'));
+
             }
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
@@ -374,11 +376,16 @@ class FeedController extends Controller
 
     public function actionGetCoursePosts()
     {
-        $posts_sql_course = "SELECT distinct *
-		  from post p
-		  where (p.origin_type = 'course' and p.origin_id = '".$_GET['id']."')
-			order by last_activity DESC
-			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+        $posts_sql_course = "SELECT distinct * from post p where (p.origin_type = 'course' and p.origin_id = '".$_GET['id']."')
+			order by last_activity DESC LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+
+        //$command = Yii::app()->db->createCommand()
+        //    ->select('*')
+        //    ->distinct(true)
+        //    ->from('post p')
+        //    ->where("(p.origin_type = 'course') and p.origin_id = '".$_GET['id']."'")
+        //    ->order("last_activity DESC LIMIT ".self::$start_rec.",".self::POST_LIMIT)
+        //    ->queryAll();
 
         $command = Yii::app()->db->createCommand($posts_sql_course);
 
@@ -387,6 +394,10 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
+        //if($command)
+        //    $success_post = TRUE;
+        //else
+        //    $success_post = FALSE;
         $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 

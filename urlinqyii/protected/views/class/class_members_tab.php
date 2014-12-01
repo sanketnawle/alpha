@@ -2,12 +2,7 @@
 
 
 <?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 7/21/14
- * Time: 5:26 PM
- */
+
 /*
 require_once 'php/dbconnection.php';
 require_once 'includes/follow.php';
@@ -98,7 +93,7 @@ echo '
 echo '
          <div class="members-list-wrap prof-member-list">';
 //}
-
+$base_url = Yii::app()->getBaseUrl(true);
 
 //THIS IS FOR TAs and the Professor
     foreach ($admins as $admin) {
@@ -112,14 +107,12 @@ echo '
               //  'DefaultImages/user.png'
                //         . ')"></div>
                         if($admin->picture_file_id){
-                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
-                                $admin->pictureFile->file_url.')"></div>';
+                            echo '<div class="picwrap" style="background-image:url('. $base_url. $admin->pictureFile->file_url.')"></div>';
                         }else{
-                            echo '<div class="picwrap" style="background-image:url('.Yii::app()->getBaseUrl(true).
-                                '/assets/default/user.png)"></div>';
+                            echo '<div class="picwrap" style="background-image:url(' . $base_url . '/assets/default/user.png)"></div>';
                         }
       echo               ' <div class="member-bio">
-                        <span>' . $admin->user_bio . '</span> <a href="'. Yii::app()->getBaseUrl(true).'/profile/'.$admin->user_id . '"><strong>View Profile</strong></a>
+                        <span>' . $admin->user_bio . '</span> <a href="' . $base_url . '/profile/'. $admin->user_id . '"><strong>View Profile</strong></a>
                       </div>
                     </div>';
         if ($admin->user_type == 's') {

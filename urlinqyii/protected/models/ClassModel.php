@@ -87,7 +87,9 @@ class ClassModel extends CActiveRecord
             //added by Michael
             'admins' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=1'),
             'students' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=0'),
-            'professor' => array(self::BELONGS_TO, 'User', 'professor'),
+
+            //Gets the user object for this classes professor
+            'professorUser' => array(self::HAS_ONE, 'User', array('user_id'=>'professor'))
 		);
 	}
 

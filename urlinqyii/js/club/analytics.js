@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     var current_option = $('.ga_option_cur').text();
 
-    alert(group_id);
+//    alert(group_id);
     //    $.getScript('js/getURLPara.js', function(){
 //        var group_id = '';
 //        if ($.getUrlVar("group_id") != null) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
 
         var current_option = $('.ga_option_cur').text();
 
-        $.getJSON(base_url + "/club/getPageViewData", { group_id: group_id, filter:current_option}, function(page_view_json) {
+        $.getJSON(base_url + "/club" + group_id.toString() + "/getPageViewData", { group_id: group_id, filter:current_option}, function(page_view_json) {
             console.log("page view data");
 
             console.log(page_view_json);
@@ -124,9 +124,9 @@ $(document).ready(function() {
 
     function show_member_data(){
 
-        $.getJSON(base_url + "/club/getMemberCountData", { group_id: group_id}, function(json_data) {
+        $.getJSON(base_url + "/club/" + group_id.toString() + "/getMemberCountData", { group_id: group_id}, function(json_data) {
             console.log(json_data);
-            alert(JSON.stringify(json_data));
+//            alert(JSON.stringify(json_data));
             var current_option = $('.ga_option_cur').text().toLowerCase();
             var percent_increase = 0.0;
             var old_members_count = 0;
@@ -736,41 +736,37 @@ $(document).delegate(".ga_option","click",function(){
 
             show_member_breakdown();
             function show_member_breakdown(){
-                $.getScript('js/getURLPara.js', function(){
-                    var group_id = '';
-                    if ($.getUrlVar("group_id") != null) {
-                        group_id = $.getUrlVar("group_id").toString();
-                    }
 
-            $.getJSON("php/analytics/club_class_rank_data.php", { group_id: group_id}, function(json_data) {
-                var freshman_percent_str = (json_data['freshman_count'] / json_data['total_count'] * 100).toString() + '%';
-                var sophomore_percent_str = (json_data['sophomore_count'] / json_data['total_count'] * 100).toString() + '%';
-                var junior_percent_str = (json_data['junior_count'] / json_data['total_count'] * 100).toString() + '%';
-                var senior_percent_str = (json_data['senior_count'] / json_data['total_count'] * 100).toString() + '%';
-                var graduate_percent_str = (json_data['graduate_count'] / json_data['total_count'] * 100).toString() + '%';
 
-                //Set the width of the horizontal bar graphs
-                $('#freshman_percent_bar').width(freshman_percent_str);
-                $('#sophomore_percent_bar').width(sophomore_percent_str);
-                $('#junior_percent_bar').width(junior_percent_str);
-                $('#senior_percent_bar').width(senior_percent_str);
-                $('#graduate_percent_bar').width(graduate_percent_str);
+                $.getJSON(base_url + '/club/' + group_id.toString() + '/getMemberBreakdown', { group_id: group_id}, function(json_data) {
+                    var freshman_percent_str = (Math.round(json_data['freshman_count'] / json_data['total_count'] * 100) / 100).toString() + '%';
+                    var sophomore_percent_str = (Math.round((json_data['sophomore_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var junior_percent_str = (Math.round((json_data['junior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var senior_percent_str = (Math.round((json_data['senior_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
+                    var graduate_percent_str = (Math.round((json_data['graduate_count'] / json_data['total_count']) * 1000) / 10).toString() + '%';
 
-                //Set percent text
-                $('#freshman_percent_text').text(freshman_percent_str);
-                $('#sophomore_percent_text').text(sophomore_percent_str);
-                $('#junior_percent_text').text(junior_percent_str);
-                $('#senior_percent_text').text(senior_percent_str);
-                $('#graduate_percent_text').text(graduate_percent_str);
+                    //Set the width of the horizontal bar graphs
+                    $('#freshman_percent_bar').width(freshman_percent_str);
+                    $('#sophomore_percent_bar').width(sophomore_percent_str);
+                    $('#junior_percent_bar').width(junior_percent_str);
+                    $('#senior_percent_bar').width(senior_percent_str);
+                    $('#graduate_percent_bar').width(graduate_percent_str);
 
-                //Set class rank count
-                $('#freshman_count').text(json_data['freshman_count']);
-                $('#sophomore_count').text(json_data['sophomore_count']);
-                $('#junior_count').text(json_data['junior_count']);
-                $('#senior_count').text(json_data['senior_count']);
-                $('#graduate_count').text(json_data['graduate_count']);
+                    //Set percent text
+                    $('#freshman_percent_text').text(freshman_percent_str);
+                    $('#sophomore_percent_text').text(sophomore_percent_str);
+                    $('#junior_percent_text').text(junior_percent_str);
+                    $('#senior_percent_text').text(senior_percent_str);
+                    $('#graduate_percent_text').text(graduate_percent_str);
+
+                    //Set class rank count
+                    $('#freshman_count').text(json_data['freshman_count']);
+                    $('#sophomore_count').text(json_data['sophomore_count']);
+                    $('#junior_count').text(json_data['junior_count']);
+                    $('#senior_count').text(json_data['senior_count']);
+                    $('#graduate_count').text(json_data['graduate_count']);
                 });
-            });
+
 
             }
 
@@ -1029,7 +1025,7 @@ $(document).delegate(".ga_option","click",function(){
 
             var member_attendance_data = null;
 
-            $.getJSON(base_url + "/club/getMemberData", { group_id: group_id}, function(json_data) {
+            $.getJSON(base_url + "/club/" + group_id.toString() + "/getMemberData", { group_id: group_id}, function(json_data) {
                 member_attendance_data = json_data;
                 show_member_attendance();
             });

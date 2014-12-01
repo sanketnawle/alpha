@@ -77,18 +77,23 @@ class PartialController extends Controller
 	}
 
 
-
     public function actionTopbar()
     {
         $user_id = Yii::app()->session['user_id'];
 
         //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
         $user = User::model()->find('user_id=:id', array(':id'=>1));
+        //$user = $this->get_current_user();
+        $school = $user->school->school_name;
+        //Changed by Alex. This line was causing errors lkajsdl
 
+        //$department = $user->department->department_name;
+        $department = $user->department['department_name'];
+        //$department = $user->department;
 
-
-        $this->render('topbar',array('user'=>$user));
+        $this->render('topbar',array('user'=>$user, 'school'=>$school, 'department'=>$department));
     }
+
 
 
 

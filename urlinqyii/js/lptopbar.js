@@ -1,6 +1,10 @@
 /**
  * Created by MikeS on 11/12/14.
  */
+ var $ = jQuery;
+ $(document).ready(function() {
+
+
 window.forceLeftMenuClose = false;
 function toggleMenu(active) {
     var menu = $(".topbar .left a.menu");
@@ -188,3 +192,4 @@ function toggleMenu(active) {
         });
     });
 })(jQuery);
+ });

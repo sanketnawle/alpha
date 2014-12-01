@@ -53,6 +53,11 @@ class ClubController extends Controller
 	public function actionView()
 	{
 
+
+        if(!$this->authenticated()){
+            $this->redirect(array('/'));
+        }
+
         $club_id = $_GET['id'];
 
 
@@ -477,6 +482,64 @@ class ClubController extends Controller
         $json_data_array['success'] = true;
         $this->renderJSON($json_data_array);
         return;
+
+    }
+
+    public function actionGetMemberBreakdown(){
+        if (!isset($_GET['id'])) {
+            $this->renderJSON(array('success'=>'false','error_id'=>1));
+            return;
+        }
+            // ../ goes to parent directory
+        $group_id = $_GET['id'];
+        try {
+
+            $group_users = GroupUser::model()->findAllbySql("SELECT * FROM `group_user` WHERE group_id = '$group_id'");
+
+
+            $json_data_array = array('freshman_count' => 0,'sophomore_count' => 0,'junior_count' => 0,'senior_count' => 0,'graduate_count' => 0,'total_count' => 0);
+
+
+            foreach($group_users as $group_user){
+                $user_id = $group_user->user_id;
+                $user = $group_user->user;
+                //if the user is a student, query their student attributes
+                if($user->user_type == 's'){
+                    $user_attribs = $user->studentAttributes;
+
+
+                    //user ids: 285/286/350
+                    //$group_users = mysqli_query($con,"SELECT * FROM `group_users` WHERE group_id = '$group_id'");
+                    $json_data_array['total_count'] += 1;
+                    if($user_attribs['student_type'] == 'grad' || $user_attribs['student_type'] == 'phd'){
+                        $json_data_array['graduate_count'] += 1;
+                    }elseif($user_attribs['student_type'] == 'undergrad'){
+                        $user_grad_year_int = intval($user_attribs['year']);
+                        $current_year_int = intval(date("Y"));
+                        $year_delta = $user_grad_year_int - $current_year_int;
+
+                        if($year_delta == 4){
+                            $json_data_array['freshman_count'] += 1;
+                        }elseif($year_delta == 3){
+                            $json_data_array['sophomore_count'] += 1;
+                        }elseif($year_delta == 2){
+                            $json_data_array['junior_count'] += 1;
+                        }elseif($year_delta == 1){
+                            $json_data_array['senior_count'] += 1;
+                        }
+                    }
+                }
+            }
+
+            $json_data_array['success'] = true;
+            $this->renderJSON($json_data_array);
+            return;
+        } catch (Exception $e) {
+            $json_data_array = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($json_data_array);
+            return;
+        }
+
 
     }
 

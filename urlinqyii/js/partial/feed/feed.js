@@ -15,7 +15,7 @@ $(document).ready(function(){
         $.getJSON( base_url + feed_url, function( json_feed_data ) {
             if(json_feed_data['success']){
                 //alert(JSON.stringify(json_feed_data));
-                alert(JSON.stringify(json_feed_data));
+//                alert(JSON.stringify(json_feed_data));
                 render_posts(json_feed_data['feed']);
             }else{
                 alert('failed to get feed');
