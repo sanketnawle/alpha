@@ -55,8 +55,14 @@ foreach ($groups as $group){
             $default_unfollowed="selected";
         }
     }
-
-    $group_mems_diaplay=$group->users;
+    $each_group_mem=array();
+    $counter = 0;
+    foreach ($group->users as $group_mem_diaplay ){
+        if ($counter == 3)
+            break;
+        $each_group_mem[$counter]= $group_mem_diaplay;
+        $counter ++;
+    }
    // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
