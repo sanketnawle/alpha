@@ -112,23 +112,13 @@ class PartialController extends Controller
     }
 
 
-    public function actionFeed()
-    {
+    public function actionFeed(){
+
         $posts = Post::model()->findAll();
 
+
+
         $this->render('feed',array('posts'=>$posts));
-    }
-
-    public function actionCourse()
-    {   //For testing
-        $course = Yii::app()->db->createCommand()
-            ->select('c.course_name')
-            ->from('course c')
-            ->where('c.course_id = 1')
-            ->limit(30)
-            ->queryAll();
-
-        $this->render('course', array('course'=>$course[0]['course_name']));
     }
 
 	// Uncomment the following methods and override them if needed
