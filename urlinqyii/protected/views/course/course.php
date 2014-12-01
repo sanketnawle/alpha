@@ -3,6 +3,7 @@
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         feed_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        id = "<?php echo $cid ?>";
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>

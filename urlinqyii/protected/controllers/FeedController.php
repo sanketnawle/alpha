@@ -388,8 +388,9 @@ class FeedController extends Controller
         //    ->queryAll();
 
         $command = Yii::app()->db->createCommand($posts_sql_course);
+        $posts = $command->queryAll();
 
-        if($posts = $command->queryAll())
+        if($posts)
             $success_post = TRUE;
         else
             $success_post = FALSE;
@@ -398,7 +399,9 @@ class FeedController extends Controller
         //    $success_post = TRUE;
         //else
         //    $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        //'success'=>$success_post
+
+        $this->renderJSON(array('success'=>true, 'id'=>$_GET['id'], 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetClubPosts()
