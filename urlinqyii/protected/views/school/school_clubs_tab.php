@@ -42,7 +42,7 @@ echo '<div class = "clubs-tab-content">
 
 
 foreach ($groups as $group){
-
+    $default_followed = "";
     $default_unfollowed="selected";
     foreach($user->groupUsers as $grp) {
         if ($grp->group_id==$group->group_id) {

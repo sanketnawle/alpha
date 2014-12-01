@@ -36,7 +36,7 @@ $(document).ready(function() {
     var map_zoom_size = "&zoom=14&size=270x180";
     var map_marker = "&markers=color:red%7Clabel:%7C";
 
-    /*
+
     $.ajax({
         type: 'GET',
         dataType: 'jsonp',
@@ -60,7 +60,7 @@ $(document).ready(function() {
             }
         }
     });
-    */
+
 
     var originalHTML = "";
 

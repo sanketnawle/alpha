@@ -23,7 +23,7 @@ echo '<div class = "members-tab-content">
 ';
 // each professor member
             foreach($members as $member) {
-
+                $default_followed = "";
                 $default_unfollowed="selected";
                 foreach($user->usersFollowed as $mem) {
                     if ($mem->user_id==$member->user_id) {
@@ -92,6 +92,7 @@ echo '<div class="blockwrapper"><div class = "members-header members-students">
 
 foreach($members as $member) {
 
+    $default_followed="";
     $default_unfollowed="selected";
     foreach($user->usersFollowed as $mem) {
         if ($mem->user_id==$member->user_id) {

@@ -68,10 +68,6 @@ echo '
 //about left section starts
 echo "
         <div class = 'about-tab-leftsec'>
-";
-
-
-echo "
             <div class = 'about-tab-about about-tab-block'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>
@@ -79,32 +75,79 @@ echo "
                     </div>
                 </div>
                 <div class = 'tab-block-content'>
-                    Is this class open to the public...
+                    <div class='settings-line'>
+                        <div class='settings-line-left'><p>Is this class open to the public, or is it invite-only?</p></div>
+                        <div class='settings-line-middle'>
+                            <p class='settings-open-current' id='class-open-privacy'>Public</p>
+                            <div class='class-settings-expand' id='settings-open-expand'>
+                                <form action=''>
+                                    <input type='radio' value='public'>Public<br>
+                                    <input type='radio' value='invite-only'>Invite-only<br>
+                                    <button class='settings-edit-button settings-edit-submit' id='settings-open-submit' type='submit'>Submit</button>
+                                    <button class='settings-edit-button settings-edit-cancel' id='settings-open-cancel' type='cancel'>Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='settings-line-right'><div class='settings-edit-icon'></div><p>Edit</p></div>
+                    </div>
+                    <hr>
+                    <div class='settings-line'>
+                        <div class='settings-line-left'><p>Can anyone see the members of this class, or just people who are enrolled?</p></div>
+                        <div class='settings-line-middle'>
+                            <p class='settings-member-current' id='class-member-privacy'>Anyone</p>
+                            <div class='class-settings-expand'>
+                                <form action=''>
+                                    <input type='radio' value='anyone'>Anyone<br>
+                                    <input type='radio' value='enrolled'>Enrolled<br>
+                                    <button class='settings-edit-button settings-edit-submit' id='settings-member-submit' type='submit'>Submit</button>
+                                    <button class='settings-edit-button settings-edit-cancel' id='settings-member-cencel' type='cancel'>Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class='settings-line-right'><div class='settings-edit-icon'></div><p>Edit</p></div>
+                    </div>
                 </div>
             </div>
 
-           <div class = 'about-tab-members about-tab-block'>
+           <div class = 'settings-tab-officers about-tab-block'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>
                         Class TAs and Admins
                     </div>
                 </div>
                 <div class = 'tab-block-content'>
-                    Professor Barrack Obama
+                    <div class='settings-officers-line'>
+                        <div class='officer-pic' id='prof'></div>
+                        <div class='officer-name'><p>Professor Barrack Obama</p><p id='officer-you'>(YOU)</p></div>
+                    </div>
+                    <hr>
+                    <div class='settings-officers-line'>
+                        <div class='officer-pic' id='prof'></div>
+                        <div class='officer-name'><p>Barrack Obama</p></div>
+                        <div class='officer-delete-icon'></div>
+                    </div>
+                    <hr>
+                    <div class='officers-input'>
+                        <div class='officers-input-icon'></div>
+                        <input class='officer-input-text' type='text' placeholder='Add a new TA or admin to this class'>
+                    </div>
                 </div>
             </div>
         </div>
-";
 
-//opening about-tab-rightsec and group-about
-echo "
-        <div class = 'about-tab-rightsec prof-rightsec'>
-            <div class = 'about-tab-block group-about group-about-2'>
+        <div class = 'about-tab-rightsec notifications-rightsec'>
+            <div class = 'about-tab-block group-about group-about-3'>
                 <div class = 'tab-block-header'>
                     <div class = 'block-head-left'>Personal Notification Settings</div>
                 </div>
                 <div class = 'tab-block-content'>
-                    Notifications are ON For this Class
+                    <div class='notifications-text'><p>Notifications are <b>ON</b> For this Class</p></div>
+                    <div class='class-notifications-check'>
+                        <input type='checkbox' id='class-notifications' class='flat7c'>
+                            <label for='flat7' class='flat7b_fbar flat_checked' style='border: 1px solid rgb(0, 160, 118); background-color: rgb(2, 226, 167);'>
+                                <span class='move' style='margin-left: 1px;'></span>
+                            </label>
+                    </div>
                 </div>
             </div>
         </div>

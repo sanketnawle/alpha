@@ -1462,4 +1462,30 @@ $(document).ready(function () {
             $(".settings-menu").css("display", "none");
         }
     });
+
+    $(document).delegate(".class-notifications-check", "click", function() {
+        console.log($(".move").css("margin-left"));
+        if ($(".move").css("margin-left") == "1px") {
+            $(".move").css("margin-left", "19px");
+            $(".notifications-text p b").text("OFF");
+        }
+        else {
+            $(".move").css("margin-left", "1px");
+            $(".notifications-text p b").text("ON");
+        }
+    });
+
+    $(document).delegate(".settings-edit-button", "click", function(event) {
+       event.preventDefault();
+    });
+
+    $(document).delegate("#settings-open-cancel", "click", function() {
+        $("#class-open-privacy").css("display", "inline-block");
+        $(".");
+        //get edit menu
+    });
+
+    $(document).delegate(".settings-open-submit", "click", function() {
+        event.preventDefault();
+    });
 });
