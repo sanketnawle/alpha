@@ -55,7 +55,7 @@
       <file leaf-file-name="club_attendance_data.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.14715719" vertical-offset="497" max-vertical-offset="1394">
+            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.19175027" vertical-offset="457" max-vertical-offset="1394">
               <folding>
                 <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
@@ -295,7 +295,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -640,7 +640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.14715719" vertical-offset="497" max-vertical-offset="1394">
+        <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.19175027" vertical-offset="457" max-vertical-offset="1394">
           <folding>
             <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
             <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
