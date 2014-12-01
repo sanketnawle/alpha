@@ -4,9 +4,10 @@
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         feed_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
     </script>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+    
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/group.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/backgroundGroup.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/invite_modal.css"> </link>

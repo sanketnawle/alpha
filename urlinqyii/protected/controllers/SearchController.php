@@ -9,8 +9,8 @@ class SearchController extends Controller
         }else{
             $q = '';
         }
-        //$user = User::model()->find('user_id=:id', array(':id'=>1));
-        $user = $this->get_current_user();
+        $user = User::model()->find('user_id=:id', array(':id'=>1));
+       // $user = $this->get_current_user();
         $school = $user->school->school_name;
         $this->render('search', array('user'=>$user,'school' =>$school, 'q'=>$q));
     }
