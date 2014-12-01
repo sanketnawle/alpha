@@ -20,12 +20,11 @@
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/club/club.css'>
 <!--    <link rel='stylesheet' type='text/css' href='--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/css/planner_for_club.css'>-->
 
-    
+
     <link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
     <link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 
 
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 
 
     <!--  This allows us to use club_id in our javascript without having to access the url parameter  -->
@@ -37,7 +36,7 @@
     </script>
 
     <?php //include "timezone.php" ?>
-
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/club/club.js'></script>
 </head>
@@ -204,9 +203,31 @@
                     ?>
                             <div class='feed-tab-content'>
 
-                            <?php
-                                echo $this->renderPartial('club_feed_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
-                            ?>
+                                <?php
+
+
+
+                                echo "<div class='group_fbar_wrap'>";
+
+                                echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group','target_id'=>$club->group_id));
+
+                                echo "</div>";
+
+                                echo "<div class='group_feed_wrap'>";
+                                echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/' . $club->group_id . '/feed'));
+
+
+                                echo "</div>";
+
+                                echo "<div class='feed-tab-rightsec'>";
+
+
+                                echo $this->renderPartial('club_feed_right_about',array('club'=>$club));
+
+                                echo "</div>";
+
+
+                                ?>
                             </div>
                     <?php
 	                }
@@ -217,6 +238,10 @@
                             echo $this->renderPartial('club_members_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count));
                         ?>
 
+                    </div>
+
+                    <div class='analytics-tab'>
+                        <?php echo $this->renderPartial('club_analytics',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count)); ?>
                     </div>
 
                     <?php
@@ -233,9 +258,7 @@
                     <?php
 	                }
 	                ?>
-	                <div class='analytics-tab'>
-                        <?php echo $this->renderPartial('club_analytics',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count)); ?>
-                    </div>
+
                     <div class='about-content-tab'>
                         <?php echo $this->renderPartial('club_about_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'connected_users'=>$connected_users)); ?>
                     </div>

@@ -172,7 +172,7 @@ while ($row = $get_course_details_query_result->fetch_array()) {
     ';
     } else { */
         echo '
-                <a href=" profile.php?user_id=' . $professor->user_id . '">
+                <a href="' . Yii::app()->getBaseUrl(true) . '/user/' . $professor->user_id . '">
                     <span class = "imp-icon leader-icon" style="background-image:url(';
                                 if($professor->picture_file_id){
                                     echo Yii::app()->getBaseUrl(true).$professor->pictureFile->file_url;
@@ -248,7 +248,7 @@ while ($row = $get_course_details_query_result->fetch_array()) {
             </div >
 
             <div class = "ghr-3 ghr-box" >
-                <a class = "department-link" href="department.php?dept_id=' . $department->department_id . '">
+                <a class = "department-link" href="' . Yii::app()->getBaseUrl(true) . '/' . $department->department_id . '">
                     <div class = "ghr-box-head" >
                         <div class = "ghr-icon-3 ghr-icon" style="background-image:url(';
                             if($department->picture_file_id){

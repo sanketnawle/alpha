@@ -807,13 +807,16 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<?php ini_set('error_reporting', E_ALL);
+?>
 <div class='root'>
     <div class='gp_topbar_wrap'>
-        <?php include ("topbar.php");?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <section>
-        <?php include("leftpanel.php"); ?>
+        <?php
+        echo Yii::app()->runController('partial/leftmenu'); ?>
     </section>
 
     <div class='modal_coverPhoto_body modal_body'>

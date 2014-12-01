@@ -14,7 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 }
 
-include 'php/dbconnection.php';
+//include 'php/dbconnection.php';
 
 
 if (isset($_SESSION['user_id'])) {

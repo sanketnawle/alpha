@@ -1,24 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "student_attribs".
+ * This is the model class for table "user_tag".
  *
- * The followings are the available columns in table 'student_attribs':
+ * The followings are the available columns in table 'user_tag':
+ * @property integer $id
  * @property integer $user_id
- * @property string $website
- * @property string $major
- * @property integer $year
- * @property string $student_type
- * @property string $minor
+ * @property integer $tag_id
+ *
+ * The followings are the available model relations:
+ * @property Group[] $groups
+ * @property User $user
+ * @property Tag $tag
  */
-class StudentAttrib extends CActiveRecord
+class UserTag extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'student_attributes';
+		return 'user_tag';
 	}
 
 	/**
@@ -29,13 +31,11 @@ class StudentAttrib extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'required'),
-			array('user_id, year', 'numerical', 'integerOnly'=>true),
-			array('website, major, minor', 'length', 'max'=>255),
-			array('student_type', 'length', 'max'=>9),
+			array('user_id, tag_id', 'required'),
+			array('user_id, tag_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, website, major, year, student_type, minor', 'safe', 'on'=>'search'),
+			array('id, user_id, tag_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +47,9 @@ class StudentAttrib extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'groups' => array(self::MANY_MANY, 'Group', 'group_user_tag(user_tag_id, group_id)'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'tag' => array(self::BELONGS_TO, 'Tag', 'tag_id'),
 		);
 	}
 
@@ -56,12 +59,9 @@ class StudentAttrib extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'user_id' => 'User',
-			'website' => 'Website',
-			'major' => 'Major',
-			'year' => 'Year',
-			'student_type' => 'Student Type',
-			'minor' => 'Minor',
+			'tag_id' => 'Tag',
 		);
 	}
 
@@ -83,12 +83,9 @@ class StudentAttrib extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('website',$this->website,true);
-		$criteria->compare('major',$this->major,true);
-		$criteria->compare('year',$this->year);
-		$criteria->compare('student_type',$this->student_type,true);
-		$criteria->compare('minor',$this->minor,true);
+		$criteria->compare('tag_id',$this->tag_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -99,7 +96,7 @@ class StudentAttrib extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return StudentAttrib the static model class
+	 * @return UserTag the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
