@@ -42,6 +42,27 @@ echo '<div class = "clubs-tab-content">
 
 
 foreach ($groups as $group){
+
+    $default_unfollowed="selected";
+    foreach($user->groupUsers as $grp) {
+        if ($grp->group_id==$group->group_id) {
+            $default_followed = "selected";
+            $default_unfollowed ="";
+            break;
+        }
+        else {
+            $default_followed="";
+            $default_unfollowed="selected";
+        }
+    }
+    $each_group_mem=array();
+    $counter = 0;
+    foreach ($group->users as $group_mem_diaplay ){
+        if ($counter == 3)
+            break;
+        $each_group_mem[$counter]= $group_mem_diaplay;
+        $counter ++;
+    }
    // var_dump($department->pictureFile->file_url);
 echo '<div class = "item department-selector">';
 
@@ -181,7 +202,13 @@ echo '<div class = "deptBtns" id="deptBtns1">';
 
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
 
-echo '<button class = "studybtn btn_join" id="studybtn1">Join</button>'; // add a class joined if joined
+    echo '
+                        <div class="group_join_wrap" >
+                            <select class="group_join" data-group_id="' . $group->group_id . '">
+                                 <option value="join" class="follow_option"'.$default_followed.'>join</option>
+                                 <option value="leave" class="follow_option"'.$default_unfollowed.'>leave</option>
+                            </select>
+                        </div>'; // add a class joined if joined
 
 echo '</div></div></a></div></div>';
 

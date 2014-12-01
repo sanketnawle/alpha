@@ -171,20 +171,8 @@ class ApiController extends Controller
         }
 
         $user_id = $_GET['user_id'];
-        //$user = User::model()->findAll(array("select"=>"user_email"));
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
-
-
-
-//        $departments = array();
-//        foreach($school->departments as $department){
-//            array_push($departments,array('department_name'=>$department->department_name,'department_id'=>$department->department_id));
-//        }
-
         $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
-
-
-
 
         $this->renderJSON($data);
         return;
@@ -281,6 +269,34 @@ class ApiController extends Controller
         }
 
     }
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionGetSchoolMembers(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'school_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $school_id = $_GET['school_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $school = School::model()->find("school_id=:school_id",array(":school_id"=>$school_id));
+        if($school){
+            $data = array('success'=>true);
+            $data['members'] = $school->users;
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
 
     //ERROR ID's
     // 1 - All data is not set
@@ -444,7 +460,16 @@ class ApiController extends Controller
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
         if($group){
-            $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('members','admins')));
+//            $data = array('success'=>true,'group'=>$this->get_model_associations($group,array('admins','members')));
+
+            $data = array('success'=>true,'group'=>$this->model_to_array($group));
+
+
+
+            $data['group']['admins'] = $group->admins;
+            $data['group']['members'] = $group->members;
+
+
             $this->renderJSON($data);
             return;
         }else{
@@ -473,9 +498,15 @@ class ApiController extends Controller
         $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
 
         if($class){
-            $data = array('success'=>true);
 
-            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('students','admins')));
+//            $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('students','admins')));
+
+            $data = array('success'=>true,'class'=>$this->model_to_array($class));
+            $data['class']['admins'] = $class->admins;
+            $data['class']['students'] = $class->students;
+            $data['class']['course'] = $class->course;
+            $data['class']['professor'] = $class->professorUser;
+
             $this->renderJSON($data);
             return;
         }else{
@@ -501,7 +532,7 @@ class ApiController extends Controller
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $group = Group::model()->find("group_id=:group_id",array(":group_id"=>$group_id));
         if($group){
-            $data = array('success'=>true,'pictures'=>$group->files);
+            $data = array('success'=>true,'files'=>$group->files);
             $this->renderJSON($data);
             return;
         }else{
@@ -528,7 +559,7 @@ class ApiController extends Controller
         //$user = User::model()->findAll(array("select"=>"user_email"));
         $class = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
         if($class){
-            $data = array('success'=>true,'pictures'=>$class->files);
+            $data = array('success'=>true,'files'=>$class->files);
             $this->renderJSON($data);
             return;
         }else{

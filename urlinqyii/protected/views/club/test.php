@@ -44,7 +44,7 @@ I MADE A CHANGE
 //
 //
 
-
+echo Yii::getVersion();
 var_dump($department->pictureFile->file_url);
 
 var_dump($classes);

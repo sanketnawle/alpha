@@ -99,26 +99,16 @@
                                     <!--ideally, we want to make these dropLists dynamic via JSON magic-->
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
-                                        <div class="dropOpenBtn">
-                                            <?php echo $school; ?>
-                                            <i class="dwnArrow"></i>
-                                        </div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul id="schools">
-                                                <li class="dropListItem1"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id="courseschool"></ul>
                                         </div>
                                     </li>
                                     <li>
                                         <span class="FilterLabel DropdownLabel">Department:</span>
-                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "coursedepartment"></ul>
                                         </div>
                                     </li>
                                     <li>
@@ -144,24 +134,16 @@
                                 <ul class="SearchFilterList">
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
-                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "professorschool"></ul>
                                         </div>
                                     </li>
                                     <li>
                                         <span class="FilterLabel DropdownLabel">Department:</span>
-                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "professordepartment"></ul>
                                         </div>
                                     </li>
                                 </ul>
@@ -177,24 +159,16 @@
                                 <ul class="SearchFilterList">
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
-                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "studentschool"></ul>
                                         </div>
                                     </li>
                                     <li>
                                         <span class="FilterLabel DropdownLabel">Major:</span>
-                                        <div class="dropOpenBtn">Computer Science <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "studentmajor"></ul>
                                         </div>
                                     </li>
                                 </ul>
@@ -210,13 +184,9 @@
                                 <ul class="SearchFilterList">
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
-                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "clubschool"></ul>
                                         </div>
                                     </li>
                                 </ul>
@@ -232,13 +202,9 @@
                                 <ul class="SearchFilterList">
                                     <li>
                                         <span class="FilterLabel DropdownLabel">School:</span>
-                                        <div class="dropOpenBtn">NYU School of Engineering <i class="dwnArrow"></i></div>
+                                        <div class="dropOpenBtn"><i class="dwnArrow"></i></div>
                                         <div class="dropOpenList" id="dropOpenList">
-                                            <ul>
-                                                <li class="dropListItem"><span>NYU School of Engineering</span></li>
-                                                <li class="dropListItem"><span>NYU College of Arts and Sciences</span></li>
-                                                <li class="dropListItem"><span>Stern School of Business</span></li>
-                                            </ul>
+                                            <ul id = "departmentschool"></ul>
                                         </div>
                                     </li>
                                 </ul>
@@ -333,9 +299,7 @@
                                             <div class="result-bottom">
                                                 <div class="course-schedule"></div>
                                                 <div class="course-bottom-functions"><div class="join-button">
-                                                        <a class="followCourse sign-up" data-value="BMS3314">
-                                                            Follow Course
-                                                        </a>
+                                                    <!--<a class="followCourse sign-up" data-value="BMS3314"></a>-->
                                                     </div></div>
                                             </div>
                                         </div>
@@ -414,7 +378,6 @@
                                         </a>
                                         <div class="person-info">
                                             <div class="title-limit mail"></div>
-                                            <a><h4>{{description}}</h4></a>
                                         </div></div>
                                     <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
                                 </div>

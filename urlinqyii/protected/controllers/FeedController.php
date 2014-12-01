@@ -284,6 +284,8 @@ class FeedController extends Controller
 
             elseif($post['post_type'] == 'event'){
                 $post_event = Event::model()->findbypk('event_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['event'] = get_model_associations($post_event, array('tags'));
+
             }
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
@@ -371,23 +373,92 @@ class FeedController extends Controller
 
         $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
-
+/*
     public function actionGetCoursePosts()
     {
-        $posts_sql_course = "SELECT distinct *
-		  from post p
-		  where (p.origin_type = 'course' and p.origin_id = '".$_GET['id']."')
-			order by last_activity DESC
-			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+        $posts_sql_course = "SELECT distinct * from post p where (p.origin_type = 'course' and p.origin_id = '".$_GET['id']."')
+			order by last_activity DESC LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+
+        //$command = Yii::app()->db->createCommand()
+        //    ->select('*')
+        //    ->distinct(true)
+        //    ->from('post p')
+        //    ->where("(p.origin_type = 'course') and p.origin_id = '".$_GET['id']."'")
+        //    ->order("last_activity DESC LIMIT ".self::$start_rec.",".self::POST_LIMIT)
+        //    ->queryAll();
 
         $command = Yii::app()->db->createCommand($posts_sql_course);
+        $posts = $command->queryAll();
 
-        if($posts = $command->queryAll())
+        if($posts)
             $success_post = TRUE;
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        //if($command)
+        //    $success_post = TRUE;
+        //else
+        //    $success_post = FALSE;
+        //'success'=>$success_post
+
+        $this->renderJSON(array('success'=>true, 'id'=>$_GET['id'], 'feed'=>self::getReplies(self::addPostData($posts))));
+    }
+*/
+    public function actionGetCoursePosts()
+    {
+        $user = $this->get_current_user();
+
+        $course_id = $_GET['id'];
+        if($course_id == null) {
+            echo CJSON::encode(array(
+                'success' => false,
+                'message' => 'Invalid Course Id'
+            ));
+            Yii::app()->end();
+        }
+
+        $sql = "SELECT c.class_id, c.course_id, c.section_id, cr.course_name, c.department_id, d.department_name, c.component, c.color_id, c.location,
+              u.firstname as prof_fname, u.lastname as prof_lname, f1.file_url AS cover_file_url, f2.file_url AS picture_file_url
+            FROM class as c
+            INNER JOIN course as cr
+              ON c.course_id = cr.course_id
+            LEFT JOIN department as d
+              ON c.department_id = d.department_id
+            LEFT JOIN user AS u
+              ON c.professor = u.user_id
+            LEFT JOIN file AS f1
+              ON c.cover_file_id = f1.file_id
+            LEFT JOIN file AS f2
+              ON c.picture_file_id = f2.file_id
+            WHERE c.course_id = $course_id
+        ";
+
+//        , s.day, s.start_time, s.end_time
+        $classes = Yii::app()->db->createCommand($sql)->queryAll();
+        $schedules = array();
+        for($i=0; $i< count($classes); $i++)  {
+            $sql = "SELECT * FROM class_schedule as cs
+                      LEFT JOIN schedule AS s
+                        ON cs.schedule_id = s.schedule_id
+                        WHERE cs.class_id = {$classes[$i]['class_id']}";
+            $classes[$i]['schedule'] = array(
+                'day' => 'M',
+                'start_time' => '17:00:00',
+                'end_time' => '17:00:00'
+            );
+//            $classes[$i]['schedule'] = Yii::app()->db->createCommand($sql)->queryAll();
+
+
+            $sql = "SELECT * FROM class_user as cu
+                      LEFT JOIN user AS u
+                        ON cu.user_id = u.user_id
+                        WHERE cu.class_id = {$classes[$i]['class_id']}";
+            $classes[$i]['users'] = Yii::app()->db->createCommand($sql)->queryAll();
+
+        }
+        echo CJSON::encode(array('success' => true, 'count' => count($classes), 'data' => $classes));
+        Yii::app()->end();
+
     }
 
     public function actionGetClubPosts()
