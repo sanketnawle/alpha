@@ -2,35 +2,9 @@
 
 class CourseController extends Controller
 {
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
-
     public function actionView() {
+        $user = $this->get_current_user();
+
         $course_id = $_GET['id'];
         if($course_id == null) {
             echo CJSON::encode(array(
@@ -79,12 +53,35 @@ class CourseController extends Controller
             $classes[$i]['users'] = Yii::app()->db->createCommand($sql)->queryAll();
 
         }
-        echo CJSON::encode(array(
-            'success' => true,
-            'count' => count($classes),
-            'data' => $classes
-        ));
-        Yii::app()->end();
+        //echo CJSON::encode(array('success' => true, 'count' => count($classes), 'data' => $classes));
+        //Yii::app()->end();
+        $this->render('course',array('user' => $user));
     }
 
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
+        return array(
+            'inlineFilterName',
+            array(
+                'class'=>'path.to.FilterClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+
+    public function actions()
+    {
+        // return external action classes, e.g.:
+        return array(
+            'action1'=>'path.to.ActionClass',
+            'action2'=>array(
+                'class'=>'path.to.AnotherActionClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+    */
 }

@@ -26,6 +26,7 @@
 
 <script>
 
+    base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
 
 $(document).ready(function() {
     var google_maps_embed = "https://maps.googleapis.com/maps/api/staticmap?";
@@ -780,7 +781,7 @@ $(document).ready(function() {
 <body>
     <div class = "root">
     <div class='gp_topbar_wrap'>
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
+
     </div>
 
     <div class='gp_leftbar_wrap'>
@@ -815,9 +816,9 @@ $(document).ready(function() {
                             <?php echo $this->renderPartial('school_info_tab_students',array('user'=>$user)); ?>
                             
                             <?php echo $this->renderPartial('school_departments_tab',array('user'=>$user, 'departments'=>$school->departments)); ?>
-                            <?php echo $this->renderPartial('school_clubs_tab',array('groups'=>$school->groups)); ?>
+                            <?php echo $this->renderPartial('school_clubs_tab',array('user'=>$user, 'groups'=>$school->groups)); ?>
 
-                            <?php echo $this->renderPartial('school_members_tab',array()); ?>
+                            <?php echo $this->renderPartial('school_members_tab',array('user'=>$user, 'members'=>$school->users)); ?>
                             
                         </div>
                     </div>
