@@ -66,8 +66,11 @@ return array(
                 'home/feed' => 'feed/getHomePosts',
                 'profile/<id:\d+>/feed' => 'feed/getProfilePosts',
                 'class/<id:[\w|-]+>/feed' => 'feed/getClassPosts',
+
                 'course/<id:[\w|\-|\s]+>/feed' => 'feed/getCoursePosts',
-                'course/' => 'partial/course',      //for testing
+                'course/<id>' => 'course/view',
+                //'course/<id>' => 'partial/course',
+
                 'club/<id:[\w|-]+>/feed' => 'feed/getClubPosts',
                 'department/<id:[\w|-]+>/feed' => 'feed/getDepartmentPosts',
                 'school/<id:[\w|-]+>/feed' => 'feed/getSchoolPosts',
