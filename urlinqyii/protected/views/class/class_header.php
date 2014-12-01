@@ -127,29 +127,29 @@ while ($row = $get_course_details_query_result->fetch_array()) {
     $schedule_string = trim($schedule_string, ",");*/
 
 
-    echo '
+echo '
     <div class = "group-head-sec">
       <div class="group-head-content">
         <div class = "group-pic-frame">
              <div class = "group-pic" style="background-image:url(';
-                if($class->picture_file_id){
-                    echo Yii::app()->getBaseUrl(true).$class->pictureFile->file_url;
-                }else{
-                    echo Yii::app()->getBaseUrl(true). '/assets/default/class.png';
-                }
+if($class->picture_file_id){
+    echo Yii::app()->getBaseUrl(true).$class->pictureFile->file_url;
+}else{
+    echo Yii::app()->getBaseUrl(true). '/assets/default/class.png';
+}
 
-    echo            ' ); background-size:cover;">
+echo            ' ); background-size:cover;">
             </div>';
-    if ($is_admin) {
-        echo '
+if ($is_admin) {
+    echo '
             <form>
             <input type="file" name="img" class="header_small_img_input">
             </form>
         ';
-    } /*else {
+} /*else {
         //no option to upload picture
     }*/
-    echo '
+echo '
         </div>
         <div class = "group-header-left">
             <div class = "group-title">
@@ -162,43 +162,43 @@ while ($row = $get_course_details_query_result->fetch_array()) {
             </div>
             <div class = "group-leader">
     ';
- /*   if ($course->professor == NULL) {
-        echo '
-                    <span class = "imp-icon leader-icon" style="background-image:url(' . get_dp($con, $row['user_id'], "user") . ')" >
-                    </span >
-                    <span class = "group-info-title" >
-    ' . $professor . '
-                    </span >
-    ';
-    } else { */
-        echo '
+/*   if ($course->professor == NULL) {
+       echo '
+                   <span class = "imp-icon leader-icon" style="background-image:url(' . get_dp($con, $row['user_id'], "user") . ')" >
+                   </span >
+                   <span class = "group-info-title" >
+   ' . $professor . '
+                   </span >
+   ';
+   } else { */
+echo '
                 <a href=" profile.php?user_id=' . $professor->user_id . '">
                     <span class = "imp-icon leader-icon" style="background-image:url(';
-                                if($professor->picture_file_id){
-                                    echo Yii::app()->getBaseUrl(true).$professor->pictureFile->file_url;
-                                }else{
-                                    echo Yii::app()->getBaseUrl(true). '/assets/default/user.png';
-                                }
-        echo                    ')" >
+if($professor->picture_file_id){
+    echo Yii::app()->getBaseUrl(true).$professor->pictureFile->file_url;
+}else{
+    echo Yii::app()->getBaseUrl(true). '/assets/default/user.png';
+}
+echo                    ')" >
                    </span >
                     <span class = "group-info-title" >
             Professor ' . $professor->lastname . '
                     </span >
                 </a >
     ';
- //   }
+//   }
 
-    //status inactive means professor has not joined Urlinq and invite him
-    if ( /*$status != "active"*/
-    FALSE
-    ) {
-        echo '<div class = "invite-btn" >
+//status inactive means professor has not joined Urlinq and invite him
+if ( /*$status != "active"*/
+FALSE
+) {
+    echo '<div class = "invite-btn" >
                     <span class = "mail-icon" >
                     </span >
     Invite to Urlinq
     </div > ';
-    }
-    echo '
+}
+echo '
             </div >
         </div >
 
@@ -210,32 +210,32 @@ while ($row = $get_course_details_query_result->fetch_array()) {
         </div >
         <div class = "group-header-right" >
           <div class="ch_edit_time_wrap" >';
-    if ($is_admin) {
-        echo '<div class="ch_edit_time" >Edit</div >';
-    }
-    echo '<div class = "ghr-1 ghr-box" style = "left:0px" >
+if ($is_admin) {
+    echo '<div class="ch_edit_time" >Edit</div >';
+}
+echo '<div class = "ghr-1 ghr-box" style = "left:0px" >
                 <div class = "ghr-box-head" >
                     <span class = "ghr-icon-1 ghr-icon" >
                     </span >
                     <span class = "ghr-head-time ghr-head-title" >';
 
-                        foreach($schedules as $i=>$schedule){
-                            echo $schedule;
-                            if($i < count($schedules)-1){
-                                echo '<br>';
-                            }
-                        }
-    echo             ' </span >
+foreach($schedules as $i=>$schedule){
+    echo $schedule;
+    if($i < count($schedules)-1){
+        echo '<br>';
+    }
+}
+echo             ' </span >
 
                 </div >
             </div >
             </div >';
 
-    echo '  <div class="ch_edit_location_wrap" >';
-    if ($is_admin) {
-        echo '<div class="ch_edit_loc" >Edit</div >';
-    }
-    echo '      <div class = "ghr-2 ghr-box" style = "left:0px" >
+echo '  <div class="ch_edit_location_wrap" >';
+if ($is_admin) {
+    echo '<div class="ch_edit_loc" >Edit</div >';
+}
+echo '      <div class = "ghr-2 ghr-box" style = "left:0px" >
                     <div class = "ghr-box-head" >
                         <span class = "ghr-icon-2 ghr-icon" >
                         </span >
@@ -251,11 +251,11 @@ while ($row = $get_course_details_query_result->fetch_array()) {
                 <a class = "department-link" href="department.php?dept_id=' . $department->department_id . '">
                     <div class = "ghr-box-head" >
                         <div class = "ghr-icon-3 ghr-icon" style="background-image:url(';
-                            if($department->picture_file_id){
-                                echo Yii::app()->getBaseUrl(true).$department->pictureFile->file_url;
-                            }else{
-                                echo Yii::app()->getBaseUrl(true). '/assets/default/dept_dp.png';
-                            }
+if($department->picture_file_id){
+    echo Yii::app()->getBaseUrl(true).$department->pictureFile->file_url;
+}else{
+    echo Yii::app()->getBaseUrl(true). '/assets/default/dept_dp.png';
+}
 echo                   ');background-size:cover;height:20px;width:20px;display: inline-block;border-radius:4px;" >
                         </div >
                         <span class = "ghr-head-title dept_title_txt">
@@ -268,10 +268,9 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         <div class = "group-head-footer" >
             <div class = "group-header-tab" >
                 <ul class = "group-nav" >';
-                /* for non-member view there is a class */
-				if ($is_member) {
-
-					echo '<li class = "group-tab" >
+/* for non-member view there is a class */
+if ($is_member) {
+    echo '<li class = "group-tab" >
 			                <a class = "tab1 tab-anchor group-tab-active" >
 			                    <div class = "tab-title" >
 			                        CLASS FEED
@@ -279,97 +278,127 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
 			                    </div >
 			                </a >
 			            </li >';
-				}
-				// new tab for non-member view as suggested by Kuan
-				else {
+}
+// new tab for non-member view as suggested by Kuan
+else {
 
-					echo '<li class = "group-tab" >
+    echo '<li class = "group-tab" >
                             <a class = "tab1 tab-anchor group-tab-active about-tab" >
                                 <div class = "tab-title" style="padding-left:25px;" >
-                                    About
+                                    ABOUT
                                 </div >
                             </a >
                             <button id="group-about-link" style="display:none;"></button>
                         </li >';
-				}
-                 echo '
+}
+echo '
                     <li class = "group-tab" >
                         <a class = "tab2 tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    MEMBERS
+                                MEMBERS
                                 <span class = "tab-icon tab2-icon-inactive" ></span >
                             </div >
                             <div class = "status tab-number" >
                                 <span class = "badge" >
-    ' . count($class->users) . '
+                                    ' . count($class->users) . '
                                 </span >
                             </div >
                         </a >
                     </li >';
-	if ($is_member) {
+if ($is_member) {
 
-		echo '<li class = "group-tab" >
+    echo '<li class = "group-tab" >
                         <a class = "tab3 tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    FILES
+                                FILES
                                 <span class = "tab-icon tab3-icon-inactive" ></span >
                             </div >
                             <div class = "status tab-number" >
                                 <span class = "badge" >'
-     . count($class->files).
-                               ' </span >
+        . count($class->files).
+        ' </span >
                             </div >
                         </a >
                     </li >
                     <li class = "tab-no-badge group-tab" >
                         <a class = "tabc tab-anchor tab-inactive" >
                             <div class = "tab-title" >
-    SYLLABUS
+                                SYLLABUS
                                 <span class = "tab-icon tabc-icon-inactive" ></span >
                             </div >
                         </a >
                     </li >
                 </ul >';
-	}
-     echo '</div >
+}
+echo '</div >
            <div class = "group-footer-functions" >';
-    if ($is_admin) {
-        echo '
+if ($is_admin) {
+    echo '
             </div >
         </div >
-        <div class = "tab-wedge-down"  >
+        <div class = "tab-wedge-down">
         </div >
         </div>
     </div > ';
-    } else {
-        //checking enrollment and echoing button accordingly
-        if ($is_member) {
-            echo '
+} else {
+
+    //checking enrollment and echoing button accordingly
+    if (!$is_member) {
+        echo '
                 <div class = "join-button" >
                     <a class = "join" >
     Enroll
                     </a >
-                </div >
-            </div >
+                </div >';
+      /*          <div class="settings-button">
+                    <a class="class-settings"><div class="settings-bg"></div></a>
+                </div>
+                <div class="settings-hover">
+                    <div class="settings-hover-tip"></div>
+                    <div class="settings-hover-body">Adjust settings and invite people</div>
+                </div>
+                <div class="settings-menu">
+                    <div class="settings-drop">
+                        <div class ="settings-item" id="show-class-settings"><div class="class-menu-icon" id="class-settings"></div>Class settings</div>
+                        <hr class = "hr">
+                        <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
+                    </div>
+                </div>*/
+       echo '     </div >
         </div >
-        <div class = "tab-wedge-down" style="left:280px">
+        <div class = "tab-wedge-down" style="left:303px">
         </div >
         </div>
     </div > ';
-        } else {
-            echo '
+    } else {
+        echo '
                 <div class = "join-button" >
                     <a class = "join joined" >
     Enrolled
                     </a >
                 </div >
+                <div class="settings-button">
+                    <a class="class-settings"><div class="settings-bg"></div></a>
+                </div>
+                <div class="settings-hover">
+                    <div class="settings-hover-tip"></div>
+                    <div class="settings-hover-body">Adjust settings and invite people</div>
+                </div>
+                <div class="settings-menu">
+                    <div class="settings-drop">
+                        <div class ="settings-item" id="show-class-settings"><div class="class-menu-icon" id="class-settings"></div>Class settings</div>
+                        <hr class = "hr">
+                        <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
+                    </div>
+                </div>
             </div >
         </div >
         <div class = "tab-wedge-down" >
         </div >
         </div>
     </div > ';
-        }
     }
+}
+
 
 ?>

@@ -1,11 +1,358 @@
+.settings-hover {
+    display: none;
+    z-index: 500;
+    position: absolute;
+    right: -69px;
+    top: 43px;
+}
+
+.settings-hover-tip {
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 9px solid #383838;
+}
+
+.settings-item .class-menu-icon {
+    background-image: url(../assets/classMoreDropdown.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-right: 15px;
+    background-size: 20px auto;
+    margin-left: 10px;
+}
+
+.settings-menu hr {
+    border-bottom: none;
+}
+
+#class-settings {
+    background-position: 0 -25px;
+}
+
+#class-invite {
+    background-position: 0px -44px;
+}
+
+.settings-menu {
+    position: absolute;
+    display: none;
+    background: #ffffff;
+    border: 1px solid #A5A5A5;
+    right: 112px;
+    top: 55px;
+    width: 163px;
+    padding-top: 12px;
+    height: 69px;
+    font-size: 15px;
+    color: #7B7B7B;
+    font-weight: 100;
+    box-shadow: 2px 1px 5px rgba(0,0,0,0.5);
+}
+
+.settings-menu:after, .settings-menu:before {
+    bottom: 100%;
+    left: 65%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.settings-menu:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 12px;
+    margin-left: 1px;
+}
+.settings-menu:before {
+    border-color: rgba(107, 107, 107, 0);
+    border-bottom-color: #8B8888;
+    border-width: 13px;
+    margin-left: 0px;
+}
+
+.settings-item {
+    cursor: pointer;
+}
+
+.settings-hover-body {
+    color: #e9e9e9;
+    font-size: 13px;
+    padding: 8px 23px;
+    position: relative;
+    z-index: 500;
+    font-weight: 100;
+    left: -170px;
+    border-radius: 5px;
+    background-color: #383838;
+}
+
+.class-settings {
+    cursor: pointer;
+    border: 1px solid #e1e8ed;
+    height:34px;
+    width: 40px;
+    margin-right: 8px;
+    font-size: 15px;
+    color: #029acf;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    float:right;
+    right: 5px;
+    border-radius: 4px;
+    bottom: 3px;
+    line-height:36px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-color: #e1e8ed;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-image: linear-gradient(#fff,#E9ECEE);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+    border-color: #e1e8ed;
+}
+
+.settings-bg {
+    background-image: url(../assets/classMoreDropdown.png);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 8px 8px;
+    background-size: 25px;
+}
+
+.class-settings:hover {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    background-color: #E0E4E7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+    background-image: linear-gradient(#F8F7F7,#E0E4E7);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+    border-color: #D4DBE0;
+    color: #50BCE0;
+}
+
+.members-scroll {
+    padding: 8px 0 0 4px !important;
+}
+
+.class-tab-content .tab-block-content p {
+    font-size: 14px;
+}
+
+.prof-courses-heading hr {
+    width: 166px;
+    float: right;
+    margin-left: -21px;
+    margin-top: -23px;
+}
+
+.prof-courses-heading {
+    width: 100%;
+    height: 31px;
+}
+
+img.class-icon {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 3px;
+}
+
+.class-list-wrapper p {
+    float: left;
+    color: rgba(0,0,0,0.5);
+    font-size: 14px;
+}
+
+ul.class-list {
+    clear: both;
+    color: rgba(0,0,0,0.8);
+    margin-left: -40px;
+    height: auto;
+    overflow-x: hidden;
+    width: 303px;
+}
+
+ul.class-list li {
+    list-style-type: none;
+    width: 100%;
+}
+
+.class-list p a {
+    float: left;
+    width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(0,0,0,0.9);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.about-dept-name a {
+    color: #029acf;
+    font-weight: 600;
+}
+
+.prof-header {
+    padding: 5px !important;
+    height: 120px;
+}
+
+.prof-img {
+    height: 119px;
+    background-image: url(../assets/obama.png);
+    width: 90px;
+    border-top-left-radius: 6px;
+    background-size: cover;
+    display: inline-block;
+}
+
+.prof-info {
+    height: auto;
+    width: 220px;
+    display: inline-block;
+}
+
+.prof-info div {
+    width: 100%;
+    display: inline-block;
+}
+
+.prof-hours, .prof-loc {
+    color: rgba(0,0,0,0.3);
+}
+
+.prof-hours, .prof-loc, .prof-hours-input, .prof-loc-input {
+    font-size: 13px;
+}
+
+.prof-name {
+    color: #029acf;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.members-scroller {
+    right: 10px;
+    top: 40px;
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    display: block;
+    z-index: 100;
+    background-image: url(../assets/arrow-next-sprite.png);
+    background-position: 0 0;
+    background-size: 43px auto;
+    background-color: transparent;
+    opacity: 0.7;
+}
+.members-scroller:hover {
+    background-position: 0 44px;
+    cursor: pointer;
+    opacity: 0.75;
+    top: 39px;
+}
+
+.desc-icon {
+    display: inline-block;
+    float: left;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+}
+
+#sched-icon {
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -20px;
+    background-size: 32px auto;
+}
+
+#loc-icon {
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 1px -40px;
+    background-size: 32px auto;
+}
+
+#dept-icon {
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 1px -60px;
+    background-size: 32px auto;
+}
+
+.about-header {
+    display: block;
+    width: 983px;
+    height: 23px;
+    margin: 15px 0 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.about-back-img {
+    float: right;
+    display: inline-block;
+    background-image: url(../assets/about_settings_icons.png);
+    height: 20px;
+    width: 18px;
+    background-position: 0px 137px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.about-back {
+    display: inline-block;
+    float: right;
+    color: rgba(0, 0, 0, .8);
+}
+
+#about-back {
+    cursor: pointer;
+}
+
+.class-tab-content hr {
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    clear: both;
+    margin-bottom: 15px;
+}
+
+.about-info-txt {
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.about-info-img {
+    float: left;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -2px;
+    margin-bottom: -5px;
+    margin-right: 5px;
+}
+
+.about-info-title {
+    float: left;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+}
+
 
 .mid_right_sec{
     width: 1010px;
     float: left;
     top: 47px;
-
     position: relative;
-
     margin: 0 auto;
     margin-left: 318px;
     margin-bottom:70px;
@@ -173,11 +520,23 @@ ul.group-nav li:last-child a.tab-anchor{
     height: 14px!important;
     top: 1px!important;
 }
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab5-icon-active{
+    background-image: url(../assets/members_icon_active.png)!important;
+    width: 14px!important;
+    height: 14px!important;
+    top: 1px!important;
+}
 
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor:hover > div.tab-title span.tab2-icon-inactive{
     background-image: url(../assets/members_icon_active.png)!important;
 }
 .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab2-icon-inactive{
+    background-image: url(../assets/members_icon_inactive.png)!important;
+    width: 14px!important;
+    height: 14px!important;
+    top: 1px!important;
+}
+.group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tab5-icon-inactive{
     background-image: url(../assets/members_icon_inactive.png)!important;
     width: 14px!important;
     height: 14px!important;
@@ -255,7 +614,7 @@ div.tab-wedge-down{
     position: absolute;
     bottom: -2px;
     z-index: 200;
-    left: 302.5px;
+    left: 303px;
 }
 .tab-title{
     padding-left: 0px !important;
@@ -331,9 +690,7 @@ div.tab-wedge-down{
     color: #029acf;
     text-align: center;
     font-weight: 600;
-
     position: relative;
-
     float:right;
     right: 5px;
     border-radius: 4px;
@@ -1336,7 +1693,6 @@ span.sticky-fx-cont div.fx-icon3{
 
 div.fx-title{
     font-size: 13px;
-
     font-weight: 600;
     display: inline-block;
 }
@@ -1348,16 +1704,20 @@ span.sticky-fx-cont div.fx-title{
 
 div.feed-tab-rightsec,div.about-tab-rightsec{
     display: inline-block;
+    position: relative;
+    margin-left: -6px;
+    width: 295px;
+}
 
-    position: absolute;
-
-    margin-left: 19px;
+div.prof-rightsec {
+    margin-left: 24px;
 }
 
 div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
-    width: 287px;
-
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05); box-shadow: 0 1px 1px rgba(0,0,0,0.05); background-color: #FFFFFF;
+    width: 315px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    background-color: #FFFFFF;
     height: auto;
     padding-bottom: 10px;
     border: 1px solid;
@@ -1366,7 +1726,8 @@ div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
 }
 
 div.about-tab-rightsec div.group-about-2{
-    height:140px;
+    height: auto;
+    width: 327px !important;
 }
 
 div.feed-tab-rightsec div.group-about div.box-header,div.about-tab-rightsec div.group-about div.box-header{
@@ -1594,7 +1955,7 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
     cursor:pointer;
 }
 
-div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.about-content,div.analytics-tab{
+div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.class-tab-content,div.analytics-tab{
     display:none;
     opacity:0;
 
@@ -2386,26 +2747,24 @@ div.file-wrap div.file-info-area div.file-info-areabtm div.download-btn1:active{
     color: #FFF;
 }
 
-div.about-content div.about-tab-leftsec{
+div.class-tab-content div.about-tab-leftsec{
     display: inline-block;
-
     float: left;
     position: relative;
-    width: 687px;
+    width: 640px;
 }
 
-div.about-content div.about-tab-rightsec div.group-about-subjects{
+div.class-tab-content div.about-tab-rightsec div.group-about-subjects{
     position: relative;
 
 }
-div.about-content div.about-tab-leftsec div.about-tab-about{
+div.class-tab-content div.about-tab-leftsec div.about-tab-about{
     position: relative;
-
-    width: 660px;
+    width: 100%;
     height: auto;
     margin-left: 13px;
 }
-div.about-content div.about-tab-leftsec div.about-tab-ratings{
+div.class-tab-content div.about-tab-leftsec div.about-tab-ratings{
     position: relative;
     width: 660px;
     height: auto;
@@ -2415,7 +2774,7 @@ div.about-content div.about-tab-leftsec div.about-tab-ratings{
     margin-top: 10px;
 }
 
-div.about-content div.about-tab-leftsec div.about-tab-left-mid{
+div.class-tab-content div.about-tab-leftsec div.about-tab-left-mid{
     display: block;
 
     position: relative;
@@ -2430,22 +2789,21 @@ div.about-tab-prof{
     margin-left: 10px;
     border: 1px solid; margin-top: 10px;
     border-color: #E0E0E0 #D5D5D5 #B7C3CA;
-
 }
 
-div.about-content div.about-tab-leftsec div.about-tab-members{
+div.class-tab-content div.about-tab-leftsec div.about-tab-members{
     position: relative;
-    width: 418px;
+    width: 100%;
     display: inline-block;
-    height: 180px; margin-left: 13px;
+    height: 175px;
     float: left;
     margin-top: 10px;
+    margin-left: 13px;
 }
 
 div.group-about-subjects div.box-header{
     color: rgba(104, 104, 104, 0.15);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
     padding: 10px 0px;
     border-bottom: 1px solid rgba(175, 175, 175, 0.89);  margin-bottom: 4px;
     -webkit-box-shadow: rgba(167, 164, 164, 0.57) 0px 1px 0px 0px, rgba(255, 255, 255, 0) 0px 1px 0px 1px;
@@ -2624,8 +2982,8 @@ div.about-tab-block a.prof-header div.tab-block-header:hover > div.block-head-le
 }
 
 div.about-tab-block div.tab-block-header div.block-head-left{
-    color: rgba(0, 0, 0, .3); text-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-
+    color: rgba(0, 0, 0, .7);
+    font-size: 13px;
 }
 
 
@@ -2722,32 +3080,28 @@ div.about-tab-block div.tab-block-header div.block-head-right a.edit-about i.edi
 }
 
 div.tab-block-content div.members-scrollwrap{
+    overflow-x: hidden;
     position: relative;
-
     white-space: nowrap;
     overflow: hidden;
-    margin-top: 4px;
-    min-height: 122px;
+    height: auto;
 }
 
 div.tab-block-content div.members-scrollwrap ul.people-you-know{
     display: inline-block;
     position: relative;
-    top: 0;
     -webkit-transition: .4s ease-in-out;
-
     -moz-transition: .4s ease-in-out;
     transition: .4s ease-in-out;
     margin: 0;
     padding: 0;
-    left: 8.5px;
     list-style-type: none;
 }
 
 div.tab-block-content div.members-scrollwrap ul.people-you-know li.people-box{
     height: 130px;
     cursor: pointer;
-    margin: 0 16px 0 0;
+    margin-right: 4px;
     padding: 0;
     display: inline-block;
     position: relative;
@@ -2759,7 +3113,7 @@ div.tab-block-content div.members-scrollwrap ul.people-you-know li.people-box di
     position: relative;
     background-size: cover;
     border: 0;
-    background-image: url(../assets/test.jpg);
+    background-image: url(../assets/obama.png);
     cursor: pointer;
 }
 
@@ -2873,7 +3227,9 @@ a.ddbox-hor-scroller i.ddbox-hor-scroller-icon{
 }
 
 .ddbox-hor-scroll-icon-left{
-    background-image:url(../assets/left-scroll-icon.png);
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -20px;
+    background-size: 32px auto;
     width: 27px;
     background-repeat: no-repeat;
     height: 45px;
@@ -2884,7 +3240,9 @@ a.ddbox-hor-scroller i.ddbox-hor-scroller-icon{
     background-size: cover;
 }
 .ddbox-hor-scroll-icon-right{
-    background-image:url(../assets/right-scroll-icon.png);
+    background-image: url(../assets/about_settings_icons.png);
+    background-position: 0 -20px;
+    background-size: 32px auto;
     width: 27px;
     background-repeat: no-repeat;
     height: 45px;
