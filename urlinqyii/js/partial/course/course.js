@@ -33,24 +33,29 @@ $(document).ready(function(){
         $.getJSON( base_url + '/course/' + id + '/feed',function( course_data )
         {
             //alert("in get_course_data");
-            if(course_data['id']){
+            if(course_data['data']){
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
-                alert(JSON.stringify(course_data));
-                render_course(course_data);
+                //alert(JSON.stringify(course_data[0]['course_name']));
+                var q = course_data['course_name'] != undefined ? course_data['course_name'] : [];
+                alert(JSON.stringify(q));
+                render_course(q);
             }else{
                 alert('error getting data');
             }
         });
+
+
     }
     function render_course(course_json){
         //alert("in render_course");
+
         var source   = $("#course_template").html();
         var template = Handlebars.compile(source);
         var context = {
-
-        }
+            course_name: course_json['course_name']
+        };
         var generated_html = template(context);
-        $('#posts').append(generated_html).hide().fadeIn();
+        $('.mid_right_sec').append(generated_html).hide().fadeIn();
     }
 
     /*
