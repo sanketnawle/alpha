@@ -55,10 +55,24 @@ echo $type;
 
 <script>
     $(document).ready(function(){
-        var post_data = {test:'lol'};
+        var post_data = {
+            event:{
+                event_name: 'Test event',
+                event_type: 'exam',
+                origin_type:' club',
+                origin_id: 1,
+                title: 'Test Event',
+                description: 'This is my test event description',
+                start_time: '10:10:10',
+                end_time: '11:11:11',
+                start_date: '2014-12-01',
+                end_date: '2014-12-01',
+                location: 'Manhattan'
+            }
+        };
         //alert(JSON.stringify(post_data));
         $.post(
-            'http://localhost/alpha/urlinqyii/event/createEvent',
+            'http://localhost/alpha/urlinqyii/event/create',
             post_data,
             function(json_response) {
                 alert(JSON.stringify(json_response));

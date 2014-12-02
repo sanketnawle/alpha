@@ -79,6 +79,9 @@ class Group extends CActiveRecord
             'files' => array(self::MANY_MANY, 'File', 'group_file(group_id, file_id)'),
 
             'events' => array(self::HAS_MANY,'Event',array('origin_id'=>'group_id'),'condition'=>'origin_type = "group"'),
+
+            'groupUsers' => array(self::HAS_MANY, 'GroupUser', 'group_id'),
+
 			'groupUserTags' => array(self::HAS_MANY, 'GroupUserTag', 'group_id'),
 		);
 	}

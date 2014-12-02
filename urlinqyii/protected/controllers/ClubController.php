@@ -547,6 +547,47 @@ class ClubController extends Controller
     }
 
 
+    public function actionGetGenderData(){
+        if (!isset($_GET['id'])) {
+            $this->renderJSON(array('success'=>'false','error_id'=>1));
+            return;
+        }
+
+
+        $group_id = $_GET['id'];
+
+        $group = Group::model()->findBySql('SELECT * FROM `group` WHERE group_id=' . $group_id);
+        $json_data_array = array('female_count' => 0,'male_count' => 0);
+        if($group){
+            foreach($group->members as $user){
+                //only count students
+                if($user->user_type == 's'){
+                    if($user->gender == 'M'){
+                        $json_data_array['male_count'] += 1;
+                    }else{
+                        $json_data_array['female_count'] += 1;
+                    }
+                }
+            }
+
+            $json_data_array['success'] = true;
+            $this->renderJSON($json_data_array);
+            return;
+        }else{
+            $json_data_array['false'] = true;
+            $json_data_array['error_id'] = 2;
+            $json_data_array['error_msg'] = 'failed to retrieve group';
+            $this->renderJSON($json_data_array);
+            return;
+        }
+
+
+
+
+
+    }
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
