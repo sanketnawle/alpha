@@ -26,9 +26,10 @@
 <div class='main'>
         <div class='main-mid-sec'>
             <div class='mid_right_sec'>
-                <script id="course_template" type="text/x-handlebars-template">
+            	<p> hi </p>
+            	<script id="course_template" type="text/x-handlebars-template">
 
-                    <div class = "group-head-sec">
+               		 <div class = "group-head-sec">
                     <div class = "group-pic-frame">
                         <div class = "group-pic"></div>
                     </div>
@@ -144,7 +145,7 @@
 					                        </img>
 					                    </div>
 					                    <div class="class_title">
-					                        {{courses_name}}
+					                        {{course_name}}
 					                        <span class="class_number">
 					                            <i>{{section_id}}</i>
 					                        </span>
