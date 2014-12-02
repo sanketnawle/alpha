@@ -66,16 +66,17 @@ function file_upload($files, $path="") {
 
 
 
-        $local_directory = 'assets/'.$path;
+                $local_directory = 'assets/'.$path;
         if(!is_dir($local_directory)) {
             mkdir($local_directory);
         }
         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             include "ImageCompress.php";
             image_compress($files["uploadFile"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
+            $extension = 'jpg';
         } else{
             move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $random_name. '.'.$extension);
-            $extension = 'jpg';
+
         }
 
 

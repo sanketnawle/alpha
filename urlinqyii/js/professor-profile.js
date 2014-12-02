@@ -449,12 +449,13 @@
                 });
 
                 var new_school;
+                var school_text;
                 $('input[name=school_name]').on('keyup',function(){
-                    new_school = $(this).val();
+                    school_text = $(this).val();
                     $.ajax({
                         url: base_url+'/profile/autoComplete',
                         type: 'GET',
-                        data: {school: new_school},
+                        data: {school: school_text},
                         //  cache: false,
                         dataType: 'json',
                         // processData: false, // Don't process the files
@@ -468,6 +469,7 @@
                             alert(errorThrown);
                         }
                     });
+
                 });
                 //var deleted_majors = [];
                 // var new_majors=[];
@@ -487,6 +489,7 @@
                     $('.info-block').css('margin-left', '2px');
                     $('.info-block input + i').removeClass('delete-major-minor');
                     $('.info-block input').attr("readonly", true);
+                    $('.info-block input[name=school_name]').attr("readonly", false);
                     $('.info-block textarea').attr("readonly", true);
                     $('.showcase-image-control').css('visibility', 'hidden');
                     // $('.user-groups').css('opacity', '1');
@@ -510,7 +513,7 @@
                         data.append('bio',new_bio);
                     }
                     new_school = $('input[name=school_name]').val();
-                    if(new_school){
+                    if($.trim(new_school) != $.trim(school)){
                         data.append('school',new_school);
                     }
                  //   $('input[name=major_name]')
@@ -535,9 +538,7 @@
                     if(new_year_name){
                         data.append('year_name',new_year_name);
                     }
-                    if(new_school){
-                        data.append('school',new_school);
-                    }
+
                     if(new_name){
                         data.append('name',new_name);
                     }
@@ -581,15 +582,20 @@
                                 // $('input[name=major_name]').val(majors[0]);
                             }
                             if(result.name == "success"){
-                                $('.info-username').text(new_name);
+                                $('#profile_name').text(new_name);
                             }else if(result.name){
                                 alert(result.name);
                                 $('input[name=username-entry]').val(name);
                             }
-                            if(result.school && result.school != "success"){
+                            if(result.school == "success"){
+                                $('input[name=school_name]').val(new_school);
+                                $('input[name=school_name]').attr('id',result.new_school_id);
+                            }
+                            else if(result.school){
                                 alert(result.school);
                                 $('input[name=school_name]').val(school);
                             }
+
                             if(result.interests && result.interests != "success"){
                                 alert(result.school);
                                // $('input[name=school_name]').val(school);
@@ -600,6 +606,7 @@
                             alert(errorThrown);
                         }
                     });
+                    $('.info-block input[name=school_name]').attr("readonly", true);
                     //alert(new_interests);
 
                     //add_interests(new_interests);
@@ -785,13 +792,14 @@
                             frontImgIdx =  parseInt(newFrontIdx);
                             var originalMargin = parseInt( $('#img-slot' + frontImgIdx).css('margin-left') );
                             $('#img-slot' + frontImgIdx).css('margin-left', (($(window).width()/2) - (480/2)) );
+                            $('#img-slot' + frontImgIdx).addClass('center-image');
+                            $('.image-panel-wrapper').detach().appendTo('#img-slot' + frontImgIdx);
                         }
-                        $('#img-slot' + frontImgIdx).addClass('center-image');
-                        $('.image-panel-wrapper').detach().appendTo('#img-slot' + frontImgIdx);
+                        else{
+                            $('#' + siblingID).addClass('center-image');
+                            $('.image-panel-wrapper').detach().appendTo('#' + siblingID);
+                        }
                         $('#' + parentID).remove();
-                        $('.showcase-image').removeClass('opacity_class');
-                        $('.showcase-image').addClass('blur_class');
-                        $('.center-image').addClass('opacity_class');
                     }
                     else{
                         var prevID = $(this).parents('.showcase-image').prev('.showcase-image').attr('id');
@@ -801,6 +809,10 @@
                         $('#img-slot' + frontImgIdx).css('margin-left', (originalMargin + 480 + 'px') );
                         $('#' + parentID).remove();
                     }
+                    $('.showcase-image').removeClass('opacity_class');
+                    $('.showcase-image').addClass('blur_class');
+                    $('.center-image').addClass('opacity_class');
+
 
                 });
 
@@ -850,17 +862,24 @@
                     e.preventDefault();
                     var visibility = $.trim($(this).text());
                     if(visibility == "Public"){
-                        visibility =  "ublic";
+                        visibility =  "public";
                     }else if(visibility == "Just Me"){
                         visibility = "only_me";
                     }else if(visibility == "People I Follow"){
                         visibility = "following";
                     }
-                    var class_id = $(this).parent().parent().parent().prev().attr('id');
+                    var class_id;
+                    var group_id;
+                    if($(this).parent().parent().parent().prev().attr('class')=='clublink'){
+                        group_id = $(this).parent().parent().parent().prev().attr('id');
+                    }else if($(this).parent().parent().parent().prev().attr('class')=='classlink'){
+                        class_id = $(this).parent().parent().parent().prev().attr('id');
+                    }
+
                     $.ajax({
-                        url: base_url+'/profile/changeClassVisibility',
+                        url: base_url+'/profile/changeVisibility',
                         type: 'POST',
-                        data: {class:class_id,visibility:visibility,user:user_id},
+                        data: {class:class_id,visibility:visibility,user:user_id,group:group_id},
                         dataType: 'json',
                         success: function(result)
                         {
@@ -2496,8 +2515,12 @@
 
                 // Function to display the selected class
                 $(document).delegate('.classlink', 'click', function () {
-                    window.location = "class.php?class_id=" + $(this).prop('id').split('_')[1].trim();
+                    window.location = "../class/" + $(this).prop('id').trim();
                 });
+                // Function to display the school page
+               /* $(document).delegate('input[schoo', 'click', function () {
+                    window.location = "../class/" + $(this).prop('id').trim();
+                });*/
 
                 // Fetch the clubs for the current user
                 function FetchClubs() {
@@ -2561,9 +2584,9 @@
                 }
 
                 // Function to display the selected class
-            /*    $(document).delegate('.group-link', 'click', function () {
-                    window.location = "clubs.php?group_id=" + $(this).prop('id').split('_')[1].trim();
-                });*/
+                $(document).delegate('.clublink', 'click', function () {
+                    window.location = "../club/" + $(this).prop('id').trim();
+                });
 
 
                 // To add more rows to edit the office hours
