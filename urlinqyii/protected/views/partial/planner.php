@@ -32,7 +32,7 @@
 		<div class="planner_container">
 			<div class="planner_header_panel">
 				<div class="planner_header">
-					PLANNER
+					<?php echo strtoupper($origin_type); ?> PLANNER
 					<img id="dropdown_arrow" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/dropdown_arrow.png"/>
 				</div>
 			</div>

@@ -879,8 +879,24 @@ class ApiController extends Controller
         $date = $_GET['date'];
         try{
             $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
+
+
             if($events){
-                $data = array('success'=>true,'events'=>$events);
+                $events_data = array();
+                foreach($events as $event){
+                    $event = $this->model_to_array($event);
+                    $origin = $event['origin_type'];
+                    $origin_id = $event['origin_id'];
+
+                    $sql = "SELECT o." . $origin . '_name, o.color_id FROM `' . $origin . '` o WHERE o.' . $origin . '_id = ' . $origin_id;
+                    $command = Yii::app()->db->createCommand($sql);
+                    $origin_data = $command->queryAll();
+
+                    $event['origin_name'] = $origin_data[$origin . '_name'];
+                    $event['origin_color_id'] = $origin_data[$origin . '_color_id'];
+                }
+
+                $data = array('success'=>true,'events'=>$events_data);
                 $this->renderJSON($data);
                 return;
             }else{
@@ -889,7 +905,7 @@ class ApiController extends Controller
                 return;
             }
         }catch(Exception $e){
-            $data = array('success'=>false,'error_id'=>2);
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
             $this->renderJSON($data);
             return;
         }

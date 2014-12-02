@@ -1,7 +1,14 @@
-var j$ = $.noConflict();
-jQuery(document).ready(function () {
+//$(document).on("click", ".commentform", function(){
+//    console.log("I AM WORKING");
+//    alert('kajslkas');
+//});
+$(document).ready(function(e) {
+//    var $ = jQuery;
+    $(document).on("click", ".commentform", function(){
+        console.log("I AM WORKING");
+        alert('kajslkas');
+    });
 
-    var $ = jQuery;
     //index 0 = A, 1 = B, 2 = C, 3 = D
     var old_width_vals = ["", "", "", ""];
     old_width_vals[0] = $("#Aexpanding").width();
@@ -65,6 +72,7 @@ jQuery(document).ready(function () {
     var fileCount = 0;
 
     $(".form-control").on("focus", function FormControlFocus () {
+        alert('laksjdaksjd');
         var attr = $(this).attr("focused");
         if(typeof attr === undefined || attr === false || attr === undefined || !attr) {
             var ta = $(this);
@@ -175,7 +183,7 @@ jQuery(document).ready(function () {
         stopDoing(e);
         collection = collection.not(e.target);
         if(collection.length === 0 && dragOnTarget === 0) $(".dragdropbox").html(dragOrigText);
-    })
+    });
 
     $(document).click(function (e) {
         var container = $(".commentform");
@@ -275,12 +283,12 @@ jQuery(document).ready(function () {
                 pullrequest.done(function (html) {
                     $ref.last().append(html);
                     load = 'yes';
+            
+                    $(".new_fd").each(function (index) {
 
-                    j$(".new_fd").each(function (index) {
-
-                        j$(this).removeClass("new_fd");
-                        if (j$(this).find(".f_hidden_p").text().trim() != "") {
-                            j$(this).find('.play').embedly({
+                        $(this).removeClass("new_fd");
+                        if ($(this).find(".f_hidden_p").text().trim() != "") {
+                            $(this).find('.play').embedly({
                                 query: {
                                     maxwidth: 500,
                                     autoplay: true
@@ -288,14 +296,14 @@ jQuery(document).ready(function () {
                                 display: function (data, elem) {
 
 //Adds the image to the a tag and then sets up the sizing.
-                                    j$(elem).html('<img src="' + data.thumbnail_url + '"/>')
+                                    $(elem).html('<img src="' + data.thumbnail_url + '"/>')
                                         .width(data.thumbnail_width)
                                         .height(data.thumbnail_height)
                                         .find('span').css('top', data.thumbnail_height / 2 - 36)
                                         .css('left', data.thumbnail_width / 2 - 36);
 ////alert($(elem).html());
-                                    var j$elhtml = j$(elem).html();
-                                    j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
+                                    var $elhtml = $(elem).html();
+                                    $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
 
                                     var t_title = data.title;
                                     var t_des = data.description;
@@ -303,22 +311,22 @@ jQuery(document).ready(function () {
 ////alert(data.title+" , "+data.description+", "+data.url);
                                     var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
 
-                                    j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-                                    j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+                                    $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+                                    $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
 
                                     if (data.type === 'video') {
 
                                     } else {
-                                        j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+                                        $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
                                     }
 
                                 }
                             }).on('click', function () {
 // Handles the click event and replaces the link with the video.
-                                var data = j$(this).data('embedly');
+                                var data = $(this).data('embedly');
 
                                 if (data.type === 'video') {
-                                    j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                                    $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
                                     return false;
                                 } else {
                                     window.open(data.url, '_blank');
@@ -338,12 +346,12 @@ jQuery(document).ready(function () {
 
 
 
-    j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
+    $.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
 
-    j$(".new_fd").each(function (index) {
+    $(".new_fd").each(function (index) {
 
-        j$(this).removeClass("new_fd");
-        if (j$(this).find(".f_hidden_p").text().trim() != "") {
+        $(this).removeClass("new_fd");
+        if ($(this).find(".f_hidden_p").text().trim() != "") {
             jQuery('.f_hidden_p a').embedly({
                 query: {
                     maxwidth: 500,
@@ -352,7 +360,7 @@ jQuery(document).ready(function () {
                 display:function(data, elem){
                     console.log(data);
                     if(data.type != 'video') $('.play_btn').hide();
-                    jQuery('.link-text-title').text(data.title);
+                    $('.link-text-title').text(data.title);
                     if(data.thumbnail_url){
                         console.log('here');
                         if((data.thumbnail_width > 550) && (data.thumbnail_height> 270)) {
@@ -395,7 +403,7 @@ jQuery(document).ready(function () {
 
                         }
                         var thumbnail_url = data.thumbnail_url;
-                        jQuery('.link-text-about').text(data.description + " " + data.original_url);
+                        $('.link-text-about').text(data.description + " " + data.original_url);
                         // jQuery('.post_msg .msg_span').append("<br> <a href=" + data.original_url + ">" + data.original_url + "</a>");
 
 
@@ -424,7 +432,7 @@ jQuery(document).ready(function () {
 
 
                         if (data.type === 'video') {
-                            j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                            $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
                             return false;
                         } else {
 
@@ -443,9 +451,9 @@ jQuery(document).ready(function () {
                      });*/
 
                 }
-            })
+            });
 
-            /*j$(this).find('.play').embedly({
+            /*$(this).find('.play').embedly({
              query: {
              maxwidth: 500,
              autoplay: true
@@ -454,14 +462,14 @@ jQuery(document).ready(function () {
              console.log(data);
 
              //Adds the image to the a tag and then sets up the sizing.
-             j$(elem).html('<img src="' + data.thumbnail_url + '"/>')
+             $(elem).html('<img src="' + data.thumbnail_url + '"/>')
              .width(data.thumbnail_width)
              .height(data.thumbnail_height)
              .find('span').css('top', data.thumbnail_height / 2 - 36)
              .css('left', data.thumbnail_width / 2 - 36);
              ////alert($(elem).html());
-             var j$elhtml = j$(elem).html();
-             j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
+             var $elhtml = $(elem).html();
+             $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
 
              var t_title = data.title;
              var t_des = data.description;
@@ -469,22 +477,22 @@ jQuery(document).ready(function () {
              ////alert(data.title+" , "+data.description+", "+data.url);
              var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
 
-             j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-             j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+             $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+             $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
 
              if (data.type === 'video') {
 
              } else {
-             j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+             $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
              }
 
              }
              }).on('click', function () {
              // Handles the click event and replaces the link with the video.
-             var data = j$(this).data('embedly');
+             var data = $(this).data('embedly');
 
              if (data.type === 'video') {
-             j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+             $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
              return false;
              } else {
              window.open(data.url, '_blank');
@@ -497,8 +505,8 @@ jQuery(document).ready(function () {
     });
 
 
-    j$(document).delegate('.playable_wrap', "click", function () {
-        j$(this).closest(".post_lr_link_msg").find(".play").click();
+    $(document).delegate('.playable_wrap', "click", function () {
+        $(this).closest(".post_lr_link_msg").find(".play").click();
     });
 
 
