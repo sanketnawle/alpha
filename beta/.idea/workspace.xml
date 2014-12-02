@@ -27,18 +27,7 @@
         <entry file="file://$PROJECT_DIR$/php/feeds/feeds_priority.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="8024">
-              <folding>
-                <marker date="1412179675621" expanded="true" signature="1065:1110" placeholder="SELECT EXTRA..." />
-                <marker date="1412179675621" expanded="true" signature="1346:2052" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="1553:1606" placeholder="SELECT to_us..connect..." />
-                <marker date="1412179675621" expanded="true" signature="1799:1992" placeholder="SELECT cu.cl..courses_user..." />
-                <marker date="1412179675621" expanded="true" signature="6217:6533" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="7651:7952" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="9098:9408" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="10564:10876" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="12030:12341" placeholder="SELECT disti..posts..." />
-                <marker date="1412179675621" expanded="true" signature="13507:13819" placeholder="SELECT disti..posts..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,7 +35,7 @@
       <file leaf-file-name="club_attendance_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_attendance_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="457" max-vertical-offset="1394">
+            <state line="37" column="46" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1394">
               <folding>
                 <marker date="1412179675564" expanded="true" signature="1007:1110" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675564" expanded="true" signature="1182:1279" placeholder="SELECT * FRO..group_event..." />
@@ -96,7 +85,7 @@
       <file leaf-file-name="club_event_data.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/analytics/club_event_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="-17.923077" vertical-offset="129" max-vertical-offset="2278">
+            <state line="35" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="2278">
               <folding>
                 <marker date="1412179675565" expanded="true" signature="285:339" placeholder="SELECT * FRO..group_event..." />
                 <marker date="1412179675565" expanded="true" signature="546:602" placeholder="SELECT * FRO..." />
@@ -316,7 +305,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -324,7 +313,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1640625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1640625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -332,11 +321,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -538,9 +527,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leftpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179">
-          <folding />
-        </state>
+        <state line="69" column="14" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="3179" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/feeds.php">
@@ -561,18 +548,7 @@
     <entry file="file://$PROJECT_DIR$/php/feeds/feeds_priority.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="8024">
-          <folding>
-            <marker date="1412179675621" expanded="true" signature="1065:1110" placeholder="SELECT EXTRA..." />
-            <marker date="1412179675621" expanded="true" signature="1346:2052" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="1553:1606" placeholder="SELECT to_us..connect..." />
-            <marker date="1412179675621" expanded="true" signature="1799:1992" placeholder="SELECT cu.cl..courses_user..." />
-            <marker date="1412179675621" expanded="true" signature="6217:6533" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="7651:7952" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="9098:9408" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="10564:10876" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="12030:12341" placeholder="SELECT disti..posts..." />
-            <marker date="1412179675621" expanded="true" signature="13507:13819" placeholder="SELECT disti..posts..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/analytics/club_event_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="-17.923077" vertical-offset="129" max-vertical-offset="2278">
+        <state line="35" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="2278">
           <folding>
             <marker date="1412179675565" expanded="true" signature="285:339" placeholder="SELECT * FRO..group_event..." />
             <marker date="1412179675565" expanded="true" signature="546:602" placeholder="SELECT * FRO..." />
