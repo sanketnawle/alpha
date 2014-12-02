@@ -283,42 +283,54 @@ class EventController extends Controller
     //Error ids
     // 1 - All data not set
     // 2 - error creating todo
-    public function actionCreateEvent()
+    public function actionCreate()
     {
-        $data = array('success'=>true);
-        $this->renderJSON($_POST);
-        return;
+//        $data = array('success'=>true);
+//        $this->renderJSON($_POST);
+//        return;
+
+//        var post_data = {
+//        event:{
+//            event_name: 'Test event',
+//                origin_type:' club',
+//                origin_id: 1,
+//                title: 'Test Event',
+//                description: 'This is my test event description',
+//                start_time: '10:10:10',
+//                end_time: '11:11:11',
+//                start_date: '2014-12-01',
+//                end_date: '2014-12-01',
+//                location: 'Manhattan'
+//            }
+//        };
 
 
-        if(!isset($_POST['todo_name']) || !isset($_POST['todo_date']) || !isset($_POST['todo_time']) || !isset($_POST['origin']) || !isset($_POST['origin_id'])){
+        if(!isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
+        || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
             return;
         }
 
+        $event_data = $_POST['event'];
 
 
         try {
-
-
-
             $user = $this->get_current_user();
 
-            $todo_name = $_POST['todo_name'];
-            $todo_date = $_POST['todo_date'];
-            $todo_time = $_POST['todo_time'];
-            $todo_origin = $_POST['origin'];
-            $todo_origin_id = $_POST['origin_id'];
-
             $event = new Event;
-            $event->title = $todo_name;
-            $event->event_type = 'todo';
+            $event->title = $event_data['event_name'];
+            $event->description = $event_data['description'];
+            $event->event_type = $event_data['event_type'];
             $event->user_id = $user->user_id;
+            $event->origin_type = $event_data['origin_type'];
+            $event->origin_id = $event_data['origin_id'];
+            $event->start_date = $event_data['start_date'];
+            $event->end_date = $event_data['end_date'];
+            $event->start_time = $event_data['start_time'];
+            $event->end_time = $event_data['end_time'];
+            $event->location = $event_data['location'];
 
-            $event->origin_type = $todo_origin;
-            $event->origin_id = $todo_origin_id;
-            $event->end_date = $todo_date;
-            $event->end_time = $todo_time;
             $event->save(false);
 
             if($event){

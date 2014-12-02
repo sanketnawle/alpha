@@ -965,3 +965,25 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/css/partial/img/wedge_down.png
 HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/leftpanel/leftpanel.css
 ---
+2014/12/02 19:41:34 [error] [php] Undefined variable: todo_origin (C:\wamp\www\alpha\urlinqyii\protected\controllers\EventController.php:327)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): EventController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): EventController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): EventController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/event/createEvent
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\EventController.php (327)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/02 19:41:56 [error] [php] Undefined variable: todo_origin (C:\wamp\www\alpha\urlinqyii\protected\controllers\EventController.php:327)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(286): EventController->runAction()
+#1 C:\wamp\yii\framework\web\CController.php(265): EventController->runActionWithFilters()
+#2 C:\wamp\yii\framework\web\CWebApplication.php(282): EventController->run()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/event/createEvent
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\EventController.php (327)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)

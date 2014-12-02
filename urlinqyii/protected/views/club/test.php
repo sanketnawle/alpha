@@ -58,6 +58,7 @@ echo $type;
         var post_data = {
             event:{
                 event_name: 'Test event',
+                event_type: 'exam',
                 origin_type:' club',
                 origin_id: 1,
                 title: 'Test Event',
@@ -71,7 +72,7 @@ echo $type;
         };
         //alert(JSON.stringify(post_data));
         $.post(
-            'http://localhost/alpha/urlinqyii/event/createEvent',
+            'http://localhost/alpha/urlinqyii/event/create',
             post_data,
             function(json_response) {
                 alert(JSON.stringify(json_response));
