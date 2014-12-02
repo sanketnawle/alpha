@@ -35,8 +35,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/fbar.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>-->
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/filepicker.js"></script>

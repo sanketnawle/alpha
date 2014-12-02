@@ -2,6 +2,23 @@ var j$ = $.noConflict();
 jQuery(document).ready(function () {
 
     var $ = jQuery;
+     $(".form-control").on("focus", function FormControlFocus () {
+        alert("focused");
+        var attr = $(this).attr("focused");
+        if(typeof attr === undefined || attr === false || attr === undefined || !attr) {
+            var ta = $(this);
+
+            ta.attr("focused", "yes");
+
+            ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
+
+            ta.parents(".postcomment").find(".comment_owner_container").show();
+            ta.closest(".postcomment").find(".reply_user_icon").hide();
+            ta.closest(".commentform").find(".dragdrop_functions").show();
+            ta.closest(".commentform").find(".reply_functions").show();
+            ta.closest(".posts").find(".feed_upload_textprompt").show();
+        }
+    });
     //index 0 = A, 1 = B, 2 = C, 3 = D
     var old_width_vals = ["", "", "", ""];
     old_width_vals[0] = $("#Aexpanding").width();
@@ -64,22 +81,7 @@ jQuery(document).ready(function () {
     var fileList = {};
     var fileCount = 0;
 
-    $(".form-control").on("focus", function FormControlFocus () {
-        var attr = $(this).attr("focused");
-        if(typeof attr === undefined || attr === false || attr === undefined || !attr) {
-            var ta = $(this);
 
-            ta.attr("focused", "yes");
-
-            ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
-
-            ta.parents(".postcomment").find(".comment_owner_container").show();
-            ta.closest(".postcomment").find(".reply_user_icon").hide();
-            ta.closest(".commentform").find(".dragdrop_functions").show();
-            ta.closest(".commentform").find(".reply_functions").show();
-            ta.closest(".posts").find(".feed_upload_textprompt").show();
-        }
-    });
 
     $(".form-control").on("keyup", function (e) {
         e = e || event;
@@ -338,172 +340,5 @@ jQuery(document).ready(function () {
 
 
 
-    j$.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
-
-    j$(".new_fd").each(function (index) {
-
-        j$(this).removeClass("new_fd");
-        if (j$(this).find(".f_hidden_p").text().trim() != "") {
-            jQuery('.f_hidden_p a').embedly({
-                query: {
-                    maxwidth: 500,
-                    autoplay: true
-                },
-                display:function(data, elem){
-                    console.log(data);
-                    if(data.type != 'video') $('.play_btn').hide();
-                    jQuery('.link-text-title').text(data.title);
-                    if(data.thumbnail_url){
-                        console.log('here');
-                        if((data.thumbnail_width > 550) && (data.thumbnail_height> 270)) {
-                            jQuery('.link-img').css({
-                                'background' :  'url(' + data.thumbnail_url + ')',
-                                'height' : 273,
-                                'width' : 555,
-                                'background-size' : 'cover'
-                            });
-
-                            jQuery('.link-text-data').css({
-                                'position' : 'relative',
-                                'top': 162,
-                                'left' : 1,
-                                'height' : 110,
-                                'width' : 414
-
-                            });
-                            jQuery('.link-text-about').css({
-                                'position' : 'relative',
-                                'top': -260,
-                                'left' :-140,
-                                'width' : 545
-                            });
-                            jQuery('.link-text-title').css({
-                                'position' : 'relative',
-                                'top' : -265,
-                                'left' : -140
-                            })
-
-                            //}
-                        }
-                        else {
-                            jQuery('.link-img').css({
-                                'background' :  'url(' + data.thumbnail_url + ')',
-                                'height' : 139,
-                                'width' :150,
-                                'background-size' : 'cover'
-                            });
-
-                        }
-                        var thumbnail_url = data.thumbnail_url;
-                        jQuery('.link-text-about').text(data.description + " " + data.original_url);
-                        // jQuery('.post_msg .msg_span').append("<br> <a href=" + data.original_url + ">" + data.original_url + "</a>");
-
-
-                    }
-                    else {
-                        //this or
-                        jQuery('.link-img').css({
-                            'background' :  'url(' + 'http://www.urlinq.com/beta/DefaultImages/anon.png' + ')',
-                            'height' : 139,
-                            'width' :150,
-                            'background-size' : 'cover'
-                        });
-
-                        // jQuery('.link-img').removeClass();
-                        if(data.description){
-                            jQuery('.link-text-about').text(data.description + " " +data.original_url);
-                        }
-                        else {
-                            jQuery('.link-text-about').text(data.original_url);
-                        }
-
-                    }
-
-                    $('.link-wrapper').on('click', function () {
-// Handles the click event and replaces the link with the video.
-
-
-                        if (data.type === 'video') {
-                            j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-                            return false;
-                        } else {
-
-                            window.open(data.url, '_blank');
-                        }
-
-                    });
-
-
-                    /*.on('click', function(){
-                     console.log('clicked');
-                     if(data.type == 'video'){
-                     //var htmlString = "<iframe src=" + data.original_url + "></iframe>";
-                     $('.link-wrapper').load(data.original_url);
-                     }
-                     });*/
-
-                }
-            })
-
-            /*j$(this).find('.play').embedly({
-             query: {
-             maxwidth: 500,
-             autoplay: true
-             },
-             display: function (data, elem) {
-             console.log(data);
-
-             //Adds the image to the a tag and then sets up the sizing.
-             j$(elem).html('<img src="' + data.thumbnail_url + '"/>')
-             .width(data.thumbnail_width)
-             .height(data.thumbnail_height)
-             .find('span').css('top', data.thumbnail_height / 2 - 36)
-             .css('left', data.thumbnail_width / 2 - 36);
-             ////alert($(elem).html());
-             var j$elhtml = j$(elem).html();
-             j$(elem).closest(".post_lr_link_msg").find(".link-img").html(j$elhtml);
-
-             var t_title = data.title;
-             var t_des = data.description;
-             var t_url = data.url;
-             ////alert(data.title+" , "+data.description+", "+data.url);
-             var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
-
-             j$(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-             j$(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-             if (data.type === 'video') {
-
-             } else {
-             j$(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-             }
-
-             }
-             }).on('click', function () {
-             // Handles the click event and replaces the link with the video.
-             var data = j$(this).data('embedly');
-
-             if (data.type === 'video') {
-             j$(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-             return false;
-             } else {
-             window.open(data.url, '_blank');
-             }
-
-             });*/
-
-        }
-
-    });
-
-
-    j$(document).delegate('.playable_wrap', "click", function () {
-        j$(this).closest(".post_lr_link_msg").find(".play").click();
-    });
-
-
-    setTimeout(function () {
-        //latest_feed();
-    }, 5000);
-
+    
 });

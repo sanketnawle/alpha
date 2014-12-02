@@ -3,6 +3,10 @@
     font-family: 'Open Sans', sans-serif;
     width: auto;
     height: 38px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 20px;
+
 }
 
 .post{

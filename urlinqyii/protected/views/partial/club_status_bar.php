@@ -34,11 +34,10 @@ else{
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/feed.css"> </link>
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/fbar.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/dropdown_style.css"> </link>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="filepicker.js"></script>
