@@ -48,7 +48,6 @@ $(document).ready(function(){
     }
     function render_course(course_json){
         //alert("in render_course");
-
         var source   = $("#course_template").html();
         var template = Handlebars.compile(source);
         var context = {
