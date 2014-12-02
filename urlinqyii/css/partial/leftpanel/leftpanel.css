@@ -183,6 +183,10 @@ body {
 
         .leftpanel .listing .class {
             height: 55%;
+            background: none!important;
+            box-shadow: none!important;
+            width: 100%!important;
+            border-radius: 0px!important;
         }
 
         .leftpanel .listing .club {

@@ -7,48 +7,65 @@
 I MADE A CHANGE
 
 <?php
-//
-//
-//var_dump($club);
-//var_dump($user);
-//
-//var_dump($is_admin);
-//
-//
-//var_dump($file_count);
-//
-//var_dump($club->users);
-//
-//
-//var_dump($is_member);
-//
-//
-//var_dump($connected_users);
-//
-//
-//
-//
-//var_dump($club->events);
-//
-//
-//
-//
-//
-//echo "USER COURSES";
-//var_dump($user->courses);
-//
-//
-//echo "$ COURSES";
-//var_dump($courses);
-//
-//
-//
+echo $type;
 
-echo Yii::getVersion();
-var_dump($department->pictureFile->file_url);
-
-var_dump($classes);
+////
+////
+////var_dump($club);
+////var_dump($user);
+////
+////var_dump($is_admin);
+////
+////
+////var_dump($file_count);
+////
+////var_dump($club->users);
+////
+////
+////var_dump($is_member);
+////
+////
+////var_dump($connected_users);
+////
+////
+////
+////
+////var_dump($club->events);
+////
+////
+////
+////
+////
+////echo "USER COURSES";
+////var_dump($user->courses);
+////
+////
+////echo "$ COURSES";
+////var_dump($courses);
+////
+////
+////
+//
+//echo Yii::getVersion();
+//var_dump($department->pictureFile->file_url);
+//
+//var_dump($classes);
 //?>
+
+
+<script>
+    $(document).ready(function(){
+        var post_data = {test:'lol'};
+        //alert(JSON.stringify(post_data));
+        $.post(
+            'http://localhost/alpha/urlinqyii/event/createEvent',
+            post_data,
+            function(json_response) {
+                alert(JSON.stringify(json_response));
+            }, 'json'
+        );
+    });
+</script>
 
 <form id='file_upload_form' action="<?php echo Yii::app()->getBaseUrl(true); ?>/api/fileUpload" method="post" enctype="multipart/form-data">
     <input type="text" name="origin_type" value="club">

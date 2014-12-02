@@ -84,7 +84,7 @@ background-color:rgba(190, 190, 190, 0.04);
 
 .fbtn{
 float: center;
-width: 166px;
+width: auto;
 margin: auto;
 display: block;
 height: 24px;

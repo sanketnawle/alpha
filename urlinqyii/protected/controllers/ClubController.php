@@ -136,6 +136,9 @@ class ClubController extends Controller
     public function actionTest()
     {
 
+
+
+
         //Yii::app()->getBaseUrl(true)
 //        //$club_id = $_GET['id'];
 //        $club = Group::model()->find('group_id=:id', array(':id'=>1));
@@ -291,11 +294,11 @@ class ClubController extends Controller
         $classes = ClassModel::model()->findAllBySql($sql);
 
         //$club_id = $_GET['id'];
-
-
+        $class = ClassModel::model()->findBySql("SELECT * FROM `class` WHERE class_id=1");
+        $type = $class->relations();
 //        $club = Group::model()->find('group_id=:id', array(':id'=>1));
 
-        $this->render('test',array('classes'=>$classes,'department'=>$department));
+        $this->render('test',array('classes'=>$classes,'department'=>$department,'type'=>json_encode($type)));
 
 
 

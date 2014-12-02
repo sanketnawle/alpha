@@ -3,6 +3,8 @@
 class CourseController extends Controller
 {
     public function actionView() {
+        $user = $this->get_current_user();
+
         $course_id = $_GET['id'];
         if($course_id == null) {
             echo CJSON::encode(array(
@@ -53,7 +55,7 @@ class CourseController extends Controller
         }
         //echo CJSON::encode(array('success' => true, 'count' => count($classes), 'data' => $classes));
         //Yii::app()->end();
-        $this->render('course',array('success' => true, 'count' => count($classes), 'data' => $classes));
+        $this->render('course',array('user' => $user, 'cid'=>$course_id));
     }
 
     // Uncomment the following methods and override them if needed

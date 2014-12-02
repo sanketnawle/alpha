@@ -1,520 +1,359 @@
-<script>
-    $(document).ready(function () {
-        $.urlParam = function (sParam) {
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-            var sPageURL = window.location.search.substring(1);
-            var sURLVariables = sPageURL.split('&');
-            for (var i = 0; i < sURLVariables.length; i++) {
-                var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] == sParam) {
-                    return sParameterName[1];
-                }
-            }
-
-        }
-        var class_id = $.urlParam('class_id');
-
-
-        $(document).delegate(".upload-syla-input", "change", function () {
-
-            var $ref = $(this);
-
-            var formData = new FormData($ref.closest("form")[0]);
-            var upload_syllabus = 1;
-            formData.append("upload_syllabus", upload_syllabus);
-            formData.append("class_id", class_id);
-            $.ajax({
-                type: "POST",
-                url: "php/edit_class_details.php",
-                xhr: function () {  // Custom XMLHttpRequest
-                    var myXhr = $.ajaxSettings.xhr();
-                    if (myXhr.upload) { // Check if upload property exists
-                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
-                    }
-                    return myXhr;
-                },
-
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (html) {
-                    //alert(html);
-                    $ref.closest("form").find(".uploadedPhotoFrame").hide();
-                    alert(html);
-                    $ref.closest("form").find(".uploadedPhotoFrame_display").css({"background-image": "url(" + html + ")"});
-                    $ref.closest("form").find(".uploadedPhotoFrame_display").show();
-
-                    $ref.closest(".syla-evt_ctr").find(".download_syla_btn").remove();
-                    $ref.closest(".syla-evt_ctr").append(html);
-
-
-                },
-                error: function (html) {
-                    alert("a");
-                    alert(html);
-                }
-            });
-        });
-
-
-        $(document).delegate(".a_weekview_right", "click", function () {
-            var event_id = $(this).closest(".weekview_content").attr("id");
-            var classes = true;
-            $.ajax({
-                type: "POST",
-                url: "php/add_event_events_tab.php",
-                data: {event_id: event_id, classes: true},
-                success: function (html) {
-                    alert("we");
-                },
-                error: function (html) {
-                    alert(html);
-                }
-            });
-        });
-        /*progress function for ajax*/
-        function progressHandlingFunction(e) {
-            if (e.lengthComputable) {
-                $('progress').attr({value: e.loaded, max: e.total});
-            }
-        }
-    });
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
-<?php
-/**
- * Created by PhpStorm.
- * User: aditya841
- * Date: 7/25/14
- * Time: 4:18 PM
- */
+<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../css/class/syla.css">
+<script type="text/javascript">
+    base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+    class_id = '<?php echo $class->course_id; ?>';
+</script>
+
+<script src="../protected/components/class/semantic/packaged/javascript/semantic.min.js">
+</script>
+<link rel="stylesheet" href="../protected/components/class/semantic/packaged/css/semantic.min.css">
 
 
-include 'php/dbconnection.php';
-include 'php/time_change.php';
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+<script src="../js/jquery-ui-1.10.2.custom.min.js"></script>
 
-$class_id = "92478034-f589-11e3-b732-00259022578e";
-$user_id = 1;
-$range = date("Y-m-d", strtotime("+1 year"));
-$user_type = 's';
+<script src="../js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-}
-if (isset($_POST['class_id'])) {
-    $class_id = $_POST['class_id'];
-}
-if (isset($_SESSION['user_type'])) {
-    $user_type = $_SESSION['user_type'];
-}
+<script src="../js/ampm.js" type="text/javascript" ></script>
 
-$get_types = "SELECT * FROM event_types";
-$get_types_result = mysqli_query($con, $get_types);
+<script>
+$(document).ready(function() {
 
 
-while ($row = mysqli_fetch_array($get_types_result)) {
-    $event_name = $row['event_name'];
-    switch ($event_name) {
-        case 'to_do':
-            $to_do_event = $row['type'];
-            break;
-        case 'personal':
-            $personal_event = $row['type'];
-            break;
-        case 'personal_invited':
-            $personal_invited_event = $row['type'];
-            break;
-        case 'group':
-            $group_event = $row['type'];
-            break;
-        case 'group_personal':
-            $group_event_personal = $row['type'];
-            break;
-        case 'course':
-            $course_event = $row['type'];
-            break;
-        case 'course_personal':
-            $course_event_personal = $row['type'];
-            break;
-        case 'office timing':
-            $office_timing = $row['type'];
-            break;
-    }
-}
+    var month_table = new Array();
+    month_table[0] = "Jan";
+    month_table[1] = "Feb";
+    month_table[2] = "Mar";
+    month_table[3] = "Apr";
+    month_table[4] = "May";
+    month_table[5] = "Jun";
+    month_table[6] = "Jul";
+    month_table[7] = "Aug";
+    month_table[8] = "Sept";
+    month_table[9] = "Oct";
+    month_table[10] = "Nov";
+    month_table[11] = "Dec";
 
-$events_array = array();
-$admin_flag = 0;
+    var weekday_table = new Array(7);
+    weekday_table[0]=  "Sun";
+    weekday_table[1] = "Mon";
+    weekday_table[2] = "Tue";
+    weekday_table[3] = "Wed";
+    weekday_table[4] = "Thur";
+    weekday_table[5] = "Fri";
+    weekday_table[6] = "Sat";
 
-if ($user_type == 'p') {
-    $get_prof_query = "SELECT COUNT(class_id) as admin_flag FROM courses_semester WHERE class_id = '$class_id' AND professor = $user_id UNION ALL (SELECT COUNT(class_id) as admin_flag FROM courses_user WHERE  class_id = '$class_id' AND user_id = $user_id AND is_admin = 1)";
-    $get_prof_query_result = $con->query($get_prof_query);
-    while ($prof_row = $get_prof_query_result->fetch_array()) {
-        $admin_flag = $prof_row['admin_flag'] + $admin_flag;
-    }
-} else {
-    $get_admin_flag_query = "SELECT COUNT(*) as admin_flag FROM courses_user WHERE class_id ='$class_id' AND user_id = $user_id AND is_admin = 1";
-    $get_admin_flag_query_result = $con->query($get_admin_flag_query);
-    $admin_row = $get_admin_flag_query_result->fetch_array();
-    $admin_flag = $admin_row['admin_flag'];
-}
+    var fit_height=$(window).height()-80;
+    $(".pdf_render").height(fit_height);
+    $(".event_render").height(fit_height);
+    $( window ).resize(function() {
+        fit_height=$(window).height()-80;
+        $(".pdf_render").height(fit_height);
+        $(".event_render").height(fit_height);
+    });
 
-$get_admin_event_query = "SELECT CE.*, CM.syllabus_id FROM course_event CE
-JOIN courses_semester CM ON CM.class_id = CE.class_id
-WHERE CE.class_id = '$class_id' AND CE.made_by_admin = 1";
-$get_admin_event_query_result = mysqli_query($con, $get_admin_event_query);
+    var animation_interval= setInterval(function(){
+        var c=0;
 
-while ($row = mysqli_fetch_array($get_admin_event_query_result)) {
-    $syllabus_id = $row['syllabus_id'];
-    $this_event_id = $row['event_id'];
-    if ($admin_flag > 0) {
-        $event_type = $course_event_personal;
-        $choice = -2;
-    } else {
-        $event_type = $course_event;
-        $get_user_choice_query = "SELECT choice FROM course_event_invited WHERE user_id = $user_id AND event_id = $this_event_id";
-        $get_user_choice_query_result = mysqli_query($con, $get_user_choice_query);
-        if (mysqli_num_rows($get_user_choice_query_result) > 0) {
-            $choice_row = mysqli_fetch_array($get_user_choice_query_result);
-            $choice = $choice_row['choice'];
-        } else {
-            $choice = -1;
-        }
-    }
-
-    if ($row['recurrence'] != 'none') {
-        $recurrence_dates = getDatesOfRecurrence($row['start_date'], $row['end_date'], $row['recurrence'], $range, $row['start_date']);
-        foreach ($recurrence_dates as $dates) {
-            $events_array[] = array(
-                'event_id' => $row['event_id'],
-                'title' => $row['title'],
-                'description' => $row['description'],
-                'start_date' => $dates,
-                'start_time' => $row['start_time'],
-                'end_date' => $dates,
-                'choice' => $choice,
-                'end_time' => $row['end_time'],
-                'event_class' => $row['event_class'],
-                'type' => $event_type
-            );
-        }
-    } else {
-        $events_array[] = array(
-            'event_id' => $row['event_id'],
-            'title' => $row['title'],
-            'description' => $row['description'],
-            'start_date' => $row['start_date'],
-            'start_time' => $row['start_time'],
-            'end_date' => $row['end_date'],
-            'choice' => $choice,
-            'end_time' => $row['end_time'],
-            'event_class' => $row['event_class'],
-            'type' => $event_type
-        );
-    }
-}
-
-
-echo "
-    <div class='syllabus-tab-content'>
-        <div class='syla-evt_ctr'>";
-
-
-
-if ($admin_flag == 0) {
-    echo "
-          <div class='uploadSyllabus'>
-          <div class='blue_btn create-schedule'>Create Schedule</div>
-          <div class='blue_btn upload-syla-btn'>Upload Syllabus</div>
-          <form>
-          <input type='file' class='upload-syla-input' name='file'></input>
-          </form>
-          </div>
-    ";
-}
-if($admin_flag == 0){
-     echo"
-        <h2 id='noSyllabus'> Syllabus </h2>
-        <div class='noInfoBox' id='noInfoSyllabusBox'><img src='DefaultImages/class.png' style='width:20px; height:auto;position:relative;top:3px;'></img>  No Syllabus Added </div> 
-    ";
-}
-if ($syllabus_id != NULL) {
-    echo "
-          <a class='download_syla_btn' href='php/download_file.php?file_id=" . $syllabus_id . "'><div class='blue_btn'>Download Syllabus</div></a>
-    ";
-}
-
-
-
-if (count($events_array) > 0) {
-    echo "
-        </div>
-        <div class='syllabus-canvas'>
-";
-    $sort = array();
-    foreach ($events_array as $k => $v) {
-        $sort['start_date'][$k] = $v['start_date'];
-        $sort['start_time'][$k] = $v['start_time'];
-    }
-
-    array_multisort($sort['start_date'], SORT_ASC, $sort['start_time'], SORT_ASC, $events_array);
-    $prev_week_start_date = "2014-01-01";
-    $prev_week_end_date = "2014-01-07";
-    $prev_day = "00-00-00";
-    $show_count = 0;
-
-    foreach ($events_array as $event) {
-        $user_start_timestamp = new DateTime(user_time($event['start_date'] . "" . $event['start_time']));
-        $user_end_timestamp = new DateTime(user_time($event['end_date'] . "" . $event['end_time']));
-        if ($user_start_timestamp->format("w") == 0) {
-            $week_start_timestamp = clone $user_start_timestamp;
-            $week_start_timestamp = $week_start_timestamp->modify("previous week monday");
-            $week_end_timestamp = clone $user_start_timestamp;
-        } else {
-            $week_start_timestamp = clone $user_start_timestamp;
-            $week_start_timestamp->modify("this week monday");
-            $week_end_timestamp = clone $user_start_timestamp;
-            $week_end_timestamp->modify("this week sunday");
-        }
-
-        if ($prev_week_start_date == $week_start_timestamp->format("Y-m-d")) {
-            $show_count++;
-            echo "
-                    <div class='weekview_content'>
-                        <div class='a_weekview'>";
-
-            if ($prev_day == $user_start_timestamp->format("Y-m-d")) {
-                echo "
-                            <div class='a_weekview_left'></div>
-                ";
-            } else {
-                $prev_day = $user_start_timestamp->format("Y-m-d");
-                echo "
-                            <div class='a_weekview_left'>" . $user_start_timestamp->format("D, M j") . "</div>
-                ";
+        $( ".adot" ).each(function( index ) {
+            if (!$(this).hasClass("blockshow")) {
+                $(this).addClass("blockshow");
+                return false;
+            }else{
+                c++;
             }
-            echo "
-                            <div class='a_weekview_mid'>
-                                <div class='a_weekview_mid_head'>
-                                    <span class='a_weekview_mid_head_topic'>" . $event['title'] . "</span>
-                                    <span class='a_weekview_mid_head_time'>" . $user_start_timestamp->format("g:i a") . "-"
-                . $user_end_timestamp->format("g:i a") . "</span>
-                                </div>
-                                <div class='a_weekview_mid_content'>
-                                    " . $event['description'] . "
-                                </div>
+        });
+        if (c>2) {
+            $( ".adot" ).removeClass("blockshow");
+        };
+    }, 500);
 
-                            </div>";
-            if ($admin_flag > 0) {
-//                echo "
-//                            <div class='a_weekview_right'>
-//                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>
-//                            </div>
-//                            <div class = 'help-div-black help-div' id ='help-2'>
-//                                <div class ='help-wedge-black help-wedge2'></div>
-//                                <div class = 'help-box-black help-box2'>
-//                                    Click to add this event
-//                                </div>
-//                            </div>";
-            } else {
-                if ($event['choice'] == 1 or $event['choice'] == 0 or $event['choice'] == 2) {
-                    echo "
-                            <div class='a_weekview_right'>
-                                <div class='syla_tag syla_tag_lec syla_checked'>" . $event['event_class'] . " <span style='background-image: url(" . 'src/checked-syla.png' . ");' class='check_syla'></span></div>
-                            </div>
-                            <div class = 'help-div-black help-div' id ='help-2'>
-                                <div class ='help-wedge-black help-wedge2'></div>
-                                <div class = 'help-box-black help-box2'>
-                                    Click to remove this event
-                                </div>
-                            </div>";
+    $(".ui.dropdown").dropdown();
 
-                    //do not echo right side add button
-                } elseif ($event['choice'] == -1) {
-                    echo "
-                            <div class='a_weekview_right'>
-                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>
-                            </div>
-                            <div class = 'help-div-black help-div' id ='help-2'>
-                                <div class ='help-wedge-black help-wedge2'></div>
-                                <div class = 'help-box-black help-box2'>
-                                    Click to add this event
-                                </div>
-                            </div>";
+    /*side card js*/
+    $(document).delegate(".add_to_cal","mouseenter",function(){
+        $(this).closest(".ssc_col").find(".ssc_help").show();
+    });
+    $(document).delegate(".add_to_cal","mouseleave",function(){
+        $(this).closest(".ssc_col").find(".ssc_help").hide();
+    });
+
+    $(".time_input").timeAutocomplete({
+        increment: 10,
+        formatter: 'ampm',
+        start_hour: 0
+    });
+    /*side card js end*/
+
+
+    $(document).delegate(".syla_upload_btn","click",function(){
+        $(this).closest(".syla_head").find(".upload_syla").click();
+    });
+
+
+    var iframe= $(".pdf_render");
+    $(document).delegate(".upload_syla","change",function(){
+        $ref=$(this);
+        pdfcandidate_name= $(this).val();
+        $(".pdf_loading_animation").show();
+
+
+        var formData= new FormData( $ref.closest("form")[0]);
+        $.ajax({
+            type: "POST",
+            url: base_url+"/class/sylaUpload",
+            xhr: function () {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) { // Check if upload property exists
+                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
                 }
-            }
+                return myXhr;
+            },
 
-            echo "
-                            </div>
-                        </div>
-            ";
-        } else {
-            $prev_week_start_date = $week_start_timestamp->format("Y-m-d");
-            if ($show_count != 0) {
-                echo "
-                    </div>
-                ";
-            }
-            $show_count++;
-            //closing previous syla_weekview and starting new
-            echo "
-                <div class='syla_weekview'>
-                    <div class='weekview_head'>
-                        Week of " . $week_start_timestamp->format("M d, Y") . "
-                    </div>
-            ";
 
-            echo "
-                    <div class='weekview_content' id='" . $event['event_id'] . "'>
-                        <div class='a_weekview'>";
+            dataType: "json",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (jsonArr) {
+                var route=jsonArr.uploadedfile;
+                alert('hello');
+                $.ajax({
+                    url: base_url+"/protected/components/class/HighlightDates/web/viewer.php",
+                    success: function () {
+                        iframe.attr("src",base_url+"/protected/components/class/HighlightDates/web/viewer.php?pdf_target="+route);
+                        $(".pdf_loading_animation").hide();
+                        checkHighlight();
 
-            if ($prev_day == $user_start_timestamp->format("Y-m-d")) {
-                //same date so skip printing date
-                echo "
-                            <div class='a_weekview_left'></div>
-                ";
-            } else {
-                $prev_day = $user_start_timestamp->format("Y-m-d");
-                echo "
-                            <div class='a_weekview_left'>" . $user_start_timestamp->format("D, M j") . "</div>
-                ";
-            }
-            echo "
-                            <div class='a_weekview_mid'>
-                                <div class='a_weekview_mid_head'>
-                                    <span class='a_weekview_mid_head_topic'>" . $event['title'] . "</span>
-                                    <span class='a_weekview_mid_head_time'>" . $user_start_timestamp->format("g:i a") . "-"
-                . $user_end_timestamp->format("g:i a") . "</span>
-                                </div>
-                                <div class='a_weekview_mid_content'>
-                                    " . $event['description'] . "
-                                </div>
-
-                            </div>";
-            if ($admin_flag > 0) {
-//                echo "
-//                            <div class='a_weekview_right'>
-//                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>
-//                            </div>
-//                            <div class = 'help-div-black help-div' id ='help-2'>
-//                                <div class ='help-wedge-black help-wedge2'></div>
-//                                <div class = 'help-box-black help-box2'>
-//                                    Click to add this event
-//                                </div>
-//                            </div>";
-            } else {
-                if ($event['choice'] == 1 or $event['choice'] == 0 or $event['choice'] == 2) {
-                    echo "
-                            <div class='a_weekview_right'>
-                                <div class='syla_tag syla_tag_lec syla_checked'>" . $event['event_class'] . " <span style='background-image: url(" . 'src/checked-syla.png' . ");' class='check_syla'></span></div>
-                            </div>
-                            <div class = 'help-div-black help-div' id ='help-2'>
-                                <div class ='help-wedge-black help-wedge2'></div>
-                                <div class = 'help-box-black help-box2'>
-                                    Click to remove this event
-                                </div>
-                            </div>";
-
-                    //do not echo right side add button
-                } elseif ($event['choice'] == -1) {
-                    echo "
-                            <div class='a_weekview_right'>
-                                <div class='syla_tag syla_tag_lec'>" . $event['event_class'] . " <span class='check_syla'></div>
-                            </div>
-                            <div class = 'help-div-black help-div' id ='help-2'>
-                                <div class ='help-wedge-black help-wedge2'></div>
-                                <div class = 'help-box-black help-box2'>
-                                    Click to add this event
-                                </div>
-                            </div>";
-                }
-            }
-
-            echo "
-                            </div>
-                        </div>
-            ";
-        }
-    }
-
-    //closing the last syla_weekview
-    echo "
-            </div>
-    ";
-}
-
-//closing syllabus-tab-content and syllabus canvas
-echo "
-        </div>
-    </div>
-";
-
-function getDatesOfRecurrence($start_date, $end_date, $recurrenceType, $range, $month_start)
-{
-    $dates = array();
-    switch ($recurrenceType) {
-        //Daily event
-        case 'daily':
-            $new_date = $start_date;
-            while (TRUE) {
-                if ($new_date < $month_start) {
-                    $new_date = date("Y-m-d", strtotime("+1 day", strtotime($new_date)));
-                    continue;
-                } else if ($new_date <= $end_date and $new_date <= $range) {
-                    $dates[] = $new_date;
-                } else {
-                    break;
-                }
-                $new_date = date("Y-m-d", strtotime("+1 day", strtotime($new_date)));
-            }
-//            print_r($dates);
-            return $dates;
-        //Weekly event
-        case 'weekly':
-            $new_date = $start_date;
-            while (TRUE) {
-                if ($new_date < $month_start) {
-                    $new_date = date("Y-m-d", strtotime("+1 week", strtotime($new_date)));
-                    continue;
-                } else if ($new_date <= $end_date and $new_date <= $range) {
-                    $dates[] = $new_date;
-                } else {
-                    break;
-                }
-                $new_date = date("Y-m-d", strtotime("+1 week", strtotime($new_date)));
-            }
-            return $dates;
-        //Monthly event
-        case 'monthly':
-            $new_date = $start_date;
-            while (TRUE) {
-                $present_month = date("n", strtotime($new_date));
-                $present_date = date("j", strtotime($new_date));
-                if ($new_date < $month_start) {
-                    if ($present_month == 1 and (($present_date > 28 and $leap_year = 0) or ($present_date > 29 and $leap_year = 1))) {
-                        $new_date = date("Y-m-d", strtotime("+2 month", strtotime($new_date)));
-                    } else {
-                        $new_date = date("Y-m-d", strtotime("+1 month", strtotime($new_date)));
+                    },
+                    error: function () {
+                        alert("a");
                     }
-                    continue;
-                } else if ($new_date <= $end_date and $new_date <= $range) {
-                    $dates[] = $new_date;
-                } else {
-                    break;
-                }
-                if ($present_month == 1 and (($present_date > 28 and $leap_year = 0) or ($present_date > 29 and $leap_year = 1))) {
-                    $new_date = date("Y-m-d", strtotime("+2 month", strtotime($new_date)));
-                } else {
-                    $new_date = date("Y-m-d", strtotime("+1 month", strtotime($new_date)));
-                }
+                });
+
+                //alert(response.uploadedfile);
+
+            },
+            error: function (html) {
+                alert(html);
             }
-            return $dates;
-        default:
-            echo "Should never get here";
+        });
+
+    });
+
+
+    iframe.load(function(){
+        var iframe_guts= iframe.contents();
+        var doc_position_compensation= 75;
+        var self_height=160;
+        var small_correction=15;
+        iframe_guts.delegate(".evt_seed_box", "mouseenter",function(){
+            var p= $(this).offset();
+            var tt= p.top+doc_position_compensation;
+            var tl= p.left;
+            $(".pup_title_input").focus();
+            $(".syla_block_pup").css({"opacity":"1","z-index":"1"});
+            $(".syla_block_pup").offset({top: tt-self_height+small_correction,left: tl});
+
+            var tid=$(this).attr("id");
+            var associate= $.inArray(tid,seed_list_id);
+            var dt= date_process(seed_list_dt[associate]);
+            $(".syla_block_pup").find(".ssc_date_block").text(dt);
+
+            $(".syla_block_pup").show();
+        });
+
+        iframe_guts.delegate(".evt_seed_box", "mouseleave",function(){
+            //$(".syla_block_pup").hide();
+            $(".syla_block_pup").css({"opacity":"0","z-index":"-1"});
+
+        });
+    });
+
+    $(document).delegate(".syla_block_pup","mouseenter",function(){
+        $(".pup_title_input").focus();
+        $(".syla_block_pup").css({"opacity":"1","z-index":"1"});
+        $(this).show();
+    });
+    $(document).delegate(".syla_block_pup","mouseleave",function(){
+        $(".syla_block_pup").css({"opacity":"0","z-index":"-1"});
+        $(this).show();
+    });
+
+
+    var previous_flag="";
+    function checkHighlight() {
+
+        var timer_ch=
+            setInterval(function(){
+                var myiframe= iframe.contents();
+                var flag= myiframe.find("body").find(".EVT_SEED_REPO").text();
+                //alert(flag);
+                if(flag!=previous_flag){
+
+                    previous_flag= flag;
+
+                    grow_seed(flag);
+
+                    arrange_events_byweek();
+                }
+            }, 3000);
     }
-    return NUll;
-}
+
+    var seed_list_id=[];
+    var seed_list_dt=[];
+    function grow_seed(seed){
+        var seeds= seed.split(";;");
+        var total= seeds.length-1;
+        $.each(seeds, function( index, value ) {
+            if (index==total) {
+                return false;
+            };
+
+            //alert(value);
+            var seedinfo= value.split("::");
+            var repeat_flag=0;
+            $(".syla_side_card").each(function( index, value ) {
+                if($(this).attr("id")==seedinfo[0]){
+                    repeat_flag++;
+                }
+            });
+
+            if (repeat_flag==0){
+                $(".event_render").append("<div class='syla_side_card green_bordered'><div class='ssc_col ssc_col0'><input type='checkbox' class='confirm_title'><input type='text' class='title_text' placeholder='Add a title to this event'></div><div class='ssc_col ssc_col1'><div class='ssc_help'><div class='ssc_help_wedge'></div><div class='ssc_help_content'>Add to Your Calendar</div></div><div class='add_to_cal'><div></div></div><div class='ssc_title'>Dummy Title</div></div><div class='ssc_col ssc_col2'><div class='ssc_date_block'>Wed, 15, Jan</div><div class='ui dropdown ssc_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>Homework</div><div class='item' data-value='option4'>Project</div></div></div></div></div>");
+                var $this_evt= $(".syla_side_card").last();
+                $this_evt.find(".ssc_col1").hide();
+                $this_evt.find(".ui.dropdown").dropdown();
+
+                //var processed_dt= date_process(seedinfo[1]);
+
+                var date_str=" ";
+                //alert(seedinfo[1]);
+                date_str=date_process(seedinfo[1]);
 
 
-?>
+                $this_evt.attr("id",seedinfo[0]);
+
+                $this_evt.find(".ssc_date_block").text(date_str);
+
+                seed_list_id.push(seedinfo[0]);
+                seed_list_dt.push(seedinfo[1]);
+            }
+        });
+    }
+
+    function date_process(dstr){
+        //alert(dstr);
+        parts = dstr.split('/');
+        fyear= 20+""+parts[2];
+
+        year = parseInt(fyear);
+        month = parseInt(parts[0]) - 1;
+        day = parseInt(parts[1]);
+        date = new Date(year, month, day);
+        new_dtstring= weekday_table[date.getDay()]+", "+month_table[date.getMonth()]+" "+date.getDate();
+
+        return new_dtstring;
+    }
+
+    function arrange_events_byweek(){
+
+        var $rt=$(".event_render");
+        var howmanyweek=0;
+        var lastweek=new Date(1991, 11, 16);
+        var dummyweek= new Date(1991, 11, 16);
+        var weeknum=1;
+
+        $(".syla_side_card").each(function( index ) {
+
+            var $this= $(this);
+
+            var tid= $(this).attr("id");
+
+            var associate= $.inArray(tid,seed_list_id);
+            var dt= seed_list_dt[associate];
+            parts = dt.split('/');
+            fyear= 20+""+parts[2];
+
+            year = parseInt(fyear);
+            month = parseInt(parts[0]) - 1;
+            day = parseInt(parts[1]);
+            date = new Date(year, month, day);
+            //alert(tid);
+
+            var thismonday= new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()+1);
+            var thissunday= new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()+7);
+
+            if (dummyweek==lastweek) {
+                lastweek= thissunday;
+                $this.before( "<div class='weekbreak'>Week "+weeknum+" ( "+month_table[thismonday.getMonth()]+" "+thismonday.getDate()+" - "+ month_table[thissunday.getMonth()]+" "+thissunday.getDate()+" )</div>" );
+                weeknum++;
+            }
+
+            else if (date>lastweek) {
+                lastweek= thissunday;
+                $this.before( "<div class='weekbreak'>Week "+weeknum+" ( "+month_table[thismonday.getMonth()]+" "+thismonday.getDate()+" - "+ month_table[thissunday.getMonth()]+" "+thissunday.getDate()+" )</div>" );
+                weeknum++;
+            }
+
+
+
+
+        });
+    }
+
+
+    /*progress handling function for ajax*/
+    function progressHandlingFunction(e){
+        if(e.lengthComputable){
+            $('progress').attr({value:e.loaded,max:e.total});
+        }
+    }
+
+
+});
+</script>
+
+
+</head>
+<body>
+<div class="syla_head">
+    <div class='syla_title'>Computer Science 171 Syllabus</div>
+    <div class='syla_like'><div class='like_sign'></div><div class="like_num">4</div></div>
+    <div class='syla_upload_btn blue_btn'>Upload Syllabus</div>
+    <form>
+        <input type="file" name='file' class="upload_syla">
+    </form>
+
+</div>
+
+<div class="syla_body">
+    <div class='pdf_loading_animation'><span>Loading</span><span class='adot'>.</span><span class='adot'>.</span><span class='adot'>.</span></div>
+    <iframe class='pdf_render' src="" frameBorder="0" width="700" height="800">
+    </iframe>
+
+    <div class='syla_block_pup'>
+        <div class='syla_popup'>
+            <div class='pup_col0'><div class='pup_col0_0'><div class='green_circ'></div></div><input class='title_text pup_title_input' type='text' placeholder='Add a title to this event'></div>
+            <div class='pup_col1'><div class='ssc_date_block'>loading...</div><input class='time_input' type='text' placeholder='Add a time'></div>
+            <div class='pup_col2'><div class='pup_col2_0'>Category : </div><div class='ui dropdown ssc_type_block pup_type_block'><div class='text'>Lecture</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Lecture</div><div class='item' data-value='option2'>Exam</div><div class='item' data-value='option3'>Homework</div><div class='item' data-value='option4'>Project</div></div></div></div>
+            <div class='pup_col3'><div class='evt_btn blue_btn'>Add Event</div> <div class='pup_col3_1'>Cancel</div></div>
+        </div>
+        <div class='pup_wedge'></div>
+        <div class='pup_wedge_border'></div>
+    </div>
+
+    <div class='event_render' src="" frameBorder="0" width="220" height="1000">
+    </div>
+</div>
+</body>
+</html>

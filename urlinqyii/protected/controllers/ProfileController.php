@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $department = $userProfile->department;
         $is_user = ($userProfile->user_id == $currentUser->user_id);
 
-        $clubs = $userProfile->groups;
+
 
         $following = $userProfile->usersFollowed;
         $followers = $userProfile->usersFollowing;
@@ -63,11 +63,14 @@ class ProfileController extends Controller
         }
         if($is_user) {
             $courses = $userProfile->classUsersAll;
+            $clubs = $userProfile->groupUsersAll;
         }
         else if($you_follow){
             $courses = $userProfile->classUsersForFollowers;
+            $clubs = $userProfile->groupUsersForFollowers;
         }else{
             $courses = $userProfile->classUsersForNonFollowers;
+            $clubs = $userProfile->groupUsersForNonFollowers;
         }
 
 
@@ -85,6 +88,7 @@ class ProfileController extends Controller
     }
 
     public function actionAddInterest($interests,$user_id){
+
 
         //if (isset($_POST['interests'])) {
             foreach($interests as $name){
@@ -110,9 +114,9 @@ class ProfileController extends Controller
                     if (!$userInterest->save()) {
                         return 'error: could not create new user-tag connection';
                     }
-                    return 'success';
                 }
             }
+        return 'success';
 
       //  }else{
      //       $this->renderJSON(array('status'=>'error','message'=>'no post interest'));
@@ -197,36 +201,40 @@ class ProfileController extends Controller
         //should pick which image somehow
 
        $html = file_get_html($url);
-         /*      $image_files = array();
-             $image_urls = array();
-            foreach($html->find('img') as $i=>$element) {
-                 $image_files[$i]['url'] = url_to_absolute($url,$element->src);
-                 $question_mark_index = strpos($image_files[$i]['url'],'?');
-                 if($question_mark_index != false){
-                     $image_files[$i]['url'] = substr($url,0,$question_mark_index);
-                 }
-                 $file_name = basename($image_files[$i]['url']);
-                 $image_files[$i]['file_path'] = '/assets/temp/'.$file_name;
-                 file_put_contents(Yii::getPathOfAlias('webroot') .'/assets/temp/'.$file_name, file_get_contents($image_files[$i]['url']));
-             }
-             $max_size = 0;
-             foreach($image_files as $i=>$image_file){
-                 list($width, $height, $type, $attr) = getimagesize(Yii::getPathOfAlias('webroot') .$image_file['file_path']);
-                 if($width*$height>$max_size){
-                     $max_size = $width*$height;
-                     $best_image_index = $i;
-                 }
-             }
+        /*    $image_files = array();
+           // $image_urls = array();
+           foreach($html->find('img') as $i=>$element) {
+                $image_files[$i]['url'] = url_to_absolute($url,$element->src);
+                $question_mark_index = strpos($image_files[$i]['url'],'?');
+                if($question_mark_index != false){
+                    $image_files[$i]['url'] = substr($url,0,$question_mark_index);
+                }
+                $file_name = basename($image_files[$i]['url']);
+                $image_files[$i]['file_path'] = '/assets/temp/'.$file_name;
+                $get_file = @file_get_contents($image_files[$i]['url']);
+                if($get_file != false){
+                    file_put_contents(Yii::getPathOfAlias('webroot') .'/assets/temp/'.$file_name, $get_file);
+                }
+                if($i == 3){
+                    break;
+                }
+            }
+            $max_size = 0;
+            foreach($image_files as $i=>$image_file){
+                list($width, $height, $type, $attr) = getimagesize(Yii::getPathOfAlias('webroot') .$image_file['file_path']);
+                if($width*$height>$max_size){
+                    $max_size = $width*$height;
+                    $best_image_index = $i;
+                }
+            }
 
 
-             //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
-             //returns largest image
-             return $image_files[$best_image_index]['url'];*/
-        try {
-            $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
-        }catch(Exception $e){
-            return null;
-        }
+            //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
+            //returns largest image
+            return $image_files[$best_image_index]['url'];*/
+
+        $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
+
         return $preview_image;
      }
      //creates a record of a file from a link
@@ -265,14 +273,17 @@ class ProfileController extends Controller
          if(!is_dir($local_directory)) {
              mkdir($local_directory);
          }
-         try{
-            file_put_contents($local_directory . $random_name .'.' .  $extension, file_get_contents($url));
-         }catch(Exception $e){
+         $get_file = @file_get_contents($url);
+         if($get_file){
+             file_put_contents($local_directory . $random_name .'.' .  $extension, $get_file);
+         }
+         else{
              return null;
          }
+
          if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
              include "ImageCompress.php";
-             image_compress($local_directory . $random_name .'.' .  $extension, $local_directory . $random_name . '.jpg', 50);
+             @image_compress($local_directory . $random_name .'.' .  $extension, $local_directory . $random_name . '.jpg', 50);
              if($extension != 'jpg'){
                  unlink($local_directory . $random_name .'.' .  $extension);
              }
@@ -453,8 +464,11 @@ class ProfileController extends Controller
         $majors = []; //can be major or minor
         $data = array();
 
+        UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>$focus));
         foreach($name_list as $majorname){
-
+            if($majorname === 'none'){
+                return 'success';
+            }
             $major = Major::model()->find('name = :mname',array(':mname'=>$majorname));
             if(!$major){
                 $data = 'failure: some major names are not valid';
@@ -464,7 +478,7 @@ class ProfileController extends Controller
             }
         }
 
-        UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>$focus));
+
         foreach($majors as $major){
             $userMajor = new UserMajor();
             $userMajor->user_id = $user_id;
@@ -544,6 +558,7 @@ class ProfileController extends Controller
                 $user->school_id = $school->school_id;
                 if($user->save()){
                     $new_data['school'] = "success";
+                   // $new_data['new_school_id'] = $school->school_id;
                 }else{
                     $new_data['school'] = $user->getErrors();
                 }
@@ -554,14 +569,14 @@ class ProfileController extends Controller
 
         }
         if(isset($_POST['majors'])){
-            if($_POST['majors'][0] == 'none'){
+            if($_POST['majors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
                 $new_data['major'] = 'success';
             }
             $new_data['major']= $this->updateMajorsMinors($_POST['majors'],'major',$user_id);
         }
         if(isset($_POST['minors'])){
-            if($_POST['majors'][0] == 'none'){
+            if($_POST['minors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'minor'));
                 $new_data['minor'] = 'success';
             }
@@ -699,24 +714,34 @@ class ProfileController extends Controller
         }
         $this->renderJSON(array('status' => 'failure: already closed'));
     }
-    public function actionChangeClassVisibility(){
+    public function actionChangeVisibility(){
         //public , just me, followers
 
        // $user_id = Yii::app()->session['user_id'];
-        if(isset($_POST['user'])&&isset($_POST['class'])&&isset($_POST['visibility'])){
+        if(isset($_POST['user'])&&isset($_POST['visibility'])){
             $user_id = $_POST['user'];
-            $class_id = $_POST['class'];
             $visibility_id = $_POST['visibility'];
 
-            $course_user = ClassUser::model()->find('user_id=:id  and class_id=:class_id', array(':id'=>$user_id,':class_id'=>$class_id));
-
-            $course_user->privacy = trim($visibility_id);
-            if($course_user->save()){
-                $this->renderJSON(array('status' => 'success'));
+            if(isset($_POST['group'])){
+                $group_id = $_POST['group'];
+                $recordToChange = GroupUser::model()->find('user_id=:id  and group_id=:group_id', array(':id'=>$user_id,':group_id'=>$group_id));
+            }else if(isset($_POST['class'])){
+                $class_id = $_POST['class'];
+                $recordToChange = ClassUser::model()->find('user_id=:id  and class_id=:class_id', array(':id'=>$user_id,':class_id'=>$class_id));
             }else{
-                $this->renderJSON(array('status' => $course_user->getErrors()));
+                $this->renderJSON(array('status' => 'error: no group or class set'));
+                return;
             }
 
+            $recordToChange->privacy = trim($visibility_id);
+            if($recordToChange->save()){
+                $this->renderJSON(array('status' => 'success'));
+            }else{
+                $this->renderJSON(array('status' => $recordToChange->getErrors()));
+            }
+
+        }else{
+            $this->renderJSON(array('status' => 'error: visibility not set'));
         }
 
 

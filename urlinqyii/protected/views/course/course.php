@@ -3,11 +3,12 @@
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         feed_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        id = "<?php echo $cid ?>";
     </script>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/course/course.js"> </script>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+    
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/group.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/backgroundGroup.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/course/invite_modal.css"> </link>
@@ -24,6 +25,12 @@
 
 <body>
 
+<div class="search-top-bar-wrap">
+    <?php echo Yii::app()->runController('partial/topbar'); ?>
+</div>
+<section class='leftbar_bag'>
+    <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+</section>
 <script id="course_template" type="text/x-handlebars-template">
     <div class='main'>
 
@@ -198,5 +205,7 @@
                 </div>
             </div>
 </script>
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/course/course.js"> </script>
 
+</body>
 
