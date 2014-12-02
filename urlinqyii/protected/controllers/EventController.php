@@ -286,7 +286,7 @@ class EventController extends Controller
     public function actionCreateEvent()
     {
         $data = array('success'=>true);
-        $this->renderJSON($data);
+        $this->renderJSON($_POST);
         return;
 
 
