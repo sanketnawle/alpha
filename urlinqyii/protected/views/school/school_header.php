@@ -15,13 +15,7 @@ echo '
         <div class = "group-head-top-sec-shadow">
         </div>
         <div class = "info-scroll-up info-shower">
-            <div class = "group-cover-pic-info">
-                <b>Caption Here</b>
-            </div>
-            <button class = "upload_cover upload_school_cover">
-                <i></i>
-                <span>Submit Cover</span>
-            </button>
+            
             <div class = "group_location">
                 <em></em>
                 <span class = "group_location_name">
@@ -84,6 +78,7 @@ echo '
                         </div>
                     </a>
                 </li>
+
                 <li class = "group-tab members-tab">
                     <a class = "tabmembers tab-anchor tab-inactive">
                         <div class = "tab-title">
@@ -97,10 +92,12 @@ echo '
                         </div>
                     </a>
                 </li>
+
                 <li class="group-tab clubs-tab">
                     <a class="tabclubs tab-anchor tab-inactive">
                         <div class="tab-title">
                             CLUBS
+                            <span class = "tab-icon tab4-icon-inactive" id="club_icon"></span>
                         </div>
                     </a>
                 </li>
@@ -118,7 +115,7 @@ echo '
         </div>
         <div class = "group-footer-functions">
             <div class = "join-button">
-                <a class = "join disabled">Member</a>
+                <a class = "join disabled">My School</a>
                 <div class = "help-div" id = "help-4">
                     <div class = "help-wedge">
                     </div>

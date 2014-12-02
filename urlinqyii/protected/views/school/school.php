@@ -11,6 +11,7 @@
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css'>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/datepicker.css">
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
@@ -680,7 +681,7 @@ $(document).ready(function() {
             $(".members-tab-content").animate({ opacity: "1"},300);
 
         }
-        if($(this).hasClass("tabc")){
+        if($(this).hasClass("tabclubs")){
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
@@ -697,7 +698,7 @@ $(document).ready(function() {
             $(this).find(".tab-title").find(".tab-icon").addClass("tabc-icon-active");
             $(".group-tab-active").addClass("tab-inactive");
             $(".group-tab-active").removeClass("group-tab-active");
-            $(".tab-wedge-down").css("left","710px");
+            $(".tab-wedge-down").css("left","520px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
@@ -781,7 +782,7 @@ $(document).ready(function() {
 <body>
     <div class = "root">
     <div class='gp_topbar_wrap'>
-
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
     <div class='gp_leftbar_wrap'>
