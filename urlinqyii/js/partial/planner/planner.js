@@ -489,7 +489,7 @@ $(document).on('click','#create_todo_form',function(e){
         return false;
     }
 
-    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id };
+    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id};
     //alert(JSON.stringify(post_data));
     $.post(
         post_url,
