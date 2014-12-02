@@ -8,11 +8,7 @@ echo '
             </div>
             <div class = "modal_content">
                 <div class = "modal_header">
-                    <span class = "floatL white">
-                        Submit Cover Photo
-                    </span>
-                    <div class = "floatR cancelBtn close school_modal_close">
-                    </div>
+                    
                 </div>
                 <div class = "modal_main">
                     <form>

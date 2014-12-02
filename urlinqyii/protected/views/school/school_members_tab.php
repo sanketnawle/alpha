@@ -61,13 +61,18 @@ echo '<div class = "members-tab-content">
                                                           </h3>
                                                           <div class="follow-btn">
                                 ';
-
+                            
+                       // <select class="member_following" data-member_id="' . $member->user_id . '">
+                          ///       <option value="follow" class="follow_option"'.$default_followed.'>follow</option>
+                           //      <option value="unfollow" class="follow_option"'.$default_unfollowed.'>unfollow</option>
+                           // </select>
                     echo '
                         <div class="member_following_wrap" >
-                            <select class="member_following" data-member_id="' . $member->user_id . '">
-                                 <option value="follow" class="follow_option"'.$default_followed.'>follow</option>
-                                 <option value="unfollow" class="follow_option"'.$default_unfollowed.'>unfollow</option>
-                            </select>
+                             
+                             <button class="member_tab_member">
+                                    Followed
+                             </button>
+                             
                         </div>';
 
                     echo '
@@ -125,19 +130,30 @@ foreach($members as $member) {
                                   <h3 class="person-title" id="person-title-student1">
                                       <strong class="search_unit">'.$member->firstname.' '.$member->lastname.'
                                       </strong>
-                                      <span><a class="search_unit" href="/beta/school.php?univ_id=1" style="text-decoration:none;">NYU</a>
+
+                                      <span>
+                                      <span class="university_icon"> </span>
+                                      <a class="search_unit" href="/beta/school.php?univ_id=1" style="text-decoration:none;">
+                                      
+                                      NYU</a>
                                       </span>
                                   </h3>
                              <div class="follow-btn">
                 ';
 
-        echo '
-            <div class="member_following_wrap" >
-                <select class="member_following" data-member_id="' . $member->user_id . '">
-                     <option value="follow" class="follow_option"'.$default_followed.'>follow</option>
-                     <option value="unfollow" class="follow_option"'.$default_unfollowed.'>unfollow</option>
-                </select>
-            </div>';
+        echo ' <div class="member_following_wrap" >';
+          if($default_followed == "selected"){
+                echo'<button class="member_tab_member">
+                      Followed
+                    </button>';
+              }
+          else{
+            echo'<button class="member_tab_not_member">
+                      Follow
+                  </button>';
+
+          }
+        echo' </div>';
 
         echo '</div>
                         </div>

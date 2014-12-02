@@ -1038,30 +1038,16 @@ $(document).ready(function() {
             ?>
         </div>
     </div>
-    
-        <div class = "event fani fani-hover">
-            <div class = "fbtn fbtn-upload">
-                Post Event
-            </div>
+    <div class = "event fani fani-hover">
+        <div class = "fbtn fbtn-upload">
+            Post Event
         </div>
-        <div class = "opp fani fani-hover">
-            <div class = "fbtn fbtn-opp">
-                Post Opportunity
-            </div>
+    </div>
+    <div class = "opp fani fani-hover">
+        <div class = "fbtn fbtn-opp">
+            Post Opportunity
         </div>
-   
-    
-        <div class = "event fani fani-hover">
-            <div class = "fbtn fbtn-upload">
-                Post Event
-            </div>
-        </div>
-        <div class = "opp fani fani-hover">
-            <div class = "fbtn fbtn-opp">
-                Post Opportunity
-            </div>
-        </div>
-   
+    </div>
 </div>
 
 <div class = "post-sec">

@@ -17,13 +17,14 @@ $(document).ready(function () {
         $('.clubs-tab-content').hide();
 
     });
-    $('.tabclubs').on('click', function () {
+    $('.clubs-tab').on('click', function () {
         $('.span_1_of_3').hide();
         $('.span_2_of_3').hide();
         $('.span_3_of_3').hide();
         $('.members-tab-content').hide();
         $('.departments-tab-content').hide();
         $('.clubs-tab-content').show();
+
     });
     $('.members-tab').on('click', function () {
         $('.span_1_of_3').hide();
@@ -33,6 +34,59 @@ $(document).ready(function () {
         $('.members-tab-content').show();
         $('.clubs-tab-content').hide();
     });
+
+    $('.club_member').on('mouseenter', function(){
+        $(this).parent('.group_join_wrap').children('.club_member').text("Leave Class");
+    });
+
+    $('.group_join_wrap' ).on( 'click', '.club_member',  function(){
+        $(this).attr("class", "club_not_member");
+        $(this).text("Join Class");
+    });
+
+    $('.group_join_wrap' ).on( 'click', '.club_not_member', function () { 
+        $(this).attr("class", "club_member");
+        $(this).text("Leave Class");
+      });
+    $('.club_member').on('mouseleave', function(){
+        $(this).parent('.group_join_wrap').children('.club_member').text("Member");
+    });
+
+    $('.tabclubs').on('mouseover', function(){
+        $('#club_icon').css({
+            "transition" : 0,
+            "background-image": 'url(../css/school/school_alpha/src/club_icon.png)',
+           "background-position": "0px -19px",
+           "top": 1
+        });
+    });
+     $('.tabclubs').on('mouseleave', function(){
+        $('#club_icon').css({
+            "transition" : 0,
+            "background-image": 'url(../css/school/school_alpha/src/club_icon.png)',
+           "background-position": "0px 0px",
+           "top": 1
+        });
+    });
+    //////
+    $('.member_tab_member').on('mouseenter', function(){
+        $(this).parent('.member_following_wrap').children('.member_tab_member').text("Unfollow");
+    });
+
+    $('.member_following_wrap' ).on( 'click', '.member_tab_member',  function(){
+        $(this).attr("class", "member_tab_not_member");
+        $(this).text("Follow");
+    });
+    
+    $('.member_following_wrap' ).on( 'click', '.member_tab_not_member', function () { 
+        $(this).attr("class", "member_tab_member");
+        $(this).text("Unfollow");
+      });
+
+    $('.member_tab_member').on('mouseleave', function(){
+        $(this).parent('.member_following_wrap').children('.member_tab_member').text("Followed");
+    });
+ 
 
     $(function () {
 //        $(".btn_follow").click(function () {
