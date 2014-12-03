@@ -44,10 +44,10 @@ echo '<div class = "clubs-tab-content">
 foreach ($groups as $group){
 
     $default_unfollowed="selected";
-    foreach($user->groupUsers as $grp) {
+    foreach($group->groupUsers as $grp) {
         if ($grp->group_id==$group->group_id) {
             $default_followed = "selected";
-            $default_unfollowed ="";
+            $default_unfollowed = "";
             break;
         }
         else {
