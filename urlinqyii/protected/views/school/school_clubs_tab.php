@@ -44,10 +44,10 @@ echo '<div class = "clubs-tab-content">
 foreach ($groups as $group){
     $default_followed = "";
     $default_unfollowed="selected";
-    foreach($user->groupUsers as $grp) {
+    foreach($group->groupUsers as $grp) {
         if ($grp->group_id==$group->group_id) {
             $default_followed = "selected";
-            $default_unfollowed ="";
+            $default_unfollowed = "";
             break;
         }
         else {
@@ -201,14 +201,25 @@ echo '</div>';
 echo '<div class = "deptBtns" id="deptBtns1">';
 
 //<img class="floatL deptImg" src="includes/get_blob.php?img_id=17">
+// <select class="group_join" data-group_id="' . $group->group_id . '">
+     //                            <option value="join" class="follow_option"'.$default_followed.'>join</option>
+       ///                          <option value="leave" class="follow_option"'.$default_unfollowed.'>leave</option>
+           //                 </select>
 
-    echo '
-                        <div class="group_join_wrap" >
-                            <select class="group_join" data-group_id="' . $group->group_id . '">
-                                 <option value="join" class="follow_option"'.$default_followed.'>join</option>
-                                 <option value="leave" class="follow_option"'.$default_unfollowed.'>leave</option>
-                            </select>
-                        </div>'; // add a class joined if joined
+  
+    echo ' <div class="group_join_wrap" >';
+          if($default_followed == "selected"){
+                echo'<button class="club_member">
+                      Member
+                    </button>';
+              }
+          else{
+            echo'<button class="club_not_member">
+                      Join Class
+                  </button>';
+
+          }
+    echo' </div>';                   
 
 echo '</div></div></a></div></div>';
 

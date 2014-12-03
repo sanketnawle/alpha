@@ -21,6 +21,7 @@
 <script type="text/javascript">
     base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
     class_id = '<?php echo $class->course_id; ?>';
+    user_id = '<?php echo $user->user_id; ?>';
 </script>
 
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
@@ -152,7 +153,7 @@
 
             <div class='mid_right_sec'>
                 <?php
-                echo $this->renderPartial('/partial/planner',array());
+            //    echo $this->renderPartial('/partial/planner',array());
                 ?>
                 <?php $this->renderPartial('class_header',array('user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
                 , 'department'=>$department, 'is_member'=>$is_member,'is_admin'=>$is_admin, 'schedules'=>$schedules)); ?>
@@ -175,7 +176,7 @@
                     </div>
                     <div class='syllabus-tab-content'>
                         <?php
-                    //        echo $this->renderPartial('class_syllabus_tab',array('class'=>$class,'user'=>$user));
+                            echo $this->renderPartial('class_syllabus_tab',array('class'=>$class,'user'=>$user));
                         ?>
 
                     </div>
@@ -185,7 +186,6 @@
                             ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules
                             ,'all_following'=>$all_following)); ?>
                     </div>
-
                     <div class='settings-content-tab'>
                         <?php echo $this->renderPartial('class_settings_tab',array('class'=>$class,'user'=>$user, 'professor'=>$professor
                         ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules

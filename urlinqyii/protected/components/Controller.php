@@ -114,6 +114,7 @@ class Controller extends CController
             foreach($model_names as $nested_model_name => $nested_attributes) {
                 $name = trim($nested_model_name); //in case of spaces around commas
                 $model_values = $model->{$name};
+
                 //Check if the model association data is not null
                 if($model_values){
                     if(is_array($model_values)){
@@ -131,6 +132,15 @@ class Controller extends CController
                         }
                         $row[$name] = $this->walk_model($model_values,$row[$name],$nested_attributes);
                     }
+                }else{
+                    $relations = $model->relations();
+                    $relation_type = $relations[$name][0];
+                    if($relation_type == "CManyManyRelation" || $relation_type == "CHasManyRelation"){
+                        $row[$name] = array();
+                    }else{
+                        $row[$name] = null;
+                    }
+
                 }
             }
         }else{
@@ -142,6 +152,14 @@ class Controller extends CController
                     $row[$name] = array();
                     foreach($model_data as $key => $value) {
                         $row[$name][$key] = $value;
+                    }
+                }else{
+                    $relations = $model->relations();
+                    $relation_type = $relations[$name][0];
+                    if($relation_type == "CManyManyRelation" || $relation_type == "CHasManyRelation"){
+                        $row[$name] = array();
+                    }else{
+                        $row[$name] = null;
                     }
                 }
             }

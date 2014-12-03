@@ -23,22 +23,20 @@
 </head>
 
 <body>
-  
-<script id="course_template" type="text/x-handlebars-template"> 
-		<div class='main'>
+<div class='main'>
+        <div class='main-mid-sec'>
+            <div class='mid_right_sec'>
+            	<p> hi </p>
+            	<script id="course_template" type="text/x-handlebars-template">
 
-			<div class='main-mid-sec'>
-
-			<div class='mid_right_sec'>
-			    <div class = "group-head-sec">
-			        <div class = "group-pic-frame">
-			            <div class = "group-pic">
-			            </div>
-			        </div>
-			        <div class = "group-header-left">
-					 <div class = "group-title">
-			                <div class = "group-name">
-			                   {{course_name}}
+               		 <div class = "group-head-sec">
+                    <div class = "group-pic-frame">
+                        <div class = "group-pic"></div>
+                    </div>
+                    <div class = "group-header-left">
+                        <div class = "group-title">
+                            <div class = "group-name">
+                                {{course_name}}
 			                </div>
 			                
 			            </div>
@@ -147,7 +145,7 @@
 					                        </img>
 					                    </div>
 					                    <div class="class_title">
-					                        {{courses_name}}
+					                        {{course_name}}
 					                        <span class="class_number">
 					                            <i>{{section_id}}</i>
 					                        </span>
@@ -195,8 +193,9 @@
 					            </div>
 					        {{/each}}
 					    </div>
-			    	</div>
-				</div>
-		  	</script>
+
+                </script>
+            </div>
+        </div>
 
 

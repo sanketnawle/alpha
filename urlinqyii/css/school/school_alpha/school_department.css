@@ -440,14 +440,14 @@ div.post_filter_container {
     background-image: url(src/events_icon_active.png);
 }
 
-.mid_right_sec_school .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-active {
+/*.mid_right_sec_school .group-head-sec .group-head-footer .group-header-tab li.group-tab a.tab-anchor div.tab-title span.tabc-icon-active {
     background-image: url(src/events_icon_active.png);
     width: 14px;
     height: 14px;
     top: 1.3px;
 }
 
-
+*/
 
 a.school-id em {
     background-image: url(src/school_icon.png);
@@ -851,10 +851,9 @@ div.group_location {
     font-size: 15px;
     line-height: 14px;
     -moz-box-shadow: 0 0 6px 0px rgba(0, 0, 0, .2);
-    background: -webkit-linear-gradient(45deg,#F7F7F7,#F0F0F0);
-    background: linear-gradient(45deg,#F7F7F7,#F0F0F0);
-    border: 1px solid rgba(163, 163, 163, 0.6);
-    color: rgb(66, 66, 66);
+    background: rgba(0,0,0,.5);
+   
+    color: white !important;
     border-radius: 4px 0px 0px 4px;
     padding: 7px 18px;
     top: 20px;
@@ -865,12 +864,12 @@ div.group_location {
 }
 
     div.group_location a {
-        color: #3A3A3A;
+        color: white;
     }
 
     div.group_location em {
-        background-image: url(src/location_white.png);
-        width: 17px;
+        background-image: url('src/location_white.png');
+        width: 13px;
         height: 19px;
         position: relative;
         top: 4px;
@@ -884,7 +883,7 @@ div.group_location {
         font-weight: 400;
     }
 
-div.location-pic-div-wrap {
+/*div.location-pic-div-wrap {
     background-image: url(http://picspaper.com/wp-content/uploads/2014/09/Aaron-Rodgers-Green-Bay-Packers-picspaper-com-600x337.jpg);
     background-size: cover;
     position: absolute;
@@ -901,7 +900,7 @@ div.location-pic-div-wrap {
     -moz-clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
     clip-path: polygon(0px 18px, 2px 14px, 5px 13px, 210px 13px, 223px 0px, 236px 13px, 265px 13px, 269px 15px, 270px 18px, 270px 176px, 269px 179px, 266px 180px, 5px 180px, 2px 179px, 0px 175px);
     overflow: hidden;
-}
+}*/
 
 div.location-pic-div-wraper img#location_popup {
     background-size: cover;

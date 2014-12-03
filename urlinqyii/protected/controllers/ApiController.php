@@ -258,6 +258,8 @@ class ApiController extends Controller
 
             $data['school']['admins'] = $school->admins;
             $data['school']['members'] = $users;
+            $data['school']['department_count'] = count($school->departments);
+            $data['school']['group_count'] = count($school->groups);
 
 
             $this->renderJSON($data);
@@ -324,6 +326,11 @@ class ApiController extends Controller
 
             $data['department']['admins'] = $department->admins;
             $data['department']['members'] = $users;
+            $data['department']['class_count'] = count($department->classes);
+            $data['department']['member_count'] = count($department->members);
+
+
+
 
             $this->renderJSON($data);
         }else{
@@ -432,8 +439,17 @@ class ApiController extends Controller
         $department = Department::model()->find("department_id=:department_id",array(":department_id"=>$department_id));
 
 
+//        $department_classes = $department->classes;
+//        $classes = array();
+//        for ($i = 1; $i <= count($department_classes); $i++) {
+//            $class = $department_classes[$i];
+//
+//        }
+
+        $classes = $this->get_model_associations($department,array('classes'=>array('course')))['classes'];
+
         if($department){
-            $data = array('success'=>true,'classes'=>$department->classes);
+            $data = array('success'=>true,'classes'=>$classes);
             $this->renderJSON($data);
             return;
         }else{
@@ -843,6 +859,106 @@ class ApiController extends Controller
 
     // api/user/courses/led/count
     public function actionUserLedCoursesCount(){
+
+    }
+
+
+
+
+    //EVENTS
+
+    public function actionGetUserDayEvents(){
+        if(!isset($_GET['user_id']) || !isset($_GET['date'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user_id = $_GET['user_id'];
+        $date = $_GET['date'];
+        try{
+            $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
+
+
+            if($events){
+                $events_data = array();
+                foreach($events as $event){
+                    $event = $this->model_to_array($event);
+                    $origin = $event['origin_type'];
+                    $origin_id = $event['origin_id'];
+
+                    $sql = "SELECT o." . $origin . '_name, o.color_id FROM `' . $origin . '` o WHERE o.' . $origin . '_id = ' . $origin_id;
+                    $command = Yii::app()->db->createCommand($sql);
+                    $origin_data = $command->queryAll();
+
+                    $event['origin_name'] = $origin_data[$origin . '_name'];
+                    $event['origin_color_id'] = $origin_data[$origin . '_color_id'];
+                }
+
+                $data = array('success'=>true,'events'=>$events_data);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>true,'events'=>array());
+                $this->renderJSON($data);
+                return;
+            }
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+    public function actionGetUserWeekEvents(){
+        if(!isset($_GET['user_id']) || !isset($_GET['date'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user_id = $_GET['user_id'];
+        $date = $_GET['date'];
+
+
+        $date = date($date . " 00:00:00", time());
+        $datetime = new DateTime($date);
+        $date = $datetime->format('Y-m-d');
+
+        $data = array();
+        for ($i = 1; $i <= 7; $i++) {
+            $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
+            $data['events'][$date] = $events;
+            $datetime->modify('+1 day');
+            $date = $datetime->format('Y-m-d');
+        }
+
+        $data['success'] = true;
+        $this->renderJSON($data);
+        return;
+
+
+//
+//        try{
+//            $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
+//            if($events){
+//                $data = array('success'=>true,'events'=>$events);
+//                $this->renderJSON($data);
+//                return;
+//            }else{
+//                $data = array('success'=>true,'events'=>array());
+//                $this->renderJSON($data);
+//                return;
+//            }
+//        }catch(Exception $e){
+//            $data = array('success'=>false,'error_id'=>2);
+//            $this->renderJSON($data);
+//            return;
+//        }
 
     }
 

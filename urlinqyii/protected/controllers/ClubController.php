@@ -136,6 +136,9 @@ class ClubController extends Controller
     public function actionTest()
     {
 
+
+
+
         //Yii::app()->getBaseUrl(true)
 //        //$club_id = $_GET['id'];
 //        $club = Group::model()->find('group_id=:id', array(':id'=>1));
@@ -264,38 +267,47 @@ class ClubController extends Controller
 //
 //        $courses = $command->queryAll();
 
-        $professor = User::model()->find("user_email=:user_email",array(":user_email"=>'lol@asdasd'));
-        //$this->render('test',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'is_member'=>$is_member,'connected_users'=>$connected_users,'courses'=>$courses,'professor'=>$professor));
-
-
-        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
-        $department = Department::model()->find('department_id=:department_id',array(':department_id'=>1));
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
-
-        $sql = "SELECT c.course_name, c.course_id, cs.picture_file_id,cs.professor, cu.class_id, u.lastname
-                 FROM `class_user` cu
-                 JOIN class cs
-                 ON (cu.class_id = cs.class_id)
-                 JOIN course c
-                 ON (cs.course_id = c.course_id
-                 AND cs.department_id = c.department_id
-                 AND cs.school_id = c.school_id)
-                 LEFT JOIN user u
-                 ON (u.user_id = cs.professor)
-                 WHERE cu.user_id = " . $user->user_id;
-        //$command = Yii::app()->db->createCommand($sql);
-
-
-
-        //$classes = $command->queryAll();
-        $classes = ClassModel::model()->findAllBySql($sql);
-
-        //$club_id = $_GET['id'];
-
-
+//        $professor = User::model()->find("user_email=:user_email",array(":user_email"=>'lol@asdasd'));
+//        //$this->render('test',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'is_member'=>$is_member,'connected_users'=>$connected_users,'courses'=>$courses,'professor'=>$professor));
+//
+//
+//        $university = University::model()->find('university_id=:university_id',array(':university_id'=>1));
+//        $department = Department::model()->find('department_id=:department_id',array(':department_id'=>1));
+//        $user = User::model()->find('user_id=:id', array(':id'=>1));
+//
+//        $sql = "SELECT c.course_name, c.course_id, cs.picture_file_id,cs.professor, cu.class_id, u.lastname
+//                 FROM `class_user` cu
+//                 JOIN class cs
+//                 ON (cu.class_id = cs.class_id)
+//                 JOIN course c
+//                 ON (cs.course_id = c.course_id
+//                 AND cs.department_id = c.department_id
+//                 AND cs.school_id = c.school_id)
+//                 LEFT JOIN user u
+//                 ON (u.user_id = cs.professor)
+//                 WHERE cu.user_id = " . $user->user_id;
+//        //$command = Yii::app()->db->createCommand($sql);
+//
+//
+//
+//        //$classes = $command->queryAll();
+//        $classes = ClassModel::model()->findAllBySql($sql);
+//
+//        //$club_id = $_GET['id'];
+//        $class = ClassModel::model()->findBySql("SELECT * FROM `class` WHERE class_id=1");
+//        $type = $class->relations();
 //        $club = Group::model()->find('group_id=:id', array(':id'=>1));
 
-        $this->render('test',array('classes'=>$classes,'department'=>$department));
+
+
+        $classes = ClassModel::model()->findAll();
+        foreach($classes as $class){
+            $class->class_name = $class->course->course_name . ' ' . $class->section_id;
+            $class->save(false);
+        }
+
+
+        $this->render('test',array('classes'=>$classes));
 
 
 
@@ -539,6 +551,47 @@ class ClubController extends Controller
             $this->renderJSON($json_data_array);
             return;
         }
+
+
+    }
+
+
+    public function actionGetGenderData(){
+        if (!isset($_GET['id'])) {
+            $this->renderJSON(array('success'=>'false','error_id'=>1));
+            return;
+        }
+
+
+        $group_id = $_GET['id'];
+
+        $group = Group::model()->findBySql('SELECT * FROM `group` WHERE group_id=' . $group_id);
+        $json_data_array = array('female_count' => 0,'male_count' => 0);
+        if($group){
+            foreach($group->members as $user){
+                //only count students
+                if($user->user_type == 's'){
+                    if($user->gender == 'M'){
+                        $json_data_array['male_count'] += 1;
+                    }else{
+                        $json_data_array['female_count'] += 1;
+                    }
+                }
+            }
+
+            $json_data_array['success'] = true;
+            $this->renderJSON($json_data_array);
+            return;
+        }else{
+            $json_data_array['false'] = true;
+            $json_data_array['error_id'] = 2;
+            $json_data_array['error_msg'] = 'failed to retrieve group';
+            $this->renderJSON($json_data_array);
+            return;
+        }
+
+
+
 
 
     }

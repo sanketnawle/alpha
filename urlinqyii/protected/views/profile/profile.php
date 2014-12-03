@@ -241,13 +241,22 @@
             <div class="main">
                 <header class="professor-header professor-header-nothing">
                     <div class="resource-wrapper resources-vacant">
-						<span class="showcase-caption">My Academic Portfolio</span>
+
+
                         <?php if($is_user){
+                            echo '<span class="showcase-caption">My Academic Portfolio</span>';
                            echo '<div class="add-showcase-button" id="add-showcase-wrap-id">
                                     <button type="button">+ Add a showcase</button>
                                 </div>';
-                        }?>
 
+                        }else{
+                            echo '<span class="showcase-caption">'.$userProfile->firstname.'\'s Academic Portfolio</span>';
+                        }
+                        if(sizeof($showcase) == 0){
+                            echo '<div class="random-default-showcase" style="background-image: url(https://s3.amazonaws.com/suh-s3-nfs/static/images/Profile_Backgrounds/'.rand(1,120).'.jpg);"></div>';
+                        }
+
+                        ?>
 						<div class="showcase-bar">
                             <?php
                             foreach($showcase as $i=>$entry){
@@ -823,12 +832,15 @@
 
             <span class="profpic-container profpic-container-real">
                 <span class="img img-inset user-pic">
-                    <div class="camera-icon-div-before" id="camera-icon-div">
+                    <?php if($is_user){
+                        echo '<div class="camera-icon-div-before" id="camera-icon-div">
                         <button class="camera-icon-button-before"><span></span></button>
-                        <div style='height: 0px;width:0px; overflow:hidden;'>
+                        <div style="height: 0px;width:0px; overflow:hidden;">
                             <input id="picture-upfile" type="file" value="upload"/>
                         </div>
-                    </div>
+                    </div>';
+                    }?>
+
                     <div class="user-pic-div user-pic-div-my" id="profile_picture" style="background: url(
                     <?php if($userProfile->pictureFile) {
                         echo Yii::app()->getBaseUrl(true).$userProfile->pictureFile->file_url;
@@ -909,7 +921,7 @@
 
                 <div class="info-block">
                     <!--	<div class="info-text-wrapper">-->
-                    <input name="school_name" value="<?php echo $school->school_name ?>" title=<?php echo '"'.$school->school_name.'"'; ?> readonly>
+                    <input name="school_name" id ="<?php echo $school->school_id ?>" value="<?php echo $school->school_name ?>" title=<?php echo '"'.$school->school_name.'"'; ?> readonly>
                     <!--	</div>-->
                 </div>
                 <?php
@@ -1062,7 +1074,7 @@
                         echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'profile.php','target_type'=>'user','target_id'=>$user->user_id));
                         echo "</div>";
                         echo "<div class='group_feed_wrap'>";
-                        Yii::app()->runController('partial/feed',array('user'=>$user));
+                     //   Yii::app()->runController('partial/feed',array('user'=>$user));
 
                         echo "</div>";
                         ?>
@@ -1128,7 +1140,7 @@
                         <?php } ?>
                     </div>
                     <div class="user-tab-clubs-content">
-                        <div class="user-class-visibility club">
+              <!--          <div class="user-class-visibility club">
                             <div class="container">
                                 <div class="current">
                                     Edit Club Visibility
@@ -1138,9 +1150,9 @@
                                 <div class="visibility_new">
 
                                     <select id="visibility_new">
-                                        <!--                                    <div class="option" >Public<div class="tick"></div></div>-->
-                                        <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>-->
-                                        <!--                                    <div class="option">Just Me<div class="tick"></div></div>-->
+                                        <!--                                    <div class="option" >Public<div class="tick"></div></div>
+                                        <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>
+                                        <!--                                    <div class="option">Just Me<div class="tick"></div></div>
                                         <option value="public" class="option" <?php// echo ($default_privacy == "public")?"selected":"" ?>>Public<div class="tick"></div></option>
                                         <option value="following" class="option" <?php //echo ($default_privacy =="following")?"selected":"" ?>>People I Follow<div class="tick"></div></option>
                                         <option value="only_me" class="option" <?php// echo ($default_privacy =="only_me")?"selected":"" ?>>Just Me<div class="tick"></div></option>
@@ -1148,9 +1160,10 @@
                                 </div>
                             </div>
                             <div class="label">Who Can See My Clubs:</div>
-                        </div>
+                        </div>-->
 
-                        <?php foreach($clubs as $club){?>
+                        <?php foreach($clubs as $groupuser){
+                            $club = $groupuser->group?>
                             <div class="professor-group course-group">
                                 <a class="group-link">
                                     <div class="group-pic group-link"style="background: url(
@@ -1160,17 +1173,33 @@
                                         echo Yii::app()->getBaseUrl(true).'/assets/default/club.png';
                                     } ?>
                                         ) no-repeat scroll center center / cover transparent"></div>
-                                    <h3 class="group-link"><?php echo $club->group_name;?></h3>
+                                    <h3 id="<?php echo $club->group_id;?>" class="clublink"><?php echo $club->group_name;?></h3>
                                     <?php  if($is_user) {
-                                        echo '<div class="user-class-visibility club"><div class="container">
-                            <div class="current">Public<div class="drop"></div>
-                                <div class="hover"></div></div><div class="options">
-                                    <div class="option">Public<div class="tick"></div></div>
-                                    <div class="option">People I Follow<div class="tick"></div></div>
-                                    <div class="option">Just Me<div class="tick"></div></div>
+                                        echo '<div class="user-class-visibility undefined">
+                                <div class="container">
+                                    <div class="current">';
+                                        if($groupuser->privacy == "public"){
+                                            echo "Public";
+                                        }else if($groupuser->privacy == "only_me"){
+                                            echo "Just Me";
+                                        }else if($groupuser->privacy == "following"){
+                                            echo "People I Follow";
+                                        }
+                                        echo'<div class="drop"></div>
+                                        <div class="hover"></div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="option">Public<div class="tick"></div>
+                                        </div>
+                                        <div class="option">People I Follow
+                                            <div class="tick"></div>
+                                        </div>
+                                        <div class="option">Just Me
+                                            <div class="tick"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                                     }?>
                                 </a>
                                 <div class="admin-group-functions">

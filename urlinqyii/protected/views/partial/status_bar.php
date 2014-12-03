@@ -40,6 +40,8 @@
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/filepicker.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/fbar.js"></script>
+
 	<script>
 		init = function(appID,fileID) {
         s = new gapi.drive.share.ShareClient(appID);

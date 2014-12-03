@@ -27,6 +27,7 @@ $(document).ready(function() {
         show_page_view_data();
         show_member_data();
         show_attendance_data();
+        show_gender_data();
     }
 
 
@@ -335,16 +336,12 @@ $(document).ready(function() {
 
 gender_data = null;
 
-show_gender_data();
+
 function show_gender_data(){
-    $.getScript('js/getURLPara.js', function(){
-        var group_id = '';
-        if ($.getUrlVar("group_id") != null) {
-            group_id = $.getUrlVar("group_id").toString();
-        }
+
 //        console.log("GROUP ID");
 //        console.log(group_id);
-        $.getJSON("php/analytics/club_gender_data.php", { group_id: group_id}, function(json_data) {
+        $.getJSON(base_url + "/club/" + group_id + '/getGenderData', { group_id: group_id}, function(json_data) {
 //            console.log("Gender json data for group " + group_id);
 //            console.log(json_data);
             gender_data = [
@@ -379,7 +376,7 @@ function show_gender_data(){
             $("#male_count_span").text('Male: ' + male_percentage + '%');
 
             });
-            });
+
 
             }
 

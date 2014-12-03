@@ -55,7 +55,7 @@ class CourseController extends Controller
         }
         //echo CJSON::encode(array('success' => true, 'count' => count($classes), 'data' => $classes));
         //Yii::app()->end();
-        $this->render('course',array('user' => $user));
+        $this->render('course',array('user' => $user, 'cid'=>$course_id));
     }
 
     // Uncomment the following methods and override them if needed
