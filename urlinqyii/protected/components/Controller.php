@@ -153,6 +153,14 @@ class Controller extends CController
                     foreach($model_data as $key => $value) {
                         $row[$name][$key] = $value;
                     }
+                }else{
+                    $relations = $model->relations();
+                    $relation_type = $relations[$name][0];
+                    if($relation_type == "CManyManyRelation" || $relation_type == "CHasManyRelation"){
+                        $row[$name] = array();
+                    }else{
+                        $row[$name] = null;
+                    }
                 }
             }
         }

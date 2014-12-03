@@ -188,7 +188,7 @@
                 </div>
                 <?php
                 //echo Yii::app()->runController('partial/planner');
-                echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user));
+                echo $this->renderPartial('/partial/planner',array('club'=>$club,'user'=>$user,'origin_type'=>'club'));
 
                 //echo $this->renderPartial('/partial/homePlanner',array('base_url'=>Yii::app()->getBaseUrl(true),'user'=>$user));
 

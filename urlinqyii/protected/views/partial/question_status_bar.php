@@ -40,7 +40,7 @@
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="filepicker.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/fbar.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
 
 	<script>
 		init = function(appID,fileID) {
@@ -103,6 +103,7 @@
 $(document).ready(function() {
 
     $(".multiple_type").on("click", function() {
+    	question_type = "multiple_type";
         $(".multiple_type").css("color", "#4697C2");
         $(".truth_type").css("color", "rgba(153, 153, 153, 0.64)");
         $(".textwrap2").css("display", "none");
@@ -111,7 +112,8 @@ $(document).ready(function() {
     });
 
     $(".truth_type").on("click", function() {
-        $(".truth_type").css("color", "#4697C2");
+    	question_type = "truth_type";
+		$(".truth_type").css("color", "#4697C2");
         $(".multiple_type").css("color", "rgba(153, 153, 153, 0.64)");
         $(".textwrap2").css("display", "none");
         $(".true_false").css("display", "block");
@@ -201,7 +203,7 @@ $(document).ready(function() {
     });
 
                 $('.post').click(function(){
-
+                	post_type = 'discussion';
                 	$('#fbar').css('height','auto');
                 	$("#fbar").find('.postTxtarea').show();
                 	$("#fbar").find('.postTxtarea').focus();
@@ -238,6 +240,7 @@ $(document).ready(function() {
                  });
 
                 $('.share').click(function(){
+                	post_type = 'notes';
                 	$('#fbar').css('height','auto');
                 	$("#fbar").find('.share').css('cursor','default');
                 	$("#fbar").find('.find').css('cursor','pointer');
@@ -274,6 +277,7 @@ $(document).ready(function() {
                  });
 
                 $('.find').click(function(){
+                	post_type = 'question';
                 	$('#fbar').css('height','auto');
                 	$("#fbar").find('.find').css('cursor','default');
                 	$("#fbar").find('.find').removeClass('fani');
@@ -1278,7 +1282,7 @@ $(document).ready(function() {
                                         <div class="letter_choice"><span>A</span></div>
                                         <div class="add_choice"><span>+</span></div>
                                     </div>
-                                    <input class="multiple_choice_answer" placeholder="Add choice A...">
+                                    <input class="multiple_choice_answer" id="choice_a"placeholder="Add choice A...">
                                     <div class="answer_check">
                                         <input id="check_A" type="radio" value="false">
                                         <label></label>
@@ -1290,7 +1294,7 @@ $(document).ready(function() {
                                         <div class="letter_choice"><span>B</span></div>
                                         <div class="add_choice"><span>+</span></div>
                                     </div>
-                                    <input class="multiple_choice_answer" placeholder="Add choice B...">
+                                    <input class="multiple_choice_answer"  id="choice_b" placeholder="Add choice B...">
                                     <div class="answer_check">
                                         <input id="check_B" type="radio" value="false">
                                         <label></label>
@@ -1302,7 +1306,7 @@ $(document).ready(function() {
                                         <div class="letter_choice"><span>C</span></div>
                                         <div class="add_choice"><span>+</span></div>
                                     </div>
-                                    <input class="multiple_choice_answer" placeholder="Add choice C...(optional)">
+                                    <input class="multiple_choice_answer"  id="choice_c"placeholder="Add choice C...(optional)">
                                     <div class="answer_check">
                                         <input id="check_C" type="radio" value="false">
                                         <label></label>
@@ -1314,7 +1318,7 @@ $(document).ready(function() {
                                         <div class="letter_choice"><span>D</span></div>
                                         <div class="add_choice"><span>+</span></div>
                                     </div>
-                                    <input class="multiple_choice_answer" placeholder="Add choice D...(optional)">
+                                    <input class="multiple_choice_answer" id="choice_d"placeholder="Add choice D...(optional)">
                                     <div class="answer_check">
                                         <input id="check_D" type="radio" value="false">
                                         <label></label>

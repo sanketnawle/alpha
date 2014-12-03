@@ -85,31 +85,31 @@
 
                 {{/if}}
                 {{#if embed_link}}
-
-                <p class='f_hidden_p'><a href='{{embed_link}}'>{{embed_link}}
-                </a></p>
-                <div class = 'link-wrapper'>
-                    <div class = 'link-container'>
-                        <a class = 'link-anchor-box'>
-                            <div class = 'link-pic-wrap'>
-                                <div class='playable_wrap'>
-                                    <div class='play_btn'></div>
-                                    <div class = 'link-img'></div>
-                                </div>
-                                <div class = 'link-text-data'>
-                                    <div class = 'link-text-title'>
-                                        <span class = 'link-text-website'>
-
-                                        </span>
+                <div class="new_fd">
+                    <p class='f_hidden_p'><a class="embed_link" href='{{embed_link}}'>{{embed_link}}
+                    </a></p>
+                    <div class = 'link-wrapper'>
+                        <div class = 'link-container'>
+                            <a class = 'link-anchor-box'>
+                                <div class = 'link-pic-wrap'>
+                                    <div class='playable_wrap'>
+                                        <div class='play_btn'></div>
+                                        <div class = 'link-img'></div>
                                     </div>
-                                    <div class = 'link-text-about'>
+                                    <div class = 'link-text-data'>
+                                        <div class = 'link-text-title'>
+                                            <span class = 'link-text-website'>
+
+                                            </span>
+                                        </div>
+                                        <div class = 'link-text-about'>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
                 {{/if}}
 
             </div>
@@ -291,7 +291,7 @@
                 <a href=''>sdafsdaffg</a>
             </div>
             {{/if}}
-        </div>
+        </div> 
 
     </div>
 
