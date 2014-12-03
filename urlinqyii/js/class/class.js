@@ -1533,7 +1533,6 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".class-notifications-check", "click", function () {
-        console.log($(".move").css("margin-left"));
         if ($(".move").css("margin-left") == "1px") {
             $(".move").css("margin-left", "19px");
             $(".notifications-text p b").text("OFF");
@@ -1544,18 +1543,40 @@ $(document).ready(function () {
         }
     });
 
+    $(document).delegate(".settings-line-right", "click", function() {
+        if ($(this).attr("id") == "settings-edit-open") {
+            $("#class-open-privacy").css("display", "none");
+            $("#settings-open-expand").css("display", "inline-block");
+            $("#" + $("#class-open-privacy").text()).prop("checked", true);
+        }
+        else {
+            $("#class-member-privacy").css("display", "none");
+            $("#settings-member-expand").css("display", "inline-block");
+            $("#" + $("#class-member-privacy").text()).prop("checked", true);
+        }
+    });
+
     $(document).delegate(".settings-edit-button", "click", function (event) {
         event.preventDefault();
-    });
-
-    $(document).delegate("#settings-open-cancel", "click", function () {
-        $("#class-open-privacy").css("display", "inline-block");
-        $(".");
-        //get edit menu
-    });
-
-    $(document).delegate(".settings-open-submit", "click", function () {
-        event.preventDefault();
+        var id = $(this).attr("id");
+        if (id == "settings-open-cancel") {
+            $("#class-open-privacy").css("display", "inline-block");
+            $("#settings-open-expand").css("display", "none");
+        }
+        else if (id == "settings-open-submit") {
+            $("#class-open-privacy").css("display", "inline-block");
+            $("#settings-open-expand").css("display", "none");
+            $("#class-open-privacy").text($("#settings-open-form input[type='radio']:checked").val());
+        }
+        else if (id == "settings-member-cancel") {
+            $("#class-member-privacy").css("display", "inline-block");
+            $("#settings-member-expand").css("display", "none");
+        }
+        else if (id == "settings-member-submit") {
+            $("#class-member-privacy").css("display", "inline-block");
+            $("#settings-member-expand").css("display", "none");
+            $("#class-member-privacy").text($("#settings-member-form input[type='radio']:checked").val());
+        }
     });
 
 });

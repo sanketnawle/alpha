@@ -80,31 +80,31 @@ echo "
                         <div class='settings-line-middle'>
                             <p class='settings-open-current' id='class-open-privacy'>Public</p>
                             <div class='class-settings-expand' id='settings-open-expand'>
-                                <form action=''>
-                                    <input type='radio' value='public'>Public<br>
-                                    <input type='radio' value='invite-only'>Invite-only<br>
+                                <form id='settings-open-form'>
+                                    <input type='radio' name='open-option' value='Public' id='Public'>Public<br>
+                                    <input type='radio' name='open-option' value='Invite-only' id='Invite-only'>Invite-only<br>
                                     <button class='settings-edit-button settings-edit-submit' id='settings-open-submit' type='submit'>Submit</button>
                                     <button class='settings-edit-button settings-edit-cancel' id='settings-open-cancel' type='cancel'>Cancel</button>
                                 </form>
                             </div>
                         </div>
-                        <div class='settings-line-right'><div class='settings-edit-icon'></div><p>Edit</p></div>
+                        <div class='settings-line-right' id='settings-edit-open'><div class='settings-edit-icon'></div><p>Edit</p></div>
                     </div>
                     <hr>
                     <div class='settings-line'>
                         <div class='settings-line-left'><p>Can anyone see the members of this class, or just people who are enrolled?</p></div>
                         <div class='settings-line-middle'>
                             <p class='settings-member-current' id='class-member-privacy'>Anyone</p>
-                            <div class='class-settings-expand'>
-                                <form action=''>
-                                    <input type='radio' value='anyone'>Anyone<br>
-                                    <input type='radio' value='enrolled'>Enrolled<br>
+                            <div class='class-settings-expand' id='settings-member-expand'>
+                                <form id='settings-member-form'>
+                                    <input type='radio' name='open-member' value='Anyone'id='Anyone'>Anyone<br>
+                                    <input type='radio' name='open-member' value='Enrolled'id='Enrolled'>Enrolled<br>
                                     <button class='settings-edit-button settings-edit-submit' id='settings-member-submit' type='submit'>Submit</button>
-                                    <button class='settings-edit-button settings-edit-cancel' id='settings-member-cencel' type='cancel'>Cancel</button>
+                                    <button class='settings-edit-button settings-edit-cancel' id='settings-member-cancel' type='cancel'>Cancel</button>
                                 </form>
                             </div>
                         </div>
-                        <div class='settings-line-right'><div class='settings-edit-icon'></div><p>Edit</p></div>
+                        <div class='settings-line-right' id='settings-edit-members'><div class='settings-edit-icon'></div><p>Edit</p></div>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,11 @@
 .class-settings-expand {
-    display: inline-block;
+    display: none;
+    margin-top: 15px;
+    height: 85px;
 }
 
 .settings-line-middle p {
-    display: none !important;
+    //display: none
 }
 
 .officer-name {
@@ -1900,7 +1902,7 @@ div.notifications-rightsec {
     margin-left: 25px;
 }
 
-div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
+div.feed-tab-rightsec div.group-about, div.about-tab-rightsec div.group-about{
     width: 315px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     box-shadow: 0 1px 1px rgba(0,0,0,0.05);
@@ -1923,21 +1925,11 @@ div.about-tab-rightsec div.group-about-3 {
 }
 
 div.feed-tab-rightsec div.group-about div.box-header,div.about-tab-rightsec div.group-about div.box-header{
-
     padding-bottom: 0px;
-
-
     margin-left: 12px;
-
-
     border-top: 1px solid rgba(233, 233, 233, 0.64);
-
-
     margin-top: 7px;
-
-
     margin-right: 12px;
-
 }
 
 div.feed-tab-rightsec div.group-about div.box-header:nth-of-type(1),div.about-tab-rightsec div.group-about div.box-header:nth-of-type(1){
