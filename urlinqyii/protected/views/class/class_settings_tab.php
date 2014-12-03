@@ -115,14 +115,20 @@ echo "
                         Class TAs and Admins
                     </div>
                 </div>
-                <div class = 'tab-block-content'>
+                <div class = 'tab-block-content officer-block-content'>
                     <div class='settings-officers-line'>
                         <div class='officer-pic' id='prof'></div>
                         <div class='officer-name'><p>Professor Barrack Obama</p><p id='officer-you'>(YOU)</p></div>
                     </div>
-                    <hr>
+                    <hr class='officer-divider'>
                     <div class='settings-officers-line'>
-                        <div class='officer-pic' id='prof'></div>
+                        <div class='officer-pic'></div>
+                        <div class='officer-name'><p>Barrack Obama</p></div>
+                        <div class='officer-delete-icon'></div>
+                    </div>
+                    <hr class='officer-divider'>
+                    <div class='settings-officers-line'>
+                        <div class='officer-pic'></div>
                         <div class='officer-name'><p>Barrack Obama</p></div>
                         <div class='officer-delete-icon'></div>
                     </div>
