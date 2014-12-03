@@ -46,11 +46,17 @@ class Post extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, post_type, text, privacy, created_at', 'required'),
+			array('user_id, post_type, text, privacy', 'required'),
 			array('user_id, origin_id, file_id, anon, like_count', 'numerical', 'integerOnly'=>true),
 			array('origin_type', 'length', 'max'=>30),
 			array('post_type', 'length', 'max'=>10),
 			array('sub_text, last_activity', 'safe'),
+            array('last_activity','default',
+                'value'=>new CDbExpression('NOW()'),
+                'setOnEmpty'=>false,'on'=>'update'),
+            array('created_at,last_activity','default',
+                'value'=>new CDbExpression('NOW()'),
+                'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('post_id, user_id, origin_type, origin_id, post_type, text, sub_text, file_id, privacy, anon, like_count, last_activity, created_at', 'safe', 'on'=>'search'),
