@@ -1,3 +1,22 @@
+.club-settings-button {
+    float: right;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 125px;
+}
+
+.group-about-4 {
+    height: 380px;
+    width: 320px !important;
+    margin-left: -45px;
+}
+
+.club-tab-content {
+    margin-left: 320px;
+    max-width: 1011px;
+    clear: both;
+}
+
 hr.officer-divider {
     margin-bottom: 7px !important;
     height: auto;
@@ -194,6 +213,7 @@ div.class-tab-content div.about-tab-leftsec div.settings-tab-officers {
     right: -69px;
     top: 43px;
 }
+
 
 .settings-hover-tip {
     height: 0;

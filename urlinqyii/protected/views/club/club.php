@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <?php
 //	include('php/redirect.php');
@@ -260,6 +256,10 @@
 	                ?>
 
                     <div class='about-content-tab'>
+                        <?php echo $this->renderPartial('club_about_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'connected_users'=>$connected_users)); ?>
+                    </div>
+
+                    <div class='settings-content-tab'>
                         <?php echo $this->renderPartial('club_about_tab',array('club'=>$club,'user'=>$user,'is_admin'=>$is_admin,'file_count'=>$file_count,'connected_users'=>$connected_users)); ?>
                     </div>
                 </div>
