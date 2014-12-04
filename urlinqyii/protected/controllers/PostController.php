@@ -43,144 +43,138 @@ class PostController extends Controller
 	{
 
         try{
-		$model=new Post;
+            $model=new Post;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-        $model->file_id = NULL;
-        if(isset($_FILES['fileUpload'])) {
-            $file = file_upload($_FILES);
-            $model->file_id = $file['file_id'];
-        }
-        // else{
-        //     // echo 'file_upload failed';
-        // }
-            
-
-		if(isset($_POST['post']))
-		{
-
-            
-                $model->attributes=$_POST['post'];
-                $model->user_id = $this->get_current_user()->user_id;
-    //            $model->created_at = NOW();
-    //            $model->last_activity =  = NOW();
-                $model->save(false);
-            
-			
+            $model->file_id = NULL;
+            if(isset($_FILES['fileUpload'])) {
+                $file = file_upload($_FILES);
+                $model->file_id = $file['file_id'];
+            }
+            // else{
+            //     // echo 'file_upload failed';
+            // }
 
 
-
-            //Changed by Alex. Dont echo 
-            //This function should return JSON with a success flag and
-            //the post data if true
-
-            //$_POST['Post'] -> $_POST['Post'] plz
-			if($model){
+            if(isset($_POST['post'])){
 
 
-                //echo $post_id = $model->post_id;
-//                echo "awesome";
-
-                if(($_POST['post']['post_type'] == 'multiple_type' || $_POST['post']['post_type'] == 'true_type') && isset($_POST['post']['question'])){
-
-                    $question = new PostQuestion;
-                    //$question->attributes = $_POST['PostQuestion'];
-                    $question->post_id = $model->post_id;
-                    $question->save(false);
-
-                    if(count($_POST['post']['question']['choices']) > 0) {
-                        foreach ($_POST['post']['question']['choices'] as $option) {
-
-                            $option = new PostQuestionOption;
-                            $option->option_text = $option;
-                            $option->post_id = $model->post_id;
-                            $option->save(false);
-
-
-                            if($option->save()){
-                                if($option['answer_flag']==1)
-                                    $correct_answer_id = $opt->option_id;
-                                //echo "opt_saved";
-                            }
-//                                else
-//                                    var_dump($opt->getErrors());
-                   
-                        }
-                    }
+                    $model->attributes=$_POST['post'];
+                    $model->user_id = $this->get_current_user()->user_id;
+        //            $model->created_at = NOW();
+        //            $model->last_activity =  = NOW();
+                    $model->save(false);
 
 
 
 
 
-                    if(isset($_POST['post']['question']['correct_answer'])){
-                        $question->correct_answer_id = $correct_answer_id;
-                    }
+                //Changed by Alex. Dont echo
+                //This function should return JSON with a success flag and
+                //the post data if true
 
-                }
+                //$_POST['Post'] -> $_POST['Post'] plz
+                if($model){
 
 
-                if(isset($post_id) && $_POST['post']['post_type']=="question"){
+                    //echo $post_id = $model->post_id;
+    //                echo "awesome";
 
-                    if(isset($_POST['PostQuestionOption'])){
+                    if(($_POST['post']['post_type'] == 'multiple_type' || $_POST['post']['post_type'] == 'true_type') && isset($_POST['post']['question'])){
 
-                        if(count($_POST['PostQuestionOption'])>0) {
+                        $question = new PostQuestion;
+                        //$question->attributes = $_POST['PostQuestion'];
+                        $question->post_id = $model->post_id;
+                        $question->save(false);
 
-                            foreach ($_POST['PostQuestionOption'] as $key => $option) {
+                        $correct_answer_key = $_POST['post']['question']['correct_answer'];
 
-                                $opt = new PostQuestionOption;
-                                $opt->option_text = $option['option_text'];
-                                $opt->post_id = $post_id;
+                        if(count($_POST['post']['question']['choices']) > 0){
+                            foreach ($_POST['post']['question']['choices'] as $key => $option) {
 
-                                if($opt->save()){
-                                    if($option['answer_flag']==1)
-                                        $correct_answer_id = $opt->option_id;
-                                    //echo "opt_saved";
+                                $option = new PostQuestionOption;
+                                $option->option_text = $option;
+                                $option->post_id = $model->post_id;
+                                $option->save(false);
+
+
+                                if($key == $correct_answer_key){
+                                    $question->correct_answer_id = $option->option_id;
+                                    $question->save(false);
                                 }
-//                                else
-//                                    var_dump($opt->getErrors());
-                                unset($opt);
-                            }
-                            if(isset($_POST['PostQuestion'])){
-                                $question = new PostQuestion;
-                                $question->attributes = $_POST['PostQuestion'];
-                                $question->post_id = $post_id;
-                                if(isset($correct_answer_id))
-                                    $question->correct_answer_id = $correct_answer_id;
-                                if($question->save())
-                                    echo "question_attribs saved";
-//                                else
-//                                    var_dump($question->getErrors());
                             }
                         }
                     }
+
+                    $return_data = array('success'=>true,'post'=>$model);
+                    $this->renderJSON($return_data);
+                    return;
+
+
+
+                }else{
+                    $return_data = array('success'=>false,'error_id'=>2);
+                    $this->renderJSON($return_data);
+                    return;
                 }
 
-                //This causes error
-                //self::createNotification("posted", $post_id);
+
+    //                if(isset($post_id) && $_POST['post']['post_type']=="question"){
+    //
+    //                    if(isset($_POST['PostQuestionOption'])){
+    //
+    //                        if(count($_POST['PostQuestionOption'])>0) {
+    //
+    //                            foreach ($_POST['PostQuestionOption'] as $key => $option) {
+    //
+    //                                $opt = new PostQuestionOption;
+    //                                $opt->option_text = $option['option_text'];
+    //                                $opt->post_id = $post_id;
+    //
+    //                                if($opt->save()){
+    //                                    if($option['answer_flag']==1)
+    //                                        $correct_answer_id = $opt->option_id;
+    //                                    //echo "opt_saved";
+    //                                }
+    ////                                else
+    ////                                    var_dump($opt->getErrors());
+    //                                unset($opt);
+    //                            }
+    //                            if(isset($_POST['PostQuestion'])){
+    //                                $question = new PostQuestion;
+    //                                $question->attributes = $_POST['PostQuestion'];
+    //                                $question->post_id = $post_id;
+    //                                if(isset($correct_answer_id))
+    //                                    $question->correct_answer_id = $correct_answer_id;
+    //                                if($question->save())
+    //                                    echo "question_attribs saved";
+    ////                                else
+    ////                                    var_dump($question->getErrors());
+    //                            }
+    //                        }
+    //                    }
+    //                }
+
+                    //This causes error
+                    //self::createNotification("posted", $post_id);
 
 
-                $return_data = array('success'=>true,'post'=>$model);
+
+
+    //            else
+    //                var_dump($model->getErrors());
+
+            }else{
+                $return_data = array('success'=>false,'error_id'=>1);
                 $this->renderJSON($return_data);
                 return;
-            }else{
-                $return_data = array('success'=>false,'error_id'=>2);
-                $this->renderJSON($return_data);
-                return;    
             }
-//            else
-//                var_dump($model->getErrors());
 
-		}else{
-            $return_data = array('success'=>false,'error_id'=>1);
-            $this->renderJSON($return_data);
-            return;    
-        }
-
-//		$this->render('create',array(
-//			'model'=>$model,
-//		));
+    //		$this->render('create',array(
+    //			'model'=>$model,
+    //		));
 
         }catch(Exception $e){
                 $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
