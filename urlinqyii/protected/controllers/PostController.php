@@ -235,7 +235,7 @@ class PostController extends Controller
     public function actionLike()
     {
 
-        if(!isset($_GET['id'])){
+        if(!isset($_POST['id'])){
             $return_data = array('success'=>false,'error_id'=>1);
             $this->renderJSON($return_data);
             return;
@@ -243,7 +243,7 @@ class PostController extends Controller
 
 
         $current_user_id = Yii::app()->session['user_id'];
-        $post_id = $_GET['id'];
+        $post_id = $_POST['id'];
         $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
         //Make sure the user hasnt already liked this post
         if(!$model){

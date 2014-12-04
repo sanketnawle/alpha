@@ -51,12 +51,13 @@ $(document).ready(function() {
         $.ajax({
             url: base_url + '/post/' + id + '/like',
             type: "POST",
-            dataType: 'json',
             success: function(liked) {
-                if(liked) return true;
+                alert(JSON.stringify(liked));
+                if(liked['success']) return true;
                 else return false;
             },
             error: function() {
+
                  $("#posts").prepend("Error Liking the post");
             }
         });
