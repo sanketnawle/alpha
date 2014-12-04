@@ -79,12 +79,12 @@ class PostController extends Controller
             //$_POST['Post'] -> $_POST['Post'] plz
 			if($model){
 
-                $return_data = array('success'=>true,'post'=>$model);
-                $this->renderJSON($return_data);
-                return;
+
                 //echo $post_id = $model->post_id;
 //                echo "awesome";
-                if(isset($post_id) && $_POST['Post']['post_type']=="question"){
+
+
+                if(isset($post_id) && $_POST['post']['post_type']=="question"){
 
                     if(isset($_POST['PostQuestionOption'])){
 
@@ -119,10 +119,14 @@ class PostController extends Controller
                         }
                     }
                 }
-                self::createNotification("posted", $post_id);
+
+                //This causes error
+                //self::createNotification("posted", $post_id);
 
 
-
+                $return_data = array('success'=>true,'post'=>$model);
+                $this->renderJSON($return_data);
+                return;
             }else{
                 $return_data = array('success'=>false,'error_id'=>2);
                 $this->renderJSON($return_data);
