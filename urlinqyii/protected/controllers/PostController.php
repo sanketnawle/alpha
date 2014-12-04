@@ -234,35 +234,45 @@ class PostController extends Controller
     // 3 - error creating post like
     public function actionLike()
     {
-
-        if(!isset($_POST['id'])){
-            $return_data = array('success'=>false,'error_id'=>1);
-            $this->renderJSON($return_data);
-            return;
-        }
-
-
-        $current_user_id = Yii::app()->session['user_id'];
-        $post_id = $_POST['id'];
-        $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
-        //Make sure the user hasnt already liked this post
-        if(!$model){
-            $post_like = new PostLike;
-            $post_like->post_id = $post_id;
-            $post_like->user_id = $current_user_id;
-            $post_like->save(false);
-            if($post_like) {
-                self::createNotification("liked", $_GET['id']);
-                $return_data = array('success'=>true);
-                $this->renderJSON($return_data);
-                return;
-            }else{
-                $return_data = array('success'=>false,'error_id'=>3);
+        try{
+            if(!isset($_GET['id'])){
+                $return_data = array('success'=>false,'error_id'=>1);
                 $this->renderJSON($return_data);
                 return;
             }
-        }else{
-            $return_data = array('success'=>false,'error_id'=>2);
+
+
+            $current_user_id = Yii::app()->session['user_id'];
+            $post_id = $_GET['id'];
+            $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
+
+
+            //Make sure the user hasnt already liked this post
+            if(!$model){
+                $post_like = new PostLike;
+                $post_like->post_id = $post_id;
+                $post_like->user_id = $current_user_id;
+                $post_like->save(false);
+                if($post_like) {
+
+                    //Notification is causing error, commented out for now
+                    //self::createNotification("liked", $_GET['id']);
+                    $return_data = array('success'=>true);
+                    $this->renderJSON($return_data);
+                    return;
+                }else{
+                    $return_data = array('success'=>false,'error_id'=>3);
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }else{
+                $return_data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
             $this->renderJSON($return_data);
             return;
         }
