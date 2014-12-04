@@ -26,11 +26,11 @@ class PostController extends Controller
     // {
     //     self::$cur_user_id = intval(Yii::app()->session['user_id'] || 1);
 
-    //     $_POST['Post'] = array('post_type'=>'question', 'text'=>'test qstn text by post_cntrlr', 'privacy'=>'members', 'anon'=>0);
+    //     $_POST['post'] = array('post_type'=>'question', 'text'=>'test qstn text by post_cntrlr', 'privacy'=>'members', 'anon'=>0);
     //     $_POST['PostQuestionOption'] = array(array('option_text'=>'opt1','answer_flag'=>1),array('option_text'=>'opt2','answer_flag'=>0),
     //                                     array('option_text'=>'opt3','answer_flag'=>0), array('option_text'=>'opt4','answer_flag'=>0));
     //     $_POST['PostQuestion'] = array('anonymous'=>0, 'live_answers'=>0, 'active'=>1);
-    //     //var_dump($_POST['Post']);
+    //     //var_dump($_POST['post']);
     // }
 
 
@@ -56,7 +56,7 @@ class PostController extends Controller
         // else{
         //     // echo 'file_upload failed';
         // }
-            
+
 
 		if(isset($_POST['post']))
 		{
@@ -66,15 +66,15 @@ class PostController extends Controller
 //            $model->last_activity =  = NOW();
             $model->save(false);
 
-            //Changed by Alex. Dont echo 
+            //Changed by Alex. Dont echo
             //This function should return JSON with a success flag and
             //the post data if true
 
-            //$_POST['Post'] -> $_POST['Post'] plz
+            //$_POST['post'] -> $_POST['post'] plz
 			if($model){
                 //echo $post_id = $model->post_id;
 //                echo "awesome";
-                if(isset($post_id) && $_POST['Post']['post_type']=="question"){
+                if(isset($post_id) && $_POST['post']['post_type']=="question"){
 
                     if(isset($_POST['PostQuestionOption'])){
 
@@ -101,8 +101,9 @@ class PostController extends Controller
                                 $question->post_id = $post_id;
                                 if(isset($correct_answer_id))
                                     $question->correct_answer_id = $correct_answer_id;
-                                if($question->save())
-                                    echo "question_attribs saved";
+                                if($question->save()){
+//                                    echo "question_attribs saved";
+                                }
 //                                else
 //                                    var_dump($question->getErrors());
                             }
@@ -121,7 +122,7 @@ class PostController extends Controller
             }else{
                 $return_data = array('success'=>false,'error_id'=>2);
                 $this->renderJSON($return_data);
-                return;    
+                return;
             }
 //            else
 //                var_dump($model->getErrors());
@@ -129,7 +130,7 @@ class PostController extends Controller
 		}else{
             $return_data = array('success'=>false,'error_id'=>1);
             $this->renderJSON($return_data);
-            return;    
+            return;
         }
 
 //		$this->render('create',array(
@@ -148,57 +149,77 @@ class PostController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+    //ERROR ID's
+    // 1 - Post_id isn't set
+    // 2 - Access Denied
 	public function actionUpdate()
 	{
-		$model=$this->loadModel($_GET['id']);
+        try {
+            if (!isset($_GET['id'])) {
+                $return_data = array('success' => false, 'error_id' => 1);
+                $this->renderJSON($return_data);
+                return;
+            }
+            $model = $this->loadModel($_GET['id']);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
 
-		if(isset($_POST['Post']))
-		{
-            if($model->user_id == self::$cur_user_id) {
-                $model->attributes = $_POST['Post'];
+            if (isset($_POST['post'])) {
+                if ($model->user_id == self::$cur_user_id) {
+                    $model->attributes = $_POST['post'];
 
-                if(isset($_GET['id']) && $model->post_type=="question") {
+                    if (isset($_GET['id']) && $model->post_type == "question") {
 
-                    if (isset($_POST['PostQuestionOption'])) {
+                        if (isset($_POST['PostQuestionOption'])) {
 
-                        if (count($_POST['PostQuestionOption']) > 0) {
+                            if (count($_POST['PostQuestionOption']) > 0) {
 
-                            foreach ($_POST['PostQuestionOption'] as $key => $option) {
+                                foreach ($_POST['PostQuestionOption'] as $key => $option) {
 
-                                $opt = new PostQuestionOption;
-                                $opt->option_text = $option['option_text'];
-                                $opt->post_id = $_GET['id'];
+                                    $opt = new PostQuestionOption;
+                                    $opt->option_text = $option['option_text'];
+                                    $opt->post_id = $_GET['id'];
 
-                                if ($opt->save()) {
-                                    if ($option['answer_flag'] == 1)
-                                        $correct_answer_id = $opt->option_id;
-                                    echo "opt_saved";
+                                    if ($opt->save()) {
+                                        if ($option['answer_flag'] == 1)
+                                            $correct_answer_id = $opt->option_id;
+//                                        echo "opt_saved";
+                                    }
+                                    //                                else
+                                    //                                    var_dump($opt->getErrors());
+                                    unset($opt);
                                 }
-//                                else
-//                                    var_dump($opt->getErrors());
-                                unset($opt);
+                            }
+                            if (isset($correct_answer_id)) {
+                                $question = PostQuestion::model()->findbypk($_GET['id']);
+                                $question->correct_answer_id = $correct_answer_id;
                             }
                         }
-                        if(isset($correct_answer_id)){
-                            $question = PostQuestion::model()->findbypk($_GET['id']);
-                            $question->correct_answer_id = $correct_answer_id;
-                        }
                     }
-                }
-                if ($model->save())
-                    echo "update_success";
-//                    $this->redirect(array('view', 'id' => $model->post_id));
-            }
-            else
-                echo "Access Denied";
-		}
+                    if ($model->save()) {
+                        $return_data = array('success' => true);
+                        $this->renderJSON($return_data);
+                        return;
+                    }
 
-//		$this->render('update',array(
-//			'model'=>$model,
-//		));
+                    //                    $this->redirect(array('view', 'id' => $model->post_id));
+                } else{
+                    $return_data = array('success' => false, 'error_id' => 2);
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }
+
+            //		$this->render('update',array(
+            //			'model'=>$model,
+            //		));
+        }
+        catch (Exception $e) {
+            $return_data = array('success' => false, 'error_id' => 3, 'error_msg' => $e->getMessage());
+            $this->renderJSON($return_data);
+            return;
+        }
 	}
 
 	/**
@@ -206,21 +227,38 @@ class PostController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+    //ERROR ID's
+    // 1 - Post_id isn't set
+    // 2 - Access Denied
 	public function actionDelete()
-	{
-//        $model=$this->loadModel($_GET['id']);
+    {
+        try {
+            if (!isset($_GET['id'])) {
+                $return_data = array('success' => false, 'error_id' => 1);
+                $this->renderJSON($return_data);
+                return;
+            }
 
-        if($model->user_id == self::$cur_user_id) {
-            if($this->loadModel($_GET['id'])->delete())
-                echo "delete_success";
+                //        $model=$this->loadModel($_GET['id']);
+
+            if ($model->user_id == self::$cur_user_id) {
+                if ($this->loadModel($_GET['id'])->delete()) {
+                    $return_data = array('success' => true);
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            } else {
+                $return_data = array('success' => false, 'error_id' => 2);
+                $this->renderJSON($return_data);
+                return;
+            }
         }
-        else
-            echo "Access Denied";
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+        catch (Exception $e) {
+            $return_data = array('success' => false, 'error_id' => 3, 'error_msg' => $e->getMessage());
+            $this->renderJSON($return_data);
+            return;
+        }
+    }
 
 
     //ERROR ID's
@@ -280,16 +318,39 @@ class PostController extends Controller
 //			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
+
+    // ERROR ID's
+    // 1 - post_id is not set
+    // 2 - Access Denied
     public function actionUnlike()
     {
-        $model=PostLike::model()->findByPk(array('post_id'=>$_GET['id'],'user_id'=>self::$cur_user_id));
+        try{
 
-        if($model->user_id == self::$cur_user_id) {
-            if($model->delete())
-                echo "delete_success";
+            if(!isset($_GET['id'])){
+                $return_data = array('success'=>false,'error_id'=>1);
+                $this->renderJSON($return_data);
+                return;
+            }
+
+            $model=PostLike::model()->findByPk(array('post_id'=>$_GET['id'],'user_id'=>self::$cur_user_id));
+
+            if($model->user_id == self::$cur_user_id) {
+                if($model->delete()){
+                    $return_data = array('success'=>true);
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }
+            else{
+                $return_data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($return_data);
+                return;
+            }
+        } catch(Exception $e){
+            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
+            $this->renderJSON($return_data);
+            return;
         }
-        else
-            echo "Access Denied";
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
@@ -301,10 +362,11 @@ class PostController extends Controller
         $model->actor_id = self::$cur_user_id;
         $model->trigger_id = $id;
         $model->trigger_type = $action;
-        if($model->save())
-            echo "Notification created successfully";
+        if($model->save()) {
+            return TRUE;
+        }
         else
-            var_dump($model->getErrors());
+            return FALSE;
     }
 
 	/**
