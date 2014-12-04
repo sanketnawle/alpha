@@ -8240,3 +8240,108 @@ Stack trace:
 REQUEST_URI=/alpha/urlinqyii/css/partial/img/attach.png
 HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/status_bar/fbar.css
 ---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/12/04 23:42:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/grey_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/grey_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/12/04 23:42:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:42:15 [warning] [application] Failed to set unsafe attribute "question_type" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:43:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:43:46 [warning] [application] Failed to set unsafe attribute "question_type" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:43:46 [warning] [application] Failed to set unsafe attribute "question" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:45:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:45:59 [warning] [application] Failed to set unsafe attribute "question_type" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:45:59 [warning] [application] Failed to set unsafe attribute "question" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)

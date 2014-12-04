@@ -83,6 +83,43 @@ class PostController extends Controller
                 //echo $post_id = $model->post_id;
 //                echo "awesome";
 
+                if(($_POST['post']['post_type'] == 'multiple_type' || $_POST['post']['post_type'] == 'true_type') && isset($_POST['post']['question'])){
+
+                    $question = new PostQuestion;
+                    //$question->attributes = $_POST['PostQuestion'];
+                    $question->post_id = $model->post_id;
+                    $question->save(false);
+
+                    if(count($_POST['post']['question']['choices']) > 0) {
+                        foreach ($_POST['post']['question']['choices'] as $option) {
+
+                            $option = new PostQuestionOption;
+                            $option->option_text = $option;
+                            $option->post_id = $model->post_id;
+                            $option->save(false);
+
+
+                            if($option->save()){
+                                if($option['answer_flag']==1)
+                                    $correct_answer_id = $opt->option_id;
+                                //echo "opt_saved";
+                            }
+//                                else
+//                                    var_dump($opt->getErrors());
+                   
+                        }
+                    }
+
+
+
+
+
+                    if(isset($_POST['post']['question']['correct_answer'])){
+                        $question->correct_answer_id = $correct_answer_id;
+                    }
+
+                }
+
 
                 if(isset($post_id) && $_POST['post']['post_type']=="question"){
 
