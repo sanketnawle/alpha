@@ -63,10 +63,10 @@ class PostController extends Controller
 
             
                 $model->attributes=$_POST['post'];
-                $model->user_id = self::$cur_user_id;
+                $model->user_id = $this->get_current_user()->user_id;
     //            $model->created_at = NOW();
     //            $model->last_activity =  = NOW();
-                $model->save();
+                $model->save(false);
             
 			
 
