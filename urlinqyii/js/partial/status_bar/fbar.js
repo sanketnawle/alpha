@@ -342,6 +342,7 @@ $(document).ready(function() {
                         //get the text
                         jsonData.text = text;
                         //make the AJAX Call
+                        alert(JSON.stringify(jsonData));
                         postStatusAjax(jsonData);
 
                      }
@@ -355,17 +356,18 @@ $(document).ready(function() {
                         console.log(choice_b);
                         if((choice_a != "") && (choice_b != "")){
                             question = {
-                                'text' : question, 
-                                'choice_a' : choice_a, 
-                                'choice_b' : choice_b
+                                'text' : text, 
+                                'choices' : [choice_a, choice_b]
+                                
                             }
                             var choice_c = $('#choice_c').val();
                             var choice_d = $('#choice_d').val()
-                            if(choice_c != '') question.choice_c = choice_c;
-                            if(choice_d != '') question.choice_d = choice_d;
+                            if(choice_c != '') question['choices'].push(choice_c);
+                            if(choice_d != '') question['choices'].push(choice_d);
                             correct_answer = 'a';
                             question.answer = correct_answer;
                             jsonData.question = question;
+                            alert(JSON.stringify(jsonData));
                             postStatusAjax(jsonData);
 
 
