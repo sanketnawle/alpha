@@ -82,6 +82,7 @@ $(document).ready(function(){
             $("#posts").append(template(single_post));
         }
         else if(single_post['post_type'] === "question") {
+            console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
             $("#posts").append(template(single_post));
