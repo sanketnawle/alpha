@@ -242,7 +242,7 @@ class PostController extends Controller
         }
 
 
-        $current_user_id = Yii::app()->session['user_id'];
+        $current_user_id = $this->get_current_user_id();
         $post_id = $_GET['id'];
         $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
         //Make sure the user hasnt already liked this post
@@ -252,7 +252,9 @@ class PostController extends Controller
             $post_like->user_id = $current_user_id;
             $post_like->save(false);
             if($post_like) {
-                self::createNotification("liked", $_GET['id']);
+
+                //This is causing an error
+                //self::createNotification("liked", $_GET['id']);
                 $return_data = array('success'=>true);
                 $this->renderJSON($return_data);
                 return;
