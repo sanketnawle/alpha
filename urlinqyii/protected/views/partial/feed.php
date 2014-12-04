@@ -134,9 +134,9 @@
                                                     
                                                     
                                                     {{#if like_status}}
-                                                        <div class = 'post_like'>
-                                                    {{else}}
                                                         <div class = 'post_liked'>
+                                                    {{else}}
+                                                        <div class = 'post_like'>
                                                     {{/if}}
                                                             <img class = 'post_like_icon' src='http://www.urlinq.com/beta/src/like-button.png'>
                                                             <div class = 'like_number'>
