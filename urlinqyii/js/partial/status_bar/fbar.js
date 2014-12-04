@@ -357,13 +357,14 @@ $(document).ready(function() {
                         if((choice_a != "") && (choice_b != "")){
                             question = {
                                 'text' : text, 
-                                'choices' : [choice_a, choice_b]
+                                'choices' : {'a' : choice_a,
+                                             'b' : choice_b}
                                 
                             }
                             var choice_c = $('#choice_c').val();
                             var choice_d = $('#choice_d').val()
-                            if(choice_c != '') question['choices'].push(choice_c);
-                            if(choice_d != '') question['choices'].push(choice_d);
+                            if(choice_c != '') question['choices'].c = choice_c;
+                            if(choice_d != '') question['choices'].d = choice_d;
                             correct_answer = 'a';
                             question.answer = correct_answer;
                             jsonData.question = question;
