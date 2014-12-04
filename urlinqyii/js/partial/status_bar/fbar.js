@@ -14,7 +14,186 @@ $(document).ready(function() {
     //*starts* Code to make the post request for a post 
     //liking a post
     
-   
+    setTimeout(function(){
+        sample();
+    }, 1000);
+
+    function sample(){
+        //var id = $(this).parents(".posts").attr("id");
+        
+        $.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
+        //console.log($(this).find(".f_hidden_p").text().trim());
+          $(".new_fd").each(function (index) {
+                //console.log("in");
+                //console.log();
+                var max = $(this);
+                $(this).removeClass("new_fd");
+
+                if ($(this).find(".f_hidden_p").children('a').text() != "") {
+                    $(this).find(".f_hidden_p").children('a').embedly({
+                          query: {
+                            maxwidth: 500,
+                            autoplay: true
+                        },
+                    display:function(data, elem){
+                       // console.log(data);
+                       // console.log($(this).find('.link-text-title').text());
+                        //jQuery = $(this);
+                        if(data.type != 'video') $('.play_btn').hide();
+                        console.log(max);
+                        max.find('.link-text-title').text(data.title);
+                        if(data.thumbnail_url){
+                            
+                          if((data.thumbnail_width > 550) && (data.thumbnail_height> 270)) {
+                                max.find('.link-img').css({
+                                    'background' :  'url(' + data.thumbnail_url + ')', 
+                                    'height' : 273,
+                                    'width' : 555,
+                                    'background-size' : 'cover'
+                                });
+
+                                max.find('.link-text-data').css({
+                                    'position' : 'relative', 
+                                    'top': 162,
+                                    'left' : 1,
+                                    'height' : 110,
+                                    'width' : 414
+
+                                });
+                                 max.find('.link-text-about').css({
+                                    'position' : 'relative', 
+                                    'top': -260,
+                                    'left' :-140,
+                                    'width' : 545
+                                });
+                                 max.find('.link-text-title').css({
+                                    'position' : 'relative',
+                                    'top' : -265,
+                                    'left' : -140
+                                 })
+
+                           //}
+                                }
+                                else {
+                                    max.find('.link-img').css({
+                                        'background' :  'url(' + data.thumbnail_url + ')', 
+                                        'height' : 139,
+                                        'width' :150,
+                                        'background-size' : 'cover'
+                                    });
+
+                                }
+                                var thumbnail_url = data.thumbnail_url;
+                                max.find('.link-text-about').text(data.description);
+                            // jQuery('.post_msg .msg_span').append("<br> <a href=" + data.original_url + ">" + data.original_url + "</a>");
+                           
+
+                        }
+                        else {
+                            //this or 
+                            max.find('.link-img').css({
+                                'background' :  'url(' + 'http://www.urlinq.com/beta/DefaultImages/anon.png' + ')', 
+                                'height' : 139,
+                                'width' :150,
+                                'background-size' : 'cover'
+                            });
+                            
+                           // jQuery('.link-img').removeClass();
+                            if(data.description){
+                                max.find('.link-text-about').text(data.description + " " +data.original_url);
+                            }
+                            else {
+                                max.find('.link-text-about').text(data.original_url);
+                            }
+                            
+                        }
+
+                        max.find('.link-wrapper').on('click', function () {
+        // Handles the click event and replaces the link with the video.
+                           
+
+                            if (data.type === 'video') {
+                                $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                                return false;
+                            } else {
+
+                                window.open(data.url, '_blank');
+                            }
+
+                        });
+
+
+                        /*.on('click', function(){
+                            console.log('clicked');
+                            if(data.type == 'video'){
+                                //var htmlString = "<iframe src=" + data.original_url + "></iframe>";
+                                $('.link-wrapper').load(data.original_url);
+                            }
+                        });*/
+
+                    }
+                    })
+                    
+                    /*$(this).find('.play').embedly({
+                        query: {
+                            maxwidth: 500,
+                            autoplay: true
+                        },
+                        display: function (data, elem) {
+                            console.log(data);
+
+        //Adds the image to the a tag and then sets up the sizing.
+                            $(elem).html('<img src="' + data.thumbnail_url + '"/>')
+                                .width(data.thumbnail_width)
+                                .height(data.thumbnail_height)
+                                .find('span').css('top', data.thumbnail_height / 2 - 36)
+                                .css('left', data.thumbnail_width / 2 - 36);
+        ////alert($(elem).html());
+                            var $elhtml = $(elem).html();
+                            $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
+
+                            var t_title = data.title;
+                            var t_des = data.description;
+                            var t_url = data.url;
+        ////alert(data.title+" , "+data.description+", "+data.url);
+                            var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
+
+                            $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+                            $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+
+                            if (data.type === 'video') {
+
+                            } else {
+                                $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+                            }
+
+                        }
+                    }).on('click', function () {
+        // Handles the click event and replaces the link with the video.
+                        var data = $(this).data('embedly');
+
+                        if (data.type === 'video') {
+                            $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                            return false;
+                        } else {
+                            window.open(data.url, '_blank');
+                        }
+
+                    });*/
+
+                }
+
+            });
+
+
+            $(document).delegate('.playable_wrap', "click", function () {
+                $(this).closest(".post_lr_link_msg").find(".play").click();
+            });
+
+    }
+
+    
+        
 
     $(document).on('click', '.post_like', function() {
          var id = $(this).parents(".posts").attr("id");
@@ -235,7 +414,7 @@ $(document).ready(function() {
         }
 
     });
-
+    
     //AJAX CALL TO posts/create with a passed in dictionary
     function postStatusAjax(jsonData) {
         //makes the ajax request to postcontroller.php
@@ -252,7 +431,11 @@ $(document).ready(function() {
                 //code to add this post to the feed
                 var source = $("#post_template").html();
                 var template = Handlebars.compile(source);
+                console.log(json_data['post']['text']);
+                console.log(findUrlInPost(json_data['post']['text']));
+                if(findUrlInPost(json_data['post']['text']) != false) json_data['post'].embed_link = findUrlInPost(json_data['post']['text']);
                 $("#posts").prepend(template(json_data['post']));
+                sample();
 
             },
             error: function() {
@@ -261,5 +444,23 @@ $(document).ready(function() {
             }
         });
 
+    }
+
+    function findUrlInPost( text ) {
+        var source = (text || '').toString();
+        var urlArray = [];
+        var url;
+        var matchArray;
+        var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((www:)?[_.\w-]+([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+        while( (matchArray = regexToken.exec( source )) !== null ) {
+            var token = matchArray[0];
+            urlArray.push( token );
+        }
+
+        if(urlArray[0]) {
+            if(urlArray[0][0] != 'h') urlArray[0] = "http://" + urlArray[0];
+            return urlArray[0];
+        }
+        return false;
     }
 });

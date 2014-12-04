@@ -504,8 +504,11 @@
                                                     {{/if}}
                                                     {{#if embed_link}}
                                                     
-                                                        <p class='f_hidden_p'><a href='{{embed_link}}'>{{embed_link}}
-                                                        </a></p>
+                                                        <p class='f_hidden_p'>
+                                                            <a id="embed_link" href='{{embed_link}}'>
+                                                                {{embed_link}}
+                                                             </a>
+                                                        </p>
                                                         <div class = 'link-wrapper'>
                                                                 <div class = 'link-container'>
                                                                     <a class = 'link-anchor-box'>
@@ -515,7 +518,7 @@
                                                                             <div class = 'link-img'></div>
                                                                             </div>
                                                                             <div class = 'link-text-data'>
-                                                                                <div class = 'link-text-title'> 
+                                                                                <div class = 'link-text-title'> hi
                                                                                     <span class = 'link-text-website'>
                                                                                         
                                                                                     </span>
