@@ -12,7 +12,57 @@ var origin_id = 25;
 
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
+    //liking a post
+    
+   
 
+    $(document).on('click', '.post_like', function() {
+         var id = $(this).parents(".posts").attr("id");
+        
+         if(likeStatusAjax(id)) {
+            var likes = $(this).children('.like_number').text().trim();
+            $(this).removeClass('post_like');
+            $(this).addClass('post_liked');
+            if(likes != ''){
+                 var likesInt = parseInt(likes, 10);
+
+                $(this).children('.like_number').text(likesInt+1)
+            } else {
+                $(this).children('.like_number').text(1)
+            }
+           //parseInt(likes)++;
+        }
+    });
+    
+    $(document).on('click','.post_liked', function(){
+        var likes = $(this).children('.like_number').text().trim();
+            $(this).removeClass('post_liked');
+            $(this).addClass('post_like');
+            if(likes != '0'){
+                 var likesInt = parseInt(likes, 10);
+
+                $(this).children('.like_number').text(likesInt-1);
+            } else {
+                $(this).children('.like_number').text("");
+            }
+    });
+
+    function likeStatusAjax(id) {
+        $.ajax({
+            url: base_url + '/post/' + id + '/like',
+            type: "POST",
+            dataType: 'json',
+            success: function(liked) {
+                if(liked) return true;
+                else return false;
+            },
+            error: function() {
+                 $("#posts").prepend("Error Liking the post");
+            }
+        });
+    return true;
+
+    }
     //Posting a Form
     $(document).on('click', '.post-btn', function() {
         var jsonData = {

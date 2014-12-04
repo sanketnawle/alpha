@@ -129,14 +129,22 @@
                                                     </div>
                                                 </div>
                                                 <div class = 'post_tools'>
-                                                    <div class = 'post_lc'>
+                                                    
+                                                    <div class = 'post_lc ' >
+                                                    
+                                                    
+                                                    {{#if like_status}}
                                                         <div class = 'post_like'>
+                                                    {{else}}
+                                                        <div class = 'post_liked'>
+                                                    {{/if}}
                                                             <img class = 'post_like_icon' src='http://www.urlinq.com/beta/src/like-button.png'>
                                                             <div class = 'like_number'>
                                                                 {{#if like_count}}
                                                                     {{like_count}}
                                                                 {{/if}}
                                                             </div>
+
                                                         </div>
 
                                                         <div class = 'post_comment_btn'>
