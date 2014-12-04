@@ -8345,3 +8345,149 @@ in C:\wamp\www\alpha\urlinqyii\index.php (17)
 2014/12/04 23:45:59 [warning] [application] Failed to set unsafe attribute "question" of "Post".
 in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
 in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:53:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:25 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php:318)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\yii\framework\web\CController.php(286): FeedController->runAction()
+#2 C:\wamp\yii\framework\web\CController.php(265): FeedController->runActionWithFilters()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(282): FeedController->run()
+#4 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home/feed
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (318)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (394)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:53:29 [error] [php] Trying to get property of non-object (C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php:318)
+Stack trace:
+#0 C:\wamp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\yii\framework\web\CController.php(286): FeedController->runAction()
+#2 C:\wamp\yii\framework\web\CController.php(265): FeedController->runActionWithFilters()
+#3 C:\wamp\yii\framework\web\CWebApplication.php(282): FeedController->run()
+#4 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\wamp\www\alpha\urlinqyii\index.php(17): CWebApplication->run()
+REQUEST_URI=/alpha/urlinqyii/home/feed
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (318)
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\FeedController.php (394)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:54:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:54:58 [warning] [application] Failed to set unsafe attribute "question_type" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:54:58 [warning] [application] Failed to set unsafe attribute "question" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (65)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:59:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/fbarops.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('includes/fbarop...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/includes/fbarops.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 23:59:33 [warning] [application] Failed to set unsafe attribute "question_type" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (64)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
+2014/12/04 23:59:33 [warning] [application] Failed to set unsafe attribute "question" of "Post".
+in C:\wamp\www\alpha\urlinqyii\protected\controllers\PostController.php (64)
+in C:\wamp\www\alpha\urlinqyii\index.php (17)
