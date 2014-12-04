@@ -70,6 +70,10 @@ class Controller extends CController
     }
 
 
+    function get_current_user_id(){
+        return Yii::app()->session['user_id'];
+    }
+
 
 
     function is_assoc($array) {
