@@ -227,18 +227,49 @@ class PostController extends Controller
 //			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
+
+    //ERROR ID's
+    // 1 - Post id isnt set
+    // 2 - like already exists
+    // 3 - error creating post like
     public function actionLike()
     {
-        $model=new PostLike;
-//        echo self::$cur_user_id;
-        $model->post_id = $_GET['id'];
-        $model->user_id = self::$cur_user_id;
-        if($model->save()) {
-            self::createNotification("liked", $_GET['id']);
-            echo "like_success";
+
+        if(!isset($_GET['id'])){
+            $return_data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($return_data);
+            return;
         }
-        else
-            var_dump($model->getErrors());
+
+
+        $current_user_id = Yii::app()->session['user_id'];
+        $post_id = $_GET['id'];
+        $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
+        //Make sure the user hasnt already liked this post
+        if(!$model){
+            $post_like = new PostLike;
+            $post_like->post_id = $post_id;
+            $post_like->user_id = $current_user_id;
+            $post_like->save(false);
+            if($post_like) {
+                self::createNotification("liked", $_GET['id']);
+                $return_data = array('success'=>true);
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $return_data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($return_data);
+                return;
+            }
+        }else{
+            $return_data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+//
+//        else
+//            var_dump($model->getErrors());
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
 //			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
