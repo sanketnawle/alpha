@@ -6,13 +6,12 @@ var privacy = 'campus';
 var anon = 0;
 var origin_type = 'class';
 var question_type = "regular_type";
-//these value hardcoded for now - based on our phonecall 
+//this value hardcoded for now - based on our phonecall 
 var origin_id = 25;
 
 
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
-    
 
     //Posting a Form
     $(document).on('click', '.post-btn', function() {
@@ -22,11 +21,11 @@ $(document).ready(function() {
                 'post_type': post_type,
                 'anon': anon,
                 'privacy': privacy
-            };
-            console.log(post_type);
+        };
+        //console.log(post_type);
             //Checks if all the bases types are satisfied 
         if (origin_type && origin_id && post_type && (anon === 0 || anon === 1) && privacy) {
-            //Checks for the type of status
+            //DISCUSSION POSTS
             if (post_type === "discussion") {
                 var text = $('.postTxtarea').val();
                 if (text) {
@@ -38,6 +37,7 @@ $(document).ready(function() {
                     //If there is no text lets user know there isn't any
                     $('.postTxtarea').text("Add text before posting");
                 }
+            //EVENT POSTS
             } else if(post_type === "event"){
                 var event_name = $('#event_name').val();
                 var event_location = $("#event_location").val();
@@ -81,6 +81,7 @@ $(document).ready(function() {
 
 
                 }
+            //NOTES POST 
             } else if(post_type === 'notes'){
                 console.log("Ine nore");
                 var fileSelect = $('._uplI').files;
@@ -96,11 +97,12 @@ $(document).ready(function() {
                 } else {
                     $('.uplName').css("color", "red");
                 }
-
+            //QUESTION POST
             } else if (post_type === 'question') {
                 jsonData.question_type = question_type;
                 var text = $('.topfbar').val();
                 console.log(question_type);
+                //REQULAR QUESTIONS TYPE
                 if(question_type === "regular_type"){
                      var sub_text = $('.askTxtArea').val();
                      if(text === '') $('.topfbar').css("border-bottom", "solid 3px red");
@@ -113,10 +115,10 @@ $(document).ready(function() {
                         postStatusAjax(jsonData);
 
                      }
+                //MULTIPLIC CHOICE QUESTION TYPE
                 } else if(question_type === "multiple_type"){
                     if(text === '') $('.topfbar').css("border-bottom", "solid 3px red");
                     else {
-                        
                         var choice_a = $('#choice_a').val();
                         var choice_b = $('#choice_b').val();
                         console.log(choice_a);
@@ -149,7 +151,7 @@ $(document).ready(function() {
 
                         }
                     }
-
+                //TRUE OR FALSE QUESTION TYPE
                 } else if(question_type === "truth_type"){
                     if(text === '') $('.topfbar').css("border-bottom", "solid 3px red");
                     else {
@@ -163,7 +165,7 @@ $(document).ready(function() {
 
 
                     }
-
+                //QUESTION TYPE DOESN'T EXIST
                 } else {
                     alert("Something is wrong");
                 }
@@ -176,30 +178,35 @@ $(document).ready(function() {
                 //Gets the top text
 
            
-            } 
+            } //POST TYPE DOESNT EXIST
         } else {
-
-            alert("Can't make a post yet");
+          alert("Can't make a post yet");
         }
 
     });
 
+    //AJAX CALL TO posts/create with a passed in dictionary
     function postStatusAjax(jsonData) {
         //makes the ajax request to postcontroller.php
+        //alert(base_url +'/post/create' );
+
+        var post_data = {'post':jsonData};
         $.ajax({
-            url: "http:www.urlinq.com/beta/PostController.php",
+            url: base_url + '/post/create',
             type: "POST",
-            data: jsonData,
+            data: post_data,
             dataType: 'json',
-            success: function(html) {
+            success: function(json_data) {
+                alert(JSON.stringify(json_data));
                 //code to add this post to the feed
                 var source = $("#post_template").html();
                 var template = Handlebars.compile(source);
-                $("#posts").append(template(html));
+                $("#posts").prepend(template(json_data['post']));
 
             },
             error: function() {
-                $("#posts").append("Error Adding the post");
+                alert('')
+                $("#posts").prepend("Error Adding the post");
             }
         });
 
