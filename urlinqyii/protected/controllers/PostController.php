@@ -50,8 +50,8 @@ class PostController extends Controller
 
         $model->file_id = NULL;
         if(isset($_FILES['fileUpload'])) {
-            $file = file_upload($_FILES);
-            $model->file_id = $file['file_id'];
+            if($file = file_upload($_FILES))
+                $model->file_id = $file['file_id'];
         }
         // else{
         //     // echo 'file_upload failed';
@@ -60,17 +60,11 @@ class PostController extends Controller
 
 		if(isset($_POST['post']))
 		{
-
-            
-                $model->attributes=$_POST['post'];
-                $model->user_id = $this->get_current_user()->user_id;
-    //            $model->created_at = NOW();
-    //            $model->last_activity =  = NOW();
-                $model->save(false);
-            
-			
-
-
+            $model->attributes=$_POST['post'];
+            $model->user_id = $this->get_current_user()->user_id;
+//            $model->created_at = NOW();
+//            $model->last_activity =  = NOW();
+            $model->save(false);
 
             //Changed by Alex. Dont echo 
             //This function should return JSON with a success flag and
@@ -78,10 +72,6 @@ class PostController extends Controller
 
             //$_POST['Post'] -> $_POST['Post'] plz
 			if($model){
-
-                $return_data = array('success'=>true,'post'=>$model);
-                $this->renderJSON($return_data);
-                return;
                 //echo $post_id = $model->post_id;
 //                echo "awesome";
                 if(isset($post_id) && $_POST['Post']['post_type']=="question"){
@@ -120,6 +110,11 @@ class PostController extends Controller
                     }
                 }
                 self::createNotification("posted", $post_id);
+
+                // return data after pushing data into the database
+                $return_data = array('success'=>true,'post'=>$model);
+                $this->renderJSON($return_data);
+                return;
 
 
 
