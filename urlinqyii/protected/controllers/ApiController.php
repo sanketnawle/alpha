@@ -888,12 +888,19 @@ class ApiController extends Controller
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
 
-                    $sql = "SELECT o." . $origin . '_name, o.color_id FROM `' . $origin . '` o WHERE o.' . $origin . '_id = ' . $origin_id;
-                    $command = Yii::app()->db->createCommand($sql);
-                    $origin_data = $command->queryAll();
-
-                    $event['origin_name'] = $origin_data[$origin . '_name'];
-                    $event['origin_color_id'] = $origin_data[$origin . '_color_id'];
+                    if($origin != ''){
+                        $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
+                        $command = Yii::app()->db->createCommand($sql);
+                        $origin_data = $command->queryRow();
+                        echo json_encode($origin_data);
+                        $event['origin_name'] = $origin_data[$origin . '_name'];
+                        $event['origin_color_id'] = $origin_data['color_id'];
+                        array_push($events_data,$event);
+                    }else{
+                        $event['origin_name'] = null;
+                        $event['origin_color_id'] = null;
+                    }
+                    array_push($events_data,$event);
                 }
 
                 $data = array('success'=>true,'events'=>$events_data);
