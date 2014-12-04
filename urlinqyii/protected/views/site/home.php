@@ -17,87 +17,87 @@
 
     <script>
 
+var $ = jQuery.noConflict();
+            $( document ).ready(function() {
+                /*
+                var lastScrollTop = 0;
+                        $(window).scroll(function (event) {
 
-$( document ).ready(function() {
-    /*
-    var lastScrollTop = 0;
-            $(window).scroll(function (event) {
+                            var scrollTop = $(window).scrollTop();
+                            var scrollBottom = $(window).scrollTop() + $(window).height();
+                        if(scrollTop >= 0 && scrollBottom <= $(document).height()){
 
-                var scrollTop = $(window).scrollTop();
-                var scrollBottom = $(window).scrollTop() + $(window).height();
-            if(scrollTop >= 0 && scrollBottom <= $(document).height()){
+                        var st = $(this).scrollTop();
 
-            var st = $(this).scrollTop();
+                        if (st > lastScrollTop) {
+                            var inc = st - lastScrollTop;
 
-            if (st > lastScrollTop) {
-                var inc = st - lastScrollTop;
-
-                var offset_rightbar = $(".rightbar_bag").offset();
-                
-                $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
-                
-            } else {
-                    
-                var inc = st - lastScrollTop;
-
-                var offset_rightbar = $(".rightbar_bag").offset();
-
-                $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
-                
-            }
-            lastScrollTop = st;
-
-        }
-
-
-        });*/
-
-        
-
-            $(document).delegate(".option_report","click",function(){
-
-                    var postid= $(this).closest(".posts").attr("id");
-                    //alert(postid);
-
-                    $(".report_popup").attr("id",postid);
-                    $(".blackcanvas").stop().show();
-                    $(".blackcanvas").find(".report_popup").stop().show();
-                    /*
-                    $.ajax({
-                            type: "POST",
-                            url: "includes/feedops.php",
-                            data: {post_id: postid, report: 1},
-                            success: function(html){ 
+                            var offset_rightbar = $(".rightbar_bag").offset();
+                            
+                            $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
+                            
+                        } else {
                                 
-                            }
-                        });
-                    */
-    });
+                            var inc = st - lastScrollTop;
 
+                            var offset_rightbar = $(".rightbar_bag").offset();
 
-    $(document).delegate(".popup_btn_1","click",function(){
-        if($(this).closest(".popup_window").hasClass("report_popup")){
-            $(".blackcanvas").hide();
-        }
-    });
+                            $(".rightbar_bag").offset({ top: inc + offset_rightbar.top });
+                            
+                        }
+                        lastScrollTop = st;
 
-    $(document).delegate(".popup_btn_0","click",function(){
-        if($(this).closest(".popup_window").hasClass("report_popup")){
-            var post_id=$(this).closest(".popup_window").attr("id");
-            //alert(post_id);
-            $.ajax({
-                        type: "POST",
-                        url: "includes/feedops.php",
-                        data: {post_id: post_id, report: 1},
-                        success: function(html){ 
-                                $(".blackcanvas").hide();
                     }
+
+
+                    });*/
+
+                    
+
+                        $(document).delegate(".option_report","click",function(){
+
+                                var postid= $(this).closest(".posts").attr("id");
+                                //alert(postid);
+
+                                $(".report_popup").attr("id",postid);
+                                $(".blackcanvas").stop().show();
+                                $(".blackcanvas").find(".report_popup").stop().show();
+                                /*
+                                $.ajax({
+                                        type: "POST",
+                                        url: "includes/feedops.php",
+                                        data: {post_id: postid, report: 1},
+                                        success: function(html){ 
+                                            
+                                        }
+                                    });
+                                */
+                });
+
+
+                $(document).delegate(".popup_btn_1","click",function(){
+                    if($(this).closest(".popup_window").hasClass("report_popup")){
+                        $(".blackcanvas").hide();
+                    }
+                });
+
+                $(document).delegate(".popup_btn_0","click",function(){
+                    if($(this).closest(".popup_window").hasClass("report_popup")){
+                        var post_id=$(this).closest(".popup_window").attr("id");
+                        //alert(post_id);
+                        $.ajax({
+                                    type: "POST",
+                                    url: "includes/feedops.php",
+                                    data: {post_id: post_id, report: 1},
+                                    success: function(html){ 
+                                            $(".blackcanvas").hide();
+                                }
+                        });
+                    }
+                });
+
+
             });
-        }
-    });
-
-
-});
 
     </script>
 
@@ -131,9 +131,11 @@ $( document ).ready(function() {
 
             echo "<div class='group_fbar_wrap'>";
 
-            echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
+            echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
+
 
             echo "</div>";
+            echo "<br><br>";
 
             echo "<div class='group_feed_wrap'>";
 

@@ -22,16 +22,16 @@ class PostController extends Controller
 
 	public $layout='//layouts/column2';
 
-    public function __construct()
-    {
-        self::$cur_user_id = intval(Yii::app()->session['user_id'] || 1);
+    // public function __construct()
+    // {
+    //     self::$cur_user_id = intval(Yii::app()->session['user_id'] || 1);
 
-        $_POST['Post'] = array('post_type'=>'question', 'text'=>'test qstn text by post_cntrlr', 'privacy'=>'members', 'anon'=>0);
-        $_POST['PostQuestionOption'] = array(array('option_text'=>'opt1','answer_flag'=>1),array('option_text'=>'opt2','answer_flag'=>0),
-                                        array('option_text'=>'opt3','answer_flag'=>0), array('option_text'=>'opt4','answer_flag'=>0));
-        $_POST['PostQuestion'] = array('anonymous'=>0, 'live_answers'=>0, 'active'=>1);
-        var_dump($_POST['Post']);
-    }
+    //     $_POST['Post'] = array('post_type'=>'question', 'text'=>'test qstn text by post_cntrlr', 'privacy'=>'members', 'anon'=>0);
+    //     $_POST['PostQuestionOption'] = array(array('option_text'=>'opt1','answer_flag'=>1),array('option_text'=>'opt2','answer_flag'=>0),
+    //                                     array('option_text'=>'opt3','answer_flag'=>0), array('option_text'=>'opt4','answer_flag'=>0));
+    //     $_POST['PostQuestion'] = array('anonymous'=>0, 'live_answers'=>0, 'active'=>1);
+    //     //var_dump($_POST['Post']);
+    // }
 
 
 	/**
@@ -41,28 +41,48 @@ class PostController extends Controller
 
 	public function actionCreate()
 	{
+
+        try{
 		$model=new Post;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
         $model->file_id = NULL;
-        if(isset($_FILES)) {
+        if(isset($_FILES['fileUpload'])) {
             $file = file_upload($_FILES);
             $model->file_id = $file['file_id'];
         }
-        else
-            echo 'file_upload failed';
+        // else{
+        //     // echo 'file_upload failed';
+        // }
+            
 
-		if(isset($_POST['Post']))
+		if(isset($_POST['post']))
 		{
-			$model->attributes=$_POST['Post'];
-            $model->user_id = self::$cur_user_id;
-//            $model->created_at = NOW();
-//            $model->last_activity =  = NOW();
 
-			if($model->save()){
-                echo $post_id = $model->post_id;
+            
+                $model->attributes=$_POST['post'];
+                $model->user_id = self::$cur_user_id;
+    //            $model->created_at = NOW();
+    //            $model->last_activity =  = NOW();
+                $model->save();
+            
+			
+
+
+
+            //Changed by Alex. Dont echo 
+            //This function should return JSON with a success flag and
+            //the post data if true
+
+            //$_POST['Post'] -> $_POST['Post'] plz
+			if($model){
+
+                $return_data = array('success'=>true,'post'=>$model);
+                $this->renderJSON($return_data);
+                return;
+                //echo $post_id = $model->post_id;
 //                echo "awesome";
                 if(isset($post_id) && $_POST['Post']['post_type']=="question"){
 
@@ -79,7 +99,7 @@ class PostController extends Controller
                                 if($opt->save()){
                                     if($option['answer_flag']==1)
                                         $correct_answer_id = $opt->option_id;
-                                    echo "opt_saved";
+                                    //echo "opt_saved";
                                 }
 //                                else
 //                                    var_dump($opt->getErrors());
@@ -100,15 +120,32 @@ class PostController extends Controller
                     }
                 }
                 self::createNotification("posted", $post_id);
+
+
+
+            }else{
+                $return_data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($return_data);
+                return;    
             }
 //            else
 //                var_dump($model->getErrors());
 
-		}
+		}else{
+            $return_data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($return_data);
+            return;    
+        }
 
 //		$this->render('create',array(
 //			'model'=>$model,
 //		));
+
+        }catch(Exception $e){
+                $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
+                $this->renderJSON($return_data);
+                return;
+            }
 	}
 
 	/**

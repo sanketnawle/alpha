@@ -1,16 +1,20 @@
 /*NOTE:post_type, privacy_flag and anon change based on what the user selects  - 
 the code to change them is added to the rest of the jquery of status_bar.html -> it basically changes the value of the
 var on('click')*/
+var post_type = 'status';
+var privacy = 'campus';
+var anon = 0;
+//these two vals are hardcoded for now - based on our phonecall 
+var origin_type = 'class';
+var origin_id = 25;
+
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
-    var post_type = 'status';
-    var privacy = 'campus';
-    var anon = 0;
-    //these two vals are hardcoded for now - based on our phonecall 
-    var origin_type = 'class';
-    var origin_id = 25;
+    console.log("INNN");
+
     //Posting a Form
     $(document).on('click', '.post-btn', function() {
+        console.log(post_type);
         var jsonData = {
                 'origin_type': origin_type,
                 'origin_id': origin_id,
@@ -18,6 +22,7 @@ $(document).ready(function() {
                 'anon': anon,
                 'privacy': privacy
             }
+
             //Checks if all the bases types are satisfied 
         if (origin_type && origin_id && post_type && (anon === 0 || anon === 1) && privacy) {
             //Checks for the type of status

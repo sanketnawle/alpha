@@ -1,8 +1,181 @@
 $(document).ready(function(){
 
 
-    $ = jQuery.noConflict();
+    //$ = jQuery.noConflict();
     //Handlebars helpers
+    sample();
+    function sample(){
+        $.embedly.extract('http://fresconews.com/post/1286', {key: '110869001b274ee0a51767da08dafeef'}).progress(function(data){
+           // console.log(data);
+            jQuery('.link-text-title').text(data.title);
+            jQuery('.link-text-about').text(data.description + " " + data.original_url);
+
+        });
+        $.embedly.defaults.key = '110869001b274ee0a51767da08dafeef';
+        //console.log($(this).find(".f_hidden_p").text().trim());
+          $(".new_fd").each(function (index) {
+                
+                $(this).removeClass("new_fd");
+                if ($(this).find(".f_hidden_p").text().trim() != "") {
+                    jQuery('#embed_link').embedly({
+                          query: {
+                            maxwidth: 500,
+                            autoplay: true
+                        },
+                    display:function(data, elem){
+                        console.log(data);
+                        if(data.type != 'video') $('.play_btn').hide();
+                        jQuery('.link-text-title').text(data.title);
+                        if(data.thumbnail_url){
+                            console.log('here');
+                          if((data.thumbnail_width > 550) && (data.thumbnail_height> 270)) {
+                               jQuery('.link-img').css({
+                                    'background' :  'url(' + data.thumbnail_url + ')', 
+                                    'height' : 273,
+                                    'width' : 555,
+                                    'background-size' : 'cover'
+                                });
+
+                                jQuery('.link-text-data').css({
+                                    'position' : 'relative', 
+                                    'top': 162,
+                                    'left' : 1,
+                                    'height' : 110,
+                                    'width' : 414
+
+                                });
+                                 jQuery('.link-text-about').css({
+                                    'position' : 'relative', 
+                                    'top': -260,
+                                    'left' :-140,
+                                    'width' : 545
+                                });
+                                 jQuery('.link-text-title').css({
+                                    'position' : 'relative',
+                                    'top' : -265,
+                                    'left' : -140
+                                 })
+
+                           //}
+                                }
+                                else {
+                                    jQuery('.link-img').css({
+                                        'background' :  'url(' + data.thumbnail_url + ')', 
+                                        'height' : 139,
+                                        'width' :150,
+                                        'background-size' : 'cover'
+                                    });
+
+                                }
+                                var thumbnail_url = data.thumbnail_url;
+                                jQuery('.link-text-about').text(data.description + " " + data.original_url);
+                            // jQuery('.post_msg .msg_span').append("<br> <a href=" + data.original_url + ">" + data.original_url + "</a>");
+                           
+
+                        }
+                        else {
+                            //this or 
+                            jQuery('.link-img').css({
+                                'background' :  'url(' + 'http://www.urlinq.com/beta/DefaultImages/anon.png' + ')', 
+                                'height' : 139,
+                                'width' :150,
+                                'background-size' : 'cover'
+                            });
+                            
+                           // jQuery('.link-img').removeClass();
+                            if(data.description){
+                                jQuery('.link-text-about').text(data.description + " " +data.original_url);
+                            }
+                            else {
+                                jQuery('.link-text-about').text(data.original_url);
+                            }
+                            
+                        }
+
+                        $('.link-wrapper').on('click', function () {
+        // Handles the click event and replaces the link with the video.
+                           
+
+                            if (data.type === 'video') {
+                                $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                                return false;
+                            } else {
+
+                                window.open(data.url, '_blank');
+                            }
+
+                        });
+
+
+                        /*.on('click', function(){
+                            console.log('clicked');
+                            if(data.type == 'video'){
+                                //var htmlString = "<iframe src=" + data.original_url + "></iframe>";
+                                $('.link-wrapper').load(data.original_url);
+                            }
+                        });*/
+
+                    }
+                    })
+                    
+                    /*$(this).find('.play').embedly({
+                        query: {
+                            maxwidth: 500,
+                            autoplay: true
+                        },
+                        display: function (data, elem) {
+                            console.log(data);
+
+        //Adds the image to the a tag and then sets up the sizing.
+                            $(elem).html('<img src="' + data.thumbnail_url + '"/>')
+                                .width(data.thumbnail_width)
+                                .height(data.thumbnail_height)
+                                .find('span').css('top', data.thumbnail_height / 2 - 36)
+                                .css('left', data.thumbnail_width / 2 - 36);
+        ////alert($(elem).html());
+                            var $elhtml = $(elem).html();
+                            $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
+
+                            var t_title = data.title;
+                            var t_des = data.description;
+                            var t_url = data.url;
+        ////alert(data.title+" , "+data.description+", "+data.url);
+                            var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
+
+                            $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+                            $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+
+                            if (data.type === 'video') {
+
+                            } else {
+                                $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+                            }
+
+                        }
+                    }).on('click', function () {
+        // Handles the click event and replaces the link with the video.
+                        var data = $(this).data('embedly');
+
+                        if (data.type === 'video') {
+                            $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+                            return false;
+                        } else {
+                            window.open(data.url, '_blank');
+                        }
+
+                    });*/
+
+                }
+
+            });
+
+
+            $(document).delegate('.playable_wrap', "click", function () {
+                $(this).closest(".post_lr_link_msg").find(".play").click();
+            });
+
+    }
+
 
     init();
     function init(){
@@ -63,7 +236,7 @@ $(document).ready(function(){
         //Event Posts
         //Announcements
         //Oppurtunities
-        console.log(single_post);
+        
         if(findUrlInPost(single_post['text'])) {
             single_post.embed_link = findUrlInPost(single_post['text']);
            
@@ -107,7 +280,6 @@ $(document).ready(function(){
 
         if(urlArray[0]) {
             if(urlArray[0][0] != 'h') urlArray[0] = "http://" + urlArray[0];
-            console.log(urlArray[0]);
             return urlArray[0];
         }
         return false;
