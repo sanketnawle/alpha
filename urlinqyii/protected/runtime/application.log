@@ -7036,3 +7036,264 @@ Stack trace:
 #11 {main}
 REQUEST_URI=/alpha/urlinqyii/post/1/like
 ---
+2014/12/04 22:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/img/white-gradient-100px.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/img...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/img/white-gradient-100px.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/12/04 22:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/grey_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/grey_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/12/04 22:51:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "oldfeed.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('oldfeed.php')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:51:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "oldfeed.php".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('oldfeed.php')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/oldfeed.php
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "css/partial/feed/white_analytics.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/partial/fee...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/css/partial/feed/white_analytics.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/css/partial/feed/feed.css
+---
+2014/12/04 22:52:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "filepicker.js".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('filepicker.js')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/filepicker.js
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/privacy_icons/privacy_status/campus_status.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/privacy_ico...')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/privacy_icons/privacy_status/campus_status.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
+2014/12/04 22:52:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/drive_icon.png".' in C:\wamp\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('img/drive_icon....')
+#1 C:\wamp\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\wamp\www\alpha\urlinqyii\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/alpha/urlinqyii/img/drive_icon.png
+HTTP_REFERER=http://localhost/alpha/urlinqyii/home
+---
