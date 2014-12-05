@@ -70,6 +70,10 @@
             </div>
             <div class="modal_content">
                 <div class="modal_header">
+
+
+                  
+
                         <span class="floatL white">
                             Member Invitation
                         </span>

@@ -41,6 +41,11 @@ class PostController extends Controller
 
 	public function actionCreate()
 	{
+//        $return_data = array('success'=>true,'post'=>$_POST);
+//        $this->renderJSON($return_data);
+//        return;
+
+
 
         try{
             $model=new Post;
@@ -62,11 +67,11 @@ class PostController extends Controller
 
 
                     $model->attributes=$_POST['post'];
-                    $model->user_id = $this->get_current_user()->user_id;
+                    $model->user_id = 1;
         //            $model->created_at = NOW();
         //            $model->last_activity =  = NOW();
                     $model->save(false);
-
+                $post_id = $model->post_id;
 
 
 
@@ -82,30 +87,30 @@ class PostController extends Controller
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
 
-                    if(($_POST['post']['post_type'] == 'multiple_type' || $_POST['post']['post_type'] == 'true_type') && isset($_POST['post']['question'])){
+                    if(($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type') && isset  ($_POST['post']['question'])){
 
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
-                        $question->post_id = $model->post_id;
+                        $question->post_id = $post_id;
                         $question->save(false);
 
-                        $correct_answer_key = $_POST['post']['question']['correct_answer'];
+                        $correct_answer_key = $_POST['post']['question']['answer'];
 
-                        if(count($_POST['post']['question']['choices']) > 0){
-                            foreach ($_POST['post']['question']['choices'] as $key => $option) {
+                        //if(count($_POST['post']['question']['choices']) > 0){
+                        foreach ($_POST['post']['question']['choices'] as $key => $option_text) {
 
-                                $option = new PostQuestionOption;
-                                $option->option_text = $option;
-                                $option->post_id = $model->post_id;
-                                $option->save(false);
+                            $option = new PostQuestionOption;
+                            $option->option_text = $option_text;
+                            $option->post_id = $post_id;
+                            $option->save(false);
 
 
-                                if($key == $correct_answer_key){
-                                    $question->correct_answer_id = $option->option_id;
-                                    $question->save(false);
-                                }
+                            if($key == $correct_answer_key){
+                                $question->correct_answer_id = $option->option_id;
+                                $question->save(false);
                             }
                         }
+                        //}
                     }
 
                     $return_data = array('success'=>true,'post'=>$model);
@@ -177,10 +182,10 @@ class PostController extends Controller
     //		));
 
         }catch(Exception $e){
-                $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
-                $this->renderJSON($return_data);
-                return;
-            }
+            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
+            $this->renderJSON($return_data);
+            return;
+        }
 	}
 
 	/**

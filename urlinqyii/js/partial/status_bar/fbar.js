@@ -424,6 +424,9 @@ $(document).ready(function() {
         //alert(base_url +'/post/create' );
 
         var post_data = {'post':jsonData};
+
+        post_data['post']['post_type'] = 'multiple_type';
+        console.log(post_data);
         $.ajax({
             url: base_url + '/post/create',
             type: "POST",
@@ -441,9 +444,10 @@ $(document).ready(function() {
                 sample();
 
             },
-            error: function() {
-                alert('')
-                $("#posts").prepend("Error Adding the post");
+            error: function(xhr, status, error) {
+                var err = JSON.parse(xhr.responseText);
+                console.log(err);
+                alert(JSON.stringify(err));
             }
         });
 

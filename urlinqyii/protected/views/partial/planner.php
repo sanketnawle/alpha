@@ -168,6 +168,8 @@
                                     </li>
                                 </ul>
                             </script>
+
+
                             <div id='past_due_events_header' style="display: none;">Past Due</div>
                             <div id='past_events'>
 

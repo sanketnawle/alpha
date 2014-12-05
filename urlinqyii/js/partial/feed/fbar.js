@@ -53,6 +53,8 @@ $(document).ready(function() {
                 if (sub_text_msg) jsonData.sub_text = sub_text_msg;
                 if (text_msg) {
                     jsonData['text'] = text_msg;
+
+
                     //Makes the Ajax Call to postcontroller.php
                     postStatusAjax(jsonData);
                 } else {
