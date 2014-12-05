@@ -23,19 +23,19 @@ if ($department_about_row['dept_desc'] == 'NULL' or $department_about_row['dept_
 */
 
 echo "
-        <div class='group-about'>
-            <div class='box-header'>
-                <span class='bh-t1'>
-                    ABOUT
-                </span>
-            </div>
-            <div class='box-content content-about'>This is the department about</div>
-
-            <div class='box-header'>
-                <span class='bh-t2'>
-                    Links
-                </span>
-            </div>
-            <div class='box-content content-link'>This is the department description</div>
+    <div class='group-about'>
+        <div class='box-header'>
+            <span class='bh-t1'>
+                ABOUT
+            </span>
         </div>
+        <div class='box-content content-about'>This is the department about</div>
+
+        <div class='box-header'>
+            <span class='bh-t2'>
+                Links
+            </span>
+        </div>
+        <div class='box-content content-link'>This is the department description</div>
+    </div>
 ";

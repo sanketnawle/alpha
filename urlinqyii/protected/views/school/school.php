@@ -104,13 +104,8 @@ $(document).ready(function() {
 
         $(".about-content").stop().animate({ opacity: "1"},300);
         $(".about-content").show();
-<<<<<<< HEAD
     
      });
-=======
->>>>>>> master
-
-    });
 
     $(document).delegate(".group-header-above.group-header-left", "mouseenter", function() {
         $(".upload_cover").css("opacity", "1");
@@ -127,7 +122,7 @@ $(document).ready(function() {
         $(".group-cover-pic-info").css("opacity", "1");
     });
 
-<<<<<<< HEAD
+
      $(document).delegate(".studybtn","mouseenter",function(){
             var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
             $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
@@ -191,30 +186,6 @@ $(document).ready(function() {
                             }
                         });
             });
-=======
-    $(document).delegate(".studybtn","mouseenter",function(){
-        var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
-        $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
-        $(this).closest(".deptBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
-        $(this).closest(".deptBtns").find(".study_box_open").show();
-        setTimeout(
-            function(){
-                $(thisBox).stop().css({"top":"3px","height":"18px","opacity": "1"});
-                setTimeout(
-                    function(){
-                        $(thisBox).stop().css({"height":"150px"});
-                    },
-                    300)
-            },
-            250)
-
-
-    });
-
-    $(document).delegate(".uploadedPhotoFrame","click",function(){
-        $(this).closest("form").find(".cover_photo_upload").click();
-    });
->>>>>>> master
 
     $(document).delegate(".cover_photo_upload","change",function(){
         var $ref= $(this);

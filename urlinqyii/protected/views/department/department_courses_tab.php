@@ -10,7 +10,7 @@
  * Time: 5:53 PM
  */
 
-
+/*
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -44,14 +44,67 @@ if ($user_type == 'p') {
 
 $get_courses_query = "SELECT C.*, (SELECT COUNT(*) FROM course_follow CF WHERE C.course_id = CF.course_id AND CF.user_id = $user_id) as follow_flag, (SELECT COUNT(CM.class_id) FROM courses_semester CM WHERE CM.course_id = C.course_id AND CM.semester = '$current_semester') as class_count FROM courses C WHERE C.dept_id = $dept_id ORDER BY class_count DESC";
 $get_courses_query_result = $con->query($get_courses_query);
+*/
+
+$user_id = 1;
+$dept_id = 1;
+$user_type = 1;
+$univ_id = 1;
 
 echo "
     <div class = 'courses-tab-content'>
         <div class = 'coursesCards card-wrapper'>
 ";
 
-$connected_users = get_connected_users($user_id);
+//$connected_users = get_connected_users($user_id);
+echo "
+            <div class = 'item courses-selector' id=''>
+                <div class = 'courses ajax'>
+                    <div class = 'course-top course-row'>
+                        <div class = 'leftFloat'>
+                            <div class = 'frame'>
+                                <img width = '44px' height = '44px' src = '' class = 'coursePicture'>
+                            </div>
+                            <a class = 'classLink' href=''>
+                                <h3 class = 'course-name'>Intro to Chem</h3>
+                            </a>
+                        </div>
+                        <div class = 'classUIBtn'>
+                            <button class='joinBtn JoinBtnLong joinedBtn'>
+                                Joined
+                            </button>
+                        </div>
+                    </div>
 
+                    <div class = 'course-row course-middle-top'>
+                        <div class = 'leftFloat course-column time-column'>
+                            <a href=''>
+                                <p class = 'course-info'>
+                                    something class_row[section_id] something
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class = 'course-row course-middle-bottom'>
+                        <div class = 'courseDescription'>
+                            This is the course description
+                        </div>
+                    </div>
+                    <div class = 'course-row course-bottom'>
+                        <div class = 'courseMember friendMember'>
+                            <img class = 'courseMemberPic MemberPicBig' src = ''>
+                            <div class = 'courseMembersWrapper'>
+                                <a href=''>First name Last name</a>
+                                <span>and <b>99</b> others you know have followed this course</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+";
+/*
 while ($course_row = $get_courses_query_result->fetch_array()) {
     $this_course_id = $course_row['course_id'];
     $get_class_query = "SELECT CM.section_id, CM.class_id FROM courses_semester CM WHERE CM.course_id = '$this_course_id' AND CM.semester = '$current_semester'";
@@ -176,6 +229,7 @@ echo "
 ";
 
 $con->close();
+*/
 
 /*
 echo "

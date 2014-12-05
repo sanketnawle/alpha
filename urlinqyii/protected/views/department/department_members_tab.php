@@ -89,7 +89,7 @@
  */
 
 
-
+/*
 if (session_status() == PHP_SESSION_NONE) {
 
     session_start();
@@ -483,274 +483,274 @@ echo "
 
 
 $con->close();
+*/
 
 
 
-/*
 
 echo "
 
-                        <div class = 'members-tab-content'>
+    <div class = 'members-tab-content'>
 
-                            <div class = 'members-search-top'>
+        <div class = 'members-search-top'>
 
-                                <form>
+            <form>
 
-                                    <div class = 'searchWrapper searchWrapperMembers'>
+                <div class = 'searchWrapper searchWrapperMembers'>
 
-                                        <input placeholder = 'Search students and faculty at NYU Polytechnic' class = 'tabSearcher ajax'>
+                    <input placeholder = 'Search students and faculty at NYU Polytechnic' class = 'tabSearcher ajax'>
 
-                                        </input>
+                    </input>
 
-                                    </div>
+                </div>
 
-                                    <button class = 'submitSearch submitSearchMembers'>
+                <button class = 'submitSearch submitSearchMembers'>
 
-                                    </button>
+                </button>
 
-                                </form>
+            </form>
 
-                            </div>
+        </div>
 
-                            <div class = 'members-header'>
+        <div class = 'members-header'>
 
-                                Professors and TAs (2)
+            Professors and TAs (2)
 
-                            </div>
+        </div>
 
-                            <div class = 'members-header-line'>
+        <div class = 'members-header-line'>
 
-                            </div>
+        </div>
 
-                            <div class = 'members-list-wrap'>
+        <div class = 'members-list-wrap'>
 
-                                <div class = 'member'>
+            <div class = 'member'>
 
-                                    <div class = 'member-person prof-member-person'>
+                <div class = 'member-person prof-member-person'>
 
-                                        <div class = 'member-wrap prof-member-wrap'>
+                    <div class = 'member-wrap prof-member-wrap'>
 
-                                            <div class = 'person-thumb'>
+                        <div class = 'person-thumb'>
 
-                                                <div class = 'picwrap' style = 'background-image:url(src/dummy-pic.jpg)'></div>
+                            <div class = 'picwrap' style = 'background-image:url()'></div>
 
-                                                <div class = 'member-bio'>
+                            <div class = 'member-bio'>
 
-                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+                                <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
 
-                                                    <strong>View Profile</strong>
-
-                                                </div>
-
-                                            </div>
-
-                                            <h3 class = 'person-title'>
-
-                                                <strong>Professor Zeroni</strong>
-
-                                                <span>
-
-                                                    <a>NYU College of Arts and Sciences</a>
-
-                                                </span>
-
-                                            </h3>
-
-                                            <div class = 'follow-btn'>
-
-                                                <a class = 'follow'>
-
-                                                    Follow
-
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class = 'member'>
-
-                                    <div class = 'member-person ta-member-person'>
-
-                                        <div class = 'member-wrap ta-member-wrap'>
-
-                                            <div class = 'person-thumb'>
-
-                                                <div class = 'picwrap' style = 'background-image:url(src/dummy-pic.jpg)'></div>
-
-                                                <div class = 'member-bio'>
-
-                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
-
-                                                    <strong>View Profile</strong>
-
-                                                </div>
-
-                                            </div>
-
-                                            <h3 class = 'person-title'>
-
-                                                <strong>TA Hector Zeroni</strong>
-
-                                                <span>
-
-                                                    <a>NYU School of Engineering</a>
-
-                                                </span>
-
-                                            </h3>
-
-                                            <div class = 'follow-btn'>
-
-                                                <a class = 'follow'>
-
-                                                    Follow
-
-                                                </a>
-
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class = 'members-header members-students'>
-
-                                Students (22)
-
-                            </div>
-
-                            <div style = 'width: 853px'class = 'members-header-line'>
-
-                            </div>
-
-                            <div class = 'members-list-wrap student-member-list'>
-
-                                <div class = 'member'>
-
-                                    <div class = 'member-person'>
-
-                                        <div class = 'member-wrap'>
-
-                                            <div class = 'person-thumb'>
-
-                                                <div class = 'picwrap' style = 'background-image:url(src/dummy-pic.jpg)'></div>
-
-                                                <div class = 'member-bio'>
-
-                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
-
-
-
-                                                    <strong>View Profile</strong>
-
-                                                </div>
-
-                                            </div>
-
-                                            <h3 class = 'person-title'>
-
-                                                <strong>TA Hector Zeroni</strong>
-
-                                                <span>
-
-                                                    <a>NYU School of Engineering</a>
-
-                                                </span>
-
-                                            </h3>
-
-                                            <div class = 'follow-btn'>
-
-                                                <a class = 'follow'>
-
-                                                    Follow
-
-                                                </a>
-
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class = 'member'>
-
-                                    <div class = 'member-person'>
-
-                                        <div class = 'member-wrap'>
-
-                                            <div class = 'person-thumb'>
-
-                                                <div class = 'picwrap' style = 'background-image:url(src/dummy-pic.jpg)'></div>
-
-                                                <div class = 'member-bio'>
-
-                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
-
-                                                    <strong>View Profile</strong>
-
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <h3 class = 'person-title'>
-
-                                                <strong>TA Hector Zeroni</strong>
-
-                                                <span>
-
-                                                    <a>NYU School of Engineering</a>
-
-                                                </span>
-
-                                            </h3>
-
-                                            <div class = 'follow-btn'>
-
-                                                <a class = 'follow'>
-
-                                                    Follow
-
-                                                </a>
-
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                <strong>View Profile</strong>
 
                             </div>
 
                         </div>
 
+                        <h3 class = 'person-title'>
+
+                            <strong>Professor Zeroni</strong>
+
+                            <span>
+
+                                <a>NYU College of Arts and Sciences</a>
+
+                            </span>
+
+                        </h3>
+
+                        <div class = 'follow-btn'>
+
+                            <a class = 'follow'>
+
+                                Follow
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class = 'member'>
+
+                <div class = 'member-person ta-member-person'>
+
+                    <div class = 'member-wrap ta-member-wrap'>
+
+                        <div class = 'person-thumb'>
+
+                            <div class = 'picwrap' style = 'background-image:url()'></div>
+
+                            <div class = 'member-bio'>
+
+                                <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+
+                                <strong>View Profile</strong>
+
+                            </div>
+
+                        </div>
+
+                        <h3 class = 'person-title'>
+
+                            <strong>TA Hector Zeroni</strong>
+
+                            <span>
+
+                                <a>NYU School of Engineering</a>
+
+                            </span>
+
+                        </h3>
+
+                        <div class = 'follow-btn'>
+
+                            <a class = 'follow'>
+
+                                Follow
+
+                            </a>
+
+                        </div>
 
 
-";*/
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class = 'members-header members-students'>
+
+            Students (22)
+
+        </div>
+
+        <div style = 'width: 853px'class = 'members-header-line'>
+
+        </div>
+
+        <div class = 'members-list-wrap student-member-list'>
+
+            <div class = 'member'>
+
+                <div class = 'member-person'>
+
+                    <div class = 'member-wrap'>
+
+                        <div class = 'person-thumb'>
+
+                            <div class = 'picwrap' style = 'background-image:url()'></div>
+
+                            <div class = 'member-bio'>
+
+                                <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+
+
+
+                                <strong>View Profile</strong>
+
+                            </div>
+
+                        </div>
+
+                        <h3 class = 'person-title'>
+
+                            <strong>TA Hector Zeroni</strong>
+
+                            <span>
+
+                                <a>NYU School of Engineering</a>
+
+                            </span>
+
+                        </h3>
+
+                        <div class = 'follow-btn'>
+
+                            <a class = 'follow'>
+
+                                Follow
+
+                            </a>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class = 'member'>
+
+                <div class = 'member-person'>
+
+                    <div class = 'member-wrap'>
+
+                        <div class = 'person-thumb'>
+
+                            <div class = 'picwrap' style = 'background-image:url();'></div>
+
+                            <div class = 'member-bio'>
+
+                                <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+
+                                <strong>View Profile</strong>
+
+
+
+                            </div>
+
+                        </div>
+
+                        <h3 class = 'person-title'>
+
+                            <strong>TA Hector Zeroni</strong>
+
+                            <span>
+
+                                <a>NYU School of Engineering</a>
+
+                            </span>
+
+                        </h3>
+
+                        <div class = 'follow-btn'>
+
+                            <a class = 'follow'>
+
+                                Follow
+
+                            </a>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+";
 
 
 

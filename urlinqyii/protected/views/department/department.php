@@ -106,7 +106,10 @@
                 <?php include('department_header.php'); ?>
                 <div class='midsec'>
                     <?php include('department_feed_tab.php'); ?>
-
+                    <?php include('department_courses_tab.php'); ?>
+                    <?php include('department_members_tab.php'); ?>
+                    <?php include('department_faculty_tab.php'); ?>
+                    <?php include('department_students_tab.php'); ?>
                 </div>
             </div>
         </div>

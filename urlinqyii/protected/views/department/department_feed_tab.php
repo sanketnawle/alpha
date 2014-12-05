@@ -62,5 +62,6 @@ echo "
 echo "
             </div>
         </div>
+    </div>
 ";
 ?>
