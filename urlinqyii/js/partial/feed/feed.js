@@ -1,8 +1,10 @@
+
 $(document).ready(function(){
 
 
-    $ = jQuery.noConflict();
+    //$ = jQuery.noConflict();
     //Handlebars helpers
+     
 
     init();
     function init(){
@@ -63,7 +65,7 @@ $(document).ready(function(){
         //Event Posts
         //Announcements
         //Oppurtunities
-        console.log(single_post);
+        
         if(findUrlInPost(single_post['text'])) {
             single_post.embed_link = findUrlInPost(single_post['text']);
            
@@ -80,6 +82,7 @@ $(document).ready(function(){
             $("#posts").append(template(single_post));
         }
         else if(single_post['post_type'] === "question") {
+            console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
             $("#posts").append(template(single_post));
@@ -107,7 +110,6 @@ $(document).ready(function(){
 
         if(urlArray[0]) {
             if(urlArray[0][0] != 'h') urlArray[0] = "http://" + urlArray[0];
-            console.log(urlArray[0]);
             return urlArray[0];
         }
         return false;

@@ -34,17 +34,17 @@ else{
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/feed.css"> </link>
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/fbar.css"> </link>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/dropdown_style.css"> </link>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
 
 <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
 <script src="filepicker.js"></script>
-<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/fbar.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
 
 <script>
+    origin_type = 'club';
     init = function(appID,fileID) {
         s = new gapi.drive.share.ShareClient(appID);
         s.setItemIds([fileID]);
@@ -146,7 +146,7 @@ $(document).ready(function() {
     });
 
     $('.post').click(function(){
-
+        post_type = 'discussion'
         $('#fbar').css('height','auto');
         $("#fbar").find('.postTxtarea').show();
         $("#fbar").find('.postTxtarea').focus();
@@ -158,10 +158,10 @@ $(document).ready(function() {
         $("#fbar").find('.opp').addClass('fani');
         $("#fbar").find('.event').css('cursor','pointer');
         $("#fbar").find('.opp').css('cursor','pointer');
-        $("#fbar").find('.fbtn-post ').css('color','#333');
-        $("#fbar").find('.fbtn-post ').css('color','#333');
-        $("#fbar").find('.fbtn-opp').css('color','#666');
-        $("#fbar").find('.fbtn-upload ').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-post ').css('color','#333');
+        $("#fbar").find('.fbtn fbtn-upload-post ').css('color','#333');
+        $("#fbar").find('.fbtn fbtn-upload-opp').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-upload ').css('color','#666');
         $("#fbar").find(".wedge1a").show();
         $("#fbar").find(".wedge1b").show();
         $("#fbar").find(".wedge2a").hide();
@@ -188,6 +188,7 @@ $(document).ready(function() {
     });
 
     $('.event').click(function(){
+        post_type = 'event';
         $('#fbar').css('height','auto');
         $("#fbar").find('.event').css('cursor','default');
         $("#fbar").find('.opp').css('cursor','pointer');
@@ -197,9 +198,9 @@ $(document).ready(function() {
         $("#fbar").find('.post-sec').show();
         $("#fbar").find('.opp').addClass('fani');
         $("#fbar").find('.post').addClass('fani');
-        $("#fbar").find('.fbtn-upload ').css('color','#333');
-        $("#fbar").find('.fbtn-post ').css('color','#666');
-        $("#fbar").find('.fbtn-opp ').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-upload ').css('color','#333');
+        $("#fbar").find('.fbtn fbtn-upload-post ').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-opp ').css('color','#666');
         $("#fbar").find(".wedge2a").show();
         $("#fbar").find(".wedge2b").show();
         $("#fbar").find(".wedge1a").hide();
@@ -229,6 +230,7 @@ $(document).ready(function() {
     });
 
     $('.opp').click(function(){
+        post_type = 'photo';
         $('#fbar').css('height','auto');
         $("#fbar").find('.opp').css('cursor','default');
         $("#fbar").find('.opp').removeClass('fani');
@@ -237,9 +239,9 @@ $(document).ready(function() {
         $("#fbar").find('.post').addClass('fani');
         $("#fbar").find('.event').css('cursor','pointer');
         $("#fbar").find('.post').css('cursor','pointer');
-        $("#fbar").find('.fbtn-opp ').css('color','#333');
-        $("#fbar").find('.fbtn-upload ').css('color','#666');
-        $("#fbar").find('.fbtn-post ').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-opp ').css('color','#333');
+        $("#fbar").find('.fbtn fbtn-upload-upload ').css('color','#666');
+        $("#fbar").find('.fbtn fbtn-upload-post ').css('color','#666');
         $("#fbar").find(".wedge3a").show();
         $("#fbar").find(".wedge3b").show();
         $("#fbar").find(".wedge1a").hide();
@@ -282,11 +284,11 @@ $(document).ready(function() {
     });
 
     $(document).delegate(".fani","mouseover",function(){
-        $(this).find(".fbtn").css({"color":"#333"});
+        $(this).find(".fbtn fbtn-upload").css({"color":"#333"});
     });
 
     $(document).delegate(".fani","mouseout",function(){
-        $(this).find(".fbtn").css({"color":"#666"});
+        $(this).find(".fbtn fbtn-upload").css({"color":"#666"});
     });
 
     $('.select').on('click','li',function(){
@@ -512,13 +514,14 @@ $(document).ready(function() {
     $(document).delegate(".flat7b_fbar","click",function(event){
 
         if(!$(this).hasClass("flat_checked")){
-
+            anon = 1;
             $(this).css({"border":"1px solid #00A076","background-color":"#02e2a7"});
             $(this).closest(".check_wrap").find(".move").css({"margin-left":"19px"});
             $(this).addClass("flat_checked");
             $(this).closest(".check_wrap").find(".comment_anon_text").css("color","rgba(33,33,33,.85)");
             $(this).closest(".controlpad").find(".post_anon_val").val("1");
         }else{
+            anon = 0;
             $(this).css({"border":"1px solid #C9C9C9","background-color":"#E8E8E8"});
             $(this).closest(".check_wrap").find(".move").css({"margin-left":"0px"});
             $(this).removeClass("flat_checked");
@@ -593,7 +596,7 @@ $(document).ready(function() {
     $(document).delegate(".visi_functions_option_fbar","click",function(){
         //student campus connections faculty
         var ref=$(this).closest(".posttool-select");
-        var privacy= "campus";
+        privacy= "campus";
         if($(this).find(".visi_icon").hasClass("i_campus")){privacy="campus";}
         if($(this).find(".visi_icon").hasClass("i_student")){privacy="students";}
         if($(this).find(".visi_icon").hasClass("i_faculty")){privacy="faculty";}
@@ -1032,7 +1035,7 @@ $(document).ready(function() {
 <div id = "fbar" class = "fb">
 <div class='fbar-head'>
     <div class = "post fani fani-hover">
-        <div class = "fbtn fbtn-post">
+        <div class = "fbtn fbtn-upload fbtn fbtn-upload-post">
             <?php
             $pg_src = substr(strrchr($_SERVER['SCRIPT_NAME'], "/"), 1);
             if($pg_src == "home.php" || $pg_src=="profile.php") echo "Post Status";
@@ -1041,12 +1044,12 @@ $(document).ready(function() {
         </div>
     </div>
     <div class = "event fani fani-hover">
-        <div class = "fbtn fbtn-upload">
+        <div class = "fbtn fbtn-upload fbtn fbtn-upload-upload">
             Post Event
         </div>
     </div>
     <div class = "opp fani fani-hover">
-        <div class = "fbtn fbtn-opp">
+        <div class = "fbtn fbtn-upload fbtn fbtn-upload-opp">
             Share Photo
         </div>
     </div>
@@ -1134,17 +1137,17 @@ $(document).ready(function() {
 <div class = "upload_state fbar_anchor">
     <div class ="textwrap">
         <form id="event_form">
-            <textarea name = "event_name" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Name" ></textarea>
+            <textarea id="event_name" name = "event_name" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Name" ></textarea>
             <!--
             <textarea id="event_location" name = "event_loc" class = "uploadTxtarea thin_input bottom_border" placeholder = "Event Location" ></textarea>
             -->
-            <textarea id="location" name="event_loc" class="uploadTxtarea thin_input bottom_border" placeholder="Event Location"></textarea>
-            <div class="bottom_border date_line event_time">
+            <textarea id="event_location" name="event_loc" class="uploadTxtarea thin_input bottom_border" placeholder="Event Location"></textarea>
+            <div id="event_time"class="bottom_border date_line event_time">
                 <p class="time_label">Event Date & Time</p>
                 <input class = "set_date" name="event_date" id="add_event_date" readonly />
                 <input id="set_time_24hr"  class = "set_time2" name="event_time" />
             </div>
-            <textarea name = "event_desc" class = "uploadTxtarea thin_input" placeholder = "Write a brief description of the event..." ></textarea>
+            <textarea id="event_description"name = "event_desc" class = "uploadTxtarea thin_input" placeholder = "Write a brief description of the event..." ></textarea>
         </form>
     </div>
     <div class = "uploadMode">

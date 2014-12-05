@@ -205,10 +205,10 @@
 
                                 echo "<div class='group_fbar_wrap'>";
 
-                                echo $this->renderPartial('/partial/status_bar',array('pg_src'=>'club.php','target_type'=>'group','target_id'=>$club->group_id));
+                                echo $this->renderPartial('/partial/club_status_bar',array('pg_src'=>'club.php','target_type'=>'group','target_id'=>$club->group_id));
 
                                 echo "</div>";
-
+                                echo "<br><br>";
                                 echo "<div class='group_feed_wrap'>";
                                 echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/' . $club->group_id . '/feed'));
 

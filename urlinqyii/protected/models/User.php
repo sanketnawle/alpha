@@ -105,7 +105,7 @@ class User extends CActiveRecord
 			'departments' => array(self::MANY_MANY, 'Department', 'department_follow(user_id, department_id)'),
 			'events' => array(self::HAS_MANY, 'Event', 'user_id'),
 			'groupFiles' => array(self::HAS_MANY, 'GroupFile', 'user_id'),
-
+			'groupUsers' => array(self::HAS_MANY, 'GroupUser', 'user_id'),
 			'invites' => array(self::HAS_MANY, 'Invite', 'user_id'),
 			'notifications' => array(self::HAS_MANY, 'Notification', 'actor_id'),
 			'notifications1' => array(self::HAS_MANY, 'Notification', 'user_id'),
@@ -137,10 +137,6 @@ class User extends CActiveRecord
 
 
             //added by Michael
-            'groupUsersAll' => array(self::HAS_MANY, 'GroupUser', 'user_id'),
-            'groupUsersForFollowers' => array(self::HAS_MANY, 'GroupUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
-            'groupUsersForNonFollowers' => array(self::HAS_MANY, 'GroupUser', 'user_id','on'=>'privacy="public"'),
-
             'classUsersAll' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
             'classUsersForFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
             'classUsersForNonFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="public"'),

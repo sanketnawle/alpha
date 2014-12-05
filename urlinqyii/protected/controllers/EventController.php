@@ -316,13 +316,13 @@ class EventController extends Controller
 
 
         try {
-            $user = $this->get_current_user();
+
 
             $event = new Event;
             $event->title = $event_data['event_name'];
             $event->description = $event_data['description'];
             $event->event_type = $event_data['event_type'];
-            $event->user_id = $user->user_id;
+            $event->user_id = $this->get_current_user_id();
             $event->origin_type = $event_data['origin_type'];
             $event->origin_id = $event_data['origin_id'];
             $event->start_date = $event_data['start_date'];

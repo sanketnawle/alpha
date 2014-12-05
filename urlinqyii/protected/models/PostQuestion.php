@@ -1,15 +1,17 @@
 <?php
 
 /**
- * This is the model class for table "posts_questions".
+ * This is the model class for table "post_question".
  *
- * The followings are the available columns in table 'posts_questions':
- * @property string $post_id
- * @property string $tag_type
- * @property string $tag_id
+ * The followings are the available columns in table 'post_question':
+ * @property integer $post_id
+ * @property integer $anonymous
+ * @property integer $live_answers
+ * @property integer $correct_answer_id
+ * @property integer $active
  *
  * The followings are the available model relations:
- * @property Posts $post
+ * @property Post $post
  */
 class PostQuestion extends CActiveRecord
 {
@@ -29,11 +31,11 @@ class PostQuestion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('post_id, tag_type, tag_id', 'required'),
-			array('post_id, tag_type, tag_id', 'length', 'max'=>20),
+			array('post_id', 'required'),
+			array('post_id, anonymous, live_answers, correct_answer_id, active', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('post_id, tag_type, tag_id', 'safe', 'on'=>'search'),
+			array('post_id, anonymous, live_answers, correct_answer_id, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +47,7 @@ class PostQuestion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'post' => array(self::BELONGS_TO, 'Posts', 'post_id'),
+			'post' => array(self::BELONGS_TO, 'Post', 'post_id'),
 		);
 	}
 
@@ -56,8 +58,10 @@ class PostQuestion extends CActiveRecord
 	{
 		return array(
 			'post_id' => 'Post',
-			'tag_type' => 'Tag Type',
-			'tag_id' => 'Tag',
+			'anonymous' => 'Anonymous',
+			'live_answers' => 'Live Answers',
+			'correct_answer_id' => 'Correct Answer',
+			'active' => 'Active',
 		);
 	}
 
@@ -79,9 +83,11 @@ class PostQuestion extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('post_id',$this->post_id,true);
-		$criteria->compare('tag_type',$this->tag_type,true);
-		$criteria->compare('tag_id',$this->tag_id,true);
+		$criteria->compare('post_id',$this->post_id);
+		$criteria->compare('anonymous',$this->anonymous);
+		$criteria->compare('live_answers',$this->live_answers);
+		$criteria->compare('correct_answer_id',$this->correct_answer_id);
+		$criteria->compare('active',$this->active);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

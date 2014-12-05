@@ -1,5 +1,7 @@
 <?php
 
+//echo Yii::app()->request->pathInfo;
+
 class FeedController extends Controller
 {
     // The user_id is hard coded, it has to be taken from the SESSION
@@ -47,6 +49,49 @@ class FeedController extends Controller
                 $result = $all;
         }
         return $result;
+    }
+
+    public function validatePrivacy($post_privacy, $origin_type=NULL, $origin_id=NULL){
+        // privacy check starts
+//        echo "#".$post_privacy."#";
+        if($post_privacy=="students_only" && self::$user->user_type!="s"){
+            return FALSE;
+        }
+        elseif($post_privacy=="professors_only" && self::$user->user_type!="p"){
+            return FALSE;
+        }
+        elseif($post_privacy=="members"){
+//            echo "***";
+            if(!is_null($origin_type) && !is_null($origin_id)){
+//                echo "billa*";
+//                echo $origin_id."**".$origin_type;
+
+                if($origin_type=="group" || $origin_type=="class") {
+                    $privacy_stmt = "SELECT * FROM " . $origin_type . "_user WHERE " . $origin_type . "_id=" . $origin_id . " AND user_id=" . self::$cur_user_id;
+                    $command = Yii::app()->db->createCommand($privacy_stmt);
+                    if ($priv = $command->queryAll()) {
+                        //                    echo "(cccccccccccc)".count(array($priv));
+                        if (count(array($priv)) == 1)
+                            return TRUE;
+                    }
+                    return FALSE;
+                }
+                elseif($origin_type == "profile"){
+                    if($origin_id == self::$cur_user_id)
+                        return TRUE;
+                    elseif(UserConnection::model()->findByPk(array('to_user_id'=>$origin_id,'from_user_id'=>self::$cur_user_id)))
+                        return TRUE;
+                    else
+                        return FALSE;
+                }
+
+            }
+//            echo "jaffa*";
+            return FALSE;
+        }
+        else
+            return TRUE;
+        // privacy check ends
     }
 
     public function getUserInfo($id,$type="post"){
@@ -164,7 +209,8 @@ class FeedController extends Controller
             $participants = self::convertModelToArray($post_opt_mem);
 
             // extracting all the user_id from participants
-            $participants_user_id = array_column($participants,"user_id");
+            // $participants_user_id = array_column($participants,"user_id");
+            $participants_user_id = array_map(function ($ar) {return $ar['user_id'];}, $participants);
 
             $options [$k] ['participants_count'] = count($participants_user_id);
 
@@ -187,6 +233,15 @@ class FeedController extends Controller
 
     public function addPostData($posts){
         foreach($posts as $i=>$post){
+//            echo "#".$post['privacy']."*".$post['origin_type']."*".$post['origin_id']."#";
+            if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'])){
+//                echo "here";
+                unset($posts[$i]);
+                continue;
+            }
+//            else{
+//                echo "Aha!";
+//            }
 
             // convert boolean/tinyint into int
             $posts[$i]['anon'] = intval($post['anon']);
@@ -336,13 +391,24 @@ class FeedController extends Controller
             $success_post = TRUE;
         else
             $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
 
 //        $this->renderJSON($posts);
 	}
 
     public function actionGetProfilePosts()
     {
+        // check if the cur_user is the owner of the profile page currently viewing
+        if ($prof_mod = User::model()->find('user_id=:id', array(':id'=> $_GET['id']))){
+            if ($prof_mod->user_id == self::$cur_user_id)
+                $is_admin = TRUE;
+            else
+                $is_admin = FALSE;
+        }
+        else
+            $is_admin = FALSE;
+        // end check
+
         $posts_sql_profile = "SELECT distinct *
 				  from post p
 				  where p.user_id = ".self::$user->user_id."
@@ -354,11 +420,25 @@ class FeedController extends Controller
             $success_post = TRUE;
         else
             $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetClassPosts()
     {
+        // check if the current user is the admin of the class
+        if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+            $is_member = TRUE;
+            if ($cl_mod->is_admin == 1)
+                $is_admin = TRUE;
+            else
+                $is_admin = FALSE;
+        }
+        else {
+            $is_member = FALSE;
+            $is_admin = FALSE;
+        }
+        // check end
+
         $posts_sql_class = "SELECT distinct *
 		  from post p
 		  where (p.origin_type = 'class' and p.origin_id = '".$_GET['id']."')
@@ -371,9 +451,10 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        $this->renderJSON(array('success'=>$success_post, 'is_member'=> $is_member, 'is_admin'=>$is_admin,
+            'feed'=>self::getReplies(self::addPostData($posts))));
     }
-/*
+
     public function actionGetCoursePosts()
     {
         $posts_sql_course = "SELECT distinct * from post p where (p.origin_type = 'course' and p.origin_id = '".$_GET['id']."')
@@ -388,77 +469,18 @@ class FeedController extends Controller
         //    ->queryAll();
 
         $command = Yii::app()->db->createCommand($posts_sql_course);
-        $posts = $command->queryAll();
 
-        if($posts)
+        if($posts = $command->queryAll())
             $success_post = TRUE;
         else
             $success_post = FALSE;
 
-        //if($command)
-        //    $success_post = TRUE;
-        //else
-        //    $success_post = FALSE;
-        //'success'=>$success_post
+        if(self::$user->user_type == "p")
+            $is_admin = TRUE;
+        else
+            $is_admin = FALSE;
 
-        $this->renderJSON(array('success'=>true, 'id'=>$_GET['id'], 'feed'=>self::getReplies(self::addPostData($posts))));
-    }
-*/
-    public function actionGetCoursePosts()
-    {
-        $user = $this->get_current_user();
-
-        $course_id = $_GET['id'];
-        if($course_id == null) {
-            echo CJSON::encode(array(
-                'success' => false,
-                'message' => 'Invalid Course Id'
-            ));
-            Yii::app()->end();
-        }
-
-        $sql = "SELECT c.class_id, c.course_id, c.section_id, cr.course_name, c.department_id, d.department_name, c.component, c.color_id, c.location,
-              u.firstname as prof_fname, u.lastname as prof_lname, f1.file_url AS cover_file_url, f2.file_url AS picture_file_url
-            FROM class as c
-            INNER JOIN course as cr
-              ON c.course_id = cr.course_id
-            LEFT JOIN department as d
-              ON c.department_id = d.department_id
-            LEFT JOIN user AS u
-              ON c.professor = u.user_id
-            LEFT JOIN file AS f1
-              ON c.cover_file_id = f1.file_id
-            LEFT JOIN file AS f2
-              ON c.picture_file_id = f2.file_id
-            WHERE c.course_id = $course_id
-        ";
-
-//        , s.day, s.start_time, s.end_time
-        $classes = Yii::app()->db->createCommand($sql)->queryAll();
-        $schedules = array();
-        for($i=0; $i< count($classes); $i++)  {
-            $sql = "SELECT * FROM class_schedule as cs
-                      LEFT JOIN schedule AS s
-                        ON cs.schedule_id = s.schedule_id
-                        WHERE cs.class_id = {$classes[$i]['class_id']}";
-            $classes[$i]['schedule'] = array(
-                'day' => 'M',
-                'start_time' => '17:00:00',
-                'end_time' => '17:00:00'
-            );
-//            $classes[$i]['schedule'] = Yii::app()->db->createCommand($sql)->queryAll();
-
-
-            $sql = "SELECT * FROM class_user as cu
-                      LEFT JOIN user AS u
-                        ON cu.user_id = u.user_id
-                        WHERE cu.class_id = {$classes[$i]['class_id']}";
-            $classes[$i]['users'] = Yii::app()->db->createCommand($sql)->queryAll();
-
-        }
-        echo CJSON::encode(array('success' => true, 'count' => count($classes), 'data' => $classes));
-        Yii::app()->end();
-
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetClubPosts()
@@ -476,7 +498,22 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        // check if the current user is an admin to this group/club feed
+        if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+            $is_member = TRUE;
+            if ($g_mod->is_admin == 1)
+                $is_admin = TRUE;
+            else
+                $is_admin = FALSE;
+        }
+        else{
+            $is_member = FALSE;
+            $is_admin = FALSE;
+        }
+        // check ends
+
+        $this->renderJSON(array('success'=>$success_post, 'is_member'=>$is_member, 'is_admin'=> $is_admin,
+            'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetDepartmentPosts()
@@ -494,7 +531,12 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        if(self::$user->user_type == "p")
+            $is_admin = TRUE;
+        else
+            $is_admin = FALSE;
+
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetSchoolPosts()
@@ -512,13 +554,16 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        if(self::$user->user_type == "p")
+            $is_admin = TRUE;
+        else
+            $is_admin = FALSE;
+
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetUniversityPosts()
     {
-
-
         $posts_sql_univ = "SELECT distinct *
 		  from post p
 		  where (p.origin_type = 'university' and p.origin_id = '".$_GET['id']."')
@@ -532,7 +577,12 @@ class FeedController extends Controller
         else
             $success_post = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+        if(self::$user->user_type == "p")
+            $is_admin = TRUE;
+        else
+            $is_admin = FALSE;
+
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetPost()
@@ -542,11 +592,61 @@ class FeedController extends Controller
 		  where p.post_id = ".$_GET['id'];
         
         $command = Yii::app()->db->createCommand($post_sql);
-        if($posts = $command->queryAll())
+        if($posts = $command->queryAll()) {
             $success_post = TRUE;
-        else
+            $is_admin = TRUE; //hard_coded value
+
+            // check if the current user is_admin to that post
+//            if($posts->origin_type == "group") {
+//                echo "test";
+//                if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $posts->origin_id, 'user_id' => self::$cur_user_id))) {
+//                    if ($g_mod->is_admin == 1)
+//                        $is_admin = TRUE;
+//                    else
+//                        $is_admin = FALSE;
+//                }
+//                else
+//                    $is_admin = FALSE;
+//            }
+//
+//            elseif($posts->origin_type == "class") {
+//                if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $posts->origin_id, 'user_id' => self::$cur_user_id))) {
+//                    if ($cl_mod->is_admin == 1)
+//                        $is_admin = TRUE;
+//                    else
+//                        $is_admin = FALSE;
+//                }
+//                else
+//                    $is_admin = FALSE;
+//            }
+//
+//            elseif($posts->origin_type == "profile") {
+//                if ($prof_mod = User::model()->find('user_id=:id', array(':id'=> $posts->origin_id))){
+//                    if ($prof_mod->user_id == self::$cur_user_id)
+//                        $is_admin = TRUE;
+//                    else
+//                        $is_admin = FALSE;
+//                }
+//                else
+//                    $is_admin = FALSE;
+//            }
+//
+//            elseif($posts->origin_type == NULL)
+//                $is_admin = FALSE;
+//
+//            elseif(self::$user->user_type == "p")
+//                $is_admin = TRUE;
+//
+//            else
+//                $is_admin = FALSE;
+            // check ends
+        }
+        else {
             $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $is_admin = FALSE;
+        }
+
+        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetMoreReplies()
