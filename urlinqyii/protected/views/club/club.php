@@ -72,7 +72,7 @@
                 <div class="modal_header">
 
 
-                  
+
 
                         <span class="floatL white">
                             Member Invitation
