@@ -19,7 +19,6 @@ $(document).ready(function(){
 		$('.department_feed_tab').hide();
 		$('.department_feed_right_about').hide();
 		$('.department_courses_tab').show();
-		
 	});
 
 	$('.tabmembers').on('click', function() {
@@ -111,6 +110,114 @@ $(document).ready(function(){
 
         $(".about-content").stop().animate({ opacity: "1"},300);
         $(".about-content").show();
+
+    });
+
+    // $(document).ready(function(){
+    // 	 jQuery.timeago.settings.allowFuture = true;
+    //               jQuery("time.timeago").timeago();
+    // });
+    navigator.sayswho = (function () {
+        var ua = navigator.userAgent, tem,
+            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE ' + (tem[1] || '');
+        }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\bOPR\/(\d+)/)
+            if (tem != null) return 'Opera ' + tem[1];
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    })();
+
+
+    $(document).ready(function(){
+
+        var ver=navigator.sayswho.split(" ")[0].toLowerCase();
+
+        if(ver=='safari'){
+            $(".feed-tab-rightsec").css({"margin-left":"692px"});
+        }
+
+
+        /*above is safari right sec position*/
+        /*below is planner margin top*/
+
+        var sp=$(".feed-tab-rightsec").height();
+        $(".rightsec").css({"margin-top":19});
+
+    });
+
+    $(document).delegate(".searchMembers_dept", "keyup", function (e) {
+
+
+
+        var curstring = $(this).val().toLowerCase().trim();
+
+        if (curstring.length >= 2) {
+
+            $(".member").each(function () {
+
+                var tagstring_obj = $(this).find(".search_unit");
+
+                var tagstring = tagstring_obj.text().toLowerCase().trim();
+
+
+
+                if (tagstring.indexOf(curstring) >= 0) {
+
+                    $(this).removeClass("hidden_result");
+
+                } else {
+
+                    $(this).addClass("hidden_result");
+
+                }
+
+
+
+
+
+                /*control the text prompt of the div*/
+
+                $(".members-list-wrap").each(function (index) {
+
+                    var l = $(this).find(".member").not('.hidden_result').length;
+
+                    if (l == 0) {
+
+                        $(this).prev(".members-header-line").prev(".members-header").addClass("hidden_result");
+
+                        $(this).prev(".members-header-line").addClass("hidden_result");
+
+                    } else {
+
+                        $(this).prev(".members-header-line").prev(".members-header").removeClass("hidden_result");
+
+                        $(this).prev(".members-header-line").removeClass("hidden_result");
+
+                    }
+
+                });
+
+                /*control the text prompt of the div end*/
+
+
+
+            });
+
+
+
+        } else {
+
+            $(".hidden_result").removeClass("hidden_result");
+
+        }
+
+
 
     });
 
@@ -628,8 +735,10 @@ $(document).ready(function(){
 
             $(".courses-tab-content").stop().animate({ opacity: "0"},300);
             $(".courses-tab-content").hide()
-            $(".members-tab-content").stop().animate({ opacity: "0"},300);
-            $(".members-tab-content").hide();
+            $(".faculty-tab-content").stop().animate({ opacity: "0"},300);
+            $(".faculty-tab-content").hide();
+            $(".students-tab-content").stop().animate({ opacity: "0"},300);
+            $(".students-tab-content").hide();
 
             $(".feed-tab-content").show();
             $(".feed-tab-content").animate({ opacity: "1"},300);
@@ -663,16 +772,23 @@ $(document).ready(function(){
             $(".tab-wedge-down").css("left","200px");
             $(this).removeClass("tab-inactive");
             $(this).addClass("group-tab-active");
-            $(".feed-tab-content").hide();
+
             $(".feed-tab-content").stop().animate({ opacity: "0"},300);
+            $(".feed-tab-content").hide();
             $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
             $(".syllabus-tab-content").hide();
             $(".about-content").stop().animate({ opacity: "0"},300);
             $(".about-content").hide();
             $(".files-tab-content").stop().animate({ opacity: "0"},300);
             $(".files-tab-content").hide();
-            $(".members-tab-content").stop().animate({ opacity: "0"},300);
-            $(".members-tab-content").hide();
+            $(".faculty-tab-content").stop().animate({ opacity: "0"},300);
+            $(".faculty-tab-content").hide();
+            $(".students-tab-content").stop().animate({ opacity: "0"},300);
+            $(".students-tab-content").hide();
+
+            $(".courses-tab-content").show();
+            $(".courses-tab-content").animate({ opacity: "1"},300);
+
             /*
              $.ajax({
              type: "POST",
@@ -691,8 +807,6 @@ $(document).ready(function(){
 
         }
         if($(this).hasClass("tabmembers")){
-
-
 
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
@@ -723,18 +837,23 @@ $(document).ready(function(){
             $(".about-content").stop().animate({ opacity: "0"},300);
             $(".about-content").hide();
             $(".courses-tab-content").stop().animate({ opacity: "0"},300);
-            $(".courses-tab-content").hide()
+            $(".courses-tab-content").hide();
+            $(".students-tab-content").stop().animate({ opacity: "0"},300);
+            $(".students-tab-content").hide();
+
+            $(".faculty-tab-content").show();
+            $(".faculty-tab-content").animate({ opacity: "1"},300);
             /*
              $.ajax({
              type: "POST",
              url: "department_members_tab.php",
              data:{dept_id:univ_id},
              success: function(html){
-             $(".members-tab-content").remove();
+             $(".faculty-tab-content").remove();
 
              $(".midsec").append(html);
-             $(".members-tab-content").show();
-             $(".members-tab-content").animate({ opacity: "1"},300);
+             $(".faculty-tab-content").show();
+             $(".faculty-tab-content").animate({ opacity: "1"},300);
              }
              });
              */
@@ -743,8 +862,6 @@ $(document).ready(function(){
         }
 
         if($(this).hasClass("tabstudents")){
-
-
 
             if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
                 $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
@@ -775,23 +892,30 @@ $(document).ready(function(){
             $(".about-content").stop().animate({ opacity: "0"},300);
             $(".about-content").hide();
             $(".courses-tab-content").stop().animate({ opacity: "0"},300);
-            $(".courses-tab-content").hide()
+            $(".courses-tab-content").hide();
+            $(".faculty-tab-content").stop().animate({ opacity: "0"},300);
+            $(".faculty-tab-content").hide();
+
+            $(".students-tab-content").show();
+            $(".students-tab-content").animate({ opacity: "1"},300);
             /*
              $.ajax({
              type: "POST",
              url: "department_members_tab.php",
              data:{dept_id:univ_id},
              success: function(html){
-             $(".members-tab-content").remove();
+             $(".faculty-tab-content").remove();
 
              $(".midsec").append(html);
-             $(".members-tab-content").show();
-             $(".members-tab-content").animate({ opacity: "1"},300);
+             $(".faculty-tab-content").show();
+             $(".faculty-tab-content").animate({ opacity: "1"},300);
              }
              });
              */
         }
     });
+
+
     $(document).delegate("#group-about-link","click",function(){
         $(".feed-tab-content").stop().animate({ opacity: "0"},300);
         $(".feed-tab-content").hide();
@@ -816,8 +940,8 @@ $(document).ready(function(){
         $(".tab-wedge-down").css("left","-400px");
         $(".group-tab-active").addClass("tab-inactive");
         $(".group-tab-active").removeClass("group-tab-active");
-        $(".members-tab-content").stop().animate({ opacity: "0"},300);
-        $(".members-tab-content").hide();
+        $(".faculty-tab-content").stop().animate({ opacity: "0"},300);
+        $(".faculty-tab-content").hide();
         $(".courses-tab-content").stop().animate({ opacity: "0"},300);
         $(".courses-tab-content").hide()
 

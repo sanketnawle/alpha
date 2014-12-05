@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <?php
 /**
  * Created by PhpStorm.

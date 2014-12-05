@@ -10,7 +10,7 @@
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_alpha/school_department.css'>
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css'>
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/datepicker.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/cousesCardUI.css'>
+<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/coursesCardUI.css'>
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/dept.css'>
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_dept.css'>
 <link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/fbar.css'>
@@ -42,12 +42,12 @@
 <body>
 <div class='root'>
     <div class='gp_topbar_wrap'>
-        <?php //include ("topbar.php");?>
+        <?php echo Yii::app()->runController('partial/topbar'); ?>
     </div>
 
-    <section>
-        <?php //include("leftpanel.php"); ?>
-    </section>
+    <div class='gp_leftbar_wrap'>
+        <?php echo Yii::app()->runController('partial/leftmenu',array()); ?>
+    </div>
 
     <div class='modal_coverPhoto_body modal_body'>
         <div class='modal_coverPhoto_container'>
@@ -105,11 +105,15 @@
             <div class='mid_right_sec mid_right_sec_school'>
                 <?php include('department_header.php'); ?>
                 <div class='midsec'>
-                    <?php include('department_feed_tab.php'); ?>
-                    <?php include('department_courses_tab.php'); ?>
-                    <?php include('department_members_tab.php'); ?>
-                    <?php include('department_faculty_tab.php'); ?>
-                    <?php include('department_students_tab.php'); ?>
+                    <div class='section group'>
+                        <?php echo $this->renderPartial('department_feed_tab',array()); ?>
+
+                        <?php echo $this->renderPartial('department_courses_tab',array()); ?>
+
+                        <?php echo $this->renderPartial('department_faculty_tab',array()); ?>
+
+                        <?php echo $this->renderPartial('department_students_tab',array()); ?>
+                    </div>
                 </div>
             </div>
         </div>

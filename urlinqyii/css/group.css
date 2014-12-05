@@ -1,3 +1,5 @@
+
+
 .club-settings-button {
     float: right;
     display: inline-block;
@@ -2163,11 +2165,9 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
     cursor:pointer;
 }
 
-div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.class-tab-content,div.analytics-tab{
+div.students-tab-content,div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.class-tab-content,div.analytics-tab{
     display:none;
     opacity:0;
-
-
 }
 
 div.members-header{
