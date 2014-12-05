@@ -1,12 +1,6 @@
+<script>
 
-
-<!--PLEASE READ (MEHUL)-->
-<!-- MASTER DIV : <div class="department_courses_tab"> (exact same as the file name) -->
-<!--Here I don't know what to remove and what not to because if I try to do it like school.php's sub files
-    there will only be HTML but here there are some vars inside the HTML, so I don't know what to replae them with
--->
-
-
+</script>
 
 <?php
 /**
@@ -31,7 +25,7 @@ if (isset($_POST['dept_id'])) {
     $dept_id = $_POST['dept_id'];
 }
 if (isset($_SESSION['user_type'])) {
-    $user_type = $_SESSION['user_type'];
+    $user_type = 0; //$_SESSION['user_type'];
 }
 if (isset($_SESSION['univ_id'])) {
     $univ_id = $_SESSION['univ_id'];

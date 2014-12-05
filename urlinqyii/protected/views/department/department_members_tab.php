@@ -1,6 +1,3 @@
-<!-- This needs to be seperated in two different studets/facutly files I believe -->
-
-
 <script>
 
     $(document).delegate(".searchMembers_dept", "keyup", function (e) {
@@ -99,7 +96,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 }
 
-include 'php/dbconnection.php';
+//include 'php/dbconnection.php';
 
 require_once 'includes/follow.php';
 
@@ -119,7 +116,7 @@ if (isset($_POST['dept_id'])) {
 
 if (isset($_SESSION['user_type'])) {
 
-    $user_type = $_SESSION['user_type'];
+    $user_type = 0; //$_SESSION['user_type'];
 
 }
 
@@ -131,7 +128,7 @@ if (isset($_SESSION['univ_id'])) {
 
 
 
-$current_semester = get_current_semester($con, $univ_id);
+$current_semester = 0; //get_current_semester($con, $univ_id);
 
 
 

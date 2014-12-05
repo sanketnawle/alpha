@@ -102,47 +102,47 @@ else{
 <script>
 $(document).ready(function() {
     /*
-    $.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        data: {},
-        url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Could not retrieve NYU JSON");
-            console.log(jqXHR);
-        },
-        success: function (msg) {
-            var locations_array = msg.locations;
+     $.ajax({
+     type: 'GET',
+     dataType: 'jsonp',
+     data: {},
+     url: "http://www.nyu.edu/footer/map/jcr:content/genericParsys/map.json?callback=?",
+     error: function (jqXHR, textStatus, errorThrown) {
+     console.log("Could not retrieve NYU JSON");
+     console.log(jqXHR);
+     },
+     success: function (msg) {
+     var locations_array = msg.locations;
 
-            for(var i = 0; i < locations_array.length; i++){
-                var loc = locations_array[i];
-                loc.label = loc.title;
-            }
+     for(var i = 0; i < locations_array.length; i++){
+     var loc = locations_array[i];
+     loc.label = loc.title;
+     }
 
-            $(function() {
-                $( "#event_location" ).autocomplete(
-                    {
-                        source: locations_array,
-                        select: function( event, ui ) {
-                            $( "#event_location" ).text( ui.item.address );
-                            return false;
-                        }
-                    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-                        return $( "<li></li>" )
-                        .data( "item.autocomplete", item )
-                        .append(item.label + " / " + item.address)
-                        .appendTo( ul );
-                };
-            });
+     $(function() {
+     $( "#event_location" ).autocomplete(
+     {
+     source: locations_array,
+     select: function( event, ui ) {
+     $( "#event_location" ).text( ui.item.address );
+     return false;
+     }
+     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+     return $( "<li></li>" )
+     .data( "item.autocomplete", item )
+     .append(item.label + " / " + item.address)
+     .appendTo( ul );
+     };
+     });
 
-            $("ul.ui-autocomplete").on("click", "li", function() {
-                var location_text = this.text();
-                alert(location_text);
-                $("#event_location").text(location_text);
-            });
-        }
-    });
-    */
+     $("ul.ui-autocomplete").on("click", "li", function() {
+     var location_text = this.text();
+     alert(location_text);
+     $("#event_location").text(location_text);
+     });
+     }
+     });
+     */
 
     $('.post').click(function(){
 
