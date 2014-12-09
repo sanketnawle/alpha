@@ -67,7 +67,7 @@ class PostController extends Controller
 
 
                     $model->attributes=$_POST['post'];
-                    $model->user_id = 1;
+                    $model->user_id = 7;
         //            $model->created_at = NOW();
         //            $model->last_activity =  = NOW();
                     $model->save(false);
@@ -88,6 +88,9 @@ class PostController extends Controller
     //                echo "awesome";
 
                     if(($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type') && isset  ($_POST['post']['question'])){
+                        $model->post_type = 'question';
+                        $model->save(false);
+
 
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
