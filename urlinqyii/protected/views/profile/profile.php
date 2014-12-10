@@ -50,6 +50,8 @@
         <section class="topbar_bag">
             <?php echo Yii::app()->runController('partial/topbar'); ?>
         </section>
+
+
 		
 		<div class="showcase-form">
             <form id="add-showcase">
@@ -93,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="root">
+        <div class="root profile-root">
             <div class="blacksheet-main editing-mode">
             </div>
             <div class="showcaser">
@@ -877,7 +879,7 @@
                     <div class="username-entry-field">
                         <input type="text" class="username-entry" name="username-entry" value="Ross Kopelman">
                     </div>
-                    <p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->year_name; ?></p>
+                    <p class="school-info"><?php echo $userProfile->studentAttributes->year_name.' at '.$university->university_name; ?></p>
                     <p class="school-info-dropdown">
                         <select class="yearpicker">
                             <option value="2015">2015</option>
@@ -900,10 +902,10 @@
                         if(!$is_user){
                             echo '<div class="follow_email_wrapper">';
                                 if($you_follow){
-                                    echo '<button type="button" class="follow_prof_button following_prof_button">Following';
+                                    echo '<button type="button" class="follow_prof_button following_prof_button">Following '.$userProfile->firstname.' '.$userProfile->lastname;
                                 }else{
                                     echo '<button type="button" class="follow_prof_button">
-                                    <i></i>Follow';
+                                    Follow '.$userProfile->firstname.' '.$userProfile->lastname;
                                 }
 
                              echo'   </button>
@@ -911,19 +913,34 @@
                             </div>';
                         }
                     ?>
+
+                    <div class = "user-primarydata-container">
+                        <div class = "user-data-row">
+                            <i class = "user-primarydata-icon icon-data-school"></i><a><p>[USERS SCHOOL]</p></a>
+                        </div>
+                        <div class = "user-data-row">
+                            <i class = "user-primarydata-icon icon-data-dept"></i><a><p>[USERS PRIMARY DEPARTMENT]</p></a>
+                        </div>
+                        <div class = "user-data-row">
+                            <p><?php echo 'Class of '. $userProfile->studentAttributes->year;?></p>
+                        </div>
+                    </div>
                 </div>
 
                 <!--<h5>ABOUT</h5>
                 <span class="profile-bio-container" id="profile_about">
 
                 </span>-->
-                <h3 id="school-section">SCHOOL</h3>
+
+
 
                 <div class="info-block">
                     <!--	<div class="info-text-wrapper">-->
                     <input name="school_name" id ="<?php echo $school->school_id ?>" value="<?php echo $school->school_name ?>" title=<?php echo '"'.$school->school_name.'"'; ?> readonly>
                     <!--	</div>-->
                 </div>
+
+
                 <?php
                 if($majors) {
                     echo '<h3 id="major-section">MAJOR</h3><i></i>';
@@ -958,7 +975,6 @@
                 </div>
 
                 <div class="user-info" id="about-section">
-                    <h3>ABOUT</h3>
                     <div class="info-block" id="about_textarea">
                         <textarea maxlength="140" readonly><?php echo $userProfile->user_bio;?></textarea>
                     </div>
@@ -1029,31 +1045,53 @@
                         <h4 class="info_field_3 plainText" id="profile_office_location"></h4>
                     </div>
                 </span>-->
-                <br />
-                <div class="user-events">
+                <br /> 
+                <div class = "user_about_block">
+                    <div class = "block_header">
+                        <h4>ABOUT</h4>
+                    </div>
+                    <div class = "user_secondary_data">
+                        <div class = "user_secondary_data_header">
+                            <h5>
+                                Double Major
+                            </h5>
+                        </div>
+                        <div class = "user_secondary_data_point">
+                            <i class></i>
+                            <h5>
+                                [Major 1]
+                            </h5>
+                        </div>
+                        <div class = "user_secondary_data_point">
+                            <i></i>
+                            <h5>
+                                [Major 2]
+                            </h5>
+                        </div>                        
+                    </div>
                 </div>
             </div>
             <div class="user-groups">
                 <div class="user-groups-tabs">
                     <div class="tab-active professor-tab tab-1">
-                        <span class="prof-tab-1">Posts</span>
+                        <span class="prof-tab-1">Personal Feed</span>
                         <span class="tab-count prof-tab-1" id="feedCount"></span>
                     </div>
                     <div class="tab-inactive professor-tab tab-2">
                         <span class="prof-tab-2">Courses</span>
-                        <span class="tab-count prof-tab-2" id="courseCount"><?php //echo count($courses);?></span>
+                        <span class="tab-count prof-tab-2" id="courseCount"></span>
                     </div>
                     <div class="tab-inactive professor-tab tab-5">
                         <span class="prof-tab-5">Clubs</span>
-                        <span class="tab-count prof-tab-5" id="clubsCount"><?php// echo count($clubs);?></span>
+                        <span class="tab-count prof-tab-5" id="clubsCount"></span>
                     </div>
                     <div class="professor-tab tab-inactive tab-3">
                         <span class="prof-tab-3">Following</span>
-                        <span class="tab-count prof-tab-3" id="followingCount"><?php// echo count($following);?></span>
+                        <span class="tab-count prof-tab-3" id="followingCount"></span>
                     </div>
                     <div class="professor-tab tab-inactive tab-4">
                         <span class="prof-tab-4">Followers</span>
-                        <span class="tab-count prof-tab-4" id="followersCount"><?php// echo count($followers);?></span>
+                        <span class="tab-count prof-tab-4" id="followersCount"></span>
                     </div>
                     <b class="tab-indicator">
                         <em class="caret-transform">
@@ -1125,13 +1163,13 @@
                                     </a>
                                     <?php
                                     echo '<div class="admin-group-functions">
-                                <div class="gfunction"><span>'.$class->section_id.'</span></div>
-                                <div class="gfunction"><span>';
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-section-id-icon"></i><span>'.$class->section_id.'</span></div>
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-time-icon"></i><span>';
                                     foreach($class->schedules as $schedule){
                                         echo $schedule->day.'('.$schedule->start_time.' - '.$schedule->end_time.') ';
                                     }
                                     echo                            '</span></div>
-                                <div class="gfunction"><span>'.(count($class->users)).' Students</span></div>
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-users-icon"></i><span>'.(count($class->users)).' Students</span></div>
                             </div>';
                                     ?>
 
@@ -1140,27 +1178,7 @@
                         <?php } ?>
                     </div>
                     <div class="user-tab-clubs-content">
-              <!--          <div class="user-class-visibility club">
-                            <div class="container">
-                                <div class="current">
-                                    Edit Club Visibility
-                                    <div class="drop"></div>
-                                    <div class="hover"></div>
-                                </div>
-                                <div class="visibility_new">
 
-                                    <select id="visibility_new">
-                                        <!--                                    <div class="option" >Public<div class="tick"></div></div>
-                                        <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>
-                                        <!--                                    <div class="option">Just Me<div class="tick"></div></div>
-                                        <option value="public" class="option" <?php// echo ($default_privacy == "public")?"selected":"" ?>>Public<div class="tick"></div></option>
-                                        <option value="following" class="option" <?php //echo ($default_privacy =="following")?"selected":"" ?>>People I Follow<div class="tick"></div></option>
-                                        <option value="only_me" class="option" <?php// echo ($default_privacy =="only_me")?"selected":"" ?>>Just Me<div class="tick"></div></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="label">Who Can See My Clubs:</div>
-                        </div>-->
 
                         <?php foreach($clubs as $groupuser){
                             $club = $groupuser->group?>

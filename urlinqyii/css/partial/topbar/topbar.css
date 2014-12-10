@@ -5,9 +5,9 @@
     text-decoration: none;
     outline: none;
     color: inherit;
-    font-family: 'Nunito', sans-serif;
     font-weight: 300;
     font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
     list-style: none;
     cursor: pointer;
 }
@@ -15,7 +15,6 @@
 
 
 .topbar {
-    background-color: #313234;
     height: 48px;
     position: fixed;
 
@@ -25,26 +24,18 @@
     border-bottom: 1px solid #000;
     z-index: 9999;
     min-width: 900px;
-    -moz-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
-    -webkit-box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
-    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
-    background-color: #565a5c;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#27292B),to(#121314));
-    background-image: -webkit-linear-gradient(top,#27292B,#121314);
-    background-image: -moz-linear-gradient(top,#27292B,#121314);
-    background-image: -o-linear-gradient(top,#27292B,#121314);
-    background-image: -ms-linear-gradient(top,#27292B,#121314);
-    background-image: linear-gradient(top,#27292B,#121314);
+    background-color: #27292b;
 }
 
     .topbar > .left {
         overflow: auto;
         float: left;
-        margin-right: 18px;
+        margin-right: 0px;
     }
 
         .topbar > .left a {
             float: left;
+            margin-left: 142px;
             height: 48px;
         }
 
@@ -54,16 +45,16 @@
             .topbar > .left a.urlinq {
                 width: 130px;
                 display: block;
-                background-image: url(../img/logo.png);
-                background-size: auto 25px;
+                background-image: url(../../../assets/logo.png);
+                background-size: auto 22px;
                 background-repeat: no-repeat;
-                background-position: center 12px;
-                border-right: 1.5px solid rgba(0, 0, 0, 0.9);
-                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset;
-            }
+                background-position: center 15px;
+            
+                cursor: pointer;
+}
 
             .topbar > .left a.menu {
-                background-image: url(../img/menu-toggle.png);
+                background-image: url(../../../assets/menu-toggle.png);
                 margin: 13px 0;
                 border-radius: 4px;
                 margin-left: 10px;
@@ -72,8 +63,8 @@
                 background-size: 24px;
                 width: 24px;
                 height: 24px;
+                display: none;
                 opacity: 0.6;
-                display: inline-block;
             }
 
                 .topbar > .left a.menu:hover {
@@ -92,17 +83,22 @@
         width: 50%;
         max-width: 600px;
         margin: auto;
-    }
+    
+        display: inline-block;
+        float: center;
+}
 
         .topbar .center form {
             background-color: white;
             position: relative;
-            margin-top: 11px;
+            margin-top: 10px;
             padding: 6px 10px 4px;
+            width: 100%;
             border-radius: 3px;
             overflow: hidden;
-            box-shadow: inset 0 0 0 1px #f9f9f9, inset 0 1px 0 0 #e5e5e5, 0 -1px 0 0 #3F3F3F;
-        }
+        
+            border: 1px solid black;
+}
 
             .topbar .center form .text {
                 width: 100%;
@@ -112,11 +108,12 @@
                 font-size: 14px;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
-                font-family: 'Open Sans';
                 border: none;
                 font-weight: 500;
                 line-height: 18px;
-            }
+            
+                font-family: 'Open Sans', sans-serif;
+}
 
             .topbar .center form .submit {
                 width: 30px;
@@ -339,3 +336,10 @@
     transition: opacity 0.15s;
     opacity: .4;
 }
+
+@media(max-width:1248px){
+.topbar > .left a{
+    margin-left:10px!important;
+}
+}
+

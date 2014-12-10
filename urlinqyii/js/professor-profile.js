@@ -1,6 +1,9 @@
 (function($) {
     var j$ = $.noConflict();
             $(document).ready(function () {
+
+                
+
                 //close description
                 //add interest
 
@@ -715,7 +718,7 @@
                         $('#img-slot' + index + ' .showcase-label span').text('.doc');
                     }
                     else if(showcaseType == '.ppt'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#d04525');
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#FD702D');
                         $('#img-slot' + index + ' .showcase-label span').text('.ppt');
                     }
 
@@ -976,7 +979,7 @@
 
                 });
 
-                var cl_cache = ['rgba(165, 21, 221, 0.5)', 'rgba(14, 207, 161, 0.98)', 'rgba(253, 112, 45, 0.74)', 'rgba(28, 109, 230, 0.8)', 'rgba(255, 0, 0, 0.8)'];
+                var cl_cache = ['#333', '#333', '#333', '#333', '#333'];
                 $(document).delegate('.tab-inactive', 'click', function () {
                     $('.tab-active').addClass('tab-inactive');
                     $('.tab-active').removeClass('tab-active');
@@ -987,7 +990,7 @@
                     var activeTab = $(this);
                     var activeTabposition = activeTab.position();
                     var activeTabLeft = activeTabposition.left;
-                    var activeTabNew = activeTabLeft - 7;
+                    var activeTabNew = activeTabLeft + 63;
                     //var activeColor = activeTab.
                     $('.tab-indicator').css('margin-left', activeTabNew);
 
@@ -1036,8 +1039,8 @@
 
                 $(document).delegate('.professor-tab', 'mouseout', function () {
 
-                    $(this).css('color', 'rgba(127, 127, 127, 0.4)');
-                    $(this).find('tab-count').css('color', 'rgba(127, 127, 127, 0.4)');
+                    $(this).css('color', '#acacac)');
+                    $(this).find('tab-count').css('color', '#acacac');
                 });
 
                 $(document).delegate('.pre-linked', 'mouseout', function () {
@@ -2785,6 +2788,8 @@
                 $(document).delegate('.ddbox-invite-option', 'click', function () {
                     window.open($(this).find('.invite-option-title-wrap').prop('title'));
                 });
+
+
 
                 /* Embedly for showcase code ends here */
 
