@@ -756,7 +756,10 @@ em.caret-transform {
     margin: 0 auto;
     padding-top: 0px;
 }
-
+.full-length-tab-content{
+    margin-left: -304px;
+    width: 963px;
+}
 .user-tab-groups-content {
     display: none;
 }
@@ -766,7 +769,8 @@ em.caret-transform {
 }
 
 .professor-group {
-    width: 99%;
+    width: 48%;
+    display: inline-block;
     background: #ffffff;
     -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
     -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
@@ -3514,8 +3518,8 @@ button.edit_prof_button b{
     position: absolute;
     width: 19px;
     z-index: 9;
-    left: 8px;
-    top: 57px;
+    left: 18px;
+    top: 151px;
 }
 p.school-info {
     font-weight: 500;
@@ -3698,6 +3702,22 @@ p.school-info {
     border-radius: 4px;
     display: inline-block;
     z-index: 999;
+}
+.add-showcase-button.main-button{
+
+    position: relative;
+    /*change stuff here*/
+
+}
+.add-showcase-button.empty-showcase{
+
+    width: 206px;
+
+}
+.add-showcase-button.empty-showcase button{
+
+    width: 199px;
+
 }
 .add-showcase-button button{
     background-color: transparent;

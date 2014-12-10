@@ -1079,6 +1079,10 @@
                         $('.user-tab-discussions-content').hide();
                         $('.user-tab-groups-content').show();
                         $('.user-tab-groups-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Feeds
                     if ($(this).hasClass('tab-1')) {
@@ -1092,6 +1096,10 @@
                         $('.user-tab-groups-content').animate({opacity: '0'}, 200);
                         $('.user-tab-discussions-content').show();
                         $('.user-tab-dicussions-content').animate({opacity: '1'}, 200);
+                        $('.user-information').show();
+                        $('.user-information').animate({opacity: '1'}, 200);
+                        $('.user_about_block').show();
+                        $('.user_about_block').animate({opacity: '1'}, 200);
                     }
                     // Following
                     if ($(this).hasClass('tab-3')) {
@@ -1108,6 +1116,10 @@
                         $('.user-tab-dicussions-content').animate({opacity: '0'}, 200);
                         $('.user-tab-following-content').show();
                         $('.user-tab-following-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Followers
                     if ($(this).hasClass('tab-4')) {
@@ -1124,6 +1136,10 @@
                         $('.user-tab-following-content').animate({opacity: '0'}, 200);
                         $('.user-tab-followers-content').show();
                         $('.user-tab-followers-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Clubs
                     if ($(this).hasClass('tab-5')) {
@@ -1140,6 +1156,10 @@
                         $('.user-tab-followers-content').animate({opacity: '0'}, 200);
                         $('.user-tab-clubs-content').show();
                         $('.user-tab-clubs-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                 });
 
