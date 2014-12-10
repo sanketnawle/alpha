@@ -1077,7 +1077,8 @@
                         $('.user-tab-clubs-content').hide();
                         $('.user-tab-clubs-content').animate({opacity: '0'}, 200);
                         $('.user-tab-discussions-content').hide();
-                        $('.user-tab-groups-content').show();
+                        /*$('.user-tab-groups-content').show();*/
+						$('.user-tab-groups-content').css('display', 'inline');
                         $('.user-tab-groups-content').animate({opacity: '1'}, 200);
                         $('.user-information').hide();
                         $('.user-information').animate({opacity: '0'}, 200);
@@ -1154,7 +1155,7 @@
                         $('.user-tab-following-content').animate({opacity: '0'}, 200);
                         $('.user-tab-followers-content').hide();
                         $('.user-tab-followers-content').animate({opacity: '0'}, 200);
-                        $('.user-tab-clubs-content').show();
+                        $('.user-tab-clubs-content').css('display', 'inline');
                         $('.user-tab-clubs-content').animate({opacity: '1'}, 200);
                         $('.user-information').hide();
                         $('.user-information').animate({opacity: '0'}, 200);

@@ -1188,7 +1188,7 @@
                     </div>
                     <div class="user-tab-clubs-content full-length-tab-content">
 
-
+						<div class="user-groups-courses">
                         <?php foreach($clubs as $groupuser){
                             $club = $groupuser->group?>
                             <div class="professor-group course-group">
@@ -1239,7 +1239,7 @@
                                 </div>
                             </div>
                         <?php } ?>
-
+						</div>
                     </div>
                     <div class="user-tab-following-content full-length-tab-content">
                         <?php
