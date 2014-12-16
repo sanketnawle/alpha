@@ -131,7 +131,7 @@ class SiteController extends Controller
         // using the default layout 'protected/views/layouts/main.php'
         //$test_str = 'TEST PAGR FROM THE POST CONTROLLER' . $user->name;
         $test_str = 'TEST PAGR FROM THE POST CONTROLLER' . var_dump($user->posts[0]->title);
-        $this->render('index',array('test_str'=>$test_str));
+        $this->render('home_test',array('test_str'=>$test_str));
     }
 
 
