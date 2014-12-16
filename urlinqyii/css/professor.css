@@ -14,6 +14,7 @@ header.professor-header {
     position: relative;
     height: 100%;
     width: 100%;
+	display: inline-flex;
 }
 
 .showcase-photos {
@@ -752,11 +753,18 @@ em.caret-transform {
 
 
 .user-groups-courses {
-    padding: 12px 15px;
+    /*padding: 12px 15px;
     margin: 0 auto;
-    padding-top: 0px;
+    padding-top: 0px;*/
+	display: flex;
+	margin-left: -296px;
+	width: 172%;
+	margin-top: -10px;
 }
-
+.full-length-tab-content{
+    margin-left: -304px;
+    width: 963px;
+}
 .user-tab-groups-content {
     display: none;
 }
@@ -766,7 +774,9 @@ em.caret-transform {
 }
 
 .professor-group {
-    width: 99%;
+	position: relative;
+    width: 90%;
+    display: inline-block;
     background: #ffffff;
     -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
     -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
@@ -778,6 +788,7 @@ em.caret-transform {
     height: 112px;
     transition: all .15s ease-out .1s;
     margin-bottom: 15px;
+	margin-left: 20px;
 }
 
 a.group-link {
@@ -955,6 +966,7 @@ div.group-pic {
 
 .user-tab-groups-content, .user-tab-clubs-content {
     display: none;
+	/*display: inline;*/
     opacity: 0;
     padding-left: 15px;
 }
@@ -3214,16 +3226,17 @@ a#univ_link {
 
 /*profile visibility*/
 .user-class-visibility {
-    margin-bottom: 17px;
-    position: relative;
+    /*margin-bottom: 17px;
+    position: relative;*/
     height: 30px;
     font-family: 'Open sans', sans-serif;
     font-size: 14px;
+	margin-top: -4px;
 }
 
     .user-class-visibility .container {
         float: right;
-        margin-right: 21px;
+        /*margin-right: 21px;*/
         right: 0;
         cursor: default;
         position: relative;
@@ -3270,6 +3283,7 @@ a#univ_link {
         background-repeat: no-repeat;
         top: 0;
         left: 100%;
+		z-index: 99;
     }
 
     .user-class-visibility .option:hover .tick, .user-class-visibility .option.selected .tick {
@@ -3330,7 +3344,7 @@ a#univ_link {
 .user-groups-courses .user-class-visibility {
     /*Michael added px to numbers*/
     position: absolute;
-    right: 8px;
+    right: 2px;
     top: 10px;
     font-size: 0.75em;
 }
@@ -3514,8 +3528,8 @@ button.edit_prof_button b{
     position: absolute;
     width: 19px;
     z-index: 9;
-    left: 8px;
-    top: 57px;
+    left: 18px;
+    top: 151px;
 }
 p.school-info {
     font-weight: 500;
@@ -3699,6 +3713,25 @@ p.school-info {
     display: inline-block;
     z-index: 999;
 }
+.add-showcase-button.main-button{
+
+    /*position: relative;*/
+    /*change stuff here*/
+
+}
+.add-showcase-button.empty-showcase{
+    width: 230px;
+	margin-right: calc(50% - 150px);
+	margin-top: 7%;
+	opacity: 0.7;
+	height: 40px;
+}
+.add-showcase-button.empty-showcase button{
+    width: 223px;
+	height: 33px;
+	font-size: 15px;
+	font-weight: 600;
+}
 .add-showcase-button button{
     background-color: transparent;
     color: white;
@@ -3708,6 +3741,7 @@ p.school-info {
     height: 28px;
     margin-top: 3px;
     margin-left: 3px;
+	cursor: pointer;
 }
 .add-showcase-button button:focus{
     outline: none;
