@@ -6,7 +6,6 @@
     <title></title>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
-    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/san_francisco.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
 
@@ -21,13 +20,61 @@
         <div class="left">
             <!--<a href="./home.php" class="urlinq"></a>-->
             <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"></a>
-            <a class="menu active"></a>
         </div>
+        <div class="center">
+            <!--<form method="get" action="./search_beta.php">-->
+            <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
+                <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+                <button type="submit" class="submit"></button>
+            </form>
+            <ul class="prelist">
+                <li>
+                    <a>
+                        <div class="icon dpt"></div>
+                        <span><?php echo $department?> Professors</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses in the <?php echo $department?> Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon prof"></div>
+                        <!--<span>Professors in Your School</span>-->
+                        <span>Professors at The <?php echo $school?></span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon crs"></div>
+                        <span>Courses at The <?php echo $school?></span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon clb"></div>
+                        <!--<span>Clubs at The <?php echo $school?></span>-->
+                        <span>Clubs Your Friends Are In</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon sch"></div>
+                        <span>Search Your School</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="postlist"></ul>
+        </div>        
+
         <div class="right">
             <div class="notify calendar">
                 <div class="button">
-                    <div class="day">Tue</div>
-                    <div class="date">9</div>
+                    <div class="icon"></div>
+                    <div class = "icon_text">Reminders</div>
                 </div>
                 <div class="notify-window">
                     <div class="wedge"></div>
@@ -108,6 +155,7 @@
             <div class="notify board">
                 <div class="button">
                     <div class="icon"></div>
+                    <div class = "icon_text">Collaborate</div>
                 </div>
                 <div class="notify-window">
                     <div class="wedge"></div>
@@ -175,54 +223,7 @@
                 </div>
             </div>
         </div>
-        <div class="center">
-            <!--<form method="get" action="./search_beta.php">-->
-            <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-                <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
-                <button type="submit" class="submit"></button>
-            </form>
-            <ul class="prelist">
-                <li>
-                    <a>
-                        <div class="icon dpt"></div>
-                        <span><?php echo $department?> Professors</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="icon crs"></div>
-                        <span>Courses in the <?php echo $department?> Department</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="icon prof"></div>
-                        <!--<span>Professors in Your School</span>-->
-                        <span>Professors at The <?php echo $school?></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="icon crs"></div>
-                        <span>Courses at The <?php echo $school?></span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="icon clb"></div>
-                        <!--<span>Clubs at The <?php echo $school?></span>-->
-                        <span>Clubs Your Friends Are In</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <div class="icon sch"></div>
-                        <span>Search Your School</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="postlist"></ul>
-        </div>
+
     </div>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>

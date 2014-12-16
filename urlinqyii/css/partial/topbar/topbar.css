@@ -6,7 +6,7 @@
     outline: none;
     color: inherit;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     list-style: none;
     cursor: pointer;
@@ -16,14 +16,14 @@
 
 .topbar {
     height: 48px;
-    position: fixed;
+    position: fixed!important;
 
     left: 0;
     right: 0;
     top: 0;
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #121314;
     z-index: 9999;
-    min-width: 900px;
+    min-width: 820px;
     background-color: #27292b;
 }
 
@@ -85,19 +85,19 @@
         margin: auto;
     
         display: inline-block;
-        float: center;
+        float: left;
 }
 
         .topbar .center form {
             background-color: white;
             position: relative;
-            margin-top: 10px;
-            padding: 6px 10px 4px;
+            margin-top: 9px;
+            padding: 7px 10px 5px;
             width: 100%;
             border-radius: 3px;
             overflow: hidden;
         
-            border: 1px solid black;
+            border: 1px solid #222;
 }
 
             .topbar .center form .text {
@@ -106,8 +106,7 @@
                 margin-right: -25px;
                 padding-right: 25px;
                 font-size: 14px;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
+
                 border: none;
                 font-weight: 500;
                 line-height: 18px;
@@ -119,74 +118,118 @@
                 width: 30px;
                 position: absolute;
                 height: 30px;
-                top: 0px;
+                top: 1px;
                 right: 0;
                 border: none;
                 background: none;
-                background-image: url(../img/smallSearchIco.png);
+                background-image: url(../../../assets/smallSearchIco.png);
                 background-repeat: no-repeat;
                 background-size: 17px 17px;
                 background-position: center center;
             }
 
     .topbar > .right {
-        float: right;
-        width: 22%;
+        float: left;
+        width: 25%;
         height: 100%;
-    }
+    
+        margin-left: 30px;
+}
 
         .topbar > .right .notify {
             float: left;
             position: relative;
-            width: 48px;
-            height: 49px;
-            border-right: 1.5px solid rgba(0, 0, 0, 0.9);
-            border-left: 1.5px solid rgba(0, 0, 0, 0.9);
-            box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset,1px 0px 0px rgba(255, 255, 255, 0.1) inset;
-        }
+            height: 31px;
+            border-right: 1px solid #fff;
+        
+            margin-top: 10px;
+            padding-right: 8px;
+            border-radius: 0px;
+            padding-left: 8px;
+}
+
+.topbar > .right .notify.calendar{
+    padding-left:5px;
+    border-radius:2px 0px 0px 2px;
+}
+
+.topbar > .right .notify.board{
+    border-right:none;
+    border-radius:0px 2px 2px 0px;
+}
 
         .topbar > .right .notify:hover,.topbar > .right .notify.active{
-            background: rgba(255, 255, 255, 0.045); 
-            -moz-transition: all .1s ease;
-            -webkit-transition: all .1s ease;
-            transition: all .1s ease;
+            background: rgba(18, 19, 20, 0.333); 
+            -moz-transition: all .12s ease;
+            -webkit-transition: all .12s ease;
+            transition: all .12s ease;
         }
 
             .topbar > .right .notify .button {
-                height: 100%;
+                height: 80%;
                 width: 100%;
-            }
+            
+                margin-left: 2px;
+}
 
-            .topbar > .right .notify.calendar .button {
-                padding-top: 12px;
-            }
+            .topbar > .right .notify.calendar .button,.topbar > .right .notify.board .button {
+                padding-top: 4px;
+            
+                padding-left: 5px;
+                padding-right: 7px;
+                padding-bottom: 4px;
+                height: 28px;
+                font-family: Avenir;
+}
 
-                .topbar > .right .notify.calendar .button div {
+                .topbar > .right .notify.calendar .button div,.topbar > .right .notify.board .button div {
                     text-align: center;
-                    color: #d6d6d6;
-                }
+                    color: rgba(255, 255, 255, 0.95);
+                
+                    display: inline-block;
+                    bottom: 10px;
+                    position: relative;
+                    top: -5px;
+}
+
+.topbar > .right .notify.board .button div{
+    top: -10px;
+}
 
             .topbar > .right .notify.calendar:hover .button div, .topbar > .right .notify.calendar.active .button div {
-                color: #01ce95;
+                color: #fff;
             }
 
             .topbar > .right .notify.board {
                 border-left: none;
-                box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.1) inset;
             }
 
-                .topbar > .right .notify.board .button .icon {
-                    background-image: url(../img/board_icon.png);
-                    background-size: 200% auto;
+                .topbar > .right .notify.board .button .icon,.topbar > .right .notify.calendar .button .icon {
+                    background-image: url(../../../assets/TopBarMenuIcons.png);
                     background-repeat: no-repeat;
                     background-position: left center;
+                    width: 23px;
+                    margin: auto;
+                    display: inline-block;
+                    height: 28px;
+                
+                    top: -1px;
+                    position: relative;
+}
+
+                .topbar > .right .notify.calendar .button .icon {
+                    background-repeat: no-repeat;
+                    background-position: -25px 0px;
                     width: 28px;
                     margin: auto;
-                    height: 48px;
-                }
+                    display: inline-block;
+                    height: 23px;
+                
+                    position: relative;
+                    top: 1px;
+}
 
                 .topbar > .right .notify.board:hover .button .icon, .topbar > .right .notify.board.active .button .icon {
-                    background-position: right center;
                 }
 
     .topbar .center ul.prelist, .topbar .center ul.postlist {
@@ -342,4 +385,21 @@
     margin-left:10px!important;
 }
 }
+
+@media(max-width:1092px){
+div.icon_text{
+    display:none!important;
+}
+.topbar > .right .notify{
+    padding-right:5px!important;
+}
+.topbar>.right .notify .notify-window{
+    left:-180px!important;
+}
+.topbar>.right .notify.board .notify-window{
+    left:-229px!important;
+}
+
+}
+
 

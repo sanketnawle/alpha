@@ -9,7 +9,9 @@
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
         <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/home.css">
-
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
 
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
         <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
@@ -102,64 +104,64 @@ var $ = jQuery.noConflict();
     </script>
 
     <body>
-	<section class='loading_animation'>
-        <?php 
-		$text = "HOME"; 
-		//include 'loading.php';?>
-    </section>
-    <section class='popup_section'><?php //include "popup.html";?></section>
-    <section class='topbar_bag'>
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
-    </section>
+        <div class = "mainStructure">
+            <section class='popup_section'><?php //include "popup.html";?></section>
+            <div class = "mainTopBar">
+                <section class='topbar_bag'>
+                    <?php echo Yii::app()->runController('partial/topbar'); ?>
+                </section>
+            </div>
+            
 
-    
+            <section class='content_bag'>       
 
-    <section class='content_bag'>       
+            <section class='midsec'>
 
-    <section class='midsec'>
+                <div class='midsec_indent'>
+                <section class='fbar_bag'>
+                    <?php //include 'status_bar.php';?>
+                </section>
 
-        <div class='midsec_indent'>
-        <section class='fbar_bag'>
-            <?php //include 'status_bar.php';?>
-        </section>
-
-        <section class='feeds_bag'>
-            <?php
+                <section class='feeds_bag'>
+                    <?php
 
 
-            echo "<div class='feed-tab-content'>";
+                    echo "<div class='feed-tab-content'>";
 
-            echo "<div class='group_fbar_wrap'>";
+                    echo "<div class='group_fbar_wrap'>";
 
-            echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
-
-
-            echo "</div>";
-            echo "<br><br>";
-
-            echo "<div class='group_feed_wrap'>";
-
-            echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
-
-            echo "</div>";
+                    echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
 
 
-            echo "</div>";
-            ?>
-        </section>
+                    echo "</div>";
+                    echo "<br><br>";
+
+                    echo "<div class='group_feed_wrap'>";
+
+                    echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
+
+                    echo "</div>";
+
+
+                    echo "</div>";
+                    ?>
+                </section>
+                </div>
+            </section>
+           
+            <section class='rightbar_bag'>
+                <?php
+                echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home'));
+                ?>
+            </section>
+
+            <section class='leftbar_bag'>
+                <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+            </section>
+
+            </section>
         </div>
-    </section>
-   
-    <section class='rightbar_bag'>
-        <?php //include 'planner_beta.php'; ?>
-    </section>
-
-    <section class='leftbar_bag'>
-        <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
-    </section>
-
-    </section>
-	
+    	
     </body>
 </html>
 

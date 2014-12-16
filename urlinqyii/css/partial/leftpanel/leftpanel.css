@@ -14,7 +14,7 @@ body {
     text-decoration: none;
     list-style: none;
     font-family: 'Open Sans', sans-serif; 
-    /* -webkit-font-smoothing: antialiased; */ -moz-osx-font-smoothing: grayscale;
+
 }
 
 .leftpanel {
@@ -87,7 +87,7 @@ body {
                 cursor: pointer;
                 padding: 7px 10px;
                 display: block;
-                background-color: #eaeaeb;
+                background-color: transparent;
                 border-radius: 2px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -95,7 +95,7 @@ body {
             }
 
                 .leftpanel ul li a:not(.nostyle):hover {
-                    background-color: #dddee0;
+                    background-color: #eee;
                 }
 
     .leftpanel .listing {
@@ -208,16 +208,17 @@ body {
         font-family: Avenir;
         font-weight: 300;
         color: #FFF;
-        padding: 8px 10px 7px 15px;
+        padding: 8px 10px 5px 15px;
         text-transform: uppercase;
-        font-size: 15px;
+        font-size: 17px;
         cursor: default;
     
         width: 241px;
+        font-weight: 500;
 }
 
     .leftpanel .profile .title {
-        background-color: #de445d;
+        background-color: #f16b6a;
         padding-right: 8px;
     }
 

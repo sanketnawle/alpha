@@ -1,15 +1,26 @@
+body{
+	background:#f5f5f5;
+	margin:0;
+	color:#222;
+	font-family: 'Open Sans', sans-serif;
+	overflow-y:scroll;
+}
 
+div.mainStructure,div.mainTopBar{
+	display:block;
+}
 
 .topbar_bag
 {
 	position: relative;
 	z-index: 5000;
+	height:48px;
 }
 
 .leftbar_bag
 {
 	position: fixed;
-	width: 280px;
+	width: 240px;
 	height: 100%;
 }
 

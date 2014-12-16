@@ -5,7 +5,7 @@
  $(document).ready(function() {
 
 
-window.forceLeftMenuClose = false;
+/*window.forceLeftMenuClose = false;
 function toggleMenu(active) {
     var menu = $(".topbar .left a.menu");
     var leftpanel = $(".leftpanel");
@@ -18,7 +18,7 @@ function toggleMenu(active) {
     }()) : (function () {
         leftpanel.hide();
     }());
-}
+}*/
 
 (function ($) {
     var leftPanelOpen = true;
