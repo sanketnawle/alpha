@@ -50,6 +50,8 @@
         <section class="topbar_bag">
             <?php echo Yii::app()->runController('partial/topbar'); ?>
         </section>
+
+
 		
 		<div class="showcase-form">
             <form id="add-showcase">
@@ -88,12 +90,13 @@
         <!--    <button type="button" id="edit-upload-button"><i></i>Upload Showcase</button>-->
             <div class="edit-form-bottom">
                 <span>Cancel</span>
+
                 <div class="add-showcase-button" id="edit-from-submit">
                     <button type="button">Done Editing</button>
                 </div>
             </div>
         </div>
-        <div class="root">
+        <div class="root profile-root">
             <div class="blacksheet-main editing-mode">
             </div>
             <div class="showcaser">
@@ -245,9 +248,16 @@
 
                         <?php if($is_user){
                             echo '<span class="showcase-caption">My Academic Portfolio</span>';
-                           echo '<div class="add-showcase-button" id="add-showcase-wrap-id">
+                            if(sizeof($showcase) == 0){
+                                echo '<div class="add-showcase-button main-button empty-showcase" id="add-showcase-wrap-id"">
                                     <button type="button">+ Add a showcase</button>
                                 </div>';
+                            }else{
+                                echo '<div class="add-showcase-button main-button" id="add-showcase-wrap-id">
+                                    <button type="button">+ Add a showcase</button>
+                                </div>';
+                            }
+
 
                         }else{
                             echo '<span class="showcase-caption">'.$userProfile->firstname.'\'s Academic Portfolio</span>';
@@ -861,13 +871,8 @@
         </div>
         <div class="profile-content">
             <div class="user-info-wrapper">
-                <?php if($is_user){
-                    echo '<button type="button" class="edit_prof_button"><b></b>Edit Profile</button>';
-                }?>
-                <div class="edit-mode-control">
-                    <button type="button" class="finish-edit-button"><i></i>Done Editing</button>
-                    <button type="button" class="cancel-edit-button">Cancel</button>
-                </div>
+
+
                 <div class="user-information">
                     <h1>
                         <a href="#">
@@ -877,7 +882,7 @@
                     <div class="username-entry-field">
                         <input type="text" class="username-entry" name="username-entry" value="Ross Kopelman">
                     </div>
-                    <p class="school-info"><?php echo $userProfile->studentAttributes->year.' | '.$university->university_name.' | '.$userProfile->studentAttributes->year_name; ?></p>
+                    <p class="school-info"><?php echo $userProfile->studentAttributes->year_name.' at '.$university->university_name; ?></p>
                     <p class="school-info-dropdown">
                         <select class="yearpicker">
                             <option value="2015">2015</option>
@@ -900,10 +905,10 @@
                         if(!$is_user){
                             echo '<div class="follow_email_wrapper">';
                                 if($you_follow){
-                                    echo '<button type="button" class="follow_prof_button following_prof_button">Following';
+                                    echo '<button type="button" class="follow_prof_button following_prof_button">Following '.$userProfile->firstname.' '.$userProfile->lastname;
                                 }else{
                                     echo '<button type="button" class="follow_prof_button">
-                                    <i></i>Follow';
+                                    Follow '.$userProfile->firstname.' '.$userProfile->lastname;
                                 }
 
                              echo'   </button>
@@ -911,70 +916,38 @@
                             </div>';
                         }
                     ?>
+
+                    <?php if($is_user){
+                        echo '<button type="button" class="edit_prof_button"><b></b>Edit Profile</button>';
+                    }?>
+                    <div class="edit-mode-control">
+                        <button type="button" class="finish-edit-button"><i></i>Done Editing</button>
+                        <button type="button" class="cancel-edit-button">Cancel</button>
+                    </div>
+
+                    <div class = "user-primarydata-container">
+                        <div class = "user-data-row">
+                            <i class = "user-primarydata-icon icon-data-school"></i><a><p><?php echo $school->school_name;?></p></a>
+                        </div>
+                        <div class = "user-data-row">
+                            <i class = "user-primarydata-icon icon-data-dept"></i><a><p><?php echo $department->department_name;?></p></a>
+                        </div>
+                        <div class = "user-data-row">
+                            <p><?php echo 'Class of '. $userProfile->studentAttributes->year;?></p>
+                        </div>
+                    </div>
                 </div>
 
                 <!--<h5>ABOUT</h5>
                 <span class="profile-bio-container" id="profile_about">
 
                 </span>-->
-                <h3 id="school-section">SCHOOL</h3>
 
-                <div class="info-block">
-                    <!--	<div class="info-text-wrapper">-->
-                    <input name="school_name" id ="<?php echo $school->school_id ?>" value="<?php echo $school->school_name ?>" title=<?php echo '"'.$school->school_name.'"'; ?> readonly>
-                    <!--	</div>-->
-                </div>
-                <?php
-                if($majors) {
-                    echo '<h3 id="major-section">MAJOR</h3><i></i>';
-                    foreach($majors as $major){
-                        echo ' <div class="info-block">
-                                    <input name="major_name" value="'.$major->name.'" title="'.$major->name.'" readonly><i></i>
-                                </div>';
-
-                    }
-                }
-                else {
-                    echo '<h3 id="major-section"></h3><i></i>';
-                }
-
-                ?>
-
-                <?php if($minors){
-                    echo '<h3 id="minor-section">MINOR</h3><i></i>';
-                    foreach($minors as $minor) {
-                        echo '  <div class="info-block">
-                                <input name="minor_name" value="' . $minor->name . '" title="'.$minor->name.'" readonly><i></i>
-                            </div>';
-                    }
-                }
-                else{
-                    echo '<h3 id="minor-section"></h3><i></i>';
-                }
-                ?>
                 <div class="add-interest-button">
                     <i></i>
                     <span>Add your research interests</span>
                 </div>
 
-                <div class="user-info" id="about-section">
-                    <h3>ABOUT</h3>
-                    <div class="info-block" id="about_textarea">
-                        <textarea maxlength="140" readonly><?php echo $userProfile->user_bio;?></textarea>
-                    </div>
-                </div>
-                <h3>INTERESTS AND SKILLS</h3>
-                <div class="info-block" id="interest-section">
-                    <?php
-                    foreach($interests as $interest){
-                        echo '<span class="interest-block">'.$interest->tag.'</span>'."\n";
-                    }
-
-                    ?>
-                </div>
-                <div class="info-block" id="interest-entry-field">
-                    <input name="interest_name" value="" placeholder="+ Add an interest or skill" readonly>
-                </div>
                 <!--<span class="user-info-piece" style="margin-top: 20px;">
                     <a id="univ_link" style="text-decoration:none;">
                         <div class="small-icon department_icon" id="university_icon" style="background-image: url(src/);">
@@ -1029,31 +1002,101 @@
                         <h4 class="info_field_3 plainText" id="profile_office_location"></h4>
                     </div>
                 </span>-->
-                <br />
-                <div class="user-events">
+                <br /> 
+                <div class = "user_about_block">
+                    <div class = "block_header">
+                        <h4>ABOUT</h4>
+                    </div>
+                    <div class = "user_secondary_data">
+                        <div class = "user_secondary_data_header">
+                            <h5>
+                                <?php if(sizeof($majors)==1){
+                                    echo "Major";
+                                }else if(sizeof($majors)==2){
+                                    echo "Double Major";
+                                }else if(sizeof($majors)==3){
+                                    echo "Triple Major";
+                                }else echo "Major(s)"?>
+
+                            </h5>
+                        </div>
+                        <?php foreach($majors as $major){
+                           echo '<div class = "user_secondary_data_point">
+                                    <i class></i>
+                                    <h5>'
+                                        .$major->name.
+                                    '</h5>
+                                </div>' ;
+                        }?>
+
+                        <div class = "user_secondary_data_header">
+                            <h5>
+                                <?php if(sizeof($minors)==1){
+                                    echo "Minor";
+                                }else if(sizeof($minors)==2){
+                                    echo "Double Minor";
+                                }else if(sizeof($minors)==3){
+                                    echo "Triple Minor";
+                                }else echo "Minor(s)"?>
+
+                            </h5>
+                        </div>
+                        <?php foreach($minors as $minor){
+                            echo '<div class = "user_secondary_data_point">
+                                    <i class></i>
+                                    <h5>'
+                                .$minor->name.
+                                '</h5>
+                                </div>' ;
+                        }?>
+
+                        <div class = "user_secondary_data_header">
+                            <h5>
+                                Bio
+                            </h5>
+                        </div>
+                        <?php
+                            echo '<div class = "user_secondary_data_point">
+                                    <i class></i>'
+                                .$userProfile->user_bio.
+                                '</div>' ;
+                        ?>
+                        <div class = "user_secondary_data_header">
+                            <h5>
+                                Interests and Skills
+
+                            </h5>
+                        </div>
+                        <div class = "user_secondary_data_point"><i class></i>
+                        <?php foreach($interests as $interest){
+                            echo '<span class="interest-block">'.$interest->tag.'</span>'."\n";
+                        }?>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <div class="user-groups">
                 <div class="user-groups-tabs">
                     <div class="tab-active professor-tab tab-1">
-                        <span class="prof-tab-1">Posts</span>
+                        <span class="prof-tab-1">Personal Feed</span>
                         <span class="tab-count prof-tab-1" id="feedCount"></span>
                     </div>
                     <div class="tab-inactive professor-tab tab-2">
                         <span class="prof-tab-2">Courses</span>
-                        <span class="tab-count prof-tab-2" id="courseCount"><?php //echo count($courses);?></span>
+                        <span class="tab-count prof-tab-2" id="courseCount"></span>
                     </div>
                     <div class="tab-inactive professor-tab tab-5">
                         <span class="prof-tab-5">Clubs</span>
-                        <span class="tab-count prof-tab-5" id="clubsCount"><?php// echo count($clubs);?></span>
+                        <span class="tab-count prof-tab-5" id="clubsCount"></span>
                     </div>
                     <div class="professor-tab tab-inactive tab-3">
                         <span class="prof-tab-3">Following</span>
-                        <span class="tab-count prof-tab-3" id="followingCount"><?php// echo count($following);?></span>
+                        <span class="tab-count prof-tab-3" id="followingCount"></span>
                     </div>
                     <div class="professor-tab tab-inactive tab-4">
                         <span class="prof-tab-4">Followers</span>
-                        <span class="tab-count prof-tab-4" id="followersCount"><?php// echo count($followers);?></span>
+                        <span class="tab-count prof-tab-4" id="followersCount"></span>
                     </div>
                     <b class="tab-indicator">
                         <em class="caret-transform">
@@ -1080,12 +1123,13 @@
                         ?>
                     </div>
 
-                    <div class="user-tab-groups-content">
+                    <div class="user-tab-groups-content full-length-tab-content">
+                        <div class="user-groups-courses">
                         <?php foreach($courses as $classuser){
                                 $class=$classuser->class;?>
-                            <div class="user-groups-courses">
+
                                 <div class="professor-group course-group">
-                                    <a class="group-link">
+
                                         <div class="group-pic classlink" style="background: url(
                                         <?php if($class->pictureFile) {
                                             echo Yii::app()->getBaseUrl(true).$class->pictureFile->file_url;
@@ -1094,7 +1138,9 @@
                                         } ?>
                                             ) no-repeat scroll center center / cover transparent">
                                         </div>
-                                        <h3 id="<?php echo $class->class_id;?>" class="classlink"><?php echo $class->course->course_name;?></h3>
+                                        <a class="group-link">
+                                            <h3 id="<?php echo $class->class_id;?>" class="classlink"><?php echo $class->course->course_name;?></h3>
+                                        </a>
                                         <?php  if($is_user) {
                                             echo '<div class="user-class-visibility undefined">
                                 <div class="container">
@@ -1122,46 +1168,27 @@
                                 </div>
                             </div>';
                                         } ?>
-                                    </a>
+
                                     <?php
                                     echo '<div class="admin-group-functions">
-                                <div class="gfunction"><span>'.$class->section_id.'</span></div>
-                                <div class="gfunction"><span>';
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-section-id-icon"></i><span>'.$class->section_id.'</span></div>
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-time-icon"></i><span>';
                                     foreach($class->schedules as $schedule){
                                         echo $schedule->day.'('.$schedule->start_time.' - '.$schedule->end_time.') ';
                                     }
                                     echo                            '</span></div>
-                                <div class="gfunction"><span>'.(count($class->users)).' Students</span></div>
+                                <div class="gfunction"><i class = "profile-tab-groups-icons profile-users-icon"></i><span>'.(count($class->users)).' Students</span></div>
                             </div>';
                                     ?>
 
                                 </div><br>
-                            </div>
+
                         <?php } ?>
+                        </div>
                     </div>
-                    <div class="user-tab-clubs-content">
-              <!--          <div class="user-class-visibility club">
-                            <div class="container">
-                                <div class="current">
-                                    Edit Club Visibility
-                                    <div class="drop"></div>
-                                    <div class="hover"></div>
-                                </div>
-                                <div class="visibility_new">
+                    <div class="user-tab-clubs-content full-length-tab-content">
 
-                                    <select id="visibility_new">
-                                        <!--                                    <div class="option" >Public<div class="tick"></div></div>
-                                        <!--                                    <div class="option" >People I Follow<div class="tick"></div></div>
-                                        <!--                                    <div class="option">Just Me<div class="tick"></div></div>
-                                        <option value="public" class="option" <?php// echo ($default_privacy == "public")?"selected":"" ?>>Public<div class="tick"></div></option>
-                                        <option value="following" class="option" <?php //echo ($default_privacy =="following")?"selected":"" ?>>People I Follow<div class="tick"></div></option>
-                                        <option value="only_me" class="option" <?php// echo ($default_privacy =="only_me")?"selected":"" ?>>Just Me<div class="tick"></div></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="label">Who Can See My Clubs:</div>
-                        </div>-->
-
+						<div class="user-groups-courses">
                         <?php foreach($clubs as $groupuser){
                             $club = $groupuser->group?>
                             <div class="professor-group course-group">
@@ -1212,9 +1239,9 @@
                                 </div>
                             </div>
                         <?php } ?>
-
+						</div>
                     </div>
-                    <div class="user-tab-following-content">
+                    <div class="user-tab-following-content full-length-tab-content">
                         <?php
                         if (count($following)  > 0) {
 
@@ -1297,7 +1324,7 @@
 
                         ?>
                     </div>
-                    <div class="user-tab-followers-content">
+                    <div class="user-tab-followers-content full-length-tab-content">
                         <?php
                         if (count($followers)  > 0) {
                             foreach ($followers as $follower) {

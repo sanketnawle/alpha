@@ -13,6 +13,8 @@ body {
     outline: none;
     text-decoration: none;
     list-style: none;
+    font-family: 'Open Sans', sans-serif; 
+    /* -webkit-font-smoothing: antialiased; */ -moz-osx-font-smoothing: grayscale;
 }
 
 .leftpanel {
@@ -24,7 +26,7 @@ body {
     width: 240px;
     z-index: 1000;
     border-right: 1px solid #cbcbcb; 
-    background-color: #F0F0F0; 
+    background-color: #f5f5f5; 
     -webkit-box-shadow: -1px 0 #FFFFFF inset;
 }
 
@@ -46,11 +48,12 @@ body {
 
         .leftpanel .profile-panel .details span {
             display: table-cell;
-            color: #444;
+            color: #333;
             height: 50px;
             vertical-align: middle;
             font-size: 14px;
         
+            font-weight: 600;
 }
 
         .leftpanel .profile-panel .details .status-img {
@@ -119,7 +122,7 @@ body {
 
         .leftpanel .listing .scrollable .wedge {
             float: right;
-            background-image: url(../img/wedge_down.png);
+            background-image: url(../../../assets/wedge_down_sb.png);
             width: 12px;
             height: 20px;
             margin-right: -1px;
@@ -202,7 +205,7 @@ body {
         }
 
     .leftpanel .title {
-        font-family: 'Nunito' sans-serif;
+        font-family: Avenir;
         font-weight: 300;
         color: #FFF;
         padding: 8px 10px 7px 15px;
@@ -214,7 +217,7 @@ body {
 }
 
     .leftpanel .profile .title {
-        background-color: #ed4f68;
+        background-color: #de445d;
         padding-right: 8px;
     }
 
@@ -222,7 +225,7 @@ body {
             width: 18px;
             height: 19px;
             float: right;
-            background-image: url(../img/menu-bar.gif);
+            background-image: url(../../../assets/menu-bar.gif);
             background-size: 100% auto;
             cursor: pointer;
             background-position: center center;
@@ -230,13 +233,13 @@ body {
         }
 
     .leftpanel .class .title {
-        background-color: #2cc185;
+        background-color: #01bd8d;
     
         width: 241px;
 }
 
     .leftpanel .club .title {
-        background-color: #1da7d2;
+        background-color: #1DA7D3;
     }
 
     .leftpanel .profile-menu {
@@ -297,7 +300,7 @@ body {
                     width: 15px;
                     height: 15px;
                     margin-right: 10px;
-                    background-image: url(../img/menu-icons.png);
+                    background-image: url(../../../assets/menu-icons.png);
                     background-size: 30px 60px;
                 }
 

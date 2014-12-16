@@ -1,6 +1,9 @@
 (function($) {
     var j$ = $.noConflict();
             $(document).ready(function () {
+
+                
+
                 //close description
                 //add interest
 
@@ -715,7 +718,7 @@
                         $('#img-slot' + index + ' .showcase-label span').text('.doc');
                     }
                     else if(showcaseType == '.ppt'){
-                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#d04525');
+                        $('#img-slot' + index + ' .showcase-label').css('background-color', '#FD702D');
                         $('#img-slot' + index + ' .showcase-label span').text('.ppt');
                     }
 
@@ -976,7 +979,7 @@
 
                 });
 
-                var cl_cache = ['rgba(165, 21, 221, 0.5)', 'rgba(14, 207, 161, 0.98)', 'rgba(253, 112, 45, 0.74)', 'rgba(28, 109, 230, 0.8)', 'rgba(255, 0, 0, 0.8)'];
+                var cl_cache = ['#333', '#333', '#333', '#333', '#333'];
                 $(document).delegate('.tab-inactive', 'click', function () {
                     $('.tab-active').addClass('tab-inactive');
                     $('.tab-active').removeClass('tab-active');
@@ -987,7 +990,7 @@
                     var activeTab = $(this);
                     var activeTabposition = activeTab.position();
                     var activeTabLeft = activeTabposition.left;
-                    var activeTabNew = activeTabLeft - 7;
+                    var activeTabNew = activeTabLeft + 63;
                     //var activeColor = activeTab.
                     $('.tab-indicator').css('margin-left', activeTabNew);
 
@@ -1036,8 +1039,8 @@
 
                 $(document).delegate('.professor-tab', 'mouseout', function () {
 
-                    $(this).css('color', 'rgba(127, 127, 127, 0.4)');
-                    $(this).find('tab-count').css('color', 'rgba(127, 127, 127, 0.4)');
+                    $(this).css('color', '#acacac)');
+                    $(this).find('tab-count').css('color', '#acacac');
                 });
 
                 $(document).delegate('.pre-linked', 'mouseout', function () {
@@ -1074,8 +1077,13 @@
                         $('.user-tab-clubs-content').hide();
                         $('.user-tab-clubs-content').animate({opacity: '0'}, 200);
                         $('.user-tab-discussions-content').hide();
-                        $('.user-tab-groups-content').show();
+                        /*$('.user-tab-groups-content').show();*/
+						$('.user-tab-groups-content').css('display', 'inline');
                         $('.user-tab-groups-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Feeds
                     if ($(this).hasClass('tab-1')) {
@@ -1089,6 +1097,10 @@
                         $('.user-tab-groups-content').animate({opacity: '0'}, 200);
                         $('.user-tab-discussions-content').show();
                         $('.user-tab-dicussions-content').animate({opacity: '1'}, 200);
+                        $('.user-information').show();
+                        $('.user-information').animate({opacity: '1'}, 200);
+                        $('.user_about_block').show();
+                        $('.user_about_block').animate({opacity: '1'}, 200);
                     }
                     // Following
                     if ($(this).hasClass('tab-3')) {
@@ -1105,6 +1117,10 @@
                         $('.user-tab-dicussions-content').animate({opacity: '0'}, 200);
                         $('.user-tab-following-content').show();
                         $('.user-tab-following-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Followers
                     if ($(this).hasClass('tab-4')) {
@@ -1121,6 +1137,10 @@
                         $('.user-tab-following-content').animate({opacity: '0'}, 200);
                         $('.user-tab-followers-content').show();
                         $('.user-tab-followers-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                     // Clubs
                     if ($(this).hasClass('tab-5')) {
@@ -1135,8 +1155,12 @@
                         $('.user-tab-following-content').animate({opacity: '0'}, 200);
                         $('.user-tab-followers-content').hide();
                         $('.user-tab-followers-content').animate({opacity: '0'}, 200);
-                        $('.user-tab-clubs-content').show();
+                        $('.user-tab-clubs-content').css('display', 'inline');
                         $('.user-tab-clubs-content').animate({opacity: '1'}, 200);
+                        $('.user-information').hide();
+                        $('.user-information').animate({opacity: '0'}, 200);
+                        $('.user_about_block').hide();
+                        $('.user_about_block').animate({opacity: '0'}, 200);
                     }
                 });
 
@@ -2785,6 +2809,8 @@
                 $(document).delegate('.ddbox-invite-option', 'click', function () {
                     window.open($(this).find('.invite-option-title-wrap').prop('title'));
                 });
+
+
 
                 /* Embedly for showcase code ends here */
 

@@ -623,16 +623,14 @@ class ProfileController extends Controller
             }
             if($fileRecord->delete()) {
                 if(!preg_match('/http/',$fileUrl)){
-                    try {
-                        unlink(Yii::getPathOfAlias('webroot') . $fileUrl);
-                    }catch(Exception $e){}
+                        @unlink(Yii::getPathOfAlias('webroot') . $fileUrl);
                 }
             }else{
                 $result['status'] .= 'failure: could not delete file record';
             }
             if(isset($previewFile)){
                 if($previewFile->delete()){
-                    unlink(Yii::getPathOfAlias('webroot') .$previewUrl);
+                    @unlink(Yii::getPathOfAlias('webroot') .$previewUrl);
                 }else{
                     $result['status'] .= 'failure: could not delete preview file record';
                 }

@@ -137,6 +137,9 @@ class User extends CActiveRecord
 
 
             //added by Michael
+            'groupUsersAll' => array(self::HAS_MANY, 'GroupUser', 'user_id'),
+			'groupUsersForFollowers' => array(self::HAS_MANY, 'GroupUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
+			'groupUsersForNonFollowers' => array(self::HAS_MANY, 'GroupUser', 'user_id','on'=>'privacy="public"'),
             'classUsersAll' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
             'classUsersForFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
             'classUsersForNonFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="public"'),

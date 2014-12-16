@@ -1,7 +1,7 @@
 body{
 	font-family: 'Open Sans', sans-serif;
 	margin:0px auto;
-	background: #d8d8d8 url(../assets/noise-2.png);
+	background: #eee;
 	min-width: 720px;
 	position: absolute;
 	top: 0;
@@ -14,8 +14,10 @@ body{
 .root{
 	height:100%;
 	min-width:320px;
-	position:relative;
+	position: absolute;
+	display: inline-block;
 	min-height:100%;
+	width: 100%;
 }
 
 .top-bar{
