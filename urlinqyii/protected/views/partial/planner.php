@@ -32,7 +32,13 @@
 		<div class="planner_container">
 			<div class="planner_header_panel">
 				<div class="planner_header">
-					<?php echo strtoupper($origin_type); ?> PLANNER
+					<?php
+                        if($origin_type == 'home'){
+                            echo 'MY';
+                        }else{
+                            echo strtoupper($origin_type);
+                        }
+                     ?> PLANNER
 					<img id="dropdown_arrow" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/dropdown_arrow.png"/>
 				</div>
 			</div>
@@ -144,11 +150,16 @@
 
                         <div id="event_list">
                             <script id="event_template" type="text/x-handlebars-template">
-                                <ul class="event">
+                                <ul class="event" data-event_id='{{event_id}}'>
                                     <li>
 
                                         <div class="event_listing_wrap">
                                             <span class="color_border " id="color_border1"></span>
+                                            {{#ifCond complete '==' '0'}}
+                                                    NOT COMPLETE
+                                            {{else}}
+                                                    COMPLETE
+                                            {{/ifCond}}
                                             <div class="event_listing {{event_class}}" >
                                                 <div class="evt_data" id="event_data0">{{title}} &#8226; {{end_date}}</div>
                                                 <div class="checkbox_wrapper">

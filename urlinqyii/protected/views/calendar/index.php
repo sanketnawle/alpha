@@ -65,7 +65,7 @@
 </head>
 <body>
     <?php echo Yii::app()->runController('partial/topbar'); ?>
-    <?php echo Yii::app()->runController('partial/leftmenu'); ?>
+
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
             <div class="column left">
