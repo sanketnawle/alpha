@@ -630,33 +630,38 @@ $(document).ready(function() {
 				});
 
 			$(document).delegate(".visi_functions_option_fbar","click",function(){
-			     	//student campus connections faculty
-			     	var ref=$(this).closest(".posttool-select");
-			     	var privacy= "campus";
-			     	if($(this).find(".visi_icon").hasClass("i_campus")){privacy="campus";}
-			     	if($(this).find(".visi_icon").hasClass("i_student")){privacy="students";}
-			     	if($(this).find(".visi_icon").hasClass("i_faculty")){privacy="faculty";}
-			     	if($(this).find(".visi_icon").hasClass("i_connections")){privacy="connections";}
+                //student campus connections faculty
+                var ref=$(this).closest(".posttool-select");
+                var privacy= "campus";
+                if($(this).find(".visi_icon").hasClass("i_campus")){privacy="campus";}
+                if($(this).find(".visi_icon").hasClass("i_student")){privacy="students";}
+                if($(this).find(".visi_icon").hasClass("i_faculty")){privacy="faculty";}
+                if($(this).find(".visi_icon").hasClass("i_connections")){privacy="connections";}
 
 
-			     	ref.find(".tag-box").text("Visible to "+privacy);
-			     	ref.closest(".select_wrap").find(".visi_val").val(privacy);
-			     	//alert(ref.closest(".select_wrap").find(".visi_val").val());
+                ref.find(".tag-box").text("Visible to "+privacy);
+                ref.closest(".select_wrap").find(".visi_val").val(privacy);
+                //alert(ref.closest(".select_wrap").find(".visi_val").val());
 
-			     	$(this).closest(".visi_functions_box").hide();
-			     	cardtag_flag=0;
-			     	ref.find(".field_fbar").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
-					ref.find(".vstt_wedgeDown").css({"opacity":"0"});
+                $(this).closest(".visi_functions_box").hide();
+                cardtag_flag=0;
+                ref.find(".field_fbar").css({"border":"1px solid rgba(60,60,60,0)","background-color":"transparent"});
+                ref.find(".vstt_wedgeDown").css({"opacity":"0"});
 
-					var src_2=$(this).closest(".posttool-select").find(".visi_icon").css("background-image");
-					var srcarr= src_2.split("_");
-					srcarr[srcarr.length-1]="status.png";
-					var subarr=srcarr[srcarr.length-2].split("/");
-					srcarr[srcarr.length-2]="status/"+privacy;
-					var src_2=srcarr.join("_").substring(4);
-					if(navigator.sayswho.split(" ")[0].toLowerCase()=="firefox"){src_2=src_2.substring(1);}
-					$(this).closest(".posttool-select").find(".vstt_icon").attr("src",src_2);
-			     });
+                var src_2=$(this).closest(".posttool-select").find(".visi_icon").css("background-image");
+                var srcarr= src_2.split("_");
+                srcarr[srcarr.length-1]="status.png";
+                var subarr=srcarr[srcarr.length-2].split("/");
+                srcarr[srcarr.length-2]="status/"+privacy;
+                var src_2=srcarr.join("_").substring(4);
+                if(navigator.sayswho.split(" ")[0].toLowerCase()=="firefox"){src_2=src_2.substring(1);}
+
+                var takeout = src_2.indexOf("visi_status");
+                src_2 = src_2.substring(takeout+12, src_2.length);
+                var src = "img/privacy_icons/privacy_status/";
+                src_2 = src + src_2;
+                $(this).closest(".posttool-select").find(".vstt_icon").attr("src",src_2);
+             });
 
 				
 				// setting target page vars for AJAX calls

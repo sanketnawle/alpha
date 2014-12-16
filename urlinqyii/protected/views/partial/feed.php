@@ -3,7 +3,8 @@
     <title> Feed </title>
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        feed_url = '<?php echo $feed_url; ?>';
+        feed_url = "";
+        //feed_url = '<?php echo $feed_url; ?>';
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/ness.js"> </script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>

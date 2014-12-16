@@ -158,22 +158,22 @@
 								</span>";
 								if($pownership=="post"){
 									echo "<div class = 'visi_functions_box'>
-                                            <span>
-                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus'></div>Campus</div>
-                                            <hr class = 'post_options_hr'>
-                                            </span>
-                                            <span>
-                                            <div class = 'visi_functions_option_fbar'><div class='visi_icon i_student'></div>Only Students</div>
-                                            <hr class = 'post_options_hr'>
-                                            </span>
-                                            <span>
-                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty'></div>Only Faculty</div>
-                                            <hr class = 'post_options_hr'>
-                                            </span>
-                                            <span>
-                                            <div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections'></div>My Connections</div>
-                                            </span>
-                                        </div>";
+                                                <span>
+                                                    <div class = 'visi_functions_option_fbar'><div class='visi_icon i_campus'></div>Campus</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_student'></div>Only Students</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                    <div class = 'visi_functions_option_fbar'><div class='visi_icon i_faculty'></div>Only Faculty</div>
+                                                <hr class = 'post_options_hr'>
+                                                </span>
+                                                <span>
+                                                <div class = 'visi_functions_option_fbar'><div class='visi_icon i_connections'></div>My Connections</div>
+                                                </span>
+                                            </div>";
 								}
 							echo "</div>
 						</div>

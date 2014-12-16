@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     //alert(club_id);
     var profileLoadFlag = 1; // to load the profile load if 1 
 
@@ -18,6 +19,7 @@ $(document).ready(function () {
 
     var feed_right_sec = $(".feed-tab-rightsec").clone();
     var about_tab = $(".about-content").clone();
+    var settings_tab = $(".settings-content").clone();
 
         $(window).scroll(function() {
         var y=$(window).scrollTop()*0.32;
@@ -376,6 +378,69 @@ $(document).ready(function () {
         });
     }
 
+    $(document).delegate("#about-back", "click", function() {
+        if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")) {
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+        }
+        if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")) {
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+        }
+        if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")) {
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
+        }
+        if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab4-icon-active")) {
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab4-icon-active");
+            $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab4-icon-inactive");
+        }
+        $(this).find(".tab-title").find(".tab-icon").removeClass("tab1-icon-inactive");
+        $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
+        $(".group-tab-active").addClass("tab-inactive");
+        $(".group-tab-active").removeClass("group-tab-active");
+        $(".tab-wedge-down").css("left", "310px");
+        $(this).removeClass("tab-inactive");
+        $(this).addClass("group-tab-active");
+
+        $(".syllabus-tab-content").stop().animate({ opacity: "0" }, 300);
+        $(".syllabus-tab-content").hide();
+        $(".about-content-tab").stop().animate({ opacity: "0" }, 300);
+        $(".about-content-tab").hide();
+        $(".files-tab-content").stop().animate({ opacity: "0" }, 300);
+        $(".files-tab-content").hide()
+        $(".members-tab-content").stop().animate({ opacity: "0" }, 300);
+        $(".members-tab-content").hide();
+        $(".analytics-tab").stop().animate({ opacity: "0" }, 300);
+        $(".analytics-tab").hide();
+        $(".about-content").stop().animate({ opacity: "0" }, 300);
+        $(".about-content").hide();
+        $(".about-content").remove();
+        $(".feed-tab-content").show();
+        $(".feed-tab-content").animate({ opacity: "1" }, 300);
+
+        /* will be replaced by ajax*/
+        //$.ajax({
+        //    type: "POST",
+        //    url: "php/club_feed_tab.php",
+        //    data: { group_id: qs['group_id'] },
+        //    success: function (html) {
+        //        $(".midsec").html(html);
+        //        $(".feed-tab-content").animate({ opacity: "1" }, 300);
+        //        $(".feed-tab-content").show();
+
+        //        var about_text = $(".content-about").text();
+        //        if (about_text.length >= 73) {
+        //            about_text = about_text.substring(0, 70) + "..." + "<span class='bh-t2'> <a id = 'group-about-link' class = 'bh-t2'>Read More</a></span>";
+        //            $(".content-about").html(about_text);
+        //        }
+        //    },
+        //    error: function (html) {
+        //        alert("error");
+        //    }
+        //});
+    });
+
     $(document).delegate(".tab-inactive", "click", function () {
         if ($(this).hasClass("tab2")) {
             if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")) {
@@ -662,6 +727,8 @@ $(document).ready(function () {
         $(".files-tab-content").hide();
         $(".analytics-tab").stop().animate({ opacity: "0" }, 300);
         $(".analytics-tab").hide();
+        $(".settings-content").stop().animate({opacity: "0"}, 300);
+        $(".settings-content").hide();
 
         $(".syllabus-tab-content").stop().animate({ opacity: "0" }, 300);
         $(".syllabus-tab-content").hide();
@@ -1182,4 +1249,24 @@ $(document).ready(function () {
     });
 
     /* code for club about tab ends here */
+
+    $(document).delegate(".club-settings-button", "mouseenter", function () {
+        if ($(".club-settings-menu").css("display") == "none") {
+            $(".club-settings-hover").css("display", "block");
+        }
+    });
+
+    $(document).delegate(".club-settings-button", "mouseleave", function () {
+        $(".club-settings-hover").css("display", "none");
+    });
+
+    $(document).delegate(".club-settings-button", "click", function () {
+        if ($(".club-settings-menu").css("display") == "none") {
+            $(".club-settings-hover").css("display", "none");
+            $(".club-settings-menu").css("display", "block");
+        }
+        else {
+            $(".club-settings-menu").css("display", "none");
+        }
+    });
 });

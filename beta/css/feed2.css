@@ -261,15 +261,15 @@ body {
 
 
 .post_lc .post_like .post_like_icon {
-	background-image: url(../src/like-button-sprite.png);
-	background-size: 15px 45px;
-	background-position: left top;
-	display: inline-block;
-	float: left;
-	margin-left: -2px;
-	width: 15px;
-	margin-top: 5.5px;
-	height: 15px;
+    background-image: url(../src/like-button-sprite.png);
+    background-size: 16px 46px;
+    background-position: left top;
+    display: inline-block;
+    float: left;
+    margin-left: -2px;
+    width: 17px;
+    margin-top: 5px;
+    height: 16px;
 }
 
 .post_lc .post_liked .post_like_icon {
@@ -849,7 +849,7 @@ color: rgba(4, 117, 156, 0.65);
   float: left;
   width: 32px;
   margin-top: 3px;
-  height: 17px;
+  height: 16px;
   border: 1px solid #C9C9C9;
   cursor:pointer;
   background-color:#f5f5f5;

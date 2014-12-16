@@ -37,7 +37,7 @@ $(document).ready(function() {
     var map_zoom_size = "&zoom=14&size=270x180";
     var map_marker = "&markers=color:red%7Clabel:%7C";
 
-    /*
+
     $.ajax({
         type: 'GET',
         dataType: 'jsonp',
@@ -61,7 +61,7 @@ $(document).ready(function() {
             }
         }
     });
-    */
+
 
     var originalHTML = "";
 
@@ -104,8 +104,8 @@ $(document).ready(function() {
 
         $(".about-content").stop().animate({ opacity: "1"},300);
         $(".about-content").show();
-
-    });
+    
+     });
 
     $(document).delegate(".group-header-above.group-header-left", "mouseenter", function() {
         $(".upload_cover").css("opacity", "1");
@@ -122,28 +122,70 @@ $(document).ready(function() {
         $(".group-cover-pic-info").css("opacity", "1");
     });
 
-    $(document).delegate(".studybtn","mouseenter",function(){
-        var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
-        $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
-        $(this).closest(".deptBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
-        $(this).closest(".deptBtns").find(".study_box_open").show();
-        setTimeout(
-            function(){
-                $(thisBox).stop().css({"top":"3px","height":"18px","opacity": "1"});
-                setTimeout(
-                    function(){
-                        $(thisBox).stop().css({"height":"150px"});
-                    },
-                    300)
-            },
-            250)
+
+     $(document).delegate(".studybtn","mouseenter",function(){
+            var thisBox = $(this).closest(".deptBtns").find(".study_box_open");
+            $(this).closest(".deptBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
+            $(this).closest(".deptBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
+            $(this).closest(".deptBtns").find(".study_box_open").show();
+            setTimeout(
+                function(){
+                 $(thisBox).stop().css({"top":"3px","height":"18px","opacity": "1"});
+                 setTimeout(
+                function(){
+                    $(thisBox).stop().css({"height":"150px"});
+                },
+                300)
+                },
+                250)
 
 
-    });
+        });
+        $(document).delegate(".uploadedPhotoFrame","click",function(){
+            $(this).closest("form").find(".cover_photo_upload").click();
+        });
+            
+            $(document).delegate(".cover_photo_upload","change",function(){
+                 var $ref= $(this);
+                var formData= new FormData( $ref.closest("form")[0]);
+                var editing="show";
+                /*
+                if(univ_id.trim()!=""){
+                    t_univ_id=univ_id;
+                }*/
 
-    $(document).delegate(".uploadedPhotoFrame","click",function(){
-        $(this).closest("form").find(".cover_photo_upload").click();
-    });
+                formData.append("editing",editing);
+                formData.append("id", univ_id);
+                formData.append("school",true);
+                $.ajax({
+                            type: "POST",
+                            url: "edit_school_pictures.php",
+                            xhr: function() {  // Custom XMLHttpRequest
+                                var myXhr = $.ajaxSettings.xhr();
+                                if(myXhr.upload){ // Check if upload property exists
+                                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                                    }
+                             return myXhr;
+                            },
+
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function(html){
+                                //alert(html);
+                                $ref.closest("form").find(".uploadedPhotoFrame").hide();
+                                alert(html);
+                                alert("ad");
+                                $ref.closest("form").find(".uploadedPhotoFrame_display").css({"background-image":"url("+html+")"});
+                                $ref.closest("form").find(".uploadedPhotoFrame_display").show();
+
+                            },
+                            error: function(html){
+                                alert(html);
+                                alert("asfw");
+                            }
+                        });
+            });
 
     $(document).delegate(".cover_photo_upload","change",function(){
         var $ref= $(this);
@@ -817,6 +859,7 @@ $(document).ready(function() {
                             <?php echo $this->renderPartial('school_info_tab_students',array('user'=>$user)); ?>
                             
                             <?php echo $this->renderPartial('school_departments_tab',array('user'=>$user, 'departments'=>$school->departments)); ?>
+
                             <?php echo $this->renderPartial('school_clubs_tab',array('user'=>$user, 'groups'=>$school->groups)); ?>
 
                             <?php echo $this->renderPartial('school_members_tab',array('user'=>$user, 'members'=>$school->users)); ?>

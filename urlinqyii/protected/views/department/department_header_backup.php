@@ -8,13 +8,14 @@
 
  */
 
+
 if (session_status() == PHP_SESSION_NONE) {
 
     session_start();
 
 }
 
-include 'php/dbconnection.php';
+//include 'php/dbconnection.php';
 
 
 if (isset($_SESSION['user_id'])) {
@@ -31,7 +32,7 @@ if (isset($_GET['dept_id'])) {
 
 if (isset($_SESSION['user_type'])) {
 
-    $user_type = $_SESSION['user_type'];
+    $user_type = 0; //$_SESSION['user_type'];
 
 }
 
@@ -42,7 +43,7 @@ if (isset($_SESSION['univ_id'])) {
 }
 
 
-$current_semester = get_current_semester($con, $univ_id);
+$current_semester = 1; //get_current_semester($con, $univ_id);
 
 $admin_flag = 0;
 
@@ -62,6 +63,7 @@ if ($user_type == 'p') {
     $admin_flag = 0;
 
 }
+
 
 
 $get_department_details_query = "SELECT (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.status = 'active') as user_count, D.*, (SELECT COUNT(*) FROM courses C WHERE C.dept_id = D.dept_id) AS course_count, (SELECT COUNT(*) FROM user U WHERE U.dept_id = D.dept_id AND U.user_id = $user_id) as join_flag, (SELECT COUNT(*) FROM department_follow DF WHERE DF.dept_id = $dept_id AND DF.user_id = $user_id) as follow_flag FROM department D WHERE D.dept_id = $dept_id";
@@ -163,7 +165,7 @@ if ($get_department_details_query_result->num_rows == 0) {
 
 //no option to edit cover photo
 //DT Test
-echo "
+        echo "
 
             <button class = 'upload_cover upload_department_cover'>
 

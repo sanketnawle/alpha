@@ -3,7 +3,7 @@
 
 
 $user_id = $user->user_id;
-
+$is_member = 0;
 
 echo '
                         <div class = "group-head-top-sec" style="background-size:cover; background-image:url(\'' . Yii::app()->getBaseUrl(true) . $club->coverFile->file_url . '\');">
@@ -135,7 +135,22 @@ echo '
                                             </a >
                                         </li >';
                                     }
-                                echo '</ul >    
+                                echo '
+                                    <div class="club-settings-button">
+                                        <a class="class-settings"><div class="settings-bg"></div></a>
+                                    </div>
+                                    <div class="club-settings-hover">
+                                        <div class="settings-hover-tip"></div>
+                                        <div class="settings-hover-body">Adjust settings and invite people</div>
+                                    </div>
+                                    <div class="club-settings-menu">
+                                        <div class="settings-drop">
+                                            <div class ="settings-item" id="show-class-settings"><div class="class-menu-icon" id="class-settings"></div>Class settings</div>
+                                            <hr class = "hr">
+                                            <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
+                                        </div>
+                                    </div>
+                                </ul >
                             </div>
                             <div class = "group-footer-functions">
 
