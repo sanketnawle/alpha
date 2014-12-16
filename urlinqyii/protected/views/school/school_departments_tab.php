@@ -37,6 +37,7 @@ foreach ($departments as $department){
     // var_dump($department->pictureFile->file_url);
     echo '<div class = "item department-selector">';
 
+    $default_followed = "";
     $default_unfollowed="selected";
       foreach($user->departments as $dep) {
           if ($dep->department_id==$department->department_id) {

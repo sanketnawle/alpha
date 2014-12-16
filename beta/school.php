@@ -406,7 +406,6 @@ $(document).ready(function() {
     });
 
 
-
     $(document).delegate('.group-cover-pic-info',"click", function(){
         $('body,html').animate({
                 scrollTop: 0

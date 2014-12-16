@@ -1,3 +1,213 @@
+
+
+.club-settings-button {
+    float: right;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 125px;
+}
+
+.group-about-4 {
+    height: 380px;
+    width: 320px !important;
+    margin-left: -45px;
+}
+
+.club-tab-content {
+    margin-left: 320px;
+    max-width: 1011px;
+    clear: both;
+}
+
+hr.officer-divider {
+    margin-bottom: 7px !important;
+    height: auto;
+}
+
+.settings-officer-line {
+    width: 100%;
+    height: 55px;
+    display: block;
+}
+
+.class-settings-expand {
+    display: none;
+    margin-top: 15px;
+    height: 85px;
+}
+
+.officer-name {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.officer-name p {
+    font-size: 17px !important;
+    font-weight: 700;
+    color: rgba(0,0,0,0.5);
+    float: left;
+    margin-right: 5px;
+}
+
+.officer-name p#officer-you {
+    color: rgba(0,0,0,0.35);
+    font-size: 14px !important;
+    vertical-align: bottom;
+    margin-top: 19px;
+}
+
+.officer-pic {
+    background-image: url(../assets/obama.png);
+    background-size: cover;
+    height: 55px;
+    width: 55px;
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.officers-input {
+    width: 100%;
+    height: 23px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 2px 0;
+    display: block;
+}
+
+.officers-input-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    background-image: url(../assets/about_settings_icons.png);
+    background-position-y: 68px;
+    background-size: 47px auto;
+}
+
+input.officer-input-text {
+    display: inline-block;
+    height: auto;
+    border: none;
+    font-size: 17px;
+    width: 550px;
+    color: rgba(0,0,0,0.45);
+    z-index: 300;
+    position: relative;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+input.officer-input-text::-webkit-input-placeholder {
+    color: rgba(0,0,0,0.25);
+    font-weight: normal;
+}
+
+input.officer-input-text:-moz-placeholder { /* Firefox 18- */
+    color: rgba(0,0,0,0.25);
+    font-weight: normal;
+}
+
+input.officer-input-text::-moz-placeholder {  /* Firefox 19+ */
+    color: rgba(0,0,0,0.25);
+    font-weight: normal;
+}
+
+input.officer-input-text:-ms-input-placeholder {
+    color: rgba(0,0,0,0.25);
+    font-weight: normal;
+}
+
+div.class-tab-content div.about-tab-leftsec div.settings-tab-officers {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    height: auto;
+    float: left;
+    margin-top: 10px;
+    margin-left: 13px;
+    padding-bottom: 9px;
+}
+
+.notifications-text {
+    width: 150px;
+    display: inline-block;
+}
+
+.notifications-text p b {
+    font-size: 16px;
+}
+
+.class-notifications-check {
+    float: right;
+    display: inline-block;
+    width: 40px;
+    margin-top: 25px;
+}
+
+.settings-edit-icon {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+}
+
+.settings-line-right:hover {
+    cursor: pointer;
+}
+
+.settings-line-right:hover .settings-edit-icon {
+    display: inline-block;
+    background-image: url(../assets/about_settings_icons.png);
+    background-position-y: 73px;
+}
+
+.settings-line-right:hover p {
+    text-decoration: underline;
+}
+
+.settings-line-left {
+    width: 230px;
+    float: left;
+    display: inline-block;
+    margin-right: 80px;
+}
+
+.settings-line-middle {
+    display: inline-block;
+    width: 140px;
+    float: left;
+    color: rgba(0,0,0,0.47);
+    font-size: 16px;
+}
+
+.settings-line-middle p {
+    font-size: 16px !important;
+    font-weight: 700;
+}
+
+.settings-line-right {
+    float: right;
+    width: 50px;
+    display: inline-block;
+}
+
+.settings-line-right p {
+    display: inline-block;
+    color: #029acf;
+}
+
+.settings-line {
+    height: 90px;
+    width: 100%;
+    display: block;
+    margin-top: -5px;
+}
+
+.settings-line:first-child {
+    height: 65px;
+}
+
 .settings-hover {
     display: none;
     z-index: 500;
@@ -5,6 +215,7 @@
     right: -69px;
     top: 43px;
 }
+
 
 .settings-hover-tip {
     height: 0;
@@ -1710,10 +1921,14 @@ div.feed-tab-rightsec,div.about-tab-rightsec{
 }
 
 div.prof-rightsec {
-    margin-left: 24px;
+    margin-left: 25px;
 }
 
-div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
+div.notifications-rightsec {
+    margin-left: 25px;
+}
+
+div.feed-tab-rightsec div.group-about, div.about-tab-rightsec div.group-about{
     width: 315px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
     box-shadow: 0 1px 1px rgba(0,0,0,0.05);
@@ -1725,27 +1940,22 @@ div.feed-tab-rightsec div.group-about,div.about-tab-rightsec div.group-about{
     border-color: #E0E0E0 #D5D5D5 #B7C3CA;
 }
 
-div.about-tab-rightsec div.group-about-2{
-    height: auto;
+div.about-tab-rightsec div.group-about-2 {
+    height: 380px;
+    width: 327px !important;
+}
+
+div.about-tab-rightsec div.group-about-3 {
+    height: 110px;
     width: 327px !important;
 }
 
 div.feed-tab-rightsec div.group-about div.box-header,div.about-tab-rightsec div.group-about div.box-header{
-
     padding-bottom: 0px;
-
-
     margin-left: 12px;
-
-
     border-top: 1px solid rgba(233, 233, 233, 0.64);
-
-
     margin-top: 7px;
-
-
     margin-right: 12px;
-
 }
 
 div.feed-tab-rightsec div.group-about div.box-header:nth-of-type(1),div.about-tab-rightsec div.group-about div.box-header:nth-of-type(1){
@@ -1955,11 +2165,9 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
     cursor:pointer;
 }
 
-div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.class-tab-content,div.analytics-tab{
+div.students-tab-content,div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.class-tab-content,div.analytics-tab{
     display:none;
     opacity:0;
-
-
 }
 
 div.members-header{

@@ -161,7 +161,6 @@
 
                     <?php echo $this->renderPartial('class_feed_tab',array('class'=>$class,'course'=>$course,'user'=>$user)); ?>
 
-
                     <div class="members-tab-content">
                         <?php echo $this->renderPartial('class_members_tab',array('user'=>$user,'class'=>$class,
                             'is_admin'=>$is_admin, 'students' =>$students, 'admins'=>$admins) );
@@ -172,13 +171,12 @@
                         <?php
                            echo $this->renderPartial('class_files_tab',array('class'=>$class,'user'=>$user, 'files'=>$files));
                         ?>
-
                     </div>
+
                     <div class='syllabus-tab-content'>
                         <?php
                             echo $this->renderPartial('class_syllabus_tab',array('class'=>$class,'user'=>$user));
                         ?>
-
                     </div>
 
                     <div class='about-content-tab'>
@@ -186,6 +184,7 @@
                             ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules
                             ,'all_following'=>$all_following)); ?>
                     </div>
+
                     <div class='settings-content-tab'>
                         <?php echo $this->renderPartial('class_settings_tab',array('class'=>$class,'user'=>$user, 'professor'=>$professor
                         ,'course'=>$class->course, 'department'=>$department,'other_courses'=>$other_courses,'schedules'=>$schedules
@@ -198,7 +197,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 
