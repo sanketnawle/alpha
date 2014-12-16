@@ -270,9 +270,9 @@ echo                   ');background-size:cover;height:20px;width:20px;display: 
         <div class = "group-head-footer" >
             <div class = "group-header-tab" >
                 <ul class = "group-nav" >';
-/* for non-member view there is a class */
-if ($is_member) {
-    echo '<li class = "group-tab" >
+                /* for non-member view there is a class */
+				if ($is_member) {
+					echo '<li class = "group-tab" >
 			                <a class = "tab1 tab-anchor group-tab-active" >
 			                    <div class = "tab-title" >
 			                        CLASS FEED
@@ -292,8 +292,8 @@ else {
                             </a >
                             <button id="group-about-link" style="display:none;"></button>
                         </li >';
-}
-echo '
+				}
+                echo '
                     <li class = "group-tab" >
                         <a class = "tab2 tab-anchor tab-inactive" >
                             <div class = "tab-title" >
@@ -342,17 +342,15 @@ if ($is_admin) {
         </div >
         </div>
     </div > ';
-} else {
+    } else {
 
-    //checking enrollment and echoing button accordingly
-    if (!$is_member) {
-        echo '
+        //checking enrollment and echoing button accordingly
+        if ($is_member) {
+            echo '
                 <div class = "join-button" >
-                    <a class = "join" >
-    Enroll
-                    </a >
-                </div >';
-      /*          <div class="settings-button">
+                    <a class = "join" >Enroll</a >
+                </div >
+                <div class="settings-button">
                     <a class="class-settings"><div class="settings-bg"></div></a>
                 </div>
                 <div class="settings-hover">
@@ -365,8 +363,8 @@ if ($is_admin) {
                         <hr class = "hr">
                         <div class ="settings-item" id="show-class-invite"><div class="class-menu-icon" id="class-invite"></div>Invite people</div>
                     </div>
-                </div>*/
-       echo '     </div >
+                </div>
+            </div >
         </div >
         <div class = "tab-wedge-down" style="left:303px">
         </div >
@@ -401,6 +399,7 @@ if ($is_admin) {
     </div > ';
     }
 }
+
 
 
 ?>

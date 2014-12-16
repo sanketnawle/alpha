@@ -1501,7 +1501,7 @@ div.content-file a.file-download:hover > div.file-icon, div.content-file a.file-
     cursor:pointer;
 }
 
-div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.about-content,div.departments-tab-content{
+div.students-tab-content,div.members-tab-content,div.files-tab-content,div.syllabus-tab-content,div.about-content,div.departments-tab-content{
     display:none;
     opacity:0;
 }

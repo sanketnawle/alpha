@@ -8,7 +8,29 @@ $(document).ready(function(){
 
     var blinkflag = 0;
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
 
     setTimeout(function(){
             $(".free_planner_message").fadeOut(150);
@@ -71,6 +93,8 @@ $(document).ready(function(){
     });
 
     $('input:checkbox').on("click", function(){
+
+        alert('???');
         if( $(this).is(':checked') ){
             var x = $(this).val();
             $(x).css("text-decoration", "line-through");
@@ -400,7 +424,13 @@ function add_event(event_json){
 
     //Check if the event is today
     var todays_date = new Date();
-    if(event_date == todays_date){
+
+
+
+    alert(event_date);
+    alert(todays_date);
+    alert(event_date.getDate() == todays_date.getDate());
+    if(event_date.getDate() == todays_date.getDate()){
         show_event(event_json,'#past_events');
         return;
     }
@@ -409,15 +439,15 @@ function add_event(event_json){
     //Check if the even was yesterday
     var yesterdays_date = new Date(todays_date);
     yesterdays_date.setDate(todays_date.getDate() - 1);
-    if(event_date == yesterdays_date){
-        show_event(event_json,'todays_events');
+    if(event_date.getDate() == yesterdays_date.getDate()){
+        show_event(event_json,'#todays_events');
         return;
     }
 
     //Check if the event is tomorrow
     var tomorrows_date = new Date(todays_date);
     tomorrows_date.setDate(todays_date.getDate() + 1);
-    if(event_date == tomorrows_date){
+    if(event_date.getDate() == tomorrows_date.getDate()){
         show_event(event_json,'#tomorrows_events');
         return;
     }
@@ -455,10 +485,88 @@ $(document).on('click','.event_time',function(){
     $('.event_time').css('display', 'none');
 });
 
+
+
+
+//$('#create_todo_form').submit(function (e) {
+$(document).on('click','.checkbox_wrapper',function(e){
+    //Send post request to event/create
+//    e.preventDefault();
+//
+//    //alert($('.event_date').val());
+//
+//    var $form = $(this);
+//    var post_url = $form.attr('action');
+//    var post_data = $(this).serializeArray();
+//    var errors = [];
+
+    var $event = $(this).closest('.event');
+    var event_id = $event.attr('data-event_id');
+
+
+    console.log("EVENT ID");
+    console.log(event_id);
+    alert(event_id);
+
+    var post_url = base_url + '/event/' + event_id + '/checkoff';
+    var post_data = {event_id: event_id};
+    $.post(
+        post_url,
+        post_data,
+        function(response) {
+            if(response['success']){
+                //alert(JSON.stringify(response));
+                add_event(response['event']);
+                //show_event(response['event'],'#todays_events');
+            }else{
+                alert(JSON.stringify(response));
+            }
+        }, 'json'
+    );
+
+
+//
+//        //Check if user input a name for todo
+//        if($('#event_name').val().length == 0){
+//            errors.push({name:'event_name_error',value:'You must give a name for this todo'});
+//        }
+//
+//        //Make sure the date is converted to UTC before passing to database
+//        var todo_date = new Date($('.event_date').attr('data-date'));
+//        todo_date = local_to_utc(todo_date);
+//        todo_date = todo_date.getUTCFullYear().toString() + "-" + (todo_date.getMonth()+ 1).toString() + "-" + todo_date.getDate().toString();
+//
+//        var todo_time = $('.event_time').attr('data-time');
+//
+//
+//        if(errors.length > 0){
+////        alert(JSON.stringify(errors));
+//            $('#new_listing_text').text(JSON.stringify(errors));
+//            return false;
+//        }
+//
+//        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id};
+//        //alert(JSON.stringify(post_data));
+//        $.post(
+//            post_url,
+//            post_data,
+//            function(response) {
+//                if(response['success']){
+//                    //alert(JSON.stringify(response));
+//                    add_event(response['event']);
+//                    //show_event(response['event'],'#todays_events');
+//                }else{
+//                    alert(JSON.stringify(response));
+//                }
+//            }, 'json'
+//        );
+    });
+
+
+
 //$('#create_todo_form').submit(function (e) {
 $(document).on('click','#create_todo_form',function(e){
 //Send post request to event/create
-
     e.preventDefault();
 
     //alert($('.event_date').val());

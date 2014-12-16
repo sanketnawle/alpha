@@ -138,7 +138,7 @@ class EventController extends Controller
 
 
     public function actionGetPlannerEvents(){
-        $user_id = $_GET['user_id'];
+        //$user_id = $_GET['user_id'];
         $user = $this->get_current_user();
 //        $user = User::model()->findBySql('SELECT * FROM `user` WHERE user_id=.'$user_id');
 

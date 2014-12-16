@@ -876,7 +876,7 @@ div.location-pic-div-wrap {
     position: absolute;
     right: 13px;
     opacity: 1;
-    //display: none;
+    display: none;
     top: 62px;
     z-index: 500;
     background-color: white;
