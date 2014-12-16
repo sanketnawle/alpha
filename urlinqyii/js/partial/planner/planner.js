@@ -400,7 +400,13 @@ function add_event(event_json){
 
     //Check if the event is today
     var todays_date = new Date();
-    if(event_date == todays_date){
+
+
+
+    alert(event_date);
+    alert(todays_date);
+    alert(event_date.getDate() == todays_date.getDate());
+    if(event_date.getDate() == todays_date.getDate()){
         show_event(event_json,'#past_events');
         return;
     }
@@ -409,15 +415,15 @@ function add_event(event_json){
     //Check if the even was yesterday
     var yesterdays_date = new Date(todays_date);
     yesterdays_date.setDate(todays_date.getDate() - 1);
-    if(event_date == yesterdays_date){
-        show_event(event_json,'todays_events');
+    if(event_date.getDate() == yesterdays_date.getDate()){
+        show_event(event_json,'#todays_events');
         return;
     }
 
     //Check if the event is tomorrow
     var tomorrows_date = new Date(todays_date);
     tomorrows_date.setDate(todays_date.getDate() + 1);
-    if(event_date == tomorrows_date){
+    if(event_date.getDate() == tomorrows_date.getDate()){
         show_event(event_json,'#tomorrows_events');
         return;
     }
@@ -458,7 +464,6 @@ $(document).on('click','.event_time',function(){
 //$('#create_todo_form').submit(function (e) {
 $(document).on('click','#create_todo_form',function(e){
 //Send post request to event/create
-
     e.preventDefault();
 
     //alert($('.event_date').val());
