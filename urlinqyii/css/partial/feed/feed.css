@@ -42,11 +42,11 @@ float: left;
 
 .post_user_icon{
 display: inline-block;
-width: 67px;
+width: 58px;
 float: left;
 position: relative;
-border: 1px solid #eee;
-height: 67px;
+border: 1px solid #d8d8d8;
+height: 58px;
 margin-top: 1px;
 border-radius: 3px;
 margin-left: 1px;
@@ -58,15 +58,13 @@ display: block;
 position:absolute;
 background-color: #F8F8F8;
 
-width: 71px;
+width: 62px;
 
 margin-left: -91px;
-border-radius: 2px;
-height: 71px;
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18);
--moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18);
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 3px rgba(0, 0, 0, 0.18);
+border-radius: 3px;
+height: 62px;
 cursor:pointer;
+border: 1px solid #d8d8d8;
 }
 
 .post_tag{
@@ -570,7 +568,7 @@ margin-bottom: 4px;
 }
 
 .comments{
-margin-left: 90px;
+margin-left: 68px;
 float: left;
 padding-right: 13px;
 
@@ -598,11 +596,10 @@ border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
 .post_comment .comment_user_icon, .postcomment .comment_user_icon{
 display: inline-block;
 float: left;
-width: 33px;
+width: 35px;
 border-radius: 2px;
-height: 33px;
+height: 35px;
 background-size: cover!important;
-border: 1px solid #eee;
 }
 
 .postcomment .comment_owner_container {
@@ -631,12 +628,14 @@ color: rgba(4, 117, 156, 0.65);
 
 .comment_main
 {
-width: 530px;
+width: 580px;
 float: left;
-margin-top: 10px;
+margin-top: 8px;
 padding: 10px;
-border: 1px solid #ccc;
+border: 1px solid #d8d8d8;
 border-radius: 3px;
+background: #fff;
+box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
 }
 
 .comment_main .comment_msg{
@@ -669,18 +668,19 @@ width: 540px;
 
 .comment_owner_container{
 background-color: #F8F8F8;
-padding: 1px;
-border-radius: 3px;
+padding: 0px;
+border-radius: 2px;
 
 -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
 
 -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
 
-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
+box-shadow: 0px 0px 1px #999;
 
 margin-left: -60px;
 width: 35px;
-margin-top: 6px;
+margin-top: -10px;
+border: 1px solid #fff;
 height: 35px;
 float: left;
 cursor:pointer;
@@ -771,10 +771,10 @@ color:rgba(128, 128, 128, 0.77);
 
 .posts .postcomment{
 position: relative;
-margin-left: 90px;
+margin-left: 68px;
 float: left;
 margin-top: 7px;
-width: 580px
+width: 580px;
 margin-bottom: 10px;
 }
 
@@ -785,7 +785,7 @@ padding: 10px;
 -webkit-border-radius: 3px;
 border-radius: 3px;
 background: #fff;  
-width: 558px;
+width: 580px;
 border: 1px solid #D8D8D8; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); border-radius: 3px;
 }
 

@@ -73,7 +73,7 @@ class PartialController extends Controller
 
 
 
-		$this->render('leftpanel',array('user'=>$user,'classes'=>$classes,'groups'=>$groups));
+		$this->render('leftpanel2',array('user'=>$user,'classes'=>$classes,'groups'=>$groups));
 	}
 
 
