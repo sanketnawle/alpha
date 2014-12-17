@@ -1,0 +1,75 @@
+#nav_bar {
+    position: fixed;
+    top: 48px;
+    background-color: #3b3e41;
+
+
+    height: 38px;
+    width: 920px;
+    z-index: 1;
+
+    margin-left: -12px;
+    float: left;
+
+
+    border-top: none;
+    border-radius: 0px 0px 3px 3px;
+    border: 1px solid #121314;
+    display: block;
+
+
+    font: OpenSans;
+    font-weight: 600;
+    font-size: 13px;
+    color: #999;
+}
+
+.nav_arrow{
+
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/partial/nav_bar/nav_right_arrow.png');
+
+
+
+    display: inline-block;
+    width: 19px;
+    height: 38px;
+
+    float:left;
+    z-index: 10;
+
+}
+
+
+.nav_section {
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+    float:left;
+
+}
+
+.nav_text{
+    margin-left: 5px;
+    width: auto;
+    height: 20px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+#home_nav_icon{
+    display: inline-block;
+    height: 19px;
+    width: 19px;
+    float: left;
+    position: relative;
+    top: 20%;
+    background-image: url('../../../assets/partial/nav_bar/school_icon_grey.png');
+}
+
+div.nav_section.active div#home_nav_icon {
+    background-image: url('../../../assets/partial/nav_bar/school_icon_white.png');
+}
+

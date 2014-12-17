@@ -1,349 +1,296 @@
-body {
-    margin: 0;    
+.clearfix{
+    zoom: 1;
+
 }
 
-.leftpanel * {
-    /*Reset Everything*/
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    font-size: 13px;
-    color: inherit;
+.float_Left{
+    float: left;
+
+}
+
+.float_Right{
+    float: right;
+
+}
+
+.textBtn{
+    color: #1da7d2;
+
+    font-size: 12px;
+    font-weight: 600;
     outline: none;
+    cursor: pointer;
     text-decoration: none;
+}
+
+#LeftPanel_Holder{
+    width: 260px;
+
+    padding-left: 60px;
+    padding-top: 72px;
+    padding-right: 16px;
+}
+
+.LeftPanel_icons{
+    background-image: url(../../../assets/LeftMenuAssets.png);
+
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: auto;
+    vertical-align: middle;
+}
+
+.LeftPanel_icons.LeftPanel_menuicon{
+    margin-left: -16px;
+	
+    position: relative;
+    background-position: 0px -114px;
+    width: 16px;
+    height: 13px;
+    cursor: pointer;
+    opacity:.77;
+}
+
+
+
+.LeftPanel_Content{
+    width: 250px;
+
+    margin-left: 10px;
+}
+
+.LeftPanel_Section{
+    height: auto;
+
+    width: 100%;
+}
+
+.LeftPanel_Profile{
+	
+}
+
+.LeftPanel_Classes{
+	
+}
+
+.LeftPanel_Clubs{
+	
+}
+
+.LeftPanel_SectionHeader{
+
+}
+
+.SectionHeader_holder{
+    border-bottom: 1px solid #dbdcdc;
+
+    height: 24px;
+}
+
+.SectionHeader_holder div h4{
+    font-family: Avenir;
+
+    font-weight: 200;
+    font-size: 18px;
+    color: #777777;
+    margin: 0;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.SectionHeader_holder div.float_Right a{
+    opacity: .48;
+	
+}
+
+em.SectionHeader_ribbon{
+    height: 20px;
+
+    width: 10px;
+    position: relative;
+    margin-left: -17px;
+    margin-top: -3px;
+}
+
+.LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
+    background-position: 0px -38px;
+
+}
+
+.LeftPanel_Clubs .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
+    background-position: 0px -70px;
+	
+}
+
+.LeftPanel_Profile .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
+    background-position: 0px -6px;
+	
+}
+
+
+
+
+.LeftPanel_SectionContent{
+
+}
+
+.LeftPanel_MyBox{
+    margin-top: 10px;
+	
+}
+
+.LeftPanel_MyBox .MyBox{
+	
+}
+
+.MyBox a.MyBox_PictureLink{
+    float: left;
+	
+    cursor: pointer;
+}
+
+a.MyBox_PictureLink img.MyBox_Picture{
+    height: 44px!important;
+	
+    width: 44px!important;
+    border-radius: 2px;
+}
+
+div.MyBox_text{
+    overflow: hidden;
+
+}
+
+div.MyBox_text div.MyBox_textcontent{
+    display: inline-block; padding-right: 5px;
+	
+}
+
+div.MyBox_textcontent div.MyBox_NameSO{
+    padding-left: 7px;
+
+    padding-top: 2px;
+}
+
+a.MyBox_ProfileLink{
+    color: #27292b;
+
+    font-size: 14.3px;
+    font-weight: 600;
+    cursor: pointer;
+    width: auto; word-wrap: break-word;
+    display: block;
+    top: 1px;
+    text-decoration: none;
+    position: relative;
+}
+
+a.MyBox_ProfileLink:hover{
+	text-decoration: underline;
+}
+
+a.MyBox_SO{
+    color: #777;
+    cursor:pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+a.MyBox_SO:hover{
+	color:#686868;
+	text-decoration: underline;
+}
+
+div.LeftPanel_DeptSchoolHolder{
+    margin-bottom: 12px;
+
+    margin-top: 7px;
+    position: relative;
+    margin-left: -6px;
+}
+
+.LeftPanel_DSContentBox{
+    height: 48px;
+
+}
+
+.LeftPanel_DSContentBoxHeader{
+
+}
+
+.LeftPanel_DSContentBoxHeader b{
+    font-size: 11px;
+	
+    color: #999;
+    margin-left: 6px;
+}
+
+a.LeftPanel_DSContentBoxName{
+    width: 256px;
+
+    display: block;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 3px;
+}
+
+
+
+a.LeftPanel_DSContentBoxName h5{
+    color: #333; font-size: 13.5px; 
+    font-weight: 500;
+    margin: 0;
+    margin-left: 6px;
+    line-height: 30px;
+}
+
+.LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
+	opacity:.65;
+	outline:none;
+}
+
+.SectionHeader_holder div.float_Right a:hover{
+	opacity:.77!important;
+}
+
+.SectionHeader_holder div.float_Right a:active{
+	opacity:1!important;
+}
+
+
+ul.LeftPanel_GroupsList{
     list-style: none;
-    font-family: 'Open Sans', sans-serif; 
 
+    margin: 8px 0px 14px;
+    padding: 0;
+    position: relative;
+    margin-left: -6px;
 }
 
-.leftpanel {
-    position: fixed;
-    bottom: 0;
-    top: 48px;
-    background-color: rgba(228, 228, 228, 0);
-    color: #575757;
-    width: 279px;
-    z-index: 1000; 
-    background-color: #ebeced; 
-    border-right: none;
-    box-shadow: none;
-    border-right: 1px solid #d8d8d8;
-    box-shadow: -1px 0px rgba(255, 255, 255, 0.42) inset;
+ul.LeftPanel_GroupsList li{
+    margin: 1px 0px;
+	
 }
 
-    .leftpanel .profile-panel {
-        margin-bottom: 5px;
-    }
-
-        .leftpanel .profile-panel .profile-img {
-            background-size: cover;
-            height: 42px;
-            width: 42px;
-            float: left;
-            margin-left: 11px;
-            margin-top: 5px;            
-        
-            border-radius: 3px;
-            border: none;
-            margin-right: 7px;
+ul.LeftPanel_GroupsList li a{
+    color: #27292b;
+	cursor:pointer;
+	outline:none;
+    font-size: 13.5px;
+    padding: 6px;
+    width: 250px;
+    font-weight: 500;
+    border-radius: 3px;
+    text-decoration: none;
+    display: block;
+    padding-right: 0px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
-        .leftpanel .profile-panel .details span {
-            display: table-cell;
-            color: #333;
-            height: 50px;
-            vertical-align: middle;
-            font-size: 14px;
-        
-            font-weight: 600;
+ul.LeftPanel_GroupsList li a:hover,a.LeftPanel_DSContentBoxName:hover{
+background: #f5f5f5;
 }
-
-        .leftpanel .profile-panel .details .status-img {
-            float: left;
-            margin: 6px 10px 6px 0;
-            height: 12px;
-        }
-
-    .leftpanel ul {
-        padding: 0px 16px 0px 14px;
-    }
-
-        .leftpanel ul li {
-            overflow: auto;
-            margin-bottom: 4px;
-        }
-
-        .leftpanel .profile > ul li:first-child {
-            margin-top: 7px;
-        }
-
-        .leftpanel .scrollable > ul li:first-child {
-            margin-top: 14px;
-        }
-
-        .leftpanel .scrollable > ul li:last-child {
-            margin-bottom: 14px;
-        }
-
-            .leftpanel ul li a:not(.nostyle) {
-                cursor: pointer;
-                padding: 4px 10px;
-                display: block;
-                background-color: transparent;
-                border-radius: 2px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            
-                font-weight: 500;
-}
-
-                .leftpanel ul li a:not(.nostyle):hover {
-                    background-color: #eee;
-                }
-
-    .leftpanel .listing {
-        position: absolute;
-        bottom: 0;
-        top: 170px;
-        width: 281px;
-    }
-
-        .leftpanel .listing > div {
-            position: relative;
-            min-height: 35px;
-            overflow: hidden;
-        }
-
-        .leftpanel .listing .scrollable ul li {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-        }
-
-        .leftpanel .listing .scrollable .wedge {
-            float: right;
-            background-image: url(../../../assets/wedge_down_sb.png);
-            width: 12px;
-            height: 20px;
-            margin-right: -1px;
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position: center center;
-            cursor: pointer;
-            -webkit-transform: rotateX(180deg);
-            -moz-transform: rotateX(180deg);
-            -ms-transform: rotateX(180deg);
-            -o-transform: rotateX(180deg);
-            transform: rotateX(180deg);
-            -webkit-transition: .5s;
-            -moz-transition: .5s;
-            -ms-transition: .5s;
-            -o-transition: .5s;
-            transition: .5s;
-        }
-
-        .leftpanel .listing .scrollable.min {
-            height: 0;
-        }
-
-            .leftpanel .listing .scrollable.min .wedge {
-                -webkit-transform: rotateX(0deg);
-                -moz-transform: rotateX(0deg);
-                -ms-transform: rotateX(0deg);
-                -o-transform: rotateX(0deg);
-                transform: rotateX(0deg);
-            }
-
-            .leftpanel .listing .scrollable.min ul {
-                bottom: 0;
-            }
-
-                .leftpanel .listing .scrollable.min ul li {
-                    opacity: 0;
-                    -webkit-transform: translateY(-20px);
-                    -moz-transform: translateY(-20px);
-                    -ms-transform: translateY(-20px);
-                    -o-transform: translateY(-20px);
-                    transform: translateY(-20px);
-                }
-
-        .leftpanel .listing .scrollable.full {
-            height: 100%;
-            margin-bottom: -35px;
-        }
-
-            .leftpanel .listing .scrollable.full ul {
-                bottom: 35px;
-            }
-
-        .leftpanel .listing .scrollable, .leftpanel .listing .scrollable ul, .leftpanel .listing .scrollable ul li {
-            -webkit-transition: .3s;
-            -moz-transition: .3s;
-            -ms-transition: .3s;
-            -o-transition: .3s;
-            transition: .3s;
-        }
-
-        .leftpanel .listing .class {
-            height: 55%;
-            background: none!important;
-            box-shadow: none!important;
-            width: 100%!important;
-            border-radius: 0px!important;
-        }
-
-        .leftpanel .listing .club {
-            height: 45%;
-        }
-
-        .leftpanel .listing ul {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            top: 35px;
-            overflow: auto;
-        }
-
-    .leftpanel .title {
-        font-family: Avenir;
-        font-weight: 300;
-        color: #FFF;
-        padding: 12px 10px 8px 20px;
-        text-transform: uppercase;
-        font-size: 17px;
-        cursor: default;
-    
-        width: 280px;
-        font-weight: 500;
-}
-
-    .leftpanel .profile .title {
-        background-color: #f16b6a;
-        padding-right: 8px;
-     
-        background: -webkit-linear-gradient(top,#f16b6a,#E75F5D); 
-        background: -moz-linear-gradient(top,#f16b6a,#E75F5D); 
-        background: -o-linear-gradient(top,#f16b6a,#E75F5D); 
-        background-image: -ms-linear-gradient(#f16b6a,#E75F5D);
-}
-
-        .leftpanel .profile .title .menu {
-            width: 18px;
-            height: 19px;
-            float: right;
-            background-image: url(../../../assets/menu-bar.gif);
-            background-size: 100% auto;
-            cursor: pointer;
-            background-position: center center;
-            background-repeat: no-repeat;
-        }
-
-    .leftpanel .class .title {
-        background-color: #01bd8d;
-    
-        background: -webkit-linear-gradient(top,#01bd8d,#00B083); 
-        background: -moz-linear-gradient(top,#f16b6a,#00B083); 
-        background: -o-linear-gradient(top,#f16b6a,#00B083); 
-        background-image: -ms-linear-gradient(#f16b6a,#00B083);
-        width: 280px;
-}
-
-    .leftpanel .club .title {
-        background-color: #1DA7D3;
-    
-        background: -webkit-linear-gradient(top,#1DA7D3,#0D94BE); 
-        background: -moz-linear-gradient(top,#1DA7D3,#0D94BE); 
-        background: -o-linear-gradient(top,#1DA7D3,#0D94BE); 
-        background-image: -ms-linear-gradient(#1DA7D3,#0D94BE);
-}
-
-    .leftpanel .profile-menu {
-        visibility: hidden;
-        position: absolute;
-        width: 210px;
-        top: 0;
-        background-color: #FFF;
-        left: 100%;
-        border: 1px solid #D8D8D8;
-        margin: 5px 0 0 4px;
-        border-radius: 2px;
-        box-shadow: 0 0 15px rgba(64,54,63,0.15);
-        color: #3F3F3F;
-        font-weight: 500;
-        opacity: 0;
-        -webkit-transform: translate(-80px, -25px) scale(0.5);
-        -moz-transform: translate(-80px, -25px) scale(0.5);
-        -ms-transform: translate(-80px, -25px) scale(0.5);
-        -o-transform: translate(-80px, -25px) scale(0.5);
-        transform: translate(-80px, -25px) scale(0.5);
-        -webkit-transition: .3s;
-        -moz-transition: .3s;
-        -ms-transition: .3s;
-        -o-transition: .3s;
-        transition: .3s;
-    }
-
-        .leftpanel .profile-menu.open {
-            opacity: 1;
-            visibility: visible;
-            -webkit-transform: none;
-            -moz-transform: none;
-            -ms-transform: none;
-            -o-transform: none;
-            transform: none;
-        }
-
-        .leftpanel .profile-menu ul {
-            padding: 12px 20px 12px 12px;
-        }
-
-            .leftpanel .profile-menu ul li {
-                margin-bottom: 0;
-            }
-
-                .leftpanel .profile-menu ul li:hover {
-                    background-color: #444;
-                    color: #FFF;
-                }
-
-                .leftpanel .profile-menu ul li a {
-                    background: none;
-                }
-
-                .leftpanel .profile-menu ul li .icon {
-                    float: left;
-                    width: 15px;
-                    height: 15px;
-                    margin-right: 10px;
-                    background-image: url(../../../assets/menu-icons.png);
-                    background-size: 30px 60px;
-                }
-
-                    .leftpanel .profile-menu ul li .icon.prof {
-                        background-position: left -30px;
-                    }
-
-                    .leftpanel .profile-menu ul li .icon.edit {
-                        background-position: left -45px;
-                    }
-
-                    .leftpanel .profile-menu ul li .icon.sign {
-                        background-position: left -15px;
-                    }
-
-                .leftpanel .profile-menu ul li:hover .icon {
-                    background-position-x: right;
-                }
-
-                    .leftpanel .profile-menu ul li:hover .icon.sign {
-                        background-position-x: left;
-                    }
-
-.mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
-    margin: 4px 0 4px 0;
+ul.LeftPanel_GroupsList li a:active,a.LeftPanel_DSContentBoxName:active
+{
+background: #f2f2f2;
 }
