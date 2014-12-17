@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-.leftpanel * {
+.rightpanel * {
     /*Reset Everything*/
     padding: 0;
     margin: 0;
@@ -17,10 +17,14 @@ body {
 
 }
 
-.leftpanel {
-    position: fixed;
-    bottom: 0;
-    top: 47px;
+.rightpanel {
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*top: 48px;*/
+    /*right: 0;*/
+
+    display: inline-block;
+    float:right;
     background-color: rgba(228, 228, 228, 0);
     color: #333;
     width: 260px;
@@ -30,15 +34,15 @@ body {
     -webkit-box-shadow: -1px 0 #FFFFFF inset;
 }
 
-.leftpanel .profile-panel {
+.rightpanel .profile-panel {
     margin-bottom: 5px;
 }
 
-.leftpanel .profile-panel .profile-img {
+.rightpanel .profile-panel .profile-img {
     background-size: cover;
     height: 40px;
     width: 42px;
-    float: left;
+    float: right;
     margin-right: 10px;
     border-radius: 2px;
     margin-top: 5px;
@@ -46,7 +50,7 @@ body {
     border: 1px solid rgba(0, 0, 0, .10);
 }
 
-.leftpanel .profile-panel .details span {
+.rightpanel .profile-panel .details span {
     display: table-cell;
     color: #333;
     height: 50px;
@@ -56,34 +60,34 @@ body {
     font-weight: 600;
 }
 
-.leftpanel .profile-panel .details .status-img {
-    float: left;
+.rightpanel .profile-panel .details .status-img {
+    float: right;
     margin: 6px 10px 6px 0;
     height: 12px;
 }
 
-.leftpanel ul {
+.rightpanel ul {
     padding: 0px 16px 0px 14px;
 }
 
-.leftpanel ul li {
+.rightpanel ul li {
     overflow: auto;
     margin-bottom: 4px;
 }
 
-.leftpanel .profile > ul li:first-child {
+.rightpanel .profile > ul li:first-child {
     margin-top: 7px;
 }
 
-.leftpanel .scrollable > ul li:first-child {
+.rightpanel .scrollable > ul li:first-child {
     margin-top: 14px;
 }
 
-.leftpanel .scrollable > ul li:last-child {
+.rightpanel .scrollable > ul li:last-child {
     margin-bottom: 14px;
 }
 
-.leftpanel ul li a:not(.nostyle) {
+.rightpanel ul li a:not(.nostyle) {
     cursor: pointer;
     padding: 7px 10px;
     display: block;
@@ -94,24 +98,24 @@ body {
     overflow: hidden;
 }
 
-.leftpanel ul li a:not(.nostyle):hover {
+.rightpanel ul li a:not(.nostyle):hover {
     background-color: #eee;
 }
 
-.leftpanel .listing {
+.rightpanel .listing {
     position: absolute;
     bottom: 0;
     top: 170px;
     width: 260px;
 }
 
-.leftpanel .listing > div {
+.rightpanel .listing > div {
     position: relative;
     min-height: 35px;
     overflow: hidden;
 }
 
-.leftpanel .listing .scrollable ul li {
+.rightpanel .listing .scrollable ul li {
     opacity: 1;
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
@@ -120,7 +124,7 @@ body {
     transform: translateY(0);
 }
 
-.leftpanel .listing .scrollable .wedge {
+.rightpanel .listing .scrollable .wedge {
     float: right;
     background-image: url(../../../assets/wedge_down_sb.png);
     width: 12px;
@@ -142,11 +146,11 @@ body {
     transition: .5s;
 }
 
-.leftpanel .listing .scrollable.min {
+.rightpanel .listing .scrollable.min {
     height: 0;
 }
 
-.leftpanel .listing .scrollable.min .wedge {
+.rightpanel .listing .scrollable.min .wedge {
     -webkit-transform: rotateX(0deg);
     -moz-transform: rotateX(0deg);
     -ms-transform: rotateX(0deg);
@@ -154,11 +158,11 @@ body {
     transform: rotateX(0deg);
 }
 
-.leftpanel .listing .scrollable.min ul {
+.rightpanel .listing .scrollable.min ul {
     bottom: 0;
 }
 
-.leftpanel .listing .scrollable.min ul li {
+.rightpanel .listing .scrollable.min ul li {
     opacity: 0;
     -webkit-transform: translateY(-20px);
     -moz-transform: translateY(-20px);
@@ -167,16 +171,16 @@ body {
     transform: translateY(-20px);
 }
 
-.leftpanel .listing .scrollable.full {
+.rightpanel .listing .scrollable.full {
     height: 100%;
     margin-bottom: -35px;
 }
 
-.leftpanel .listing .scrollable.full ul {
+.rightpanel .listing .scrollable.full ul {
     bottom: 35px;
 }
 
-.leftpanel .listing .scrollable, .leftpanel .listing .scrollable ul, .leftpanel .listing .scrollable ul li {
+.rightpanel .listing .scrollable, .rightpanel .listing .scrollable ul, .rightpanel .listing .scrollable ul li {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -ms-transition: .3s;
@@ -184,7 +188,7 @@ body {
     transition: .3s;
 }
 
-.leftpanel .listing .class {
+.rightpanel .listing .class {
     height: 55%;
     background: none!important;
     box-shadow: none!important;
@@ -192,11 +196,11 @@ body {
     border-radius: 0px!important;
 }
 
-.leftpanel .listing .club {
+.rightpanel .listing .club {
     height: 45%;
 }
 
-.leftpanel .listing ul {
+.rightpanel .listing ul {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -204,7 +208,7 @@ body {
     overflow: auto;
 }
 
-.leftpanel .title {
+.rightpanel .title {
     font-family: Avenir;
     font-weight: 300;
     color: #FFF;
@@ -213,16 +217,16 @@ body {
     font-size: 17px;
     cursor: default;
 
-    width: 260px;
+    width: 241px;
     font-weight: 500;
 }
 
-.leftpanel .profile .title {
+.rightpanel .profile .title {
     background-color: #f16b6a;
     padding-right: 8px;
 }
 
-.leftpanel .profile .title .menu {
+.rightpanel .profile .title .menu {
     width: 18px;
     height: 19px;
     float: right;
@@ -233,23 +237,23 @@ body {
     background-repeat: no-repeat;
 }
 
-.leftpanel .class .title {
+.rightpanel .class .title {
     background-color: #01bd8d;
 
-    width: 260px;
+    width: 241px;
 }
 
-.leftpanel .club .title {
+.rightpanel .club .title {
     background-color: #1DA7D3;
 }
 
-.leftpanel .profile-menu {
+.rightpanel .profile-menu {
     visibility: hidden;
     position: absolute;
     width: 210px;
     top: 0;
     background-color: #FFF;
-    left: 100%;
+    right: 100%;
     border: 1px solid #D8D8D8;
     margin: 5px 0 0 4px;
     border-radius: 2px;
@@ -269,7 +273,7 @@ body {
     transition: .3s;
 }
 
-.leftpanel .profile-menu.open {
+.rightpanel .profile-menu.open {
     opacity: 1;
     visibility: visible;
     -webkit-transform: none;
@@ -279,25 +283,25 @@ body {
     transform: none;
 }
 
-.leftpanel .profile-menu ul {
+.rightpanel .profile-menu ul {
     padding: 12px 20px 12px 12px;
 }
 
-.leftpanel .profile-menu ul li {
+.rightpanel .profile-menu ul li {
     margin-bottom: 0;
 }
 
-.leftpanel .profile-menu ul li:hover {
+.rightpanel .profile-menu ul li:hover {
     background-color: #444;
     color: #FFF;
 }
 
-.leftpanel .profile-menu ul li a {
+.rightpanel .profile-menu ul li a {
     background: none;
 }
 
-.leftpanel .profile-menu ul li .icon {
-    float: left;
+.rightpanel .profile-menu ul li .icon {
+    float: right;
     width: 15px;
     height: 15px;
     margin-right: 10px;
@@ -305,24 +309,24 @@ body {
     background-size: 30px 60px;
 }
 
-.leftpanel .profile-menu ul li .icon.prof {
-    background-position: left -30px;
+.rightpanel .profile-menu ul li .icon.prof {
+    background-position: right -30px;
 }
 
-.leftpanel .profile-menu ul li .icon.edit {
-    background-position: left -45px;
+.rightpanel .profile-menu ul li .icon.edit {
+    background-position: right -45px;
 }
 
-.leftpanel .profile-menu ul li .icon.sign {
-    background-position: left -15px;
+.rightpanel .profile-menu ul li .icon.sign {
+    background-position: right -15px;
 }
 
-.leftpanel .profile-menu ul li:hover .icon {
+.rightpanel .profile-menu ul li:hover .icon {
     background-position-x: right;
 }
 
-.leftpanel .profile-menu ul li:hover .icon.sign {
-    background-position-x: left;
+.rightpanel .profile-menu ul li:hover .icon.sign {
+    background-position-x: right;
 }
 
 .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
