@@ -45,7 +45,7 @@
 			<div class="planner_body">
 					<div class="entry_field" id="todo_wrap">
 						<div class="entry_field_placeholder" id="add_todo">
-							+ Add a new to-do
+							+ Create To-do
 							<i class="help_icon"></i>
 						</div>
 						<div class="planner_creation_form">
@@ -143,8 +143,8 @@
 					<div class="event_body">
                         <div id="free_planner_wrap" style="display: none;">
                             <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                            <span class="free_planner_message">Your schedule looks free </span>
-                            <span class="create_planner_message">Create an event or to-do</span>
+                            <span class="free_planner_message">   Your schedule's free</span>
+                            <span class="create_planner_message">Fill out weekly planner</span>
                         </div>
 
 

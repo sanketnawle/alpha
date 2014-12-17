@@ -2848,7 +2848,7 @@ div.grey_star{
 
 .gp_leftbar_wrap
 {
-    position: fixed;
+    position: relative;
     height: 100%;
 }
 

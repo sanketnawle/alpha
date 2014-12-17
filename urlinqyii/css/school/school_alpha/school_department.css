@@ -23,11 +23,6 @@ div.study_box_open {
     font-size: 12.5px;
 }
 
-body {
-    background: #eee;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 div.club-members-wrapper {
     float: left;

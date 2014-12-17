@@ -6,71 +6,132 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="leftpanel">
-    <div class="profile">
-        <div class="title">
-            Profile
-            <div class="menu"></div>
-        </div>
-        <ul>
-            <li class="profile-panel">
-                <a class="nostyle" href="<?php echo Yii::app()->getBaseUrl(true) . '/profile/' . $user->user_id; ?>">
-                    <img class="profile-img" src="<?php echo Yii::app()->getBaseUrl(true) . '' . $user->pictureFile->file_url ?>">
-                    <div class="details">
-                        <span class="name"><?php echo $user->firstname." ".$user->lastname; ?></span>
-                        <!--<span class="status">
-                            <img class="status-img" src="http://lorempixel.com/18/18">
-                            <span class="status-msg">Online</span>
-                        </span>-->
-                    </div>
-                </a>
-            </li>
-            <li><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $user->department_id ?>"><?php echo $user->department->department_name ?></a></li>
-            <li><a href="<?php echo Yii::app()->getBaseUrl(true) . '/school/' . $user->school_id ?>"><?php echo $user->school->school_name ?></a></li>
-        </ul>
-        <div class="profile-menu">
-            <ul>
-                <li><a href="./profile.php?user_id=<?php echo $user->user_id; ?>"><div class="icon prof"></div>Your Profile</a></li>
-                <li><a href="./profile.php?user_id=<?php echo $user->user_id; ?>"><div class="icon edit"></div>Edit Profile</a></li>
-                <li><a href="./php/logout.php"><div class="icon sign"></div>Sign Out</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="listing">
-        <div class="class scrollable <?php if(count($classes) == 0){
-            echo 'min';
-        } ?>">
-            <div class="title">
-                <div class="wedge"></div>
-                Classes
-            </div>
-            <ul>
 
-                <?php foreach($classes as $class){
-                    echo '<li><a href="' .  Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id . '">' . $class->course->course_name . '</a></li>';
-                } ?>
-            </ul>
-        </div>
+<div id = "LeftPanel_Holder">
+	<div class = "LeftPanel_Content">
+		<div class = "LeftPanel_Section LeftPanel_Profile">
+			<div class = "LeftPanel_SectionHeader">
+				<div class = "SectionHeader_holder">
+					<div class = "float_Left">
+						<em class = "SectionHeader_ribbon LeftPanel_icons">
+						</em>
+						<h4>PROFILE</h4>
+					</div>
+					<div class = "float_Right">
+						<div class = "LeftPanel_menuicon LeftPanel_icons"></div>
+					</div>
 
-        <div class="club scrollable <?php if(count($groups) == 0){
-            echo 'min';
-        } ?>">
-
-            <div class="title">
-                <div class="wedge"></div>
-                Clubs
-            </div>
-            <ul>
-                <?php foreach ($groups as $group) {
-                    echo '<li><a href="'.  Yii::app()->getBaseUrl(true) . '/club/' . $group->group_id . '">' . $group->group_name . '</a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </div>
+				</div>
+			</div>
+			<div class = "LeftPanel_SectionContent">
+				<div class = "LeftPanel_MyBox">
+					<div class = "clearfix MyBox">
+						<a class = "MyBox_PictureLink">
+							<img class = "MyBox_Picture" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/LazDisplayPic.png">
+						</a>
+						<div class = "MyBox_text">
+							<div class = "MyBox_textcontent">
+								<div class = "MyBox_NameSO">
+									<a class = "MyBox_ProfileLink">
+										Jacob Lazarus
+									</a>
+									<a class = "MyBox_SO">
+										Sign out
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class = "LeftPanel_DeptSchoolHolder">
+					<div class = "LeftPanel_DSContentBox">
+						<div class = "LeftPanel_DSContentBoxHeader">
+							<b>Department</b>
+						</div>
+						<a class = "LeftPanel_DSContentBoxName">
+							<h5>Neuroscience</h5>
+						</a>						
+					</div>
+					<div class = "LeftPanel_DSContentBox">
+						<div class = "LeftPanel_DSContentBoxHeader">
+							<b>School</b>
+						</div>
+						<a class = "LeftPanel_DSContentBoxName">
+							<h5>NYU School of Engineering</h5>
+						</a>						
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class = "LeftPanelSection LeftPanel_Classes">
+			<div class = "LeftPanel_SectionHeader">
+				<div class = "SectionHeader_holder">
+					<div class = "float_Left">
+						<em class = "SectionHeader_ribbon LeftPanel_icons">
+						</em>
+						<h4>CLASSES</h4>	
+					</div>
+					<div class = "float_Right">
+						<a class = "textBtn">Join classes</a>
+					</div>				
+				</div>				
+			</div>
+			<div class = "LeftPanel_SectionContent">
+				<ul class = "LeftPanel_GroupsList">
+					<li>
+						<a>Theories of the French Republic and Beorafa Part 2</a>
+					</li>
+					<li>
+						<a>Systems and Motor Neuroscience</a>
+					</li>
+					<li>
+						<a>Technical Entrepreneurship</a>
+					</li>		
+					<li>
+						<a>Web Programming</a>
+					</li>
+					<li>
+						<a>Principles of Economics</a>
+					</li>			
+				</ul>
+			</div>						
+		</div>
+		<div class = "LeftPanelSection LeftPanel_Clubs">
+			<div class = "LeftPanel_SectionHeader">
+				<div class = "SectionHeader_holder">
+					<div class = "float_Left">
+						<em class = "SectionHeader_ribbon LeftPanel_icons">
+						</em>
+						<h4>CLUBS</h4>
+					</div>
+					<div class = "float_Right">
+						<a class = "textBtn">Join clubs</a>
+					</div>					
+				</div>				
+			</div>	
+			<div class = "LeftPanel_SectionContent">
+				<ul class = "LeftPanel_GroupsList">
+					<li>
+						<a>NYU Cheese Club</a>
+					</li>
+					<li>
+						<a>Gallatin Business Club</a>
+					</li>
+					<li>
+						<a>NYU Poly Hackathons</a>
+					</li>		
+					<li>
+						<a>Tech@NYU</a>
+					</li>		
+				</ul>				
+			</div>					
+		</div>
+	</div>
 </div>
+
 <script>
     (function($){
         $(function () {
@@ -110,23 +171,7 @@
                     }
                 })();
             });
-            $(".leftpanel .profile .title").click(function () {
-                var menu = $(".menu", $(this));
-                var profilemenu = $(".profile-menu", $(this).parents(".profile"));
-                menu.hasClass("open") ? (function () {
-                    menu.removeClass("open")
-                        .css({ "background-image": "url(./img/menu-x-bar.gif?p" + new Date().getTime().toString() + ")" });
-                    profilemenu.removeClass("open");
-                }()) : (function () {
-                    menu.addClass("open")
-                        .css({ "background-image": "url(./img/menu-bar-x.gif?p" + new Date().getTime().toString() + ")" });
-                    profilemenu.addClass("open");
-                }());
-            });
-            $(".leftpanel .scrollable ul").mCustomScrollbar({
-                theme: "minimal-dark",
-                scrollInertia: 100
-            });
+
         })
     })(jQuery);
 </script>
