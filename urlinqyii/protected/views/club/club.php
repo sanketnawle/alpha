@@ -43,7 +43,7 @@
 
 
                     <div id="content_panel">
-                        <?php echo $this->renderPartial('/partial/nav_bar'); ?>
+                        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club')); ?>
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');"></div>
 
 
