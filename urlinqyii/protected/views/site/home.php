@@ -151,7 +151,7 @@ var $ = jQuery.noConflict();
            
             <section class='rightbar_bag'>
                 <?php
-                echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home'));
+                echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
                 ?>
             </section>
 
