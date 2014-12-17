@@ -4,7 +4,7 @@
     <head>
         <script>
             base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-            origin_type = '<?php echo $origin_type; ?>';
+            origin_type = '<?php echo 'club'; ?>';
             origin_id = '<?php echo $club->group_id; ?>';
 
         </script>
