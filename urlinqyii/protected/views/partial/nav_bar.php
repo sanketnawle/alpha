@@ -87,15 +87,22 @@
             <div class="nav_text"><?php echo $origin->department_name; ?></div>
         </div>
 
+        <!-- ADD NAV ARROW WHITE AFTER CURRENT DEPARTMENT NAME, then COURSES DROP DOWN - text is #999-->
+
+
 
     <?php } ?>
 
 
     <?php if($origin_type == 'school') { ?>
+
+        <!--ADD NAV ARROW WHITE BEFORE SCHOOL NAME -->
         <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/school/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
+
+         <!-- ADD NAV ARROW WHITE AFTER CURRENT SCHOOL NAME, then DEPARTMENTS DROP DOWN - text is #999-->
 
     <?php } ?>
 
