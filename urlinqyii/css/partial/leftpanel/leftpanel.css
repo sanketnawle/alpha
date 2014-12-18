@@ -24,11 +24,11 @@
 }
 
 #LeftPanel_Holder{
-    width: 260px;
+    width: 230px;
 
-    padding-left: 60px;
-    padding-top: 72px;
-    padding-right: 16px;
+    padding-left: 18px;
+    padding-top: 32px;
+    padding-right: 14px;
 }
 
 .LeftPanel_icons{
@@ -42,11 +42,11 @@
 
 .LeftPanel_icons.LeftPanel_menuicon{
     margin-left: -16px;
-	
+    
     position: relative;
-    background-position: 0px -114px;
+    background-position: 0px -108px;
     width: 16px;
-    height: 13px;
+    height: 16px;
     cursor: pointer;
     opacity:.77;
 }
@@ -54,7 +54,7 @@
 
 
 .LeftPanel_Content{
-    width: 250px;
+    width: 220px;
 
     margin-left: 10px;
 }
@@ -66,15 +66,15 @@
 }
 
 .LeftPanel_Profile{
-	
+    
 }
 
 .LeftPanel_Classes{
-	
+    
 }
 
 .LeftPanel_Clubs{
-	
+    
 }
 
 .LeftPanel_SectionHeader{
@@ -100,7 +100,9 @@
 
 .SectionHeader_holder div.float_Right a{
     opacity: .48;
-	
+    
+    top: 6px;
+    position: relative;
 }
 
 em.SectionHeader_ribbon{
@@ -119,12 +121,12 @@ em.SectionHeader_ribbon{
 
 .LeftPanel_Clubs .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
     background-position: 0px -70px;
-	
+    
 }
 
 .LeftPanel_Profile .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
     background-position: 0px -6px;
-	
+    
 }
 
 
@@ -136,22 +138,22 @@ em.SectionHeader_ribbon{
 
 .LeftPanel_MyBox{
     margin-top: 10px;
-	
+    
 }
 
 .LeftPanel_MyBox .MyBox{
-	
+    
 }
 
 .MyBox a.MyBox_PictureLink{
     float: left;
-	
+    
     cursor: pointer;
 }
 
 a.MyBox_PictureLink img.MyBox_Picture{
     height: 44px!important;
-	
+    
     width: 44px!important;
     border-radius: 2px;
 }
@@ -163,7 +165,7 @@ div.MyBox_text{
 
 div.MyBox_text div.MyBox_textcontent{
     display: inline-block; padding-right: 5px;
-	
+    
 }
 
 div.MyBox_textcontent div.MyBox_NameSO{
@@ -186,7 +188,7 @@ a.MyBox_ProfileLink{
 }
 
 a.MyBox_ProfileLink:hover{
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 a.MyBox_SO{
@@ -197,20 +199,20 @@ a.MyBox_SO{
 }
 
 a.MyBox_SO:hover{
-	color:#686868;
-	text-decoration: underline;
+    color:#686868;
+    text-decoration: underline;
 }
 
 div.LeftPanel_DeptSchoolHolder{
     margin-bottom: 12px;
 
-    margin-top: 7px;
+    margin-top: 20px;
     position: relative;
     margin-left: -6px;
 }
 
 .LeftPanel_DSContentBox{
-    height: 48px;
+    height: 44px;
 
 }
 
@@ -220,13 +222,13 @@ div.LeftPanel_DeptSchoolHolder{
 
 .LeftPanel_DSContentBoxHeader b{
     font-size: 11px;
-	
+    
     color: #999;
     margin-left: 6px;
 }
 
 a.LeftPanel_DSContentBoxName{
-    width: 256px;
+    width: 230px;
 
     display: block;
     cursor: pointer;
@@ -245,16 +247,16 @@ a.LeftPanel_DSContentBoxName h5{
 }
 
 .LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
-	opacity:.65;
-	outline:none;
+    opacity:.65;
+    outline:none;
 }
 
 .SectionHeader_holder div.float_Right a:hover{
-	opacity:.77!important;
+    opacity:.77!important;
 }
 
 .SectionHeader_holder div.float_Right a:active{
-	opacity:1!important;
+    opacity:1!important;
 }
 
 
@@ -269,16 +271,16 @@ ul.LeftPanel_GroupsList{
 
 ul.LeftPanel_GroupsList li{
     margin: 1px 0px;
-	
+    
 }
 
 ul.LeftPanel_GroupsList li a{
     color: #27292b;
-	cursor:pointer;
-	outline:none;
+    cursor:pointer;
+    outline:none;
     font-size: 13.5px;
     padding: 6px;
-    width: 250px;
+    width: 230px;
     font-weight: 500;
     border-radius: 3px;
     text-decoration: none;

@@ -8,6 +8,7 @@
     background: #fff;
     border-radius: 4px;
     border: 1px solid #D8D8D8; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
+    max-height: 485px;
 }
 .planner_header_panel{
     font-family: Avenir;
@@ -84,6 +85,7 @@ span.create_planner_message {}
 .event_body{
     font-size: 12px;
     position: relative;
+    max-height: 400px;
 }
 .free_planner_message, .create_planner_message{
     display: inline;
@@ -296,15 +298,17 @@ span.create_planner_message {}
 
 
 #event_list{
-    width: 272px;
-    margin-left: 4px;
+    width: 225px;
+    margin-left: 0px;
     position: relative;
     font-size: 10px;
     font-weight: bold;
     font-family: 'OpenSans', sans-serif;
-    min-height: 40px;
-    color: #444;
+    height: auto;
+    color: #575757;
     white-space: normal;
+    padding-left: 10px;
+    max-height: 270px;
 }
 .event, .day3{
     padding: 5px 0px 0px 0px;
@@ -334,7 +338,7 @@ span.create_planner_message {}
 }
 
 .past_event{
-    background: rgba(255, 228, 234, 0.77);
+    background: #fceff2;
     -webkit-box-shadow: -1px 0px 0px 0px #F56B76 inset;
     -moz-box-shadow: -1px 0px 0px 0px #F56B76 inset;
     box-shadow: -1px 0px 0px 0px #F56B76 inset;
@@ -347,8 +351,7 @@ span.create_planner_message {}
     padding-bottom: 8px;
     font-size: 13px;
     font-weight: 500;
-    width: 278px;
-    margin-left: 7px;
+    width: 236px;
     text-overflow: ellipsis;
 }
 .event_listing input[type=checkbox]{
@@ -370,7 +373,7 @@ span.create_planner_message {}
     border-style: solid;
     border-width: 1px;
     padding: 0;
-    margin-left: 20px;
+    margin-left: 18px;
     border: 1px solid #CFCFCF;
     box-shadow: inset 0px 0px 1px 1px rgba(190, 189, 189, 0.21);
     background: white;
@@ -413,12 +416,8 @@ span.create_planner_message {}
 }
 .color_border{
     position: absolute;
-    width: 2px!important;
-    height: 31px;
-    margin-left: 5px!important;
-    -webkit-transition: all 0.15s ease;
     -moz-transition: all 0.15s ease;
-    transition: all 0.15s ease;
+    display: none;
 }
 #color_border1{
     background-color: #60dd29;
@@ -477,10 +476,11 @@ span.create_planner_message {}
     background: #f5f5f5;
 }
 .event_listing_wrap{
-    width: 285px;
-    margin-left: -9px;
+    width: 205px;
+    margin-left: -6px;
     margin-bottom: 4px;
     margin-top: 4px;
+    text-indent: 10px;
 }
 .evt_data:hover{
     text-decoration: underline;
@@ -503,8 +503,7 @@ span.create_planner_message {}
     bottom: 16px;
 }
 .evt_data{
-    width: 231px;
-    margin-left: 4px;
+    width: 205px;
     cursor: pointer;
     text-overflow: ellipsis;
 

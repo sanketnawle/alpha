@@ -38,7 +38,6 @@
 .event{
     width:216px;
     height:38px;
-    border-right: 1px solid #E2E2E2;
     display:inline-block;
     margin-left: -4.4px;
     -webkit-transition: .05px;

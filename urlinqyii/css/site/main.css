@@ -65,26 +65,29 @@ div{
 #right_panel {
     position: fixed;
     top: 48px;
-    right: 15px;
-    width: 240px;
+    right: 0px;
+    width: 196px;
     bottom: 0;
 
+    border-left: 1px solid #dadada;
+    background: #f5f5f5;
     z-index: 300;
+    box-shadow: 2px 0px #fff inset;
 }
 
 #main_panel{
-    width: 1160px;
+    max-width: 1145px;
     margin: 0px auto;
 
     height: 2000px;
-    padding-right: 210px;
+    padding-right: 220px;
 
 }
 
 
 #content_panel{
     display:block;
-    margin-left: 240px;
+    margin-left: 272px;
 
     margin-right: 0px;
 
@@ -95,8 +98,7 @@ div{
     height: 2000px;
 
     max-height:100%;
-    width: 900px;
-    min-width: 850px;
+    width: 830px;
     z-index: 50;
 
 
@@ -164,9 +166,11 @@ div{
     z-index: 10;
     display: block;
     top: -57px;
-    min-width: 850px;
-    width: 100%;
+    width: 842px!important;
 
+    border-radius: 2px;
+    margin-left: -7px;
+    border: 1px solid #101010;
 }
 
 .tab {
@@ -336,6 +340,41 @@ div.tab:hover div.tab_img {
     z-index: 20;
 }
 
+
+
+@media screen and (max-width: 1313px) {
+    #main_panel{
+        padding-right:0px;
+    }
+    #right_panel{
+        display:none;
+    }
+    #content_panel{
+        margin-left: 273px;
+    }
+    #LeftPanel_Holder{
+
+    }
+}
+
+@media screen and (max-width: 1110px) {
+    #left_panel{
+        display:none!important;
+    }
+    #content_panel{
+        width:100%!important;
+        overflow-x:hidden!important;
+        margin-left:0px!important;
+    }
+    #nav_bar{
+        width:100%!important;
+        margin-left:0px!important;
+    }
+    #tab_bar{
+        width: 100%!important;
+        margin-left: 0px!important;
+    }
+}
 
 
 
