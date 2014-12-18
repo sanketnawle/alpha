@@ -2,7 +2,7 @@
 .planner_container{
     position: fixed;
     right: 50px;
-    width: 280px;
+    width: 235px;
     height: auto;
     font-family: 'Open Sans', sans-serif;
     background: #fff;
@@ -17,19 +17,21 @@
     color: #999;
     position: relative;
     border-radius: 4px 4px 0px 0px;
-    border-bottom: 1px solid #ddd;  
+    border-bottom: 1px solid #dbdcdc;  
     margin-left: 11px;
     margin-right: 12px;
 }
 .planner_header{
-    padding: 15px 0px 10px 0px;
-    font-size: 16px;
+    padding: 16px 0px 6px 0px;
+    font-size: 17px;
     font-family: Avenir;
-    font-weight: 500;
+    font-weight: 200;
+    color: #777;
 }
 #dropdown_arrow{
     padding: 0px 0px 2px 5px;
     cursor: pointer;
+    display: none;
 }
 .planner_body{
     background-color: rgba(255, 255, 255, 0);
@@ -39,17 +41,16 @@
     z-index: 1;
 }
 .entry_field{
-    width: 256px;
     height: 36px;
-    /*height: 140px;*/
-    border: 1px solid #e5e5e5;
+    /* height: 140px; */
+    border: 1px solid #dbdcdc;
     border-width: 0px 0px 1px 0px;
     margin-left: 11px;
     padding-bottom: 5px;
     position: relative;
-    -moz-transition: all .5s ease;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
+    -moz-transition: all .35s ease-in;
+    /* -webkit-transition: all .35s ease-in-out; */
+    /* transition: height .8s ease; */
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
@@ -57,11 +58,12 @@
 .entry_field_placeholder{
     padding: 10px 0px 10px 10px;
     position: fixed;
-    width: 224px;
+    width: 202px;
     font-size:14px;
     font-weight: 600;
     cursor: pointer;
     color: #45a8cf;
+    border-bottom: 1px solid #dbdcdc;
 }
 .entry_field_placeholder i{
     background-image: url('../../../assets/partial/planner/help_icon.png');
@@ -75,8 +77,10 @@
     display: none;
 }
 #eventImg{
-    padding: 20px 0px 20px 35px;
+    padding: 45px 0px 20px 16px;
 }
+
+span.create_planner_message {}
 .event_body{
     font-size: 12px;
     position: relative;
@@ -84,15 +88,18 @@
 .free_planner_message, .create_planner_message{
     display: inline;
     position: absolute;
-    top: 145px;
-    left: 76px;
     font-size: 12px;
+    margin: 0 auto;
+    top: 169px;
+    left: 59px;
 }
 .create_planner_message{
     display: none;
-    color: #029acf;
+    color: #27292b;
     cursor: pointer;
     text-decoration: none;
+    width: auto;
+    
 }
 .create_planner_message:hover{
     text-decoration: underline;
@@ -100,40 +107,43 @@
 
 .bottom_container{
     position: relative;
-    width: 260px;
+    width: 212px;
     height: 38px;
-    margin-left: 4px;
-    border: 1px solid #e5e5e5;
+    margin-left: 12px;
+    border: 1px solid #dbdcdc;
     border-width: 1px 0px 0px 0px;
-    padding: 6px;
+    padding: 7px 0px;
 }
 .bottom_container_text{
-    padding: 10px 0px 10px 33px;
+    padding: 10px 0px 10px 34px;
     color: #029acf;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13.5px;
+    border-radius: 4px;
 }
 .bottom_container_text i{
     background-image: url('../../../assets/partial/planner/calendar_icon.png');
     background-repeat: no-repeat;
     width: 10px;
     height: 20px;
-    background-size: 8px 13px;
+    background-size: 8px 12px;
     position: absolute;
-    top: 20px;
-    right: 35px;
+    top: 19px;
+    right: 8px;
     cursor: pointer;
+    display: none;
 }
 
 .planner_creation_form{
     display: none;
-    width: 272px;
+    width: 211px;
     height: 120px;
     background-color: rgba(250, 250, 250, 0);
     position: relative;
-    top: 8px;
+    top: 6px;
     border-radius: 4px;
     border: 1px solid rgba(229, 229, 229, 0);
+    margin-left: -1px;
 }
 .event_name_wrap{
     padding: 10px 0px 0px 33px;
@@ -148,10 +158,10 @@
     direction: ltr;
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
-    height: 30px;
+    font-size: 13.35px;
+    height: 25px;
     overflow: hidden;
-    padding: 5px 0px 0px 8px;
+    padding: 3px 0px 1px 6px;
     transition-delay: 0s;
     outline: none;
     transition-duration: 0.2s;
@@ -159,7 +169,7 @@
     transition-timing-function: linear;
     /* vertical-align: top; */
     white-space: nowrap;
-    width: 246px;
+    width: 204px;
     word-wrap: normal;
     border-radius: 4px;
     -moz-transition: all .2s ease;
@@ -167,32 +177,34 @@
     transition: all .2s ease;
     color: rgb(41, 47, 51);
     -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-    border: 1px solid #d9d9d9;
+    border: none;
+    border: 1px solid #d7d7d7;
     border-top: 1px solid #c0c0c0;
+    line-height: 25px;
 }
 
 
 .event_time_wrap{
     display: inline-block;
-    width: 260px;
+    width: 220px;
     height: auto;
     font-size: 11.5px;
     font-weight: bold;
-    color: #444;
+    color: #575757;
     position: relative;
     top: 17px;
-    left: 0px;
+    left: -1px;
 }
 .event_date{
-    width: 112px;
-    height: 30px;
+    width: 102px;
+    height: 25px;
     cursor: pointer;
     font-size: 13px;
     background-repeat: no-repeat;
     background-image: url('../../../assets/partial/planner/calendar.png');
-    margin-left: 3px;
-    background-position: 93px 10px;
-    background-size: 12px;
+    margin-left: 4px;
+    background-position: 88px 10px;
+    background-size: 13px;
     border: 1px solid #d7d7d7;
     border-radius: 4px;
     -moz-transition: all .2s ease;
@@ -201,8 +213,8 @@
     transition: all .2s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 0px 0px 1px 6px;
-    border: 1px solid #d9d9d9;
+    padding: 2px 0px 1px 6px;
+    border: 1px solid #D7D7D7;
     border-top: 1px solid #c0c0c0;
     font-size: 12.5px;
     font-weight: 500;
@@ -210,21 +222,20 @@
 }
 
 .event_time{
-    color: #1c5c76;
+    color: #999;
     font-weight: normal;
-    margin-left: 13px;
-    font-size: 13px;
+    margin-left: 6px;
+    font-size: 12.1px;
     cursor: pointer;
-    border-bottom: 1px solid #1c5c76;
 }
 
 .event_action{
     display: inline-block;
-    width: 260px;
+    width: 217px;
     height: auto;
     position: relative;
     left: -5px;
-    top: 29px;
+    top: 32px;
 }
 .cancel_form{
     height: auto;
@@ -235,11 +246,12 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 11.5px;
     position: relative;
-    left: 0px;
+    left: 1px;
     padding: 4.7px;
     opacity: .7;
     top: 5px;
     float: left;
+    color: #999;
 }
 .create_form{
     padding: 1px 13px;
@@ -262,7 +274,8 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 12.5px;
-    border: 1px solid #e5e5e5; border-radius: 4px; background-color: #fcfcfc; background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); box-shadow: 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #333; text-shadow: 0 1px 0 #fff;
+    border: 1px solid #e5e5e5; 
+    border-radius: 4px; background-color: #fcfcfc; background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); box-shadow: 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #333; text-shadow: 0 1px 0 #fff;
 }
 
 .create_form:hover{
@@ -270,8 +283,7 @@
     outline: 0;
     background-color: #f9f9f9;
     border-color: #e5e5e5 #ccc #ccc;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
-    text-shadow: -1px -1px 0 #fcfcfc, 1px -1px 0 #fcfcfc, -1px 1px 0 #fcfcfc, 1px 1px 0 #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
 }
 
 .create_form:active{
@@ -279,6 +291,7 @@
     border: 1px solid rgb(200, 200, 200);
     background-color: #eee;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    outline: -webkit-focus-ring-color auto 5px;
 }
 
 
@@ -289,7 +302,7 @@
     font-size: 10px;
     font-weight: bold;
     font-family: 'OpenSans', sans-serif;
-    min-height: 120px;
+    min-height: 40px;
     color: #444;
     white-space: normal;
 }
@@ -422,8 +435,8 @@
 .timepicker{
     display: none;
     position: absolute;
-    width: 78px;
-    left: 177px;
+    width: 62px;
+    left: 149px;
     background-color: white;
     overflow: hidden;
     border-radius: 0px 0px 3px 3px;
@@ -449,7 +462,7 @@
     cursor:pointer;
     font-size: 12.5px;
     padding-top: 5px;
-    color:#333;
+    color: #575757;
     font-weight:500;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
@@ -457,11 +470,11 @@
     font-family: 'Roboto', sans-serif;
 }
 .timepicker div:hover{
-    background-color: #444;
-    color: #fff;
+    background-color: #f5f5f5;
+    color: #222;
 }
 .bottom_container_text:hover{
-    text-decoration: underline;
+    background: #f5f5f5;
 }
 .event_listing_wrap{
     width: 285px;
@@ -537,11 +550,11 @@
 .tp1{
     display: none;
     position: absolute;
-    height: 30px;
-    width: 80px;
-    border: 1px solid #d9d9d9;
+    height: 26px;
+    width: 60px;
+    border: 1px solid #d7d7d7;
     border-radius: 4px;
-    left: 177px;
+    left: 149px;
     top: 0px;
     font-size: 12.5px;
     font-weight: 500;

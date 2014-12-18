@@ -1,5 +1,6 @@
 <html>
 	<head>
+
 		<title>Home Planner</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/planner.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
@@ -49,9 +50,9 @@
 							<i class="help_icon"></i>
 						</div>
 						<div class="planner_creation_form">
-							<textarea class="event_name" id="event_name" name="event_name" placeholder="Name your to-do..." maxlength="100"></textarea>
+							<textarea class="event_name" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
 							<div class="event_time_wrap">
-								Due on:
+								Due:
 								<input class="event_date" id="event_date" name="event_date" value="none" readonly></input>
 								<div class = "calLayer">
 						          <section id = "mounth" class="mounth">
@@ -121,7 +122,7 @@
 						            </article>
 						          </section>
 						        </div>
-								<span class="event_time">Add a time</span>
+								<span class="event_time">Add time</span>
 								<input class="tp1" id="tp1" value="none">
 								<div class="timepicker">
 									<div class="timeslot1"></div>
@@ -309,7 +310,7 @@
 
 						<div class="bottom_container">
 							<div class="bottom_container_text">
-								View your Monthly Calendar
+								View monthly calendar
 								<i class="calendar_icon"></i>
 							</div>
 						</div>

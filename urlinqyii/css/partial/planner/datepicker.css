@@ -15,11 +15,13 @@ article span {
   font-size: 14.5px;
   padding: 0;
   list-style: none;
-color: #333; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+
+  color: #575757; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   text-align: center;
 
   padding-right: .1em;
   padding-top:1px;
+  font-family: Avenir;
 }
 
 /****/
@@ -67,7 +69,6 @@ section.mounth {
 overflow: hidden;
 display: block;
 float: left;
-margin-left: 38px;
 z-index: 500;
 width: 242px;
 font-family: 'Roboto', sans-serif;
@@ -80,7 +81,7 @@ border-width: 1px 1px 2px;
 border: 1px solid #c4c4c4;
 border-radius: 4px;
 box-shadow: 0 0 9px 5px rgba(0,0,0,0.05);
-background-color: #fff;
+background-color: rgba(255, 255, 255, 0.94);
 z-index: 9999999999;
 }
 .minical-header {
@@ -119,13 +120,13 @@ z-index: 9999999999;
 .minical-header nav span:first-of-type {
         
           margin-left: 0px;
-          background-image: url(img/minical_left_arrow.png);
+          background-image: url(../../../assets/minical_left_arrow.png);
 }
 
 .minical-header nav span:last-of-type {
         
           float: right!important;
-          background-image: url(img/minical_right_arrow.png);
+          background-image: url(../../../assets/minical_right_arrow.png);
 }
 
 
@@ -153,9 +154,10 @@ position:relative;
   article span {
     font-size: 13.5px;
     color: #565a5c;
-    border-radius: 0px;
+    border-radius: 2px;
     text-indent: 1.5px;
-    background-color: #f5f5f5; border: 1px solid #dce0e0;
+    background-color: #f5f5f5; 
+    border: 1px solid #DDD;
     cursor: pointer;
   
     -moz-box-sizing: border-box; 
@@ -168,27 +170,31 @@ position:relative;
     cursor:default;
   
     background-color: #FDFDFD; 
-    border: 1px solid rgba(235, 235, 235, 0.57);
+    border: 1px solid rgba(235, 235, 235, 0);
 }
 
     article span:not(.disable):hover {
-      background: #16dca7;
+      background: #E5E5E5;
     
-      color: #fff;
-      border: 1px solid #16dca7;
+      color: #000;
+      border: 1px solid #c0c0c0;
 }
     article span:not(.disable):active {
-      background: #16dca7;
+      background: #CBCBCB;
 
-    }
+    
+      color: #fff;
+}
     article span.active1,
     article span.active1:hover,
     article span.active1:active {
       color: #fff;
-      background: #16dca7;
+      background: #575757;
 
     
-    }
+    
+      border: #444;
+}
     
     
     article span.active0,
@@ -213,8 +219,10 @@ position:relative;
 }
 
 div.days{
-padding: 0px 8px 0px 8px;
+padding: 0px 0px 0px 0px;
 border-bottom: 1px solid rgba(235, 235, 235, 0.86);
+margin-left: 8px;
+margin-right: 8px;
 }
 
 div.dates{
