@@ -21,6 +21,7 @@ $(document).ready(function(){
         var $page = $(this);
 
         var $tab_bar = $('#tab_bar');
+        var $tab_wedge = $('.tab_wedge');
 
         //$tab_bar_position.left + ", top: " + $tab_bar_position.top
         var tab_bar_width = '100%';
@@ -40,10 +41,10 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 261){
+        if(Math.floor(scroll_offset_top) >= 256){
 
             console.log("SETTING TO FIXED");
-            $tab_bar.css({position: 'fixed', top: '87px',width: content_panel_width});
+            $tab_bar.css({position: 'fixed', top: '102px',width: content_panel_width});
             //alert(y);
             //$("#cover_photo").css({"transform":"translateY("+ -y+"px)"});
 
@@ -54,21 +55,26 @@ $(document).ready(function(){
             //                "opacity":"1"
             //            });
 
-            $tab_bar.css({'transition': 'background-color 0.1s ease'});
+            $tab_bar.css({'transition': 'height 0.1s ease'});
+            $tab_wedge.css({'transition': 'margin-top 0.1s ease'});
 
 
-            $tab_bar.css({'background-color': 'rgba(18, 19, 20, 1)'});
+            $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
+            $tab_bar.css({'height': '48px'});
+            $tab_wedge.css({'margin-top':'22px'});
 
 
 
-        }else if(Math.floor(scroll_offset_top) <= 260){
+        }else if(Math.floor(scroll_offset_top) <= 294){
             console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
 
-            $tab_bar.css({position: 'relative', top: '-57px',width: content_panel_width});
+            $tab_bar.css({position: 'relative', top: '-48px',width: content_panel_width});
 
-            $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.9)'});
+            $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
+            $tab_bar.css({'height': '52px'});
+            $tab_wedge.css({'margin-top':'25px'});
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 
 
