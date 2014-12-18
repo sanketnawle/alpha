@@ -3,25 +3,7 @@
 
 }
 
-.float_Left{
-    float: left;
 
-}
-
-.float_Right{
-    float: right;
-
-}
-
-.textBtn{
-    color: #1da7d2;
-
-    font-size: 12px;
-    font-weight: 600;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-}
 
 #LeftPanel_Holder{
     width: 230px;
