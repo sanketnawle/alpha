@@ -38,13 +38,17 @@
 
                 <div id="content_holder">
 
-                    <div id="left_panel">LEFT PANEL GOES HERE</div>
+                    <div id="left_panel">
+<!--                        <section class='leftbar_bag'>-->
+                            <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+<!--                        </section>-->
+                    </div>
 
 
 
 
                     <div id="content_panel">
-                        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club')); ?>
+                        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');"></div>
 
 
