@@ -109,10 +109,16 @@
         <div class='main-mid-sec'>
 
             <div class='mid_right_sec mid_right_sec_school'>
-
+                <?php include('department_header.php'); ?>
                 <div class='midsec'>
                     <div class='section group'>
+                        <?php echo $this->renderPartial('department_feed_tab',array()); ?>
 
+                        <?php echo $this->renderPartial('department_courses_tab',array()); ?>
+
+                        <?php echo $this->renderPartial('department_faculty_tab',array()); ?>
+
+                        <?php echo $this->renderPartial('department_students_tab',array()); ?>
                     </div>
                 </div>
             </div>

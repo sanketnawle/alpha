@@ -8,7 +8,7 @@
 
 <div id="nav_bar">
 
-    <?php if($origin_type == 'club') { ?>
+    <?php if($origin_type == 'home') { ?>
         <div class="nav_section active" id="home_nav" data-link_url="">
             <div class="nav_picture" id="home_nav_icon"></div>
             <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
@@ -56,7 +56,7 @@
         <div class="nav_arrow"></div>
 
 
-        <div class="nav_section" id="home_nav" data-link_url="/<?php echo '/department/' . $origin->department->department_id; ?>">
+        <div class="nav_section" id="home_nav" data-link_url="/<?php echo 'department/' . $origin->department->department_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department->department_name; ?></div>
         </div>
@@ -65,7 +65,7 @@
         <div class="nav_arrow nav_arrow_white"></div>
 
 
-        <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/' . $origin_type . '/' . $origin_id ?>">
+        <div class="nav_section active" id="home_nav" data-link_url="<?php echo '/' . $origin_type . '/' . $origin_id ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->class_name; ?></div>
         </div>
@@ -74,7 +74,7 @@
 
 
     <?php if($origin_type == 'department') { ?>
-        <div class="nav_section" id="home_nav" data-link_url="/<?php echo '/school/' . $origin_id; ?>">
+        <div class="nav_section" id="home_nav" data-link_url="/<?php echo 'school/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -82,14 +82,32 @@
         <div class="nav_arrow nav_arrow_white"></div>
 
 
-        <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/department/' . $origin_id; ?>">
+        <div class="nav_section active" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department_name; ?></div>
         </div>
 
         <!-- ADD NAV ARROW WHITE AFTER CURRENT DEPARTMENT NAME, then COURSES DROP DOWN - text is #999-->
 
-    
+        <div class="nav_arrow"></div>
+
+        <!-- Store the link type so we can use it in the js        -->
+        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'class/' . $origin_id; ?>" data-link_type="class">
+            <div class="nav_picture"></div>
+            <div class="nav_text">Courses</div>
+            <div id="nav_drop_down_container">
+                <div id="nav_drop_down_scrollable">
+                    <?php foreach($origin->courses as $class){ ?>
+                        <div id="nav_drop_down_section" data-id="<?php echo $class->course_id; ?>"><?php echo $class->course_name; ?></div>
+
+                    <?php } ?>
+                </div>
+                <div id="nav_drop_down_see_all_button">
+                    <div id="nav_drop_down_see_all_text">See all courses</div>
+                </div>
+            </div>
+        </div>
+
 
     <?php } ?>
 
@@ -97,7 +115,7 @@
     <?php if($origin_type == 'school') { ?>
 
         <!--ADD NAV ARROW WHITE BEFORE SCHOOL NAME -->
-        <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/school/' . $origin_id; ?>">
+        <div class="nav_section active" id="home_nav" data-link_url="/<?php echo 'school/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -105,6 +123,9 @@
          <!-- ADD NAV ARROW WHITE AFTER CURRENT SCHOOL NAME, then DEPARTMENTS DROP DOWN - text is #999-->
 
     <?php } ?>
+
+
+
 
 
 

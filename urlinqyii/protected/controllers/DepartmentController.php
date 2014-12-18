@@ -7,8 +7,10 @@ class DepartmentController extends Controller
 
         $department_id = $_GET['id'];
 
+        $department = Department::model()->findBySql("SELECT * FROM `department` WHERE `department_id` = " . $department_id);
 
-		$this->render('department');
+
+		$this->render('department',array('department'=>$department));
 	}
 
 
