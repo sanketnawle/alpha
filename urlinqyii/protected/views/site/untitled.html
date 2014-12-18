@@ -8,8 +8,8 @@
 
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
-        <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/site/main.css">
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css" type = "text/css"> 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
 
@@ -103,52 +103,63 @@ var $ = jQuery.noConflict();
 
     </script>
 
-    <body id = "body_home">
-
+    <body>
         <?php echo Yii::app()->runController('partial/topbar'); ?>
 
-        <div id = "wrapper">
-            <div id="page">
+
+        <div id='wrapper'>       
+
+            <div id='page'>
                 <div id = "main_panel">
-                    <div id="content_holder">
+                    <div id = "content_holder">
                         <div id="left_panel">
-                            <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+                             <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
                         </div>
-                        <div id = "content_panel" class = "content_panel_home">
+                        <div id = "content_panel">
                             <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'home','origin_id'=>'','origin'=>null)); ?>
-                            <div id = "planner_column" class = "planner_column_home">
-                                <div id = "right_column_specs">
-                                    <div id = "fixed_element">
-                                        <?php
-                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
-                                        ?>    
-                                    </div>
-                                </div>                           
-                            </div>
-                            <div id = "feed_column" class = "feed_column_home">
-                                <div id = "stream_holder" class = "stream_holder_home">
-                                    <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group')); ?>
-                                    </div>
+                            <section class='feeds_bag'>
+                                <?php
 
 
-                                    <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed')); ?>
-                                    </div>
+                                echo "<div class='feed-tab-content'>";
+
+                                echo "<div class='group_fbar_wrap'>";
+
+                                echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group'));
 
 
-                                </div>
-                            </div>
+                                echo "</div>";
+                                echo "<br><br>";
+
+                                echo "<div class='group_feed_wrap'>";
+
+                                echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed'));
+
+                                echo "</div>";
+
+
+                                echo "</div>";
+                                ?>
+                            </section>
+                            <section class='rightbar_bag'>
+                                <?php
+                                echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'home','origin_id'=>''));
+                                ?>
+                            </section>
                         </div>
                     </div>
                 </div>
-                <div id="right_panel">
-
-                    RIGHT PANEL GOES HERE
-                </div>               
+                <div id = "right_panel">
+                </div>
             </div>
+           
+
+
+
         </div>
-    	
+        
     </body>
 </html>
 
+
+               
