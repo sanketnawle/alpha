@@ -1275,7 +1275,7 @@ $(document).ready(function() {
 							<div class ="textwrap2">
 								<textarea name = "q_desc" class = "askTxtArea autogrowth_textarea"placeholder = "Add more details about this question... (Optional)" ></textarea>
 							</div>
-
+							<!--HERE IS MULT CHOICE HTML -->
                             <div class="multiple_choice">
                                 <div class="question_choice_line multiple_line">
                                     <div class="fixed_choice_prefix">
