@@ -10,7 +10,7 @@
 
     height: 38px;
     width: 842px;
-    z-index: 1000;
+
 
     margin-left: -7px;
     float: left;
@@ -26,10 +26,12 @@
     font-weight: bold;
     font-size: 14px;
     color: #999;
-    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    /*box-shadow: 0px 0 3px rgba(0,0,0,0.5);*/
     font-family: 'Open Sans', sans-serif;
     text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.49);  
     overflow: hidden;
+
+    cursor: default;
 }
 
 
@@ -66,6 +68,8 @@ a {
 
     padding-left: 7px;
     padding-right: 5px;
+
+    text-decoration: none;
 }
 
 .nav_text {
@@ -126,12 +130,20 @@ div.nav_section.active div#home_nav_icon {
     border-top: none;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    padding: 10px;
+
 
 
     background: rgba(18, 19, 20, 0.92);
-    z-index: 50;
+
+
 }
+
+
+.nav_drop_down_section{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
 
 div#nav_drop_down_scrollable{
 
@@ -139,6 +151,14 @@ div#nav_drop_down_scrollable{
 
 
 #nav_drop_down_bar_line {
+    position: absolute;
+    height: 2px;
+    width: 230px;
+    background-color: #999;
+    margin: 0px auto;
+    bottom: 35px;
+    left: 10px;
+    border-radius: 1px;
 
 }
 
@@ -146,7 +166,16 @@ div#nav_drop_down_see_all_button {
     position: absolute;
     margin: 0px auto;
     bottom: 10px;
-    left: 10px;
+}
+
+
+#nav_drop_down_see_all_courses_text{
+    margin-left: 75px;
+}
+
+
+#see_all_departments_text{
+
 }
 
 

@@ -95,7 +95,7 @@
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'course/' . $origin_id; ?>" data-link_type="course">
             <div class="nav_picture"></div>
             <div class="nav_text">Courses</div>
-            <div id="nav_drop_down_container">
+            <div id="nav_drop_down_container" class="closed">
                 <div id="nav_drop_down_scrollable">
                     <?php foreach($origin->courses as $class){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $class->course_id; ?>"><?php echo $class->course_name; ?></div>
@@ -107,7 +107,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_text">See all courses</div>
+                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
                 </div>
             </div>
         </div>

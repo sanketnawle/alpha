@@ -3,7 +3,34 @@ $(document).ready(function(){
 
 
 
+    $('.nav_section').mouseenter(function(){
+        var $this_section = $(this);
 
+        if($this_section.hasClass('drop_down')){
+            var $drop_down = $('#nav_drop_down_container');
+            $drop_down.show();
+        }
+    });
+
+    $('.nav_section').mouseleave(function(){
+        var $this_section = $(this);
+        if($this_section.hasClass('drop_down')){
+            var $drop_down = $('#nav_drop_down_container');
+            $drop_down.hide();
+        }
+    });
+
+//    var $this_section = $(this);
+//
+//    if($this_section.hasClass('drop_down')){
+//        var $drop_down = $('#nav_drop_down_container');
+//
+//        if($drop_down.css('display') == 'none'){
+//            $drop_down.show();
+//        } else {
+//            $drop_down.hide();
+//        }
+//    }
 
 
 
