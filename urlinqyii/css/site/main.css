@@ -1,6 +1,5 @@
 * {
     /*box-sizing: border-box;*/
-    font-family: Avenir;
     font-weight: 500;
 
 }
@@ -177,23 +176,29 @@ div{
 
 .tab {
     display: inline-block;
-    width: 20%;
+    width: auto;
     height: 100%;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(255, 255, 255, 0.65);
 
     /*display: table-cell;*/
     vertical-align: middle;
+    cursor:pointer;
+    padding-left: 23px;
+    padding-right: 23px;
 }
 
 div.tab div.tab_content{
-    width: 60%;
-    height: 40%;
+    width: 100%;
+    height: 100%;
     position: relative;
-    top: 50%;
-    transform: translateY(-38%);
     margin: 0px auto;
     display: block;
+    cursor:pointer;
+    transform: translateY(-38%);
+    top: 38%;
 }
+
+
 
 
 
@@ -218,22 +223,28 @@ div.tab div.tab_img{
     background-repeat: no-repeat;
     display: inline-block;
     float:left;
-    opacity: .77;
-    width: 20%;
-    height: 40px;
+    opacity: .65;
+    cursor:pointer;
+    width: 25px;  
+    height: 100%;
+    background-position: 0px 18px;
+
 }
 
 .tab_text{
-    font-family: Avenir;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 14.5px;
     display: inline-block;
     float: right;
-
-    width: 80%;
+    width: auto;
     margin-right: auto;
-
-
+    cursor:pointer;
+    padding-top: 16px;
+    padding-left: 7px;
+    padding-bottom: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 0px 0px 1px #121314; -moz-osx-font-smoothing: grayscale;
+    text-shadow: rgba(0, 0, 0, 0.490196) 0px 0px 1px;
 }
 
 /* Default the wedge to hidden */
@@ -257,32 +268,52 @@ div.tab.active div.tab_wedge {
 }
 
 
-div.tab:hover{
+div.tab:hover,div.tab.active{
     color: #fff;
-
+    cursor:default;
 }
 
-div.tab:hover div.tab_img {
+div.tab:hover{
+    cursor: pointer!important;
+}
+
+div.tab:hover div.tab_img,div.tab.active div.tab_img,div.tab.active div.tab_text {
     opacity: 1.0;
+    cursor:default!important;
 }
+
+div.tab:hover div.tab_img, div.tab:hover div.tab_text{
+    cursor: pointer!important;
+}
+
 
 
 #tab_more_button{
     width: 45px;
-    height: 15px;
+    height: 25px;
     float: right;
-    padding-top: 10px;
-    padding-left: 20px;
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-48%);
 
     border-style: solid;
-    border-width: 3px;
+    border-width: 1px;
     border-radius: 5px;
     border-color: white;
-
+    cursor: pointer;
     margin-right: 5px;
+    box-shadow: 0px 0px 1px #fff;
+    -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease; background-color: rgba(71, 71, 71, 0.49); 
+    border-color: #000; -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+    padding: 4px 2px;
+}
+
+#tab_more_button:hover{
+    background-color: rgba(112, 112, 112, 0.41);
+}
+
+#tab_more_button:active{
+    background-color: rgba(112, 112, 112, 0.2);
 }
 
 #tab_more_button_image {
@@ -290,46 +321,73 @@ div.tab:hover div.tab_img {
     height: 9px;
     background-repeat: no-repeat;
     background-image: url('../../assets/main/tab_bar/tab_more_icon.png');
+    background-size: 88%;
+    top: 10px;
+    position: relative;
+    left: 10px;
+    cursor: pointer;
 }
 
 
 #group_user_action_button {
     height: 25px;
-    width: 80px;
-    padding-top: 0px;
-
-    background-color: green;
+    background-color: #04CF6B;
     display: inline-block;
     float: right;
-
     border-style: solid;
-    border-width: 3px;
-    border-radius: 5px;
-    border-color: darkgreen;
-
+    border-width: 1px;
+    border-radius: 4px;
     margin-right: 5px;
-
+    cursor: pointer;
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
-
+    transform: translateY(-48%);
     color: white;
+    border-top-color: #000000; 
+    border-left-color: #000000; 
+    border-right-color: #000000; 
+    border-bottom-color: #000000; 
+    -webkit-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; 
+    -moz-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; 
+    box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; background: #039103; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00c307",endColorstr="#039103"); 
+    background: -webkit-gradient(linear,left top,left bottom,from(#04CF6B),to(#17A866)); 
+    background: -moz-linear-gradient(top,#04CF6B,#17A866); 
+    background-image: -o-linear-gradient(top,#04CF6B 0,#17A866 100%); 
+    background-image: linear-gradient(to bottom,#04CF6B 0,#17A866 100%);
+    font-size: 15px;
+    padding: 4px 2px;
+    font-family: "Open Sans", sans-serif;
+    min-width: 98px;
+    margin-right: 20px;
 }
 
 #group_user_action_button_text{
-    width: 55px;
     height: 16px;
     position: relative;
-    top: 50%;
-    transform: translateY(-45%);
     margin: 0px auto;
     display: block;
+    font-weight: 500; 
+    font-size: 15px; 
+    font-family: Avenir;
+    -webkit-font-smoothing: antialiased;
+    line-height: 28px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
 }
 
 #group_user_action_button:hover{
-    background-color: red;
-    border-color: darkred;
+    background: #e84a5a!important;
+    border-color: #bd2f33;
+    box-shadow: none!important;
+    cursor:default!important;
 }
+
+#group_user_action_button:hover #group_user_action_button_text{
+    cursor:default!important;
+}
+
 
 /* Panel content */
 .panel {

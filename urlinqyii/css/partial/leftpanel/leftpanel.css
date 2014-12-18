@@ -99,10 +99,11 @@
 }
 
 .SectionHeader_holder div.float_Right a{
-    opacity: .48;
+    opacity: .58;
     
-    top: 6px;
+    top: 4px;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
 }
 
 em.SectionHeader_ribbon{
@@ -185,6 +186,8 @@ a.MyBox_ProfileLink{
     top: 1px;
     text-decoration: none;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
+    padding-bottom: 4px;
 }
 
 a.MyBox_ProfileLink:hover{
@@ -196,6 +199,7 @@ a.MyBox_SO{
     cursor:pointer;
     font-size: 12px;
     font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
 }
 
 a.MyBox_SO:hover{
@@ -206,7 +210,7 @@ a.MyBox_SO:hover{
 div.LeftPanel_DeptSchoolHolder{
     margin-bottom: 12px;
 
-    margin-top: 20px;
+    margin-top: 16px;
     position: relative;
     margin-left: -6px;
 }
@@ -225,6 +229,8 @@ div.LeftPanel_DeptSchoolHolder{
     
     color: #999;
     margin-left: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 a.LeftPanel_DSContentBoxName{
@@ -244,6 +250,7 @@ a.LeftPanel_DSContentBoxName h5{
     margin: 0;
     margin-left: 6px;
     line-height: 30px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
@@ -287,6 +294,7 @@ ul.LeftPanel_GroupsList li a{
     display: block;
     padding-right: 0px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    font-family: 'Open Sans', sans-serif;
 }
 
 ul.LeftPanel_GroupsList li a:hover,a.LeftPanel_DSContentBoxName:hover{
