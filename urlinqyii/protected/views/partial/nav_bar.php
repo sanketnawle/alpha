@@ -25,7 +25,7 @@
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_arrow_white"></div>
 
 
         <div class="nav_section active" id="home_nav" data-link_url="/club/<?php echo $origin_id; ?>">
@@ -51,7 +51,7 @@
         </div>
 
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_arrow_white"></div>
 
 
         <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/' . $origin_type . '/' . $origin_id ?>">
@@ -68,13 +68,14 @@
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_arrow_white"></div>
 
 
         <div class="nav_section active" id="home_nav" data-link_url="/<?php echo '/department/' . $origin_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department_name; ?></div>
         </div>
+    
 
     <?php } ?>
 

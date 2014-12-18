@@ -53,7 +53,7 @@ a {
 
 }
 
-div.nav_bar div.nav_arrow:last-of-type{
+.nav_arrow_white{
     background-image: url('../../../assets/partial/nav_bar/nav_right_arrow.png')!important;
 }
 
@@ -64,8 +64,8 @@ div.nav_bar div.nav_arrow:last-of-type{
     height: 100%;
     float:left;
 
-    padding-left: 5px;
-    padding-right: 3px;
+    padding-left: 7px;
+    padding-right: 5px;
 }
 
 .nav_text {

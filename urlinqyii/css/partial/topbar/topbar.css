@@ -13,7 +13,6 @@
 }
 
 
-
 .topbar {
     height: 48px;
     position: fixed!important;
@@ -28,23 +27,28 @@
     box-shadow: 0px 0 3px rgba(0,0,0,0.5);
 }
 
+#topbar_responsive_holder{
 
-    .topbar > .left {
+}
+
+
+
+    .topbar > #topbar_responsive_holder > .left {
         overflow: auto;
         float: left;
         margin-right: 0px;
     }
 
-        .topbar > .left a {
+        .topbar > #topbar_responsive_holder > .left a {
             float: left;
             margin-left: 30px;
             height: 48px;
         }
 
-            .topbar > .left a:hover {
+            .topbar > #topbar_responsive_holder > .left a:hover {
             }
 
-            .topbar > .left a.urlinq {
+            .topbar > #topbar_responsive_holder > .left a.urlinq {
                 width: 130px;
                 display: block;
                 background-image: url(../../../assets/logo.png);
@@ -55,7 +59,7 @@
                 cursor: pointer;
 }
 
-            .topbar > .left a.menu {
+            .topbar > #topbar_responsive_holder > .left a.menu {
                 background-image: url(../../../assets/menu-toggle.png);
                 margin: 13px 0;
                 border-radius: 4px;
@@ -69,11 +73,11 @@
                 opacity: 0.6;
             }
 
-                .topbar > .left a.menu:hover {
+                .topbar > #topbar_responsive_holder > .left a.menu:hover {
                     opacity: 1;
                 }
 
-    .topbar:hover > .left a.menu.active {
+    .topbar:hover > #topbar_responsive_holder > .left a.menu.active {
         cursor: pointer;
     }
 
@@ -116,7 +120,7 @@
                 font-family: 'Open Sans', sans-serif;
 }
 
-            .topbar .center form .submit {
+            .topbar #topbar_responsive_holder .center form .submit {
                 width: 30px;
                 position: absolute;
                 height: 30px;
@@ -130,7 +134,7 @@
                 background-position: center center;
             }
 
-    .topbar > .right {
+    .topbar > #topbar_responsive_holder > .right {
         float: left;
         width: 25%;
         height: 100%;
@@ -138,7 +142,7 @@
         margin-left: 30px;
 }
 
-        .topbar > .right .notify {
+        .topbar > #topbar_responsive_holder > .right .notify {
             float: left;
             position: relative;
             height: 31px;
@@ -150,36 +154,36 @@
             padding-left: 8px;
 }
 
-.topbar > .right .notify.calendar{
+.topbar > #topbar_responsive_holder > .right .notify.calendar{
     padding-left:5px;
     border-radius:2px 0px 0px 2px;
 }
 
-.topbar > .right .notify.board{
+.topbar > #topbar_responsive_holder > .right .notify.board{
     border-right:none;
     border-radius:0px 2px 2px 0px;
 }
 
-.topbar > .right , .topbar > .center{
+.topbar > #topbar_responsive_holder > .right , .topbar > #topbar_responsive_holder > .center{
 
 }
 
 
-        .topbar > .right .notify:hover,.topbar > .right .notify.active{
+        .topbar > #topbar_responsive_holder > .right .notify:hover,.topbar > #topbar_responsive_holder > .right .notify.active{
             background: rgba(18, 19, 20, 0.333); 
             -moz-transition: all .12s ease;
             -webkit-transition: all .12s ease;
             transition: all .12s ease;
         }
 
-            .topbar > .right .notify .button {
+            .topbar > #topbar_responsive_holder > .right .notify .button {
                 height: 80%;
                 width: 100%;
             
                 margin-left: 2px;
 }
 
-            .topbar > .right .notify.calendar .button,.topbar > .right .notify.board .button {
+            .topbar > #topbar_responsive_holder > .right .notify.calendar .button,.topbar > #topbar_responsive_holder > .right .notify.board .button {
                 padding-top: 4px;
             
                 padding-left: 5px;
@@ -189,7 +193,7 @@
                 font-family: Avenir;
 }
 
-                .topbar > .right .notify.calendar .button div,.topbar > .right .notify.board .button div {
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
                     text-align: center;
                     color: rgba(255, 255, 255, 0.95);
                 
@@ -199,19 +203,19 @@
                     top: -5px;
 }
 
-.topbar > .right .notify.board .button div{
+.topbar > #topbar_responsive_holder > .right .notify.board .button div{
     top: -10px;
 }
 
-            .topbar > .right .notify.calendar:hover .button div, .topbar > .right .notify.calendar.active .button div {
+            .topbar > #topbar_responsive_holder > .right .notify.calendar:hover .button div, .topbar > #topbar_responsive_holder > .right .notify.calendar.active .button div {
                 color: #fff;
             }
 
-            .topbar > .right .notify.board {
+            .topbar > #topbar_responsive_holder > .right .notify.board {
                 border-left: none;
             }
 
-                .topbar > .right .notify.board .button .icon,.topbar > .right .notify.calendar .button .icon {
+                .topbar > #topbar_responsive_holder > .right .notify.board .button .icon,.topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
                     background-image: url(../../../assets/TopBarMenuIcons.png);
                     background-repeat: no-repeat;
                     background-position: left center;
@@ -224,7 +228,7 @@
                     position: relative;
 }
 
-                .topbar > .right .notify.calendar .button .icon {
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
                     background-repeat: no-repeat;
                     background-position: -25px 0px;
                     width: 28px;
@@ -236,14 +240,14 @@
                     top: 1px;
 }
 
-                .topbar > .right .notify.board:hover .button .icon, .topbar > .right .notify.board.active .button .icon {
+                .topbar > #topbar_responsive_holder > .right .notify.board:hover .button .icon, .topbar > #topbar_responsive_holder > .right .notify.board.active .button .icon {
                 }
 
-    .topbar .center ul.prelist, .topbar .center ul.postlist {
+    .topbar #topbar_responsive_holder .center ul.prelist, .topbar .center ul.postlist {
         display: none;
     }
 
-    .topbar .center ul {
+    .topbar #topbar_responsive_holder .center ul {
         background-color: #FFF;
         position: absolute;
         top: 40px;
@@ -258,7 +262,7 @@
         -webkit-box-shadow: 0 1px 8px 0px rgba(0, 0, 0, .10);
     }
 
-        .topbar .center ul li a {
+        .topbar #topbar_responsive_holder .center ul li a {
             display: block;
             overflow: auto;
             padding: 5px 8px;
@@ -267,11 +271,11 @@
             color: #333;
         }
 
-            .topbar .center ul li a:hover {
+            .topbar #topbar_responsive_holder .center ul li a:hover {
                 background-color: #f1f1f1;
             }
 
-            .topbar .center ul li a .icon {
+            .topbar #topbar_responsive_holder .center ul li a .icon {
                 background-image: url(../img/search-icons.png);
                 background-size: 100%;
                 float: left;
@@ -281,61 +285,61 @@
                 margin-right: 10px;
             }
 
-                .topbar .center ul li a .icon.src, .topbar .center ul li a .icon.pro {
+                .topbar #topbar_responsive_holder .center ul li a .icon.src, .topbar .center ul li a .icon.pro {
                     background-position-y: 100%;
                 }
 
-                .topbar .center ul li a .icon.sch {
+                .topbar #topbar_responsive_holder .center ul li a .icon.sch {
                     background-position-y: 38.3%;
                 }
 
-                .topbar .center ul li a .icon.prof {
+                .topbar #topbar_responsive_holder .center ul li a .icon.prof {
                     background-position-y: 64.2%;
                 }
 
-                .topbar .center ul li a .icon.dpt {
+                .topbar #topbar_responsive_holder .center ul li a .icon.dpt {
                     background-position-y: 13%;
                 }
 
-                .topbar .center ul li a .icon.cls {
+                .topbar #topbar_responsive_holder .center ul li a .icon.cls {
                     background-position-y: 0%;
                 }
 
-                .topbar .center ul li a .icon.crs {
+                .topbar #topbar_responsive_holder .center ul li a .icon.crs {
                     background-position-y: 77.2%;
                 }
 
-                .topbar .center ul li a .icon.srch {
+                .topbar #topbar_responsive_holder .center ul li a .icon.srch {
                     background-position-y: 77.2%;
                 }
 
 
-                .topbar .center ul li a .icon.clb {
+                .topbar #topbar_responsive_holder .center ul li a .icon.clb {
                     background-position-y: 25.3%;
                 }
 
-            .topbar .center ul li a span {
+            .topbar #topbar_responsive_holder .center ul li a span {
                 display: table-cell;
                 height: 40px;
                 vertical-align: middle;
             }
 
-                .topbar .center ul li a span b {
+                .topbar #topbar_responsive_holder .center ul li a span b {
                     color: #000;
                     font-weight: 400;
                 }
 
-        .topbar .center ul.postlist li:last-child a {
+        .topbar #topbar_responsive_holder .center ul.postlist li:last-child a {
             border-top: 1px solid #DDD;
             text-align: center;
             padding: 9px;
         }
 
-            .topbar .center ul.postlist li:last-child a:hover {
+            .topbar #topbar_responsive_holder .center ul.postlist li:last-child a:hover {
                 background-color: #DDD;
             }
 
-    .topbar div.day {
+    .topbar #topbar_responsive_holder div.day {
         font-size: 10px;
         line-height: 12px;
         font-family: 'san_francisco';
@@ -388,7 +392,7 @@
 }
 
 @media(max-width:1248px){
-.topbar > .left a{
+.topbar > #topbar_responsive_holder > .left a{
     margin-left:10px!important;
 }
 }
@@ -397,13 +401,13 @@
 div.icon_text{
     display:none!important;
 }
-.topbar > .right .notify{
+.topbar > #topbar_responsive_holder > .right .notify{
     padding-right:5px!important;
 }
 .topbar>.right .notify .notify-window{
     left:-180px!important;
 }
-.topbar > .right{
+.topbar > #topbar_responsive_holder > .right{
     width:20%!important;
 }
 }
