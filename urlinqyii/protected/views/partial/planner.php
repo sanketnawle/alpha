@@ -1,6 +1,16 @@
 <html>
 	<head>
 
+<<<<<<< HEAD
+=======
+        <script>
+            origin = '<?php echo $origin_type; ?>';
+            origin_id = '<?php echo $origin_id; ?>';
+
+
+        </script>
+
+>>>>>>> 18c9d8fd9d1933cac4dd4f53b55c5793101d78cd
 		<title>Home Planner</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/planner.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>

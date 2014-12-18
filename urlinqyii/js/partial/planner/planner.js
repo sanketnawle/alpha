@@ -427,9 +427,9 @@ function add_event(event_json){
 
 
 
-    alert(event_date);
-    alert(todays_date);
-    alert(event_date.getDate() == todays_date.getDate());
+//    alert(event_date);
+//    alert(todays_date);
+//    alert(event_date.getDate() == todays_date.getDate());
     if(event_date.getDate() == todays_date.getDate()){
         show_event(event_json,'#past_events');
         return;
@@ -506,7 +506,7 @@ $(document).on('click','.checkbox_wrapper',function(e){
 
     console.log("EVENT ID");
     console.log(event_id);
-    alert(event_id);
+//    alert(event_id);
 
     var post_url = base_url + '/event/' + event_id + '/checkoff';
     var post_data = {event_id: event_id};
