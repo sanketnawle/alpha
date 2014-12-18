@@ -8,7 +8,7 @@
 
 <div id="nav_bar">
 
-    <?php if($origin_type == 'club') { ?>
+    <?php if($origin_type == 'home') { ?>
         <div class="nav_section active" id="home_nav" data-link_url="">
             <div class="nav_picture" id="home_nav_icon"></div>
             <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
@@ -86,7 +86,7 @@
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->department_name; ?></div>
         </div>
-    
+
 
     <?php } ?>
 
