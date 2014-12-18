@@ -8,15 +8,26 @@
 
 <div id="nav_bar">
 
+    <?php if($origin_type == 'club') { ?>
+        <div class="nav_section active" id="home_nav" data-link_url="">
+            <div class="nav_picture" id="home_nav_icon"></div>
+            <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
 
+        </div>
 
-    <div class="nav_section" id="home_nav" data-link_url="">
-        <div class="nav_picture" id="home_nav_icon"></div>
-        <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
+        <div class="nav_arrow"></div>
 
-    </div>
+    <?php } else { ?>
 
-    <div class="nav_arrow"></div>
+        <div class="nav_section" id="home_nav" data-link_url="">
+            <div class="nav_picture" id="home_nav_icon"></div>
+            <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
+
+        </div>
+
+        <div class="nav_arrow"></div>
+
+    <?php } ?>
 
 
     <?php if($origin_type == 'club') { ?>
