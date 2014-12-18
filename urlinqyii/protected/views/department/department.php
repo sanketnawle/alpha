@@ -1,128 +1,155 @@
-<!DOCTYPE html>
 <html>
+
+
 <head>
+    <script>
+        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        origin_type = '<?php echo 'department'; ?>';
+        origin_id = '<?php echo $department->department_id; ?>';
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/backgroundGroup.css'>
-<!--<link rel = "stylesheet" type = "text/css" href = "school_alpha/feedGroup.css"> -->
-<!--<link rel = "stylesheet" type = "text/css" href = "css/group.css"> -->
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_alpha/group.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_alpha/school_department.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/leftmenu.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/datepicker.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/coursesCardUI.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/dept.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/planner_for_dept.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/fbar.css'>
-<link rel = "stylesheet" type = "text/css" href = '<?php echo Yii::app()->getBaseUrl(true); ?>/css/dropdown_style.css'>
+    </script>
 
 
-<script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
-<!--<script src="filepicker.js"></script>-->
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script src="../protected/js/department.js"></script>
-
-<link rel="shortcut icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
-<link rel="icon" href="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
-
-<script>
-    base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
-</script>
-
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
 </head>
+
 <body>
-<div class='root'>
+
+<?php echo Yii::app()->runController('partial/topbar'); ?>
+<div id="wrapper">
+    <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
 
 
-    <div class='gp_topbar_wrap'>
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
-    </div>
 
-    <div class='gp_leftbar_wrap'>
-        <?php echo Yii::app()->runController('partial/leftmenu',array()); ?>
-    </div>
+    <div id="page">
 
 
-    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
+        <div id="main_panel">
 
-    <div class='modal_coverPhoto_body modal_body'>
-        <div class='modal_coverPhoto_container'>
-            <div class='modal_loading'>
-                <img class='modal_animation' src='src/loadingAnimation.gif'>
-            </div>
-            <div class='modal_content'>
-                <div class='modal_header'>
-						<span class='floatL white'>
-							Submit Cover Photo
-						</span>
-                    <div class='floatR cancelBtn close'>
+
+            <div id="content_holder">
+
+                <div id="left_panel">
+                    <!--                        <section class='leftbar_bag'>-->
+                    <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+                    <!--                        </section>-->
+                </div>
+
+
+
+
+                <div id="content_panel">
+                    <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
+                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');"></div>
+
+
+
+
+                    <div id="tab_bar">
+
+                        <div class="tab feed active" data-panel_id="1">
+                            <div class="tab_content">
+                                <div class="tab_img"></div>
+                                <div class="tab_text">Department Feed</div>
+                            </div>
+                            <div class="tab_wedge"></div>
+                        </div>
+
+                        <div class="tab syllabus" data-panel_id="2">
+                            <div class="tab_content">
+                                <div class="tab_img"></div>
+                                <div class="tab_text">Files/Photos</div>
+                            </div>
+                            <div class="tab_wedge"></div>
+                        </div>
+
+                        <div class="tab materials" data-panel_id="3">
+                            <div class="tab_content">
+                                <div class="tab_img"></div>
+                                <div class="tab_text">Members</div>
+                            </div>
+                            <div class="tab_wedge"></div>
+                        </div>
+
+                        <div class="tab members" data-panel_id="4">
+                            <div class="tab_content">
+                                <div class="tab_img"></div>
+                                <div class="tab_text">Analytics</div>
+                            </div>
+                            <div class="tab_wedge"></div>
+                        </div>
+
+
+
+
+                        <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
+                        <?php if($is_following ){ ?>
+                            <div id="group_user_action_button" class="member" data-action_url="/leave">
+                                <div id="group_user_action_button_text">Member</div>
+                            </div>
+                        <?php }else{ ?>
+                            <div id="group_user_action_button" class="non_member" data-action_url="/join">
+                                <div id="group_user_action_button_text">Follow</div>
+                            </div>
+                        <?php } ?>
+
+                        <div id="tab_more_button">
+                            <div id="tab_more_button_image"></div>
+                        </div>
                     </div>
+
+
+                    <div class="panel active" id="panel_1">
+                        CLASS FEED GOES HERE
+                    </div>
+
+                    <div class="panel" id="panel_2">
+                        PANEL 2
+                    </div>
+
+                    <div class="panel" id="panel_3">
+                        PANEL 3
+                    </div>
+
+                    <div class="panel" id="panel_4">
+                        PANEL 4
+                    </div>
+
                 </div>
-                <div class='modal_main'>
-                    <form>
-                        <label for='cover_name' class='label_left'>
-                            Cover Photo Name
-                        </label>
-                        <input class='inputBig inputPhotoName' id='cover_name'
-                               placeholder='Enter a name for this photo...'>
-                        <input class='cover_photo_upload' name='img' type='file' style='display:none;'>
 
-                        <div class = "uploadedPhotoFrame_display" style="background-size:cover;"></div>
-                        <div class='uploadedPhotoFrame'>
-                            <div class='noPhotoText'>
-                                No photo uploaded
-                            </div>
-                            <div class='photoicon'>
-                            </div>
-
-                            <button class='uploadPhotoBtn'>
-                                Upload Photo
-                            </button>
-                        </div>
-                        <div class='btmleft'>
-
-                            <button type='button' class='cancelBtn grayBtn'>
-                                Cancel
-                            </button>
-                            <button type='button' class='blueBtn pt_upload_button'>
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
-    </div>
 
-    <div class='main'>
+        <div id="right_panel">
 
-        <div class='main-mid-sec'>
-
-            <div class='mid_right_sec mid_right_sec_school'>
-
-                <div class='midsec'>
-                    <div class='section group'>
-
-                    </div>
-                </div>
-            </div>
+            RIGHT PANEL GOES HERE
         </div>
+
+        <!--            <div id="div1" style="height: 500px;position:relative;">-->
+        <!--                <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">-->
+        <!--                    <div id="div3" style="height:1500px;border:5px solid yellow;">hello</div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
     </div>
-</div>
-</div>
+
+    <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
 </div>
 
 </body>
 
 
+
+
 </html>
+
+

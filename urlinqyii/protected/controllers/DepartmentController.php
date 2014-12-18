@@ -10,7 +10,14 @@ class DepartmentController extends Controller
         $department = Department::model()->findBySql("SELECT * FROM `department` WHERE `department_id` = " . $department_id);
 
 
-		$this->render('department',array('department'=>$department));
+        $user = $this->get_current_user();
+
+
+
+        $is_following = false;
+
+
+		$this->render('department',array('department'=>$department,'user'=>$user,'is_following'=>$is_following));
 	}
 
 
