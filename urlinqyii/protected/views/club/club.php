@@ -59,7 +59,7 @@
                             <div class="tab feed active" data-panel_id="1">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
-                                    <div class="tab_text">Class Feed</div>
+                                    <div class="tab_text">Club Feed</div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
@@ -67,7 +67,7 @@
                             <div class="tab syllabus" data-panel_id="2">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
-                                    <div class="tab_text">Syllabus</div>
+                                    <div class="tab_text">Files/Photos</div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
@@ -75,7 +75,7 @@
                             <div class="tab materials" data-panel_id="3">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
-                                    <div class="tab_text">Materials</div>
+                                    <div class="tab_text">Members</div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
@@ -83,7 +83,7 @@
                             <div class="tab members" data-panel_id="4">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
-                                    <div class="tab_text">Members</div>
+                                    <div class="tab_text">Analytics</div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>

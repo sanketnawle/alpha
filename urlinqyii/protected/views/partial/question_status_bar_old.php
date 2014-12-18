@@ -1,3 +1,4 @@
+
 <?php
 	$pg_src = substr(strrchr($_SERVER['SCRIPT_NAME'], "/"), 1);
 	if($pg_src == "profile.php" && isset($_GET['user_id'])) {
@@ -1431,4 +1432,3 @@ $(document).ready(function() {
 
 </body>
 </html>
-

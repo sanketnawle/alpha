@@ -17,6 +17,10 @@ body{
     background: #FAFAFA;
 }
 
+body#body_home{
+    overflow:auto!important;
+}
+
 
 div{
     cursor:default;
