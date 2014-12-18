@@ -121,12 +121,12 @@ div.nav_section.active div#home_nav_icon {
 
     top: 94px;
     width: 250px;
-    height: 100px;
+    height: 200px;
 
     border-top: none;
     border-bottom-left-radius: 3px;
-
-
+    border-bottom-right-radius: 3px;
+    padding: 10px;
 
 
     background: rgba(18, 19, 20, 0.92);
@@ -135,6 +135,18 @@ div.nav_section.active div#home_nav_icon {
 
 div#nav_drop_down_scrollable{
 
+}
+
+
+#nav_drop_down_bar_line {
+
+}
+
+div#nav_drop_down_see_all_button {
+    position: absolute;
+    margin: 0px auto;
+    bottom: 10px;
+    left: 10px;
 }
 
 

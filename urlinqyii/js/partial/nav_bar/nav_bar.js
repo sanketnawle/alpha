@@ -1,6 +1,13 @@
 $(document).ready(function(){
 
 
+
+
+
+
+
+
+
     $('.nav_section').click(function(){
         var $this_section = $(this);
 
@@ -27,5 +34,20 @@ $(document).ready(function(){
     $('.nav_arrow').click(function(){
         //Find the section to the left of this arrow
     });
+
+
+    $('.nav_drop_down_section').click(function(){
+        var $this_drop_down_section = $(this);
+        //Get the type of this link from the parent drop down
+        var $nav_section = $this_drop_down_section.closest('.nav_section');
+        var link_type = $nav_section.attr('data-link_type');
+        //Gets the id of what we are trying to link to from this section
+        var link_id = $this_drop_down_section.attr('data-id');
+
+//        alert(link_type);
+        window.location.replace(base_url + '/' + link_type + '/' + link_id);
+    });
+
+
 
 });
