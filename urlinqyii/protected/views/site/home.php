@@ -115,7 +115,7 @@ var $ = jQuery.noConflict();
                             <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
-                            <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'home','origin_id'=>'','origin'=>null)); ?>
+                            <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'home','origin_id'=>$user->user_id,'origin'=>$user)); ?>
                             <div id = "planner_column" class = "planner_column_home">
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element">

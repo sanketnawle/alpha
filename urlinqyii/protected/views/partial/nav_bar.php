@@ -17,6 +17,28 @@
 
         <div class="nav_arrow"></div>
 
+        <div class="nav_section drop_down" id="home_nav" data-link_type="school">
+            <div class="nav_picture"></div>
+            <div class="nav_text">Schools</div>
+            <div id="nav_down_arrow"></div>
+            <div id="nav_drop_down_container" class="closed">
+                <div id="nav_drop_down_scrollable">
+                    <?php foreach($origin->school->university->schools as $school){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
+                    <?php } ?>
+                </div>
+
+
+
+                <div id="nav_drop_down_bar_line"></div>
+
+                <div id="nav_drop_down_see_all_button">
+                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
+                </div>
+            </div>
+        </div>
+
+
     <?php } else { ?>
 
         <div class="nav_section" id="home_nav" data-link_url="">
@@ -94,6 +116,9 @@
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'course/' . $origin_id; ?>" data-link_type="course">
             <div class="nav_picture"></div>
             <div class="nav_text">Courses</div>
+            <div id="nav_down_arrow"></div>
+
+
             <div id="nav_drop_down_container" class="closed">
                 <div id="nav_drop_down_scrollable">
                     <?php foreach($origin->courses as $class){ ?>
@@ -112,6 +137,7 @@
         </div>
 
 
+
     <?php } ?>
 
 
@@ -127,11 +153,12 @@
          <!-- Store the link type so we can use it in the js        -->
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
             <div class="nav_picture"></div>
-            <div class="nav_text">Courses</div>
+            <div class="nav_text">Departments</div>
+            <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="closed">
                 <div id="nav_drop_down_scrollable">
-                    <?php foreach($origin->courses as $class){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $class->course_id; ?>"><?php echo $class->course_name; ?></div>
+                    <?php foreach($origin->departments as $department){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->course_id; ?>"><?php echo $department->depatment_name; ?></div>
                     <?php } ?>
                 </div>
 

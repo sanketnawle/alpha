@@ -32,6 +32,7 @@
     overflow: hidden;
 
     cursor: default;
+    z-index: 100;
 }
 
 
@@ -61,7 +62,7 @@ a {
 
 
 .nav_section {
-    display: inline-block;
+    display: block;
     min-width: 87px;
     height: 100%;
     float:left;
@@ -75,12 +76,15 @@ a {
 .nav_text {
     margin-left: 5px;
     width: auto;
-    height: 20px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 30px;
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    margin-top: 9px;
+    float: left;
     font-weight: 600;
     font-size: 14.5px;
+    display: inline-block;
 }
 
 
@@ -116,6 +120,16 @@ div.nav_section.active div#home_nav_icon {
     background-image: url('../../../assets/partial/nav_bar/school_icon_white.png');
 }
 
+
+#nav_down_arrow {
+    height: 5px;
+    width: 9px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 15px;
+    display: inline-block;
+    background-image: url('../../../assets/partial/nav_bar/nav_down_arrow.png');
+}
 
 #nav_drop_down_container {
     display: none;
