@@ -1,0 +1,20 @@
+﻿<div class="header row1 day">
+    <div class="left">
+        <a ng-href="{{getPrevLink()}}" class="arrow left" ng-uc-check></a>
+        <a ng-href="{{getNextLink()}}" class="arrow right" ng-uc-check></a>
+        <div class="month">{{getDate()}}</div>
+        <div class="year">{{activeYear}}</div>
+        <div class="wedge"></div>
+    </div>
+    <div class="right">
+        <a ng-href="{{getTodayLink()}}" class="today">Today</a>
+    </div>
+</div>
+<div class="day-view">
+    <div class="day-grid" id="day-grid">
+
+    </div>
+    <div class="ad-grid">
+
+    </div>
+</div>

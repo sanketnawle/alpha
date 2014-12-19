@@ -1,0 +1,413 @@
+.topbar * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+    font-weight: 300;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.topbar {
+    height: 48px;
+    position: fixed!important;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 1px solid #222;
+    z-index: 9999;
+    min-width: 820px;
+    background-color: #27292b;
+    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+}
+
+#topbar_responsive_holder{
+
+}
+
+
+
+    .topbar > #topbar_responsive_holder > .left {
+        overflow: auto;
+        float: left;
+        margin-right: 0px;
+    }
+
+        .topbar > #topbar_responsive_holder > .left a {
+            float: left;
+            margin-left: 30px;
+            height: 48px;
+        }
+
+            .topbar > #topbar_responsive_holder > .left a:hover {
+            }
+
+            .topbar > #topbar_responsive_holder > .left a.urlinq {
+                width: 130px;
+                display: block;
+                background-image: url(../../../assets/logo.png);
+                background-size: auto 22px;
+                background-repeat: no-repeat;
+                background-position: center 15px;
+            
+                cursor: pointer;
+}
+
+            .topbar > #topbar_responsive_holder > .left a.menu {
+                background-image: url(../../../assets/menu-toggle.png);
+                margin: 13px 0;
+                border-radius: 4px;
+                margin-left: 10px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 24px;
+                width: 24px;
+                height: 24px;
+                display: none;
+                opacity: 0.6;
+            }
+
+                .topbar > #topbar_responsive_holder > .left a.menu:hover {
+                    opacity: 1;
+                }
+
+    .topbar:hover > #topbar_responsive_holder > .left a.menu.active {
+        cursor: pointer;
+    }
+
+    .topbar:hover > .left a.menu {
+        background-position: center center;
+    }
+
+    .topbar .center {
+        width: 55%;
+        max-width: 800px;
+        margin: auto;
+    
+        display: inline-block;
+        float: left;
+}
+
+        .topbar .center form {
+            background-color: white;
+            position: relative;
+            margin-top: 8px;
+            padding: 8px 10px 4px;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+        
+            border: 1px solid #222;
+}
+
+            .topbar .center form .text {
+                width: 100%;
+                float: left;
+                margin-right: -25px;
+                padding-right: 25px;
+                font-size: 14px;
+
+                border: none;
+                font-weight: 500;
+                line-height: 18px;
+            
+                font-family: 'Open Sans', sans-serif;
+}
+
+            .topbar #topbar_responsive_holder .center form .submit {
+                width: 30px;
+                position: absolute;
+                height: 30px;
+                top: 2px;
+                right: 0;
+                border: none;
+                background: none;
+                background-image: url(../../../assets/smallSearchIco.png);
+                background-repeat: no-repeat;
+                background-size: 17px 17px;
+                background-position: center center;
+            }
+
+    .topbar > #topbar_responsive_holder > .right {
+        float: left;
+        width: 25%;
+        height: 100%;
+    
+        margin-left: 30px;
+}
+
+        .topbar > #topbar_responsive_holder > .right .notify {
+            float: left;
+            position: relative;
+            height: 31px;
+            border-right: 1px solid #fff;
+        
+            margin-top: 10px;
+            padding-right: 8px;
+            border-radius: 0px;
+            padding-left: 8px;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.calendar{
+    padding-left:5px;
+    border-radius:2px 0px 0px 2px;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.board{
+    border-right:none;
+    border-radius:0px 2px 2px 0px;
+}
+
+.topbar > #topbar_responsive_holder > .right , .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+        .topbar > #topbar_responsive_holder > .right .notify:hover,.topbar > #topbar_responsive_holder > .right .notify.active{
+            background: rgba(18, 19, 20, 0.333); 
+            -moz-transition: all .12s ease;
+            -webkit-transition: all .12s ease;
+            transition: all .12s ease;
+        }
+
+            .topbar > #topbar_responsive_holder > .right .notify .button {
+                height: 80%;
+                width: 100%;
+            
+                margin-left: 2px;
+}
+
+            .topbar > #topbar_responsive_holder > .right .notify.calendar .button,.topbar > #topbar_responsive_holder > .right .notify.board .button {
+                padding-top: 4px;
+            
+                padding-left: 5px;
+                padding-right: 7px;
+                padding-bottom: 4px;
+                height: 28px;
+                font-family: Avenir;
+}
+
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
+                    text-align: center;
+                    color: rgba(255, 255, 255, 0.95);
+                
+                    display: inline-block;
+                    bottom: 10px;
+                    position: relative;
+                    top: -5px;
+}
+
+.topbar > #topbar_responsive_holder > .right .notify.board .button div{
+    top: -10px;
+}
+
+            .topbar > #topbar_responsive_holder > .right .notify.calendar:hover .button div, .topbar > #topbar_responsive_holder > .right .notify.calendar.active .button div {
+                color: #fff;
+            }
+
+            .topbar > #topbar_responsive_holder > .right .notify.board {
+                border-left: none;
+            }
+
+                .topbar > #topbar_responsive_holder > .right .notify.board .button .icon,.topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
+                    background-image: url(../../../assets/TopBarMenuIcons.png);
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    width: 23px;
+                    margin: auto;
+                    display: inline-block;
+                    height: 28px;
+                
+                    top: -1px;
+                    position: relative;
+}
+
+                .topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
+                    background-repeat: no-repeat;
+                    background-position: -25px 0px;
+                    width: 28px;
+                    margin: auto;
+                    display: inline-block;
+                    height: 23px;
+                
+                    position: relative;
+                    top: 1px;
+}
+
+                .topbar > #topbar_responsive_holder > .right .notify.board:hover .button .icon, .topbar > #topbar_responsive_holder > .right .notify.board.active .button .icon {
+                }
+
+    .topbar #topbar_responsive_holder .center ul.prelist, .topbar .center ul.postlist {
+        display: none;
+    }
+
+    .topbar #topbar_responsive_holder .center ul {
+        background-color: #FFF;
+        position: absolute;
+        top: 40px;
+        width: 55%;
+        max-width: 600px;
+        border-radius: 4px;
+        padding: 4px 0px 4px;
+        border-top: none;
+        border: 1px solid #ccc;
+        border-color: rgba(0, 0, 0, .15);
+        -webkit-border-radius: 4px;
+        -webkit-box-shadow: 0 1px 8px 0px rgba(0, 0, 0, .10);
+    }
+
+        .topbar #topbar_responsive_holder .center ul li a {
+            display: block;
+            overflow: auto;
+            padding: 5px 8px;
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            color: #333;
+        }
+
+            .topbar #topbar_responsive_holder .center ul li a:hover {
+                background-color: #f1f1f1;
+            }
+
+            .topbar #topbar_responsive_holder .center ul li a .icon {
+                background-image: url(../img/search-icons.png);
+                background-size: 100%;
+                float: left;
+                width: 40px;
+                height: 40px;
+                clear: both;
+                margin-right: 10px;
+            }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.src, .topbar .center ul li a .icon.pro {
+                    background-position-y: 100%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.sch {
+                    background-position-y: 38.3%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.prof {
+                    background-position-y: 64.2%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.dpt {
+                    background-position-y: 13%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.cls {
+                    background-position-y: 0%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.crs {
+                    background-position-y: 77.2%;
+                }
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.srch {
+                    background-position-y: 77.2%;
+                }
+
+
+                .topbar #topbar_responsive_holder .center ul li a .icon.clb {
+                    background-position-y: 25.3%;
+                }
+
+            .topbar #topbar_responsive_holder .center ul li a span {
+                display: table-cell;
+                height: 40px;
+                vertical-align: middle;
+            }
+
+                .topbar #topbar_responsive_holder .center ul li a span b {
+                    color: #000;
+                    font-weight: 400;
+                }
+
+        .topbar #topbar_responsive_holder .center ul.postlist li:last-child a {
+            border-top: 1px solid #DDD;
+            text-align: center;
+            padding: 9px;
+        }
+
+            .topbar #topbar_responsive_holder .center ul.postlist li:last-child a:hover {
+                background-color: #DDD;
+            }
+
+    .topbar #topbar_responsive_holder div.day {
+        font-size: 10px;
+        line-height: 12px;
+        font-family: 'san_francisco';
+    }
+
+    .topbar div.date {
+        font-size: 16px;
+        line-height: 14px;
+        font-family: 'san_francisco';
+    }
+
+.mainsearch::-webkit-input-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+
+.mainsearch::-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* firefox 19+ */
+.mainsearch:-ms-input-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+/* ie */
+.mainsearch:-moz-placeholder {
+    color: #474747;
+    font-weight: 500;
+}
+
+.mainsearch:focus::-webkit-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+.mainsearch:focus::-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* firefox 19+ */
+.mainsearch:focus:-ms-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* ie */
+.mainsearch:focus:-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+@media(max-width:1248px){
+.topbar > #topbar_responsive_holder > .left a{
+    margin-left:10px!important;
+}
+}
+
+@media(max-width:1092px){
+div.icon_text{
+    display:none!important;
+}
+.topbar > #topbar_responsive_holder > .right .notify{
+    padding-right:5px!important;
+}
+.topbar>.right .notify .notify-window{
+    left:-180px!important;
+}
+.topbar > #topbar_responsive_holder > .right{
+    width:20%!important;
+}
+}

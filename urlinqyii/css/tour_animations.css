@@ -1,0 +1,9 @@
+@-webkit-keyframes pulse{from{background-position:0 0}
+to{background-position:-696px 0}
+}
+@-moz-keyframes pulse{from{background-position:0 0}
+to{background-position:-696px 0}
+}
+@keyframes pulse{from{background-position:0 0}
+to{background-position:-696px 0}
+}

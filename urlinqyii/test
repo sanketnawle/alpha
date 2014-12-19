@@ -1,0 +1,20 @@
+//ERROR ID's
+    // 1 - All data is not set
+    public function actionGetClassData(){
+        if(!isset($_GET['class_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $class = class::model()->find("class_id=:class_id",array(":class_id"=>$class_id));
+
+
+        $data = array('success'=>true,'class'=>$this->get_model_associations($class,array('members','admins')));
+
+
+        $this->renderJSON($data);
+        return;
+    }

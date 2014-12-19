@@ -1,0 +1,123 @@
+
+ul.color-border li p{
+  
+    font-weight: bold;
+    font-size: 14px;
+    margin: 7px 5px;
+    color: #999999; color: rgba(0, 0, 0, 0.3);
+}
+
+ul.color-border{
+  list-style:none;
+  width: 600px;
+  font-size:0;
+  margin: 0 auto;
+  max-width: 1280px;
+  position: relative;
+  padding: 0;
+  margin-top: 40px;
+  padding-bottom: 25px;
+}
+
+ul.color-border li{
+    display:inline-block;
+  
+    padding: 4px 20px;
+
+  
+    color: white;
+    font-size: 14px; font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    text-align: center; 
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+ul.color-border li a:visited{
+  text-decoration:none;
+}
+
+ul.color-border li a{
+  padding-bottom: 3px;
+  display: block;
+  padding-top: 3px;
+  text-transform: capitalize;
+}
+
+ul.color-border li:nth-of-type(1) {
+  color: #565a5c; 
+}
+
+
+ul.color-border li:nth-of-type(1):hover {
+background-color: #565a5c;
+  }
+
+
+
+
+ul.color-border li:hover {
+color:white!important;
+cursor:pointer;
+}
+
+ul.color-border li:active {
+opacity:.8;
+}
+
+ul.color-border li:nth-of-type(2) {
+  border-color: #1DA7D3;
+  color: #1DA7D3;
+}
+
+
+
+ul.color-border li:nth-of-type(3):hover {
+background-color:rgba(253, 112, 45, 0.74);
+  }
+
+
+
+ul.color-border li:hover > a{
+  color:white!important;
+}
+
+a:visited{
+  text-decoration: none;
+}
+
+ul.color-border li:nth-of-type(4):hover {
+ background-color: rgba(177, 104, 226, 0.8);
+}
+
+ul.color-border li:nth-of-type(5) {
+ color: #ff5a5f;
+}
+
+ul.color-border li:nth-of-type(5):hover {
+ background-color: #ff5a5f;
+}
+
+
+a.cb-link1:visited{
+color: #565a5c;
+}
+
+a.cb-link2:visited{
+  color: #1DA7D3;
+}
+a.cb-link3:visited{
+  color:rgba(253, 112, 45, 0.74);
+}
+a.cb-link4:visited{
+  color: rgba(177, 104, 226, 0.8);
+}
+
+ul.color-border li:hover:nth-of-type(2) {
+  background-color: #1DA7D3;
+}
+
+ul.color-border li:nth-of-type(3) {
+  border-color: rgba(253, 112, 45, 0.74);
+  color: rgba(253, 112, 45, 0.74);
+}
