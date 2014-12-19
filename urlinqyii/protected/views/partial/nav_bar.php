@@ -33,7 +33,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
+                    <div id="nav_drop_down_see_all_schools_text">See all schools</div>
                 </div>
             </div>
         </div>

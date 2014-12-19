@@ -177,6 +177,7 @@ div#nav_drop_down_scrollable{
 
 }
 
+
 div#nav_drop_down_see_all_button {
     position: absolute;
     margin: 0px auto;
@@ -187,15 +188,22 @@ div#nav_drop_down_see_all_button {
 }
 
 
+/* Hacky solution to get the text at the bottom of the nav dropdown
+to be centered since its absolutely positioned */
+
 #nav_drop_down_see_all_courses_text{
     margin-left: 80px;
     font-weight: 600;
 }
 
-
-#see_all_departments_text{
+#nav_drop_down_see_all_departments_text{
     margin-left: 70px;
 }
 
+
+
+#nav_drop_down_see_all_schools_text{
+    margin-left: 74px;
+}
 
 
