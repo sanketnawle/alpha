@@ -238,7 +238,11 @@ to be centered since its absolutely positioned */
 
 
 #nav_drop_down_see_all_schools_text{
+<<<<<<< HEAD
     margin-left: 91px;
+=======
+    margin-left: 75px;
+>>>>>>> 991e9fe87884ec4beac8620fc7203601303cad2d
 }
 
 

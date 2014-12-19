@@ -222,8 +222,13 @@ a.LeftPanel_DSContentBoxName{
     cursor: pointer;
     height: 30px;
     border-radius: 3px;
-}
 
+    /*Added by Alex*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
 
 
 a.LeftPanel_DSContentBoxName h5{
@@ -233,6 +238,7 @@ a.LeftPanel_DSContentBoxName h5{
     margin-left: 6px;
     line-height: 30px;
     font-family: 'Open Sans', sans-serif;
+    text-overflow: ellipsis;
 }
 
 .LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
