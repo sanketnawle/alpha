@@ -173,9 +173,8 @@ div{
     top: -52px;
     width: 830px!important;
 
-    border-radius: 3px;
+    border-radius: 2px;
     margin-left: 0px;
-    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
 }
 
 .tab {
@@ -476,8 +475,7 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
     }
     #tab_bar{
     left: 0px!important;
-    width: 98%!important;
-    margin-left: 10px;
+    width: 100%!important;
     }
     #topbar_responsive_holder{
     
