@@ -110,7 +110,7 @@
         </div>
 
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_arrow_white"></div>
 
         <!-- Store the link type so we can use it in the js        -->
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'course/' . $origin_id; ?>" data-link_type="course">
