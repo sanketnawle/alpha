@@ -159,18 +159,20 @@
 
                         <div id="event_list">
                             <script id="event_template" type="text/x-handlebars-template">
-                                <ul class="event" data-event_id='{{event_id}}'>
+
+                                <!-- event complete_0 or event complete_1
+                                    0 = not completed
+                                    1 = completed
+                                -->     
+                                <ul class="event complete_{{complete}}" data-event_id='{{event_id}}'>
                                     <li>
 
                                         <div class="event_listing_wrap">
                                             <span class="color_border " id="color_border1"></span>
-                                            {{#ifCond complete '==' '0'}}
-                                                    NOT COMPLETE
-                                            {{else}}
-                                                    COMPLETE
-                                            {{/ifCond}}
+
                                             <div class="event_listing {{event_class}}" >
-                                                <div class="evt_data" id="event_data0">{{title}} &#8226; {{end_date}}</div>
+                                                <div class="evt_data event_name_text" id="event_data0">{{title}}</div>
+                                                <div class="evt_data" id="event_data0">{{end_date}}</div>
                                                 <div class="checkbox_wrapper">
                                                     <input type="checkbox" name="event0" id="e0" value="#event_data0">
                                                     <label for="e0" id="label0"></label>

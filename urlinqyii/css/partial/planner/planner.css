@@ -1,9 +1,10 @@
 
 .planner_container{
     position: fixed;
-    right: 50px;
+    right: 240px;
+    top: 100px;
     width: 235px;
-    height: auto;
+    height: 70%;
     font-family: 'Open Sans', sans-serif;
     background: #fff;
     border-radius: 4px;
@@ -318,6 +319,15 @@ span.create_planner_message {}
     font-weight: 600;
     opacity: 1;
 }
+
+
+/*If the event is completed, strike out its name*/
+.event.complete_1 div.event_name_text{
+    text-decoration: line-through;
+}
+
+
+
 .evt_date{
     float: right;
     font-weight: 200;
@@ -348,11 +358,13 @@ span.create_planner_message {}
 .event_listing{
     display: block;
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 14px;
     font-size: 13px;
     font-weight: 500;
     width: 236px;
+    height: 40%;
     text-overflow: ellipsis;
+    margin-left: -4px;
 }
 .event_listing input[type=checkbox]{
     clip: rect(0,0,0,0);
@@ -367,6 +379,7 @@ span.create_planner_message {}
 .event_listing label{
     cursor: pointer;
     position: absolute;
+    top: -18px;
     width: 16px;
     height: 16px;
     border-radius: 4px;
@@ -475,13 +488,19 @@ span.create_planner_message {}
 .bottom_container_text:hover{
     background: #f5f5f5;
 }
+
+
+
 .event_listing_wrap{
     width: 205px;
     margin-left: -6px;
     margin-bottom: 4px;
     margin-top: 4px;
     text-indent: 10px;
+    height: 70px;
 }
+
+
 .evt_data:hover{
     text-decoration: underline;
     color: #029acf;
@@ -506,8 +525,11 @@ span.create_planner_message {}
     width: 205px;
     cursor: pointer;
     text-overflow: ellipsis;
+    margin-bottom: 5px;
 
 }
+
+
 .checkbox_hint{
     position: absolute;
     -moz-transition: all .3s ease-in-out;

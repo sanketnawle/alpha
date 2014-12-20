@@ -243,7 +243,7 @@ $(document).ready(function(){
 
     function handle_planner_events(){
         //Default it to hide and fadein if there are no posts
-        //$('#free_planner_wrap').hide();
+        $('#free_planner_wrap').hide();
 
 
         $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
@@ -291,7 +291,7 @@ $(document).ready(function(){
             $.each(past_events, function(index, past_event) {
                 past_event['event_class'] = 'past_event';
                 var date = new Date(past_event['end_date']);
-                var formatted_date =  weekday[d.getDay()].substring(0, 3) + ' ' + (date.getDate() + 1).toString() + '/' + (date.getMonth() + 1).toString();
+                var formatted_date =  weekday[d.getDay()].substring(0, 3) + ' ' + (date.getMonth() + 1).toString() + '/' + (date.getDate() + 1).toString();
                 past_event['end_date'] = formatted_date;
                 show_event(past_event,'#past_events');
             });
@@ -309,6 +309,13 @@ $(document).ready(function(){
 
             $.each(todays_events, function(index, todays_event) {
                 todays_event['event_class'] = 'today_event';
+
+                var date = new Date(todays_event['end_date']);
+                var formatted_date = get_formatted_time(date);
+                todays_event['end_date'] = formatted_date;
+
+
+
                 show_event(todays_event,'#todays_events');
             });
 
@@ -323,6 +330,11 @@ $(document).ready(function(){
 
             $.each(tomorrows_events, function(index, tomorrows_event) {
                 tomorrows_event['event_class'] = 'tomorrow_event';
+
+                var date = new Date(tomorrows_event['end_date']);
+                var formatted_date = get_formatted_time(date);
+                tomorrows_event['end_date'] = formatted_date;
+
                 show_event(tomorrows_event,'#tomorrows_events');
             });
 
@@ -338,6 +350,46 @@ $(document).ready(function(){
 
 
 
+
+    //Takes in a date object and returns a string of time like so:
+    //12:00 am, 5:35pm, etc
+    function get_formatted_time(date){
+        //Contains 0 - 23 so add 1
+        var hours = date.getHours() + 1;
+
+        var am_pm = 'am';
+        if(hours == 24){
+            hours = 12;
+        }else if(hours > 11){
+            hours %= 12;
+            am_pm = 'pm';
+        }
+
+        return hours.toString() + ':' + addZero(date.getMinutes()) + ' ' + am_pm;
+    }
+
+
+
+
+
+
+
+
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function myFunction() {
+        var d = new Date();
+        var x = document.getElementById("demo");
+        var h = addZero(d.getHours());
+        var m = addZero(d.getMinutes());
+        var s = addZero(d.getSeconds());
+        x.innerHTML = h + ":" + m + ":" + s;
+    }
 
 
 
