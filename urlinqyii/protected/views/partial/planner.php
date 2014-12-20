@@ -173,7 +173,11 @@
                                 <div class='event_date_time'>{{end_date}}</div>
                             </div>
                             <div class='event_checkbox_holder'>
-                                <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0">
+                                {{#ifCond completed '==' 'completed'}}
+                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0" checked>
+                                {{else}}
+                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0">
+                                {{/ifCond}}
                             </div>
                             <div>
 
