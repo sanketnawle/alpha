@@ -44,7 +44,7 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 255){
+        if(Math.floor(scroll_offset_top) >= 254){
 
             console.log("SETTING TO FIXED");
             
@@ -70,13 +70,9 @@ $(document).ready(function(){
         }
 
         if(Math.floor(scroll_offset_top) >= 299){
-            $tab_bar.css({'transition': 'height 200ms ease'});
-            $tab_wedge.css({'transition': 'margin-top 0ms ease'});            
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
-            $tab_bar.css({'height': '48px'});           
-            $tab_wedge.css({'margin-top':'-7px'});
-            $panel.css({'margin-top':'52px'});
+            $panel.css({'margin-top':'32px'});
             $cover_photo.css({'opacity':'0'});
 
         }if(Math.floor(scroll_offset_top) <= 255){
@@ -89,12 +85,10 @@ $(document).ready(function(){
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
 
-            $tab_bar.css({position: 'relative', top: '-52px',width: content_panel_width});
+            $tab_bar.css({position: 'relative', top: '-50px',width: content_panel_width});
 
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
-            $tab_bar.css({'height': '52px'});
-            $tab_wedge.css({'margin-top':'-7px'});
-            $panel.css({'margin-top':'0px'});
+            $panel.css({'margin-top':'-20px'});
             $cover_photo.css({'opacity':'1'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});

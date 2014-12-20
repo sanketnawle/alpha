@@ -1,0 +1,7 @@
+#files_tab_sprites{
+	background-image: url(../../../assets/FilesTab_iconmap.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: auto;
+    vertical-align: middle;
+}
