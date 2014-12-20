@@ -175,6 +175,7 @@ div{
 
     border-radius: 2px;
     margin-left: 0px;
+    box-shadow: 0px 10px 8px #fff;
 }
 
 .tab {
@@ -270,6 +271,12 @@ div.tab.active div.tab_wedge {
     background-image: url('../../assets/main/tab_bar/tab_wedge.png');
     margin: 0px auto;
     margin-top: -7px;
+    opacity:1;
+    -moz-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -ms-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -o-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -webkit-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
     z-index: 1000;
 }
 
@@ -440,7 +447,7 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
 }
 
 #small_search{
-    margin-top: 2px;
+    margin-top: 4px;
 
 }
 
@@ -465,15 +472,15 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
 #small_search input#small_search_input{
     border: 1px solid #C7C7C7;
     
-    width: 250px;
+    width: 210px;
     padding-left: 29px;
     padding-right: 22px;
-    height: 32px;
+    height: 30px;
     background: #fff;
     box-shadow: none;
     outline: none;
     border-radius: 3px;
-    font-size: 13.5px;
+    font-size: 14px;
 }
 
 ul.tabnav_tabs{
@@ -503,7 +510,7 @@ ul.tabnav_tabs li{
     position: relative;
 
     border-bottom: 1px solid #ddd;
-    margin: 0px 0px 20px;
+    margin: 0px 0px 15px;
 }
 
 .tabnav_right {
@@ -515,27 +522,22 @@ ul.tabnav_tabs li{
 ul.tabnav_tabs li div.tabnav_tab{
     background-color: transparent;
 
-    border: none;
+    border: 1px solid transparent;
     border-radius: 3px 3px 0 0;
     display: inline-block; 
-    padding: 10px 30px 9px; font-size: 14px; line-height: 20px;  text-decoration: none;
-    font-weight: 600;
+    padding: 10px 27px 9px; 
 }
 
 ul.tabnav_tabs li.active div.tabnav_tab{
-    background-color: transparent;
-
     border: 1px solid #ddd;
-    border-radius: 3px 3px 0 0;
     border-bottom: 1px solid #fafafa;
-    display: inline-block; 
-    padding: 10px 30px 9px; font-size: 14px; line-height: 20px;  text-decoration: none;
     font-weight: 600;
+    box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
 }
 
 ul.tabnav_tabs li div.tabnav_tab span{
-    font-weight: 600;
-
+    font-weight: 500;
+    font-family:Avenir;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
 }
@@ -550,11 +552,13 @@ ul.tabnav_tabs li.active{
 }
 
 .tab_floater_bar_half{
+    display: inline-block;
 
+    width: 270px;
+    margin-left: 20px;
 }
 
 .tab_floater_bar_half div.action{
-    width: 50%;
 
     padding-left: 2px;
 }

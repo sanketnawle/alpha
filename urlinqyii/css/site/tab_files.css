@@ -49,7 +49,7 @@ li.class_files.active{
     font-weight: 600;
     padding-left: 1px;
     -webkit-font-smoothing: antialiased;
-    font-size: 14.5px;
+    font-size: 14px;
 }
 
 span.drag_hint{
@@ -57,12 +57,12 @@ span.drag_hint{
 
     font-weight: 600;
     -webkit-font-smoothing: antialiased;
-    font-size: 14.5px;
+    font-size: 14px;
 }
 
 span.drag_hint i{
     color: #999;
-    padding-right: 5px;
+    padding-right: 4px;
 }
 
 div.action a#new_folder_button{
@@ -70,10 +70,10 @@ div.action a#new_folder_button{
 }
 
 div.files_sort{
-    border-bottom: 2px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
 
     line-height: 29px;
-    padding: 4px 2px;
+    padding: 4px 4px;
     padding-right: 5px;
     height: 25px;
     padding-top: 10px;
@@ -132,7 +132,7 @@ div#name_sorter{
 }
 
 div#kind_sorter{
-    width: 23%;
+    width: 22%;
 
 }
 
@@ -142,11 +142,12 @@ div#date_sorter{
 }
 
 a#upload_text_button{
-	padding: 6px 4px;
+	padding: 3px 4px;
 	border-radius: 3px;
 	margin-left: -7px;
 	cursor:pointer;
 	margin-right:2px;
+	padding-right: 0px;
 }
 
 a#upload_text_button:hover{
@@ -158,9 +159,205 @@ a#upload_text_button:active{
 }
 
 div#views_sorter{
-    width: 15%;
-
+    width: 16%;
 }
 
 div#files_header_bottom_line{
+}
+
+div.files_sub_panel{
+	width:100%;
+	min-height:400px;
+	display:none;
+}
+
+div.files_sub_panel.student_files{
+}
+
+div.files_sub_panel.active{
+	display:block!important;
+}
+
+ol.files_list{
+    margin: 0;
+
+    list-style: none;
+    padding: 0;
+    -webkit-padding-start: 0;
+}
+
+ol.files_list li.file{
+    text-align: left;
+	
+    padding: 7px 2px 6px;
+    margin: 0 0px -1px 0px;
+    line-height: 32px;
+    list-style: none;
+    position: relative;
+    border: 1px solid #d4d4d4;
+    border-width: 1px 0;
+    font-size: 13.5px;
+    zoom: 1;
+}
+
+ol.files_list li.file div{
+    cursor: default;
+
+    display: block;
+}
+
+ol.files_list li.file div.filename_col{
+	
+    height: 32px;
+    width: 45%;
+    float: left;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite{
+    width: 32px;
+	
+    height: 32px;
+    margin-top: -4px;
+    margin-right: 14px;
+    display: block;
+    margin-left: 1px;
+    background-color: transparent;
+    overflow: hidden;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.doc{
+    background-position: 0px -147px;
+	
+    margin-left: 5px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.excel{
+    background-position: 0px -234px;
+	
+    margin-left: 5px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.ppt{
+    background-position: 0px -191px;
+	
+    margin-left: 5px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.pdf{
+    background-position: 0px -105px;
+	
+    margin-left: 5px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.zip{
+    background-position: 0px -274px;
+	
+    width: 35px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.img{
+    background-image: url(../../assets/NYU_CAS_Cover.jpg)!important;
+	
+    width: 33px;
+    height: 33px;
+    background-size: cover!important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+
+ol.files_list li.file div.filename_col a.filename{
+    color: #333;
+	
+    font-size: 13.5px;
+    white-space: pre;
+    text-decoration: none;
+}
+
+ol.files_list li.file div.filename_col a.file_uploader_user{
+	
+}
+
+ol.files_list li.file div.kind{
+    width: 22%;
+	
+    display: inline-block;
+    float: left;
+}
+
+ol.files_list li.file div.kind span.category{
+	
+}
+
+ol.files_list li.file div.date{
+    width: 17%;
+	
+    float: left;
+}
+
+ol.files_list li.file div.date span.relevant_date{
+	
+}
+
+ol.files_list li.file div.views{
+	
+    display: inline-block;
+    width: 16%;
+}
+
+ol.files_list li.file div.views span.viewcount{
+    white-space: nowrap;
+	
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: -2px;
+}
+
+ol.files_list li.file div.views a.download_button{
+    display: none; 
+	
+    position: absolute;
+    border: 1px solid #C0C0C0; 
+    line-height: 28px;
+    border-radius: 4px; 
+    right: 8px;
+    background-color: #fcfcfc; 
+    cursor:pointer;
+    top: 8px;
+    background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); 
+    height: 28px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); 
+    -moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    -webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #333; 
+}
+
+ol.files_list li.file div.views a.download_button:hover{
+color: #333;
+outline: 0;
+background-color: #f9f9f9;
+border-color: #B8B8B8 #969696 #7E7E7E;
+-moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+-webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+}
+ol.files_list li.file div.views a.download_button:active{
+text-shadow: none;
+border-color: #B8B8B8 #969696 #7E7E7E;
+background-color: #eee;
+-moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+-webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+}
+
+ol.files_list li.file:hover div.views a.download_button{
+	display:block;
+}
+
+ol.files_list li.file div.views a.extra_padding{
+    padding: 0 15px;
+	
+    margin: 0;            
 }
