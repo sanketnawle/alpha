@@ -54,30 +54,33 @@
                         <img id="dropdown_arrow" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/dropdown_arrow.png"/>
                     </div>
                 </div>
-                <div class="planner_body">
-                        <div class="entry_field" id="todo_wrap">
-                            <div class="entry_field_placeholder" id="add_todo">
-                                + Create To-do
-                                <i class="help_icon"></i>
-                            </div>
-                            <div class="planner_creation_form">
-                                <textarea class="event_name" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
-                                <div class="event_time_wrap">
-                                    Due:
-                                    <input class="event_date" id="event_date" name="event_date" value="none" readonly></input>
-                                    <div class = "calLayer">
-                                      <section id = "mounth" class="mounth">
-                                        <header class="minical-header">
-                                          <h1 class="minical-h1"></h1>
 
-                                          <nav role="padigation">
+            </div>
+
+            <div class="create_event_body">
+                <div class="entry_field" id="todo_wrap">
+                    <div class="entry_field_placeholder" id="add_todo">
+                        + Create To-do
+                        <i class="help_icon"></i>
+                    </div>
+                    <div class="planner_creation_form">
+                        <textarea class="event_name" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
+                        <div class="event_time_wrap">
+                            Due:
+                            <input class="event_date" id="event_date" name="event_date" value="none" readonly></input>
+                            <div class = "calLayer">
+                                <section id = "mounth" class="mounth">
+                                    <header class="minical-header">
+                                        <h1 class="minical-h1"></h1>
+
+                                        <nav role="padigation">
                                             <span class="m-prev"></span>
                                             <span class="m-next"></span>
-                                          </nav>
-                                        </header>
+                                        </nav>
+                                    </header>
 
-                                        <article>
-                                          <div class="days">
+                                    <article>
+                                        <div class="days">
                                             <b>SU</b>
                                             <b>MO</b>
                                             <b>TU</b>
@@ -85,8 +88,8 @@
                                             <b>TH</b>
                                             <b>FR</b>
                                             <b>SA</b>
-                                          </div>
-                                          <div class="dates">
+                                        </div>
+                                        <div class="dates">
                                             <span id="calcell_su_0" class="calcell disable cl_0"></span>
                                             <span id="calcell_mo_1" class="calcell disable cl_1"></span>
                                             <span id="calcell_tu_2" class="calcell disable cl_2"></span>
@@ -129,29 +132,28 @@
                                             <span id="calcell_th_39" class="disable calcell cl_39"></span>
                                             <span id="calcell_fr_40" class="disable calcell cl_40"></span>
                                             <span id="calcell_sa_41" class="disable calcell cl_41"></span>
-                                          </div>
-                                        </article>
-                                      </section>
-                                    </div>
-                                    <span class="event_time">Add time</span>
-                                    <input class="tp1" id="tp1" value="none">
-                                    <div class="timepicker">
-                                        <div class="timeslot1"></div>
-                                        <div class="timeslot2"></div>
-                                        <div class="timeslot3"></div>
-                                        <div class="timeslot4"></div>
-                                        <div class="timeslot5"></div>
-                                    </div>
-                                </div>
-                                <div class="event_action">
-                                    <span class="cancel_form">Cancel</span>
-
-                                    <form id='create_todo_form' method="post" action="<?php echo Yii::app()->getBaseUrl(true); ?>/event/createTodo">
-                                        <input type="submit" class="create_form" id="create_todo_button" name="create_form" value="Add this To-Do">
-                                    </form>
-                                </div>
+                                        </div>
+                                    </article>
+                                </section>
+                            </div>
+                            <span class="event_time">Add time</span>
+                            <input class="tp1" id="tp1" value="none">
+                            <div class="timepicker">
+                                <div class="timeslot1"></div>
+                                <div class="timeslot2"></div>
+                                <div class="timeslot3"></div>
+                                <div class="timeslot4"></div>
+                                <div class="timeslot5"></div>
                             </div>
                         </div>
+                        <div class="event_action">
+                            <span class="cancel_form">Cancel</span>
+
+                            <form id='create_todo_form' method="post" action="<?php echo Yii::app()->getBaseUrl(true); ?>/event/createTodo">
+                                <input type="submit" class="create_form" id="create_todo_button" name="create_form" value="Add this To-Do">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -165,6 +167,8 @@
 
                 <div id="event_list">
 
+
+                    <!--    Add btn to delete event from planner                -->
                     <script id="event_template" type="text/x-handlebars-template">
 
                         <div class='event {{complete}}' data-event_id='{{event_id}}'>
