@@ -487,7 +487,7 @@ function show_event(event,event_div_id){
         event['completed'] = 'not_completed';
     }
 
-    
+    event['completed'] = 'completed';
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
     var generated_html = template(event);
@@ -566,7 +566,7 @@ $(document).on('click','.event_time',function(){
 
 
 //$('#create_todo_form').submit(function (e) {
-$(document).on('click','.checkbox_wrapper',function(e){
+$(document).on('click','.event_checkbox_input',function(e){
     //Send post request to event/create
 //    e.preventDefault();
 //
@@ -577,15 +577,24 @@ $(document).on('click','.checkbox_wrapper',function(e){
 //    var post_data = $(this).serializeArray();
 //    var errors = [];
 
+    var $checkbox = $(this);
+
     var $event = $(this).closest('.event');
     var event_id = $event.attr('data-event_id');
 
 
     console.log("EVENT ID");
     console.log(event_id);
-//    alert(event_id);
 
-    var post_url = base_url + '/event/' + event_id + '/checkoff';
+
+    var check_or_uncheck = 'check';
+    if(!$checkbox.is(':checked')){
+        check_or_uncheck = 'uncheck';
+    }
+
+    var post_url = base_url + '/event/' + event_id + '/' + check_or_uncheck;
+
+
     var post_data = {event_id: event_id};
     $.post(
         post_url,
