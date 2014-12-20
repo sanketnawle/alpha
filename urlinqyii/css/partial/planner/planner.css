@@ -41,6 +41,7 @@
     position: relative;
     border-radius: 0px 0px 4px 4px;
     z-index: 1;
+
 }
 .entry_field{
     height: 36px;
@@ -83,11 +84,10 @@
 }
 
 span.create_planner_message {}
-.event_body{
-    font-size: 12px;
-    position: relative;
-    max-height: 400px;
-}
+
+
+
+
 .free_planner_message, .create_planner_message{
     display: inline;
     position: absolute;
@@ -264,15 +264,19 @@ span.create_planner_message {}
 
 
 #event_list{
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     margin-left: 0px;
     font-size: 10px;
     font-weight: bold;
     font-family: 'OpenSans', sans-serif;
-    height: auto;
+    height: 88%;
     color: #575757;
     white-space: normal;
-    max-height: 270px;
+
+
 
     overflow-y: auto;
 }
@@ -284,6 +288,37 @@ span.create_planner_message {}
     width: 100%;
     height: 40px;
 
+}
+
+#planner_header_holder {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 100;
+
+
+}
+
+#planner_body_holder{
+    position: relative;
+    top: 4px;
+    left: 0;
+    font-size: 12px;
+    width: 100%;
+    height: 80%;
+}
+
+
+#planner_bottom_holder{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0px auto;
+
+    width: 100%;
+    height: 10%;
 }
 
 
@@ -302,6 +337,7 @@ span.create_planner_message {}
     display: inline-block;
     float: right;
     width: 15%;
+    padding-top: 11px;
 }
 
 
@@ -335,6 +371,44 @@ span.create_planner_message {}
 
     color: lightgrey;
 
+}
+
+
+
+
+#planner_bottom_bar_line {
+    position: relative;
+    top: -5px;
+    height: 1px;
+    width: 210px;
+    background-color: #dbdcdc;
+    margin: 0px auto;
+
+    border-radius: 1px;
+}
+
+#planner_bottom_see_all_button {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+
+
+#nav_drop_down_bar_line {
+    position: absolute;
+    height: 1px;
+    width: 250px;
+    background-color: #E8E8E8;
+    margin: 0px auto;
+    bottom: 37px;
+    left: 10px;
+    border-radius: 1px;
+
+}
+
+
+#planner_bottom_text {
+    margin-left:  50px;
 }
 
 

@@ -364,7 +364,7 @@ $(document).ready(function(){
     //Takes in a date and returns abbreviated day and the month/day
     //eg Sat 12/19
     function get_formatted_date(date){
-        return weekday[d.getDay()].substring(0, 3) + ' ' + (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();
+        return weekday[date.getDay()].substring(0, 3) + ' ' + (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();
     }
 
     //Takes in a date object and returns a string of time like so:
@@ -487,7 +487,7 @@ function show_event(event,event_div_id){
         event['completed'] = 'not_completed';
     }
 
-
+    
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
     var generated_html = template(event);
