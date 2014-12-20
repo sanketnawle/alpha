@@ -350,6 +350,60 @@ class EventController extends Controller
     }
 
 
+
+    public function actionCheck(){
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $event_id = $_POST['event_id'];
+
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+        if($event){
+            $event->complete = true;
+            $event->save(false);
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionUncheck(){
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $event_id = $_POST['event_id'];
+
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+        if($event){
+            $event->complete = false;
+            $event->save(false);
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

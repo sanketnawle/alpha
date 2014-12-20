@@ -413,7 +413,7 @@ span.create_planner_message {}
 
 
 /*If the event is completed, strike out its name*/
-.event.completed div.event_name {
+.event.complete div.event_name {
     text-decoration: line-through;
 }
 
