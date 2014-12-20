@@ -416,6 +416,7 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
     z-index: 20;
 }
 
+
 /* Common Partial Classes */
 
 .float_Left{
@@ -438,6 +439,171 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
     text-decoration: none;
 }
 
+#small_search{
+    margin-top: 2px;
+
+}
+
+.fade_input_small{
+
+}
+
+#small_search label{
+    position: absolute;
+
+    color: #aaa;
+    padding-left: 28px;
+    line-height: normal;
+    left: 22px;
+    top: 7px;
+    cursor: text;
+    pointer-events: none;
+    transition: color 0.2s linear 0s; -webkit-transition: color 0.2s linear 0s; -moz-transition: color 0.2s linear 0s;
+    font-size: 13.5px;
+}
+
+#small_search input#small_search_input{
+    border: 1px solid #C7C7C7;
+    
+    width: 250px;
+    padding-left: 29px;
+    padding-right: 22px;
+    height: 32px;
+    background: #fff;
+    box-shadow: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 13.5px;
+}
+
+ul.tabnav_tabs{
+    display: inline-block;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.tabnav_tabs li{
+    display: inline-block;
+
+    margin-bottom: -1px;
+    color: #777;
+}
+
+#tab_content_holder{
+
+}
+
+#tab_header{
+
+}
+
+#tabnav{
+    position: relative;
+
+    border-bottom: 1px solid #ddd;
+    margin: 0px 0px 20px;
+}
+
+.tabnav_right {
+    position: absolute;
+
+    right: 0px;
+}
+
+ul.tabnav_tabs li div.tabnav_tab{
+    background-color: transparent;
+
+    border: none;
+    border-radius: 3px 3px 0 0;
+    display: inline-block; 
+    padding: 10px 30px 9px; font-size: 14px; line-height: 20px;  text-decoration: none;
+    font-weight: 600;
+}
+
+ul.tabnav_tabs li.active div.tabnav_tab{
+    background-color: transparent;
+
+    border: 1px solid #ddd;
+    border-radius: 3px 3px 0 0;
+    border-bottom: 1px solid #fafafa;
+    display: inline-block; 
+    padding: 10px 30px 9px; font-size: 14px; line-height: 20px;  text-decoration: none;
+    font-weight: 600;
+}
+
+ul.tabnav_tabs li div.tabnav_tab span{
+    font-weight: 600;
+
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+ul.tabnav_tabs li.active{
+    color: #333;
+
+}
+
+#tab_global_actions_bar{
+
+}
+
+.tab_floater_bar_half{
+
+}
+
+.tab_floater_bar_half div.action{
+    width: 50%;
+
+    padding-left: 2px;
+}
+
+.upload_text_button{
+    
+}
+
+
+/* Fading input placeholder */
+input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+
+input::-moz-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+/* firefox 19+ */
+input:-ms-input-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+/* ie */
+input:-moz-placeholder {
+    color: #999;
+    font-weight: 500;
+}
+
+input:focus::-webkit-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+
+input:focus::-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* firefox 19+ */
+input:focus:-ms-input-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
+/* ie */
+input:focus:-moz-placeholder {
+    transition: opacity 0.15s;
+    opacity: .4;
+}
 
 /* Media Queries */
 
