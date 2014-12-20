@@ -60,7 +60,7 @@ $(document).ready(function(){
 
 
             $nav_bar.css({'position':'relative'});
-            $nav_bar.css({'top':'265px'});
+            $nav_bar.css({'top':'264px'});
 
             
             
@@ -70,8 +70,8 @@ $(document).ready(function(){
         }
 
         if(Math.floor(scroll_offset_top) >= 299){
-            $tab_bar.css({'transition': 'height 200ms ease'});
-            $tab_wedge.css({'transition': 'margin-top 0ms ease'});            
+            $tab_bar.css({'transition': 'height 0.0s ease'});
+            $tab_wedge.css({'transition': 'margin-top 0.0s ease'});            
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
             $tab_bar.css({'height': '48px'});           
@@ -79,12 +79,7 @@ $(document).ready(function(){
             $panel.css({'margin-top':'52px'});
             $cover_photo.css({'opacity':'0'});
 
-        }if(Math.floor(scroll_offset_top) <= 255){
-            $nav_bar.css({'position':'fixed'});
-            $nav_bar.css({'top':'56px'});            
-        }
-
-        else if(Math.floor(scroll_offset_top) <= 299){
+        }else if(Math.floor(scroll_offset_top) <= 299){
             console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -95,7 +90,6 @@ $(document).ready(function(){
             $tab_bar.css({'height': '52px'});
             $tab_wedge.css({'margin-top':'-7px'});
             $panel.css({'margin-top':'0px'});
-            $cover_photo.css({'opacity':'1'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 

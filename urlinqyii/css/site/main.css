@@ -406,8 +406,10 @@ div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div
 /* Panel content */
 .panel {
     display: none;
-    color: white;
+    color: #333;
 
+    width: 100%;
+    padding: 0px 12px;
 }
 
 .panel.active{
