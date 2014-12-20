@@ -481,13 +481,12 @@ function show_event(event,event_div_id){
 
     //Change the boolean 0 or 1 to completed or not_completed
     //so the css is more clear
-    if(event['completed'] == '1'){
-        event['completed'] = 'completed';
+    if(event['complete'] == '1'){
+        event['complete'] = 'complete';
     }else{
-        event['completed'] = 'not_completed';
+        event['complete'] = 'not_complete';
     }
 
-    
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
     var generated_html = template(event);
@@ -565,17 +564,9 @@ $(document).on('click','.event_time',function(){
 
 
 
-//$('#create_todo_form').submit(function (e) {
-$(document).on('click','.checkbox_wrapper',function(e){
-    //Send post request to event/create
-//    e.preventDefault();
-//
-//    //alert($('.event_date').val());
-//
-//    var $form = $(this);
-//    var post_url = $form.attr('action');
-//    var post_data = $(this).serializeArray();
-//    var errors = [];
+$(document).on('click','.event_checkbox_input',function(e){
+
+    var $checkbox = $(this);
 
     var $event = $(this).closest('.event');
     var event_id = $event.attr('data-event_id');
@@ -583,21 +574,32 @@ $(document).on('click','.checkbox_wrapper',function(e){
 
     console.log("EVENT ID");
     console.log(event_id);
-//    alert(event_id);
 
-    var post_url = base_url + '/event/' + event_id + '/checkoff';
+
+    var check_or_uncheck = 'check';
+    if(!$checkbox.is(':checked')){
+        check_or_uncheck = 'uncheck';
+    }
+
+    var post_url = base_url + '/event/' + event_id + '/' + check_or_uncheck;
+
+
     var post_data = {event_id: event_id};
     $.post(
         post_url,
         post_data,
         function(response) {
             if(response['success']){
-                //alert(JSON.stringify(response));
 
 
+                if(check_or_uncheck == 'check'){
+                    $event.removeClass('not_complete');
+                    $event.addClass('complete');
+                }else{
+                    $event.removeClass('complete');
+                    $event.addClass('not_complete');
+                }
 
-                add_event(response['event']);
-                //show_event(response['event'],'#todays_events');
             }else{
                 alert(JSON.stringify(response));
             }

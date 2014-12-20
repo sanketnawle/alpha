@@ -167,19 +167,21 @@
 
                     <script id="event_template" type="text/x-handlebars-template">
 
-                        <div class='event {{completed}}' data-event_id='{{event_id}}'>
+                        <div class='event {{complete}}' data-event_id='{{event_id}}'>
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
                                 <div class='event_date_time'>{{end_date}}</div>
                             </div>
                             <div class='event_checkbox_holder'>
-                                {{#ifCond completed '==' 'completed'}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0" checked>
+
+
+                                {{#ifCond complete '==' 'complete'}}
+                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0" checked="checked">
                                 {{else}}
                                     <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0">
                                 {{/ifCond}}
                             </div>
-                            <div>
+                        </div>
 
 
                     </script>
