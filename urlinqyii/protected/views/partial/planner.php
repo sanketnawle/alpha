@@ -158,163 +158,56 @@
 
 
                         <div id="event_list">
+
                             <script id="event_template" type="text/x-handlebars-template">
 
-                                <!-- event complete_0 or event complete_1
-                                    0 = not completed
-                                    1 = completed
-                                -->     
-                                <ul class="event complete_{{complete}}" data-event_id='{{event_id}}'>
-                                    <li>
+                                <div class='event {{completed}}' data-event_id='{{event_id}}'>
+                                    <div class='event_data_holder'>
+                                        <div class='event_name'>{{title}}</div>
+                                        <div class='event_date_time'>{{end_date}}</div>
+                                    </div>
+                                    <div class='event_checkbox_holder'>
+                                        <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0">
+                                    </div>
+                                <div>
 
-                                        <div class="event_listing_wrap">
-                                            <span class="color_border " id="color_border1"></span>
 
-                                            <div class="event_listing {{event_class}}" >
-                                                <div class="evt_data event_name_text" id="event_data0">{{title}}</div>
-                                                <div class="evt_data" id="event_data0">{{end_date}}</div>
-                                                <div class="checkbox_wrapper">
-                                                    <input type="checkbox" name="event0" id="e0" value="#event_data0">
-                                                    <label for="e0" id="label0"></label>
-                                                </div>
-                                                <div class="checkbox_hint" id="checkbox_hint1">
-                                                    <div class="hint_wedge">
-
-                                                    </div>
-                                                    <div class="hint_box">
-                                                        Mark as Complete
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
                             </script>
 
 
-                            <div id='past_due_events_header' style="display: none;">Past Due</div>
+
+
+                            <div class='planner_event_header' id='past_due_events_header' style="display: none;">
+                                <div class="planner_event_header_label">Past Due</div>
+                            </div>
+
+
+
                             <div id='past_events'>
 
                             </div>
 
-                            <div id='todays_events_header' style="display: none;">Today</div>
+
+
+                            <div class='planner_event_header' id='todays_events_header' style="display: none;">
+                                <div class="planner_event_header_label">Today</div>
+                                <div class="planner_event_header_date" id="todays_date"></div>
+                            </div>
+
                             <div id='todays_events'>
 
                             </div>
 
 
-                            <div id='tomorrows_events_header' style="display: none;">Tomorrow</div>
+                            <div class='planner_event_header' id='tomorrows_events_header' style="display: none;">
+                                <div class="planner_event_header_label">Tomorrow</div>
+                                <div class="planner_event_header_date" id="tomorrows_date"></div>
+                            </div>
+
                             <div id='tomorrows_events'>
 
                             </div>
-<!--                            <ul class="today_event">Past Due-->
-<!--                                <li>-->
-<!--                                    <div class="event_listing_wrap">-->
-<!--                                        <span class="color_border" id="color_border1"></span>-->
-<!--                                        <div class="event_listing" id="pastdue_event">-->
-<!--                                            <div class="evt_data" id="event_data0">Neurochemistry Reading &#8226; Tue, 11/5</div>-->
-<!--                                            <div class="checkbox_wrapper">-->
-<!--                                                <input type="checkbox" name="event0" id="e0" value="#event_data0">-->
-<!--                                                <label for="e0" id="label0"></label>-->
-<!--                                            </div>-->
-<!--                                            <div class="checkbox_hint" id="checkbox_hint1">-->
-<!--                                                <div class="hint_wedge">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div class="hint_box">-->
-<!--                                                    Mark as Complete-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                            <ul class="today_event">Today<span id="today_date" class="evt_date"></span>-->
-<!--                                <li>-->
-<!--                                    <div class="event_listing_wrap">-->
-<!--                                        <span class="color_border" id="color_border1"></span>-->
-<!--                                        <div class="event_listing" id="today_event">-->
-<!--                                            <div class="evt_data" id="event_data1">Neurochemistry Reading &#8226; 9:30am</div>-->
-<!--                                            <div class="checkbox_wrapper">-->
-<!--                                                <input type="checkbox" name="event1" id="e1" value="#event_data1">-->
-<!--                                                <label for="e1" id="label1"></label>-->
-<!--                                            </div>-->
-<!--                                            <div class="checkbox_hint" id="checkbox_hint1">-->
-<!--                                                <div class="hint_wedge">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div class="hint_box">-->
-<!--                                                    Mark as Complete-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                            <ul class="today_event">Tomorrow<span id="tomorrow_date" class="evt_date"></span>-->
-<!--                                <li>-->
-<!--                                    <div class="event_listing_wrap">-->
-<!--                                        <span class="color_border" id="color_border2"></span>-->
-<!--                                        <div class="event_listing">-->
-<!--                                            <div class="evt_data" id="event_data2">American History Paper &#8226; 11:30am</div>-->
-<!--                                            <div class="checkbox_wrapper">-->
-<!--                                                <input type="checkbox" name="event2" id="e2" value="#event_data2">-->
-<!--                                                <label for="e2" id="label2"></label>-->
-<!--                                            </div>-->
-<!--                                            <div class="checkbox_hint" id="checkbox_hint2">-->
-<!--                                                <div class="hint_wedge">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div class="hint_box">-->
-<!--                                                    Mark as Complete-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    <div class="event_listing_wrap">-->
-<!--                                        <span class="color_border" id="color_border3"></span>-->
-<!--                                        <div class="event_listing">-->
-<!--                                            <div class="evt_data" id="event_data3">Stressbusters Club Meeting &#8226; 6:00pm</div>-->
-<!--                                            <div class="checkbox_wrapper">-->
-<!--                                                <input type="checkbox" name="event3" id="e3" value="#event_data3">-->
-<!--                                                <label for="e3" id="label3"></label>-->
-<!--                                            </div>-->
-<!--                                            <div class="checkbox_hint" id="checkbox_hint3">-->
-<!--                                                <div class="hint_wedge">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div class="hint_box">-->
-<!--                                                    Mark as Complete-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                            <ul class="today_event"><span class="weekday3"></span><span id="date3" class="evt_date"></span>-->
-<!--                                <li>-->
-<!--                                    <div class="event_listing_wrap">-->
-<!--                                        <span class="color_border" id="color_border4"></span>-->
-<!--                                        <div class="event_listing">-->
-<!--                                            <div class="evt_data" id="event_data4">Person To-Do (Study) &#8226; 4:00pm</div>-->
-<!--                                            <div class="checkbox_wrapper">-->
-<!--                                                <input type="checkbox" name="event4" id="e4" value="#event_data4">-->
-<!--                                                <label for="e4" id="label4"></label>-->
-<!--                                            </div>-->
-<!--                                            <div class="checkbox_hint" id="checkbox_hint4">-->
-<!--                                                <div class="hint_wedge">-->
-<!---->
-<!--                                                </div>-->
-<!--                                                <div class="hint_box">-->
-<!--                                                    Mark as Complete-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
+
                         </div>
 
 

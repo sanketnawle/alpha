@@ -148,43 +148,8 @@ span.create_planner_message {}
     border: 1px solid rgba(229, 229, 229, 0);
     margin-left: -1px;
 }
-.event_name_wrap{
-    padding: 10px 0px 0px 33px;
-}
-.event_name{
-    position: relative;
-    left: 0px;
-    top: 7px;
-    border-width: 1px;
-    border-style: solid;
-    resize: none;
-    direction: ltr;
-    display: inline-block;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13.35px;
-    height: 25px;
-    overflow: hidden;
-    padding: 3px 0px 1px 6px;
-    transition-delay: 0s;
-    outline: none;
-    transition-duration: 0.2s;
-    transition-property: background;
-    transition-timing-function: linear;
-    /* vertical-align: top; */
-    white-space: nowrap;
-    width: 204px;
-    word-wrap: normal;
-    border-radius: 4px;
-    -moz-transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-    color: rgb(41, 47, 51);
-    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-    border: none;
-    border: 1px solid #d7d7d7;
-    border-top: 1px solid #c0c0c0;
-    line-height: 25px;
-}
+
+
 
 
 .event_time_wrap{
@@ -299,47 +264,105 @@ span.create_planner_message {}
 
 
 #event_list{
-    width: 225px;
+    width: 100%;
     margin-left: 0px;
-    position: relative;
     font-size: 10px;
     font-weight: bold;
     font-family: 'OpenSans', sans-serif;
     height: auto;
     color: #575757;
     white-space: normal;
-    padding-left: 10px;
     max-height: 270px;
+
+    overflow-y: auto;
 }
-.event, .day3{
-    padding: 5px 0px 0px 0px;
-    list-style: none;
-    margin-top: 2px;
-    color: #444;
+
+
+
+.event{
+    display: block;
+    width: 100%;
+    height: 40px;
+
+}
+
+
+.event_data_holder {
+    display: inline-block;
+    float: left;
+    width: 80%;
+    margin-top: 5px;
+    margin-left: 10px;
+
+    font-size: 12px;
     font-weight: 600;
-    opacity: 1;
+}
+
+.event_checkbox_holder {
+    display: inline-block;
+    float: right;
+    width: 15%;
+}
+
+
+.planner_event_header {
+    display: block;
+    height: 10px;
+
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+}
+
+.planner_event_header_label {
+    display: inline-block;
+    float: left;
+    width: auto;
+
+
+    font-weight: 600;
+
+}
+
+.planner_event_header_date {
+    display: inline-block;
+    float: right;
+    width: auto;
+    font-weight: 300;
+
+    color: lightgrey;
+
 }
 
 
 /*If the event is completed, strike out its name*/
-.event.complete_1 div.event_name_text{
+.event.completed div.event_name {
     text-decoration: line-through;
 }
 
 
+.event_name {
 
-.evt_date{
-    float: right;
-    font-weight: 200;
-    font-size: 11px;
-    margin-top: -1px;
-    color: #bababa;
-    opacity: .75;
 }
-.event_list li{
-    position: relative;
-    top: 6px;
+/* Set the background colors for the different types of events */
+
+#past_events div.event{
+    background-color: #F56B76;
 }
+
+
+#todays_events div.event{
+    background-color: #E6EFC2;
+}
+
+#tomorrows_events div.event{
+    background-color: white;
+}
+
+
 
 
 

@@ -92,7 +92,7 @@ a {
     margin-top: 9px;
     float: left;
     font-weight: 600;
-    font-size: 14.5px;
+    font-size: 14px;
     display: inline-block;
 }
 
@@ -238,11 +238,7 @@ to be centered since its absolutely positioned */
 
 
 #nav_drop_down_see_all_schools_text{
-<<<<<<< HEAD
     margin-left: 91px;
-=======
-    margin-left: 75px;
->>>>>>> 991e9fe87884ec4beac8620fc7203601303cad2d
 }
 
 

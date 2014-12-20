@@ -291,7 +291,7 @@ $(document).ready(function(){
             $.each(past_events, function(index, past_event) {
                 past_event['event_class'] = 'past_event';
                 var date = new Date(past_event['end_date']);
-                var formatted_date =  weekday[d.getDay()].substring(0, 3) + ' ' + (date.getMonth() + 1).toString() + '/' + (date.getDate() + 1).toString();
+                var formatted_date =  get_formatted_date(date);
                 past_event['end_date'] = formatted_date;
                 show_event(past_event,'#past_events');
             });
@@ -305,6 +305,10 @@ $(document).ready(function(){
 
         var todays_events = json_data['todays_events'];
         if(todays_events.length > 0){
+            //show todays date as month/day in the Today header above todays events
+            //eg 12/5
+            var date = new Date();
+            $('#todays_date').text(get_formatted_date(date));
 
 
             $.each(todays_events, function(index, todays_event) {
@@ -327,6 +331,15 @@ $(document).ready(function(){
 
         var tomorrows_events = json_data['tomorrows_events'];
         if(tomorrows_events.length > 0){
+            //show todays date as month/day in the Today header above todays events
+            //eg 12/5
+            //Actually gets todays date
+            var tomorrows_date = new Date();
+            //Converts today into tomorrow
+            tomorrows_date.setDate(tomorrows_date.getDate() + 1);
+            $('#tomorrows_date').text(get_formatted_date(tomorrows_date));
+
+
 
             $.each(tomorrows_events, function(index, tomorrows_event) {
                 tomorrows_event['event_class'] = 'tomorrow_event';
@@ -348,8 +361,11 @@ $(document).ready(function(){
 
     }
 
-
-
+    //Takes in a date and returns abbreviated day and the month/day
+    //eg Sat 12/19
+    function get_formatted_date(date){
+        return weekday[d.getDay()].substring(0, 3) + ' ' + (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();
+    }
 
     //Takes in a date object and returns a string of time like so:
     //12:00 am, 5:35pm, etc
@@ -462,7 +478,16 @@ $(document).ready(function(){
 //First parameter is the json event
 //Second is the div id to add event to
 function show_event(event,event_div_id){
-    //alert('showing event');
+
+    //Change the boolean 0 or 1 to completed or not_completed
+    //so the css is more clear
+    if(event['completed'] == '1'){
+        event['completed'] = 'completed';
+    }else{
+        event['completed'] = 'not_completed';
+    }
+
+
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
     var generated_html = template(event);
@@ -568,6 +593,9 @@ $(document).on('click','.checkbox_wrapper',function(e){
         function(response) {
             if(response['success']){
                 //alert(JSON.stringify(response));
+
+
+
                 add_event(response['event']);
                 //show_event(response['event'],'#todays_events');
             }else{
