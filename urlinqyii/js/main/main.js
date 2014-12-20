@@ -45,32 +45,11 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 254){
-
-            console.log("SETTING TO FIXED");
-            
-            //alert(y);
-            //$("#cover_photo").css({"transform":"translateY("+ -y+"px)"});
-
-
-
-            //            $(".em_hide").css({
-            //                "width":"12px",
-            //                "opacity":"1"
-            //            });
-
-
+        if(Math.floor(scroll_offset_top) >= 300){
+            //Set the tab bar to fixed at top of screen
             $nav_bar.css({'position':'relative'});
             $nav_bar.css({'top':'265px'});
-
-            
-            
-
-
-
-        }
-
-        if(Math.floor(scroll_offset_top) >= 302){
+            //Fade image and wedge out
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
             $panel.css({'margin-top':'32px'});
@@ -79,32 +58,37 @@ $(document).ready(function(){
             $tab_wedge.css({'height':'0px'});
             $cover_photo.css({'opacity':'0'});
 
-        }if(Math.floor(scroll_offset_top) <= 255){
-            $nav_bar.css({'position':'fixed'});
-            $nav_bar.css({'top':'56px'});            
-        }
 
-        else if(Math.floor(scroll_offset_top) <= 299){
-            console.log("SETTING TO RELATIVE");
-            //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
-//            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
+
+        }else if(Math.floor(scroll_offset_top) >= 259){
+            //Set the nav bar to relative so it scrolls up
+            //Set the nav bar to relative so it scrolls up
+            $nav_bar.css({'position':'relative'});
+            $nav_bar.css({'top':'265px'});
 
             $tab_bar.css({position: 'relative', top: '-50px',width: content_panel_width});
-
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
             $panel.css({'margin-top':'-20px'});
             $cover_photo.css({'opacity':'1'});
             $tab_wedge.css({'opacity':'1'});
             $tab_wedge.css({'margin-top':'-7px'});
             $tab_wedge.css({'height':'10px'});
+        }else if(Math.floor(scroll_offset_top) <= 258){
+            //nav bar fixed to top
+            $nav_bar.css({'position':'fixed'});
+            $nav_bar.css({'top':'56px'});
 
-            //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 
-
+            $tab_bar.css({position: 'relative', top: '-50px',width: content_panel_width});
+            $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
+            $panel.css({'margin-top':'-20px'});
+            $cover_photo.css({'opacity':'1'});
+            $tab_wedge.css({'opacity':'1'});
+            $tab_wedge.css({'margin-top':'-7px'});
+            $tab_wedge.css({'height':'10px'});
         }
 
 
-        //alert(y);
 
     });
 
