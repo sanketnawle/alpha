@@ -167,6 +167,8 @@
 
                 <div id="event_list">
 
+
+                    <!--    Add btn to delete event from planner                -->
                     <script id="event_template" type="text/x-handlebars-template">
 
                         <div class='event {{complete}}' data-event_id='{{event_id}}'>

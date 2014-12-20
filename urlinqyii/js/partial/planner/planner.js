@@ -305,10 +305,7 @@ $(document).ready(function(){
 
         var todays_events = json_data['todays_events'];
         if(todays_events.length > 0){
-            //show todays date as month/day in the Today header above todays events
-            //eg 12/5
-            var date = new Date();
-            $('#todays_date').text(get_formatted_date(date));
+
 
 
             $.each(todays_events, function(index, todays_event) {
@@ -322,22 +319,14 @@ $(document).ready(function(){
 
                 show_event(todays_event,'#todays_events');
             });
+            show_todays_label();
 
-            $('#todays_events_header').fadeIn( "slow", function() {
-                // Animation complete
-            });
         }
 
 
         var tomorrows_events = json_data['tomorrows_events'];
         if(tomorrows_events.length > 0){
-            //show todays date as month/day in the Today header above todays events
-            //eg 12/5
-            //Actually gets todays date
-            var tomorrows_date = new Date();
-            //Converts today into tomorrow
-            tomorrows_date.setDate(tomorrows_date.getDate() + 1);
-            $('#tomorrows_date').text(get_formatted_date(tomorrows_date));
+
 
 
 
@@ -351,10 +340,8 @@ $(document).ready(function(){
                 show_event(tomorrows_event,'#tomorrows_events');
             });
 
+            show_tomorrows_label();
 
-            $('#tomorrows_events_header').fadeIn( "slow", function() {
-                // Animation complete
-            });
         }
 
 
@@ -384,12 +371,41 @@ $(document).ready(function(){
         return hours.toString() + ':' + addZero(date.getMinutes()) + ' ' + am_pm;
     }
 
+    function show_past_due_label(){
+        $('#todays_events_header').fadeIn( "slow", function() {
+            // Animation complete
+        });
+    }
+
+    function show_todays_label(){
+        //show todays date as month/day in the Today header above todays events
+        //eg 12/5
+        //Actually gets todays date
+        var tomorrows_date = new Date();
+        //Converts today into tomorrow
+        tomorrows_date.setDate(tomorrows_date.getDate() + 1);
+        $('#tomorrows_date').text(get_formatted_date(tomorrows_date));
 
 
+        $('#todays_events_header').fadeIn( "slow", function() {
+            // Animation complete
+        });
+
+    }
 
 
+    function show_tomorrows_label(){
+        //show todays date as month/day in the Today header above todays events
+        //eg 12/5
+        var date = new Date();
+        $('#todays_date').text(get_formatted_date(date));
 
 
+        $('#tomorrows_events_header').fadeIn( "slow", function() {
+            // Animation complete
+        });
+
+    }
 
     function addZero(i) {
         if (i < 10) {
@@ -507,6 +523,9 @@ function add_event(event_json){
 //    alert(todays_date);
 //    alert(event_date.getDate() == todays_date.getDate());
     if(event_date.getDate() == todays_date.getDate()){
+        if($("#past_due_events_header").is(":visible")){
+            show_past_due_label();
+        }
         show_event(event_json,'#past_events');
         return;
     }
@@ -516,6 +535,9 @@ function add_event(event_json){
     var yesterdays_date = new Date(todays_date);
     yesterdays_date.setDate(todays_date.getDate() - 1);
     if(event_date.getDate() == yesterdays_date.getDate()){
+        if($("#todays_events_header").is(":visible")){
+            show_todays_label();
+        }
         show_event(event_json,'#todays_events');
         return;
     }
@@ -524,6 +546,9 @@ function add_event(event_json){
     var tomorrows_date = new Date(todays_date);
     tomorrows_date.setDate(todays_date.getDate() + 1);
     if(event_date.getDate() == tomorrows_date.getDate()){
+        if($("#tomorrows_events_header").is(":visible")){
+            show_tomorrows_label();
+        }
         show_event(event_json,'#tomorrows_events');
         return;
     }
