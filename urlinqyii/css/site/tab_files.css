@@ -29,6 +29,7 @@ li.class_files.active{
 
 .tab_files{
     font-family: 'Open Sans', sans-serif;
+    position:relative;
 
 }
 
@@ -167,7 +168,7 @@ div#files_header_bottom_line{
 
 div.files_sub_panel{
 	width:100%;
-	min-height:400px;
+	min-height: 250px;
 	display:none;
 }
 
@@ -270,10 +271,14 @@ ol.files_list li.file div.filename_col div.upload_sprite.img{
 
 ol.files_list li.file div.filename_col a.filename{
     color: #333;
-	
     font-size: 13.5px;
     white-space: pre;
+    cursor:pointer;
     text-decoration: none;
+}
+
+ol.files_list li.file div.filename_col a.filename:hover{
+	text-decoration: underline;
 }
 
 ol.files_list li.file div.filename_col a.file_uploader_user{
@@ -360,4 +365,65 @@ ol.files_list li.file div.views a.extra_padding{
     padding: 0 15px;
 	
     margin: 0;            
+}
+
+div.files_upload_bigbox{
+    margin: 0 auto;
+
+    width: 700px;
+    height: 240px;
+    background: #f8f8f8;
+    position: relative;
+    margin-top: 35px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 1px 0 0px rgba(255, 255, 255, 0.75) inset, -1px 0 0px rgba(255, 255, 255, 0.75) inset, 0 1px 0px rgba(255, 255, 255, 0.75) inset, 0 -1px 0px rgba(255, 255, 255, 0.75) inset;
+}
+
+div.files_upload_bigbox div.bigbox_bigmessage{
+    background-image: url(../../assets/drop_files_normal.png);	
+    width: 388px;
+    height: 77px;
+    background-size: auto;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    margin-top: -33.5px;
+    left: 50%;
+    margin-left: -194px;
+}
+
+div.files_upload_bigbox:hover{
+	background:#eee;
+}
+
+div.files_upload_bigbox:active{
+	background:#e5e5e5;
+}
+
+div.files_upload_bigbox:hover div.bigbox_bigmessage{
+	background-image: url(../../assets/drop_files_hover.png);
+}
+
+div.files_upload_bigbox:active div.bigbox_bigmessage{
+	background-image: url(../../assets/drop_files_active.png);
+}
+
+.dz-default{
+	position: absolute;
+	top: -7px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.dz-default span{
+	display:none;
+}
+
+@media screen and (max-width: 808px) {
+	span.drag_hint{
+		display:none;
+	}
 }

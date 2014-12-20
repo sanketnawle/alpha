@@ -21,6 +21,7 @@
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     </head>
 
     <body>
@@ -114,366 +115,373 @@
                             CLASS FEED GOES HERE
                         </div>
 
+
                         <div class="panel tab_files" id="panel_2">
-                            <div id = "tab_content_holder">
-                                <div id = "tab_header">
-                                    <div id = "tabnav">
-                                        <div class = "tabnav_right float_Right">
-                                            <div id = "small_search" class = "fade_input_small">
-                                                <em id = "files_tab_sprites" class = "search_icon">
-                                                </em>
-                                                <input type = "text" name = "files_search_input" placeholder = "Search" id = "small_search_input">
+                            <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
+                                <div id = "tab_content_holder">
+                                    <div id = "tab_header">
+                                        <div id = "tabnav">
+                                            <div class = "tabnav_right float_Right">
+                                                <div id = "small_search" class = "fade_input_small">
+                                                    <em id = "files_tab_sprites" class = "search_icon">
+                                                    </em>
+                                                    <input type = "text" name = "files_search_input" placeholder = "Search" id = "small_search_input">
+                                                </div>
+                                            </div>
+                                            <ul class = "tabnav_tabs">
+                                                <li class = "files_subtab class_files active" data-panel_id = "1">
+                                                    <div class = "tabnav_tab">
+                                                        <span>Class Files</span>
+                                                    </div>
+                                                </li>
+                                                <li class = "files_subtab student_files" data-panel_id = "2">
+                                                    <div class = "tabnav_tab">
+                                                        <span>Student Files</span>
+                                                    </div>                                                
+                                                </li>
+                                            </ul>
+                                            <div class = "tab_floater_bar_half">
+                                                <div class = "action">
+                                                    <a id = "upload_text_button">
+                                                        <em id = "files_tab_sprites" class = "upload_icon">
+                                                        </em>
+                                                        <span>Upload</span>
+                                                    </a>
+                                                    <span class = "drag_hint"><i> or </i>drag &#38; drop to add files</span>
+                                                </div>
+                                                <div class = "action">
+                                                    <a id = "new_folder_button">
+                                                        <em id = "files_tab_sprites" class = "new_folder_icon">
+                                                        </em>
+                                                        <span>New Folder</span>
+                                                    </a>
+                                                </div>
+                                            </div>                                        
+                                        </div>
+                                           
+
+
+                                        <div class = "files_sort">
+                                            <div id = "name_sorter" data-sort = "files_by_name" data-ascending = "true" class = "active sortable_column_header">
+                                                <span>Name</span>
+                                                <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
+                                            </div>
+                                            <div id = "kind_sorter" data-sort = "files_by_kind" data-ascending = "false" class = "sortable_column_header">
+                                                <span>Kind</span>
+                                                <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
+                                            </div>
+                                            <div id = "date_sorter" data-sort = "files_by_date" data-ascending = "false" class = "sortable_column_header">
+                                                <span>Date</span>
+                                                <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
+                                            </div>
+                                            <div id = "views_sorter" data-sort = "files_by_views" data-ascending = "false" class = "sortable_column_header">
+                                                <span>Views</span>
+                                                <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                                             </div>
                                         </div>
-                                        <ul class = "tabnav_tabs">
-                                            <li class = "files_subtab class_files active" data-panel_id = "1">
-                                                <div class = "tabnav_tab">
-                                                    <span>Class Files</span>
+                                        <div id = "files_header_bottom_line">
+                                        </div>
+                                    </div>
+                                    <div class = "files_sub_panel active class_files" id ="files_sub_panel_1">
+                                        <ol class = "files_list">
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite doc">
+                                                    </div>
+                                                    <a class = "filename">Daunting Document</a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Document</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/5/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                        28
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                        Download
+                                                    </a>
                                                 </div>
                                             </li>
-                                            <li class = "files_subtab student_files" data-panel_id = "2">
-                                                <div class = "tabnav_tab">
-                                                    <span>Student Files</span>
-                                                </div>                                                
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite img">
+                                                    </div>
+                                                    <a class = "filename">Interesting Image</a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Image</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/5/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">48</span>
+                                                    <a class = "download_button extra_padding">
+                                                        Download
+                                                    </a>
+                                                </div>
                                             </li>
-                                        </ul>
-                                        <div class = "tab_floater_bar_half">
-                                            <div class = "action">
-                                                <a id = "upload_text_button">
-                                                    <em id = "files_tab_sprites" class = "upload_icon">
-                                                    </em>
-                                                    <span>Upload</span>
-                                                </a>
-                                                <span class = "drag_hint"><i> or </i>drag &#38; drop to add files</span>
-                                            </div>
-                                            <div class = "action">
-                                                <a id = "new_folder_button">
-                                                    <em id = "files_tab_sprites" class = "new_folder_icon">
-                                                    </em>
-                                                    <span>New Folder</span>
-                                                </a>
-                                            </div>
-                                        </div>                                        
-                                    </div>
-                                       
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite excel">
+                                                    </div>
+                                                    <a class = "filename">Serial Spreadsheet</a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Spreadsheet</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/24/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">120</span>
+                                                    <a class = "download_button extra_padding">Download</a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite ppt">
+                                                    </div>
+                                                    <a class = "filename">
 
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Powerpoint</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/5/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">1340</span>
+                                                    <a class = "download_button extra_padding">Download</a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite pdf">
 
-                                    <div class = "files_sort">
-                                        <div id = "name_sorter" data-sort = "files_by_name" data-ascending = "true" class = "active sortable_column_header">
-                                            <span>Name</span>
-                                            <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
-                                        </div>
-                                        <div id = "kind_sorter" data-sort = "files_by_kind" data-ascending = "false" class = "sortable_column_header">
-                                            <span>Kind</span>
-                                            <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
-                                        </div>
-                                        <div id = "date_sorter" data-sort = "files_by_date" data-ascending = "false" class = "sortable_column_header">
-                                            <span>Date</span>
-                                            <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
-                                        </div>
-                                        <div id = "views_sorter" data-sort = "files_by_views" data-ascending = "false" class = "sortable_column_header">
-                                            <span>Views</span>
-                                            <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
-                                        </div>
+                                                    </div>
+                                                    <a class = "filename">Poignant PDF</a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Document</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/14/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">23</span>
+                                                    <a class = "download_button extra_padding">Download</a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite zip">
+                                                    </div>
+                                                    <a class = "filename">Unit 1 Course Materials</a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">Folder</span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">10/24/2014</span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">--</span>
+                                                    <a class = "download_button extra_padding">Download</a>
+                                                </div>
+                                            </li>
+                                        </ol>
                                     </div>
-                                    <div id = "files_header_bottom_line">
-                                    </div>
+                                    <div class = "files_sub_panel student_files" id ="files_sub_panel_2">
+                                        <ol class = "files_list">
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite doc">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite img">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite excel">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite ppt">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite pdf">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class = "file">
+                                                <div class = "filename_col">
+                                                    <div id = "files_tab_sprites" class = "upload_sprite zip">
+                                                    </div>
+                                                    <a class = "filename">
+
+                                                    </a>
+                                                    <a class = "file_uploader_user">
+                                                    </a>
+                                                </div>
+                                                <div class = "kind">
+                                                    <span class = "category">
+                                                    </span>
+                                                </div>
+                                                <div class = "date">
+                                                    <span class = "relevant_date">
+                                                    </span>
+                                                    <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                                                    </div>
+                                                </div>
+                                                <div class = "views">
+                                                    <span class = "viewcount">
+                                                    </span>
+                                                    <a class = "download_button extra_padding">
+                                                    </a>
+                                                </div>
+                                            </li>
+
+                                        </ol>                                    
+                                    </div>   
+                                    <div class = "files_upload_bigbox">
+                                        <div class = "bigbox_bigmessage">
+                                        </div>
+                                    </div>                             
                                 </div>
-                                <div class = "files_sub_panel active class_files" id ="files_sub_panel_1">
-                                    <ol class = "files_list">
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite doc">
-                                                </div>
-                                                <a class = "filename">Daunting Document</a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Document</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/5/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                    28
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                    Download
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite img">
-                                                </div>
-                                                <a class = "filename">Interesting Image</a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Image</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/5/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">48</span>
-                                                <a class = "download_button extra_padding">
-                                                    Download
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite excel">
-                                                </div>
-                                                <a class = "filename">Serial Spreadsheet</a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Spreadsheet</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/24/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">120</span>
-                                                <a class = "download_button extra_padding">Download</a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite ppt">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Powerpoint</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/5/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">1340</span>
-                                                <a class = "download_button extra_padding">Download</a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite pdf">
-
-                                                </div>
-                                                <a class = "filename">Poignant PDF</a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Document</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/14/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">23</span>
-                                                <a class = "download_button extra_padding">Download</a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite zip">
-                                                </div>
-                                                <a class = "filename">Unit 1 Course Materials</a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">Folder</span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">10/24/2014</span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">--</span>
-                                                <a class = "download_button extra_padding">Download</a>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </div>
-                                <div class = "files_sub_panel student_files" id ="files_sub_panel_2">
-                                    <ol class = "files_list">
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite doc">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite img">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite excel">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite ppt">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite pdf">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class = "file">
-                                            <div class = "filename_col">
-                                                <div id = "files_tab_sprites" class = "upload_sprite zip">
-                                                </div>
-                                                <a class = "filename">
-
-                                                </a>
-                                                <a class = "file_uploader_user">
-                                                </a>
-                                            </div>
-                                            <div class = "kind">
-                                                <span class = "category">
-                                                </span>
-                                            </div>
-                                            <div class = "date">
-                                                <span class = "relevant_date">
-                                                </span>
-                                                <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                                                </div>
-                                            </div>
-                                            <div class = "views">
-                                                <span class = "viewcount">
-                                                </span>
-                                                <a class = "download_button extra_padding">
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                    </ol>                                    
-                                </div>                                
-                            </div>
+                            <!--</form>-->
                         </div>
 
                         <div class="panel" id="panel_3">
