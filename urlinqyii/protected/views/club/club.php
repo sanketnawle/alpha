@@ -118,8 +118,23 @@
                                 <div id = "tab_header">
                                     <div id = "tabnav">
                                         <div class = "tabnav_right float_Right">
+                                            <div id = "small_search" class = "fade_input_small">
+                                                <em id = "files_tab_sprites" class = "search_icon">
+                                                </em>
+                                                <input type = "text" name = "files_search_input" placeholder = "Search" id = "small_search_input">
+                                            </div>
                                         </div>
-                                        <ul class = "tabnav-tabs">
+                                        <ul class = "tabnav_tabs">
+                                            <li class = "files_subtab class_files active" data-panel_id = "1">
+                                                <div class = "tabnav_tab">
+                                                    <span>Class Files</span>
+                                                </div>
+                                            </li>
+                                            <li class = "files_subtab student_files" data-panel_id = "2">
+                                                <div class = "tabnav_tab">
+                                                    <span>Student Files</span>
+                                                </div>                                                
+                                            </li>
                                         </ul>
                                     </div>
                                     <div id = "tab_global_actions_bar">
@@ -159,7 +174,7 @@
                                         </div>
                                         <div id = "views_sorter" data-sort = "files_by_views" data-ascending = "false" class = "sortable_column_header">
                                             <span>Views</span>
-                                            <em id = "files_tab_sprites sprites" class = "sort_gray_arrow up"></em>
+                                            <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                                         </div>
                                     </div>
                                     <div id = "files_header_bottom_line">

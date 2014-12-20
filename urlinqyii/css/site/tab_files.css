@@ -1,7 +1,166 @@
 #files_tab_sprites{
-	background-image: url(../../../assets/FilesTab_iconmap.png);
+	background-image: url(../../assets/FilesTab_iconmap.png);
     background-repeat: no-repeat;
     display: inline-block;
     background-size: auto;
     vertical-align: middle;
+}
+
+em#files_tab_sprites.search_icon{
+    width: 16px;
+
+    height: 16px;
+    background-position: 0px -63px;
+    position: relative;
+    left: 28px;
+}
+
+li.files_subtab{
+
+}
+
+li.class_files{
+
+}
+
+li.class_files.active{
+
+}
+
+.tab_files{
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+#upload_text_button em#files_tab_sprites{
+
+}
+
+#upload_text_button em#files_tab_sprites.upload_icon{
+    background-position: 0px -25px;
+	
+    height: 20px;
+    width: 19px;
+}
+
+#upload_text_button span{
+    color: #45a8cf;
+
+    font-weight: 600;
+    padding-left: 1px;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14.5px;
+}
+
+span.drag_hint{
+    color: #777;
+
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14.5px;
+}
+
+span.drag_hint i{
+    color: #999;
+    padding-right: 5px;
+}
+
+div.action a#new_folder_button{
+	display:none;
+}
+
+div.files_sort{
+    border-bottom: 2px solid #d4d4d4;
+
+    line-height: 29px;
+    padding: 4px 2px;
+    padding-right: 5px;
+    height: 25px;
+    padding-top: 10px;
+}
+
+div.files_sort > div.sortable_column_header{
+    text-align: left;
+
+    font-size: 12.8px;
+    margin-bottom: 0px;
+    float: left;
+}
+
+div.files_sort > div.sortable_column_header span{
+    color: #aaa;
+
+}
+
+div.files_sort > div.sortable_column_header em{
+	display:none;
+}
+
+div.sortable_column_header.active em.sort_gray_arrow{
+    background-position: 0px -47px;
+    width: 14px;
+    height: 14px;
+    display:inline-block;
+}
+
+em.sort_gray_arrow.up{
+	
+}
+
+em.sort_gray_arrow.down{
+	
+}
+
+div.files_sort > div.sortable_column_header.active{
+    color: #959595;
+
+    font-weight: 600;
+}
+
+div.files_sort > div.sortable_column_header.active span{
+
+}
+
+div.files_sort > div.sortable_column_header.active span{
+	display:inline-block!important;
+	font-weight: 700;
+}
+
+div#name_sorter{
+    width: 45%;
+
+}
+
+div#kind_sorter{
+    width: 23%;
+
+}
+
+div#date_sorter{
+    width: 17%;
+
+}
+
+a#upload_text_button{
+	padding: 6px 4px;
+	border-radius: 3px;
+	margin-left: -7px;
+	cursor:pointer;
+	margin-right:2px;
+}
+
+a#upload_text_button:hover{
+	background: #eee;
+}
+
+a#upload_text_button:active{
+	background:#ddd;
+}
+
+div#views_sorter{
+    width: 15%;
+
+}
+
+div#files_header_bottom_line{
 }
