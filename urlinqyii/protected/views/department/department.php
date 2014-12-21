@@ -14,6 +14,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_courses.css">
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -116,8 +117,21 @@
                         CLASS FEED GOES HERE
                     </div>
 
-                    <div class="panel" id="panel_2">
-                        PANEL 2
+                    <div class="panel tab_courses" id="panel_2">
+                        <div id = "tab_content_holder">
+                            <div id = "tab_header"> 
+                                <div class = "float_Right">
+                                    <div id = "small_search" class = "fade_input_small">
+                                        <em id = "left_search_icon">
+                                        </em>
+                                        <input type = "text" name = "people_search_input" placeholder = "Search courses" id = "small_search_input">
+                                    </div>                                        
+                                </div>
+                                <div class = "header_sentence">
+                                    Courses this Semester
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="panel tab_members" id="panel_3">

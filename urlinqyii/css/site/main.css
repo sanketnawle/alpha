@@ -525,7 +525,7 @@ ul.tabnav_tabs li{
 
 }
 
-.tab_members #tab_content_holder #tab_header{
+.tab_members #tab_content_holder #tab_header, .tab_courses #tab_content_holder #tab_header{
     border-bottom: 1px solid #d4d4d4;
 
     padding: 14px 2px 5px;
@@ -602,7 +602,7 @@ ul.tabnav_tabs li.active{
     z-index: 1000;
 }
 
-.tab_members #tab_content_holder #tab_header div.header_sentence{
+.tab_members #tab_content_holder #tab_header div.header_sentence, .tab_courses #tab_content_holder #tab_header div.header_sentence{
     font-family: Avenir;
 
     font-size: 18.4px;
@@ -753,6 +753,7 @@ div.members_card_img{
     background-size: cover;
     height: 48%;
     background-repeat: no-repeat;
+    cursor:pointer;
     border-radius: 2px;
     box-shadow: 1px 0px 0px rgba(0, 0, 0, .1) inset, -1px 0px 0px rgba(0, 0, 0, .1) inset, 0px 1px 0px rgba(0, 0, 0, .1) inset;
 }
@@ -871,6 +872,12 @@ input:focus:-ms-input-placeholder {
 input:focus:-moz-placeholder {
     transition: opacity 0.15s;
     opacity: .4;
+}
+
+::selection {
+background: #45a8cf;
+color: white;
+text-shadow: none;
 }
 
 /* Media Queries */

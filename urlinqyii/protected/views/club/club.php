@@ -127,7 +127,7 @@
                                                 <div id = "small_search" class = "fade_input_small">
                                                     <em id = "files_tab_sprites" class = "search_icon">
                                                     </em>
-                                                    <input type = "text" name = "files_search_input" placeholder = "Search" id = "small_search_input">
+                                                    <input type = "text" name = "files_search_input" placeholder = "Search files" id = "small_search_input">
                                                 </div>
                                             </div>
                                             <ul class = "tabnav_tabs">
@@ -508,6 +508,121 @@
                                         <div class = "members_card admin normal_size" data-user_id='1'>
                                             <div class = "members_card_img">
                                                 <span class = "title">Professor</span>
+                                                <span class = "class_year">Senior</span>
+                                            </div>
+                                            <div class = "user_main_info">
+                                                <a class = "name profile_link">Jacob Lazarus</a>
+                                            </div>
+                                            <div class = "user_more_info">
+                                                <a class = "department_link">Neuroscience</a>
+                                            </div>
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button following">Following</div>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div> 
+                                   <div class = "members_card_wrapper">
+                                        <div class = "members_card admin normal_size" data-user_id='1'>
+                                            <div class = "members_card_img">
+                                                <span class = "title">Professor</span>
+                                                <span class = "class_year">Senior</span>
+                                            </div>
+                                            <div class = "user_main_info">
+                                                <a class = "name profile_link">Jacob Lazarus</a>
+                                            </div>
+                                            <div class = "user_more_info">
+                                                <a class = "department_link">Neuroscience</a>
+                                            </div>
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button following">Following</div>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div> 
+                                   <div class = "members_card_wrapper">
+                                        <div class = "members_card admin normal_size" data-user_id='1'>
+                                            <div class = "members_card_img">
+                                                <span class = "title">Professor</span>
+                                                <span class = "class_year">Senior</span>
+                                            </div>
+                                            <div class = "user_main_info">
+                                                <a class = "name profile_link">Jacob Lazarus</a>
+                                            </div>
+                                            <div class = "user_more_info">
+                                                <a class = "department_link">Neuroscience</a>
+                                            </div>
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button following">Following</div>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div> 
+                                   <div class = "members_card_wrapper">
+                                        <div class = "members_card admin normal_size" data-user_id='1'>
+                                            <div class = "members_card_img">
+                                                <span class = "title">Professor</span>
+                                                <span class = "class_year">Senior</span>
+                                            </div>
+                                            <div class = "user_main_info">
+                                                <a class = "name profile_link">Jacob Lazarus</a>
+                                            </div>
+                                            <div class = "user_more_info">
+                                                <a class = "department_link">Neuroscience</a>
+                                            </div>
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button following">Following</div>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div> 
+                                   <div class = "members_card_wrapper">
+                                        <div class = "members_card admin normal_size" data-user_id='1'>
+                                            <div class = "members_card_img">
+                                                <span class = "title">Professor</span>
+                                                <span class = "class_year">Senior</span>
+                                            </div>
+                                            <div class = "user_main_info">
+                                                <a class = "name profile_link">Jacob Lazarus</a>
+                                            </div>
+                                            <div class = "user_more_info">
+                                                <a class = "department_link">Neuroscience</a>
+                                            </div>
+                                            <div class = "user_card_button_holder">
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button following">Following</div>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div> 
+                                   <div class = "members_card_wrapper">
+                                        <div class = "members_card admin normal_size" data-user_id='1'>
+                                            <div class = "members_card_img">
+                                                <span class = "title">Club Admin</span>
                                                 <span class = "class_year">Senior</span>
                                             </div>
                                             <div class = "user_main_info">

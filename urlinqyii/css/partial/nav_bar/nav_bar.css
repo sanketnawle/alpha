@@ -216,10 +216,21 @@ div#nav_drop_down_scrollable{
 div#nav_drop_down_see_all_button {
     position: absolute;
     margin: 0px auto;
-    bottom: 10px;
+    bottom: 0px;
     font-size: 13px;
     font-weight: bold;
     color: #FFFFFF;
+    padding: 10px 0px;
+    left: 10px;
+    right: 10px;
+}
+
+div#nav_drop_down_see_all_button:hover{
+    cursor: pointer
+}
+
+div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_courses_text,div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_departments_text{
+    text-decoration: underline;
 }
 
 
@@ -229,10 +240,12 @@ to be centered since its absolutely positioned */
 #nav_drop_down_see_all_courses_text{
     margin-left: 80px;
     font-weight: 600;
+    cursor:pointer;
 }
 
 #nav_drop_down_see_all_departments_text{
     margin-left: 70px;
+    cursor: pointer
 }
 
 

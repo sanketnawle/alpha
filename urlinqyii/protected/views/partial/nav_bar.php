@@ -27,14 +27,6 @@
                         <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
                     <?php } ?>
                 </div>
-
-
-
-                <div id="nav_drop_down_bar_line"></div>
-
-                <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_schools_text">See all schools</div>
-                </div>
             </div>
         </div>
 
