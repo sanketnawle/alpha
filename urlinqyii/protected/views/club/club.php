@@ -67,7 +67,7 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab syllabus" data-panel_id="2">
+                            <div class="tab materials" data-panel_id="2">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Files/Photos</div>
@@ -75,15 +75,16 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab materials" data-panel_id="3">
+                            <div class="tab members" data-panel_id="3">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Members</div>
+                                    <div class = "tab_amount">92</div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab members" data-panel_id="4">
+                            <div class="tab analytics" data-panel_id="4">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Analytics</div>
@@ -484,8 +485,44 @@
                             <!--</form>-->
                         </div>
 
-                        <div class="panel" id="panel_3">
-                            PANEL 3
+                        <div class="panel tab_members" id="panel_3">
+                            <div id = "tab_content_holder">
+                                <div id = "tab_header"> 
+                                    <div class = "float_Right">
+                                        <div class = "add_people_button">
+                                            Add People
+                                        </div>
+                                        <div id = "small_search" class = "fade_input_small">
+                                            <em id = "left_search_icon">
+                                            </em>
+                                            <input type = "text" name = "people_search_input" placeholder = "Search" id = "small_search_input">
+                                        </div>                                        
+                                    </div>
+                                    <div class = "header_sentence">
+                                        Club Members
+                                    </div>
+                                </div>
+                                <div id = "members_tab_content">
+
+                                    <div class = "members_card admin" data-user_id='1'>
+                                        <div class = "members_card_img">
+
+                                        </div>
+                                        <div class = "user_main_info">
+                                            <span class = "title">Professor</span>
+                                            <a class = "name profile_link">Jacob Lazarus</a>
+                                            <span class = "class_year">Senior</span>
+                                        </div>
+                                        <div class = "user_more_info">
+                                            <a class = "department_link">Neuroscience</a>
+                                        </div>
+                                        <div class = "button_holder">
+                                            <div class = "user_follow_button user_follow_button_medium">Follow</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>                      
                         </div>
 
                         <div class="panel" id="panel_4">

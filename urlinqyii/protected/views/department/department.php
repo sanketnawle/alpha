@@ -64,18 +64,20 @@
                             <div class="tab_wedge"></div>
                         </div>
 
-                        <div class="tab syllabus" data-panel_id="2">
+                        <div class="tab courses" data-panel_id="2">
                             <div class="tab_content">
                                 <div class="tab_img"></div>
-                                <div class="tab_text">Files/Photos</div>
+                                <div class="tab_text">Courses</div>
+                                <div class="tab_amount">180</div>
                             </div>
                             <div class="tab_wedge"></div>
                         </div>
 
-                        <div class="tab materials" data-panel_id="3">
+                        <div class="tab members" data-panel_id="3">
                             <div class="tab_content">
                                 <div class="tab_img"></div>
-                                <div class="tab_text">Members</div>
+                                <div class="tab_text">Faculty</div>
+                                <div class="tab_amount">180</div>
                             </div>
                             <div class="tab_wedge"></div>
                         </div>
@@ -83,7 +85,8 @@
                         <div class="tab members" data-panel_id="4">
                             <div class="tab_content">
                                 <div class="tab_img"></div>
-                                <div class="tab_text">Analytics</div>
+                                <div class="tab_text">Students</div>
+                                <div class="tab_amount">820</div>
                             </div>
                             <div class="tab_wedge"></div>
                         </div>

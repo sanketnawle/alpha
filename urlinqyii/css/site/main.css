@@ -215,6 +215,18 @@ div.tab.syllabus div.tab_img{
     background-position: 0px 17px;
 }
 
+div.tab.analytics div.tab_img{
+    background-image: url('../../assets/main/tab_bar/TabIcon_analytics.png');
+    background-position: 0px 17px;
+    width:24px;
+}
+
+div.tab.courses div.tab_img{
+    background-image: url('../../assets/main/tab_bar/TabIcon_courses.png');
+    background-position: 0px 17px;
+    width:23px;
+}
+
 div.tab.materials div.tab_img{
     background-image: url('../../assets/main/tab_bar/TabIcon_files.png');
     background-position: 0px 17px;
@@ -242,7 +254,6 @@ div.tab div.tab_img{
     font-weight: 600;
     font-size: 14.5px;
     display: inline-block;
-    float: right;
     width: auto;
     margin-right: auto;
     cursor:pointer;
@@ -251,7 +262,17 @@ div.tab div.tab_img{
     padding-bottom: 18px;
     font-family: 'Open Sans', sans-serif;
     text-shadow: 0px 0px 1px #121314; -moz-osx-font-smoothing: grayscale;
+    
     text-shadow: rgba(0, 0, 0, 0.490196) 0px 0px 1px;
+}
+
+.tab_amount{
+    font-size: 11.5px;
+    font-family: Avenir;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-weight: bold;
+    padding-left: 2px;
 }
 
 /* Default the wedge to hidden */
@@ -298,12 +319,12 @@ div.tab.active:hover{
 
 
 
-div.tab:hover div.tab_img, div.tab:hover div.tab_text{
+div.tab:hover div.tab_img, div.tab:hover div.tab_text, div.tab:hover div.tab_amount{
     cursor: pointer!important;
     opacity:1.0;
 }
 
-div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{
+div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text, div.tab.active:hover div.tab_amount{
     opacity: 1.0;
     cursor:default!important;
 }
