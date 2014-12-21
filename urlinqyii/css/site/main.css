@@ -261,7 +261,7 @@ div.tab div.tab_img{
     padding-left: 2px;
     padding-bottom: 18px;
     font-family: 'Open Sans', sans-serif;
-    text-shadow: 0px 0px 1px #121314; -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0px 0px 1px #121314; 
     
     text-shadow: rgba(0, 0, 0, 0.490196) 0px 0px 1px;
 }
@@ -270,6 +270,7 @@ div.tab div.tab_img{
     font-size: 11.5px;
     font-family: Avenir;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     display: inline-block;
     font-weight: bold;
     padding-left: 2px;
@@ -435,6 +436,7 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
 .panel {
     display: none;
     color: #333;
+    position: relative;
     padding: 0px 12px;
     margin-top:-20px;
 }
@@ -501,7 +503,7 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
     box-shadow: none;
     outline: none;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 13.5px;
 }
 
 ul.tabnav_tabs{
@@ -523,8 +525,11 @@ ul.tabnav_tabs li{
 
 }
 
-#tab_header{
+.tab_members #tab_content_holder #tab_header{
+    border-bottom: 1px solid #d4d4d4;
 
+    padding: 14px 2px 5px;
+    height: 35px;
 }
 
 #tabnav{
@@ -587,6 +592,244 @@ ul.tabnav_tabs li.active{
 .upload_text_button{
     
 }
+
+#left_search_icon{
+    background-image: url(../../assets/left_search_icon.png);
+
+    display: inline-block;
+    background-size: auto;
+    background-repeat: no-repeat;
+    z-index: 1000;
+}
+
+.tab_members #tab_content_holder #tab_header div.header_sentence{
+    font-family: Avenir;
+
+    font-size: 18.4px;
+    color: #444;
+    padding-top: 14px;
+}
+
+div.content_row
+
+/* Common Button styles */
+
+.add_people_button{
+
+}
+
+/* Follow button style */
+
+
+.follow_button_wrapper:hover{
+    cursor:pointer;
+}
+
+.follow_button_wrapper:active{
+    cursor:pointer;
+}
+
+
+.follow_button_wrapper.following_wrapper.unfollow{
+    background: #e84a5a!important; 
+    border-color: #bd2f33; 
+    box-shadow: none!important; 
+    cursor: default!important;
+   
+}
+
+.follow_button_wrapper.following_wrapper:active{
+    cursor:default;
+}
+
+
+.follow_button_wrapper{
+    width: 130px;
+    
+    border-radius: 4px;
+    height: 36px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #45a8cf; 
+    border: 1px solid rgb(29, 153, 207); 
+    -moz-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
+    box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
+    -webkit-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+}
+
+.follow_button_wrapper .user_follow_button{
+    color: #fff;
+
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    display: inline-block;
+    padding: 9px 13px;
+    vertical-align: top;
+    padding-right: 12px;
+    position: absolute;
+    left: 0px;
+}
+
+.follow_button_wrapper .user_follow_button.following{
+
+}
+
+.follow_button_wrapper .user_message_button{
+    cursor:pointer;
+    display: inline-block;
+    padding: 6px 10px;
+    position: absolute;
+    right: 0px;
+    padding-left: 0px;
+}
+
+.follow_button_wrapper .user_message_button:hover em.white_message_icon{
+    cursor:pointer;
+    opacity: .87;
+}
+
+.follow_button_wrapper .user_message_button:active em.white_message_icon{
+    cursor:pointer;
+    opacity: .69;
+}
+
+
+.follow_button_wrapper .user_message_button em.white_message_icon{
+    cursor:pointer;
+    background-image:url('../../assets/message_icon_white.png');
+    background-size:auto;
+    height: 24px;
+    width: 31px;
+    display:inline-block;
+    background-repeat:no-repeat;
+    position:relative;
+    border-left: 1px solid rgba(255,255,255,0.30);
+    background-position: 13px 4px;
+}
+
+
+
+/* Members Card style */
+
+#members_tab_content div.members_card_wrapper{
+    width: 24.6%;
+
+    display: inline-block;
+    margin-bottom: 22px;
+}
+
+#members_tab_content div.members_card_wrapper .members_card.admin{
+    
+}
+
+.members_card{
+    background: #fff;
+
+    border-radius: 4px;
+    display: block;
+    border: 1px solid #E4E4E4; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    margin: 0px auto;
+}
+
+.members_card.normal_size{
+
+    height: 256px;
+    
+
+    width: 90%;
+
+}
+
+.members_card.active{
+
+}
+
+div.members_card_img{
+    background-image: url('../../assets/ross.jpg');
+    margin: 7px 7px; 
+    position:relative;
+    background-size: cover;
+    height: 48%;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, .1) inset, -1px 0px 0px rgba(0, 0, 0, .1) inset, 0px 1px 0px rgba(0, 0, 0, .1) inset;
+}
+
+div.user_main_info{
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+
+    padding: 4px 7px 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+div.members_card_img span.class_year, div.members_card_img span.title{
+    color:#fff;
+    font-weight:bold;
+    font-family:Avenir;
+    -webkit-font-smoothing: antialiased;
+    position:absolute;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    bottom: 2px;
+    right: 5px;
+}
+
+div.admin div.members_card_img span.class_year{
+    display:none;
+}
+
+div.non_admin div.members_card_img span.title{
+    display:none;
+}
+
+div.user_more_info{
+    padding: 2px 7px;
+
+    font-size: 13.5px;
+    color: #777;
+}
+
+div.user_more_info a.department_link{
+    color: #777;
+    text-decoration: none;
+}
+
+div.user_more_info a.department_link:hover{
+    color:#999;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+div.user_more_info a.department_link:active{
+    color:#acacac;
+}
+
+div.user_card_button_holder{
+    margin: 0 auto;
+
+    width: auto;
+    padding: 10px 0px;
+}
+
+div.user_main_info a.name.profile_link{
+    font-weight: 600;
+    color: #1da7d2;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+div.user_main_info a.name.profile_link:hover{
+    text-decoration: underline;
+}
+
+div.user_main_info a.name.profile_link:active{
+    color:#016283;
+}
+
 
 
 /* Fading input placeholder */

@@ -5,7 +5,7 @@
     text-decoration: none;
     outline: none;
     color: inherit;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     list-style: none;
@@ -104,6 +104,7 @@
             overflow: hidden;
         
             border: 1px solid #222;
+            max-width: 600px;
 }
 
             .topbar .center form .text {
@@ -250,7 +251,7 @@
     .topbar #topbar_responsive_holder .center ul {
         background-color: #FFF;
         position: absolute;
-        top: 40px;
+        top: 42px;
         width: 55%;
         max-width: 600px;
         border-radius: 4px;

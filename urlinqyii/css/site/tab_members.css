@@ -1,0 +1,55 @@
+div.tab_members{
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+div.tab_members #tab_content_holder{
+    position: relative;
+
+    top: -20px;
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button{
+    display: inline-block;
+
+    background-color: #03C794; cursor: pointer !important; color: #FFF !important;         
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    box-shadow: 0px 0px 1px #fff; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease;     
+    font-weight: 600;
+    background-color: #03C794; 
+    border: 1px solid #01A379; 
+    -moz-box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
+    box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
+    -webkit-box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:hover{
+	background: #08D09C;
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:active{
+box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+background-color: #03C794; 
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right #small_search{
+    display: inline-block;
+
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right #small_search em{
+    width: 16px; 
+    height: 16px; 
+    background-position: 0px 0px; position: relative; left: 28px;
+    top: 3px;
+}
+
+#members_tab_content{
+    padding: 25px 0 0 0;
+	
+    position: relative;
+    width: 100%;
+}

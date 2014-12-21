@@ -15,7 +15,7 @@
 
         </div>
 
-        <div class="nav_arrow"></div>
+        <div class="nav_arrow nav_arrow_white"></div>
 
         <div class="nav_section drop_down" id="home_nav" data-link_type="school">
             <div class="nav_picture"></div>
