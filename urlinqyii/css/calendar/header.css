@@ -62,19 +62,19 @@
 
             .body .header.row1 > .left .arrow i {
                 position: absolute;
-                background-color: #777;
-                width: 1px;
-                height: 16px;
+                background-color: #888;
+                width: 2px;
+                height: 15px;
                 left: 50%;
             }
 
                 .body .header.row1 > .left .arrow i.x {
-                    -webkit-transform: rotateZ(42deg);
-                    -moz-transform: rotateZ(42deg);
-                    -ms-transform: rotateZ(42deg);
-                    -o-transform: rotateZ(42deg);
-                    transform: rotateZ(42deg);
-                    top: 0px;
+                    -webkit-transform: rotateZ(35deg);
+                    -moz-transform: rotateZ(35deg);
+                    -ms-transform: rotateZ(35deg);
+                    -o-transform: rotateZ(35deg);
+                    transform: rotateZ(35deg);
+                    top: 1px;
                 }
 
                 .body .header.row1 > .left .arrow i.xx {
@@ -82,8 +82,8 @@
                     -moz-transform: rotateZ(-35deg);
                     -ms-transform: rotateZ(-35deg);
                     -o-transform: rotateZ(-35deg);
-                    transform: rotateZ(-42deg);
-                    bottom: 0px;
+                    transform: rotateZ(-35deg);
+                    bottom: 0;
                 }
 
             .body .header.row1 > .left .arrow:hover i {
@@ -166,8 +166,6 @@
             .body .grid-view .grid .grid-item:nth-of-type(7n), .body .grid-view .grid .grid-item:nth-of-type(7n + 1), .body .grid-view .grid .grid-item:nth-of-type(1) {
                 color: rgba(153, 153, 153, 0.75);
                 background-color: #fff;
-                border-left: 1px solid #ddd !important;
-                border-left: none;
             }
 
             .body .grid-view .grid .grid-item .grid-event {

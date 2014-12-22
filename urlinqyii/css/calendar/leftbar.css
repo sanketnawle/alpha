@@ -1,22 +1,22 @@
 .ul-calendar .leftbar {
     width: 170px;
     position: absolute;
-    top: 0px;
+    top: 0;
     right: auto;
     bottom: 0;
     left: 0;
-    padding-top: 70px;
     z-index: auto;
+    border-right: 1px solid #d4d4d4;
     font-size: 14px;
-    background: #fafafa;
-    border-right: 1px solid #ddd;
+    background-color: #fafafa;
+    padding-top: 70px;
 }
 
     .ul-calendar .leftbar .providers {
         position: absolute;
         top: 60px;
         right: 0;
-        bottom: 275px;
+        bottom: 170px;
         left: 0;
         z-index: auto;
         overflow: auto;
@@ -120,9 +120,9 @@
                 text-overflow: ellipsis;
                 line-height: 25px;
                 white-space: nowrap;
-                font-family: 'Open Sans', sans-serif;
+                font-family: "Open Sans",Arial,sans-serif;
                 color: #333;
-                font-size: 13.5px;
+                font-size: 14px;
                 font-weight: 500;
                 text-transform: capitalize;
             }
@@ -136,36 +136,36 @@
         z-index: auto;
         height: 170px;
         font-size: 14px;
-        background: #f5f5f5;
-        border-top: 1px solid #ddd;
+        background-color: #f5f5f5;
+        border-top: 1px solid #d4d4d4;
     }
 
         .ul-calendar .leftbar .mini-calendar .header {
-            margin: 0 0px;
+            margin: 0;
         }
 
             .ul-calendar .leftbar .mini-calendar .header.row1 {
                 height: 42px;
-                line-height: 45px;
-                overflow: auto;
+                line-height: 42px;
+                overflow: hidden;
             }
 
                 .ul-calendar .leftbar .mini-calendar .header.row1 .title {
                     margin: 0 auto;
                     width: 100%;
                     text-align: center;
-                    font-family: Avenir;
+                    font-family: "Avenir",Arial,sans-serif;
                     color: #575757;
                 }
 
                 .ul-calendar .leftbar .mini-calendar .header.row1 .arrow {
                     position: relative;
-                    width: 24px;
+                    width: 30px;
                     height: 28px;
                     margin-top: 11px;
                     margin-top: 15px;
-                    height: 13px;
                     margin-bottom: 15px;
+                    height: 13px;
                 }
 
                     .ul-calendar .leftbar .mini-calendar .header.row1 .arrow.right {
@@ -174,13 +174,11 @@
                         -ms-transform: rotateZ(180deg);
                         -o-transform: rotateZ(180deg);
                         transform: rotateZ(180deg);
-                        margin-bottom: 14px;
-                        margin-top: 14px;
                     }
 
                     .ul-calendar .leftbar .mini-calendar .header.row1 .arrow i {
                         position: absolute;
-                        background-color: #575757;
+                        background-color: #888;
                         width: 2px;
                         height: 15px;
                         left: 50%;
@@ -191,7 +189,7 @@
                             -moz-transform: rotateZ(35deg);
                             -ms-transform: rotateZ(35deg);
                             -o-transform: rotateZ(35deg);
-                            transform: rotateZ(45deg);
+                            transform: rotateZ(35deg);
                             top: 1px;
                         }
 
@@ -200,8 +198,8 @@
                             -moz-transform: rotateZ(-35deg);
                             -ms-transform: rotateZ(-35deg);
                             -o-transform: rotateZ(-35deg);
-                            transform: rotateZ(-45deg);
-                            bottom: 1px;
+                            transform: rotateZ(-35deg);
+                            bottom: 0;
                         }
 
                     .ul-calendar .leftbar .mini-calendar .header.row1 .arrow:hover i {
@@ -231,10 +229,9 @@
                     width: 19px;
                     margin: 0 1px;
                     text-align: center;
-                    font: 600 11.5px/15px 'Open Sans';
-                    text-align: center;
                     color: #999;
-                    font-size: 0.8em;
+                    font-family: "Open Sans",Arial,sans-serif;
+                    font-size: 13px;
                     text-transform: uppercase;
                 }
 
@@ -254,10 +251,9 @@
                 height: 19px;
                 line-height: 19px;
                 text-align: center;
+                font-size: 10px;
                 border-radius: 1px;
-                font-size: 10.5px;
                 color: #565a5c;
-                border-radius: -1px;
             }
 
                 .ul-calendar .leftbar .mini-calendar .mini-cal-grid .grid-item .date {
@@ -267,7 +263,7 @@
                 .ul-calendar .leftbar .mini-calendar .mini-cal-grid .grid-item.td {
                     border: 1px solid #3ea0c7;
                     color: #333;
-                    background: rgba(62, 160, 199, 0.35);
+                    background: rgba(62,160,199,0.35);
                     font-weight: bold;
                 }
 

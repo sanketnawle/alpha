@@ -8,7 +8,7 @@
         float: left;
 
         &:first-child, &:last-child {
-            color: @out-of-range-color;
+            color: #999;
         }
     }
 
@@ -17,6 +17,7 @@
         @right-width: 125px;
         line-height: @header-1-height;
         height: @header-1-height;
+        margin-top: 5px;
         display: none;
 
         & > .left {
@@ -25,7 +26,7 @@
             height: @hundred-percent;
             margin-right: -@right-width;
             padding-right: @right-width;
-            padding-left: 20px;
+            padding-left: 4px;
             line-height: @header-1-height;
             font-weight: 100;
             font-size: 25px;
@@ -43,7 +44,7 @@
             }
 
             .year {
-                font-size: 25px;
+                font-size: 26px;
             }
 
             .arrow {
@@ -92,28 +93,28 @@
     .header.row2 {
         height: @header-2-height;        
         font-size: @ideal-font-size;
-        padding-top: @header-2-height - 25;
+        padding-top: @header-2-height - 17;
     }
 
     .grid-view {
-        .absolute(@header-1-height + @header-2-height, 0, 0, 0);
+        .absolute(46px, 0, 0, 0);
         font-size: @ideal-grid-font-size;
 
         .grid {
-            border: 1px solid @border-color;
+            border: 1px solid #ddd;
             border-width: 0 1px 0 0;
 
             .grid-item {
                 width: @hundred-percent / 7;
                 float: left;
                 position: relative;
-                border: solid @border-color;
+                border: solid #ddd;
                 border-width: 1px 0 0 1px;
                 background-color: #FFF;
 
                 &:nth-of-type(7n), &:nth-of-type(7n + 1), &:nth-of-type(1) {
-                    color: @out-of-range-color;
-                    background-color: lighten(black, 98%);
+                    color: rgba(153, 153, 153, 0.75);
+                    background-color: #FFF;
                 }
 
                 .grid-event {

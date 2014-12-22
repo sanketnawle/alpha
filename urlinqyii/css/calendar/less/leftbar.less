@@ -4,7 +4,7 @@
 .ul-calendar {
     .leftbar {
         width: @leftbar-width;
-        .absolute(@toolbar-height, auto, 0, 0);
+        .absolute(0px, auto, 0, 0);
         border-right: 1px solid @border-color;
         @mini-calendar-height: @leftbar-width;
         font-size: @ideal-font-size;
@@ -84,8 +84,9 @@
 
                     .arrow {
                         .nav-arrow();
-                        margin-top: 3px;
-                        height: @m-header-1 - 6;
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                        height: 13px;
 
                         &.right {
                             float: right;
@@ -104,6 +105,7 @@
                 &.row2 {
                     height: @m-header-2 - 2;
                     color: darken(@border-color, 20%);
+                    margin: 0 10px;
 
                     .grid-column {
                         float: left;
