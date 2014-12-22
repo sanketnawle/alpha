@@ -55,5 +55,22 @@ $(document).ready(function() {
             $('#page').animate({ scrollTop: 0 }, 0);
         }
 
-    });      
+    });    
+    $('.user_follow_button').mouseenter(function(){
+        var $follow_button = $(this);
+        var $follow_button_container = $(this).parent();
+        if($follow_button.hasClass('following')){
+            $follow_button.text('Unfollow');
+            $follow_button_container.addClass("unfollow");
+        }
+    });
+
+    $('.user_follow_button').mouseleave(function(){
+        var $follow_button = $(this);
+        var $follow_button_container = $(this).parent();
+        if($follow_button.hasClass('following')){
+            $follow_button.text('Following');
+            $follow_button_container.removeClass("unfollow");
+        }
+    });        
 });

@@ -39,8 +39,6 @@ $(document).ready(function(){
         var y = $page.scrollTop()*0.32;
         var x = $page.scrollTop() * 1;
 
-        $(".horizontal_scroll_holder").css({"opacity":""1*y""});        
-
 
         //Get the width of the content panel. The bar should always be the same width
         //as content panel

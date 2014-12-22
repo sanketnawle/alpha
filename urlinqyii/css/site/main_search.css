@@ -85,7 +85,7 @@ div.page_search.page_search_all_members_results #main_panel.main_panel_search{
 	position: relative;
 	margin-top: 22px;
 	width: 765px!important;
-	margin-left: 325px;
+	margin-left: 325px!important;
 	z-index: 10;
 }
 
@@ -329,7 +329,6 @@ div.filter_section.active:hover, div.filter_section.active div.filter_name:hover
 
 .filter_header .float_Right span{
     -webkit-font-smoothing: antialiased;
-
     font-family: Avenir;
     font-weight: 500;
     font-size: 13px;
@@ -343,9 +342,16 @@ div.filter_section.active:hover, div.filter_section.active div.filter_name:hover
 	width: 17px;
 	top: 3px;
 	background-image: url(../../assets/search_page_assets.png);
-
-
+	cursor:default;
+	overflow:hidden;
 }
+
+.filter_header .float_Right span:hover ~ div.help_div{
+	z-index: 1;
+	opacity: 1;
+}
+
+
 
 .filter_header span.filter_header_sentence{
     font-size: 18px;
@@ -598,6 +604,9 @@ input.filter_textinput:focus, input.filter_textinput:active{
 		width: -moz-calc(100% - 230px);
 		width: calc(100% - 230px);
 	}	
+	#content_panel.content_panel_search{
+		margin-left:280px!important;
+	}
 
 }
 

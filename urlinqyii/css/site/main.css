@@ -459,6 +459,58 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
 
 }
 
+.help_div{
+position: absolute;
+-moz-transition: all .3s ease-in-out;
+-webkit-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+display: block;
+opacity: 0;
+z-index: -1;
+pointer-events: none;
+z-index: -1;
+top: 39px;
+margin-left: -16px;
+}
+
+.help_div.dark{
+
+}
+
+.help_div .box{
+width: 120px;
+font-size: 11.5px;
+line-height: 14px;
+text-align: left;
+text-shadow: none;
+padding: 7px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+border-radius: 4px;  
+padding-left: 10px;
+}
+
+.help_div.dark .box{
+color: #fff;
+background-color: rgba(34, 34, 34, 0.87);     
+}
+
+.help_div .wedge{
+border-color: transparent;
+border-style: dashed dashed solid;
+border-width: 0 6.5px 6.5px;
+display: block;
+z-index: 1;
+height: 0;
+width: 0;
+position: relative;
+left: 20px;   
+}
+
+.help_div.dark .wedge{
+    border-bottom-color: rgba(34, 34, 34, 0.87);
+}
+
 .textBtn{
     color: #1da7d2;
 

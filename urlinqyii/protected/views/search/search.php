@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main_search.css">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_courses.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     
@@ -256,7 +256,14 @@
                         <div class = "search_filter_container">
                             <div class = "filter_header">
                                 <div class = "float_Right">
-                                    <span>6500 results</span>
+                                    <span></span>
+                                    <div class = "help_div dark">
+                                        <div class = "wedge">
+                                        </div>
+                                        <div class = "box">
+                                            Results from the NYU academic network
+                                        </div>
+                                    </div>
                                 </div>
                                 <span class = "filter_header_sentence">
                                     SEARCH FILTERS
