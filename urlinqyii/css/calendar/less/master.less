@@ -32,17 +32,18 @@ html, body {
     }
 
     .toolbar {
-        .absolute(0, 0, auto, 0);
-        height: @toolbar-height;
+        .absolute(0, 0, auto, 0, 10);
+        height: @toolbar-height + 10;
         border-bottom: 1px solid @border-color;
-        background-color: #EEE;
+        background-color: #fafafa;
         @corner-rd: 4px;
 
         .column {
             font-size: 12px;
             height: @hundred-percent;
-            width: 25%;
-            padding: 6px 20px;
+            width: 20%;
+            padding: 8px 20px;
+            padding-right: 12px;
 
             &.left {
                 float: left;
@@ -57,24 +58,26 @@ html, body {
                     position: relative;
 
                     &.full {
-                        background-color: #00B5E7;
-                        border: 1px solid #319ac3;
-                        box-shadow: inset 0 0 3px lighten(#00B5E7, 25%);
+                        background: #1d9bd9;
+                        .gradient(#3BB9E7, #3BB9E7, #008ECC);
+                        border: 1px solid #137ec6;
+                        border-top-color: #1992da;
+                        border-bottom-color: #0d6ab2;
+                        box-shadow: 0px 1px #17C1FF inset,0px -1px #1B8DB6 inset;
                     }
 
                     &.quick {
-                        background-color: #FBFBFB;
-                        border: 1px solid @border-color;
+                        background-color: transparent;
                         padding: @padding-z;
                         background-size: 12px 12px;
                         background-repeat: no-repeat;
                         background-position: center center;
 
                         i {
-                            .absolute(5px, auto, auto, 11px);
+                            .absolute(6px, auto, auto, 11px);
                             width: 2px;
-                            height: 14px;
-                            background-color: #000;
+                            height: 23px;
+                            background-color: #FFF;
 
                             &.xx {
                                 .rotate(90deg);
@@ -137,7 +140,8 @@ html, body {
                     }
 
                     &:hover {
-                        box-shadow: 0 0 9px -1px #Acf;
+                        background: #2fa2dc;
+                        .gradient(#42c4f4, #42c4f4, #139cd8);
                     }
                 }
             }
@@ -147,10 +151,11 @@ html, body {
 
                 form {
                     float: right;
-                    box-shadow: 0 0 6px -2px #444 inset;
-                    border-radius: @corner-rd * 2;
+                    border-radius: @corner-rd;
                     background-color: #FFF;
                     height: @hundred-percent;
+                    border: 1px solid rgb(185,185,185);
+                    border-top-color: rgb(160,160,160);
                     @ideal-width: @ideal-font-size * 2;
 
                     * {
@@ -163,6 +168,8 @@ html, body {
                         width: @hundred-percent;
                         margin-left: -@ideal-width;
                         padding-left: @ideal-width + @padding-z;
+                        border-radius: @corner-rd;
+                        box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.05);
                     }
 
                     input[type=submit] {
@@ -170,8 +177,11 @@ html, body {
                         background-image: url(../../assets/calendar/search.png);
                         background-repeat: no-repeat;
                         background-position: right center;
-                        background-size: 60% 60%;
+                        background-size: 60% 54%;
                         opacity: .8;
+                        background-color: #FFF;
+                        box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.05);
+                        border-radius: @corner-rd 0 0 @corner-rd;
                     }
                 }
             }
@@ -180,6 +190,7 @@ html, body {
                 width: 50%;
                 margin: auto;
                 font-size: 11px;
+                padding: 8px 20px 6px;
 
                 ul {
                     overflow: auto;
@@ -190,12 +201,18 @@ html, body {
                     li {
                         font-size: @ideal-font-size - 1;
                         display: inline-block;
-                        border: 1px solid @border-color;
-                        border-bottom-width: 2px;
-                        border-right-width: 0;
-                        background-color: #FDFDFD;
+                        border: 1px solid;
+                        border-color: #868686 #8F8F8F #6B6B6B;
+                        background-color: rgba(71, 71, 71, 0.49);
+                        box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
                         overflow: hidden;
+                        color: #FFF;
+                        font-weight:500;
+                        text-align:center;
+                        .transition(all .1s ease);
+                        text-shadow: 0 -1px rgba(213, 213, 213, 0.25);
                         @border-radius: @corner-rd * 2;
+                        .font-avenir();
 
 
                         &:first-child {
@@ -218,10 +235,7 @@ html, body {
                             text-transform: capitalize;
 
                             &:hover, &.active {
-                                background-color: #838383;
-                                color: #FFF;
-                                border: 1px solid #777;
-                                padding: @padding-y - 2 @padding-x - 1 @padding-y - 1;
+                                background-color: rgba(112, 112, 112, 0.41);
                             }
                         }
                     }
