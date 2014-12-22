@@ -41,7 +41,7 @@ div{
 
 #page{
 
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
 
     overflow: auto;
 
@@ -98,7 +98,7 @@ div{
     display: block;
 
 
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
     height: 2000px;
 
     max-height:100%;
@@ -927,6 +927,7 @@ text-shadow: none;
 @media screen and (max-width: 1110px) {
     body{
         overflow-x:scroll!important;
+        min-width:820px;
     }
 
 }
