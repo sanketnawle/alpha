@@ -1,1 +1,351 @@
-.body .header.row1.day{position:absolute;top:0;right:250px;bottom:auto;left:0;z-index:auto}.body .day-view .ad-scroll-view{position:absolute;top:0;right:0;bottom:0;left:auto;z-index:auto;position:absolute !important;border-left:1px solid #d4d4d4;width:250px !important;height:auto !important}.body .day-view .ad-scroll-view .ad-grid{position:absolute;top:0;right:0;bottom:0;left:auto;z-index:auto;height:auto !important;font-size:14px}.body .day-view .scroll-view{position:absolute;top:50px;right:253px;bottom:0;left:0;z-index:auto;position:absolute !important;height:auto !important}.body .day-view .day-grid{position:absolute;top:0;right:0;bottom:0;left:0;z-index:auto;height:auto !important;overflow:auto}.body .day-view .day-grid .day-event{width:95%;margin:auto}.body .day-view .day-grid .day-event:first-child .line{visibility:hidden}.body .day-view .day-grid .day-event .line{height:30px;border-left:1px solid #000;margin-left:75px}.body .day-view .day-grid .day-event .time{float:left;width:65px;text-align:center;font-size:13px;padding-top:10px}.body .day-view .day-grid .day-event .event{margin-left:65px}.body .day-view .day-grid .day-event .event.open .row1{border-radius:5px 5px 0 0;border-bottom:0}.body .day-view .day-grid .day-event .event.open .row1 .icon .wedge{display:block}.body .day-view .day-grid .day-event .event.open .row2{display:block}.body .day-view .day-grid .day-event .event .row1{cursor:pointer;background-color:#fff;overflow:hidden;box-shadow:0 0 3px #d4d4d4;border:1px solid #eee;border-radius:5px;height:60px;position:relative}.body .day-view .day-grid .day-event .event .row1 .icon{width:3px;border-radius:1px;position:absolute;top:8px;right:auto;bottom:8px;left:8px;z-index:auto;overflow:hidden}.body .day-view .day-grid .day-event .event .row1 .icon.a{background-color:#f6932b}.body .day-view .day-grid .day-event .event .row1 .icon.b{background-color:#60dd29}.body .day-view .day-grid .day-event .event .row1 .icon.c{background-color:#3ab9f7}.body .day-view .day-grid .day-event .event .row1 .icon.d{background-color:#fcc827}.body .day-view .day-grid .day-event .event .row1 .icon.e{background-color:#f0405b}.body .day-view .day-grid .day-event .event .row1 .icon.f{background-color:#ab7f4c}.body .day-view .day-grid .day-event .event .row1 .icon img{opacity:.5;width:20px;display:inline-block;height:100%;width:auto;background-position:center center}.body .day-view .day-grid .day-event .event .row1 .icon .wedge{display:none;position:absolute;top:auto;right:auto;bottom:0;left:13px;z-index:auto;width:24px;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:13px solid #fff}.body .day-view .day-grid .day-event .event .row1 .title{margin-top:8px;margin-left:20px}.body .day-view .day-grid .day-event .event .row1 .loc{position:absolute;top:auto;right:12px;bottom:6px;left:auto;z-index:auto;font-size:13px;color:#6e6e6e;width:auto;line-height:15px}.body .day-view .day-grid .day-event .event .row1 .loc .location{float:right;display:block}.body .day-view .day-grid .day-event .event .row1 .loc img{float:left;height:15px;width:15px}.body .day-view .day-grid .day-event .event .row2{display:none;background-color:#fafafa;box-shadow:inset 0 0 30px #f3f3f3,0 0 2px #d4d4d4;border:1px solid #eee;border-top:0;border-radius:0 0 5px 5px;overflow:hidden}.body .day-view .day-grid .day-event .event .row2 .todos{margin-bottom:8px}.body .day-view .day-grid .day-event .event .row2 .todos .todo{background-color:#fff;box-shadow:0 0 10px -5px #d4d4d4;border-radius:3px;padding:8px;border:1px solid #eee;margin:8px;position:relative}.body .day-view .day-grid .day-event .event .row2 .todos .todo .label{margin-right:16px}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check{height:16px;width:16px;border-radius:3px;box-shadow:inset 0 0 10px #d4d4d4;border:1px solid #444;position:relative;opacity:.5;float:right}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check:hover{opacity:1}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check.checked i{display:block}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check i{display:none;position:absolute;height:2px;background-color:#000}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check i.x{top:55%;width:40%;left:1px;-webkit-transform:rotateZ(45deg);-moz-transform:rotateZ(45deg);-ms-transform:rotateZ(45deg);-o-transform:rotateZ(45deg);transform:rotateZ(45deg)}.body .day-view .day-grid .day-event .event .row2 .todos .todo .check i.xx{top:45%;width:70%;right:1px;-webkit-transform:rotateZ(-45deg);-moz-transform:rotateZ(-45deg);-ms-transform:rotateZ(-45deg);-o-transform:rotateZ(-45deg);transform:rotateZ(-45deg)}.body .day-view .day-grid .day-event .event .row2 table{border-collapse:separate;border-spacing:8px;width:100%;font-size:13px}.body .day-view .day-grid .day-event .event .row2 .att{background-color:#fff;box-shadow:0 0 10px -5px #d4d4d4;border-radius:3px;padding:8px;border:1px solid #eee;float:right;width:150px;height:75px}.body .day-view .day-grid .day-event .event .row2 .att .yesno{width:127px;background-color:#d4d4d4;padding:1px;border-radius:5px;cursor:pointer;margin-top:5px}.body .day-view .day-grid .day-event .event .row2 .att .yesno i{background-color:#fff;display:inline-block;font-style:normal;height:28px;line-height:26px;width:62px;text-align:center}.body .day-view .day-grid .day-event .event .row2 .att .yesno i.x{margin-right:1px;border-radius:4px 0 0 4px}.body .day-view .day-grid .day-event .event .row2 .att .yesno i.xx{border-radius:0 4px 4px 0}.body .day-view .day-grid .day-event .event .row2 .att .yesno.checked i.x{background-color:#2ea;box-shadow:inset 0 0 25px -5px #1c8;color:#fff}.body .day-view .day-grid .day-event .event .row2 .att .yesno:not(.checked) i.xx{box-shadow:inset 0 0 25px -5px #ccc}.body .day-view .day-grid .day-event .event .row2 .att-c{background-color:#fff;box-shadow:0 0 10px -5px #d4d4d4;border-radius:3px;padding:8px;border:1px solid #eee;width:150px}.body .day-view .day-grid .day-event .event .row2 .att-c img{height:25px;width:25px;float:left;margin:4px 3px 0 0}.body .day-view .day-grid .day-event .event .row2 .desc{background-color:#fff;box-shadow:0 0 10px -5px #d4d4d4;border-radius:3px;padding:8px;border:1px solid #eee;margin-right:8px;vertical-align:top}
+.body .header.row1.day {
+    position: absolute;
+    top: 0;
+    right: 250px;
+    bottom: auto;
+    left: 0;
+    z-index: auto;
+}
+
+.body .day-view .ad-scroll-view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: auto;
+    position: absolute !important;
+    border-left: 1px solid #d4d4d4;
+    width: 250px !important;
+    height: auto !important;
+}
+
+    .body .day-view .ad-scroll-view .ad-grid {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        z-index: auto;
+        height: auto !important;
+        font-size: 14px;
+    }
+
+.body .day-view .scroll-view {
+    position: absolute;
+    top: 50px;
+    right: 253px;
+    bottom: 0;
+    left: 0;
+    z-index: auto;
+    position: absolute !important;
+    height: auto !important;
+}
+
+.body .day-view .day-grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: auto;
+    height: auto !important;
+    overflow: auto;
+}
+
+    .body .day-view .day-grid .day-event {
+        width: 95%;
+        margin: auto;
+    }
+
+        .body .day-view .day-grid .day-event:first-child .line {
+            visibility: hidden;
+        }
+
+        .body .day-view .day-grid .day-event .line {
+            height: 30px;
+            border-left: 1px solid #000;
+            margin-left: 75px;
+        }
+
+        .body .day-view .day-grid .day-event .time {
+            float: left;
+            width: 65px;
+            text-align: center;
+            font-size: 13px;
+            padding-top: 10px;
+        }
+
+        .body .day-view .day-grid .day-event .event {
+            margin-left: 65px;
+        }
+
+            .body .day-view .day-grid .day-event .event.open .row1 {
+                border-radius: 5px 5px 0 0;
+                border-bottom: 0;
+            }
+
+                .body .day-view .day-grid .day-event .event.open .row1 .icon .wedge {
+                    display: block;
+                }
+
+            .body .day-view .day-grid .day-event .event.open .row2 {
+                display: block;
+            }
+
+            .body .day-view .day-grid .day-event .event .row1 {
+                cursor: pointer;
+                background-color: #fff;
+                overflow: hidden;
+                box-shadow: 0 0 3px #d4d4d4;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                height: 60px;
+                position: relative;
+            }
+
+                .body .day-view .day-grid .day-event .event .row1 .icon {
+                    width: 3px;
+                    border-radius: 1px;
+                    position: absolute;
+                    top: 8px;
+                    right: auto;
+                    bottom: 8px;
+                    left: 8px;
+                    z-index: auto;
+                    overflow: hidden;
+                }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.a {
+                        background-color: #f6932b;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.b {
+                        background-color: #60dd29;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.c {
+                        background-color: #3ab9f7;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.d {
+                        background-color: #fcc827;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.e {
+                        background-color: #f0405b;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon.f {
+                        background-color: #ab7f4c;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon img {
+                        opacity: .5;
+                        width: 20px;
+                        display: inline-block;
+                        height: 100%;
+                        width: auto;
+                        background-position: center center;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .icon .wedge {
+                        display: none;
+                        position: absolute;
+                        top: auto;
+                        right: auto;
+                        bottom: 0;
+                        left: 13px;
+                        z-index: auto;
+                        width: 24px;
+                        border-left: 13px solid transparent;
+                        border-right: 13px solid transparent;
+                        border-bottom: 13px solid #fff;
+                    }
+
+                .body .day-view .day-grid .day-event .event .row1 .title {
+                    margin-top: 8px;
+                    margin-left: 20px;
+                }
+
+                .body .day-view .day-grid .day-event .event .row1 .loc {
+                    position: absolute;
+                    top: auto;
+                    right: 12px;
+                    bottom: 6px;
+                    left: auto;
+                    z-index: auto;
+                    font-size: 13px;
+                    color: #6e6e6e;
+                    width: auto;
+                    line-height: 15px;
+                }
+
+                    .body .day-view .day-grid .day-event .event .row1 .loc .location {
+                        float: right;
+                        display: block;
+                    }
+
+                    .body .day-view .day-grid .day-event .event .row1 .loc img {
+                        float: left;
+                        height: 15px;
+                        width: 15px;
+                    }
+
+            .body .day-view .day-grid .day-event .event .row2 {
+                display: none;
+                background-color: #fafafa;
+                box-shadow: inset 0 0 30px #f3f3f3,0 0 2px #d4d4d4;
+                border: 1px solid #eee;
+                border-top: 0;
+                border-radius: 0 0 5px 5px;
+                overflow: hidden;
+            }
+
+                .body .day-view .day-grid .day-event .event .row2 .todos {
+                    margin-bottom: 8px;
+                }
+
+                    .body .day-view .day-grid .day-event .event .row2 .todos .todo {
+                        background-color: #fff;
+                        box-shadow: 0 0 10px -5px #d4d4d4;
+                        border-radius: 3px;
+                        padding: 8px;
+                        border: 1px solid #eee;
+                        margin: 8px;
+                        position: relative;
+                    }
+
+                        .body .day-view .day-grid .day-event .event .row2 .todos .todo .label {
+                            margin-right: 16px;
+                        }
+
+                        .body .day-view .day-grid .day-event .event .row2 .todos .todo .check {
+                            height: 16px;
+                            width: 16px;
+                            border-radius: 3px;
+                            box-shadow: inset 0 0 10px #d4d4d4;
+                            border: 1px solid #444;
+                            position: relative;
+                            opacity: .5;
+                            float: right;
+                        }
+
+                            .body .day-view .day-grid .day-event .event .row2 .todos .todo .check:hover {
+                                opacity: 1;
+                            }
+
+                            .body .day-view .day-grid .day-event .event .row2 .todos .todo .check.checked i {
+                                display: block;
+                            }
+
+                            .body .day-view .day-grid .day-event .event .row2 .todos .todo .check i {
+                                display: none;
+                                position: absolute;
+                                height: 2px;
+                                background-color: #000;
+                            }
+
+                                .body .day-view .day-grid .day-event .event .row2 .todos .todo .check i.x {
+                                    top: 55%;
+                                    width: 40%;
+                                    left: 1px;
+                                    -webkit-transform: rotateZ(45deg);
+                                    -moz-transform: rotateZ(45deg);
+                                    -ms-transform: rotateZ(45deg);
+                                    -o-transform: rotateZ(45deg);
+                                    transform: rotateZ(45deg);
+                                }
+
+                                .body .day-view .day-grid .day-event .event .row2 .todos .todo .check i.xx {
+                                    top: 45%;
+                                    width: 70%;
+                                    right: 1px;
+                                    -webkit-transform: rotateZ(-45deg);
+                                    -moz-transform: rotateZ(-45deg);
+                                    -ms-transform: rotateZ(-45deg);
+                                    -o-transform: rotateZ(-45deg);
+                                    transform: rotateZ(-45deg);
+                                }
+
+                .body .day-view .day-grid .day-event .event .row2 table {
+                    border-collapse: separate;
+                    border-spacing: 8px;
+                    width: 100%;
+                    font-size: 13px;
+                }
+
+                .body .day-view .day-grid .day-event .event .row2 .att {
+                    background-color: #fff;
+                    box-shadow: 0 0 10px -5px #d4d4d4;
+                    border-radius: 3px;
+                    padding: 8px;
+                    border: 1px solid #eee;
+                    float: right;
+                    width: 150px;
+                    height: 75px;
+                }
+
+                    .body .day-view .day-grid .day-event .event .row2 .att .yesno {
+                        width: 127px;
+                        background-color: #d4d4d4;
+                        padding: 1px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        margin-top: 5px;
+                    }
+
+                        .body .day-view .day-grid .day-event .event .row2 .att .yesno i {
+                            background-color: #fff;
+                            display: inline-block;
+                            font-style: normal;
+                            height: 28px;
+                            line-height: 26px;
+                            width: 62px;
+                            text-align: center;
+                        }
+
+                            .body .day-view .day-grid .day-event .event .row2 .att .yesno i.x {
+                                margin-right: 1px;
+                                border-radius: 4px 0 0 4px;
+                            }
+
+                            .body .day-view .day-grid .day-event .event .row2 .att .yesno i.xx {
+                                border-radius: 0 4px 4px 0;
+                            }
+
+                        .body .day-view .day-grid .day-event .event .row2 .att .yesno.checked i.x {
+                            background-color: #2ea;
+                            box-shadow: inset 0 0 25px -5px #1c8;
+                            color: #fff;
+                        }
+
+                        .body .day-view .day-grid .day-event .event .row2 .att .yesno:not(.checked) i.xx {
+                            box-shadow: inset 0 0 25px -5px #ccc;
+                        }
+
+                .body .day-view .day-grid .day-event .event .row2 .att-c {
+                    background-color: #fff;
+                    box-shadow: 0 0 10px -5px #d4d4d4;
+                    border-radius: 3px;
+                    padding: 8px;
+                    border: 1px solid #eee;
+                    width: 150px;
+                }
+
+                    .body .day-view .day-grid .day-event .event .row2 .att-c img {
+                        height: 25px;
+                        width: 25px;
+                        float: left;
+                        margin: 4px 3px 0 0;
+                    }
+
+                .body .day-view .day-grid .day-event .event .row2 .desc {
+                    background-color: #fff;
+                    box-shadow: 0 0 10px -5px #d4d4d4;
+                    border-radius: 3px;
+                    padding: 8px;
+                    border: 1px solid #eee;
+                    margin-right: 8px;
+                    vertical-align: top;
+                }

@@ -18,9 +18,6 @@ ulcal.config(function ($routeProvider) {
     }).when("/month/:month/:year", {
         templateUrl: views_url + "/month.html",
         controller: "MonthController"
-    }).when("/semester/:sem/:year", {
-        templateUrl: views_url + "/semester.html",
-        controller: "SemesterController"
     }).otherwise({
         redirectTo: "/day/" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
     });

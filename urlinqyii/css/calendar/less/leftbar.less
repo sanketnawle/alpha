@@ -1,15 +1,18 @@
 ﻿@import "import/common.less";
+@leftbar-width: 170px;
 
 .ul-calendar {
     .leftbar {
         width: @leftbar-width;
         .absolute(@toolbar-height, auto, 0, 0);
         border-right: 1px solid @border-color;
-        @mini-calendar-height: @leftbar-width + 25;
+        @mini-calendar-height: @leftbar-width;
         font-size: @ideal-font-size;
+        background-color: #fafafa;
+        padding-top: 70px;
 
         .providers {
-            .absolute(0, 0, @mini-calendar-height, 0);
+            .absolute(60px, 0, @mini-calendar-height, 0);
             overflow: auto;
             padding: 8px;
 
@@ -19,6 +22,8 @@
                 .icon {
                     float: left;
                     margin-right: 5px;
+                    border-radius: 2px;
+                    display: none;
                 }
 
                 .check {
@@ -41,6 +46,11 @@
                     text-overflow: ellipsis;
                     line-height: 25px;
                     white-space: nowrap;
+                    .font-open-sans();
+                    color: #333;
+                    font-size: @ideal-font-size;
+                    font-weight: 500;
+                    text-transform: capitalize;
                 }
             }
         }
@@ -49,25 +59,27 @@
             .absolute(auto, 0, 0, 0);
             height: @mini-calendar-height;
             font-size: @ideal-font-size;
-            @m-header-1: 30px;
+            background-color: #f5f5f5;
+            border-top: 1px solid @border-color;
+            @m-header-1: 34px;
             @m-header-2: 20px;
-            @g-width: 31px;
-            @g-height: 31px;
+            @g-width: 19px;
+            @g-height: 19px;
 
             .header {
-                margin: 0 9px;
+                margin: 0;
 
                 &.row1 {
                     height: @m-header-1 + 8;
-                    line-height: @m-header-1;
-                    overflow: auto;
+                    line-height: @m-header-1 + 8;
+                    overflow: hidden;
 
                     .title {
-                        margin-right: -30px;
-                        padding-right: 30px;
+                        margin: 0 auto;
                         width: 100%;
                         text-align: center;
                         .font-avenir();
+                        color: #575757;
                     }
 
                     .arrow {
@@ -84,14 +96,13 @@
                         }
 
                         i {
-                            height: 13px;
+                            height: 7px;
                         }
                     }
                 }
 
                 &.row2 {
-                    height: @m-header-2 + 2;
-                    border-bottom: 1px solid @border-color;
+                    height: @m-header-2 - 2;
                     color: darken(@border-color, 20%);
 
                     .grid-column {
@@ -99,37 +110,41 @@
                         width: @g-width;
                         margin: 0 1px;
                         text-align: center;
+                        color: #999;
+                        .font-open-sans();
+                        font-size: @ideal-font-size - 1;
                         text-transform: uppercase;
                     }
                 }
             }
 
             .mini-cal-grid {
-                .absolute(@m-header-1 + @m-header-2 + 15, 9px, 0, 9px);
+                .absolute(@m-header-1 + @m-header-2 + 2, 9px, 0, 9px);
 
                 .grid-item {
                     float: left;
                     width: @g-width;
                     margin: 1px;
                     height: @g-height;
-                    line-height: @g-height - 2;
+                    line-height: @g-height;
                     text-align: center;
-                    box-shadow: inset 0 0 50px -10px lighten(@border-color, 10%);
-                    border: 1px solid @border-color;
-                    border-radius: 2px;
+                    font-size: @ideal-grid-font-size;
+                    border-radius: 1px;
+                    color: #565a5c;
 
                     .date {
                         display: block;
                     }
 
                     &.td {
-                        background-color: @time-line-color;
-                        color: #FFF;
-                        box-shadow: inset 0 0 50px -10px lighten(@time-line-color, 10%);
+                        border: 1px solid #3ea0c7;
+                        color: #333;
+                        background: rgba(62, 160, 199, 0.35);
+                        font-weight: bold;
                     }
 
                     &.out-of-range {
-                        opacity: 0.2;
+                        opacity: 0;
                     }
                 }
             }

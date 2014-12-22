@@ -17,6 +17,7 @@
         @right-width: 125px;
         line-height: @header-1-height;
         height: @header-1-height;
+        display: none;
 
         & > .left {
             float: left;
@@ -38,6 +39,7 @@
             .month {
                 line-height: @header-1-height + 5;
                 font-size: 25px;
+                color: #575757;
             }
 
             .year {
@@ -88,8 +90,7 @@
     }
 
     .header.row2 {
-        height: @header-2-height;
-        border-bottom: 1px solid darken(@border-color, 20%);
+        height: @header-2-height;        
         font-size: @ideal-font-size;
         padding-top: @header-2-height - 25;
     }

@@ -2,6 +2,7 @@
 
 .body {
     @margin-right: 12px;
+
     .header.row2.month {
         margin-right: @margin-right;
     }
@@ -14,8 +15,7 @@
                 height: @hundred-percent / 6;
 
                 &.tl {
-                    border-top-color: @time-line-color;
-                    border-top-width: 2px;
+                    border-top-width: 1px;
                 }
 
                 &.ll {
@@ -23,16 +23,23 @@
                 }
 
                 &.td {
-                    border-top-color: darken(@time-line-color, 10%);
+                    border-top-color: @time-line-color;
+                    border-top-width: 1px;
+                    background: rgba(62, 160, 199, 0.07);
 
                     .date {
-                        background: @time-line-color;
-                        border-radius: 30px;
-                        margin: 1px;
+                        border-bottom: 1px solid @time-line-color;
+                        margin: 0px;
+                        border-left: 1px solid @time-line-color;
                         width: 20px;
                         text-align: center;
-                        color: #FFF;
+                        color: #222;
                         float: right;
+                        line-height: 11px;
+                        font-weight: bold;
+                        padding-bottom: 1px;
+                        border-radius: 0px 0px 0px 2px;
+                        background: rgba(62, 160, 199, 0.21);
                     }
                 }
 
@@ -46,11 +53,15 @@
 
                 &.out-of-range {
                     color: @out-of-range-color;
+                    background-color: #EEE;
                 }
 
                 .date {
                     text-align: right;
                     padding: 3px;
+                    font-size: @ideal-grid-font-size;
+                    font-weight: 500;
+                    .font-avenir();
                 }
             }
 
