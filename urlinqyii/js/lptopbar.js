@@ -151,15 +151,15 @@ function toggleMenu(active) {
         $(".topbar .left a.menu").click(function () {
             leftPanelOpen = $(this).toggleClass("active").hasClass("active")
             forceLeftMenuClose = false;
-            toggleMenu(leftPanelOpen);
+            //toggleMenu(leftPanelOpen);
         });
         $(".topbar .right > .day").html(weekDays[new Date().getDay()]);
         $(".topbar .right > .date").html(new Date().getDate());
-        $(window).resize(function () {
-            if ($(window).width() < 1250) toggleMenu(false);
-            else if (leftPanelOpen) toggleMenu(true);
-        })
-        $(window).resize();
+        //$(window).resize(function () {
+        //    if ($(window).width() < 1250) toggleMenu(false);
+        //    else if (leftPanelOpen) toggleMenu(true);
+        //})
+        //$(window).resize();
 
         // notification
 
