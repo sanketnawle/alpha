@@ -1,8 +1,5 @@
 
 .planner_container{
-    position: fixed;
-    right: 240px;
-    top: 100px;
     width: 235px;
     min-height: 450px;
     max-height: 650px;
@@ -290,8 +287,9 @@ span.create_planner_message {}
 .event{
     display: block;
     width: 100%;
-    height: 40px;
+    height: 38px;
 
+    margin-bottom: 4px;
 }
 
 #planner_header_holder {
@@ -438,7 +436,8 @@ span.create_planner_message {}
 /* Set the background colors for the different types of events */
 
 #past_events div.event{
-    background-color: #F56B76;
+    background-color: #fbeaed;
+    box-shadow: -1px 0px rgb(229, 20, 44) inset;
 }
 
 

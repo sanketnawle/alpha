@@ -1,0 +1,73 @@
+div#fbar_new{
+    background: #fff;
+
+    border-radius: 3px;
+    border: 1px solid #ddd;    margin-bottom: 20px; 
+    border-radius: 4px; border-top-color: #EDEDED; border-bottom-color: #CDCDCD;
+    height: auto;
+    word-wrap: break-word;
+    min-height: 92px;
+}
+
+div.#fbar_holder.fbar_homepage #fbar_new{
+
+}
+
+div.#fbar_holder div#fbar_new{
+
+}
+
+div#fbar_new section#fbar_buttons{
+    -webkit-transition: opacity 450ms ease; transition: opacity 450ms ease;
+
+    padding: 0 1px 0 7px;
+    text-align: center;
+    height: auto;
+}
+
+section#fbar_buttons .fbar_buttonwrapper{
+    float: left; position: relative; 
+    top: 8px; left: 0; 
+    width: 33%; height: 20px; 
+    padding: 40px 1px 18px 0; color: #696969; 
+    display: inline-block;
+    font-size: 15px; opacity: .9; font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
+    background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
+
+}
+
+section#fbar_buttons .fbar_buttonwrapper:last-of-type{
+	background-image:none!important;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
+	
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
+    font-weight: 600;
+
+}
+
+.fbar_button_icon#fbar_icon_discuss{
+    width: 20px;
+	
+    height: 20px;
+}
+
+.fbar_button_icon#fbar_icon_notes{
+	
+}
+
+.fbar_button_icon#fbar_icon_question{
+	
+}
+
+.fbar_button_icon#fbar_icon_event{
+	
+}
+
+.fbar_button_icon#fbar_icon_opportunity{
+	
+}
+

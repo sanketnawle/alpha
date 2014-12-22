@@ -119,6 +119,113 @@ div{
     zoom: 1;
 }
 
+.fbar_holder {
+
+}
+
+/* HOME + GROUP PAGE STRUCTURE */
+
+#content_panel.content_panel_home{
+
+}
+
+div#planner_column{
+    padding: 0 4px 0 0; 
+    float: right;
+    margin-top: 0;
+    word-wrap: break-word;
+    width: 235px;
+
+    height: 100%;
+}
+
+div#planner_column.planner_column_home{
+
+}
+
+#fbar_holder.fbar_homepage{
+
+}
+
+#planner_column.planner_column_home #right_column_specs {
+
+}
+
+#planner_column.planner_column_home #right_column_specs #fixed_element{
+    top: 106px;
+
+}
+
+#right_column_specs{
+    position: relative;
+
+}
+
+#feed_column{
+    width: 568px;
+
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    float: left;
+}
+
+div#stream_holder{
+
+}
+
+div#stream_holder .stream_holder_home{
+    
+}
+
+div#stream_holder .stream_holder_group{
+    
+}
+
+#feed_wrapper{
+    min-height: 150px;
+
+    margin-left: 0px;
+}
+
+#feed_wrapper_home{
+    
+}
+
+#feed_wrapper_group{
+    
+}
+
+#feed_column.feed_column_home{
+    margin-top: 72px;
+
+}
+
+div#fbar_wrapper{
+
+}
+
+div#fbar_wrapper.fbar_home{
+    
+}
+
+div#fbar_wrapper.fbar_group{
+    
+}
+
+
+#right_column_specs #fixed_element{
+    position: fixed!important;
+
+    padding-top: 12px;
+    z-index: 1;
+    -webkit-transform: translateZ(0);
+    margin: auto;
+}
+
+
+/* GROUP PAGE STRUCTURE */
+
 #cover_photo {
 
     /*display: block;*/
@@ -479,7 +586,7 @@ border-radius: 3px;
 background: #EFEFEF;
 border: 1px solid #ddd;
 position: relative;
-box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
+box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.06) inset;
 cursor: pointer;
 display: inline-block;
 width: 180px;
@@ -1006,7 +1113,7 @@ text-decoration: none!important;
         display:none;
     }
     #content_panel{
-        margin-left: 273px;
+        margin-left: 280px;
     }
     #LeftPanel_Holder{
 
@@ -1037,6 +1144,12 @@ text-decoration: none!important;
     #topbar_responsive_holder{
     
     }
+    #content_panel.content_panel_home {
+    width: 830px!important;
+    overflow-x: hidden!important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    }    
 }
 
 @media screen and (max-width: 1110px) {

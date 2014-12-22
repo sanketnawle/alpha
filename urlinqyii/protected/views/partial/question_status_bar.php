@@ -3,14 +3,14 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/status_bar/fbar.css" type = "text/css"> 
+		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
 		<script>
 
 		</script>
 	</head>
 	<body>
 
-		<div id = "fbar_holder fbar_homepage">
+		<div id = "fbar_holder" class = "fbar_homepage">
 			<div id = "fbar_new">
 				<section id = "fbar_buttons">
 					<div class = "fbar_buttonwrapper" id = "fbar_button_discuss">
@@ -24,7 +24,7 @@
 						<p class = "fbar_button_text">Notes</p>
 					</div>
 					<div class = "fbar_buttonwrapper" id = "fbar_button_question">
-						<i class = "fbar_button_icon" id = "fbar_icon_notes">
+						<i class = "fbar_button_icon" id = "fbar_icon_question">
 						</i>
 						<p class = "fbar_button_text">Question</p>
 					</div>
