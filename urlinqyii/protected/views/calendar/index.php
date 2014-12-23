@@ -68,26 +68,34 @@
 
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
-            <div class="column left">
-                <button>Today</button>
-            </div>
-            <div class="column right">
-                <button class="print" ng-click="printGrid()">&nbsp;</button>
-                <form class="search">
-                    <input type="submit" value="">
-                    <input type="text" placeholder="Search">
-                </form>
-            </div>
-            <div class="column center">
-                <ul>
-                    <li ng-repeat="item in menu.items">
-                        <a ng-href="#/{{item}}/{{getLink($index)}}" ng-class="{active: menu.active == $index}">{{item}}</a>
-                    </li>
-                </ul>
+            <div class="wrap">
+                <div class="column left">
+                    <button>Today</button>
+                </div>
+                <div class="column right">
+                    <button class="print" ng-click="printGrid()">&nbsp;</button>
+                    <form class="search">
+                        <input type="submit" value="">
+                        <input type="text" placeholder="Search">
+                    </form>
+                </div>
+                <div class="column center">
+                    <ul>
+                        <li ng-repeat="item in menu.items">
+                            <a ng-href="#/{{item}}/{{getLink($index)}}" ng-class="{active: menu.active == $index}">{{item}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="leftbar">
             <!-- ng-click="openNewEvent()" for create button -->
+            <div class="create">
+                <div class="button">
+                    <div class="left">Create</div>
+                    <div class="right"></div>
+                </div>
+            </div>
             <div class="providers"></div>
             <div class="mini-calendar" ng-controller="MiniMonthController">
                 <div class="header row1">

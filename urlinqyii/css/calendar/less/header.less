@@ -15,60 +15,30 @@
     .header.row1 {
         overflow: hidden;
         @right-width: 125px;
-        line-height: @header-1-height;
         height: @header-1-height;
         margin-top: 5px;
-        display: none;
+        position: absolute;
+        top: -41px;
+        left: 15px;
+        z-index: 20;
 
         & > .left {
-            float: left;
-            width: @hundred-percent;
             height: @hundred-percent;
-            margin-right: -@right-width;
-            padding-right: @right-width;
-            padding-left: 4px;
-            line-height: @header-1-height;
-            font-weight: 100;
-            font-size: 25px;
 
             & > * {
                 float: left;
-                margin-right: 10px;
+                margin-right: 6px;
                 font-size: 22px;
+                .font-avenir();
             }
 
             .month {
-                line-height: @header-1-height + 5;
-                font-size: 25px;
                 color: #575757;
+                line-height: 28px;
             }
 
             .year {
-                font-size: 26px;
-            }
-
-            .arrow {
-                .nav-arrow();
-            }
-        }
-
-        & > .right {
-            float: right;
-            width: @right-width;
-            height: @hundred-percent;
-            text-align: center;
-
-            .print {
-                padding: 8px;
-                float: left;
-                margin-top: 20px;
-                background-image: url(../../assets/calendar/print.png);
-                background-size: 100% 100%;
-                opacity: 0.5;
-
-                &:hover {
-                    opacity: 1;
-                }
+                line-height: 28px;
             }
 
             .today {
@@ -87,17 +57,50 @@
                     box-shadow: 0 1px 3px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(248, 248, 248, 1), inset 0 -1px 0 rgba(248, 248, 248, .5), inset 1px 0 0 rgba(248, 248, 248, 1);
                 }
             }
+
+            .sep {
+                height: 20px;
+                width: 1px;
+                background-color: @border-color;
+                margin-top: 5px;
+            }
+
+            .arrow {
+                background-image: url(../../assets/calendar_page_assets.png);
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-top: 6px;
+
+                &.right {
+                    background-position: 0 113px;
+                    padding-left: 12px;
+
+                    &:hover {
+                        background-position-y: 129px;
+                    }
+                }
+
+                &.left {
+                    margin-left: 6px;
+                    background-position: 0 80px;
+
+                    &:hover {
+                        background-position-y: 96px;
+                    }
+                }
+            }
         }
     }
 
     .header.row2 {
-        height: @header-2-height;        
+        height: @header-2-height;
         font-size: @ideal-font-size;
         padding-top: @header-2-height - 17;
     }
 
     .grid-view {
-        .absolute(@header-1-height, 0, 0, 12px);
+        .absolute(@header-2-height+5, 0, 0, 15px);
         font-size: @ideal-grid-font-size;
 
         .grid {
