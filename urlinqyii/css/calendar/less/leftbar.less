@@ -1,18 +1,18 @@
 ﻿@import "import/common.less";
-@leftbar-width: 170px;
 
 .ul-calendar {
+    @mini-calendar-height: @leftbar-width;
+
     .leftbar {
         width: @leftbar-width;
-        .absolute(0px, auto, 0, 0);
+        .absolute(0, auto, 0, 0);
         border-right: 1px solid @border-color;
-        @mini-calendar-height: @leftbar-width;
         font-size: @ideal-font-size;
         background-color: #fafafa;
-        padding-top: 70px;
+        background-color: #f5f5f5;
 
         .providers {
-            .absolute(60px, 0, @mini-calendar-height, 0);
+            .absolute(0, 0, @mini-calendar-height, 0);
             overflow: auto;
             padding: 8px;
 
@@ -59,7 +59,6 @@
             .absolute(auto, 0, 0, 0);
             height: @mini-calendar-height;
             font-size: @ideal-font-size;
-            background-color: #f5f5f5;
             border-top: 1px solid @border-color;
             @m-header-1: 34px;
             @m-header-2: 20px;

@@ -5,12 +5,12 @@
     @hour-height: 50px;
 
     .header.row2.week {
-        margin-left: @timestrip-width;
-        margin-right: 12px;
+        margin-left: @timestrip-width + 12;
+        margin-right: 15px;
     }
 
     .scroll-view {
-        .absolute(@header-1-height + @header-2-height,0,0,0);
+        .absolute(@header-1-height,3px,0,0);
         position: absolute !important;
         height: auto !important;
     }
