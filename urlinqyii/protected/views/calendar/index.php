@@ -92,11 +92,24 @@
             <!-- ng-click="openNewEvent()" for create button -->
             <div class="create">
                 <div class="button">
-                    <div class="left">Create</div>
-                    <div class="right"></div>
+                    <div class="full" ng-click="openNewEvent()">Create Event</div>
+                    <div class="quick">
+                        <i>&nbsp;</i>
+                        <div class="quick-dialog">
+                            <div class="wedge"></div>
+                            <form>
+                                <div>Quick Add Event</div>
+                                <input type="submit" value="Add">
+                                <input type="text" placeholder="Example: Homework due Tuesday 11pm">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
                 </div>
             </div>
-            <div class="providers"></div>
+            <div class="providers class"></div>
+            <div class="providers clubs"></div>
+            <div class="providers depts"></div>
             <div class="mini-calendar" ng-controller="MiniMonthController">
                 <div class="header row1">
                     <a ng-click="goPrevMonth()" class="arrow left" ng-uc-check></a>
