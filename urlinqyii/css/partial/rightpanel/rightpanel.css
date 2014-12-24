@@ -7,3 +7,17 @@ div#panel_header{
     padding-top: 18px;
     padding-bottom: 6px;
 }
+
+span.right_panel_assets{
+    background-image: url(../../../assets/right_panel_assets.png);
+    background-size: auto;  
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+span.activity_icon.right_panel_assets{
+    width: 24px;
+    height: 24px;  
+    display: inline-block;
+    top: 9px; 
+}

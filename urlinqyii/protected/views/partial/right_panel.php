@@ -22,8 +22,20 @@
 			                if($origin_type == 'search'){
 			                    echo 'Campus';
 			                }
-			                else{
-			                    echo ucfirst($origin_type);
+			                if($origin_type == 'club'){
+			                    echo 'Club';
+			                }
+			                if($origin_type == 'class'){
+			                    echo 'Class';
+			                }
+			                if($origin_type == 'Course'){
+			                    echo 'Course';
+			                }
+			                if($origin_type == 'Department'){
+			                    echo 'Department';
+			                }
+			                if($origin_type == 'School'){
+			                    echo 'School';
 			                }
 			             ?> 
 			             Activity
