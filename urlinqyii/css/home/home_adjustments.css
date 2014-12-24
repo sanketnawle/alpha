@@ -1,0 +1,32 @@
+.MyBox_NameSO a.MyBox_ProfileLink{
+	padding-bottom:0px!important;
+}
+
+div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
+	margin-top:6px!important;
+}
+
+div#content_panel div#nav_bar{
+	top: 61px!important;
+	border-radius: 4px;
+}
+
+div.SectionHeader_holder div.float_Right a{
+	top:0px!important;
+}
+
+div.LeftPanel_DeptSchoolHolder div.LeftPanel_DSContentBox{
+	margin-bottom: 4px!important;
+}
+
+.LeftPanel_MyBox{
+	margin-top:14px!important;
+}
+
+div#nav_bar:hover {
+background-color: rgba(50, 51, 52, 1)!important;
+}
+
+div#nav_drop_down_container{
+	background-color: rgba(50, 51, 52, 1);
+}
