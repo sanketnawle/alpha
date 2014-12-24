@@ -82,7 +82,6 @@
 }
 
 .SectionHeader_holder div.float_Right a{
-    opacity: .58;
     
     top: 4px;
     position: relative;
@@ -99,7 +98,7 @@ em.SectionHeader_ribbon{
 }
 
 .LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
-    background-position: 0px -38px;
+    background-position: 0px -6px;
 
 }
 
@@ -109,7 +108,7 @@ em.SectionHeader_ribbon{
 }
 
 .LeftPanel_Profile .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
-    background-position: 0px -6px;
+    background-position: 0px -38px;
     
 }
 
@@ -121,7 +120,7 @@ em.SectionHeader_ribbon{
 }
 
 .LeftPanel_MyBox{
-    margin-top: 10px;
+    margin-top: 14px;
     
 }
 
@@ -178,9 +177,9 @@ a.MyBox_ProfileLink:hover{
 }
 
 a.MyBox_SO{
-    color: #777;
+    color: rgba(153, 153, 153, 0.72);
     cursor:pointer;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 500;
     font-family: 'Open Sans', sans-serif;
 }
@@ -191,7 +190,7 @@ a.MyBox_SO:hover{
 }
 
 div.LeftPanel_DeptSchoolHolder{
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 
     margin-top: 16px;
     position: relative;
@@ -221,7 +220,7 @@ a.LeftPanel_DSContentBoxName{
 
     display: block;
     cursor: pointer;
-    height: 30px;
+    height: 20px;
     border-radius: 3px;
 
     /*Added by Alex*/
@@ -234,7 +233,7 @@ a.LeftPanel_DSContentBoxName h5{
     font-weight: 500;
     margin: 0;
     margin-left: 6px;
-    line-height: 30px;
+    line-height: 20px;
     font-family: 'Open Sans', sans-serif;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
@@ -245,7 +244,7 @@ a.LeftPanel_DSContentBoxName h5{
 }
 
 .SectionHeader_holder div.float_Right a:hover{
-    opacity:.77!important;
+    text-decoration: underline;
 }
 
 .SectionHeader_holder div.float_Right a:active{
@@ -273,7 +272,7 @@ ul.LeftPanel_GroupsList li a{
     outline:none;
     font-size: 13.5px;
     padding: 6px;
-    width: 230px;
+    width: 220px;
     font-weight: 500;
     border-radius: 3px;
     text-decoration: none;
@@ -283,10 +282,26 @@ ul.LeftPanel_GroupsList li a{
     font-family: 'Open Sans', sans-serif;
 }
 
-ul.LeftPanel_GroupsList li a:hover,a.LeftPanel_DSContentBoxName:hover{
-background: #f5f5f5;
+ul.LeftPanel_GroupsList li a:hover{
+background: #F4F4F4;
 }
-ul.LeftPanel_GroupsList li a:active,a.LeftPanel_DSContentBoxName:active
+
+ul.LeftPanel_GroupsList li a:active
 {
-background: #f2f2f2;
+background: #ECECEC;
 }
+
+ul.LeftPanel_GroupsList li a.current_group, ul.LeftPanel_GroupsList li a.current_group:hover, ul.LeftPanel_GroupsList li a.current_group:active{
+    background: #ECECEC!important;
+    cursor:default;
+}
+
+a.LeftPanel_DSContentBoxName:hover{
+    text-decoration: underline;
+    opacity:.95;
+}
+
+a.LeftPanel_DSContentBoxName:active{
+    opacity:1;
+}
+

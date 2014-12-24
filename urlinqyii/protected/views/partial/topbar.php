@@ -156,7 +156,7 @@
                 <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Collaborate</div>
+                        <div class = "icon_text">Notifications</div>
                     </div>
                     <div class="notify-window">
                         <div class="wedge"></div>

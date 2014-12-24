@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $followers = $userProfile->usersFollowing;
 
         $interests = $userProfile->userInterests;
-        $showcase_info = $userProfile->showcase;
+      //  $showcase_info = $userProfile->showcase;
         $majors = $userProfile->majors;
         $minors = $userProfile->minors;
         $closedInstructions = $userProfile->closed_showcase_instructions;
@@ -83,7 +83,7 @@ class ProfileController extends Controller
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
             ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs, 'following'=>$following,'followers'=>$followers, 'interests'=>$interests
-            , 'showcase'=>$showcase_info, 'majors'=>$majors, 'minors'=>$minors, 'you_follow'=>$you_follow, 'both_follow'=>$you_follow&&$follows_you
+            , 'showcase'=>null, 'majors'=>$majors, 'minors'=>$minors, 'you_follow'=>$you_follow, 'both_follow'=>$you_follow&&$follows_you
             , 'closedInstructions'=>$closedInstructions, 'random_image_url'=>$random_image_url));
     }
 
@@ -742,6 +742,49 @@ class ProfileController extends Controller
             $this->renderJSON(array('status' => 'error: visibility not set'));
         }
 
+
+    }
+    public function actionGetTemplate(){
+        $this->render('profile');
+    }
+    public function actionJson(){
+        $user=User::model()->find('user_id = :uid', array(':uid'=>$_GET['id']));
+        $data = array();
+        $data['firstname']=$user->firstname;
+        $data['lastname']=$user->lastname;
+        $data['school']=$user->school->school_name;
+        $data['university']=$user->school->university->university_name;
+        $data['department']=$user->department->department_name;
+        $data['classes']=array();
+        foreach($user->classes as $i=>$class){
+            $data['classes'][$i]['name']=$class->course->course_name;
+            $data['classes'][$i]['section']=$class->section_id;
+        }
+        if($user->user_type=="s"){
+            $data['minors']=array();
+            foreach($user->minors as $i=>$minor){
+                $data['minors'][$i]['name']=$minor->name;
+            }
+            $data['majors']=array();
+
+            foreach($user->majors as $i=>$major){
+                $data['majors'][$i]['name']=$major->name;
+            }
+            $data['year_name'] = $user->studentAttributes->year_name;
+        }
+        $data['following']=array();
+        foreach($user->usersFollowed as $i=>$user){
+            $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
+            $data['following'][$i]['user_school']=$user->school->school_name;
+        }
+        $data['base_url'] = Yii::app()->getBaseUrl(true);
+        $data['professor'] = $user->user_type == "p";
+        $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());
+        $this->renderJSON($data);
+        if($user->user_type == "p"){
+            $data['office_location'] = $user->professorAttribute->office_location;
+            $data['office_hours'] = $user->professorAttribute->office_hours;
+        }
 
     }
 
