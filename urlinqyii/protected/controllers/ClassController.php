@@ -27,7 +27,7 @@ class ClassController extends Controller
 
         $course = $class->course;
 
-        $professor = User::model()->find('user_id = :id',array(':id'=>$class->professor));
+        $professor = $class->professor;
 
         $department = $class->department;
         $university = $class->school;
@@ -80,13 +80,13 @@ class ClassController extends Controller
         $students = $class->students;
         $admins = $class->admins;
 
-        $other_courses_from_prof =  Yii::app()->db->createCommand()
-           // ->select('co.course_name, cl.section_id')
-            ->select('co.course_id,co.course_name')
-            ->from('course co, class cl')
-            ->where('cl.professor = :pid and cl.course_id = co.course_id and cl.class_id != :cid',
-                    array(':pid'=>$professor->user_id,':cid'=>$class_id))
-            ->queryAll();
+//        $other_courses_from_prof =  Yii::app()->db->createCommand()
+//           // ->select('co.course_name, cl.section_id')
+//            ->select('co.course_id,co.course_name')
+//            ->from('course co, class cl')
+//            ->where('cl.professor = :pid and cl.course_id = co.course_id and cl.class_id != :cid',
+//                    array(':pid'=>$professor->user_id,':cid'=>$class_id))
+//            ->queryAll();
 
         $students_following_that_took_course = User::model()->findAllBySql(' select u.*
             from class c1, class c2, class_user cu, user u, user_connection uc
@@ -96,11 +96,14 @@ class ClassController extends Controller
                 or c1.semester = "fall")) or (c2.semester="summer" and c1.semester="fall"))))'
                 ,array(':uid'=>$user_id,':cid'=>$class_id));
 
+//        $this->render('class',array('all_following'=>$students_following_that_took_course, 'students'=>$students,'admins'=>$admins, 'user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
+//            , 'department'=>$department, 'is_member'=>$is_member, 'university'=>$university, 'is_admin'=>$is_admin
+//            , 'schedules'=>$schedule_strings, 'files'=>$files, 'other_courses'=>$other_courses_from_prof)
+//              );
         $this->render('class',array('all_following'=>$students_following_that_took_course, 'students'=>$students,'admins'=>$admins, 'user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
             , 'department'=>$department, 'is_member'=>$is_member, 'university'=>$university, 'is_admin'=>$is_admin
-            , 'schedules'=>$schedule_strings, 'files'=>$files, 'other_courses'=>$other_courses_from_prof)
-              );
-
+            , 'schedules'=>$schedule_strings, 'files'=>$files)
+        );
     }
     public function ActionSylaUpload(){
         if (isset($_FILES['file'])) {

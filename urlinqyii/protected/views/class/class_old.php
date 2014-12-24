@@ -1,30 +1,30 @@
 <html>
 
 
-<head>
-    <script>
-        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        origin_type = '<?php echo 'class'; ?>';
+    <head>
+        <script>
+            base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+            origin_type = '<?php echo 'class'; ?>';
 
-        origin_id = '<?php echo $class->class_id; ?>';
+            origin_id = '<?php echo $class->class_id; ?>';
 
-    </script>
-
-
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
-
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+        </script>
 
 
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
-    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
-</head>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+        <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
+    </head>
 
     <body>
 
@@ -53,7 +53,7 @@
 
 
         <div id="content_panel">
-        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
+        <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$class->group_id,'origin'=>$class)); ?>
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');"></div>
 
 
@@ -693,8 +693,8 @@
         <!--            </div>-->
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
 
+        <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
         </div>
         <!--        <div id="right_menu_panel">-->
         <!---->

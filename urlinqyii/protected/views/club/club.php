@@ -691,8 +691,8 @@
     <!--            </div>-->
 
         </div>
+        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
 
-<!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
     </div>
 <!--        <div id="right_menu_panel">-->
 <!---->
