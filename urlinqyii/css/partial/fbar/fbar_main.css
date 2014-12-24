@@ -6,7 +6,7 @@ div#fbar_new{
     border-radius: 4px; border-top-color: #EDEDED; border-bottom-color: #CDCDCD;
     height: auto;
     word-wrap: break-word;
-    min-height: 92px;
+    min-height: 74px;
 }
 
 div.#fbar_holder.fbar_homepage #fbar_new{
@@ -27,9 +27,10 @@ div#fbar_new section#fbar_buttons{
 
 section#fbar_buttons .fbar_buttonwrapper{
     float: left; position: relative; 
-    top: 8px; left: 0; 
-    width: 33%; height: 20px; 
-    padding: 40px 1px 18px 0; color: #696969; 
+    top: 0px; left: 0; 
+    width: 180.5px; 
+    height: 52px; 
+    padding: 12px 0px 11px 0px; color: #696969; 
     display: inline-block;
     font-size: 15px; opacity: .9; font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
     background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
@@ -37,37 +38,57 @@ section#fbar_buttons .fbar_buttonwrapper{
 }
 
 section#fbar_buttons .fbar_buttonwrapper:last-of-type{
-	background-image:none!important;
+    background-image:none!important;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
-	
+    background-image: url(../../../assets/Fbar_icon_map.png);
+    
+    background-size: auto;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    margin-left: 27px;
+    float: left;
+    margin-top: 3px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
     font-weight: 600;
 
+    display: inline-block;
+    float: left;
+    margin-left: 0px;
+    width: 87px;
+    text-align: center;
+    margin-top: 17px;
 }
 
 .fbar_button_icon#fbar_icon_discuss{
-    width: 20px;
-	
-    height: 20px;
+    width: 42px;
+    
+    height: 44px;
+    background-position: 0px -52px!important;
 }
 
 .fbar_button_icon#fbar_icon_notes{
-	
+    width: 42px; height: 44px;
+    
+    background-position: 0px -10px;
 }
 
 .fbar_button_icon#fbar_icon_question{
-	
+    background-position: 0px -147px;
+    
+    width: 40px;
+    height: 42px;
 }
 
 .fbar_button_icon#fbar_icon_event{
-	
+    
 }
 
 .fbar_button_icon#fbar_icon_opportunity{
-	
+    
 }
 
