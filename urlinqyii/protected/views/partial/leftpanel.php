@@ -3,6 +3,20 @@
 <html>
 <head>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+    <script>
+		$(document).ready(function(){
+
+			if (origin_type == "club"){
+				$("ul[data-group='clubs'] a[data-group_id="+ origin_id +"]").addClass("current_group");
+
+			}
+
+			if (origin_type == "class"){
+				$("ul[data-group='classes'] a[data-class_id="+ origin_id +"]").addClass("current_group");
+			}
+
+		});
+    </script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css" rel="stylesheet" type="text/css">
@@ -17,7 +31,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>PROFILE</h4>
+						<h4>Profile</h4>
 					</div>
 					<div class = "float_Right">
 						<div class = "LeftPanel_menuicon LeftPanel_icons"></div>
@@ -29,12 +43,12 @@
 				<div class = "LeftPanel_MyBox">
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink">
-							<img class = "MyBox_Picture" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
+							<img class = "MyBox_Picture profile_link" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
 						</a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
 								<div class = "MyBox_NameSO">
-									<a class = "MyBox_ProfileLink">
+									<a class = "MyBox_ProfileLink profile_link">
 										<?php echo $user->firstname . " " . $user->lastname?>
 									</a>
 									<a class = "MyBox_SO" href="<?php echo Yii::app()->getBaseUrl(true); ?>/logout">
@@ -71,7 +85,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>CLASSES</h4>	
+						<h4>Classes</h4>	
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn">Join classes</a>
@@ -79,10 +93,10 @@
 				</div>				
 			</div>
 			<div class = "LeftPanel_SectionContent">
-				<ul class = "LeftPanel_GroupsList">
+				<ul data-group = "classes" class = "LeftPanel_GroupsList">
                     <?php foreach($user->classes as $class){?>
                         <li>
-                            <a href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
+                            <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
                         </li>
                     <?php } ?>
 				</ul>
@@ -94,7 +108,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>CLUBS</h4>
+						<h4>Clubs</h4>
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn">Join clubs</a>
@@ -102,12 +116,12 @@
 				</div>				
 			</div>	
 			<div class = "LeftPanel_SectionContent">
-				<ul class = "LeftPanel_GroupsList">
+				<ul data-group = "clubs" class = "LeftPanel_GroupsList">
                     <?php foreach($user->groups as $club){ ?>
 
 
                         <li>
-                            <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
+                            <a data-group_id = "<?php echo $club->group_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
                         </li>
                     <?php } ?>
 				</ul>				

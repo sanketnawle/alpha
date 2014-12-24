@@ -46,11 +46,11 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type == 'home'){
-                                echo 'MY';
+                                echo '';
                             }else{
-                                echo strtoupper($origin_type);
+                                echo ucfirst($origin_type);
                             }
-                         ?> PLANNER
+                         ?> Planner
                         <img id="dropdown_arrow" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/dropdown_arrow.png"/>
                     </div>
                 </div>
@@ -160,8 +160,8 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="free_planner_message">   Your schedule's free</span>
-                    <span class="create_planner_message">Fill out weekly planner</span>
+                    <span class="free_planner_message">Schedule clear</span>
+                    <span class="create_planner_message">Add a todo</span>
                 </div>
 
 
