@@ -755,18 +755,22 @@ class ProfileController extends Controller
         $data['school']=$user->school->school_name;
         $data['university']=$user->school->university->university_name;
         $data['department']=$user->department->department_name;
-        $data['majors']=array();
-        foreach($user->majors as $major){
-            $data['majors'][]=$major->name;
-        }
-        $data['minors']=array();
-        foreach($user->minors as $minor){
-            $data['minors'][]=$minor->name;
-        }
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
             $data['classes'][$i]['name']=$class->course->course_name;
             $data['classes'][$i]['section']=$class->section_id;
+        }
+        if($user->user_type=="s"){
+            $data['minors']=array();
+            foreach($user->minors as $i=>$minor){
+                $data['minors'][$i]['name']=$minor->name;
+            }
+            $data['majors']=array();
+
+            foreach($user->majors as $i=>$major){
+                $data['majors'][$i]['name']=$major->name;
+            }
+            $data['year_name'] = $user->studentAttributes->year_name;
         }
         $data['following']=array();
         foreach($user->usersFollowed as $i=>$user){
@@ -774,7 +778,14 @@ class ProfileController extends Controller
             $data['following'][$i]['user_school']=$user->school->school_name;
         }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
+        $data['professor'] = $user->user_type == "p";
+        $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());
         $this->renderJSON($data);
+        if($user->user_type == "p"){
+            $data['office_location'] = $user->professorAttribute->office_location;
+            $data['office_hours'] = $user->professorAttribute->office_hours;
+        }
+
     }
 
 

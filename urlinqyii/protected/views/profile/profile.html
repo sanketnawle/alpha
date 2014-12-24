@@ -10,7 +10,7 @@
         <div id="modal_controls">
 
             <a href="#" class="branding_left">ur |</a>
-            <div id="modal_label">Profile | Student</div>
+            <div id="modal_label">Profile | {{#if professor}}Professor{{else}}Student{{/if}}</div>
             <a href="#" class="close_modal">x</a>
         </div>
 
@@ -20,8 +20,12 @@
             <div id="profile_picture" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/user.png )"></div>
         </div>
         <div id="name_info_wrapper">
-            <div id="name_info">{{firstname}} {{lastname}}</div>
-            <div id="year_info">Graduate at {{university}}</div>
+            <div id="name_info">{{#if professor}}Professor {{/if}}{{firstname}} {{lastname}}</div>
+            {{#if professor}}
+            <div id="university_info">{{university}}</div>
+            {{else}}
+            <div id="year_info">{{year_name}} at {{university}}</div>
+            {{/if}}
         </div>
         <div id="profile_tab_bar">
             <div class="profile_tab feed active" data-panel_id="1">
@@ -79,21 +83,43 @@
                 </div>
                 <a href="#" class="info_name">{{department}}</a>
             </div>
-
-            <div class="info_section" id = "major_section">
-                <div class="info_label" id = "major_label">
-                    Major:
+            {{#if research}}
+                <div class="info_section" id = "research_section">
+                    <div class="info_label" id = "research_label">
+                        Research:
+                    </div>
+                    <div class="info_name">research</div>
                 </div>
-                <div class="info_name">Computer Science</div>
-            </div>
-
-            <div class="info_section" id = "minor_section">
-                <div class="info_label" id = "minor_label">
-                    Minor:
+            {{/if}}
+            {{#if professor}}
+                <div class="info_section" id = "office_section">
+                    <div class="info_label" id = "office_label">
+                        Office Location:
+                    </div>
+                    <div class="info_name">{{office_location}}</div>
                 </div>
-                <div class="info_name">Mathematics</div>
-            </div>
-
+            {{else}}
+                {{#if majors}}
+                <div class="info_section" id = "major_section">
+                    <div class="info_label" id = "major_label">
+                        Major:
+                    </div>
+                    {{#each majors}}
+                    <div class="info_name">{{name}}</div>
+                    {{/each}}
+                </div>
+                {{/if}}
+                {{#if minors}}
+                <div class="info_section" id = "minor_section">
+                    <div class="info_label" id = "minor_label">
+                        Minor:
+                    </div>
+                    {{#each minors}}
+                    <div class="info_name">{{name}}</div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            {{/if}}
         </div>
         <div id = "tab_contents">
             <div class="profile_panel active" id="profile_panel_1"> <!-- feed -->
