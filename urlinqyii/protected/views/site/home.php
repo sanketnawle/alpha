@@ -105,7 +105,7 @@ var $ = jQuery.noConflict();
 
     <body id = "body_home">
 
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
+        <?php echo Yii::app()->runController('partial/topbar');     ?>
 
         <div id = "wrapper">
             <div id="page">
