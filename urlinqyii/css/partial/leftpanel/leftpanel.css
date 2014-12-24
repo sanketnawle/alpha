@@ -75,7 +75,7 @@
 
     font-weight: 200;
     font-size: 18px;
-    color: #777777;
+    color: #575757;
     margin: 0;
     display: inline-block;
     margin-left: 2px;
@@ -239,7 +239,7 @@ a.LeftPanel_DSContentBoxName h5{
 }
 
 .LeftPanelSection:hover .LeftPanel_SectionHeader div.float_Right a{
-    opacity:.65;
+    opacity: 1;
     outline:none;
 }
 

@@ -1,86 +1,130 @@
-﻿@import "import/common.less";
-
-.body {
-    @margin-right: 15px;
-
+﻿.body {
     .header.row2.month {
-        margin-right: @margin-right;
-        margin-left: @margin-right;
+        margin-right:15px;
+        margin-left:15pxmargin-right:15px;
+        margin-left:15px;
     }
-
     .month-view {
         .month-grid {
-            .absolute(0, @margin-right, 0, 0);
-
+            position:absolute;
+            top:0;
+            right:15px;
+            bottom: 12px;
+            left:0;
+            z-index:autoposition:absolute;
+            top:0;
+            right:15px;
+            bottom: 12px;
+            left:0;
+            z-index:auto;
             .grid-item {
-                height: @hundred-percent / 6;
-
-                &.tl {
-                    border-top-width: 1px;
-                }
-
-                &.ll {
-                    border-bottom: 1px solid @border-color;
-                }
-
-                &.td {
-                    border-top-color: @time-line-color;
-                    border-top-width: 1px;
-                    background: rgba(62, 160, 199, 0.07);
-
-                    .date {
-                        border-bottom: 1px solid @time-line-color;
-                        margin: 0px;
-                        border-left: 1px solid @time-line-color;
-                        width: 20px;
-                        text-align: center;
-                        color: #222;
-                        float: right;
-                        line-height: 11px;
-                        font-weight: bold;
-                        padding-bottom: 1px;
-                        border-radius: 0px 0px 0px 2px;
-                        background: rgba(62, 160, 199, 0.21);
-                    }
-                }
-
-                &.prem {
-                    height: @hundred-percent / 5;
-                }
-
-                &.prem-plus {
-                    height: @hundred-percent / 4;
-                }
-
-                &.out-of-range {
-                    color: @out-of-range-color;
-                    background-color: #EEE;
-                }
-
+                height:16.66666667%height:16.66666667%;
                 .date {
-                    text-align: right;
-                    padding: 3px;
-                    font-size: @ideal-grid-font-size;
-                    font-weight: 500;
-                    .font-avenir();
+                    text-align:right;
+                    padding:3px;
+                    font-size:10px;
+                    font-weight:500;
+                    font-family:"Avenir",Arial,sans-seriftext-align:right;
+                    padding:3px;
+                    font-size:10px;
+                    font-weight:500;
+                    font-family:"Avenir",Arial,sans-serif;
                 }
             }
-
-            .grid-event {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                z-index: 42;
-
-                .line {
-                    .absolute(0, auto, 0, 3px);
-                    width: 2px;
-                    .color-schemes();
+            .grid-item.tl {
+                border-top-width:1pxborder-top-width:1px;
+            }
+            .grid-item.ll {
+                border-bottom:1px solid #d4d4d4border-bottom:1px solid #d4d4d4;
+            }
+            .grid-item.td {
+                border-top-color:#3ea0c7;
+                border-top-width:1px;
+                background:rgba(62,160,199,0.07)border-top-color:#3ea0c7;
+                border-top-width:1px;
+                background:rgba(62,160,199,0.07);
+                .date {
+                    border-bottom:1px solid #3ea0c7;
+                    margin:0;
+                    border-left:1px solid #3ea0c7;
+                    width:20px;
+                    text-align:center;
+                    color:#222;
+                    float:right;
+                    line-height:11px;
+                    font-weight:bold;
+                    padding-bottom:1px;
+                    border-radius:0 0 0 2px;
+                    background:rgba(62,160,199,0.21)border-bottom:1px solid #3ea0c7;
+                    margin:0;
+                    border-left:1px solid #3ea0c7;
+                    width:20px;
+                    text-align:center;
+                    color:#222;
+                    float:right;
+                    line-height:11px;
+                    font-weight:bold;
+                    padding-bottom:1px;
+                    border-radius:0 0 0 2px;
+                    background:rgba(62,160,199,0.21);
                 }
-
+            }
+            .grid-item.prem {
+                height:20%height:20%;
+            }
+            .grid-item.prem-plus {
+                height:25%height:25%;
+            }
+            .grid-item.out-of-range {
+                color:#a6a6a6;
+                background-color:#eeecolor:#a6a6a6;
+                background-color:#eee;
+            }
+            .grid-event {
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                z-index:42white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                z-index:42;
+                .line {
+                    position:absolute;
+                    top:0;
+                    right:auto;
+                    bottom:0;
+                    left:3px;
+                    z-index:auto;
+                    width:2pxposition:absolute;
+                    top:0;
+                    right:auto;
+                    bottom:0;
+                    left:3px;
+                    z-index:auto;
+                    width:2px;
+                }
+                .line.a {
+                    background-color:#f6932bbackground-color:#f6932b;
+                }
+                .line.b {
+                    background-color:#60dd29background-color:#60dd29;
+                }
+                .line.c {
+                    background-color:#3ab9f7background-color:#3ab9f7;
+                }
+                .line.d {
+                    background-color:#fcc827background-color:#fcc827;
+                }
+                .line.e {
+                    background-color:#f0405bbackground-color:#f0405b;
+                }
+                .line.f {
+                    background-color:#ab7f4cbackground-color:#ab7f4c;
+                }
                 .time {
-                    float: left;
-                    line-height: 20px;
+                    float:left;
+                    line-height:20pxfloat:left;
+                    line-height:20px;
                 }
             }
         }
