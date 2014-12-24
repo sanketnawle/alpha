@@ -9,9 +9,12 @@ class SchoolController extends Controller
         $school = School::model()->find('school_id=:id', array(':id'=>1));
         $user_id=1;
         $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+
+
+        $is_member = true;
         //var_dump($user);
         //$members=User::model()->find('school_id:=id', array(':id'=>1));
-        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users));
+        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member));
     }
 
     public function actionFollowDept(){
