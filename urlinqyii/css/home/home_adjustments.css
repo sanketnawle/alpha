@@ -23,10 +23,22 @@ div.LeftPanel_DeptSchoolHolder div.LeftPanel_DSContentBox{
 	margin-top:14px!important;
 }
 
+div#nav_bar{
+	border-radius:2px!important;
+}
+
 div#nav_bar:hover {
 background-color: rgba(50, 51, 52, 1)!important;
 }
 
 div#nav_drop_down_container{
 	background-color: rgba(50, 51, 52, 1);
+}
+
+div.nav_section div#nav_drop_down_container{
+	top:99px!important;
+}
+
+div.nav_section.nav_section_home.active div a:hover{
+	cursor:default!important;
 }

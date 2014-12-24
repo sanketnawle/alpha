@@ -6,7 +6,6 @@
     width: 830px;
     float: left;
     border-top: none;
-    border-radius: 2px;
     /* border: 1px solid #101010; */
     display: block;
     font: OpenSans;
@@ -28,6 +27,14 @@
 
 div#nav_bar:hover{
     background-color: rgba(25, 26, 27, 1);
+}
+
+div.nav_section.nav_section_home:hover div.nav_picture#home_nav_icon{
+    background-image: url('../../../assets/partial/nav_bar/school_icon_white.png');
+}
+
+div.nav_section.nav_section_home:hover div.nav_text a{
+    color:#fff;
 }
 
 a {
@@ -84,11 +91,15 @@ a {
     /*position: relative;*/
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
-    margin-top: 9px;
+    margin-top: 10px;
     float: left;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13.2px;
+    max-width: 207px;
     display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
@@ -186,6 +197,8 @@ div.nav_drop_down_section:active{
 
 div#nav_drop_down_scrollable{
     padding-top:7px;
+    overflow-y: scroll;
+    height: 154px;
 }
 
 
