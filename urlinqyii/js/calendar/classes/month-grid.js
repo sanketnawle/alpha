@@ -1,5 +1,6 @@
-﻿/// <reference path="../../lib/jquery.js" />
+﻿/// <reference path="../lib/jquery.js" />
 /// <reference path="../helpers/date.js" />
+/// <reference path="event-target.js" />
 
 var MonthGrid = (function (MonthGrid) {
     var dp = new DateProvider();
@@ -49,6 +50,10 @@ var MonthGrid = (function (MonthGrid) {
 
     /* Class Grid */
     var Grid = function (grid, month, year) {
+
+        EventTarget.call(this);
+        var me = this;
+
         Object.defineProperties(this, {
             ele: { value: grid },
             populate: {
@@ -102,10 +107,21 @@ var MonthGrid = (function (MonthGrid) {
             children: { get: function () { return this.ele.querySelectorAll(".grid-item"); } },
             items: { get: function () { return getGridItems(this.children); } },
         });
-
-        // intialize
-        this.populate();
+        
+        var MonthMouseWheel = function (e) {
+            var e = e || event;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            me.__fire({ type: "scroll", delta: delta });
+        }
+        if (this.ele.addEventListener) {
+            this.ele.addEventListener("mousewheel", MonthMouseWheel, false);
+            this.ele.addEventListener("DOMMouseScroll", MonthMouseWheel, false);
+        } else {
+            this.ele.attachEvent("onmousewheel", MonthMouseWheel);
+        }
     }
+    // inherit events
+    Grid.prototype = Object.create(EventTarget.prototype);
 
     MonthGrid.Grid = Grid;
     MonthGrid.GridItem = GridItem;
@@ -128,6 +144,8 @@ var MonthGrid = (function (MonthGrid) {
         } else {
             grid = new Grid(ele, month, year);
         }
+
+        grid.populate();
 
         return grid;
     }
