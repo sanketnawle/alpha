@@ -1,26 +1,36 @@
-#outside_wrapper{
-    width:100%;
-    height:100%;
-    background-color: black;
-    /* opacity: 0.4;*/
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
 }
 #profile_wrapper{
-    margin-top:40px;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0px auto;
+   position: absolute;
+    top:20%;
+    left:50%;
+    margin-left:-500px;
+    width: 1000px;
+
     background-color: white;
     opacity: 1;
+    z-index:2001;
+    font-family: "Avenir", Arial, sans-serif;
 }
 #left_info_bar{
     width: 30%;
-    display: inline-block;
+    height:100%;
+    float: left;
     background-color: #dcdcdc ;
     font-family: "Avenir", Arial, sans-serif;
 }
 #tab_contents{
     display: inline-block;
-
+    width: 69%;
+    min-height: 1000px;
 }
 #main_content{
     clear:left;
@@ -68,8 +78,8 @@
 .branding_left{
    /* background: url("http://cdn.brandisty.com/img?id=5272b9713e162c5930000066&format=png&w=400&h=400") 50% 50% no-repeat;*/
     height: 38px;
-    width: 56px;
-    margin: 5px 8px;
+    width: 61px;
+    margin: 2px 8px;
     font-weight: 600;
     font-size: 32px;
     background-size: 100% 100%;
@@ -124,7 +134,7 @@
     padding-left: 10px;
     font-size: 14px;
 }
-#tab_bar{
+#profile_tab_bar{
     left: 20px;
     height: 52px;
     z-index: 10;
@@ -133,7 +143,9 @@
     /* padding-left: 0px; */
     width: 100%;
 }
-
+a {
+    color:blue;
+}
 .info_section{
     border-bottom: 1px  grey;
     font-weight: 10px;
@@ -159,7 +171,7 @@ a.info_name{
     margin-bottom: 10px;
 }
 
-.tab {
+.profile_tab {
     display: inline-block;
     width: 16%;
     height: 100%;
@@ -168,11 +180,88 @@ a.info_name{
     /*display: table-cell;*/
     vertical-align: middle;
     cursor:pointer;
+}
 
+.groups_wrapper{
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.group_box{
+    width: 100%;
+    height: 100px;
+    display: inline-block;
+    background-color: #ffffff ;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+
+    margin-bottom: 10px;
+}
+.class_content{
+    width:100%;
+    height:100%;
+    color:black;
+}
+
+.class_pic{
+    width:100px;
+    height:100%;
+    float:left;
+}
+.users_wrapper{
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.user_box{
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+
+    margin:10px;
+}
+.user_content{
+    width:160px;
+    margin:auto;
+    background-color: #ffffff ;
+    border-radius: 3px;
+    border: 10px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
+    color:black;
 }
 
 
-div.tab div.tab_content{
+.user_pic{
+    width:160px;
+    height:160px;
+
+    margin-top: 10px;
+    margin:auto;
+}
+.user_name{
+    margin-top: 4px;
+    margin-left: 8px;
+    display: inline-block;
+    font-size: 15px;
+}
+.user_school{
+    margin-left: 8px;
+    font-size:10px;
+
+}
+.class_name{
+    margin-top: 4px;
+    margin-left: 8px;
+    display: inline-block;
+    font-size: 25px;
+}
+.class_section_name{
+    margin-left: 8px;
+
+}
+div.profile_tab div.profile_tab_content{
     width: 100%;
     height: 100%;
     position: relative;
@@ -185,52 +274,17 @@ div.tab div.tab_content{
 
 
 
-
-
-div.tab.feed div.tab_img{
-    background-image: url('../../assets/main/tab_bar/feed_icon.png');
-}
-
-div.tab.syllabus div.tab_img{
-    background-image: url('../../assets/main/tab_bar/TabIcon_syllabus.png');
-    background-position: 0px 17px;
-}
-
-div.tab.materials div.tab_img{
-    background-image: url('../../assets/main/tab_bar/TabIcon_files.png');
-    background-position: 0px 17px;
-}
-
-div.tab.members div.tab_img{
-    background-image: none;
-    display:none;
-}
-
-div.tab div.tab_img{
-
-    background-repeat: no-repeat;
-    display: inline-block;
-    float:left;
-    opacity: .65;
-    cursor:pointer;
-    width: 25px;
-    height: 100%;
-    background-position: 0px 18px;
-
-}
-
-
-.panel {
+.profile_panel {
     display: none;
     color: white;
 
 }
 
-.panel.active{
+.profile_panel.active{
     display: block;
     z-index: 20;
 }
-.tab_text{
+.profile_tab_text{
     float: left;
     height: 13px;
     display: inline-block;
@@ -253,55 +307,39 @@ div.tab div.tab_img{
     font-family: "Avenir", Arial, sans-serif;
 }
 
-/* Default the wedge to hidden */
-div.tab div.tab_wedge{
-    height: 10px;
-    width: 22px;
-    display: none;
-}
 
 
 
 
-/* Show the wedge when the tab is active */
-div.tab.active div.tab_wedge {
-    display: block;
-    background-repeat: no-repeat;
-    background-image: url('../../assets/main/tab_bar/tab_wedge.png');
-    margin: 0px auto;
-    margin-top: -7px;
-    z-index: 1000;
-}
 
-
-div.tab.active{
+div.profile_tab.active{
     /*color: #fff;*/
     cursor:default!important;
 
 }
-div.tab.active div.tab_content div.tab_text{
+div.profile_tab.active div.profile_tab_content div.profile_tab_text{
 
     border-bottom: 4px solid black;
 }
 
-div.tab:hover{
+div.profile_tab:hover{
     /* color:#fff;*/
     cursor: pointer;
 }
 
-div.tab.active:hover{
+div.profile_tab.active:hover{
     /*color: #fff;*/
     cursor:default!important;
 }
 
 
 
-div.tab:hover div.tab_img, div.tab:hover div.tab_text{
+div.profile_tab:hover div.profile_tab_text{
     cursor: pointer!important;
     opacity:1.0;
 }
-
+/*
 div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{
     opacity: 1.0;
     cursor:default!important;
-}
+}*/
