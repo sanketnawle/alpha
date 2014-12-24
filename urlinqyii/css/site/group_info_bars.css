@@ -1,0 +1,150 @@
+div.tab_courses{
+    font-family: 'Open Sans', sans-serif;
+}
+
+div.tab_courses #tab_content_holder{
+    position: relative;
+    top: -20px;
+}
+
+.tab_courses #tab_content_holder #tab_header div.float_Right #small_search{
+    display: inline-block;
+}
+
+.tab_courses #tab_content_holder #tab_header div.float_Right #small_search em{
+    width: 16px; 
+    height: 16px; 
+    background-position: 0px 0px; position: relative; left: 28px;
+    top: 3px;
+}
+
+#courses_tab_content{
+    padding: 25px 0 0 0;
+    position: relative;
+    width: 100%;
+}
+
+div.group_info_tab_content{
+    padding: 25px 9px;
+}
+
+div.group_info_tab_content div.group_box{
+    background: #fff;   
+    margin-bottom: 18px;
+    border: 1px solid #E4E4E4; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    position: relative;
+}
+
+div.group_info_tab_content div.group_box div.float_Left.group_image{
+    background-image: url(../../assets/neuroscience.jpg);  
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    bottom: 3px;
+    border-radius: 2px;
+    cursor: pointer;
+    opacity:.87;
+    transition: opacity 0.15s;
+}
+
+div.group_info_tab_content div.group_box:hover div.float_Left.group_image{
+    opacity:.9;
+}
+
+
+div.group_info_tab_content div.group_box div.float_Left.group_image:active{
+    opacity: 1;
+}
+
+div.group_info_tab_content div.group_box div.float_Left.group_image:hover ~ div.group_box_main_info a.group_link{
+    text-decoration: underline;
+}
+
+div.group_info_tab_content div.group_box div.float_Left.group_image:active ~ div.group_box_main_info a.group_link{
+    color: #016283;
+    text-decoration: underline;
+}
+
+div.group_box div.group_box_main_info{
+    margin-left: 30%;
+    padding-left: 24px;
+    padding-top: 12px;
+    padding-right: 12px;
+}
+
+div.group_box_main_info a.group_link{
+    color: #1da7d2;    
+    font-size: 17px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+}
+
+div.group_box_main_info a.group_link:hover, a.department_link:hover{
+    text-decoration: underline;
+}
+
+div.group_box_main_info a.group_link:active, div.group_box_secondary_info_section div.info_line a.department_link:active{
+    color: #016283;
+}
+
+div.group_box_main_info div.float_Right span.group_type{
+    font-size: 12.5px;  
+    position: relative;
+    top: 9px;
+    font-family: Avenir;
+    color: #999;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div.group_box div.group_box_secondary_info_section{
+    margin-left: 30%; padding-left: 14px; 
+    padding-top: 3px; padding-right: 12px;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+div.group_box_secondary_info_section div.info_line{
+    padding: 4px 0px;
+    width: auto;
+}
+
+div.group_box_secondary_info_section div.info_line a.department_link{
+    color: #1da7d2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+div.group_box_secondary_info_section div.info_line.indent{
+    padding-left: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div.group_course_box div.group_box_secondary_info_section div.info_line{
+    font-size: 13.5px;
+    color: #575757;
+    font-weight: 500;
+}
+
+div.group_course_box div.group_box_secondary_info_section div.info_line.info_about{
+    font-size: 12.5px;
+
+    font-weight: 500;
+    background: #f6f6f6;
+    color: #333;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 1px 0px 1px #fff inset, -1px 0px 1px #fff inset, 0px -1px 1px #fff inset, 0px 1px 1px #fff inset;
+    padding: 6px 10px;
+    margin-top: 6px;
+}
+

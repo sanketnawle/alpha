@@ -4,67 +4,69 @@
 {
 font-family: 'Open Sans';
 float: left;
-width: 690px;
+width: 567px;
+margin-left: 0px;
 }
 
 .posts
 {
 float: left;
-width: 660px;
+width: 565px;
 padding-top: 5px;
+background: #fff;
+position: relative;
+border: 1px solid #ddd; 
+/* box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); */ -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); 
+/* -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); */
+margin-bottom: 20px;
+border-radius: 3px;
+border-top-color: #EDEDED;
+border-bottom-color: #CDCDCD;
 }
 
 .post_main{
-padding-top:10px;
-padding-bottom: 10px;
+padding-top: 8px;
 padding-right: 10px;
-width: 640px;
+width: 535px;
 opacity: 1;
 -webkit-border-radius: 3px;
 border-radius: 3px;
-border: 1px solid;
 height: auto;
 
-padding-bottom: 16px;
-border-bottom: 1px solid;
 background-color: #FFFFFF;
-float: left;
-margin-left: 18px;
-background: #fff;  
-border: 1px solid #D8D8D8; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); border-radius: 3px;
+background: #fff;      border-radius: 3px;
+position: relative;
 }
 
 .post_head{
 padding-left: 0px;
 margin-left: -5px;
-float: left;
 }
 
 .post_user_icon{
 display: inline-block;
-width: 58px;
+width: 56px;
 float: left;
 position: relative;
-border: 1px solid #d8d8d8;
-height: 58px;
+height: 56px;
 margin-top: 1px;
 border-radius: 3px;
 margin-left: 1px;
 background-size: cover!important;
+border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .post_head .image_container{
 display: block;
 position:absolute;
-background-color: #F8F8F8;
+background-color: transparent;
 
-width: 62px;
+width: auto;
 
-margin-left: -91px;
-border-radius: 3px;
-height: 62px;
+margin-left: -65px;
+border-radius: 2px;
+height: auto;
 cursor:pointer;
-border: 1px solid #d8d8d8;
 }
 
 .post_tag{
@@ -156,7 +158,6 @@ font-size: 12px;
 font-weight: 400;
 
 display: inline;
-float:left;
 
 text-align: left;
 line-height: 25px;
@@ -179,7 +180,6 @@ font-weight: 200;
 text-align: left;
 padding-right: 10px;
 display: inline-block;
-float: left;
 max-width: 550px;
 margin-top: 5px;
 
@@ -203,9 +203,8 @@ hyphens: auto;
 display: inline-block;
 border-radius: 8px;
 
-float: left;
 height: 27px;
-margin-top: 10px;u
+width: 560px;u
 
 box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 color: #666;
@@ -218,16 +217,14 @@ margin-left: 5px;
 }
 
 .post_lc .post_like{
-padding-right: 10px;
 height: 100%;
-padding-left: 10px;
+width: 33%;
 border-radius: 5px 0px 0px 5px;
 float: left;
 -moz-transition: background .15s ease;
 -webkit-transition: background .15s ease;
 transition: background .15s ease;
-
-border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2;  background: #e6e6e6 url(../img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
+       
 }
 .post_lc .post_liked{
 padding-right: 10px;
@@ -350,23 +347,16 @@ background-position: left center;
 
 .post_lc .post_comment_btn, .show_analytics_btn{
 display: inline-block;
-float: left;
-height: 99%;
 text-indent: 8px;
 font-weight: bold;
 line-height: 27px;
 font-weight: 600;
 margin-left: 0px;
 color: rgba(0, 0, 0, 0.62);
-padding-left: 11px;
 font-size: 13px;
-padding-right: 19px;
 text-transform: uppercase;
-width: auto;
-
-border: 1px solid #D6D6D6; outline: none; border-bottom: 1px solid #C2C2C2;
-background: #e6e6e6 url(http://www.urlinq.com/beta/img/white-gradient-100px.png) repeat-x 50% 50%; -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 0 3px rgba(0,0,0,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),0 1px 3px rgba(0, 0, 0, 0.1);
-border-left-color:transparent;
+width: 33%;
+ outline: none;    
 
 }
 .show_analytics_btn{
@@ -375,7 +365,6 @@ background: url("grey_analytics.png");
 background-size: 15px 15px;
 background-repeat:no-repeat;
 background-position: 6px;
-background-color: #E0E0E0;
 }
 /*
 .post_like:hover ~ .post_comment_btn{
@@ -429,10 +418,13 @@ margin-right: 3px;
 
 .post_tools{
 display: inline-block;
-padding-top: 5px;
-float: left;
-width: 100%;
-margin-left: 70px;
+width: 565px;
+margin-top: 20px;
+box-shadow: 0px 1px rgba(255, 255, 255, 0.5) inset, 0px -1px rgba(255, 255, 255, 0.5) inset, -1px 0px rgba(255, 255, 255, 0.5) inset, 1px 0px rgba(255, 255, 255, 0.5) inset;
+background: #f8f8f8;
+border-top: 1px solid #D2D2D2;
+border-bottom: 1px solid #ddd;
+margin-left: 5px;
 }
 
 .post_tools .post_functions{
@@ -440,6 +432,7 @@ display: inline-block;
 float: right;
 margin-top: 13px;
 margin-right: 85px;
+display: none;
 }
 
 .post_functions .post_functions_showr{
@@ -568,10 +561,9 @@ margin-bottom: 4px;
 }
 
 .comments{
-margin-left: 68px;
-float: left;
 padding-right: 13px;
 
+background: #F9F9F9;
 }
 
 .comments .post_comment{
@@ -611,7 +603,6 @@ margin-top: 2px;
 .comment_owner{
 color: #029acf;
 font-weight: 400;
-float: left;
 font-size: 14px;
 }
 
@@ -628,14 +619,18 @@ color: rgba(4, 117, 156, 0.65);
 
 .comment_main
 {
-width: 580px;
-float: left;
-margin-top: 8px;
-padding: 10px;
-border: 1px solid #d8d8d8;
-border-radius: 3px;
-background: #fff;
-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
+width: 535px;
+margin-top: 0px;
+padding: 7px 5px;
+/* border-bottom: 1px solid #ddd; */
+background: #F9F9F9;  
+margin-left: 10px;
+border-top: 1px solid #ddd;
+margin-right: 10px;
+}
+
+.comment_main:first-of-type{
+	border-top:none!important;
 }
 
 .comment_main .comment_msg{
@@ -644,7 +639,6 @@ font-size: 14px;
 font-weight: 200;
 line-height: 21px;
 width: 100%;
-float: left;
 
 -ms-word-break: break-all;
 word-break: break-all;
@@ -662,27 +656,21 @@ div.comment_time{
 color: rgba(102, 102, 102, 0.47);
 font-weight: bold;
 font-size: 12px;
-float: left;
 width: 540px;
 }
 
 .comment_owner_container{
 background-color: #F8F8F8;
 padding: 0px;
-border-radius: 2px;
+border-radius: 3px;
 
--webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
 
--moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
 
-box-shadow: 0px 0px 1px #999;
 
-margin-left: -60px;
-width: 35px;
-margin-top: -10px;
-border: 1px solid #fff;
-height: 35px;
-float: left;
+width: 38px;
+margin-top: 0px;
+height: 38px;
+border: 1px solid rgba(0, 0, 0, 0.1);
 cursor:pointer;
 }
 
@@ -771,22 +759,26 @@ color:rgba(128, 128, 128, 0.77);
 
 .posts .postcomment{
 position: relative;
-margin-left: 68px;
-float: left;
-margin-top: 7px;
-width: 580px;
-margin-bottom: 10px;
+background: #F9F9F9;
+width: 557px;
+margin-bottom: 0px;
+padding: 4px;
+border-radius: 0px 0px 4px 4px;
 }
 
 div.commentform{
-margin-bottom: 12px;
+margin-bottom: 0px;
 border: 1px solid;
-padding: 10px;
--webkit-border-radius: 3px;
-border-radius: 3px;
+padding: 8px 10px;
+-webkit-border-radius: 2px;
 background: #fff;  
-width: 580px;
-border: 1px solid #D8D8D8; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); border-radius: 3px;
+width: 84%;
+border: 1px solid #D8D8D8; 
+box-: 0 0px 2px rgba(0, 0, 0, 0.05);   
+border-radius: 3px;
+display: inline-block;
+margin-left: 16px;
+border-top: 1px solid #CFCFCF;
 }
 
 textarea.form-control{
@@ -796,25 +788,27 @@ border: none;
 width: 100%;
 display: block;
 resize: none;
-height: 21px;
+height: 22px;
 outline: none;
 font-size: 14px;
 font-family: "Open Sans",sans-serif;
 overflow: hidden;
 box-shadow: none !important;
-padding-left: 41px;
+padding-left: 6px;
 box-sizing: border-box;
 }
 
 .reply_user_icon {
-top: 3px;
-left: 3px;
-border-radius: 1px 0 0 1px;
-height: 37px;
-width: 37px;
+top: 0px;
+left: 11px;
+border-radius: 3px;
+height: 38px;
+width: 38px;
 z-index: 2;
-position: absolute;
+border: 1px solid rgba(0, 0, 0, 0.1);
+position: relative;
 background-size: cover !important;
+display: inline-block;
 }
 
 .reply_functions {
@@ -1005,6 +999,7 @@ margin-left: 5px;
 .posttool-select {
 margin-right: 10px;
 margin-top: 16px;
+display: none;
 font-size: 11px;
 color: #989898;
 float: right;
@@ -1208,7 +1203,6 @@ cursor: pointer;
 
 .post_edit
 {
-float: left;
 height: auto;
 min-height: 100px;
 width: 530px;
@@ -1400,7 +1394,6 @@ color: #989898;
 
 .ct_ts
 {
-float: left;
 font-size: 12px;
 font-weight: 400;
 color: rgba(102, 102, 102, 0.47);
@@ -1976,7 +1969,7 @@ text-align:left;
 }
 
 div.post_lr_link_msg div.link-wrapper div.link-container a.link-anchor-box{
-width: 553px;
+width: 460px;
 display: block;
 cursor:pointer;
 height: 141px;

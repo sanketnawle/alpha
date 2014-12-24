@@ -14,7 +14,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
-    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_courses.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -121,6 +121,12 @@
                         <div id = "tab_content_holder">
                             <div id = "tab_header"> 
                                 <div class = "float_Right">
+                                    <span class = "sort_label">Order:</span>
+                                    <div class = "order_sort_dropdown">
+                                        <span>Members High to Low</span>
+                                        <em class = "dropdown_arrow">
+                                        </em>
+                                    </div>
                                     <div id = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
@@ -130,6 +136,100 @@
                                 <div class = "header_sentence">
                                     Courses this Semester
                                 </div>
+                            </div>
+                            <div class = "group_info_tab_content">
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+                                <div class = "group_box group_course_box">
+                                    <div class = "float_Left group_image">
+                                    </div>
+                                    <div class = "group_box_main_info">
+                                        <a class = "group_link">Neuroscience of Advertising</a>
+                                        <div class = "float_Right">
+                                            <span class = "group_type">Course</span>
+                                        </div>
+                                    </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent">4 open classes</div>
+                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
+                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
