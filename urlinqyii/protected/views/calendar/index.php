@@ -70,9 +70,7 @@
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
             <div class="wrap">
-                <div class="column left">
-                    <button>Today</button>
-                </div>
+                <div class="column left"></div>
                 <div class="column right">
                     <button class="print" ng-click="printGrid()">&nbsp;</button>
                     <form class="search">
