@@ -196,5 +196,10 @@ $(document).ready(function(){
         );
     });
 
+    $(document).on('click', '.profile_link', function(){
+        //$(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
+
+        open_profile(base_url,7);
+    });
 
 });

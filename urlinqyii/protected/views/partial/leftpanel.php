@@ -43,12 +43,12 @@
 				<div class = "LeftPanel_MyBox">
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink">
-							<img class = "MyBox_Picture" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
+							<img class = "MyBox_Picture profile_link" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
 						</a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
 								<div class = "MyBox_NameSO">
-									<a class = "MyBox_ProfileLink">
+									<a class = "MyBox_ProfileLink profile_link">
 										<?php echo $user->firstname . " " . $user->lastname?>
 									</a>
 									<a class = "MyBox_SO" href="<?php echo Yii::app()->getBaseUrl(true); ?>/logout">

@@ -773,6 +773,7 @@ class ProfileController extends Controller
             $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
             $data['following'][$i]['user_school']=$user->school->school_name;
         }
+        $data['base_url'] = Yii::app()->getBaseUrl(true);
         $this->renderJSON($data);
     }
 
