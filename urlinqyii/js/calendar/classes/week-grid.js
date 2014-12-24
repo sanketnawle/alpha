@@ -99,7 +99,6 @@ var WeekGrid = (function (WeekGrid) {
                     var parent = this.ele.parentElement;
                     setTimeout(function () {
                         parent.scrollTop = offset - parent.offsetHeight / 3;
-                        console.log(parent.scrollTop, offset - parent.offsetHeight / 3);
                     }, 1);
                     this.startTicking();
                 }

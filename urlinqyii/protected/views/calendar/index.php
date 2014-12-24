@@ -11,15 +11,15 @@
     <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css"><!-- Open Sans:3->8-5 -->
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
     <!-- Styles -->
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/master.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/master.less" type="text/css" rel="stylesheet/less">
     <!--<link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/transition.css" type="text/css" rel="stylesheet">-->
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/leftbar.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/header.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/day.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/week.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/month.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/semester.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/dialog.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/leftbar.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/header.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/day.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/week.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/month.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/semester.less" type="text/css" rel="stylesheet/less">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/dialog.less" type="text/css" rel="stylesheet/less">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/jq-datepicker.css" type="text/css" rel="stylesheet">
 
     <!-- Libraries -->
@@ -28,6 +28,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-route.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/ng-animate.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/less.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
     <!-- Classes -->
@@ -69,9 +70,7 @@
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
             <div class="wrap">
-                <div class="column left">
-                    <button>Today</button>
-                </div>
+                <div class="column left"></div>
                 <div class="column right">
                     <button class="print" ng-click="printGrid()">&nbsp;</button>
                     <form class="search">
