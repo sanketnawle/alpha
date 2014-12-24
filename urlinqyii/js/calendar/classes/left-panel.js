@@ -19,7 +19,7 @@ var LeftPanel = (function (Panel) {
                 }
             },
             addProvider: {
-                value: function (provider, iconsrc, color) {
+                value: function (type, provider, iconsrc, color) {
                     var div = new Div("provider");
 
                     var img = new Image(25, 25);
@@ -34,7 +34,18 @@ var LeftPanel = (function (Panel) {
                     div.appendChild(check);
                     div.appendChild(title);
 
-                    this.ele.querySelector(".providers").appendChild(div);
+                    title.onclick = function () {
+                        check.click();
+                    }
+
+                    title.onmouseover = function () {
+                        console.log(this.offsetWidth);
+                        if (this.offsetWidth > 150) {
+                            this.style.boxShadow = "3px 0 8px -3px #aaa";
+                        }
+                    }
+
+                    this.ele.querySelector(".providers." + type).appendChild(div);
                 }
             }
         });

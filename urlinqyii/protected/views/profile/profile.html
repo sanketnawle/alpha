@@ -1,122 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <link href='http://localhost/alpha/urlinqyii/css/profile/profile.css' rel='stylesheet' type='text/css'>
-    <script src='http://localhost/alpha/urlinqyii/js/main/main.js'></script>
-</head>
-<body>
-<div id="outside_wrapper">
-    <div id="profile_wrapper">
-        <div id="modal_header" style="background-image: url( http://localhost/alpha/urlinqyii/assets/nice_background.jpg )">
 
-            <div id="modal_controls">
 
-                <a href="#" class="branding_left">ur |</a>
-                <div id="modal_label">Profile | Student</div>
-                <a href="#" class="close_modal">x</a>
-            </div>
+<script src="http://localhost/alpha/urlinqyii/js/jquery.min.js"></script>
+<script src="http://localhost/alpha/urlinqyii/js/profile/profile.js"></script>
+<link href='http://localhost/alpha/urlinqyii/css/profile/profile.css' rel='stylesheet' type='text/css'>
+<div class="overlay"></div>
+<div id="profile_wrapper">
+    <div id="modal_header" style="background-image: url( http://localhost/alpha/urlinqyii/assets/nice_background.jpg )">
 
-        </div>
-        <div id="main_bar">
-            <div id="profile_picture_wrapper">
-                <div id="profile_picture" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/user.png )"></div>
-            </div>
-            <div id="name_info_wrapper">
-                <div id="name_info">Michael Ohr '15</div>
-                <div id="year_info">Graduate at NYU</div>
-            </div>
-            <div id="tab_bar">
-                <div class="tab feed active" data-panel_id="1">
-                    <div class="tab_content">
+        <div id="modal_controls">
 
-                        <div class="tab_text">Michael's Feed</div>
-                    </div>
-
-                </div>
-
-                <div class="tab classes" data-panel_id="2">
-                    <div class="tab_content">
-
-                        <div class="tab_text">Classes</div>
-                    </div>
-
-                </div>
-
-                <div class="tab clubs" data-panel_id="3">
-                    <div class="tab_content">
-
-                        <div class="tab_text">Clubs</div>
-                    </div>
-
-                </div>
-
-                <div class="tab Followers" data-panel_id="4">
-                    <div class="tab_content">
-
-                        <div class="tab_text">Followers</div>
-                    </div>
-                    <div class="tab_wedge"></div>
-                </div>
-
-                <div class="tab Following" data-panel_id="5">
-                    <div class="tab_content">
-
-                        <div class="tab_text">Following</div>
-                    </div>
-                    <div class="tab_wedge"></div>
-                </div>
-            </div>
-        </div>
-        <div id="main_content">
-            <div id = "left_info_bar">
-                <div class="info_section" id = "school_section">
-                    <div class="info_label" id = "school_label">
-                        School:
-                    </div>
-                    <a href="#" class="info_name">NYU Polytechnic School of Engineering</a>
-                </div>
-                <div class="info_section" id = "department_section">
-                    <div class="info_label" id = "department_label">
-                        Department:
-                    </div>
-                    <a href="#" class="info_name">Computer Science</a>
-                </div>
-                <div class="info_section" id = "major_section">
-                    <div class="info_label" id = "major_label">
-                        Major:
-                    </div>
-                    <div class="info_name">Computer Science</div>
-                </div>
-                <div class="info_section" id = "minor_section">
-                    <div class="info_label" id = "minor_label">
-                        Minor:
-                    </div>
-                    <div class="info_name">Mathematics</div>
-                </div>
-            </div>
-            <div id = "tab_contents">
-                <div class="panel active" id="panel_1">
-                    CLASS FEED GOES HERE
-                </div>
-
-                <div class="panel" id="panel_2">
-                    PANEL 2
-                </div>
-
-                <div class="panel" id="panel_3">
-                    PANEL 3
-                </div>
-
-                <div class="panel" id="panel_4">
-                    PANEL 4
-                </div>
-            </div>
+            <a href="#" class="branding_left">ur |</a>
+            <div id="modal_label">Profile | Student</div>
+            <a href="#" class="close_modal">x</a>
         </div>
 
     </div>
+    <div id="main_bar">
+        <div id="profile_picture_wrapper">
+            <div id="profile_picture" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/user.png )"></div>
+        </div>
+        <div id="name_info_wrapper">
+            <div id="name_info">{{firstname}} {{lastname}}</div>
+            <div id="year_info">Graduate at {{university}}</div>
+        </div>
+        <div id="profile_tab_bar">
+            <div class="profile_tab feed active" data-panel_id="1">
+                <div class="profile_tab_content">
+
+                    <div class="profile_tab_text">{{firstname}}'s Feed</div>
+                </div>
+
+            </div>
+
+            <div class="profile_tab classes" data-panel_id="2">
+                <div class="profile_tab_content">
+
+                    <div class="profile_tab_text">Classes</div>
+                </div>
+
+            </div>
+
+            <div class="profile_tab clubs" data-panel_id="3">
+                <div class="profile_tab_content">
+
+                    <div class="profile_tab_text">Clubs</div>
+                </div>
+
+            </div>
+
+            <div class="profile_tab Followers" data-panel_id="4">
+                <div class="profile_tab_content">
+
+                    <div class="profile_tab_text">Followers</div>
+                </div>
+
+            </div>
+
+            <div class="profile_tab Following" data-panel_id="5">
+                <div class="profile_tab_content">
+
+                    <div class="profile_tab_text">Following</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="main_content">
+        <div id = "left_info_bar">
+            <div class="info_section" id = "school_section">
+                <div class="info_label" id = "school_label">
+                    School:
+                </div>
+                <a href="#" class="info_name">{{school}}</a>
+            </div>
+            <div class="info_section" id = "department_section">
+                <div class="info_label" id = "department_label">
+                    Department:
+                </div>
+                <a href="#" class="info_name">{{department}}</a>
+            </div>
+
+            <div class="info_section" id = "major_section">
+                <div class="info_label" id = "major_label">
+                    Major:
+                </div>
+                <div class="info_name">Computer Science</div>
+            </div>
+
+            <div class="info_section" id = "minor_section">
+                <div class="info_label" id = "minor_label">
+                    Minor:
+                </div>
+                <div class="info_name">Mathematics</div>
+            </div>
+
+        </div>
+        <div id = "tab_contents">
+            <div class="profile_panel active" id="profile_panel_1"> <!-- feed -->
+                CLASS FEED GOES HERE
+            </div>
+
+            <div class="profile_panel" id="profile_panel_2"> <!-- classes -->
+                {{#if classes}}
+                <div class="groups_wrapper">
+                    {{#each classes}}
+                    <div class="group_box">
+                        <div class="class_content">
+                            <div class="class_pic" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/class.png )"></div>
+                            <div class="class_name">
+                                {{name}}
+                            </div>
+                            <div class="class_section_name">
+                                {{section}}
+                            </div>
+                            <div class="class_visibility">
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+
+            <div class="profile_panel" id="profile_panel_3"> <!-- clubs -->
+                PANEL 3
+            </div>
+
+            <div class="profile_panel" id="profile_panel_4"> <!-- followers -->
+                <div class="search_bar follower">
+
+                </div>
+                {{#if following}}
+                <div class="user_wrapper">
+                    {{#each following}}
+                    <div class="user_box">
+                        <div class="user_content">
+
+                            <div class="user_pic" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/user.png )"></div>
+                            <div class="user_name">
+                                {{user_name}}
+                            </div>
+                            <div class="user_school">
+                                {{user_school}}
+                            </div>
+                            <div class="user_follow">
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+
+            </div>
+            <div class="profile_panel" id="profile_panel_5"> <!-- following -->
+                PANEL 4
+            </div>
+        </div>
+    </div>
+
 </div>
 
-</body>
-</html>

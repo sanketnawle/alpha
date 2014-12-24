@@ -97,8 +97,10 @@ var WeekGrid = (function (WeekGrid) {
                     hr.style.top = offset + "px";
 
                     var parent = this.ele.parentElement;
-                    parent.scrollTop = offset - parent.offsetHeight / 3;
-
+                    setTimeout(function () {
+                        parent.scrollTop = offset - parent.offsetHeight / 3;
+                        console.log(parent.scrollTop, offset - parent.offsetHeight / 3);
+                    }, 1);
                     this.startTicking();
                 }
             },
