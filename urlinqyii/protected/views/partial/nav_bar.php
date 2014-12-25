@@ -27,8 +27,16 @@
                         <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
                     <?php } ?>
                 </div>
+
+                <div id="nav_drop_down_bar_line"></div>
+                <div id="nav_drop_down_see_all_button">
+                    <div id="nav_drop_down_see_all_departments_text">See all departments</div>
+                </div>
             </div>
         </div>
+
+
+
 
 
     <?php } else { ?>
@@ -39,12 +47,15 @@
 
         </div>
 
-        <div class="nav_arrow"></div>
+
 
     <?php } ?>
 
 
     <?php if($origin_type == 'club') { ?>
+
+        <div class="nav_arrow"></div>
+
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id;; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
@@ -63,6 +74,8 @@
 
 
     <?php if($origin_type == 'class') { ?>
+        <div class="nav_arrow"></div>
+
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
@@ -89,6 +102,8 @@
     <?php } ?>
 
     <?php if($origin_type == 'course') { ?>
+        <div class="nav_arrow"></div>
+
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id; ?>">
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
@@ -117,6 +132,7 @@
 
 
     <?php if($origin_type == 'department') { ?>
+        <div class="nav_arrow"></div>
 
         <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin->school->school_id; ?>">
 
@@ -193,7 +209,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
+                    <div id="nav_drop_down_see_all_departments_text">See all departments</div>
                 </div>
             </div>
         </div>
