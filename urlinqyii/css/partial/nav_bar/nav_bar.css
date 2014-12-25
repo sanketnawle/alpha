@@ -67,7 +67,7 @@ a {
     min-width: 87px;
     height: 100%;
     float: left;
-    max-width: 25%;
+    max-width: 28%;
 
     padding-left: 2px;
     padding-right: 7px;
@@ -87,10 +87,11 @@ a {
     transition: color 150ms ease;
 }
 
-.nav_text {
-    white-space: nowrap;
+div.nav_section div.nav_text {
+
     margin-left: 5px;
-    width: auto;
+
+    max-width: 100%;
     height: 30px;
     /*position: relative;*/
     /*top: 50%;*/
@@ -100,7 +101,11 @@ a {
     font-weight: 600;
 
     font-size: 13px;
+    overflow:hidden;
     display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 
 
 

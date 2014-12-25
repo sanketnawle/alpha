@@ -39,17 +39,13 @@
 
         </div>
 
+        <div class="nav_arrow"></div>
+
     <?php } ?>
 
 
     <?php if($origin_type == 'club') { ?>
-<<<<<<< HEAD
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id;; ?>">
-=======
-        <div class="nav_arrow"></div>
-
-        <div class="nav_section" data-link_url="/school/<?php echo $origin_id; ?>">
->>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -65,16 +61,9 @@
     <?php } ?>
 
 
-<<<<<<< HEAD
+
     <?php if($origin_type == 'class') { ?>
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id; ?>">
-=======
-    <?php if($origin_type == 'class' || $origin_type == 'course') { ?>
-
-        <div class="nav_arrow"></div>
-
-        <div class="nav_section" data-link_url="/<?php echo $origin_type . '/' . $origin_id; ?>">
->>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -128,13 +117,9 @@
 
 
     <?php if($origin_type == 'department') { ?>
-<<<<<<< HEAD
-        <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin->school->school_id; ?>">
-=======
-        <div class="nav_arrow"></div>
 
-        <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin_id; ?>">
->>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
+        <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin->school->school_id; ?>">
+
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>

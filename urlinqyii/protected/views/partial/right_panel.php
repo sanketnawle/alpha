@@ -2,7 +2,7 @@
 	<head>
 
 		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/rightpanel/rightpanel.css">
-		<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/right_panel/right_panel.js"></script>
+<!--		<script src="--><?php //echo Yii::app()->getBaseUrl(true); ?><!--/js/partial/right_panel/right_panel.js"></script>-->
 
 		<script>
 		    base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
