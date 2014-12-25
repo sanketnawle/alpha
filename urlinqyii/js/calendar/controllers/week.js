@@ -35,12 +35,12 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
     $scope.getDate = function (i) { return addDate(i).getDate(); }
 
     $scope.getNextLink = function () {
-        var next = addDate(8);
+        var next = addDate(9);
         return "#/week/" + next.getWeek() + "/" + next.getWeekYear();
     }
 
     $scope.getPrevLink = function () {
-        var prev = addDate(-1);
+        var prev = addDate(-3);
         return "#/week/" + prev.getWeek() + "/" + prev.getWeekYear();
     }
 

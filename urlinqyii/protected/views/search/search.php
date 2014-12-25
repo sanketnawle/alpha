@@ -408,10 +408,8 @@
                     </div>
                 </div>
             </div>
-            <div id="right_panel" class = "right_panel_search">
-
-                RIGHT PANEL GOES HERE
-            </div>            
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'search','origin_id'=>'')); ?>   
+      
         </div>
     </div>
 

@@ -3,7 +3,7 @@
 /// <reference path="../ulCalendar.js" />
 /// <reference path="../classes/month-grid.js" />
 
-ulcal.controller("MonthController", function ($scope, $routeParams) {
+ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, $location) {
     LeftPanel.hidden = false;
 
     $scope.class = "month";
@@ -34,6 +34,18 @@ ulcal.controller("MonthController", function ($scope, $routeParams) {
     }
 
     window.grid = MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear);
+    grid.addListener("scroll", function (e) {
+        $rootScope.$apply(function () {
+            var link = "";            
+            if (e.delta < 0) {
+                link = $scope.getNextLink();
+            } else {
+                link = $scope.getPrevLink();                
+            }
+            link = link.replace(/^\/?#/, "");            
+            $location.path(link);
+        });
+    })
 
     $scope.setMiniMonth($scope.activeMonth, $scope.activeYear, "m");
 });

@@ -48,10 +48,10 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/DefaultImages/anon.png")'>
+                                                          <div class = 'post_user_icon'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1")'>
+                                                            <div class = 'post_user_icon'>
                                                           </div>
                                                         {{/if}}
                                                     </div>
@@ -138,7 +138,8 @@
                                                     {{else}}
                                                         <div class = 'post_like'>
                                                     {{/if}}
-                                                            <img class = 'post_like_icon' src='http://www.urlinq.com/beta/src/like-button.png'>
+                                                            <img class = 'post_like_icon'>
+                                                            <p class = 'post_like_link'>Like</p>
                                                             <div class = 'like_number'>
                                                                 {{#if like_count}}
                                                                     {{like_count}}
@@ -370,10 +371,10 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/DefaultImages/anon.png")'>
+                                                          <div class = 'post_user_icon'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1")'>
+                                                            <div class = 'post_user_icon'>
                                                           </div>
                                                         {{/if}}
                                                     </div>
@@ -701,10 +702,10 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/DefaultImages/anon.png")'>
+                                                          <div class = 'post_user_icon'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1")'>
+                                                            <div class = 'post_user_icon'>
                                                           </div>
                                                         {{/if}}
                                                     </div>

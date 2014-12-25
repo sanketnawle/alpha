@@ -117,7 +117,7 @@
                         CLASS FEED GOES HERE
                     </div>
 
-                    <div class="panel tab_courses" id="panel_2">
+                    <div class="panel tab_group_info" id="panel_2">
                         <div id = "tab_content_holder">
                             <div id = "tab_header"> 
                                 <div class = "float_Right">

@@ -681,10 +681,8 @@
                 </div>
             </div>
 
-            <div id="right_panel">
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
 
-                RIGHT PANEL GOES HERE
-            </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->
     <!--                <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">-->
@@ -693,7 +691,7 @@
     <!--            </div>-->
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
+        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>
 
     </div>
 <!--        <div id="right_menu_panel">-->

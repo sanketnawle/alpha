@@ -9,7 +9,7 @@
 <div id="nav_bar">
 
     <?php if($origin_type == 'home') { ?>
-        <div class="nav_section active" id="home_nav" data-link_url="">
+        <div class="nav_section active nav_section_home" id="home_nav" data-link_url="">
             <div class="nav_picture" id="home_nav_icon"></div>
             <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
 
@@ -33,19 +33,23 @@
 
     <?php } else { ?>
 
-        <div class="nav_section" data-link_url="">
+        <div class="nav_section nav_section_home" data-link_url="">
             <div class="nav_picture" id="home_nav_icon"></div>
             <div class="nav_text"><a href='<?php echo Yii::app()->getBaseUrl(true); ?>'>Home</a></div>
 
         </div>
 
-        <div class="nav_arrow"></div>
-
     <?php } ?>
 
 
     <?php if($origin_type == 'club') { ?>
+<<<<<<< HEAD
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id;; ?>">
+=======
+        <div class="nav_arrow"></div>
+
+        <div class="nav_section" data-link_url="/school/<?php echo $origin_id; ?>">
+>>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -61,8 +65,16 @@
     <?php } ?>
 
 
+<<<<<<< HEAD
     <?php if($origin_type == 'class') { ?>
         <div class="nav_section" data-link_url="/school/<?php echo $origin->school->school_id; ?>">
+=======
+    <?php if($origin_type == 'class' || $origin_type == 'course') { ?>
+
+        <div class="nav_arrow"></div>
+
+        <div class="nav_section" data-link_url="/<?php echo $origin_type . '/' . $origin_id; ?>">
+>>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -116,7 +128,13 @@
 
 
     <?php if($origin_type == 'department') { ?>
+<<<<<<< HEAD
         <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin->school->school_id; ?>">
+=======
+        <div class="nav_arrow"></div>
+
+        <div class="nav_section" data-link_url="/<?php echo 'school/' . $origin_id; ?>">
+>>>>>>> 3dc36e8c59465dba8d578c3b901eccf9b37167ef
             <div class="nav_picture"></div>
             <div class="nav_text"><?php echo $origin->school->school_name; ?></div>
         </div>
@@ -163,7 +181,7 @@
 
     <?php if($origin_type == 'school') { ?>
 
-
+        <div class="nav_arrow nav_arrow_white"></div>
 
         <div class="nav_section active" data-link_url="/<?php echo 'school/' . $origin->school_id; ?>">
             <div class="nav_picture"></div>

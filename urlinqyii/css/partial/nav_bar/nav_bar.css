@@ -6,7 +6,6 @@
     width: 830px;
     float: left;
     border-top: none;
-    border-radius: 2px;
     /* border: 1px solid #101010; */
     display: block;
     font: OpenSans;
@@ -28,6 +27,14 @@
 
 div#nav_bar:hover{
     background-color: rgba(25, 26, 27, 1);
+}
+
+div.nav_section.nav_section_home:hover div.nav_picture#home_nav_icon{
+    background-image: url('../../../assets/partial/nav_bar/school_icon_white.png');
+}
+
+div.nav_section.nav_section_home:hover div.nav_text a{
+    color:#fff;
 }
 
 a {
@@ -91,8 +98,10 @@ a {
     margin-top: 10px;
     float: left;
     font-weight: 600;
+
     font-size: 13px;
     display: inline-block;
+
 
 
 }
@@ -196,6 +205,7 @@ div#nav_drop_down_scrollable{
 
     overflow-y: auto;
     max-height: 184px;
+
 }
 
 

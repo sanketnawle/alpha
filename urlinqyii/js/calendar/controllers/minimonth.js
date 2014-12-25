@@ -11,13 +11,13 @@ ulcal.controller("MiniMonthController", function ($scope) {
     }
 
     $scope.goPrevMonth = function () {
-        var m = $scope.miniActiveMonth, y = $scope.miniActiveYear;
+        var m = parseInt($scope.miniActiveMonth), y = parseInt($scope.miniActiveYear);
         m = m == 0 ? function () { y -= 1; return 11; }() : m - 1;
         $scope.setMiniMonth(m, y, $scope.activeType);
     }
 
     $scope.goNextMonth = function () {
-        var m = $scope.miniActiveMonth, y = $scope.miniActiveYear;
+        var m = parseInt($scope.miniActiveMonth), y = parseInt($scope.miniActiveYear);
         m = m == 11 ? function () { y += 1; return 0; }() : m + 1;
         $scope.setMiniMonth(m, y, $scope.activeType);        
     }

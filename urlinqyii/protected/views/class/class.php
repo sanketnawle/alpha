@@ -64,32 +64,32 @@
             <div class="tab feed active" data-panel_id="1">
                 <div class="tab_content">
                     <div class="tab_img"></div>
-                    <div class="tab_text">Club Feed</div>
+                    <div class="tab_text">Class Feed</div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
 
-            <div class="tab materials" data-panel_id="2">
+            <div class="tab syllabus" data-panel_id="2">
                 <div class="tab_content">
                     <div class="tab_img"></div>
-                    <div class="tab_text">Files/Photos</div>
+                    <div class="tab_text">Syllabus</div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
 
-            <div class="tab members" data-panel_id="3">
+            <div class="tab materials" data-panel_id="3">
                 <div class="tab_content">
                     <div class="tab_img"></div>
-                    <div class="tab_text">Members</div>
+                    <div class="tab_text">Materials</div>
                     <div class = "tab_amount">92</div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
 
-            <div class="tab analytics" data-panel_id="4">
+            <div class="tab members" data-panel_id="4">
                 <div class="tab_content">
                     <div class="tab_img"></div>
-                    <div class="tab_text">Analytics</div>
+                    <div class="tab_text">Members</div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -118,8 +118,11 @@
             CLASS FEED GOES HERE
         </div>
 
+        <div class="panel tab_syllabus" id="panel_2">
+            SYLLABUS/ASSIGNMENTS GO HERE
+        </div>
 
-        <div class="panel tab_files" id="panel_2">
+        <div class="panel tab_files" id="panel_3">
         <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
         <div id = "tab_content_holder">
         <div id = "tab_header">
@@ -487,7 +490,7 @@
         <!--</form>-->
         </div>
 
-        <div class="panel tab_members" id="panel_3">
+        <div class="panel tab_members" id="panel_4">
             <div id = "tab_content_holder">
                 <div id = "tab_header">
                     <div class = "float_Right">
@@ -672,9 +675,6 @@
             </div>
         </div>
 
-        <div class="panel" id="panel_4">
-            PANEL 4
-        </div>
 
         </div>
 

@@ -72,6 +72,7 @@ $(document).ready(function(){
 
         if(Math.floor(scroll_offset_top) >= 302){
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
+            $tab_bar.css({'border-radius': '2px'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
             $panel.css({'margin-top':'32px'});
             $tab_wedge.css({'opacity':'0'});
@@ -90,7 +91,7 @@ $(document).ready(function(){
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
 
             $tab_bar.css({position: 'relative', top: '-50px',width: content_panel_width});
-
+            $tab_bar.css({'border-radius': '0px'});
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
             $panel.css({'margin-top':'-20px'});
             $cover_photo.css({'opacity':'1'});
