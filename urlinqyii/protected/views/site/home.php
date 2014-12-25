@@ -34,7 +34,7 @@
                 <div id = "main_panel">
                     <div id="content_holder">
                         <div id="left_panel">
-                            <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+                            <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
                             <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'home','origin_id'=>$user->user_id,'origin'=>$user)); ?>

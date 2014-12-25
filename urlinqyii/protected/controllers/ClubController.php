@@ -63,7 +63,7 @@ class ClubController extends Controller
 
         $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
 
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
+        $user = $this->get_current_user();
 
 
         $is_admin = Yii::app()->db->createCommand()

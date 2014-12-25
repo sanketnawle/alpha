@@ -46,7 +46,7 @@
 
     <div id="left_panel">
         <!--                        <section class='leftbar_bag'>-->
-        <?php echo Yii::app()->runController('partial/leftmenu',array('user'=>$user)); ?>
+        <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
         <!--                        </section>-->
     </div>
 

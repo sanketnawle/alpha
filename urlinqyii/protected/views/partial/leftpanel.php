@@ -1,27 +1,15 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-    <script>
-		$(document).ready(function(){
+<link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+<script>
+    origin_type = '<?php echo $origin_type; ?>';
+    origin_id = '<?php echo $origin_id; ?>';
 
-			if (origin_type == "club"){
-				$("ul[data-group='clubs'] a[data-group_id="+ origin_id +"]").addClass("current_group");
+</script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/left_panel/left_panel.js"></script>
+<link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css" rel="stylesheet" type="text/css">
 
-			}
-
-			if (origin_type == "class"){
-				$("ul[data-group='classes'] a[data-class_id="+ origin_id +"]").addClass("current_group");
-			}
-
-		});
-    </script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css" rel="stylesheet" type="text/css">
-</head>
-<body>
 
 <div id = "LeftPanel_Holder">
 	<div class = "LeftPanel_Content">
@@ -129,7 +117,3 @@
 		</div>
 	</div>
 </div>
-
-
-</body>
-</html>
