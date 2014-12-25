@@ -59,12 +59,15 @@ a {
     display: block;
     min-width: 87px;
     height: 100%;
-    float:left;
+    float: left;
+    max-width: 25%;
 
-    padding-left: 7px;
-    padding-right: 5px;
+    padding-left: 2px;
+    padding-right: 7px;
 
     text-decoration: none;
+
+    text-overflow: ellipsis;
 }
 
 .nav_section:hover{
@@ -78,17 +81,20 @@ a {
 }
 
 .nav_text {
+    white-space: nowrap;
     margin-left: 5px;
     width: auto;
     height: 30px;
     /*position: relative;*/
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
-    margin-top: 9px;
+    margin-top: 10px;
     float: left;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     display: inline-block;
+
+
 }
 
 
@@ -148,10 +154,10 @@ div.nav_section.active div#home_nav_icon {
     display: none; 
     /*position: relative;*/
     position: fixed;
-    margin-left: -23px;
+    margin-left: -19px;
     top: 94px;
     width: 270px;
-    height: 200px;
+    height: 230px;
     border-top: none;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -185,7 +191,11 @@ div.nav_drop_down_section:active{
 
 
 div#nav_drop_down_scrollable{
+
     padding-top:7px;
+
+    overflow-y: auto;
+    max-height: 184px;
 }
 
 

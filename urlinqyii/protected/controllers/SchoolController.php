@@ -4,11 +4,11 @@ class SchoolController extends Controller
 {
     public function actionView()
     {
+        $school_id = $_GET['id'];
 
+        $school = School::model()->find('school_id=:id', array(':id'=>$school_id));
 
-        $school = School::model()->find('school_id=:id', array(':id'=>1));
-        $user_id=1;
-        $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+        $user = $this->get_current_user();
 
 
         $is_member = true;
