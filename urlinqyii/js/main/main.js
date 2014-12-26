@@ -1,5 +1,9 @@
 
+
+
 $(document).ready(function(){
+
+
 
 
 
@@ -287,6 +291,47 @@ $(document).ready(function(){
         });
 
     }
+
+    //Perform group member action
+    // For clubs - join/leave
+    // class - join/leave
+    // department - follow/unfollow
+    // To simplify this, follow is join and unfollow is leave for departments as well
+//    $('#group_user_action_button').click(function(){
+    $(document).on('click','#group_user_action_button',function(){
+        var $group_user_action_button = $(this);
+
+        var verb = '';
+        if($group_user_action_button.hasClass('member')){
+            verb = 'leave';
+        }else{
+            verb = 'join';
+        }
+
+
+        var post_url = globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/' + verb;
+
+
+
+
+        var post_data = {};
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    alert(JSON.stringify(response));
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
+
+
+
+
 
 
 

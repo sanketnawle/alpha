@@ -3,9 +3,10 @@
 
 <head>
     <script>
-        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        origin_type = '<?php echo 'department'; ?>';
-        origin_id = '<?php echo $department->department_id; ?>';
+        var globals = {};
+        globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        globals.origin_type = '<?php echo 'department'; ?>';
+        globals.origin_id = '<?php echo $department->department_id; ?>';
 
     </script>
 
@@ -27,7 +28,7 @@
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
 <div id="wrapper">
-    <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
+
 
 
 

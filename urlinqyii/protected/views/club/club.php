@@ -1,13 +1,10 @@
 <html>
-
-
     <head>
         <script>
-            base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-            origin_type = '<?php echo 'club'; ?>';
-
-            origin_id = '<?php echo $club->group_id; ?>';
-
+            var globals = {};
+            globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+            globals.origin_type = '<?php echo 'club'; ?>';
+            globals.origin_id = '<?php echo $club->group_id; ?>';
         </script>
 
 
@@ -24,17 +21,17 @@
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
 
-        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
+
+
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     </head>
 
     <body>
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper">
-<!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
-
 
 
 
@@ -47,9 +44,9 @@
                 <div id="content_holder">
 
                     <div id="left_panel">
-<!--                        <section class='leftbar_bag'>-->
-                            <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
-<!--                        </section>-->
+
+                        <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
+
                     </div>
 
 
