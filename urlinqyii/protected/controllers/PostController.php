@@ -278,23 +278,23 @@ class PostController extends Controller
     public function actionLike()
     {
         try{
-            if(!isset($_GET['id'])){
+            if(!isset($_POST['post_id'])){
                 $return_data = array('success'=>false,'error_id'=>1);
                 $this->renderJSON($return_data);
                 return;
             }
 
 
-            $current_user_id = Yii::app()->session['user_id'];
-            $post_id = $_GET['id'];
-            $model = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $current_user_id);
+            $user_id = $this->get_current_user_id();
+            $post_id = $_POST['post_id'];
+            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
 
 
             //Make sure the user hasnt already liked this post
-            if(!$model){
+            if(!$post_like){
                 $post_like = new PostLike;
                 $post_like->post_id = $post_id;
-                $post_like->user_id = $current_user_id;
+                $post_like->user_id = $user_id;
                 $post_like->save(false);
                 if($post_like) {
 
@@ -320,28 +320,124 @@ class PostController extends Controller
             return;
         }
 
-//
-//        else
-//            var_dump($model->getErrors());
+
+    }
+
+    public function actionUnlike()
+    {
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $user_id = $this->get_current_user_id();
+        $post_id = $_POST['post_id'];
+        $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
+        if($post_like->delete()){
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error deleting post_like');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 //		if(!isset($_GET['ajax']))
 //			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
-    public function actionUnlike()
-    {
-        $model=PostLike::model()->findByPk(array('post_id'=>$_GET['id'],'user_id'=>self::$cur_user_id));
 
-        if($model->user_id == self::$cur_user_id) {
-            if($model->delete())
-                echo "delete_success";
+    public function actionReply(){
+        if(!isset($_POST['post_id']) || !isset($_POST['reply_text']) || !isset($_POST['reply_user_id']) || !isset($_POST['anonymous'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
         }
-        else
-            echo "Access Denied";
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        try{
+            //$post_id = $_POST['post_id'];
+            $post_id = $_POST['post_id'];
+
+            $reply_text = $_POST['reply_text'];
+            $reply_user_id = $_POST['reply_user_id'];
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply_user_id));
+
+            $anonymous = $_POST['anonymous'];
+
+            $post = Post::model()->find("post_id=:post_id",array(":post_id"=>$post_id));
+            if($post){
+                //Create a new reply model
+                $reply = new Reply;
+                $reply->reply_msg = $reply_text;
+                $reply->post_id = $post_id;
+                $reply->anon = $anonymous;
+                $reply->user_id = $reply_user_id;
+                $reply->save(false);
+
+                if($reply){
+
+//                {
+//                  "reply_id": "1",
+//                  "post_id": "10",
+//                  "user_id": "2",
+//                  "reply_msg": "Hey dude whats up",
+//                  "up_vote": 0,
+//                  "down_vote": 0,
+//                  "file_id": null,
+//                  "anon": 0,
+//                  "update_timestamp": 1417015584,
+//                  "user_info": {
+//                            "user_id": "2",
+//                    "user_name": "Lol Lmfao",
+//                    "picture_file_id": "1"
+//                  },
+//                  "cownership": false,
+//                  "vote_status": null
+//                }
+                    $reply_data = array(
+                        'reply_id'=>$reply->reply_id,
+                        'post_id'=>$post->post_id,
+                        'reply_msg'=>$reply->reply_msg,
+                        'up_vote'=>$reply->up_vote,
+                        'down_vote'=>$reply->down_vote,
+                        'file_id'=>$reply->file_id,
+                        'anon'=>$reply->anon,
+                        'update_timestamp'=>$reply->update_timestamp,
+                        'user_info'=>array(
+                            'user_id'=>$reply_user_id,
+                            'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
+                            'picture_file_id'=>$reply_user->picture_file_id
+                        ),
+                        'cownership'=>false,
+                        'vote_status'=>null
+                    );
+                    $data = array('success'=>true,'reply'=>$reply_data);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>3,'error_msg'=>'error creating reply');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
+            }else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'post with id ' . $post_id . 'does not exist');
+                $this->renderJSON($data);
+                return;
+            }
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+
+
     }
 
     public function createNotification($action, $id){

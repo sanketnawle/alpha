@@ -296,10 +296,12 @@ class FeedController extends Controller
                 $posts [$i] ['origin_pic_id'] = NULL;
             }
 
-            if($lk_model = PostLike::model()->findbypk(array('post_id' => $post['post_id'], 'user_id' => self::$cur_user_id)))
+            if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $this->get_current_user_id())){
                 $posts [$i] ['like_status'] = TRUE;
-            else
+            }else{
                 $posts [$i] ['like_status'] = FALSE;
+            }
+
 
             if($post['file_id'] != NULL) {
                 if ($file = File::model()->findbypk($post['file_id']))

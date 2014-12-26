@@ -4,6 +4,7 @@
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         feed_url = '<?php echo $feed_url; ?>';
+        user_id = '<?php echo $user->user_id; ?>';
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/ness.js"> </script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
@@ -36,7 +37,7 @@
 
                 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
-                            <div class = 'posts new_fd' id = '{{post_id}}'> 
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -224,9 +225,9 @@
                                 </div>
                              {{/each}}
                              {{#if show_more}}
-                                <button id='show_more' class='morecmt_bar'>
+                                <div id='show_more' class='morecmt_bar'>
                                     Show Full Discussion 
-                                </button>
+                                </div>
                             {{/if}}
                         </div>
                     {{/if}}
@@ -238,38 +239,43 @@
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
                         <div class = 'reply_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
                         <div class = 'commentform'>
-                            <div>
-                                <textarea class = 'form-control postval' placeholder = 'Add a reply or upload a file' required></textarea>
-                                <div class = 'dragdrop_functions'>
-                                    <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
-                                    <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
-                                    <div class='filelistbox'></div>
+
+
+                            <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
+
+                                <div>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a reply or upload a file' required></textarea>
+                                    <div class = 'dragdrop_functions'>
+                                        <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
+                                        <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
+                                        <div class='filelistbox'></div>
+                                    </div>
+                                </div>
+                                <div class = 'reply_functions'>
+                                    <div class='check_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                        <label for='flat7' class='flat7b'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                                    </div>
+                                    <a class='reply_button'>
+                                        Add this reply
+                                    </a>
                                 </div>
                             </div>
                             <div class = 'reply_functions'>
-                                <div class='check_wrap'>
-                                    <input type='checkbox' id='flat_0' class='flat7c'/>
-                                    <label for='flat7' class='flat7b'>
-                                        <span class='move'></span>
-                                    </label>
-                                    <span class = 'comment_anon_text'>Post Anonymously</span>
-                                </div>
-                                <a class = 'reply_button'>
-                                    Add this reply
-                                </a>
-                            </div>
-                        </div>
-                        <div class = 'reply_functions'>
-                                <div class='check_wrap'>
-                                    <input type='checkbox' id='flat_0' class='flat7c'/>
-                                    <label for='flat7' class='flat7b'>
-                                        <span class='move'></span>
-                                    </label>
-                                    <span class = 'comment_anon_text'>Post Anonymously</span>
-                                </div>
-                                <a class = 'reply_button'>
-                                    Add this reply
-                                </a>
+                                    <div class='check_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                        <label for='flat7' class='flat7b'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                                    </div>
+                                    <a class = 'reply_button'>
+                                        Add this reply
+                                    </a>
+                            </form>
                         </div>
                     </div>
               </script>
@@ -311,9 +317,43 @@
                                 </div>
 
                      {{/each}}
-                                <button id='show_less' class='lesscmt_bar'>
+                                <div id='show_less' class='lesscmt_bar'>
                                             Do not show Full Discussion 
-                                </button>
+                                </div>
+            </script>
+
+
+            <script id='one_reply_template' type="text/x-handlebars-template">
+                <div class = 'comments'>
+                    <div class = 'comment_main'>
+                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
+                            <div class = 'comment_user_icon'></div>
+                        </div>
+                                            <span class = 'comment_owner'>
+                                                {{#if anon}}
+                                                    Anonymous
+                                                {{else}}
+                                                    {{user_name}}
+                                                {{/if}}
+                                            </span>
+                        <div class = 'comment_time'>
+                            <div class='ct_ts'>
+                                {{update_timestamp}}
+                            </div>
+                        </div>
+                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                            {{reply_msg}}
+                        </div>
+
+                        {{#if file_id}}
+                        <div class='cmt_f_attach' title=''>
+                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                            <a href=''>sdafsdaffg</a>
+                        </div>
+                        {{/if}}
+                    </div>
+
+                </div>
             </script>
 
             <script id="reply_more_template" type="text/x-handlebars-template">
@@ -351,15 +391,15 @@
                                 </div>
 
                      {{/each}}
-                                <button id='show_more' class='morecmt_bar'>
+                                <div id='show_more' class='morecmt_bar'>
                                             Show Full Discussion 
-                                </button>
+                                </div>
 
             </script>
             
             <script id="post_question_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'posts new_fd' id = '{{post_id}}'> 
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -547,14 +587,20 @@
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
 
-                                                        <div class = 'post_like'>
-                                                            <img class = 'post_like_icon' src='http://www.urlinq.com/beta/src/like-button.png'>
-                                                            <div class = 'like_number'>
-                                                                {{#if like_count}}
+                                                        {{#if like_status}}
+                                                            <div class = 'post_liked'>
+                                                        {{else}}
+                                                            <div class = 'post_like'>
+                                                        {{/if}}
+                                                                <img class = 'post_like_icon'>
+                                                                <p class = 'post_like_link'>Like</p>
+                                                                <div class = 'like_number'>
+                                                                    {{#if like_count}}
                                                                     {{like_count}}
-                                                                {{/if}}
+                                                                    {{/if}}
+                                                                </div>
+
                                                             </div>
-                                                        </div>
 
                                                         <div class = 'post_comment_btn'>
                                                                 Reply
@@ -602,9 +648,9 @@
                     </div>
 
                     </div>
-                   
+                    <div class="master_comments" id="{{post_id}}" data-post_id='{{post_id}}'>
                     {{#if replies}}
-                        <div class="master_comments" id="{{post_id}}">
+
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
@@ -638,13 +684,13 @@
                                 </div>
                              {{/each}}
                              {{#if show_more}}
-                                <button id='show_more' class='morecmt_bar'>
-                                    Show Full Discussion 
-                                </button>
-                            {{/if}}
-                        </div>
+                                <div id='show_more' class='morecmt_bar'>
+                                    Show Full Discussion
+                                </div>
+                             {{/if}}
+
                     {{/if}}
-                          
+                    </div>
                     <div class = 'postcomment'>
                         <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
                             <div class = 'comment_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
@@ -652,45 +698,47 @@
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
                         <div class = 'reply_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
                         <div class = 'commentform'>
-                            <div>
-                                <textarea class = 'form-control postval' placeholder = 'Add a reply or upload a file' required></textarea>
-                                <div class = 'dragdrop_functions'>
-                                    <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
-                                    <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
-                                    <div class='filelistbox'></div>
+                            <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
+
+                                <div>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a reply or upload a file' required></textarea>
+                                    <div class = 'dragdrop_functions'>
+                                        <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
+                                        <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
+                                        <div class='filelistbox'></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class = 'reply_functions'>
-                                <div class='check_wrap'>
-                                    <input type='checkbox' id='flat_0' class='flat7c'/>
-                                    <label for='flat7' class='flat7b'>
-                                        <span class='move'></span>
-                                    </label>
-                                    <span class = 'comment_anon_text'>Post Anonymously</span>
+                                <div class = 'reply_functions'>
+                                    <div class='check_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                        <label for='flat7' class='flat7b'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                                    </div>
+                                    <a class='reply_button'>
+                                        Add this reply
+                                    </a>
                                 </div>
-                                <a class = 'reply_button'>
-                                    Add this reply
-                                </a>
-                            </div>
                         </div>
                         <div class = 'reply_functions'>
-                                <div class='check_wrap'>
-                                    <input type='checkbox' id='flat_0' class='flat7c'/>
-                                    <label for='flat7' class='flat7b'>
-                                        <span class='move'></span>
-                                    </label>
-                                    <span class = 'comment_anon_text'>Post Anonymously</span>
-                                </div>
-                                <a class = 'reply_button'>
-                                    Add this reply
-                                </a>
-                        </div>
+                            <div class='check_wrap'>
+                                <input type='checkbox' id='flat_0' class='flat7c'/>
+                                <label for='flat7' class='flat7b'>
+                                    <span class='move'></span>
+                                </label>
+                                <span class = 'comment_anon_text'>Post Anonymously</span>
+                            </div>
+                            <a class = 'reply_button'>
+                                Add this reply
+                            </a>
+                        </form>
                     </div>
             </script>
 
             <script id="post_note_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'posts new_fd' id = '{{post_id}}'> 
+                            <div class = 'post new_fd' id = '{{post_id}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -808,14 +856,20 @@
                                                 </div>
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
-                                                        <div class = 'post_like'>
-                                                            <img class = 'post_like_icon' src='http://www.urlinq.com/beta/src/like-button.png'>
-                                                            <div class = 'like_number'>
-                                                                {{#if like_count}}
+                                                        {{#if like_status}}
+                                                            <div class = 'post_liked'>
+                                                        {{else}}
+                                                            <div class = 'post_like'>
+                                                        {{/if}}
+                                                                <img class = 'post_like_icon'>
+                                                                <p class = 'post_like_link'>Like</p>
+                                                                <div class = 'like_number'>
+                                                                    {{#if like_count}}
                                                                     {{like_count}}
-                                                                {{/if}}
+                                                                    {{/if}}
+                                                                </div>
+
                                                             </div>
-                                                        </div>
 
                                                         <div class = 'post_comment_btn'>
                                                                 Reply
@@ -893,9 +947,9 @@
                                 </div>
                              {{/each}}
                              {{#if show_more}}
-                                <button id='show_more' class='morecmt_bar'>
-                                    Show Full Discussion 
-                                </button>
+                                <div id='show_more' class='morecmt_bar'>
+                                    Show Full Discussion
+                                </div>
                             {{/if}}
                         </div>
                     {{/if}}

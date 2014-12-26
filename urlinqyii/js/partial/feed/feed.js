@@ -151,8 +151,100 @@ $(document).ready(function(){
     });
 
 
+    $(document).on('click','.post_like', function(){
+        var $post_like_button = $(this);
+        var post_id = $(this).closest('.post').attr('data-post_id');
+
+        var post_data = {post_id: post_id, user_id: user_id};
+
+        var post_url = base_url + '/post/like';
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    alert(JSON.stringify(response));
+
+                    $post_like_button.removeClass('post_like');
+                    $post_like_button.addClass('post_liked');
+
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
 
 
+    $(document).on('click','.post_liked', function(){
+        var $post_like_button = $(this);
+        var post_id = $(this).closest('.post').attr('data-post_id');
+
+        var post_data = {post_id: post_id, user_id: user_id};
+
+        var post_url = base_url + '/post/unlike';
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    alert(JSON.stringify(response));
+
+                    $post_like_button.removeClass('post_liked');
+                    $post_like_button.addClass('post_like');
+
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
+
+
+
+    $(document).on('click','.reply_button', function(){
+        var $reply_form = $(this).closest('.reply_form');
+        $reply_form.submit();
+    });
+
+
+    $(document).on('submit','.reply_form', function(event){
+        event.preventDefault();
+        var $reply_form = $(this);
+        var post_id = $reply_form.attr('data-post_id');
+        var reply_text = $reply_form.find('.reply_text_textarea').val();
+
+        if(reply_text.length == 0){
+            alert('You must input something');
+            return;
+        }
+
+
+        var anonymous = false;
+        var reply_user_id = user_id;
+
+
+        var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
+
+        var post_url = base_url + '/post/reply';
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    var source   = $("#one_reply_template").html();
+                    var template = Handlebars.compile(source);
+                    $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
+                    $reply_form.find('.reply_text_textarea').val('');
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
 
 
 
