@@ -731,7 +731,7 @@ left: 20px;
     text-decoration: none;
 }
 
-#small_search{
+.small_search{
     margin-top: 4px;
 
 }
@@ -740,7 +740,7 @@ left: 20px;
 
 }
 
-#small_search label{
+.small_search label{
     position: absolute;
 
     color: #aaa;
@@ -754,7 +754,7 @@ left: 20px;
     font-size: 13.5px;
 }
 
-#small_search input#small_search_input{
+.small_search input.small_search_input{
     border: 1px solid #C7C7C7;
     
     width: 210px;
