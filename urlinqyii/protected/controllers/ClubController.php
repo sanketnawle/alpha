@@ -314,6 +314,77 @@ class ClubController extends Controller
 
     }
 
+    public function actionJoin(){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $group_id = $_GET['id'];
+        $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this group
+        if(!$group_user){
+            //Create new group user
+            $group_user = new GroupUser;
+            $group_user->group_id = $group_id;
+            $group_user->user_id = $user_id;
+            //If we save successfully, user is now apart of group
+            if($group_user->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this group
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+    public function actionLeave(){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $group_id = $_GET['id'];
+        $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
+        //Check if this user is even in this group
+        if($group_user){
+            //Check if we destroy this shit successfully
+            if($group_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this group
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
 
 
 

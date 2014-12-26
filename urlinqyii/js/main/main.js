@@ -235,7 +235,7 @@ $(document).ready(function(){
             return false;
         }
 
-        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id};
+        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: globals.origin_type, origin_id: globals.origin_id};
         //alert(JSON.stringify(post_data));
         $.post(
             post_url,
@@ -255,7 +255,7 @@ $(document).ready(function(){
     $(document).on('click', '.profile_link', function(){
         //$(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
 
-        open_profile(base_url,7);
+        open_profile(globals.base_url,7);
     });
     $(document).on('click', '.close_modal', function(){
         //$(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
@@ -321,7 +321,18 @@ $(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
-                    alert(JSON.stringify(response));
+                    var $group_user_action_button_text_div = $('#group_user_action_button_text');
+                    if(verb == 'join'){
+                        $group_user_action_button_text_div.text('Member');
+                        $group_user_action_button.removeClass('non_member');
+                        $group_user_action_button.addClass('member');
+
+                    }else if(verb == 'leave'){
+                        $group_user_action_button_text_div.text('Join');
+                        $group_user_action_button.removeClass('member');
+                        $group_user_action_button.addClass('non_member');
+
+                    }
                 }else{
                     alert(JSON.stringify(response));
                 }

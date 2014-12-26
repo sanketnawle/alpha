@@ -203,6 +203,79 @@ class ClassController extends Controller
 
 
 
+    public function actionJoin(){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $class_id = $_GET['id'];
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this class
+        if(!$class_user){
+            //Create new class user
+            $class_user = new ClassUser;
+            $class_user->class_id = $class_id;
+            $class_user->user_id = $user_id;
+            //If we save successfully, user is now apart of class
+            if($class_user->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this class
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+    public function actionLeave(){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $class_id = $_GET['id'];
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+        //Check if this user is even in this class
+        if($class_user){
+            //Check if we destroy this shit successfully
+            if($class_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()
