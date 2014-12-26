@@ -644,7 +644,7 @@ padding-bottom: 1px;
 
 .order_sort_dropdown:active{
     border: 1px solid #CFCFCF;
-    background: #D7D7D7;
+    background: #E5E5E5;
     box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 234, 234, 0.4) inset, 0px 1px 0px rgba(226, 226, 226, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
 }
 

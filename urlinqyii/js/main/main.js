@@ -164,6 +164,28 @@ $(document).ready(function(){
 
     });
 
+    //For group info boxes, if about div text overflows div show scroll icon
+
+    $('.about_scroll_container').mouseenter(function(){
+        var $about_section = $(this);
+        var $about_section_span_height = $(this).find("div.about").height();
+       
+        if($about_section_span_height >= 80){
+            $about_section.addClass("scroller");
+        }
+            
+    });
+
+    $('.about_scroll_container').mouseleave(function(){
+        var $about_section = $(this);
+        var $about_section_span_height = $(this).find("div.about").height();
+       
+        if($about_section_span_height >= 80){
+            $about_section.removeClass("scroller");
+        }          
+    });
+
+
     //Handles the member leave/join/follow button
     $('#group_user_action_button').mouseenter(function(){
         var $action_button = $(this);

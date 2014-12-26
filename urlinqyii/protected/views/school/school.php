@@ -168,7 +168,7 @@
                                 <div class = "group_box_secondary_info_section">
                                     <div class= "info_line indent"><span>120 faculty </span><b>&#183;</b><span> 560 students</span></div>
                                     <div class= "info_line indent">25 courses</div>
-                                    <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div></div>
                                 </div>
                             </div>
                         </div>
@@ -196,33 +196,118 @@
                             </div>
                         </div>
                         <div class = "group_info_tab_content">
-                            <div class = "group_box group_course_box">
+                            <div class = "group_box group_course_box club_box">
                                 <div class = "float_Left group_image">
-                                    <div class = "club_count">
+                                    <a class = "group_link">NYU Cheese Club</a>
+                                    <span class = "group_type group_with_button">Club</span>
 
-                                    </div>
                                 </div>
                                 <div class = "group_box_main_info">
-                                    <a class = "group_link">NYU Cheese Club</a>
+                                    
                                     <div class = "float_Right">
                                         <div class = "group_bar_button_holder">
                                             <div class = "join_button_wrapper">
-                                                <div class = "group_join_button">Join</div>
-                                                <div class = "group_more_button">
-                                                    <em class = "white_more_icon">
-                                                    </em>
-                                                </div>
+                                                <div class = "group_join_button">Join Club</div>
                                             </div>
                                         </div>
-                                        <span class = "group_type group_with_button">Club</span>
                                     </div>
                                 </div>
                                 <div class = "group_box_secondary_info_section">
                                     <div class= "info_line indent">35 members</div>
-                                    <div class= "info_line indent">5 events this month</div>
-                                    <div class = "info_line info_about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                    <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
                                 </div>
                             </div>
+                            <div class = "group_box group_course_box club_box">
+                                <div class = "float_Left group_image">
+                                    <a class = "group_link">NYU Cheese Club</a>
+                                    <span class = "group_type group_with_button">Club</span>
+
+                                </div>
+                                <div class = "group_box_main_info">
+                                    
+                                    <div class = "float_Right">
+                                        <div class = "group_bar_button_holder">
+                                            <div class = "join_button_wrapper">
+                                                <div class = "group_join_button">Join Club</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "group_box_secondary_info_section">
+                                    <div class= "info_line indent">35 members</div>
+                                    <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
+                                </div>
+                            </div>
+                            <div class = "group_box group_course_box club_box">
+                                <div class = "float_Left group_image">
+                                    <a class = "group_link">NYU Cheese Club</a>
+                                    <span class = "group_type group_with_button">Club</span>
+
+                                </div>
+                                <div class = "group_box_main_info">
+                                    
+                                    <div class = "float_Right">
+                                        <div class = "group_bar_button_holder">
+                                            <div class = "join_button_wrapper">
+                                                <div class = "group_join_button">Join Club</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "group_box_secondary_info_section">
+                                    <div class= "info_line indent">35 members</div>
+                                    <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
+                                </div>
+                            </div>
+                            <div class = "group_box group_course_box club_box">
+                                <div class = "float_Left group_image">
+                                    <a class = "group_link">NYU Cheese Club</a>
+                                    <span class = "group_type group_with_button">Club</span>
+
+                                </div>
+                                <div class = "group_box_main_info">
+                                    
+                                    <div class = "float_Right">
+                                        <div class = "group_bar_button_holder">
+                                            <div class = "join_button_wrapper">
+                                                <div class = "group_join_button">Join Club</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "group_box_secondary_info_section">
+                                    <div class= "info_line indent">35 members</div>
+                                    <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
+                                </div>
+                            </div>
+                            <div class = "group_box group_course_box club_box">
+                                <div class = "float_Left group_image">
+                                    <a class = "group_link">NYU Cheese Club</a>
+                                    <span class = "group_type group_with_button">Club</span>
+
+                                </div>
+                                <div class = "group_box_main_info">
+                                    
+                                    <div class = "float_Right">
+                                        <div class = "group_bar_button_holder">
+                                            <div class = "join_button_wrapper">
+                                                <div class = "group_join_button">Join Club</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "group_box_secondary_info_section">
+                                    <div class= "info_line indent">35 members</div>
+                                    <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+                                    <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of dig</div></div></div>
+                                </div>
+                            </div>
+
+
 
                         </div>
                     </div>                
