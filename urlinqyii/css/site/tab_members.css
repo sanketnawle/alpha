@@ -35,12 +35,12 @@ box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 18
 background-color: #03C794; 
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right #small_search{
+.tab_members #tab_content_holder #tab_header div.float_Right .small_search{
     display: inline-block;
 
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right #small_search em{
+.tab_members #tab_content_holder #tab_header div.float_Right .small_search em{
     width: 16px; 
     height: 16px; 
     background-position: 0px 0px; position: relative; left: 28px;
@@ -53,6 +53,8 @@ background-color: #03C794;
     position: relative;
     width: 100%;
 }
+
+
 
 div#members_tab_content div.members_card_wrapper.class_admin{
 width: 74.95%;
@@ -73,6 +75,10 @@ div#members_tab_content div.members_card_wrapper.class_admin div.user_main_info{
 div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info{
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px 4px; font-size: 14px; font-weight: 500;
     
+}
+
+div.user_more_info {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.label{
