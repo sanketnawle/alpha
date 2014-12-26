@@ -28,7 +28,9 @@
 
     <body>
 
-        <?php echo Yii::app()->runController('partial/topbar'); ?>
+
+
+    <?php echo Yii::app()->runController('partial/topbar'); ?>
         <div id="wrapper">
         <!--        --><?php //echo Yii::app()->runController('partial/leftmenu'); ?>
 
@@ -112,6 +114,9 @@
             <div id="tab_more_button">
                 <div id="tab_more_button_image"></div>
             </div>
+
+            <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+
         </div>
 
 
@@ -782,21 +787,15 @@
             RIGHT PANEL GOES HERE
         </div>
 
-        <!--            <div id="div1" style="height: 500px;position:relative;">-->
-        <!--                <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">-->
-        <!--                    <div id="div3" style="height:1500px;border:5px solid yellow;">hello</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
 
         </div>
         <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
 
         </div>
-        <!--        <div id="right_menu_panel">-->
-        <!---->
-        <!--        </div>-->
+
 
     </body>
+
 
 
 

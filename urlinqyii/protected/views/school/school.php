@@ -120,6 +120,10 @@
                     <div id="tab_more_button">
                         <div id="tab_more_button_image"></div>
                     </div>
+
+
+                    <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
+
                 </div>
 
 

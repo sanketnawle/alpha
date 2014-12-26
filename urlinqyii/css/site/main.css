@@ -1206,6 +1206,25 @@ text-decoration: none!important;
 
 
 
+
+/* Other views box */
+#other_views_box {
+    width: 240px;
+    height: 130px;
+    background-color: green;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+
+}
+
+div#other_views_box.active {
+    display: block;
+}
+
+
 /*#left_menu_panel{*/
 /*position: fixed;*/
 /*background: black;*/
