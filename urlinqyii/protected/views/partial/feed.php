@@ -322,6 +322,40 @@
                                 </div>
             </script>
 
+
+            <script id='one_reply_template' type="text/x-handlebars-template">
+                <div class = 'comments'>
+                    <div class = 'comment_main'>
+                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
+                            <div class = 'comment_user_icon'></div>
+                        </div>
+                                            <span class = 'comment_owner'>
+                                                {{#if anon}}
+                                                    Anonymous
+                                                {{else}}
+                                                    {{user_name}}
+                                                {{/if}}
+                                            </span>
+                        <div class = 'comment_time'>
+                            <div class='ct_ts'>
+                                {{update_timestamp}}
+                            </div>
+                        </div>
+                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                            {{reply_msg}}
+                        </div>
+
+                        {{#if file_id}}
+                        <div class='cmt_f_attach' title=''>
+                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                            <a href=''>sdafsdaffg</a>
+                        </div>
+                        {{/if}}
+                    </div>
+
+                </div>
+            </script>
+
             <script id="reply_more_template" type="text/x-handlebars-template">
 
                     {{#each replies}}
@@ -614,9 +648,9 @@
                     </div>
 
                     </div>
-                   
+                    <div class="master_comments" id="{{post_id}}" data-post_id='{{post_id}}'>
                     {{#if replies}}
-                        <div class="master_comments" id="{{post_id}}" data-post_id='{{post_id}}'>
+
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
@@ -654,9 +688,9 @@
                                     Show Full Discussion
                                 </div>
                              {{/if}}
-                        </div>
+
                     {{/if}}
-                          
+                    </div>
                     <div class = 'postcomment'>
                         <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
                             <div class = 'comment_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>

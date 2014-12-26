@@ -359,39 +359,84 @@ class PostController extends Controller
             return;
         }
 
-        //$post_id = $_POST['post_id'];
-        $post_id = $_POST['post_id'];
+        try{
+            //$post_id = $_POST['post_id'];
+            $post_id = $_POST['post_id'];
 
-        $reply_text = $_POST['reply_text'];
-        $reply_user_id = $_POST['reply_user_id'];
-        $anonymous = $_POST['anonymous'];
+            $reply_text = $_POST['reply_text'];
+            $reply_user_id = $_POST['reply_user_id'];
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply_user_id));
 
-        $post = Post::model()->find("post_id=:post_id",array(":post_id"=>$post_id));
-        if($post){
-            //Create a new reply model
-            $reply = new Reply;
-            $reply->reply_msg = $reply_text;
-            $reply->post_id = $post_id;
-            $reply->anon = $anonymous;
-            $reply->user_id = $reply_user_id;
-            $reply->save(false);
+            $anonymous = $_POST['anonymous'];
 
-            if($reply){
-                $data = array('success'=>true,'reply_id'=>$reply->reply_id);
-                $this->renderJSON($data);
-                return;
+            $post = Post::model()->find("post_id=:post_id",array(":post_id"=>$post_id));
+            if($post){
+                //Create a new reply model
+                $reply = new Reply;
+                $reply->reply_msg = $reply_text;
+                $reply->post_id = $post_id;
+                $reply->anon = $anonymous;
+                $reply->user_id = $reply_user_id;
+                $reply->save(false);
+
+                if($reply){
+
+//                {
+//                  "reply_id": "1",
+//                  "post_id": "10",
+//                  "user_id": "2",
+//                  "reply_msg": "Hey dude whats up",
+//                  "up_vote": 0,
+//                  "down_vote": 0,
+//                  "file_id": null,
+//                  "anon": 0,
+//                  "update_timestamp": 1417015584,
+//                  "user_info": {
+//                            "user_id": "2",
+//                    "user_name": "Lol Lmfao",
+//                    "picture_file_id": "1"
+//                  },
+//                  "cownership": false,
+//                  "vote_status": null
+//                }
+                    $reply_data = array(
+                        'reply_id'=>$reply->reply_id,
+                        'post_id'=>$post->post_id,
+                        'reply_msg'=>$reply->reply_msg,
+                        'up_vote'=>$reply->up_vote,
+                        'down_vote'=>$reply->down_vote,
+                        'file_id'=>$reply->file_id,
+                        'anon'=>$reply->anon,
+                        'update_timestamp'=>$reply->update_timestamp,
+                        'user_info'=>array(
+                            'user_id'=>$reply_user_id,
+                            'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
+                            'picture_file_id'=>$reply_user->picture_file_id
+                        ),
+                        'cownership'=>false,
+                        'vote_status'=>null
+                    );
+                    $data = array('success'=>true,'reply'=>$reply_data);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>3,'error_msg'=>'error creating reply');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
             }else{
-                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'error creating reply');
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'post with id ' . $post_id . 'does not exist');
                 $this->renderJSON($data);
                 return;
             }
-
-
-        }else{
-            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'post with id ' . $post_id . 'does not exist');
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
             $this->renderJSON($data);
             return;
         }
+
 
     }
 

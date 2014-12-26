@@ -215,6 +215,13 @@ $(document).ready(function(){
         var $reply_form = $(this);
         var post_id = $reply_form.attr('data-post_id');
         var reply_text = $reply_form.find('.reply_text_textarea').val();
+
+        if(reply_text.length == 0){
+            alert('You must input something');
+            return;
+        }
+
+
         var anonymous = false;
         var reply_user_id = user_id;
 
@@ -228,7 +235,10 @@ $(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
-                    alert(JSON.stringify(response));
+                    var source   = $("#one_reply_template").html();
+                    var template = Handlebars.compile(source);
+                    $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
+                    $reply_form.find('.reply_text_textarea').val('');
                 }else{
                     alert(JSON.stringify(response));
                 }
