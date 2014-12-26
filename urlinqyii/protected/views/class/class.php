@@ -90,6 +90,7 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Members</div>
+                    <div class = "tab_amount">92</div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -497,6 +498,18 @@
                         <div class = "add_people_button">
                             Add People
                         </div>
+                        <div class = "admin_member_controls">
+                            <div class = "add_people_button remove" id = "remove_button">
+                                Remove Members
+                            </div>
+                        </div> 
+                        <div class = "remove_state_controls">
+                            <span class ="removed_count"></span>
+                            <div class = "remove" id = "done_removing_button">
+                                <em></em>
+                                <span>Done</span>
+                            </div>
+                        </div>                      
                         <div id = "small_search" class = "fade_input_small">
                             <em id = "left_search_icon">
                             </em>
@@ -504,14 +517,47 @@
                         </div>
                     </div>
                     <div class = "header_sentence">
-                        Club Members
+                        Class Members
                     </div>
                 </div>
-                <div id = "members_tab_content">
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+
+                <div id = "members_tab_content" class= "class_members_tab">
+                    <div class = "members_card_wrapper class_admin">
+                        <div class = "members_card normal_size admin_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
+                                
+                            </div>
+                            <span class = "title">Professor</span>
+                            <div class = "user_main_info">
+                                <a class = "name profile_link">Jacob Lazarus</a>
+                                <span class = "office_hours in_office">
+                                    <em></em>
+                                    <span>In office</span>
+                                </span>
+                            </div>
+                            <div class = "user_more_info">
+                                <span class = "label">Department <br> </span><a class = "data department_link">Neuroscience</a>
+                            </div>
+                            <div class = "user_more_info">
+                                <span class = "label">Office location <br> </span><span class = "data location">Dibner 212</span>
+                            </div>
+                            <div class = "user_more_info">
+                                <span class = "label">Email address <br> </span><span class = "data email">jacobmlazarus@gmail.com</span>
+                            </div>
+                            <div class = "user_card_button_holder">
+                                <div class = "follow_button_wrapper following_wrapper">
+                                    <div class = "user_follow_button following">Following</div>
+                                    <div class = "user_message_button message_active">
+                                        <em class = "white_message_icon">
+                                        </em>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
+                            <div class = "members_card_img">
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -528,13 +574,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -551,13 +600,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -574,13 +626,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -597,13 +652,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -620,13 +678,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Club Admin</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -643,13 +704,16 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "members_card_wrapper">
-                        <div class = "members_card non_admin normal_size" data-user_id='1'>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
                             <div class = "members_card_img">
-                                <span class = "title">Professor</span>
                                 <span class = "class_year">Senior</span>
                             </div>
                             <div class = "user_main_info">
@@ -666,9 +730,41 @@
                                         </em>
                                     </div>
                                 </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class = "members_card_wrapper regular_member">
+                        <div class = "members_card normal_size" data-user_id='1'>
+                            <div class = "members_card_img">
+                                <span class = "class_year">Senior</span>
+                            </div>
+                            <div class = "user_main_info">
+                                <a class = "name profile_link">Jacob Lazarus</a>
+                            </div>
+                            <div class = "user_more_info">
+                                <a class = "department_link">Neuroscience</a>
+                            </div>
+                            <div class = "user_card_button_holder">
+                                <div class = "follow_button_wrapper following_wrapper">
+                                    <div class = "user_follow_button following">Following</div>
+                                    <div class = "user_message_button message_active">
+                                        <em class = "white_message_icon">
+                                        </em>
+                                    </div>
+                                </div>
+                                <div class = "remove_member_button">
+                                    <em></em>
+                                    <span>Remove</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
 
 
                 </div>

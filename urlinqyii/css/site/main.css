@@ -257,7 +257,7 @@ div#fbar_wrapper.fbar_group{
 
 
     background: no-repeat fixed;
-    background-position: center center!important;
+    background-position: center top!important;
     -webkit-background-size: 100% auto!important;
     -moz-background-size: 100% auto!important;
     -o-background-size: 100% auto!important;
@@ -289,10 +289,6 @@ div#fbar_wrapper.fbar_group{
     box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     border-radius: 0px 0px 1px 1px;
     margin-left: 0px;
-}
-
-div#tab_bar:hover{
-    background-color: rgba(25, 26, 27, 1)!important;
 }
 
 .tab {
@@ -992,7 +988,7 @@ div.content_row
 
 .members_card{
     background: #fff;
-
+    position: relative;
     border-radius: 4px;
     display: block;
     border: 1px solid #E4E4E4; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
@@ -1002,10 +998,12 @@ div.content_row
 
 .members_card.normal_size{
 
-    height: 256px;
+    height: 246px;
     
 
-    width: 90%;
+    margin-left: 9px;
+
+    margin-right: 9px;
 
 }
 
@@ -1198,17 +1196,12 @@ text-decoration: none!important;
     overflow-x: hidden!important;
     margin-right: auto!important;
     margin-left: auto!important;
-    }    
-}
-
-@media screen and (max-width: 1110px) {
+    }  
     body{
         overflow-x:scroll!important;
-        min-width:820px;
-    }
-
+        min-width:840px;
+    }     
 }
-
 
 
 

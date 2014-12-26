@@ -26,7 +26,7 @@ div.tab_members #tab_content_holder{
 }
 
 .tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:hover{
-	background: #08D09C;
+    background: #08D09C;
 }
 
 .tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:active{
@@ -49,7 +49,232 @@ background-color: #03C794;
 
 #members_tab_content{
     padding: 25px 0 0 0;
-	
+    
     position: relative;
     width: 100%;
 }
+
+div#members_tab_content div.members_card_wrapper.class_admin{
+width: 74.95%;
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.members_card div.members_card_img{
+height: 95%;
+float: left;
+width: 45%; 
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.user_main_info{
+    margin-top: 15px;
+
+    font-size: 18px;
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info{
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px 4px; font-size: 14px; font-weight: 500;
+    
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.label{
+    
+    font-size: 11px; color: #999;  font-family: 'Open Sans', sans-serif; font-weight: 600;
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.data,div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info a.data{
+    font-size: 15.2px;
+    
+    color: #575757;
+}
+
+div.admin_size span.title{
+    color: #999;
+    font-weight: bold;
+    font-family: Avenir;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+    top: 7px;
+    right: 7px;
+}
+
+div#members_tab_content div.members_card_wrapper.class_admin div.admin_size div.user_card_button_holder{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 4px 7px 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top:13px;
+}
+
+span.office_hours{
+    display:none;
+}
+
+span.office_hours em{
+    background-image: url(../../assets/small_icons.png);
+   
+    width: 13px;
+    height: 11px;
+    background-size: auto;
+    display: inline-block;
+    background-position: 0px -34px;
+    top: 2px;
+    position: relative;
+    left: 7px;
+}
+
+span.office_hours span{
+    font-family: Avenir;
+   
+    font-weight: 200;
+    font-size: 11px;
+    color: #42A522;
+    top: -3px;
+    position: relative;
+    left: 1px;
+}
+
+span.office_hours.in_office{
+    display:inline-block;
+}
+
+
+div.class_members_tab div.members_card_wrapper:nth-of-type(2){
+    float:right;
+}
+
+div.admin_member_controls{
+    display: inline-block;
+margin-left: 4px;
+font-size: 12px;
+color: #777;
+font-family: Avenir;
+}
+
+div.remove_state_controls{
+    display:inline-block;
+}
+
+div.remove#done_removing_button {
+    cursor: pointer
+}
+
+div.remove#done_removing_button em{
+background-image: url(../../assets/small_icons.png);
+width: 13px;
+height: 11px;
+background-size: auto;
+display: inline-block;
+background-position: 0px -85px;
+top: 2px;
+position: relative;
+left: -3px;    
+}
+
+div.remove#done_removing_button span{
+    font-weight:600;
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove, div.remove_state_controls div.remove#done_removing_button{
+    margin-left:4px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #C0C0C0;
+    background-color: #fcfcfc;
+    background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6));
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6));
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    color: #575757!important;
+    padding: 5px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    -moz-transition: all .1s ease;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    font-weight: 600;    
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:hover, div.remove_state_controls div.remove#done_removing_button:hover{
+    color: #333;
+    outline: 0;
+    background-color: #f9f9f9;
+    border-color: #B8B8B8 #969696 #7E7E7E;
+    -moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+    -webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+    box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;   
+}
+
+.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:active, div.remove_state_controls div.remove#done_removing_button:active{
+    text-shadow: none;
+    border-color: #B8B8B8 #969696 #7E7E7E;
+    background-color: #eee;
+    -moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    -webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+}
+
+.remove_members_state div.regular_member div.members_card div.user_card_button_holder div.follow_button_wrapper{
+    display:none!important;
+}
+
+div.remove_member_button{
+    display:none;
+    background: #de445d!important;
+    border: 1px solid #b52b1f;
+    color:#fff!important;
+    -moz-box-shadow: inset 0 1px 1px #D52844,inset 0 -1px 1px #F5768B, 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+    box-shadow: inset 0 1px 1px #D52844,inset 0 -1px 1px #F5768B, 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 1px 1px #D52844,inset 0 -1px 1px #F5768B, 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);   
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor:pointer;
+    margin: 0 auto;
+    padding: 8px 12px;
+    width: 90px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    padding-right: 8px;
+}
+
+div.remove_member_button:hover{
+background: #F2516B!important;    
+}
+
+div.remove_member_button:active{
+box-shadow: inset 0 1px 1px rgba(190, 28, 54, 0.73),inset 0 -1px 1px rgba(228, 112, 131, 0.43), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 1px 1px rgba(190, 28, 54, 0.73),inset 0 -1px 1px rgba(228, 112, 131, 0.43), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+background-color: #D0314B!important;    
+}
+
+div.remove_member_button em{
+    background-image: url(../../assets/small_icons.png);
+    width: 13px;
+    height: 11px;
+    background-size: auto;
+    display: inline-block;
+    background-position: 0px -66px;
+    top: 2px;
+    position: relative;
+    left: -3px;
+}
+
+div.remove_state_controls{
+    display:none;
+}
+
+div.remove_member_button span{
+    font-weight:600!important;
+}
+
+.remove_members_state div.regular_member div.members_card div.user_card_button_holder div.remove_member_button{
+    display:block!important;
+}
+
+.remove_members_state div.members_card_wrapper.class_admin{
+    display:none!important;
+}
+

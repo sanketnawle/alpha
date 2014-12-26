@@ -85,7 +85,7 @@ $(document).ready(function(){
             $nav_bar.css({'top':'56px'});            
         }
 
-        else if(Math.floor(scroll_offset_top) <= 299){
+        if(Math.floor(scroll_offset_top) <= 299){
             console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -104,12 +104,59 @@ $(document).ready(function(){
 
         }
 
+        if(Math.floor(scroll_offset_top) <= 301){
+            console.log("SETTING TO RELATIVE");
+            //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
+//            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
+
+            $tab_bar.css({position: 'relative', top: '-50px',width: content_panel_width});
+            $tab_bar.css({'border-radius': '0px'});
+            $tab_bar.css({'background-color': 'rgba(18, 19, 20, 0.92)'});
+            $panel.css({'margin-top':'-20px'});
+            $cover_photo.css({'opacity':'1'});
+            $tab_wedge.css({'opacity':'1'});
+            $tab_wedge.css({'margin-top':'-7px'});
+            $tab_wedge.css({'height':'10px'});
+
+            //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
+
+
+        }
 
         //alert(y);
 
     });
 
+    //Admin members tab controls in class and club to remove group members 
 
+    $("#remove_button").click(function(){
+        var $remove_button = $(".admin_member_controls");
+        var $add_button = $(".add_people_button");
+        var $members_tab = $("#members_tab_content");
+        var $remove_state_controls = $(".remove_state_controls");
+
+        $add_button.hide();
+        $remove_button.hide();
+        $remove_state_controls.css({"display":"inline-block"});
+        $members_tab.addClass("remove_members_state");
+    });
+
+    $(".remove_member_button").click(function(){
+        $(this).closest(".regular_member").fadeOut(250);
+    });
+
+    $("#done_removing_button").click(function(){
+        var $remove_button = $(".admin_member_controls");
+        var $add_button = $(".add_people_button");
+        var $members_tab = $("#members_tab_content");
+        var $remove_state_controls = $(".remove_state_controls");
+
+        $remove_state_controls.hide();
+        $add_button.show();
+        $remove_button.show();
+        $members_tab.removeClass("remove_members_state");
+
+    });
 
     //Handles the member leave/join/follow button
     $('#group_user_action_button').mouseenter(function(){
@@ -145,6 +192,8 @@ $(document).ready(function(){
             $follow_button_container.removeClass("unfollow");
         }
     });    
+
+
 
 
     //$('#create_todo_form').submit(function (e) {
