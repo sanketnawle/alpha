@@ -2,6 +2,8 @@ $(document).ready(function(){
 
     init();
     function init(){
+
+
         handle_planner_events();
         //show_events(events);
     }
@@ -143,10 +145,7 @@ $(document).ready(function(){
     }
     $('.tp1').val( (0<currHr-12<10 ? '0' : '') + (currHr<12? currHr : currHr-12 ) + ":" + (currMin<12 ? '0' : '') + currMin + (currHr<12 ? 'AM' : 'PM') );
 
-    //Set the event time data attribute to an empty
-    //string for now because we only want to add a time
-    //when the user clicks 'add time'
-    $('.event_time').attr('data-time','');
+
 
 
 
@@ -274,7 +273,7 @@ $(document).ready(function(){
     function show_events(json_data){
         //alert(JSON.stringify(json_data));
 
-        if(json_data['event_count'] > 0){
+        if(json_data['events'].length > 0){
             $('#free_planner_wrap').hide();
         }else{
             $('#free_planner_wrap').hide().fadeIn( "slow", function() {
@@ -284,65 +283,69 @@ $(document).ready(function(){
         }
 
 
-        console.log(json_data);
-        var past_events = json_data['past_due_events'];
-        if(past_events.length > 0){
+        $.each(json_data['events'], function(index, event) {
+            add_event(event);
+        });
 
-            $.each(past_events, function(index, past_event) {
-                past_event['event_class'] = 'past_event';
-                var date = new Date(past_event['end_date']);
-                var formatted_date =  get_formatted_date(date);
-                past_event['end_date'] = formatted_date;
-                show_event(past_event,'#past_events');
-            });
-
-            $('#past_due_events_header').fadeIn( "slow", function() {
-                // Animation complete
-            });
-        }
-
-
-
-        var todays_events = json_data['todays_events'];
-        if(todays_events.length > 0){
-
-
-
-            $.each(todays_events, function(index, todays_event) {
-                todays_event['event_class'] = 'today_event';
-
-                var date = new Date(todays_event['end_date']);
-                var formatted_date = get_formatted_time(date);
-                todays_event['end_date'] = formatted_date;
-
-
-
-                show_event(todays_event,'#todays_events');
-            });
-            show_todays_label();
-
-        }
-
-
-        var tomorrows_events = json_data['tomorrows_events'];
-        if(tomorrows_events.length > 0){
-
-
-
-
-            $.each(tomorrows_events, function(index, tomorrows_event) {
-                tomorrows_event['event_class'] = 'tomorrow_event';
-
-                var date = new Date(tomorrows_event['end_date']);
-                var formatted_date = get_formatted_time(date);
-                tomorrows_event['end_date'] = formatted_date;
-
-                show_event(tomorrows_event,'#tomorrows_events');
-            });
-
-            show_tomorrows_label();
-
-        }
+//        console.log(json_data);
+//        var past_events = json_data['past_due_events'];
+//        if(past_events.length > 0){
+//
+//            $.each(past_events, function(index, past_event) {
+//                past_event['event_class'] = 'past_event';
+//                var date = new Date(past_event['end_date']);
+//                var formatted_date =  get_formatted_date(date);
+//                past_event['end_date'] = formatted_date;
+//                show_event(past_event,'#past_events');
+//            });
+//
+//            $('#past_due_events_header').fadeIn( "slow", function() {
+//                // Animation complete
+//            });
+//        }
+//
+//
+//
+//        var todays_events = json_data['todays_events'];
+//        if(todays_events.length > 0){
+//
+//
+//
+//            $.each(todays_events, function(index, todays_event) {
+//                todays_event['event_class'] = 'today_event';
+//
+//                var date = new Date(todays_event['end_date']);
+//                var formatted_date = get_formatted_time(date);
+//                todays_event['end_date'] = formatted_date;
+//
+//
+//
+//                show_event(todays_event,'#todays_events');
+//            });
+//            show_todays_label();
+//
+//        }
+//
+//
+//        var tomorrows_events = json_data['tomorrows_events'];
+//        if(tomorrows_events.length > 0){
+//
+//
+//
+//
+//            $.each(tomorrows_events, function(index, tomorrows_event) {
+//                tomorrows_event['event_class'] = 'tomorrow_event';
+//
+//                var date = new Date(tomorrows_event['end_date']);
+//                var formatted_date = get_formatted_time(date);
+//                tomorrows_event['end_date'] = formatted_date;
+//
+//                show_event(tomorrows_event,'#tomorrows_events');
+//            });
+//
+//            show_tomorrows_label();
+//
+//        }
 
 
 
@@ -372,7 +375,7 @@ $(document).ready(function(){
     }
 
     function show_past_due_label(){
-        $('#todays_events_header').fadeIn( "slow", function() {
+        $('#past_due_events_header').fadeIn( "slow", function() {
             // Animation complete
         });
     }
@@ -495,6 +498,7 @@ $(document).ready(function(){
 //Second is the div id to add event to
 function show_event(event,event_div_id){
 
+
     //Change the boolean 0 or 1 to completed or not_completed
     //so the css is more clear
     if(event['complete'] == '1'){
@@ -512,7 +516,10 @@ function show_event(event,event_div_id){
 //Checks the date of the event and
 //Adds it to the proper DIV
 function add_event(event_json){
-    var event_date = utc_to_local(new Date(event_json['end_date']));
+    $("#free_planner_wrap").hide();
+
+    var event_datetime = utc_to_local(new Date(event_json['end_date'] + ' ' + event_json['end_time']));
+    //var event_date = utc_to_local(new Date('2014-12-27 02:07:00'));
 
     //Check if the event is today
     var todays_date = new Date();
@@ -522,10 +529,15 @@ function add_event(event_json){
 //    alert(event_date);
 //    alert(todays_date);
 //    alert(event_date.getDate() == todays_date.getDate());
-    if(event_date.getDate() == todays_date.getDate()){
-        if($("#past_due_events_header").is(":visible")){
+    if(event_datetime.getDate() == todays_date.getDate()){
+        if(!$("#past_due_events_header").is(":visible")){
             show_past_due_label();
         }
+
+        var date = new Date(event_json['end_date']);
+        var formatted_date =  get_formatted_date(date);
+        event_json['end_date'] = formatted_date;
+
         show_event(event_json,'#past_events');
         return;
     }
@@ -534,10 +546,15 @@ function add_event(event_json){
     //Check if the even was yesterday
     var yesterdays_date = new Date(todays_date);
     yesterdays_date.setDate(todays_date.getDate() - 1);
-    if(event_date.getDate() == yesterdays_date.getDate()){
-        if($("#todays_events_header").is(":visible")){
+    if(event_datetime.getDate() == yesterdays_date.getDate()){
+        if(!$("#todays_events_header").is(":visible")){
             show_todays_label();
         }
+
+        var date = new Date(event_json['end_date']);
+        var formatted_date = get_formatted_time(date);
+        event_json['end_date'] = formatted_date;
+
         show_event(event_json,'#todays_events');
         return;
     }
@@ -545,10 +562,15 @@ function add_event(event_json){
     //Check if the event is tomorrow
     var tomorrows_date = new Date(todays_date);
     tomorrows_date.setDate(todays_date.getDate() + 1);
-    if(event_date.getDate() == tomorrows_date.getDate()){
-        if($("#tomorrows_events_header").is(":visible")){
+    if(event_datetime.getDate() == tomorrows_date.getDate()){
+        if(!$("#tomorrows_events_header").is(":visible")){
             show_tomorrows_label();
         }
+
+        var date = new Date(event_json['end_date']);
+        var formatted_date = get_formatted_time(date);
+        event_json['end_date'] = formatted_date;
+
         show_event(event_json,'#tomorrows_events');
         return;
     }
@@ -556,7 +578,7 @@ function add_event(event_json){
     //Check if the event is in the next week
     var week_from_now_date = new Date(todays_date);
     week_from_now_date.setDate(todays_date.getDate() + 1);
-    if(event_date > tomorrows_date && event_date < week_from_now_date){
+    if(event_datetime > tomorrows_date && event_datetime < week_from_now_date){
         show_event(event_json,'#future_events');
         return;
     }
@@ -571,6 +593,7 @@ $(document).on('click','#add_todo',function(){
     $("#todo_wrap").css("height", "140px");
     $(".planner_creation_form").fadeIn(500);
     $("textarea#event_name").focus();
+    $("#planner_bottom_holder").hide();
 });
 
 $(document).on('click','.cancel_form',function(){
@@ -579,6 +602,7 @@ $(document).on('click','.cancel_form',function(){
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add a time');
+    $("#planner_bottom_holder").show();
 });
 $(document).on('click','.event_time',function(){
     $('.timepicker').fadeToggle(150);
@@ -691,12 +715,15 @@ $(document).on('click','#create_todo_form',function(e){
     }
 
     //Make sure the date is converted to UTC before passing to database
-    var todo_date = new Date($('.event_date').attr('data-date'));
-    todo_date = local_to_utc(todo_date);
-    todo_date = todo_date.getUTCFullYear().toString() + "-" + (todo_date.getMonth()+ 1).toString() + "-" + todo_date.getDate().toString();
+    var todo_datetime = new Date($('.event_date').attr('data-date') + ' ' + $('.event_time').attr('data-time'));
 
-    var todo_time = $('.event_time').attr('data-time');
 
+    //var todo_time = $('.event_time').attr('data-time');
+
+
+    todo_datetime = local_to_utc(todo_datetime);
+    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth()+ 1).toString() + "-" + todo_datetime.getDate().toString();
+    var todo_time = addZero(todo_datetime.getHours()).toString() + ':' + addZero(todo_datetime.getMinutes()).toString() + ':' + addZero(todo_datetime.getSeconds()).toString();
 
     if(errors.length > 0){
 //        alert(JSON.stringify(errors));

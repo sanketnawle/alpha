@@ -136,7 +136,7 @@
                                     </article>
                                 </section>
                             </div>
-                            <span class="event_time">Add time</span>
+                            <span class="event_time" data-time="00:00:00">Add time</span>
                             <input class="tp1" id="tp1" value="none">
                             <div class="timepicker">
                                 <div class="timeslot1"></div>
