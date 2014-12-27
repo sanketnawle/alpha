@@ -180,9 +180,9 @@
 
 
                                 {{#ifCond complete '==' 'complete'}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0" checked="checked">
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0" checked="checked"><label for = "event_{{event_id}}_input">
                                 {{else}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event0" id="e0" value="#event_data0">
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0"><label for = "event_{{event_id}}_input">
                                 {{/ifCond}}
                             </div>
                         </div>
