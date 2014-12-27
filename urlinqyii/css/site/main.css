@@ -1216,11 +1216,17 @@ text-decoration: none!important;
     top: 0;
     left: 0;
     z-index: 99999;
-    display: none;
+
 
 }
 
-div#other_views_box.active {
+
+
+.popup {
+    display: none;
+}
+
+.popup.active {
     display: block;
 }
 

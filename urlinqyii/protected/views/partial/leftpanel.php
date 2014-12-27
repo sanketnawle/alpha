@@ -4,6 +4,7 @@
     origin_type = '<?php echo $origin_type; ?>';
     origin_id = '<?php echo $origin_id; ?>';
 
+
 </script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/left_panel/left_panel.js"></script>
@@ -81,7 +82,7 @@
 				</div>				
 			</div>
 			<div class = "LeftPanel_SectionContent">
-				<ul data-group = "classes" class = "LeftPanel_GroupsList">
+				<ul data-group = "classes" id='class_list' class = "LeftPanel_GroupsList">
                     <?php foreach($user->classes as $class){?>
                         <li>
                             <a data-class_id = "<?php echo $class->class_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id; ?>"><?php echo $class->class_name; ?></a>
@@ -104,12 +105,10 @@
 				</div>				
 			</div>	
 			<div class = "LeftPanel_SectionContent">
-				<ul data-group = "clubs" class = "LeftPanel_GroupsList">
+				<ul data-group = "clubs" class = "LeftPanel_GroupsList" id='club_list'>
                     <?php foreach($user->groups as $club){ ?>
-
-
                         <li>
-                            <a data-group_id = "<?php echo $club->group_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
+                            <a data-club_id = "<?php echo $club->group_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
                         </li>
                     <?php } ?>
 				</ul>				

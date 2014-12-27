@@ -43,6 +43,16 @@ class ClassModel extends CActiveRecord
 		return 'class';
 	}
 
+    //Returns professor model object
+    public function professor(){
+        foreach($this->admins as $admin){
+            if($admin->user_type == 'p'){
+                return $admin;
+            }
+        }
+        return null;
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -88,8 +98,7 @@ class ClassModel extends CActiveRecord
             'admins' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=1'),
             'students' => array(self::MANY_MANY, 'User', 'class_user(class_id, user_id)', 'on'=>'is_admin=0'),
 
-            //Gets the user object for this classes professor
-            'professorUser' => array(self::HAS_ONE, 'User', array('user_id'=>'professor'))
+
 		);
 	}
 

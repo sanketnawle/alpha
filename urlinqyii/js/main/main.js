@@ -320,7 +320,11 @@ $(document).ready(function(){
     // department - follow/unfollow
     // To simplify this, follow is join and unfollow is leave for departments as well
 //    $('#group_user_action_button').click(function(){
-    $(document).on('click','#group_user_action_button',function(){
+    $(document).on('click','#group_user_action_button',function(e){
+        e.stopPropagation();
+
+
+
         var $group_user_action_button = $(this);
 
         var verb = '';
@@ -349,10 +353,23 @@ $(document).ready(function(){
                         $group_user_action_button.removeClass('non_member');
                         $group_user_action_button.addClass('member');
 
+                        //If you joined a new class or club, add it to the leftpanel
+                        if(globals.origin_type == 'class'){
+                            $('#class_list').append('<li><a href="' + globals.base_url + '/class/' + globals.origin_id + '" data-class_id="' + globals.origin_id + '">' + globals.origin_name + '</a></li>');
+                        }else if(globals.origin_type == 'club'){
+                            $('#club_list').append('<li><a href="' + globals.base_url + '/club/' + globals.origin_id + '" data-club_id="' + globals.origin_id + '">' + globals.origin_name + '</a></li>');
+                        }
+
                     }else if(verb == 'leave'){
                         $group_user_action_button_text_div.text('Join');
                         $group_user_action_button.removeClass('member');
                         $group_user_action_button.addClass('non_member');
+
+                        var data_group = 'clubs';
+                        if(globals.origin_type == 'class'){
+                            data_group = 'classes';
+                        }
+                        $("ul[data-group='" + data_group + "'] a[data-" + globals.origin_type + "_" + "id='" + globals.origin_id + "']").remove();
 
                     }
                 }else{

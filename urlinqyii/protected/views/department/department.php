@@ -43,7 +43,7 @@
 
                 <div id="left_panel">
                     <!--                        <section class='leftbar_bag'>-->
-                    <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                    <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'origin_name'=>$department->department_name)); ?>
                     <!--                        </section>-->
                 </div>
 

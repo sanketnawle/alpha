@@ -5,6 +5,7 @@
             globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
             globals.origin_type = '<?php echo 'club'; ?>';
             globals.origin_id = '<?php echo $club->group_id; ?>';
+            globals.origin_name = '<?php echo $club->group_name; ?>';
         </script>
 
 
@@ -47,7 +48,7 @@
 
                     <div id="left_panel">
 
-                        <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
+                        <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
 
                     </div>
 
@@ -528,7 +529,7 @@
                                                     <span class = "class_year">Senior</span>
                                                 </div>
                                                 <div class = "user_main_info">
-                                                    <a class = "name profile_link"><?php echo $member->firstname . ' ' . $member->lastname; ?></a>
+                                                    <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
                                                 </div>
                                                 <div class = "user_more_info">
                                                     <a class = "department_link"><?php echo $member->department->department_name; ?></a>
