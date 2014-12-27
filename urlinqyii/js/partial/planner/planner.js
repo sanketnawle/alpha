@@ -589,21 +589,31 @@ function add_event(event_json){
 
 //For somereason these has to be outside of the .ready()
 $(document).on('click','#add_todo',function(){
+    show_planner_creation_form()
+});
+
+$(document).on('click','.cancel_form',function(){
+    hide_planner_creation_form()
+});
+function show_planner_creation_form(){
     $(this).css("display", "none");
     $("#todo_wrap").css("height", "140px");
     $(".planner_creation_form").fadeIn(500);
     $("textarea#event_name").focus();
     $("#planner_bottom_holder").hide();
-});
+}
 
-$(document).on('click','.cancel_form',function(){
+function hide_planner_creation_form(){
     $('.planner_creation_form').css('display', 'none');
     $(".entry_field").css("height", "36px");
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add a time');
     $("#planner_bottom_holder").show();
-});
+}
+
+
+
 $(document).on('click','.event_time',function(){
     $('.timepicker').fadeToggle(150);
     $('.tp1').css('display', 'initial');
@@ -739,6 +749,7 @@ $(document).on('click','#create_todo_form',function(e){
         function(response) {
             if(response['success']){
                 //alert(JSON.stringify(response));
+                hide_planner_creation_form();
                 add_event(response['event']);
                 //show_event(response['event'],'#todays_events');
             }else{
