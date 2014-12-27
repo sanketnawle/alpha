@@ -25,6 +25,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main_groups.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
 </head>
 
 <body>
@@ -98,7 +99,7 @@
                         <div class="tab_content">
                             <div class="tab_img"></div>
                             <div class="tab_text">Members</div>
-                            <div class = "tab_amount">92</div>
+                            <div class = "tab_amount"><?php echo count($school->users); ?></div>
                         </div>
                         <div class="tab_wedge"></div>
                     </div>
@@ -320,180 +321,53 @@
                                 <div class = "add_people_button">
                                     Add People
                                 </div>
-                                <div id = "small_search" class = "fade_input_small">
+                                <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "people_search_input" placeholder = "Search people" id = "small_search_input">
+                                    <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input" id="school_users_search_input">
                                 </div>
                             </div>
                             <div class = "header_sentence">
                                 Members
                             </div>
                         </div>
-                        <div id = "members_tab_content">
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Club Admin</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "members_card_wrapper">
-                                <div class = "members_card non_admin normal_size" data-user_id='1'>
-                                    <div class = "members_card_img">
-                                        <span class = "title">Professor</span>
-                                        <span class = "class_year">Senior</span>
-                                    </div>
-                                    <div class = "user_main_info">
-                                        <a class = "name profile_link">Jacob Lazarus</a>
-                                    </div>
-                                    <div class = "user_more_info">
-                                        <a class = "department_link">Neuroscience</a>
-                                    </div>
-                                    <div class = "user_card_button_holder">
-                                        <div class = "follow_button_wrapper following_wrapper">
-                                            <div class = "user_follow_button following">Following</div>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class = "members_tab_content">
 
 
+                            <?php foreach($school->users as $member){ ?>
+                                <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                    <div class = "members_card admin normal_size">
+                                        <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+
+                                            <?php if($member->user_type == 'p'){ ?>
+                                                <span class = "title">Professor</span>
+                                            <?php }elseif($member->user_type == 'a'){ ?>
+                                                <span class = "title">Admin</span>
+                                            <?php }else{ ?>
+                                                <span class = "title">Student</span>
+                                            <?php } ?>
+
+                                            <span class = "class_year">Senior</span>
+                                        </div>
+                                        <div class = "user_main_info">
+                                            <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                        </div>
+                                        <div class = "user_more_info">
+                                            <a class = "department_link"><?php echo $user->department->department_name; ?></a>
+                                        </div>
+                                        <div class = "user_card_button_holder">
+                                            <div class = "follow_button_wrapper following_wrapper">
+                                                <div class = "user_follow_button following">Following</div>
+                                                <div class = "user_message_button message_active">
+                                                    <em class = "white_message_icon">
+                                                    </em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
