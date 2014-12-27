@@ -101,7 +101,7 @@ $(document).ready(function(){
             $panel.css({'margin-top':'-20px'});
             $cover_photo.css({'opacity':'1'});
             $tab_wedge.css({'opacity':'1'});
-            $tab_wedge.css({'margin-top':'-7px'});
+            $tab_wedge.css({'margin-top':'-6px'});
             $tab_wedge.css({'height':'10px'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
@@ -120,7 +120,7 @@ $(document).ready(function(){
             $panel.css({'margin-top':'-20px'});
             $cover_photo.css({'opacity':'1'});
             $tab_wedge.css({'opacity':'1'});
-            $tab_wedge.css({'margin-top':'-7px'});
+            $tab_wedge.css({'margin-top':'-6px'});
             $tab_wedge.css({'height':'10px'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
@@ -165,21 +165,22 @@ $(document).ready(function(){
 
     //For group info boxes, if about div text overflows div show scroll icon
 
-    $('.about_scroll_container').mouseenter(function(){
-        var $about_section = $(this);
+    $('.group_box').mouseenter(function(){
+
+        var $about_section = $(this).find(".about_scroll_container");
         var $about_section_span_height = $(this).find("div.about").height();
        
-        if($about_section_span_height >= 80){
+        if($about_section_span_height >= 50){
             $about_section.addClass("scroller");
         }
             
     });
 
-    $('.about_scroll_container').mouseleave(function(){
-        var $about_section = $(this);
+    $('.group_box').mouseleave(function(){
+        var $about_section = $(this).find(".about_scroll_container");
         var $about_section_span_height = $(this).find("div.about").height();
        
-        if($about_section_span_height >= 80){
+        if($about_section_span_height >= 50){
             $about_section.removeClass("scroller");
         }          
     });
@@ -319,7 +320,11 @@ $(document).ready(function(){
     // department - follow/unfollow
     // To simplify this, follow is join and unfollow is leave for departments as well
 //    $('#group_user_action_button').click(function(){
-    $(document).on('click','#group_user_action_button',function(){
+    $(document).on('click','#group_user_action_button',function(e){
+        e.stopPropagation();
+
+
+
         var $group_user_action_button = $(this);
 
         var verb = '';
@@ -348,10 +353,23 @@ $(document).ready(function(){
                         $group_user_action_button.removeClass('non_member');
                         $group_user_action_button.addClass('member');
 
+                        //If you joined a new class or club, add it to the leftpanel
+                        if(globals.origin_type == 'class'){
+                            $('#class_list').append('<li><a href="' + globals.base_url + '/class/' + globals.origin_id + '" data-class_id="' + globals.origin_id + '">' + globals.origin_name + '</a></li>');
+                        }else if(globals.origin_type == 'club'){
+                            $('#club_list').append('<li><a href="' + globals.base_url + '/club/' + globals.origin_id + '" data-club_id="' + globals.origin_id + '">' + globals.origin_name + '</a></li>');
+                        }
+
                     }else if(verb == 'leave'){
                         $group_user_action_button_text_div.text('Join');
                         $group_user_action_button.removeClass('member');
                         $group_user_action_button.addClass('non_member');
+
+                        var data_group = 'clubs';
+                        if(globals.origin_type == 'class'){
+                            data_group = 'classes';
+                        }
+                        $("ul[data-group='" + data_group + "'] a[data-" + globals.origin_type + "_" + "id='" + globals.origin_id + "']").remove();
 
                     }
                 }else{

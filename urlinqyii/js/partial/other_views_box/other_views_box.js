@@ -1,15 +1,20 @@
 $(document).ready(function(){
 
-    $(document).on('click','html',function(){
 
-    });
 
 
 
     //Make the ... prompt appear
-    $(document).on('click', '#tab_more_button', function(){
+    $('#tab_more_button').click(function(e){
+        e.stopPropagation();
+
+
         var $tab_more_button = $(this);
+
         var $other_views_box = $('#other_views_box');
+        //Check if the popup is already active
+
+
         if($other_views_box.hasClass('active')){
             $other_views_box.removeClass('active');
         }else{
@@ -22,6 +27,17 @@ $(document).ready(function(){
 
 
             $other_views_box.addClass('active')
+        }
+    });
+
+
+
+    $("body").click(function(e) {
+        // Check for left button
+        if (e.button == 0) {
+            $('.popup').each(function(){
+                $(this).removeClass('active');
+            });
         }
     });
 });

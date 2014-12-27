@@ -1,8 +1,7 @@
 
 .planner_container{
     width: 235px;
-    min-height: 450px;
-    max-height: 650px;
+    height: 100%;
     font-family: 'Open Sans', sans-serif;
     background: #fff;
     border-radius: 4px;
@@ -27,7 +26,7 @@
     font-size: 17px;
     font-family: Avenir;
     font-weight: 200;
-    color: #777;
+    color: #575757;
 }
 #dropdown_arrow{
     padding: 0px 0px 2px 5px;
@@ -41,16 +40,17 @@
     border-radius: 0px 0px 4px 4px;
     z-index: 1;
     float: left;
+    height: auto;
     margin: 0px auto;
 
 }
 .entry_field{
-    height: 36px;
+    height: 0px;
     /* height: 140px; */
     border: 1px solid #dbdcdc;
     border-width: 0px 0px 1px 0px;
     margin-left: 11px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     position: relative;
     -moz-transition: all .35s ease-in;
     /* -webkit-transition: all .35s ease-in-out; */
@@ -58,16 +58,20 @@
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
+    margin-bottom: 22px;
 }
 .entry_field_placeholder{
-    padding: 10px 0px 10px 10px;
-    position: fixed;
-    width: 202px;
+    position: relative;
+    width: 24px;
+    float: right;
     font-size:14px;
-    font-weight: 600;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-image: url(../../../assets/small_icons.png);
+    background-position: 0px -330px;
+    height: 24px;
     cursor: pointer;
-    color: #45a8cf;
-    border-bottom: 1px solid #dbdcdc;
+    left: 7px;
 }
 .entry_field_placeholder i{
     background-image: url('../../../assets/partial/planner/help_icon.png');
@@ -279,6 +283,10 @@ span.create_planner_message {}
 
     float: left;
     clear: right;
+    
+
+    margin-top: -18px;
+
 }
 
 
@@ -289,7 +297,7 @@ span.create_planner_message {}
     height: 38px;
 
     margin-bottom: 4px;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 
 #planner_header_holder {
@@ -337,7 +345,7 @@ span.create_planner_message {}
     display: inline-block;
     float: left;
     width: 80%;
-    margin-top: 5px;
+    margin-top: 6px;
     margin-left: 10px;
 
     font-size: 12px;
@@ -356,7 +364,7 @@ span.create_planner_message {}
     display: block;
     height: 10px;
 
-    margin-top: 5px;
+    margin-top: 8px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -370,20 +378,23 @@ span.create_planner_message {}
     width: auto;
 
 
-    font-weight: 500;
 
-    font-family: Avenir;
-    color: #777;
+    color: #444; font-weight: 600; 
+    font-size: 10.5px;
 }
 
 .planner_event_header_date {
     display: inline-block;
     float: right;
     width: auto;
-    font-weight: 300;
+    font-weight: 200;
 
-    color: lightgrey;
 
+    font-size: 11px;
+    opacity: .95;
+    top: -1px;
+    position: relative;
+    color: #bababa;
 }
 
 
@@ -437,7 +448,9 @@ span.create_planner_message {}
     font-size: 13.5px;
 
     color: #333;
-    font-weight: 600;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding-bottom: 2px;
 }
 /* Set the background colors for the different types of events */
 
@@ -455,7 +468,18 @@ span.create_planner_message {}
     background-color: white;
 }
 
+.event_date_time{
+    font-size: 11px;
+    font-weight: 600;
+}
 
+#todays_events{
+    margin-bottom: 7px;
+}
+
+#tomorrows_events{
+    margin-top:-7px;
+}
 
 
 
@@ -524,6 +548,18 @@ span.create_planner_message {}
     -moz-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
 }
+
+.event_checkbox_input{
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    margin: -1px;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+}
+
 .event label:hover:after{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);

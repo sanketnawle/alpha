@@ -248,7 +248,8 @@ a.LeftPanel_DSContentBoxName h5{
 }
 
 .SectionHeader_holder div.float_Right a:active{
-    opacity:1!important;
+    color: #016283!important;
+    text-decoration: underline;
 }
 
 

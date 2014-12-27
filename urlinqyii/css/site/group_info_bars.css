@@ -64,8 +64,11 @@ div.group_info_tab_content div.group_box div.float_Left.group_image{
 
 div.group_info_tab_content div.group_box.club_box div.float_Left.group_image{
 height: 109px;
-width: 98%;
+width: 95.7%;
 float: none;
+right: 8px;
+left: 8px;
+top: 8px;
 position: relative;
 }
 
@@ -220,31 +223,48 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     box-shadow: 1px 0px 1px #fff inset, -1px 0px 1px #fff inset, 0px -1px 1px #fff inset, 0px 1px 1px #fff inset;
     padding: 6px 10px;
     margin-top: 6px;
-    overflow-y: scroll;
-    height: 70px;
+    overflow-y: hidden;
+    position: absolute;
+    z-index:100;
+    height: 38px;
+    -webkit-transition: height 0.125s ease;
+    -moz-transition: height 0.125s ease;
+    transition: height 0.125s ease;      
+}
+
+div.group_box div.group_box_secondary_info_section div.info_line.info_about:hover{
+    height:auto;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
 }
 
 
 
-span.scroll_gif{
+/*FOR USE IN SCROLL INDICATOR HANDLING FOR OVERFLOWING DIVS */
+
+div.group_box div.group_box_secondary_info_section div.about_scroll_container span.scroll_gif{
     opacity:0;
-    background-image: url(../../assets/scroll_indicator.gif);
+    background-image: url(../../assets/small_icons.png);
     background-repeat: no-repeat;
-    background-position: 0px 0px;
+    background-position: 0px -134px;
     position:absolute;
     width: 16px;
-    height: 20px;
-    right: 4px;
+    height: 17px;
     -webkit-transition: all 0.125s ease;
     -moz-transition: all 0.125s ease;
     transition: all 0.125s ease;   
+    z-index: 2000;
+    top: -2px;
+    right:0px;
 }
 
 div.group_box div.group_box_secondary_info_section div.about_scroll_container.scroller span.scroll_gif{
 opacity:1;
-right:-11;
+top: 8px;
 }
 
+*/
 div.group_box div.group_box_secondary_info_section div.info_about.group_with_button{
     width: 70%;
 }
@@ -265,9 +285,10 @@ div.department_alias, div.club_count{
 }
 
 div.group_bar_button_holder{
-    top: 9px;
+    top: 11px;
 
     position: relative;
+    right: -3px;
 }
 
 div.join_button_wrapper{
@@ -338,6 +359,11 @@ div.join_button_wrapper div.group_more_button em{
     border-left: 1px solid rgba(255, 255, 255, 0.73); 
     background-position: 13px -95px;
     
+}
+
+div.about_scroll_container{
+    position:relative;
+    height: 56px;
 }
 
 

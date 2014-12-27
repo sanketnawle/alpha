@@ -163,48 +163,87 @@ class EventController extends Controller
 //        $date = $datetime->format('Y-m-d H:i:s');
 //        $date_key = $datetime->format('Y-m-d');
 
+//        $event_count = 0;
+//
+//        //Get events that were due yesterday
+//        $date = date("Y-m-d H:i:s", time());
+//        $datetime = new DateTime($date);
+//        $datetime->modify('-1 day');
+//        $yesterdays_date = $datetime->format('Y-m-d');
+//
+//
+//        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $yesterdays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+//        $past_due_events = Event::model()->findAllBySql($sql);
+//        $event_count += count($past_due_events);
+//
+//        //Get events that are due today
+//
+//        $datetime = new DateTime($date);
+//        $todays_date = $datetime->format('Y-m-d');
+//
+//        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $todays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+//        $todays_events = Event::model()->findAllBySql($sql);
+//        $event_count += count($todays_events);
+//
+//
+//        //Get events that are due tomorrow
+//
+//        $datetime = new DateTime($date);
+//        $datetime->modify('+1 day');
+//        $tomorrows_date = $datetime->format('Y-m-d');
+//
+//        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $tomorrows_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
+//        $tomorrows_events = Event::model()->findAllBySql($sql);
+//        $event_count += count($tomorrows_events);
+//
+//        $club = Group::model()->find('group_id=:group_id',array(':group_id'=>1));
+//        $data = array('success'=>true,'past_due_events'=>$past_due_events,'todays_events'=>$todays_events,'tomorrows_events'=>$tomorrows_events,'event_count'=>$event_count);
+//        //$data = array('success'=>true,'event'=>$this->get_model_associations($club,array('pictureFile')));
+//
+//
+//        //Show 7 days after tomorrow
+//
+//        $this->renderJSON($data);
+//        return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $event_count = 0;
 
         //Get events that were due yesterday
         $date = date("Y-m-d H:i:s", time());
         $datetime = new DateTime($date);
         $datetime->modify('-1 day');
-        $yesterdays_date = $datetime->format('Y-m-d');
+        $start_date= $datetime->format('Y-m-d');
+        $datetime->modify('+4 day');
+        $end_date= $datetime->format('Y-m-d');
+
+        $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id));
 
 
-        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $yesterdays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
-        $past_due_events = Event::model()->findAllBySql($sql);
-        $event_count += count($past_due_events);
-
-        //Get events that are due today
-
-        $datetime = new DateTime($date);
-        $todays_date = $datetime->format('Y-m-d');
-
-        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $todays_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
-        $todays_events = Event::model()->findAllBySql($sql);
-        $event_count += count($todays_events);
-
-
-        //Get events that are due tomorrow
-
-        $datetime = new DateTime($date);
-        $datetime->modify('+1 day');
-        $tomorrows_date = $datetime->format('Y-m-d');
-
-        $sql = "SELECT * FROM event WHERE user_id = '" . $user->user_id ."' AND end_date = '" . $tomorrows_date . "'"; // AND YEAR(`start_date`) = YEAR(curdate())
-        $tomorrows_events = Event::model()->findAllBySql($sql);
-        $event_count += count($tomorrows_events);
-
-        $club = Group::model()->find('group_id=:group_id',array(':group_id'=>1));
-        $data = array('success'=>true,'past_due_events'=>$past_due_events,'todays_events'=>$todays_events,'tomorrows_events'=>$tomorrows_events,'event_count'=>$event_count);
-        //$data = array('success'=>true,'event'=>$this->get_model_associations($club,array('pictureFile')));
-
-
-        //Show 7 days after tomorrow
+        $data = array('success'=>true,'events'=>$events);
 
         $this->renderJSON($data);
         return;
+
+
+
+
+
+
+
+
 
 
 

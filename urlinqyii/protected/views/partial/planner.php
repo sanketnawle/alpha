@@ -6,7 +6,6 @@
             origin = '<?php echo $origin_type; ?>';
             origin_id = '<?php echo $origin_id; ?>';
 
-
         </script>
 
 		<title>Home Planner</title>
@@ -51,7 +50,8 @@
                                 echo ucfirst($origin_type);
                             }
                          ?> Planner
-                        <img id="dropdown_arrow" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/dropdown_arrow.png"/>
+                         <div class="entry_field_placeholder" id="add_todo">
+                        </div>
                     </div>
                 </div>
 
@@ -59,12 +59,9 @@
 
             <div class="create_event_body">
                 <div class="entry_field" id="todo_wrap">
-                    <div class="entry_field_placeholder" id="add_todo">
-                        + Create To-do
-                        <i class="help_icon"></i>
-                    </div>
+
                     <div class="planner_creation_form">
-                        <textarea class="event_name" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
+                        <textarea class="event_title" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
                         <div class="event_time_wrap">
                             Due:
                             <input class="event_date" id="event_date" name="event_date" value="none" readonly></input>
@@ -136,7 +133,7 @@
                                     </article>
                                 </section>
                             </div>
-                            <span class="event_time">Add time</span>
+                            <span class="event_time" data-time="00:00:00">Add time</span>
                             <input class="tp1" id="tp1" value="none">
                             <div class="timepicker">
                                 <div class="timeslot1"></div>

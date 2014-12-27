@@ -66,6 +66,11 @@ class User extends CActiveRecord
 		return 'user';
 	}
 
+
+    public function full_name(){
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -215,6 +220,9 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
+
 
 	/**
 	 * Returns the static model of the specified AR class.

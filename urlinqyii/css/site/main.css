@@ -157,6 +157,7 @@ div#planner_column.planner_column_home{
 #planner_column.planner_column_home #right_column_specs #fixed_element{
     top: 131px;
 
+    height: 60%;
 }
 
 #right_column_specs{
@@ -421,7 +422,7 @@ div.tab.active div.tab_wedge {
     background-repeat: no-repeat;
     background-image: url('../../assets/main/tab_bar/tab_wedge.png');
     margin: 0px auto;
-    margin-top: -7px;
+    margin-top: -6px;
     opacity:1;
     -moz-transition: opacity .200s cubic-bezier(0.550,0.085,0.680,0.530), margin-top .200s cubic-bezier(0.550,0.085,0.680,0.530), height .200s cubic-bezier(0.550,0.085,0.680,0.530);
     -ms-transition: opacity .200s cubic-bezier(0.550,0.085,0.680,0.530), margin-top .200s cubic-bezier(0.550,0.085,0.680,0.530), height .200s cubic-bezier(0.550,0.085,0.680,0.530);
@@ -733,7 +734,7 @@ left: 20px;
 
 .small_search{
     margin-top: 4px;
-
+    display:inline-block;
 }
 
 .fade_input_small{
@@ -768,6 +769,15 @@ left: 20px;
     font-size: 13.5px;
 }
 
+.small_search em{
+    width: 16px;
+    height: 16px;
+    background-position: 0px 0px;
+    position: relative;
+    left: 28px;
+    top: 3px;
+}
+
 ul.tabnav_tabs{
     display: inline-block;
 
@@ -783,15 +793,17 @@ ul.tabnav_tabs li{
     color: #777;
 }
 
-#tab_content_holder{
-
+.tab_content_holder{
+    top:-28px;
+}
+.tab_members .tab_content_holder .tab_header, .tab_group_info .tab_content_holder .tab_header{
+    border-bottom: 1px solid #d4d4d4;
+    padding: 25px 2px 5px;
+    height: 35px;
 }
 
-.tab_members #tab_content_holder #tab_header, .tab_group_info #tab_content_holder #tab_header{
-    border-bottom: 1px solid #d4d4d4;
-
-    padding: 14px 2px 5px;
-    height: 35px;
+.tab_group_info .tab_content_holder .tab_header{
+padding-top:5px;
 }
 
 #tabnav{
@@ -865,7 +877,7 @@ ul.tabnav_tabs li.active{
     z-index: 1000;
 }
 
-.tab_members #tab_content_holder #tab_header div.header_sentence, .tab_group_info #tab_content_holder #tab_header div.header_sentence{
+.tab_members .tab_content_holder .tab_header div.header_sentence, .tab_group_info .tab_content_holder .tab_header div.header_sentence{
     font-family: Avenir;
 
     font-size: 20px;
@@ -976,14 +988,14 @@ div.content_row
 
 /* Members Card style */
 
-#members_tab_content div.members_card_wrapper{
+.members_tab_content div.members_card_wrapper{
     width: 24.6%;
 
     display: inline-block;
     margin-bottom: 22px;
 }
 
-#members_tab_content div.members_card_wrapper .members_card.admin{
+.members_tab_content div.members_card_wrapper .members_card.admin{
     
 }
 
@@ -1217,11 +1229,17 @@ input:focus:-moz-placeholder {
     top: 0;
     left: 0;
     z-index: 99999;
-    display: none;
+
 
 }
 
-div#other_views_box.active {
+
+
+.popup {
+    display: none;
+}
+
+.popup.active {
     display: block;
 }
 

@@ -187,6 +187,9 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class = "post_tag">
+                                <span>Discussion</span>
+                            </div>
                     </div>
 
                     </div>
@@ -646,6 +649,9 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class = "post_tag">
+                                <span>Question</span>
+                            </div>
                     </div>
 
                     </div>
@@ -783,7 +789,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'> File Added
+                                                <div class = 'post_time'>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{update_timestamp}}
                                                      </time>
@@ -908,6 +914,9 @@
 
                                     </span>
                                 </div>
+                            </div>
+                            <div class = "post_tag">
+                                <span>Files</span>
                             </div>
                     </div>
 

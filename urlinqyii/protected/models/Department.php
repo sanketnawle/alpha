@@ -64,11 +64,11 @@ class Department extends CActiveRecord
 			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
-			'members' => array(self::MANY_MANY, 'User', 'user(user_id,department_id)'),
-            'admins' => array(self::HAS_MANY,'User',array('school_id'=>'school_id'),'condition'=>'user_type = "p" or user_type = "f"'),
+            'students' => array(self::HAS_MANY,'User',array('department_id'=>'department_id'),'condition'=>'user_type = "s"'),
+            'admins' => array(self::HAS_MANY,'User',array('department_id'=>'department_id'),'condition'=>'user_type = "p" or user_type = "f"'),
 
 
-			'users1' => array(self::HAS_MANY, 'User', 'department_id'),
+			'users' => array(self::HAS_MANY, 'User', 'department_id'),
 		);
 	}
 
