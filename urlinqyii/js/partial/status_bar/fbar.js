@@ -470,4 +470,21 @@ $(document).ready(function() {
         }
         return false;
     }
+
+    $(document).delegate('.fbar_buttonwrapper', "click", function () {
+        var $button_section = $('#fbar_buttons');
+        var $form_section = $('form#fbar_form')
+        $button_section.addClass("faded").delay(450).queue(function(next){
+            $button_section.addClass("hide");
+            $form_section.addClass("show").delay(650).queue(function(next2){
+                $form_section.addClass("fadeIn");
+                next2();
+            });
+            next();
+
+        });
+      
+    });
+
+
 });

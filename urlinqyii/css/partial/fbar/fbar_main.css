@@ -1,12 +1,14 @@
 div#fbar_new{
     background: #fff;
-
     border-radius: 3px;
     border: 1px solid #ddd;    margin-bottom: 20px; 
     border-radius: 4px; border-top-color: #EDEDED; border-bottom-color: #CDCDCD;
     height: auto;
     word-wrap: break-word;
     min-height: 74px;
+    -moz-transition: height 450ms ease;
+    -webkit-transition: height 450ms ease;
+    transition: height 450ms ease;
 }
 
 div.#fbar_holder.fbar_homepage #fbar_new{
@@ -18,8 +20,9 @@ div.#fbar_holder div#fbar_new{
 }
 
 div#fbar_new section#fbar_buttons{
-    -webkit-transition: opacity 450ms ease; transition: opacity 450ms ease;
-
+    -moz-transition: opacity 450ms ease; 
+    -webkit-transition: opacity 450ms ease; 
+    transition: opacity 450ms ease;
     padding: 0 1px 0 7px;
     text-align: center;
     height: auto;
@@ -28,6 +31,7 @@ div#fbar_new section#fbar_buttons{
 section#fbar_buttons .fbar_buttonwrapper{
     float: left; position: relative; 
     top: 0px; left: 0; 
+    cursor: pointer;
     width: 180.5px; 
     height: 52px; 
     padding: 12px 0px 11px 0px; color: #696969; 
@@ -43,7 +47,9 @@ section#fbar_buttons .fbar_buttonwrapper:last-of-type{
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
     background-image: url(../../../assets/Fbar_icon_map.png);
-    
+    -moz-transform: scale(.87);
+    -webkit-transform: scale(.87);
+    transform: scale(.87);  
     background-size: auto;
     background-repeat: no-repeat;
     position: relative;
@@ -64,10 +70,61 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
     margin-top: 17px;
 }
 
+section#fbar_buttons .fbar_buttonwrapper:hover{
+    color:#222;
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    -ms-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: .06s;
+    -moz-transition-duration: .06s;
+    -ms-transition-duration: .06s;
+    -o-transition-duration: .06s;
+    transition-duration: .06s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;    
+}
+
+.fbar_buttonwrapper > i{
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -ms-transition-property: transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: .06s;
+    -moz-transition-duration: .06s;
+    -ms-transition-duration: .06s;
+    -o-transition-duration: .06s;
+    transition-duration: .06s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+
+section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
+    -moz-transform: scale(.9);
+    -webkit-transform: scale(.9);
+    transform: scale(.9);
+    
+}
+
+section#fbar_buttons .fbar_buttonwrapper:active > i.fbar_button_icon{
+    -moz-transform: scale(.87) translateY(0px);
+    -webkit-transform: scale(.87) translateY(0px);
+    transform: scale(.87) translateY(0px);
+}
+
 .fbar_button_icon#fbar_icon_discuss{
     width: 42px;
     
     height: 44px;
+    left: 2px;
     background-position: 0px -52px!important;
 }
 
@@ -75,6 +132,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
     width: 42px; height: 44px;
     
     background-position: 0px -10px;
+    left: 10px;
 }
 
 .fbar_button_icon#fbar_icon_question{
@@ -90,5 +148,33 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
 
 .fbar_button_icon#fbar_icon_opportunity{
     
+}
+
+form#fbar_form{
+    display:none;
+    height:auto;
+    opacity:0;
+    min-height:310px;
+    -moz-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -ms-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -o-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    -webkit-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+}
+
+.faded{
+    opacity:0!important;
+}
+
+.hide{
+    display:none!important;
+}
+
+.fadeIn{
+    opacity:1!important;
+}
+
+.show{
+    display:block!important;
 }
 

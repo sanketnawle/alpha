@@ -26,6 +26,7 @@
 <script type="text/javascript">
    
     
+    
 
 </script>
     
@@ -244,7 +245,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
 
                                 <div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a reply or upload a file' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>

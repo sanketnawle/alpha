@@ -6,7 +6,6 @@ $(document).ready(function(){
 
 
 
-
     $('.tab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');

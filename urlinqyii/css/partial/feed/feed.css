@@ -49,7 +49,7 @@ float: left;
 position: relative;
 height: 48px;
 margin-top: 1px;
-border-radius: 2px;
+border-radius: 3.2px;
 margin-left: 1px;
 background-size: cover!important;
 border: 1px solid rgba(0, 0, 0, 0.1);
@@ -323,10 +323,12 @@ color:#666;
 background-image: url(http://www.urlinq.com/beta/src/like-button-sprite.png);
 background-size: 15px 45px;
 background-position: left top;
+border: none;
 display: inline-block;
 float: left;
 margin-left:2px;
 width: 15px;
+box-shadow: none;
 margin-top: 9.5px;
 height: 15px;
 }
@@ -575,10 +577,26 @@ margin-top: 3px;
 margin-bottom: 4px;
 }
 
+div.master_comments{
+	background:#f6f6f6;
+}
+
 .comments{
 padding-right: 13px;
-
+border-bottom: 1px solid #d9d9d9;
 background: #f6f6f6;
+margin-left: 15px;
+box-shadow: 0px 1px 0px #fff inset;
+padding-top: 1px;
+}
+
+.post .master_comments > .comments:first-of-type{
+	box-shadow:none;
+	margin-top: 1px;
+}
+
+.post > div.master_comments > div.comments:last-of-type{
+	border-bottom:none;
 }
 
 .comments .post_comment{
@@ -642,17 +660,20 @@ color: #016283;
 {
 width: 530px;
 margin-top: 0px;
-padding: 7px 5px;
-border-bottom: 1px solid #DFDFDF;
+padding: 5px 5px;
 background: #f6f6f6;  
-margin-left: 10px;
 margin-right: 10px;
 height: auto;
 position: relative;
+padding-top: 10px;
+padding-left: 0px;
+margin-left: 0px;
 }
 
 .comment_main:first-of-type{
 	border-top:none!important;
+	/* box-shadow: none!important; */
+	margin-top: 0px;
 }
 
 .comment_main .comment_msg{
@@ -693,11 +714,7 @@ float: left;
 .comment_owner_container{
 background-color: #F8F8F8;
 padding: 0px;
-border-radius: 2px;
-
-
-
-
+border-radius: 3.2px;
 width: 36px;
 margin-top: 0px;
 height: 36px;

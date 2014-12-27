@@ -4,7 +4,6 @@ $(document).ready(function(){
 
     //$ = jQuery.noConflict();
     //Handlebars helpers
-     
 
     init();
     function init(){
@@ -248,7 +247,13 @@ $(document).ready(function(){
 
 
 
+    /*$("div.master_comments").each(function() {
+        var $master_comments_list = $(this);
+        var $master_comments_comment = $(this).find("div.comments");
+        $master_comments_comment.last().css({"border-bottom":"none"});
+    });*/
 
+    $("div.comments:last-of-type").css({"border-bottom":"none"});
 
 
 

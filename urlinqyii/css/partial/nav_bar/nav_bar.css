@@ -64,12 +64,11 @@ a {
 
 .nav_section {
     display: block;
-    min-width: 75px;
     height: 100%;
     float: left;
     max-width: 30%;
 
-    padding-left: 2px;
+    padding-left: 5px;
     padding-right: 7px;
 
     text-decoration: none;

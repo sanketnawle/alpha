@@ -1097,7 +1097,13 @@ div.user_main_info a.name.profile_link:active{
     color:#016283;
 }
 
-
+*, *:active, *:focus {
+outline: 0;
+outline-style: none;
+outline-width: 0;
+-moz-outline-width: 0;
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 
 /* Fading input placeholder */
 input::-webkit-input-placeholder {
@@ -1140,11 +1146,6 @@ input:focus:-moz-placeholder {
     opacity: .4;
 }
 
-::selection {
-background: rgba(34, 34, 34, 0)!important;
-text-shadow: none!important;
-text-decoration: none!important;
-}
 
 /* Media Queries */
 
