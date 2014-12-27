@@ -2,16 +2,16 @@ div.tab_group_info{
     font-family: 'Open Sans', sans-serif;
 }
 
-div.tab_group_info #tab_content_holder{
+div.tab_group_info .tab_content_holder{
     position: relative;
     top: -20px;
 }
 
-.tab_group_info #tab_content_holder #tab_header div.float_Right #small_search{
+.tab_group_info .tab_content_holder .tab_header div.float_Right #small_search{
     display: inline-block;
 }
 
-.tab_group_info #tab_content_holder #tab_header div.float_Right #small_search em{
+.tab_group_info .tab_content_holder .tab_header div.float_Right #small_search em{
     width: 16px; 
     height: 16px; 
     background-position: 0px 0px; position: relative; left: 28px;
@@ -34,6 +34,7 @@ div.group_info_tab_content div.group_box{
     border: 1px solid #E4E4E4; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
     position: relative;
+    height: 200px;
 }
 
 div.group_info_tab_content div.group_box.club_box{

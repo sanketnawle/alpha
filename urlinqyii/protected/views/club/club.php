@@ -504,17 +504,17 @@
                                         <div class = "small_search fade_input_small">
                                             <em id = "left_search_icon">
                                             </em>
-                                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input">
+                                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input">
                                         </div>                                        
                                     </div>
                                     <div class = "header_sentence">
                                         Club Members
                                     </div>
                                 </div>
-                                <div class = "members_tab_content">
+                                <div class = "members_tab_content tab_content">
 
                                     <?php foreach($club->members as $member){ ?>
-                                        <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                        <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                             <div class = "members_card admin normal_size">
                                                 <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 

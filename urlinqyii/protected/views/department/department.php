@@ -135,111 +135,40 @@
                                 <div class = "float_Right">
                                     <span class = "sort_label">Order:</span>
                                     <div class = "order_sort_dropdown">
-                                        <span>Members High to Low</span>
+                                        <span>Courses High to Low</span>
                                         <em class = "dropdown_arrow">
                                         </em>
                                     </div>
-                                    <div id = "small_search" class = "fade_input_small">
+                                    <div class = "small_search fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
-                                        <input type = "text" name = "people_search_input" placeholder = "Search courses" id = "small_search_input">
+                                        <input type = "text" name = "people_search_input" placeholder = "Search courses" class = "name_search_input small_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
                                     Courses this Semester
                                 </div>
                             </div>
-                            <div class = "group_info_tab_content">
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
+                            <div class = "group_info_tab_content tab_content">
+
+                                <?php foreach($department->courses as $course){ ?>
+                                    <div class = "group_box group_course_box" data-name="<?php echo $course->course_name; ?>">
+                                        <div class = "float_Left group_image">
+                                        </div>
+                                        <div class = "group_box_main_info">
+                                            <a class = "group_link"><?php echo $course->course_name; ?></a>
+                                            <div class = "float_Right">
+                                                <span class = "group_type">Course</span>
+                                            </div>
+                                        </div>
+                                        <div class = "group_box_secondary_info_section">
+                                            <div class= "info_line indent">4 open classes</div>
+                                            <div class= "info_line indent">Department of <a class = "department_link"><?php echo $course->department->department_name; ?></a></div>
+                                            <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
                                         </div>
                                     </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
-                                        </div>
-                                    </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
-                                        </div>
-                                    </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
-                                        </div>
-                                    </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
-                                        </div>
-                                    </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
-                                <div class = "group_box group_course_box">
-                                    <div class = "float_Left group_image">
-                                    </div>
-                                    <div class = "group_box_main_info">
-                                        <a class = "group_link">Neuroscience of Advertising</a>
-                                        <div class = "float_Right">
-                                            <span class = "group_type">Course</span>
-                                        </div>
-                                    </div>
-                                    <div class = "group_box_secondary_info_section">
-                                        <div class= "info_line indent">4 open classes</div>
-                                        <div class= "info_line indent">Department of <a class = "department_link">Neuroscience</a></div>
-                                        <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
-                                    </div>
-                                </div>
+
+                                <?php } ?>
 
 
                             </div>
@@ -256,17 +185,17 @@
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
-                                        <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input" id="department_admins_search_input">
+                                        <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input" id="department_admins_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
                                    Faculty
                                 </div>
                             </div>
-                            <div class = "members_tab_content" id="department_admins_members_tab_content">
+                            <div class = "members_tab_content tab_content" id="department_admins_members_tab_content">
 
                                 <?php foreach($department->admins as $member){ ?>
-                                    <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                    <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
                                             <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
@@ -316,16 +245,16 @@
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
-                                        <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input" id="department_students_search_input">
+                                        <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input" id="department_students_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
                                     Students
                                 </div>
                             </div>
-                            <div class = "members_tab_content" id="department_students_members_tab_content">
+                            <div class = "members_tab_content tab_content" id="department_students_members_tab_content">
                                 <?php foreach($department->students as $member){ ?>
-                                    <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
+                                    <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
                                             <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
