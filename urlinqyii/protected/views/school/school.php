@@ -133,8 +133,8 @@
 
 
                 <div class="panel tab_group_info" id="panel_2">
-                    <div id = "tab_content_holder">
-                        <div id = "tab_header"> 
+                    <div class="tab_content_holder">
+                        <div class="tab_header"> 
                             <div class = "float_Right">
                                 <span class = "sort_label">Order:</span>
                                 <div class = "order_sort_dropdown">
@@ -145,7 +145,7 @@
                                 <div id = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "people_search_input" placeholder = "Search departments" id = "small_search_input">
+                                    <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input">
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
@@ -176,8 +176,8 @@
                 </div>
 
                 <div class="panel tab_group_info" id="panel_3">
-                    <div id = "tab_content_holder">
-                        <div id = "tab_header"> 
+                    <div class="tab_content_holder">
+                        <div class="tab_header"> 
                             <div class = "float_Right">
                                 <span class = "sort_label">Order:</span>
                                 <div class = "order_sort_dropdown">
@@ -314,8 +314,8 @@
                 </div>
 
                 <div class="panel tab_members" id="panel_4">
-                    <div id = "tab_content_holder">
-                        <div id = "tab_header">
+                    <div class="tab_content_holder">
+                        <div class="tab_header">
                             <div class = "float_Right">
                                 <div class = "add_people_button">
                                     Add People

@@ -3,13 +3,13 @@ div.tab_members{
 
 }
 
-div.tab_members #tab_content_holder{
+div.tab_members .tab_content_holder{
     position: relative;
 
     top: -20px;
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button{
+.tab_members .tab_content_holder .tab_header div.float_Right .add_people_button{
     display: inline-block;
 
     background-color: #03C794; cursor: pointer !important; color: #FFF !important;         
@@ -25,29 +25,29 @@ div.tab_members #tab_content_holder{
     -webkit-box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:hover{
+.tab_members .tab_content_holder .tab_header div.float_Right .add_people_button:hover{
     background: #08D09C;
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right .add_people_button:active{
+.tab_members .tab_content_holder .tab_header div.float_Right .add_people_button:active{
 box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
 -webkit-box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
 background-color: #03C794; 
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right .small_search{
+.tab_members .tab_content_holder .tab_header div.float_Right .small_search{
     display: inline-block;
 
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right .small_search em{
+.tab_members .tab_content_holder .tab_header div.float_Right .small_search em{
     width: 16px; 
     height: 16px; 
     background-position: 0px 0px; position: relative; left: 28px;
     top: 3px;
 }
 
-#members_tab_content{
+.members_tab_content{
     padding: 25px 0 0 0;
     
     position: relative;
@@ -56,23 +56,23 @@ background-color: #03C794;
 
 
 
-div#members_tab_content div.members_card_wrapper.class_admin{
+div.members_tab_content div.members_card_wrapper.class_admin{
 width: 74.95%;
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.members_card div.members_card_img{
+div.members_tab_content div.members_card_wrapper.class_admin div.members_card div.members_card_img{
 height: 95%;
 float: left;
 width: 45%; 
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.user_main_info{
+div.members_tab_content div.members_card_wrapper.class_admin div.user_main_info{
     margin-top: 15px;
 
     font-size: 18px;
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info{
+div.members_tab_content div.members_card_wrapper.class_admin div.user_more_info{
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px 4px; font-size: 14px; font-weight: 500;
     
 }
@@ -81,12 +81,12 @@ div.user_more_info {
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.label{
+div.members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.label{
     
     font-size: 11px; color: #999;  font-family: 'Open Sans', sans-serif; font-weight: 600;
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.data,div#members_tab_content div.members_card_wrapper.class_admin div.user_more_info a.data{
+div.members_tab_content div.members_card_wrapper.class_admin div.user_more_info span.data,div.members_tab_content div.members_card_wrapper.class_admin div.user_more_info a.data{
     font-size: 15.2px;
     
     color: #575757;
@@ -104,7 +104,7 @@ div.admin_size span.title{
     right: 7px;
 }
 
-div#members_tab_content div.members_card_wrapper.class_admin div.admin_size div.user_card_button_holder{
+div.members_tab_content div.members_card_wrapper.class_admin div.admin_size div.user_card_button_holder{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -147,7 +147,7 @@ span.office_hours.in_office{
 }
 
 
-div.class_members_tab div.members_card_wrapper:nth-of-type(2){
+div#class_members_tab div.members_card_wrapper:nth-of-type(2){
     float:right;
 }
 
@@ -183,7 +183,7 @@ div.remove#done_removing_button span{
     font-weight:600;
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove, div.remove_state_controls div.remove#done_removing_button{
+.tab_members .tab_content_holder .tab_header div.float_Right div.admin_member_controls div.add_people_button.remove, div.remove_state_controls div.remove#done_removing_button{
     margin-left:4px;
     font-family: 'Open Sans', sans-serif;
     border: 1px solid #C0C0C0;
@@ -203,7 +203,7 @@ div.remove#done_removing_button span{
     font-weight: 600;    
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:hover, div.remove_state_controls div.remove#done_removing_button:hover{
+.tab_members .tab_content_holder .tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:hover, div.remove_state_controls div.remove#done_removing_button:hover{
     color: #333;
     outline: 0;
     background-color: #f9f9f9;
@@ -213,7 +213,7 @@ div.remove#done_removing_button span{
     box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;   
 }
 
-.tab_members #tab_content_holder #tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:active, div.remove_state_controls div.remove#done_removing_button:active{
+.tab_members .tab_content_holder .tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:active, div.remove_state_controls div.remove#done_removing_button:active{
     text-shadow: none;
     border-color: #B8B8B8 #969696 #7E7E7E;
     background-color: #eee;

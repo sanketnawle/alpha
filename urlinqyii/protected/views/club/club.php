@@ -128,8 +128,8 @@
 
                         <div class="panel tab_files" id="panel_2">
                             <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
-                                <div id = "tab_content_holder">
-                                    <div id = "tab_header">
+                                <div class="tab_content_holder">
+                                    <div class="tab_header">
                                         <div id = "tabnav">
                                             <div class = "tabnav_right float_Right">
                                                 <div class = "small_search fade_input_small">
@@ -495,8 +495,8 @@
                         </div>
 
                         <div class="panel tab_members" id="panel_3">
-                            <div id = "tab_content_holder">
-                                <div id = "tab_header"> 
+                            <div class="tab_content_holder">
+                                <div class="tab_header"> 
                                     <div class = "float_Right">
                                         <div class = "add_people_button">
                                             Add People
@@ -504,14 +504,14 @@
                                         <div class = "small_search fade_input_small">
                                             <em id = "left_search_icon">
                                             </em>
-                                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "small_search_input" id="people_search_input">
+                                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input">
                                         </div>                                        
                                     </div>
                                     <div class = "header_sentence">
                                         Club Members
                                     </div>
                                 </div>
-                                <div id = "members_tab_content">
+                                <div class = "members_tab_content">
 
                                     <?php foreach($club->members as $member){ ?>
                                         <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">

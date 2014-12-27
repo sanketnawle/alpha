@@ -783,11 +783,11 @@ ul.tabnav_tabs li{
     color: #777;
 }
 
-#tab_content_holder{
+.tab_content_holder{
 
 }
 
-.tab_members #tab_content_holder #tab_header, .tab_group_info #tab_content_holder #tab_header{
+.tab_members .tab_content_holder .tab_header, .tab_group_info .tab_content_holder .tab_header{
     border-bottom: 1px solid #d4d4d4;
 
     padding: 14px 2px 5px;
@@ -865,7 +865,7 @@ ul.tabnav_tabs li.active{
     z-index: 1000;
 }
 
-.tab_members #tab_content_holder #tab_header div.header_sentence, .tab_group_info #tab_content_holder #tab_header div.header_sentence{
+.tab_members .tab_content_holder .tab_header div.header_sentence, .tab_group_info .tab_content_holder .tab_header div.header_sentence{
     font-family: Avenir;
 
     font-size: 20px;
@@ -976,14 +976,14 @@ div.content_row
 
 /* Members Card style */
 
-#members_tab_content div.members_card_wrapper{
+.members_tab_content div.members_card_wrapper{
     width: 24.6%;
 
     display: inline-block;
     margin-bottom: 22px;
 }
 
-#members_tab_content div.members_card_wrapper .members_card.admin{
+.members_tab_content div.members_card_wrapper .members_card.admin{
     
 }
 

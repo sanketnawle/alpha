@@ -134,8 +134,8 @@
 
         <div class="panel tab_files" id="panel_3">
         <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
-        <div id = "tab_content_holder">
-        <div id = "tab_header">
+        <div class="tab_content_holder">
+        <div class="tab_header">
             <div id = "tabnav">
                 <div class = "tabnav_right float_Right">
                     <div id = "small_search" class = "fade_input_small">
@@ -501,8 +501,8 @@
         </div>
 
         <div class="panel tab_members" id="panel_4">
-            <div id = "tab_content_holder">
-                <div id = "tab_header">
+            <div class="tab_content_holder">
+                <div class="tab_header">
                     <div class = "float_Right">
                         <div class = "add_people_button">
                             Add People
@@ -522,15 +522,15 @@
                         <div class="fade_input_small small_search">
                             <em id = "left_search_icon">
                             </em>
-                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "small_search_input" id="people_search_input">
+                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input">
                         </div>
                     </div>
                     <div class = "header_sentence">
                         Class Members
                     </div>
                 </div>
-
-                <div id = "members_tab_content" class= "class_members_tab">
+                <!-- class_members_tab should be an id because it is a unique identifier -->
+                <div id="class_members_tab" class= "members_tab_content ">
 
                     <?php
                         $professor = $class->professor();
