@@ -522,7 +522,7 @@
                         <div class="fade_input_small small_search">
                             <em id = "left_search_icon">
                             </em>
-                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "people_search_input small_search_input">
+                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input">
                         </div>
                     </div>
                     <div class = "header_sentence">
@@ -530,13 +530,13 @@
                     </div>
                 </div>
                 <!-- class_members_tab should be an id because it is a unique identifier -->
-                <div id="class_members_tab" class= "members_tab_content ">
+                <div id="class_members_tab" class= "members_tab_content tab_content">
 
                     <?php
                         $professor = $class->professor();
                         if($professor){
                     ?>
-                        <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-user_name="<?php echo $professor->full_name(); ?>">
+                        <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-name="<?php echo $professor->full_name(); ?>">
                             <div class = "members_card normal_size admin_size" data-user_id='1'>
                                 <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $professor->pictureFile->file_url; ?>');">
 
@@ -573,7 +573,7 @@
                     <?php } ?>
 
                     <?php foreach($class->students as $member){ ?>
-                        <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-user_name="<?php echo $member->full_name(); ?>">
+                        <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->full_name(); ?>">
                             <div class = "members_card admin normal_size">
                                 <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
