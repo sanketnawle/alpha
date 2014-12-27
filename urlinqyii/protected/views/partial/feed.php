@@ -78,7 +78,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'> Posted
+                                                <div class = 'post_time'> 
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{created_time}}
                                                      </time>
@@ -447,7 +447,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'> Question Asked 
+                                                <div class = 'post_time'>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{update_timestamp}}
                                                      </time>
