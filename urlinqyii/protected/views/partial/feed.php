@@ -78,7 +78,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'> Posted
+                                                <div class = 'post_time'> <span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{created_time}}
                                                      </time>
@@ -140,7 +140,7 @@
                                                     {{else}}
                                                         <div class = 'post_like'>
                                                     {{/if}}
-                                                            <img class = 'post_like_icon'>
+                                                            <span class = 'post_like_icon'></span>
                                                             <p class = 'post_like_link'>Like</p>
                                                             <div class = 'like_number'>
                                                                 {{#if like_count}}
@@ -447,7 +447,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'> Question Asked 
+                                                <div class = 'post_time'><span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{update_timestamp}}
                                                      </time>
@@ -596,7 +596,7 @@
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                         {{/if}}
-                                                                <img class = 'post_like_icon'>
+                                                                <span class = 'post_like_icon'></span>
                                                                 <p class = 'post_like_link'>Like</p>
                                                                 <div class = 'like_number'>
                                                                     {{#if like_count}}
@@ -789,7 +789,7 @@
                                                         {{/if}}
                                                     {{/if}}
                                                 </div>
-                                                <div class = 'post_time'>
+                                                <div class = 'post_time'><span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
                                                         {{update_timestamp}}
                                                      </time>
@@ -868,7 +868,7 @@
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                         {{/if}}
-                                                                <img class = 'post_like_icon'>
+                                                                <span class = 'post_like_icon'></span>
                                                                 <p class = 'post_like_link'>Like</p>
                                                                 <div class = 'like_number'>
                                                                     {{#if like_count}}
@@ -972,7 +972,7 @@
                         <div class = 'reply_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
                         <div class = 'commentform'>
                             <div>
-                                <textarea class = 'form-control postval' placeholder = 'Add a reply or upload a file' required></textarea>
+                                <textarea class = 'form-control postval' placeholder = 'Add a comment' required></textarea>
                                 <div class = 'dragdrop_functions'>
                                     <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                     <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>

@@ -77,7 +77,7 @@
 						<h4>Classes</h4>	
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn">Join classes</a>
+						<a class = "textBtn">Join</a>
 					</div>				
 				</div>				
 			</div>
@@ -100,7 +100,7 @@
 						<h4>Clubs</h4>
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn">Join clubs</a>
+						<a class = "textBtn">Join</a>
 					</div>					
 				</div>				
 			</div>	

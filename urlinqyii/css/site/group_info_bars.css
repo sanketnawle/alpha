@@ -34,13 +34,16 @@ div.group_info_tab_content div.group_box{
     border: 1px solid #E4E4E4; box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
     position: relative;
-    height: 200px;
+    max-height: 200px;
 }
 
 div.group_info_tab_content div.group_box.club_box{
     width:48.25%;
     display:inline-block;
+    min-height: 240px;
 }
+
+.group_box.group_course_box.club_box {}
 
 div.group_info_tab_content div.group_box.club_box:nth-of-type(odd){
     margin-right:18px;

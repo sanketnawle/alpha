@@ -51,6 +51,9 @@
                             }
                          ?> Planner
                          <div class="entry_field_placeholder" id="add_todo">
+                            <div class="nav-icon">
+                              <div class="nav-icon-plus"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +64,7 @@
                 <div class="entry_field" id="todo_wrap">
 
                     <div class="planner_creation_form">
-                        <textarea class="event_title" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></textarea>
+                        <input class="event_title" id="event_name" name="event_name" placeholder="Title (e.g. Physics HW)" maxlength="100"></input>
                         <div class="event_time_wrap">
                             Due:
                             <input class="event_date" id="event_date" name="event_date" value="none" readonly></input>
@@ -133,7 +136,6 @@
                                     </article>
                                 </section>
                             </div>
-                            <span class="event_time" data-time="00:00:00">Add time</span>
                             <input class="tp1" id="tp1" value="none">
                             <div class="timepicker">
                                 <div class="timeslot1"></div>
@@ -144,10 +146,9 @@
                             </div>
                         </div>
                         <div class="event_action">
-                            <span class="cancel_form">Cancel</span>
 
                             <form id='create_todo_form' method="post" action="<?php echo Yii::app()->getBaseUrl(true); ?>/event/createTodo">
-                                <input type="submit" class="create_form" id="create_todo_button" name="create_form" value="Add this To-Do">
+                                <input type="submit" class="create_form" id="create_todo_button" name="create_form" value="Create Todo">
                             </form>
                         </div>
                     </div>
@@ -177,9 +178,9 @@
 
 
                                 {{#ifCond complete '==' 'complete'}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0" checked="checked"><label for = "event_{{event_id}}_input">
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0" checked="checked"><label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
                                 {{else}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0"><label for = "event_{{event_id}}_input">
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0"><label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
                                 {{/ifCond}}
                             </div>
                         </div>

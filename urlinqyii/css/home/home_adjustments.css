@@ -9,6 +9,8 @@ div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
 div#content_panel div#nav_bar{
 	top: 61px!important;
 	border-radius: 2px!important;
+	width: 800px;
+	margin-left: 16px;
 }
 
 div.SectionHeader_holder div.float_Right a{

@@ -133,7 +133,7 @@ div{
 }
 
 div#planner_column{
-    padding: 0 8px 0 0; 
+    padding: 0 15px 0 0; 
     float: right;
     margin-top: 0;
     word-wrap: break-word;
@@ -155,9 +155,9 @@ div#planner_column.planner_column_home{
 }
 
 #planner_column.planner_column_home #right_column_specs #fixed_element{
-    top: 131px;
+    top: 112px;
 
-    height: 60%;
+    height: 56%;
 }
 
 #right_column_specs{
@@ -168,7 +168,7 @@ div#planner_column.planner_column_home{
 #feed_column{
     width: 552px;
 
-    padding-left: 6px;
+    padding-left: 15px;
     padding-right: 10px;
     padding-bottom: 20px;
     float: left;
@@ -201,7 +201,7 @@ div#stream_holder .stream_holder_group{
 }
 
 #feed_column.feed_column_home{
-    margin-top: 84px;
+    margin-top: 65px;
 
 }
 
@@ -984,6 +984,73 @@ div.content_row
     background-position: 13px 4px;
 }
 
+
+/* FILTER WRAPPER STYLE */
+
+.filter_bar{
+    width: 100%;
+
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 12px;
+}
+
+.filter_bar div.filter_wrapper_left{
+
+    display: inline-block;
+}
+
+.filter_bar div.filter_wrapper_left > span{
+    padding-bottom: 5px;
+    
+    display: inline-block;
+}
+
+.filter_bar div.filter_wrapper_left > span h5.feed_header{
+    font-family: Avenir; font-weight: 200; font-size: 18px;
+    
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 21px;
+    color: #575757;
+    position: relative;
+    top: 3px;
+}
+
+
+.filter_bar div.filter_wrapper_right{
+    float: right;
+
+    display: inline-block;
+}
+
+.filter_bar div.filter_wrapper_right span.filters_header{
+    font-size: 12px;
+
+    color: #999;
+    font-family: Avenir;
+    margin-right: 4px;
+    position: relative; 
+    top: 1px; };
+}
+
+.filter_bar div.filter_wrapper_right span.filter_type{
+    font-size: 10.5px;
+
+    color: #fff;
+    background: rgba(18, 19, 20, 0.77);
+    border-radius: 3px;
+    margin-right: 4px;
+    padding: 2px 5px;
+    border: 1px solid #222;
+}
+
+.filter_bar div.filter_wrapper_right span.filter_type.active{
+
+}
+
+.filter_bar.filter_bar_home{
+
+}
 
 
 /* Members Card style */

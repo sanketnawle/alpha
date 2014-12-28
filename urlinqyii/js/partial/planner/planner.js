@@ -71,7 +71,13 @@ $(document).ready(function(){
     $('.weekday3').text( y[ d.getDay()+2 ] );
     $('#date3').text( ( d.getMonth() +2 )+ "/" + ( d.getDate()+2 ));
 
+    /* PLUS SIGN ANIMATION */
 
+
+    $(".entry_field_placeholder").on('click',function(){
+      $(".nav-icon-plus").toggleClass('hide-plus');
+      $(".nav-icon").toggleClass('bounce-minus');
+    });
 
 
 
@@ -590,25 +596,31 @@ function add_event(event_json){
 //For somereason these has to be outside of the .ready()
 $(document).on('click','#add_todo',function(){
     show_planner_creation_form()
+    $(this).addClass("cancel_form");
 });
 
 $(document).on('click','.cancel_form',function(){
     hide_planner_creation_form()
+    $(this).removeClass("cancel_form");
 });
 function show_planner_creation_form(){
+    $("#planner_body_holder").css({"opacity":"0"});
     $(this).css("display", "none");
-    $("#todo_wrap").css("height", "140px");
+    $("#todo_wrap").css("height", "128px");
+    $(".entry_field").css("border-bottom", "1px solid #ddd");
     $(".planner_creation_form").fadeIn(500);
-    $("textarea#event_name").focus();
+    $("input.event_title").focus();
     $("#planner_bottom_holder").hide();
 }
 
 function hide_planner_creation_form(){
+    $("#planner_body_holder").css({"opacity":"1"});
     $('.planner_creation_form').css('display', 'none');
     $(".entry_field").css("height", "0px");
+    $(".entry_field").css("border", "none");
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
-    $('.event_time').text('Add a time');
+    $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
 }
 
