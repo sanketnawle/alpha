@@ -534,14 +534,25 @@
                                                 <div class = "user_more_info">
                                                     <a class = "department_link"><?php echo $member->department->department_name; ?></a>
                                                 </div>
+
+
+
                                                 <div class = "user_card_button_holder">
-                                                    <div class = "follow_button_wrapper following_wrapper">
-                                                        <div class = "user_follow_button following">Following</div>
-                                                        <div class = "user_message_button message_active">
-                                                            <em class = "white_message_icon">
-                                                            </em>
+
+                                                    <?php if($user->is_following($member->user_id)){ ?>
+                                                        <div class = "follow_button_wrapper following_wrapper">
+                                                            <div class = "user_follow_button following">Following</div>
+                                                    <?php }else{ ?>
+                                                        <div class = "follow_button_wrapper following_wrapper">
+                                                            <div class = "user_follow_button">Follow</div>
+                                                    <?php } ?>
+                                                            <div class = "user_message_button message_active">
+                                                                <em class = "white_message_icon">
+                                                                </em>
+                                                            </div>
                                                         </div>
-                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>

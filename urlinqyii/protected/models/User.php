@@ -71,6 +71,22 @@ class User extends CActiveRecord
         return $this->firstname . ' ' . $this->lastname;
     }
 
+
+
+
+
+    public function is_following($other_user_id){
+        $this_user_id = $this->user_id;
+        $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='$this_user_id' AND `to_user_id`='$other_user_id'");
+        if($user_connection){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
