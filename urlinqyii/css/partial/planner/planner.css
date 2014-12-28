@@ -5,7 +5,7 @@
     font-family: 'Open Sans', sans-serif;
     background: #fff;
     border-radius: 4px;
-    border: 1px solid #ddd; 
+    border: 1px solid #d9d9d9; 
     overflow: hidden;
     display: block;
     box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05);
@@ -250,19 +250,14 @@ span.create_planner_message {}
 }
 
 .create_form:hover{
-    color: #333;
     outline: 0;
-    background-color: #f9f9f9;
-    border-color: #e5e5e5 #ccc #ccc;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
+    background-color: #4CB2DA;
 }
 
 .create_form:active{
-    text-shadow: none;
-    border: 1px solid rgb(200, 200, 200);
-    background-color: #eee;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
-    outline: -webkit-focus-ring-color auto 5px;
+    background-color: #2C9DCA;
+    box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
+    -webkit-box-shadow: inset 0 1px 1px rgba(32, 151, 173, 1),inset 0 -1px 1px rgba(42, 166, 221, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
 }
 
 

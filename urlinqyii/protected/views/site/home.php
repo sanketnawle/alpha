@@ -53,6 +53,19 @@
                                         <?php echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group')); ?>
                                     </div>
 
+                                    <div id = "filter_wrapper" class = "filter_bar filter_bar_home">
+                                        <div class = "filter_wrapper_left">
+                                            <span><h5 class = "feed_header">Home Feed</h5></span>
+                                        </div>
+                                        <div class = "filter_wrapper_right">
+                                            <span class = "filters_header">Filters:</span>
+                                            <span class = "filter_type active">Faculty posts</span>
+                                            <span class = "filter_type active">Student posts</span>
+                                            <span class = "filter_type active">Question</span>
+                                            <span class = "filter_type active">Notes</span>
+                                            <span class = "filter_type active">Events</span>
+                                        </div>
+                                    </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
                                         <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed')); ?>

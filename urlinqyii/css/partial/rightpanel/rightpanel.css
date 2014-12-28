@@ -1,11 +1,16 @@
 div#panel_header{
-    border-bottom: 1px solid #CBCBCB; padding-bottom: 4px; margin-left: 0px; padding-left: 8px; -moz-box-shadow: 0px -1px 0px #FFF inset, 0px 1px 0px rgba(255, 255, 255, 0.39) inset, -1px 0px 0px rgba(255, 255, 255, 0.64) inset; 
-    box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.66) inset, 0px 1px 0px rgba(255, 255, 255, 0.39) inset, 1px 0px 0px rgba(255, 255, 255, 0.65) inset; background: rgb(236, 236, 236);
+    border-bottom: 1px solid #d9d9d9;  margin-left: 0px;  
+    -moz-box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
+    box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
 
     color: #777;
-    font-size: 18px; font-family: Avenir; font-weight: 500; color: #777; -webkit-font-smoothing: antialiased;
-    padding-top: 18px;
-    padding-bottom: 6px;
+    font-size: 18px; font-family: Avenir; font-weight: 500; 
+    color: #575757; -webkit-font-smoothing: antialiased;
+    padding-top: 21px;
+    padding-bottom: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-shadow: 0 -1px rgba(255, 255, 255, 1);
 }
 
 span.right_panel_assets{
@@ -16,8 +21,8 @@ span.right_panel_assets{
 }
 
 span.activity_icon.right_panel_assets{
-    width: 24px;
-    height: 24px;  
+    width: 9px;
+    height: 20px;  
     display: inline-block;
-    top: 9px; 
+    top: 3px; 
 }
