@@ -78,7 +78,7 @@
                             <div class="tab_content">
                                 <div class="tab_img"></div>
                                 <div class="tab_text">Courses</div>
-                                <div class="tab_amount">182</div>
+                                <div class="tab_amount"><?php echo count($department->courses); ?></div>
                             </div>
                             <div class="tab_wedge"></div>
                         </div>
@@ -153,7 +153,7 @@
 
                                 <?php foreach($department->courses as $course){ ?>
                                     <div class = "group_box group_course_box" data-name="<?php echo $course->course_name; ?>">
-                                        <div class = "float_Left group_image">
+                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
                                             <a class = "group_link"><?php echo $course->course_name; ?></a>
@@ -163,8 +163,8 @@
                                         </div>
                                         <div class = "group_box_secondary_info_section">
                                             <div class= "info_line indent">4 open classes</div>
-                                            <div class= "info_line indent">Department of <a class = "department_link"><?php echo $course->department->department_name; ?></a></div>
-                                            <div class = "info_line info_about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div>
+                                            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
+                                            <div class = "info_line info_about"><?php echo $course->course_desc; ?></div>
                                         </div>
                                     </div>
 

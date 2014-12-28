@@ -28,6 +28,11 @@ div.group_info_tab_content{
     padding: 25px 9px;
 }
 
+
+div.group_box {
+    height: 200px;
+}
+
 div.group_info_tab_content div.group_box{
     background: #fff;   
     margin-bottom: 18px;
