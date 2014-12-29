@@ -264,89 +264,89 @@ $(document).ready(function(e) {
     });
 
 
-    $(window).scroll(function () {
-        ////alert($(window).scrollTop() + heightOffset >= $(document).height() - $(window).height());
-        if (load == 'yes') {
-
-            if ($(window).scrollTop() + heightOffset >= $(document).height() - $(window).height()) {
-                ////alert(heightOffset);
-                load = 'no';
-                pg = pg + 1;
-                last_time = $("#posts").children().last().attr('id');
-                var $ref = $("#posts");
-                var pullrequest = $.ajax({
-                    type: "POST",
-                    url: "oldfeed.php",
-                    cache: false,
-                    data: {last_time: last_time,
-                        pg: pg
-
-                    },
-                    datatype: "html"
-                });
-                pullrequest.done(function (html) {
-                    $ref.last().append(html);
-                    load = 'yes';
-            
-                    $(".new_fd").each(function (index) {
-
-                        $(this).removeClass("new_fd");
-                        if ($(this).find(".f_hidden_p").text().trim() != "") {
-                            $(this).find('.play').embedly({
-                                query: {
-                                    maxwidth: 500,
-                                    autoplay: true
-                                },
-                                display: function (data, elem) {
-
-//Adds the image to the a tag and then sets up the sizing.
-                                    $(elem).html('<img src="' + data.thumbnail_url + '"/>')
-                                        .width(data.thumbnail_width)
-                                        .height(data.thumbnail_height)
-                                        .find('span').css('top', data.thumbnail_height / 2 - 36)
-                                        .css('left', data.thumbnail_width / 2 - 36);
-////alert($(elem).html());
-                                    var $elhtml = $(elem).html();
-                                    $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
-
-                                    var t_title = data.title;
-                                    var t_des = data.description;
-                                    var t_url = data.url;
-////alert(data.title+" , "+data.description+", "+data.url);
-                                    var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
-
-                                    $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
-                                    $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
-
-                                    if (data.type === 'video') {
-
-                                    } else {
-                                        $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
-                                    }
-
-                                }
-                            }).on('click', function () {
-// Handles the click event and replaces the link with the video.
-                                var data = $(this).data('embedly');
-
-                                if (data.type === 'video') {
-                                    $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
-                                    return false;
-                                } else {
-                                    window.open(data.url, '_blank');
-                                }
-
-                            });
-
-                        }
-
-                    });
-
-
-                });
-            }
-        }
-    });
+//    $(window).scroll(function () {
+//        ////alert($(window).scrollTop() + heightOffset >= $(document).height() - $(window).height());
+//        if (load == 'yes') {
+//
+//            if ($(window).scrollTop() + heightOffset >= $(document).height() - $(window).height()) {
+//                ////alert(heightOffset);
+//                load = 'no';
+//                pg = pg + 1;
+//                last_time = $("#posts").children().last().attr('id');
+//                var $ref = $("#posts");
+//                var pullrequest = $.ajax({
+//                    type: "POST",
+//                    url: "oldfeed.php",
+//                    cache: false,
+//                    data: {last_time: last_time,
+//                        pg: pg
+//
+//                    },
+//                    datatype: "html"
+//                });
+//                pullrequest.done(function (html) {
+//                    $ref.last().append(html);
+//                    load = 'yes';
+//
+//                    $(".new_fd").each(function (index) {
+//
+//                        $(this).removeClass("new_fd");
+//                        if ($(this).find(".f_hidden_p").text().trim() != "") {
+//                            $(this).find('.play').embedly({
+//                                query: {
+//                                    maxwidth: 500,
+//                                    autoplay: true
+//                                },
+//                                display: function (data, elem) {
+//
+////Adds the image to the a tag and then sets up the sizing.
+//                                    $(elem).html('<img src="' + data.thumbnail_url + '"/>')
+//                                        .width(data.thumbnail_width)
+//                                        .height(data.thumbnail_height)
+//                                        .find('span').css('top', data.thumbnail_height / 2 - 36)
+//                                        .css('left', data.thumbnail_width / 2 - 36);
+//////alert($(elem).html());
+//                                    var $elhtml = $(elem).html();
+//                                    $(elem).closest(".post_lr_link_msg").find(".link-img").html($elhtml);
+//
+//                                    var t_title = data.title;
+//                                    var t_des = data.description;
+//                                    var t_url = data.url;
+//////alert(data.title+" , "+data.description+", "+data.url);
+//                                    var ctt = t_title + "<span class='link-text-website'>" + t_url + "</span>";
+//
+//                                    $(elem).closest(".post_lr_link_msg").find(".link-text-title").html(ctt);
+//                                    $(elem).closest(".post_lr_link_msg").find(".link-text-about").html(t_des);
+//
+//                                    if (data.type === 'video') {
+//
+//                                    } else {
+//                                        $(elem).closest(".post_lr_link_msg").find(".play_btn").hide();
+//                                    }
+//
+//                                }
+//                            }).on('click', function () {
+//// Handles the click event and replaces the link with the video.
+//                                var data = $(this).data('embedly');
+//
+//                                if (data.type === 'video') {
+//                                    $(this).closest(".post_lr_link_msg").find(".link-wrapper").replaceWith(data.html);
+//                                    return false;
+//                                } else {
+//                                    window.open(data.url, '_blank');
+//                                }
+//
+//                            });
+//
+//                        }
+//
+//                    });
+//
+//
+//                });
+//            }
+//        }
+//    });
 
 
 

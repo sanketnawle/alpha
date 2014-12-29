@@ -108,7 +108,7 @@ class FeedController extends Controller
             $data = array('user_id'=>$user->user_id,'user_name'=>$user->firstname." ".$user->lastname, 'picture_file_id'=>$user->picture_file_id);
         }
         else {
-            $data = $this->get_model_associations($user, array('department' => array('pictureFile', 'coverFile'),
+            $data = $this->get_model_associations($user, array('pictureFile'=>array(),'department' => array('pictureFile', 'coverFile'),
                 'school' => array('pictureFile', 'coverFile', 'university')));
         }
         return $data;
@@ -260,6 +260,7 @@ class FeedController extends Controller
             if($post['origin_type']=="user"){
                 $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
                 $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
+
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));

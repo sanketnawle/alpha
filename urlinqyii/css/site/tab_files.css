@@ -1,19 +1,39 @@
 #class_upload_dropzone {
-    height: 200px;
+
 }
 
 
 
 
-#files_tab_sprites{
-	background-image: url(../../assets/FilesTab_iconmap.png);
-    background-repeat: no-repeat;
+
+
+
+.dz-error-mark{
+    display: none;
+}
+
+.dz-success-mark{
+    display: none;
+}
+
+
+.dz-size {
+    display: none;
+}
+
+.dz-preview {
+    width: 25%;
     display: inline-block;
-    background-size: auto;
-    vertical-align: middle;
+    float: left;
+    margin-top: 50px;
 }
 
-em#files_tab_sprites.search_icon{
+.dz-default {
+    height: auto;
+}
+
+
+em.files_tab_sprites.search_icon{
     width: 16px;
 
     height: 16px;
@@ -40,11 +60,11 @@ li.class_files.active{
 
 }
 
-#upload_text_button em#files_tab_sprites{
+#upload_text_button em.files_tab_sprites{
 
 }
 
-#upload_text_button em#files_tab_sprites.upload_icon{
+#upload_text_button em.files_tab_sprites.upload_icon{
     background-position: 0px -25px;
 	
     height: 20px;
@@ -223,7 +243,8 @@ ol.files_list li.file div.filename_col{
 
 ol.files_list li.file div.filename_col div.upload_sprite{
     width: 32px;
-	
+
+	background-repeat: no-repeat;
     height: 32px;
     margin-top: -4px;
     margin-right: 14px;
@@ -236,22 +257,46 @@ ol.files_list li.file div.filename_col div.upload_sprite{
 }
 
 ol.files_list li.file div.filename_col div.upload_sprite.doc{
-    background-position: 0px -147px;
-	
+
+	background-image: url('../../assets/file_icons/file_type_doc.png');
+    background-size: auto;
     margin-left: 5px;
 }
 
-ol.files_list li.file div.filename_col div.upload_sprite.excel{
-    background-position: 0px -234px;
-	
+ol.files_list li.file div.filename_col div.upload_sprite.docx{
+    background-image: url('../../assets/file_icons/file_type_doc.png');
+    background-size: auto;
     margin-left: 5px;
 }
+
+
+
+ol.files_list li.file div.filename_col div.upload_sprite.xlsx{
+    background-image: url('../../assets/file_icons/file_type_xls.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+ol.files_list li.file div.filename_col div.upload_sprite.xls{
+    background-image: url('../../assets/file_icons/file_type_xls.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
+
 
 ol.files_list li.file div.filename_col div.upload_sprite.ppt{
-    background-position: 0px -191px;
-	
+    background-image: url('../../assets/file_icons/file_type_ppt.png');
+    background-size: auto;
     margin-left: 5px;
 }
+
+
+ol.files_list li.file div.filename_col div.upload_sprite.pptx{
+    background-image: url('../../assets/file_icons/file_type_ppt.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
 
 ol.files_list li.file div.filename_col div.upload_sprite.pdf{
     background-position: 0px -105px;
@@ -312,6 +357,9 @@ ol.files_list li.file div.date{
 ol.files_list li.file div.date span.relevant_date{
 	
 }
+
+
+
 
 ol.files_list li.file div.views{
 	
@@ -383,13 +431,21 @@ ol.files_list li.file div.views a.extra_padding{
     margin: 0 auto;
 
     width: 700px;
-    height: 240px;
+    height: auto;
+    min-height: 240px;
     background: #f8f8f8;
     position: relative;
     margin-top: 35px;
     border-radius: 4px;
     border: 1px solid #ddd;
     box-shadow: 1px 0 0px rgba(255, 255, 255, 0.75) inset, -1px 0 0px rgba(255, 255, 255, 0.75) inset, 0 1px 0px rgba(255, 255, 255, 0.75) inset, 0 -1px 0px rgba(255, 255, 255, 0.75) inset;
+
+    display: block;
+}
+
+img{
+    width: 40px;
+    height: 40px;
 }
 
 .files_upload_bigbox div.bigbox_bigmessage{
@@ -424,10 +480,11 @@ ol.files_list li.file div.views a.extra_padding{
 
 .dz-default{
 	position: absolute;
+
 	top: -7px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
+
+
+    height: auto;
 }
 
 .dz-default span{
@@ -438,4 +495,25 @@ ol.files_list li.file div.views a.extra_padding{
 	span.drag_hint{
 		display:none;
 	}
+}
+
+
+
+.files_tab_sprites{
+    background-image: url(../../assets/FilesTab_iconmap.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: auto;
+    vertical-align: middle;
+    float: left;
+}
+
+
+
+.filename {
+    width: 50px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

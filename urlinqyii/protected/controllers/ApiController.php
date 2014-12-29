@@ -42,7 +42,39 @@ class ApiController extends Controller
 
     }
 
+    //checks nyu email and checks if user already exists
 
+    public function actionValidateAccount(){
+        if(!isset($_GET['email']) || !isset($_GET['password'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $email = $_GET['email'];
+
+
+        if(strpos($email,'nyu.edu') < 0){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'NOT A VALID EMAIL');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user = User::model()->findBySql("SELECT * FROM `user` WHERE user_email='$email'");
+
+        if($user){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User alreadty exists');
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
 
 
 
@@ -50,8 +82,7 @@ class ApiController extends Controller
     //Error ids
     // 1 - all data required is not set
     // 2 - error saving user to database
-    public function actionSignup()
-    {
+    public function actionSignup() {
 
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['user_type'])
           || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
@@ -109,16 +140,26 @@ class ApiController extends Controller
             $user->picture_file_id = $picture_file_id;
             $user->save(false);
 
-            include "password_encryption.php";
-            $salt = salt();
-            $hashed_password = hash_password($password,$salt);
+            if($user){
+                include "password_encryption.php";
+                $salt = salt();
+                $hashed_password = hash_password($password,$salt);
 
-            $user_login = new UserLogin;
-            $user_login->user_id = $user->user_id;
-            $user_login->password = $hashed_password;
-            $user_login->salt = $salt;
-            $user_login->save(false);
-
+                $user_login = new UserLogin;
+                $user_login->user_id = $user->user_id;
+                $user_login->password = $hashed_password;
+                $user_login->salt = $salt;
+                $user_login->save(false);
+                if(!$user_login){
+                    $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'error saving user login to db');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving user to database');
+                $this->renderJSON($data);
+                return;
+            }
         } catch (Exception $e) {
             $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
             $this->renderJSON($data);
