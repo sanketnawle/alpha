@@ -8,34 +8,81 @@
             <div class="dbody">
                 <div class="row1 row">
                     <input type="text" class="etitle" placeholder="Event Title">
-                    <div class="ecat">
-                        <div class="cat ptd"></div>
-                        <div class="wedge"></div>
-                        <ul class="cats">
-                            <li><div class="cat ptd"></div><div class="des">Personal To-Do</div></li>
-                            <li><div class="cat pev"></div><div class="des">Personal Event</div></li>
-                            <li><div class="cat cle"></div><div class="des">Class Events/To-Do's</div></li>
-                            <li><div class="cat cbe"></div><div class="des">Club Meetings/Event</div></li>
-                            <li><div class="cat lbe"></div><div class="des">Lab Meetings</div></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row2 row">
-                    <div class="allday">
-                        <div class="check" ng-uc-check></div>
-                        <label>All Day Event</label>
-                    </div>
                     <div class="from-ts ts">
                         <input type="text" class="date">
                         <input type="time" class="time">
-                        <div class="label">Start Date/Time</div>
+                        <div class="label">Start</div>
                     </div>
                     <div class="sep-to" ng-uc-check></div>
                     <div class="to-ts ts">
                         <input type="text" class="date">
                         <input type="time" class="time">
-                        <div class="label">End Date/Time</div>
+                        <div class="label">End</div>
                     </div>
+                    <div class="allday">
+                        <div class="check" ng-uc-check></div>
+                        <label>All Day</label>
+                    </div>
+                    <div class="todo">
+                        <div class="check" ng-uc-check></div>
+                        <label>Todo</label>
+                    </div>
+
+                </div>
+                <div class="row2 row">
+                    <div class = "creator_sub_row">
+                        <div class = "list_container group_list_container">
+                            <div class = "list_header">
+                                Select a class or group
+                            </div>
+                            <div class = "scroll_list">
+                                <div class = "group_bar active">
+                                    <span class = "group_name">Chemistry</span>
+                                    <span class = "white_checkmark"></span>
+                                </div>
+                                <div class = "group_bar">
+                                    <span class = "group_name">Chemistry</span>
+                                    <span class = "white_checkmark"></span>
+                                </div>
+                                <div class = "group_bar">
+                                    <span class = "group_name">Chemistry</span>
+                                    <span class = "white_checkmark"></span>
+                                </div>
+                                <div class = "group_bar">
+                                    <span class = "group_name">Chemistry</span>
+                                    <span class = "white_checkmark"></span>
+                                </div>
+                                <div class = "group_bar">
+                                    <span class = "group_name">Chemistry</span>
+                                    <span class = "white_checkmark"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "list_container category_list_container">
+                            <div class = "list_header">
+                                <span class = "category_icon"></span>Add Category
+                            </div>
+                            <div class = "scroll_list">
+                                <div class = "cat_bar active">
+                                    <span class = "group_name">Homework</span><span class = "dark_checkmark"></span>
+                                </div>
+                                <div class = "cat_bar">
+                                    <span class = "group_name">Project</span><span class = "dark_checkmark"></span>
+                                </div>
+                                <div class = "cat_bar">
+                                    <span class = "group_name">Meeting</span><span class = "dark_checkmark"></span>
+                                </div>
+                                <div class = "cat_bar">
+                                    <span class = "group_name">Exam</span><span class = "dark_checkmark"></span>
+                                </div>
+                                <div class = "cat_bar">
+                                    <span class = "group_name">Lab/Research</span><span class = "dark_checkmark"></span>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+
                 </div>
                 <div class="row3 row">
                     <div class="loc">

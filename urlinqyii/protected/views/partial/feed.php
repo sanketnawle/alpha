@@ -9,8 +9,12 @@
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/ness.js"> </script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/embedly.js"> </script>
-
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js"> </script>
+    <script>
+        moment().format();
+    </script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
+    
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
     
 
@@ -80,7 +84,7 @@
                                                 </div>
                                                 <div class = 'post_time'> <span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'> 
-                                                        {{created_time}}
+                                                        {{update_timestamp}}
                                                      </time>
                                                 </div>
                                                     <div class = 'post_msg post_lr_link_msg'>
@@ -199,7 +203,7 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
+                                    <div class = 'comment_owner_container'>
                                         <div class = 'comment_user_icon'></div>
                                         </div>
                                         <span class = 'comment_owner'>
@@ -299,7 +303,7 @@
                                                 {{#if anon}}
                                                     Anonymous
                                                 {{else}}
-                                                    {{user_name}}
+                                                    {{user_info.firstname}} {{user_info.lastname}}
                                                 {{/if}}
                                             </span>
                                             <div class = 'comment_time'>
@@ -338,7 +342,7 @@
                                                 {{#if anon}}
                                                     Anonymous
                                                 {{else}}
-                                                    {{user_name}}
+                                                    {{user_info.firstname}} {{user_info.lastname}}
                                                 {{/if}}
                                             </span>
                         <div class = 'comment_time'>
@@ -373,7 +377,7 @@
                                                 {{#if anon}}
                                                     Anonymous
                                                 {{else}}
-                                                    {{user_name}}
+                                                    {{user_info.firstname}} {{user_info.lastname}}
                                                 {{/if}}
                                             </span>
                                             <div class = 'comment_time'>
@@ -433,7 +437,7 @@
                                                                     Anonymous
                                                                 {{/if}}
                                                             {{else}}
-                                                                {{user_name}}
+                                                                {{user_info.firstname}} {{user_info.lastname}}
                                                             {{/if}}
                                                         {{else}}
                                                             Invalid User 
@@ -458,7 +462,7 @@
                                                     <span class = 'experts_icon'></span>
                                                         <a href='http://www.urlinq.com/beta/profile.php?user_id={{user_id}}'>
                                                     <span class = 'experts_name'>
-                                                        {{username}}
+                                                        {{user_info.firstname}} {{user_info.lastname}}
                                                     </span></a>
                                                     {{/each}}
                                                 {{/if}}
@@ -592,13 +596,16 @@
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
 
-                                                        {{#if like_status}}
+                                                        {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
+                                                                <span class = 'post_liked_icon'></span>
+                                                                <p class = 'post_like_link'>Unlike</p>
                                                         {{else}}
                                                             <div class = 'post_like'>
-                                                        {{/if}}
                                                                 <span class = 'post_like_icon'></span>
                                                                 <p class = 'post_like_link'>Like</p>
+                                                        {{/ifCond}}
+                    
                                                                 <div class = 'like_number'>
                                                                     {{#if like_count}}
                                                                     {{like_count}}
@@ -669,7 +676,7 @@
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
-                                                {{user_name}}
+                                                {{user_info.firstname}} {{user_info.lastname}}
                                             {{/if}}
                                         </span>
                                          <div class = 'comment_time'>
@@ -796,9 +803,9 @@
                                                         {{update_timestamp}}
                                                      </time>
                                                 </div>
-                        <div class = 'post_msg post_file_msg'>
-                            <span class='msg_span seemore_anchor'>
-                                    <div class = 'file-wrapper'>
+                                                <div class = 'post_msg post_file_msg'>
+                                                    <span class='msg_span seemore_anchor'>
+                                                            <div class = 'file-wrapper'>
                                                     <div class = 'file-container'>
                                                         <div class = 'file-pic-wrap'>
                                                             <div class = 'file-img file-img-type-doc'>

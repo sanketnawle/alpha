@@ -360,8 +360,7 @@ color: white;
 color:#666;
 }
 
-
-.post_lc .post_like .post_like_icon{
+.post_like_icon{
 background-image: url(../../../assets/small_icons.png);
 background-size: auto;
 background-position: 0px -220px;
@@ -521,7 +520,6 @@ display: inline-block;
 float: right;
 margin-top: 13px;
 margin-right: 85px;
-display: none;
 }
 
 .post_functions .post_functions_showr{
