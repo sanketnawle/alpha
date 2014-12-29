@@ -1,16 +1,14 @@
 div#panel_header{
-    border-bottom: 1px solid #d9d9d9;  margin-left: 0px;  
-    -moz-box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
-    box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
+    border-bottom: 1px solid #d9d9d9;  margin-left: 0px;    
 
-    color: #777;
-    font-size: 18px; font-family: Avenir; font-weight: 500; 
-    color: #575757; -webkit-font-smoothing: antialiased;
-    padding-top: 21px;
-    padding-bottom: 4px;
+    font-size: 18px; font-family: Avenir; font-weight: 500;  
+    padding-top: 22px;
+    padding-bottom: 6px;
     margin-left: 10px;
     margin-right: 10px;
     text-shadow: 0 -1px rgba(255, 255, 255, 1);
+    font-family: Avenir; font-weight: 500; font-size: 14.5px; color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
 }
 
 span.right_panel_assets{

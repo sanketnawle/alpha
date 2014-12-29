@@ -50,10 +50,11 @@ a {
     width: 19px;
     height: 43px;
     float:left;
+    left: 4px;
     z-index: 10;
-    top: -1px;
+    top: 8px;
     position: relative;
-    background-size: 102%;
+    background-size: 67%;
 
 }
 

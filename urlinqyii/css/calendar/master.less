@@ -115,7 +115,7 @@ html, body {
                             background-color: #f0f0f0;
                             overflow: hidden;
                             font-weight: 500;
-                            border: 1px solid #ddd;
+                            width:82px;
                             text-align: center;
                             .transition(all .1s ease);
                             .font-avenir();
@@ -128,6 +128,7 @@ html, body {
                             &:first-child {
                                 &, a {
                                     border-radius: @border-radius 0 0 @border-radius;
+                                    border-right:none;
                                 }
                             }
 
@@ -136,6 +137,7 @@ html, body {
 
                                 &, a {
                                     border-radius: 0 @border-radius @border-radius 0;
+                                    border-left:none;
                                 }
                             }
 
@@ -144,6 +146,8 @@ html, body {
                                 padding: 5px 19px 4px;
                                 text-transform: capitalize;
                                 height: @hundred-percent;
+                                color:#777;
+                                border:1px solid #ddd;
 
                                 &:hover {
                                     background-color: #eaeaea;
@@ -155,6 +159,7 @@ html, body {
                                     border-top-color: #575757;
                                     border-bottom-color: #575757;
                                     box-shadow: 1px 0px 1px rgb(37, 37, 37), 0px 1px 1px rgba(255, 255, 255, 0.23) inset;
+                                    border: 1px solid #222;
                                 }
                             }
                         }
@@ -175,8 +180,8 @@ html, body {
         }
 
         .year {
-            font-weight: 100;
-            color: lighten(#000, 50%);
+            font-weight: 500;
+            color: #575757;
         }
 
         &.semester {
