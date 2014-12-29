@@ -1,3 +1,10 @@
+#class_upload_dropzone {
+    height: 200px;
+}
+
+
+
+
 #files_tab_sprites{
 	background-image: url(../../assets/FilesTab_iconmap.png);
     background-repeat: no-repeat;
@@ -367,7 +374,12 @@ ol.files_list li.file div.views a.extra_padding{
     margin: 0;            
 }
 
-div.files_upload_bigbox{
+
+.upload_files_submit {
+    margin-top: -30px;
+}
+
+.files_upload_bigbox{
     margin: 0 auto;
 
     width: 700px;
@@ -380,7 +392,7 @@ div.files_upload_bigbox{
     box-shadow: 1px 0 0px rgba(255, 255, 255, 0.75) inset, -1px 0 0px rgba(255, 255, 255, 0.75) inset, 0 1px 0px rgba(255, 255, 255, 0.75) inset, 0 -1px 0px rgba(255, 255, 255, 0.75) inset;
 }
 
-div.files_upload_bigbox div.bigbox_bigmessage{
+.files_upload_bigbox div.bigbox_bigmessage{
     background-image: url(../../assets/drop_files_normal.png);	
     width: 388px;
     height: 77px;
@@ -394,19 +406,19 @@ div.files_upload_bigbox div.bigbox_bigmessage{
     margin-left: -194px;
 }
 
-div.files_upload_bigbox:hover{
+.files_upload_bigbox:hover{
 	background:#eee;
 }
 
-div.files_upload_bigbox:active{
+.files_upload_bigbox:active{
 	background:#e5e5e5;
 }
 
-div.files_upload_bigbox:hover div.bigbox_bigmessage{
+.files_upload_bigbox:hover div.bigbox_bigmessage{
 	background-image: url(../../assets/drop_files_hover.png);
 }
 
-div.files_upload_bigbox:active div.bigbox_bigmessage{
+.files_upload_bigbox:active div.bigbox_bigmessage{
 	background-image: url(../../assets/drop_files_active.png);
 }
 

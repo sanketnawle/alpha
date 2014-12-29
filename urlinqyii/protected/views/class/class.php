@@ -492,10 +492,45 @@
 
             </ol>
         </div>
-        <div class = "files_upload_bigbox">
-            <div class = "bigbox_bigmessage">
+
+
+<!--        <form id="my-awesome-dropzone" class="dropzone" action="--><?php //echo Yii::app()->getBaseUrl(true);?><!--/class/uploadFile">-->
+<!--            <div class="dropzone-previews"></div>-->
+<!---->
+<!--            <button type="submit">Submit data and files!</button>-->
+<!--        </form>-->
+
+<!--        <div class = "materials_upload_div files_upload_bigbox">-->
+<!--            <div class = "bigbox_bigmessage">-->
+<!--            </div>-->
+<!---->
+<!---->
+<!--        </div>-->
+
+<!--            id="class_upload_dropzone"   -->
+
+
+<!--            <form id="my-awesome-dropzone"  class="dropzone files_upload_bigbox"  action="--><?php //echo Yii::app()->getBaseUrl(true);?><!--/class/fileUpload">-->
+<!--                <button type="submit">Submit data and files!</button>-->
+<!---->
+<!--                <div class="dropzone-previews"></div> <!-- this is were the previews should be shown. -->
+<!---->
+<!---->
+<!---->
+<!--            </form>-->
+
+
+        <form action="<?php echo Yii::app()->getBaseUrl(true);?>/class/fileUpload" class="dropzone dz-clickable files_upload_bigbox" id="demo-upload">
+            <div class="bigbox_bigmessage">
             </div>
-        </div>
+
+            <button class="upload_files_submit" type="submit">Submit data and files!</button>
+        </form>
+
+
+
+
+
         </div>
         <!--</form>-->
         </div>

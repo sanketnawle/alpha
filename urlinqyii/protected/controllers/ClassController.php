@@ -201,7 +201,9 @@ class ClassController extends Controller
 	}
 
 
+    public function actionFileUpload(){
 
+    }
 
     public function actionJoin(){
         if(!isset($_GET['id'])){
