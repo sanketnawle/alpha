@@ -82,7 +82,7 @@ $(document).ready(function(e) {
             ta.attr("focused", "yes");
 
             ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
-
+            ta.parents(".postcomment").find(".pre_expand_comment_fx").hide();
             ta.parents(".postcomment").find(".comment_owner_container").show();
             ta.closest(".postcomment").find(".reply_user_icon").hide();
             ta.closest(".commentform").find(".dragdrop_functions").show();
@@ -93,6 +93,7 @@ $(document).ready(function(e) {
 
     $(document).on("keyup",".form-control", function (e) {
         e = e || event;
+        
         if(e.keyCode == 13 && !e.shiftKey) {
             $(this).closest(".commentform").find(".reply_button").click();
             e.preventDefault();
@@ -202,6 +203,7 @@ $(document).ready(function(e) {
 
             ta.parents(".postcomment").find(".comment_owner_container").hide();
             ta.closest(".postcomment").find(".reply_user_icon").show();
+            ta.parents(".postcomment").find(".pre_expand_comment_fx").show();
             ta.closest(".commentform").find(".dragdrop_functions").hide();
             ta.closest(".commentform").find(".reply_functions").hide();
             ta.closest(".posts").find(".feed_upload_textprompt").hide();
@@ -221,7 +223,7 @@ $(document).ready(function(e) {
     $(document).delegate(".flat7b", "click", function (event) {
 
         if (!$(this).hasClass("flat_checked")) {
-            $(this).css({"border": "1px solid #00A076", "background-color": "#02e2a7"});
+            $(this).css({"border": "1px solid #333", "background-color": "#575757"});
             $(this).closest(".check_wrap").find(".move").css({"margin-left": "19px"});
             $(this).addClass("flat_checked");
             $(this).closest(".check_wrap").find(".comment_anon_text").css("color", "rgba(33,33,33,.85)");

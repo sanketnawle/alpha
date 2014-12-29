@@ -248,6 +248,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
 
                                 <div>
+                                    <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
                                     <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
@@ -708,6 +709,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
 
                                 <div>
+                                    <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
                                     <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
@@ -972,6 +974,7 @@
                         <div class = 'reply_user_icon'></div>
                         <div class = 'commentform'>
                             <div>
+                                <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
                                 <textarea class = 'form-control postval' placeholder = 'Add a comment...' required></textarea>
                                 <div class = 'dragdrop_functions'>
                                     <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>

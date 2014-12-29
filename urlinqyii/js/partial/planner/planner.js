@@ -596,11 +596,15 @@ function add_event(event_json){
 //For somereason these has to be outside of the .ready()
 $(document).on('click','#add_todo',function(){
     show_planner_creation_form()
+    $(this).find("#add_todo_text").text("Discard");
+    $(".entry_field_placeholder").css({"width":"62.5px"});
     $(this).addClass("cancel_form");
 });
 
 $(document).on('click','.cancel_form',function(){
     hide_planner_creation_form()
+    $(this).find("#add_todo_text").text("Add Todo");
+    $(".entry_field_placeholder").css({"width":"75px"});
     $(this).removeClass("cancel_form");
 });
 function show_planner_creation_form(){

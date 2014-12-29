@@ -318,7 +318,12 @@ div.tab div.tab_content{
 }
 
 
-
+.small_icon_map{
+    background-image: url('../../assets/small_icons.png');
+    background-size:auto;
+    background-repeat:no-repeat;
+    display:inline-block;
+}
 
 
 div.tab.feed div.tab_img{
@@ -1276,6 +1281,11 @@ input:focus:-moz-placeholder {
     #topbar_responsive_holder{
     
     }
+
+    #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
+        top:114px;
+    }
+
     #content_panel.content_panel_home {
     width: 830px!important;
     overflow-x: hidden!important;

@@ -20,7 +20,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>Profile</h4>
+						<h4>My Profile</h4>
 					</div>
 					<div class = "float_Right">
 						<div class = "LeftPanel_menuicon LeftPanel_icons"></div>
@@ -74,7 +74,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>Classes</h4>	
+						<h4>My Classes</h4>	
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn">Join</a>
@@ -97,7 +97,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>Clubs</h4>
+						<h4>My Clubs</h4>
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn">Join</a>

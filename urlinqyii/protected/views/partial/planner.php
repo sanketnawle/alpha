@@ -8,7 +8,6 @@
 
         </script>
 
-		<title>Home Planner</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/planner.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/planner/datepicker.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
@@ -45,12 +44,13 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type == 'home'){
-                                echo '';
+                                echo 'WEEK';
                             }else{
                                 echo ucfirst($origin_type);
                             }
                          ?> Planner
                          <div class="entry_field_placeholder" id="add_todo">
+                            <span id = "add_todo_text">Add Todo</span>
                             <div class="nav-icon">
                               <div class="nav-icon-plus"></div>
                             </div>
@@ -192,7 +192,8 @@
 
 
                     <div class='planner_event_header' id='past_due_events_header' style="display: none;">
-                        <div class="planner_event_header_label">Past Due</div>
+                        <div class="planner_event_header_label"><em class = "pl_red_circle small_icon_map"></em> Past Due</div>
+
                     </div>
 
 
@@ -204,7 +205,7 @@
 
 
                     <div class='planner_event_header' id='todays_events_header' style="display: none;">
-                        <div class="planner_event_header_label">Today</div>
+                        <div class="planner_event_header_label"><em class = "pl_blue_circle"></em> Today</div>
                         <div class="planner_event_header_date" id="todays_date"></div>
                     </div>
 

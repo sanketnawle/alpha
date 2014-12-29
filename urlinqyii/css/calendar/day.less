@@ -1,21 +1,30 @@
 ﻿@import "import/common.less";
 
 .body {
-    @ad-width: 250px;
+    @ad-width: 270px;
 
     .day-view {
         .ad-scroll-view {
             .absolute(0,0,0);
             position: absolute !important;
-            border-left: 1px solid @border-color;
+            border-left: 1px solid #d9d9d9;
             width: @ad-width !important;
             height: auto !important;
+            box-shadow:1px 0px #fff inset;
 
             .ad-grid {
-                .absolute(0,0,0);
+                .absolute(0,15px,0,0);
                 height: auto !important;
+                background-color:#fff;
                 font-size: @ideal-font-size;
+                .ads_header{
+                    h5{
+
+                    }
+                }
             }
+
+
         }
 
         .scroll-view {

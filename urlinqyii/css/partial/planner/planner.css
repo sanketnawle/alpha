@@ -68,14 +68,49 @@
 
 .entry_field_placeholder{
     position: relative;
-    width: 24px;
+    width: 75px;
     float: right;
-    font-size:14px;
+    font-size: 11px;
 
+    font-weight: 7000;
     height: 24px;
-    top:0px;
+    text-transform: capitalize;
+    top: -8px;
     cursor: pointer;
+    padding-top: 8px;
     left: 7px;
+}
+
+.entry_field_placeholder span{
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased; 
+    position: relative;
+    -moz-osx-font-smoothing: grayscale;
+    top: 3px;
+}
+
+.entry_field_placeholder:hover span{
+    
+}
+
+em.pl_red_circle{
+width: 12px;
+height: 12px;
+background-position: 0px -14px;
+top: 2px;
+position: relative;
+right:1px;
+}
+
+em.pl_blue_circle{
+    width: 6px;
+    height: 6px;
+    border-radius:1000px;
+    background:#029acf;
+    display:inline-block;
+    position:relative;
+    top: -1px;
+    right: 2px;
 }
 
 .entry_field_placeholder:hover{
@@ -359,18 +394,19 @@ input.event_title{
   background:#575757;
   position:fixed;
   right: 11px; 
-  top: 24px;
-  width: 12px; 
+  top: 23px;
+  width: 10px; 
   height: 2px;
   cursor:pointer;cursor:hand;
 } 
 .nav-icon .nav-icon-plus{
     background:#575757;
     width: 2px; 
-    height: 12px;
+    height: 10px;
     position:relative;
-    left: 5px; 
-    bottom: 5px;
+    left: 4px; 
+    cursor: pointer;
+    bottom: 4px;
 
 }
 
@@ -653,12 +689,12 @@ margin-left: 7px;
 /* Set the background colors for the different types of events */
 
 #past_events div.event{
-    background-color: #fceff2;
+    background-color: #fff;
 }
 
 
 #todays_events div.event{
-    background-color: #fffbf0;
+    background-color: transparent;
 }
 
 #tomorrows_events div.event{
