@@ -151,7 +151,7 @@
                                                         </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                                Reply
+                                                            <span class = "reply_icon"></span><span>Reply</span>
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
@@ -248,7 +248,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
 
                                 <div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -264,7 +264,7 @@
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
                                     <a class='reply_button'>
-                                        Add this reply
+                                        Add Comment
                                     </a>
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
                                     <a class = 'reply_button'>
-                                        Add this reply
+                                        Add this Comment
                                     </a>
                             </form>
                         </div>
@@ -607,7 +607,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                                Reply
+                                                            <span class = "reply_icon"></span><span>Reply</span>
                                                         </div>
                                                         
                                                         <div class = 'show_analytics_btn'>
@@ -708,7 +708,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
 
                                 <div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a reply or upload a file' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -724,7 +724,7 @@
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
                                     <a class='reply_button'>
-                                        Add this reply
+                                        Add Comment
                                     </a>
                                 </div>
                         </div>
@@ -737,7 +737,7 @@
                                 <span class = 'comment_anon_text'>Post Anonymously</span>
                             </div>
                             <a class = 'reply_button'>
-                                Add this reply
+                                Add Comment
                             </a>
                         </form>
                     </div>
@@ -879,7 +879,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                                Reply
+                                                            <span class = "reply_icon"></span><span>Reply</span>
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
@@ -966,13 +966,13 @@
                           
                     <div class = 'postcomment'>
                         <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
-                            <div class = 'comment_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
+                            <div class = 'comment_user_icon'></div>
                         </div>
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
-                        <div class = 'reply_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
+                        <div class = 'reply_user_icon'></div>
                         <div class = 'commentform'>
                             <div>
-                                <textarea class = 'form-control postval' placeholder = 'Add a comment' required></textarea>
+                                <textarea class = 'form-control postval' placeholder = 'Add a comment...' required></textarea>
                                 <div class = 'dragdrop_functions'>
                                     <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                     <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -988,7 +988,7 @@
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
                                 <a class = 'reply_button'>
-                                    Add this reply
+                                    Add Comment
                                 </a>
                             </div>
                         </div>
@@ -1001,7 +1001,7 @@
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
                                 <a class = 'reply_button'>
-                                    Add this reply
+                                    Add Comment
                                 </a>
                         </div>
                     </div>

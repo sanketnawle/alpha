@@ -7,10 +7,10 @@ div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
 }
 
 div#content_panel div#nav_bar{
-	top: 61px!important;
+	top: 63px!important;
 	border-radius: 2px!important;
-	width: 800px;
-	margin-left: 16px;
+	width: 554px;
+	margin-left: 14px;
 }
 
 div.SectionHeader_holder div.float_Right a{
@@ -30,11 +30,11 @@ div#nav_bar{
 }
 
 div#nav_bar:hover {
-background-color: rgba(50, 51, 52, 1)!important;
+background-color: #393d41!important;
 }
 
 div#nav_drop_down_container{
-	background-color: rgba(50, 51, 52, 1);
+	background-color: #393d41;
 }
 
 div.nav_section div#nav_drop_down_container{

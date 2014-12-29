@@ -32,18 +32,31 @@ ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, 
         var date = new Date();
         return "#/month/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     }
+    var scrollCount = 0;
+    var lastDirection = 0;
 
     window.grid = MonthGrid.createGrid("month-grid", $scope.activeMonth, $scope.activeYear);
     grid.addListener("scroll", function (e) {
         $rootScope.$apply(function () {
-            var link = "";            
-            if (e.delta < 0) {
-                link = $scope.getNextLink();
-            } else {
-                link = $scope.getPrevLink();                
+            if (lastDirection == e.delta){
+                scrollCount += 1;
             }
-            link = link.replace(/^\/?#/, "");            
-            $location.path(link);
+            lastDirection = e.delta;
+
+            console.log('scroll count');
+            console.log(scrollCount);
+            var link = "";            
+            if (scrollCount > 12) {
+                if (e.delta < 0) {
+                    link = $scope.getNextLink();
+                } else {
+                    link = $scope.getPrevLink();                
+                }
+
+                link = link.replace(/^\/?#/, "");            
+                $location.path(link);
+            }
+            
         });
     })
 
