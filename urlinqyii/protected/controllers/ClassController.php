@@ -320,6 +320,35 @@ class ClassController extends Controller
 
 
 
+    public function actionFiles (){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $class_id = $_GET['id'];
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$class_id));
+        //Check if this user is even in this class
+        if($class){
+            //Check if we destroy this shit successfully
+            $data = array('success'=>true,'files'=>$class->files);
+            $this->renderJSON($data);
+            return;
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

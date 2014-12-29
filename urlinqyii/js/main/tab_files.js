@@ -1,5 +1,47 @@
 
 $(document).ready(function(){
+
+
+
+    init();
+
+    function init(){
+        //Get all the files for this class
+        get_files();
+    }
+
+
+    function show_files(files_list){
+        //alert(JSON.stringify(files_list));
+        for (i = 0; i < files_list.length; i++) {
+            show_file(files_list[i]);
+        }
+    }
+
+
+    function show_file(file_json){
+        var source   = $("#file_template").html();
+        var template = Handlebars.compile(source);
+        var generated_html = template(file_json);
+        $('.files_list').append(generated_html).hide().fadeIn();
+    }
+
+
+    function get_files(){
+        $.getJSON( base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/files', function( json_data ) {
+            console.log(json_data);
+            if(json_data['success']){
+                show_files(json_data['files']);
+            }else{
+                return [];
+            }
+
+        });
+    }
+
+
+
+
 	$('.files_subtab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
@@ -19,9 +61,8 @@ $(document).ready(function(){
     var myDropzone = new Dropzone('.dropzone', {
         url: base_url + '/class/fileUpload',
         autoProcessQueue: false,
-        maxFiles: 4,
         parallelUploads: 4,
-        maxFilesize: 50,
+        maxFilesize: 100,
         init: function() {
             this.on("success", function(file, response) {
 
@@ -32,6 +73,9 @@ $(document).ready(function(){
                     var $name = $("span[data-dz-name='']:contains('" + response['original_name'] + "')");
                     console.log($name);
                     $name.closest('.dz-preview').remove();
+
+                    //Add the file to the list
+                    show_file(response);
                 }
 
 
@@ -46,6 +90,41 @@ $(document).ready(function(){
 
     myDropzone.on("addedfile", function(file) {
         $('.bigbox_bigmessage').fadeOut("fast");
+
+        var $name = $("span[data-dz-name='']:contains('" + file['name'] + "')");
+        var $img = $name.closest('.dz-details').find("img[data-dz-thumbnail='']");
+
+        if(file['name'].indexOf('.docx') > -1){
+            $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_doc.png" + '")');
+
+        }else if(file['name'].indexOf('.pptx') > -1){
+            $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_ppt.png" + '")');
+
+        }else if(file['name'].indexOf('.pdf') > -1){
+            $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_pdf.png" + '")');
+
+        }else if(file['name'].indexOf('.xls') > -1){
+            $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_xls.png" + '")');
+
+        }else if(file['name'].indexOf('.zip') > -1){
+            $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_zip.png" + '")');
+
+        }else{
+            //Check if the image background is alread set
+            console.log('background-image');
+            console.log($img.css('background-image'));
+
+            console.log(typeof($img.css('background-image')));
+            if($img.css('background-image') == 'none'){
+                $img.css('background-image', 'url("' + base_url + "/assets/file_icons/file_type_none.png" + '")');
+            }
+        }
+
+        //$("span[data-dz-name='']:contains('.docx')");
+
+
+        //<span data-dz-name="">Alex_Lopez_resume.docx</span>
+
     });
 
     $('.dropzone').submit(function(event){
