@@ -229,7 +229,7 @@ class EventController extends Controller
         $datetime->modify('+4 day');
         $end_date= $datetime->format('Y-m-d');
 
-        $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id));
+        $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
 
 
         $data = array('success'=>true,'events'=>$events);

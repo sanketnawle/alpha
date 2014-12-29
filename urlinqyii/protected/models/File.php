@@ -53,12 +53,13 @@ class File extends CActiveRecord
 		return array(
 			array('file_name, file_url, created_timestamp', 'required'),
 			array('file_name, file_type', 'length', 'max'=>255),
+            array('original_name, file_type', 'length', 'max'=>255),
 			array('file_url', 'length', 'max'=>512),
 			array('file_extension', 'length', 'max'=>20),
 			array('origin_type', 'length', 'max'=>7),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('file_id, file_name, file_url, file_type, file_extension, created_timestamp, origin_type', 'safe', 'on'=>'search'),
+			array('file_id, file_name, original_name, file_url, file_type, file_extension, created_timestamp, origin_type', 'safe', 'on'=>'search'),
 
 		);
 	}
@@ -101,6 +102,7 @@ class File extends CActiveRecord
 		return array(
 			'file_id' => 'File',
 			'file_name' => 'File Name',
+            'original_name' => 'Original Name',
 			'file_url' => 'File Url',
 			'file_type' => 'File Type',
 			'file_extension' => 'File Extension',
