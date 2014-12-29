@@ -35,47 +35,29 @@ if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) 
 
 function file_upload($files, $path="") {
     //example of path: 'uploads/preview/'
-    $user = User::model()->find('user_id=:id', array(':id'=>1));
+    $user = User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
 
-
-
-//        if(!isset($_POST['origin_type'])){
-//            $this->renderJSON(array('success'=>false,'msg'=>'origin_type is not set'));
-//        }
-//
-//        if(!isset($_POST['origin_id'])){
-//            $this->renderJSON(array('success'=>false,'msg'=>'origin_id is not set'));
-//        }
-
-
-
-//        $origin_type = $_POST['origin_type'];
-//        $origin_id = $_POST['origin_id'];
-
-
-
-    //["name"]
-    if(isset($files["uploadFile"])){
+    if(isset($files["file"])){
         include "UniqueTokenGenerator.php";
 
-        $path_parts = pathinfo($files["uploadFile"]["name"]);
+        $path_parts = pathinfo($files["file"]["name"]);
         $extension = $path_parts['extension'];
-        //$file_type = getFileMimeType($files["uploadFile"]['tmp_name']);
+        //$file_type = getFileMimeType($files["file"]['tmp_name']);
         $file_type = $extension;
         $random_name = token($user->user_id,$user->firstname);
 
 
 
-                $local_directory = 'assets/'.$path;
+        $local_directory = 'assets/'.$path;
         if(!is_dir($local_directory)) {
             mkdir($local_directory);
         }
         if($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             include "ImageCompress.php";
-            image_compress($files["uploadFile"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
+            image_compress($files["file"]["tmp_name"], $local_directory . $random_name . '.jpg', 50);
             $extension = 'jpg';
         } else{
-            move_uploaded_file($files["uploadFile"]["tmp_name"], $local_directory . $random_name. '.'.$extension);
+            move_uploaded_file($files["file"]["tmp_name"], $local_directory . $random_name. '.'. $extension);
 
         }
 
@@ -83,6 +65,7 @@ function file_upload($files, $path="") {
         //Create file in file table here
         $file = new File;
         $file->file_name = $random_name . '.' . $extension;
+        $file->original_name = $files["file"]["name"];
         $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
         $file->file_type = $file_type;
         $file->file_extension = $extension;
@@ -92,7 +75,7 @@ function file_upload($files, $path="") {
 
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
-        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension);
+        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'original_name'=>$file->original_name,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension);
     }else {
         //$this->renderJSON(array('success'=>false));
         return array('success'=>false);

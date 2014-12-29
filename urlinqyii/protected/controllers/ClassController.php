@@ -203,6 +203,48 @@ class ClassController extends Controller
 
     public function actionFileUpload(){
 
+        if (empty($_FILES) || !isset($_POST['class_id'])) {
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        include "file_upload.php";
+        try{
+            $class_id = $_POST['class_id'];
+            $local_directory = 'class/' . $class_id . '/';
+
+
+            $data = file_upload($_FILES,$local_directory);
+            if($data['success']){
+                $class_file = new ClassFile;
+                $class_file->class_id = $class_id;
+                $class_file->file_id = $data['file_id'];
+                $class_file->user_id = $this->get_current_user_id();
+                $class_file->save(false);
+                if($class_file){
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
     }
 
     public function actionJoin(){

@@ -14,13 +14,38 @@ $(document).ready(function(){
     });
 
 
-
-
     Dropzone.autoDiscover = false;
 
     var myDropzone = new Dropzone('.dropzone', {
         url: base_url + '/class/fileUpload',
-        autoProcessQueue: false
+        autoProcessQueue: false,
+        maxFiles: 4,
+        parallelUploads: 4,
+        maxFilesize: 50,
+        init: function() {
+            this.on("success", function(file, response) {
+
+                console.log('FILE NAME');
+                console.log(response['original_name']);
+
+                if(response['success']){
+                    var $name = $("span[data-dz-name='']:contains('" + response['original_name'] + "')");
+                    console.log($name);
+                    $name.closest('.dz-preview').remove();
+                }
+
+
+                if($('.dz-preview').length == 0){
+                    $('.bigbox_bigmessage').fadeIn();
+                }
+                console.log(response['success']);
+            });
+        }
+    });
+
+
+    myDropzone.on("addedfile", function(file) {
+        $('.bigbox_bigmessage').fadeOut("fast");
     });
 
     $('.dropzone').submit(function(event){

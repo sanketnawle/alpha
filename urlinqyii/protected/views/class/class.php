@@ -523,6 +523,8 @@
         <form action="<?php echo Yii::app()->getBaseUrl(true);?>/class/fileUpload" class="dropzone dz-clickable files_upload_bigbox" id="demo-upload">
             <div class="bigbox_bigmessage">
             </div>
+            <input type="hidden" name="class_id" value="<?php echo $class->class_id; ?>">
+
 
             <button class="upload_files_submit" type="submit">Submit data and files!</button>
         </form>
