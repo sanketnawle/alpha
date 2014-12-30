@@ -756,7 +756,7 @@ $(document).on('click','#create_todo_form',function(e){
 
 
     todo_datetime = local_to_utc(todo_datetime);
-    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth()+ 1).toString() + "-" + todo_datetime.getDate().toString();
+    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
     var todo_time = addZero(todo_datetime.getHours()).toString() + ':' + addZero(todo_datetime.getMinutes()).toString() + ':' + addZero(todo_datetime.getSeconds()).toString();
 
     if(errors.length > 0){

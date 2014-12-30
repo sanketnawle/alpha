@@ -95,7 +95,7 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Materials</div>
-                    <div class = "tab_amount">92</div>
+                    <div class = "tab_amount"><?php echo count($class->files);?></div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
