@@ -7,9 +7,17 @@ $(document).ready(function(){
 
     function init(){
         //Get all the files for this class
-        get_files('class');
 
-        get_files('student');
+        if(origin_type == 'class'){
+            get_files('class');
+            get_files('student');
+        }else if(origin_type == 'club'){
+            get_files('club');
+        }
+
+
+
+
     }
 
 
