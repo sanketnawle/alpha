@@ -60,6 +60,7 @@ class File extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('file_id, file_name, original_name, file_url, file_type, file_extension, created_timestamp, origin_type', 'safe', 'on'=>'search'),
+            array('download_count', 'numerical', 'integerOnly'=>true)
 
 		);
 	}
@@ -108,6 +109,7 @@ class File extends CActiveRecord
 			'file_extension' => 'File Extension',
 			'created_timestamp' => 'Created Timestamp',
 			'origin_type' => 'Origin Type',
+            'download_count' => 'Download Count'
 		);
 	}
 
@@ -131,11 +133,13 @@ class File extends CActiveRecord
 
 		$criteria->compare('file_id',$this->file_id);
 		$criteria->compare('file_name',$this->file_name,true);
+        $criteria->compare('original_name',$this->original_name,true);
 		$criteria->compare('file_url',$this->file_url,true);
 		$criteria->compare('file_type',$this->file_type,true);
 		$criteria->compare('file_extension',$this->file_extension,true);
 		$criteria->compare('created_timestamp',$this->created_timestamp,true);
 		$criteria->compare('origin_type',$this->origin_type,true);
+        $criteria->compare('download_count',$this->download_count);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

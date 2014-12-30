@@ -873,7 +873,7 @@ ul.tabnav_tabs li.active{
     
 }
 
-#left_search_icon{
+.left_search_icon{
     background-image: url(../../assets/left_search_icon.png);
 
     display: inline-block;
@@ -881,6 +881,9 @@ ul.tabnav_tabs li.active{
     background-repeat: no-repeat;
     z-index: 1000;
 }
+
+
+
 
 .tab_members .tab_content_holder .tab_header div.header_sentence, .tab_group_info .tab_content_holder .tab_header div.header_sentence{
     font-family: Avenir;

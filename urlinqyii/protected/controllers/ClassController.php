@@ -101,8 +101,7 @@ class ClassController extends Controller
 //            , 'schedules'=>$schedule_strings, 'files'=>$files, 'other_courses'=>$other_courses_from_prof)
 //              );
         $this->render('class',array('all_following'=>$students_following_that_took_course, 'students'=>$students,'admins'=>$admins, 'user'=>$user,'class'=>$class, 'course'=>$course, 'professor'=>$professor
-            , 'department'=>$department, 'is_member'=>$is_member, 'university'=>$university, 'is_admin'=>$is_admin
-            , 'schedules'=>$schedule_strings, 'files'=>$files)
+            , 'department'=>$department, 'is_member'=>$is_member, 'university'=>$university, 'is_admin'=>$is_admin, 'schedules'=>$schedule_strings, 'files'=>$files)
         );
     }
     public function ActionSylaUpload(){
@@ -202,16 +201,22 @@ class ClassController extends Controller
 
 
     public function actionFileUpload(){
+        if (empty($_FILES)) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
 
-        if (empty($_FILES) || !isset($_POST['class_id'])) {
-            $data = array('success'=>false,'error_id'=>1);
+
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set','_files'=>$_FILES,'_post'=>$_POST);
             $this->renderJSON($data);
             return;
         }
 
         include "file_upload.php";
         try{
-            $class_id = $_POST['class_id'];
+            $class_id = $_POST['id'];
             $local_directory = 'class/' . $class_id . '/';
 
 
@@ -319,8 +324,8 @@ class ClassController extends Controller
     }
 
 
-
-    public function actionFiles (){
+    //Returns only files uploaded by the professor
+    public function actionClassFiles (){
         if(!isset($_GET['id'])){
             $data = array('success'=>false,'error_id'=>1);
             $this->renderJSON($data);
@@ -334,7 +339,7 @@ class ClassController extends Controller
         //Check if this user is even in this class
         if($class){
             //Check if we destroy this shit successfully
-            $data = array('success'=>true,'files'=>$class->files);
+            $data = array('success'=>true,'files'=>$class->classFiles());
             $this->renderJSON($data);
             return;
         }else{
@@ -343,8 +348,33 @@ class ClassController extends Controller
             $this->renderJSON($data);
             return;
         }
+    }
 
 
+    //Returns only files uploaded by the professor
+    public function actionStudentFiles (){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+        $class_id = $_GET['id'];
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$class_id));
+        //Check if this user is even in this class
+        if($class){
+            //Check if we destroy this shit successfully
+            $data = array('success'=>true,'files'=>$class->studentFiles());
+            $this->renderJSON($data);
+            return;
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
     }
 
 

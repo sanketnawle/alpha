@@ -7,6 +7,8 @@
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
  */
+date_default_timezone_set('UTC');
+
 class Controller extends CController
 {
 	/**
