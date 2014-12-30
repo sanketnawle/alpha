@@ -12,7 +12,7 @@
 
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
-	<div class = "dark_overlay" id = "dark_overlay_fbar"></div>
+	<!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
 	<div id = "fbar_new">
 		<section id = "fbar_buttons">
 			<div class = "fbar_buttonwrapper" id = "fbar_button_discuss" data-post_button_type = "discuss">
@@ -58,6 +58,8 @@
 							<div class = "2">
 							</div>
 						</header>
+						
+
 					</section>
 
 					<section id = "question_form" class = "post_form_template fbar_contents_fix">
@@ -68,7 +70,61 @@
 							</div>
 							<div class = "3">
 							</div>
+
 						</header>
+						<section>
+							<div class="multiple_choice">
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>A</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" id="choice_a"placeholder="Add choice A...">
+                                    <div class="answer_check">
+                                        <input id="check_A" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>B</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer"  id="choice_b" placeholder="Add choice B...">
+                                    <div class="answer_check">
+                                        <input id="check_B" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>C</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer"  id="choice_c"placeholder="Add choice C...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_C" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                                <div class="question_choice_line multiple_line">
+                                    <div class="fixed_choice_prefix">
+                                        <div class="letter_choice"><span>D</span></div>
+                                        <div class="add_choice"><span>+</span></div>
+                                    </div>
+                                    <input class="multiple_choice_answer" id="choice_d"placeholder="Add choice D...(optional)">
+                                    <div class="answer_check">
+                                        <input id="check_D" type="radio" value="false">
+                                        <label></label>
+                                        <span>Correct Answer</span>
+                                    </div>
+                                </div>
+                            </div>
+						</section>
+
 					</section>
 
 					<footer id = "fbar_footer" class = "fbar_contents_fix">

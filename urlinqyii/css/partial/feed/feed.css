@@ -2974,7 +2974,6 @@ display: inline-block;
 
 .profile_thumbnail {
 display: inline-block;
-background-image: url('http://www.urlinq.com/beta/DefaultImages/anon.png');
 width: 25px;
 height: 25px;
 background-size: cover;
@@ -2982,6 +2981,7 @@ border-radius: 2px;
 position: relative;
 top: 4.5px;
 }
+
 .profile_thumbnail_no_pic:hover , .profile_thumbnail:hover{
 cursor: pointer;
 }
