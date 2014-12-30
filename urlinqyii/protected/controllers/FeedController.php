@@ -305,10 +305,11 @@ class FeedController extends Controller
 
 
             if($post['file_id'] != NULL) {
-                if ($file = File::model()->findbypk($post['file_id']))
-                    $posts [$i] ['file'] = array('success' => TRUE, 'file_contents' => $file);
+                $file = File::model()->find('file_id=:id', array(':id'=>$post['file_id']));
+                if ($file)
+                    $posts [$i] ['file'] = self::convertModelToArray($file);
                 else
-                    $posts [$i] ['file'] = array('success'=>FALSE, 'msg'=>'provided file id does not exist');
+                    $posts [$i] ['file'] = null;
             }
             else
                 $posts [$i] ['file'] = NULL;
@@ -357,6 +358,12 @@ class FeedController extends Controller
 
 	public function actionGetHomePosts()
 	{
+
+
+        if(!$this->authenticated() || !isset($_GET['token'])){
+
+        }
+
 //      print_r(User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id)));
 
         // $posts_sql_home = "SELECT distinct *
