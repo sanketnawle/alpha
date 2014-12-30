@@ -231,12 +231,14 @@
                         </div>
 
 
+                        <?php if($is_admin){ ?>
+                            <div class='remove_file_div'>remove</div>
+                        <?php } ?>
+
                     </li>
                 </script>
 
-<!--                --><?php //if($is_admin){ ?>
-<!--                    <div class='remove_file_div'>remove</div>-->
-<!--                --><?php //} ?>
+
 
 
 

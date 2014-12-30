@@ -8,10 +8,10 @@ $(document).ready(function(){
     function init(){
         //Get all the files for this class
 
-        if(origin_type == 'class'){
+        if(globals.origin_type == 'class'){
             get_files('class');
             get_files('student');
-        }else if(origin_type == 'club'){
+        }else if(globals.origin_type == 'club'){
             get_files('club');
         }
 
@@ -118,7 +118,7 @@ $(document).ready(function(){
     Dropzone.autoDiscover = false;
 
     var myDropzone = new Dropzone('.dropzone', {
-        url: base_url + '/class/fileUpload',
+        url: base_url + '/' + origin_type + '/fileUpload',
         autoProcessQueue: false,
         parallelUploads: 4,
         maxFilesize: 16,
@@ -136,28 +136,32 @@ $(document).ready(function(){
                     $name.closest('.dz-preview').remove();
 
                     //Add the file to the list
-                    if(globals.is_admin == 'true'){
-                        show_file(response,globals.admin_file_panel_class);
-                        //Make sure the admin file tab is active
-                        $('.files_sub_panel.active').removeClass('active');
-                        $(".files_sub_panel[data-file_list_type='" + globals.admin_file_panel_class + "']").addClass('active');
+
+                    if(globals.origin_type == 'class'){
+                        if(globals.is_admin == 'true'){
+                            show_file(response,globals.admin_file_panel_class);
+                            //Make sure the admin file tab is active
+                            $('.files_sub_panel.active').removeClass('active');
+                            $(".files_sub_panel[data-file_list_type='" + globals.admin_file_panel_class + "']").addClass('active');
 
 
-                        //Active the tab as well
-                        $('.files_subtab.active').removeClass('active');
-                        $(".files_subtab[data-file_list_type='" + globals.admin_file_panel_class + "']").addClass('active');
-                    }else{
-                        show_file(response,'student');
-                        //Make sure the class file tab is active
-                        $('.files_sub_panel.active').removeClass('active');
-                        $('.files_sub_panel[data-file_list_type="student"]').addClass('active');
+                            //Active the tab as well
+                            $('.files_subtab.active').removeClass('active');
+                            $(".files_subtab[data-file_list_type='" + globals.admin_file_panel_class + "']").addClass('active');
+                        }else{
+                            show_file(response,'student');
+                            //Make sure the class file tab is active
+                            $('.files_sub_panel.active').removeClass('active');
+                            $('.files_sub_panel[data-file_list_type="student"]').addClass('active');
 
 
-                        //Active the tab as well
-                        $('.files_subtab.active').removeClass('active');
-                        $(".files_subtab[data-file_list_type='student']").addClass('active');
+                            //Active the tab as well
+                            $('.files_subtab.active').removeClass('active');
+                            $(".files_subtab[data-file_list_type='student']").addClass('active');
+                        }
+                    }else if(globals.origin_type == 'club'){
+                        show_file(response,'club');
                     }
-
                 }
 
 
