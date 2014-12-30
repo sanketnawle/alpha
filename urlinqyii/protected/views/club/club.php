@@ -188,7 +188,7 @@
                             <div id = "files_header_bottom_line">
                             </div>
                         </div>
-                        <div class = "files_sub_panel active class_files" id ="files_sub_panel_1" data-file_list_type="class">
+                        <div class = "files_sub_panel active class_files" id ="files_sub_panel_1" data-file_list_type="club">
                             <ol class = "files_list club" data-file_list_type="club">
 
 
@@ -219,12 +219,7 @@
 
                             </ol>
                         </div>
-                        <div class = "files_sub_panel student_files" id ="files_sub_panel_2" data-file_list_type="student">
-                            <ol class = "files_list student" data-file_list_type="student">
 
-
-                            </ol>
-                        </div>
 
 
 

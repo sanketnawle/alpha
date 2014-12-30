@@ -319,6 +319,7 @@ class FeedController extends Controller
                 $post_que = PostQuestion::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
                 $posts [$i] ['active'] = $post_que->active;
+                $posts[$i]['question'] = self::convertModelToArray($post_que);
 
                 // give correct answer, if NOT active
                 if($post_que->active == 0)
