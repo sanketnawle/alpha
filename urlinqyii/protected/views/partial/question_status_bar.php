@@ -34,13 +34,14 @@
 		<section id = "fbar_postbox">
 			<form id = "fbar_form">
 				<div class = "form_wrapper">
-					<header id = "fbar_header" class = "clearfix">
+					<header id = "fbar_header" class = "fbar_contents_fix">
 						<div id = "audience_select"><span>To Followers</span><em class = "down_arrow"></em></div>
 						<div id = "question_form_content" class = "question_type_button" data-question_post_type = "multiple_choice">Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button">True or False</div>
+						<div id = "post_anonymously"><span class = 'comment_anon_text'>Post Anonymously</span><input type='checkbox' value='0' class='post_anon_val'></div>
 					</header>
 
-					<section id = "discussion_form" class = "post_form_template">
-						<header>
+					<section id = "discussion_form" class = "post_form_template fbar_contents_fix">
+						<header class = "form_function_panel">
 							<div class = "3">
 							</div>
 							<div class = "3">
@@ -50,8 +51,8 @@
 						</header>
 					</section>
 
-					<section id = "notes_form" class = "post_form_template">
-						<header>
+					<section id = "notes_form" class = "post_form_template fbar_contents_fix">
+						<header class = "form_function_panel">
 							<div class = "2">
 							</div>
 							<div class = "2">
@@ -59,8 +60,8 @@
 						</header>
 					</section>
 
-					<section id = "question_form" class = "post_form_template">
-						<header>
+					<section id = "question_form" class = "post_form_template fbar_contents_fix">
+						<header class = "form_function_panel">
 							<div class = "3">
 							</div>
 							<div class = "3">
@@ -70,7 +71,7 @@
 						</header>
 					</section>
 
-					<footer id = "fbar_footer">
+					<footer id = "fbar_footer" class = "fbar_contents_fix">
 						<div class = "post_btn" id = "post_btn">
 							Post
 						</div>

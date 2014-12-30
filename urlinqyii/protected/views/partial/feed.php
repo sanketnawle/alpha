@@ -57,7 +57,7 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon' style = 'background-size:auto;'>
+                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                             </div>
                                                         {{/if}}
                                                     </div>
@@ -432,7 +432,7 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon'>
+                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>
@@ -501,10 +501,10 @@
 
                                                     {{/if}}
 
-                                                    {{#if multiple_choice}}
+                                                    {{#ifCond question.question_type '==' multiple_choice}}
                                                         
                                                         <div class="mc_question">
-                                                            {{#each choices}}
+                                                            {{#each options}}
                                                                 <div class="mc_question_one_choice" id="{{the_choice_letter}}">
 
                                                                     <input type="radio" class="mc_question_radio_button" name="letter" > 
@@ -518,7 +518,7 @@
                                                                     
                                                                     <div class="mc_question_choice_text">
                                                                         {{#if anon}}
-                                                                            <span class="choice_text"> {{the_choice_text}} </span>
+                                                                            <span class="choice_text"> {{option_text}} </span>
                                                                         {{else}}
                                                                             <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{the_choice_text}} </span>
                                                                             
@@ -779,7 +779,7 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link'>
+                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>

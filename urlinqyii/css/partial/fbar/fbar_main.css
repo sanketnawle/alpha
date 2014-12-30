@@ -177,6 +177,15 @@ div.form_wrapper header{
 
 }
 
+div.form_wrapper header{
+
+}
+
+div.fbar_contents_fix{
+    width:95%;
+    margin: 0 auto;
+}
+
 div.form_wrapper header img#fbar_user_icon{
     width: 54px;
 
@@ -275,7 +284,7 @@ form#fbar_form.show{
 }
 
 .question_type_button{
-    
+
 }
 
 
