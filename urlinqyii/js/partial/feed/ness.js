@@ -61,12 +61,24 @@ $(document).ready(function(e) {
         $('.list_of_people').css('visibility', 'hidden');
     });
 
-    $(document).delegate(".post_functions_showr", "click", function () {
+    $(document).delegate(".post_functions_showr", "mouseover", function () {
+        var $post_functions_showr = $(this);
+        $post_functions_showr.closest(".post_functions").addClass("functions_active");
         if ($(this).closest(".post_functions").hasClass("functions_active")) {
-            $(this).closest(".post_functions").find(".post_functions_box").hide();
+            $(this).closest(".post_functions").find(".post_functions_box").removeClass("show");
             $(this).closest(".post_functions").removeClass("functions_active");
         } else {
-            $(this).closest(".post_functions").find(".post_functions_box").show();
+            $(this).closest(".post_functions").find(".post_functions_box").addClass("show");
+            $(this).closest(".post_functions").addClass("functions_active");
+        }
+    });
+
+    $(document).delegate(".post_functions_showr", "mouseout", function () {
+        if ($(this).closest(".post_functions").hasClass("functions_active")) {
+            $(this).closest(".post_functions").find(".post_functions_box").removeClass("show");
+            $(this).closest(".post_functions").removeClass("functions_active");
+        } else {
+            $(this).closest(".post_functions").find(".post_functions_box").addClass("show");
             $(this).closest(".post_functions").addClass("functions_active");
         }
     });
@@ -249,9 +261,13 @@ $(document).ready(function(e) {
     var pg = 1;
 
 
-    $(document).delegate('.post_functions', "click", function () {
-        $(this).find('.post_functions_box').show();
+    $(document).delegate('.post_functions', "mouseover", function () {
+        $(this).find('.post_functions_box').addClass("show");
         $(this).addClass('functions_active');
+    });
+    $(document).delegate('.post_functions', "mouseout", function () {
+        $(this).find('.post_functions_box').removeClass("show");
+        $(this).removeClass('functions_active');
     });
 
     $(document).delegate('.functions_active', "click", function () {

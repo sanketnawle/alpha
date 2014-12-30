@@ -2,8 +2,8 @@ div#fbar_new{
     background: #fff;
     border-radius: 3px;
     border: 1px solid #d9d9d9;    
-    margin-bottom: 8px; 
-    border-radius: 3px;  
+    margin-bottom: 12px; 
+    border-radius: 5px;  
     height: auto;
     word-wrap: break-word;
     min-height: 60px;
@@ -14,6 +14,10 @@ div#fbar_new{
 
 div.#fbar_holder.fbar_homepage #fbar_new{
 
+}
+
+.post_form_template{
+    display:none;
 }
 
 div.#fbar_holder div#fbar_new{
@@ -115,11 +119,6 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
     
 }
 
-section#fbar_buttons .fbar_buttonwrapper:active > i.fbar_button_icon{
-    -moz-transform: scale(.87) translateY(0px);
-    -webkit-transform: scale(.87) translateY(0px);
-    transform: scale(.87) translateY(0px);
-}
 
 .fbar_button_icon#fbar_icon_discuss{
     width: 42px;
@@ -155,15 +154,20 @@ section#fbar_buttons .fbar_buttonwrapper:active > i.fbar_button_icon{
 }
 
 form#fbar_form{
-    display:none;
     height:auto;
     opacity:0;
-    min-height:310px;
-    -moz-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
-    -ms-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
-    -o-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
-    -webkit-transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
-    transition: opacity .15s cubic-bezier(0.550,0.085,0.680,0.530);
+    pointer-events:none;
+    overflow: hidden;
+    max-height:0px;
+    -moz-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -ms-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -o-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -webkit-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+}
+
+div.form_wrapper{
+    height:200px;
 }
 
 .faded{
@@ -178,7 +182,19 @@ form#fbar_form{
     opacity:1!important;
 }
 
-.show{
-    display:block!important;
+form#fbar_form.show{
+    max-height:330px;
+    pointer-events:auto;
 }
 
+
+/* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
+#fbar_holder.discuss section#discussion_form {
+    display:block;
+} 
+#fbar_holder.notes section#notes_form {
+    display:block;
+} 
+#fbar_holder.question section#question_form {
+    display:block;
+} 

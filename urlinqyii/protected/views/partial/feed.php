@@ -54,7 +54,7 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon'>
+                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
                                                             <div class = 'post_user_icon'>
@@ -67,7 +67,7 @@
                                                             {{#if anon}}
                                                                 Anonymous
                                                             {{else}}
-                                                                {{user_name}}
+                                                                {{user_info.firstname}} {{user_info.lastname}}
                                                             {{/if}}
                                                         {{else}}
                                                             Invalid User 
@@ -138,24 +138,26 @@
                                                     
                                                     <div class = 'post_lc ' >
                                                     
-                                                    
-                                                    {{#if like_status}}
-                                                        <div class = 'post_liked'>
-                                                    {{else}}
-                                                        <div class = 'post_like'>
-                                                    {{/if}}
-                                                            <span class = 'post_like_icon'></span>
-                                                            <p class = 'post_like_link'>Like</p>
-                                                            <div class = 'like_number'>
-                                                                {{#if like_count}}
+                                                        {{#ifCond like_status '==' true}}
+                                                            <div class = 'post_liked'>
+                                                                <span class = 'post_like_icon'></span>
+                                                                <p class = 'post_like_link'>Unlike</p>
+                                                        {{else}}
+                                                            <div class = 'post_like'>
+                                                                <span class = 'post_like_icon'></span>
+                                                                <p class = 'post_like_link'>Like</p>
+                                                        {{/ifCond}}
+                    
+                                                                <div class = 'like_number'>
+                                                                    {{#if like_count}}
                                                                     {{like_count}}
-                                                                {{/if}}
+                                                                    {{/if}}
+                                                                </div>
+
                                                             </div>
 
-                                                        </div>
-
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span>Reply</span>
+                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
@@ -163,12 +165,12 @@
                                                 </div>  
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        <div class = 'post_functions_option option_edit'>Edit this Post</div>
+                                                        <div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
-                                            <div class = 'post_functions_option option_delete'>Delete this Post</div>
+                                            <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
                                                     <div class = 'post_functions_option option_hide'>
-                                                        Hide this Post
+                                                        I don&#39;t want to see this
                                                     </div>
                                                         <hr class = 'post_options_hr'>
                                                         <div class = 'post_functions_option option_report'>
@@ -203,6 +205,19 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
+
+                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                        {{reply_msg}}
+                                    </div>
+                                   
+                                    {{#if file_id}}
+                                        <div class='cmt_f_attach' title=''>
+                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                                                <a href=''>sdafsdaffg</a>
+                                        </div>
+                                    {{/if}}
+
+
                                     <div class = 'comment_owner_container'>
                                         <div class = 'comment_user_icon'></div>
                                         </div>
@@ -210,7 +225,7 @@
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
-                                                {{user_name}}
+                                                {{user_info.user_name}}
                                             {{/if}}
                                         </span>
                                          <div class = 'comment_time'>
@@ -218,16 +233,7 @@
                                                 {{update_timestamp}}
                                             </div>
                                         </div>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                            {{reply_msg}}
-                                        </div>
-                                       
-                                        {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
-                                        {{/if}}
+
                                     </div>
                                 
                                 </div>
@@ -296,32 +302,33 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
+                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                            {{reply_msg}}
+                                        </div>
+                                        
+                                        {{#if file_id}}
+                                            <div class='cmt_f_attach' title=''>
+                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                                                    <a href=''>sdafsdaffg</a>
+                                            </div>
+                                        {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
-                                            </div>
-                                            <span class = 'comment_owner'>
-                                                {{#if anon}}
-                                                    Anonymous
-                                                {{else}}
-                                                    {{user_info.firstname}} {{user_info.lastname}}
-                                                {{/if}}
-                                            </span>
-                                            <div class = 'comment_time'>
-                                                <div class='ct_ts'>
-                                                    {{update_timestamp}}
-                                                </div>
-                                            </div>
-                                            <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                                {{reply_msg}}
-                                            </div>
-                                            
-                                            {{#if file_id}}
-                                                <div class='cmt_f_attach' title=''>
-                                                    <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                        <a href=''>sdafsdaffg</a>
-                                                </div>
-                                            {{/if}}
                                         </div>
+                                        <span class = 'comment_owner'>
+                                            {{#if anon}}
+                                                Anonymous
+                                            {{else}}
+                                                {{user_info.user_name}}
+                                            {{/if}}
+                                        </span>
+                                        <div class = 'comment_time'>
+                                            <div class='ct_ts'>
+                                                {{update_timestamp}}
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
                                     
                                 </div>
 
@@ -335,21 +342,6 @@
             <script id='one_reply_template' type="text/x-handlebars-template">
                 <div class = 'comments'>
                     <div class = 'comment_main'>
-                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
-                            <div class = 'comment_user_icon'></div>
-                        </div>
-                                            <span class = 'comment_owner'>
-                                                {{#if anon}}
-                                                    Anonymous
-                                                {{else}}
-                                                    {{user_info.firstname}} {{user_info.lastname}}
-                                                {{/if}}
-                                            </span>
-                        <div class = 'comment_time'>
-                            <div class='ct_ts'>
-                                {{update_timestamp}}
-                            </div>
-                        </div>
                         <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
                             {{reply_msg}}
                         </div>
@@ -360,6 +352,22 @@
                             <a href=''>sdafsdaffg</a>
                         </div>
                         {{/if}}
+                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
+                            <div class = 'comment_user_icon'></div>
+                        </div>
+                        <span class = 'comment_owner'>
+                            {{#if anon}}
+                                Anonymous
+                            {{else}}
+                                {{user_info.user_name}}
+                            {{/if}}
+                        </span>
+                        <div class = 'comment_time'>
+                            <div class='ct_ts'>
+                                {{update_timestamp}}
+                            </div>
+                        </div>
+                        
                     </div>
 
                 </div>
@@ -370,32 +378,33 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
+                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                            {{reply_msg}}
+                                        </div>
+                                        
+                                        {{#if file_id}}
+                                            <div class='cmt_f_attach' title=''>
+                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                                                    <a href=''>sdafsdaffg</a>
+                                            </div>
+                                        {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
-                                            </div>
-                                            <span class = 'comment_owner'>
-                                                {{#if anon}}
-                                                    Anonymous
-                                                {{else}}
-                                                    {{user_info.firstname}} {{user_info.lastname}}
-                                                {{/if}}
-                                            </span>
-                                            <div class = 'comment_time'>
-                                                <div class='ct_ts'>
-                                                    {{update_timestamp}}
-                                                </div>
-                                            </div>
-                                            <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                                {{reply_msg}}
-                                            </div>
-                                            
-                                            {{#if file_id}}
-                                                <div class='cmt_f_attach' title=''>
-                                                    <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                        <a href=''>sdafsdaffg</a>
-                                                </div>
-                                            {{/if}}
                                         </div>
+                                        <span class = 'comment_owner'>
+                                            {{#if anon}}
+                                                Anonymous
+                                            {{else}}
+                                                {{user_info.user_name}}
+                                            {{/if}}
+                                        </span>
+                                        <div class = 'comment_time'>
+                                            <div class='ct_ts'>
+                                                {{update_timestamp}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                     
                                 </div>
 
@@ -420,7 +429,7 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon'>
+                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
                                                             <div class = 'post_user_icon'>
@@ -432,7 +441,7 @@
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
-                                                                    Anonymous (ME)
+                                                                    Anonymous (you)
                                                                 {{else}}
                                                                     Anonymous
                                                                 {{/if}}
@@ -598,7 +607,7 @@
 
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
-                                                                <span class = 'post_liked_icon'></span>
+                                                                <span class = 'post_like_icon'></span>
                                                                 <p class = 'post_like_link'>Unlike</p>
                                                         {{else}}
                                                             <div class = 'post_like'>
@@ -615,7 +624,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span>Reply</span>
+                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
                                                         </div>
                                                         
                                                         <div class = 'show_analytics_btn'>
@@ -629,12 +638,12 @@
                                                 </div>  
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        <div class = 'post_functions_option option_edit'>Edit this Post</div>
+                                                        <div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
-                                            <div class = 'post_functions_option option_delete'>Delete this Post</div>
+                                            <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
                                                     <div class = 'post_functions_option option_hide'>
-                                                        Hide this Post
+                                                        I don&#39;t want to see this
                                                     </div>
                                                         <hr class = 'post_options_hr'>
                                                         <div class = 'post_functions_option option_report'>
@@ -669,34 +678,35 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                        {{reply_msg}}
+                                    </div>
+                                       
+                                    {{#if file_id}}
+                                        <div class='cmt_f_attach' title=''>
+                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                                                <a href=''>sdafsdaffg</a>
+                                        </div>
+                                    {{/if}}
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>
-                                        </div>
-                                        <span class = 'comment_owner'>
-                                            {{#if anon}}
-                                                Anonymous
-                                            {{else}}
-                                                {{user_info.firstname}} {{user_info.lastname}}
-                                            {{/if}}
-                                        </span>
-                                         <div class = 'comment_time'>
-                                            <div class='ct_ts'>
-                                                {{update_timestamp}}
-                                            </div>
-                                        </div>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                            {{reply_msg}}
-                                        </div>
-                                       
-                                        {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
-                                        {{/if}}
                                     </div>
-                                
+                                    <span class = 'comment_owner'>
+                                        {{#if anon}}
+                                            Anonymous
+                                        {{else}}
+                                            {{user_info.user_name}}
+                                        {{/if}}
+                                    </span>
+                                     <div class = 'comment_time'>
+                                        <div class='ct_ts'>
+                                            {{update_timestamp}}
+                                        </div>
+                                    </div>
+                                    
                                 </div>
+                                
+                            </div>
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
@@ -766,10 +776,10 @@
                                                     <div class = 'image_container'>     
                                                             
                                                         {{#if anon}}
-                                                          <div class = 'post_user_icon'>
+                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon'>
+                                                            <div class = 'post_user_icon profile_link'>
                                                           </div>
                                                         {{/if}}
                                                     </div>
@@ -778,12 +788,12 @@
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
-                                                                    Anonymous (ME)
+                                                                    Anonymous (you)
                                                                 {{else}}
                                                                     Anonymous
                                                                 {{/if}}
                                                             {{else}}
-                                                                {{user_name}}
+                                                                {{user_info.firstname}} {{user_info.lastname}}
                                                             {{/if}}
                                                         {{else}}
                                                             Invalid User 
@@ -872,13 +882,16 @@
                                                 </div>
                                                 <div class = 'post_tools'>
                                                     <div class = 'post_lc'>
-                                                        {{#if like_status}}
+                                                        {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
+                                                                <span class = 'post_like_icon'></span>
+                                                                <p class = 'post_like_link'>Unlike</p>
                                                         {{else}}
                                                             <div class = 'post_like'>
-                                                        {{/if}}
                                                                 <span class = 'post_like_icon'></span>
                                                                 <p class = 'post_like_link'>Like</p>
+                                                        {{/ifCond}}
+                    
                                                                 <div class = 'like_number'>
                                                                     {{#if like_count}}
                                                                     {{like_count}}
@@ -888,7 +901,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span>Reply</span>
+                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
@@ -896,12 +909,12 @@
                                                 </div>  
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        <div class = 'post_functions_option option_edit'>Edit this Post</div>
+                                                        <div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
-                                            <div class = 'post_functions_option option_delete'>Delete this Post</div>
+                                            <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
                                                     <div class = 'post_functions_option option_hide'>
-                                                        Hide this Post
+                                                        I don&#39;t want to see this
                                                     </div>
                                                         <hr class = 'post_options_hr'>
                                                         <div class = 'post_functions_option option_report'>
@@ -936,34 +949,35 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                        {{reply_msg}}
+                                    </div>
+                                       
+                                    {{#if file_id}}
+                                        <div class='cmt_f_attach' title=''>
+                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
+                                                <a href=''>sdafsdaffg</a>
+                                        </div>
+                                    {{/if}}
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>
-                                        </div>
-                                        <span class = 'comment_owner'>
-                                            {{#if anon}}
-                                                Anonymous
-                                            {{else}}
-                                                {{user_name}}
-                                            {{/if}}
-                                        </span>
-                                         <div class = 'comment_time'>
-                                            <div class='ct_ts'>
-                                                {{update_timestamp}}
-                                            </div>
-                                        </div>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                            {{reply_msg}}
-                                        </div>
-                                       
-                                        {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
-                                        {{/if}}
                                     </div>
-                                
+                                    <span class = 'comment_owner'>
+                                        {{#if anon}}
+                                            Anonymous
+                                        {{else}}
+                                            {{user_info.user_name}}
+                                        {{/if}}
+                                    </span>
+                                     <div class = 'comment_time'>
+                                        <div class='ct_ts'>
+                                            {{update_timestamp}}
+                                        </div>
+                                    </div>
+                                    
                                 </div>
+                                
+                            </div>
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>

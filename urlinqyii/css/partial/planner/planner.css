@@ -4,13 +4,12 @@
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     border: 1px solid #d9d9d9; 
-    overflow: hidden;
     display: block;
     /* box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */ -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); 
     /* -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */
-    padding-bottom: 40px;
+    padding-bottom: 3px;
 }
 .planner_header_panel{
     font-family: Avenir;
@@ -47,6 +46,7 @@
     float: left;
     height: auto;
     margin: 0px auto;
+    display:none;
 
 }
 .entry_field{
@@ -310,7 +310,7 @@ span.create_planner_message {}
     white-space: normal;
 
 
-    height: 311px;
+    height: 329px;
     
 
     overflow-y: auto;
@@ -321,7 +321,7 @@ span.create_planner_message {}
     clear: right;
     
 
-    margin-top: -27px;
+    margin-top: 0px;
 
 }
 
@@ -351,7 +351,7 @@ input.event_title{
     float: left;
     clear: right;
     width: 100%;
-    height: 41px;
+    height: 38px;
     z-index: 100;
 
     margin: 0px auto;
@@ -361,7 +361,7 @@ input.event_title{
 #planner_body_holder{
     float: left;
     clear: right;
-    /*position: relative;*/
+    position: relative;
     /*top: 4px;*/
     /*left: 0;*/
     font-size: 12px;
@@ -375,14 +375,44 @@ input.event_title{
 
 
 #planner_bottom_holder{
+    
 
 
 
-    width: 100%;
+    position: absolute;
+
+
+
     height: 50px;
 
-    float: left;
+    
+    
+
+
+
+
+
+
+    bottom: -54px;
+
+
+
     clear: right;
+    
+
+
+
+    left: 22px;
+
+
+
+    right: 22px;
+
+
+
+
+
+
 }
 
 @import url(http://weloveiconfonts.com/api/?family=entypo);
@@ -527,7 +557,7 @@ input.event_title{
     top: 0px;
     height: 1px;
     width: 210px;
-    background-color: #dbdcdc;
+    background-color: rgba(219, 220, 220, 0);
     margin: 0px auto;
 
     border-radius: 1px;
@@ -537,6 +567,8 @@ input.event_title{
     font-size: 13px;
     font-weight: bold;
     color: #000000;
+    position: relative;
+    margin-top: 0px;
 }
 
 
@@ -554,10 +586,29 @@ input.event_title{
 
 
 #planner_bottom_text {
-    margin-top: 15px;
-    margin-left:  50px;
-    color: #029acf;
+    margin: 0 auto;
+    color: #029ACF;
+    margin-top: 7px;
+    display: inline-block;
+    padding: 6px 0px;
+    width: 100%;
+    text-transform: capitalize;
+    cursor: pointer;
+    font-family: Avenir;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 26px;
 }
+
+#planner_bottom_text:hover {
+    background:#f5f5f5;
+}
+
+#planner_bottom_text:active {
+    background:#f1f1f1;
+    color:#016283;
+}
+
 
 /* checkbox styling and selecting */
 
@@ -698,7 +749,7 @@ margin-left: 7px;
 }
 
 #tomorrows_events div.event{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .event_date_time{

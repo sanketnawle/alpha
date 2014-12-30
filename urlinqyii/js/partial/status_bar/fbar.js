@@ -471,12 +471,17 @@ $(document).ready(function() {
         return false;
     }
 
-    $(document).delegate('.fbar_buttonwrapper', "click", function () {
+    $(document).delegate('.fbar_buttonwrapper', "click", function () { 
+        var $button_selected = $(this);
+        
+        var button_selected_type = $button_selected.attr("data-post_button_type");
+        $("#fbar_holder").addClass(button_selected_type);
+
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form')
-        $button_section.addClass("faded").delay(450).queue(function(next){
+        $button_section.addClass("faded").delay(150).queue(function(next){
             $button_section.addClass("hide");
-            $form_section.addClass("show").delay(650).queue(function(next2){
+            $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
                 next2();
             });
@@ -484,6 +489,25 @@ $(document).ready(function() {
 
         });
       
+    });
+
+    $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
+        var $button_section = $('#fbar_buttons');
+        var $form_section = $('form#fbar_form');
+
+
+
+        $form_section.removeClass("fadeIn");
+        $form_section.removeClass("show").delay(350).queue(function(next){
+            $button_section.removeClass("faded");
+            $button_section.removeClass("hide");
+            $("#fbar_holder").removeClass("discuss");
+            $("#fbar_holder").removeClass("question");
+            $("#fbar_holder").removeClass("notes");
+            next();
+
+        });
+
     });
 
 

@@ -608,7 +608,8 @@ $(document).on('click','.cancel_form',function(){
     $(this).removeClass("cancel_form");
 });
 function show_planner_creation_form(){
-    $("#planner_body_holder").css({"opacity":"0"});
+    $("#planner_body_holder").hide();
+    $(".create_event_body").fadeIn(500);
     $(this).css("display", "none");
     $("#todo_wrap").css("height", "128px");
     $(".entry_field").css("border-bottom", "1px solid #ddd");
@@ -618,10 +619,11 @@ function show_planner_creation_form(){
 }
 
 function hide_planner_creation_form(){
-    $("#planner_body_holder").css({"opacity":"1"});
+    $("#planner_body_holder").fadeIn(500);
     $('.planner_creation_form').css('display', 'none');
     $(".entry_field").css("height", "0px");
     $(".entry_field").css("border", "none");
+    $(".create_event_body").hide();
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add time');
