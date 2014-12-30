@@ -422,7 +422,7 @@
                                     </span>
                                 </div>
                                 <div class = "user_more_info">
-                                    <span class = "label">Department <br> </span><a class = "data department_link"><?php echo $professor->department->department_name; ?></a>
+                                    <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
                                 </div>
                                 <div class = "user_more_info">
                                     <span class = "label">Office location <br> </span><span class = "data location"><?php echo $professor->professorAttribute->office_location; ?></span>
