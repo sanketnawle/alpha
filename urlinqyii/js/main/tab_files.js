@@ -402,9 +402,11 @@ $(document).ready(function(){
 
     $(document).on('click','.remove_file_div', function(){
         var $remove_file_div = $(this);
-        var $file = $remove_file_div.closest('');
+        var $file = $remove_file_div.closest('.file');
+        var file_id = $file.attr('data-file_id');
 
-        alert('lol');
+        alert(file_id);
+
     });
 
 

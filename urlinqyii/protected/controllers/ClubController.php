@@ -679,6 +679,7 @@ class ClubController extends Controller
 
         $user_id = $this->get_current_user_id();
 
+
         $club_id = $_GET['id'];
         $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
         //Check if this user is even in this club

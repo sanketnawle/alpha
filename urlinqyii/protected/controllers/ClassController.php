@@ -378,6 +378,39 @@ class ClassController extends Controller
     }
 
 
+    public function actionRemoveFile(){
+        if(!isset($_POST['file_id']) || !isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $class_id = $_POST['id'];
+        $file_id = $_POST['file_id'];
+
+
+
+        $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
+
+
+        if($class){
+
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+    }
+
+
+
+
+
 
 	// Uncomment the following methods and override them if needed
 	/*
