@@ -49,6 +49,7 @@ $(document).ready(function(){
     }
 
     function render_posts(jsonData){
+        
         $.each(jsonData ,function(key,post) {
             //alert(JSON.stringify(post));
             //jsonData['key'].jsonData[key]['replies'][0]);
@@ -63,13 +64,24 @@ $(document).ready(function(){
                 var theReplies = post['replies'];
                 replies[post_id.toString()] = theReplies;
                 post['replies'] = [post['replies'][0], post['replies'][1]];
-
             }
+
+
 
             for(i = 0; i < post['replies'].length; i++){
                 post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
 
             }
+
+            if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
+                var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            
+                for(i = 0; i < post['options'].length; i++){
+                    post['options'][i]['the_choice_letter'] = alphabet.charAt(i);
+
+                }    
+            }
+            
 
 
 
