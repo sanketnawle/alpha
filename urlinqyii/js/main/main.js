@@ -69,7 +69,6 @@ $(document).ready(function(){
             $nav_bar.css({'top':'265px'});
 
             
-            
 
 
 
