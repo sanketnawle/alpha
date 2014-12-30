@@ -501,8 +501,8 @@
 
                                                     {{/if}}
 
-                                                    {{#ifCond question.question_type '==' multiple_choice}}
-                                                        
+
+                                                    {{#ifCond question.question_type '==' 'multiple_choice'}}
                                                         <div class="mc_question">
                                                             {{#each options}}
                                                                 <div class="mc_question_one_choice" id="{{the_choice_letter}}">
@@ -518,9 +518,9 @@
                                                                     
                                                                     <div class="mc_question_choice_text">
                                                                         {{#if anon}}
-                                                                            <span class="choice_text"> {{option_text}} </span>
+                                                                            <span class="choice_text"> {{question.option_text}} </span>
                                                                         {{else}}
-                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{the_choice_text}} </span>
+                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{question.option_text}} </span>
                                                                             
                                                                         {{/if}}
                                                                     </div>
@@ -555,7 +555,7 @@
                                                         </div>
                                                     
 
-                                                    {{/if}}
+                                                    {{/ifCond}}
                                                     {{#if file_id}}
                                                     
                                                     <div class='post_attachment_review'><img {{theFileType file_share_type file_id}} </div>
