@@ -256,6 +256,13 @@ ol.files_list li.file div.filename_col div.upload_sprite{
     cursor: pointer;
 }
 
+
+ol.files_list li.file div.filename_col div.upload_sprite{
+    background-image: url('../../assets/file_icons/file_type_na.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
 ol.files_list li.file div.filename_col div.upload_sprite.doc{
 
 	background-image: url('../../assets/file_icons/file_type_doc.png');
@@ -299,15 +306,54 @@ ol.files_list li.file div.filename_col div.upload_sprite.pptx{
 
 
 ol.files_list li.file div.filename_col div.upload_sprite.pdf{
-    background-position: 0px -105px;
-	
+    background-image: url('../../assets/file_icons/file_type_pdf.png');
+    background-size: auto;
     margin-left: 5px;
 }
 
+
+
+ol.files_list li.file div.filename_col div.upload_sprite.png{
+    background-image: url('../../assets/file_icons/file_type_png.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
+ol.files_list li.file div.filename_col div.upload_sprite.jpg{
+    background-image: url('../../assets/file_icons/file_type_jpg.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
+
+
+
+ol.files_list li.file div.filename_col div.upload_sprite.folder{
+    background-image: url('../../assets/file_icons/file_type_folder.png');
+    background-size: auto;
+    margin-left: 5px;
+}
+
+
+ol.files_list li.file div.filename_col div.upload_sprite.code{
+    background-image: url('../../assets/file_icons/file_type_code.png');
+    background-size: auto;
+    margin-left: 5px;
+
+}
+
+
+
+
+
+
+
+
+
 ol.files_list li.file div.filename_col div.upload_sprite.zip{
-    background-position: 0px -274px;
-	
-    width: 35px;
+    background-image: url('../../assets/file_icons/file_type_zip.png');
+    background-size: auto;
+    margin-left: 5px;
 }
 
 ol.files_list li.file div.filename_col div.upload_sprite.img{
@@ -327,6 +373,9 @@ ol.files_list li.file div.filename_col a.filename{
     white-space: pre;
     cursor:pointer;
     text-decoration: none;
+
+    width: 80%;
+    float: left;
 }
 
 ol.files_list li.file div.filename_col a.filename:hover{

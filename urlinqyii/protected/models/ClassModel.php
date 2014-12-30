@@ -53,6 +53,43 @@ class ClassModel extends CActiveRecord
         return null;
     }
 
+    //Returns files uploaded by the professor or other admin
+    public function classFiles(){
+        $class_files = array();
+
+        $class_file_objects = ClassFile::model()->findAllBySql('SELECT * FROM `class_file` WHERE class_id=' . $this->class_id);
+
+        foreach($class_file_objects as $class_file_object){
+            $class_user_object = ClassUser::model()->findBySql("SELECT * FROM `class_user` WHERE class_id=" . $this->class_id . " AND user_id=" . $class_file_object->user_id);
+            $user_type = $class_user_object->is_admin;
+            if($user_type == '1'){
+                array_push($class_files,$class_file_object->file);
+            }
+        }
+        return $class_files;
+
+    }
+
+
+    //Returns files uploaded by the professor or other admin
+    public function studentFiles(){
+        $student_files = array();
+
+        $student_file_objects = ClassFile::model()->findAllBySql('SELECT * FROM `class_file` WHERE class_id=' . $this->class_id);
+
+        foreach($student_file_objects as $student_file_object){
+            $class_user_object = ClassUser::model()->findBySql('SELECT * FROM `class_user` WHERE class_id=' . $this->class_id . ' AND user_id=' . $student_file_object->user_id);
+            $user_type = $class_user_object->is_admin;
+            if($user_type == '0'){
+                array_push($student_files,$student_file_object->file);
+            }
+        }
+        return $student_files;
+
+    }
+
+
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -89,6 +126,7 @@ class ClassModel extends CActiveRecord
 			'color' => array(self::BELONGS_TO, 'Color', 'color_id'),
 			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
 			'files' => array(self::MANY_MANY, 'File', 'class_file(class_id, file_id)'),
+
 			'classReviews' => array(self::HAS_MANY, 'ClassReview', 'class_id'),
 			'schedules' => array(self::MANY_MANY, 'Schedule', 'class_schedule(class_id, schedule_id)'),
 			'classUsers' => array(self::HAS_MANY, 'ClassUser', 'class_id'),
