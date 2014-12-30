@@ -117,9 +117,10 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
 
 .fbar_button_icon#fbar_icon_discuss{
     width: 42px;
+    
     height: 44px;
-    left: 16px;
-    background-position: 0px -61px!important;
+    left: 2px;
+    background-position: 0px -60px!important;
 }
 
 .fbar_button_icon#fbar_icon_notes{
@@ -160,7 +161,6 @@ form#fbar_form{
     height:auto;
     opacity:0;
     pointer-events:none;
-    overflow: hidden;
     max-height:0px;
     -moz-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
     -ms-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
@@ -182,10 +182,10 @@ div.form_wrapper header img#fbar_user_icon{
 
     height: 54px;
     background-size: cover;
-    left: 12px;
+    left: -10px;
     position: relative;
-    top: 10px;
-    border-radius: 4.4px;
+    top: 7px;
+    border-radius: 4.8px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.21), -1px -1px 1px rgba(0, 0, 0, 0.28);
     padding: 1px;
     background: #FFF;
@@ -200,10 +200,15 @@ div.form_wrapper header div#audience_select{
 
 }
 
-
-
 div.form_wrapper section{
+    margin: 0 auto;
 
+    width: 90%;
+    margin-top: -10px;
+    border: 1px solid #d9d9d9;
+    min-height: 110px;
+    border-radius: 4px;
+    border-top-color: #c0c0c0;
 }
 
 div.form_wrapper section.post_form_template{
@@ -224,24 +229,25 @@ div.form_wrapper section.post_form_template#question_form{
 
 
 div.form_wrapper footer{
+    width: 90%;
 
+    margin: 0 auto;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    height: 24px;
+    padding: 7px 0px;
 }
 
-div.form_wrapper footer div{
-        padding: 6px 13px;
-
-    text-transform: capitalize; 
-        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-
-    font-family: Avenir;
-        padding-bottom: 8px;
-
-    border-radius: 4px; line-height: 15px;
-}
 div.form_wrapper footer .post_btn{
     float: right;
-    text-transform: uppercase;
+
+    padding: 6px 13px;
     font-size: 15.5px;
+    padding-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: Avenir;
+    border-radius: 4px;
     background: #08D09C; 
     color: #FFF;
     border-radius: 4px; border: 1px solid #0AB286; -webkit-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; -moz-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
@@ -251,9 +257,16 @@ div.form_wrapper footer .post_btn{
 div.form_wrapper footer .cancel_btn{
     border: 1px solid #C0C0C0; 
     background-color: #F0F0F0; 
-    font-size:15px;
     float: left;  -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #575757!important;
+
+    padding: 6px 13px;  
+    text-transform: capitalize; 
+    font-size: 15px; 
+    font-family: Avenir;
+    border-radius: 4px; line-height: 15px;
+    padding-bottom: 8px;
     padding-top: 10px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 .faded{
@@ -270,21 +283,12 @@ div.form_wrapper footer .cancel_btn{
 }
 
 form#fbar_form.show{
-    max-height:330px;
     pointer-events:auto;
-}
-
-.question_type_button{
-    
+    max-height: 330px;
 }
 
 
 /* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
-
-div#question_form_content{
-    display:none;
-}
-
 #fbar_holder.discuss section#discussion_form {
     display:block;
 } 
@@ -294,7 +298,3 @@ div#question_form_content{
 #fbar_holder.question section#question_form {
     display:block;
 } 
-
-#fbar_holder.question div#question_form_content {
-    display:block;
-}

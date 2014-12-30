@@ -50,7 +50,7 @@
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
                                     <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/question_status_bar',array('pg_src'=>'club.php','target_type'=>'group')); ?>
+                                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'home','origin_id'=>'','pg_src'=>'club.php','target_type'=>'group')); ?>
                                     </div>
 
                                     <div id = "filter_wrapper" class = "filter_bar filter_bar_home">

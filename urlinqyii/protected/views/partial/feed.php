@@ -57,8 +57,8 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon'>
-                                                          </div>
+                                                            <div class = 'post_user_icon' style = 'background-size:auto;'>
+                                                            </div>
                                                         {{/if}}
                                                     </div>
 
@@ -240,7 +240,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show Full Discussion 
+                                    See all replies
                                 </div>
                             {{/if}}
                         </div>
@@ -334,7 +334,7 @@
 
                      {{/each}}
                                 <div id='show_less' class='lesscmt_bar'>
-                                            Do not show Full Discussion 
+                                            Hide Discussion 
                                 </div>
             </script>
 
@@ -410,7 +410,7 @@
 
                      {{/each}}
                                 <div id='show_more' class='morecmt_bar'>
-                                            Show Full Discussion 
+                                            See all replies  
                                 </div>
 
             </script>
@@ -710,7 +710,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show Full Discussion
+                                    See all replies
                                 </div>
                              {{/if}}
 
@@ -981,7 +981,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show Full Discussion
+                                    See all replies
                                 </div>
                             {{/if}}
                         </div>

@@ -58,6 +58,7 @@ $(document).ready(function(){
             //jsonData[key]['created_time'] = time
             if(post['reply_count'] >  2) {
                 post.show_more = true;
+
                 var post_id = post['post_id'];
                 var theReplies = post['replies'];
                 replies[post_id.toString()] = theReplies;
@@ -72,7 +73,6 @@ $(document).ready(function(){
 
 
 
-            
             post['update_timestamp'] = moment(post['update_timestamp'], "X").fromNow();
 
             
@@ -177,7 +177,6 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.morecmt_bar', function(){
-        $(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
         var source   = $("#reply_template").html();
         var template = Handlebars.compile(source);
         var id = $(this).parent(".master_comments").attr("id");

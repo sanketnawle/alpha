@@ -632,10 +632,7 @@ label.planner_checkbox_label:after{
     -o-transform: rotate(-54deg);
     -ms-transform: rotate(-54deg);
     transform: rotate(-54deg);
-    
-    -webkit-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+
 }
 
 .checkbox_hint{

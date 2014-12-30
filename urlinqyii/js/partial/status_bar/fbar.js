@@ -501,9 +501,9 @@ $(document).ready(function() {
         $form_section.removeClass("show").delay(350).queue(function(next){
             $button_section.removeClass("faded");
             $button_section.removeClass("hide");
-            $("#fbar_holder").removeClass("discuss");
-            $("#fbar_holder").removeClass("question");
-            $("#fbar_holder").removeClass("notes");
+                    $("#fbar_holder").removeClass("discuss");
+                    $("#fbar_holder").removeClass("question");
+                    $("#fbar_holder").removeClass("notes");
             next();
 
         });

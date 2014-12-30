@@ -10,7 +10,7 @@ div#content_panel div#nav_bar{
 	top: 63px!important;
 	border-radius: 2px!important;
 	width: 554px;
-	margin-left: 14px;
+	margin-left: 15px;
 }
 
 div.SectionHeader_holder div.float_Right a{
@@ -38,7 +38,7 @@ div#nav_drop_down_container{
 }
 
 div.nav_section div#nav_drop_down_container{
-	top:99px!important;
+	top:100px!important;
 }
 
 div.nav_section.nav_section_home.active div a:hover{
