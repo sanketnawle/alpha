@@ -264,76 +264,76 @@
                         }
                         if(sizeof($showcase) == 0){
                             echo '<div class="random-default-showcase" style="background-image: url(https://s3.amazonaws.com/suh-s3-nfs/static/images/Profile_Backgrounds/'.rand(1,120).'.jpg);"></div>';
-                        }
+                        }else{
 
                         ?>
-						<div class="showcase-bar">
+                        <div class="showcase-bar">
                             <?php
-                            foreach($showcase as $i=>$entry){
+                            foreach ($showcase as $i => $entry) {
                                 $ext = $entry->file->file_extension;
-                                if($ext != 'url'){
-                                    $ext = '.'.$ext;
+                                if ($ext != 'url') {
+                                    $ext = '.' . $ext;
                                 }
 
-                                if($i == 0){
-                                    echo '<div class="showcase-image center-image blur_class opacity_class" id="img-slot0" data-file-type="'.$ext.'"';
-                                }else{
-                                    echo '<div class="showcase-image blur_class" id="img-slot'.$i.'" data-file-type="'.$ext.'"';
+                                if ($i == 0) {
+                                    echo '<div class="showcase-image center-image blur_class opacity_class" id="img-slot0" data-file-type="' . $ext . '"';
+                                } else {
+                                    echo '<div class="showcase-image blur_class" id="img-slot' . $i . '" data-file-type="' . $ext . '"';
                                 }
-                                if($entry->preview_file_id){
-                                    echo " style=\"background-image: url('..".$entry->preview_image->file_url."');\">";
-                                }else{
+                                if ($entry->preview_file_id) {
+                                    echo " style=\"background-image: url('.." . $entry->preview_image->file_url . "');\">";
+                                } else {
                                     echo '>';
                                 }
                                 echo '
                                         <div class="showcase-label"><span>';
-                                if($entry->file->origin_type == 'link'){
+                                if ($entry->file->origin_type == 'link') {
                                     echo $entry->file->file_name;
                                 }
                                 echo '
                                         </span>
                                         </div>
                                         <div class="add-showcase-button download-button-div">';
-                              /*  if($entry->file->origin_type == 'link'){
-                                     echo '<button type="button" class="download-showcase-button"><i class="download_button_icon">
-                                                   </i></button>';
+                                /*  if($entry->file->origin_type == 'link'){
+                                       echo '<button type="button" class="download-showcase-button"><i class="download_button_icon">
+                                                     </i></button>';
 
-                                }else{
-                                     echo ' <a href="..'.$entry->file->file_url.'" download="'.basename($entry->file->file_name).'">
-                                                <button type="button" class="download-showcase-button"><i class="download_button_icon">
-                                                   </i></button></a>';
+                                  }else{
+                                       echo ' <a href="..'.$entry->file->file_url.'" download="'.basename($entry->file->file_name).'">
+                                                  <button type="button" class="download-showcase-button"><i class="download_button_icon">
+                                                     </i></button></a>';
 
-                                }*/
-                               if($entry->file->origin_type == 'link'){
-                                   echo "<button type=\"button\" onclick = \"window.open('".$entry->file->file_url."')\" class=\"download-showcase-button\"><i class=\"download_button_icon\">
+                                  }*/
+                                if ($entry->file->origin_type == 'link') {
+                                    echo "<button type=\"button\" onclick = \"window.open('" . $entry->file->file_url . "')\" class=\"download-showcase-button\"><i class=\"download_button_icon\">
                                                    </i></button>";
 
-                               }else{
-                                   echo ' <a href="../profile/downloadShowcase/?file_id='.$entry->file->file_id.'">
+                                } else {
+                                    echo ' <a href="../profile/downloadShowcase/?file_id=' . $entry->file->file_id . '">
                                                 <button type="button" class="download-showcase-button"><i class="download_button_icon">
                                                    </i></button></a>';
-                                /*   echo ' <a href="..'.$entry->file->file_url.'" download="'.basename($entry->file->file_name).'">
-                                            <button type="button" class="download-showcase-button"><i class="download_button_icon">
-                                               </i></button></a>';*/
-                           }
+                                    /*   echo ' <a href="..'.$entry->file->file_url.'" download="'.basename($entry->file->file_name).'">
+                                                <button type="button" class="download-showcase-button"><i class="download_button_icon">
+                                                   </i></button></a>';*/
+                                }
 
-                            echo '    </div>
+                                echo '    </div>
                                     <div class="showcase-description-wrap">
-                                        <div class="showcase-title">'.
-                                           $entry->title
-                                        .'</div>
-                                        <div class="showcase-description">'.
-                                            $entry->file_desc
-                                       .' </div>
+                                        <div class="showcase-title">' .
+                                    $entry->title
+                                    . '</div>
+                                        <div class="showcase-description">' .
+                                    $entry->file_desc
+                                    . ' </div>
                                     </div>';
-                            if($i==0){
-                                echo '<div class="image-panel-wrapper">';
-                                  if($is_user){
-                                      echo '<div class="circle-div" id="circle-div-delete">
+                                if ($i == 0) {
+                                    echo '<div class="image-panel-wrapper">';
+                                    if ($is_user) {
+                                        echo '<div class="circle-div" id="circle-div-delete">
                                             </div>
                                             <i></i>';
-                                  }
-                                echo  '     <div id="hint_wedge-before">
+                                    }
+                                    echo '     <div id="hint_wedge-before">
 
                                             </div>
                                             <div id="delete-on-hover-before">
@@ -365,11 +365,11 @@
                                             </div>
                                         </div>';
 
+                                }
+                                echo '</div>';
+
                             }
-                            echo '</div>';
-
-                        }
-
+                            }
                         ?>
                      <!--   <div class="showcase-image center-image" id="img-slot0" data-file-type=".pdf">
                             <div class="showcase-label">

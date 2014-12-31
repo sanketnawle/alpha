@@ -1,7 +1,7 @@
 
 
 <script src="{{base_url}}/js/jquery.min.js"></script>
-<script src="{{base_url}}/js/profile/profile.js"></script>
+<!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
 <link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>
 <div class="overlay"></div>
 <div id="profile_wrapper">
@@ -16,50 +16,74 @@
         <div id="showcase_wrapper">
             <div class="showcase_controls">
                 <div class="showcase_delete"></div>
-
-
-
-                <div class="showcase_right"></div>
-                <div class="showcase_left"></div>
+                <div class="showcase_arrow right" href=""></div>
+                <div class="showcase_arrow left" href=""></div>
             </div>
-            <div class="showcase_item center">
-                <div class="showcase_info">
-                    <div class="showcase_label">
-                        .pdf
-                    </div>
-                    <div class="showcase_title">
-                        Adtech and Big Data
-                    </div>
-                    <div class="showcase_description">
-                        This is a paper on the use of big data in digital marketing.
+            <div class="showcase_items">
+                <div class="showcase_item center" showcase_index="0">
+                    <div class="showcase_info">
+                        <div class="showcase_label">
+                            .pdf
+                        </div>
+                        <div class="showcase_text">
+                            <div class="showcase_title">
+                                Adtech and Big Data
+                            </div>
+                            <div class="showcase_description">
+                                This is a paper on the use of big data in digital marketing.
+                            </div>
+                        </div>
+                        <div class="showcase_download"></div>
                     </div>
 
-                    <div class="showcase_download"></div>
+                    <div class="showcase_image"  style="background-image: url()"></div>
+
+
                 </div>
-
-                <div class="showcase_image"  style="background-image: url()"></div>
-
-
-            </div>
-            <div class="showcase_item">
-                <div class="showcase_info">
-                    <div class="showcase_title">
-                        Adtech and Big Data
+                <div class="showcase_item" showcase_index="1">
+                    <div class="showcase_info">
+                        <div class="showcase_label">
+                            .pdf
+                        </div>
+                        <div class="showcase_text">
+                            <div class="showcase_title">
+                                Adtech and Big Data
+                            </div>
+                            <div class="showcase_description">
+                                This is a paper on the use of big data in digital marketing.
+                            </div>
+                        </div>
+                        <div class="showcase_download"></div>
                     </div>
-                    <div class="showcase_description">
-                        This is a paper on the use of big data in digital marketing.
-                    </div>
-                    <div class="showcase_type">
-                        .pdf
-                    </div>
+
+                    <div class="showcase_image"  style="background-image: url()"></div>
+
+
                 </div>
+                <div class="showcase_item" showcase_index="2">
+                    <div class="showcase_info">
+                        <div class="showcase_label">
+                            .pdf
+                        </div>
+                        <div class="showcase_text">
+                            <div class="showcase_title">
+                                Adtech and Big Data
+                            </div>
+                            <div class="showcase_description">
+                                This is a paper on the use of big data in digital marketing.
+                            </div>
+                        </div>
+                        <div class="showcase_download"></div>
+                    </div>
 
-                <div class="showcase_image"  style="background-image: url()"></div>
+                    <div class="showcase_image"  style="background-image: url()"></div>
 
 
+                </div>
             </div>
+            <div class="showcase_button">Add to Portfolio</div>
         </div>
-        <div class="showcase_button">Add to Portfolio</div>
+
         <!--{{#if showcase}}
         <div id="showcase_wrapper">
             <div class="showcase_controls">

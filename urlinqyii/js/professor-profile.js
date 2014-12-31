@@ -72,7 +72,7 @@
                     // Create a formdata object and add the files
                     var data = new FormData();
                     if(upload_file){
-                        data.append("uploadFile", upload_file);
+                        data.append("file", upload_file);
                     }else if($('#link-entry').val() != ''){
                         data.append("link_url",$('#link-entry').val());
                     }else{
