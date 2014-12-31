@@ -195,54 +195,54 @@ $(document).ready(function() {
     
         
 
-    $(document).on('click', '.post_like', function() {
-         var id = $(this).parents(".posts").attr("id");
-        
-         if(likeStatusAjax(id)) {
-            var likes = $(this).children('.like_number').text().trim();
-            $(this).removeClass('post_like');
-            $(this).addClass('post_liked');
-            if(likes != ''){
-                 var likesInt = parseInt(likes, 10);
+//    $(document).on('click', '.post_like', function() {
+//         var id = $(this).parents(".posts").attr("id");
+//
+//         if(likeStatusAjax(id)) {
+//            var likes = $(this).children('.like_number').text().trim();
+//            $(this).removeClass('post_like');
+//            $(this).addClass('post_liked');
+//            if(likes != ''){
+//                 var likesInt = parseInt(likes, 10);
+//
+//                $(this).children('.like_number').text(likesInt+1)
+//            } else {
+//                $(this).children('.like_number').text(1)
+//            }
+//           //parseInt(likes)++;
+//        }
+//    });
+//
+//    $(document).on('click','.post_liked', function(){
+//        var likes = $(this).children('.like_number').text().trim();
+//            $(this).removeClass('post_liked');
+//            $(this).addClass('post_like');
+//            if(likes != '0'){
+//                 var likesInt = parseInt(likes, 10);
+//
+//                $(this).children('.like_number').text(likesInt-1);
+//            } else {
+//                $(this).children('.like_number').text("");
+//            }
+//    });
 
-                $(this).children('.like_number').text(likesInt+1)
-            } else {
-                $(this).children('.like_number').text(1)
-            }
-           //parseInt(likes)++;
-        }
-    });
-    
-    $(document).on('click','.post_liked', function(){
-        var likes = $(this).children('.like_number').text().trim();
-            $(this).removeClass('post_liked');
-            $(this).addClass('post_like');
-            if(likes != '0'){
-                 var likesInt = parseInt(likes, 10);
-
-                $(this).children('.like_number').text(likesInt-1);
-            } else {
-                $(this).children('.like_number').text("");
-            }
-    });
-
-    function likeStatusAjax(id) {
-        $.ajax({
-            url: base_url + '/post/' + id + '/like',
-            type: "POST",
-            success: function(liked) {
-                alert(JSON.stringify(liked));
-                if(liked['success']) return true;
-                else return false;
-            },
-            error: function() {
-
-                 $("#posts").prepend("Error Liking the post");
-            }
-        });
-    return true;
-
-    }
+//    function likeStatusAjax(id) {
+//        $.ajax({
+//            url: base_url + '/post/' + id + '/like',
+//            type: "POST",
+//            success: function(liked) {
+//                alert(JSON.stringify(liked));
+//                if(liked['success']) return true;
+//                else return false;
+//            },
+//            error: function() {
+//
+//                 $("#posts").prepend("Error Liking the post");
+//            }
+//        });
+//    return true;
+//
+//    }
     //Posting a Form
     $(document).on('click', '.post-btn', function() {
         var jsonData = {
@@ -471,12 +471,17 @@ $(document).ready(function() {
         return false;
     }
 
-    $(document).delegate('.fbar_buttonwrapper', "click", function () {
+    $(document).delegate('.fbar_buttonwrapper', "click", function () { 
+        var $button_selected = $(this);
+        
+        var button_selected_type = $button_selected.attr("data-post_button_type");
+        $("#fbar_holder").addClass(button_selected_type);
+
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form')
-        $button_section.addClass("faded").delay(450).queue(function(next){
+        $button_section.addClass("faded").delay(150).queue(function(next){
             $button_section.addClass("hide");
-            $form_section.addClass("show").delay(650).queue(function(next2){
+            $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
                 next2();
             });
@@ -484,6 +489,25 @@ $(document).ready(function() {
 
         });
       
+    });
+
+    $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
+        var $button_section = $('#fbar_buttons');
+        var $form_section = $('form#fbar_form');
+
+
+
+        $form_section.removeClass("fadeIn");
+        $form_section.removeClass("show").delay(350).queue(function(next){
+            $button_section.removeClass("faded");
+            $button_section.removeClass("hide");
+                    $("#fbar_holder").removeClass("discuss");
+                    $("#fbar_holder").removeClass("question");
+                    $("#fbar_holder").removeClass("notes");
+            next();
+
+        });
+
     });
 
 

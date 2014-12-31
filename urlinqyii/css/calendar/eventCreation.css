@@ -1,0 +1,47 @@
+div.dialog div.overlay{
+	font-family: "Open Sans", Arial, sans-serif;
+font-size: 14px;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 210;
+position: fixed;
+background: rgba(18, 19, 20, 0.90);
+height: 100%;
+width: 100%;
+display: table;
+}
+
+div.dialog .overlay .wrapper {
+display: block;
+vertical-align: top;
+height: 100%;
+padding-top: 48px;
+}
+
+div.dialog div.overlay .wrapper .content .dbody div.row {
+height: auto;
+border-bottom: 1px solid #ebebeb;
+margin-left: 10px;
+}
+
+div.dialog div.overlay .wrapper .content .dbody div.row.no_btm_border {
+border-bottom: none;
+}
+
+div.dialog .overlay .wrapper div.content{
+	width: 85%;
+margin: auto;
+background: #fff;
+height: 100%;
+-webkit-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
+-moz-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
+box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
+position: absolute;
+left: 200px;
+right: 0px;
+bottom: 0px;
+top: 100px;
+}

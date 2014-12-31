@@ -668,6 +668,134 @@ class ClubController extends Controller
     }
 
 
+
+
+    public function actionClubFiles (){
+        if(!isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $this->get_current_user_id();
+
+
+        $club_id = $_GET['id'];
+        $club = Group::model()->find('group_id=:id', array(':id'=>$club_id));
+        //Check if this user is even in this club
+        if($club){
+            //Check if we destroy this shit successfully
+            $data = array('success'=>true,'files'=>$club->files);
+            $this->renderJSON($data);
+            return;
+        }else{
+            //user is not apart of this club
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+    public function actionFileUpload(){
+        if (empty($_FILES)) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'group id not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'group id not set','_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        include "file_upload.php";
+
+        try{
+            $group_id = $_POST['id'];
+            $local_directory = 'club/' . $group_id . '/';
+
+
+            $data = file_upload($_FILES,$local_directory);
+            if($data['success']){
+                $group_file = new GroupFile;
+                $group_file->group_id = $group_id;
+                $group_file->file_id = $data['file_id'];
+                $group_file->user_id = $this->get_current_user_id();
+                $group_file->save(false);
+                if($group_file){
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+    }
+
+
+
+    public function actionRemoveFile(){
+        if(!isset($_POST['file_id']) || !isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $group_id = $_GET['id'];
+        $file_id = $_POST['file_id'];
+
+        $group = Group::model()->find('group_id=:id',array(':id'=>$group_id));
+
+
+        if($group){
+            $group_file = GroupFile::model()->findBySql('SELECT * FROM `group_file` WHERE group_id=' . $group_id . ' AND file_id=' . $file_id);
+            if($group_file){
+                if($group_file->delete()){
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

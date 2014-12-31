@@ -108,7 +108,7 @@ class FeedController extends Controller
             $data = array('user_id'=>$user->user_id,'user_name'=>$user->firstname." ".$user->lastname, 'picture_file_id'=>$user->picture_file_id);
         }
         else {
-            $data = $this->get_model_associations($user, array('department' => array('pictureFile', 'coverFile'),
+            $data = $this->get_model_associations($user, array('pictureFile'=>array(),'department' => array('pictureFile', 'coverFile'),
                 'school' => array('pictureFile', 'coverFile', 'university')));
         }
         return $data;
@@ -260,6 +260,7 @@ class FeedController extends Controller
             if($post['origin_type']=="user"){
                 $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
                 $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
+
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
@@ -304,10 +305,11 @@ class FeedController extends Controller
 
 
             if($post['file_id'] != NULL) {
-                if ($file = File::model()->findbypk($post['file_id']))
-                    $posts [$i] ['file'] = array('success' => TRUE, 'file_contents' => $file);
+                $file = File::model()->find('file_id=:id', array(':id'=>$post['file_id']));
+                if ($file)
+                    $posts [$i] ['file'] = self::convertModelToArray($file);
                 else
-                    $posts [$i] ['file'] = array('success'=>FALSE, 'msg'=>'provided file id does not exist');
+                    $posts [$i] ['file'] = null;
             }
             else
                 $posts [$i] ['file'] = NULL;
@@ -318,6 +320,7 @@ class FeedController extends Controller
                 $post_que = PostQuestion::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
                 $posts [$i] ['active'] = $post_que->active;
+                $posts[$i]['question'] = self::convertModelToArray($post_que);
 
                 // give correct answer, if NOT active
                 if($post_que->active == 0)
@@ -355,6 +358,12 @@ class FeedController extends Controller
 
 	public function actionGetHomePosts()
 	{
+
+
+        if(!$this->authenticated() || !isset($_GET['token'])){
+
+        }
+
 //      print_r(User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id)));
 
         // $posts_sql_home = "SELECT distinct *

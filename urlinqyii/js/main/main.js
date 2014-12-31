@@ -19,7 +19,7 @@ $(document).ready(function(){
         $('#panel_' + panel_id).addClass('active');
     });
 
-
+    
 
     $( "#page" ).scroll(function() {
 //        alert('SCROLL');
@@ -37,8 +37,8 @@ $(document).ready(function(){
         //alert(tab_bar_position.top);
 
         var scroll_offset_top = $page.scrollTop();
-        console.log("OFFSET");
-        console.log(scroll_offset_top);
+        ////console.log("OFFSET");
+        ////console.log(scroll_offset_top);
 //        alert(scroll_offset_top);
 
         var y = $page.scrollTop()*0.32;
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
         if(Math.floor(scroll_offset_top) >= 254){
 
-            console.log("SETTING TO FIXED");
+            ////console.log("SETTING TO FIXED");
             
             //alert(y);
             //$("#cover_photo").css({"transform":"translateY("+ -y+"px)"});
@@ -68,7 +68,6 @@ $(document).ready(function(){
             $nav_bar.css({'position':'relative'});
             $nav_bar.css({'top':'265px'});
 
-            
             
 
 
@@ -91,7 +90,7 @@ $(document).ready(function(){
         }
 
         if(Math.floor(scroll_offset_top) <= 299){
-            console.log("SETTING TO RELATIVE");
+            //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
 
@@ -110,7 +109,7 @@ $(document).ready(function(){
         }
 
         if(Math.floor(scroll_offset_top) <= 301){
-            console.log("SETTING TO RELATIVE");
+            //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
 

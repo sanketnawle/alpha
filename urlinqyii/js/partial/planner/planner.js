@@ -608,7 +608,8 @@ $(document).on('click','.cancel_form',function(){
     $(this).removeClass("cancel_form");
 });
 function show_planner_creation_form(){
-    $("#planner_body_holder").css({"opacity":"0"});
+    $("#planner_body_holder").hide();
+    $(".create_event_body").fadeIn(500);
     $(this).css("display", "none");
     $("#todo_wrap").css("height", "128px");
     $(".entry_field").css("border-bottom", "1px solid #ddd");
@@ -618,12 +619,19 @@ function show_planner_creation_form(){
 }
 
 function hide_planner_creation_form(){
-    $("#planner_body_holder").css({"opacity":"1"});
+    $("#planner_body_holder").fadeIn(500);
     $('.planner_creation_form').css('display', 'none');
     $(".entry_field").css("height", "0px");
     $(".entry_field").css("border", "none");
+    $(".create_event_body").hide();
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
+
+    $('.cancel_form').find("#add_todo_text").text("Add Todo");
+    $('.cancel_form').removeClass("cancel_form");
+    $(".nav-icon").toggleClass('bounce-minus');
+    $(".nav-icon-plus").toggleClass('hide-plus');
+    $(".entry_field_placeholder").css({"width":"75px"});
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
 }
@@ -748,7 +756,7 @@ $(document).on('click','#create_todo_form',function(e){
 
 
     todo_datetime = local_to_utc(todo_datetime);
-    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth()+ 1).toString() + "-" + todo_datetime.getDate().toString();
+    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
     var todo_time = addZero(todo_datetime.getHours()).toString() + ':' + addZero(todo_datetime.getMinutes()).toString() + ':' + addZero(todo_datetime.getSeconds()).toString();
 
     if(errors.length > 0){

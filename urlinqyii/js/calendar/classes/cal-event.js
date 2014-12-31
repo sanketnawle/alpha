@@ -83,45 +83,45 @@ var CalendarEvent = (function (CalendarEvent) {
                         }
                     }
 
-                    this.closeBtn = dialog.querySelector(".dtitle .close");
-                    this.closeBtn.onclick = function () { dlg.opened = false; dlg.__fire("cancel"); }
+//                    this.closeBtn = dialog.querySelector(".dtitle .close");
+//                    this.closeBtn.onclick = function () { dlg.opened = false; dlg.__fire("cancel"); }
 
-                    this.submitBtn = dialog.querySelector(".row5 .submit");
-                    this.submitBtn.onclick = function () { dlg.opened = false; dlg.__fire("submit"); }
+//                    this.submitBtn = dialog.querySelector(".submit");
+//                    this.submitBtn.onclick = function () { dlg.opened = false; dlg.__fire("submit"); }
 
-                    this.desBtn = dialog.querySelector(".row5 .des-btn");
-                    this.desBtn.onclick = function () {
-                        var cls = "active";
-                        if (this.classList.contains(cls))
-                            this.classList.remove(cls);
-                        else
-                            this.classList.add(cls);
-                    }
+//                    this.desBtn = dialog.querySelector(".row5 .des-btn");
+//                    this.desBtn.onclick = function () {
+//                        var cls = "active";
+//                        if (this.classList.contains(cls))
+//                            this.classList.remove(cls);
+//                        else
+//                            this.classList.add(cls);
+//                    }
 
-                    this.tagInput = dialog.querySelector(".row4 .tag-in .txt");
-                    this.tagInput.onkeyup = function (e) {
-                        e = e || event;
-                        if (e.keyCode == 188 || e.keyCode == 13) {
-                            dlg.addTag(this.value.split(",", 1)[0]);
-                            this.value = "";
-                        }
-                    }
+//                    this.tagInput = dialog.querySelector(".row4 .tag-in .txt");
+//                    this.tagInput.onkeyup = function (e) {
+//                        e = e || event;
+//                        if (e.keyCode == 188 || e.keyCode == 13) {
+//                            dlg.addTag(this.value.split(",", 1)[0]);
+//                            this.value = "";
+//                        }
+//                    }
 
-                    if ($(".row2 .date", dlg.ele).datepicker)
-                        $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
-
-                    var fdate = new Date();
-                    this.fromTime = fdate.toTimeInputValue();
-                    this.fromDate = fdate.toDateInputValue();
-
-                    var tdate = new Date(fdate.getTime());
-                    tdate.setHours(fdate.getHours() + 1);
-                    this.toDate = tdate.toDateInputValue();
-                    this.toTime = tdate.toTimeInputValue();
-
-                    $(".row1 .cats li", dlg.ele).click(function () {
-                        $(" > .cat", $(this).parents(".ecat"))[0].className = $(".cat", this)[0].className;
-                    });
+//                    if ($(".row2 .date", dlg.ele).datepicker)
+//                        $(".row2 .date", dlg.ele).datepicker({ dateFormat: "D, M dd, yy" });
+//
+//                    var fdate = new Date();
+//                    this.fromTime = fdate.toTimeInputValue();
+//                    this.fromDate = fdate.toDateInputValue();
+//
+//                    var tdate = new Date(fdate.getTime());
+//                    tdate.setHours(fdate.getHours() + 1);
+//                    this.toDate = tdate.toDateInputValue();
+//                    this.toTime = tdate.toTimeInputValue();
+//
+//                    $(".row1 .cats li", dlg.ele).click(function () {
+//                        $(" > .cat", $(this).parents(".ecat"))[0].className = $(".cat", this)[0].className;
+//                    });
 
                     this.__fire("load");
                 }

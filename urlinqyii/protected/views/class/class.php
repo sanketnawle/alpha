@@ -11,17 +11,25 @@
 
         globals.origin_name = '<?php echo $class->class_name; ?>';
 
+        globals.is_admin = '<?php echo $is_admin ? 'true' : 'false'; ?>';
+
+        globals.admin_file_panel_class = 'class';
+
     </script>
 
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
+
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
 
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
@@ -87,7 +95,7 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Materials</div>
-                    <div class = "tab_amount">92</div>
+                    <div class = "tab_amount"><?php echo count($class->files);?></div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -138,19 +146,19 @@
         <div class="tab_header">
             <div id = "tabnav">
                 <div class = "tabnav_right float_Right">
-                    <div id = "small_search" class = "fade_input_small">
-                        <em id = "files_tab_sprites" class = "search_icon">
+                    <div class = "small_search fade_input_small">
+                        <em id = "files_tab_sprites" class = "left_search_icon search_icon">
                         </em>
-                        <input type = "text" name = "files_search_input" placeholder = "Search files" id = "small_search_input">
+                        <input type = "text" name = "files_search_input" placeholder = "Search files" class = "small_search_input file_search_input">
                     </div>
                 </div>
                 <ul class = "tabnav_tabs">
-                    <li class = "files_subtab class_files active" data-panel_id = "1">
+                    <li class = "files_subtab class_files active" data-panel_id = "1" data-file_list_type="class">
                         <div class = "tabnav_tab">
                             <span>Class Files</span>
                         </div>
                     </li>
-                    <li class = "files_subtab student_files" data-panel_id = "2">
+                    <li class = "files_subtab student_files" data-panel_id = "2" data-file_list_type="student">
                         <div class = "tabnav_tab">
                             <span>Student Files</span>
                         </div>
@@ -183,7 +191,7 @@
                     <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                 </div>
                 <div id = "kind_sorter" data-sort = "files_by_kind" data-ascending = "false" class = "sortable_column_header">
-                    <span>Kind</span>
+                    <span>Type</span>
                     <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                 </div>
                 <div id = "date_sorter" data-sort = "files_by_date" data-ascending = "false" class = "sortable_column_header">
@@ -191,342 +199,169 @@
                     <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                 </div>
                 <div id = "views_sorter" data-sort = "files_by_views" data-ascending = "false" class = "sortable_column_header">
-                    <span>Views</span>
+                    <span>Downloads</span>
                     <em id = "files_tab_sprites" class = "sort_gray_arrow up"></em>
                 </div>
             </div>
             <div id = "files_header_bottom_line">
             </div>
         </div>
-        <div class = "files_sub_panel active class_files" id ="files_sub_panel_1">
-            <ol class = "files_list">
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite doc">
-                        </div>
-                        <a class = "filename">Daunting Document</a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Document</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/5/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                                28
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                            Download
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite img">
-                        </div>
-                        <a class = "filename">Interesting Image</a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Image</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/5/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                        <span class = "viewcount">48</span>
-                        <a class = "download_button extra_padding">
-                            Download
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite excel">
-                        </div>
-                        <a class = "filename">Serial Spreadsheet</a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Spreadsheet</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/24/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                        <span class = "viewcount">120</span>
-                        <a class = "download_button extra_padding">Download</a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite ppt">
-                        </div>
-                        <a class = "filename">
+        <div class = "files_sub_panel active class_files" id ="files_sub_panel_1" data-file_list_type="class">
+            <ol class = "files_list class" data-file_list_type="class">
 
-                        </a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Powerpoint</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/5/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                        <span class = "viewcount">1340</span>
-                        <a class = "download_button extra_padding">Download</a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite pdf">
 
+
+                <script id="file_template" type="text/x-handlebars-template">
+                    <li class = "file" data-file_id="{{file_id}}" data-name="{{original_name}}" data-file_type="{{file_type}}" data-date="{{created_timestamp}}" data-download_count="{{download_count}}">
+                        <div class = "filename_col">
+                            <div class = "files_tab_sprites upload_sprite {{file_type}}"></div>
+                            <a class = "filename" data-file_type="{{file_type}}" href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'>{{original_name}}</a>
                         </div>
-                        <a class = "filename">Poignant PDF</a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Document</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/14/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                        <div class = "kind">
+                            <span class = "category">{{file_type}}</span>
                         </div>
-                    </div>
-                    <div class = "views">
-                        <span class = "viewcount">23</span>
-                        <a class = "download_button extra_padding">Download</a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite zip">
+                        <div class = "date">
+                            <span class = "relevant_date">{{created_timestamp}}</span>
+                            <div id = "hidden_datepicker" class = "files_tab_datepicker"></div>
                         </div>
-                        <a class = "filename">Unit 1 Course Materials</a>
-                    </div>
-                    <div class = "kind">
-                        <span class = "category">Folder</span>
-                    </div>
-                    <div class = "date">
-                        <span class = "relevant_date">10/24/2014</span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
+                        <div class = "views">
+                            <span class = "viewcount">
+                            {{download_count}}
+                            </span>
                         </div>
-                    </div>
-                    <div class = "views">
-                        <span class = "viewcount">--</span>
-                        <a class = "download_button extra_padding">Download</a>
-                    </div>
-                </li>
+
+
+                        <?php if($is_admin){ ?>
+                            <div class='remove_file_div'>remove</div>
+                        <?php } ?>
+
+                    </li>
+                </script>
+
+
+
+
+
+<!---->
+<!--                <li class = "file">-->
+<!--                    <div class = "filename_col">-->
+<!--                        <div id = "files_tab_sprites" class = "upload_sprite img">-->
+<!--                        </div>-->
+<!--                        <a class = "filename">Interesting Image</a>-->
+<!--                    </div>-->
+<!--                    <div class = "kind">-->
+<!--                        <span class = "category">Image</span>-->
+<!--                    </div>-->
+<!--                    <div class = "date">-->
+<!--                        <span class = "relevant_date">10/5/2014</span>-->
+<!--                        <div id = "hidden_datepicker" class = "files_tab_datepicker">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class = "views">-->
+<!--                        <span class = "viewcount">48</span>-->
+<!--                        <a class = "download_button extra_padding">-->
+<!--                            Download-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class = "file">-->
+<!--                    <div class = "filename_col">-->
+<!--                        <div id = "files_tab_sprites" class = "upload_sprite excel">-->
+<!--                        </div>-->
+<!--                        <a class = "filename">Serial Spreadsheet</a>-->
+<!--                    </div>-->
+<!--                    <div class = "kind">-->
+<!--                        <span class = "category">Spreadsheet</span>-->
+<!--                    </div>-->
+<!--                    <div class = "date">-->
+<!--                        <span class = "relevant_date">10/24/2014</span>-->
+<!--                        <div id = "hidden_datepicker" class = "files_tab_datepicker">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class = "views">-->
+<!--                        <span class = "viewcount">120</span>-->
+<!--                        <a class = "download_button extra_padding">Download</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class = "file">-->
+<!--                    <div class = "filename_col">-->
+<!--                        <div id = "files_tab_sprites" class = "upload_sprite ppt">-->
+<!--                        </div>-->
+<!--                        <a class = "filename">-->
+<!---->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class = "kind">-->
+<!--                        <span class = "category">Powerpoint</span>-->
+<!--                    </div>-->
+<!--                    <div class = "date">-->
+<!--                        <span class = "relevant_date">10/5/2014</span>-->
+<!--                        <div id = "hidden_datepicker" class = "files_tab_datepicker">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class = "views">-->
+<!--                        <span class = "viewcount">1340</span>-->
+<!--                        <a class = "download_button extra_padding">Download</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class = "file">-->
+<!--                    <div class = "filename_col">-->
+<!--                        <div id = "files_tab_sprites" class = "upload_sprite pdf">-->
+<!---->
+<!--                        </div>-->
+<!--                        <a class = "filename">Poignant PDF</a>-->
+<!--                    </div>-->
+<!--                    <div class = "kind">-->
+<!--                        <span class = "category">Document</span>-->
+<!--                    </div>-->
+<!--                    <div class = "date">-->
+<!--                        <span class = "relevant_date">10/14/2014</span>-->
+<!--                        <div id = "hidden_datepicker" class = "files_tab_datepicker">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class = "views">-->
+<!--                        <span class = "viewcount">23</span>-->
+<!--                        <a class = "download_button extra_padding">Download</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class = "file">-->
+<!--                    <div class = "filename_col">-->
+<!--                        <div id = "files_tab_sprites" class = "upload_sprite zip">-->
+<!--                        </div>-->
+<!--                        <a class = "filename">Unit 1 Course Materials</a>-->
+<!--                    </div>-->
+<!--                    <div class = "kind">-->
+<!--                        <span class = "category">Folder</span>-->
+<!--                    </div>-->
+<!--                    <div class = "date">-->
+<!--                        <span class = "relevant_date">10/24/2014</span>-->
+<!--                        <div id = "hidden_datepicker" class = "files_tab_datepicker">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class = "views">-->
+<!--                        <span class = "viewcount">--</span>-->
+<!--                        <a class = "download_button extra_padding">Download</a>-->
+<!--                    </div>-->
+<!--                </li>-->
             </ol>
         </div>
-        <div class = "files_sub_panel student_files" id ="files_sub_panel_2">
-            <ol class = "files_list">
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite doc">
-                        </div>
-                        <a class = "filename">
+        <div class = "files_sub_panel student_files" id ="files_sub_panel_2" data-file_list_type="student">
+            <ol class = "files_list student" data-file_list_type="student">
 
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite img">
-                        </div>
-                        <a class = "filename">
-
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite excel">
-                        </div>
-                        <a class = "filename">
-
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite ppt">
-                        </div>
-                        <a class = "filename">
-
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite pdf">
-                        </div>
-                        <a class = "filename">
-
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
-                <li class = "file">
-                    <div class = "filename_col">
-                        <div id = "files_tab_sprites" class = "upload_sprite zip">
-                        </div>
-                        <a class = "filename">
-
-                        </a>
-                        <a class = "file_uploader_user">
-                        </a>
-                    </div>
-                    <div class = "kind">
-                                                            <span class = "category">
-                                                            </span>
-                    </div>
-                    <div class = "date">
-                                                            <span class = "relevant_date">
-                                                            </span>
-                        <div id = "hidden_datepicker" class = "files_tab_datepicker">
-                        </div>
-                    </div>
-                    <div class = "views">
-                                                            <span class = "viewcount">
-                                                            </span>
-                        <a class = "download_button extra_padding">
-                        </a>
-                    </div>
-                </li>
 
             </ol>
         </div>
 
 
-<!--        <form id="my-awesome-dropzone" class="dropzone" action="--><?php //echo Yii::app()->getBaseUrl(true);?><!--/class/uploadFile">-->
-<!--            <div class="dropzone-previews"></div>-->
-<!---->
-<!--            <button type="submit">Submit data and files!</button>-->
-<!--        </form>-->
-
-<!--        <div class = "materials_upload_div files_upload_bigbox">-->
-<!--            <div class = "bigbox_bigmessage">-->
-<!--            </div>-->
-<!---->
-<!---->
-<!--        </div>-->
-
-<!--            id="class_upload_dropzone"   -->
-
-
-<!--            <form id="my-awesome-dropzone"  class="dropzone files_upload_bigbox"  action="--><?php //echo Yii::app()->getBaseUrl(true);?><!--/class/fileUpload">-->
-<!--                <button type="submit">Submit data and files!</button>-->
-<!---->
-<!--                <div class="dropzone-previews"></div> <!-- this is were the previews should be shown. -->
-<!---->
-<!---->
-<!---->
-<!--            </form>-->
 
 
         <form action="<?php echo Yii::app()->getBaseUrl(true);?>/class/fileUpload" class="dropzone dz-clickable files_upload_bigbox" id="demo-upload">
             <div class="bigbox_bigmessage">
             </div>
-            <input type="hidden" name="class_id" value="<?php echo $class->class_id; ?>">
+            <input type="hidden" name="id" value="<?php echo $class->class_id; ?>">
 
 
-            <button class="upload_files_submit" type="submit">Submit data and files!</button>
+            <input class="upload_files_submit" type="submit" name="submitIT" value="Submit data and files!">
         </form>
 
 
@@ -557,7 +392,7 @@
                             </div>
                         </div>                      
                         <div class="fade_input_small small_search">
-                            <em id = "left_search_icon">
+                            <em class = "left_search_icon">
                             </em>
                             <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input">
                         </div>
@@ -587,7 +422,7 @@
                                     </span>
                                 </div>
                                 <div class = "user_more_info">
-                                    <span class = "label">Department <br> </span><a class = "data department_link"><?php echo $professor->department->department_name; ?></a>
+                                    <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
                                 </div>
                                 <div class = "user_more_info">
                                     <span class = "label">Office location <br> </span><span class = "data location"><?php echo $professor->professorAttribute->office_location; ?></span>
@@ -651,217 +486,6 @@
                         </div>
 
                     <?php } ?>
-
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class = "members_card_wrapper regular_member">-->
-<!--                        <div class = "members_card normal_size" data-user_id='1'>-->
-<!--                            <div class = "members_card_img">-->
-<!--                                <span class = "class_year">Senior</span>-->
-<!--                            </div>-->
-<!--                            <div class = "user_main_info">-->
-<!--                                <a class = "name profile_link">Jacob Lazarus</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_more_info">-->
-<!--                                <a class = "department_link">Neuroscience</a>-->
-<!--                            </div>-->
-<!--                            <div class = "user_card_button_holder">-->
-<!--                                <div class = "follow_button_wrapper following_wrapper">-->
-<!--                                    <div class = "user_follow_button following">Following</div>-->
-<!--                                    <div class = "user_message_button message_active">-->
-<!--                                        <em class = "white_message_icon">-->
-<!--                                        </em>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class = "remove_member_button">-->
-<!--                                    <em></em>-->
-<!--                                    <span>Remove</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                   
 
 
                 </div>
