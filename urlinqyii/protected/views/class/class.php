@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_syllabus.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -33,6 +34,7 @@
 
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/class/class_syllabus_tab.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
@@ -137,7 +139,117 @@
         </div>
 
         <div class="panel tab_syllabus" id="panel_2">
-            SYLLABUS/ASSIGNMENTS GO HERE
+            <div class = "class_syllabus_tab">
+                <div class = "full_syllabus_box syllabus_tagger">
+
+                    <div class = "title">
+                        Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div>
+                    </div>
+
+                    <div class = "rendered_syllabus_page_holder" id = "page1">
+                        <div class = "paper_shadowonblack">
+                        </div>
+                    </div>
+
+                    <div class = "rendered_syllabus_page_holder" id = "page2">
+                        <div class = "paper_shadowonblack">
+                        </div>
+                    </div>
+
+                    <div class = "rendered_syllabus_page_holder" id = "page3">
+                        <div class = "paper_shadowonblack">
+                        </div>
+                    </div>
+
+                    <div class = "rendered_syllabus_page_holder" id = "page4">
+                        <div class = "paper_shadowonblack">
+                        </div>
+                    </div>
+
+                </div>
+                <div class = "class_events_holder order_kind">
+                    <div class = "import_syllabus_button">
+                        Import Syllabus
+                    </div>
+                    <header class = "class_tasks">
+                        <h5>Class Work</h5>
+                        <label>Order:</label><div class = "order_sort_dropdown"><span>Date</span><em></em></div>
+                        <div class = "order_dropdown_box"><div id = "syllabus_event_order_date">Date</div><div id = "syllabus_event_order_kind">Kind</div></div>
+                    </header>
+                    <div class = "events_by_kind events_ordered_list">
+                        <div class = "kind_section">
+                            <h5>Assignments</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "kind_section">
+                            <h5>Exams</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "kind_section">
+                            <h5>Projects</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "kind_section">
+                            <h5>Papers</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "kind_section">
+                            <h5>Labs</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "events_by_date events_ordered_list">
+                        <div class = "week_section">
+                            <h5>Week 1</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "week_section">
+                            <h5>Week 2</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "week_section">
+                            <h5>Week 3</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "week_section">
+                            <h5>Week 4</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                        <div class = "week_section">
+                            <h5>Week 5</h5>
+                            <div class = "syllabus_event">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="panel tab_files" id="panel_3">

@@ -76,7 +76,7 @@ li.class_files.active{
 
 #upload_text_button em.files_tab_sprites.upload_icon{
     background-position: 0px -25px;
-	
+    
     height: 20px;
     width: 19px;
 }
@@ -104,7 +104,7 @@ span.drag_hint i{
 }
 
 div.action a#new_folder_button{
-	display:none;
+    display:none;
 }
 
 div.files_sort{
@@ -131,7 +131,7 @@ div.files_sort > div.sortable_column_header span{
 }
 
 div.files_sort > div.sortable_column_header em{
-	display:none;
+    display:none;
 }
 
 div.sortable_column_header.active em.sort_gray_arrow{
@@ -142,11 +142,11 @@ div.sortable_column_header.active em.sort_gray_arrow{
 }
 
 em.sort_gray_arrow.up{
-	
+    
 }
 
 em.sort_gray_arrow.down{
-	
+    
 }
 
 div.files_sort > div.sortable_column_header.active{
@@ -160,8 +160,8 @@ div.files_sort > div.sortable_column_header.active span{
 }
 
 div.files_sort > div.sortable_column_header.active span{
-	display:inline-block!important;
-	font-weight: 700;
+    display:inline-block!important;
+    font-weight: 700;
 }
 
 div#name_sorter{
@@ -180,20 +180,20 @@ div#date_sorter{
 }
 
 a#upload_text_button{
-	padding: 3px 4px;
-	border-radius: 3px;
-	margin-left: -7px;
-	cursor:pointer;
-	margin-right:2px;
-	padding-right: 0px;
+    padding: 3px 4px;
+    border-radius: 3px;
+    margin-left: -7px;
+    cursor:pointer;
+    margin-right:2px;
+    padding-right: 0px;
 }
 
 a#upload_text_button:hover{
-	background: #eee;
+    background: #eee;
 }
 
 a#upload_text_button:active{
-	background:#ddd;
+    background:#ddd;
 }
 
 div#views_sorter{
@@ -204,16 +204,16 @@ div#files_header_bottom_line{
 }
 
 div.files_sub_panel{
-	width:100%;
-	min-height: 250px;
-	display:none;
+    width:100%;
+    min-height: 250px;
+    display:none;
 }
 
 div.files_sub_panel.student_files{
 }
 
 div.files_sub_panel.active{
-	display:block!important;
+    display:block!important;
 }
 
 ol.files_list{
@@ -226,7 +226,7 @@ ol.files_list{
 
 ol.files_list li.file{
     text-align: left;
-	
+    
     padding: 7px 2px 6px;
     margin: 0 0px -1px 0px;
     line-height: 32px;
@@ -245,7 +245,7 @@ ol.files_list li.file div{
 }
 
 ol.files_list li.file div.filename_col{
-	
+    
     height: 32px;
     width: 45%;
     float: left;
@@ -255,9 +255,9 @@ ol.files_list li.file div.filename_col div.upload_sprite{
     width: 32px;
     height: 50px;
     background-size: auto;
-	background-repeat: no-repeat;
-    height: 32px;
-    margin-top: 0px;
+    background-repeat: no-repeat;
+    height: 36px;
+    margin-top: -3px;
     margin-right: 14px;
     display: block;
     margin-left: 1px;
@@ -276,7 +276,7 @@ ol.files_list li.file div.filename_col div.upload_sprite{
 
 ol.files_list li.file div.filename_col div.upload_sprite.doc{
 
-	background-image: url('../../assets/file_icons/file_type_doc.png');
+    background-image: url('../../assets/file_icons/file_type_doc.png');
     background-size: auto;
     margin-left: 5px;
 }
@@ -369,7 +369,7 @@ ol.files_list li.file div.filename_col div.upload_sprite.zip{
 
 ol.files_list li.file div.filename_col div.upload_sprite.img{
     background-image: url(../../assets/NYU_CAS_Cover.jpg)!important;
-	
+    
     width: 33px;
     height: 33px;
     background-size: cover!important;
@@ -390,46 +390,46 @@ ol.files_list li.file div.filename_col a.filename{
 }
 
 ol.files_list li.file div.filename_col a.filename:hover{
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 ol.files_list li.file div.filename_col a.file_uploader_user{
-	
+    
 }
 
 ol.files_list li.file div.kind{
     width: 22%;
-	
+    
     display: inline-block;
     float: left;
 }
 
 ol.files_list li.file div.kind span.category{
-	
+    
 }
 
 ol.files_list li.file div.date{
     width: 17%;
-	
+    
     float: left;
 }
 
 ol.files_list li.file div.date span.relevant_date{
-	
+    
 }
 
 
 
 
 ol.files_list li.file div.views{
-	
+    
     display: inline-block;
     width: 16%;
 }
 
 ol.files_list li.file div.views span.viewcount{
     white-space: nowrap;
-	
+    
     text-overflow: ellipsis;
     overflow: hidden;
     margin-left: -2px;
@@ -437,7 +437,7 @@ ol.files_list li.file div.views span.viewcount{
 
 ol.files_list li.file div.views a.download_button{
     display: none; 
-	
+    
     position: absolute;
     border: 1px solid #C0C0C0; 
     line-height: 28px;
@@ -473,12 +473,12 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
 }
 
 ol.files_list li.file:hover div.views a.download_button{
-	display:block;
+    display:block;
 }
 
 ol.files_list li.file div.views a.extra_padding{
     padding: 0 15px;
-	
+    
     margin: 0;            
 }
 
@@ -509,7 +509,7 @@ img{
 }
 
 .files_upload_bigbox div.bigbox_bigmessage{
-    background-image: url(../../assets/drop_files_normal.png);	
+    background-image: url(../../assets/drop_files_normal.png);  
     width: 388px;
     height: 77px;
     background-size: auto;
@@ -523,32 +523,32 @@ img{
 }
 
 .files_upload_bigbox:hover{
-	background:#eee;
+    background:#eee;
 }
 
 .files_upload_bigbox:active{
-	background:#e5e5e5;
+    background:#e5e5e5;
 }
 
 .files_upload_bigbox:hover div.bigbox_bigmessage{
-	background-image: url(../../assets/drop_files_hover.png);
+    background-image: url(../../assets/drop_files_hover.png);
 }
 
 .files_upload_bigbox:active div.bigbox_bigmessage{
-	background-image: url(../../assets/drop_files_active.png);
+    background-image: url(../../assets/drop_files_active.png);
 }
 
 .dz-default{
-	position: absolute;
+    position: absolute;
 
-	top: -7px;
+    top: -7px;
 
 
     height: auto;
 }
 
 .dz-default span{
-	display:none;
+    display:none;
 }
 
 
@@ -556,9 +556,9 @@ img{
 
 
 @media screen and (max-width: 808px) {
-	span.drag_hint{
-		display:none;
-	}
+    span.drag_hint{
+        display:none;
+    }
 }
 
 
