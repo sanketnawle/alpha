@@ -219,8 +219,37 @@
 
 /* repeat or not */
 #create_event_repeat_holder {
+
     display: inline-block;
     margin-left: 60px;
+}
+
+/* bottom */
+#create_event_bottom_holder {
+    height: 250px;
+}
+
+
+#create_event_description_holder {
+    width: 480px;
+    float: left;
+}
+
+#event_description_input {
+    width: 480px;
+    height: 150px;
+    display: inline-block;
+    background-color: white;
+}
+
+#create_event_invite_holder {
+    height: 250px;
+    display: inline-block;
+    margin-left: 60px;
+}
+
+#event_invite_input {
+    background-color: white;
 }
 
 
