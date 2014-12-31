@@ -77,7 +77,7 @@
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Files/Photos</div>
-                                    <div class = "tab_amount">92</div>
+                                    <div class = "tab_amount"><?php echo count($club->files);?></div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
@@ -212,6 +212,9 @@
                                             </span>
                                         </div>
 
+                                        <?php if($is_admin){ ?>
+                                            <div class='remove_file_div'>remove</div>
+                                        <?php } ?>
 
                                     </li>
                                 </script>

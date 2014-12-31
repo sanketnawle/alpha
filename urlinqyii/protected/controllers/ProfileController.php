@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $followers = $userProfile->usersFollowing;
 
         $interests = $userProfile->userInterests;
-      //  $showcase_info = $userProfile->showcase;
+        $showcase_info = $userProfile->showcase;
         $majors = $userProfile->majors;
         $minors = $userProfile->minors;
         $closedInstructions = $userProfile->closed_showcase_instructions;
@@ -83,7 +83,7 @@ class ProfileController extends Controller
 
         $this->render('profile',array('user'=>$currentUser,'userProfile'=>$userProfile,'school'=>$school,'university'=>$university,'department'=>$department
             ,'is_user'=>$is_user, 'courses'=>$courses, 'clubs'=>$clubs, 'following'=>$following,'followers'=>$followers, 'interests'=>$interests
-            , 'showcase'=>null, 'majors'=>$majors, 'minors'=>$minors, 'you_follow'=>$you_follow, 'both_follow'=>$you_follow&&$follows_you
+            , 'showcase'=>$showcase_info, 'majors'=>$majors, 'minors'=>$minors, 'you_follow'=>$you_follow, 'both_follow'=>$you_follow&&$follows_you
             , 'closedInstructions'=>$closedInstructions, 'random_image_url'=>$random_image_url));
     }
 
@@ -311,7 +311,7 @@ class ProfileController extends Controller
    //  public function updateMajorMinor
      public function actionAddShowcase(){
          include "file_upload.php";
-         if (isset($_FILES['uploadFile'])) {
+         if (isset($_FILES['file'])) {
              $result = file_upload($_FILES,"showcase/");
              if($result['extension']=='jpg'||$result['extension']=='png'||$result['extension']=='gif'){
                  $preview_image = $result;
@@ -780,12 +780,13 @@ class ProfileController extends Controller
         $data['base_url'] = Yii::app()->getBaseUrl(true);
         $data['professor'] = $user->user_type == "p";
         $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());
-        $this->renderJSON($data);
+        $data['profile_pic'] = ($user->pictureFile) ?
+            Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         if($user->user_type == "p"){
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
         }
-
+        $this->renderJSON($data);
     }
 
 

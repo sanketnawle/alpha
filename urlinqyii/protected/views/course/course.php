@@ -23,7 +23,6 @@
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
-        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     </head>
 

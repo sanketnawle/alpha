@@ -379,7 +379,7 @@ class ClassController extends Controller
 
 
     public function actionRemoveFile(){
-        if(!isset($_POST['file_id']) || !isset($_POST['id'])){
+        if(!isset($_POST['file_id']) || !isset($_GET['id'])){
             $data = array('success'=>false,'error_id'=>1);
             $this->renderJSON($data);
             return;
@@ -387,24 +387,35 @@ class ClassController extends Controller
 
 
 
-        $class_id = $_POST['id'];
+        $class_id = $_GET['id'];
         $file_id = $_POST['file_id'];
-
-
 
         $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
 
 
         if($class){
+            $class_file = ClassFile::model()->findBySql('SELECT * FROM `class_file` WHERE class_id=' . $class_id . ' AND file_id=' . $file_id);
+            if($class_file){
+                if($class_file->delete()){
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
 
         }else{
             $data = array('success'=>false,'error_id'=>2);
             $this->renderJSON($data);
             return;
         }
-
-
-
     }
 
 

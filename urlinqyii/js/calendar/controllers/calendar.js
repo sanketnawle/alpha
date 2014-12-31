@@ -12,7 +12,7 @@ ulcal.controller("CalController", function (
     DateService, KeyControlService, PrinterService) {
     $scope.menu = { items: ['day', 'week', 'month'], active: 0, old: 0 };
 
-    var date = new Date()
+    var date = new Date();
     $scope.activeDate = date.getDate();
     $scope.activeWeek = date.getWeek();
     $scope.activeMonth = date.getMonth();

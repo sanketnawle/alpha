@@ -1,117 +1,283 @@
-﻿<div class="overlay">
+﻿<link rel="stylesheet" href="../../../../../alpha/urlinqyii/css/calendar/create_event.css">
+
+<div class="overlay">
     <div class="wrapper">
         <div class="content">
-            <div class="dtitle">
-                <div class="close" ng-uc-check></div>
-                <div class="label">Create Event</div>
-            </div>
-            <div class="dbody">
-                <div class="row1 row">
-                    <input type="text" class="etitle" placeholder="Event Title">
-                    <div class="from-ts ts">
-                        <input type="text" class="date">
-                        <input type="time" class="time">
-                        <div class="label">Start</div>
-                    </div>
-                    <div class="sep-to" ng-uc-check></div>
-                    <div class="to-ts ts">
-                        <input type="text" class="date">
-                        <input type="time" class="time">
-                        <div class="label">End</div>
-                    </div>
-                    <div class="allday">
-                        <div class="check" ng-uc-check></div>
-                        <label>All Day</label>
-                    </div>
-                    <div class="todo">
-                        <div class="check" ng-uc-check></div>
-                        <label>Todo</label>
+
+
+            <div id="create_event_holder">
+                <form action="/event/create" id="create_event_form">
+
+                    <div id="top_buttons_holder" class="create_event_section">
+                        <div id="create_event_back_button" class="grey_button">Back</div>
+
+                        <input id="create_event_submit_button" class='button' type="submit" name="event_submit" value="CREATE">
+                        <div id="create_event_discard_button" class="grey_button">Discard</div>
                     </div>
 
-                </div>
-                <div class="row2 row">
-                    <div class = "creator_sub_row">
-                        <div class = "list_container group_list_container">
-                            <div class = "list_header">
-                                Select a class or group
-                            </div>
-                            <div class = "scroll_list">
-                                <div class = "group_bar active">
-                                    <span class = "group_name">Chemistry</span>
-                                    <span class = "white_checkmark"></span>
+                    <!--Long thing grey bar to split input field sections -->
+                    <div class="event_form_divider"></div>
+
+
+                    <div id="create_event_top_holder" class="create_event_section">
+                        <input id="create_event_name_input" type="text" name="event_name" value="" placeholder="Title (e.g. history presentation)">
+                        <br>
+                        <input id="create_event_start_date_input" class="date_input" type="text" name="event_start_date" value="">
+                        <input id="create_event_start_time_input" class="time_input" type="text" name="event_start_time" value="">
+
+                        <div class="arrow_divider"></div>
+
+                        <input id="create_event_end_date_input" class="date_input" type="text" name="event_start_date" value="">
+                        <input id="create_event_end_time_input" class="time_input" type="text" name="event_start_time" value="">
+
+                        <input type="checkbox" id="todo_checkbox" name="todo" value="todo">
+                        <label for="todo_checkbox">To-Do</label>
+
+                        <input type="checkbox" id="allday_checkbox" name="allday" value="allday">
+                        <label for="todo_checkbox">All day</label>
+                    </div>
+
+
+                    <div class="event_form_divider"></div>
+
+                    <div id="create_event_middle_holder" class="create_event_section">
+
+                        <div id="create_event_group_select_holder">
+                            <div id="create_event_group_select_label">Select a class or group</div>
+                            <div id="create_event_group_holder" class="scrollable">
+
+
+                                <div class="group" data-group_type="class" data-id="1">
+                                    <div class="group_name">Neurochemical Foundations of Behavior</div>
                                 </div>
-                                <div class = "group_bar">
-                                    <span class = "group_name">Chemistry</span>
-                                    <span class = "white_checkmark"></span>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">NYU Chess Club</div>
                                 </div>
-                                <div class = "group_bar">
-                                    <span class = "group_name">Chemistry</span>
-                                    <span class = "white_checkmark"></span>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">jiu Jitsu Club</div>
                                 </div>
-                                <div class = "group_bar">
-                                    <span class = "group_name">Chemistry</span>
-                                    <span class = "white_checkmark"></span>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">Computer Science 101</div>
                                 </div>
-                                <div class = "group_bar">
-                                    <span class = "group_name">Chemistry</span>
-                                    <span class = "white_checkmark"></span>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">Calc 1</div>
                                 </div>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">Calc 2</div>
+                                </div>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">Physics</div>
+                                </div>
+
+                                <div class="group" data-group_type="club" data-id="3">
+                                    <div class="group_name">Chemistry</div>
+                                </div>
+
+
+
                             </div>
                         </div>
-                        <div class = "list_container category_list_container">
-                            <div class = "list_header">
-                                <span class = "category_icon"></span>Add Category
-                            </div>
-                            <div class = "scroll_list">
-                                <div class = "cat_bar active">
-                                    <span class = "group_name">Homework</span><span class = "dark_checkmark"></span>
-                                </div>
-                                <div class = "cat_bar">
-                                    <span class = "group_name">Project</span><span class = "dark_checkmark"></span>
-                                </div>
-                                <div class = "cat_bar">
-                                    <span class = "group_name">Meeting</span><span class = "dark_checkmark"></span>
-                                </div>
-                                <div class = "cat_bar">
-                                    <span class = "group_name">Exam</span><span class = "dark_checkmark"></span>
-                                </div>
-                                <div class = "cat_bar">
-                                    <span class = "group_name">Lab/Research</span><span class = "dark_checkmark"></span>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
-                    
 
-                </div>
-                <div class="row3 row">
-                    <div class="loc">
-                        <div class="value"><input type="text" class="txt" placeholder="No Location"></div>
-                        <div class="label">Location</div>
+
+
+                        <div id="create_event_category_select_holder">
+                            <div id="create_event_category_label_holder">
+                                <div id="create_event_category_label_image"></div>
+                                <div id="create_event_category_label">Add Category</div>
+                            </div>
+
+                            <div id="create_event_category_holder">
+
+                                <div class="category" data-category="homework">Homework</div>
+                                <div class="category" data-category="homework">Project</div>
+                                <div class="category" data-category="homework">Meeting</div>
+                                <div class="category" data-category="homework">Exam</div>
+                                <div class="category" data-category="homework">Lab/Research</div>
+
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="rep">
-                        <div class="value">No Repeat</div>
-                        <div class="label">Repeat</div>
+
+
+                    <div id="create_event_middle_bottom_holder" class="create_event_section">
+                        <div id="create_event_location_input_holder">
+                            <label id="create_event_location_input_label" for="event_location_input">Where</label>
+                            <input type="text" id="event_location_input" name="event_location" value="event_location">
+                        </div>
+
+                        <div id="create_event_repeat_holder">
+                            <select>
+                                <option value="no-repeat">No repeat</option>
+                                <option value="repeat">repeat</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row4 row">
-                    <div class="tags">
-                        
+
+
+                    <div class="event_form_divider"></div>
+
+
+                    <div id="create_event_bottom_holder" class="create_event_section">
+                        <div id="create_event_description_holder">
+                            <div id="create_event_description_label">Description</div>
+                            <div id="create_event_add_photo_label">Add photo or filter</div>
+
+                            <textarea id="event_description_input" name="event_description"></textarea>
+                        </div>
+
+
+                        <div id="create_event_invite_holder">
+                            <div id="create_event_invite_label">Invite people</div>
+
+
+                            <input id="event_invite_input" name="event_description" placeholder="Enter names">
+
+                            <div id="create_event_invite_button" class="grey_button">Invite</div>
+
+                        </div>
+
                     </div>
-                    <div class="tag-in">
-                        <input type="text" placeholder="Add Tags" class="txt">
-                    </div>
-                </div>
-                <div class="row5 row">
-                    <div class="des-btn">
-                        <div class="show-des"><div class="plus" ng-uc-check></div>Description</div>
-                    </div>
-                    <textarea class="desc" placeholder="Enter Description"></textarea>
-                    <div class="sub-btn">
-                        <button class="submit">Submit</button>
-                    </div>
-                </div>
+
+
+
+                </form>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--<div class="dbody">-->
+                <!--<div class="row1 row">-->
+                    <!--<input type="text" class="etitle" placeholder="Event Title">-->
+                    <!--<div class="from-ts ts">-->
+                        <!--<input type="text" class="date">-->
+                        <!--<input type="time" class="time">-->
+                        <!--<div class="label">Start</div>-->
+                    <!--</div>-->
+                    <!--<div class="sep-to" ng-uc-check></div>-->
+                    <!--<div class="to-ts ts">-->
+                        <!--<input type="text" class="date">-->
+                        <!--<input type="time" class="time">-->
+                        <!--<div class="label">End</div>-->
+                    <!--</div>-->
+                    <!--<div class="allday">-->
+                        <!--<div class="check" ng-uc-check></div>-->
+                        <!--<label>All Day</label>-->
+                    <!--</div>-->
+                    <!--<div class="todo">-->
+                        <!--<div class="check" ng-uc-check></div>-->
+                        <!--<label>Todo</label>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="row2 row">-->
+                    <!--<div class = "creator_sub_row">-->
+                        <!--<div class = "list_container group_list_container">-->
+                            <!--<div class = "list_header">-->
+                                <!--Select a class or group-->
+                            <!--</div>-->
+                            <!--<div class = "scroll_list">-->
+                                <!--<div class = "group_bar active">-->
+                                    <!--<span class = "group_name">Chemistry</span>-->
+                                    <!--<span class = "white_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "group_bar">-->
+                                    <!--<span class = "group_name">Chemistry</span>-->
+                                    <!--<span class = "white_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "group_bar">-->
+                                    <!--<span class = "group_name">Chemistry</span>-->
+                                    <!--<span class = "white_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "group_bar">-->
+                                    <!--<span class = "group_name">Chemistry</span>-->
+                                    <!--<span class = "white_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "group_bar">-->
+                                    <!--<span class = "group_name">Chemistry</span>-->
+                                    <!--<span class = "white_checkmark"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class = "list_container category_list_container">-->
+                            <!--<div class = "list_header">-->
+                                <!--<span class = "category_icon"></span>Add Category-->
+                            <!--</div>-->
+                            <!--<div class = "scroll_list">-->
+                                <!--<div class = "cat_bar active">-->
+                                    <!--<span class = "group_name">Homework</span><span class = "dark_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "cat_bar">-->
+                                    <!--<span class = "group_name">Project</span><span class = "dark_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "cat_bar">-->
+                                    <!--<span class = "group_name">Meeting</span><span class = "dark_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "cat_bar">-->
+                                    <!--<span class = "group_name">Exam</span><span class = "dark_checkmark"></span>-->
+                                <!--</div>-->
+                                <!--<div class = "cat_bar">-->
+                                    <!--<span class = "group_name">Lab/Research</span><span class = "dark_checkmark"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+                <!--</div>-->
+                <!--<div class="row3 row">-->
+                    <!--<div class="loc">-->
+                        <!--<div class="value"><input type="text" class="txt" placeholder="No Location"></div>-->
+                        <!--<div class="label">Location</div>-->
+                    <!--</div>-->
+                    <!--<div class="rep">-->
+                        <!--<div class="value">No Repeat</div>-->
+                        <!--<div class="label">Repeat</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row4 row">-->
+                    <!--<div class="tags">-->
+
+                    <!--</div>-->
+                    <!--<div class="tag-in">-->
+                        <!--<input type="text" placeholder="Add Tags" class="txt">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row5 row">-->
+                    <!--<div class="des-btn">-->
+                        <!--<div class="show-des"><div class="plus" ng-uc-check></div>Description</div>-->
+                    <!--</div>-->
+                    <!--<textarea class="desc" placeholder="Enter Description"></textarea>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+
         </div>
     </div>
 </div>

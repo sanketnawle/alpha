@@ -753,6 +753,49 @@ class ClubController extends Controller
 
 
 
+    public function actionRemoveFile(){
+        if(!isset($_POST['file_id']) || !isset($_GET['id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $group_id = $_GET['id'];
+        $file_id = $_POST['file_id'];
+
+        $group = Group::model()->find('group_id=:id',array(':id'=>$group_id));
+
+
+        if($group){
+            $group_file = GroupFile::model()->findBySql('SELECT * FROM `group_file` WHERE group_id=' . $group_id . ' AND file_id=' . $file_id);
+            if($group_file){
+                if($group_file->delete()){
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3);
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

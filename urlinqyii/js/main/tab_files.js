@@ -398,14 +398,25 @@ $(document).ready(function(){
 
 
     //DELETE FILE - ONLY FOR ADMINS
-
-
     $(document).on('click','.remove_file_div', function(){
         var $remove_file_div = $(this);
         var $file = $remove_file_div.closest('.file');
         var file_id = $file.attr('data-file_id');
 
-        alert(file_id);
+
+        post_data = {file_id: file_id};
+        //alert(JSON.stringify(post_data));
+        $.post(
+            globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/removeFile',
+            post_data,
+            function(response) {
+                if(response['success']){
+                    $file.remove();
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
 
     });
 
