@@ -1,0 +1,232 @@
+.scrollable {
+    overflow-y: auto;
+}
+
+#create_event_holder {
+    background-color: #E6EFC2;
+    height: 100%;
+    width: 1000px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+
+#create_event_submit_button {
+    padding: 4px 8px;
+    display: inline-block;
+    line-height: 30px;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    color: #FFF;
+    position: relative;
+    background: #45a8cf;
+    border: 1px solid #1d99cf;
+    box-shadow: inset 0 1px 1px #3bc0d8, inset 0 -1px 1px #49baec, 0 0 1px #fafafa, 0 0 1px #ffffff;
+
+
+    width: 120px;
+    height: 40px;
+
+}
+
+
+.grey_button {
+    width: 80px;
+    height: 40px;
+
+
+    padding: 4px 8px;
+    display: inline-block;
+    line-height: 30px;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    color: #FFF;
+    position: relative;
+    background: grey;
+    border: 1px solid grey;
+    box-shadow: inset 0 1px 1px grey, inset 0 -1px 1px grey, 0 0 1px #fafafa, 0 0 1px #ffffff;
+}
+
+.create_event_section {
+    width: 100%;
+}
+
+.event_form_divider {
+    height: 2px;
+    width: 100%;
+    background-color: grey;
+}
+
+
+#top_buttons_holder {
+    height: 70px;
+    width: 1000px;
+}
+
+.date_input {
+    width: 80px;
+    height: 30px;
+
+    background-color: white;
+}
+
+.time_input {
+    width: 60px;
+    height: 30px;
+
+    background-color: white;
+}
+
+
+.arrow_divider {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-color: black;
+    margin-bottom: -10px;
+}
+
+#create_event_top_holder {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#create_event_middle_holder {
+    margin-top: 20px;
+    height: 220px;
+}
+
+
+#create_event_name_input {
+    width: 80%;
+    height: 30px;
+
+    background-color: white;
+}
+
+#create_event_start_date_input {
+
+
+    margin-top: 10px;
+    background-color: white;
+}
+
+
+/* class/group select divs */
+#create_event_group_select_holder {
+    width: 480px;
+    height: 200px;
+    display: inline-block;
+    float: left;
+
+
+}
+
+#create_event_group_holder {
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+    background-color: white;
+}
+
+.group {
+    width: 100%;
+    height: 25px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #cceffe;
+    border-radius: 3px;
+
+
+}
+
+.group_name {
+    width: 100%;
+    margin-left: 5px;
+    padding-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+/* category selector */
+#create_event_category_select_holder{
+    width: 40%;
+    height: 200px;
+    margin-left: 60px;
+
+    display: inline-block;
+
+}
+
+#create_event_category_holder {
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+    background-color: white;
+    width: 200px;
+
+}
+
+.category {
+    height: 25px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.category:hover{
+    background-color: #ddd;
+}
+
+
+
+
+/* Event location */
+
+#create_event_middle_bottom_holder {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#create_event_location_input_holder {
+    width: 480px;
+
+    display: inline-block;
+
+}
+
+#create_event_location_input_label {
+
+}
+
+#event_location_input {
+    width: 430px;
+    height: 30px;
+    background-color: white;
+}
+
+
+/* repeat or not */
+#create_event_repeat_holder {
+    display: inline-block;
+    margin-left: 60px;
+}
+
+
+
+
+
+
+
+

@@ -126,7 +126,10 @@
         <div ng-view class="body {{class}}">
 
         </div>
-        <div class="dialog" id="dialog" ng-uc-dialog></div>
+        <div class="dialog" id="dialog" ng-uc-dialog>
+
+
+        </div>
     </div>
 </body>
 </html>
