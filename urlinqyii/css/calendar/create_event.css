@@ -100,11 +100,21 @@
 }
 
 
+input.text_input {
+    border-radius: 2px;
+    border: 1px solid #d9d9d9;
+    border-top-color: #c0c0c0;
+    font-size: 13px;
+    padding-left: 6px;
+}
+
 #create_event_name_input {
     width: 80%;
     height: 30px;
 
     background-color: white;
+
+
 }
 
 #create_event_start_date_input {
@@ -156,6 +166,17 @@
     color: black;
 }
 
+.category_name {
+    width: 100%;
+    margin-left: 5px;
+    padding-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+
 /* category selector */
 #create_event_category_select_holder{
     width: 40%;
@@ -186,6 +207,14 @@
 
 .category:hover{
     background-color: #ddd;
+}
+
+.category_list {
+    display: none;
+}
+
+.category_list.active {
+    display: block;
 }
 
 
@@ -226,6 +255,7 @@
 
 /* bottom */
 #create_event_bottom_holder {
+    margin-top: 10px;
     height: 250px;
 }
 

@@ -2,6 +2,11 @@
 /// <reference path="date-provider.js" />
 /// <reference path="../lib/jquery.js /">
 
+
+
+
+
+
 var CalendarEvent = (function (CalendarEvent) {
     var _displayMode = "block";
     var dp = new DateProvider();
@@ -72,8 +77,11 @@ var CalendarEvent = (function (CalendarEvent) {
             hide: { value: function () { this.ele.style.display = "none"; } },
             init: {
                 value: function () {
+
                     var dlg = this, dialog = this.ele;
                     dlg.opened = false;
+
+                    //get_user_group_data();
 
                     this.wrapper = dialog.querySelector(".wrapper");
                     this.wrapper.onclick = function (e) {
@@ -81,13 +89,80 @@ var CalendarEvent = (function (CalendarEvent) {
                             dlg.opened = false;
                             dlg.__fire("cancel");
                         }
+                    };
+
+                    get_user_group_data();
+
+
+                    function get_user_group_data(){
+                        $.getJSON( base_url + '/user/getGroupData', function( json_data ) {
+                            if(json_data['success']){
+                                show_groups(json_data);
+                            }else{
+                                alert(JSON.stringify(json_data));
+                            }
+                        });
                     }
+
+
+
+                    function show_groups(json_data){
+                        $.each(json_data['classes'],function(index, class_json){
+                            class_json['group_type'] = 'class';
+                            //Reassigning name and id so we can use same template for
+                            //classes, clubs, and groups
+                            class_json['name'] = class_json['class_name'];
+                            class_json['id'] = class_json['class_id'];
+                            show_group(class_json);
+                        });
+
+                        $.each(json_data['clubs'],function(index, club_json){
+                            club_json['group_type'] = 'club';
+                            //Reassigning name so we can use same template for
+                            //clubes, clubs, and groups
+                            club_json['name'] = club_json['group_name'];
+                            club_json['id'] = club_json['group_id'];
+                            show_group(club_json);
+                        });
+                    }
+
+
+
+                    function show_group(group_json){
+                        //Normally source would be $("#group_template").html(); but for whatever reason
+                        //angular doesnt let jquery select the handlebars template if it is in the html
+                        var source = '<div class="group" data-group_type="{{group_type}}" data-id="{{id}}"><div class="group_name">{{name}}</div></div>';
+                        var template = Handlebars.compile(source);
+                        var generated_html = template(group_json);
+
+                        dialog.querySelector('#create_event_group_holder').innerHTML += generated_html;
+
+                    }
+
+
+
+
+
+
+//                    function show_group(group_json){
+//                        //Normally source would be $("#group_template").html(); but for whatever reason
+//                        //angular doesnt let jquery select the handlebars template if it is in the html
+//                        var source = '<div class="group" data-group_type="{{group_type}}" data-id="{{id}}"><div class="group_name">{{name}}</div></div>';
+//                        var template = Handlebars.compile(source);
+//                        var generated_html = template(group_json);
+//
+//                        dialog.querySelector('#create_event_group_holder').innerHTML += generated_html;
+//                        //$('#create_event_group_holder').append(generated_html).hide().fadeIn();
+//                    }
+
 
 //                    this.closeBtn = dialog.querySelector(".dtitle .close");
 //                    this.closeBtn.onclick = function () { dlg.opened = false; dlg.__fire("cancel"); }
 
-//                    this.submitBtn = dialog.querySelector(".submit");
-//                    this.submitBtn.onclick = function () { dlg.opened = false; dlg.__fire("submit"); }
+//                    this.group_div = dialog.querySelectorAll(".group");
+//                    this.group_div.onclick = function () {
+//                        alert('lol');
+//                    };
 
 //                    this.desBtn = dialog.querySelector(".row5 .des-btn");
 //                    this.desBtn.onclick = function () {
@@ -159,7 +234,24 @@ var CalendarEvent = (function (CalendarEvent) {
                 }
             }
         });
-    }
+
+
+        $(document).on('click','.group',function(){
+            var $this_group_div = $(this);
+            var group_type = $this_group_div.attr('data-group_type');
+
+            //Remove the active class from the previous category
+            $('div.category_list.active').removeClass('active');
+            //Show the category list for this group type
+            $("div.category_list[data-group_type='" + group_type + "']").addClass('active');
+        });
+
+
+
+
+
+
+    };
 
     // inherit events
     Dialog.prototype = Object.create(EventTarget.prototype);

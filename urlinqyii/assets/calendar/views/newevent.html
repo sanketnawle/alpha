@@ -1,4 +1,9 @@
-﻿<link rel="stylesheet" href="../../../../../alpha/urlinqyii/css/calendar/create_event.css">
+﻿<link rel="stylesheet" type="text/css" href="../../../../../alpha/urlinqyii/css/partial/planner/datepicker.css"/>
+<link rel="stylesheet" href="../../../../../alpha/urlinqyii/css/calendar/create_event.css">
+<script src="../../../../../alpha/urlinqyii/js/calendar/create_event/create_event.js"></script>
+
+<script src="../../../../../alpha/urlinqyii/js/calendar_selector.js" type="text/javascript"></script>
+
 
 <div class="overlay">
     <div class="wrapper">
@@ -20,15 +25,86 @@
 
 
                     <div id="create_event_top_holder" class="create_event_section">
-                        <input id="create_event_name_input" type="text" name="event_name" value="" placeholder="Title (e.g. history presentation)">
+                        <input id="create_event_name_input" type="text" name="event_name" value="" placeholder="Title (e.g. history presentation)" class="text_input">
                         <br>
-                        <input id="create_event_start_date_input" class="date_input" type="text" name="event_start_date" value="">
-                        <input id="create_event_start_time_input" class="time_input" type="text" name="event_start_time" value="">
+                        <input id="create_event_start_date_input" class="date_input text_input event_date" type="text" name="event_start_date" value="">
+                        <!--<input class="event_date" id="event_date" name="event_date" value="none" readonly></input>-->
+                        <div class = "calLayer">
+                            <section id = "mounth" class="mounth">
+                                <header class="minical-header">
+                                    <h1 class="minical-h1"></h1>
+
+                                    <nav role="padigation">
+                                        <span class="m-prev"></span>
+                                        <span class="m-next"></span>
+                                    </nav>
+                                </header>
+
+                                <article>
+                                    <div class="days">
+                                        <b>SU</b>
+                                        <b>MO</b>
+                                        <b>TU</b>
+                                        <b>WE</b>
+                                        <b>TH</b>
+                                        <b>FR</b>
+                                        <b>SA</b>
+                                    </div>
+                                    <div class="dates">
+                                        <span id="calcell_su_0" class="calcell disable cl_0"></span>
+                                        <span id="calcell_mo_1" class="calcell disable cl_1"></span>
+                                        <span id="calcell_tu_2" class="calcell disable cl_2"></span>
+                                        <span id="calcell_we_3" class="calcell disable cl_3"></span>
+                                        <span id="calcell_th_4" class="calcell disable cl_4"></span>
+                                        <span id="calcell_fr_5" class="calcell disable cl_5"></span>
+                                        <span id="calcell_sa_6" class="calcell disable cl_6"></span>
+                                        <span id="calcell_su_7" class="calcell disable cl_7"></span>
+                                        <span id="calcell_mo_8" class="calcell disable cl_8"></span>
+                                        <span id="calcell_tu_9" class="calcell disable cl_9"></span>
+                                        <span id="calcell_we_10" class="calcell disable cl_10"></span>
+                                        <span id="calcell_th_11" class="calcell disable cl_11"></span>
+                                        <span id="calcell_fr_12" class="calcell disable cl_12"></span>
+                                        <span id="calcell_sa_13" class="calcell disable cl_13"></span>
+                                        <span id="calcell_su_14" class="calcell disable cl_14"></span>
+                                        <span id="calcell_mo_15" class="calcell disable cl_15"></span>
+                                        <span id="calcell_tu_16" class="calcell disable cl_16"></span>
+                                        <span id="calcell_we_17" class="calcell disable cl_17"></span>
+                                        <span id="calcell_th_18" class="calcell disable cl_18"></span>
+                                        <span id="calcell_fr_19" class="calcell disable cl_19"></span>
+                                        <span id="calcell_sa_20" class="calcell disable cl_20"></span>
+                                        <span id="calcell_su_21" class="calcell disable cl_21"></span>
+                                        <span id="calcell_mo_22" class="calcell disable cl_22"></span>
+                                        <span id="calcell_tu_23" class="calcell disable cl_23"></span>
+                                        <span id="calcell_we_24" class="calcell disable cl_24"></span>
+                                        <span id="calcell_th_25" class="calcell disable cl_25"></span>
+                                        <span id="calcell_fr_26" class="calcell disable cl_26"></span>
+                                        <span id="calcell_sa_27" class="calcell disable cl_27"></span>
+                                        <span id="calcell_su_28" class="calcell disable cl_28"></span>
+                                        <span id="calcell_mo_29" class="calcell disable cl_29"></span>
+                                        <span id="calcell_tu_30" class="calcell disable cl_30"></span>
+                                        <span id="calcell_we_31" class="calcell disable cl_31"></span>
+                                        <span id="calcell_th_32" class="calcell disable cl_32"></span>
+                                        <span id="calcell_fr_33" class="disable calcell cl_33"></span>
+                                        <span id="calcell_sa_34" class="disable calcell cl_34"></span>
+                                        <span id="calcell_su_35" class="disable calcell cl_35"></span>
+                                        <span id="calcell_mo_36" class="disable calcell cl_36"></span>
+                                        <span id="calcell_tu_37" class="disable calcell cl_37"></span>
+                                        <span id="calcell_we_38" class="disable calcell cl_38"></span>
+                                        <span id="calcell_th_39" class="disable calcell cl_39"></span>
+                                        <span id="calcell_fr_40" class="disable calcell cl_40"></span>
+                                        <span id="calcell_sa_41" class="disable calcell cl_41"></span>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+
+
+                        <input id="create_event_start_time_input" class="time_input text_input" type="text" name="event_start_time" value="">
 
                         <div class="arrow_divider"></div>
 
-                        <input id="create_event_end_date_input" class="date_input" type="text" name="event_start_date" value="">
-                        <input id="create_event_end_time_input" class="time_input" type="text" name="event_start_time" value="">
+                        <input id="create_event_end_date_input" class="date_input text_input" type="text" name="event_start_date" value="" >
+                        <input id="create_event_end_time_input" class="time_input text_input" type="text" name="event_start_time" value="">
 
                         <input type="checkbox" id="todo_checkbox" name="todo" value="todo">
                         <label for="todo_checkbox">To-Do</label>
@@ -47,38 +123,6 @@
                             <div id="create_event_group_holder" class="scrollable">
 
 
-                                <div class="group" data-group_type="class" data-id="1">
-                                    <div class="group_name">Neurochemical Foundations of Behavior</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">NYU Chess Club</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">jiu Jitsu Club</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">Computer Science 101</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">Calc 1</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">Calc 2</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">Physics</div>
-                                </div>
-
-                                <div class="group" data-group_type="club" data-id="3">
-                                    <div class="group_name">Chemistry</div>
-                                </div>
-
 
 
                             </div>
@@ -94,14 +138,60 @@
 
                             <div id="create_event_category_holder">
 
-                                <div class="category" data-category="homework">Homework</div>
-                                <div class="category" data-category="homework">Project</div>
-                                <div class="category" data-category="homework">Meeting</div>
-                                <div class="category" data-category="homework">Exam</div>
-                                <div class="category" data-category="homework">Lab/Research</div>
+
+
+                                <div class="category_list active" data-group_type="class">
+                                    <div class="category" data-category="homework">
+                                        <div class="category_name">Homework</div>
+                                    </div>
+
+                                    <div class="category" data-category="project">
+                                        <div class="category_name">Project</div>
+                                    </div>
+
+                                    <div class="category" data-category="meeting">
+                                        <div class="category_name">Meeting</div>
+                                    </div>
+
+                                    <div class="category" data-category="exam">
+                                        <div class="category_name">Exam</div>
+                                    </div>
+
+                                    <div class="category" data-category="lab/research">
+                                        <div class="category_name">Lab/Research</div>
+                                    </div>
+                                </div>
+
+                                <div class="category_list" data-group_type="club">
+                                    <div class="category" data-category="homework">
+                                        <div class="category_name">Club</div>
+                                    </div>
+
+                                    <div class="category" data-category="project">
+                                        <div class="category_name">Club</div>
+                                    </div>
+
+                                    <div class="category" data-category="meeting">
+                                        <div class="category_name">Meeting</div>
+                                    </div>
+
+                                    <div class="category" data-category="exam">
+                                        <div class="category_name">Exam</div>
+                                    </div>
+
+                                    <div class="category" data-category="lab/research">
+                                        <div class="category_name">Lab/Research</div>
+                                    </div>
+                                </div>
+
+
+
 
 
                             </div>
+
+
+
                         </div>
                     </div>
 
@@ -109,7 +199,7 @@
                     <div id="create_event_middle_bottom_holder" class="create_event_section">
                         <div id="create_event_location_input_holder">
                             <label id="create_event_location_input_label" for="event_location_input">Where</label>
-                            <input type="text" id="event_location_input" name="event_location" value="event_location">
+                            <input type="text" id="event_location_input" name="event_location" value="event_location" class="text_input">
                         </div>
 
                         <div id="create_event_repeat_holder">
@@ -129,7 +219,7 @@
                             <div id="create_event_description_label">Description</div>
                             <div id="create_event_add_photo_label">Add photo or filter</div>
 
-                            <textarea id="event_description_input" name="event_description"></textarea>
+                            <textarea id="event_description_input" name="event_description" class="text_input"></textarea>
                         </div>
 
 
@@ -137,7 +227,7 @@
                             <div id="create_event_invite_label">Invite people</div>
 
 
-                            <input id="event_invite_input" name="event_description" placeholder="Enter names">
+                            <input id="event_invite_input" name="event_description" placeholder="Enter names" class="text_input">
 
                             <div id="create_event_invite_button" class="grey_button">Invite</div>
 

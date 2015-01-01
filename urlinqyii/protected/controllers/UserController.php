@@ -80,4 +80,25 @@ class UserController extends Controller
 
 
 
+    public function actionGetGroupData(){
+        if(!$this->authenticated()){
+            $this->redirect(array('/home'));
+        }
+
+        $user = $this->get_current_user();
+        if($user){
+            $data = array('success'=>true,'classes'=>$user->classes,'clubs'=>$user->groups);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'error getting user');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
 }
