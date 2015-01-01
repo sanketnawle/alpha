@@ -236,6 +236,15 @@ var CalendarEvent = (function (CalendarEvent) {
         });
 
 
+        $(document).on('click','.category',function(){
+            var $this_category_div = $(this);
+            //If there is a currently selected group, remove the class
+            $('div.category.selected').removeClass('selected');
+            $this_category_div.addClass('selected');
+        });
+
+
+
         $(document).on('click','.group',function(){
             var $this_group_div = $(this);
             var group_type = $this_group_div.attr('data-group_type');
@@ -244,9 +253,81 @@ var CalendarEvent = (function (CalendarEvent) {
             $('div.category_list.active').removeClass('active');
             //Show the category list for this group type
             $("div.category_list[data-group_type='" + group_type + "']").addClass('active');
+
+            //If there is a currently selected group, remove the class
+            $('div.group.selected').removeClass('selected');
+            $this_group_div.addClass('selected');
         });
 
 
+
+        $(document).on('submit','#create_event_form',function(event){
+            var $form = $(this);
+            event.preventDefault();
+
+            var post_url = base_url + $form.attr('action');
+
+            var event_name = $('#create_event_name_input').val();
+            
+            var event_start_date = '2015-01-01';
+            var event_start_time  = '00:00:00';
+
+            var event_end_date = '2015-01-01';
+            var event_end_time  = '00:05:00';
+
+            var $selected_group = $('div.group.selected');
+
+            var event_origin_type = $selected_group.attr('data-group_type');
+            var event_origin_id = $selected_group.attr('data-id');
+
+            var event_category = $('div.category.selected').attr('data-category');
+
+            var event_location = $('#event_location_input').val();
+            var event_description = $('#event_description_input').val();
+
+
+
+        var post_data = {
+        event:{
+                event_name: event_name,
+                origin_type: event_origin_type,
+                origin_id: event_origin_id,
+                event_type: event_category,
+                title: event_name,
+                description: event_description,
+                start_time: event_start_time,
+                end_time: event_end_time,
+                start_date: event_start_date,
+                end_date: event_end_date,
+                location: event_location
+            }
+        };
+
+//            var post_data = {
+//                event_name: event_name,
+//                event_start_date: event_start_date,
+//                event_start_time: event_start_time,
+//                event_end_date: event_end_date,
+//                event_end_time: event_end_time,
+//                event_origin_type: event_origin_type,
+//                event_category: event_category,
+//                event_location: event_location,
+//                event_description: event_description
+//            };
+            //alert(JSON.stringify(post_data));
+            $.post(
+                post_url,
+                post_data,
+                function(response) {
+                    if(response['success']){
+                        alert(JSON.stringify(response));
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }, 'json'
+            );
+
+        });
 
 
 

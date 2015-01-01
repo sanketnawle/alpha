@@ -156,6 +156,12 @@ input.text_input {
 
 }
 
+.group.selected {
+
+    background-color: red;
+}
+
+
 .group_name {
     width: 100%;
     margin-left: 5px;
@@ -203,6 +209,10 @@ input.text_input {
 
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.category.selected {
+    background-color: red;
 }
 
 .category:hover{
