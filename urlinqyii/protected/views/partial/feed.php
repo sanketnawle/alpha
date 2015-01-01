@@ -480,7 +480,7 @@
                                                                 {{text}}
                                                     </div>
 
-                                                    {{#if true_or_false}}
+                                                    {{#ifCond question.question_type '==' 'true_or_false'}}
                                                         
                                                         <div class="true_choice">
                                                             <input type="radio" name="true_or_false" id="true_radio"> 
@@ -499,7 +499,7 @@
                                                              </span>
                                                         </div>
 
-                                                    {{/if}}
+                                                    {{/ifCond}}
 
 
                                                     {{#ifCond question.question_type '==' 'multiple_choice'}}
@@ -518,38 +518,14 @@
                                                                     
                                                                     <div class="mc_question_choice_text">
                                                                         {{#if anon}}
-                                                                            <span class="choice_text"> {{question.option_text}} </span>
+                                                                            <span class="choice_text"> {{option_text}} </span>
                                                                         {{else}}
-                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{question.option_text}} </span>
+                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
                                                                             
                                                                         {{/if}}
                                                                     </div>
-                                                                    {{#if anon}}
-                                                                        <div class='profile_thumbnail' 
-                                                                        style="background:url('http://www.urlinq.com/beta/DefaultImages/anon.png'); width: 20px; height: 20px;">
-                                                                            
-                                                                        </div>
-                                                                         
-                                                                    {{else}}
-                                                                        <div class='profile_thumbnail' style="background:url('http://www.urlinq.com/beta/DefaultImages/anon.png'">
-                                                                            
-                                                                        </div>
-                                                                        <div class='profile_thumbnail_no_pic'>
-                                                                            +{{people_who_answered_len}}
-                                                                        </div>
-                                                                        <div class="border_wedge"></div>
-                                                                        <div class="list_of_people">
 
-                                                                            <ul class="people" style="text-decoration:none">
-                                                                                {{#each people_who_answered}}
-                                                                                <li class="person"> {{name}} </li>
-                                                                                {{/each}}
-                                                                            </ul>
-                                                                        </div>
-                                                                        
-                                                                        
-                                                                    {{/if}}
-                                                                    </div>
+                                                                </div>
 
                                                             {{/each}}
                                                         </div>
@@ -688,7 +664,7 @@
                                                 <a href=''>sdafsdaffg</a>
                                         </div>
                                     {{/if}}
-                                    <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
+                                    <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         <div class = 'comment_user_icon'></div>
                                     </div>
                                     <span class = 'comment_owner'>
