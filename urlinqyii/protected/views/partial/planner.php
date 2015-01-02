@@ -228,7 +228,7 @@
                     <div id="planner_bottom_bar_line"></div>
 
                     <div id="planner_bottom_see_all_button">
-                        <div id="planner_bottom_text">View monthly calendar</div>
+                        <div id="planner_bottom_text"><a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">View monthly calendar</a></div>
                     </div>
                 </div>
 

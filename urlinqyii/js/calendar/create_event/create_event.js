@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    var $recent_date_input = null;
     var blinkflag = 0;
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -22,7 +24,9 @@ $(document).ready(function(){
     if(todays_month < 10){
         todays_month = '0' + todays_month.toString();
     }
-    $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+    $( ".event_date").each(function(){
+        $(this).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+    });
 
 
 
@@ -43,6 +47,10 @@ $(document).ready(function(){
 
 
     $(document).delegate('.date_input', 'click', function () {
+        $recent_date_input = $(this);
+
+
+        $('.calLayer').css({position:'fixed', top: $recent_date_input.position().top + 85, left: $recent_date_input.position().left + 200});
         $('.calLayer').toggle();
 
     });
@@ -81,7 +89,7 @@ $(document).ready(function(){
                 if(todays_month < 10){
                     todays_month = '0' + todays_month.toString();
                 }
-                $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+                $recent_date_input.attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
 
 
 
@@ -90,7 +98,7 @@ $(document).ready(function(){
                 var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
                 var year= yeararr[1];
                 var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
-                $('.event_date').val(theDate);
+                $recent_date_input.val(theDate);
 
 
 

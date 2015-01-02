@@ -719,7 +719,7 @@ $(document).on('click','.event_checkbox_input',function(e){
 //                }
 //            }, 'json'
 //        );
-    });
+});
 
 
 

@@ -32,22 +32,22 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
         return d;
     }
 
-    $scope.getDate = function (i) { return addDate(i).getDate(); }
+    $scope.getDate = function (i) { return addDate(i).getDate(); };
 
     $scope.getNextLink = function () {
         var next = addDate(9);
         return "#/week/" + next.getWeek() + "/" + next.getWeekYear();
-    }
+    };
 
     $scope.getPrevLink = function () {
         var prev = addDate(-3);
         return "#/week/" + prev.getWeek() + "/" + prev.getWeekYear();
-    }
+    };
 
     $scope.getTodayLink = function () {
         var date = new Date();
         return "#/week/" + date.getWeek() + "/" + date.getWeekYear();
-    }
+    };
 
     window.grid = WeekGrid.createGrid("week-grid", dateOfWeek);
 
@@ -73,4 +73,4 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
     }(0));
 
     $scope.setMiniMonth(dateOfWeek.getMonth(), dateOfWeek.getWeekYear(), "w");
-})
+});
