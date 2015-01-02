@@ -153,7 +153,8 @@ div#class_members_tab div.members_card_wrapper:nth-of-type(2){
 
 div.admin_member_controls{
     display: inline-block;
-margin-left: 4px;
+
+    margin-left: 0px;
 font-size: 12px;
 color: #777;
 font-family: Avenir;
@@ -198,6 +199,7 @@ div.remove#done_removing_button span{
     border-radius: 3px;
     font-size: 13px;
     -moz-transition: all .1s ease;
+    margin-right: 4px;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
     font-weight: 600;    

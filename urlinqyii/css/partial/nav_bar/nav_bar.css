@@ -70,6 +70,7 @@ a {
     max-width: 30%;
 
     padding-left: 5px;
+    cursor:pointer;
     padding-right: 7px;
 
     text-decoration: none;
@@ -99,7 +100,7 @@ div.nav_section div.nav_text {
     margin-top: 10px;
     float: left;
     font-weight: 600;
-
+    cursor: pointer;
     font-size: 13px;
     overflow:hidden;
     display: inline-block;
@@ -114,6 +115,7 @@ div.nav_section div.nav_text {
 
 div.nav_section.active div.nav_text{
     color: white;
+    cursor:default;
     font-weight: 600;
 }
 

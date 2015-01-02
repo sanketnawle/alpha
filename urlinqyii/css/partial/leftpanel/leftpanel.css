@@ -81,7 +81,7 @@
     -webkit-font-smoothing: antialiased;          -moz-osx-font-smoothing: grayscale;
     margin: 0;
     display: inline-block;
-    margin-left: 2px;
+    margin-left: 3px;
     text-transform: uppercase;
 }
 
@@ -93,28 +93,47 @@
 }
 
 em.SectionHeader_ribbon{
-    height: 20px;
+    height: 14.56px;
 
-    width: 10px;
+    width: 9px;
+    border-radius: 1px;
     position: relative;
     margin-left: -17px;
-    margin-top: -1px;
+    margin-top: -2px;
 }
 
 .LeftPanel_Classes .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
-    background-position: 0px -6px;
 
+    background: #E8514F; 
+
+    background-image: -webkit-linear-gradient(#E8514F,#f16b6a); 
+
+    background-image: -moz-linear-gradient(#E8514F,#f16b6a); 
+
+    background-image: -o-linear-gradient(#E8514F,#f16b6a); 
+
+    background-image: linear-gradient(#E8514F,#f16b6a);
 }
 
 .LeftPanel_Clubs .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
-    background-position: 0px -70px;
     
+    background: #2489B2; 
+    background-image: -webkit-linear-gradient(#2489B2,#45a8cf); 
+    background-image: -moz-linear-gradient(#2489B2,#45a8cf); 
+    background-image: -o-linear-gradient(#2489B2,#45a8cf); 
+    background-image: linear-gradient(#2489B2,#45a8cf);
 }
 
 .LeftPanel_Profile .LeftPanel_SectionHeader .SectionHeader_holder div em.SectionHeader_ribbon{
-    background-position: 0px -38px;
     
+    background: #11B372; 
+    background-image: -webkit-linear-gradient(#11B372,#30DD97); 
+    background-image: -moz-linear-gradient(#11B372,#30DD97); 
+    background-image: -o-linear-gradient(#11B372,#30DD97); 
+    background-image: linear-gradient(#11B372,#30DD97);
 }
+
+em.SectionHeader_ribbon.LeftPanel_icons {}
 
 
 

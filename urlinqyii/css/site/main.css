@@ -14,6 +14,7 @@ body{
     margin: 0;
     padding: 0;
     min-width:745px;
+    font-family: 'Open Sans', sans-serif;
     overflow: hidden;
     background: #FAFAFA;
 }
@@ -22,10 +23,6 @@ body#body_home{
     overflow:auto!important;
 }
 
-
-div{
-    cursor:default;
-}
 
 .post_like {}
 
@@ -83,8 +80,6 @@ div{
 #main_panel{
     max-width: 1145px;
     margin: 0px auto;
-
-    height: 2000px;
     padding-right: 220px;
 
 }
@@ -97,10 +92,8 @@ div{
     margin-right: 0px;
 
     display: block;
-
-
-    overflow-x: hidden;
-    overflow-y:hidden;
+    overflow: hidden;
+    height: 5000px;
     width: 830px;
     z-index: 50;
 
@@ -113,7 +106,6 @@ div{
     margin: 0px;
     outline: none;
     padding: 0;
-    min-height: 600px;
     width: auto;
     zoom: 1;
 }
@@ -652,11 +644,12 @@ padding-bottom: 1px;
 }
 
 .order_sort_dropdown span {
-font-size: 13px;
+font-size: 12.5px;
 padding: 4px 0px 4px 6px;
 display: inline-block;
-color: #333;
-font-weight: 600;
+font-family: 'Open Sans', sans-serif;
+color: #777;
+font-weight: 00;
 }
 
 .order_sort_dropdown em {
@@ -800,7 +793,7 @@ ul.tabnav_tabs li{
 }
 .tab_members .tab_content_holder .tab_header, .tab_group_info .tab_content_holder .tab_header{
     border-bottom: 1px solid #d4d4d4;
-    padding: 25px 2px 5px;
+    padding: 18px 2px 5px;
     height: 35px;
 }
 
@@ -882,9 +875,10 @@ ul.tabnav_tabs li.active{
 .tab_members .tab_content_holder .tab_header div.header_sentence, .tab_group_info .tab_content_holder .tab_header div.header_sentence{
     font-family: Avenir;
 
-    font-size: 20px;
-    color: #444;
-    padding-top: 12px;
+    font-size: 16px;
+    color: #333;
+    padding-top: 16px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 div.content_row
