@@ -419,7 +419,7 @@ var MonthGrid = (function (MonthGrid) {
             }
 
 
-            var event_name = event_start_time;
+            var event_name = event_input_string;
 
             var event_start_date = $create_month_day_event_popup.attr('data-date');
 
