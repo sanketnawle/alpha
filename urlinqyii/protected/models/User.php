@@ -108,6 +108,11 @@ class User extends CActiveRecord
 		);
 	}
 
+    //Returns array of events where the creator is this user and the events that this user is attending through event_user table
+    public function get_all_events(){
+        return array_merge ($this->events,$this->events1);
+    }
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -125,6 +130,11 @@ class User extends CActiveRecord
 			'courses' => array(self::MANY_MANY, 'Course', 'course_follow(user_id, course_id)'),
 			'departments' => array(self::MANY_MANY, 'Department', 'department_follow(user_id, department_id)'),
 			'events' => array(self::HAS_MANY, 'Event', 'user_id'),
+
+            'events' => array(self::HAS_MANY, 'Event', 'user_id'),
+            'eventCheckins' => array(self::HAS_MANY, 'EventCheckin', 'user_id'),
+            'events1' => array(self::MANY_MANY, 'Event', 'event_user(user_i, event_id)'),
+
 			'groupFiles' => array(self::HAS_MANY, 'GroupFile', 'user_id'),
 			'groupUsers' => array(self::HAS_MANY, 'GroupUser', 'user_id'),
 			'invites' => array(self::HAS_MANY, 'Invite', 'user_id'),
