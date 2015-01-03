@@ -50,7 +50,7 @@
         
         $('.day_box_color').each(function(){
 
-            var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#DD605B"];            
+            var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#13D298"];            
             var color = colors[Math.floor(colors.length * Math.random())];
 
             if(color != lastColor){
@@ -62,6 +62,27 @@
 
         });
 
+
+        $('div.complete_incomplete_button.active').click(function(){
+            var $checkbox = $(this);
+            var $tooltip = $(this).find(".help-box");
+            if($checkbox.hasClass("incomplete")){
+                $checkbox.removeClass("incomplete");
+                $tooltip.text("Mark as Incomplete");
+
+            }
+            else{
+                $checkbox.addClass("incomplete");
+                $tooltip.text("Mark as Complete");
+            }
+        });
+
+
+        $('.syllabus_event_order').click(function(){
+            var $selected_order = $(this);
+            var selected_order_text = $selected_order.find("a").text();
+            $("#selected_syllabus_event_order").text(selected_order_text);
+        });
     
                          
     });
@@ -200,7 +221,7 @@
                     <div class = "class_events_holder order_kind">
                         <div class = "black_action_box">
                             <button class = "scan_syllabus">
-                                Import Syllabus
+                                <em class = "syla_plus"></em>Add Syllabus
                             </button>
                             <div class = "black_explainer">
                                 By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
@@ -212,8 +233,8 @@
                                 <label>Order:</label>
                                 <ul class = "menu">
                                     <li>
-                                        <a href = "#"><div class = "order_sort_dropdown"><span>Date</span><em></em></div></a>
-                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_date"><a href = "#">Date</a></li><li id = "syllabus_event_order_kind"><a href = "#">Kind</a></li></div></ul>
+                                        <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
+                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
                                     </li>
                                 </ul>
 
@@ -234,18 +255,20 @@
                                             <span class ="event_name_text">
                                                 Midterm 1
                                             </span>
+                                            <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
                                             <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
-                                            <div class ="complete_incomplete_button incomplete active">
-                                                <span></span>
+                                            <div class ="complete_incomplete_button syllabus_event_button incomplete active">
+                                                <span class = "todo_checkbox">
+                                                </span>
+                                                <div class="help-div">
+                                                    <div class="help-wedge">
+                                                    
+                                                    </div>
+                                                    <div class="help-box">Mark as Complete</div>
+                                                </div>
                                             </div>
 
-                                            <div class ="view_more_button">
-                                                <span></span>
-                                            </div>
 
-                                            <div class ="complete_incomplete_box incomplete active">
-                                                <span></span>
-                                            </div>
                                         </div>
                                     
                                     </div>
@@ -264,21 +287,24 @@
                                             <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
                                             <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button syllabus_event_button incomplete active">
-                                                <span></span>
+                                                <span class = "todo_checkbox">
+                                                </span>
+                                                <div class="help-div">
+                                                    <div class="help-wedge">
+                                                    
+                                                    </div>
+                                                    <div class="help-box">Mark as Complete</div>
+                                                </div>
                                             </div>
-
-                                            <div class ="view_more_button syllabus_event_button">
-                                                <span></span>
-                                            </div>
-
-                                            <div class ="complete_incomplete_box syllabus_event_button incomplete active">
-                                                <span></span>
+                                            <div class = "done_editing_button">
+                                                Done
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class = "kind_section">
                                     <h5>Exams</h5>
+
                                     <div class = "syllabus_event">
                                         <div class = "day_month_box day_box_color">
                                             <div class = "calendar_top_border"></div>
@@ -292,43 +318,10 @@
                                                 Midterm 1
                                             </span>
                                             <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
-                                            <div class ="complete_incomplete_button incomplete active">
+                                            <div class ="complete_incomplete_button incomplete">
                                                 <span></span>
                                             </div>
 
-                                            <div class ="view_more_button">
-                                                <span></span>
-                                            </div>
-
-                                            <div class ="complete_incomplete_box incomplete active">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class = "syllabus_event">
-                                        <div class = "day_month_box day_box_color">
-                                            <div class = "calendar_top_border"></div>
-                                            <div class = "calendar_bottom_section">
-                                                <span class = "day">10</span>
-                                                <span class = "month">Nov</span>
-                                            </div>
-                                        </div>
-                                        <div class = "event_name_buttons">
-                                            <span class ="event_name_text">
-                                                Midterm 1
-                                            </span>
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
-                                            <div class ="complete_incomplete_button incomplete active">
-                                                <span></span>
-                                            </div>
-
-                                            <div class ="view_more_button">
-                                                <span></span>
-                                            </div>
-
-                                            <div class ="complete_incomplete_box incomplete active">
-                                                <span></span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
