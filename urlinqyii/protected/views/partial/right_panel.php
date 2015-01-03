@@ -14,8 +14,7 @@
 		<div id='right_panel'>
 			<div id = 'panel_header'>
 				<div>
-					<span class = "activity_icon right_panel_assets">
-			        </span>
+					
 					<span>                        
 						<?php
 			                if($origin_type == 'home'){
@@ -42,6 +41,8 @@
 			             ?> 
 			             Activity
 			         </span>
+			         <span class = "activity_icon right_panel_assets">
+			        </span>
 			         
 		         </div>
 			</div>

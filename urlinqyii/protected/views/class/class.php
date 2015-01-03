@@ -28,16 +28,45 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_syllabus.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
 
+
+    <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
+
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
-
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/class/class_syllabus_tab.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+
+    <script>
+    $(document).ready(function() {
+        $('.menu').dropit();
+        
+        $('.day_box_color').each(function(){
+
+            var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#DD605B"];            
+            var color = colors[Math.floor(colors.length * Math.random())];
+
+            if(color != lastColor){
+                $(this).css({"background-color":color});
+            }
+
+            var lastColor = color;
+
+
+        });
+
+    
+                         
+    });
+
+    </script>
 </head>
 
     <body>
@@ -140,111 +169,232 @@
 
         <div class="panel tab_syllabus" id="panel_2">
             <div class = "class_syllabus_tab">
-                <div class = "full_syllabus_box syllabus_tagger">
+                <div class = "syllabus_tab_holder">
+                    <div class = "full_syllabus_box syllabus_tagger">
 
-                    <div class = "title">
-                        Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div>
-                    </div>
+                        <div class = "title">
+                            Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div><div class = "syllabus_download_btn"><span class = "download_icon"></span>Download</div>
+                        </div>
 
-                    <div class = "rendered_syllabus_page_holder" id = "page1">
-                        <div class = "paper_shadowonblack">
+                        <div class = "rendered_syllabus_page_holder" id = "page1">
+                            <div class = "paper_shadowonblack">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class = "rendered_syllabus_page_holder" id = "page2">
-                        <div class = "paper_shadowonblack">
+                        <div class = "rendered_syllabus_page_holder" id = "page2">
+                            <div class = "paper_shadowonblack">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class = "rendered_syllabus_page_holder" id = "page3">
-                        <div class = "paper_shadowonblack">
+                        <div class = "rendered_syllabus_page_holder" id = "page3">
+                            <div class = "paper_shadowonblack">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class = "rendered_syllabus_page_holder" id = "page4">
-                        <div class = "paper_shadowonblack">
+                        <div class = "rendered_syllabus_page_holder" id = "page4">
+                            <div class = "paper_shadowonblack">
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class = "class_events_holder order_kind">
-                    <div class = "import_syllabus_button">
-                        Import Syllabus
                     </div>
-                    <header class = "class_tasks">
-                        <h5>Class Work</h5>
-                        <label>Order:</label><div class = "order_sort_dropdown"><span>Date</span><em></em></div>
-                        <div class = "order_dropdown_box"><div id = "syllabus_event_order_date">Date</div><div id = "syllabus_event_order_kind">Kind</div></div>
-                    </header>
-                    <div class = "events_by_kind events_ordered_list">
-                        <div class = "kind_section">
-                            <h5>Assignments</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
+                    <div class = "class_events_holder order_kind">
+                        <div class = "black_action_box">
+                            <button class = "scan_syllabus">
+                                Import Syllabus
+                            </button>
+                            <div class = "black_explainer">
+                                By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
                             </div>
                         </div>
-                        <div class = "kind_section">
-                            <h5>Exams</h5>
-                            <div class = "syllabus_event">
+                        <div class = "syllabus_events_wrapper">
+                            <header class = "class_tasks">
+                                <h5>Class Work</h5>
+                                <label>Order:</label>
+                                <ul class = "menu">
+                                    <li>
+                                        <a href = "#"><div class = "order_sort_dropdown"><span>Date</span><em></em></div></a>
+                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_date"><a href = "#">Date</a></li><li id = "syllabus_event_order_kind"><a href = "#">Kind</a></li></div></ul>
+                                    </li>
+                                </ul>
+
+
+                            </header>
+                            <div class = "events_by_kind events_ordered_list">
+                                <div class = "kind_section">
+                                    <h5>Assignments</h5>
+                                    <div class = "syllabus_event">
+                                        <div class = "day_month_box day_box_color">
+                                            <div class = "calendar_top_border"></div>
+                                            <div class = "calendar_bottom_section">
+                                                <span class = "day">10</span>
+                                                <span class = "month">Nov</span>
+                                            </div>
+                                        </div>
+                                        <div class = "event_name_buttons">
+                                            <span class ="event_name_text">
+                                                Midterm 1
+                                            </span>
+                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
+                                            <div class ="complete_incomplete_button incomplete active">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="view_more_button">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="complete_incomplete_box incomplete active">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class = "syllabus_event editable">
+                                        <div class = "day_month_box day_box_color">
+                                            <div class = "calendar_top_border"></div>
+                                            <div class = "calendar_bottom_section">
+                                                <span class = "day">10</span>
+                                                <span class = "month">Nov</span>
+                                            </div>
+                                        </div>
+                                        <div class = "event_name_buttons">
+                                            <span class ="event_name_text">
+                                                Midterm 1
+                                            </span>
+                                            <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
+                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
+                                            <div class ="complete_incomplete_button syllabus_event_button incomplete active">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="view_more_button syllabus_event_button">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="complete_incomplete_box syllabus_event_button incomplete active">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "kind_section">
+                                    <h5>Exams</h5>
+                                    <div class = "syllabus_event">
+                                        <div class = "day_month_box day_box_color">
+                                            <div class = "calendar_top_border"></div>
+                                            <div class = "calendar_bottom_section">
+                                                <span class = "day">10</span>
+                                                <span class = "month">Nov</span>
+                                            </div>
+                                        </div>
+                                        <div class = "event_name_buttons">
+                                            <span class ="event_name_text">
+                                                Midterm 1
+                                            </span>
+                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
+                                            <div class ="complete_incomplete_button incomplete active">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="view_more_button">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="complete_incomplete_box incomplete active">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "syllabus_event">
+                                        <div class = "day_month_box day_box_color">
+                                            <div class = "calendar_top_border"></div>
+                                            <div class = "calendar_bottom_section">
+                                                <span class = "day">10</span>
+                                                <span class = "month">Nov</span>
+                                            </div>
+                                        </div>
+                                        <div class = "event_name_buttons">
+                                            <span class ="event_name_text">
+                                                Midterm 1
+                                            </span>
+                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
+                                            <div class ="complete_incomplete_button incomplete active">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="view_more_button">
+                                                <span></span>
+                                            </div>
+
+                                            <div class ="complete_incomplete_box incomplete active">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "kind_section">
+                                    <h5>Projects</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "kind_section">
+                                    <h5>Papers</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "kind_section">
+                                    <h5>Lecture</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "kind_section">
+                                    <h5>Labs</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
                             </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "kind_section">
-                            <h5>Projects</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "kind_section">
-                            <h5>Papers</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "kind_section">
-                            <h5>Labs</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "events_by_date events_ordered_list">
-                        <div class = "week_section">
-                            <h5>Week 1</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "week_section">
-                            <h5>Week 2</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "week_section">
-                            <h5>Week 3</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "week_section">
-                            <h5>Week 4</h5>
-                            <div class = "syllabus_event">
-                            </div>
-                        </div>
-                        <div class = "week_section">
-                            <h5>Week 5</h5>
-                            <div class = "syllabus_event">
+                            <div class = "events_by_date events_ordered_list">
+                                <div class = "week_section">
+                                    <h5>Week 1</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "week_section">
+                                    <h5>Week 2</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "week_section">
+                                    <h5>Week 3</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "week_section">
+                                    <h5>Week 4</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
+                                <div class = "week_section">
+                                    <h5>Week 5</h5>
+                                    <div class = "syllabus_event">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
