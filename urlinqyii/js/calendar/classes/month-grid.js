@@ -359,6 +359,11 @@ var MonthGrid = (function (MonthGrid) {
             var event_input_string = $('#create_month_day_event_input').val();
 
 
+            if(event_input_string.length == 0){
+                alert('please input an event');
+                return;
+            }
+
             //Seaches for a string like 1pm or 12:20am
             //We are assuming the first time like string is the start time of this event
             var match = /([1-9]|1[0-2])((pm|am)|(:[0-9][0-9](pm|am)))/g.exec(event_input_string);
