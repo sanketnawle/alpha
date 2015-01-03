@@ -47,12 +47,13 @@ div.order_dropdown_box{
     background: #fff;
    
 
-    border: 1px solid #eee;
-    width: 80px;
+    width: 84px;
     font-size: 12px;
     padding: 4px 0px;
+    border: 1px solid rgba(0, 0, 0, .15); 
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.11);
     border-radius: 2px;
-    padding-left: 4px;
+    padding-left: 0px;
 }
 
 div.day_month_box{
@@ -120,8 +121,9 @@ div.events_ordered_list div.kind_section > h5{
     
     color: #999; font-family: Avenir; 
     font-size: 13.5px;
-    text-align: center;
-    padding-left: 5px;
+    text-align: left;
+    padding-left: 0px;
+    padding-bottom: 1px;
 }
 
 div.events_ordered_list div.week_section{
@@ -132,9 +134,10 @@ div.events_ordered_list > div > h5{
     margin: 15px 0px 6px 0px;
 
     color: #999; font-family: Avenir; 
-    text-align: center;
+    text-align: left;
     font-size: 13.5px;
-    padding-left: 6px;
+    padding-left: 0px;
+    padding-bottom: 1px;
 }
 
 div.syllabus_like_btn{
@@ -218,11 +221,17 @@ div.syllabus_event.editable input.syla_tab_event_editor{
     border: none;
     border-bottom: 1px solid #eee;
     font-size: 13.7px;
-    margin: 12px 12px;
-    padding-left: 4px;
+    margin: 13px 12px;
     position: relative;
     left: 5px;
     width: 76%;
+    -webkit-transition: border-color 0.15s;
+    -moz-transition: border-color 0.15s;
+    transition: border-color 0.15s;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus{
+border-bottom: 1px solid #CDCDCD;
 }
 
 div.syllabus_event.editable span.event_name_text{
@@ -354,6 +363,7 @@ button.scan_syllabus{
     margin: 0 auto;  
     width: 100%;
     margin-left: auto;
+    text-indent: 7px;
     border-radius: 4px;     
     margin-right: auto;
     font-weight: bold;    
@@ -364,10 +374,47 @@ button.scan_syllabus{
     border-color: #Ddd;
     background-repeat: repeat-x; 
     font-size: 14px;          
+    -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease;
     box-shadow: 0px -1px #fff inset;
 }
 
-div.full_syllabus_box div.rendered_syllabus_page_holder{
+button.scan_syllabus:hover{
+    color: #333;
+outline: 0;
+
+    background-color: #F5F5F5;
+  
+    -webkit-box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset; 
+    -moz-box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset; 
+    box-shadow: 0 1px 1px rgba(179, 179, 179, 0.1), 0px -1px #fff inset;
+    border-color: rgb(231, 229, 229) rgb(208, 205, 205) rgba(184, 178, 178, 0.5);
+}
+
+button.scan_syllabus em.syla_plus{
+    background-image: url(../../assets/small_icons.png); background-size: auto; 
+    background-position: 0px -552px;
+
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    position: relative;
+    left: -4px;
+    top: 3px;
+    -moz-transform: scale(.7); position: relative; 
+    -webkit-transform: scale(.7);  
+    transform: scale(.7);
+}
+
+
+
+
+button.scan_syllabus:active{
+text-shadow: none; background-image: none; border-color: #b5b5b5; 
+border: 1px solid #CFCFCF; background: #E5E5E5; box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 234, 234, 0.4) inset, 0px 1px 0px rgba(226, 226, 226, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
+}
+
+
+ div.rendered_syllabus_page_holder{
     position: relative;
 
     margin-right: 15px;
@@ -376,10 +423,6 @@ div.full_syllabus_box div.rendered_syllabus_page_holder{
     padding-top: 1px;
     border-radius: 1px;
     padding-bottom: 5px;
-}
-
-div.full_syllabus_box div.rendered_syllabus_page_holder:first-child(){
-
 }
 
 div.syllabus_tab_holder{
@@ -413,19 +456,23 @@ div.complete_incomplete_button.active{
     display:inline-block;
 }
 
-div.complete_incomplete_button.incomplete{
+div.complete_incomplete_button{
     
+    width: 33px;
+    height: 44px;
+    right: 0px;
+    position: absolute;
 }
 
 div.black_explainer{
     margin-top: 15px;
     
     text-align: left;
-    width: 82%;
+    width: 90%;
 }
 
-div.complete_incomplete_button.complete span{
-    
+div.complete_incomplete_button span{
+    background-position: -32px -579px;
 }
 
 ul.menu{
@@ -435,12 +482,131 @@ ul.menu{
     margin-top: -4px;
 }
 
+div.complete_incomplete_button span{
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 26px;
+    position: relative;
+    -moz-transform: scale(.85); position: relative; 
+    -webkit-transform: scale(.85); 
+    transform: scale(.85);
+    cursor:pointer;
+    top: 9px;
+    background-image: url(../../assets/small_icons.png);
+    display: block;
+    opacity: 1;
+}
 
 div.complete_incomplete_button.incomplete span{
     
+    
+
+    background-position: -1px -579px;
 }
 
+div.help-div {
+position: absolute;
+-moz-transition: all .3s ease-in-out;
+-webkit-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+display: block;
+opacity: 0; 
+pointer-events: none;
+z-index:100000;
+top: 36px;
+right: -10px;
+}
 
+div.help-div .help-wedge {
+border-color: transparent;
+border-bottom-color: rgba(51, 51, 51, 0.87);
+border-style: dashed dashed solid;
+border-width: 0 6.5px 6.5px;
+display: block;
+z-index: 1;
+height: 0;
+width: 0;
+position: relative;
+left: 114px;
+}
+
+div.help-div div.help-box {
+width: 136px;
+font-size: 12px;
+line-height: 14px;
+text-align: center;
+text-shadow: none;
+padding: 7px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+font-weight: 600;
+border-radius: 2px;
+color: #fff;
+background-color: rgba(51, 51, 51, 0.87);
+}
+
+span.todo_checkbox:hover ~ div.help-div {
+z-index: 1;
+opacity: 1;
+}
+
+div.done_editing_button{
+    display:none;
+    position:absolute;
+    line-height: 54px;
+    right: -48px;
+    z-index: 1000;
+    text-align: center;
+    padding-right: 3px;
+    width: 41px;
+    cursor:pointer;
+    top: -4px;
+    opacity:0;
+    color:#777;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    border-radius: 0px 2.5px 2.5px 0px;
+    font-size:12.5px;
+    font-weight: bold;
+    background-color:rgba(213, 214, 215, 0.5);
+    bottom: -4px;
+}
+
+div.done_editing_button:hover{color:#575757;text-decoration: underline;}
+div.done_editing_button:active{color:#575757;background-color:rgba(213, 214, 215, 0.75);}
+
+div.editable > div.event_name_buttons > div.done_editing_button{
+    display:block;
+}
+
+div.syllabus_event.editable input.syla_tab_event_editor:focus ~ div.done_editing_button{
+    opacity:1;
+}
+
+.checkbox_hint.syllabus_tab{
+
+}
+
+.order_dropdown_box li{
+    padding: 2px 6px;
+    cursor: pointer;
+    color: #444;
+    font-size: 12.7px;
+}
+
+.order_dropdown_box li:hover{
+    background:#f5f5f5;
+}
+
+.order_dropdown_box li:hover > a{
+    color:#222;
+}
+
+.order_dropdown_box li a{
+    color:#333;
+}
 
 div.full_syllabus_box{
     right: 32%;

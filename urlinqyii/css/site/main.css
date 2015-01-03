@@ -92,7 +92,7 @@ body#body_home{
     margin-right: 0px;
 
     display: block;
-    overflow: hidden;
+    /* overflow: hidden; */
     height: 5000px;
     width: 830px;
     z-index: 50;
