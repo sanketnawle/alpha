@@ -26,7 +26,7 @@ function UCEvent(object) {
 
 UCEvent.assert = function (object) {
     if (!(object instanceof UCEvent)) throw "Expected UCEvent, given " + object.constructor.name;
-}
+};
 
 function AdEvent(object) {
     CalendarEvent.call(this, object);
@@ -34,7 +34,7 @@ function AdEvent(object) {
 
 AdEvent.assert = function (object) {
     if (!(object instanceof AdEvent)) throw "Expected AdEvent, given " + object.constructor.name;
-}
+};
 
 function Div(cls, html) {
     var div = document.createElement("div");

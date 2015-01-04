@@ -2,7 +2,7 @@
 /// <reference path="../helpers/date.js" />
 /// <reference path="other.js" />
 /// <reference path="event-div.js" />
-
+$.noConflict();
 var WeekGrid = (function (WeekGrid) {
     var dp = new DateProvider();
     var itemHeight = 50;
@@ -14,17 +14,20 @@ var WeekGrid = (function (WeekGrid) {
         var item = document.createElement("div");
         item.className = "grid-item";
         return item;
-    }
+    };
 
     var getGridItems = function (itemNodes) {
         var items = [];
         [].forEach.call(itemNodes, function (ele, i, array) { items.push(new GridItem(ele)); });
         return items;
-    }
+    };
+
+
 
     /* Class GridItem */
     var GridItem = function (element) {
         this.ele = element || createGridItem();
+
         Object.defineProperties(this, {
             addEvent: {
                 value: function (uce, top, pseudo) {
@@ -61,28 +64,67 @@ var WeekGrid = (function (WeekGrid) {
                     event.appendChild(time);
                     event.appendChild(title);
 
+                    event.setAttribute('data-id',uce.id);
+                    event.setAttribute('data-start_date',uce.startTime);
+                    event.setAttribute('data-end_date',uce.endTime);
+
+
                     this.ele.appendChild(event);
 
                     return event;
                 }
             }
         });
-    }
+    };
 
     /* Class Grid */
     var Grid = function (grid, date) {
+
         var getOffset = function () {
             var dt = new Date();
             return Math.floor((1 + dt.getHours() + dt.getMinutes() / 60) * itemHeight);
-        }
+        };
         Object.defineProperties(this, {
+            init: {
+                value: function(){
+
+
+
+                }
+            },
             ele: { value: grid },
             populate: {
                 value: function () {
                     this.ele.innerHTML = "";
-                    for (var i = 0; i < 175; ++i) this.ele.appendChild(new GridItem().ele);
-                    if (date.getWeek() == dp.getCurrentWeek()
-                        && date.getWeekYear() == dp.getCurrentYear()) this.drawTimeLine();
+
+
+                    var current_date = date;
+
+                    //Start at -1 because the first row
+                    //is all day events
+                    var hour_index = -1;
+
+                    for (var i = 0; i < 175; ++i){
+                        if((i % 7) == 0 && i != 0){
+                            current_date.setDate(current_date.getDate() - 7);
+                            hour_index++;
+                        }
+
+                        var grid_item_ele = new GridItem().ele;
+                        grid_item_ele.setAttribute('data-date',date_to_string(current_date));
+                        grid_item_ele.setAttribute('data-time',ints_to_time(hour_index,0,0));
+                        grid_item_ele.setAttribute('data-time_num',hour_index);
+
+                        this.ele.appendChild(grid_item_ele);
+                        current_date.setDate(current_date.getDate() + 1);
+                    }
+
+
+
+
+                    if (date.getWeek() == dp.getCurrentWeek() && date.getWeekYear() == dp.getCurrentYear()){
+                        this.drawTimeLine();
+                    }
                 }
             },
             children: { get: function () { return this.ele.querySelectorAll(".grid-item"); } },
@@ -122,11 +164,14 @@ var WeekGrid = (function (WeekGrid) {
 
                     var t = uce.startTime.split(":");
                     var item = this.items[t[0] * 7 + col + 7];
+
+
                     var count = item.ele.querySelectorAll(".grid-event").length;
                     count += item.ele.querySelectorAll(".grid-pseudo-event").length;
 
                     if (uce.id in this.events) {
                         var ele = this.events[uce.id].ele;
+
                         ele.querySelector(".time").classList.add("short");
                         var oldcol = this.events[uce.id].col;
                         var width = col - oldcol + 1;
@@ -142,7 +187,11 @@ var WeekGrid = (function (WeekGrid) {
 
         // intialize
         this.populate();
-    }
+    };
+
+
+
+
     WeekGrid.Grid = Grid;
     WeekGrid.GridItem = GridItem;
 
@@ -159,14 +208,20 @@ var WeekGrid = (function (WeekGrid) {
             for (var i = 0; i < ele.length; ++i) {
                 var d = new Date(date.getTime());
                 d = new Date(d.setDate(d.getDate() + (i * 7)));
-                grid.push(new Grid(ele[i], d))
+                var this_ele = ele[i];
+                var this_grid = new Grid(this_ele, d);
+
+
+                grid.push(this_grid);
             }
         } else {
             grid = new Grid(ele, date);
+            grid.init();
         }
 
         return grid;
-    }
+    };
 
     return WeekGrid;
 }(WeekGrid || {}));
+

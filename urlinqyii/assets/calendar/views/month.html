@@ -1,13 +1,16 @@
-﻿<div ng-include="getHeaderUrl()"></div>
+﻿
+
+
+<div ng-include="getHeaderUrl()"></div>
 <div class="header row2 month">
     <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}}</span>
 </div>
-<div class="month-view grid-view">
+<div class="month-view grid-view" >
     <div class="month-grid grid" id="month-grid"></div>
 </div>
 
 
-<div id="inspect_event_popup" class="popup">
+<div id="inspect_event_popup_month" class="inspect_event_popup popup">
     <div id="inspect_event_title">Test event title</div>
     <div id="inspect_event_exit_button" class="popup_exit_button"></div>
     <div id="inspect_event_text"></div>
@@ -16,7 +19,7 @@
     <div id="inspect_event_edit_button" class="popup_edit_button">Edit event</div>
 </div>
 
-<div id="create_month_day_event_popup" class="popup">
+<div id="create_month_day_event_popup" class="create_event_popup popup">
     <div id="create_month_day_event_exit_button" class="popup_exit_button"></div>
     <div id="create_month_day_event_text">Create event</div>
     <div id="create_month_day_event_when"></div>

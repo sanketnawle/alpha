@@ -32,6 +32,11 @@ ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, 
         var date = new Date();
         return "#/month/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     };
+
+    $scope.getBaseUrl = function(){
+        return window.base_url;
+    };
+
     var scrollCount = 0;
     var lastDirection = 0;
 
@@ -59,8 +64,6 @@ ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, 
             
         });
     });
-
-
 
 
 

@@ -12,6 +12,6 @@ var KeyControl = function () {
             case 39: kc.__fire({ type: "UcRight", context: e }); break;
         }
     };
-}
+};
 
 KeyControl.prototype = Object.create(EventTarget.prototype);
