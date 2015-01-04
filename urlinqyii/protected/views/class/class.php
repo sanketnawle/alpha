@@ -62,6 +62,9 @@
 
         });
 
+        $("#page").scroll(function() {
+            console.log($("#page").scrollTop());
+        });
 
         $('div.complete_incomplete_button.active').click(function(){
             var $checkbox = $(this);
@@ -177,9 +180,10 @@
 
             <div id="tab_more_button">
                 <div id="tab_more_button_image"></div>
+                <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
             </div>
 
-            <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+            
 
         </div>
 
@@ -616,7 +620,7 @@
             <input type="hidden" name="id" value="<?php echo $class->class_id; ?>">
 
 
-            <input class="upload_files_submit" type="submit" name="submitIT" value="Submit data and files!">
+            <input class="upload_files_submit" type="submit" name="submitIT" value="Upload these Files">
         </form>
 
 
@@ -631,12 +635,10 @@
             <div class="tab_content_holder">
                 <div class="tab_header">
                     <div class = "float_Right">
-                        <div class = "add_people_button">
-                            Add People
-                        </div>
+                        
                         <div class = "admin_member_controls">
                             <div class = "add_people_button remove" id = "remove_button">
-                                Remove Members
+                                Remove People
                             </div>
                         </div> 
                         <div class = "remove_state_controls">
@@ -645,11 +647,14 @@
                                 <em></em>
                                 <span>Done</span>
                             </div>
-                        </div>                      
+                        </div>   
+                        <div class = "add_people_button">
+                            Add Members
+                        </div>                   
                         <div class="fade_input_small small_search">
                             <em class = "left_search_icon">
                             </em>
-                            <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input">
+                            <input type = "text" name = "people_search_input" placeholder = "Search members" class = "name_search_input small_search_input">
                         </div>
                     </div>
                     <div class = "header_sentence">

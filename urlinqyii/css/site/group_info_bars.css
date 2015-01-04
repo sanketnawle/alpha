@@ -136,11 +136,12 @@ div.group_box_main_info a.group_link{
 div.group_box.club_box a.group_link{
 color: #fff!important;
 font-size: 19px;
-text-shadow: 0 1px 4px rgba(0, 0, 0, 0.33);
+text-shadow: 0 0px 2px rgba(0, 0, 0, 1);
 top: 70px;
 position: relative;
 margin: 0 auto;
 display: block;
+text-transform: uppercase;
 text-align: center;
 }
 
@@ -229,7 +230,6 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     color: #333;
     border: 1px solid #eee;
     border-radius: 4px;
-    box-shadow: 1px 0px 1px #fff inset, -1px 0px 1px #fff inset, 0px -1px 1px #fff inset, 0px 1px 1px #fff inset;
     padding: 6px 10px;
     margin-top: 6px;
     overflow-y: hidden;
@@ -245,7 +245,7 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about:hove
     height:auto;
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
     -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .35);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.09);
 }
 
 
@@ -265,6 +265,7 @@ div.group_box div.group_box_secondary_info_section div.about_scroll_container sp
     transition: all 0.125s ease;   
     z-index: 2000;
     top: -2px;
+    display: none;
     right:0px;
 }
 
@@ -305,35 +306,56 @@ div.join_button_wrapper{
     cursor: pointer;
     /* position: absolute; */
     right: 0px;
+    height: 26px;
     color: #fff;
-    height: 34px;
-    background: #08D09C;
-    border-radius: 4px;
-    border: 1px solid #0AB286; 
-    -webkit-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
-    -moz-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; 
-    box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; 
+    padding-left: 3px;
+    border-radius: 3px;   
+    width: 95px;
+    padding-right: 3px;
+    background-color: #27D579; 
+    background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); 
+    background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); 
+    background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); 
+    background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%);
+    background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C);  
+    border: 1px solid #1ECD77;
+    -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset;
+    box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset;
+    border-bottom: 1px solid rgba(9, 166, 89, 0.74);
 }
 
 div.join_button_wrapper:hover{
-    background: #12E0AB;
-    -webkit-box-shadow: inset 0 1px 1px #2CEFBD,inset 0 -1px 1px #22C298, 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); -moz-box-shadow: inset 0 1px 1px #2CEFBD,inset 0 -1px 1px #22C298, 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.87), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
+  
+    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%); 
+    background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); 
+    background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); 
+    background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); 
+    background-image: -webkit-linear-gradient(top,#09E78A,#1CE883);
+    border: 1px solid rgba(3, 144, 74, 0.24);
+    border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
 div.join_button_wrapper:active{
-    background: #0BC897;
-    box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset; 
-    -webkit-box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); 
+    background: #02DB6F; 
+    border: 1px solid #2FB750; 
+    border-top: 1px solid #1BAD3E;
+ 
 }
 
 div.join_button_wrapper div.group_join_button{
-    font-size: 14px;
-    cursor: pointer!important;
-    font-weight: 600;
+    cursor: pointer;
     color: #fff; 
-    font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 14px; display: inline-block; 
-    padding: 7px 19px; vertical-align: top;  
-    position: relative; left: 0px;
+    font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
+    font-size: 12.2px; display: inline-block;  
+    line-height: 26px;
+    height: 12px;
+    text-transform: uppercase;
+    vertical-align: top;   
+    left: 0px;
+    font-family: avenir;
+    background-size: auto;
+    position: relative;
 }
 
 div.info_line.info_line_events{
@@ -359,6 +381,22 @@ div.join_button_wrapper div.group_more_button{
     position: relative; right: 0px; padding-left: 0px;
     
 }
+
+em.white_add_icon{
+    display:none;
+    background-image: url("../../assets/small_icons.png"); position: relative; 
+    background-position: -2px -643px;
+    background-size: auto;
+    width: 8px;
+    height: 8px;
+    top: 0px;
+    left: -4px;
+}
+
+div.nonmember em.white_add_icon{
+    display:inline-block;
+}
+
 
 div.join_button_wrapper div.group_more_button em{
     cursor: pointer; 

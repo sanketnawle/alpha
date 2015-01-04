@@ -19,15 +19,36 @@ $(document).ready(function(){
             $other_views_box.removeClass('active');
         }else{
             //Get the tab button position
-            var tab_more_button_position = $tab_more_button.offset();
-
+            $other_views_box.addClass('active'); 
             //Position the other_views_box near the tab button
-            $other_views_box.css('top', tab_more_button_position['top'] + 40);
-            $other_views_box.css('left', tab_more_button_position['left']);
+            
 
 
-            $other_views_box.addClass('active')
+            
+            $( "#page" ).scroll(function() {
+        //        alert('SCROLL');
+
+                var $page = $(this);
+                var scroll_offset_top = $page.scrollTop();
+                if(Math.floor(scroll_offset_top) >= 302){
+                    var tab_more_button_position = $tab_more_button.offset();
+                    $other_views_box.css("position","fixed");
+                    $other_views_box.css('margin-left','1px');
+                    $other_views_box.css('margin-top','6px');
+                }
+
+                else{
+                    $other_views_box.css("position","absolute");
+                    $other_views_box.css('margin-left','3px');
+                    $other_views_box.css('margin-top','6px');
+               }
+
+
+            }); 
+                       
         }
+
+
     });
 
 

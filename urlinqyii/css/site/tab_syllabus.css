@@ -47,12 +47,11 @@ div.order_dropdown_box{
     background: #fff;
    
 
-    width: 84px;
+    width: 46px;
     font-size: 12px;
     padding: 4px 0px;
     border: 1px solid rgba(0, 0, 0, .15); 
-    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.11);
-    border-radius: 2px;
+    border-radius: 1px;
     padding-left: 0px;
 }
 
@@ -396,10 +395,10 @@ button.scan_syllabus em.syla_plus{
 
     display: inline-block;
     width: 18px;
-    height: 16px;
+    height: 15px;
     position: relative;
     left: -4px;
-    top: 3px;
+    top: 2px;
     -moz-transform: scale(.7); position: relative; 
     -webkit-transform: scale(.7);  
     transform: scale(.7);
@@ -597,15 +596,16 @@ div.syllabus_event.editable input.syla_tab_event_editor:focus ~ div.done_editing
 }
 
 .order_dropdown_box li:hover{
-    background:#f5f5f5;
+    background: #333;
 }
 
 .order_dropdown_box li:hover > a{
-    color:#222;
+    color: #fff;
 }
 
 .order_dropdown_box li a{
     color:#333;
+    font-weight: 100;
 }
 
 div.full_syllabus_box{
