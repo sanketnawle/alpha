@@ -59,7 +59,61 @@ var MonthGrid = (function (MonthGrid) {
         Object.defineProperties(this, {
             init: {
                 value: function () {
+                    init();
 
+                    function init(){
+                        var date_str = new Date();
+                        date_str = date_to_string(date_str);
+                        get_month_events(date_str);
+                    }
+
+
+
+                    function get_month_events(date_str){
+
+                        $.getJSON( base_url + '/event/getMonthEvents', {date: date_str},function( json_data ) {
+                            if(json_data['success']){
+                                show_month_events(json_data['events']);
+                            }else{
+                                alert('error getting planner events');
+                            }
+                        });
+                    }
+
+
+                    function show_month_events(events_json){
+                        $.each(events_json,function(index, event_json){
+                            show_month_event(event_json);
+                        });
+                    }
+
+
+                    function show_month_event(event_json){
+                        //Normally source would be jQuery("#group_template").html(); but for whatever reason
+                        //angular doesnt let jquery select the handlebars template if it is in the html
+                        var source = '<div class="month_day_event" data-id="{{event_id}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
+                        var template = Handlebars.compile(source);
+
+                        event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
+
+
+                        var generated_html = template(event_json);
+                        //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+                        var grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+
+                        if(grid_item_selector){
+                            //                grid_item_selector.innerHTML += generated_html;
+                            var $dom_object = jQuery(generated_html);
+                            $dom_object.attr('ng-click','clickMonthDayEvent()');
+                            grid_item_selector.append($dom_object);
+
+                        }else{
+                            console.log("ERROR ADDING EVENT");
+                            console.log(event_json);
+                        }
+
+
+                    }
                 }
             },
             ele: { value: grid },
@@ -167,7 +221,7 @@ var MonthGrid = (function (MonthGrid) {
         }
 
         grid.populate();
-
+        grid.init();
         return grid;
     };
 
