@@ -33,7 +33,7 @@ ulcal.controller("CalController", function (
             case 0: // day
                 return $scope.activeDate + "/" + ($scope.activeMonth + 1) + "/" + $scope.activeYear;
             case 1: // week
-                return $scope.activeWeek + "/" + $scope.activeYear;
+                return ($scope.activeWeek) + "/" + $scope.activeYear;
             case 2: // month                
                 return ($scope.activeMonth + 1) + "/" + $scope.activeYear;
             case 3: // semester

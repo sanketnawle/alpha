@@ -12,3 +12,30 @@
     </div>
     <div class="week-grid grid" id="week-grid"></div>
 </div>
+
+
+
+<div id="inspect_event_popup" class="popup">
+    <div id="inspect_event_title">Test event title</div>
+    <div id="inspect_event_exit_button" class="popup_exit_button"></div>
+    <div id="inspect_event_text"></div>
+    <div id="inspect_event_description"></div>
+    <div id="inspect_event_delete_button">Delete</div>
+    <div id="inspect_event_edit_button" class="popup_edit_button">Edit event</div>
+</div>
+
+
+<div id="create_month_day_event_popup" class="popup">
+    <div id="create_month_day_event_exit_button" class="popup_exit_button"></div>
+    <div id="create_month_day_event_text">Create event</div>
+    <div id="create_month_day_event_when"></div>
+
+    <form id='create_month_day_event_form' method="post" action="/event/create">
+        <input id="create_month_day_event_input" name="event_input" type="text" class="text_input">
+        <label for="create_month_day_event_button">What: </label>
+        <div class="cb-example">e.g., Meeting with professor</div>
+        <input type="submit" class="" id="create_month_day_event_button" name="create_month_day_event_button" value="Create event">
+    </form>
+
+    <div id="create_month_day_event_edit_button" class="popup_edit_button">Edit event <strong>»</strong></div>
+</div>

@@ -521,7 +521,7 @@ var MonthGrid = (function (MonthGrid) {
 
 
     function addZero(i) {
-        if (i < 10 && i != '00') {
+        if (i < 10 && i !== '00') {
             i = "0" + i;
         }
         return i;
