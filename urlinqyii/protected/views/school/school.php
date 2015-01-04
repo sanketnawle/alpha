@@ -59,6 +59,12 @@
         <div class = "group_name">
             <div class = "center_text">NYU College of Arts and Sciences</div>
         </div>
+        <div class = "group_right_info group_info_boxes">
+            <div class = "group_info_block" id = "location">
+                <em class ="small_icon_map"></em>
+                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+            </div>
+        </div>
 
     </div>
 

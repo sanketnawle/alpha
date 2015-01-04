@@ -128,7 +128,7 @@
 					</section>
 
 					<footer id = "fbar_footer" class = "fbar_contents_fix">
-						<div class = "post_btn" id = "post_btn">
+						<div class = "post_btn fresh_green_button" id = "post_btn">
 							Post
 						</div>
 						<div class = "cancel_btn" id = "cancel_btn">

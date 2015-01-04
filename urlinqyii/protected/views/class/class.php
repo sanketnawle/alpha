@@ -123,7 +123,23 @@
 
         <div id="content_panel">
         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
-        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');"></div>
+        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+            <div class = "group_name">
+                <div class = "center_text">NYU College of Arts and Sciences</div>
+            </div>
+            <div class = "group_right_info group_info_boxes">
+                <div class = "group_info_block" id = "location">
+                    <em class ="small_icon_map"></em>
+                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                </div>
+                <div class = "group_info_block" id = "class_schedule">
+                    <em class ="small_icon_map"></em>
+                    <span>Mon 9:30 am - 11:00 am, Wed 10:00 am - 11:30 am, Fri 9:30 am - 11:00 am</span>
+                </div>
+            </div>
+
+
+        </div>
 
 
 

@@ -553,24 +553,25 @@ opacity: 1;
 div.done_editing_button{
     display:none;
     position:absolute;
-    line-height: 54px;
-    right: -48px;
+    line-height: 23px;
+    right: -4px;
     z-index: 1000;
     text-align: center;
-    padding-right: 3px;
+    padding-right: 7px;
     width: 41px;
+    top: 100%;
+    padding-left: 7px;
     cursor:pointer;
-    top: -4px;
+    margin-top: 4px;
     opacity:0;
     color:#777;
     -moz-transition: opacity .3s ease-in-out;
     -webkit-transition: opacity .3s ease-in-out;
     transition: opacity .3s ease-in-out;
-    border-radius: 0px 2.5px 2.5px 0px;
+    border-radius: 0px 0px 3px 3px;
     font-size:12.5px;
     font-weight: bold;
     background-color:rgba(213, 214, 215, 0.5);
-    bottom: -4px;
 }
 
 div.done_editing_button:hover{color:#575757;text-decoration: underline;}
