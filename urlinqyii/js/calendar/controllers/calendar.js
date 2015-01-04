@@ -91,6 +91,16 @@ ulcal.controller("CalController", function (
         });
     });
 
+
+
+    $scope.clickMonthDayEvent = function(){
+        alert('scope clickz');
+    };
+
+//    jQuery(document).on('click','.grid-item',function(){
+//        alert('lol');
+//    });
+
     LeftPanel.init($scope, $compile);
 
     KeyControlService.addListener("UcLeft", function () { $(".body .header.row1 .arrow.left").trigger("click"); });

@@ -8,6 +8,8 @@
         window.css_url = base_url + "/css/calendar";
     </script>
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
+
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 
@@ -69,6 +71,14 @@
 
     <!-- Main Events -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/events.js"></script>
+
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/month/month.js"></script>
+
+
+<!--    <script src="../../../../../alpha/urlinqyii/js/calendar/week/week.js"></script>   -->
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/week/week.js"></script>
 </head>
 <body>
     <?php echo Yii::app()->runController('partial/topbar'); ?>

@@ -1,9 +1,9 @@
 ﻿<div class="header row1">
     <div class="left">
-        <a ng-href="{{getTodayLink()}}" class="today">Today</a>
-        <a ng-href="{{getPrevLink()}}" class="arrow left" ng-uc-check></a>
+        <a ng-href="{{getBaseUrl()}}/calendar{{getTodayLink()}}" class="today">Today</a>
+        <a ng-href="{{getBaseUrl()}}/calendar{{getPrevLink()}}" class="arrow left" ng-uc-check></a>
         <a class="sep"></a>
-        <a ng-href="{{getNextLink()}}" class="arrow right" ng-uc-check></a>
+        <a ng-href="{{getBaseUrl()}}/calendar{{getNextLink()}}" class="arrow right" ng-uc-check></a>
         <div class="month">{{getMonthName(activeMonth, false)}}</div>
         <div class="year">{{activeYear}}</div>
         <div class="wedge"></div>
