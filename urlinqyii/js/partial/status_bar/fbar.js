@@ -473,6 +473,8 @@ $(document).ready(function() {
 
     $(document).delegate('.fbar_buttonwrapper', "click", function () { 
         var $button_selected = $(this);
+
+
         
         var button_selected_type = $button_selected.attr("data-post_button_type");
         $("#fbar_holder").addClass(button_selected_type);
@@ -483,12 +485,87 @@ $(document).ready(function() {
             $button_section.addClass("hide");
             $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
+                $(".autofocus").focus();
                 next2();
             });
             next();
 
         });
       
+    });
+
+    $(document).delegate('.question_type_button', "click", function () { 
+        var $button_selected = $(this);
+        $(".question_type_button.active").removeClass("active");    
+        $(this).addClass("active"); 
+        var question_button_selected_type = $button_selected.attr("data-question_post_type"); 
+        var parent_form = $button_selected.closest("#fbar_form");
+        if(question_button_selected_type == "multiple_choice"){
+            $(parent_form).addClass("mult_choice");
+            $(parent_form).removeClass("true_or_false");
+            $(".autofocus").focus();
+            $(parent_form).removeClass("regular_question");
+        }
+        if(question_button_selected_type == "true_false"){
+            $(parent_form).addClass("true_or_false");
+            $(".autofocus").focus();
+            $(parent_form).removeClass("mult_choice");
+            $(parent_form).removeClass("regular_question");
+        }
+        if(question_button_selected_type == "hide_both"){
+            $(parent_form).addClass("regular_question");
+            $(parent_form).removeClass("mult_choice");
+            $(".autofocus").focus();
+            $(parent_form).removeClass("true_or_false");
+        }
+    });
+
+    $(".tf_line").mouseenter(function() {
+        $(this).find(".answer_check").css("display", "inline-block");
+    });
+
+    $(".tf_line").mouseleave(function() {
+        if (!($(this).find(".answer_check").hasClass("selected_answer"))) {
+            $(this).find(".answer_check").css("display", "none");
+        }
+    });
+
+    $(".multiple_choice").delegate(".question_choice_line", "mouseenter", function() {
+        $(this).find(".answer_check").css("display", "inline-block");
+        $(this).find(".add_choice").css("display", "none");
+        $(this).find(".letter_choice").css("display", "inline-block");
+    });
+
+    $(".multiple_choice").delegate(".question_choice_line", "mouseleave", function() {
+        if (!($(this).find(".answer_check").hasClass("selected_answer"))) {
+            $(this).find(".answer_check").css("display", "none");
+        }
+        if ($(this).find(".multiple_choice_answer").val() == "") {
+            $(this).find(".letter_choice").css("display", "none");
+            $(this).find(".add_choice").css("display", "inline-block");
+        }
+    });
+
+    $(".answer_check").delegate("input", "click", function() {
+        if ($(this).parent().hasClass("selected_answer")) {
+            $(this).parent().removeClass("selected_answer");
+            $(this).prop("checked", false);
+        }
+        else {
+            if($(".answer_check input").prop("checked", true)) {
+                $(".answer_check input").prop("checked", false);
+                $(".answer_check").removeClass("selected_answer");
+                $(".answer_check").css("display", "none");
+                $(this).prop("checked", true);
+                $(this).parent().addClass("selected_answer");
+                $(this).parent().css("display", "inline-block");
+            }
+        }
+    }); 
+
+    $(document).ready(function() {
+        $('.menu_audience').dropit({
+        });
     });
 
     $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
