@@ -38,12 +38,12 @@
     background-color: #d3d3d3;
 }
 #modal_header{
-    height: 328px;
+    height: 331px;
+    background-color: black;
 }
 .controls{
     float:left;
 }
-
 #modal_controls{
     background-color: rgba(94, 94, 94,1);
     height: 53px;
@@ -108,7 +108,7 @@
     position: relative;
     border: 5px solid #fff;
     float:left;
-
+    height: 203px;
     margin-left: 13px;
     box-shadow: 0px 0px 4px #888888;
     margin-top:-130px;
@@ -143,13 +143,7 @@
     /* padding-left: 0px; */
     width: 100%;
 }
-<<<<<<< HEAD
 
-=======
-a {
-
-}
->>>>>>> cedcc785ed2b181d384a09c414d7df86ac3b2b04
 .info_section{
     border-bottom: 1px  grey;
     font-weight: 10px;
@@ -177,7 +171,7 @@ a.info_name{
 
 .profile_tab {
     display: inline-block;
-    width: 16%;
+    width: 15.9%;
     height: 100%;
     color: rgba(255, 255, 255, 0.65);
 
@@ -235,8 +229,29 @@ a.info_name{
     box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
     color:black;
 }
+.edit_profile_button{
+    height: 16%;
+    font-family: 'Open Sans', sans-serif;
+    width: 80%;
+    position: relative;
+    font-weight: 600;
+    margin: auto;
+    z-index: 5000;
+    margin-top: 7px;
+    margin-left: 15px;
+}
+#academic_header{
+    display: none;
+}
+#school_dropdown{
+    display: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80%;
+    white-space: nowrap;
+    margin-left: 10px;
 
-
+}
 .user_pic{
     width:160px;
     height:160px;
@@ -347,7 +362,7 @@ div.profile_tab:hover div.profile_tab_text{
     position:relative;
     width:100%;
     height: 278px;
-    background-color: black;
+
     color: white;
     overflow: hidden;
 }
@@ -475,7 +490,7 @@ button.download_showcase_button {
     box-shadow: -10px 0px 20px -8px #e1e1e1;
 
 }
-.add_showcase_button{
+button.add_showcase_button {
     background-color: rgba(100, 100, 100,0.5);
     position: absolute;
     border-radius: 4px;
@@ -483,16 +498,18 @@ button.download_showcase_button {
     height: 28px;
     right:20px;
     bottom:20px;
-}
-.add_showcase_button button {
-    background-color: transparent;
     color: white;
     border: 1px solid white;
-    border-radius: 4px;
-    width: 134px;
-    height: 28px;
+
 
     cursor: pointer;
+}
+
+.add_showcase_button.empty{
+    top:100px;
+    left:400px;
+    width:200px;
+    height:50px;
 }
 .showcase_arrow {
     width: 20px;
