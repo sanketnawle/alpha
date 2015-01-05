@@ -26,7 +26,7 @@ $(document).on('click', '.profile_tab',function(){
     $('.profile_panel.active').removeClass('active');
     $('#profile_panel_' + panel_id).addClass('active');
 });
-var numShowcase=3;
+var numShowcase=0;
 $(document).on('click','.showcase_arrow.left',function(){
     var index=parseInt($('.showcase_item.center').attr('showcase_index'));
     if(index>0){
@@ -58,7 +58,7 @@ $(document).on('click','.add_showcase_button',function(){
    //$('.overlay').css('z-index',2500);
     $('.showcase_form_overlay').show();
     $('.add_showcase_form').show();
-
+    $('.edit_showcase_button').clicl();
 });
 $(document).on('click','.cancel_showcase_form',function(){
     $('.add_showcase_form').hide();
@@ -108,7 +108,16 @@ function render_new_showcase(data){
             $('.showcase_item.center').removeClass('center');
 
             data.index = index;
-            $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
+            if($('.showcase_item').length>0){
+                $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
+            }else{
+                $('.showcase_items').append(template(data));
+                $('.showcase_controls').show();
+                $('#modal_header').removeAttr('style');
+                $('.add_showcase_button').removeClass('empty');
+                $('.add_showcase_button').text('+ Add a Showcase');
+
+            }
             numShowcase++;
         }
     });
@@ -216,4 +225,20 @@ function deleteShowcaseElement(){
         $('.showcase_item[showcase_index='+(index-1)+']').addClass('center');
     }
     numShowcase--;
+    if(numShowcase==0){
+        $('.showcase_controls').hide();
+    }
 }
+
+//edit profile
+$(document).on('click','.edit_profile_button',function(){
+    $('#academic_header').show();
+    $('#school_dropdown').show();
+    $('#school_name').hide();
+    $.getJSON( base_url + "/profile/getSchools",{user: user_id}, function( result) {
+        $.each(result.schools,function(i,school){
+            $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
+        })
+        $('#school_dropdown').val(result.selected);
+    });
+});

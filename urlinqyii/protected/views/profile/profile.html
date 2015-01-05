@@ -2,7 +2,7 @@
 
 <script src="{{base_url}}/js/jquery.min.js"></script>
 <!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
-<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>
+<!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
 <div class="overlay"></div>
 <div id="profile_wrapper">
     <div class="showcase_form_overlay"></div>
@@ -17,14 +17,14 @@
 
         <div id="showcase_wrapper">
 
-            {{#if showcase}}
-            <div class="showcase_controls">
 
+            <div class="showcase_controls"{{#if showcase}}{{else}} style="display:none"{{/if}}>
                 <div class="showcase_arrow right" href=""></div>
                 <div class="showcase_arrow left" href=""></div>
             </div>
 
             <div class="showcase_items">
+
                 {{#each showcase}}
                 <div class="showcase_item{{center}}" showcase_index="{{index}}" file_id = {{id}}
                      {{#if url}} style="background-image: url({{preview}})" {{/if}}>
@@ -59,18 +59,13 @@
 
                 </div>
                 {{/each}}
-
             </div>
-            {{/if}}
+
 
             {{#if showcase}}
-            <div class="add_showcase_button">
-                <button type="button">+ Add a showcase</button>
-            </div>
+            <button class="add_showcase_button" type="button">+ Add a Showcase</button>
             {{else}}
-            <div class="add_showcase_button empty">
-                <button type="button">Start Your Academic Profile</button>
-            </div>
+            <button  class="add_showcase_button empty"type="button">Start Your Academic Profile</button>
             {{/if}}
             <div class="add_showcase_form">
                 <form id="add_showcase">
@@ -85,7 +80,7 @@
                     </div>
                     <div class="showcase_submit">
                         <span class="cancel_showcase_form">Cancel</span>
-                        <input type="submit" class="create_showcase_form" id="create_showcase_form" name="create_showcase_form" value="+ Add this Showcase">
+                        <input type="submit" class="create_showcase_form"value="+ Add this Showcase">
                     </div>
                 </form>
                 <div class="description-section">
@@ -106,6 +101,7 @@
     <div id="main_bar">
         <div id="profile_picture_wrapper">
             <div id="profile_picture" style="background-image: url( {{profile_pic}} )"></div>
+            <button type="button" class="edit_profile_button">Edit Profile</button>
         </div>
         <div id="name_info_wrapper">
             <div id="name_info">{{#if professor}}Professor {{/if}}{{firstname}} {{lastname}}</div>
@@ -159,11 +155,13 @@
     </div>
     <div id="main_content">
         <div id = "left_info_bar">
+            <h2 id="academic_header">Academic Information</h2>
             <div class="info_section" id = "school_section">
                 <div class="info_label" id = "school_label">
                     School:
                 </div>
-                <a href="#" class="info_name">{{school}}</a>
+                <a href="#" class="info_name" id="school_name">{{school}}</a>
+                <select id="school_dropdown"></select>
             </div>
             <div class="info_section" id = "department_section">
                 <div class="info_label" id = "department_label">

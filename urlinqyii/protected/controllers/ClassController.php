@@ -231,7 +231,7 @@ class ClassController extends Controller
                     $this->renderJSON($data);
                     return;
                 }else{
-                    $data = array('success'=>false,'error_id'=>4);
+                    $data = array('success'=>false,'error_id'=>4);  
                     $this->renderJSON($data);
                     return;
                 }
@@ -250,6 +250,27 @@ class ClassController extends Controller
 
 
 
+    }
+    public function actionStoreSyllabus(){
+        $class_id = $_POST["class_id"];
+        $file_id = $_POST["file_id"];
+        $user_id = $this->get_current_user_id();
+        $official_syllabus = false;
+        $class_syllabus = new ClassSyllabus;
+        $class_syllabus->class_id = $class_id;
+        $class_syllabus->file_id = $file_id;
+        $class_syllabus->user_id = $user_id;
+        $class_syllabus->official_syllabus = $official_syllabus;
+
+        if($class_syllabus->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>1);
+                $this->renderJSON($data);
+                return;
+            }
     }
 
     public function actionJoin(){
@@ -289,6 +310,21 @@ class ClassController extends Controller
 
     }
 
+    public function actionGetSyllabusPDF(){
+        $class_id= $_GET["class_id"];
+        $class_syllabus = ClassSyllabus::model()->find('class_id=:id', array(':id'=>$class_id));
+
+        if($class_syllabus){
+            $file= File::model()->find('file_id=:id', array(':id'=>$class_syllabus["file_id"]));
+            $this->renderJSON($file);
+            return;
+        }
+        else{
+            $this->renderJSON(array("success"=>false));
+            return;
+        }
+
+    }
 
     public function actionLeave(){
         if(!isset($_GET['id'])){

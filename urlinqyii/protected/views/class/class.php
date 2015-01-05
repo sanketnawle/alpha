@@ -16,7 +16,7 @@
         globals.admin_file_panel_class = 'class';
 
     </script>
-
+      
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
@@ -43,7 +43,25 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+      
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/api.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/metadata.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/canvas.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/webgl.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/pattern_helper.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/font_loader.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/annotation_helper.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/text_layer_builder.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/ui_utils.js"></script>
+      <script>PDFJS.workerSrc = '<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/worker_loader.js';</script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/pdf.js"></script>
 
+      <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/chrono.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/application.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/uiscripts.js"></script>
+    
     <script>
     $(document).ready(function() {
         $('.menu').dropit();
@@ -216,8 +234,9 @@
                         <div class = "title">
                             Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div><div class = "syllabus_download_btn"><span class = "download_icon"></span>Download</div>
                         </div>
-
-                        <div class = "rendered_syllabus_page_holder" id = "page1">
+                        <div id="pdfContainer">
+                        </div>
+                        <!-- <div class = "rendered_syllabus_page_holder" id = "page1">
                             <div class = "paper_shadowonblack">
                             </div>
                         </div>
@@ -236,13 +255,14 @@
                             <div class = "paper_shadowonblack">
                             </div>
                         </div>
-
+ -->
                     </div>
                     <div class = "class_events_holder order_kind">
                         <div class = "black_action_box">
-                            <button class = "scan_syllabus">
+                            <button id="btn_add_syllabus" class = "scan_syllabus">
                                 <em class = "syla_plus"></em>Add Syllabus
                             </button>
+                            <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
                             <div class = "black_explainer">
                                 By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
                             </div>
