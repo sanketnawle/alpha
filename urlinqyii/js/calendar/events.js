@@ -2,6 +2,8 @@
 jQuery(function () {
     var scope = $(".ul-calendar");
 
+
+
     LeftPanel.addProvider("class", "Neurochemical foundations of behavior", "http://lorempixel.com/60/60", "a");
     LeftPanel.addProvider("class", "Theory of neuroscience", "http://lorempixel.com/60/60", "b");
     LeftPanel.addProvider("class", "Computaional Biology", "http://lorempixel.com/60/60", "c");

@@ -72,6 +72,7 @@
     <!-- Main Events -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/events.js"></script>
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/left_panel/left_panel.js"></script>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/month/month.js"></script>
 
@@ -83,12 +84,23 @@
 <body>
     <?php echo Yii::app()->runController('partial/topbar'); ?>
 
+    <script id="provider_template" type="text/x-handlebars-template">
+        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}'>
+            <img width="25" height="25" src="http://lorempixel.com/60/60" class="icon">
+            <div ng-uc-check="" class="check ng-scope checked {{color_class}}" checked="">
+                <i class="x"></i><i class="xx"></i>
+            </div>
+            <div class="title" style="box-shadow: rgb(170, 170, 170) 3px 0px 8px -3px;">{{name}}</div>
+        </div>
+    </script>
+
+
     <div class="ul-calendar" ng-app="ulCalendar" ng-controller="CalController">
         <div class="toolbar">
             <div class="wrap">
                 <div class="column left"></div>
                 <div class="column right">
-                    <button class="print" ng-click="printGrid()">&nbsp;</button>
+<!--                    <button class="print" ng-click="printGrid()">&nbsp;</button>-->
                     <form class="search">
                         <input type="submit" value="">
                         <input type="text" placeholder="Search">

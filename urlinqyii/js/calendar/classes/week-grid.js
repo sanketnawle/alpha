@@ -42,7 +42,7 @@ var WeekGrid = (function (WeekGrid) {
 
                     var h = dp.diffTime(uce.startTime, uce.endTime) / 3600 * 100;
 
-                    var event = new Div("grid-event");
+                    var event = new Div("grid-event event_holder");
                     var line = new Div("line");
                     var time = new Div("time", st[0] + ":" + st[1] + "-" + et[0] + ":" + et[1]);
                     var title = new Div("title", uce.title);
@@ -67,6 +67,9 @@ var WeekGrid = (function (WeekGrid) {
                     event.setAttribute('data-id',uce.id);
                     event.setAttribute('data-start_date',uce.startTime);
                     event.setAttribute('data-end_date',uce.endTime);
+                    event.setAttribute('data-origin_type',uce.origin_type);
+                    event.setAttribute('data-origin_id',uce.origin_id);
+
 
 
                     this.ele.appendChild(event);

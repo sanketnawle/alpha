@@ -31,7 +31,7 @@ var MonthGrid = (function (MonthGrid) {
         Object.defineProperties(this, {
             addEvent: {
                 value: function (text) {
-                    var event = new Div("grid-event");
+                    var event = new Div("grid-event event_holder");
                     var line = new Div("line");
                     var title = new Div("title", text || "Test Event");
                     var time = new Div("time", "10p");
@@ -91,7 +91,7 @@ var MonthGrid = (function (MonthGrid) {
                     function show_month_event(event_json){
                         //Normally source would be jQuery("#group_template").html(); but for whatever reason
                         //angular doesnt let jquery select the handlebars template if it is in the html
-                        var source = '<div class="month_day_event" data-id="{{event_id}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
+                        var source = '<div class="month_day_event event_holder" data-id="{{event_id}}" data-origin_id="{{origin_id}}" data-origin_type="{{origin_type}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
                         var template = Handlebars.compile(source);
 
                         event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));

@@ -23,7 +23,7 @@ var DayGrid = (function (DayGrid) {
         todo.appendChild(label);
         todowrap.appendChild(todo);
         return todowrap.innerHTML;
-    }
+    };
 
     var TodoItem = function (ele, title, checked) {
         this.ele = ele || _compiler(createTodo(title, checked))(_scope)[0];
@@ -38,7 +38,7 @@ var DayGrid = (function (DayGrid) {
             },
             label: { set: function (value) { return this.ele.querySelector(".label").innerHTML = value } }
         })
-    }
+    };
 
     var GridItem = function () {
         EventTarget.call(this);
@@ -97,7 +97,7 @@ var DayGrid = (function (DayGrid) {
                 }
             }
         });
-    }
+    };
 
     GridItem.prototype = Object.create(EventTarget.prototype);
 
@@ -119,11 +119,20 @@ var DayGrid = (function (DayGrid) {
                         eve.loc = uce.loc;
                         eve.id = uce.id;
                         eve.color = getRandomClass();
+                        eve.origin_type = uce.origin_type;
+                        eve.origin_id = uce.origin_id;
+
+                        alert(uce);
+                        console.log(uce);
                         if (uce.allday) eve.time = "allday";
                         else eve.time = dp.to12Hrs(uce.startTime) + " - " + dp.to12Hrs(uce.endTime);
 
                         grid[eve.id] = eve;
                         ++grid.count;
+                        eve.ele.setAttribute('data-origin_type',uce.origin_type);
+                        eve.ele.setAttribute('data-origin_id',uce.origin_id);
+                        eve.ele.setAttribute('data-id',uce.id);
+                        $(eve.ele).addClass('event_holder');
 
                         if (uce.allday) grid.ele.insertBefore(eve.ele, grid.ele.children[0]);
                         else grid.ele.appendChild(eve.ele);
@@ -132,7 +141,7 @@ var DayGrid = (function (DayGrid) {
                 }
             }
         })
-    }
+    };
 
     DayGrid.TodoItem = TodoItem;
     DayGrid.GridItem = GridItem;
@@ -152,13 +161,15 @@ var DayGrid = (function (DayGrid) {
         if (ele === null || ele === undefined) return null;
 
         if (isclass) {
-            for (var i = 0; i < ele.length; grid.push(new Grid(ele[i])), ++i);
+            for (var i = 0; i < ele.length; ++i){
+                grid.push(new Grid(ele[i]));
+            }
         } else {
             grid = new Grid(ele);
         }
 
         return grid;
-    }
+    };
 
     return DayGrid;
 }(DayGrid || {}));

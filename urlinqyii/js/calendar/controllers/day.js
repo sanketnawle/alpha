@@ -28,25 +28,40 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, $tim
     $scope.getDate = function () {
         var date = new Date($scope.activeYear, $scope.activeMonth, $scope.activeDate);
         return $scope.getDayName(date.getDay()) + " " + $scope.getMonthName(date.getMonth()) + " " + date.getDate() + ",";
-    }
+    };
 
     $scope.getNextLink = function () {
         var d = addDate(1);
         return "#/day/" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-    }
+    };
 
     $scope.getPrevLink = function () {
         var d = addDate(-1);
         return "#/day/" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-    }
+    };
 
     $scope.getTodayLink = function () {
         var d = new Date();
         return "#/day/" + d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-    }
+    };
 
     window.grid = DayGrid.createGrid(document.getElementById("day-grid"), $scope, $compile);
     window.adgrid = AdGrid.createGrid();
+
+
+    UCEventData.getData({
+        type: "d",
+        date: $scope.activeYear + "-" + ($scope.activeMonth + 1) + "-" + $scope.activeDate
+    }).success(function (events) {
+        events = events.events;
+        var c = 0;
+        for (e in events) {
+            var event = new UCEvent(events[e]);
+            grid.addEvent(event, c);
+            ++c;
+        }
+    });
+
 
     UCAdData.getData().success(function (events) {
         events = events.events;
@@ -57,17 +72,7 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, $tim
             var g = $(".ad-grid");
             g.slimScroll({ wrapperClass: "ad-scroll-view" });
         }, 0);
-    })
-
-    UCEventData.getData({
-        type: "d",
-        date: $scope.activeYear + "-" + ($scope.activeMonth + 1) + "-" + $scope.activeDate
-    }).success(function (events) {
-        events = events.events;
-        var c = 0;
-        for (e in events) {
-            grid.addEvent(new UCEvent(events[e]), c);
-            ++c;
-        }
     });
-})
+
+
+});
