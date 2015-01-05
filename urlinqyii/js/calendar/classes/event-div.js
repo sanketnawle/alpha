@@ -9,6 +9,8 @@
     this.startTime = object.start_time;
     this.endTime = object.end_time;
     this.loc = object.location;
+    this.origin_type = object.origin_type;
+    this.origin_id = object.origin_id;
 }
 
 function UCEvent(object) {
