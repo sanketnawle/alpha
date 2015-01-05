@@ -313,6 +313,7 @@ div.form_wrapper footer .post_btn{
 div.form_wrapper footer .cancel_btn{
     border: 1px solid #C0C0C0; 
     background-color: #EFEFEF; 
+    cursor: default;
     font-size: 14px;
     font-weight: 500;
     float: right;  
