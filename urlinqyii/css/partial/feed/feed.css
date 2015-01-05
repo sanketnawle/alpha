@@ -17,7 +17,6 @@ position: relative;
 margin-bottom: 12px;
 border-radius: 5px;
 background: rgba(255, 255, 255, 1);
-padding-bottom: 14px;
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
@@ -91,6 +90,7 @@ box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.77) inset, 0px 1px 0px rgba(255, 2
 right: -6px;
 top: 14px;
 cursor: default;
+display: none!important;
 }
 
 .post_tag:hover > span{
@@ -659,18 +659,21 @@ margin-bottom: 4px;
 }
 
 div.master_comments{
-    background: rgba(244, 244, 244, 0.36);
+    background: #fff;
     border: 1px solid #eee;
     margin-top: 0px;
-    margin-left: 15px;
     border-top-width: 1px;
     box-shadow: 0px 1px rgba(255, 255, 255, 0.48) inset, 1px 0px rgba(255, 255, 255, 0.48) inset, -1px 0px rgba(255, 255, 255, 0.48) inset;
-    margin-right: 15px;
+    margin: 0 auto 10px;
+    width: 96%;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
 }
 
 .comments{
 padding-right: 10px;
-padding-left: 13px;
+padding-left: 24px;
 padding-top: 4px;
 margin-top: 4px;
 margin-right: 14px;
@@ -904,19 +907,17 @@ color:rgba(128, 128, 128, 0.77);
 
 .post .postcomment{
 position: relative;
-width: 516px;
+width: 549px;
 margin-bottom: 0px;
-padding: 4px;
 border-radius: 0px 0px 3px 3px;
 padding-top: 0px;
+padding: 4px 0px;
+margin-top: -1px;
 border-top: none;
-margin-left: 15px;
-padding-left: 0px;
-margin-right: 15px;
-background: rgba(244, 244, 244, 0.36); border: 1px solid #eee;
-box-shadow: 0px -1px rgba(255, 255, 255, 0.48) inset, 1px 0px rgba(255, 255, 255, 0.48) inset, -1px 0px rgba(255, 255, 255, 0.48) inset, 0px -1px #fafafa;
-border-top-width: 1px;
+background: #fff; border: 1px solid #eee;
+border-top-width: 4px;
 border-bottom-width: 1px;
+border-right-width: 4px;
 }
 
 div.commentform{
@@ -1335,8 +1336,8 @@ margin-bottom: 3px;
 
 .morecmt_bar, .lesscmt_bar
 {
-    width: 100%;
-    height: 25px;
+    width: auto;
+    height: 14px;
     cursor: pointer;
     border-radius: 3px;
     text-align: center;
@@ -1344,10 +1345,16 @@ margin-bottom: 3px;
     cursor: pointer;
     text-align: center;
 
-    color: #444;
-    margin-top: -5px;
+    color: #777;
+    left: 3%;
+    margin-top: 4px;
     font-weight: bold;
+    text-transform: uppercase;
+    background: #fff;
     z-index: 100;
+    position: absolute;
+    font-family: Avenir;
+    padding: 0px 4px;
 }
 
 div.lesscmt_bar{

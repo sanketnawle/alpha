@@ -563,6 +563,7 @@ $(document).ready(function() {
         }
     }); 
 
+
     $(document).ready(function() {
         $('.menu_audience').dropit({
         });
@@ -581,11 +582,23 @@ $(document).ready(function() {
                     $("#fbar_holder").removeClass("discuss");
                     $("#fbar_holder").removeClass("question");
                     $("#fbar_holder").removeClass("notes");
+                    $form_section.removeClass("true_or_false");
+                    $form_section.removeClass("mult_choice");
+                    $form_section.removeClass("regular_question");
+                    $(".question_type_button.active").removeClass("active");    
+                    $(".question_type_button.regular_question").addClass("active");                     
             next();
 
         });
 
     });
 
+    $('textarea').autosize();
+
+    $('.audience_name').click(function(){
+        var $selected_audience = $(this);
+        var selected_audience_text = $selected_audience.find("a").text();
+        $(".selected_audience").text(selected_audience_text);
+    });
 
 });

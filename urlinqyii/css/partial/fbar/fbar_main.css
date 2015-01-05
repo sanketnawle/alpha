@@ -208,7 +208,7 @@ div.form_wrapper header img#fbar_user_icon{
 
 div.form_wrapper header div#audience_select{   position: relative; 
     display: inline-block;
-    width: 94px;
+    width: auto;
     height: 15px;
     color: #222;
     font-size: 13.1px;
@@ -241,20 +241,33 @@ div.form_wrapper section.post_form_template{
     margin: 0px 15px;
 }
 
-div.form_wrapper section.post_form_template#question_form:before{
+div.form_wrapper section.post_form_template:before{
 background-image: none,url(../../../assets/sitechrome.svg);
 background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
-height: 20px;
+height: 14px;
 width: 30px;
 position: relative;
 display: block;
 top: -11px;
 float: right;
-right: 50px;
 background-position: 8px -141px;
 content: " ";
+}
+
+div.form_wrapper section.post_form_template#question_form:before{
+    right: 50px;
+}
+
+div.form_wrapper section.post_form_template#notes_form:before {
+    right: 32px;
+
+}
+
+div.form_wrapper section.post_form_template#discussion_form:before {
+    right: 12px;
+
 }
 
 form#fbar_form.true_or_false div.form_wrapper section.post_form_template#question_form:before{right:304px;}
@@ -350,13 +363,29 @@ form#fbar_form.show{
 
 }
 
-.question_type_button.active{
+.question_type_button.active, #discussion_form_content.active, #notes_form_content.active{
     background: #eee;
-
     color: #009bcd!important;
 }
 
-.question_type_button.active:hover{
+.post_type_header > em{
+    background-image: url(../../../assets/Fbar_icon_map.png); background-size: auto; background-repeat: no-repeat; 
+
+}
+
+#discussion_form_content > em{
+
+}
+
+#notes_form_content > em{
+
+}
+
+.post_type_header.active{
+    cursor: default!important;
+}
+
+.question_type_button.active:hover, #discussion_form_content.active:hover, #question_form_content.active:hover{
     background: #eee!important;
     cursor: default!important;
     color: #029acf!important;
@@ -541,7 +570,7 @@ input#multiple_choice_answer:focus ~ div.answer_check{
 }
 
 li.dropit-open em.down_arrow{
-    background-position: -30px -491px;
+    background-position: -30px -494px;
 }
 
 div.tf_line{
@@ -562,9 +591,10 @@ em.down_arrow{
     background-repeat: no-repeat;
     background-size: auto;
     width: 15px;
-    background-position: 0px -491px;
-    height: 12px;
+    background-position: 0px -494px;
+    height: 7px;
     left: 1px;
+    top: -3px;
     display: inline-block;
     position: relative;
 }
@@ -578,15 +608,6 @@ em.down_arrow{
     cursor: pointer;
     border-radius: 0px;
     padding: 13px 14px;
-}
-
-
-div#audience_select:hover > span{
-    border-bottom:1px solid #222;
-}
-
-li.dropit-open div#audience_select > span{
-    border-bottom:1px solid #222;
 }
 
 #post_attachments:hover, #post_privacy:hover{
@@ -628,9 +649,18 @@ li.dropit-open div#audience_select > span{
     float: left;
 }
 
-div#question_form_content{
+div#question_form_content,div#discussion_form_content,div#notes_form_content{
     display:none;
 }
+
+div.notes_form_hide_content{
+    display:inline-block;
+}
+
+#fbar_holder.notes div.notes_form_hide_content{
+    display:none!important;
+}
+
 
 #fbar_holder.discuss section#discussion_form {
     display:block;
@@ -674,7 +704,7 @@ input#post_title{
     padding: 7px 10px;
     font-size: 14px;
     font-size: 15px; 
-    margin-top: -7px;
+    margin-top: -2px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     line-height: 1.4; -webkit-transition: border-color .2s; transition: border-color .2s; -webkit-transition: border-color .2s 180ms ease-in-out 0s; -moz-transition: border-color .2s 180ms ease-in-out 0s; -ms-transition: border-color .2s 180ms ease-in-out 0s; -o-transition: border-color .2s 180ms ease-in-out 0s; transition: border-color .2s 180ms ease-in-out 0s; border: 1px solid #ddd; border-radius: 2px; box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
 }
@@ -691,28 +721,30 @@ textarea.post_text_area{
     resize: none;
     
     width: 100%;
-    padding: 7px 10px;
-    width: 500px;
+    width: 520px;
     min-height: 60px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     border: none;
-    padding-top: 10px;
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 div.discussion_textarea textarea{
   
     padding-left: 0px; padding-right: 0px;
+    padding-top: 0px;
+    min-height: 87px;
 }
 
 div.question_textarea textarea{
     margin-top: 12px;
     border-top: 1px solid rgba(181, 181, 181, 0.46);
+    padding-top:10px;
 }
 
 div.file_textarea textarea{
     padding-left: 0px;
-   
+    padding-top: 8px;
     padding-right: 0px;
 }
 
@@ -723,30 +755,50 @@ ul.menu_audience{
 
 ul.menu_audience ul.dropit-submenu{
     background: #fff;
-
-    border: 1px solid rgba(214, 214, 214, 0.93); -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
+    border: 1px solid rgba(214, 214, 214, 0.93); 
+    -webkit-box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.13); 
+    -moz-box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.13); 
+    box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.13);
     border-radius: 2px;
     position: absolute;
-    left: 14px;
+    left: 6px;
     z-index: 1;
-    height: 143px;
+    height: 142px;
     top: 44px;
-    width: 200px;
+    padding: 5px 2px;
+    width: 94px;
     overflow: hidden;
     overflow-y: scroll;
+    margin: 0 10px;
+    border-top: 8px solid #CFD3D7;
+    /* border-bottom: 4px solid #999; */
+    padding-top: 0px;
+}
+
+#fbar_holder.notes ul.menu_audience ul.dropit-submenu{
+    height:198px;
+}
+
+#fbar_holder.question ul.menu_audience ul.dropit-submenu{
+    height:178px;
 }
 
 ul.menu_audience ul.dropit-submenu li{
 
-    border-bottom: 1px solid rgba(220, 220, 220, 0.93);
+    border-bottom: 1px solid rgba(237, 237, 237, 0.93);
+    
+
+    margin: 0 auto;
+
+    width: 90%;
+
 }
 
 ul.menu_audience ul.dropit-submenu li:hover{
-    background-color:#fafafa;
 }
 
 ul.menu_audience ul.dropit-submenu li:hover a{
-    color:#222;    
+    color: #029acf;    
 }
 
 ul.menu_audience ul.dropit-submenu li a{
@@ -759,9 +811,13 @@ ul.menu_audience ul.dropit-submenu li a{
     font-size: 13px; font-weight: 400; -webkit-font-smoothing: antialiased;
     white-space: nowrap;
     padding: 6px 8px;
+    
+
+    padding-left: 0px;
+
 }
 
-#fbar_holder.question div#question_form_content {
+#fbar_holder.question div#question_form_content, #fbar_holder.discuss div#discussion_form_content, #fbar_holder.notes div#notes_form_content {
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -821,4 +877,101 @@ font-weight: 600;
 border-radius: 2px;
 color: #fff;
 background-color: rgba(51, 51, 51, 0.76);
+}
+
+div.upload_file_wrap{
+    position: relative;
+
+    height: 87px;
+    border-bottom: 1px solid rgba(181, 181, 181, 0.46);
+}
+
+div.upload_half{
+    width: 260px;
+    
+    position: absolute;
+    height: 72px;
+    padding-top: 2px;
+    top: 7px;
+    border-right: 1px solid #D8D8D8;
+    display: inline-block;
+    bottom: 7px;
+}
+
+div.upload_half.half_1{
+    left: 0px;
+
+}
+
+div.upload_half.half_2{
+    left: 260px;
+    
+    border-right: none!important;
+}
+
+div.upload_half > div{
+    margin-bottom: 10px;
+    
+}
+
+div.upload_half > div > em.google_drive{
+    background-repeat: no-repeat; background-size: auto; background-image: url(../../../assets/Fbar_icon_map.png); position: relative; 
+    display: inline-block;
+
+    width: 18px;
+    top: 2px;
+    margin-right: -14px;
+    height: 17px;
+    left: 55px;
+    background-position: 0px -423px;
+}
+
+div.upload_half > div > p.upload_hint{
+    margin: 0;
+    
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 74px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    color: #333;
+    display: inline-block;
+}
+
+div.upload_half > div > div.upload_button{
+    display: inline-block;
+
+    font-size: 13.2px;
+    background-color: #f2f2f2; 
+    padding: 4px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: 1px solid; 
+    margin-left: 36px;
+    border-color: #Ddd; 
+    box-shadow: 0px -1px #fff inset, rgba(0, 0, 0, 0.0980392) 0px 1px 0px 0px; color: #575757 !important; font-weight: 600; 
+}
+
+div.upload_half > div > div.upload_button:hover{
+    background-color: #F9F9F9;
+
+    border-color: #CBCBCB;
+}
+
+div.upload_half > div > div.upload_button:active{
+background: #EAEAEA;
+border-bottom-color: #D0D0D0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+div.upload_half > div > div.upload_button.upload_button_alone{
+    margin-left: 87px;
+}
+
+div.upload_half > div > p.drag_hint{
+    margin: 0;
+    
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 9px;
+    color: #777;
 }
