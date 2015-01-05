@@ -56,13 +56,12 @@ $(document).on('click','.showcase_arrow.right',function(){
 $(document).on('click','.add_showcase_button',function(){
 
    //$('.overlay').css('z-index',2500);
-    $('.showcase_form_overlay').show();
-    $('.add_showcase_form').show();
-    $('.edit_showcase_button').clicl();
+    $('#profile_overlay').show();
+    $('#add_showcase_form').show();
 });
 $(document).on('click','.cancel_showcase_form',function(){
-    $('.add_showcase_form').hide();
-    $('.showcase_form_overlay').hide();
+    $('#add_showcase_form').hide();
+    $('#profile_overlay').hide();
 
     //kinyi add showcase to showcase bar: data.title, data.desc, data.file_extension, data.preview_file
     //reset form
@@ -231,14 +230,52 @@ function deleteShowcaseElement(){
 }
 
 //edit profile
-$(document).on('click','.edit_profile_button',function(){
+$(document).on('click','#edit_profile_button',function(){
+    $('#profile_overlay').show();
+    $('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
+    $('#info_name').hide();
     $('#academic_header').show();
+    //school
     $('#school_dropdown').show();
-    $('#school_name').hide();
+
     $.getJSON( base_url + "/profile/getSchools",{user: user_id}, function( result) {
         $.each(result.schools,function(i,school){
             $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
-        })
+        });
         $('#school_dropdown').val(result.selected);
     });
+    //department
+    $('#department_dropdown').show();
+    $('#department_name').hide();
+    $.getJSON( base_url + "/profile/getDepartments",{user: user_id}, function( result) {
+        $.each(result.departments,function(i,department){
+            $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name));
+        });
+        $('#department_dropdown').val(result.selected);
+    });
+    //buttons
+    $('#edit_profile_button').css('margin-left','0');
+    $('#edit_profile_button').text('Done Editing');
+    $('#cancel_edit_button').show();
+    $('#cancel_edit_button').css('display','inline-block');
+});
+$(document).on('change','#school_dropdown',function(){
+    $.getJSON( base_url + "/profile/getDepartments",{school: $('#school_dropdown').val()}, function( result) {
+        $('#department_dropdown').empty();
+        $.each(result.departments,function(i,department){
+            $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name));
+        });
+    });
+});
+$(document).on('click','#cancel_edit_button',function(){
+    $('#academic_header').hide();
+    $('#school_dropdown').hide();
+    $('#school_name').show();
+    $('#department_dropdown').hide();
+    $('#department_name').show();
+    $('#edit_profile_button').css('margin-left','15px');
+    $('#edit_profile_button').text('Edit Profile');
+    $('#cancel_edit_button').hide();
+    $('#profile_overlay').hide();
+    $('#profile_picture_wrapper').css('z-index','');
 });

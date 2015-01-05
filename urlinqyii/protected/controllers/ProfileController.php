@@ -809,14 +809,31 @@ class ProfileController extends Controller
         if(isset($_GET['user'])){
             $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
             $result=array('schools'=>array(),'selected'=>0);
-
-            foreach($user->school->university->schools as $school){
+            $university = $user->school->university;
+            foreach($university->schools as $school){
                 $result['schools'][] = array('id'=>$school->school_id
                     ,'name'=>$school->school_name);
             }
             $result['selected'] = $user->school_id;
             $this->renderJSON($result);
         }
+    }
+
+    public function actionGetDepartments(){
+        $result=array('departments'=>array(),'selected'=>0);
+        if(isset($_GET['school'])){
+            $departments = Department::model()->findAll('school_id=:sid',array(':sid'=>$_GET['school']));
+
+        }
+        if(isset($_GET['user'])){
+            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $departments = $user->school->departments;
+            $result['selected'] = $user->department_id;
+        }
+        foreach($departments as $department){
+            $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name);
+        }
+        $this->renderJSON($result);
     }
 
 
