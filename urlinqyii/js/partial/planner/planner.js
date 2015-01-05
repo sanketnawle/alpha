@@ -595,14 +595,14 @@ function add_event(event_json){
 
 //For somereason these has to be outside of the .ready()
 $(document).on('click','#add_todo',function(){
-    show_planner_creation_form()
+    show_planner_creation_form();
     $(this).find("#add_todo_text").text("Discard");
     $(".entry_field_placeholder").css({"width":"62.5px"});
     $(this).addClass("cancel_form");
 });
 
 $(document).on('click','.cancel_form',function(){
-    hide_planner_creation_form()
+    hide_planner_creation_form();
     $(this).find("#add_todo_text").text("Add Todo");
     $(".entry_field_placeholder").css({"width":"75px"});
     $(this).removeClass("cancel_form");
@@ -626,12 +626,6 @@ function hide_planner_creation_form(){
     $(".create_event_body").hide();
     $('.entry_field_placeholder').fadeIn(250);
     $('.timepicker').css('display', 'none');
-
-    $('.cancel_form').find("#add_todo_text").text("Add Todo");
-    $('.cancel_form').removeClass("cancel_form");
-    $(".nav-icon").toggleClass('bounce-minus');
-    $(".nav-icon-plus").toggleClass('hide-plus');
-    $(".entry_field_placeholder").css({"width":"75px"});
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
 }
@@ -725,7 +719,7 @@ $(document).on('click','.event_checkbox_input',function(e){
 //                }
 //            }, 'json'
 //        );
-    });
+});
 
 
 

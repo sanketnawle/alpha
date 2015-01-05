@@ -1,20 +1,26 @@
 ﻿@import "import/common.less";
 
 .body {
+    height: 100%;
     @ad-width: 270px;
 
     .day-view {
+      height: 100%;
         .ad-scroll-view {
-            .absolute(0,0,0);
-            position: absolute !important;
+            float: right;
+
+//            .absolute(0,0,0);
+            position: relative !important;
+            right: 0;
+            bottom: 0;
             border-left: 1px solid #d9d9d9;
             width: @ad-width !important;
-            height: auto !important;
+            height: 100% !important;
             box-shadow:1px 0px #fff inset;
 
             .ad-grid {
                 .absolute(0,15px,0,0);
-                height: auto !important;
+                height: 100% !important;
                 background-color:#fff;
                 font-size: @ideal-font-size;
                 .ads_header{
@@ -29,14 +35,19 @@
 
         .scroll-view {
             .absolute(@header-1-height,@ad-width + 3,0,0);
+
+
             position: absolute !important;
             height: auto !important;
         }
 
-        .day-grid {
+        #day-grid {
             .absolute(0, 0, 0, 0);
             height: auto !important;
             overflow: auto;
+
+            z-index: 100;
+
             @corner: 5px;
             @row-height: 60px; /* 100px original */
             @time-width: 65px;

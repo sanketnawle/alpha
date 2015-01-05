@@ -1,7 +1,7 @@
 ﻿/// <reference path="../lib/jquery.js" />
 /// <reference path="../helpers/date.js" />
 /// <reference path="event-target.js" />
-
+$.noConflict();
 var MonthGrid = (function (MonthGrid) {
     var dp = new DateProvider();
 
@@ -17,13 +17,13 @@ var MonthGrid = (function (MonthGrid) {
         if (oor) item.classList.add("out-of-range")
         item.appendChild(date);
         return item;
-    }
+    };
 
     var getGridItems = function (itemNodes) {
         var items = [];
         [].forEach.call(itemNodes, function (ele, i, array) { items.push(new GridItem(ele)); });
         return items;
-    }
+    };
 
     /* Class GridItem */
     var GridItem = function (element, text, oor) {
@@ -46,7 +46,7 @@ var MonthGrid = (function (MonthGrid) {
                 }
             }
         })
-    }
+    };
 
     /* Class Grid */
     var Grid = function (grid, month, year) {
@@ -54,7 +54,68 @@ var MonthGrid = (function (MonthGrid) {
         EventTarget.call(this);
         var me = this;
 
+
+
         Object.defineProperties(this, {
+            init: {
+                value: function () {
+                    init();
+
+                    function init(){
+                        var date_str = new Date();
+                        date_str = date_to_string(date_str);
+                        get_month_events(date_str);
+                    }
+
+
+
+                    function get_month_events(date_str){
+
+                        $.getJSON( base_url + '/event/getMonthEvents', {date: date_str},function( json_data ) {
+                            if(json_data['success']){
+                                show_month_events(json_data['events']);
+                            }else{
+                                alert('error getting planner events');
+                            }
+                        });
+                    }
+
+
+                    function show_month_events(events_json){
+                        $.each(events_json,function(index, event_json){
+                            show_month_event(event_json);
+                        });
+                    }
+
+
+                    function show_month_event(event_json){
+                        //Normally source would be jQuery("#group_template").html(); but for whatever reason
+                        //angular doesnt let jquery select the handlebars template if it is in the html
+                        var source = '<div class="month_day_event" data-id="{{event_id}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
+                        var template = Handlebars.compile(source);
+
+                        event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
+
+
+                        var generated_html = template(event_json);
+                        //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+                        var grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+
+                        if(grid_item_selector){
+                            //                grid_item_selector.innerHTML += generated_html;
+                            var $dom_object = jQuery(generated_html);
+                            $dom_object.attr('ng-click','clickMonthDayEvent()');
+                            grid_item_selector.append($dom_object);
+
+                        }else{
+                            console.log("ERROR ADDING EVENT");
+                            console.log(event_json);
+                        }
+
+
+                    }
+                }
+            },
             ele: { value: grid },
             populate: {
                 value: function () {
@@ -66,9 +127,15 @@ var MonthGrid = (function (MonthGrid) {
                     this.ele.innerHTML = "";
 
                     for (var i = 1 - start, text = "", gc = 1; i <= 42 - start; ++i, text = "", gc += 1) {
-                        if (i < 1) text = dp.getMonthName(month == 0 ? 11 : month - 1, true);
-                        else if (i > end) text = dp.getMonthName((month + 1) % 12, true);
-                        text += " " + new Date(year, month, i).getDate();
+                        if (i < 1) {
+                            text = dp.getMonthName(month == 0 ? 11 : month - 1, true);
+                        }
+                        else if (i > end) {
+                            text = dp.getMonthName((month + 1) % 12, true);
+                        }
+
+                        var this_date = new Date(year, month, i);
+                        text += " " + this_date.getDate();
 
                         var gi = new GridItem(null, text, i < 1 || i > end).ele;
 
@@ -79,7 +146,9 @@ var MonthGrid = (function (MonthGrid) {
                             gi.classList.add("td");
                         }
 
+                        gi.setAttribute('data-date',date_to_string(this_date));
                         this.ele.appendChild(gi);
+
 
                         if (gc % 7 == 0 && gc / 7 < 6 && i >= end) {
                             if (i == end && i == 28) prem_plus = true;
@@ -105,21 +174,27 @@ var MonthGrid = (function (MonthGrid) {
                 }
             },
             children: { get: function () { return this.ele.querySelectorAll(".grid-item"); } },
-            items: { get: function () { return getGridItems(this.children); } },
+            items: { get: function () { return getGridItems(this.children); } }
         });
         
         var MonthMouseWheel = function (e) {
             var e = e || event;
             var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
             me.__fire({ type: "scroll", delta: delta });
-        }
+        };
         if (this.ele.addEventListener) {
             this.ele.addEventListener("mousewheel", MonthMouseWheel, false);
             this.ele.addEventListener("DOMMouseScroll", MonthMouseWheel, false);
         } else {
             this.ele.attachEvent("onmousewheel", MonthMouseWheel);
         }
-    }
+    };
+
+
+
+
+
+
     // inherit events
     Grid.prototype = Object.create(EventTarget.prototype);
 
@@ -146,9 +221,22 @@ var MonthGrid = (function (MonthGrid) {
         }
 
         grid.populate();
-
+        grid.init();
         return grid;
-    }
+    };
+
+
+
 
     return MonthGrid;
 }(MonthGrid || {}));
+
+
+
+
+
+
+
+
+
+

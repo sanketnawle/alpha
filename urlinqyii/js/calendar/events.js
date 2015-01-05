@@ -1,5 +1,5 @@
 ﻿/// <reference path="lib/jquery.js" />
-$(function () {
+jQuery(function () {
     var scope = $(".ul-calendar");
 
     LeftPanel.addProvider("class", "Neurochemical foundations of behavior", "http://lorempixel.com/60/60", "a");

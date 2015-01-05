@@ -13,15 +13,17 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
 
     var dateOfWeek = DateService.getDateOfWeek($routeParams.week, $routeParams.year);
 
-    addDate(6).getDate() < 7 ? function () {
-        $scope.setActiveMonth((dateOfWeek.getMonth() + 1) % 12);
-        var year = dateOfWeek.getWeekYear();
-        if ($scope.activeMonth == 0) year += 1;
-        $scope.setActiveYear(year);
-    }() : function () {
-        $scope.setActiveMonth(dateOfWeek.getMonth());
-        $scope.setActiveYear(dateOfWeek.getFullYear());
-    }();
+//    addDate(6).getDate() < 7 ? function () {
+//        $scope.setActiveMonth((dateOfWeek.getMonth() + 1) % 12);
+//        var year = dateOfWeek.getWeekYear();
+//        alert(year);
+//        if ($scope.activeMonth == 0) year += 1;
+//
+//        $scope.setActiveYear(year);
+//    }() : function () {
+//        $scope.setActiveMonth(dateOfWeek.getMonth());
+//        $scope.setActiveYear(dateOfWeek.getFullYear());
+//    }();
 
     $scope.setActiveWeek($routeParams.week);
     $scope.setActiveSem(new Date($scope.activeYear, $scope.activeMonth, 1).getSemester());
@@ -32,22 +34,23 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
         return d;
     }
 
-    $scope.getDate = function (i) { return addDate(i).getDate(); }
+    $scope.getDate = function (i) { return addDate(i).getDate(); };
 
     $scope.getNextLink = function () {
         var next = addDate(9);
         return "#/week/" + next.getWeek() + "/" + next.getWeekYear();
-    }
+    };
 
     $scope.getPrevLink = function () {
         var prev = addDate(-3);
         return "#/week/" + prev.getWeek() + "/" + prev.getWeekYear();
-    }
+    };
 
     $scope.getTodayLink = function () {
         var date = new Date();
-        return "#/week/" + date.getWeek() + "/" + date.getWeekYear();
-    }
+        return "#/week/" + (parseInt(date.getWeek()) + 1).toString() + "/" + date.getWeekYear();
+    };
+
 
     window.grid = WeekGrid.createGrid("week-grid", dateOfWeek);
 
@@ -72,5 +75,10 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
         }, 1000)
     }(0));
 
+
+
+
+
+
     $scope.setMiniMonth(dateOfWeek.getMonth(), dateOfWeek.getWeekYear(), "w");
-})
+});

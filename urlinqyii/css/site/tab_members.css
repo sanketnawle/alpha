@@ -1,6 +1,6 @@
 div.tab_members{
     font-family: 'Open Sans', sans-serif;
-
+    font-style:normal!important;
 }
 
 div.tab_members .tab_content_holder{
@@ -11,28 +11,24 @@ div.tab_members .tab_content_holder{
 
 .tab_members .tab_content_holder .tab_header div.float_Right .add_people_button{
     display: inline-block;
-
-    background-color: #03C794; cursor: pointer !important; color: #FFF !important;         
-    padding: 5px 14px;
-    border-radius: 3px;
-    font-size: 13px;
-    box-shadow: 0px 0px 1px #fff; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease;     
-    font-weight: 600;
-    background-color: #03C794; 
-    border: 1px solid #01A379; 
-    -moz-box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
-    box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); 
-    -webkit-box-shadow: inset 0 1px 1px rgba(41, 195, 148, 1),inset 0 -1px 1px rgba(73, 236, 186, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+ cursor: pointer !important;          
+    padding: 0px -1px;
+    border-radius: 0px;
+    font-size: 13px; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease;     
+    padding: 5px 7px;
+    color: #029acf; font-weight: 600; 
+    margin-right: 2px;
+    border-radius: 2px; -webkit-font-smoothing: antialiased; 
+    font-size: 13px;             
 }
 
 .tab_members .tab_content_holder .tab_header div.float_Right .add_people_button:hover{
-    background: #08D09C;
+    background: #EEE;
 }
 
 .tab_members .tab_content_holder .tab_header div.float_Right .add_people_button:active{
-box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
--webkit-box-shadow: inset 0 1px 1px rgba(103, 148, 135, 1),inset 0 -1px 1px rgba(115, 186, 164, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
-background-color: #03C794; 
+ 
+    background: #ddd;
 }
 
 .tab_members .tab_content_holder .tab_header div.float_Right .small_search{
@@ -153,10 +149,12 @@ div#class_members_tab div.members_card_wrapper:nth-of-type(2){
 
 div.admin_member_controls{
     display: inline-block;
-margin-left: 4px;
+
+    margin-left: 0px;
 font-size: 12px;
 color: #777;
 font-family: Avenir;
+    margin-right: 10px;
 }
 
 div.remove_state_controls{
@@ -195,9 +193,10 @@ div.remove#done_removing_button span{
     box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
     color: #575757!important;
     padding: 5px 14px;
-    border-radius: 3px;
+    border-radius: 2px;
     font-size: 13px;
     -moz-transition: all .1s ease;
+    margin-right: 4px;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
     font-weight: 600;    
@@ -207,10 +206,7 @@ div.remove#done_removing_button span{
     color: #333;
     outline: 0;
     background-color: #f9f9f9;
-    border-color: #B8B8B8 #969696 #7E7E7E;
-    -moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
-    -webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;
-    box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, 0), inset 0 1px 0 rgba(255, 255, 255, 1), /* top inner border */ inset -1px 0 0 rgba(248, 248, 248, 1), /* right inner border */ inset 0 -1px 0 rgba(248, 248, 248, .5), /* bottom inner border */ inset 1px 0 0 rgba(248, 248, 248, 1) /* left inner border */;   
+    border-color: #B8B8B8 #969696 #7E7E7E;   
 }
 
 .tab_members .tab_content_holder .tab_header div.float_Right div.admin_member_controls div.add_people_button.remove:active, div.remove_state_controls div.remove#done_removing_button:active{

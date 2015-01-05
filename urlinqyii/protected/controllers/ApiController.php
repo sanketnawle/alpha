@@ -61,15 +61,15 @@ class ApiController extends Controller
             return;
         }
 
-
-        $user = User::model()->findBySql("SELECT * FROM `user` WHERE user_email='$email'");
+        $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
+        //$user = User::model()->findBySql("SELECT * FROM `user` WHERE user_email='$email'");
 
         if($user){
-            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User alreadty exists');
+            $data = array('success'=>true,'status'=>$user->status);
             $this->renderJSON($data);
             return;
         }else{
-            $data = array('success'=>true);
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User with email ' . $email . ' doesnt exist');
             $this->renderJSON($data);
             return;
         }
@@ -244,7 +244,26 @@ class ApiController extends Controller
 
     }
 
+    public  function  actionGetUserDepartments(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+        if($user){
+            $data = array('success'=>true,'departments'=>$user->departments);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     //ERROR ID's
     // 1 - all data not set
@@ -933,10 +952,10 @@ class ApiController extends Controller
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
-                        echo json_encode($origin_data);
+                        //echo json_encode($origin_data);
                         $event['origin_name'] = $origin_data[$origin . '_name'];
                         $event['origin_color_id'] = $origin_data['color_id'];
-                        array_push($events_data,$event);
+                        //array_push($events_data,$event);
                     }else{
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
@@ -968,10 +987,8 @@ class ApiController extends Controller
             return;
         }
 
-
         $user_id = $_GET['user_id'];
         $date = $_GET['date'];
-
 
         $date = date($date . " 00:00:00", time());
         $datetime = new DateTime($date);
@@ -980,7 +997,28 @@ class ApiController extends Controller
         $data = array();
         for ($i = 1; $i <= 7; $i++) {
             $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
-            $data['events'][$date] = $events;
+            $events_data = array();
+            if($events) {
+                foreach ($events as $event) {
+                    $event = $this->model_to_array($event);
+                    $origin = $event['origin_type'];
+                    $origin_id = $event['origin_id'];
+                    if ($origin != '') {
+                        $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
+                        $command = Yii::app()->db->createCommand($sql);
+                        $origin_data = $command->queryRow();
+                        //echo json_encode($origin_data);
+                        $event['origin_name'] = $origin_data[$origin . '_name'];
+                        $event['origin_color_id'] = $origin_data['color_id'];
+                        //array_push($events_data,$event);
+                    } else {
+                        $event['origin_name'] = null;
+                        $event['origin_color_id'] = null;
+                    }
+                    array_push($events_data, $event);
+                }
+            }
+            $data['events'][$date] = $events_data;
             $datetime->modify('+1 day');
             $date = $datetime->format('Y-m-d');
         }
@@ -988,8 +1026,6 @@ class ApiController extends Controller
         $data['success'] = true;
         $this->renderJSON($data);
         return;
-
-
 //
 //        try{
 //            $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
@@ -1007,9 +1043,56 @@ class ApiController extends Controller
 //            $this->renderJSON($data);
 //            return;
 //        }
-
     }
 
+    public function actionGetUserMonthEvents(){
+        if(!isset($_GET['user_id']) || !isset($_GET['date'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'email is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+        $date = $_GET['date'];
+
+        $date = date($date . " 00:00:00", time());
+        $datetime = new DateTime($date);
+        $date = $datetime->format('Y-m-d');
+
+        $data = array();
+        for ($i = 1; $i <= 31; $i++) {
+            $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>$user_id));
+            $events_data = array();
+            if($events) {
+                foreach ($events as $event) {
+                    $event = $this->model_to_array($event);
+                    $origin = $event['origin_type'];
+                    $origin_id = $event['origin_id'];
+                    if ($origin != '') {
+                        $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
+                        $command = Yii::app()->db->createCommand($sql);
+                        $origin_data = $command->queryRow();
+                        //echo json_encode($origin_data);
+                        $event['origin_name'] = $origin_data[$origin . '_name'];
+                        $event['origin_color_id'] = $origin_data['color_id'];
+                        //array_push($events_data,$event);
+                    } else {
+                        $event['origin_name'] = null;
+                        $event['origin_color_id'] = null;
+                    }
+                    array_push($events_data, $event);
+                }
+            }
+            $data['events'][$date] = $events_data;
+            $datetime->modify('+1 day');
+            $date = $datetime->format('Y-m-d');
+        }
+
+        $data['success'] = true;
+        $this->renderJSON($data);
+        return;
+
+    }
 
 
 

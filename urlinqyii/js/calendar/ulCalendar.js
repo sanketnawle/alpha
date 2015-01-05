@@ -7,6 +7,13 @@ window.ApplicationName = "ulCalendar";
 
 var ulcal = angular.module(ApplicationName, ["ngRoute"]);
 
+
+
+
+
+
+
+
 ulcal.config(function ($routeProvider) {
     var date = new Date();
     $routeProvider.when("/day/:date/:month/:year", {

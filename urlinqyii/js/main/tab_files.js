@@ -130,7 +130,7 @@ $(document).ready(function(){
 
                 if(response['success']){
 
-                    $('.files_upload_bigbox').css({'background':'#ddd'});
+                    $('.files_upload_bigbox').css({'background':'#f8f8f8'});
                     var $name = $("span[data-dz-name='']:contains('" + response['original_name'] + "')");
                     console.log($name);
                     $name.closest('.dz-preview').remove();
@@ -173,6 +173,8 @@ $(document).ready(function(){
         }
     });
 
+    
+
 
     $('.file_search_input').keyup(function(){
 
@@ -210,7 +212,7 @@ $(document).ready(function(){
 
     myDropzone.on("addedfile", function(file) {
         $('.bigbox_bigmessage').fadeOut("fast");
-
+        $(".upload_files_submit").fadeIn("fast");
         var $name = $("span[data-dz-name='']:contains('" + file['name'] + "')");
         var $img = $name.closest('.dz-details').find("img[data-dz-thumbnail='']");
 
@@ -249,25 +251,30 @@ $(document).ready(function(){
 
     myDropzone.on("dragenter", function(file) {
         console.log('ENTER');
-        $('.files_upload_bigbox').css({'background':'red'});
+        $('.files_upload_bigbox').css({'background':'#eee'});
+        $('.files_upload_bigbox').find(".bigbox_bigmessage").css({'background-image':'url(../../assets/drop_files_hover.png);'});
 
     });
 
     myDropzone.on("dragleave", function(file) {
         console.log('LEAVE');
-        $('.files_upload_bigbox').css({'background':'#ddd'});
+        $('.files_upload_bigbox').css({'background':'#f8f8f8'});
+        $('.files_upload_bigbox').find(".bigbox_bigmessage").css({'background-image':'url(../../assets/drop_files_normal.png);'});
     });
 
     myDropzone.on("drop", function(file) {
         console.log('DROP');
-        $('.files_upload_bigbox').css({'background':'#ddd'});
+        $('.files_upload_bigbox').css({'background':'#e5e5e5'});
+        $('.files_upload_bigbox').find(".bigbox_bigmessage").css({'background-image':'url(../../assets/drop_files_active.png);'});
     });
 
 
     $('.dropzone').submit(function(event){
         event.preventDefault();
         myDropzone.processQueue();
+        $(".upload_files_submit").fadeOut("fast");
         console.log("SUBMIT");
+
     });
 
     $(document).on('click','#upload_text_button', function(){
@@ -394,6 +401,8 @@ $(document).ready(function(){
         }
 
     }
+
+
 
 
 

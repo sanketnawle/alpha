@@ -20,18 +20,23 @@ ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, 
         var month = (parseInt($scope.activeMonth) + 1) % 12, year = parseInt($scope.activeYear);
         if (month == 0) year += 1;
         return "#/month/" + (month + 1) + "/" + year;
-    }
+    };
 
     $scope.getPrevLink = function () {
         var month = (parseInt($scope.activeMonth) - 1) % 12, year = parseInt($scope.activeYear);
         if (month == -1) { month = 11, year -= 1; }
         return "#/month/" + (month + 1) + "/" + year;
-    }
+    };
 
     $scope.getTodayLink = function () {
         var date = new Date();
         return "#/month/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    }
+    };
+
+    $scope.getBaseUrl = function(){
+        return window.base_url;
+    };
+
     var scrollCount = 0;
     var lastDirection = 0;
 
@@ -58,7 +63,12 @@ ulcal.controller("MonthController", function ($scope, $rootScope, $routeParams, 
             }
             
         });
-    })
+    });
+
+
+
+
+
 
     $scope.setMiniMonth($scope.activeMonth, $scope.activeYear, "m");
 });

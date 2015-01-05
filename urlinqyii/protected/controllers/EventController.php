@@ -116,6 +116,33 @@ class EventController extends Controller
     }
 
 
+
+    public function actionGetMonthEvents(){
+        $user = $this->get_current_user();
+//        $date = '2014-11-12';
+        $date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+        //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
+        //$events = $user->get_all_events();
+//        $events = Event::model()->findAllBySql('SELECT *
+//                                                FROM `event`
+//                                                LEFT OUTER JOIN `event_user`
+//                                                ON event.event_id = event_user.event_id
+//                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
+
+        //Get the events that this user is an event_user of
+        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = 7 AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+        //Get the events that this
+        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = 7 AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+
+        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+
+        $this->renderJSON($data);
+        return;
+
+    }
+
+
     public function actionAttendees(){
         //$user = $this->get_current_user();
         $event_id = $_GET['id'];
@@ -254,6 +281,63 @@ class EventController extends Controller
     }
 
 
+    public function actionDelete(){
+        if(!$this->authenticated()){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'Not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user();
+
+        $event_id = $_POST['event_id'];
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+
+        if(!$event){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+        //Check if the current user is either the creator
+        //Of this event or he is attending it and associated through group_user table
+        if($user->user_id == $event->user_id){
+            if($event->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>6,'error_msg'=>'Error destroying event');
+                $this->renderJSON($data);
+                return;
+            }
+        }elseif($event_user = $event->user_is_attending($user->user_id)){
+            if($event_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>6,'error_msg'=>'Error destroying event_user association');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            $data = array('success'=>false,'error_id'=>5,'error_msg'=>'User not authorized to touch this event.');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+    }
+
 
 
     public function actionGetSuggestedEvents(){
@@ -344,7 +428,7 @@ class EventController extends Controller
 //        };
 
 
-        if(!isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
+        if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
         || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
@@ -377,7 +461,7 @@ class EventController extends Controller
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error creating todo');
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error creating event ');
                 $this->renderJSON($data);
                 return;
             }
@@ -442,6 +526,9 @@ class EventController extends Controller
         }
 
     }
+
+
+
 
 	// Uncomment the following methods and override them if needed
 	/*

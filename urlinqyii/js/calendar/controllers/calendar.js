@@ -33,7 +33,7 @@ ulcal.controller("CalController", function (
             case 0: // day
                 return $scope.activeDate + "/" + ($scope.activeMonth + 1) + "/" + $scope.activeYear;
             case 1: // week
-                return $scope.activeWeek + "/" + $scope.activeYear;
+                return ($scope.activeWeek) + "/" + $scope.activeYear;
             case 2: // month                
                 return ($scope.activeMonth + 1) + "/" + $scope.activeYear;
             case 3: // semester
@@ -41,24 +41,24 @@ ulcal.controller("CalController", function (
         }
     };
 
-    $scope.getHeaderUrl = function () { return views_url + "/header.html"; }
-    $scope.getAssetsUrl = function () { return base_url + "/assets/calendar"; }
+    $scope.getHeaderUrl = function () { return views_url + "/header.html"; };
+    $scope.getAssetsUrl = function () { return base_url + "/assets/calendar"; };
 
     // Print
-    $scope.printGrid = function () { PrinterService.print(document.querySelector(".body")); }
+    $scope.printGrid = function () { PrinterService.print(document.querySelector(".body")); };
 
     // Setters
-    $scope.setActiveDate = function (date) { $scope.activeDate = date; }
-    $scope.setActiveWeek = function (week) { $scope.activeWeek = week; }
-    $scope.setActiveMonth = function (month) { $scope.activeMonth = month; }
-    $scope.setActiveYear = function (year) { $scope.activeYear = year; }
-    $scope.setActiveSem = function (sem) { $scope.activeSem = sem; }
-    $scope.setActiveType = function (type) { $scope.activeType = type; }
+    $scope.setActiveDate = function (date) { $scope.activeDate = date; };
+    $scope.setActiveWeek = function (week) { $scope.activeWeek = week; };
+    $scope.setActiveMonth = function (month) { $scope.activeMonth = month; };
+    $scope.setActiveYear = function (year) { $scope.activeYear = year; };
+    $scope.setActiveSem = function (sem) { $scope.activeSem = sem; };
+    $scope.setActiveType = function (type) { $scope.activeType = type; };
 
     $scope.setMiniDate = function (month, year) {
         $scope.miniActiveMonth = month;
         $scope.miniActiveYear = year;
-    }
+    };
 
     $scope.setMiniMonth = function (month, year, type) {
         var param = {
@@ -69,7 +69,7 @@ ulcal.controller("CalController", function (
         MiniMonthGrid.createGrid($(".leftbar .mini-calendar .mini-cal-grid")[0], month, year, param);
         $scope.setMiniDate(month, year);
         $scope.setActiveType(type);
-    }
+    };
 
     // Events
     $scope.$on("$routeChangeSuccess", function () {
@@ -91,8 +91,18 @@ ulcal.controller("CalController", function (
         });
     });
 
+
+
+    $scope.clickMonthDayEvent = function(){
+        alert('scope clickz');
+    };
+
+//    jQuery(document).on('click','.grid-item',function(){
+//        alert('lol');
+//    });
+
     LeftPanel.init($scope, $compile);
 
     KeyControlService.addListener("UcLeft", function () { $(".body .header.row1 .arrow.left").trigger("click"); });
     KeyControlService.addListener("UcRight", function () { $(".body .header.row1 .arrow.right").trigger("click"); });
-})
+});
