@@ -232,7 +232,6 @@ class ProfileController extends Controller
             //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
             //returns largest image
             return $image_files[$best_image_index]['url'];*/
-
         $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
 
         return $preview_image;
@@ -802,9 +801,23 @@ class ProfileController extends Controller
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
         }
+        $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
         $this->renderJSON($data);
     }
 
+    public function actionGetSchools(){
+        if(isset($_GET['user'])){
+            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $result=array('schools'=>array(),'selected'=>0);
+
+            foreach($user->school->university->schools as $school){
+                $result['schools'][] = array('id'=>$school->school_id
+                    ,'name'=>$school->school_name);
+            }
+            $result['selected'] = $user->school_id;
+            $this->renderJSON($result);
+        }
+    }
 
 
 
