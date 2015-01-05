@@ -5,6 +5,7 @@
 <link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>
 <div class="overlay"></div>
 <div id="profile_wrapper">
+    <div class="showcase_form_overlay"></div>
     <div id="modal_header" {{#if showcase}}{{else}}style="background-image: url( {{background_pic}} )"{{/if}}>
 
         <div id="modal_controls">
@@ -13,115 +14,93 @@
             <div id="modal_label">Profile | {{#if professor}}Professor{{else}}Student{{/if}}</div>
             <a href="#" class="close_modal">x</a>
         </div>
+
         <div id="showcase_wrapper">
+
+            {{#if showcase}}
             <div class="showcase_controls">
-                <div class="showcase_delete"></div>
+
                 <div class="showcase_arrow right" href=""></div>
                 <div class="showcase_arrow left" href=""></div>
             </div>
+
             <div class="showcase_items">
-                <div class="showcase_item center" showcase_index="0">
+                {{#each showcase}}
+                <div class="showcase_item{{center}}" showcase_index="{{index}}" file_id = {{id}}
+                     {{#if url}} style="background-image: url({{preview}})" {{/if}}>
                     <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
+                        <div class="showcase_label" style="background-color:{{color}}">
+                            {{#if url}}
+                            <div class="showcase_url">{{link}}</div>
+                            {{else}}
+                            <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
+                                <button type="button" class="download_showcase_button">
+                                    <i class="download_button_icon"></i>
+                                </button>
+                            </a>
+                            <div class="showcase_type">.{{type}}</div>
+                            {{/if}}
+
+
                         </div>
                         <div class="showcase_text">
                             <div class="showcase_title">
-                                Adtech and Big Data
+                                {{title}}
                             </div>
                             <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
+                                {{description}}
                             </div>
                         </div>
-                        <div class="showcase_download"></div>
+
                     </div>
 
-                    <div class="showcase_image"  style="background-image: url()"></div>
+                    <div class="showcase_delete"><a>x</a></div>
 
 
                 </div>
-                <div class="showcase_item" showcase_index="1">
-                    <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
-                        </div>
-                        <div class="showcase_text">
-                            <div class="showcase_title">
-                                Adtech and Big Data
-                            </div>
-                            <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
-                            </div>
-                        </div>
-                        <div class="showcase_download"></div>
-                    </div>
+                {{/each}}
 
-                    <div class="showcase_image"  style="background-image: url()"></div>
-
-
-                </div>
-                <div class="showcase_item" showcase_index="2">
-                    <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
-                        </div>
-                        <div class="showcase_text">
-                            <div class="showcase_title">
-                                Adtech and Big Data
-                            </div>
-                            <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
-                            </div>
-                        </div>
-                        <div class="showcase_download"></div>
-                    </div>
-
-                    <div class="showcase_image"  style="background-image: url()"></div>
-
-
-                </div>
             </div>
-            <div class="showcase_button">Add to Portfolio</div>
-        </div>
+            {{/if}}
 
-        <!--{{#if showcase}}
-        <div id="showcase_wrapper">
-            <div class="showcase_controls">
-                {{#if own_profile}}
-                <div class="showcase_delete"></div>
-                {{/if}}
-                {{#if link}}
-                <div class="showcase_link"></div>
-                {{else}}
-                <div class="showcase_download"></div>
-                {{/if}}
-                <div class="showcase_right"></div>
-                <div class="showcase_left"></div>
+            {{#if showcase}}
+            <div class="add_showcase_button">
+                <button type="button">+ Add a showcase</button>
             </div>
-            <div class="showcase_item center">
-                <div class="showcase_info">
-                    <div class="showcase_title">
-                        Adtech and Big Data
+            {{else}}
+            <div class="add_showcase_button empty">
+                <button type="button">Start Your Academic Profile</button>
+            </div>
+            {{/if}}
+            <div class="add_showcase_form">
+                <form id="add_showcase">
+
+                    Adding a New Showcase
+                    <input type="text" id="title_entry" name="title_entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you">
+                    <textarea id="desc_entry" name="desc_entry" placeholder="Add a description"></textarea>
+                    <input id="link_entry" name="link_entry" placeholder="Paste a link to your showcase">
+                    <button type="button" id="upload_link_button" ><i></i>Upload Showcase</button>
+                    <div style='height: 0px;width:0px; overflow:hidden;'>
+                        <input id="upfile" type="file" value="upload"/>
                     </div>
-                    <div class="showcase_description">
-                        This is a paper on the use of big data in digital marketing.
+                    <div class="showcase_submit">
+                        <span class="cancel_showcase_form">Cancel</span>
+                        <input type="submit" class="create_showcase_form" id="create_showcase_form" name="create_showcase_form" value="+ Add this Showcase">
                     </div>
-                    <div class="showcase_type">
-                        .pdf
+                </form>
+                <div class="description-section">
+                    <i class="close-description"></i>
+                    <div class="top-description">
+                        - Show your peers and friends what academic research and articles you\'re interested in or have contributed to.
+                    </div>
+                    <div class="bottom-description">
+                        - Display presentations or projects that you want to share with the people in your academic network.
                     </div>
                 </div>
-                {{#if link}}
-                    {{#if preview_image}}
-                    <div class="showcase_image"  style="background-image: url({{preview_image}})"></div>
-                    {{/if}}
-                {{/if}}
+
 
             </div>
         </div>
-        <div class="showcase_button">Add to Portfolio</div>
-        {{else}}
-        <div class="showcase_button center"> Start Your Academic Portfolio </div>
-        {{/if}}-->
 
     </div>
     <div id="main_bar">
