@@ -317,17 +317,6 @@ class ProfileController extends Controller
                  $preview_image = $result;
              }
              $share_type='regular';
-            /* $file_name = basename($file['name']);
-             $previous_record = File::model()->find('file_url=:furl',array(':furl'=>$uploaddir.$file_name));
-             if($previous_record) {
-                 $this->renderJSON(array('status'=>'error','message'=>'there is already a file of the same name in your showcase'));
-                 return;
-             }else{
-                 if(!move_uploaded_file($file['tmp_name'], Yii::getPathOfAlias('webroot').$uploaddir.$file_name)) {
-                     $this->renderJSON(array('status'=>'error','message'=>'could not upload file'));
-                     return;
-                 }
-             }*/
 
         }else if(isset($_POST['link_url'])){
             $file_name = basename($_POST['link_url']);
@@ -368,37 +357,7 @@ class ProfileController extends Controller
             $this->renderJSON(array('status'=>'error','message'=>'failed to load file'));
             return;
         }
-     /*   if($result)
-        //create preview if file is not image
-        preg_match('/[.](.+)/',$file_name,$match);
-        $extension = $match[1];
-        if($extension == "jpg" || $extension == "png"){
-            $type = 'image';
-            copy(Yii::getPathOfAlias('webroot').$uploaddir.$file_name, Yii::getPathOfAlias('webroot').$uploaddir."preview/".$file_name);
-        }
-        else if($extension == "doc" || $extension == "docx"){
-            $type = 'document';
-            $this->renderJSON(array('status'=>'error','message'=>'cannot do this filetype yet'));
-            //$derp = $this->actionThumbify($_POST['link_url'],$_POST['user']);
-        }
-        else if($extension == "pdf"){
-            $type = 'pdf';
-            $this->renderJSON(array('status'=>'error','message'=>'cannot do this filetype yet'));
-            //$derp = $this->actionThumbify($_POST['link_url'],$_POST['user']);
-        }
 
-        $fileRecord = new File();
-        $fileRecord->file_name = $file_name;
-        $fileRecord->file_url = $uploaddir.$file_name;
-
-        $fileRecord->file_extension = $extension;
-        $fileRecord->file_type = $type;
-        $fileRecord->created_timestamp = new CDbExpression('NOW()');
-        if (!$fileRecord->save()) {
-            $errors = print_r($fileRecord->getErrors());
-            $this->renderJSON(array('status'=>'error','message'=>$errors));
-            return;
-        }*/
 
         $previous_showcase = Showcase::model()->find('title=:title',array(':title'=>$_POST['title']));
         if($previous_showcase){
@@ -421,13 +380,33 @@ class ProfileController extends Controller
             $this->renderJSON(array('status'=>'error','message'=>$errors));
             return;
         }
-        if(isset($preview_image)){
-            $this->renderJSON(array('status'=>'success','message'=>$result['file_url'],'file_extension'=>$result['extension'],
-                'title'=>$showcase->title, 'desc'=>$showcase->file_desc,'preview_file'=>$showcase->preview_image->file_url));
-        }else{
-            $this->renderJSON(array('status'=>'success','message'=>$result['file_url'],'file_extension'=>$result['extension'],
-                'title'=>$showcase->title, 'desc'=>$showcase->file_desc));
-        }
+        $result = array();
+         $result['title'] = $showcase->title;
+         $result['description'] = $showcase->file_desc;
+         $result['id'] = $showcase->file_id;
+         $type = $showcase->file->file_type;
+         $result['type'] = $type;
+         $result['url'] = ($type == "url");
+         if($type == "pdf"){
+             $result['color']= "#f15c61"; //red
+         }
+         else if($type == "doc" || $type == "docx"){
+             $result['color']= "#2a5896"; //blue
+         }
+         else if($type == "ppt" || $type == "pptx"){
+             $result['color']= "#FD702D"; //orange
+         }
+         else if($type == "url"){
+             $result['color']= "transparent";
+             if(isset($preview_image)){
+                 $result['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+             }
+             $result['link']=$showcase->file->file_name;
+         }else {
+             $result['color']= "#ffffff"; //white
+         }
+         $result['status'] = 'success';
+        $this->renderJSON($result);
 
     }
     public function actionAutoComplete(){
@@ -607,7 +586,16 @@ class ProfileController extends Controller
         }
     }
     public function actionDeleteShowcase(){
-        $showcase = Showcase::model()->find('title = :tid', array(':tid'=>$_POST['title']));
+        if(isset($_POST['file_id'])){
+            $showcase = Showcase::model()->find('file_id = :fid', array(':fid'=>$_POST['file_id']));
+        }else if(isset($_POST['title'])){
+            $showcase = Showcase::model()->find('title = :tid', array(':tid'=>$_POST['title']));
+        }else{
+            $this->renderJSON(array('status'=>'failure: you derped'));
+            return;
+        }
+
+
         $result = array();
         if($showcase){
             $fileRecord = $showcase->file;
@@ -626,13 +614,13 @@ class ProfileController extends Controller
                         @unlink(Yii::getPathOfAlias('webroot') . $fileUrl);
                 }
             }else{
-                $result['status'] .= 'failure: could not delete file record';
+                $result['status'] .= 'Could not delete file record';
             }
             if(isset($previewFile)){
                 if($previewFile->delete()){
                     @unlink(Yii::getPathOfAlias('webroot') .$previewUrl);
                 }else{
-                    $result['status'] .= 'failure: could not delete preview file record';
+                    $result['status'] .= 'Could not delete preview file record';
                 }
             }
             if($result['status']==''){
@@ -777,6 +765,34 @@ class ProfileController extends Controller
             $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
             $data['following'][$i]['user_school']=$user->school->school_name;
         }
+        $data['showcase_size']= sizeof($user->showcase);
+        $data['showcase']=array();
+        foreach($user->showcase as $i=>$showcase){
+            $data['showcase'][$i]['center'] = ($i==0)?" center":"";
+            $data['showcase'][$i]['index']=$i;
+            $data['showcase'][$i]['title'] = $showcase->title;
+            $data['showcase'][$i]['description'] = $showcase->file_desc;
+            $data['showcase'][$i]['id'] = $showcase->file_id;
+            $type = $showcase->file->file_type;
+            $data['showcase'][$i]['type'] = $type;
+            $data['showcase'][$i]['url'] = ($type == "url");
+            if($type == "pdf"){
+                $data['showcase'][$i]['color']= "#f15c61"; //red
+            }
+            else if($type == "doc" || $type == "docx"){
+                $data['showcase'][$i]['color']= "#2a5896"; //blue
+            }
+            else if($type == "ppt" || $type == "pptx"){
+                $data['showcase'][$i]['color']= "#FD702D"; //orange
+            }
+            else if($type == "url"){
+                $data['showcase'][$i]['color']= "transparent";
+                $data['showcase'][$i]['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+                $data['showcase'][$i]['link']=$showcase->file->file_name;
+            }else {
+                $data['showcase'][$i]['color']= "#ffffff"; //white
+            }
+         }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
         $data['professor'] = $user->user_type == "p";
         $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());

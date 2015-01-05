@@ -13,6 +13,11 @@
     padding-top: 2px;
     border-radius: 5px;
 }
+
+li#syllabus_event_order_kind{
+    border-bottom: 1px solid #dcdcdc;
+}
+
 header.class_tasks{  
     
     margin-right: 10px;
@@ -47,12 +52,11 @@ div.order_dropdown_box{
     background: #fff;
    
 
-    width: 46px;
-    font-size: 12px;
-    padding: 4px 0px;
-    border: 1px solid rgba(0, 0, 0, .15); 
+    width: 48px;
+    font-size: 12px; 
     border-radius: 1px;
     padding-left: 0px;
+    border: 1px solid #d6d6d6; -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13); box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.13);
 }
 
 div.day_month_box{
@@ -590,22 +594,22 @@ div.syllabus_event.editable input.syla_tab_event_editor:focus ~ div.done_editing
 }
 
 .order_dropdown_box li{
-    padding: 2px 6px;
+    padding: 6px 6px;
     cursor: pointer;
     color: #444;
     font-size: 12.7px;
 }
 
 .order_dropdown_box li:hover{
-    background: #333;
+    background: #f2f2f2;
 }
 
 .order_dropdown_box li:hover > a{
-    color: #fff;
+    color: #222;
 }
 
 .order_dropdown_box li a{
-    color:#333;
+    color: #575757;
     font-weight: 100;
 }
 

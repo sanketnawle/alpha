@@ -13,12 +13,12 @@ margin-left: 0px;
 float: left;
 width: 552px;
 padding-top: 5px;
-position: relative;
-border: 1px solid #d9d9d9;   
+position: relative;   
 margin-bottom: 12px;
 border-radius: 5px;
 background: rgba(255, 255, 255, 1);
 padding-bottom: 14px;
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 .post_main{
