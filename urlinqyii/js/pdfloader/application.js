@@ -89,8 +89,17 @@ window.onload = function () {
     return Promise.all([renderTask.promise, textLayerPromise]);
   }
   document.addEventListener('resolved', highlightText, true);
-
-  loadPdf(input_pdf);
+  $.ajax({
+         url: "GetSyllabusPDF?class_id="+globals.origin_id,
+         type: "GET",
+         success: function(response) {
+            loadPdf(globals.base_url+response["file_url"])
+        
+         },
+         error: function(jqXHR, textStatus, errorMessage) {
+             console.log(errorMessage); // Optional
+         }
+      });
 
 };
 

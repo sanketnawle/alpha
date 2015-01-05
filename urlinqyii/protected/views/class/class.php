@@ -57,10 +57,10 @@
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/ui_utils.js"></script>
       <script>PDFJS.workerSrc = '<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/worker_loader.js';</script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/pdf.js"></script>
-      <script>input_pdf = "<?php echo Yii::app()->getBaseUrl(true);?>/assets/class/3000/19bd566b7885af40bd3d64fbfc9dfc30.pdf"</script>
 
       <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/chrono.js"></script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/application.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/uiscripts.js"></script>
     
     <script>
     $(document).ready(function() {
@@ -259,9 +259,10 @@
                     </div>
                     <div class = "class_events_holder order_kind">
                         <div class = "black_action_box">
-                            <button class = "scan_syllabus">
+                            <button id="btn_add_syllabus" class = "scan_syllabus">
                                 <em class = "syla_plus"></em>Add Syllabus
                             </button>
+                            <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
                             <div class = "black_explainer">
                                 By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
                             </div>
