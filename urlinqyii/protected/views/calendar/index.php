@@ -74,12 +74,15 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/left_panel/left_panel.js"></script>
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/day/day.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/month/month.js"></script>
 
 
 <!--    <script src="../../../../../alpha/urlinqyii/js/calendar/week/week.js"></script>   -->
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/week/week.js"></script>
+
+
 </head>
 <body>
     <?php echo Yii::app()->runController('partial/topbar'); ?>

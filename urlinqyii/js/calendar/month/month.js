@@ -107,7 +107,8 @@ jQuery(document).ready(function(){
     });
 
 
-    jQuery(document).on('click','#inspect_event_delete_button',function(event){
+    jQuery(document).on('click','#inspect_event_delete_button_month',function(event){
+        alert('MONTH');
         event.stopPropagation();
         var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
         var event_id = last_clicked_event_id;

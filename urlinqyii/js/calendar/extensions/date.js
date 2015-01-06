@@ -13,6 +13,8 @@ Date.prototype.getWeek = function () {
     return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
         - 3 + (week1.getDay() + 6) % 7) / 7);
 };
+
+
 Date.prototype.getWeek = function (dowOffset) {
     dowOffset = typeof (dowOffset) == 'int' ? dowOffset : 0;
     var newYear = new Date(this.getFullYear(), 0, 1);

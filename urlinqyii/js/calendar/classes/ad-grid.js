@@ -14,7 +14,7 @@ var AdGrid = (function (Panel) {
                     var title = new Div("title", adevent.title);
 
                     var description = new Div("description");
-                    alert(JSON.stringify(adevent));
+
                     description.innerHTML = adevent.desc;
 
                     var button = document.createElement("button");

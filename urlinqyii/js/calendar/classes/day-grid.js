@@ -122,8 +122,8 @@ var DayGrid = (function (DayGrid) {
                         eve.origin_type = uce.origin_type;
                         eve.origin_id = uce.origin_id;
 
-                        alert(uce);
-                        console.log(uce);
+                        //alert(uce);
+                        //console.log(uce);
                         if (uce.allday) eve.time = "allday";
                         else eve.time = dp.to12Hrs(uce.startTime) + " - " + dp.to12Hrs(uce.endTime);
 
@@ -140,7 +140,8 @@ var DayGrid = (function (DayGrid) {
                     return eve;
                 }
             }
-        })
+        });
+
     };
 
     DayGrid.TodoItem = TodoItem;
@@ -168,11 +169,58 @@ var DayGrid = (function (DayGrid) {
             grid = new Grid(ele);
         }
 
+        //grid.ele.innerHTML = "";
+
+        var current_date = scope.getTodaysDate();
+        //Start at -1 because the first row
+        //is all day events
+
+        for (var i = 0; i < 26; i++){
+
+            var html_string = '<div class="day_grid_item"><div class="day_time">12pm</div></div>';
+            if(i == 0){
+                html_string = '<div class="day_grid_item all_day"><div class="day_time">All day</div></div>';
+            }
+
+            var grid_item_ele = jQuery(html_string);
+
+            if(i != 0){
+                if(i == 1){
+                    grid_item_ele.find('.day_time').text('12am');
+                }else if(i == 13){
+                    grid_item_ele.find('.day_time').text('12pm');
+                }else if(i < 13){
+                    grid_item_ele.find('.day_time').text((i - 1).toString() + 'am');
+                }else{
+                    grid_item_ele.find('.day_time').text((i - 13).toString() + 'pm');
+                }
+            }
+
+
+            //grid_item_ele.find('.day_time').text('12am');
+
+            grid_item_ele.attr('data-date',date_to_string(current_date));
+            grid_item_ele.attr('data-time',ints_to_time(i - 1,0,0));
+            grid_item_ele.attr('data-time_num', i - 1);
+
+            //grid.ele.appendChild(grid_item_ele);
+            jQuery('#day-grid').append(grid_item_ele);
+
+            jQuery('#day-grid').attr('data-date',date_to_string(current_date));
+        }
+
         return grid;
     };
 
     return DayGrid;
 }(DayGrid || {}));
+
+
+//Converts date object into date string of SQl format like this:
+// 2014-06-02
+function date_to_string(date){
+    return date.getFullYear() + '-' + addZero((date.getMonth() + 1)) + '-' + addZero(date.getDate());
+}
 
 // inj = angular.injector(['ng', ApplicationName]);
 // inj.invoke(function ($rootScope, $compile) {

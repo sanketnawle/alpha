@@ -7,111 +7,34 @@ class EventController extends Controller
     }
 
     public function actionGetEvents(){
+        if(!isset($_GET['date'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
         $user = $this->get_current_user();
 //        $date = '2014-11-12';
         $date = $_GET['date'];
         //user_id=:user_id AND  //':user_id'=>1,
-        $events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
+        //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
+        //$events = $user->get_all_events();
+//        $events = Event::model()->findAllBySql('SELECT *
+//                                                FROM `event`
+//                                                LEFT OUTER JOIN `event_user`
+//                                                ON event.event_id = event_user.event_id
+//                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
+        //Get the events that this user is an event_user of
+        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = 7 AND start_date = "' . $date . '"')->queryAll();
+        //Get the events that this
+        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = 7 AND start_date = "' . $date . '"')->queryAll();
 
-//            $weekdays = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-//
-//            if(!isset($_REQUEST["date"])) die("{}");
-//
-//            $return_arr = Array();
-//
-//            $conn = mysqli_connect("localhost", "root", "root", "urlinq_new");
-//            $query = "SELECT * FROM event LEFT OUTER JOIN event_repeat using(event_id)";
-//            $result = mysqli_query($conn, $query);
-//
-//            while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-//                array_push($return_arr,$row);
-//            }
-//
-//            $json = json_decode(json_encode($return_arr));
-//
-//            //echo "<pre>";
-//            //echo json_encode($json, JSON_PRETTY_PRINT);
-//
-//            //die;
-//
-//            $givendate = stt(isset($_REQUEST["date"]) ? date("Y-m-d", stt($_REQUEST["date"])) : date("Y-m-d"));
-//
-//            $json = array_filter($json, function($obj) {
-//                global $givendate;
-//                global $weekdays;
-//
-//                $state = stt($obj->start_date) == $givendate && stt($obj->repeat_type) == NULL; // single day
-//                if(!$state) $state = ( // multi day
-//                    $obj->repeat_type == NULL && (
-//                        $givendate >= stt($obj->start_date) &&
-//                        $givendate <= stt($obj->end_date)
-//                    )
-//                );
-//                if(!$state) $state = ( // daily
-//                    $obj->repeat_type == "daily" && (
-//                        $givendate >= stt($obj->start_date) &&
-//                        $givendate <= stt($obj->repeat_end_date)
-//                    )
-//                );
-//                if(!$state) $state = ( // weekly
-//                    $obj->repeat_type == "weekly" && (
-//                        $givendate <= stt($obj->repeat_end_date) &&
-//                        (
-//                            date("w", stt($obj->start_date)) == date("w", $givendate) || // weekly single day
-//                            (
-//                                date("w", stt($obj->start_date)) < date("w", $givendate) && // weekly multi day same week
-//                                (
-//                                    date("w", $givendate) <= date("w", stt($obj->end_date)) || // weekly multi day cross week
-//                                    (
-//                                        date("w", stt($obj->start_date)) > date("w", stt($obj->end_date)) &&
-//                                        date("w", $givendate) <= (date("w", stt($obj->end_date)) + 7)
-//                                    )
-//                                )
-//                            )
-//                        )
-//                    )
-//                );
-//                if(!$state) $state = ( // monthly on date
-//                    $obj->repeat_type == "monthlydate" && (
-//                        $givendate <= stt($obj->repeat_end_date) &&
-//                        date("d", stt($obj->start_date)) <= date("d", $givendate) &&
-//                        date("d", stt($obj->end_date)) >= date("d", $givendate)
-//                    )
-//                );
-//                if(!$state) { // monthly on week
-//                    $week = date("w", stt($obj->start_date));
-//                    $target = $weekdays[$week];
-//
-//                    $sd = stt($obj->start_date);
-//                    $diff = stt($obj->end_date) - stt($obj->start_date);
-//
-//                    $state = (
-//                        $obj->repeat_type == "monthlyweek" && (
-//                            $givendate <= stt($obj->repeat_end_date) && (
-//                            TRUE
-//                            )
-//                        )
-//                    );
-//                }
-//
-//                return $state;
-//            });
-//
-//            usort($json, function($a, $b) {
-//                return stt($a->start_time) - stt($b->start_time);
-//            });
-//
-//            echo json_encode($json, JSON_PRETTY_PRINT);
-
-
-
-        $data = array('success'=>true,'events'=>$events);
-
-
+        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
 
         $this->renderJSON($data);
         return;
+
 
     }
 
@@ -341,7 +264,7 @@ class EventController extends Controller
 
 
     public function actionGetSuggestedEvents(){
-        $events = Event::model()->findAll();
+        $events = Event::model()->findAll(array('limit'=>15) );
 
         $data = array('success'=>true,'events'=>$events);
         $this->renderJSON($data);
@@ -383,6 +306,7 @@ class EventController extends Controller
             $event->origin_id = $todo_origin_id;
             $event->end_date = $todo_date;
             $event->end_time = $todo_time;
+            $event->all_day = false;
             $event->save(false);
 
             if($event){
@@ -429,7 +353,7 @@ class EventController extends Controller
 
 
         if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
-        || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location'])){
+        || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
             return;
@@ -453,6 +377,7 @@ class EventController extends Controller
             $event->start_time = $event_data['start_time'];
             $event->end_time = $event_data['end_time'];
             $event->location = $event_data['location'];
+            $event->all_day = $event_data['all_day'];
 
             $event->save(false);
 
