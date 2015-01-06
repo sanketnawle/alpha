@@ -10,6 +10,13 @@ function date_to_day_of_week_string(this_date){
 }
 
 
+//returns a string like Fri, Jan 9
+function date_string_to_day_of_week_string(this_date_string){
+    var this_date = new Date(this_date_string + ' 00:00:00');
+    return week_days_short[this_date.getDay()] + ', ' + months_short[this_date.getMonth()] + ' ' + this_date.getDate();
+}
+
+
 function addZero(i) {
     if (i < 10 && i !== '00') {
         i = "0" + i;
@@ -49,6 +56,39 @@ function date_to_am_pm_string(datetime_obj){
     }
 
 }
+
+
+//Takes in string like 11:25:00
+//returns either 12:30pm or
+//4pm
+function time_string_to_am_pm_string(time_string){
+    var datetime_obj = new Date();
+    datetime_obj = new Date(date_to_string(datetime_obj) + ' ' + time_string);
+
+
+    var hours = datetime_obj.getHours();
+    var am_pm = 'am';
+
+    if(hours >= 12){
+        am_pm = 'pm';
+        if(hours > 12){
+            hours -= 12;
+        }
+    }else if(hours == 0){
+        //If its 12am, hours will be 0
+        //so set it so 12
+        hours = 12;
+    }
+
+    var minutes = datetime_obj.getMinutes();
+    if(minutes > 0){
+        return hours.toString() + ':' + addZero(minutes) + am_pm;
+    }else{
+        return hours.toString() + am_pm;
+    }
+
+}
+
 
 var weekday = new Array(7);
 weekday[0]=  "Sunday";

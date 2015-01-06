@@ -30,6 +30,8 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/eventCreation.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/eventCreation.css" type = "text/css" rel = "stylesheet">
 
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+
     <!-- Libraries -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jq.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jq-datepicker.js"></script>
@@ -64,6 +66,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/controllers/semester.js"></script>
 
     <!-- Helpers -->
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/date.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/range.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/extensions/directives.js"></script>
@@ -161,4 +164,92 @@
         </div>
     </div>
 </body>
+
+
+<!--Include this and js/time_selector/time_selector.js to use this.
+Set the class name on your input to 'time_input' -->
+<div id="time_selector">
+    <div class='time_selector_div' data-time='00:00:00' value="00:00:00">12:00am</div>
+    <div class='time_selector_div' data-time='00:30:00' value="00:30:00">12:30am</div>
+
+    <div class='time_selector_div' data-time='01:00:00' value="01:00:00">1:00am</div>
+    <div class='time_selector_div' data-time='01:30:00' value="01:30:00">1:30am</div>
+
+    <div class='time_selector_div' data-time='02:00:00' value="02:00:00">2:00am</div>
+    <div class='time_selector_div' data-time='02:30:00' value="02:30:00">2:30am</div>
+
+    <div class='time_selector_div' data-time='03:00:00' value="03:00:00">3:00am</div>
+    <div class='time_selector_div' data-time='03:30:00' value="03:30:00">3:30am</div>
+
+    <div class='time_selector_div' data-time='04:00:00' value="04:00:00">4:00am</div>
+    <div class='time_selector_div' data-time='04:30:00' value="04:30:00">4:30am</div>
+
+    <div class='time_selector_div' data-time='05:00:00' value="05:00:00">5:00am</div>
+    <div class='time_selector_div' data-time='05:30:00' value="05:30:00">5:30am</div>
+
+    <div class='time_selector_div' data-time='06:00:00' value="06:00:00">6:00am</div>
+    <div class='time_selector_div' data-time='06:30:00' value="06:30:00">6:30am</div>
+
+    <div class='time_selector_div' data-time='07:00:00' value="06:00:00">7:00am</div>
+    <div class='time_selector_div' data-time='07:30:00' value="06:30:00">7:30am</div>
+
+
+    <div class='time_selector_div' data-time='08:00:00' value="08:00:00">8:00am</div>
+    <div class='time_selector_div' data-time='08:30:00' value="08:30:00">8:30am</div>
+
+    <div class='time_selector_div' data-time='09:00:00' value="09:00:00">9:00am</div>
+    <div class='time_selector_div' data-time='09:30:00' value="09:30:00">9:30am</div>
+
+    <div class='time_selector_div' data-time='10:00:00' value="10:00:00">10:00am</div>
+    <div class='time_selector_div' data-time='10:30:00' value="10:30:00">10:30am</div>
+
+    <div class='time_selector_div' data-time='11:00:00' value="11:00:00">11:00am</div>
+    <div class='time_selector_div' data-time='11:30:00' value="11:30:00">11:30am</div>
+
+
+    <!-- NOON -->
+    <div class='time_selector_div' data-time='12:00:00' value="12:00:00">12:00pm</div>
+    <div class='time_selector_div' data-time='12:30:00' value="12:30:00">12:30pm</div>
+
+
+
+    <div class='time_selector_div' data-time='01:00:00' value="01:00:00">1:00pm</div>
+    <div class='time_selector_div' data-time='01:30:00' value="01:30:00">1:30pm</div>
+
+    <div class='time_selector_div' data-time='02:00:00' value="02:00:00">2:00pm</div>
+    <div class='time_selector_div' data-time='02:30:00' value="02:30:00">2:30pm</div>
+
+    <div class='time_selector_div' data-time='03:00:00' value="03:00:00">3:00pm</div>
+    <div class='time_selector_div' data-time='03:30:00' value="03:30:00">3:30pm</div>
+
+    <div class='time_selector_div' data-time='04:00:00' value="04:00:00">4:00pm</div>
+    <div class='time_selector_div' data-time='04:30:00' value="04:30:00">4:30pm</div>
+
+    <div class='time_selector_div' data-time='05:00:00' value="05:00:00">5:00pm</div>
+    <div class='time_selector_div' data-time='05:30:00' value="05:30:00">5:30pm</div>
+
+    <div class='time_selector_div' data-time='06:00:00' value="06:00:00">6:00pm</div>
+    <div class='time_selector_div' data-time='06:30:00' value="06:30:00">6:30pm</div>
+
+    <div class='time_selector_div' data-time='07:00:00' value="06:00:00">7:00pm</div>
+    <div class='time_selector_div' data-time='07:30:00' value="06:30:00">7:30pm</div>
+
+
+    <div class='time_selector_div' data-time='08:00:00' value="08:00:00">8:00pm</div>
+    <div class='time_selector_div' data-time='08:30:00' value="08:30:00">8:30pm</div>
+
+    <div class='time_selector_div' data-time='09:00:00' value="09:00:00">9:00pm</div>
+    <div class='time_selector_div' data-time='09:30:00' value="09:30:00">9:30pm</div>
+
+    <div class='time_selector_div' data-time='10:00:00' value="10:00:00">10:00pm</div>
+    <div class='time_selector_div' data-time='10:30:00' value="10:30:00">10:30pm</div>
+
+    <div class='time_selector_div' data-time='11:00:00' value="11:00:00">11:00pm</div>
+    <div class='time_selector_div' data-time='11:30:00' value="11:30:00">11:30pm</div>
+
+
+</div>
+
+
+
 </html>
