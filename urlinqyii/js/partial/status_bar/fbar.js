@@ -564,10 +564,30 @@ $(document).ready(function() {
     }); 
 
 
-    $(document).ready(function() {
-        $('.menu_audience').dropit({
-        });
+    $('.menu_audience').dropit({
     });
+    $('.privacy_menu').dropit({
+    });
+
+    $(".privacy_dropdown_link").click(function(){
+        $("#privacy_tooltip").hide();
+    });
+
+    $("li.privacy_list").click(function(){
+        $("li.privacy_list").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    
+
+    $(".privacy_dropdown_link").mouseenter(function(){
+        $("#privacy_tooltip").fadeIn(250);
+    });
+
+    $(".privacy_dropdown_link").mouseleave(function(){
+        $("#privacy_tooltip").fadeOut(250);
+    });
+
 
     $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
         var $button_section = $('#fbar_buttons');

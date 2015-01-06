@@ -240,7 +240,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    See all replies
+                                    Show all replies
                                 </div>
                             {{/if}}
                         </div>
@@ -274,7 +274,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class='reply_button'>
+                                    <a class='reply_button fresh_green_button'>
                                         Add Comment
                                     </a>
                                 </div>
@@ -287,7 +287,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class = 'reply_button'>
+                                    <a class = 'reply_button fresh_green_button'>
                                         Add this Comment
                                     </a>
                             </form>
@@ -410,7 +410,7 @@
 
                      {{/each}}
                                 <div id='show_more' class='morecmt_bar'>
-                                            See all replies  
+                                            Show all replies  
                                 </div>
 
             </script>
@@ -686,7 +686,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    See all replies
+                                    Show all replies
                                 </div>
                              {{/if}}
 
@@ -718,7 +718,7 @@
                                         </label>
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
-                                    <a class='reply_button'>
+                                    <a class='reply_button fresh_green_button'>
                                         Add Comment
                                     </a>
                                 </div>
@@ -731,7 +731,7 @@
                                 </label>
                                 <span class = 'comment_anon_text'>Post Anonymously</span>
                             </div>
-                            <a class = 'reply_button'>
+                            <a class = 'reply_button fresh_green_button'>
                                 Add Comment
                             </a>
                         </form>
@@ -957,7 +957,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    See all replies
+                                    Show all replies
                                 </div>
                             {{/if}}
                         </div>
@@ -987,7 +987,7 @@
                                     </label>
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
-                                <a class = 'reply_button'>
+                                <a class = 'reply_button fresh_green_button'>
                                     Add Comment
                                 </a>
                             </div>
@@ -1000,7 +1000,7 @@
                                     </label>
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
-                                <a class = 'reply_button'>
+                                <a class = 'reply_button fresh_green_button'>
                                     Add Comment
                                 </a>
                         </div>

@@ -100,7 +100,8 @@
         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
-                <div class = "center_text">NYU College of Arts and Sciences</div>
+                <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
+                <div class = "center_text"><p id = "group_name">Theories and Applications of Graphical Computing</p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
