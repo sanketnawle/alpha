@@ -30,7 +30,7 @@ class ClassSyllabus extends CActiveRecord
 			array('class_id', 'length', 'max'=>36),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('class_id, file_id, user_id, official_syllabus', 'safe', 'on'=>'search'),
+			array('id','class_id, file_id, user_id, official_syllabus', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +83,8 @@ class ClassSyllabus extends CActiveRecord
 		$criteria->compare('file_id',$this->file_id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('official_syllabus',$this->official_syllabus,true);
+		$criteria->compare('id',$this->id);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

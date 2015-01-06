@@ -256,6 +256,14 @@ class ClassController extends Controller
         $file_id = $_POST["file_id"];
         $user_id = $this->get_current_user_id();
         $official_syllabus = false;
+        $check_syllabus = ClassSyllabus::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id, ':user_id'=>$user_id));
+        if($check_syllabus){
+            $check_syllabus->updateByPk($check_syllabus->id, array("file_id"=>$file_id));
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }
+        else{
         $class_syllabus = new ClassSyllabus;
         $class_syllabus->class_id = $class_id;
         $class_syllabus->file_id = $file_id;
@@ -271,6 +279,7 @@ class ClassController extends Controller
                 $this->renderJSON($data);
                 return;
             }
+        }
     }
 
     public function actionJoin(){
