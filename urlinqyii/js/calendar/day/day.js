@@ -1,24 +1,35 @@
 jQuery(document).ready(function(){
-    init();
-    function init(){
-        get_day_events();
-    }
 
 
-    function get_day_events(){
-        var todays_date = jQuery('div#day-grid').attr('data-date');
-        //console.log(todays_date);
+    $( window ).resize(function() {
+        recalculate_event_positions();
+    });
 
-        jQuery.getJSON(base_url + '/event/getEvents?date=' + '2015-01-05',{date: todays_date}, function(json_data){
-            jQuery.each(json_data['events'],function(index, event_json){
-                //console.log('DAY EVENTS');
 
-                show_day_event(event_json);
-            });
+    function recalculate_event_positions(){
+        $('.day_grid_item').each(function(index, day_grid_item){
+            var $day_grid_item = $(day_grid_item);
+            //Start 50 pixels from the left since there is padding on the day grid
+            //Leave 15 pixels on the right so new events can be created
+            var left_pixels = 50;
+
+            var width = $day_grid_item.width() - 15;
+
+            //check if other events are within this time range
+            var $this_day_time_events = $day_grid_item.find('.day_event_holder');
+            if($this_day_time_events.length){
+                //100 / 3 elements = 33% each
+                width /= $this_day_time_events.length;
+
+                //Loop through each event and change the styling
+                jQuery.each($this_day_time_events, function(index,$day_time_event){
+                    $($day_time_event).css({'width': width.toString() + 'px'});
+                    $($day_time_event).css({'left': left_pixels + 'px'});
+                    left_pixels += width;
+                });
+            }
         });
     }
-
-
 
 
     last_clicked_event_id = null;
@@ -172,6 +183,12 @@ jQuery(document).ready(function(){
 
         event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
         var generated_html = template(event_json);
+        var html_object = jQuery(generated_html);
+
+        //formatted start time
+        var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
+        html_object.find('.event_start_time').text(event_time_text);
+
 
         var start_time_hour = ints_to_time(parseInt(event_json['start_time'].substring(0,2)),0,0);
 
@@ -212,7 +229,7 @@ jQuery(document).ready(function(){
             var event_hour_length =  hour_difference + (minute_difference / 60); //in hour form with decimals for minutes
             console.log('EVENT HOUR LENGTH');
             console.log(event_hour_length);
-            var event_height = event_hour_length * time_range_height;
+            var event_height = (event_hour_length * time_range_height) + 1;
             //event_height += (parseInt(event_json['end_time'].substring(3,5)) / 60) * time_range_height;
 
 
@@ -237,6 +254,7 @@ jQuery(document).ready(function(){
             var $this_day_time_events = $grid_item_selector.find('.day_event_holder');
             if($this_day_time_events.length){
                 //100 / 3 elements = 33% each
+                //Add one because we have not added our new event element yet
                 width /= $this_day_time_events.length + 1;
 
                 //Loop through each event and change the styling
@@ -247,7 +265,7 @@ jQuery(document).ready(function(){
                 });
             }
 
-            var html_object = jQuery(generated_html);
+
 
             html_object.css({'position':'absolute'});
             html_object.css({'top': top_pixels.toString() + 'px'});

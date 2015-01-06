@@ -122,7 +122,7 @@
             <!-- ng-click="openNewEvent()" for create button -->
             <div class="create">
                 <div class="button">
-                    <div class="full" ng-click="openNewEvent()">Create Event</div>
+                    <div id='create_new_event_button' class="full" ng-click="openNewEvent()">Create Event</div>
                     <div class="quick">
                         <i>&nbsp;</i>
                         <div class="quick-dialog">
