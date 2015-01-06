@@ -3,13 +3,14 @@ jQuery(document).ready(function(){
 
 
     last_clicked_event_id = null;
-    jQuery(document).on('click', '.grid-event', function(event){
-        event.stopPropagation();
+    jQuery(document).on('click', '.event_holder', function(event){
+        event.stopPropagation()
+        console.log('click event');
 
 
         var $month_day_event_div = jQuery(this);
         var event_id = $month_day_event_div.attr('id');
-        var $inspect_event_popup_week = jQuery('#inspect_event_popup_week_week');
+        var $inspect_event_popup_week = jQuery('#inspect_event_popup_week');
 
         //Add the event_id to the inspect_event_popup_week for easy access
         $inspect_event_popup_week.attr('data-event_id', event_id);
@@ -216,6 +217,8 @@ jQuery(document).ready(function(){
 
 
 
+
+
     function show_week_day_event(event_json){
 
 
@@ -243,5 +246,35 @@ jQuery(document).ready(function(){
 
 
     }
+
+
+
+
+
+
+    jQuery(document).on('click','#inspect_event_delete_button_week',function(event){
+        event.stopPropagation();
+        var $inspect_event_popup_week = jQuery('#inspect_event_popup_week');
+        var event_id = last_clicked_event_id;
+
+        var post_url = base_url + '/event/' + event_id + '/delete';
+
+
+        var post_data = {event_id: event_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    $inspect_event_popup_week.removeClass('active');
+                    jQuery('.grid-event.event_holder[data-id="' + last_clicked_event_id + '"]').remove();
+                    alert('successfully deleted event: ' + event_id);
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
+
 
 });

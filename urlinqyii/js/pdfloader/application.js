@@ -1,6 +1,9 @@
 window.onload = function () {
+  run_pdf_algo();
+  
+};
 
-  console.log("clicked");
+function run_pdf_algo(){
   if (typeof PDFJS === 'undefined') {
     alert('Built version of pdf.js is not found\nPlease run `node make generic`');
     return;
@@ -101,7 +104,7 @@ window.onload = function () {
          }
       });
 
-};
+}
 
 
 function highlightText(){

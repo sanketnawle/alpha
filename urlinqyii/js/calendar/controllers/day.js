@@ -25,6 +25,11 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, $tim
         return d;
     }
 
+
+    $scope.getTodaysDate = function(){
+        return date;
+    };
+
     $scope.getDate = function () {
         var date = new Date($scope.activeYear, $scope.activeMonth, $scope.activeDate);
         return $scope.getDayName(date.getDay()) + " " + $scope.getMonthName(date.getMonth()) + " " + date.getDate() + ",";
@@ -53,13 +58,13 @@ ulcal.controller("DayController", function ($scope, $routeParams, $compile, $tim
         type: "d",
         date: $scope.activeYear + "-" + ($scope.activeMonth + 1) + "-" + $scope.activeDate
     }).success(function (events) {
-        events = events.events;
-        var c = 0;
-        for (e in events) {
-            var event = new UCEvent(events[e]);
-            grid.addEvent(event, c);
-            ++c;
-        }
+//        events = events.events;
+//        var c = 0;
+//        for (e in events) {
+//            var event = new UCEvent(events[e]);
+//            grid.addEvent(event, c);
+//            ++c;
+//        }
     });
 
 

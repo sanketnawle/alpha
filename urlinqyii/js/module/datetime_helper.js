@@ -1,3 +1,15 @@
+var week_days_short = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var week_days_long = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
+var months_short = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+
+//returns a string like Fri, Jan 9
+function date_to_day_of_week_string(this_date){
+    return week_days_short[this_date.getDay()] + ', ' + months_short[this_date.getMonth()] + ' ' + this_date.getDate();
+}
+
+
 function addZero(i) {
     if (i < 10 && i !== '00') {
         i = "0" + i;

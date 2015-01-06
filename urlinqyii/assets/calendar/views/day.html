@@ -10,13 +10,50 @@
     </div>
 </div>
 <div class="day-view">
-    <div class="day-grid toscroll" id="day-grid">
+    <!--<div class="day-grid toscroll" id="day-grid">-->
 
-    </div>
+        <div class="day-view grid-view toscroll ng-scope" style="overflow: hidden; width: auto; height: 250px;">
+            <!--<div class="time-strip">-->
+                <!--<div class="time">All day</div>-->
+                <!--<div class="time">12 am</div>-->
+                <!--&lt;!&ndash; ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >1 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >2 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >3 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >4 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >5 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >6 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >7 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >8 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >9 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >10 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >11 am</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;-->
+                <!--<div class="time">12 pm</div>-->
+                <!--&lt;!&ndash; ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >1 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >2 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >3 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >4 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >5 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >6 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >7 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >8 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >9 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >10 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;<div class="time ng-binding ng-scope" >11 pm</div>&lt;!&ndash; end ngRepeat: i in [] | range:1:12 &ndash;&gt;-->
+            <!--</div>-->
+            <div class="day-grid grid" id="day-grid">
+            </div>
+        </div>
+
+    <!--</div>-->
     <div class="ad-grid">
         <div class = "ads_header">
             <h5>Suggested Events at NYU</h5>
         </div>
         <div class="ads"></div>
     </div>
+</div>
+
+<div id="inspect_event_popup_day" class="inspect_event_popup popup">
+    <div id="inspect_event_title">Test event title</div>
+    <div id="inspect_event_exit_button" class="popup_exit_button"></div>
+    <div id="inspect_event_text"></div>
+    <div id="inspect_event_description"></div>
+    <div id="inspect_event_delete_button_day">Delete</div>
+    <div id="inspect_event_edit_button" class="popup_edit_button">Edit event</div>
+</div>
+
+
+<div id="create_day_event_popup" class="create_event_popup popup">
+    <div id="create_day_event_exit_button" class="popup_exit_button"></div>
+    <div id="create_day_event_text">Create event</div>
+    <div id="create_day_event_when"></div>
+
+    <form id='create_day_event_form' method="post" action="/event/create">
+            <input id="create_day_event_input" name="event_input" type="text" class="text_input">
+        <label for="create_day_event_button">What: </label>
+        <div class="cb-example">e.g., Meeting with professor</div>
+        <input type="submit" class="" id="create_day_event_button" name="create_day_event_button" value="Create event">
+    </form>
+
+    <div id="create_day_event_edit_button" class="popup_edit_button">Edit event <strong>»</strong></div>
 </div>
