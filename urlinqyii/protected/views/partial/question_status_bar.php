@@ -11,6 +11,7 @@
 <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
+<script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/jquery.autosize.js'></script>
 
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
@@ -41,27 +42,29 @@
 							<li>
 								<a><div id = "audience_select"><span>To <span class = "selected_audience">Followers</span></span><em class = "down_arrow"></em></div></a>
 								<ul>
-									<li>
+									<li class = "audience_name">
 										<a>Faculty</a>
 									</li>
-									<li>
+									<li class = "audience_name">
 										<a>Class 1</a>
 									</li>
-									<li>
+									<li class = "audience_name">
 										<a>Class 2</a>
 									</li>
-									<li>
+									<li class = "audience_name">
 										<a>Class 3</a>
 									</li>
-									<li>
+									<li class = "audience_name">
 										<a>Club 1</a>
 									</li>
-									<li>
+									<li class = "audience_name">
 										<a>Club 2</a>
 									</li>
 								</ul>
 							</li>
 						</ul>
+						<div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>	
+						<div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>					
 						<div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "hide_both">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>
 					</header>
 
@@ -72,6 +75,20 @@
 					</section>
 
 					<section id = "notes_form" class = "post_form_template fbar_contents_fix">
+						<div class = "upload_file_wrap">
+
+							<div class = "upload_half half_1">
+								<div><p class = "upload_hint">From your computer</p></div>
+								<div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+							</div>
+
+							<div class = "upload_half half_2">
+								<div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
+								<div><div class = "upload_button upload_button_alone">Choose File</div></div>
+							</div>
+
+						</div>	
+
 						<div class = "file_textarea input_wrap">
 							<textarea class = "autofocus post_text_area" placeholder = "Write file details"></textarea>
 						</div>
@@ -168,7 +185,7 @@
                                 </div>
                             </div>
 						</div>
-						<div id = "post_attachments" class = "help_div_shower">
+						<div id = "post_attachments" class = "notes_form_hide_content help_div_shower">
 							<span></span>
 							<div class="help-div fbar_helpers">
                                 <div class="help-box">Attach files/notes</div>
@@ -177,10 +194,10 @@
                             </div>
 						</div>
 
-						<div class = "post_btn fresh_green_button" id = "post_btn">
+						<div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
 							Post
 						</div>
-						<div class = "cancel_btn" id = "cancel_btn">
+						<div style = "-webkit-user-select: none;" class = "cancel_btn" id = "cancel_btn">
 							Cancel
 						</div>
 					</footer>
