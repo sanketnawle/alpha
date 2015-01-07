@@ -1,8 +1,8 @@
 
 
-<script src="{{base_url}}/js/jquery.min.js"></script>
 <!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
 <!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
+
 <div class="overlay"></div>
 <div id="profile_wrapper">
     <div id="profile_overlay"></div>
@@ -101,7 +101,7 @@
     <div id="main_bar">
         <div id="profile_picture_wrapper">
             <div id="profile_picture" style="background-image: url( {{profile_pic}} )"></div>
-            <button type="button" id="edit_profile_button">Edit Profile</button>
+            <button type="button" id="edit_profile_button" class="not_editing">Edit Profile</button>
             <div id="cancel_edit_button">x</div>
         </div>
         <div id="name_info_wrapper">
@@ -156,7 +156,7 @@
     </div>
     <div id="main_content">
         <div id = "left_info_bar">
-            <h2 id="academic_header">Academic Information</h2>
+            <h2 id="academic_header" class="headers">Academic Information</h2>
             <div class="info_section" id = "school_section">
                 <div class="info_label" id = "school_label">
                     School:
@@ -171,44 +171,59 @@
                 <a href="#" class="info_name" id="department_name">{{department}}</a>
                 <select class="edit_field" id="department_dropdown"></select>
             </div>
-            {{#if research}}
-                <div class="info_section" id = "research_section">
-                    <div class="info_label" id = "research_label">
-                        Research:
-                    </div>
-                    <div class="info_name">{{department}}</div>
-                    <input type="text" class="edit_field" va>
+            <div class="info_section" id = "research_section">
+                <div class="info_label" id = "research_label">
+                    Research Interests:
                 </div>
-            {{/if}}
+                <div class="info_name">{{research}}</div>
+                <input type="text" class="edit_field" id="research_input">
+            </div>
             {{#if professor}}
                 <div class="info_section" id = "office_section">
                     <div class="info_label" id = "office_label">
                         Office Location:
                     </div>
                     <div class="info_name">{{office_location}}</div>
+                    <input type="text" class="edit_field" id="office_input">
                 </div>
             {{else}}
-                {{#if majors}}
                 <div class="info_section" id = "major_section">
                     <div class="info_label" id = "major_label">
                         Major:
                     </div>
                     {{#each majors}}
-                    <div class="info_name">{{name}}</div>
+                    <div class="info_name major">{{name}}</div>
                     {{/each}}
+                    <div class="info_name undeclared" style="display:none">undeclared</div>
+                    <input type="text" class="edit_field major">
+                    <input type="text" class="edit_field major" placeholder="double major">
+                    <input type="text" class="edit_field major" placeholder="triple major">
                 </div>
-                {{/if}}
-                {{#if minors}}
                 <div class="info_section" id = "minor_section">
                     <div class="info_label" id = "minor_label">
                         Minor:
                     </div>
                     {{#each minors}}
-                    <div class="info_name">{{name}}</div>
+                    <div class="info_name minor">{{name}}</div>
                     {{/each}}
+                    <input type="text" class="edit_field minor">
+                    <input type="text" class="edit_field minor">
+                    <input type="text" class="edit_field minor">
                 </div>
-                {{/if}}
             {{/if}}
+            <h2 id="account_header" class="headers">Account Information</h2>
+            <div class="info_section account" id = "name_section">
+                <div class="info_label" id = "name_label">
+                    Full Name:
+                </div>
+                <input type="text" class="edit_field" id="name_input">
+            </div>
+            <div class="info_section account" id = "email_section">
+                <div class="info_label" id = "email_label">
+                    School Email:
+                </div>
+                <input type="text" class="edit_field" id="email_input">
+            </div>
         </div>
         <div id = "tab_contents">
             <div class="profile_panel active" id="profile_panel_1"> <!-- feed -->

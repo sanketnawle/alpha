@@ -479,6 +479,7 @@ class ProfileController extends Controller
     public function actionEditProfile(){
         $new_data = array();
         $user_id = $_POST['user'];
+        $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
         if(isset($_POST['year'])){
             $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $student_attributes->year = $_POST['year'];
@@ -490,17 +491,14 @@ class ProfileController extends Controller
 
         }
         if(isset($_POST['bio'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $user->user_bio = $_POST['bio'];
             if($user->save()){
                 $new_data['bio'] = "success";
             }else{
                 $new_data['bio'] = $user->getErrors();
             }
-
         }
         if(isset($_POST['name'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $name = explode(' ',$_POST['name']);
             if(sizeof($name) < 2){
                 $user->firstname = $name;
@@ -530,22 +528,52 @@ class ProfileController extends Controller
             }
         }
         if(isset($_POST['school'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $school = School::model()->find('school_name=:sname',array(':sname'=>$_POST['school']));
-            if($school){
-                $user->school_id = $school->school_id;
-                if($user->save()){
-                    $new_data['school'] = "success";
-                   // $new_data['new_school_id'] = $school->school_id;
+
+            $school = School::model()->find('school_id=:sid',array(':sid'=>$_POST['school']));
+            if($user->school_id != $school->school_id){
+                if($school){
+                    $user->school_id = $school->school_id;
+                    if($user->save()){
+                        $new_data['school'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['school'] = $user->getErrors();
+                    }
                 }else{
-                    $new_data['school'] = $user->getErrors();
+                    $new_data['school'] = $school->getErrors();
                 }
-            }else{
-                $new_data['school'] = $school->getErrors();
             }
 
-
         }
+        if(isset($_POST['department'])){
+            $department = Department::model()->find('department_id=:did',array(':did'=>$_POST['department']));
+            if($user->department_id != $department->department_id){
+                if($department){
+                    $user->department_id = $department->department_id;
+                    if($user->save()){
+                        $new_data['department'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['department'] = $user->getErrors();
+                    }
+                }else{
+                    $new_data['department'] = $department->getErrors();
+                }
+            }
+        }
+        if(isset($_POST['email'])){
+            if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                $user->user_email = $_POST['email'];
+                if($user->save()){
+                    $new_data['email'] = "success";
+                }else{
+                    $new_data['email'] = $user->getErrors();
+                }
+            }else{
+                $new_data['email'] = "not a valid email";
+            }
+        }
+
         if(isset($_POST['majors'])){
             if($_POST['majors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
@@ -562,7 +590,6 @@ class ProfileController extends Controller
         }
         if(isset($_POST['interests'])){
             $new_data['interests']= $this->actionAddInterest($_POST['interests'],$user_id);
-
         }
         $this->renderJSON($new_data);
     }
@@ -742,6 +769,7 @@ class ProfileController extends Controller
         $data['school']=$user->school->school_name;
         $data['university']=$user->school->university->university_name;
         $data['department']=$user->department->department_name;
+        $data['email']=$user->user_email;
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
             $data['classes'][$i]['name']=$class->course->course_name;
@@ -749,11 +777,10 @@ class ProfileController extends Controller
         }
         if($user->user_type=="s"){
             $data['minors']=array();
-            foreach($user->minors as $i=>$minor){
-                $data['minors'][$i]['name']=$minor->name;
+            foreach($user->minors as $i=>$minor) {
+                $data['minors'][$i]['name'] = $minor->name;
             }
             $data['majors']=array();
-
             foreach($user->majors as $i=>$major){
                 $data['majors'][$i]['name']=$major->name;
             }

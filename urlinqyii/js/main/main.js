@@ -221,7 +221,13 @@ $(document).ready(function(){
     });    
 
 
+    var group_name_left = $("p#group_name").position().left;
+    $("div.center_admin").css({"left":group_name_left})
 
+    $(window).on('resize', function(){
+         var group_name_left = $("p#group_name").position().left;
+        $("div.center_admin").css({"left":group_name_left})
+    });
 
     //$('#create_todo_form').submit(function (e) {
     $(document).on('click','#create_todo_form',function(e){

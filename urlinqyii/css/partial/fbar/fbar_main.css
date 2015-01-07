@@ -6,7 +6,7 @@ div#fbar_new{
     position: relative;
     height: auto;
     word-wrap: break-word;
-    min-height: 60px;
+    min-height: 50px;
     -moz-transition: height 450ms ease, box-shadow 250 ease;
     -webkit-transition: height 450ms ease, box-shadow 250 ease;
     transition: height 450ms ease, box-shadow 250 ease;
@@ -38,8 +38,8 @@ section#fbar_buttons .fbar_buttonwrapper{
     top: 0px; left: 0; 
     cursor: pointer;
     width: 180.5px; 
-    height: 37px; 
-    padding: 12px 0px 11px 0px; color: #696969; 
+    height: 35px; 
+    padding: 7px 0px 8px 0px; color: #696969; 
     display: inline-block;
     font-size: 15px; opacity: .9; font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
     background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
@@ -52,16 +52,16 @@ section#fbar_buttons .fbar_buttonwrapper:last-of-type{
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
     background-image: url(../../../assets/Fbar_icon_map.png);
-    -moz-transform: scale(.87);
-    -webkit-transform: scale(.87);
-    transform: scale(.87);  
+    -moz-transform: scale(.65);
+    -webkit-transform: scale(.65);
+    transform: scale(.65);  
     background-size: auto;
     background-repeat: no-repeat;
     position: relative;
     display: inline-block;
     margin-left: 27px;
     float: left;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
@@ -113,9 +113,9 @@ section#fbar_buttons .fbar_buttonwrapper:hover{
 }
 
 section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
-    -moz-transform: scale(.9);
-    -webkit-transform: scale(.9);
-    transform: scale(.9);
+    -moz-transform: scale(.665);
+    -webkit-transform: scale(.665);
+    transform: scale(.665);
     
 }
 
@@ -141,7 +141,8 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
     
     width: 40px;
     height: 46px;
-    top: -3px;
+    margin-top: -1px!important;
+    left: 4px;
 }
 
 .fbar_button_icon#fbar_icon_event{
@@ -639,6 +640,7 @@ em.down_arrow{
     width: 20px;
     height: 18px;
     top: 8px;
+    pointer-events: none;
 }
 
 /* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
@@ -784,14 +786,13 @@ ul.menu_audience ul.dropit-submenu{
 }
 
 ul.menu_audience ul.dropit-submenu li{
-
     border-bottom: 1px solid rgba(237, 237, 237, 0.93);
-    
-
     margin: 0 auto;
-
     width: 90%;
+}
 
+ul.menu_audience ul.dropit-submenu li:last-of-type{
+    border-bottom:none;
 }
 
 ul.menu_audience ul.dropit-submenu li:hover{
@@ -949,6 +950,91 @@ div.upload_half > div > div.upload_button{
     margin-left: 36px;
     border-color: #Ddd; 
     box-shadow: 0px -1px #fff inset, rgba(0, 0, 0, 0.0980392) 0px 1px 0px 0px; color: #575757 !important; font-weight: 600; 
+}
+
+a.privacy_dropdown_link{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.privacy_dropdown{
+    top: -104px!important;
+    left: 6px!important;
+    padding: 4px 11px;
+    border-radius: 5px;
+    background-color: rgba(51, 51, 51, 0.760784);
+    padding-bottom: 1px;
+    top: -100px;
+    left: 12px;
+    padding: 5px 10px!important;
+    padding-bottom: 2px!important;
+}
+
+li.no_relative{
+    position:static!important;
+}
+
+ul.privacy_dropdown div.help-wedge{
+ border-color: transparent;
+border-top-color: rgba(51, 51, 51, 0.76);
+border-style: dashed dashed solid;
+border-top-style: solid;
+border-width: 0 8.5px 8.5px;
+border-top-width: 8.5px;
+display: block;
+z-index: 1;
+border-radius: 1px;
+height: 4px;
+width: 1px;
+
+ top: 100%;
+padding: 0;
+
+ position: absolute;
+left: 9px;   
+}
+
+.privacy_dropdown a{
+    font-size: 12.5px;
+    color: #fff;
+    padding: 10px 0px;
+    width: 100%;
+    padding-right: 20px;
+}
+
+li.privacy_list > span{
+    display: none!important;
+    background-image: url(../../../assets/checked.png)!important; 
+    background-size: auto!important; 
+    background-repeat: no-repeat!important;
+    position: absolute!important;
+    right: 0px!important;
+    background-position: 0 0 !important;
+    height: 20px!important;
+    -moz-transform: scale(.87); -webkit-transform: scale(.87); 
+    transform: scale(.75);
+    top: 7px!important;    
+}
+
+
+li.privacy_list:hover > span{
+    display: inline-block!important;
+}
+
+li.privacy_list.active > span{
+    display:inline-block!important;
+}
+
+.privacy_dropdown li:hover > a{
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.privacy_dropdown li:active > a{
+    color: rgba(255, 255, 255, 0.5);
 }
 
 div.upload_half > div > div.upload_button:hover{
