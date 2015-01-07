@@ -150,6 +150,10 @@
     border-bottom: 1px  grey;
     font-weight: 10px;
 }
+
+.info_section.account{
+    display: none;
+}
 .info_label{
     color:#808080;
     font-size: 12px;
@@ -162,10 +166,11 @@
      margin-left:10px;
      margin-bottom: 10px;
      font-size: 15px;
-    display: inline-block;
+     display: block;
  }
 a.info_name{
     text-decoration: none;
+    color:blue;
     margin-top:5px;
     margin-left:10px;
     margin-bottom: 10px;
@@ -181,7 +186,10 @@ a.info_name{
     vertical-align: middle;
     cursor:pointer;
 }
-
+.ui-autocomplete{
+    z-index: 9999 !important;
+    font-size: 12px !important;
+}
 .groups_wrapper{
     width: 90%;
     margin-left: 10px;
@@ -248,18 +256,17 @@ a.info_name{
     font-size: 26px;
     margin-left: 8px;
 }
-#academic_header{
+.headers{
     display: none;
     margin-left:10px;
 }
-.info_dropdown{
+.edit_field{
     display: none;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 80%;
     white-space: nowrap;
     margin-left: 10px;
-
 }
 .user_pic{
     width:160px;
