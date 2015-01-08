@@ -10,15 +10,11 @@ var question_type = "regular_type";
 var origin_id = 25;
 
 
+
+
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
     //liking a post
-
-    $.getJSON(base_url + "/js/partial/status_bar/NYU_locations.json",function(json_data){
-        var parsedLocations = JSON.stringify(json_data);
-    });
-
-
 
     setTimeout(function(){
         sample();

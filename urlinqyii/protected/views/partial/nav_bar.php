@@ -238,6 +238,8 @@
             </div>
         </div>
 
+        <div class="nav_arrow"></div>
+
         <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
             <div class="nav_picture"></div>
             <div class="nav_text">Clubs</div>

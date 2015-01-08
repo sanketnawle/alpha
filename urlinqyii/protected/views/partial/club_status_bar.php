@@ -8,6 +8,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
+<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
 <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/autocomplete.js'></script>
@@ -105,7 +106,7 @@
                             <input placeholder = "Start date" id = "event_start_date" class = "fbar_date_time" type = "text" name = "event_start_date"><input placeholder = "Start time" id = "start_time" class = "fbar_date_time fbar_time_input" type = "text" name = "event_start_time"><em class = "event_time_to_arrow"></em><input placeholder = "End time" id = "event_end_time" class = "fbar_date_time fbar_time_input" type = "text" name = "event_end_time"><input placeholder = "End date" id = "event_end_date" class = "fbar_date_time" type = "text" name = "event_end_date">
                         </div>
                         <div class = "input_wrap" style = "position:relative;">
-                            <label for = "event_location">Where:</label><input placeholder = "Enter a location" list="location_datalist" id = "event_location" class = "autocomplete_location fbar_date_time" type = "text" name = "event_title"><datalist id="location_datalist"></datalist><span class = "where_icon"></span>
+                            <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "location_input autocomplete_location fbar_date_time" type = "text" name = "event_title"><span class = "where_icon"></span>
                         </div>
 
                         <div class = "event_textarea input_wrap">
@@ -152,10 +153,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div id = "post_attachments" class = "notes_form_hide_content help_div_shower">
+                        <div id = "post_attachments" class = "notes_form_hide_content event_form_hide_content help_div_shower">
                             <span></span>
                             <div class="help-div fbar_helpers">
                                 <div class="help-box">Attach files/notes</div>
+                                <div class="help-wedge">
+                                </div>
+                            </div>
+                        </div>
+                        <div id = "post_photos" style = "display:none" class = "event_form_content help_div_shower">
+                            <span></span>
+                            <div class="help-div fbar_helpers">
+                                <div class="help-box">Add photo/flier</div>
                                 <div class="help-wedge">
                                 </div>
                             </div>
