@@ -30,7 +30,7 @@ ulcal.controller("SemesterController", function ($scope, $routeParams, $timeout,
         var sem = parseInt($scope.sem) - 1;
         if (sem == -1) { sem = 3; --year; }
         return "#/semester/" + sem + "/" + year;
-    }
+    };
 
     $scope.class = "semester";
     $scope.title = "Semester";

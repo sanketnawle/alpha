@@ -24,7 +24,7 @@
     this.getDate = function (month, year, last) { return getFullDate(month, year, last); }
 
     this.getDateOfWeek = function (week, year) {
-        var simple = new Date(year, 0, 1 + (week - 1) * 7);
+        var simple = new Date(year, 0, 1 + (week) * 7);
         var dow = simple.getDay();
         var date = simple;
         if (dow <= 4)

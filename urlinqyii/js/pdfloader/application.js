@@ -1,12 +1,13 @@
 var previous = "";
 var events={};
+var pdf_year= (new Date()).getFullYear();
 
 window.onload = function () {
-  run_pdf_algo();
+  run_pdf_algo(false);
   
 };
 
-function run_pdf_algo(){
+var run_pdf_algo = function(db){
   if (typeof PDFJS === 'undefined') {
     alert('Built version of pdf.js is not found\nPlease run `node make generic`');
     return;
@@ -76,7 +77,7 @@ function run_pdf_algo(){
     var completeCallback = renderTask.internalRenderTask.callback;
     renderTask.internalRenderTask.callback = function (error) {
       //Step 2: what you want to do before calling the complete method 
-      highlightText()                 ;
+      highlightText(db)                 ;
       completeCallback.call(this, error);
       //Step 3: do some more stuff
     };
@@ -109,17 +110,31 @@ function run_pdf_algo(){
 }
 
 
-function highlightText(){
-  var rex=[];
-  var text = $('div.textLayer').children();
 
+function highlightText(db){
+  var full_text = "";
+  var text = $('div.textLayer').children();
+  $.each(text,function(index, value){
+    full_text+= $(value).text()+" ";
+  });
+  var sem_year = "(spring|fall|summer|winter)(.*?)([0-9][0-9][0-9][0-9])";
+  full_text = full_text.replace(/\s{2,}/g, ' ');
+  sem_year_matched = full_text.match(new RegExp(sem_year, "ig"));
+  if (sem_year_matched){
+    pdf_year = sem_year_matched[0].slice(sem_year_matched[0].length-4,sem_year_matched[0].length);
+  }
   $.each(text,function(index, value){
     if($(value).attr("analyzed")!="1"){
     $(value).css({'padding-left':'6px'});
+    previous = $(text[index-1]).text();
+    next = $(text[index+2]).text();
     var text_value = $(value).text();
-    var matched = chronotext(text_value.replace(".", ""));
-    if(matched && $.trim(matched[0][0]).length>3){
+    var matched = chronotext(text_value);
+    if(matched && $.trim(matched[0][0]).length>2 && isNaN($.trim(matched[0][0]))){
+          if(db){
           get_date(text_value+" "+$(text[index+1]).text().slice(0,5));
+          }
+
           if(text_value.indexOf(matched[0][0])<0){
             $(value).html('<span style="opacity:0.1;background-color:#2E0854;">'+$(value).text()+'</span>');
           }
@@ -144,16 +159,21 @@ var chronotext = function(input){
     var parsed = chrono.parse(input);
     var data = parsed.map(function(p) { return [p.text, p.startDate, Date.parse(p.text)]; });
     if(data.length>0){
-      //get_date(input);
       return data;
     }
     else{
-      previous = input;
+      var matched_month = input.match("(Jan(.|,)|Feb(.|,)|Mar(.|,)|Apr(.|,)|May(.|,)|Jun(.|,)|Jul(.|,)|Aug(.|,)|Sep(.|,)|Oct(.|,)|Nov(.|,)|Dec(.|,))",'ig')
+      if(matched_month){
+        var mon = [];
+        mon[0]=matched_month;
+        return mon;
+      }
       return false;
     }
   }
 
 var get_date= function(input){
+  input = input.replace(/\s{2,}/g, ' ');
   var raw_input = input;
   var found = false;
   /*
@@ -183,7 +203,7 @@ var get_date= function(input){
       input = input.slice(input.indexOf(matched_year[0])+matched_year[0].length, input.length);//input.replace(matched_year[0],"")
       }
       else{
-        final_date+=" "+(new Date()).getFullYear();
+        final_date+=" "+pdf_year;
       }
       var matched_time = input.match(new RegExp(times_moment, 'ig')) ;
       if(matched_time){
@@ -191,41 +211,151 @@ var get_date= function(input){
         if(matched_time.indexOf(" ")<0){
           matched_time[0] =matched_time[0].slice(0,matched_time[0].length-2) +" "+ matched_time[0].slice(matched_time[0].length-2,matched_time[0].length);
         }
+          matched_time[0] = format_time(matched_time[0])
         final_date+=" "+matched_time[0].toUpperCase();
       input = input.slice(input.indexOf(matched_time[0])+matched_time[0].length, input.length);//input.replace(matched_time[0],"")
       }
       else {
-        matched_time = input.match(new RegExp(times, 'ig')) ;
+        matched_time = input.match(new RegExp(times, 'ig'));
         if(matched_time){
           matched_time[0] = $.trim(matched_time[0]);
           if(matched_time.indexOf(" ")<0){
             matched_time[0] =matched_time[0].slice(0,matched_time[0].length-2) +" "+ matched_time[0].slice(matched_time[0].length-2,matched_time[0].length);
           }
+          matched_time[0] = format_time(matched_time[0])
           final_date+=" "+matched_time[0].toUpperCase();
           input = input.slice(input.indexOf(matched_time[0])+matched_time[0].length, input.length);//input.replace(matched_time[0],"")
         }
       }
       if(!events.hasOwnProperty(final_date)){
-        events[final_date] = ((previous+raw_input).split(matched_month)[0]).split(".").pop();
+        var title = get_title(((previous+" "+raw_input).split(matched_month)[0]).split(".").pop());
+        events[final_date] = title;
       }
     }
   }
   var stage_two_input = input;
-  var mmddyyyy = "([1-3]?[0-9])(\/|-|.)([1-3]?[0-9])(\/|-|.)([0-9][0-9][0-9][0-9])";
-  var mmddyy = "([1-3]?[0-9])(\/|-|.)([1-3]?[0-9])(\/|-|.)([0-9][0-9])";
+  var mmddyyyy = "(([1-3]?[0-9])\/([1-3]?[0-9])\/([0-9][0-9][0-9][0-9]))|(([1-3]?[0-9])-([1-3]?[0-9])-(([0-9][0-9][0-9][0-9])))|(([1-3]?[0-9]).([1-3]?[0-9]).(([0-9][0-9][0-9][0-9])))";
+  var mmddyy = "(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{2})";
+  var mmdd = "([1-3]?[0-9])\/([1-3]?[0-9])";
   var matched_mmddyyyy = stage_two_input.match(new RegExp(mmddyyyy, 'ig'));
   if (matched_mmddyyyy){
     if(!events.hasOwnProperty(matched_mmddyyyy[0])){
-        events[matched_mmddyyyy[0]] = ((previous+raw_input).split(matched_month)[0]).split(".").pop();
+      var title = get_title(((previous+" "+raw_input).split(matched_mmddyyyy)[0]).split(".").pop());
+        events[matched_mmddyyyy[0]] = title;
       }
   }
   else{
-    var matched_mmddyy = stage_two_input.match(new RegExp(mmddyy, 'ig'));
+    var matched_mmddyy = stage_two_input.match(new RegExp(mmddyy));
     if(matched_mmddyy){
       if(!events.hasOwnProperty(matched_mmddyy[0])){
-        events[matched_mmddyy[0]] = ((previous+raw_input).split(matched_month)[0]).split(".").pop();
+        var title = get_title(((previous+" "+raw_input).split(matched_mmddyy)[0]).split(".").pop());
+        events[matched_mmddyy[0]] = title;
+      }
+    }
+    else{
+      var matched_mmdd = stage_two_input.match(new RegExp(mmdd, 'ig'));
+      if (matched_mmdd){
+        matched_mmdd[0] = matched_mmdd[0]+"/"+pdf_year;
+        if(!events.hasOwnProperty(matched_mmdd[0])){
+          var title = get_title(((previous+" "+raw_input).split(matched_mmdd)[0]).split(".").pop());
+            events[matched_mmdd[0]] = title;
+          }
       }
     }
   }
-  console.log(events);
+  add_event_to_ui(events);
+}
+
+
+var format_time = function(time_value){
+  time_value = time_value.replace(/\s{2,}/g, ' ');
+  var split_space = time_value.split(" ");
+  var split_time = split_space[0].split(":");
+  if(split_time.length>1){
+    if(split_time[0].length==1){
+      if(split_time[1].length==1){
+        return "0"+split_time[0]+":0"+split_time[1]+" " + split_space[1];
+      }
+      else{
+        return "0"+split_time[0]+":"+split_time[1]+" " + split_space[1];
+      }
+    }
+    else{
+      if(split_time[1].length==1){
+        return split_time[0]+":0"+split_time[1]+" " + split_space[1];
+      }
+      else{
+        return split_time[0]+":"+split_time[1]+" " + split_space[1];
+      }
+    }
+  }
+  else{
+    if(split_time[0].length==1){
+      return "0"+split_time[0]+":00 " + split_space[1];
+    }
+    else{
+      return split_time[0]+":00 " + split_space[1];
+    }
+  }
+}
+
+
+var get_title = function(title){
+  var junk = ",|-|.|!|\/";
+  var after_rep_junk = title.replace(new RegExp(junk), "");
+  var after_rep_num = after_rep_junk.replace(new RegExp("[0-9]", "g"), "")
+  if($.trim(after_rep_num).length<4){
+    return next;
+  }
+  else{
+    return title;
+  }
+}
+
+var added_events = new Array();
+
+var add_event_to_ui = function(events_generated){
+  html_text = "";
+  var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
+  $.each(events_generated,function(index, value){
+    var stamp = new Date(Date.parse(index));
+    if(stamp && added_events.indexOf(stamp)<0){
+      html_text+='<div class = "syllabus_event editable">\
+                    <div class = "day_month_box day_box_color">\
+                        <div class = "calendar_top_border"></div>\
+                        <div class = "calendar_bottom_section">\
+                            <span class = "day">'+stamp.getDate()+'</span>\
+                            <span class = "month">'+month[stamp.getMonth()]+'</span>\
+                        </div>\
+                    </div>\
+                    <div class = "event_name_buttons">\
+                        <span class ="event_name_text">\
+                            Midterm 1\
+                        </span>\
+                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value+'"">\
+                        <div class = "done_editing_button">\
+                            Done\
+                        </div>\
+                    </div>\
+                </div>'
+      added_events.push(stamp);
+    }
+    else{
+      console.log(index);
+    }
+
+  });
+  $('div#events_list').html(html_text);
 }

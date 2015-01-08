@@ -81,6 +81,12 @@
 }
 
 
+
+input.error {
+    background-color: red;
+}
+
+
 .arrow_divider {
     width: 30px;
     height: 30px;
