@@ -18,6 +18,8 @@ $(document).ready(function(){
         $('.panel.active').removeClass('active');
         $('#panel_' + panel_id).addClass('active');
     });
+    
+    
 
     
 
@@ -218,8 +220,21 @@ $(document).ready(function(){
             $follow_button.text('Following');
             $follow_button_container.removeClass("unfollow");
         }
-    });    
-
+    });  
+    
+    // Notification Settings Message
+    $('.cmn-toggle').click(function() {
+	   var checked = $('.cmn-toggle').prop('checked');  
+	   if (checked == true) {
+	       var output = $('#left_text')
+	       output.html("Notifications are ON for this class");
+	   } 
+	   else {
+		   var output = $('#left_text')
+	       output.html("Notifications are OFF for this class");
+	   }
+    });
+    
 
 
 
