@@ -195,6 +195,12 @@ jQuery(document).ready(function(){
     });
 
 
+    jQuery(document).on('keydown','.time_input', function(){
+        var $time_selector = $('#time_selector');
+        //Hide the selector
+        $time_selector.removeClass('active');
+    });
+
 
 
 
