@@ -27,11 +27,11 @@ $(document).ready(function(){
 //        alert('SCROLL');
 
         var $page = $(this);
-
         var $tab_bar = $('#tab_bar');
         var $tab_wedge = $('.tab_wedge');
         var $nav_bar = $('#nav_bar');
         var $panel = $('.panel');
+        var $panel_feed = $('.panel.panel_feed');
         var $cover_photo = $('#cover_photo');
 
         //$tab_bar_position.left + ", top: " + $tab_bar_position.top
@@ -81,10 +81,13 @@ $(document).ready(function(){
             $tab_bar.css({'border-radius': '2px'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
             $panel.css({'margin-top':'32px'});
+            $panel_feed.css({'margin-top':'41px'});
             $tab_wedge.css({'opacity':'0'});
             $tab_wedge.css({'margin-top':'15px'});
             $tab_wedge.css({'height':'0px'});
             $cover_photo.css({'opacity':'0'});
+            $("#fixed_element.planner_group").css({'position':'fixed'});
+            $("#fixed_element.planner_group").css({'top':'125px'});
 
         }if(Math.floor(scroll_offset_top) <= 255){
             $nav_bar.css({'position':'fixed'});
@@ -104,6 +107,8 @@ $(document).ready(function(){
             $tab_wedge.css({'opacity':'1'});
             $tab_wedge.css({'margin-top':'-6px'});
             $tab_wedge.css({'height':'10px'});
+            $("#fixed_element.planner_group").css({'position':'relative'});
+            $("#fixed_element.planner_group").css({'top':'0px'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 
@@ -123,6 +128,8 @@ $(document).ready(function(){
             $tab_wedge.css({'opacity':'1'});
             $tab_wedge.css({'margin-top':'-6px'});
             $tab_wedge.css({'height':'10px'});
+            $("#fixed_element.planner_group").css({'position':'relative'});
+            $("#fixed_element.planner_group").css({'top':'0px'});
 
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 
@@ -186,6 +193,12 @@ $(document).ready(function(){
         }          
     });
 
+    $("#page").scroll(function() {
+        var y=$(this).scrollTop()*0.0072;
+        var opacityShift = y*1;
+        //alert(y);
+        $("div.group_info_block").css({"opacity":1-opacityShift});
+    }); 
 
     //Handles the member leave/join/follow button
     $('#group_user_action_button').mouseenter(function(){
@@ -235,6 +248,39 @@ $(document).ready(function(){
 	   }
     });
     
+
+    $(function(){
+
+        var $quote = $("#group_name");
+        
+        var $numWords = $quote.text().split("").length;
+        
+        if (($numWords >= 1) && ($numWords < 10)) {
+            $quote.css("font-size", "38px");
+            $quote.css("letter-spacing", "1.5px;");
+        }
+        else if (($numWords >= 10) && ($numWords < 20)) {
+            $quote.css("font-size", "35px");
+            $quote.css("letter-spacing", "1.3px;");
+        }
+        else if (($numWords >= 20) && ($numWords < 30)) {
+            $quote.css("font-size", "32px");
+            $quote.css("letter-spacing", "1.15px;");
+        }
+        else if (($numWords >= 30) && ($numWords < 40)) {
+            $quote.css("font-size", "28px");
+        }
+        else {
+            $quote.css("font-size", "23px");
+        }    
+        var group_name_left = $("p#group_name").position().left;
+        $("div.center_admin").css({"left":group_name_left})
+
+        $(window).on('resize', function(){
+             var group_name_left = $("p#group_name").position().left;
+            $("div.center_admin").css({"left":group_name_left})
+        });       
+    });
 
 
 

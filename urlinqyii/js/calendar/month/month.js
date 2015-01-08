@@ -101,13 +101,11 @@ jQuery(document).ready(function(){
     });
 
 
-    jQuery(document).on('click','.popup_exit_button',function(event){
-        event.stopPropagation();
-        jQuery(this).closest('.popup').removeClass('active');
-    });
 
 
-    jQuery(document).on('click','#inspect_event_delete_button',function(event){
+
+    jQuery(document).on('click','#inspect_event_delete_button_month',function(event){
+        //alert('MONTH');
         event.stopPropagation();
         var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
         var event_id = last_clicked_event_id;
@@ -123,7 +121,7 @@ jQuery(document).ready(function(){
                 if(response['success']){
                     $inspect_event_popup_month.removeClass('active');
                     jQuery('.month_day_event[data-id="' + last_clicked_event_id + '"]').remove();
-                    alert('successfully deleted event: ' + event_id);
+                    //alert('successfully deleted event: ' + event_id);
                 }else{
                     alert(JSON.stringify(response));
                 }

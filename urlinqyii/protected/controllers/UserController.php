@@ -17,8 +17,12 @@ class UserController extends Controller
             $this->renderJSON($data);
             return;
         }
-
-        $current_user_id = $this->get_current_user_id();
+        $current_user_id = null;
+        if(isset($_POST['from_user_id'])){
+            $current_user_id = $_POST['from_user_id'];
+        }else {
+            $current_user_id = $this->get_current_user_id();
+        }
         $follow_user_id = $_POST['user_id'];
 
         $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='$current_user_id' AND `to_user_id`='$follow_user_id'");

@@ -1,11 +1,11 @@
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 500%;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 2000;
 }
 #profile_wrapper{
@@ -17,15 +17,14 @@
 
     background-color: white;
     opacity: 1;
-    z-index:2001;
+    z-index:2000;
     font-family: "Avenir", Arial, sans-serif;
 }
 #left_info_bar{
     width: 30%;
     height:100%;
     float: left;
-    background-color: #dcdcdc ;
-    font-family: "Avenir", Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 #tab_contents{
     display: inline-block;
@@ -35,20 +34,20 @@
 #main_content{
     clear:left;
     height: auto;
-    background-color: #d3d3d3;
+    position: relative;
+    background-color: #fafafa;
 }
 #modal_header{
-    height: 328px;
+    height: 331px;
 }
 .controls{
     float:left;
 }
-
 #modal_controls{
-    background-color: rgba(94, 94, 94,1);
+    background-color: #3b3e41;
     height: 53px;
 
-    z-index: 200;
+
     font-family: 'Open Sans', sans-serif;
     color: white;
     text-decoration: none;
@@ -57,18 +56,27 @@
 
     font-family: 'Open Sans', sans-serif;
     color: white;
+    
+
+    background: transparent;
+
     text-decoration: none;
+    
+
+    border: none!important;
+
 }
 
 #modal_label {
-    font-weight: 600;
-    font-size: 14.5px;
+    font-weight: 500;
+    font-size: 18.5px;
     display: inline-block;
     float: right;
     width: auto;
     margin-right: auto;
-    cursor:pointer;
-    padding-top: 16px;
+    font-family: Avenir;
+    cursor: default;
+    padding-top: 17px;
     padding-left: 2px;
     padding-bottom: 18px;
     float: left;
@@ -102,21 +110,25 @@
 #main_bar{
     height: 90px;
     border: 1px;
-    box-shadow: 0px 0px 4px #888888;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
 }
 #profile_picture_wrapper{
     position: relative;
-    border: 5px solid #fff;
+    border: 3px solid #fff;
     float:left;
-
-    margin-left: 13px;
-    box-shadow: 0px 0px 4px #888888;
+    background-color: white;
+    height: 199px;
+    margin-left: 13px; 
+    -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27); 
+    -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27); 
+    box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27);
     margin-top:-130px;
 }
 #profile_picture{
-
-    width:160px;
-    height:160px;
+    background-size: cover;
+    width: 165px;
+    height: 165px;
 }
 #name_info_wrapper{
     font-family: "Avenir", Arial, sans-serif;
@@ -137,22 +149,20 @@
 #profile_tab_bar{
     left: 20px;
     height: 52px;
-    z-index: 10;
+
     display: block;
     position: relative;
     /* padding-left: 0px; */
     width: 100%;
 }
-<<<<<<< HEAD
 
-=======
-a {
-
-}
->>>>>>> cedcc785ed2b181d384a09c414d7df86ac3b2b04
 .info_section{
     border-bottom: 1px  grey;
     font-weight: 10px;
+}
+
+.info_section.account{
+    display: none;
 }
 .info_label{
     color:#808080;
@@ -166,10 +176,11 @@ a {
      margin-left:10px;
      margin-bottom: 10px;
      font-size: 15px;
-    display: inline-block;
+     display: block;
  }
 a.info_name{
     text-decoration: none;
+    color:blue;
     margin-top:5px;
     margin-left:10px;
     margin-bottom: 10px;
@@ -177,7 +188,7 @@ a.info_name{
 
 .profile_tab {
     display: inline-block;
-    width: 16%;
+    width: 15.9%;
     height: 100%;
     color: rgba(255, 255, 255, 0.65);
 
@@ -185,7 +196,10 @@ a.info_name{
     vertical-align: middle;
     cursor:pointer;
 }
-
+.ui-autocomplete{
+    z-index: 9999 !important;
+    font-size: 12px !important;
+}
 .groups_wrapper{
     width: 90%;
     margin-left: 10px;
@@ -235,8 +249,41 @@ a.info_name{
     box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
     color:black;
 }
+#edit_profile_button{
+    height: 26px;
+    font-family: 'Open Sans', sans-serif;
+    width: 80%;
+    position: relative;
+    font-weight: 600;
+    border-radius: 4px;
+    margin: auto;
+    z-index:2;
+    margin-top: 6px;
+    margin-left: 16px;
+    ckground-color: #f2f2f2; text-shadow: 0 1px 1px rgba(255,255,255,0.75); 
+    border: 1px solid #ddd; background-repeat: repeat-x; 
+    color: #575757;
+    background-color: #f2f2f2;
+    font-size: 14px; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease; box-shadow: 0px -1px #fff inset;
+}
+#cancel_edit_button{
+    display:none;
 
-
+    font-size: 26px;
+    margin-left: 8px;
+}
+.headers{
+    display: none;
+    margin-left:10px;
+}
+.edit_field{
+    display: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80%;
+    white-space: nowrap;
+    margin-left: 10px;
+}
 .user_pic{
     width:160px;
     height:160px;
@@ -286,7 +333,7 @@ div.profile_tab div.profile_tab_content{
 
 .profile_panel.active{
     display: block;
-    z-index: 20;
+
 }
 .profile_tab_text{
     float: left;
@@ -298,7 +345,7 @@ div.profile_tab div.profile_tab_content{
     text-align: center;
     text-transform: uppercase;
     padding-top: 19px;
-    color: #4B5258;
+    color: #999;
     cursor: default;
     font-size: 13.5px;
     letter-spacing: .02em;
@@ -347,11 +394,51 @@ div.profile_tab:hover div.profile_tab_text{
     position:relative;
     width:100%;
     height: 278px;
-    background-color: black;
+
     color: white;
     overflow: hidden;
 }
-
+button.download_showcase_button {
+    width: 28px;
+    left: 5px;
+    height: 28px;
+    top: 5px;
+    border-radius: 4px;
+    position: absolute;
+    /* border: 1px solid #898585; */
+    border: 1px solid white;
+    background-color: transparent;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background-color: rgba(71, 71, 71, 0.49);
+    border-color: #868686 #8F8F8F #797979;
+    -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+    box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+    -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.download_button_icon {
+    width: 21px;
+    height: 21px;
+    left: -1px;
+    top: 2px;
+    position: absolute;
+    background-image: url('../../assets/download_white_icon.png');
+    background-position: 0px;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
 
 .showcase_items{
     white-space: nowrap;
@@ -362,19 +449,26 @@ div.profile_tab:hover div.profile_tab_text{
     top: 10px;
 }
 .showcase_item{
-    width: 460px;
+    width: 480px;
     display: inline-block;
     height: 278px;
-    margin-right: 30px;
+    margin-right: 10px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.showcase_url{
+    overflow: hidden;
 }
 
 .showcase_label{
     position:relative;
-    height:30px;
-    width:100%;
+    height: 38px;
+    width: 460px;
     text-align: right;
-    line-height: 1.9;
+    text-overflow: ellipsis;
+    line-height: 2.3;
     padding-right: 10px;
     padding-left: 10px;
     background-color: red;
@@ -396,7 +490,63 @@ div.profile_tab:hover div.profile_tab_text{
 }
 .showcase_item.center{
 
+}
 
+
+.showcase_delete{
+    cursor: pointer;
+    text-decoration: underline;
+    position:absolute;
+    top: 44px;
+    right:10px;
+}
+#profile_overlay{
+    width:100%;
+    height:100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    z-index:-1;
+    display:none;
+}
+#add_showcase_form{
+    display: none;
+    position: fixed;
+    top: 74px;
+    background-color: white;
+    color: black;
+    width: 500px;
+    margin-left: 255px;
+    height: 278px;
+
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: -10px 0px 20px -8px #e1e1e1;
+
+}
+button.add_showcase_button {
+    background-color: rgba(34, 34, 34, 0.6);
+    position: absolute;
+    border-radius: 4px;
+    width: 134px;
+    height: 28px;
+    left: 329px!important;
+    right:20px;
+    font-family: AVenir;
+    width: 340px!important;
+    font-size: 17px;
+    bottom:20px;
+    color: white;
+    border: 1px solid white;
+
+
+    box-shadow: 0 0 1px black;
+    cursor: pointer;
+}
+
+.add_showcase_button.empty{
+    top:100px;
+    left:400px;
+    width:200px;
+    height:50px;
 }
 .showcase_arrow {
     width: 20px;
@@ -404,7 +554,7 @@ div.profile_tab:hover div.profile_tab_text{
     height: 20px;
     display: inline-block;
     top: 82%;
-    z-index: 3000;
+
 }
 
 .showcase_arrow.left {

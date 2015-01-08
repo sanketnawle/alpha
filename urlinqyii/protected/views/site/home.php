@@ -12,6 +12,7 @@
 
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
         <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/site/main.css">
         <link rel = "stylesheet" type = "text/css" href = "<?php echo Yii::app()->request->baseUrl; ?>/css/home/home_adjustments.css">
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
@@ -21,7 +22,7 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
         <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
-
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
     </head>
 
 
@@ -37,7 +38,7 @@
                             <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>
                         </div>
                         <div id = "content_panel" class = "content_panel_home">
-                            <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'home','origin_id'=>$user->user_id,'origin'=>$user)); ?>
+                            <?php echo $this->renderPartial('/partial/nav_bar',array('user' => $user, 'origin_type'=>'home','origin_id'=>$user->user_id,'origin'=>$user)); ?>
                             <div id = "planner_column" class = "planner_column_home">
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element">

@@ -231,7 +231,7 @@ class ClassController extends Controller
                     $this->renderJSON($data);
                     return;
                 }else{
-                    $data = array('success'=>false,'error_id'=>4);
+                    $data = array('success'=>false,'error_id'=>4);  
                     $this->renderJSON($data);
                     return;
                 }
@@ -251,17 +251,53 @@ class ClassController extends Controller
 
 
     }
+    public function actionStoreSyllabus(){
+        $class_id = $_POST["class_id"];
+        $file_id = $_POST["file_id"];
+        $user_id = $this->get_current_user_id();
+        $official_syllabus = false;
+        $check_syllabus = ClassSyllabus::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id, ':user_id'=>$user_id));
+        if($check_syllabus){
+            $check_syllabus->updateByPk($check_syllabus->id, array("file_id"=>$file_id));
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }
+        else{
+        $class_syllabus = new ClassSyllabus;
+        $class_syllabus->class_id = $class_id;
+        $class_syllabus->file_id = $file_id;
+        $class_syllabus->user_id = $user_id;
+        $class_syllabus->official_syllabus = $official_syllabus;
 
+        if($class_syllabus->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>1);
+                $this->renderJSON($data);
+                return;
+            }
+        }
+    }
+
+    //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
-        if(!isset($_GET['id'])){
-            $data = array('success'=>false,'error_id'=>1);
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $this->get_current_user_id();
+        $user_id = null;
+        if(isset($_POST['user_id'])){
+            $user_id = $_POST['user_id'];
+        }else {
+            $user_id = $this->get_current_user_id();
+        }
 
-        $class_id = $_GET['id'];
+        $class_id = $_POST['id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
         //Check if this user is already a member for this class
         if(!$class_user){
@@ -275,13 +311,13 @@ class ClassController extends Controller
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>3);
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving class_user table');
                 $this->renderJSON($data);
                 return;
             }
         }else{
             //user is apart of this class
-            $data = array('success'=>false,'error_id'=>2);
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the class');
             $this->renderJSON($data);
             return;
         }
@@ -289,17 +325,21 @@ class ClassController extends Controller
 
     }
 
-
     public function actionLeave(){
-        if(!isset($_GET['id'])){
-            $data = array('success'=>false,'error_id'=>1);
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $this->get_current_user_id();
+        $user_id = null;
+        if(isset($_POST['user_id'])){
+            $user_id = $_POST['user_id'];
+        }else {
+            $user_id = $this->get_current_user_id();
+        }
 
-        $class_id = $_GET['id'];
+        $class_id = $_POST['id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
         //Check if this user is even in this class
         if($class_user){
@@ -309,13 +349,13 @@ class ClassController extends Controller
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>3);
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting class_user table');
                 $this->renderJSON($data);
                 return;
             }
         }else{
             //user is not apart of this class
-            $data = array('success'=>false,'error_id'=>2);
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the class');
             $this->renderJSON($data);
             return;
         }
@@ -323,6 +363,22 @@ class ClassController extends Controller
 
     }
 
+
+    public function actionGetSyllabusPDF(){
+        $class_id= $_GET["class_id"];
+        $class_syllabus = ClassSyllabus::model()->find('class_id=:id', array(':id'=>$class_id));
+
+        if($class_syllabus){
+            $file= File::model()->find('file_id=:id', array(':id'=>$class_syllabus["file_id"]));
+            $this->renderJSON($file);
+            return;
+        }
+        else{
+            $this->renderJSON(array("success"=>false));
+            return;
+        }
+
+    }
 
     //Returns only files uploaded by the professor
     public function actionClassFiles (){

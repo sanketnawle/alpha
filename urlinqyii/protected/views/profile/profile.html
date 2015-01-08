@@ -1,10 +1,11 @@
 
 
-<script src="{{base_url}}/js/jquery.min.js"></script>
 <!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
-<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>
+<!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
+
 <div class="overlay"></div>
 <div id="profile_wrapper">
+    <div id="profile_overlay"></div>
     <div id="modal_header" {{#if showcase}}{{else}}style="background-image: url( {{background_pic}} )"{{/if}}>
 
         <div id="modal_controls">
@@ -13,120 +14,95 @@
             <div id="modal_label">Profile | {{#if professor}}Professor{{else}}Student{{/if}}</div>
             <a href="#" class="close_modal">x</a>
         </div>
+
         <div id="showcase_wrapper">
-            <div class="showcase_controls">
-                <div class="showcase_delete"></div>
+
+
+            <div class="showcase_controls"{{#if showcase}}{{else}} style="display:none"{{/if}}>
                 <div class="showcase_arrow right" href=""></div>
                 <div class="showcase_arrow left" href=""></div>
             </div>
+
             <div class="showcase_items">
-                <div class="showcase_item center" showcase_index="0">
+
+                {{#each showcase}}
+                <div class="showcase_item{{center}}" showcase_index="{{index}}" file_id = {{id}}
+                     {{#if url}} style="background-image: url({{preview}})" {{/if}}>
                     <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
+                        <div class="showcase_label" style="background-color:{{color}}">
+                            {{#if url}}
+                            <div class="showcase_url">{{link}}</div>
+                            {{else}}
+                            <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
+                                <button type="button" class="download_showcase_button">
+                                    <i class="download_button_icon"></i>
+                                </button>
+                            </a>
+                            <div class="showcase_type">.{{type}}</div>
+                            {{/if}}
+
+
                         </div>
                         <div class="showcase_text">
                             <div class="showcase_title">
-                                Adtech and Big Data
+                                {{title}}
                             </div>
                             <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
+                                {{description}}
                             </div>
                         </div>
-                        <div class="showcase_download"></div>
+
                     </div>
 
-                    <div class="showcase_image"  style="background-image: url()"></div>
+                    <div class="showcase_delete"><a>x</a></div>
 
 
                 </div>
-                <div class="showcase_item" showcase_index="1">
-                    <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
-                        </div>
-                        <div class="showcase_text">
-                            <div class="showcase_title">
-                                Adtech and Big Data
-                            </div>
-                            <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
-                            </div>
-                        </div>
-                        <div class="showcase_download"></div>
-                    </div>
-
-                    <div class="showcase_image"  style="background-image: url()"></div>
-
-
-                </div>
-                <div class="showcase_item" showcase_index="2">
-                    <div class="showcase_info">
-                        <div class="showcase_label">
-                            .pdf
-                        </div>
-                        <div class="showcase_text">
-                            <div class="showcase_title">
-                                Adtech and Big Data
-                            </div>
-                            <div class="showcase_description">
-                                This is a paper on the use of big data in digital marketing.
-                            </div>
-                        </div>
-                        <div class="showcase_download"></div>
-                    </div>
-
-                    <div class="showcase_image"  style="background-image: url()"></div>
-
-
-                </div>
+                {{/each}}
             </div>
-            <div class="showcase_button">Add to Portfolio</div>
-        </div>
 
-        <!--{{#if showcase}}
-        <div id="showcase_wrapper">
-            <div class="showcase_controls">
-                {{#if own_profile}}
-                <div class="showcase_delete"></div>
-                {{/if}}
-                {{#if link}}
-                <div class="showcase_link"></div>
-                {{else}}
-                <div class="showcase_download"></div>
-                {{/if}}
-                <div class="showcase_right"></div>
-                <div class="showcase_left"></div>
-            </div>
-            <div class="showcase_item center">
-                <div class="showcase_info">
-                    <div class="showcase_title">
-                        Adtech and Big Data
+
+            {{#if showcase}}
+            <button class="add_showcase_button" type="button">+ Add a Showcase</button>
+            {{else}}
+            <button  class="add_showcase_button empty"type="button">Start Your Academic Profile</button>
+            {{/if}}
+            <div id="add_showcase_form">
+                <form id="add_showcase">
+
+                    Adding a New Showcase
+                    <input type="text" id="title_entry" name="title_entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you">
+                    <textarea id="desc_entry" name="desc_entry" placeholder="Add a description"></textarea>
+                    <input id="link_entry" name="link_entry" placeholder="Paste a link to your showcase">
+                    <button type="button" id="upload_link_button" ><i></i>Upload Showcase</button>
+                    <div style='height: 0px;width:0px; overflow:hidden;'>
+                        <input id="upfile" type="file" value="upload"/>
                     </div>
-                    <div class="showcase_description">
-                        This is a paper on the use of big data in digital marketing.
+                    <div class="showcase_submit">
+                        <span class="cancel_showcase_form">Cancel</span>
+                        <input type="submit" class="create_showcase_form"value="+ Add this Showcase">
                     </div>
-                    <div class="showcase_type">
-                        .pdf
+                </form>
+                <div class="description-section">
+                    <i class="close-description"></i>
+                    <div class="top-description">
+                        - Show your peers and friends what academic research and articles you\'re interested in or have contributed to.
+                    </div>
+                    <div class="bottom-description">
+                        - Display presentations or projects that you want to share with the people in your academic network.
                     </div>
                 </div>
-                {{#if link}}
-                    {{#if preview_image}}
-                    <div class="showcase_image"  style="background-image: url({{preview_image}})"></div>
-                    {{/if}}
-                {{/if}}
+
 
             </div>
         </div>
-        <div class="showcase_button">Add to Portfolio</div>
-        {{else}}
-        <div class="showcase_button center"> Start Your Academic Portfolio </div>
-        {{/if}}-->
 
     </div>
     <div id="main_bar">
         <div id="profile_picture_wrapper">
             <div id="profile_picture" style="background-image: url( {{profile_pic}} )"></div>
+            <button type="button" id="edit_profile_button" class="not_editing">Edit Profile</button>
+            <div id="cancel_edit_button">x</div>
         </div>
         <div id="name_info_wrapper">
             <div id="name_info">{{#if professor}}Professor {{/if}}{{firstname}} {{lastname}}</div>
@@ -180,55 +156,74 @@
     </div>
     <div id="main_content">
         <div id = "left_info_bar">
+            <h2 id="academic_header" class="headers">Academic Information</h2>
             <div class="info_section" id = "school_section">
                 <div class="info_label" id = "school_label">
                     School:
                 </div>
-                <a href="#" class="info_name">{{school}}</a>
+                <a href="#" class="info_name" id="school_name">{{school}}</a>
+                <select class="edit_field" id="school_dropdown"></select>
             </div>
             <div class="info_section" id = "department_section">
                 <div class="info_label" id = "department_label">
                     Department:
                 </div>
-                <a href="#" class="info_name">{{department}}</a>
+                <a href="#" class="info_name" id="department_name">{{department}}</a>
+                <select class="edit_field" id="department_dropdown"></select>
             </div>
-            {{#if research}}
-                <div class="info_section" id = "research_section">
-                    <div class="info_label" id = "research_label">
-                        Research:
-                    </div>
-                    <div class="info_name">research</div>
+            <div class="info_section" id = "research_section">
+                <div class="info_label" id = "research_label">
+                    Research Interests:
                 </div>
-            {{/if}}
+                <div class="info_name">{{research}}</div>
+                <input type="text" class="edit_field" id="research_input">
+            </div>
             {{#if professor}}
                 <div class="info_section" id = "office_section">
                     <div class="info_label" id = "office_label">
                         Office Location:
                     </div>
                     <div class="info_name">{{office_location}}</div>
+                    <input type="text" class="edit_field" id="office_input">
                 </div>
             {{else}}
-                {{#if majors}}
                 <div class="info_section" id = "major_section">
                     <div class="info_label" id = "major_label">
                         Major:
                     </div>
                     {{#each majors}}
-                    <div class="info_name">{{name}}</div>
+                    <div class="info_name major">{{name}}</div>
                     {{/each}}
+                    <div class="info_name undeclared" style="display:none">undeclared</div>
+                    <input type="text" class="edit_field major">
+                    <input type="text" class="edit_field major" placeholder="double major">
+                    <input type="text" class="edit_field major" placeholder="triple major">
                 </div>
-                {{/if}}
-                {{#if minors}}
                 <div class="info_section" id = "minor_section">
                     <div class="info_label" id = "minor_label">
                         Minor:
                     </div>
                     {{#each minors}}
-                    <div class="info_name">{{name}}</div>
+                    <div class="info_name minor">{{name}}</div>
                     {{/each}}
+                    <input type="text" class="edit_field minor">
+                    <input type="text" class="edit_field minor">
+                    <input type="text" class="edit_field minor">
                 </div>
-                {{/if}}
             {{/if}}
+            <h2 id="account_header" class="headers">Account Information</h2>
+            <div class="info_section account" id = "name_section">
+                <div class="info_label" id = "name_label">
+                    Full Name:
+                </div>
+                <input type="text" class="edit_field" id="name_input">
+            </div>
+            <div class="info_section account" id = "email_section">
+                <div class="info_label" id = "email_label">
+                    School Email:
+                </div>
+                <input type="text" class="edit_field" id="email_input">
+            </div>
         </div>
         <div id = "tab_contents">
             <div class="profile_panel active" id="profile_panel_1"> <!-- feed -->

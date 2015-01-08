@@ -1,0 +1,14 @@
+#time_selector {
+    display: none;
+    overflow-y: auto;
+    background-color: white;
+    width: 90px;
+    height: 150px;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+
+#time_selector.active {
+    display: block;
+}

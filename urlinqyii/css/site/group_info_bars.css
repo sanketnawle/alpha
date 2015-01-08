@@ -4,7 +4,7 @@ div.tab_group_info{
 
 div.tab_group_info .tab_content_holder{
     position: relative;
-    top: -20px;
+    top: -10px;
 }
 
 .tab_group_info .tab_content_holder .tab_header div.float_Right #small_search{
@@ -233,7 +233,6 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     border-radius: 4px;
     padding: 6px 10px;
     margin-top: 6px;
-    margin-right:9px;
     overflow-y: hidden;
     position: absolute;
     z-index:100;
@@ -241,6 +240,11 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     -webkit-transition: height 0.125s ease;
     -moz-transition: height 0.125s ease;
     transition: height 0.125s ease;      
+}
+
+div.group_box.group_course_box div.group_box_secondary_info_section div.info_line.info_about
+{
+margin-right:9px;
 }
 
 div.group_box div.group_box_secondary_info_section div.info_line.info_about:hover{

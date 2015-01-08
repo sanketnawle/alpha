@@ -23,7 +23,7 @@ var DayGrid = (function (DayGrid) {
         todo.appendChild(label);
         todowrap.appendChild(todo);
         return todowrap.innerHTML;
-    }
+    };
 
     var TodoItem = function (ele, title, checked) {
         this.ele = ele || _compiler(createTodo(title, checked))(_scope)[0];
@@ -38,7 +38,7 @@ var DayGrid = (function (DayGrid) {
             },
             label: { set: function (value) { return this.ele.querySelector(".label").innerHTML = value } }
         })
-    }
+    };
 
     var GridItem = function () {
         EventTarget.call(this);
@@ -97,7 +97,7 @@ var DayGrid = (function (DayGrid) {
                 }
             }
         });
-    }
+    };
 
     GridItem.prototype = Object.create(EventTarget.prototype);
 
@@ -108,31 +108,12 @@ var DayGrid = (function (DayGrid) {
             iconbase: { set: function (value) { _iconbase = value; } },
             addEvent: {
                 value: function (uce, id) {
-                    UCEvent.assert(uce);
-                    if (_scope == undefined || _compiler == undefined) return false;
-                    var eve = new GridItem();
-                    var grid = this;
-                    eve.addListener("load", function () {
-                        eve.title = uce.title;
-                        eve.desc = uce.desc;
-                        // eve.icon = id;
-                        eve.loc = uce.loc;
-                        eve.id = uce.id;
-                        eve.color = getRandomClass();
-                        if (uce.allday) eve.time = "allday";
-                        else eve.time = dp.to12Hrs(uce.startTime) + " - " + dp.to12Hrs(uce.endTime);
 
-                        grid[eve.id] = eve;
-                        ++grid.count;
-
-                        if (uce.allday) grid.ele.insertBefore(eve.ele, grid.ele.children[0]);
-                        else grid.ele.appendChild(eve.ele);
-                    });
-                    return eve;
                 }
             }
-        })
-    }
+        });
+
+    };
 
     DayGrid.TodoItem = TodoItem;
     DayGrid.GridItem = GridItem;
@@ -152,16 +133,92 @@ var DayGrid = (function (DayGrid) {
         if (ele === null || ele === undefined) return null;
 
         if (isclass) {
-            for (var i = 0; i < ele.length; grid.push(new Grid(ele[i])), ++i);
+            for (var i = 0; i < ele.length; ++i){
+                grid.push(new Grid(ele[i]));
+            }
         } else {
             grid = new Grid(ele);
         }
 
+        //grid.ele.innerHTML = "";
+
+        var current_date = scope.getTodaysDate();
+        //Start at -1 because the first row
+        //is all day events
+
+        for (var i = 0; i < 26; i++){
+
+            var html_string = '<div class="day_grid_item"><div class="day_time">12pm</div></div>';
+            if(i == 0){
+                html_string = '<div class="day_grid_item all_day"><div class="day_time">All day</div></div>';
+            }
+
+            var grid_item_ele = jQuery(html_string);
+
+            if(i != 0){
+                if(i == 1){
+                    grid_item_ele.find('.day_time').text('12am');
+                }else if(i == 13){
+                    grid_item_ele.find('.day_time').text('12pm');
+                }else if(i < 13){
+                    grid_item_ele.find('.day_time').text((i - 1).toString() + 'am');
+                }else{
+                    grid_item_ele.find('.day_time').text((i - 13).toString() + 'pm');
+                }
+            }
+
+
+            //grid_item_ele.find('.day_time').text('12am');
+
+            grid_item_ele.attr('data-date',date_to_string(current_date));
+            grid_item_ele.attr('data-time',ints_to_time(i - 1,0,0));
+            grid_item_ele.attr('data-time_num', i - 1);
+
+            //grid.ele.appendChild(grid_item_ele);
+            jQuery('#day-grid').append(grid_item_ele);
+
+            jQuery('#day-grid').attr('data-date',date_to_string(current_date));
+
+
+
+        }
+
+
+        init();
+        function init(){
+            get_day_events();
+        }
+
+
+        function get_day_events(){
+            var todays_date = jQuery('div#day-grid').attr('data-date');
+            //console.log(todays_date);
+
+            jQuery.getJSON(base_url + '/event/getEvents?date=' + '2015-01-05',{date: todays_date}, function(json_data){
+                jQuery.each(json_data['events'],function(index, event_json){
+                    //console.log('DAY EVENTS');
+
+                    show_day_event(event_json);
+                });
+            });
+        }
+
+
+
+
+
         return grid;
-    }
+    };
 
     return DayGrid;
 }(DayGrid || {}));
+
+
+//Converts date object into date string of SQl format like this:
+// 2014-06-02
+function date_to_string(date){
+    return date.getFullYear() + '-' + addZero((date.getMonth() + 1)) + '-' + addZero(date.getDate());
+}
 
 // inj = angular.injector(['ng', ApplicationName]);
 // inj.invoke(function ($rootScope, $compile) {

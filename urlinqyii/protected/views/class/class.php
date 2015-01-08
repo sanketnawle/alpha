@@ -16,7 +16,7 @@
         globals.admin_file_panel_class = 'class';
 
     </script>
-
+      
 
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
@@ -42,53 +42,26 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
-   
+      
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/api.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/metadata.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/canvas.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/webgl.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/pattern_helper.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/font_loader.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/annotation_helper.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/text_layer_builder.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/ui_utils.js"></script>
+      <script>PDFJS.workerSrc = '<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/worker_loader.js';</script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/pdf.js"></script>
 
-    <script>
-    $(document).ready(function() {
-        $('.menu').dropit();
-        
-        $('.day_box_color').each(function(){
+      <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/chrono.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/application.js"></script>
+      <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/uiscripts.js"></script>
+     <script>
 
-            var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#13D298"];            
-            var color = colors[Math.floor(colors.length * Math.random())];
-
-            if(color != lastColor){
-                $(this).css({"background-color":color});
-            }
-
-            var lastColor = color;
-
-
-        });
-
-        $("#page").scroll(function() {
-            console.log($("#page").scrollTop());
-        });
-
-        $('div.complete_incomplete_button.active').click(function(){
-            var $checkbox = $(this);
-            var $tooltip = $(this).find(".help-box");
-            if($checkbox.hasClass("incomplete")){
-                $checkbox.removeClass("incomplete");
-                $tooltip.text("Mark as Incomplete");
-
-            }
-            else{
-                $checkbox.addClass("incomplete");
-                $tooltip.text("Mark as Complete");
-            }
-        });
-
-
-        $('.syllabus_event_order').click(function(){
-            var $selected_order = $(this);
-            var selected_order_text = $selected_order.find("a").text();
-            $("#selected_syllabus_event_order").text(selected_order_text);
-        });
-    
-                         
-    });
 
     </script>
 </head>
@@ -125,7 +98,8 @@
         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
-                <div class = "center_text">NYU College of Arts and Sciences</div>
+                <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
+                <div class = "center_text"><p id = "group_name">Theories of Graphical Computing</p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
@@ -204,8 +178,29 @@
         </div>
 
 
-        <div class="panel active" id="panel_1">
-            CLASS FEED GOES HERE
+        <div class="panel active panel_feed" id="panel_1">
+            <div id = "planner_column" class = "planner_column_group">
+                <div id = "right_column_specs">
+                    <div id = "fixed_element" class = "planner_group">
+                        <?php
+                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));
+                        ?>    
+                    </div>
+                </div>                           
+            </div>
+            <div id = "feed_column" class = "feed_column_group">
+                <div id = "stream_holder" class = "stream_holder_home">
+                    <div id = "fbar_wrapper" class = "fbar_home">
+                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
+                    </div>
+
+                    <div id = "feed_wrapper" class = "feed_wrapper_home">
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/<?php echo $class->class_id; ?>/feed')); ?>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
 
         <div class="panel tab_syllabus" id="panel_2">
@@ -216,8 +211,9 @@
                         <div class = "title">
                             Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div><div class = "syllabus_download_btn"><span class = "download_icon"></span>Download</div>
                         </div>
-
-                        <div class = "rendered_syllabus_page_holder" id = "page1">
+                        <div id="pdfContainer">
+                        </div>
+                        <!-- <div class = "rendered_syllabus_page_holder" id = "page1">
                             <div class = "paper_shadowonblack">
                             </div>
                         </div>
@@ -236,18 +232,37 @@
                             <div class = "paper_shadowonblack">
                             </div>
                         </div>
-
+ -->
                     </div>
                     <div class = "class_events_holder order_kind">
                         <div class = "black_action_box">
-                            <button class = "scan_syllabus">
+                            <button id="btn_add_syllabus" class = "scan_syllabus">
                                 <em class = "syla_plus"></em>Add Syllabus
                             </button>
+                            <input style="display:none;" type="file" accept=".pdf" id="syllabus_pdf_upload"/>
                             <div class = "black_explainer">
                                 By importing your syllabus, our algorithm will generate a list of events within this class's calendar. 
                             </div>
                         </div>
                         <div class = "syllabus_events_wrapper">
+                            <header class = "class_tasks">
+                                <h5>Class Work</h5>
+                                <label>Order:</label>
+                                <ul class = "menu">
+                                    <li>
+                                        <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
+                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
+                                    </li>
+                                </ul>
+
+
+                            </header>
+                            <br>
+                            <div id="events_list">
+                                
+                            </div>
+                        </div>
+<!--                         <div class = "syllabus_events_wrapper">
                             <header class = "class_tasks">
                                 <h5>Class Work</h5>
                                 <label>Order:</label>
@@ -276,7 +291,6 @@
                                                 Midterm 1
                                             </span>
                                             <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button syllabus_event_button incomplete active">
                                                 <span class = "todo_checkbox">
                                                 </span>
@@ -305,7 +319,6 @@
                                                 Midterm 1
                                             </span>
                                             <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button syllabus_event_button incomplete active">
                                                 <span class = "todo_checkbox">
                                                 </span>
@@ -337,7 +350,6 @@
                                             <span class ="event_name_text">
                                                 Midterm 1
                                             </span>
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button incomplete">
                                                 <span></span>
                                             </div>
@@ -409,7 +421,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

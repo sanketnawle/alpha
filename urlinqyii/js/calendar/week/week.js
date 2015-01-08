@@ -2,65 +2,10 @@
 jQuery(document).ready(function(){
 
 
-    last_clicked_event_id = null;
-    jQuery(document).on('click', '.grid-event', function(event){
-        event.stopPropagation();
-
-
-        var $month_day_event_div = jQuery(this);
-        var event_id = $month_day_event_div.attr('id');
-        var $inspect_event_popup_week = jQuery('#inspect_event_popup_week_week');
-
-        //Add the event_id to the inspect_event_popup_week for easy access
-        $inspect_event_popup_week.attr('data-event_id', event_id);
-
-
-        if(!$inspect_event_popup_week.is(":visible")){
-            if((event.pageY - 180) <= 0){
-                $inspect_event_popup_week.css('top', event.pageY + 15);
-            }else{
-                $inspect_event_popup_week.css('top', event.pageY - 180);
-            }
-            $inspect_event_popup_week.css('left', event.pageX - 140);
-
-    //            Mon, October 27, 2014, 8am – 11am
-            var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
-            var start_time = $month_day_event_div.attr('data-start_time');
-            var inspect_event_text = format_event_date_text(this_date);
-            $inspect_event_popup_week.find('#inspect_event_text').text(inspect_event_text);
-            $inspect_event_popup_week.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
-
-            $inspect_event_popup_week.addClass('active');
-        }else{
-            if($month_day_event_div.attr('data-id') != last_clicked_event_id){
-                //We clicked a different event than the event we were already looking at
-                //switch the inspect_event_popup_week to this event
-                if((event.pageY - 180) <= 0){
-                    $inspect_event_popup_week.css('top', event.pageY + 15);
-                }else{
-                    $inspect_event_popup_week.css('top', event.pageY - 180);
-                }
 
 
 
-                $inspect_event_popup_week.css('left', event.pageX - 140);
 
-
-                //            Mon, October 27, 2014, 8am – 11am
-                var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
-                var start_time = $month_day_event_div.attr('data-start_time');
-                var inspect_event_text = format_event_date_text(this_date);
-                $inspect_event_popup_week.find('#inspect_event_text').text(inspect_event_text);
-                $inspect_event_popup_week.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
-
-
-            }else{
-                $inspect_event_popup_week.removeClass('active');
-            }
-        }
-
-        last_clicked_event_id = $month_day_event_div.attr('data-id');
-    });
 
 
     last_month_day_date_selected = null;
@@ -73,7 +18,7 @@ jQuery(document).ready(function(){
         event.stopPropagation();
         var $day_time_div = jQuery(this);
         var this_date = $day_time_div.attr('data-date');
-        var this_date_obj = new Date(this_date);
+        var this_date_obj = new Date(this_date + ' 00:00:00');
         var this_time = $day_time_div.attr('data-time');
         var this_time_int = parseInt($day_time_div.attr('data-time_num'));
         var $create_week_day_event_popup = jQuery('#create_week_day_event_popup');
@@ -128,10 +73,7 @@ jQuery(document).ready(function(){
 
 
 
-    jQuery(document).on('click','.popup_exit_button',function(){
-        event.stopPropagation();
-        jQuery(this).closest('.popup').removeClass('active');
-    });
+
 
 
     jQuery(document).on('submit','#create_week_day_event_form',function(e){
@@ -150,7 +92,7 @@ jQuery(document).ready(function(){
         }
 
 
-
+        var event_id = '';
 
         var event_name = event_input_string;
 
@@ -176,6 +118,7 @@ jQuery(document).ready(function(){
 
         var post_data = {
             event:{
+                event_id: event_id,
                 event_name: event_name,
                 origin_type: event_origin_type,
                 origin_id: event_origin_id,
@@ -188,7 +131,7 @@ jQuery(document).ready(function(){
                 end_date: event_end_date,
                 location: event_location,
                 event_todo: event_todo,
-                event_all_day: event_all_day
+                all_day: event_all_day
             }
         };
 
@@ -199,6 +142,8 @@ jQuery(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
+
+                    //alert(JSON.stringify(response));
                     //reset the input field
                     jQuery('#create_week_day_event_input').val('');
                     //Hide the create event popup
@@ -216,32 +161,38 @@ jQuery(document).ready(function(){
 
 
 
-    function show_week_day_event(event_json){
 
 
-        //Normally source would be jQuery("#group_template").html(); but for whatever reason
-        //angular doesnt let jquery select the handlebars template if it is in the html
-        var source = '<div class="grid-event" data-id="{{event_id}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
-        var template = Handlebars.compile(source);
-
-        event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
 
 
-        var generated_html = template(event_json);
-
-        //.clone()
-    //            var grid_item_selector = ele.querySelector("div.grid-item[data-date='" + event_json['start_date'] + "'][data-time='" + event_json['start_time'] + "']");
-        var grid_item_selector = jQuery("div.grid-item[data-date='" + event_json['start_date'] + "'][data-time='" + event_json['start_time'] + "']");
-
-        if(grid_item_selector){
-    //                grid_item_selector.innerHTML += generated_html;
-            grid_item_selector.append(jQuery(generated_html).clone());
-        }else{
-            console.log("ERROR ADDING EVENT");
-            console.log(event_json);
-        }
 
 
-    }
+
+
+
+    jQuery(document).on('click','#inspect_event_delete_button_week',function(event){
+        event.stopPropagation();
+        var $inspect_event_popup_week = jQuery('#inspect_event_popup_week');
+        var event_id = last_clicked_event_id;
+
+        var post_url = base_url + '/event/' + event_id + '/delete';
+
+
+        var post_data = {event_id: event_id};
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    $inspect_event_popup_week.removeClass('active');
+                    jQuery('.grid-event.event_holder[data-id="' + last_clicked_event_id + '"]').remove();
+                    //alert('successfully deleted event: ' + event_id);
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    });
+
 
 });

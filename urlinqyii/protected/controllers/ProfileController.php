@@ -232,7 +232,6 @@ class ProfileController extends Controller
             //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
             //returns largest image
             return $image_files[$best_image_index]['url'];*/
-
         $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
 
         return $preview_image;
@@ -317,17 +316,6 @@ class ProfileController extends Controller
                  $preview_image = $result;
              }
              $share_type='regular';
-            /* $file_name = basename($file['name']);
-             $previous_record = File::model()->find('file_url=:furl',array(':furl'=>$uploaddir.$file_name));
-             if($previous_record) {
-                 $this->renderJSON(array('status'=>'error','message'=>'there is already a file of the same name in your showcase'));
-                 return;
-             }else{
-                 if(!move_uploaded_file($file['tmp_name'], Yii::getPathOfAlias('webroot').$uploaddir.$file_name)) {
-                     $this->renderJSON(array('status'=>'error','message'=>'could not upload file'));
-                     return;
-                 }
-             }*/
 
         }else if(isset($_POST['link_url'])){
             $file_name = basename($_POST['link_url']);
@@ -368,37 +356,7 @@ class ProfileController extends Controller
             $this->renderJSON(array('status'=>'error','message'=>'failed to load file'));
             return;
         }
-     /*   if($result)
-        //create preview if file is not image
-        preg_match('/[.](.+)/',$file_name,$match);
-        $extension = $match[1];
-        if($extension == "jpg" || $extension == "png"){
-            $type = 'image';
-            copy(Yii::getPathOfAlias('webroot').$uploaddir.$file_name, Yii::getPathOfAlias('webroot').$uploaddir."preview/".$file_name);
-        }
-        else if($extension == "doc" || $extension == "docx"){
-            $type = 'document';
-            $this->renderJSON(array('status'=>'error','message'=>'cannot do this filetype yet'));
-            //$derp = $this->actionThumbify($_POST['link_url'],$_POST['user']);
-        }
-        else if($extension == "pdf"){
-            $type = 'pdf';
-            $this->renderJSON(array('status'=>'error','message'=>'cannot do this filetype yet'));
-            //$derp = $this->actionThumbify($_POST['link_url'],$_POST['user']);
-        }
 
-        $fileRecord = new File();
-        $fileRecord->file_name = $file_name;
-        $fileRecord->file_url = $uploaddir.$file_name;
-
-        $fileRecord->file_extension = $extension;
-        $fileRecord->file_type = $type;
-        $fileRecord->created_timestamp = new CDbExpression('NOW()');
-        if (!$fileRecord->save()) {
-            $errors = print_r($fileRecord->getErrors());
-            $this->renderJSON(array('status'=>'error','message'=>$errors));
-            return;
-        }*/
 
         $previous_showcase = Showcase::model()->find('title=:title',array(':title'=>$_POST['title']));
         if($previous_showcase){
@@ -421,13 +379,33 @@ class ProfileController extends Controller
             $this->renderJSON(array('status'=>'error','message'=>$errors));
             return;
         }
-        if(isset($preview_image)){
-            $this->renderJSON(array('status'=>'success','message'=>$result['file_url'],'file_extension'=>$result['extension'],
-                'title'=>$showcase->title, 'desc'=>$showcase->file_desc,'preview_file'=>$showcase->preview_image->file_url));
-        }else{
-            $this->renderJSON(array('status'=>'success','message'=>$result['file_url'],'file_extension'=>$result['extension'],
-                'title'=>$showcase->title, 'desc'=>$showcase->file_desc));
-        }
+        $result = array();
+         $result['title'] = $showcase->title;
+         $result['description'] = $showcase->file_desc;
+         $result['id'] = $showcase->file_id;
+         $type = $showcase->file->file_type;
+         $result['type'] = $type;
+         $result['url'] = ($type == "url");
+         if($type == "pdf"){
+             $result['color']= "#f15c61"; //red
+         }
+         else if($type == "doc" || $type == "docx"){
+             $result['color']= "#2a5896"; //blue
+         }
+         else if($type == "ppt" || $type == "pptx"){
+             $result['color']= "#FD702D"; //orange
+         }
+         else if($type == "url"){
+             $result['color']= "transparent";
+             if(isset($preview_image)){
+                 $result['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+             }
+             $result['link']=$showcase->file->file_name;
+         }else {
+             $result['color']= "#ffffff"; //white
+         }
+         $result['status'] = 'success';
+        $this->renderJSON($result);
 
     }
     public function actionAutoComplete(){
@@ -501,6 +479,7 @@ class ProfileController extends Controller
     public function actionEditProfile(){
         $new_data = array();
         $user_id = $_POST['user'];
+        $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
         if(isset($_POST['year'])){
             $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $student_attributes->year = $_POST['year'];
@@ -512,17 +491,14 @@ class ProfileController extends Controller
 
         }
         if(isset($_POST['bio'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $user->user_bio = $_POST['bio'];
             if($user->save()){
                 $new_data['bio'] = "success";
             }else{
                 $new_data['bio'] = $user->getErrors();
             }
-
         }
         if(isset($_POST['name'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
             $name = explode(' ',$_POST['name']);
             if(sizeof($name) < 2){
                 $user->firstname = $name;
@@ -552,22 +528,52 @@ class ProfileController extends Controller
             }
         }
         if(isset($_POST['school'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $school = School::model()->find('school_name=:sname',array(':sname'=>$_POST['school']));
-            if($school){
-                $user->school_id = $school->school_id;
-                if($user->save()){
-                    $new_data['school'] = "success";
-                   // $new_data['new_school_id'] = $school->school_id;
+
+            $school = School::model()->find('school_id=:sid',array(':sid'=>$_POST['school']));
+            if($user->school_id != $school->school_id){
+                if($school){
+                    $user->school_id = $school->school_id;
+                    if($user->save()){
+                        $new_data['school'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['school'] = $user->getErrors();
+                    }
                 }else{
-                    $new_data['school'] = $user->getErrors();
+                    $new_data['school'] = $school->getErrors();
                 }
-            }else{
-                $new_data['school'] = $school->getErrors();
             }
 
-
         }
+        if(isset($_POST['department'])){
+            $department = Department::model()->find('department_id=:did',array(':did'=>$_POST['department']));
+            if($user->department_id != $department->department_id){
+                if($department){
+                    $user->department_id = $department->department_id;
+                    if($user->save()){
+                        $new_data['department'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['department'] = $user->getErrors();
+                    }
+                }else{
+                    $new_data['department'] = $department->getErrors();
+                }
+            }
+        }
+        if(isset($_POST['email'])){
+            if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                $user->user_email = $_POST['email'];
+                if($user->save()){
+                    $new_data['email'] = "success";
+                }else{
+                    $new_data['email'] = $user->getErrors();
+                }
+            }else{
+                $new_data['email'] = "not a valid email";
+            }
+        }
+
         if(isset($_POST['majors'])){
             if($_POST['majors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
@@ -584,7 +590,6 @@ class ProfileController extends Controller
         }
         if(isset($_POST['interests'])){
             $new_data['interests']= $this->actionAddInterest($_POST['interests'],$user_id);
-
         }
         $this->renderJSON($new_data);
     }
@@ -607,7 +612,16 @@ class ProfileController extends Controller
         }
     }
     public function actionDeleteShowcase(){
-        $showcase = Showcase::model()->find('title = :tid', array(':tid'=>$_POST['title']));
+        if(isset($_POST['file_id'])){
+            $showcase = Showcase::model()->find('file_id = :fid', array(':fid'=>$_POST['file_id']));
+        }else if(isset($_POST['title'])){
+            $showcase = Showcase::model()->find('title = :tid', array(':tid'=>$_POST['title']));
+        }else{
+            $this->renderJSON(array('status'=>'failure: you derped'));
+            return;
+        }
+
+
         $result = array();
         if($showcase){
             $fileRecord = $showcase->file;
@@ -626,13 +640,13 @@ class ProfileController extends Controller
                         @unlink(Yii::getPathOfAlias('webroot') . $fileUrl);
                 }
             }else{
-                $result['status'] .= 'failure: could not delete file record';
+                $result['status'] .= 'Could not delete file record';
             }
             if(isset($previewFile)){
                 if($previewFile->delete()){
                     @unlink(Yii::getPathOfAlias('webroot') .$previewUrl);
                 }else{
-                    $result['status'] .= 'failure: could not delete preview file record';
+                    $result['status'] .= 'Could not delete preview file record';
                 }
             }
             if($result['status']==''){
@@ -755,6 +769,7 @@ class ProfileController extends Controller
         $data['school']=$user->school->school_name;
         $data['university']=$user->school->university->university_name;
         $data['department']=$user->department->department_name;
+        $data['email']=$user->user_email;
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
             $data['classes'][$i]['name']=$class->course->course_name;
@@ -762,11 +777,10 @@ class ProfileController extends Controller
         }
         if($user->user_type=="s"){
             $data['minors']=array();
-            foreach($user->minors as $i=>$minor){
-                $data['minors'][$i]['name']=$minor->name;
+            foreach($user->minors as $i=>$minor) {
+                $data['minors'][$i]['name'] = $minor->name;
             }
             $data['majors']=array();
-
             foreach($user->majors as $i=>$major){
                 $data['majors'][$i]['name']=$major->name;
             }
@@ -777,6 +791,34 @@ class ProfileController extends Controller
             $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
             $data['following'][$i]['user_school']=$user->school->school_name;
         }
+        $data['showcase_size']= sizeof($user->showcase);
+        $data['showcase']=array();
+        foreach($user->showcase as $i=>$showcase){
+            $data['showcase'][$i]['center'] = ($i==0)?" center":"";
+            $data['showcase'][$i]['index']=$i;
+            $data['showcase'][$i]['title'] = $showcase->title;
+            $data['showcase'][$i]['description'] = $showcase->file_desc;
+            $data['showcase'][$i]['id'] = $showcase->file_id;
+            $type = $showcase->file->file_type;
+            $data['showcase'][$i]['type'] = $type;
+            $data['showcase'][$i]['url'] = ($type == "url");
+            if($type == "pdf"){
+                $data['showcase'][$i]['color']= "#f15c61"; //red
+            }
+            else if($type == "doc" || $type == "docx"){
+                $data['showcase'][$i]['color']= "#2a5896"; //blue
+            }
+            else if($type == "ppt" || $type == "pptx"){
+                $data['showcase'][$i]['color']= "#FD702D"; //orange
+            }
+            else if($type == "url"){
+                $data['showcase'][$i]['color']= "transparent";
+                $data['showcase'][$i]['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+                $data['showcase'][$i]['link']=$showcase->file->file_name;
+            }else {
+                $data['showcase'][$i]['color']= "#ffffff"; //white
+            }
+         }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
         $data['professor'] = $user->user_type == "p";
         $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());
@@ -786,9 +828,40 @@ class ProfileController extends Controller
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
         }
+        $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
         $this->renderJSON($data);
     }
 
+    public function actionGetSchools(){
+        if(isset($_GET['user'])){
+            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $result=array('schools'=>array(),'selected'=>0);
+            $university = $user->school->university;
+            foreach($university->schools as $school){
+                $result['schools'][] = array('id'=>$school->school_id
+                    ,'name'=>$school->school_name);
+            }
+            $result['selected'] = $user->school_id;
+            $this->renderJSON($result);
+        }
+    }
+
+    public function actionGetDepartments(){
+        $result=array('departments'=>array(),'selected'=>0);
+        if(isset($_GET['school'])){
+            $departments = Department::model()->findAll('school_id=:sid',array(':sid'=>$_GET['school']));
+
+        }
+        if(isset($_GET['user'])){
+            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $departments = $user->school->departments;
+            $result['selected'] = $user->department_id;
+        }
+        foreach($departments as $department){
+            $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name);
+        }
+        $this->renderJSON($result);
+    }
 
 
 
