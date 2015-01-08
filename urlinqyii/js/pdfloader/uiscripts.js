@@ -33,7 +33,8 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                                    processData: false,
                                    contentType: false,
                                    success: function(response) {
-                                      console.log(response);
+                                      $('#pdfContainer').html("");
+                                      run_pdf_algo();
                                    },
                                    error: function(jqXHR, textStatus, errorMessage) {
                                        console.log(errorMessage); // Optional

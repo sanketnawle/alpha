@@ -314,16 +314,22 @@ class ClubController extends Controller
 
     }
 
+    //modified by Tianming Xu for use of App on 01/07/2014
     public function actionJoin(){
-        if(!isset($_GET['id'])){
-            $data = array('success'=>false,'error_id'=>1);
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $this->get_current_user_id();
+        $user_id = null;
+        if(isset($_POST['user_id'])){
+            $user_id = $_POST['user_id'];
+        }else {
+            $user_id = $this->get_current_user_id();
+        }
 
-        $group_id = $_GET['id'];
+        $group_id = $_POST['id'];
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
         //Check if this user is already a member for this group
         if(!$group_user){
@@ -337,13 +343,13 @@ class ClubController extends Controller
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>3);
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving group_user table');
                 $this->renderJSON($data);
                 return;
             }
         }else{
             //user is apart of this group
-            $data = array('success'=>false,'error_id'=>2);
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the group');
             $this->renderJSON($data);
             return;
         }
@@ -353,15 +359,20 @@ class ClubController extends Controller
 
 
     public function actionLeave(){
-        if(!isset($_GET['id'])){
-            $data = array('success'=>false,'error_id'=>1);
+        if(!isset($_POST['id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
             return;
         }
 
-        $user_id = $this->get_current_user_id();
+        $user_id = null;
+        if(isset($_POST['user_id'])){
+            $user_id = $_POST['user_id'];
+        }else {
+            $user_id = $this->get_current_user_id();
+        }
 
-        $group_id = $_GET['id'];
+        $group_id = $_POST['id'];
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
         //Check if this user is even in this group
         if($group_user){
@@ -371,13 +382,13 @@ class ClubController extends Controller
                 $this->renderJSON($data);
                 return;
             }else{
-                $data = array('success'=>false,'error_id'=>3);
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting user');
                 $this->renderJSON($data);
                 return;
             }
         }else{
             //user is not apart of this group
-            $data = array('success'=>false,'error_id'=>2);
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the group');
             $this->renderJSON($data);
             return;
         }
