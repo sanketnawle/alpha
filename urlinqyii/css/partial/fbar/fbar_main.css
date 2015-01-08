@@ -14,6 +14,10 @@ div#fbar_new{
     border-bottom: 1px solid #CBCBCB;
 }
 
+form#fbar_form{
+    margin-bottom:0px!important;
+}
+
 div#fbar_new:hover{
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
@@ -41,7 +45,8 @@ section#fbar_buttons .fbar_buttonwrapper{
     height: 35px; 
     padding: 7px 0px 8px 0px; color: #696969; 
     display: inline-block;
-    font-size: 15px; opacity: .9; font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
+    font-size: 15px; opacity: .9; 
+    font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
     background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
 
 }
@@ -66,32 +71,40 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
     font-weight: 600;
-
     display: inline-block;
     float: left;
-    margin-left: 0px;
+    margin-left: -6px;
     width: 87px;
+    -webkit-user-select: none;
     text-align: center;
     margin-top: 9px;
 }
 
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.post_button_text{
+    margin-left: -7px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.files_button_text{
+    margin-left: -8px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text{
+    margin-left:-2px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.event_button_text{
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.notes_button_text{
+    margin-left: -2px;
+}
+
+
 section#fbar_buttons .fbar_buttonwrapper:hover{
     color:#222;
-    -webkit-transition-property: color;
-    -moz-transition-property: color;
-    -ms-transition-property: color;
-    -o-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: .06s;
-    -moz-transition-duration: .06s;
-    -ms-transition-duration: .06s;
-    -o-transition-duration: .06s;
-    transition-duration: .06s;
-    -webkit-transition-timing-function: linear;
-    -moz-transition-timing-function: linear;
-    -ms-transition-timing-function: linear;
-    -o-transition-timing-function: linear;
-    transition-timing-function: linear;    
+    -webkit-transition: .06s;
+    -moz-transition: .06s;
+    transition: .06s;    
 }
 
 .fbar_buttonwrapper > i{
@@ -100,11 +113,11 @@ section#fbar_buttons .fbar_buttonwrapper:hover{
     -ms-transition-property: transform;
     -o-transition-property: transform;
     transition-property: transform;
-    -webkit-transition-duration: .06s;
-    -moz-transition-duration: .06s;
-    -ms-transition-duration: .06s;
-    -o-transition-duration: .06s;
-    transition-duration: .06s;
+    -webkit-transition-duration: .03s;
+    -moz-transition-duration: .03s;
+    -ms-transition-duration: .03s;
+    -o-transition-duration: .03s;
+    transition-duration: .15s;
     -webkit-transition-timing-function: linear;
     -moz-transition-timing-function: linear;
     -ms-transition-timing-function: linear;
@@ -113,9 +126,6 @@ section#fbar_buttons .fbar_buttonwrapper:hover{
 }
 
 section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
-    -moz-transform: scale(.665);
-    -webkit-transform: scale(.665);
-    transform: scale(.665);
     
 }
 
@@ -123,17 +133,25 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
 .fbar_button_icon#fbar_icon_discuss{
     width: 42px;
     height: 44px;
-    left: 16px;
+    top: 0px;
+    left: 21px;
     background-position: 0px -61px!important;
 }
 
 .fbar_button_icon#fbar_icon_notes{
     width: 42px; 
     height: 46px;
-    
     background-position: 0px -14px;
     top: -3px;
-    left: 10px;
+    left: 18px;
+}
+
+.fbar_button_icon#fbar_icon_event{
+    width: 42px; 
+    height: 46px;
+    background-position: 0px -103px;
+    top: -3px;
+    left: 17px;
 }
 
 .fbar_button_icon#fbar_icon_question{
@@ -142,7 +160,7 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
     width: 40px;
     height: 46px;
     margin-top: -1px!important;
-    left: 4px;
+    left: 7px;
 }
 
 .fbar_button_icon#fbar_icon_event{
@@ -239,11 +257,12 @@ div.form_wrapper section.post_form_template{
     border-left: none;
     border-right: none;
     border-bottom: none;
+    font-family: 'Open Sans', sans-serif;
     margin: 0px 15px;
 }
 
 div.form_wrapper section.post_form_template:before{
-background-image: none,url(../../../assets/sitechrome.svg);
+background-image: none,url(../../../assets/wire_icons.svg);
 background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
@@ -268,7 +287,10 @@ div.form_wrapper section.post_form_template#notes_form:before {
 
 div.form_wrapper section.post_form_template#discussion_form:before {
     right: 12px;
+}
 
+div.form_wrapper section.post_form_template#event_form:before {
+right: 16px;
 }
 
 form#fbar_form.true_or_false div.form_wrapper section.post_form_template#question_form:before{right:304px;}
@@ -364,7 +386,7 @@ form#fbar_form.show{
 
 }
 
-.question_type_button.active, #discussion_form_content.active, #notes_form_content.active{
+.question_type_button.active, #discussion_form_content.active, #notes_form_content.active,#event_form_content.active{
     background: #eee;
     color: #009bcd!important;
 }
@@ -386,7 +408,7 @@ form#fbar_form.show{
     cursor: default!important;
 }
 
-.question_type_button.active:hover, #discussion_form_content.active:hover, #question_form_content.active:hover{
+.question_type_button.active:hover, #discussion_form_content.active:hover, #question_form_content.active:hover,#event_form_content.active:hover{
     background: #eee!important;
     cursor: default!important;
     color: #029acf!important;
@@ -651,7 +673,7 @@ em.down_arrow{
     float: left;
 }
 
-div#question_form_content,div#discussion_form_content,div#notes_form_content{
+div#question_form_content,div#discussion_form_content,div#notes_form_content, div#event_form_content{
     display:none;
 }
 
@@ -670,6 +692,11 @@ div.notes_form_hide_content{
 #fbar_holder.notes section#notes_form {
     display:block;
 } 
+
+#fbar_holder.event section#event_form {
+    display:block;
+} 
+
 #fbar_holder.question section#question_form {
     display:block;
     position: relative;
@@ -700,7 +727,7 @@ div.notes_form_hide_content{
 
 }
 
-input#post_title{
+input#post_title, input#event_title{
     width: 498px;
     position: relative;
     padding: 7px 10px;
@@ -709,6 +736,14 @@ input#post_title{
     margin-top: -2px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     line-height: 1.4; -webkit-transition: border-color .2s; transition: border-color .2s; -webkit-transition: border-color .2s 180ms ease-in-out 0s; -moz-transition: border-color .2s 180ms ease-in-out 0s; -ms-transition: border-color .2s 180ms ease-in-out 0s; -o-transition: border-color .2s 180ms ease-in-out 0s; transition: border-color .2s 180ms ease-in-out 0s; border: 1px solid #ddd; border-radius: 2px; box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+}
+
+input#event_title{
+    width: 520px!important;
+    margin-bottom: 14px;
+    box-shadow: none;
+    border-top: 1px solid #ccc;
+    margin-top: 2px;
 }
 
 input#post_title:focus{
@@ -818,7 +853,7 @@ ul.menu_audience ul.dropit-submenu li a{
 
 }
 
-#fbar_holder.question div#question_form_content, #fbar_holder.discuss div#discussion_form_content, #fbar_holder.notes div#notes_form_content {
+#fbar_holder.question div#question_form_content, #fbar_holder.discuss div#discussion_form_content, #fbar_holder.notes div#notes_form_content, #fbar_holder.event div#event_form_content {
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -887,6 +922,11 @@ div.upload_file_wrap{
     border-bottom: 1px solid rgba(181, 181, 181, 0.46);
 }
 
+div.upload_file_wrap.photo_flier_upload_box{
+    border-top:1px solid rgba(181, 181, 181, 0.46);
+    border-bottom:none!important;
+}
+
 div.upload_half{
     width: 260px;
     
@@ -927,7 +967,7 @@ div.upload_half > div > em.google_drive{
     background-position: 0px -423px;
 }
 
-div.upload_half > div > p.upload_hint{
+p.upload_hint{
     margin: 0;
     
     font-size: 12px;
@@ -1061,3 +1101,107 @@ div.upload_half > div > p.drag_hint{
     margin-left: 9px;
     color: #777;
 }
+
+/* EVENT POST */
+
+.fbar_date_time{
+    -webkit-transition: border-color .2s; transition: border-color .2s; -webkit-transition: border-color .2s 180ms ease-in-out 0s; -moz-transition: border-color .2s 180ms ease-in-out 0s; -ms-transition: border-color .2s 180ms ease-in-out 0s; -o-transition: border-color .2s 180ms ease-in-out 0s; transition: border-color .2s 180ms ease-in-out 0s; border: 1px solid #ddd; border-radius: 2px; 
+    margin-left: 4px;
+    width: 137.5px;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+    padding: 8px 7px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    margin-bottom: 9px;
+}
+
+input.event_location{
+    
+}
+
+.fbar_date_time#event_location{
+    margin-bottom: 12px;
+
+    width: 520px;
+    margin-right: 0px;
+    margin-top: 2px;
+    margin-left: 0px;   
+    padding-left: 22px;
+}
+
+span.where_icon{
+    background-image: url(../../../assets/small_icons.png);
+    background-repeat: no-repeat;
+    background-position: 6px -693px;
+    position: absolute;
+    display: block;
+    width: 20px;
+    opacity: .58;
+    height: 30px;
+    top: 18px;
+}
+
+.fbar_date_time#event_location:focus ~ span.where_icon{
+    background-position: -16px -693px;
+
+}
+
+.www_prefix{
+
+}
+
+em.event_time_to_arrow{
+    background-image: url(../../../assets/minical_right_arrow.png);
+    
+    background-size: contain;
+    width: 21px;
+    height: 21px;
+    position: relative;
+    top: 7px;
+    left: 3px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+div.input_wrap.event_when{
+    position: relative;
+    margin-left: -4px;
+}
+
+#event_start_date{
+    margin-left: 4px;
+}
+
+.input_wrap label{
+    font-family: Avenir;
+
+    font-size: 11.5px;
+    color: #444;
+    display: block;
+    margin-right: 4px;
+    padding-top: 2px;
+}
+
+.event_textarea{
+    border-top: 1px solid rgba(181, 181, 181, 0.46);
+
+    padding-top: 4px;
+}
+
+div.photo_flier_upload_box{
+
+}
+
+.fbar_date_time.fbar_time_input{
+    width: 106px;
+
+}
+
+/* AUTOCOMPLETE STYLING */
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }

@@ -1,0 +1,1133 @@
+{
+    "buildings": {
+      "building-1wsv": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 Washington Square Village, New York University, New York, NY 10012, USA",
+        "-buildingcode": "1WSV",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "1 Washington Square Village",
+        "-latitude": "40.72873",
+        "-longitude": "-73.997329"
+      },
+      "building-10ast": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "10 Astor Place, New York, NY 10003, USA",
+        "-buildingcode": "10AST",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "10 Astor Place",
+        "-latitude": "40.7297006",
+        "-longitude": "-73.9922318"
+      },
+      "building-10wpl": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "10 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "10WPL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "10 Washington Place",
+        "-latitude": "40.729347",
+        "-longitude": "-73.994987"
+      },
+      "building-110f": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "110 5th Avenue, New York, NY 10011, USA",
+        "-buildingcode": "110F",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "110 Fifth Avenue",
+        "-latitude": "40.737673",
+        "-longitude": "-73.992925"
+      },
+      "building-145f": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "145 4th Avenue, New York, NY 10003, USA",
+        "-buildingcode": "145F",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "145 4th Avenue, Touro",
+        "-latitude": "40.7341085",
+        "-longitude": "-73.9896092"
+      },
+      "building-15-metrotech-center": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "15 Metrotech Center, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "15 MetroTech Center",
+        "-latitude": "40.6939559",
+        "-longitude": "-73.9845972"
+      },
+      "building-16-east-8th-street-apartments": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "16 East 8th Street, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "16 East 8th Street, Apartments",
+        "-latitude": "40.73162",
+        "-longitude": "-73.995515"
+      },
+      "building-19up": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "19 University Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "19UP",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "19 University Place",
+        "-latitude": "40.7312877",
+        "-longitude": "-73.9948032"
+      },
+      "building-19wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "19 Washington Square North, New York University, New York, NY 10011, USA",
+        "-buildingcode": "19WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "NYU Abu Dhabi New York City Office",
+        "-jcr:title": "19 Washington Square North",
+        "-latitude": "40.731861",
+        "-longitude": "-73.99763"
+      },
+      "building-19w4": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "19 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "19W4",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "19 West 4th Street, 8 Washington Place",
+        "-latitude": "40.7291036",
+        "-longitude": "-73.9951974"
+      },
+      "building-194mr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "194 Mercer Street, New York, NY 10012, USA",
+        "-buildingcode": "194MR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "194 Mercer Street",
+        "-latitude": "40.726306",
+        "-longitude": "-73.9968416"
+      },
+      "building-196mr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "196 Mercer Street, New York, NY 10012, USA",
+        "-buildingcode": "196MR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "196 Mercer Street",
+        "-latitude": "40.726264",
+        "-longitude": "-73.9969022"
+      },
+      "building-2-metrotech-center": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "2 Metrotech Center, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "2 MetroTech Center",
+        "-latitude": "40.6934915",
+        "-longitude": "-73.9858796"
+      },
+      "building-2wsv": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "2 Washington Square North, New York, NY 10003, USA",
+        "-buildingcode": "2WSV",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "2 Washington Square Village",
+        "-latitude": "40.7306904",
+        "-longitude": "-73.9955917"
+      },
+      "building-22wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "22 Washington Square North, New York University, New York, NY 10011, USA",
+        "-buildingcode": "22WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "22 Washington Square North",
+        "-latitude": "40.732141",
+        "-longitude": "-73.997825"
+      },
+      "building-240g": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "240 Greene Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "240G",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "240 Greene Street, 31 West 4th Street",
+        "-latitude": "40.7293507",
+        "-longitude": "-73.9954918"
+      },
+      "building-244g": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "244 Greene Street, New York University, New York, NY 10003, USA",
+        "-buildingcode": "244G",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "244 Greene Street, 21 Washington Place",
+        "-latitude": "40.72976",
+        "-longitude": "-73.995301"
+      },
+      "building-25w4": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "25 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "25W4",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Student Services Center SCPS, Office of the Dean",
+        "-jcr:title": "25 West 4th Street",
+        "-latitude": "40.7292159",
+        "-longitude": "-73.9954494"
+      },
+      "building-285mr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "285 Mercer Street, New York University, New York, NY 10003, USA",
+        "-buildingcode": "285MR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "285 Mercer Street",
+        "-latitude": "40.72982",
+        "-longitude": "-73.994325"
+      },
+      "building-29wsw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "29 Washington Square West, New York, NY 10011, USA",
+        "-buildingcode": "29WSW",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "29 Washington Square West",
+        "-latitude": "40.732107",
+        "-longitude": "-73.999035"
+      },
+      "building-3wsv": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "3 Washington Square Village, New York University, New York, NY 10012, USA",
+        "-buildingcode": "3WSV",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "3 Washington Square Village",
+        "-latitude": "40.7278058",
+        "-longitude": "-73.9979716"
+      },
+      "building-37-wsw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "37 Washington Square West, New York University, New York, NY 10011, USA",
+        "-buildingcode": "37 WSW",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "37 Washington Square West",
+        "-latitude": "40.731315",
+        "-longitude": "-73.999687"
+      },
+      "building-4wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "4 Washington Square North, New York, NY 10003, USA",
+        "-buildingcode": "4WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "4 Washington Square North",
+        "-latitude": "40.7311119",
+        "-longitude": "-73.9957928"
+      },
+      "building-411lf": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "411 Lafayette Street, New York, NY 10003, USA",
+        "-buildingcode": "411LF",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "411 Lafayette",
+        "-latitude": "40.7284193",
+        "-longitude": "-73.9923445"
+      },
+      "building-5-washington-place": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "5 Washington Place, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "5 Washington Place",
+        "-latitude": "40.7294569",
+        "-longitude": "-73.9943479"
+      },
+      "building-5wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "5 Washington Square North, New York, NY 10003, USA",
+        "-buildingcode": "5WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "5 Washington Square North",
+        "-latitude": "40.7311336",
+        "-longitude": "-73.9959066"
+      },
+      "building-547lg": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "547 LaGuardia Place, New York, NY 10012, USA",
+        "-buildingcode": "547LG",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "NYU Mail Services NYU Copy Central",
+        "-jcr:title": "547 Laguardia Place",
+        "-latitude": "40.7286646",
+        "-longitude": "-73.9984296"
+      },
+      "building-561-laguardia-place-": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "561 LaGuardia Place, New York University, New York, NY 10012, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Office of Global Services (in Washington Square Village)",
+        "-jcr:title": "561 LaGuardia Place ",
+        "-latitude": "40.7288689",
+        "-longitude": "-73.9976555"
+      },
+      "building-67-livingston-street-residence-hall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "67 Livingston Street, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "67 Livingston Street Residence Hall",
+        "-latitude": "40.6919321",
+        "-longitude": "-73.9919232"
+      },
+      "building-7e12": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "7 East 12th Street, New York, NY 10003, USA",
+        "-buildingcode": "7E12",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "McGhee Division, SCPS, 9th floor",
+        "-jcr:title": "7 East 12th St.",
+        "-latitude": "40.7344999",
+        "-longitude": "-73.9937026"
+      },
+      "building-719bw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "719 Broadway, New York University, New York, NY 10003, USA",
+        "-buildingcode": "719BW",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "719 Broadway",
+        "-latitude": "40.7294128",
+        "-longitude": "-73.9936989"
+      },
+      "building-726bw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "726 Broadway, New York, NY 10003, USA",
+        "-buildingcode": "726BW",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Main Bookstore and Computer Store Student Health Center Residential Life and Housing Services",
+        "-jcr:title": "726 Broadway",
+        "-latitude": "40.7293206",
+        "-longitude": "-73.9930216"
+      },
+      "building-80-washington-square-east-galleries": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "80 Washington Square East, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "80 Washington Square East Galleries",
+        "-latitude": "40.7296790",
+        "-longitude": "-73.9964698"
+      },
+      "building-838bw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "838 Broadway, New York, NY 10003, USA",
+        "-buildingcode": "838BW",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "838 Broadway",
+        "-latitude": "40.7336626",
+        "-longitude": "-73.9907953"
+      },
+      "building-890b": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "890 Broadway, New York, NY 10003, USA",
+        "-buildingcode": "890B",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "890 Broadway",
+        "-latitude": "40.7386165",
+        "-longitude": "-73.9897361"
+      },
+      "building-95-university-place": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "95 University Place, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "95 University Place",
+        "-latitude": "40.7335514",
+        "-longitude": "-73.9928157"
+      },
+      "building-383lf": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "383 Lafayette Street, New York, NY 10003, USA",
+        "-buildingcode": "383LF",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Academic Support Center (in renovations until spring 2016)",
+        "-latitude": "40.7276953",
+        "-longitude": "-73.9932553"
+      },
+      "building-alum": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "33 3rd Avenue, New York, NY 10003, USA",
+        "-buildingcode": "ALUM",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Alumni Hall",
+        "-latitude": "40.7301562",
+        "-longitude": "-73.9890155"
+      },
+      "building-shds": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "345 East 24th Street, New York, NY 10010, USA",
+        "-buildingcode": "SHDS",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Arnold and Marie Schartz Hall of Dental Sciences",
+        "-latitude": "40.7379477",
+        "-longitude": "-73.9782152"
+      },
+      "building-arthur-l-carter-journalism-institute": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "20 Cooper Square, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Arthur L. Carter Journalism Institute",
+        "-latitude": "40.7279494",
+        "-longitude": "-73.9915334"
+      },
+      "building-barn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "34 Stuyvesant Street, New York, NY 10003, USA",
+        "-buildingcode": "BARN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Barney Building",
+        "-latitude": "40.7298092",
+        "-longitude": "-73.9880819"
+      },
+      "building-bsci": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "433 1st Avenue, New York, NY 10010, USA",
+        "-buildingcode": "BSCI",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Basic Science Building",
+        "-latitude": "40.738669",
+        "-longitude": "-73.977647"
+      },
+      "building-bobst": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "70 Washington Square South, New York University, New York, NY 10011, USA",
+        "-buildingcode": "BOBST",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Bobst Library",
+        "-latitude": "40.729496",
+        "-longitude": "-73.9951945"
+      },
+      "building-britt": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "55 East 10th Street, New York, NY 10003, USA",
+        "-buildingcode": "BRITT",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Brittany Residence Hall",
+        "-latitude": "40.7321893",
+        "-longitude": "-73.991945"
+      },
+      "building-bronf": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "7 East 10th Street, New York, NY 10003, USA",
+        "-buildingcode": "BRONF",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Bronfman Center",
+        "-latitude": "40.7332774",
+        "-longitude": "-73.9946311"
+      },
+      "building-broom": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "400 Broome Street, New York, NY 10013, USA",
+        "-buildingcode": "BROOM",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Broom Street Residence",
+        "-latitude": "40.7208865",
+        "-longitude": "-73.9973401"
+      },
+      "building-brown": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "29 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "BROWN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Brown Building",
+        "-latitude": "40.7301179",
+        "-longitude": "-73.9953081"
+      },
+      "building-cantr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "36 East 8th Street, New York University, New York, NY 10003, USA",
+        "-buildingcode": "CANTR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Cantor Film Center",
+        "-latitude": "40.7314208",
+        "-longitude": "-73.9945228"
+      },
+      "building-carly": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "25 Union Square West, New York, NY 10003, USA",
+        "-buildingcode": "CARLY",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Carlyle Court",
+        "-latitude": "40.7361665",
+        "-longitude": "-73.9910431"
+      },
+      "building-casai": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "24 West 12th Street, New York, NY 10011, USA",
+        "-buildingcode": "CASAI",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Casa Italiana Zerilli-Marimo",
+        "-latitude": "40.7349781",
+        "-longitude": "-73.995783"
+      },
+      "building-12wv": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "12 Waverly Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "12WV",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Center for Genomics and Systems Biology",
+        "-latitude": "40.729958",
+        "-longitude": "-73.994496"
+      },
+      "building-coles": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "181 Mercer Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "COLES",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Coles Sports and Recreation Center",
+        "-latitude": "40.7267199",
+        "-longitude": "-73.9973127"
+      },
+      "building-tc": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "50 Cooper Square, New York, NY 10003, USA",
+        "-buildingcode": "TC",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Cooper Square",
+        "-latitude": "40.7288086",
+        "-longitude": "-73.9913158"
+      },
+      "building-coral": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "129 3rd Avenue, New York, NY 10003, USA",
+        "-buildingcode": "CORAL",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Coral Towers",
+        "-latitude": "40.7334551",
+        "-longitude": "-73.9869142"
+      },
+      "building-dag": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "110 West 3rd Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "DAG",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "D Agostino Hall",
+        "-latitude": "40.7300989",
+        "-longitude": "-73.9999854"
+      },
+      "building-dhaus": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "42 Washington Mews, New York, NY 10003, USA",
+        "-buildingcode": "DHAUS",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Deutsches House",
+        "-latitude": "40.7313136",
+        "-longitude": "-73.9952365"
+      },
+      "building-dibner-building": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "5 Metrotech Center, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Dibner Building",
+        "-latitude": "40.6945689",
+        "-longitude": "-73.9857557"
+      },
+      "building-east": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "239 Greene Street, New York University, New York, NY 10003, USA",
+        "-buildingcode": "EAST",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "East Building",
+        "-latitude": "40.7294672",
+        "-longitude": "-73.9955938"
+      },
+      "building-educ": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "35 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "EDUC",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Education Building",
+        "-latitude": "40.7293724",
+        "-longitude": "-73.995937"
+      },
+      "building-founders-hall-12th-street-residence-hall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "120 East 12th Street, New York, NY 10003, USA",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Founder's Hall (12th Street Residence Hall)",
+        "-latitude": "40.7322592",
+        "-longitude": "-73.9889296"
+      },
+      "building-furh": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "245 Sullivan Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "FURH",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Furman Hall",
+        "-latitude": "40.730124",
+        "-longitude": "-73.998924"
+      },
+      "building-1wp": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "1WP",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Gallatin School of Individual Study",
+        "-latitude": "40.7292231",
+        "-longitude": "-73.9938557"
+      },
+      "building-erin": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 Washington Mews, New York, NY 10003, USA",
+        "-buildingcode": "ERIN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Glucksman Ireland House",
+        "-latitude": "40.7317275",
+        "-longitude": "-73.996503"
+      },
+      "building-6wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "6 Washington Square North, New York, NY 10003, USA",
+        "-buildingcode": "6WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Graduate School of Arts and Science",
+        "-latitude": "40.731311",
+        "-longitude": "-73.9959597"
+      },
+      "building-gramercy-green": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "316 3rd Avenue, New York, NY 10010, USA",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Gramercy Green",
+        "-latitude": "40.7392195",
+        "-longitude": "-73.9830375"
+      },
+      "building-grhtl": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "636 Greenwich Street, New York, NY 10014, USA",
+        "-buildingcode": "GRHTL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Greenwich Hotel",
+        "-latitude": "40.731311",
+        "-longitude": "-74.00822"
+      },
+      "building-haydn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "33 Washington Square West, New York University, New York, NY 10011, USA",
+        "-buildingcode": "HAYDN",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Hayden Residence Hall",
+        "-latitude": "40.731664",
+        "-longitude": "-73.99957"
+      },
+      "building-e29hs": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "333 East 29th Street, New York, NY 10016, USA",
+        "-buildingcode": "E29HS",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Health Sciences Bookstore",
+        "-latitude": "40.7411647",
+        "-longitude": "-73.9764964"
+      },
+      "building-ifst": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "15 Washington Mews, New York, NY 10003, USA",
+        "-buildingcode": "IFST",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Institute of French Studies",
+        "-latitude": "40.7316677",
+        "-longitude": "-73.9962948"
+      },
+      "building-1e78-duke": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 East 78th Street, New York, NY 10075, USA",
+        "-buildingcode": "1E78, DUKE",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "James B. Duke House - Institute of Fine Arts",
+        "-latitude": "40.7763068",
+        "-longitude": "-73.9641694"
+      },
+      "building-kmc": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "44 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "KMC",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Kaufman Management Center",
+        "-latitude": "40.7288625",
+        "-longitude": "-73.9964132"
+      },
+      "building-kimb": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "246 Greene Street, New York University, New York, NY 10003, USA",
+        "-buildingcode": "kimb",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Kimball Hall",
+        "-latitude": "40.7300645",
+        "-longitude": "-73.9948875"
+      },
+      "building-kimm": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "60 Washington Square South, New York University, New York, NY 10012, USA",
+        "-buildingcode": "KIMM",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Kimmel Center for University Life",
+        "-latitude": "40.7299366",
+        "-longitude": "-73.9978275"
+      },
+      "building-kjcc": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "53 Washington Square South, New York University, New York, NY 10012, USA",
+        "-buildingcode": "KJCC",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "King Juan Carlos I Center",
+        "-latitude": "40.7304287",
+        "-longitude": "-73.9985708"
+      },
+      "building-lamaf": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "16 Washington Mews, New York, NY 10003, USA",
+        "-buildingcode": "LAMAF",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "La Maison Francaise",
+        "-latitude": "40.7311932",
+        "-longitude": "-73.9953817"
+      },
+      "building-80laf": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "80 Lafayette Street, New York, NY 10013, USA",
+        "-buildingcode": "80LAF",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Lafayette Residence Hall",
+        "-latitude": "40.7172786",
+        "-longitude": "-74.0019828"
+      },
+      "building-leslie-entrepreneurs-lab": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "242 Greene Street, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Leslie Entrepreneurs Lab",
+        "-latitude": "40.7295117",
+        "-longitude": "-73.9955404"
+      },
+      "building-vern": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "58 West 10th Street, New York, NY 10011, USA",
+        "-buildingcode": "VERN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Lillian Vernon Creative Writers House",
+        "-latitude": "40.7343336",
+        "-longitude": "-73.9980004"
+      },
+      "building-240mr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "240 Mercer Street, New York, NY 10012, USA",
+        "-buildingcode": "240MR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Mercer Street Residence",
+        "-latitude": "40.7279026",
+        "-longitude": "-73.9954959"
+      },
+      "building-merrl": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "90 Trinity Place, New York, NY 10006, USA",
+        "-buildingcode": "MERRL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Merril Hall",
+        "-latitude": "40.7090242",
+        "-longitude": "-74.0123569"
+      },
+      "building-meyer": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "4 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "MEYER",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Meyer Hall",
+        "-latitude": "40.7290204",
+        "-longitude": "-73.9942843"
+      },
+      "building-11w42": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "West 42nd Street, New York, NY 10036, USA",
+        "-buildingcode": "11W42",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Midtown Center",
+        "-latitude": "40.758034",
+        "-longitude": "-73.9917031"
+      },
+      "building-morton-williams-associated": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "509 LaGuardia Place, New York, NY 10012, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Morton Williams Associated",
+        "-latitude": "40.7277584",
+        "-longitude": "-73.9992018"
+      },
+      "building-nich": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "100 Trinity Place, New York, NY 10006, USA",
+        "-buildingcode": "NICH",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Nichols Hall",
+        "-latitude": "40.709254",
+        "-longitude": "-74.0121884"
+      },
+      "building-nyu-card-center": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "7 Washington Place, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "NYU Card Center",
+        "-latitude": "40.7296610",
+        "-longitude": "-73.9944990"
+      },
+      "building-med": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "530 1st Avenue, New York University School of Medicine, New York, NY 10016, USA",
+        "-buildingcode": "MED",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "NYU Langone Medical Center",
+        "-latitude": "40.7416214",
+        "-longitude": "-73.9747437"
+      },
+      "building-4wsv": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "4 Washington Square North, New York, NY 10012, USA",
+        "-buildingcode": "4WSV",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Off-Campus Housing",
+        "-jcr:title": "Off-Campus Housing",
+        "-latitude": "40.7307362",
+        "-longitude": "-73.9956887"
+      },
+      "building-othmer-residence-hall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "6 Metrotech Center, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Othmer Residence Hall",
+        "-latitude": "40.6940105",
+        "-longitude": "-73.9867065"
+      },
+      "building-pall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "140 East 14th Street, New York, NY 10003, USA",
+        "-buildingcode": "PALL",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Palladium Hall",
+        "-latitude": "40.7335117",
+        "-longitude": "-73.9881647"
+      },
+      "building-godd": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "79 Washington Square East, New York University, New York, NY 10003, USA",
+        "-buildingcode": "GODD",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Paulette Goddard Hall",
+        "-latitude": "40.7296271",
+        "-longitude": "-73.9962864"
+      },
+      "building-panx": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "26 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "PANX",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Pless Annex",
+        "-latitude": "40.7299554",
+        "-longitude": "-73.9957732"
+      },
+      "building-pless": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "82 Washington Square East, New York University, New York, NY 10003, USA",
+        "-buildingcode": "PLESS",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Pless Hall",
+        "-latitude": "40.7298842",
+        "-longitude": "-73.996078"
+      },
+      "building-14wpl": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "14 Washington Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "14WPL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Public Safety - Administrative Office",
+        "-latitude": "40.7295223",
+        "-longitude": "-73.9951561"
+      },
+      "building-public-safety-command-center": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "7 Washington Place, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Public Safety - Command Center",
+        "-latitude": "40.7296610",
+        "-longitude": "-73.9944990"
+      },
+      "building-puck": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "295 Lafayette Street, New York, NY 10012, USA",
+        "-buildingcode": "PUCK",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Robert F. Wagner Graduate School of Public Service",
+        "-jcr:title": "Puck Building",
+        "-latitude": "40.7246814",
+        "-longitude": "-73.9954465"
+      },
+      "building-rogers-hall-and-jacobs-academic-building": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "6 Metrotech Center, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Rogers Hall and Jacobs Academic Building",
+        "-latitude": "40.6940105",
+        "-longitude": "-73.9867065"
+      },
+      "building-rubin": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "35 5th Avenue, New York, NY 10003, USA",
+        "-buildingcode": "RUBIN",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Rubin Hall",
+        "-latitude": "40.7335306",
+        "-longitude": "-73.9951427"
+      },
+      "building-rufus": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "25 Waverly Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "RUFUS",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Rufus D. Smith Hall",
+        "-latitude": "40.7306",
+        "-longitude": "-73.994791"
+      },
+      "building-second-street-residence-hall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 East 2nd Street, New York, NY 10003, USA",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Second Street Residence Hall",
+        "-latitude": "40.7254116",
+        "-longitude": "-73.9919009"
+      },
+      "building-40e7": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "40 East 7th Street, New York, NY 10003, USA",
+        "-buildingcode": "40E7",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Seventh Street Residence Hall",
+        "-latitude": "40.7281282",
+        "-longitude": "-73.9887752"
+      },
+      "building-shimk": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "50 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "SHIMK",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Shimkin Hall & Jeffrey S. Gould Welcome Center",
+        "-latitude": "40.7293583",
+        "-longitude": "-73.9964572"
+      },
+      "building-silk": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "14 West 4th Street, New York, NY 10012, USA",
+        "-buildingcode": "SILK",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Silk Building, 14 East 4th Street",
+        "-latitude": "40.7286379",
+        "-longitude": "-73.9949878"
+      },
+      "building-silvr": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "100 Washington Square East, New York University, New York, NY 10003, USA",
+        "-buildingcode": "SILVR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Silver Center for Arts and Science",
+        "-latitude": "40.7302704",
+        "-longitude": "-73.995686"
+      },
+      "building-1wsn": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "1 Washington Square North, New York, NY 10003, USA",
+        "-buildingcode": "1WSN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Silver School of Social Work",
+        "-latitude": "40.7310431",
+        "-longitude": "-73.9957041"
+      },
+      "building-silver-towers-100-bleecker": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "100 Bleecker Street, New York University, New York, NY 10013, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Silver Towers, 100 Bleecker",
+        "-latitude": "40.7268853",
+        "-longitude": "-73.998116"
+      },
+      "building-110bl": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "110 Bleecker Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "110BL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Silver Towers, 110 Bleecker",
+        "-latitude": "40.7267199",
+        "-longitude": "-73.9986428"
+      },
+      "building-skirball-center-for-the-performing-arts-": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "566 LaGuardia Place, New York University, New York, NY 10012, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Skirball Center for the Performing Arts ",
+        "-latitude": "40.7297952",
+        "-longitude": "-73.9977487"
+      },
+      "building-chan": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "14 East 78th Street, New York, NY 10075, USA",
+        "-buildingcode": "CHAN",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Stephen Chan House",
+        "-latitude": "40.775746",
+        "-longitude": "-73.963494"
+      },
+      "building-kevor": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "50 Washington Square South, New York University, New York, NY 10012, USA",
+        "-buildingcode": "KEVOR",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "The Hagop Kevorkian Center",
+        "-latitude": "40.7305275",
+        "-longitude": "-73.9987905"
+      },
+      "building-isaw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "15 East 84th Street, New York, NY 10028, USA",
+        "-buildingcode": "ISAW",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "The Institute for the Study of the Ancient World",
+        "-latitude": "40.779893",
+        "-longitude": "-73.9603178"
+      },
+      "building-75e3": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "75 3rd Avenue, New York, NY 10003, USA",
+        "-buildingcode": "75E3",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Third Avenue North Residence Hall",
+        "-latitude": "40.7313942",
+        "-longitude": "-73.9881904"
+      },
+      "building-13drm": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "47 West 13th Street, New York, NY 10011, USA",
+        "-buildingcode": "13DRM",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Thirteenth Street Residence Hall",
+        "-latitude": "40.7363936",
+        "-longitude": "-73.9963081"
+      },
+      "building-tisc": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "40 West 4th Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "TISC",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Tisch Hall",
+        "-latitude": "40.7287652",
+        "-longitude": "-73.9961835"
+      },
+      "building-721bw": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "721 Broadway, New York University, New York, NY 10003, USA",
+        "-buildingcode": "721BW",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Tisch School of the Arts",
+        "-latitude": "40.7294245",
+        "-longitude": "-73.993707"
+      },
+      "building-torch-club": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "18 Waverly Place, New York University, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Torch Club",
+        "-latitude": "40.730087",
+        "-longitude": "-73.994756"
+      },
+      "building-e26": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "334 East 26th Street, New York, NY 10010, USA",
+        "-buildingcode": "E26",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Twenty-sixth Street Residence",
+        "-latitude": "40.7391271",
+        "-longitude": "-73.9780277"
+      },
+      "building-uncrt": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "334 East 25th Street, New York, NY 10010, USA",
+        "-buildingcode": "UNCRT",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "University Court",
+        "-latitude": "40.7383844",
+        "-longitude": "-73.9785642"
+      },
+      "building-uhall": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "110 East 14th Street, New York, NY 10003, USA",
+        "-buildingcode": "UHALL",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "University Hall",
+        "-latitude": "40.7340081",
+        "-longitude": "-73.9889696"
+      },
+      "building-vand": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "40 Washington Square South, New York University, New York, NY 10012, USA",
+        "-buildingcode": "VAND",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Vanderbilt Hall",
+        "-latitude": "40.730538",
+        "-longitude": "-73.999482"
+      },
+      "building-423e": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "423 East 23rd Street, New York, NY 10010, USA",
+        "-buildingcode": "423E",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Veterans Administration Hospital",
+        "-latitude": "40.7363165",
+        "-longitude": "-73.977115"
+      },
+      "building-ciww": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "251 Mercer Street, New York University, New York, NY 10012, USA",
+        "-buildingcode": "CIWW",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "Courant Institute of Mathematical Sciences",
+        "-jcr:title": "Warren Weaver Hall",
+        "-latitude": "40.7287645",
+        "-longitude": "-73.9954957"
+      },
+      "building-wasserman-center-for-career-development": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "133 East 13th Street, New York, NY 10003, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:description": "2nd floor",
+        "-jcr:title": "Wasserman Center for Career Development",
+        "-latitude": "40.7329344",
+        "-longitude": "-73.9884780"
+      },
+      "building-wave": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "24 Waverly Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "WAVE",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Waverly Building",
+        "-latitude": "40.730272",
+        "-longitude": "-73.995124"
+      },
+      "building-wein": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "5 University Place, New York University, New York, NY 10003, USA",
+        "-buildingcode": "WEIN",
+        "-cq:tags": "maps:publicsafety",
+        "-jcr:title": "Weinstein Residence Hall",
+        "-latitude": "40.7310963",
+        "-longitude": "-73.9949366"
+      },
+      "building-weis": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "421 1st Avenue, New York, NY 10010, USA",
+        "-buildingcode": "WEIS",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Weissman Building",
+        "-latitude": "40.738087",
+        "-longitude": "-73.9780236"
+      },
+      "building-wool": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "Barclay Street, New York, NY 10279, USA",
+        "-buildingcode": "WOOL",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Woolworth Building",
+        "-latitude": "40.7133277",
+        "-longitude": "-74.010995"
+      },
+      "building-wunsch-building": {
+        "-jcr:primaryType": "nt:unstructured",
+        "-address": "311 Bridge Street, Brooklyn, NY 11201, USA",
+        "-cq:tags": "maps:building",
+        "-jcr:title": "Wunsch Building",
+        "-latitude": "40.6942291",
+        "-longitude": "-73.9851577"
+      }
+    }
+}

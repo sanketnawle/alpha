@@ -155,6 +155,9 @@ div.nav_section.active div#home_nav_icon {
     background-image: url('../../../assets/partial/nav_bar/school_icon_white.png');
 }
 
+.nav_drop_down_section:last-of-type{
+    margin-bottom:10px;
+}
 
 #nav_down_arrow {
     height: 5px;

@@ -101,7 +101,7 @@
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
                 <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
-                <div class = "center_text"><p id = "group_name">Theories and Applications of Graphical Computing</p></div>
+                <div class = "center_text"><p id = "group_name">Theories of Graphical Computing</p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
@@ -180,8 +180,29 @@
         </div>
 
 
-        <div class="panel active" id="panel_1">
-            CLASS FEED GOES HERE
+        <div class="panel active panel_feed" id="panel_1">
+            <div id = "planner_column" class = "planner_column_group">
+                <div id = "right_column_specs">
+                    <div id = "fixed_element" class = "planner_group">
+                        <?php
+                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));
+                        ?>    
+                    </div>
+                </div>                           
+            </div>
+            <div id = "feed_column" class = "feed_column_group">
+                <div id = "stream_holder" class = "stream_holder_home">
+                    <div id = "fbar_wrapper" class = "fbar_home">
+                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
+                    </div>
+
+                    <div id = "feed_wrapper" class = "feed_wrapper_home">
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/<?php echo $class->class_id; ?>/feed')); ?>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
 
         <div class="panel tab_syllabus" id="panel_2">

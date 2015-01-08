@@ -20,6 +20,10 @@ body{
     background: #FAFAFA;
 }
 
+body.body_group{
+
+}
+
 body#body_home{
     overflow:auto!important;
     background: #fff;
@@ -125,7 +129,7 @@ body#body_home{
 }
 
 div#planner_column{
-    padding: 0 4px 0 0; 
+    padding: 0 7px 0 0; 
     float: right;
     margin-top: 0;
     word-wrap: break-word;
@@ -142,14 +146,37 @@ div#planner_column.planner_column_home{
 
 }
 
+.panel_feed{
+margin-top: 32px;
+padding: 0px 5px;
+top: -20px;
+}
+
+.panel_feed div#feed_column.feed_column_group{
+float: none;
+position: relative;
+margin-top: 10px;
+margin-left: -5px;
+padding-left: 5px;
+}
+}
+
 #planner_column.planner_column_home #right_column_specs {
 
 }
 
+div#planner_column.planner_column_group{
+    padding-right:2px!important;
+}
+
 #planner_column.planner_column_home #right_column_specs #fixed_element{
     top: 62px;
-
     height: 364px;
+}
+
+#planner_column.planner_column_group #right_column_specs #fixed_element{
+    height: 364px;
+    position: relative;
 }
 
 #right_column_specs{
@@ -211,7 +238,7 @@ div#fbar_wrapper.fbar_group{
 
 
 #right_column_specs #fixed_element{
-    position: fixed!important;
+    position: fixed;
 
     padding-top: 0px;
     z-index: 1;
@@ -615,7 +642,7 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
     -moz-osx-font-smoothing: grayscale;
 }
 
-div.professor_image{
+div.professor_image,div.admin_image{
     display: inline-block;
 
     width: 36px;
@@ -623,6 +650,13 @@ div.professor_image{
     height: 36px;
     background-size: cover;
     border-radius: 1000px;
+}
+
+div.admin_image{
+    margin-right:12px;
+    width:28px;
+    margin-bottom:2px;
+    height:28px;
 }
 
 div.professor_name{
@@ -835,6 +869,9 @@ ul.tabnav_tabs li{
     border-bottom: 1px solid #d4d4d4;
     padding: 15px 2px 5px;
     height: 35px;
+}
+.tab_members .tab_content_holder .tab_header{
+    padding-top:17px!important;
 }
 
 .tab_group_info .tab_content_holder .tab_header{
@@ -1150,8 +1187,8 @@ border-top: 1px solid #1BAD3E;
     display: block;
     border: 1px solid transparent;   
     margin-bottom: 25px;
-    margin: 0px auto;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    margin: 0px auto;  
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 .members_card.normal_size{
@@ -1377,6 +1414,11 @@ textarea:focus:-moz-placeholder {
         top:114px;
     }
 
+    .panel_feed div#feed_column.feed_column_group{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-right: 269px!important;
+    }
     #content_panel.content_panel_home {
     width: 830px!important;
     overflow-x: hidden!important;
@@ -1516,14 +1558,17 @@ div.group_info_block{
     background: rgba(18, 19, 20, 0.9); border-radius: 5px 0 0 5px;
     color: #fff;
     font-size: 12.5px;
+    -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     margin-bottom:16px;
-    font-weight: 600;
+    font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 div.group_info_block span{
     color: #fff;
-
+    font-weight:600;
 }
 
 

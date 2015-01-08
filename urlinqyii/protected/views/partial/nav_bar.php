@@ -4,6 +4,7 @@
 <script>
     base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
+
 </script>
 
 <div id="nav_bar">
@@ -21,21 +22,44 @@
             <div class="nav_picture"></div>
             <div class="nav_text">Schools</div>
             <div id="nav_down_arrow"></div>
-            <div id="nav_drop_down_container" class="closed">
+            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div id="nav_drop_down_scrollable">
                     <?php foreach($origin->school->university->schools as $school){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
                     <?php } ?>
                 </div>
+            </div>
+        </div>
 
-                <div id="nav_drop_down_bar_line"></div>
-                <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_departments_text">See all departments</div>
+        <div class="nav_arrow"></div>
+
+        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'department/' . $origin_id; ?>" data-link_type="department">
+            <div class="nav_picture"></div>
+            <div class="nav_text">Departments</div>
+            <div id="nav_down_arrow"></div>
+            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
+                <div id="nav_drop_down_scrollable">
+                    <?php foreach($user->school->departments as $department){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
 
+        <div class="nav_arrow"></div>
 
+        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
+            <div class="nav_picture"></div>
+            <div class="nav_text">Clubs</div>
+            <div id="nav_down_arrow"></div>
+            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
+                <div id="nav_drop_down_scrollable">
+                    <?php foreach($user->school->groups as $club){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $club->group_id; ?>"><?php echo $club->group_name; ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -213,6 +237,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="nav_section drop_down" id="home_nav" data-link_url="/<?php echo 'club/' . $origin_id; ?>" data-link_type="club">
+            <div class="nav_picture"></div>
+            <div class="nav_text">Clubs</div>
+            <div id="nav_down_arrow"></div>
+            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
+                <div id="nav_drop_down_scrollable">
+                    <?php foreach($origin->groups as $club){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $club->group_id; ?>"><?php echo $club->group_name; ?></div>
+                    <?php } ?>
+                </div>
+                <div id="nav_drop_down_bar_line"></div>
+
+                <div id="nav_drop_down_see_all_button">
+                    <div id="nav_drop_down_see_all_clubs_text">See all clubs</div>
+                </div>
+            </div>
+        </div>
+
 
     <?php } ?>
 
