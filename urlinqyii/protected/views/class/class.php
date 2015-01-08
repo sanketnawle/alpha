@@ -238,6 +238,24 @@
 
 
                             </header>
+                            <br>
+                            <div id="events_list">
+                                
+                            </div>
+                        </div>
+<!--                         <div class = "syllabus_events_wrapper">
+                            <header class = "class_tasks">
+                                <h5>Class Work</h5>
+                                <label>Order:</label>
+                                <ul class = "menu">
+                                    <li>
+                                        <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
+                                        <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
+                                    </li>
+                                </ul>
+
+
+                            </header>
                             <div class = "events_by_kind events_ordered_list">
                                 <div class = "kind_section">
                                     <h5>Assignments</h5>
@@ -254,7 +272,6 @@
                                                 Midterm 1
                                             </span>
                                             <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button syllabus_event_button incomplete active">
                                                 <span class = "todo_checkbox">
                                                 </span>
@@ -283,7 +300,6 @@
                                                 Midterm 1
                                             </span>
                                             <input class = "syla_tab_event_editor" type = "text" name = "event_name" placeholder = "Enter a title...">
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button syllabus_event_button incomplete active">
                                                 <span class = "todo_checkbox">
                                                 </span>
@@ -315,7 +331,6 @@
                                             <span class ="event_name_text">
                                                 Midterm 1
                                             </span>
-                                            <!-- The complete_incomplete_box is only active for certain types of events - assignments, papers, and projects. So for all other kinds of class events, do not show this box -->
                                             <div class ="complete_incomplete_button incomplete">
                                                 <span></span>
                                             </div>
@@ -387,7 +402,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
