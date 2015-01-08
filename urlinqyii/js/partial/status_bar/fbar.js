@@ -13,7 +13,13 @@ var origin_id = 25;
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
     //liking a post
-    
+
+    $.getJSON(base_url + "/js/partial/status_bar/NYU_locations.json",function(json_data){
+        var parsedLocations = JSON.stringify(json_data);
+    });
+
+
+
     setTimeout(function(){
         sample();
     }, 1000);
@@ -471,6 +477,8 @@ $(document).ready(function() {
         return false;
     }
 
+
+
     $(document).delegate('.fbar_buttonwrapper', "click", function () { 
         var $button_selected = $(this);
 
@@ -478,6 +486,26 @@ $(document).ready(function() {
         
         var button_selected_type = $button_selected.attr("data-post_button_type");
         $("#fbar_holder").addClass(button_selected_type);
+        if($("#fbar_holder").hasClass("event")){
+            $("#post_btn").text("Create Event");
+        }
+
+        if($("#fbar_holder").hasClass("discuss")){
+            $("#post_btn").text("Post");
+        }
+
+        if($("#fbar_holder").hasClass("question")){
+            $("#post_btn").text("Add Question");
+        }
+
+        if($("#fbar_holder").hasClass("question")){
+            $("#post_btn").text("Add Question");
+        }
+
+        if($("#fbar_holder").hasClass("notes")){
+            $("#post_btn").text("Add Files");
+        }
+
 
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form')
@@ -601,6 +629,7 @@ $(document).ready(function() {
             $button_section.removeClass("hide");
                     $("#fbar_holder").removeClass("discuss");
                     $("#fbar_holder").removeClass("question");
+                    $("#fbar_holder").removeClass("event");
                     $("#fbar_holder").removeClass("notes");
                     $form_section.removeClass("true_or_false");
                     $form_section.removeClass("mult_choice");

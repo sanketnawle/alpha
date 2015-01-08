@@ -5,7 +5,7 @@
     left: 0;
     height: 500%;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 2000;
 }
 #profile_wrapper{
@@ -24,8 +24,7 @@
     width: 30%;
     height:100%;
     float: left;
-    background-color: #dcdcdc ;
-    font-family: "Avenir", Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 #tab_contents{
     display: inline-block;
@@ -35,17 +34,17 @@
 #main_content{
     clear:left;
     height: auto;
-    background-color: #d3d3d3;
+    position: relative;
+    background-color: #fafafa;
 }
 #modal_header{
     height: 331px;
-    background-color: black;
 }
 .controls{
     float:left;
 }
 #modal_controls{
-    background-color: rgba(94, 94, 94,1);
+    background-color: #3b3e41;
     height: 53px;
 
 
@@ -57,18 +56,27 @@
 
     font-family: 'Open Sans', sans-serif;
     color: white;
+    
+
+    background: transparent;
+
     text-decoration: none;
+    
+
+    border: none!important;
+
 }
 
 #modal_label {
-    font-weight: 600;
-    font-size: 14.5px;
+    font-weight: 500;
+    font-size: 18.5px;
     display: inline-block;
     float: right;
     width: auto;
     margin-right: auto;
-    cursor:pointer;
-    padding-top: 16px;
+    font-family: Avenir;
+    cursor: default;
+    padding-top: 17px;
     padding-left: 2px;
     padding-bottom: 18px;
     float: left;
@@ -103,22 +111,24 @@
     height: 90px;
     border: 1px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 4px #888888;
+    border-bottom: 1px solid #f0f0f0;
 }
 #profile_picture_wrapper{
     position: relative;
-    border: 5px solid #fff;
+    border: 3px solid #fff;
     float:left;
     background-color: white;
-    height: 203px;
-    margin-left: 13px;
-    box-shadow: 0px 0px 4px #888888;
+    height: 199px;
+    margin-left: 13px; 
+    -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27); 
+    -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27); 
+    box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.27);
     margin-top:-130px;
 }
 #profile_picture{
     background-size: cover;
-    width:160px;
-    height:160px;
+    width: 165px;
+    height: 165px;
 }
 #name_info_wrapper{
     font-family: "Avenir", Arial, sans-serif;
@@ -240,15 +250,21 @@ a.info_name{
     color:black;
 }
 #edit_profile_button{
-    height: 16%;
+    height: 26px;
     font-family: 'Open Sans', sans-serif;
     width: 80%;
     position: relative;
     font-weight: 600;
+    border-radius: 4px;
     margin: auto;
     z-index:2;
-    margin-top: 7px;
-    margin-left: 15px;
+    margin-top: 6px;
+    margin-left: 16px;
+    ckground-color: #f2f2f2; text-shadow: 0 1px 1px rgba(255,255,255,0.75); 
+    border: 1px solid #ddd; background-repeat: repeat-x; 
+    color: #575757;
+    background-color: #f2f2f2;
+    font-size: 14px; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease; box-shadow: 0px -1px #fff inset;
 }
 #cancel_edit_button{
     display:none;
@@ -329,7 +345,7 @@ div.profile_tab div.profile_tab_content{
     text-align: center;
     text-transform: uppercase;
     padding-top: 19px;
-    color: #4B5258;
+    color: #999;
     cursor: default;
     font-size: 13.5px;
     letter-spacing: .02em;
@@ -507,17 +523,22 @@ button.download_showcase_button {
 
 }
 button.add_showcase_button {
-    background-color: rgba(100, 100, 100,0.5);
+    background-color: rgba(34, 34, 34, 0.6);
     position: absolute;
     border-radius: 4px;
     width: 134px;
     height: 28px;
+    left: 329px!important;
     right:20px;
+    font-family: AVenir;
+    width: 340px!important;
+    font-size: 17px;
     bottom:20px;
     color: white;
     border: 1px solid white;
 
 
+    box-shadow: 0 0 1px black;
     cursor: pointer;
 }
 

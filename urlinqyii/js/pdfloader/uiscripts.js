@@ -34,7 +34,10 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                                    contentType: false,
                                    success: function(response) {
                                       $('#pdfContainer').html("");
-                                      run_pdf_algo();
+                                      previous = "";
+                                      events={};
+                                      pdf_year= (new Date()).getFullYear();
+                                      run_pdf_algo(true);
                                    },
                                    error: function(jqXHR, textStatus, errorMessage) {
                                        console.log(errorMessage); // Optional

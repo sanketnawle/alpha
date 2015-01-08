@@ -41,6 +41,14 @@ div.nav_section div#nav_drop_down_container{
 	top:100px!important;
 }
 
+div.home_nav_dropdown#nav_drop_down_container{
+height: 205px;
+}
+
+div.home_nav_dropdown#nav_drop_down_container div#nav_drop_down_scrollable{
+max-height: 198px;
+}
+
 div.nav_section.nav_section_home.active div a:hover{
 	cursor:default!important;
 }
