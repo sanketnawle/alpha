@@ -1,5 +1,96 @@
 jQuery(document).ready(function(){
 
+
+    init();
+
+    function init(){
+        //get the current datetime object
+        var datetime = new Date();
+        //sql formatted timestring
+        var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+
+        //Set the default time for the time_inputs
+        var $start_time_input = $('#create_event_start_time_input');
+        $start_time_input.attr('data-time',start_time_string);
+        $start_time_input.val(time_string_to_am_pm_string(start_time_string));
+
+
+
+        var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+
+        //Set the default time for the time_inputs
+        var $end_time_input = $('#create_event_end_time_input');
+
+        $end_time_input.attr('data-time',end_time_string);
+        $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+
+        
+
+    }
+
+
+
+
+//    jQuery(document).on('focusout','input',function(){
+//        console.log('VERIFYING DATE INPUTS');
+//        verify_date_inputs();
+//    });
+
+    jQuery(document).on('click', '.dates', function(){
+        verify_date_inputs();
+    });
+
+
+    jQuery(document).on('click', '.time_selector_div', function(){
+        verify_date_inputs();
+    });
+
+    jQuery(document).on('click', '.text_input', function(){
+        console.log('VERIFYING DATE INPUTS');
+        verify_date_inputs();
+    });
+
+
+    function verify_date_inputs(){
+        var event_start_date = $('#create_event_start_date_input').attr('data-date');
+        var event_start_time = $('#create_event_start_time_input').attr('data-time');
+
+        var event_end_date = $('#create_event_end_date_input').attr('data-date');
+        var event_end_time = $('#create_event_end_time_input').attr('data-time');
+
+
+        //Make sure the start date is less than the end date
+        var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
+        var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+
+
+        if(end_datetime_object < start_datetime_object){
+            //alert('end time must be after start time');
+
+
+            //Create just date objects
+            //so we can compare the date only
+            var start_date = new Date(date_to_string(start_datetime_object) + ' 00:00:00');
+            var end_date = new Date(date_to_string(end_datetime_object) + ' 00:00:00');
+            //Set the end time input as an error
+            if(start_date > end_date){
+                $('#create_event_end_date_input').addClass('error');
+                $('#create_event_end_time_input').removeClass('error');
+            }else {
+                $('#create_event_end_time_input').addClass('error');
+                $('#create_event_end_date_input').removeClass('error');
+            }
+
+
+        }else{
+            $('#create_event_end_date_input').removeClass('error');
+            $('#create_event_end_time_input').removeClass('error');
+        }
+    }
+
+
+
+
     var $recent_date_input = null;
     var blinkflag = 0;
 
@@ -51,7 +142,13 @@ jQuery(document).ready(function(){
 
 
         jQuery('.calLayer').css({position:'fixed', top: $recent_date_input.position().top + 85, left: $recent_date_input.position().left + 200});
+
+
+
         jQuery('.calLayer').toggle();
+
+
+
 
     });
 
@@ -161,78 +258,7 @@ jQuery(document).ready(function(){
     });
 
 
-    jQuery(document).on('click','.popup_edit_button', function(){
-        var $this_popup_button = jQuery(this);
-        var $inspect_event_popup = $this_popup_button.closest('.inspect_event_popup');
-        //Hide the popup
-        $inspect_event_popup.removeClass('active');
 
-
-        //Get the event id from this popup
-        var event_id = $inspect_event_popup.attr('data-event_id');
-
-
-        //Get the event div that has this event id
-        var $event_holder = jQuery('.day_event_holder[data-id="' + event_id + '"]');
-
-        var event_name = $event_holder.attr('data-name');
-        var event_start_time_string = $event_holder.attr('data-start_time');
-        var event_end_time_string = $event_holder.attr('data-end_time');
-        var event_start_date_string = $event_holder.attr('data-start_date');
-        var event_end_date_string = $event_holder.attr('data-end_date');
-        var event_origin_type = $event_holder.attr('data-origin_type');
-        var event_origin_id = $event_holder.attr('data-origin_id');
-        var event_type = $event_holder.attr('data-event_type');
-        var event_location = $event_holder.attr('data-location');
-
-        //Get the create event dialog
-        var $dialog = jQuery('#dialog');
-
-
-        jQuery('#create_event_name_input').val(event_name);
-        jQuery('#event_location_input').val(event_location);
-
-
-
-        jQuery('#create_event_start_date_input').val(date_string_to_day_of_week_string(event_start_date_string));
-        jQuery('#create_event_start_date_input').attr('data-date',event_start_date_string);
-        jQuery('#create_event_end_date_input').val(date_string_to_day_of_week_string(event_end_date_string));
-        jQuery('#create_event_end_date_input').attr('data-date',event_end_date_string);
-
-        jQuery('#create_event_start_time_input').val(time_string_to_am_pm_string(event_start_time_string));
-        jQuery('#create_event_start_time_input').attr('data-time', event_start_time_string);
-        jQuery('#create_event_end_time_input').val(time_string_to_am_pm_string(event_end_time_string));
-        jQuery('#create_event_end_time_input').attr('data-time', event_end_time_string);
-
-
-
-        //Get the create event form element
-        var $create_event_form = jQuery('#create_event_form');
-        //Change the event form action to update instead of create
-        $create_event_form.attr("action", "/event/update");
-        //add the event id to the form so its easy to pull off during the post request
-        $create_event_form.attr('data-event_id', event_id);
-
-        $create_event_form.find('#create_event_submit_button').val('UPDATE');
-
-        //Check if there is an element with this origin type and id
-        var $this_origin_type = jQuery('.group[data-group_type="' + event_origin_type + '"][data-id="' + event_origin_id + '"]');
-        if($this_origin_type.length){
-            $this_origin_type.addClass('selected');
-        }
-
-
-        //Check if there is an element with this origin type and id
-        var $this_category = jQuery('.category[data-category="' + event_type + '"]');
-        if($this_category.length){
-            $this_category.addClass('selected');
-        }
-
-
-        //show the create event dialog
-        $dialog.show();
-
-    });
 
 
     jQuery(document).on('click','#create_new_event_button',function(){
@@ -292,10 +318,11 @@ jQuery(document).ready(function(){
 
         var $selected_group = jQuery('div.group.selected');
 
-        var event_origin_type = $selected_group.attr('data-group_type');
-        var event_origin_id = $selected_group.attr('data-id');
 
-        var event_category = jQuery('div.category.selected').attr('data-category');
+        var event_origin_type = $selected_group.attr('data-group_type') ? $selected_group.attr('data-group_type'):'';
+        var event_origin_id = $selected_group.attr('data-id') ? $selected_group.attr('data-id'):'';
+
+        var event_category = jQuery('div.category.selected').attr('data-category') ? jQuery('div.category.selected').attr('data-category'):'';
 
         var event_location = jQuery('#event_location_input').val();
         var event_description = jQuery('#event_description_input').val();
@@ -305,10 +332,31 @@ jQuery(document).ready(function(){
         var event_all_day = jQuery('#allday_checkbox').is(':checked');
 
 
-
         if(jQuery('#todo_checkbox').is(':checked')){
             event_category = 'todo';
         }
+
+
+
+        //Make sure event has a name
+        if(event_name.length == 0){
+            alert('event needs a name');
+            return;
+        }
+
+
+        //Make sure the start date is less than the end date
+        var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
+        var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+//        var start_time_value = parseInt(event_start_date.substring(0,2)) + parseInt(event_end_date.substring(3,5));
+//        var end_time_value = parseInt(event_end_date.substring(0,2)) + parseInt(event_end_date['end_time'].substring(3,5));
+
+        if(end_datetime_object < start_datetime_object){
+            alert('start date and time need to be before the end date and time.');
+            return;
+        }
+
+
 
 
         var post_data = {
@@ -331,7 +379,7 @@ jQuery(document).ready(function(){
         };
 
 
-        //alert(JSON.stringify(post_data));
+        console.log(JSON.stringify(post_data));
 
 
 
@@ -340,6 +388,23 @@ jQuery(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
+                    //If this was an update event, do some shit
+                    if($form.attr('action') == '/event/update'){
+                        //Delete the old event
+                        jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+                        //show new event
+                        var $active_tab = jQuery('a.ng-binding.active');
+                        if($active_tab.text().toLowerCase() == 'day'){
+                            show_day_event(response['event']);
+                        }else if($active_tab.text().toLowerCase() == 'week'){
+                            show_week_day_event(response['event']);
+                        }else if($active_tab.text().toLowerCase() == 'month'){
+                            show_month_event(response['event']);
+                        }
+                    }
+
+
+
                     jQuery('#dialog').hide();
                     reset_create_event_form();
                 }else{
@@ -355,6 +420,19 @@ jQuery(document).ready(function(){
     //Intercept the click event if the user clicked the create form
     jQuery(document).on('click','#create_event_holder',function(e){
         e.stopPropagation();
+
+
+
+        //Hide all popups
+        var $time_selector = $('#time_selector');
+        //Hide the selector
+        $time_selector.removeClass('active');
+
+
+
+        var $calLayer = $('.calLayer');
+        //Hide the selector
+        $calLayer.removeClass('active');
     });
 
     jQuery(document).on('click','.wrapper',function(){
@@ -363,4 +441,8 @@ jQuery(document).ready(function(){
         $dialog.hide();
         reset_create_event_form();
     });
+
+
+
+
 });

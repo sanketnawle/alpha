@@ -13,6 +13,11 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 
+
+    <!-- global show event functions -->
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/global/show_events.js"></script>
+
+
     <!-- Fonts -->
     <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css"><!-- Open Sans:3->8-5 -->
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
@@ -85,6 +90,8 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/week/week.js"></script>
 
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/inspect_event/inspect_event.js"></script>
 
 </head>
 <body>
@@ -213,42 +220,61 @@ Set the class name on your input to 'time_input' -->
 
 
 
-    <div class='time_selector_div' data-time='01:00:00' value="01:00:00">1:00pm</div>
-    <div class='time_selector_div' data-time='01:30:00' value="01:30:00">1:30pm</div>
+    <div class='time_selector_div' data-time='13:00:00' value="13:00:00">1:00pm</div>
+    <div class='time_selector_div' data-time='13:30:00' value="13:30:00">1:30pm</div>
 
-    <div class='time_selector_div' data-time='02:00:00' value="02:00:00">2:00pm</div>
-    <div class='time_selector_div' data-time='02:30:00' value="02:30:00">2:30pm</div>
+    <div class='time_selector_div' data-time='14:00:00' value="14:00:00">2:00pm</div>
+    <div class='time_selector_div' data-time='14:30:00' value="14:30:00">2:30pm</div>
 
-    <div class='time_selector_div' data-time='03:00:00' value="03:00:00">3:00pm</div>
-    <div class='time_selector_div' data-time='03:30:00' value="03:30:00">3:30pm</div>
+    <div class='time_selector_div' data-time='15:00:00' value="15:00:00">3:00pm</div>
+    <div class='time_selector_div' data-time='15:30:00' value="15:30:00">3:30pm</div>
 
-    <div class='time_selector_div' data-time='04:00:00' value="04:00:00">4:00pm</div>
-    <div class='time_selector_div' data-time='04:30:00' value="04:30:00">4:30pm</div>
+    <div class='time_selector_div' data-time='16:00:00' value="16:00:00">4:00pm</div>
+    <div class='time_selector_div' data-time='16:30:00' value="16:30:00">4:30pm</div>
 
-    <div class='time_selector_div' data-time='05:00:00' value="05:00:00">5:00pm</div>
-    <div class='time_selector_div' data-time='05:30:00' value="05:30:00">5:30pm</div>
+    <div class='time_selector_div' data-time='17:00:00' value="17:00:00">5:00pm</div>
+    <div class='time_selector_div' data-time='17:30:00' value="17:30:00">5:30pm</div>
 
-    <div class='time_selector_div' data-time='06:00:00' value="06:00:00">6:00pm</div>
-    <div class='time_selector_div' data-time='06:30:00' value="06:30:00">6:30pm</div>
+    <div class='time_selector_div' data-time='18:00:00' value="18:00:00">6:00pm</div>
+    <div class='time_selector_div' data-time='18:30:00' value="18:30:00">6:30pm</div>
 
-    <div class='time_selector_div' data-time='07:00:00' value="06:00:00">7:00pm</div>
-    <div class='time_selector_div' data-time='07:30:00' value="06:30:00">7:30pm</div>
+    <div class='time_selector_div' data-time='19:00:00' value="19:00:00">7:00pm</div>
+    <div class='time_selector_div' data-time='19:30:00' value="19:30:00">7:30pm</div>
 
 
-    <div class='time_selector_div' data-time='08:00:00' value="08:00:00">8:00pm</div>
-    <div class='time_selector_div' data-time='08:30:00' value="08:30:00">8:30pm</div>
+    <div class='time_selector_div' data-time='20:00:00' value="20:00:00">8:00pm</div>
+    <div class='time_selector_div' data-time='20:30:00' value="20:30:00">8:30pm</div>
 
-    <div class='time_selector_div' data-time='09:00:00' value="09:00:00">9:00pm</div>
-    <div class='time_selector_div' data-time='09:30:00' value="09:30:00">9:30pm</div>
+    <div class='time_selector_div' data-time='21:00:00' value="21:00:00">9:00pm</div>
+    <div class='time_selector_div' data-time='21:30:00' value="21:30:00">9:30pm</div>
 
-    <div class='time_selector_div' data-time='10:00:00' value="10:00:00">10:00pm</div>
-    <div class='time_selector_div' data-time='10:30:00' value="10:30:00">10:30pm</div>
+    <div class='time_selector_div' data-time='22:00:00' value="22:00:00">20:00pm</div>
+    <div class='time_selector_div' data-time='22:30:00' value="22:30:00">20:30pm</div>
 
-    <div class='time_selector_div' data-time='11:00:00' value="11:00:00">11:00pm</div>
-    <div class='time_selector_div' data-time='11:30:00' value="11:30:00">11:30pm</div>
+    <div class='time_selector_div' data-time='23:00:00' value="23:00:00">11:00pm</div>
+    <div class='time_selector_div' data-time='23:30:00' value="23:30:00">11:30pm</div>
 
 
 </div>
+
+
+<script id="day_event_template" type="text/x-handlebars-template">
+    <div class="day_event_holder event_holder" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+        <div class="event_start_time">{{formatted_start_time}}</div>
+        <div class="event_name">{{title}}</div>
+        <div class="event_description">{{description}}</div>
+    </div>
+</script>
+
+<script id="week_day_event_template" type="text/x-handlebars-template">
+    <div class="grid-event week_event_holder event_holder" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+        <div class="event_start_time">{{formatted_start_time}}</div>
+        <div class="event_name">{{title}}</div>
+        <div class="event_description">{{description}}</div>
+    </div>
+</script>
+
+
 
 
 

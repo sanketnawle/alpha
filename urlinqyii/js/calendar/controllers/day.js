@@ -6,6 +6,7 @@
 
 ulcal.controller("DayController", function ($scope, $routeParams, $compile, $timeout, UCEventData, UCAdData) {
     var date = new Date($routeParams.year, $routeParams.month - 1, $routeParams.date);
+
     $scope.setActiveDate(date.getDate());
     $scope.setActiveMonth(date.getMonth());
     $scope.setActiveYear(date.getFullYear());
