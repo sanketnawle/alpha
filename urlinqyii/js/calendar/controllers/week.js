@@ -11,7 +11,22 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
     $scope.class = "week";
     $scope.title = "Week";
 
+
+
+
     var dateOfWeek = DateService.getDateOfWeek($routeParams.week, $routeParams.year);
+
+    //alert( $routeParams.year);
+
+    var first_day_of_week_date = DateService.getDateOfWeek($routeParams.week, $routeParams.year);
+
+
+    $scope.first_day_of_week_date = first_day_of_week_date;
+    //alert(first_day_of_week_date);
+
+
+
+
 
 //    addDate(6).getDate() < 7 ? function () {
 //        $scope.setActiveMonth((dateOfWeek.getMonth() + 1) % 12);
@@ -26,11 +41,24 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
 //    }();
 
     $scope.setActiveWeek($routeParams.week);
+
+
     $scope.setActiveSem(new Date($scope.activeYear, $scope.activeMonth, 1).getSemester());
 
+    $scope.getFirstDayOfMonth = function(){
+
+
+        var month = $routeParams.week % 4;
+
+        //Gets the active month based on what week you are looking at
+        var date = new Date($scope.activeYear, month, 1);
+        return date;
+    };
+
+
     function addDate(i) {
-        var d = new Date(dateOfWeek.getTime());
-        d.setDate(dateOfWeek.getDate() + i);
+        var d = new Date($scope.first_day_of_week_date.getTime());
+        d.setDate($scope.first_day_of_week_date.getDate() + i);
         return d;
     }
 
@@ -52,28 +80,28 @@ ulcal.controller("WeekController", function ($scope, $routeParams, DateService, 
     };
 
 
-    window.grid = WeekGrid.createGrid("week-grid", dateOfWeek);
+    window.grid = WeekGrid.createGrid("week-grid", dateOfWeek, $scope.getFirstDayOfMonth(), false);
 
-    (function LoadEvents(i) {
-        if (i == 7) return;
-        (function (i) {
-            UCEventData.getData({ date: addDate(i).toDateInputValue() }).success(function (events) {
-                events = events.events;
-                for (e in events) {
-                    grid.addEvent(new UCEvent(events[e]), i);
-                }
-                LoadEvents(++i);
-            });
-        }(i));
-        setTimeout(function () {
-            $(".grid-event").hover(function () {
-                $(".grid-event").addClass("fade");
-                $(this).removeClass("fade");
-            }, function () {
-                $(".grid-event").removeClass("fade");
-            })
-        }, 1000)
-    }(0));
+//    (function LoadEvents(i) {
+//        if (i == 7) return;
+//        (function (i) {
+//            UCEventData.getData({ date: addDate(i).toDateInputValue() }).success(function (events) {
+//                events = events.events;
+//                for (e in events) {
+//                    grid.addEvent(new UCEvent(events[e]), i);
+//                }
+//                LoadEvents(++i);
+//            });
+//        }(i));
+//        setTimeout(function () {
+//            $(".grid-event").hover(function () {
+//                $(".grid-event").addClass("fade");
+//                $(this).removeClass("fade");
+//            }, function () {
+//                $(".grid-event").removeClass("fade");
+//            })
+//        }, 1000)
+//    }(0));
 
 
 

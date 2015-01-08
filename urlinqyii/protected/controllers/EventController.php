@@ -66,6 +66,34 @@ class EventController extends Controller
     }
 
 
+
+
+    public function actionGetWeekEvents(){
+        $user = $this->get_current_user();
+//        $date = '2014-11-12';
+        $date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+        //$events = Event::model()->findAll('start_date<=:date and end_date>=:date and user_id=:user_id',array(':date'=>$date,':user_id'=>7));
+        //$events = $user->get_all_events();
+//        $events = Event::model()->findAllBySql('SELECT *
+//                                                FROM `event`
+//                                                LEFT OUTER JOIN `event_user`
+//                                                ON event.event_id = event_user.event_id
+//                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
+
+        //Get the events that this user is an event_user of
+        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
+        //Get the events that this
+        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
+
+        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+
+        $this->renderJSON($data);
+        return;
+
+    }
+
+
     public function actionAttendees(){
         //$user = $this->get_current_user();
         $event_id = $_GET['id'];
@@ -336,23 +364,21 @@ class EventController extends Controller
 //        $this->renderJSON($_POST);
 //        return;
 
-//        var post_data = {
-//        event:{
-//            event_name: 'Test event',
-//                origin_type:' club',
-//                origin_id: 1,
-//                title: 'Test Event',
-//                description: 'This is my test event description',
-//                start_time: '10:10:10',
-//                end_time: '11:11:11',
-//                start_date: '2014-12-01',
-//                end_date: '2014-12-01',
-//                location: 'Manhattan'
-//            }
-//        };
+//                event_name: event_name,
+//                origin_type: event_origin_type,
+//                origin_id: event_origin_id,
+//                event_type: event_category,
+//                title: event_name,
+//                description: event_description,
+//                start_time: event_start_time,
+//                end_time: event_end_time,
+//                start_date: event_start_date,
+//                end_date: event_end_date,
+//                location: event_location,
+//                event_todo: event_todo,
+//                ll_day: event_all_day
 
-
-        if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
+        if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_todo']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
         || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
@@ -395,6 +421,77 @@ class EventController extends Controller
             $this->renderJSON($data);
             return;
         }
+    }
+
+
+    //Error ids
+    // 1 - All data not set
+    // 2 - error creating todo
+    public function actionUpdate() {
+//        $data = array('success'=>true);
+//        $this->renderJSON($_POST);
+//        return;
+
+//        var post_data = {
+//        event:{
+//            event_name: 'Test event',
+//                origin_type:' club',
+//                origin_id: 1,
+//                title: 'Test Event',
+//                description: 'This is my test event description',
+//                start_time: '10:10:10',
+//                end_time: '11:11:11',
+//                start_date: '2014-12-01',
+//                end_date: '2014-12-01',
+//                location: 'Manhattan'
+//            }
+//        };
+
+
+        if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
+            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_data = $_POST['event'];
+        $event_id = $event_data['event_id'];
+
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+
+
+        if($event){
+            $event->title = $event_data['event_name'];
+            $event->description = $event_data['description'];
+            $event->event_type = $event_data['event_type'];
+            $event->user_id = $this->get_current_user_id();
+            $event->origin_type = $event_data['origin_type'];
+            $event->origin_id = $event_data['origin_id'];
+            $event->start_date = $event_data['start_date'];
+            $event->end_date = $event_data['end_date'];
+            $event->start_time = $event_data['start_time'];
+            $event->end_time = $event_data['end_time'];
+            $event->location = $event_data['location'];
+            $event->all_day = $event_data['all_day'];
+
+
+
+            if($event->save(false)){
+                $data = array('success'=>true,'event'=>$event);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error creating event ');
+                $this->renderJSON($data);
+                return;
+            }
+        }else {
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
     }
 
 

@@ -77,7 +77,153 @@ class ApiController extends Controller
     }
 
 
+    public function actionCreatePost(){
+        if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['subtext']) || !isset($_POST['origin_type']) || !isset($_POST['privacy'])){
+            $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+        else {
+            //$post = $_POST['post'];
+            //echo $post;
+            //$picture_file_id = null;
+            // if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+            //     include "file_upload.php";
+            //
+            //     $file_upload_response = file_upload($_FILES);
+            //     if ($file_upload_response['success']) {
+            //         $picture_file_id = $file_upload_response['file_id'];
+            //     } else {
+            //         $picture_file_id = null;
+            //     }
+            // } else {
+            //     $picture_file_id = null;
+            // }
+            try{
+                $post_new = new Post;
+                $post_new->user_id = $_POST['user_id'];
+                $post_new->origin_type = $_POST['origin_type'];
+                if($post_new->origin_type == 'user'){
+                    $post_new->origin_id = null;
+                }else{
+                    $post_new->origin_id = $_POST['origin_id'];
+                }
+                $post_new->post_type = 'discussion';
+                $post_new->text = $_POST['text'];
+                $post_new->sub_text = $_POST['subtext'];
+                $post_new->file_id = null;
+                if($_POST['privacy'] == 'all') {
+                    $post_new->privacy = '';
+                }else if($_POST['privacy'] == 'admin'){
+                    $post_new->privacy = 'admin';
+                }else if($_POST['privacy'] == 'members'){
+                    $post_new->privacy = 'members';
+                }
+                $post_new->save(false);
+                if(!$post_new){
+                    $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
+                    $this->renderJSON($data);
+                    return;
+                }
+                else{
+                    $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }catch (Exception $e){
+                $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+    }
 
+    public function actionCreateQuestion(){
+        if(!isset($_POST['post']) || !isset($_POST['user_id']) || !isset($_POST['question'])){
+            $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+        }
+        else {
+            $post = $_POST['post'];
+            $question = $_POST['question'];
+            $options = $question['options'];
+            $picture_file_id = null;
+            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+                include "file_upload.php";
+
+                $file_upload_response = file_upload($_FILES);
+                if ($file_upload_response['success']) {
+                    $picture_file_id = $file_upload_response['file_id'];
+                } else {
+                    $picture_file_id = 1;
+                }
+            } else {
+                $picture_file_id = 1;
+            }
+
+            $post_new = new Post();
+            try{
+                $post_new->user_id = $_POST['user_id'];
+                $post_new->origin_type = $post['origin']['origin_type'];
+                $post_new->origin_id = $post['origin']['origin_id'];
+                $post_new->post_type = 'discussion';
+                $post_new->text = $post['text'];
+                $post_new->sub_text = $post['subtext'];
+                $post_new->file_id = $picture_file_id;
+                if($post['privacy'] == 'all') {
+                    $post_new->privacy = '';
+                }elseif($post['privacy'] == 'admin'){
+                    $post_new->privacy = 'admin';
+                }elseif($post['privacy'] == 'members'){
+                    $post_new->privacy = 'members';
+                }
+                $post_new->save(false);
+                if($post_new){
+                    $question_new = new PostQuestion();
+                    $question_new->post_id = $post_new->post_id;
+                    $question_new->anonymous = $post['anon'];
+                    $flag = true;
+                    if($question['correctAnswer'] == '') {
+                        $question_new->correct_answer_id = null;
+                        $flag = false;
+                    }
+                    foreach($options as $option) {
+                        $option_new = new PostQuestionOption();
+                        $option_new->post_id = $post_new->post_id;
+                        $option_new->option_text = $option;
+                        $option_new->save(false);
+                        if(!$option_new){
+                            $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'Error saving option to database');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                        if($flag && ($question['correctAnswer'] == $option )) {
+                            $question_new->correct_answer_id = $option_new->option_id;
+                        }
+                    }
+
+                    $question_new->save(false);
+                    if(!$question_new){
+                        $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'Error saving question to database');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                    $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }catch (Exception $e){
+                $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+    }
 
     //Error ids
     // 1 - all data required is not set
@@ -201,6 +347,280 @@ class ApiController extends Controller
         }
     }
 
+    public function actionUserFollow()
+    {
+        if(!isset($_POST['user_id']) || !isset($_POST['from_user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $current_user_id = $_POST['from_user_id'];
+        $follow_user_id = $_POST['user_id'];
+
+        $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='$current_user_id' AND `to_user_id`='$follow_user_id'");
+
+        if(!$user_connection){
+            $user_connection = new UserConnection;
+            $user_connection->from_user_id = $current_user_id;
+            $user_connection->to_user_id = $follow_user_id;
+            $user_connection->save(false);
+
+            //If we successfully create the userconnection, return true
+            if($user_connection){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                //Error creating user connection
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'error creation user connection');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else{
+            //Connection already exists
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user connection already exists');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    public function actionUserUnfollow()
+    {
+        if(!isset($_POST['user_id']) || !isset($_POST['from_user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $current_user_id = $_POST['from_user_id'];
+        $unfollow_user_id = $_POST['user_id'];
+
+        $user_connection = UserConnection::model()->findBySql("SELECT * FROM `user_connection` WHERE `from_user_id`='$current_user_id' AND `to_user_id`='$unfollow_user_id'");
+
+
+        //if user connection exists and we can delete it, return true
+        if($user_connection && $user_connection->delete()){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            //Error deleting connection
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user connection doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionGroupJoin(){
+        if(!isset($_POST['group_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $group_id = $_POST['group_id'];
+
+        $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this group
+        if(!$group_user){
+            //Create new group user
+            $group_user = new GroupUser;
+            $group_user->group_id = $group_id;
+            $group_user->user_id = $user_id;
+            //If we save successfully, user is now apart of group
+            if($group_user->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving group_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this group
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the group');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+    public function actionGroupLeave(){
+        if(!isset($_POST['group_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $group_id = $_POST['group_id'];
+
+        $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
+        //Check if this user is even in this group
+        if($group_user){
+            //Check if we destroy this shit successfully
+            if($group_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting user');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this group
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the group');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    public function actionClassJoin(){
+        if(!isset($_POST['class_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $class_id = $_POST['class_id'];
+
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this class
+        if(!$class_user){
+            //Create new class user
+            $class_user = new ClassUser;
+            $class_user->class_id = $class_id;
+            $class_user->user_id = $user_id;
+            //If we save successfully, user is now apart of class
+            if($class_user->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving class_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the class');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    public function actionClassLeave(){
+        if(!isset($_POST['class_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $class_id = $_POST['class_id'];
+
+        $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+        //Check if this user is even in this class
+        if($class_user){
+            //Check if we destroy this shit successfully
+            if($class_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting class_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not in the class');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    public function actionDepartmentFollow(){
+        if(!isset($_POST['department_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $department_id = $_POST['department_id'];
+
+        $department_user = DepartmentFollow::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this class
+        if(!$department_user){
+            //Create new class user
+            $department_user = new DepartmentFollow;
+            $department_user->department_id = $department_id;
+            $department_user->user_id = $user_id;
+            //If we save successfully, user is now apart of class
+            if($department_user->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving department_follow table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already following the department');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionDepartmentUnfollow(){
+        if(!isset($_POST['department_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $department_id = $_POST['department_id'];
+
+        $department_user = ClassUser::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
+        //Check if this user is even in this class
+        if($department_user){
+            //Check if we destroy this shit successfully
+            if($department_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting department_follow table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not following the department');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     //ERROR ID's
     // 1 - All data is not set
@@ -291,7 +711,59 @@ class ApiController extends Controller
     }
 
 
+    public function actionGetUserFollowers(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+        if($user){
+            $followers = $user->usersFollowed;
+            $followers_data = array();
+            foreach($followers as $follower){
+                $follower = $this->get_model_associations($follower, array('department'=>array(),'school'=>array('university')));
+                array_push($followers_data, $follower);
+            }
+            $data = array('success'=>true, 'followers'=>$followers_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function  actionGetUserFollowings(){
+        if(!isset($_GET['user_id'])){
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_GET['user_id'];
+
+        $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+        if($user){
+            $followings = $user->usersFollowing;
+            $followings_data = array();
+            foreach($followings as $following){
+                $following = $this->get_model_associations($following, array('department'=>array(),'school'=>array('university')));
+                array_push($followings_data, $following);
+            }
+            $data = array('success'=>true, 'followings'=>$followings_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
+            $this->renderJSON($data);
+            return;
+        }
+    }
 
     //ERROR ID's
     // 1 - All data is not set
@@ -676,6 +1148,7 @@ class ApiController extends Controller
     }
 
 
+
     //Checks to see if we support the current univ edu email
     //ERROR ID's
     // 1 - All data is not set
@@ -857,52 +1330,27 @@ class ApiController extends Controller
     }
 
 
-
-
-
-    //https://urlinq.com/api/user/courses
-	public function actionUserCourses()
-	{
-        $user_id = $_GET['user_id'];
-        $token = $_GET['token'];
-
-
-
-
-
-		$this->render('userCourses');
-	}
-
-
-    //https://urlinq.com/api/user/follow_courses
-    public function actionUserFollowCourses()
+    //api/attendClass
+    public function actionAttendCourses()
     {
         $user_id = $_GET['user_id'];
         $token = $_GET['token'];
 
-
-
-
-
         $this->render('userCourses');
     }
 
+    //api/FollowDepartment
 
-    //https://urlinq.com/api/group/users/count
-    public function actionGroupUsersCount(){
+    //api/AttendClub
 
-
-
-    }
-
-    // api/user/follow
+    // api/followUser
     public function actionFollowUser(){
         $user_id = $_POST['user_id'];
         $followed_user_id = $_POST['followed_user_id'];
         $toke = $_POST['token'];
     }
 
-    // api/user/unfollow
+    // api/unfollowUser
     public function actionUnfollowUser(){
         $user_id = $_POST['user_id'];
         $unfollowed_user_id = $_POST['unfollowed_user_id'];
@@ -910,22 +1358,27 @@ class ApiController extends Controller
     }
 
 
-    // api/user/courses/led/
-    public function actionUserLedCourses(){
-        $user_id = $_POST['user_id'];
-        $user_type = $_POST['user_type'];
-        $toke = $_POST['token'];
-    }
-
-    // api/user/courses/led/count
-    public function actionUserLedCoursesCount(){
-
-    }
-
-
-
 
     //EVENTS
+
+    public function actionGetEventAttendees(){
+        //$user = $this->get_current_user();
+        $event_id = $_GET['event_id'];
+        //$date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+        $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
+
+        //$attendees = $event->attendees;
+
+
+        //$data = array('success'=>true,'attendees'=>$attendees);
+
+        $data = array('success'=>true,'attendees'=>$event->attendees);
+
+        $this->renderJSON($data);
+        return;
+
+    }
 
     public function actionGetUserDayEvents(){
         if(!isset($_GET['user_id']) || !isset($_GET['date'])){

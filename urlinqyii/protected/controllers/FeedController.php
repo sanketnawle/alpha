@@ -427,10 +427,13 @@ class FeedController extends Controller
 					ORDER BY last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
-        if($posts = $command->queryAll())
+        $posts = $command->queryAll();
+        if($posts){
             $success_post = TRUE;
-        else
+        }else{
             $success_post = FALSE;
+        }
+
         $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
