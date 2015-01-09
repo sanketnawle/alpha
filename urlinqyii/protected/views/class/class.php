@@ -799,15 +799,11 @@
         							<p>Is this class open to the public?</p>
         						</div>
         						<div class="status">
-        							<ul class="settings_status_dropit">
-        								<li>
-        									<a  id="settings_status_dropit_label" href="#">Public</a>
-        									<ul id="settings_status_dropit_sub">
-        										<li><a href="#">Public</a></li>
-        										<li><a href="#">Private</a></li>
-        									</ul>
-        								</li>
-        							</ul>		
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_open">
+        								<label><input id="status_check" type="radio" name="openStatus" value="Public"checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="openStatus" value="Private">Private</label>
+        							</form>
         						</div>
         						<div class="edit">
         							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
@@ -819,15 +815,11 @@
         							<p>Who can see the members of this class?</p>
         						</div>
         						<div class="status">
-        							<ul class="settings_status_dropit">
-        								<li>
-        									<a  id="settings_status_dropit_label" href="#">Public</a>
-        									<ul id="Settings_status_dropit_sub">
-        										<li><a href="#">Public</a></li>
-        										<li><a href="#">Members Only</a></li>
-        									</ul>
-        								</li>
-        							</ul>
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_privacy">
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Public" checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Members Only">Members Only</label>
+        							</form>
         						</div>
         						<div class="edit">
         							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">

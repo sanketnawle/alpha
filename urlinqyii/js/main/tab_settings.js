@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-    $('.settings_status_dropit').dropit();
     
     // Now we deal with removing active class from tab from 'tab_bar' and adding 'active' to other_view_tab
     $('.other_views_tab').click(function(){
@@ -18,6 +16,7 @@ $(document).ready(function() {
         $('#panel_' + panel_id).addClass('active');
     });
     
+    
     $('.row').hover(
     	function() {
 	    	$(this).css("background-color","#fafafa");
@@ -30,6 +29,26 @@ $(document).ready(function() {
 	   		$(this).children('.edit').children('.edit_img').css("visibility","hidden");
 	    }
     );
+    
+    // Display radio Buttons for settings
+    $('.admin_settings').children('.row').click(function() {
+    	if ($(this).children(".status").children('.status_form').hasClass("active") == false) {
+	    	$(this).children(".status").children('.status_form').addClass("active");
+	    	$(this).children(".status").children('.status_form').css("display","block");
+	    }
+	    else {
+		    $(this).children(".status").children('.status_form').removeClass("active");
+		    $(this).children(".status").children('.status_form').css("display","none");
+	    }
+    });
+    
+    
+    // Adjsut display text to whatever is checked
+/*     checkForms(); */
+/*     function checkForms() { */
+/* 	    var form1 = $(') */
+/*     } */
+
 
     
 });
