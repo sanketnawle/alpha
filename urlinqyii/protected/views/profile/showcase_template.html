@@ -4,9 +4,12 @@
         <div class="showcase_label" style="background-color:{{color}}">
             {{#if url}}
             <div class="showcase_url">{{link}}</div>
+            <button type="button" onclick = "window.open({{link}})" class="download_showcase_button">
+                <i class="link_button_icon"></i>
+            </button>
             {{else}}
             <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
-                <button type="button" class="download_showcase_button">
+                <button type="button" class="showcase_link_button">
                     <i class="download_button_icon"></i>
                 </button>
             </a>
