@@ -42,6 +42,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
       
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
@@ -798,7 +799,15 @@
         							<p>Is this class open to the public?</p>
         						</div>
         						<div class="status">
-        							<p>Public</p>
+        							<ul class="settings_status_dropit">
+        								<li>
+        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
+        									<ul id="settings_status_dropit_sub">
+        										<li><a href="#">Public</a></li>
+        										<li><a href="#">Private</a></li>
+        									</ul>
+        								</li>
+        							</ul>		
         						</div>
         						<div class="edit">
         							<img src="../assets/settings_imgs/bluePen.png">
@@ -810,7 +819,15 @@
         							<p>Who can see the members of this class?</p>
         						</div>
         						<div class="status">
-        							<p>Anyone</p>
+        							<ul class="settings_status_dropit">
+        								<li>
+        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
+        									<ul id="Settings_status_dropit_sub">
+        										<li><a href="#">Anyone</a></li>
+        										<li><a href="#">Members Only</a></li>
+        									</ul>
+        								</li>
+        							</ul>
         						</div>
         						<div class="edit">
         							<img src="../assets/settings_imgs/bluePen.png">
