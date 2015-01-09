@@ -281,7 +281,6 @@
 	margin-bottom: 25px;
 	margin: 0px auto;
 	overflow: auto;
-	padding-bottom: 5px;
 }
 
 .people_you_know_wrapper .people_you_know .header {
@@ -294,82 +293,70 @@
 
 /* HORIZONTAL STUDENT SLIDER */
 
-
-.horiz-area{
-	margin-top: 5px;
+.people_you_know .slider_wrapper {
+	padding: 3px 3px 2px 3px;
+	height: 96px;
+	position: relative;
+	overflow-x: scroll;
 }
 
-.horiz-area .horiz-wrapper{
-	zoom:1;
-	position:relative;
+.people_you_know .slider_button_left {
+	position: absolute;
+	z-index: 5;
+	height: 25px;
+	width: 25px;
+	top: 70px;
+	left: 10px;
 }
 
-.horiz-area .horiz-wrapper .horiz-mask{
-	width: 100%;
-	margin: 0 auto;
-	height: 250px;
+.people_you_know .slider_button_right {
+	position: absolute;
+	z-index: 5;
+	height: 25px;
+	width: 25px;
+	top: 70px;
+	right: 10px;
+}
+
+.slider_wrapper .slider {
+/* 	position: absolute; */
+	height: 96px;
+	width: 1000px;
+	list-style: none;
+	padding-left: 0px;
+	margin: 0px;
+	overflow-x: scroll;
+}
+
+.slider .slider_pic {
+	margin-left: 2px;
+	margin-right: 2px;
+	height: 95px;
+	width: 95px;
+	float: left;
+}
+
+.slider .slider_pic:first-of-type {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 	overflow: hidden;
 }
 
-.horiz-area .horiz-wrapper .horiz-mask .content-area{
-	position:relative;
-	top:0px;
-	left:0px;
-	overflow:hidden;
-	z-index:1;
-	-webkit-perspective: 1000px;
-	-webkit-backface-visibility: hidden;
+.slider .slider_pic img {
+	height: 100%;
 	width: 100%;
-	height: 270px;
-	margin:0 auto;
 }
 
-.ContentSlider{
-	position: relative;
-	-webkit-perspective: 0;
-	-webkit-backface-visibility: hidden;
-	-webkit-touch-callout: none; 
-	-webkit-user-select: none; 
-	-webkit-tap-highlight-color: rgba(0,0,0,0); 
-	-webkit-tap-highlight-color: transparent;
-	width: auto;
-	-webkit-transition: all 450ms ease-out;
-    -moz-transition: all 450ms ease-out;
-    -ms-transition: all 450ms ease-out;
-    -o-transition: all 450ms ease-out;
-    transition: all 450ms ease-out;
-	height: 220px;
-}
 
-.slide:first-child{
-	width: 182px;
-	float: left;
-	display:block;
-	margin: 0 auto;
-	margin: 0 12.5px;
-	position: absolute; top: 0px; 
-}
 
-.slide{
-		
-	width: 182px;
-/* 	position: absolute; */
-	top:0px;
-	float: left;
- 	-webkit-transition: all 250ms ease-in-out;
-    -moz-transition: all 250ms ease-in-out;
-    -ms-transition: all 250ms ease-in-out;
-    -o-transition: all 250ms ease-in-out;
-    transition: all 250ms ease-in-out;
-	display:block;
-	margin: 0 auto;
-}
 
-.slide-inner{
-	width: 182px;
-	height:auto;
-	margin:0 auto;
-}
+
+
+
+
+
+
+
 
 
 

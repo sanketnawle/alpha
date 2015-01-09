@@ -934,100 +934,43 @@
         				<div class="people_you_know">
         					<div class="header">
         						<p>Friends who have taken this class</p>
-        					</div>
-        					
-        					<div class = "horizontal_scroll_holder">
-				                <div class = "horizontal_scroll_holder_search" id = "horizontal_scroll_holder">
-				                        <!-- horizontal scroll members cards -->
-				                    <div class = "horiz-area">
-				                        <div class = "horiz-wrapper">
-				                            <div class = "horiz-mask">
-				                                <div class = "content-area">
-				                                    <div class = "ContentSlider">
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div> 
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>
-				                                        <div class = "members_card_wrapper slide">
-				                                            <div class = "members_card admin normal_size" data-user_id='1'>
-				                                                <div class = "members_card_img">
-				                                                    <span class = "title">Professor</span>
-				                                                    <span class = "class_year">Senior</span>
-				                                                </div>
-															</div>
-				                                        </div>                                              
-				                                    </div>
-				
-				                                </div>
-				                            </div>
-				                            <div class = "arrow_disabled arrow_container arrow_prev">
-				                                <a class = "ar_disabled ar_left">
-				
-				                                </a>
-				                            </div>
-				                            <div class = "arrow_container arrow_next">
-				                                <a id = "ar_right" class = "ar_right">
-				                                    
-				                                </a>
-				                            </div>
-				                        </div>
-				                    </div>
-				                        
-				                </div>                
-				            </div>
-				            
+        					</div>	
+        					<div class="slider_wrapper">
+        						<ul class="slider">
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>    
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>    						
+        						</ul>
+        					</div>	
+        					<img class="slider_button_left" src="../assets/syllabus_icon_active.png">
+        					<img class="slider_button_right" src="../assets/syllabus_icon_active.png">	            
         				</div>
         			</div>
         			
