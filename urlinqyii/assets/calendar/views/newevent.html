@@ -239,16 +239,42 @@
                         </div>
 
 
-                        <div id="create_event_invite_holder">
+                        <div id="create_event_invite_holder" class="invite_holder">
                             <div id="create_event_invite_label">Invite people</div>
 
 
-                            <input id="event_invite_input" name="event_description" placeholder="Enter names" class="text_input">
+                            <input id="event_invite_input" name="event_invite_input" placeholder="Enter names" class="text_input invite_input">
 
-                            <div id="create_event_invite_button" class="grey_button">Invite</div>
+                            <div id="create_event_invite_button" class="grey_button invite_people_button">Invite</div>
+
+                            <div id="invite_list">
+
+
+                            </div>
+
+                            <div id="invite_popup">
+
+
+                            </div>
 
                         </div>
 
+                        <!--template for user that is in the invite list-->
+                        <script id="user_template" type="text/x-handlebars-template">
+                            <div class="invite_user_list_item" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}">
+                                <div class="invite_user_list_item_name">{{user_name}}</div>
+                                <div class="invite_user_list_item_email">{{user_email}}</div>
+                                <div class="invite_user_list_item_remove_button">x</div>
+                            </div>
+                        </script>
+
+                        <!--template for user in the dropdown -->
+                        <script id="invite_user_template" type="text/x-handlebars-template">
+                            <div class="invite_user_holder" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}">
+                                <div class="invite_user_name">{{user_name}}</div>
+                                <div class="invite_user_email">{{user_email}}</div>
+                            </div>
+                        </script>
                     </div>
 
 

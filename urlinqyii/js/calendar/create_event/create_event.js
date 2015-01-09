@@ -231,6 +231,16 @@ jQuery(document).ready(function(){
 
         jQuery('#create_event_form').find('#create_event_submit_button').val('CREATE');
 
+        var $invite_input = $('#event_invite_input');
+        $invite_input.removeClass('active');
+        $invite_input.val('');
+        $invite_input.attr('data-name','');
+        $invite_input.attr('data-email','');
+        $invite_input.attr('data-id','');
+
+        //Clear the invite list
+        $('#invite_list').empty();
+
     }
 
 
@@ -285,6 +295,10 @@ jQuery(document).ready(function(){
         $dialog.hide();
         reset_create_event_form();
     });
+
+
+
+
 
 
 
@@ -381,7 +395,7 @@ jQuery(document).ready(function(){
 
         console.log(JSON.stringify(post_data));
 
-
+        alert(JSON.stringify(post_data));
 
         $.post(
             post_url,

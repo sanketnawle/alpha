@@ -5,11 +5,13 @@ jQuery(document).ready(function(){
 
     jQuery(document).on('click', '.event_holder', function(event){
         event.stopPropagation();
-        console.log('click event');
 
 
         var $event_div = jQuery(this);
         var event_id = $event_div.attr('data-id');
+
+        console.log('inspect event: ' + event_id);
+
 
         var $inspect_event_popup = jQuery('.inspect_event_popup');
 
