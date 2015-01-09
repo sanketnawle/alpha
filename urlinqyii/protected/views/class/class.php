@@ -801,7 +801,7 @@
         						<div class="status">
         							<ul class="settings_status_dropit">
         								<li>
-        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
+        									<a  id="settings_status_dropit_label" href="#">Public</a>
         									<ul id="settings_status_dropit_sub">
         										<li><a href="#">Public</a></li>
         										<li><a href="#">Private</a></li>
@@ -810,7 +810,7 @@
         							</ul>		
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>
@@ -821,16 +821,16 @@
         						<div class="status">
         							<ul class="settings_status_dropit">
         								<li>
-        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
+        									<a  id="settings_status_dropit_label" href="#">Public</a>
         									<ul id="Settings_status_dropit_sub">
-        										<li><a href="#">Anyone</a></li>
+        										<li><a href="#">Public</a></li>
         										<li><a href="#">Members Only</a></li>
         									</ul>
         								</li>
         							</ul>
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>
