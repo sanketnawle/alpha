@@ -474,7 +474,7 @@ form#fbar_form.show{
 .question_choice_line {
     font-size: 15px;
     color: #575757;
-    clear: both;
+    /* clear: both; */
     display: block;
     position: relative;
     border: 1px solid rgba(239, 239, 239, 0.72);
@@ -527,10 +527,11 @@ form#fbar_form.show{
     display: none;
     text-align: center;
     width: 19px;
+    left: 10px;
     right: 0px;
-    height: 19px;
-    top: 1px;
-    position: relative;
+    height: 17px;
+    position: absolute;
+    top: 10px;
 }
 
 .add_choice {
@@ -544,8 +545,8 @@ form#fbar_form.show{
     position: relative;
     font-size: 11px;
     font-family: Avenir;
-    top: -2px;
-    right: 0px;
+    top: -3px;
+    right: -1px;
 }
 
 .add_choice span {
@@ -559,6 +560,10 @@ input.multiple_choice_answer {
     font-size: 13.5px;
     font-weight: 500;
     color: #222;
+    position: absolute;
+    left: 35px;
+    top: 10px;
+    display: inline-block;
     width: 340px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
