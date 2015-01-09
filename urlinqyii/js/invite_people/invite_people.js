@@ -3,7 +3,9 @@ jQuery(document).ready(function(){
 
 
     var $last_clicked_element = null;
-    jQuery(document).on('click', '.invite_user_list_item_remove_button', function(){
+    jQuery(document).on('click', '.invite_user_list_item_remove_button', function(e){
+        e.stopPropagation();
+
         var $remove_button = jQuery(this);
         $last_clicked_element = $remove_button;
         //Remove this user from list
@@ -158,10 +160,13 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click', '.invite_user_holder', function(e){
+
         e.stopPropagation();
 
         var $invite_user_holder = jQuery(this);
         $last_clicked_element = $invite_user_holder;
+
+
 
 
         var user_id = $invite_user_holder.attr('data-id');
@@ -193,14 +198,15 @@ jQuery(document).ready(function(){
 
     });
 
-    jQuery(document).on('click',function(){
-        verify_invite_input(jQuery(this));
 
-    });
+
 
     jQuery(document).on('focusout','.invite_input', function(e){
-        verify_invite_input(jQuery(this));
+
     });
+
+
+
 
 
 
@@ -232,10 +238,10 @@ jQuery(document).ready(function(){
     });
 
 
+    jQuery(document).on('click', function(){
 
-//    jQuery(document).on('click','.invite_input', function(){
-//        verify_invite_input(jQuery(this));
-//    });
+        verify_invite_input($('.invite_holder').find('.invite_input'));
+    });
 
 
 

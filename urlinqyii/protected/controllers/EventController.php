@@ -407,7 +407,20 @@ class EventController extends Controller
 
             $event->save(false);
 
+
             if($event){
+                //If this event was successfully created, check if there
+                //were any invitations sent out for this event
+                if(isset($_POST['event']['invites'])){
+                    include_once "invite/invite.php";
+                    //Loop thru the invites and send an invite to each user
+                    foreach($_POST['event']['invites'] as $invite_user_id){
+                        send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                    }
+                }
+
+
+
                 $data = array('success'=>true,'event'=>$event);
                 $this->renderJSON($data);
                 return;
@@ -422,6 +435,9 @@ class EventController extends Controller
             return;
         }
     }
+
+
+
 
 
     //Error ids
