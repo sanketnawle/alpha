@@ -633,8 +633,9 @@ class ProfileController extends Controller
         $this->renderJSON($new_data);
     }
     public function actionEditShowcase(){
-        if($_POST['old_title']){
-            $showcase = Showcase::model()->find('title = :title',array(':title'=>$_POST['old_title']));
+        if(isset($_POST['file']) && isset($_POST['user']) && isset($_POST['title']) && isset($_POST['desc'])){
+            $showcase = Showcase::model()->find('file_id=:fid and user_id=:uid',
+                array(':fid'=>$_POST['file'],':uid'=>$_POST['user']));
             if($_POST['title']){
                 $showcase->title = $_POST['title'];
             }

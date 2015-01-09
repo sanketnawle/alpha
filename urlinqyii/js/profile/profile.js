@@ -589,11 +589,13 @@ $(document).on('click','#follow_button',function(){
         {
             if(data.status == "success"){
                 if(follow){
-                    alert('now following');
-                    $(this).addClass('following');
+
+                    $('#follow_button').addClass('following');
+                    $('#follow_button').text('Following');
                 }else{
-                    alert('unfollowed');
-                    $(this).removeClass('following');
+
+                    $('#follow_button').removeClass('following');
+                    $('#follow_button').text('Follow');
                 }
 
             }else{
@@ -605,4 +607,56 @@ $(document).on('click','#follow_button',function(){
             alert('err'+errorThrown);
         }
     });
-})
+});
+$(document).on('click','.edit_showcase_button.edit',function(){
+
+    var $showcase_item = $(this).closest('.showcase_item');
+    $showcase_item.find('.showcase_title').hide();
+    $showcase_item.find('.showcase_description').hide();
+    $showcase_item.find('.showcase_edit_field').css('display','block');
+    $showcase_item.find('.edit_showcase_button').show();
+    $showcase_item.find('.edit_showcase_button.edit').hide();
+    $showcase_item.find('.edit_showcase_title').val($.trim($showcase_item.find('.showcase_title').text()));
+    $showcase_item.find('.edit_showcase_description').val($.trim($showcase_item.find('.showcase_description').text()));
+
+});
+var new_showcase_desc;
+var new_showcase_title;
+$(document).on('click','.edit_showcase_button.submit',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    new_showcase_desc = $showcase_item.find('.edit_showcase_description').val();
+    new_showcase_title = $showcase_item.find('.edit_showcase_title').val();
+    $.ajax({
+        url: base_url+'/profile/editShowcase',
+        type: 'POST',
+        data: {title:new_showcase_title,desc:new_showcase_desc,file:$showcase_item.attr('file_id'),user:user_id},
+
+        dataType: 'json',
+        success: function(data)
+        {
+            if(data.status == "success"){
+                $showcase_item.find('.showcase_title').show();
+                $showcase_item.find('.showcase_description').show();
+                $showcase_item.find('.showcase_edit_field').hide();
+                $showcase_item.find('.edit_showcase_button').hide();
+                $showcase_item.find('.edit_showcase_button.edit').show();
+                $showcase_item.find('.showcase_title').text($showcase_item.find('.edit_showcase_title').val());
+                $showcase_item.find('.showcase_description').text($showcase_item.find('.edit_showcase_description').val());
+            }else{
+                alert(data.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert('err'+errorThrown);
+        }
+    });
+});
+$(document).on('click','.edit_showcase_button.cancel',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    $showcase_item.find('.showcase_title').show();
+    $showcase_item.find('.showcase_description').show();
+    $showcase_item.find('.showcase_edit_field').hide();
+    $showcase_item.find('.edit_showcase_button').hide();
+    $showcase_item.find('.edit_showcase_button.edit').show();
+});

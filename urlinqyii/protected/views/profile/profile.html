@@ -47,12 +47,30 @@
 
                         </div>
                         <div class="showcase_text">
-                            <div class="showcase_title">
-                                {{title}}
-                            </div>
-                            <div class="showcase_description">
-                                {{description}}
-                            </div>
+                            {{#if ../own_profile}}
+                                <div class="showcase_title ">
+                                    {{title}}
+                                    <button class="edit_showcase_button edit">
+                                    </button>
+                                </div>
+
+                                <input class="edit_showcase_title showcase_edit_field">
+                                <div class="showcase_description">
+                                    {{description}}
+                                </div>
+                                <textarea class="edit_showcase_description showcase_edit_field"></textarea>
+                                <button class="edit_showcase_button cancel">
+                                </button>
+                                <button class="edit_showcase_button submit">
+                                </button>
+                            {{else}}
+                                <div class="showcase_title ">
+                                    {{title}}
+                                </div>
+                                <div class="showcase_description">
+                                    {{description}}
+                                </div>
+                            {{/if}}
                         </div>
 
                     </div>
@@ -95,9 +113,19 @@
                         - Display presentations or projects that you want to share with the people in your academic network.
                     </div>
                 </div>
-
-
             </div>
+           <!-- <div class="edit-showcase-form">
+                <span>Editing this Showcase</span>
+                <input id="showcase-name-edit" name="showcase-name" placeholder="change title">
+                <input id="showcase-link-edit" name="showcase-link" placeholder="change description">
+                <div class="edit-form-bottom">
+                    <span>Cancel</span>
+
+                    <div class="add-showcase-button" id="edit-from-submit">
+                        <button type="button">Done Editing</button>
+                    </div>
+                </div>
+            </div>-->
         </div>
 
     </div>
