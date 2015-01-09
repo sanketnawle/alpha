@@ -220,7 +220,7 @@ div#stream_holder .stream_holder_group{
 }
 
 #feed_column.feed_column_home{
-    margin-top: 72px;
+    margin-top: 36px;
 
 }
 
@@ -1571,7 +1571,10 @@ div.group_info_block span{
     font-weight:600;
 }
 
-
+div.content_panel_home#content_panel div#nav_bar{
+position:relative!important;
+top: 16px!important;
+}
 
 div.group_info_block#location em{
     background-position: 0px -660px; 
@@ -1581,6 +1584,10 @@ div.group_info_block#location em{
     
     top: 2px;
     position: relative;
+}
+
+body#body_home div.topbar{
+    z-index: 9999999999999;
 }
 
 div.group_info_block#class_schedule em{
