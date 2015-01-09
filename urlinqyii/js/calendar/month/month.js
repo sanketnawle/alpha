@@ -1,32 +1,7 @@
 jQuery(document).ready(function(){
 
 
-    function show_month_event(event_json){
-        //Normally source would be jQuery("#group_template").html(); but for whatever reason
-        //angular doesnt let jquery select the handlebars template if it is in the html
-        var source = '<div class="month_day_event" data-id="{{event_id}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
-        var template = Handlebars.compile(source);
 
-        event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
-
-
-        var generated_html = template(event_json);
-        //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
-        var grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
-
-        if(grid_item_selector){
-            //                grid_item_selector.innerHTML += generated_html;
-            var $dom_object = jQuery(generated_html);
-            $dom_object.attr('ng-click','clickMonthDayEvent()');
-            grid_item_selector.append($dom_object);
-
-        }else{
-            console.log("ERROR ADDING EVENT");
-            console.log(event_json);
-        }
-
-
-    }
 
 
     var weekday = new Array(7);
@@ -38,67 +13,67 @@ jQuery(document).ready(function(){
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    last_clicked_event_id = null;
-
-    jQuery(document).on('click', '.month_day_event', function(event){
-        event.stopPropagation();
-        //Hide the other popup
-        jQuery('#create_month_day_event_popup').removeClass('active');
-
-        var $month_day_event_div = jQuery(this);
-        var event_id = $month_day_event_div.attr('id');
-        var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
-
-        //Add the event_id to the inspect_event_popup_month for easy access
-        $inspect_event_popup_month.attr('data-event_id', event_id);
-
-
-        if(!$inspect_event_popup_month.is(":visible")){
-            if((event.pageY - 180) <= 0){
-                $inspect_event_popup_month.css('top', event.pageY + 15);
-            }else{
-                $inspect_event_popup_month.css('top', event.pageY - 180);
-            }
-            $inspect_event_popup_month.css('left', event.pageX - 140);
-
-            //            Mon, October 27, 2014, 8am – 11am
-            var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
-            var start_time = $month_day_event_div.attr('data-start_time');
-            var inspect_event_text = format_event_date_text(this_date);
-            $inspect_event_popup_month.find('#inspect_event_text').text(inspect_event_text);
-            $inspect_event_popup_month.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
-
-            $inspect_event_popup_month.addClass('active');
-        }else{
-            if($month_day_event_div.attr('data-id') != last_clicked_event_id){
-                //We clicked a different event than the event we were already looking at
-                //switch the inspect_event_popup_month to this event
-                if((event.pageY - 180) <= 0){
-                    $inspect_event_popup_month.css('top', event.pageY + 15);
-                }else{
-                    $inspect_event_popup_month.css('top', event.pageY - 180);
-                }
-
-
-
-                $inspect_event_popup_month.css('left', event.pageX - 140);
-
-
-                //            Mon, October 27, 2014, 8am – 11am
-                var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
-                var start_time = $month_day_event_div.attr('data-start_time');
-                var inspect_event_text = format_event_date_text(this_date);
-                $inspect_event_popup_month.find('#inspect_event_text').text(inspect_event_text);
-                $inspect_event_popup_month.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
-
-
-            }else{
-                $inspect_event_popup_month.removeClass('active');
-            }
-        }
-
-        last_clicked_event_id = $month_day_event_div.attr('data-id');
-    });
+//    last_clicked_event_id = null;
+//
+//    jQuery(document).on('click', '.month_day_event', function(event){
+//        event.stopPropagation();
+//        //Hide the other popup
+//        jQuery('#create_month_day_event_popup').removeClass('active');
+//
+//        var $month_day_event_div = jQuery(this);
+//        var event_id = $month_day_event_div.attr('id');
+//        var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
+//
+//        //Add the event_id to the inspect_event_popup_month for easy access
+//        $inspect_event_popup_month.attr('data-event_id', event_id);
+//
+//
+//        if(!$inspect_event_popup_month.is(":visible")){
+//            if((event.pageY - 180) <= 0){
+//                $inspect_event_popup_month.css('top', event.pageY + 15);
+//            }else{
+//                $inspect_event_popup_month.css('top', event.pageY - 180);
+//            }
+//            $inspect_event_popup_month.css('left', event.pageX - 140);
+//
+//            //            Mon, October 27, 2014, 8am – 11am
+//            var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
+//            var start_time = $month_day_event_div.attr('data-start_time');
+//            var inspect_event_text = format_event_date_text(this_date);
+//            $inspect_event_popup_month.find('#inspect_event_text').text(inspect_event_text);
+//            $inspect_event_popup_month.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
+//
+//            $inspect_event_popup_month.addClass('active');
+//        }else{
+//            if($month_day_event_div.attr('data-id') != last_clicked_event_id){
+//                //We clicked a different event than the event we were already looking at
+//                //switch the inspect_event_popup_month to this event
+//                if((event.pageY - 180) <= 0){
+//                    $inspect_event_popup_month.css('top', event.pageY + 15);
+//                }else{
+//                    $inspect_event_popup_month.css('top', event.pageY - 180);
+//                }
+//
+//
+//
+//                $inspect_event_popup_month.css('left', event.pageX - 140);
+//
+//
+//                //            Mon, October 27, 2014, 8am – 11am
+//                var this_date = new Date($month_day_event_div.closest('.grid-item').attr('data-date') + ' 00:00:00');
+//                var start_time = $month_day_event_div.attr('data-start_time');
+//                var inspect_event_text = format_event_date_text(this_date);
+//                $inspect_event_popup_month.find('#inspect_event_text').text(inspect_event_text);
+//                $inspect_event_popup_month.find('#inspect_event_description').text($month_day_event_div.attr('data-description'));
+//
+//
+//            }else{
+//                $inspect_event_popup_month.removeClass('active');
+//            }
+//        }
+//
+//        last_clicked_event_id = $month_day_event_div.attr('data-id');
+//    });
 
 
 
@@ -206,6 +181,9 @@ jQuery(document).ready(function(){
             return;
         }
 
+        //Only used for update event
+        var event_id = '';
+
         //Seaches for a string like 1pm or 12:20am
         //We are assuming the first time like string is the start time of this event
         var match = /([1-9]|1[0-2])((pm|am)|(:[0-9][0-9](pm|am)))/g.exec(event_input_string);
@@ -289,6 +267,7 @@ jQuery(document).ready(function(){
 
         var post_data = {
             event:{
+                event_id: event_id,
                 event_name: event_name,
                 origin_type: event_origin_type,
                 origin_id: event_origin_id,
@@ -301,7 +280,7 @@ jQuery(document).ready(function(){
                 end_date: event_end_date,
                 location: event_location,
                 event_todo: event_todo,
-                event_all_day: event_all_day
+                all_day: event_all_day
             }
         };
 
