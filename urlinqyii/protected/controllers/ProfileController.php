@@ -87,10 +87,11 @@ class ProfileController extends Controller
             , 'closedInstructions'=>$closedInstructions, 'random_image_url'=>$random_image_url));
     }
 
-    public function actionAddInterest($interests,$user_id){
+    public function actionAddResearchInterests($interests,$user_id){
 
 
         //if (isset($_POST['interests'])) {
+            UserInterest::model()->deleteAll('user_id=:uid',array(':uid'=>$user_id));
             foreach($interests as $name){
                 $interest = Tag::model()->find('tag=:name', array(':name' => $name));
                 if (!$interest) {
@@ -198,43 +199,47 @@ class ProfileController extends Controller
         include 'simple_html_dom.php';
         include 'url_to_absolute.php';
 
-        //should pick which image somehow
+
 
        $html = file_get_html($url);
-        /*    $image_files = array();
+            $image_files = array();
            // $image_urls = array();
            foreach($html->find('img') as $i=>$element) {
-                $image_files[$i]['url'] = url_to_absolute($url,$element->src);
-                $question_mark_index = strpos($image_files[$i]['url'],'?');
-                if($question_mark_index != false){
-                    $image_files[$i]['url'] = substr($url,0,$question_mark_index);
+                $image_files[$i]['url'] = @url_to_absolute($url,$element->src);
+                if($image_files[$i]['url']){
+                    $question_mark_index = strpos($image_files[$i]['url'],'?');
+                    if($question_mark_index != false){
+                        $image_files[$i]['url'] = substr($url,0,$question_mark_index);
+                    }
+                    $file_name = basename($image_files[$i]['url']);
+                    $image_files[$i]['file_path'] = '/assets/temp/'.$file_name;
+                    $get_file = @file_get_contents($image_files[$i]['url']);
+                    if($get_file != false){
+                        file_put_contents(Yii::getPathOfAlias('webroot') .'/assets/temp/'.$file_name, $get_file);
+                    }
+                    if($i == 4){
+                        break;
+                    }
                 }
-                $file_name = basename($image_files[$i]['url']);
-                $image_files[$i]['file_path'] = '/assets/temp/'.$file_name;
-                $get_file = @file_get_contents($image_files[$i]['url']);
-                if($get_file != false){
-                    file_put_contents(Yii::getPathOfAlias('webroot') .'/assets/temp/'.$file_name, $get_file);
-                }
-                if($i == 3){
-                    break;
-                }
+
             }
             $max_size = 0;
             foreach($image_files as $i=>$image_file){
-                list($width, $height, $type, $attr) = getimagesize(Yii::getPathOfAlias('webroot') .$image_file['file_path']);
+                list($width, $height, $type, $attr) = @getimagesize(Yii::getPathOfAlias('webroot') .$image_file['file_path']);
                 if($width*$height>$max_size){
                     $max_size = $width*$height;
                     $best_image_index = $i;
                 }
             }
 
-
-            //$preview_image = url_to_absolute($url,$html->find('img')[0]->src);
+            if($max_size>200){
+                return $image_files[$best_image_index]['url'];
+            }
             //returns largest image
-            return $image_files[$best_image_index]['url'];*/
-        $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
 
-        return $preview_image;
+      //  $preview_image = url_to_absolute($url, $html->find('img')[0]->src);
+
+       // return $preview_image;
      }
      //creates a record of a file from a link
      public function fileFromLink($url, $path, $user_id){
@@ -326,7 +331,7 @@ class ProfileController extends Controller
                 $preview_url = $this->getImageFromWebsite($_POST['link_url']);
               //  $this->renderJSON(array('status'=>'error','message'=>$preview_url));
                // return;
-                    $preview_image = $this->fileFromLink($preview_url,'showcase/preview/', $_POST['user']);
+                $preview_image = $this->fileFromLink($preview_url,'showcase/preview/', $_POST['user']);
 
 
 
@@ -543,7 +548,6 @@ class ProfileController extends Controller
                     $new_data['school'] = $school->getErrors();
                 }
             }
-
         }
         if(isset($_POST['department'])){
             $department = Department::model()->find('department_id=:did',array(':did'=>$_POST['department']));
@@ -559,6 +563,40 @@ class ProfileController extends Controller
                 }else{
                     $new_data['department'] = $department->getErrors();
                 }
+            }
+        }
+        if(isset($_POST['location'])){
+            $location = $_POST['location'];
+            if($user->user_type =="p"){
+                $professorAttribute=$user->professorAttribute;
+                if($professorAttribute->office_location!=$location){
+                    $professorAttribute->office_location=$location;
+                    if($professorAttribute->save()){
+                        $new_data['location'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['location'] = $professorAttribute->getErrors();
+                    }
+                }
+            }else{
+                $new_data['location'] = "error: not a professor";
+            }
+        }
+        if(isset($_POST['hours'])){
+            $hours = $_POST['hours'];
+            if($user->user_type =="p"){
+                $professorAttribute=$user->professorAttribute;
+                if($professorAttribute->office_hours!=$hours){
+                    $professorAttribute->office_hours=$hours;
+                    if($professorAttribute->save()){
+                        $new_data['hours'] = "success";
+                        // $new_data['new_school_id'] = $school->school_id;
+                    }else{
+                        $new_data['hours'] = $professorAttribute->getErrors();
+                    }
+                }
+            }else{
+                $new_data['hours'] = "error: not a professor";
             }
         }
         if(isset($_POST['email'])){
@@ -588,8 +626,9 @@ class ProfileController extends Controller
             }
             $new_data['minor']= $this->updateMajorsMinors($_POST['minors'],'minor',$user_id);
         }
-        if(isset($_POST['interests'])){
-            $new_data['interests']= $this->actionAddInterest($_POST['interests'],$user_id);
+        if(isset($_POST['research'])){
+            if($_POST['research'][0] !== 'none')
+            $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
         }
         $this->renderJSON($new_data);
     }
@@ -656,10 +695,10 @@ class ProfileController extends Controller
         $this->renderJSON($result);
     }
     public function actionFollowUser(){
-        if(isset($_POST['user']) && isset($_POST['user_to_follow'])&& isset($_POST['follow_unfollow'])){
+        if(isset($_POST['user']) && isset($_POST['user_to_follow'])&& isset($_POST['follow'])){
             $userFollow = UserConnection::model()->find('from_user_id = :u1 and to_user_id = :u2 ',
                 array(':u1'=>$_POST['user'],':u2'=>$_POST['user_to_follow']));
-            if(!$userFollow && $_POST['follow_unfollow'] == 'follow'){
+            if(!$userFollow && $_POST['follow']){
                 $userFollow = new UserConnection();
                 $userFollow->from_user_id = $_POST['user'];
                 $userFollow->to_user_id = $_POST['user_to_follow'];
@@ -670,7 +709,7 @@ class ProfileController extends Controller
                 else{
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
                 }
-            }elseif($userFollow && $_POST['follow_unfollow'] == 'unfollow'){
+            }else if($userFollow && !$_POST['follow']){
                 if($userFollow->delete()){
                     $this->renderJSON(array('status'=>'success'));
                 }
@@ -684,15 +723,21 @@ class ProfileController extends Controller
     }
     public function actionChangeProfilePicture(){
         include "file_upload.php";
-        if(isset($_FILES['uploadFile'])){
-            $result = file_upload($_FILES,"profile/");
-            $user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
-            $user->picture_file_id = $result['file_id'];
-            if($user->save()){
-                $this->renderJSON(array('status'=>'success','file_url'=>$user->pictureFile->file_url));
+        if(isset($_FILES['file'])){
+            $extension = pathinfo($_FILES["file"]["name"])['extension'];
+            if($extension == "jpg" || $extension == "png" || $extension == "gif"){
+                $result = file_upload($_FILES,"profile/");
+                $user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                $user->picture_file_id = $result['file_id'];
+                if($user->save()){
+                    $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
+                }else{
+                    $this->renderJSON(array('status'=>'failure','message'=>$user->getErrors()));
+                }
             }else{
-                $this->renderJSON(array('status'=>'failure','message'=>$user->getErrors()));
+                $this->renderJSON(array('status'=>'failure','message'=>'file is not a picture'));
             }
+
         }
     }
 
@@ -762,8 +807,34 @@ class ProfileController extends Controller
         $this->render('profile');
     }
     public function actionJson(){
-        $user=User::model()->find('user_id = :uid', array(':uid'=>$_GET['id']));
+        if(isset($_GET['id'])){
+            $user=User::model()->find('user_id = :uid', array(':uid'=>$_GET['id']));
+        }else if(isset($_GET['name'])){
+            $name = explode(' ',$_GET['name']);
+            if(sizeof($name) < 2){
+                $firstname = $name;
+            }else if(sizeof($name) == 2){
+                $firstname = $name[0];
+                $lastname = $name[1];
+            }else{
+                $firstname = $name[0];
+                $lastname = $name[1];
+                for($i = 2;$i<sizeof($name);$i++){
+                    $lastname .= ' '.$name[$i];
+                }
+            }
+            $user=User::model()->find('firstname = :fname and lastname = :lname', array(':fname'=>$firstname,':lname'=>$lastname));
+        }else {
+            $this->renderJSON(array('status'=>'error'));
+            return;
+        }
+        if(!$user){
+            $this->renderJSON(array('status'=>'error no user with this name'));
+            return;
+        }
         $data = array();
+        $data['user_id']=intval($user->user_id);
+        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user_id()));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['school']=$user->school->school_name;
@@ -775,6 +846,10 @@ class ProfileController extends Controller
             $data['classes'][$i]['name']=$class->course->course_name;
             $data['classes'][$i]['section']=$class->section_id;
         }
+        foreach($user->groups as $i=>$club){
+            $data['clubs'][$i]['name']=$club->group_name;
+            //$data['clubs'][$i]['picture']=$club->;
+        }
         if($user->user_type=="s"){
             $data['minors']=array();
             foreach($user->minors as $i=>$minor) {
@@ -785,9 +860,25 @@ class ProfileController extends Controller
                 $data['majors'][$i]['name']=$major->name;
             }
             $data['year_name'] = $user->studentAttributes->year_name;
+            $data['year'] = ($user->studentAttributes->year % 100);
+        }else if($user->user_type=="p"){
+            $data['office_location'] = $user->professorAttribute->office_location;
+            $data['office_hours'] = $user->professorAttribute->office_hours;
+         }
+        if(sizeof($user->userInterests)>0){
+            $data['research'] = array();
+            foreach($user->userInterests as $i=>$interest){
+                $data['research'][$i]['name'] = $interest->tag;
+            }
+        }
+
+        $data['followed']=array();
+        foreach($user->usersFollowed as $i=>$user){
+            $data['followed'][$i]['user_name']=$user->firstname." ".$user->lastname;
+            $data['followed'][$i]['user_school']=$user->school->school_name;
         }
         $data['following']=array();
-        foreach($user->usersFollowed as $i=>$user){
+        foreach($user->usersFollowing as $i=>$user){
             $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
             $data['following'][$i]['user_school']=$user->school->school_name;
         }
@@ -813,7 +904,9 @@ class ProfileController extends Controller
             }
             else if($type == "url"){
                 $data['showcase'][$i]['color']= "transparent";
-                $data['showcase'][$i]['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+                if($showcase->preview_image){
+                    $data['showcase'][$i]['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
+                }
                 $data['showcase'][$i]['link']=$showcase->file->file_name;
             }else {
                 $data['showcase'][$i]['color']= "#ffffff"; //white
@@ -821,13 +914,13 @@ class ProfileController extends Controller
          }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
         $data['professor'] = $user->user_type == "p";
-        $data['own_profile']= ($_GET['id'] == $this->get_current_user_id());
+
+        if(!$data['own_profile']){
+            $data['is_following']=UserConnection::model()->exists('from_user_id = :u1 and to_user_id = :u2 ',
+                array(':u1'=>$this->get_current_user_id(),':u2'=>$user->user_id));
+        }
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
-        if($user->user_type == "p"){
-            $data['office_location'] = $user->professorAttribute->office_location;
-            $data['office_hours'] = $user->professorAttribute->office_hours;
-        }
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
         $this->renderJSON($data);
     }
