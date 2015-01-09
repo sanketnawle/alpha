@@ -16,8 +16,10 @@ padding-top: 5px;
 position: relative;   
 margin-bottom: 12px;
 border-radius: 5px;
-background: rgba(255, 255, 255, 1);
--webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+/* background: rgba(255, 255, 255, 1); */
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; 
+/* -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); */  
+/* box-shadow: 0 1px 2px rgba(0,0,0,0.07); */
 padding-bottom: 3px;
 }
 
@@ -34,8 +36,7 @@ background-color: #FFFFFF;
 background: #fff;      
 border-radius: 5px;
 position: relative;
-/* background: #fff; */
-/* border: 1px solid #d9d9d9; */
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 .post_head{
@@ -212,7 +213,7 @@ color: #333;
 font-weight: 400;
 text-align: left;
 padding-right: 4px;
-margin-bottom: 10px;
+margin-bottom: 0px;
 display: inline-block;
 max-width: 523px;
 margin-top: 24px;
@@ -295,7 +296,7 @@ cursor:default;
 .post_lc .post_comment_btn:hover{
 cursor:pointer;
   
-color: #1da7d2;
+color: #029acf;
 }
 
 
@@ -436,7 +437,7 @@ font-size: 12px; font-weight: bold; position: relative;
 }
 
 .post_comment_btn:hover > span.reply_link_text{
-    border-bottom:1px solid #029acf;
+    /* border-bottom:1px solid #029acf; */
 }
 
 .show_analytics_btn{
@@ -660,31 +661,27 @@ margin-bottom: 4px;
 }
 
 div.master_comments{
-    background: #fff;
-    margin-top: 0px;
-    border-top: 1px solid #eee;
-    border-top-width: 1px;
-    box-shadow: 0px 1px rgba(255, 255, 255, 0.48) inset, 1px 0px rgba(255, 255, 255, 0.48) inset, -1px 0px rgba(255, 255, 255, 0.48) inset;
-    margin: 0 auto 10px;
-    width: 96%;
-    border-right: none;
-    border-left: none;
+    margin: 5px 2px 0px auto;
+    width: 536px;
     border-bottom: none;
     padding-top: 3px;
+    border-radius: 5px 5px 0px 0px;
+    background: #FFF;
+    position: relative;
+    border-bottom: none;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 .comments{
-padding-right: 10px;
-padding-left: 6px;
+padding-right: 22px;
+padding-left: 14px;
 padding-top: 4px;
 margin-top: 4px;
-margin-right: 12px;
 margin-top: -2px;
 padding-bottom: 8px;
-margin-left: 8px;
 border-radius: 0px;
 position: relative;
-box-shadow: 0px -1px #fafafa;
+border-bottom: dotted 1px #ddd;
 }
 
 .post .master_comments > .comments:first-of-type{
@@ -734,7 +731,7 @@ display: none!important;
 .comment_owner{
 color: #029acf;
 font-weight: bold;
-font-size: 12.5px;
+font-size: 12.2px;
 left: -10px;
 display: inline;
 height: 18px;
@@ -775,9 +772,8 @@ margin-left: 0px;
 }
 
 .comment_main .comment_msg{
-color: #333;
-font-size: 13px;
-font-weight: 500;
+color: #222;
+font-size: 13.2px;
 line-height: 21px;
 
 -ms-word-break: break-all;
@@ -789,12 +785,12 @@ hyphens: auto;
 
 position: relative;                     
 opacity: 1;   
-margin-bottom: 10px;
+margin-bottom: 8px;
 text-align: left;
 position: relative;
 margin-left: -13px;
 min-height: 20px;
-margin-top: 0px;
+margin-top: 2px;
 padding-bottom: 0px;
 }
 
@@ -805,7 +801,7 @@ font-size: 11.5px;
 width: 50px;
 display: inline-block;
 position: absolute;
-bottom: 4px;
+bottom: 5px;
 text-align: left;
 left: 42px;
 }
@@ -909,41 +905,42 @@ color:rgba(128, 128, 128, 0.77);
 
 .post .postcomment{
 position: relative;
-width: 532px;
-margin-bottom: 0px;
-border-radius: 0px;
+width: 536px;
+border-radius: 0px 0px 5px 5px;
 padding-top: 0px;
 padding: 4px 0px;
 margin-top: -1px;
 border-top: none;
-background: #fff; border: 1px solid #eee;
-border-top-width: 4px;
+background: #fff; 
 border-bottom-width: 0px;
 border-right-width: 0px;
 margin-left: 10px;
-border-left-width: 0px;
+border-left-width: 0px; 
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+margin: 0px 2px 0px auto;
 }
 
 div.commentform{
-margin-bottom: 2px;
+margin-bottom: 0px;
 border: 1px solid;
 padding: 4px 10px;
 -webkit-border-radius: 2px;
 background: #fff;  
 width: 500px;
-border: 1px solid rgba(232, 232, 232, 0.79);    
+/* border: 1px solid rgba(232, 232, 232, 0.79); */    
 border-radius: 3px;
 display: inline-block;
-margin-top: 12px;
+margin-top: 5px;
 padding-top: 7px; 
 position: relative;
 margin-left: 6px;
--webkit-transition: border-color .2s; transition: border-color .2s; -webkit-transition: border-color .2s 180ms ease-in-out 0s; -moz-transition: border-color .2s 180ms ease-in-out 0s; -ms-transition: border-color .2s 180ms ease-in-out 0s; -o-transition: border-color .2s 180ms ease-in-out 0s; transition: border-color .2s 180ms ease-in-out 0s; border: 1px solid #ddd; border-radius: 2px; 
+-webkit-transition: border-color .2s; transition: border-color .2s; -webkit-transition: border-color .2s 180ms ease-in-out 0s; -moz-transition: border-color .2s 180ms ease-in-out 0s; -ms-transition: border-color .2s 180ms ease-in-out 0s; -o-transition: border-color .2s 180ms ease-in-out 0s; transition: border-color .2s 180ms ease-in-out 0s; 
+border: none!important; border-radius: 2px; 
 }
 
 div.commentform:hover{
-    border: 1px solid rgba(185, 185, 185, 0.79);
-    border-top-color: rgba(160, 160, 160, 0.78);
+    /* border: 1px solid rgba(185, 185, 185, 0.79); */
+    /* border-top-color: rgba(160, 160, 160, 0.78); */
 }
 
 div.pre_expand_comment_fx{
@@ -1338,13 +1335,13 @@ margin-bottom: 3px;
     cursor: pointer;
     border-radius: 3px;
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     cursor: pointer;
     text-align: center;
 
-    color: #777;
-    left: 4%;
-    margin-top: 4px;
+    color: #7C7B7B;
+    right: 5%;
+    bottom: -7px;
     font-weight: bold;
     text-transform: uppercase;
     background: #fff;
@@ -1732,7 +1729,6 @@ text-decoration: none;
 
 .question_title_span
 {
-float: left;
 
 width: 100%;
 
@@ -1746,12 +1742,23 @@ hyphens: auto;
 font-size: 18px;
 letter-spacing: -0.330px;
 line-height: 1.25;
-font-family: Avenir; font-weight: 200; font-weight: 500; 
-font-size: 18px; color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+font-family: Avenir;   
+font-size: 18px; 
+
+color: #222; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 font-weight: 500;
 margin-top: 4px;     
 }
 
+div.mc_question{
+    margin-right: 12px;
+}
+
+div.question_subtext_span{
+margin: 8px auto 12px;
+width: 95%;
+color: #444;
+}
 
 /*post file css*/
 .post_time span.file_icon {
@@ -2893,6 +2900,8 @@ background-position: 3px -7px;
 width: 100%;
 padding: 5px;
 height: 30px;
+border: 2px solid rgba(239, 239, 239, 0.72);
+border-radius: 2px;
 }
 
 /*.mc_question_choice_letter{
@@ -2905,20 +2914,22 @@ text-align: center;
 border-radius: 125px;
 }*/
 .mc_question_choice_letter{
-background-color: grey;
 border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
 color: white;
 font: 15px/13px Arial;
-height: 16px;
-min-width: 14px;
-padding: 4px 3px 0 3px;
+height: 14px;
+min-width: 12px;
+padding: 3px 3px 0 3px;
 text-align: center;
 position: relative;
 
+color: #FFF; position: relative; font-size: 11px; background-color: rgba(153, 153, 153, 0.78); border-radius: 2px;
+font-family: Avenir;
 }
 .choice_letter{
 position: relative;
 top: -1px;
+color: #FFF; position: relative; font-size: 11px; font-family: Avenir;
 }
 span#B{
 top:-0.62px;
@@ -2934,7 +2945,7 @@ top: 0px;
 }
 div#B{
 position: relative;
-top: 16px;
+top: -2px;
 }
 div#C{
 position: relative;
@@ -2946,12 +2957,12 @@ top: 4px;
 }
 .mc_question_choice_text{
 padding: 5px;
-background-color: #F7F7F7;
+/* background-color: #F7F7F7; */
 padding: 2px;
 padding-left: 5px;
 width: 77%;
 height: 20px;
-border: solid 1px #D5D5D5;
+/* border: solid 1px #D5D5D5; */
 font-family: arial;
 border-radius: 2px;
 
@@ -2963,7 +2974,13 @@ left: -5px;
 height: 20px;
 padding-top: 2px;
 padding-bottom: 2px;
-top: -2px;
+
+
+top: 1px;
+
+
+background: #FFF!important;
+
 padding-left: 5px;
 border-radius: 2px;
 text-align: middle;
