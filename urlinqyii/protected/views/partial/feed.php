@@ -479,6 +479,9 @@
                                                     <div class='question_title_span'>
                                                                 {{text}}
                                                     </div>
+                                                    <div class='question_subtext_span'>
+                                                                {{sub_text}}
+                                                    </div>
 
                                                     {{#ifCond question.question_type '==' 'true_or_false'}}
                                                         

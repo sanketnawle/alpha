@@ -8,7 +8,7 @@
 #LeftPanel_Holder{
     width: 230px;
 
-    padding-left: 23px;
+    padding-left: 20px;
     padding-top: 15px;
     padding-right: 14px;
     position: fixed;
@@ -91,9 +91,10 @@
 
 .SectionHeader_holder div.float_Right a{
     
-    top: 4px;
+    top: 6px;
     position: relative;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Avenir;
+    font-weight: 500;
 }
 
 em.SectionHeader_ribbon{

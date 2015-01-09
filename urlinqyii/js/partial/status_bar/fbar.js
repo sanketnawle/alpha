@@ -509,6 +509,7 @@ $(document).ready(function() {
             $button_section.addClass("hide");
             $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
+                $("form#fbar_form").css({"overflow":"visible"});
                 $(".autofocus").focus();
                 next2();
             });
@@ -516,6 +517,19 @@ $(document).ready(function() {
 
         });
       
+    });
+
+    
+    $(document).delegate('.event_more_options', "click", function () { 
+        if($("#fbar_holder").hasClass("events_more_options")){
+            $(this).closest("#fbar_holder").removeClass("events_more_options");
+            $(this).text("More Options");
+        }
+        else{
+            $(this).closest("#fbar_holder").addClass("events_more_options");
+            $(this).text("Fewer Options");
+        }
+        
     });
 
     $(document).delegate('.question_type_button', "click", function () { 
@@ -617,7 +631,7 @@ $(document).ready(function() {
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
-
+        $("form#fbar_form").css({"overflow":"hidden"});
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
@@ -631,7 +645,9 @@ $(document).ready(function() {
                     $form_section.removeClass("mult_choice");
                     $form_section.removeClass("regular_question");
                     $(".question_type_button.active").removeClass("active");    
-                    $(".question_type_button.regular_question").addClass("active");                     
+                    $(".question_type_button.regular_question").addClass("active"); 
+                    $("#fbar_holder").removeClass("events_more_options");  
+                    $(".event_more_options").text("More Options");                  
             next();
 
         });

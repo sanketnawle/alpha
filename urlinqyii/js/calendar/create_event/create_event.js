@@ -231,6 +231,16 @@ jQuery(document).ready(function(){
 
         jQuery('#create_event_form').find('#create_event_submit_button').val('CREATE');
 
+        var $invite_input = $('#event_invite_input');
+        $invite_input.removeClass('active');
+        $invite_input.val('');
+        $invite_input.attr('data-name','');
+        $invite_input.attr('data-email','');
+        $invite_input.attr('data-id','');
+
+        //Clear the invite list
+        $('#invite_list').empty();
+
     }
 
 
@@ -285,6 +295,10 @@ jQuery(document).ready(function(){
         $dialog.hide();
         reset_create_event_form();
     });
+
+
+
+
 
 
 
@@ -358,6 +372,21 @@ jQuery(document).ready(function(){
 
 
 
+        //Get the invitations for this event
+        var invites = [];
+
+        var $invite_holder = $('.invite_holder');
+        var $invite_list = $invite_holder.find('#invite_list');
+
+        //loop through the chikldren of the invite list
+        $invite_list.children('div').each(function () {
+            var $invite_item = $(this);
+            var user_id = $invite_item.attr('data-id');
+
+            invites.push(user_id);
+        });
+
+
 
         var post_data = {
             event:{
@@ -374,14 +403,15 @@ jQuery(document).ready(function(){
                 end_date: event_end_date,
                 location: event_location,
                 event_todo: event_todo,
-                all_day: event_all_day
+                all_day: event_all_day,
+                invites: invites
             }
         };
 
 
         console.log(JSON.stringify(post_data));
 
-
+        //alert(JSON.stringify(post_data));
 
         $.post(
             post_url,
@@ -389,20 +419,32 @@ jQuery(document).ready(function(){
             function(response) {
                 if(response['success']){
                     //If this was an update event, do some shit
-                    if($form.attr('action') == '/event/update'){
-                        //Delete the old event
-                        jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
-                        //show new event
-                        var $active_tab = jQuery('a.ng-binding.active');
-                        if($active_tab.text().toLowerCase() == 'day'){
-                            show_day_event(response['event']);
-                        }else if($active_tab.text().toLowerCase() == 'week'){
-                            show_week_day_event(response['event']);
-                        }else if($active_tab.text().toLowerCase() == 'month'){
-                            show_month_event(response['event']);
-                        }
-                    }
+//                    if($form.attr('action') == '/event/update'){
+//                        //Delete the old event
+//                        jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+//                        //show new event
+//                        var $active_tab = jQuery('a.ng-binding.active');
+//                        if($active_tab.text().toLowerCase() == 'day'){
+//                            show_day_event(response['event']);
+//                        }else if($active_tab.text().toLowerCase() == 'week'){
+//                            show_week_day_event(response['event']);
+//                        }else if($active_tab.text().toLowerCase() == 'month'){
+//                            show_month_event(response['event']);
+//                        }
+//                    }
 
+
+                    //Delete the old event
+                    jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+                    //show new event
+                    var $active_tab = jQuery('a.ng-binding.active');
+                    if($active_tab.text().toLowerCase() == 'day'){
+                        show_day_event(response['event']);
+                    }else if($active_tab.text().toLowerCase() == 'week'){
+                        show_week_day_event(response['event']);
+                    }else if($active_tab.text().toLowerCase() == 'month'){
+                        show_month_event(response['event']);
+                    }
 
 
                     jQuery('#dialog').hide();
@@ -429,11 +471,39 @@ jQuery(document).ready(function(){
         $time_selector.removeClass('active');
 
 
+        verify_invite_input($('.invite_holder').find('.invite_input'));
+
 
         var $calLayer = $('.calLayer');
         //Hide the selector
         $calLayer.removeClass('active');
     });
+
+    function verify_invite_input($invite_input){
+        jQuery('#invite_popup').removeClass('active');
+
+        var name = $invite_input.attr('data-name');
+        var email = $invite_input.attr('data-email');
+        var id = $invite_input.attr('data-id');
+
+
+
+        if($invite_input.val() == ''){
+            $invite_input.removeClass('error');
+            return;
+        }
+
+        if(id == '' || name == '' || email == ''){
+            $invite_input.addClass('error');
+        }else{
+            $invite_input.removeClass('error');
+        }
+
+
+    }
+
+
+
 
     jQuery(document).on('click','.wrapper',function(){
 

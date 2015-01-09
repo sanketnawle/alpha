@@ -40,31 +40,7 @@
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <ul class = "menu_audience">
-                            <li>
-                                <a><div id = "audience_select"><span>To <span class = "selected_audience">Followers</span></span><em class = "down_arrow"></em></div></a>
-                                <ul>
-                                    <li class = "audience_name">
-                                        <a>Faculty</a>
-                                    </li>
-                                    <li class = "audience_name">
-                                        <a>Class 1</a>
-                                    </li>
-                                    <li class = "audience_name">
-                                        <a>Class 2</a>
-                                    </li>
-                                    <li class = "audience_name">
-                                        <a>Class 3</a>
-                                    </li>
-                                    <li class = "audience_name">
-                                        <a>Club 1</a>
-                                    </li>
-                                    <li class = "audience_name">
-                                        <a>Club 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a><div id = "audience_select"><span>To <span class = "selected_audience">Club Name</span></span></div></a>
                         <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
                         <div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>                 
@@ -106,26 +82,19 @@
                             <input placeholder = "Start date" id = "event_start_date" class = "fbar_date_time" type = "text" name = "event_start_date"><input placeholder = "Start time" id = "start_time" class = "fbar_date_time fbar_time_input" type = "text" name = "event_start_time"><em class = "event_time_to_arrow"></em><input placeholder = "End time" id = "event_end_time" class = "fbar_date_time fbar_time_input" type = "text" name = "event_end_time"><input placeholder = "End date" id = "event_end_date" class = "fbar_date_time" type = "text" name = "event_end_date">
                         </div>
                         <div class = "input_wrap" style = "position:relative;">
-                            <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "location_input autocomplete_location fbar_date_time" type = "text" name = "event_title"><span class = "where_icon"></span>
+                            <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_title"><span class = "where_icon"></span>
+                            <div class = "location_matches_list"></div>
+                            <div class = "input_wrap event_input_hidden repeat_event_input"> 
+                                <label style = "margin-left: 30px;" for = "event_repeat">Repeat:</label><div class = "repeat_activator">No repeat <em class = "down_arrow"></em></div>
+                            </div>
                         </div>
 
-                        <div class = "event_textarea input_wrap">
+
+                        
+                        <div class = "event_textarea input_wrap event_input_hidden hidden">
                             <textarea class = "post_text_area" placeholder = "Write event description"></textarea>
                         </div>
-
-                        <div class = "upload_file_wrap photo_flier_upload_box">
-
-                            <div class = "upload_half half_1">
-                                <div><p class = "upload_hint">Flier/photo from your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
-                            </div>
-
-                            <div class = "upload_half half_2">
-                                <div><p class = "upload_hint">Photo from web</p></div>
-                                <div><input placeholder = "url" id = "event_photo_url" class = "fbar_date_time" type = "text" name = "event_photo_url"><div class = "www_prefix">www</div></div>
-                            </div>
-
-                        </div>                         
+                        
                     </section>
 
                     <footer id = "fbar_footer" class = "fbar_contents_fix">
@@ -134,10 +103,10 @@
                             <ul class = "menu privacy_menu">
                                 <li class = "no_relative">
                                     <a class = "privacy_dropdown_link"></a>
-                                    <ul class = "privacy_dropdown">
-                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Members</a><span></span></li>
-                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Admin</a><span></span></li>
-                                        <li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>
+                                    <ul class = "privacy_dropdown privacy_dropdown_club_fbar">
+                                        <li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>All Club Members</a><span></span></li>
+                                        <li class = "privacy_list" style = "position:relative;"><a>Club Admins</a><span></span></li>
+                                        <!--<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>-->
                                         <div class="help-wedge">
                                         </div>
                                     </ul>
@@ -169,6 +138,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div style = "display:none" class = "event_form_content event_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
                             Post

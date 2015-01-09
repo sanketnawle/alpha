@@ -148,7 +148,7 @@ div#planner_column.planner_column_home{
 
 .panel_feed{
 margin-top: 32px;
-padding: 0px 5px;
+padding: 0px 8px!important;
 top: -20px;
 }
 
@@ -220,7 +220,7 @@ div#stream_holder .stream_holder_group{
 }
 
 #feed_column.feed_column_home{
-    margin-top: 67px;
+    margin-top: 72px;
 
 }
 
