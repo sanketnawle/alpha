@@ -85,10 +85,10 @@ class ApiController extends Controller
                 return;
             }
             $picture_file_id = null;
-            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
                 include "file_upload.php";
 
-                $file_upload_response = file_upload($_FILES);
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
                 if ($file_upload_response['success']) {
                     $picture_file_id = $file_upload_response['file_id'];
                 } else {
@@ -135,24 +135,23 @@ class ApiController extends Controller
 
     public function actionCreateQuestion(){
         try{
-            if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy']) || !isset($_POST['options']) || !isset($_POST['anon'])){
-                $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy']) || !isset($_POST['anon'])) {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'required data not set');
                 $this->renderJSON($data);
             }
-            $options = $_POST['options'];
             //echo 'options: '.$options;
             $picture_file_id = null;
-            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
                 include "file_upload.php";
 
-                $file_upload_response = file_upload($_FILES);
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
                 if ($file_upload_response['success']) {
                     $picture_file_id = $file_upload_response['file_id'];
                 } else {
-                    $picture_file_id = 1;
+                    $picture_file_id = null;
                 }
             } else {
-                $picture_file_id = 1;
+                $picture_file_id = null;
             }
 
             $post_new = new Post();
@@ -191,6 +190,22 @@ class ApiController extends Controller
                     $question = $_POST['answer'];
                 }
 
+                $options = null;
+                if(isset($_POST['options'])){
+                    $options = $_POST['options'];
+                }
+                else{
+                    if(!$question_new->save(false)){
+                        $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'Error saving question to database');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                    else{
+                        $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
                 //get options and correct answer id
                 for($i = 0; $i<count($options); $i++) {
                     $option_new = new PostQuestionOption();
@@ -222,7 +237,7 @@ class ApiController extends Controller
                 return;
             }
         }catch (Exception $e){
-            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>$e->getMessage());
             $this->renderJSON($data);
             return;
         }
@@ -234,7 +249,7 @@ class ApiController extends Controller
     public function actionSignup() {
 
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['user_type'])
-          || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
+            || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
 
 
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -1552,66 +1567,31 @@ class ApiController extends Controller
 
 
 
-    //Takes in a string and returns a list of users whose
-    //name or email contains that string
-    public function actionSearchUsers(){
-        if(!isset($_GET['input_string'])){
-            $data = array('success'=>false,'error_id'=>1,'error'=>'input string is not set');
-            $this->renderJSON($data);
-            return;
-        }
 
-
-        $input_string = $_GET['input_string'];
-
-
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname ) LIKE '%" . $input_string . "%' OR user_email LIKE '%" . $input_string . "%'");
-
-
-
-        $users_data = array();
-        foreach($users as $user){
-            array_push($users_data, $this->get_model_associations($user, array('pictureFile')));
-        }
-
-
-        if(count($users_data) >= 0){
-            $data = array('success'=>true,'users'=>$users_data);
-            $this->renderJSON($data);
-            return;
-        }else{
-            $data = array('success'=>false,'error_id'=>2,'error'=>'error getting users');
-            $this->renderJSON($data);
-            return;
-        }
-
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
+        return array(
+            'inlineFilterName',
+            array(
+                'class'=>'path.to.FilterClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
     }
 
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    public function actions()
+    {
+        // return external action classes, e.g.:
+        return array(
+            'action1'=>'path.to.ActionClass',
+            'action2'=>array(
+                'class'=>'path.to.AnotherActionClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+    */
 }
