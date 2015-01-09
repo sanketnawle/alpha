@@ -631,7 +631,8 @@ button.add_showcase_button {
 .edit_showcase_button.edit{
     background-position: 0px -66px;
     background-size: 113%;
-    float:right;
+    float: right;
+    left: 0;
 }
 .edit_showcase_button.cancel{
     background-position: 0px -17px;

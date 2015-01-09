@@ -1,16 +1,16 @@
 var user_id = 7;
 
 $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $.trim($(this).text()));
+        open_profile(base_url, $(this).attr('user_id'));
 
 });
 $(document).on('click', '.close_modal', function(){
     $('#profile_wrapper').hide();
     $('#profile_background_overlay').hide();
 });
-function open_profile(base_url,user_name){
+function open_profile(base_url,user_id){
     //  var numShowcase;
-    $.getJSON( base_url + "/profile/json",{name: user_name}, function( json_profile_data ) {
+    $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
         if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
             $('#profile_wrapper').show();
             $('#profile_background_overlay').show();
@@ -611,13 +611,15 @@ $(document).on('click','#follow_button',function(){
 $(document).on('click','.edit_showcase_button.edit',function(){
 
     var $showcase_item = $(this).closest('.showcase_item');
-    $showcase_item.find('.showcase_title').hide();
-    $showcase_item.find('.showcase_description').hide();
-    $showcase_item.find('.showcase_edit_field').css('display','block');
-    $showcase_item.find('.edit_showcase_button').show();
-    $showcase_item.find('.edit_showcase_button.edit').hide();
-    $showcase_item.find('.edit_showcase_title').val($.trim($showcase_item.find('.showcase_title').text()));
-    $showcase_item.find('.edit_showcase_description').val($.trim($showcase_item.find('.showcase_description').text()));
+    if($showcase_item.hasClass('center')){
+        $showcase_item.find('.showcase_title').hide();
+        $showcase_item.find('.showcase_description').hide();
+        $showcase_item.find('.showcase_edit_field').css('display','block');
+        $showcase_item.find('.edit_showcase_button').show();
+        $showcase_item.find('.edit_showcase_button.edit').hide();
+        $showcase_item.find('.edit_showcase_title').val($.trim($showcase_item.find('.showcase_title').text()));
+        $showcase_item.find('.edit_showcase_description').val($.trim($showcase_item.find('.showcase_description').text()));
+    }
 
 });
 var new_showcase_desc;
