@@ -170,30 +170,9 @@ class ClassController extends Controller
             }
         }
     }
-    public function actionJoinClass(){
-        if(isset($_POST['class']) && isset($_POST['user'])){
-            $userClass = ClassUser::model()->find('user_id=:uid and class_id=:cid', array(':uid'=>$_POST['user'],':cid'=>$_POST['class']));
-            if($userClass){
-                if($userClass->delete()){
-                    $this->renderJSON(array('status'=>'success','action'=>'withdraw'));
-                }else{
-                    $this->renderJSON(array('status'=>'error',$userClass->getError()));
-                }
-            }else{
-                $userClass = new ClassUser();
-                $userClass->user_id = $_POST['user'];
-                $userClass->class_id = $_POST['class'];
-                if($userClass->save()){
-                    $this->renderJSON(array('status'=>'success','action'=>'enroll'));
-                }
-                else{
-                    $this->renderJSON(array('status'=>'error','message'=>$userClass->getError()));
-                }
-            }
-        }else{
-            $this->renderJSON(array('status'=>'error','message'=>'post data not set'));
-        }
-    }
+
+
+
 	public function actionClass()
 	{
 		$this->render('class');
@@ -282,8 +261,15 @@ class ClassController extends Controller
         }
     }
 
+
+
+
+
+
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
+        include_once "color/color.php";
+
         if(!isset($_POST['id'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
@@ -301,10 +287,14 @@ class ClassController extends Controller
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
         //Check if this user is already a member for this class
         if(!$class_user){
+
+
+
             //Create new class user
             $class_user = new ClassUser;
             $class_user->class_id = $class_id;
             $class_user->user_id = $user_id;
+            $class_user->color_id = get_random_color();
             //If we save successfully, user is now apart of class
             if($class_user->save(false)){
                 $data = array('success'=>true);

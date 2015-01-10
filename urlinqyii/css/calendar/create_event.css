@@ -130,6 +130,13 @@ input.text_input {
     background-color: white;
 }
 
+#create_event_end_date_input {
+
+
+    margin-top: 10px;
+
+}
+
 
 /* class/group select divs */
 #create_event_group_select_holder {

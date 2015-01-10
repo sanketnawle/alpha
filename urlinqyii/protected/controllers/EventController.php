@@ -6,6 +6,31 @@ class EventController extends Controller
         return strtotime($obj);
     }
 
+
+    function get_user_event_color($user, $event){
+        $origin_type = '';
+        try{
+            $origin_type = $event['origin_type'];
+        }catch(Exception $e){
+            $origin_type = $event->origin_type;
+        }
+
+
+        if($origin_type == 'class'){
+            $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$event['origin_id']));
+            $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
+            return $color;
+        }else if($origin_type == 'club' || $origin_type == 'group'){
+            $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$event['origin_id']));
+            $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+            return $color;
+        }else {
+            $color = Color::model()->find('color_id=:id',array(':id'=>3));
+            return $color;
+        }
+
+    }
+
     public function actionGetEvents(){
         if(!isset($_GET['date'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'date is not set');
@@ -26,11 +51,18 @@ class EventController extends Controller
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
         //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = 7 AND start_date = "' . $date . '"')->queryAll();
+        $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND start_date = '" . $date . "'")->queryAll();
         //Get the events that this
-        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = 7 AND start_date = "' . $date . '"')->queryAll();
+        $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND start_date = '" . $date . "'")->queryAll();
 
-        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+
+
+        $all_events = array_merge($events,$events_attending);
+        for($i=0;$i<count($all_events);$i++){
+            $all_events[$i]['color'] = $this->get_user_event_color($user,$all_events[$i]);
+        }
+
+        $data = array('success'=>true,'events'=>$all_events);
 
         $this->renderJSON($data);
         return;
@@ -54,9 +86,16 @@ class EventController extends Controller
 //                                                WHERE event_user.user_id = 7 OR event.user_id = 7');
 
         //Get the events that this user is an event_user of
-        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = 7 AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+        $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id .' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
         //Get the events that this
-        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = 7 AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+        $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
+
+
+        for($i=0;$i<count($events);$i++){
+            $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
+        }
+
+
 
         $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
 
@@ -85,6 +124,10 @@ class EventController extends Controller
         $events_attending = Yii::app()->db->createCommand('SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
+
+        for($i=0;$i<count($events);$i++){
+            $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
+        }
 
         $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
 
@@ -419,7 +462,8 @@ class EventController extends Controller
                     }
                 }
 
-
+                $event = $this->model_to_array($event);
+                $event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
 
                 $data = array('success'=>true,'event'=>$event);
                 $this->renderJSON($data);
@@ -494,6 +538,10 @@ class EventController extends Controller
 
 
             if($event->save(false)){
+                $event = $this->model_to_array($event);
+                $event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
+
+
                 $data = array('success'=>true,'event'=>$event);
                 $this->renderJSON($data);
                 return;

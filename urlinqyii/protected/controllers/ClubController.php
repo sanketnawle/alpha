@@ -316,6 +316,8 @@ class ClubController extends Controller
 
     //modified by Tianming Xu for use of App on 01/07/2014
     public function actionJoin(){
+
+        include_once "color/color.php";
         if(!isset($_POST['id'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
             $this->renderJSON($data);
@@ -337,6 +339,7 @@ class ClubController extends Controller
             $group_user = new GroupUser;
             $group_user->group_id = $group_id;
             $group_user->user_id = $user_id;
+            $group_user->color_id = get_random_color();
             //If we save successfully, user is now apart of group
             if($group_user->save(false)){
                 $data = array('success'=>true);

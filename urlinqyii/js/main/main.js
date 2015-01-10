@@ -385,7 +385,7 @@ $(document).ready(function(){
 
 
 
-        var post_data = {};
+        var post_data = {id: globals.origin_id};
 
         $.post(
             post_url,

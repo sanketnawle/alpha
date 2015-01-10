@@ -725,7 +725,7 @@ $(document).on('click','.event_checkbox_input',function(e){
 
 //$('#create_todo_form').submit(function (e) {
 $(document).on('click','#create_todo_form',function(e){
-//Send post request to event/create
+    //Send post request to event/create
     e.preventDefault();
 
     //alert($('.event_date').val());

@@ -4,6 +4,8 @@
 <head>
     <script>
         var globals = {};
+
+
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'class'; ?>';
 
