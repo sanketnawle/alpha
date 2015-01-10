@@ -1,16 +1,16 @@
 var user_id = 7;
 
 $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $.trim($(this).text()));
+        open_profile(base_url, $(this).attr('user_id'));
 
 });
 $(document).on('click', '.close_modal', function(){
     $('#profile_wrapper').hide();
     $('#profile_background_overlay').hide();
 });
-function open_profile(base_url,user_name){
+function open_profile(base_url,user_id){
     //  var numShowcase;
-    $.getJSON( base_url + "/profile/json",{name: user_name}, function( json_profile_data ) {
+    $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
         if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
             $('#profile_wrapper').show();
             $('#profile_background_overlay').show();
@@ -589,11 +589,13 @@ $(document).on('click','#follow_button',function(){
         {
             if(data.status == "success"){
                 if(follow){
-                    alert('now following');
-                    $(this).addClass('following');
+
+                    $('#follow_button').addClass('following');
+                    $('#follow_button').text('Following');
                 }else{
-                    alert('unfollowed');
-                    $(this).removeClass('following');
+
+                    $('#follow_button').removeClass('following');
+                    $('#follow_button').text('Follow');
                 }
 
             }else{
@@ -605,4 +607,58 @@ $(document).on('click','#follow_button',function(){
             alert('err'+errorThrown);
         }
     });
-})
+});
+$(document).on('click','.edit_showcase_button.edit',function(){
+
+    var $showcase_item = $(this).closest('.showcase_item');
+    if($showcase_item.hasClass('center')){
+        $showcase_item.find('.showcase_title').hide();
+        $showcase_item.find('.showcase_description').hide();
+        $showcase_item.find('.showcase_edit_field').css('display','block');
+        $showcase_item.find('.edit_showcase_button').show();
+        $showcase_item.find('.edit_showcase_button.edit').hide();
+        $showcase_item.find('.edit_showcase_title').val($.trim($showcase_item.find('.showcase_title').text()));
+        $showcase_item.find('.edit_showcase_description').val($.trim($showcase_item.find('.showcase_description').text()));
+    }
+
+});
+var new_showcase_desc;
+var new_showcase_title;
+$(document).on('click','.edit_showcase_button.submit',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    new_showcase_desc = $showcase_item.find('.edit_showcase_description').val();
+    new_showcase_title = $showcase_item.find('.edit_showcase_title').val();
+    $.ajax({
+        url: base_url+'/profile/editShowcase',
+        type: 'POST',
+        data: {title:new_showcase_title,desc:new_showcase_desc,file:$showcase_item.attr('file_id'),user:user_id},
+
+        dataType: 'json',
+        success: function(data)
+        {
+            if(data.status == "success"){
+                $showcase_item.find('.showcase_title').show();
+                $showcase_item.find('.showcase_description').show();
+                $showcase_item.find('.showcase_edit_field').hide();
+                $showcase_item.find('.edit_showcase_button').hide();
+                $showcase_item.find('.edit_showcase_button.edit').show();
+                $showcase_item.find('.showcase_title').text($showcase_item.find('.edit_showcase_title').val());
+                $showcase_item.find('.showcase_description').text($showcase_item.find('.edit_showcase_description').val());
+            }else{
+                alert(data.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert('err'+errorThrown);
+        }
+    });
+});
+$(document).on('click','.edit_showcase_button.cancel',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    $showcase_item.find('.showcase_title').show();
+    $showcase_item.find('.showcase_description').show();
+    $showcase_item.find('.showcase_edit_field').hide();
+    $showcase_item.find('.edit_showcase_button').hide();
+    $showcase_item.find('.edit_showcase_button.edit').show();
+});

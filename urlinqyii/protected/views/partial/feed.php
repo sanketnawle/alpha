@@ -57,12 +57,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}}style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                             </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 Anonymous
@@ -221,7 +221,7 @@
                                     <div class = 'comment_owner_container'>
                                         <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -315,7 +315,7 @@
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -355,7 +355,7 @@
                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                             <div class = 'comment_user_icon'></div>
                         </div>
-                        <span class = 'comment_owner'>
+                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                             {{#if anon}}
                                 Anonymous
                             {{else}}
@@ -391,7 +391,7 @@
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -432,12 +432,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
@@ -670,7 +670,7 @@
                                     <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         <div class = 'comment_user_icon'></div>
                                     </div>
-                                    <span class = 'comment_owner'>
+                                    <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                         {{#if anon}}
                                             Anonymous
                                         {{else}}
@@ -758,12 +758,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
@@ -941,7 +941,7 @@
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>
                                     </div>
-                                    <span class = 'comment_owner'>
+                                    <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                         {{#if anon}}
                                             Anonymous
                                         {{else}}

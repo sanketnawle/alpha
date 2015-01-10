@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
+
     <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
@@ -42,6 +45,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
       
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
@@ -798,10 +802,14 @@
         							<p>Is this class open to the public?</p>
         						</div>
         						<div class="status">
-        							<p>Public</p>
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_open">
+        								<label><input id="status_check" type="radio" name="openStatus" value="Public"checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="openStatus" value="Private">Private</label>
+        							</form>
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>
@@ -810,10 +818,14 @@
         							<p>Who can see the members of this class?</p>
         						</div>
         						<div class="status">
-        							<p>Anyone</p>
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_privacy">
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Public" checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Members Only">Members Only</label>
+        							</form>
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>
