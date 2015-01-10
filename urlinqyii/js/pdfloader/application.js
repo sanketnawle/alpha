@@ -1,3 +1,4 @@
+var file_id = 0;
 var previous = "";
 var events={};
 var pdf_year= (new Date()).getFullYear();
@@ -99,8 +100,11 @@ var run_pdf_algo = function(db){
          url: "GetSyllabusPDF?class_id="+globals.origin_id,
          type: "GET",
          success: function(response) {
-            loadPdf(globals.base_url+response["file_url"])
-        
+            if(response["file_url"]){
+              $('div#pdfContainer').attr("pdf_location",response["file_url"]);
+              loadPdf(globals.base_url+response["file_url"]);
+            }
+            
          },
          error: function(jqXHR, textStatus, errorMessage) {
              console.log(errorMessage); // Optional
@@ -331,8 +335,16 @@ var add_event_to_ui = function(events_generated){
     month[11] = "Dec";
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
-    if(stamp && added_events.indexOf(stamp)<0){
-      html_text+='<div class = "syllabus_event editable">\
+    if(stamp && added_events.indexOf(String(stamp))<0){
+      var php_time = stamp.getFullYear()+"-"+(stamp.getMonth()+1)+"-"+stamp.getDate()+" "+stamp.getHours()+":"+stamp.getMinutes()+":"+stamp.getSeconds();
+      var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
+      $.ajax({
+         url: "StoreEvent",
+         type: "GET",
+         data: get_data_json,
+         success: function(response) {
+          //var parsed_response = ;
+          html_text='<div id="'+response+'" class = "syllabus_event editable">\
                     <div class = "day_month_box day_box_color">\
                         <div class = "calendar_top_border"></div>\
                         <div class = "calendar_bottom_section">\
@@ -349,13 +361,18 @@ var add_event_to_ui = function(events_generated){
                             Done\
                         </div>\
                     </div>\
-                </div>'
-      added_events.push(stamp);
+                </div>';
+            $('div#events_list').append(html_text);
+         },
+         error: function(jqXHR, textStatus, errorMessage) {
+             console.log(errorMessage); // Optional
+         }
+      });
+      
+      added_events.push(String(stamp));
     }
     else{
       console.log(index);
     }
-
   });
-  $('div#events_list').html(html_text);
 }

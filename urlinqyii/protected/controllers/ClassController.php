@@ -261,9 +261,27 @@ class ClassController extends Controller
         }
     }
 
+    public function actionStoreEvent(){
+        $class_id = $_GET["class_id"];
+        $event_title = $_GET["event_title"];
+        $event_date = $_GET["event_date"];
+        $user_id = $this->get_current_user_id();
+        $event_type = $_GET["event_type"];
+        $file_id = $_GET["file_id"];
+        $syllabus_event = new ClassSyllabusEvent;
+        $syllabus_event->class_id = $class_id;
+        $syllabus_event->event_title = $event_title;
+        $syllabus_event->user_id = $user_id;
+        $syllabus_event->event_type = $event_type;
+        $syllabus_event->event_date = $event_date;
+        $syllabus_event->file_id = $file_id;
+        $syllabus_event->save(false);
+
+        $class_user = ClassSyllabusEvent::model()->deleteAll('class_id=:id and user_id=:user_id and file_id!=:file_id', array(':id'=>$class_id,':user_id'=>$user_id,':file_id'=>$file_id));
 
 
-
+        echo $syllabus_event->event_id;
+    }
 
 
     //modified by Tianming Xu at 01/07/2014
