@@ -557,6 +557,7 @@ button.download_showcase_button.link{
     background-color: white;
     color: black;
     width: 500px;
+    padding:10px;
     margin-left: 255px;
     height: 278px;
     z-index: 10000;
@@ -658,6 +659,33 @@ button.add_showcase_button {
 .edit_showcase_description{
     resize: none;
     height:50px;
+}
+#title_entry{
+    margin-top:10px;
+}
+#add_showcase input, #add_showcase textarea{
+    margin-left: 10px;
+    display:block;
+    padding: 5px;
+    border-radius: 4px;
+    width:90%;
+    margin-bottom: 10px;
+}
+#create_showcase_form{
+    float:right;
+    width:30% !important;
+    background-color: #00c32c;
+    color:#ffffff;
+    border:none;
+}
+#cancel_showcase_form{
+    float:right;
+
+    margin-left:10px;
+}
+#description_section{
+    clear:both;
+    border-top: 2px black;
 }
 /*
 #add_showcase i{

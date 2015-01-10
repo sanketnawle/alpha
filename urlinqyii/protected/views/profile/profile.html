@@ -1,7 +1,7 @@
 
 
 <!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
-<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>
+<!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
 
 <div id="profile_background_overlay"></div>
 <div id="profile_wrapper" user_id={{user_id}}>
@@ -95,21 +95,22 @@
                     <input type="text" id="title_entry" name="title_entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you">
                     <textarea id="desc_entry" name="desc_entry" placeholder="Add a description"></textarea>
                     <input id="link_entry" name="link_entry" placeholder="Paste a link to your showcase">
+                    OR
                     <button type="button" id="upload_link_button" ><i></i>Upload Showcase</button>
                     <div style='height: 0px;width:0px; overflow:hidden;'>
                         <input id="upfile" type="file" value="upload"/>
                     </div>
-                    <div class="showcase_submit">
-                        <span class="cancel_showcase_form">Cancel</span>
-                        <input type="submit" class="create_showcase_form"value="+ Add this Showcase">
+                    <div id="showcase_submit">
+                        <span id="cancel_showcase_form">Cancel</span>
+                        <input type="submit" id="create_showcase_form" value="+ Add this Showcase">
                     </div>
                 </form>
-                <div class="description-section">
-                    <i class="close-description"></i>
-                    <div class="top-description">
-                        - Show your peers and friends what academic research and articles you\'re interested in or have contributed to.
+                <div id="description_section">
+                    <i id="close_description"></i>
+                    <div id="top_description">
+                        - Show your peers and friends what academic research and articles you're interested in or have contributed to.
                     </div>
-                    <div class="bottom-description">
+                    <div id="bottom_description">
                         - Display presentations or projects that you want to share with the people in your academic network.
                     </div>
                 </div>
