@@ -1034,14 +1034,17 @@ display: none;
 }
 
 .dragdropbox {
-border: 1px dashed #ddd;
-color: rgba(0, 0, 0, 0.42);
+color: #999;
 text-align: center;
 vertical-align: middle;
 padding: 13px 10px;
 cursor: pointer;
-font-size: 13px;
-font-weight: 600;
+letter-spacing: .2px;
+font-family: Avenir;
+font-size: 11px;
+text-transform: uppercase;
+font-weight: 500;
+border: 2px dashed #999;
 }
 .dragdropbox:hover {
 background-color: #f9f9f9;
