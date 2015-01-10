@@ -631,7 +631,7 @@ $(document).ready(function() {
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
-        $("form#fbar_form").css({"overflow":"hidden"});
+        
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
@@ -647,7 +647,8 @@ $(document).ready(function() {
                     $(".question_type_button.active").removeClass("active");    
                     $(".question_type_button.regular_question").addClass("active"); 
                     $("#fbar_holder").removeClass("events_more_options");  
-                    $(".event_more_options").text("More Options");                  
+                    $(".event_more_options").text("More Options");    
+                    $("form#fbar_form").css({"overflow":"hidden"});              
             next();
 
         });

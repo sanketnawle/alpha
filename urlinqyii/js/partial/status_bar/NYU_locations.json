@@ -682,7 +682,7 @@
         "-jcr:primaryType": "nt:unstructured",
         "-address": "242 Greene Street, New York University, New York, NY 10003, USA",
         "-cq:tags": "maps:building",
-        "-jcr:title": "Leslie Entrepreneurs Lab",
+        "-jcr:title": "Leslie Entrepreneurs Lab (ELab)",
         "-latitude": "40.7295117",
         "-longitude": "-73.9955404"
       },

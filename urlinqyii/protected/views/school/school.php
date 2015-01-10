@@ -57,12 +57,12 @@
     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
 
         <div class = "group_name">
-            <div class = "center_text">NYU College of Arts and Sciences</div>
+            <div class = "center_text">Tisch School of the Arts</div>
         </div>
         <div class = "group_right_info group_info_boxes">
             <div class = "group_info_block" id = "location">
                 <em class ="small_icon_map"></em>
-                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                <span>721 Broadway New York, NY (212) 998-1900</span>
             </div>
         </div>
 

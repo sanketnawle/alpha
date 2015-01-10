@@ -3,9 +3,9 @@
 <!--<script src="{{base_url}}/js/profile/profile.js"></script>-->
 <!--<link href='{{base_url}}/css/profile/profile.css' rel='stylesheet' type='text/css'>-->
 
-<div class="overlay"></div>
-<div id="profile_wrapper">
-    <div id="profile_overlay"></div>
+<div id="profile_background_overlay"></div>
+<div id="profile_wrapper" user_id={{user_id}}>
+    <div id="profile_foreground_overlay"></div>
     <div id="modal_header" {{#if showcase}}{{else}}style="background-image: url( {{background_pic}} )"{{/if}}>
 
         <div id="modal_controls">
@@ -32,6 +32,9 @@
                         <div class="showcase_label" style="background-color:{{color}}">
                             {{#if url}}
                             <div class="showcase_url">{{link}}</div>
+                            <button type="button" onclick = "window.open('{{link}}')" class="download_showcase_button link">
+                                <i class="link_button_icon"></i>
+                            </button>
                             {{else}}
                             <a href="/alpha/urlinqyii/profile/downloadShowcase/?file_id={{id}}">
                                 <button type="button" class="download_showcase_button">
@@ -44,12 +47,30 @@
 
                         </div>
                         <div class="showcase_text">
-                            <div class="showcase_title">
-                                {{title}}
-                            </div>
-                            <div class="showcase_description">
-                                {{description}}
-                            </div>
+                            {{#if ../own_profile}}
+                                <div class="showcase_title ">
+                                    {{title}}
+                                    <button class="edit_showcase_button edit">
+                                    </button>
+                                </div>
+
+                                <input class="edit_showcase_title showcase_edit_field">
+                                <div class="showcase_description">
+                                    {{description}}
+                                </div>
+                                <textarea class="edit_showcase_description showcase_edit_field"></textarea>
+                                <button class="edit_showcase_button cancel">
+                                </button>
+                                <button class="edit_showcase_button submit">
+                                </button>
+                            {{else}}
+                                <div class="showcase_title ">
+                                    {{title}}
+                                </div>
+                                <div class="showcase_description">
+                                    {{description}}
+                                </div>
+                            {{/if}}
                         </div>
 
                     </div>
@@ -74,40 +95,64 @@
                     <input type="text" id="title_entry" name="title_entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you">
                     <textarea id="desc_entry" name="desc_entry" placeholder="Add a description"></textarea>
                     <input id="link_entry" name="link_entry" placeholder="Paste a link to your showcase">
+                    OR
                     <button type="button" id="upload_link_button" ><i></i>Upload Showcase</button>
                     <div style='height: 0px;width:0px; overflow:hidden;'>
                         <input id="upfile" type="file" value="upload"/>
                     </div>
-                    <div class="showcase_submit">
-                        <span class="cancel_showcase_form">Cancel</span>
-                        <input type="submit" class="create_showcase_form"value="+ Add this Showcase">
+                    <div id="showcase_submit">
+                        <span id="cancel_showcase_form">Cancel</span>
+                        <input type="submit" id="create_showcase_form" value="+ Add this Showcase">
                     </div>
                 </form>
-                <div class="description-section">
-                    <i class="close-description"></i>
-                    <div class="top-description">
-                        - Show your peers and friends what academic research and articles you\'re interested in or have contributed to.
+                <div id="description_section">
+                    <i id="close_description"></i>
+                    <div id="top_description">
+                        - Show your peers and friends what academic research and articles you're interested in or have contributed to.
                     </div>
-                    <div class="bottom-description">
+                    <div id="bottom_description">
                         - Display presentations or projects that you want to share with the people in your academic network.
                     </div>
                 </div>
-
-
             </div>
+           <!-- <div class="edit-showcase-form">
+                <span>Editing this Showcase</span>
+                <input id="showcase-name-edit" name="showcase-name" placeholder="change title">
+                <input id="showcase-link-edit" name="showcase-link" placeholder="change description">
+                <div class="edit-form-bottom">
+                    <span>Cancel</span>
+
+                    <div class="add-showcase-button" id="edit-from-submit">
+                        <button type="button">Done Editing</button>
+                    </div>
+                </div>
+            </div>-->
         </div>
 
     </div>
     <div id="main_bar">
         <div id="profile_picture_wrapper">
             <div id="profile_picture" style="background-image: url( {{profile_pic}} )"></div>
-            <button type="button" id="edit_profile_button" class="not_editing">Edit Profile</button>
+            {{#if own_profile}}
+            <button type="button" id="change_picture_button"></button>
+            <div style="height: 0px;width:0px; overflow:hidden;">
+                <input id="picture_upfile" type="file" value="upload"/>
+            </div>
+            <button type="button" id="edit_profile_button" class="edit_or_follow_button not_editing">Edit Profile</button>
+            {{else}}
+            <button type="button" id="follow_button" class="edit_or_follow_button
+                {{#if is_following}}following{{/if}}">
+                {{#if is_following}}Following
+                {{else}}Follow{{/if}}</button>
+            {{/if}}
             <div id="cancel_edit_button">x</div>
         </div>
         <div id="name_info_wrapper">
-            <div id="name_info">{{#if professor}}Professor {{/if}}{{firstname}} {{lastname}}</div>
+            <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
+                {{else}} {{firstname}} {{lastname}} '{{year}}{{/if}}</div>
             {{#if professor}}
             <div id="university_info">{{university}}</div>
+            <div id="office_hours_info">{{office_hours}}</div>
             {{else}}
             <div id="year_info">{{year_name}} at {{university}}</div>
             {{/if}}
@@ -175,16 +220,28 @@
                 <div class="info_label" id = "research_label">
                     Research Interests:
                 </div>
-                <div class="info_name">{{research}}</div>
-                <input type="text" class="edit_field" id="research_input">
+                {{#each research}}
+                <div class="info_name research">{{name}}</div>
+                {{/each}}
+                <input type="text" class="edit_field research">
+                <input type="text" class="edit_field research">
+                <input type="text" class="edit_field research">
             </div>
             {{#if professor}}
                 <div class="info_section" id = "office_section">
                     <div class="info_label" id = "office_label">
                         Office Location:
                     </div>
-                    <div class="info_name">{{office_location}}</div>
+                    <div class="info_name" id="office_location">{{office_location}}</div>
                     <input type="text" class="edit_field" id="office_input">
+                </div>
+
+                <div class="info_section" id = "hours_section">
+                    <div class="info_label" id = "hours_label">
+                        Office Hours:
+                    </div>
+                    <div class="info_name" id="office_hours">{{office_hours}}</div>
+                    <input type="text" class="edit_field" id="hours_input">
                 </div>
             {{else}}
                 <div class="info_section" id = "major_section">
@@ -254,11 +311,28 @@
             </div>
 
             <div class="profile_panel" id="profile_panel_3"> <!-- clubs -->
-                PANEL 3
+                {{#if clubs}}
+                <div class="groups_wrapper">
+                    {{#each clubs}}
+                    <div class="group_box">
+                        <div class="class_content">
+                            <div class="class_pic" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/class.png )"></div>
+                            <div class="class_name">
+                                {{name}}
+                            </div>
+                            <div class="class_section_name">
+                                {{section}}
+                            </div>
+
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
             </div>
 
             <div class="profile_panel" id="profile_panel_4"> <!-- followers -->
-                <div class="search_bar follower">
+                <div class="search_bar followers">
 
                 </div>
                 {{#if following}}
@@ -285,7 +359,30 @@
 
             </div>
             <div class="profile_panel" id="profile_panel_5"> <!-- following -->
-                PANEL 4
+                <div class="search_bar following">
+
+                </div>
+                {{#if followed}}
+                <div class="user_wrapper">
+                    {{#each followed}}
+                    <div class="user_box">
+                        <div class="user_content">
+
+                            <div class="user_pic" style="background-image: url( http://localhost/alpha/urlinqyii/assets/default/user.png )"></div>
+                            <div class="user_name">
+                                {{user_name}}
+                            </div>
+                            <div class="user_school">
+                                {{user_school}}
+                            </div>
+                            <div class="user_follow">
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
             </div>
         </div>
     </div>

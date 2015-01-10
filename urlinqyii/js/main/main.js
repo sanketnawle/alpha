@@ -319,7 +319,7 @@ $(document).ready(function(){
         );
     });
 
-    $(document).on('click', '.profile_link', function(){
+ /*   $(document).on('click', '.profile_link', function(){
         //$(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
 
         open_profile(globals.base_url,7);
@@ -338,7 +338,7 @@ $(document).ready(function(){
              render_profile(json_profile_data['feed']);
              }else{
              alert('failed to get profile data');
-             }*/
+             }
             render_profile(base_url,json_profile_data);
         });
 
@@ -357,7 +357,7 @@ $(document).ready(function(){
 
         });
 
-    }
+    }*/
 
     //Perform group member action
     // For clubs - join/leave
