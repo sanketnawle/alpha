@@ -10,9 +10,6 @@
  * @property string $privacy
  * @property integer $color_id
  * @property string $join_time
- *
- * The followings are the available model relations:
- * @property User $user
  */
 class GroupUser extends CActiveRecord
 {
@@ -49,8 +46,6 @@ class GroupUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'group'=> array(self::BELONGS_TO, 'Group', 'group_id'),
 		);
 	}
 

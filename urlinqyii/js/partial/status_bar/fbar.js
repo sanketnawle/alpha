@@ -10,10 +10,12 @@ var question_type = "regular_type";
 var origin_id = 25;
 
 
+
+
 $(document).ready(function() {
     //*starts* Code to make the post request for a post 
     //liking a post
-    
+
     setTimeout(function(){
         sample();
     }, 1000);
@@ -471,6 +473,8 @@ $(document).ready(function() {
         return false;
     }
 
+
+
     $(document).delegate('.fbar_buttonwrapper', "click", function () { 
         var $button_selected = $(this);
 
@@ -478,6 +482,26 @@ $(document).ready(function() {
         
         var button_selected_type = $button_selected.attr("data-post_button_type");
         $("#fbar_holder").addClass(button_selected_type);
+        if($("#fbar_holder").hasClass("event")){
+            $("#post_btn").text("Create Event");
+        }
+
+        if($("#fbar_holder").hasClass("discuss")){
+            $("#post_btn").text("Post");
+        }
+
+        if($("#fbar_holder").hasClass("question")){
+            $("#post_btn").text("Add Question");
+        }
+
+        if($("#fbar_holder").hasClass("question")){
+            $("#post_btn").text("Add Question");
+        }
+
+        if($("#fbar_holder").hasClass("notes")){
+            $("#post_btn").text("Add Files");
+        }
+
 
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form')
@@ -485,6 +509,7 @@ $(document).ready(function() {
             $button_section.addClass("hide");
             $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
+                $("form#fbar_form").css({"overflow":"visible"});
                 $(".autofocus").focus();
                 next2();
             });
@@ -492,6 +517,19 @@ $(document).ready(function() {
 
         });
       
+    });
+
+    
+    $(document).delegate('.event_more_options', "click", function () { 
+        if($("#fbar_holder").hasClass("events_more_options")){
+            $(this).closest("#fbar_holder").removeClass("events_more_options");
+            $(this).text("More Options");
+        }
+        else{
+            $(this).closest("#fbar_holder").addClass("events_more_options");
+            $(this).text("Fewer Options");
+        }
+        
     });
 
     $(document).delegate('.question_type_button', "click", function () { 
@@ -593,7 +631,7 @@ $(document).ready(function() {
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
-
+        
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
@@ -601,12 +639,16 @@ $(document).ready(function() {
             $button_section.removeClass("hide");
                     $("#fbar_holder").removeClass("discuss");
                     $("#fbar_holder").removeClass("question");
+                    $("#fbar_holder").removeClass("event");
                     $("#fbar_holder").removeClass("notes");
                     $form_section.removeClass("true_or_false");
                     $form_section.removeClass("mult_choice");
                     $form_section.removeClass("regular_question");
                     $(".question_type_button.active").removeClass("active");    
-                    $(".question_type_button.regular_question").addClass("active");                     
+                    $(".question_type_button.regular_question").addClass("active"); 
+                    $("#fbar_holder").removeClass("events_more_options");  
+                    $(".event_more_options").text("More Options");    
+                    $("form#fbar_form").css({"overflow":"hidden"});              
             next();
 
         });

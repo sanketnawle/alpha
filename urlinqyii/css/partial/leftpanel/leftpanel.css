@@ -3,12 +3,10 @@
 
 }
 
-
-
 #LeftPanel_Holder{
     width: 230px;
 
-    padding-left: 23px;
+    padding-left: 20px;
     padding-top: 15px;
     padding-right: 14px;
     position: fixed;
@@ -41,10 +39,8 @@
     width: 220px;
 
     margin-left: 0px;
-    background: #FFF;
     padding: 10px;  
     border-radius: 5px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
 }
 
 .LeftPanel_Section{
@@ -91,9 +87,10 @@
 
 .SectionHeader_holder div.float_Right a{
     
-    top: 4px;
+    top: 6px;
     position: relative;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Avenir;
+    font-weight: 500;
 }
 
 em.SectionHeader_ribbon{
@@ -287,7 +284,7 @@ ul.LeftPanel_GroupsList{
     margin: 8px 0px 14px;
     padding: 0;
     position: relative;
-    margin-left: -6px;
+    margin-left: 0px;
 }
 
 ul.LeftPanel_GroupsList li{
@@ -312,7 +309,7 @@ ul.LeftPanel_GroupsList li a{
 }
 
 ul.LeftPanel_GroupsList li a:hover{
-background: #fafafa;
+background: #eee;
 color: #029acf;
 }
 

@@ -99,6 +99,11 @@ function show_day_event(event_json){
         html_object.css({'z-index':time_range_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
 
+        html_object.css({'background-color':event_json['color']['hex']});
+
+
+
+
         $grid_item_selector.append(html_object);
 
     }else{
@@ -212,6 +217,8 @@ function show_week_day_event(event_json){
         html_object.css({'z-index':event_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
 
+        html_object.css({'background-color': event_json['color']['hex']});
+
         $grid_item_selector.append(html_object);
 
     }else{
@@ -228,15 +235,12 @@ function show_week_day_event(event_json){
 
 
 
-
-
-
-
-
 function show_month_event(event_json){
     //Normally source would be jQuery("#group_template").html(); but for whatever reason
     //angular doesnt let jquery select the handlebars template if it is in the html
-    var source = '<div class="month_day_event event_holder" data-id="{{event_id}}" data-origin_id="{{origin_id}}" data-origin_type="{{origin_type}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
+    //var source = '<div class="month_day_event event_holder" data-id="{{event_id}}" data-origin_id="{{origin_id}}" data-origin_type="{{origin_type}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}"><div class="event_start_time">{{formatted_start_time}}</div><div class="event_name">{{title}}</div></div>';
+    var source = jQuery('#month_event_template').html();
+
     var template = Handlebars.compile(source);
 
     event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
@@ -244,18 +248,34 @@ function show_month_event(event_json){
 
     var generated_html = template(event_json);
     //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
-    var grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+    var $grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
 
-    if(grid_item_selector){
-        //                grid_item_selector.innerHTML += generated_html;
+    if($grid_item_selector){
+
         var $dom_object = jQuery(generated_html);
         $dom_object.attr('ng-click','clickMonthDayEvent()');
-        grid_item_selector.append($dom_object);
+
+        $dom_object.css({'background-color': event_json['color']['hex']});
+        $grid_item_selector.append($dom_object);
+
+//        var $month_day_event = $('.month_day_event[data-id="' + event_json['event_id'] + '"]');
+//        var children_height = $grid_item_selector.children().length * $month_day_event.height();
+//
+//        if(children_height > $grid_item_selector.height()){
+//            alert('overflow :o event_id=' + event_json['event_id']);
+//
+//            $grid_item_selector.append('<a>more</div>')
+//
+//        }
+
+        //alert('Children height = ' + children_height.toString());
 
     }else{
         console.log("ERROR ADDING EVENT");
         console.log(event_json);
     }
+
+
 
 
 }

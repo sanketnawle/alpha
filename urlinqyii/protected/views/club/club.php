@@ -10,6 +10,8 @@
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
+            <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
 
@@ -18,6 +20,8 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
+		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
@@ -32,7 +36,7 @@
 
     </head>
 
-    <body>
+    <body class = "body_group">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper">
@@ -58,7 +62,18 @@
 
                     <div id="content_panel">
                         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
-                        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');"></div>
+                        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
+                            <div class = "group_name">
+                                <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
+                                <div class = "center_text"><p id = "group_name">NYU Cheese Club</p></div>
+                            </div>
+                            <div class = "group_right_info group_info_boxes">
+                                <div class = "group_info_block" id = "location">
+                                    <em class ="small_icon_map"></em>
+                                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -115,15 +130,35 @@
 
                             <div id="tab_more_button">
                                 <div id="tab_more_button_image"></div>
+                                <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
                             </div>
 
-                            <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
+                            
 
                         </div>
 
 
-                        <div class="panel active" id="panel_1">
-                            CLASS FEED GOES HERE
+                        <div class="panel active panel_feed" id="panel_1">
+                            <div id = "planner_column" class = "planner_column_group">
+                                <div id = "right_column_specs">
+                                    <div id = "fixed_element" class = "planner_group">
+                                        <?php
+                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->club_id; ?>'));
+                                        ?>    
+                                    </div>
+                                </div>                           
+                            </div>
+                            <div id = "feed_column" class = "feed_column_group">
+                                <div id = "stream_holder" class = "stream_holder_home">
+                                    <div id = "fbar_wrapper" class = "fbar_home">
+                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user,'origin_type'=>'club','origin_id'=>'','pg_src'=>'club.php','target_type'=>'club')); ?>
+                                    </div>
+
+                                    <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->club_id; ?>/feed')); ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -454,9 +489,151 @@
                             </div>                      
                         </div>
 
-                        <div class="panel" id="panel_4">
+                        <div class="panel tab_analytics" id="panel_4">
                             PANEL 4
                         </div>
+                        
+                        <!-- INSERTING NEW PANELS HERE STARTING WITH ID = panel_5  -->
+				        <div class="panel tab_settings" id="panel_5">
+				        	<div class="tab_content_holder">
+				        		<div class="tab_header">
+				        			<img class="tab_settings_icon" src="../assets/settings_imgs/gear.png">
+					        		<div class="header_sentence">Club Settings</div>
+				        		</div>
+				        		<div class="settings_tab_content">
+				        			<div class="admin_settings_wrapper">
+				        				<div class="admin_settings">
+				        					<div class="header">
+				        						<p>Administrative Settings</p>
+				        					</div>
+				        					<div class="row">
+				        						<div class="text">
+				        							<p>Is this class open to the public?</p>
+				        						</div>
+				        						<div class="status">
+				        							<p>Public</p>
+				        						</div>
+				        						<div class="edit">
+				        							<img src="../assets/settings_imgs/bluePen.png">
+				        							Edit
+				        						</div>
+				        					</div>
+				        					<div class="row">
+				        						<div class="text">
+				        							<p>Who can see the members of this class?</p>
+				        						</div>
+				        						<div class="status">
+				        							<p>Anyone</p>
+				        						</div>
+				        						<div class="edit">
+				        							<img src="../assets/settings_imgs/bluePen.png">
+				        							Edit
+				        						</div>
+				        					</div>
+										</div>
+				        			</div>
+				           			<div class="personal_notification_settings_wrapper">
+					        			<div class="personal_notification_settings">
+					        				<div class="header">
+					        					<p>Personal Notification Settings</p>
+					        				</div>
+					        				<div class="row_no_click">
+					        					<p id="left_text">Notifications are OFF for this class</p>
+					        					<div id="right_slider">
+						        					<div class="switch">
+														<input id="cmn-toggle" class="cmn-toggle cmn-toggle-round" type="checkbox">
+														<label for="cmn-toggle"></label>
+													</div>
+					        					</div>
+					        				</div>
+					        			</div>
+				        			</div>
+				        			<div class="admins_wrapper">
+				        				<div class="admins">
+				        					<div class="header">
+				        						<p>Club Admins</p>
+				        					</div>
+				        					<div class="row">
+				        						<img class="admins_image" src="../assets/dummy-pic.jpg">
+				        						<p class="admins_name">Professor Larry Herman</p>
+				        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
+				        					</div>
+				        					<div class="row">
+				        						<img class="admins_image" src="../assets/farring.png">
+				        						<p class="admins_name">Jeffery Bigham</p>
+				        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
+				        					</div>
+				        					<form>
+				        						<input class="add_admin" type="text" placeholder="Add a new admin to this class">
+				        						<img id="add_admin_img" src="../assets/settings_imgs/add-icon.png">
+				        					</form>
+				        				</div>
+				        			</div>
+				        		</div>
+				        	</div>
+				        </div>
+				        
+				        <!-- About Tab -->
+				        <div class="panel tab_about" id="panel_6">
+				        	<div class="tab_content_holder">
+				        	
+				        		<div class="tab_header">
+				        			<img class="tab_about_icon" src="../assets/about_icon.png">
+					        		<div class="header_sentence">About this Club - Brazilian Jiu Jitsu</div>
+				        		</div>
+				        		
+				        		<div class="about_tab_content">
+				        		
+				        			<div class="description_wrapper">
+				        				<div class="description">
+				        					<div class="description_header">
+				        						<p>Club Description</p>
+				        					</div>
+				        					<div class="description_blurb">
+				        						<p>The Brazilian Jiu-Jitsu club meets weekly in Coles Gym to instruct members on the modern art of fighting, calming the soul, and strengthening the heart.</p>
+				        					</div>
+				        					<div class="description_info_row">
+				        						<img class="description_time_img" src="../assets/settings_imgs/clock.png">
+				        						<p class="description_time_p">Monday 08:00 am - 09:20 am, Wednesday 08:00 am - 09:20 am</p>
+											</div>
+											<div class="description_info_row">
+				        						<img class="description_location_img" src="../assets/settings_imgs/location.png">
+				        						<p class="description_location_p">Class Location</p>
+											</div>
+											<div class="description_info_row">
+				        						<img class="description_department_img" src="../assets/settings_imgs/department.png">
+				        						<p class="description_department_p">Department of Biomedical Engineering</p>
+											</div>
+										</div>
+				        			</div>
+				        			
+				           			<div class="recent_events_wrapper">
+					        			<div class="recent_events">
+					        				<div class="header">
+					        					<p>Most Recent Events</p>
+					        				</div>	
+					        				<div class="recent_events_content">
+					        				</div>				        										        			
+					        			</div>
+				        			</div>
+				        			
+				        			<div class="people_you_know_wrapper">
+				        				<div class="people_you_know">
+				        					<div class="header">
+				        						<p>Friends in this club</p>
+				        					</div>
+				        				</div>
+				        			</div>
+				        			
+				        		</div>
+				        	</div>
+				        </div>
+				        
+				        <div class="panel tab_calendar" id="panel_7">
+				        	This will be a calendar
+				        </div>
+                        
+                        
 
                     </div>
 

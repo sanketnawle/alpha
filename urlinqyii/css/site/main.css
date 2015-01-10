@@ -20,6 +20,10 @@ body{
     background: #FAFAFA;
 }
 
+body.body_group{
+
+}
+
 body#body_home{
     overflow:auto!important;
     background: #fff;
@@ -125,7 +129,7 @@ body#body_home{
 }
 
 div#planner_column{
-    padding: 0 4px 0 0; 
+    padding: 0 7px 0 0; 
     float: right;
     margin-top: 0;
     word-wrap: break-word;
@@ -142,14 +146,37 @@ div#planner_column.planner_column_home{
 
 }
 
+.panel_feed{
+margin-top: 32px;
+padding: 0px 8px!important;
+top: -20px;
+}
+
+.panel_feed div#feed_column.feed_column_group{
+float: none;
+position: relative;
+margin-top: 10px;
+margin-left: -5px;
+padding-left: 5px;
+}
+}
+
 #planner_column.planner_column_home #right_column_specs {
 
 }
 
+div#planner_column.planner_column_group{
+    padding-right:2px!important;
+}
+
 #planner_column.planner_column_home #right_column_specs #fixed_element{
     top: 62px;
-
     height: 364px;
+}
+
+#planner_column.planner_column_group #right_column_specs #fixed_element{
+    height: 364px;
+    position: relative;
 }
 
 #right_column_specs{
@@ -193,7 +220,7 @@ div#stream_holder .stream_holder_group{
 }
 
 #feed_column.feed_column_home{
-    margin-top: 67px;
+    margin-top: 72px;
 
 }
 
@@ -211,7 +238,7 @@ div#fbar_wrapper.fbar_group{
 
 
 #right_column_specs #fixed_element{
-    position: fixed!important;
+    position: fixed;
 
     padding-top: 0px;
     z-index: 1;
@@ -307,8 +334,7 @@ div.tab div.tab_content{
     margin: 0px auto;
     display: block;
     cursor:pointer;
-    transform: translateY(-38%);
-    top: 38%;
+    
 }
 
 
@@ -460,25 +486,27 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
 }
 
 
-#tab_more_button{
-    width: 45px;
-    height: 25px;
-    float: right;
-    position: relative;
-    top: 50%;
-    transform: translateY(-48%);
-
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: white;
-    cursor: pointer;
-    margin-right: 5px;
-    box-shadow: 0px 0px 1px #fff;
-    -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease; background-color: rgba(71, 71, 71, 0.49); 
-    border-color: #000; -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-    padding: 4px 2px;
-}
+#tab_more_button{width: 45px;
+height: 25px;
+float: right;
+top:8px;
+position: relative;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+border-color: white;
+cursor: pointer;
+margin-right: 5px;
+box-shadow: 0px 0px 1px #fff;
+-moz-transition: all .1s ease;
+-webkit-transition: all .1s ease;
+transition: all .1s ease;
+background-color: rgba(71, 71, 71, 0.49);
+border-color: #000;
+-moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+-webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+padding: 4px 2px;}
 
 
 #tab_more_button_image {
@@ -494,37 +522,36 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
 }
 
 
-#group_user_action_button {
-    height: 25px;
-    background-color: #04CF6B;
-    display: inline-block;
-    float: right;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    margin-right: 5px;
-    cursor: pointer;
-    position: relative;
-    top: 50%;
-    transform: translateY(-48%);
-    color: white;
-    border-top-color: #000000; 
-    border-left-color: #000000; 
-    border-right-color: #000000; 
-    border-bottom-color: #000000; 
-    -webkit-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; 
-    -moz-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; 
-    box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890; background: #039103; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00c307",endColorstr="#039103"); 
-    /* background: -webkit-gradient(linear,left top,left bottom,from(#04CF6B),to(#17A866)); */ 
-    background: -moz-linear-gradient(top,#04CF6B,#17A866); 
-    background-image: -o-linear-gradient(top,#04CF6B 0,#17A866 100%); 
-    font-size: 15px;
-    padding: 4px 2px;
-    font-family: "Open Sans", sans-serif;
-    min-width: 98px;
-    margin-right: 20px;
-    background-color: rgba(71, 71, 71, 0.49); border-color: #000; -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46); -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-}
+#group_user_action_button {height: 25px;
+background-color: #04CF6B;
+display: inline-block;
+float: right;
+border-style: solid;
+border-width: 1px;
+border-radius: 4px;
+margin-right: 5px;
+cursor: pointer;
+position: relative;
+top:8px;
+color: white;
+border-top-color: #000000;
+border-left-color: #000000;
+border-right-color: #000000;
+border-bottom-color: #000000;
+-webkit-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890;
+-moz-box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890;
+box-shadow: inset 0 1px 1px #3CFF90,inset 0 -1px 1px #4DC890;
+background: #039103;
+font-size: 15px;
+padding: 4px 2px;
+font-family: "Open Sans", sans-serif;
+min-width: 98px;
+margin-right: 20px;
+background-color: rgba(71, 71, 71, 0.49);
+border-color: #000;
+-moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
+-webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);}
 
 #group_user_action_button_text{
     height: 16px;
@@ -615,7 +642,7 @@ div.tab.active div.tab_amount, div.tab.active div.tab_img,div.tab.active div.tab
     -moz-osx-font-smoothing: grayscale;
 }
 
-div.professor_image{
+div.professor_image,div.admin_image{
     display: inline-block;
 
     width: 36px;
@@ -623,6 +650,13 @@ div.professor_image{
     height: 36px;
     background-size: cover;
     border-radius: 1000px;
+}
+
+div.admin_image{
+    margin-right:12px;
+    width:28px;
+    margin-bottom:2px;
+    height:28px;
 }
 
 div.professor_name{
@@ -835,6 +869,9 @@ ul.tabnav_tabs li{
     border-bottom: 1px solid #d4d4d4;
     padding: 15px 2px 5px;
     height: 35px;
+}
+.tab_members .tab_content_holder .tab_header{
+    padding-top:17px!important;
 }
 
 .tab_group_info .tab_content_holder .tab_header{
@@ -1150,8 +1187,8 @@ border-top: 1px solid #1BAD3E;
     display: block;
     border: 1px solid transparent;   
     margin-bottom: 25px;
-    margin: 0px auto;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    margin: 0px auto;  
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 .members_card.normal_size{
@@ -1377,6 +1414,11 @@ textarea:focus:-moz-placeholder {
         top:114px;
     }
 
+    .panel_feed div#feed_column.feed_column_group{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-right: 269px!important;
+    }
     #content_panel.content_panel_home {
     width: 830px!important;
     overflow-x: hidden!important;
@@ -1474,7 +1516,7 @@ div#other_views_box.top_row_hover:before{
 
 #other_views_box:before {
     content: "";
-background-image: none,url(../../assets/sitechrome.svg);
+background-image: none,url(../../assets/wire_icons.svg);
 background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
@@ -1516,14 +1558,17 @@ div.group_info_block{
     background: rgba(18, 19, 20, 0.9); border-radius: 5px 0 0 5px;
     color: #fff;
     font-size: 12.5px;
+    -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    box-shadow: 0px 0 3px rgba(0,0,0,0.5);
     margin-bottom:16px;
-    font-weight: 600;
+    font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 div.group_info_block span{
     color: #fff;
-
+    font-weight:600;
 }
 
 
@@ -1553,5 +1598,6 @@ div.group_info_block#class_schedule em{
 /*bottom: 0;*/
 /*width: 18%;*/
 /*}*/
+
 
 

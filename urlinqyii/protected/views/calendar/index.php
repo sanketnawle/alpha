@@ -17,6 +17,7 @@
     <!-- global show event functions -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/global/show_events.js"></script>
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/invite_people/invite_people.js"></script>
 
     <!-- Fonts -->
     <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css"><!-- Open Sans:3->8-5 -->
@@ -36,6 +37,9 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/eventCreation.css" type = "text/css" rel = "stylesheet">
 
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
+
+
 
     <!-- Libraries -->
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/lib/jq.js"></script>
@@ -259,7 +263,7 @@ Set the class name on your input to 'time_input' -->
 
 
 <script id="day_event_template" type="text/x-handlebars-template">
-    <div class="day_event_holder event_holder" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="day_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class="event_start_time">{{formatted_start_time}}</div>
         <div class="event_name">{{title}}</div>
         <div class="event_description">{{description}}</div>
@@ -267,10 +271,18 @@ Set the class name on your input to 'time_input' -->
 </script>
 
 <script id="week_day_event_template" type="text/x-handlebars-template">
-    <div class="grid-event week_event_holder event_holder" data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+    <div class="grid-event week_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
         <div class="event_start_time">{{formatted_start_time}}</div>
         <div class="event_name">{{title}}</div>
         <div class="event_description">{{description}}</div>
+    </div>
+</script>
+
+
+<script id="month_event_template" type="text/x-handlebars-template">
+    <div class="month_day_event event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
+        <div class="event_start_time month_event_start_time">{{formatted_start_time}}</div>
+        <div class="event_name month_event_name">{{title}}</div>
     </div>
 </script>
 

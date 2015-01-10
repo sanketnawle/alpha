@@ -49,6 +49,7 @@ $(document).ready(function(){
 
     });
 
+	// Handle the highlighting for the other_view_tab
     $('a#settings_link').mouseover(function(){
         $(this).closest("#other_views_box").addClass("top_row_hover");
     });
@@ -65,4 +66,5 @@ $(document).ready(function(){
             });
         }
     });
+
 });

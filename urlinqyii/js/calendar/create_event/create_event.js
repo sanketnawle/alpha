@@ -29,28 +29,6 @@ jQuery(document).ready(function(){
     }
 
 
-
-
-//    jQuery(document).on('focusout','input',function(){
-//        console.log('VERIFYING DATE INPUTS');
-//        verify_date_inputs();
-//    });
-
-    jQuery(document).on('click', '.dates', function(){
-        verify_date_inputs();
-    });
-
-
-    jQuery(document).on('click', '.time_selector_div', function(){
-        verify_date_inputs();
-    });
-
-    jQuery(document).on('click', '.text_input', function(){
-        console.log('VERIFYING DATE INPUTS');
-        verify_date_inputs();
-    });
-
-
     function verify_date_inputs(){
         var event_start_date = $('#create_event_start_date_input').attr('data-date');
         var event_start_time = $('#create_event_start_time_input').attr('data-time');
@@ -90,120 +68,43 @@ jQuery(document).ready(function(){
 
 
 
+    jQuery(document).on('focusout', '.date_input', function(){
+        verify_date_inputs();
+    });
 
-    var $recent_date_input = null;
-    var blinkflag = 0;
 
-    var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    var y = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
-    var z = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    var s = ["st", "nd", "rd", "th"];
-    var d = new Date();
+    jQuery(document).on('click', '.calcell', function(e){
+        console.log('create event js');
+        verify_date_inputs();
+        console.log("IS THIS EVEN FIRING???");
 
-    var dueOn = w[ d.getDay() ] + ", " + z[ d.getMonth() ] + " " + d.getDate() ; //+ s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
-    jQuery('.event_date').val(dueOn);
-    //Add todays date to the data-date attribute
-    //So its easy to pull off while sending the post request
-    //to create the event, and it will already be in the proper SQL
-    //format
-    //.getDate() returns the day of the month
-    var formatted_day_date = d.getDate();
-    if(formatted_day_date < 10){
-        formatted_day_date  = '0' + formatted_day_date.toString();
-    }
-    var todays_month = d.getMonth() + 1;
-    if(todays_month < 10){
-        todays_month = '0' + todays_month.toString();
-    }
-    jQuery( ".event_date").each(function(){
-        jQuery(this).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+
+
+        e.stopPropagation();
+    });
+
+    jQuery(document).on('click', '.dates', function(){
+        verify_date_inputs();
+    });
+
+
+    jQuery(document).on('click', '.time_selector_div', function(){
+        verify_date_inputs();
+    });
+
+    jQuery(document).on('click', '.text_input', function(){
+        console.log('VERIFYING DATE INPUTS');
+        verify_date_inputs();
     });
 
 
 
-    x= w[ d.getDay() ];
-    jQuery("#today_date").text( w[ d.getDay() ] + " " + ( d.getMonth() +1 )+ "/" + d.getDate() );
-    jQuery("#tomorrow_date").text( w[ d.getDay()+1 ] + " " + ( d.getMonth() +1 )+ "/" + ( d.getDate()+1 ));
-
-    jQuery('.weekday3').text( y[ d.getDay()+2 ] );
-    jQuery('#date3').text( ( d.getMonth() +2 )+ "/" + ( d.getDate()+2 ));
-
-    /* PLUS SIGN ANIMATION */
-
-
-    jQuery(".entry_field_placeholder").on('click',function(){
-        jQuery(".nav-icon-plus").toggleClass('hide-plus');
-        jQuery(".nav-icon").toggleClass('bounce-minus');
-    });
-
-
-    jQuery(document).delegate('.date_input', 'click', function () {
-        $recent_date_input = jQuery(this);
-
-
-        jQuery('.calLayer').css({position:'fixed', top: $recent_date_input.position().top + 85, left: $recent_date_input.position().left + 200});
-
-
-
-        jQuery('.calLayer').toggle();
-
-
-
-
-    });
-
-    /*date cell clicked in that mini cal, event trigger here*/
-    jQuery(document).delegate(".calcell", "click", function () {
-
-        var $this_cal=jQuery(this).closest(".calLayer");
-
-        if (!jQuery(this).hasClass("disable")) {
-            if (blinkflag == 0) {
-                var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
-                var dayarr= jQuery(this).attr("id").split("_");
-                var day= dayarr[1];
-                if(day === "mo") day = "Mon";
-                if(day === "tu") day = "Tue";
-                if(day === "we") day = "Wed";
-                if(day === "th") day = "Thu";
-                if(day === "fr") day = "Fri";
-                if(day === "sa") day = "Sat"
-                if(day === "su") day = "Sun"
-                var selected_day_date = jQuery(this).text();
-
-
-
-                //Add the selected date to the data-date attribute
-                //So its easy to pull off while sending the post request
-                //to create the event, and it will already be in the proper SQL
-                //format
-                var todays_date = new Date();
-                var formatted_day_date = selected_day_date;
-                if(formatted_day_date < 10){
-                    formatted_day_date  = '0' + formatted_day_date.toString();
-                }
-                var todays_month = todays_date.getMonth() + 1;
-                if(todays_month < 10){
-                    todays_month = '0' + todays_month.toString();
-                }
-                $recent_date_input.attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
 
 
 
 
 
-                var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
-                var year= yeararr[1];
-                var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
-                $recent_date_input.val(theDate);
 
-
-
-
-
-            }
-        }
-    });
 
 
 
@@ -230,6 +131,16 @@ jQuery(document).ready(function(){
         jQuery('#create_event_form').attr("action", "/event/create");
 
         jQuery('#create_event_form').find('#create_event_submit_button').val('CREATE');
+
+        var $invite_input = $('#event_invite_input');
+        $invite_input.removeClass('active');
+        $invite_input.val('');
+        $invite_input.attr('data-name','');
+        $invite_input.attr('data-email','');
+        $invite_input.attr('data-id','');
+
+        //Clear the invite list
+        $('#invite_list').empty();
 
     }
 
@@ -285,6 +196,10 @@ jQuery(document).ready(function(){
         $dialog.hide();
         reset_create_event_form();
     });
+
+
+
+
 
 
 
@@ -358,6 +273,21 @@ jQuery(document).ready(function(){
 
 
 
+        //Get the invitations for this event
+        var invites = [];
+
+        var $invite_holder = $('.invite_holder');
+        var $invite_list = $invite_holder.find('#invite_list');
+
+        //loop through the chikldren of the invite list
+        $invite_list.children('div').each(function () {
+            var $invite_item = $(this);
+            var user_id = $invite_item.attr('data-id');
+
+            invites.push(user_id);
+        });
+
+
 
         var post_data = {
             event:{
@@ -374,14 +304,15 @@ jQuery(document).ready(function(){
                 end_date: event_end_date,
                 location: event_location,
                 event_todo: event_todo,
-                all_day: event_all_day
+                all_day: event_all_day,
+                invites: invites
             }
         };
 
 
         console.log(JSON.stringify(post_data));
 
-
+        //alert(JSON.stringify(post_data));
 
         $.post(
             post_url,
@@ -389,20 +320,32 @@ jQuery(document).ready(function(){
             function(response) {
                 if(response['success']){
                     //If this was an update event, do some shit
-                    if($form.attr('action') == '/event/update'){
-                        //Delete the old event
-                        jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
-                        //show new event
-                        var $active_tab = jQuery('a.ng-binding.active');
-                        if($active_tab.text().toLowerCase() == 'day'){
-                            show_day_event(response['event']);
-                        }else if($active_tab.text().toLowerCase() == 'week'){
-                            show_week_day_event(response['event']);
-                        }else if($active_tab.text().toLowerCase() == 'month'){
-                            show_month_event(response['event']);
-                        }
-                    }
+//                    if($form.attr('action') == '/event/update'){
+//                        //Delete the old event
+//                        jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+//                        //show new event
+//                        var $active_tab = jQuery('a.ng-binding.active');
+//                        if($active_tab.text().toLowerCase() == 'day'){
+//                            show_day_event(response['event']);
+//                        }else if($active_tab.text().toLowerCase() == 'week'){
+//                            show_week_day_event(response['event']);
+//                        }else if($active_tab.text().toLowerCase() == 'month'){
+//                            show_month_event(response['event']);
+//                        }
+//                    }
 
+
+                    //Delete the old event
+                    jQuery('.day_event_holder[data-id="' + event_id + '"]').remove();
+                    //show new event
+                    var $active_tab = jQuery('a.ng-binding.active');
+                    if($active_tab.text().toLowerCase() == 'day'){
+                        show_day_event(response['event']);
+                    }else if($active_tab.text().toLowerCase() == 'week'){
+                        show_week_day_event(response['event']);
+                    }else if($active_tab.text().toLowerCase() == 'month'){
+                        show_month_event(response['event']);
+                    }
 
 
                     jQuery('#dialog').hide();
@@ -421,7 +364,7 @@ jQuery(document).ready(function(){
     jQuery(document).on('click','#create_event_holder',function(e){
         e.stopPropagation();
 
-
+        verify_date_inputs();
 
         //Hide all popups
         var $time_selector = $('#time_selector');
@@ -429,11 +372,39 @@ jQuery(document).ready(function(){
         $time_selector.removeClass('active');
 
 
+        verify_invite_input($('.invite_holder').find('.invite_input'));
+
 
         var $calLayer = $('.calLayer');
         //Hide the selector
         $calLayer.removeClass('active');
     });
+
+    function verify_invite_input($invite_input){
+        jQuery('#invite_popup').removeClass('active');
+
+        var name = $invite_input.attr('data-name');
+        var email = $invite_input.attr('data-email');
+        var id = $invite_input.attr('data-id');
+
+
+
+        if($invite_input.val() == ''){
+            $invite_input.removeClass('error');
+            return;
+        }
+
+        if(id == '' || name == '' || email == ''){
+            $invite_input.addClass('error');
+        }else{
+            $invite_input.removeClass('error');
+        }
+
+
+    }
+
+
+
 
     jQuery(document).on('click','.wrapper',function(){
 

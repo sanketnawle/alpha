@@ -1,0 +1,36 @@
+#invite_popup {
+    display: none;
+    padding: 5px;
+    width: 100px;
+
+    background-color: white;
+}
+
+
+#invite_popup.active {
+    display: block;
+}
+
+
+.invite_user_holder {
+    cursor: pointer;
+
+}
+
+.invite_input {
+    background-color: white;
+}
+
+.invite_input.error {
+    background-color: red;
+}
+
+
+.invite_people_button {
+    cursor: pointer;
+}
+
+
+.invite_user_list_item_remove_button {
+    cursor: pointer;
+}

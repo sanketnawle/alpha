@@ -78,75 +78,69 @@ class ApiController extends Controller
 
 
     public function actionCreatePost(){
-        if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['subtext']) || !isset($_POST['origin_type']) || !isset($_POST['privacy'])){
-            $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
-            $this->renderJSON($data);
-            return;
-        }
-        else {
-            //$post = $_POST['post'];
-            //echo $post;
-            //$picture_file_id = null;
-            // if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
-            //     include "file_upload.php";
-            //
-            //     $file_upload_response = file_upload($_FILES);
-            //     if ($file_upload_response['success']) {
-            //         $picture_file_id = $file_upload_response['file_id'];
-            //     } else {
-            //         $picture_file_id = null;
-            //     }
-            // } else {
-            //     $picture_file_id = null;
-            // }
-            try{
-                $post_new = new Post;
-                $post_new->user_id = $_POST['user_id'];
-                $post_new->origin_type = $_POST['origin_type'];
-                if($post_new->origin_type == 'user'){
-                    $post_new->origin_id = null;
-                }else{
-                    $post_new->origin_id = $_POST['origin_id'];
-                }
-                $post_new->post_type = 'discussion';
-                $post_new->text = $_POST['text'];
-                $post_new->sub_text = $_POST['subtext'];
-                $post_new->file_id = null;
-                if($_POST['privacy'] == 'all') {
-                    $post_new->privacy = '';
-                }else if($_POST['privacy'] == 'admin'){
-                    $post_new->privacy = 'admin';
-                }else if($_POST['privacy'] == 'members'){
-                    $post_new->privacy = 'members';
-                }
-                $post_new->save(false);
-                if(!$post_new){
-                    $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
-                    $this->renderJSON($data);
-                    return;
-                }
-                else{
-                    $data = array('success'=> true, 'post_id'=>$post_new->post_id);
-                    $this->renderJSON($data);
-                    return;
-                }
-            }catch (Exception $e){
-                $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+        try{
+            if(!isset($_POST['user_id']) || !isset($_POST['anon']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy'])){
+                $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
             }
+            $picture_file_id = null;
+            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+                include "file_upload.php";
+
+                $file_upload_response = file_upload($_FILES);
+                if ($file_upload_response['success']) {
+                    $picture_file_id = $file_upload_response['file_id'];
+                } else {
+                    $picture_file_id = null;
+                }
+            } else {
+                $picture_file_id = null;
+            }
+            $post_new = new Post;
+            $post_new->user_id = $_POST['user_id'];
+            $post_new->origin_type = $_POST['origin_type'];
+            if($post_new->origin_type == 'user'){
+                $post_new->origin_id = $_POST['user_id'];
+            }else{
+                $post_new->origin_id = $_POST['origin_id'];
+            }
+            $post_new->post_type = 'discussion';
+            $post_new->anon = $_POST['anon'];
+            $post_new->text = $_POST['text'];
+            $post_new->file_id = $picture_file_id;
+            if($_POST['privacy'] == 'all') {
+                $post_new->privacy = '';
+            }else if($_POST['privacy'] == 'admin'){
+                $post_new->privacy = 'admin';
+            }else if($_POST['privacy'] == 'members'){
+                $post_new->privacy = 'members';
+            }
+            if(!$post_new->save(false)){
+                $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
+                $this->renderJSON($data);
+                return;
+            }
+            else{
+                $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                $this->renderJSON($data);
+                return;
+            }
+        }catch (Exception $e){
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
         }
     }
 
     public function actionCreateQuestion(){
-        if(!isset($_POST['post']) || !isset($_POST['user_id']) || !isset($_POST['question'])){
-            $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
-            $this->renderJSON($data);
-        }
-        else {
-            $post = $_POST['post'];
-            $question = $_POST['question'];
-            $options = $question['options'];
+        try{
+            if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy']) || !isset($_POST['options']) || !isset($_POST['anon'])){
+                $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+            }
+            $options = $_POST['options'];
+            //echo 'options: '.$options;
             $picture_file_id = null;
             if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
                 include "file_upload.php";
@@ -162,66 +156,75 @@ class ApiController extends Controller
             }
 
             $post_new = new Post();
-            try{
-                $post_new->user_id = $_POST['user_id'];
-                $post_new->origin_type = $post['origin']['origin_type'];
-                $post_new->origin_id = $post['origin']['origin_id'];
-                $post_new->post_type = 'discussion';
-                $post_new->text = $post['text'];
-                $post_new->sub_text = $post['subtext'];
-                $post_new->file_id = $picture_file_id;
-                if($post['privacy'] == 'all') {
-                    $post_new->privacy = '';
-                }elseif($post['privacy'] == 'admin'){
-                    $post_new->privacy = 'admin';
-                }elseif($post['privacy'] == 'members'){
-                    $post_new->privacy = 'members';
-                }
-                $post_new->save(false);
-                if($post_new){
-                    $question_new = new PostQuestion();
-                    $question_new->post_id = $post_new->post_id;
-                    $question_new->anonymous = $post['anon'];
-                    $flag = true;
-                    if($question['correctAnswer'] == '') {
-                        $question_new->correct_answer_id = null;
-                        $flag = false;
-                    }
-                    foreach($options as $option) {
-                        $option_new = new PostQuestionOption();
-                        $option_new->post_id = $post_new->post_id;
-                        $option_new->option_text = $option;
-                        $option_new->save(false);
-                        if(!$option_new){
-                            $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'Error saving option to database');
-                            $this->renderJSON($data);
-                            return;
-                        }
-                        if($flag && ($question['correctAnswer'] == $option )) {
-                            $question_new->correct_answer_id = $option_new->option_id;
-                        }
-                    }
+            $post_new->user_id = $_POST['user_id'];
+            $post_new->origin_type = $_POST['origin_type'];
+            if($post_new->origin_type == 'user'){
+                $post_new->origin_id = $_POST['user_id'];
+            }else{
+                $post_new->origin_id = $_POST['origin_id'];
+            }
+            $post_new->post_type = 'question';
+            $post_new->text = $_POST['text'];
+            $post_new->anon = $_POST['anon'];
+            if(isset($_POST['subtext'])){
+                $post_new->sub_text = $_POST['subtext'];
+            }
+            $post_new->file_id = $picture_file_id;
+            if($_POST['privacy'] == 'all') {
+                $post_new->privacy = '';
+            }elseif($_POST['privacy'] == 'admin'){
+                $post_new->privacy = 'admin';
+            }elseif($_POST['privacy'] == 'members'){
+                $post_new->privacy = 'members';
+            }
 
-                    $question_new->save(false);
-                    if(!$question_new){
-                        $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'Error saving question to database');
+            //save post first
+            if($post_new->save(false)){
+                $question_new = new PostQuestion();
+                $question_new->post_id = $post_new->post_id;
+                $question_new->anonymous = $_POST['anon'];
+                $question = null;
+                if(!isset($_POST['answer'])) {
+                    $question_new->correct_answer_id = null;
+                }
+                else{
+                    $question = $_POST['answer'];
+                }
+
+                //get options and correct answer id
+                for($i = 0; $i<count($options); $i++) {
+                    $option_new = new PostQuestionOption();
+                    $option_new->post_id = $post_new->post_id;
+                    $option_new->option_text = $options[$i];
+
+                    if(!$option_new->save(false)){
+                        $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'Error saving option to database');
                         $this->renderJSON($data);
                         return;
                     }
+                    if($question && ($question == $options[$i])) {
+                        $question_new->correct_answer_id = $option_new->option_id;
+                    }
+                }
 
-                    $data = array('success'=> true, 'post_id'=>$post_new->post_id);
-                    $this->renderJSON($data);
-                    return;
-                }else{
-                    $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
+                if(!$question_new->save(false)){
+                    $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'Error saving question to database');
                     $this->renderJSON($data);
                     return;
                 }
-            }catch (Exception $e){
-                $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+
+                $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
                 $this->renderJSON($data);
                 return;
             }
+        }catch (Exception $e){
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+            $this->renderJSON($data);
+            return;
         }
     }
 
@@ -1548,6 +1551,41 @@ class ApiController extends Controller
     }
 
 
+
+    //Takes in a string and returns a list of users whose
+    //name or email contains that string
+    public function actionSearchUsers(){
+        if(!isset($_GET['input_string'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'input string is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $input_string = $_GET['input_string'];
+
+
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname ) LIKE '%" . $input_string . "%' OR user_email LIKE '%" . $input_string . "%'");
+
+
+
+        $users_data = array();
+        foreach($users as $user){
+            array_push($users_data, $this->get_model_associations($user, array('pictureFile')));
+        }
+
+
+        if(count($users_data) >= 0){
+            $data = array('success'=>true,'users'=>$users_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error'=>'error getting users');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
 
 
 	// Uncomment the following methods and override them if needed

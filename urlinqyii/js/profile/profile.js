@@ -1,19 +1,53 @@
 var user_id = 7;
 
 $(document).on('click', '.profile_link', function(){
-    if($('#profile_wrapper').length){
-        $('#profile_wrapper').show();
-        $('.overlay').show();
-    }else{
-        open_profile(base_url,user_id);
-    }
+        open_profile(base_url, $(this).attr('user_id'));
 
 });
 $(document).on('click', '.close_modal', function(){
     $('#profile_wrapper').hide();
-    $('.overlay').hide();
+    $('#profile_background_overlay').hide();
 });
+function open_profile(base_url,user_id){
+    //  var numShowcase;
+    $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
+        if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
+            $('#profile_wrapper').show();
+            $('#profile_background_overlay').show();
+        }else if($('#profile_wrapper').length){
+            $('#profile_wrapper').remove();
+            $('#profile_background_overlay').remove();
+            render_profile(base_url,json_profile_data);
+        }else{
+            render_profile(base_url,json_profile_data);
+        }
 
+    });
+
+}
+function render_profile(base_url,data){
+
+    $.ajax({ url: base_url + '/protected/views/profile/profile.html',
+        dataType:'html',
+        success: function(html) {
+            numShowcase=data.showcase_size;
+            var template = Handlebars.compile(html);
+            $('body').append(template(data));
+            if(!data.minors || data.minors.length==0){
+                $('#minor_section').hide();
+            }
+            if(!data.majors ||data.majors.length==0){
+                $('.info_name.undeclared').show();
+            }
+            if(!data.research){
+                $('#research_section').hide();
+            }
+
+            $('#name_input').val(data.firstname+" "+data.lastname);
+            $('#email_input').val(data.email);
+        }
+    });
+}
 $(document).on('click', '.profile_tab',function(){
     var $tab = $(this);
     var panel_id = $tab.attr('data-panel_id');
@@ -65,36 +99,7 @@ $(document).on('click','.cancel_showcase_form',function(){
     $('#desc_entry').val('');
     $('#link_entry').prop('disabled',false);
 });
-function open_profile(base_url,user_id){
-  //  var numShowcase;
-    $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
-        //numShowcase=json_profile_data.showcase.length();
-        render_profile(base_url,json_profile_data);
-    });
 
-}
-function render_profile(base_url,data){
-
-    $.ajax({ url: base_url + '/protected/views/profile/profile.html',
-        dataType:'html',
-        success: function(html) {
-            numShowcase=data.showcase_size;
-            var template = Handlebars.compile(html);
-            $('body').append(template(data));
-            if(data.minors.length==0){
-                $('#minor_section').hide();
-            }
-            if(data.majors.length==0){
-                $('.info_name.undeclared').show();
-            }
-            if(!data.research){
-                $('#research_section').hide();
-            }
-            $('#name_input').val(data.firstname+" "+data.lastname);
-            $('#email_input').val(data.email);
-        }
-    });
-}
 
 function render_new_showcase(data){
 
@@ -167,24 +172,23 @@ $(document).on('submit','form[id=add_showcase]', function (event) {
         success: function(data)
         {
             if(data.status == "success"){
-                $('.add_showcase_form').hide();
-                $('.showcase_form_overlay').hide();
+                $('#add_showcase_form').hide();
+                $('#profile_overlay').hide();
 
-                //kinyi add showcase to showcase bar: data.title, data.desc, data.file_extension, data.preview_file
                 //reset form
                 $('#link_entry').val('');
                 $('#title_entry').val('');
                 $('#desc_entry').val('');
                 $('#link_entry').prop('disabled',false);
                 render_new_showcase(data);
-                //alert(data.message);
+                //alert(JSON.stringify(data));
             }else{
-               // alert(data.message);
+                //alert(JSON.stringify(data));
             }
         },
         error: function(jqXHR, textStatus, errorThrown)
         {
-            alert('err'+errorThrown);
+            alert('err'+jqXHR+textStatus+errorThrown);
         }
     });
 });
@@ -236,7 +240,6 @@ function deleteShowcaseElement(){
 
 //edit profile
 $(document).on('click','#edit_profile_button.not_editing',function(){
-    alert('edit');
     $('#profile_overlay').show();
     $('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
     $('.info_name').hide();
@@ -265,16 +268,19 @@ $(document).on('click','#edit_profile_button.not_editing',function(){
     //minors
     $('#minor_section').show();
     $('.info_name.minor').each(function(i){
-        if(!$(this).hasClass('undeclared')){
-            $('.edit_field.minor:eq('+i+')').val($(this).text());
-        }
+        $('.edit_field.minor:eq('+i+')').val($(this).text());
     });
     //research
     $('#research_section').show();
-    $('#research_section').val($('#research_name').text());
+    $('.info_name.research').each(function(i){
+        $('.edit_field.research:eq('+i+')').val($(this).text());
+    });
 
     $('.info_section.account').show();
 
+    //office hours and location
+    $('#office_input').val($('#office_location').text());
+    $('#hours_input').val($('#office_hours').text());
     //buttons
     $('#edit_profile_button').css('margin-left','0');
     $('#edit_profile_button').text('Done Editing');
@@ -283,7 +289,7 @@ $(document).on('click','#edit_profile_button.not_editing',function(){
     $('#cancel_edit_button').show();
     $('#cancel_edit_button').css('display','inline-block');
 });
-$(document).on('click','#edit_profile_button.editing',function(){
+$(document).on('click','#edit_profile_button.editing',function(){  //submit changes
     //alert('done');
     var data = new FormData();
     data.append('school',$('#school_dropdown').val());
@@ -291,26 +297,46 @@ $(document).on('click','#edit_profile_button.editing',function(){
     data.append('name',$('#name_input').val());
     data.append('department',$('#department_dropdown').val());
     data.append('email',$('#email_input').val());
+    if($('#office_section').length){
+        data.append('location',$('#office_input').val());
+        data.append('hours',$('#hours_input').val());
+    }
+    var any_research = false;
+    $('.edit_field.research').each(function(index){
+        if($(this).val()){
+            any_research = true;
+            data.append('research['+index+']', $(this).val());
+        }
+    });
+    if(!any_research){
+        data.append('research[0]', "none");
+    }
+
     var any_major = false;
-    $('.edit_field.major').each(function(index){
-        if($(this).val()){
-            any_major = true;
-            data.append('majors['+index+']', $(this).val());
+    if(major_changed){
+        $('.edit_field.major').each(function(index){
+            if($(this).val()){
+                any_major = true;
+                data.append('majors['+index+']', $(this).val());
+            }
+        });
+        if(!any_major){
+            data.append('majors[0]', "none");
         }
-    });
-    if(!any_major){
-        data.append('majors[0]', "none");
     }
-    var any_minor = false;
-    $('.edit_field.minor').each(function(index){
-        if($(this).val()){
-            any_minor = true;
-            data.append('minors['+index+']', $(this).val());
+    if(minor_changed){
+        var any_minor = false;
+        $('.edit_field.minor').each(function(index){
+            if($(this).val()){
+                any_minor = true;
+                data.append('minors['+index+']', $(this).val());
+            }
+        });
+        if(!any_minor){
+            data.append('minors[0]', "none");
         }
-    });
-    if(!any_minor){
-        data.append('minors[0]', "none");
     }
+
     $('#major_section > .info_name.undeclared').hide();
     $.ajax({
         url: base_url+'/profile/editProfile',
@@ -339,11 +365,12 @@ $(document).on('click','#edit_profile_button.editing',function(){
                 $('.info-block textarea').val(bio);
             }*/
             var any_errors = false;
+            if(!any_major){
+                $('#major_section > .info_name.undeclared').show();
+            }
             if(result.major == "success"){
                 $('#major_section > .info_name.major').remove();
-                if(!any_major){
-                    $('#major_section > .info_name.undeclared').show();
-                }else{
+                if(any_major){
                     $('.edit_field.major').each(function(index){
                         if($(this).val()){
                             $('#major_section').append('<div class= "info_name major">'+$(this).val()+'</div>');
@@ -355,14 +382,46 @@ $(document).on('click','#edit_profile_button.editing',function(){
                 alert(result.major);
                 any_errors = true;
                 // $('input[name=major_name]').val(majors[0]);
-            }else{
-                $('#major_section > .info_name.undeclared').hide();
+            }
+            if(result.major == "success"){
+                $('#major_section > .info_name.major').remove();
+                if(any_major){
+                    $('.edit_field.major').each(function(index){
+                        if($(this).val()){
+                            $('#major_section').append('<div class= "info_name major">'+$(this).val()+'</div>');
+                        }
+                    });
+                }
+
+            } else if(result.major){
+                alert(result.major);
+                any_errors = true;
+                // $('input[name=major_name]').val(majors[0]);
+            }
+            if(!any_research){
+                $('#research_section').hide();
+            }
+            if(result.research == "success"){
+                $('#research_section > .info_name.research').remove();
+                if(any_research){
+                    $('.edit_field.research').each(function(index){
+                        if($(this).val()){
+                            $('#research_section').append('<div class= "info_name major">'+$(this).val()+'</div>');
+                        }
+                    });
+                }
+
+            } else if(result.major){
+                alert(result.major);
+                any_errors = true;
+                // $('input[name=major_name]').val(majors[0]);
+            }
+            if(!any_minor){
+                $('#minor_section').hide();
             }
             if(result.minor == "success"){
                 $('#minor_section > .info_name.minor').remove();
-                if(!any_minor){
-                    $('#minor_section').hide();
-                }else{
+                if(any_minor){
                     $('#minor_section').show();
                     $('.edit_field.minor').each(function(index){
                         if($(this).val()){
@@ -400,6 +459,18 @@ $(document).on('click','#edit_profile_button.editing',function(){
             }
             if(result.email && result.email !="success"){
                 alert(result.email);
+                any_errors = true;
+            }
+            if(result.location == "success"){
+                $('#office_location').text($('#office_input').val());
+            }else if(result.location){
+                alert(result.location);
+                any_errors = true;
+            }
+            if(result.hours == "success"){
+                $('#office_hours').text($('#hours_input').val());
+            }else if(result.hours){
+                alert(result.hours);
                 any_errors = true;
             }
             if(!any_errors){
@@ -464,4 +535,130 @@ $(document).on('keyup','.edit_field.minor', function () {
     $.getJSON(base_url + '/profile/autoComplete',{major: major_text},function (result) {
         $('.edit_field.minor:eq('+major_index+')').autocomplete({source: result});
     });
+});
+
+//change profile picture
+$(document).on('click','#change_picture_button',function(){
+    $('#picture_upfile').click();
+});
+var upload_file;
+$(document).on('change', '#picture_upfile', function (event)
+{
+    upload_file = event.target.files[0];
+    var data = new FormData();
+
+    data.append("file", upload_file);
+    data.append("user", user_id);
+    $.ajax({
+        url: base_url+'/profile/changeProfilePicture',
+        type: 'POST',
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false, // Don't process the files
+        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+        success: function(data)
+        {
+            if(data.status == "success"){
+                $('#profile_picture').css('background-image','url('+data.file_url+')');
+            }else{
+                alert(data.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert('err'+errorThrown);
+        }
+    });
+});
+$(document).on('click','#follow_button',function(){
+
+    var follow;
+
+    if($(this).hasClass('following')){
+        follow=0; // want to unfollow
+    }else{
+        follow=1;  //want to follow
+    }
+    $.ajax({
+        url: base_url+'/profile/followUser',
+        type: 'POST',
+        data: {user_to_follow:$('#profile_wrapper').attr('user_id'),user:user_id,follow:follow},
+        dataType: 'json',
+        success: function(data)
+        {
+            if(data.status == "success"){
+                if(follow){
+
+                    $('#follow_button').addClass('following');
+                    $('#follow_button').text('Following');
+                }else{
+
+                    $('#follow_button').removeClass('following');
+                    $('#follow_button').text('Follow');
+                }
+
+            }else{
+                alert(data.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert('err'+errorThrown);
+        }
+    });
+});
+$(document).on('click','.edit_showcase_button.edit',function(){
+
+    var $showcase_item = $(this).closest('.showcase_item');
+    if($showcase_item.hasClass('center')){
+        $showcase_item.find('.showcase_title').hide();
+        $showcase_item.find('.showcase_description').hide();
+        $showcase_item.find('.showcase_edit_field').css('display','block');
+        $showcase_item.find('.edit_showcase_button').show();
+        $showcase_item.find('.edit_showcase_button.edit').hide();
+        $showcase_item.find('.edit_showcase_title').val($.trim($showcase_item.find('.showcase_title').text()));
+        $showcase_item.find('.edit_showcase_description').val($.trim($showcase_item.find('.showcase_description').text()));
+    }
+
+});
+var new_showcase_desc;
+var new_showcase_title;
+$(document).on('click','.edit_showcase_button.submit',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    new_showcase_desc = $showcase_item.find('.edit_showcase_description').val();
+    new_showcase_title = $showcase_item.find('.edit_showcase_title').val();
+    $.ajax({
+        url: base_url+'/profile/editShowcase',
+        type: 'POST',
+        data: {title:new_showcase_title,desc:new_showcase_desc,file:$showcase_item.attr('file_id'),user:user_id},
+
+        dataType: 'json',
+        success: function(data)
+        {
+            if(data.status == "success"){
+                $showcase_item.find('.showcase_title').show();
+                $showcase_item.find('.showcase_description').show();
+                $showcase_item.find('.showcase_edit_field').hide();
+                $showcase_item.find('.edit_showcase_button').hide();
+                $showcase_item.find('.edit_showcase_button.edit').show();
+                $showcase_item.find('.showcase_title').text($showcase_item.find('.edit_showcase_title').val());
+                $showcase_item.find('.showcase_description').text($showcase_item.find('.edit_showcase_description').val());
+            }else{
+                alert(data.message);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            alert('err'+errorThrown);
+        }
+    });
+});
+$(document).on('click','.edit_showcase_button.cancel',function(){
+    var $showcase_item = $(this).closest('.showcase_item');
+    $showcase_item.find('.showcase_title').show();
+    $showcase_item.find('.showcase_description').show();
+    $showcase_item.find('.showcase_edit_field').hide();
+    $showcase_item.find('.edit_showcase_button').hide();
+    $showcase_item.find('.edit_showcase_button.edit').show();
 });

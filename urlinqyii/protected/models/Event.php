@@ -39,6 +39,17 @@ class Event extends CActiveRecord
 		return 'event';
 	}
 
+
+    public function user_group_color($user, $group_type){
+        if($group_type == 'class'){
+            $event_user = ClassUser::model()->find('user_id=:user_id', array(':user_id'=>$user->user_id));
+            return $event_user->color();
+        }else if($group_type == 'club'){
+            $event_user = GroupUser::model()->find('user_id=:user_id', array(':user_id'=>$user->user_id));
+            return $event_user->color();
+        }
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */

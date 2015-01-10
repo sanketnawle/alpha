@@ -4,6 +4,8 @@
 <head>
     <script>
         var globals = {};
+
+
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'class'; ?>';
 
@@ -27,22 +29,25 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_syllabus.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
+	<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
 
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
     <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
-
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/class/class_syllabus_tab.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
+    <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
       
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/pdfloader/minimal.css" rel="stylesheet" media="screen" />
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/util.js"></script>
@@ -61,8 +66,7 @@
       <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/chrono.js"></script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/application.js"></script>
       <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/pdfloader/uiscripts.js"></script>
-    
-    <script>
+     <script>
 
 
     </script>
@@ -101,7 +105,7 @@
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
                 <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
-                <div class = "center_text"><p id = "group_name">Theories and Applications of Graphical Computing</p></div>
+                <div class = "center_text"><p id = "group_name">Theories of Musical Instruments</p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
@@ -180,8 +184,29 @@
         </div>
 
 
-        <div class="panel active" id="panel_1">
-            CLASS FEED GOES HERE
+        <div class="panel active panel_feed" id="panel_1">
+            <div id = "planner_column" class = "planner_column_group">
+                <div id = "right_column_specs">
+                    <div id = "fixed_element" class = "planner_group">
+                        <?php
+                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));
+                        ?>    
+                    </div>
+                </div>                           
+            </div>
+            <div id = "feed_column" class = "feed_column_group">
+                <div id = "stream_holder" class = "stream_holder_home">
+                    <div id = "fbar_wrapper" class = "fbar_home">
+                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
+                    </div>
+
+                    <div id = "feed_wrapper" class = "feed_wrapper_home">
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/<?php echo $class->class_id; ?>/feed')); ?>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
 
         <div class="panel tab_syllabus" id="panel_2">
@@ -760,6 +785,218 @@
                 </div>
             </div>
         </div>
+        
+        <!-- INSERTING NEW PANELS HERE STARTING WITH ID = panel_5  -->
+        <div class="panel tab_settings" id="panel_5">
+        	<div class="tab_content_holder">
+        		<div class="tab_header">
+        			<img class="tab_settings_icon" src="../assets/settings_imgs/gear.png">
+	        		<div class="header_sentence">Class Settings</div>
+        		</div>
+        		<div class="settings_tab_content">
+        			<div class="admin_settings_wrapper">
+        				<div class="admin_settings">
+        					<div class="header">
+        						<p>Administrative Settings</p>
+        					</div>
+        					<div class="row">
+        						<div class="text">
+        							<p>Is this class open to the public?</p>
+        						</div>
+        						<div class="status">
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_open">
+        								<label><input id="status_check" type="radio" name="openStatus" value="Public"checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="openStatus" value="Private">Private</label>
+        							</form>
+        						</div>
+        						<div class="edit">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
+        							Edit
+        						</div>
+        					</div>
+        					<div class="row">
+        						<div class="text">
+        							<p>Who can see the members of this class?</p>
+        						</div>
+        						<div class="status">
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_privacy">
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Public" checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Members Only">Members Only</label>
+        							</form>
+        						</div>
+        						<div class="edit">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
+        							Edit
+        						</div>
+        					</div>
+						</div>
+        			</div>
+           			<div class="personal_notification_settings_wrapper">
+	        			<div class="personal_notification_settings">
+	        				<div class="header">
+	        					<p>Personal Notification Settings</p>
+	        				</div>
+	        				<div class="row_no_click">
+	        					<p id="left_text">Notifications are OFF for this class</p>
+	        					<div id="right_slider">
+		        					<div class="switch">
+										<input id="cmn-toggle" class="cmn-toggle cmn-toggle-round" type="checkbox">
+										<label for="cmn-toggle"></label>
+									</div>
+	        					</div>
+	        				</div>
+	        			</div>
+        			</div>
+        			<div class="admins_wrapper">
+        				<div class="admins">
+        					<div class="header">
+        						<p>Class TAs and Admins</p>
+        					</div>
+        					<div class="row">
+        						<img class="admins_image" src="../assets/dummy-pic.jpg">
+        						<p class="admins_name">Professor Larry Herman</p>
+        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
+        					</div>
+        					<div class="row">
+        						<img class="admins_image" src="../assets/farring.png">
+        						<p class="admins_name">Jeffery Bigham</p>
+        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
+        					</div>
+        					<form>
+        						<input class="add_admin" type="text" placeholder="Add a new admin to this class">
+        						<img id="add_admin_img" src="../assets/settings_imgs/add-icon.png">
+        					</form>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        
+        <!-- About Tab -->
+        <div class="panel tab_about" id="panel_6">
+        	<div class="tab_content_holder">
+        	
+        		<div class="tab_header">
+        			<img class="tab_about_icon" src="../assets/about_icon.png">
+	        		<div class="header_sentence">About this Class - Guided Studies in Biomedical Engineering</div>
+        		</div>
+        		
+        		<div class="about_tab_content">
+        		
+        			<div class="description_wrapper">
+        				<div class="description">
+        					<div class="description_header">
+        						<p>Class Description</p>
+        					</div>
+        					<div class="description_blurb">
+        						<p>This course is a must-take class in Biomedical Engineering. It enables the user to have a strong foundation and take future advanced courses.</p>
+        					</div>
+        					<div class="description_info_row">
+        						<img class="description_time_img" src="../assets/settings_imgs/clock.png">
+        						<p class="description_time_p">Monday 08:00 am - 09:20 am, Wednesday 08:00 am - 09:20 am</p>
+							</div>
+							<div class="description_info_row">
+        						<img class="description_location_img" src="../assets/settings_imgs/location.png">
+        						<p class="description_location_p">Class Location</p>
+							</div>
+							<div class="description_info_row">
+        						<img class="description_department_img" src="../assets/settings_imgs/department.png">
+        						<p class="description_department_p">Department of Biomedical Engineering</p>
+							</div>
+						</div>
+        			</div>
+        			
+           			<div class="prof_description_wrapper">
+	        			<div class="prof_description">
+	        				<div class="header">
+	        					<img class="prof_description_pic" src="../assets/dummy-pic.jpg">
+	        					<div class="prof_description_info">
+	        						<p class="prof_name">Professor Larry Herman</p>
+	        						<p class="prof_description_text">OFFICE HOURS:</p>
+	        						<p class="prof_hours">Monday 08:00pm - 09:00pm</p>
+	        						<p class="prof_description_text">OFFICE LOCATION:</p>
+	        						<p class="prof_location">Gavett 207</p>
+	        					</div>
+	        				</div>
+	        				<div class="prof_blurb">
+	        					<p id="classes_taught">Other classes taught</p><hr><br>
+	        					<div class="prof_row">
+		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
+		        					<p class="class_taught">MS Thesis in Biomedical Engineering</p>
+	        					</div>
+	        					<div class="prof_row">
+		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
+		        					<p class="class_taught">PhD Thesis in Biomedical Engineering</p>
+
+	        					</div>
+	        					<div class="prof_row">
+		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
+		        					<p class="class_taught">Biostatistics</p>
+
+	        					</div>
+	        					<div class="prof_row">
+		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
+		        					<p class="class_taught">Guided Studies in Biomedical...</p>
+	        					</div>
+	        				</div>
+	        			</div>
+        			</div>
+        			
+        			<div class="people_you_know_wrapper">
+        				<div class="people_you_know">
+        					<div class="header">
+        						<p>Friends who have taken this class</p>
+        					</div>	
+        					<div class="slider_wrapper">
+        						<ul class="slider">
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>    
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>
+        							<li class="slider_pic">
+	        							<img src="../assets/dummy-pic.jpg">
+        							</li>    						
+        						</ul>
+        					</div>	
+        					<img class="slider_button_left" src="../assets/syllabus_icon_active.png">
+        					<img class="slider_button_right" src="../assets/syllabus_icon_active.png">	            
+        				</div>
+        			</div>
+        			
+        		</div>
+        	</div>
+        </div>
+        
+        <div class="panel tab_calendar" id="panel_7">
+        	This will be a calendar
+        </div>
+        
+        
 
 
         </div>
