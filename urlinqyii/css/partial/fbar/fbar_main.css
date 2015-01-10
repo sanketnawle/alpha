@@ -97,13 +97,18 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.files_button_text {
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text {
-    margin-left: -2px;
+    margin-left: -3px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.event_button_text {}
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.notes_button_text {
     margin-left: -2px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.opportunity_button_text {
+    margin-left: -10px;
+    width: 95px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper:hover {
@@ -143,7 +148,7 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
 }
 
 .fbar_button_icon#fbar_icon_notes {
-    width: 42px;
+    width: 40px;
     height: 46px;
     background-position: 0px -14px;
     top: -3px;
@@ -151,26 +156,27 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
 }
 
 .fbar_button_icon#fbar_icon_event {
-    width: 42px;
+    width: 40px;
     height: 46px;
     background-position: 0px -103px;
     top: -3px;
     left: 17px;
 }
 
+.fbar_button_icon#fbar_icon_opportunity {
+    width: 42px;
+    height: 46px;
+    background-position: 0px -201px;
+    top: -3px;
+    left: -5px;
+}
+
 .fbar_button_icon#fbar_icon_question {
     background-position: 0px -152px;
-
     width: 40px;
     height: 46px;
     margin-top: -1px !important;
     left: 7px;
-}
-
-.fbar_button_icon#fbar_icon_event {
-}
-
-.fbar_button_icon#fbar_icon_opportunity {
 }
 
 div.dark_overlay#dark_overlay_fbar {
@@ -233,7 +239,7 @@ div.form_wrapper header div#audience_select {
     font-size: 13.1px;
     padding-top: 6px;
     margin-top: 13px;
-    padding-right: 6px;
+    padding-right: 8px;
     padding-bottom: 6px;
     font-family: Avenir;
     margin-left: 16px;
@@ -289,6 +295,10 @@ div.form_wrapper section.post_form_template#event_form:before {
     right: 16px;
 }
 
+div.form_wrapper section.post_form_template#opportunity_form:before {
+    right: 102px;
+}
+
 form#fbar_form.true_or_false div.form_wrapper section.post_form_template#question_form:before {
     right: 304px;
 }
@@ -320,6 +330,7 @@ div.form_wrapper footer {
     background-color: #F9F9F9;
     border-top: 1px solid rgba(181, 181, 181, 0.3);
     border-radius: 0px 0px 6px 6px;
+    padding-right:15px;
 }
 
 div.form_wrapper footer div {
@@ -384,7 +395,7 @@ form#fbar_form.show {
 }
 
 .question_type_button.active, #discussion_form_content.active,
-#notes_form_content.active, #event_form_content.active {
+#notes_form_content.active, #event_form_content.active, #opportunity_form_content.active {
     background: #eee;
     color: #009bcd !important;
 }
@@ -690,7 +701,7 @@ em.down_arrow {
 }
 
 div#question_form_content, div#discussion_form_content, div#notes_form_content,
-div#event_form_content {
+div#event_form_content, div#opportunity_form_content {
     display: none;
 }
 
@@ -714,6 +725,10 @@ div.event_form_hide_content {
     display: inline-block !important;
 }
 
+#fbar_holder.opportunity div#opportunity_form_content {
+    display: inline-block!important;
+}
+
 #fbar_holder.discuss section#discussion_form {
     display: block;
 }
@@ -723,6 +738,10 @@ div.event_form_hide_content {
 }
 
 #fbar_holder.event section#event_form {
+    display: block;
+}
+
+#fbar_holder.opportunity section#opportunity_form {
     display: block;
 }
 
@@ -756,7 +775,7 @@ div.event_form_hide_content {
 }
 
 input#post_title, input#event_title {
-    width: 498px;
+    width: 520px;
     position: relative;
     padding: 7px 10px;
     font-size: 14px;
@@ -896,7 +915,7 @@ ul.menu_audience ul.dropit-submenu li a {
 }
 
 #fbar_holder.question div#question_form_content, #fbar_holder.discuss div#discussion_form_content,
-#fbar_holder.notes div#notes_form_content, #fbar_holder.event div#event_form_content {
+#fbar_holder.notes div#notes_form_content, #fbar_holder.event div#event_form_content, #fbar_holder.opportunity div#opportunity_form_content {
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -1361,9 +1380,18 @@ em.event_time_to_arrow {
     background-position: 0px 0px;
 }
 
+a.audience_default{
+    cursor: default;
+}
+
 div.input_wrap.event_when {
     position: relative;
     margin-left: -4px;
+}
+
+div.input_wrap.opportunity_deadline{
+    margin-left:0px;
+    margin-top:11px;
 }
 
 #event_start_date {
@@ -1380,11 +1408,16 @@ div.input_wrap.event_when {
     padding-top: 2px;
 }
 
-.event_textarea {
+.event_textarea, .opportunity_textarea {
     border-top: 1px solid rgba(181, 181, 181, 0.46);
-
     padding-top: 4px;
 }
+
+.opportunity_textarea {
+    border-bottom: 1px solid rgba(181, 181, 181, 0.46);
+}
+
+
 
 div.photo_flier_upload_box {
 }

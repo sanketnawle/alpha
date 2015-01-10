@@ -128,6 +128,16 @@ body#body_home{
 
 }
 
+div#planner_column.planner_column_department .entry_field_placeholder
+{
+    width:30px!important;
+}
+
+div#planner_column.planner_column_department .entry_field_placeholder span#add_todo_text
+{
+   display:none;
+}
+
 div#planner_column{
     padding: 0 7px 0 0; 
     float: right;
@@ -875,7 +885,7 @@ ul.tabnav_tabs li{
 }
 
 .tab_group_info .tab_content_holder .tab_header{
-padding-top:5px;
+padding-top: 7px;
 }
 
 #tabnav{
