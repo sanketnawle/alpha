@@ -59,7 +59,7 @@
 
         <div class = "group_name">
             <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
-            <div class = "center_text"><p id = "group_name" class = "school_name"><?php echo $school->school_name; ?></p></div>
+            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
         </div>
         <div class = "group_right_info group_info_boxes">
             <div class = "group_info_block" id = "location">

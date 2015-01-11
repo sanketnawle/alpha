@@ -93,7 +93,7 @@
                                                     </span>
                                                     {{#if file_id}}
                                                     <div class = "file_section_header">Attached</div>
-                                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span><span class = "download_count">{{file.download_count}}</span></div></a>
+                                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
 
                                                     {{/if}}
                                                     {{#if embed_link}}
@@ -211,10 +211,8 @@
                                     </div>
                                    
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
 
 
@@ -307,10 +305,8 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
+                                            <div class = "file_section_header">Attached</div>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
@@ -347,10 +343,8 @@
                         </div>
 
                         {{#if file_id}}
-                        <div class='cmt_f_attach' title=''>
-                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                            <a href=''>sdafsdaffg</a>
-                        </div>
+                            <div class = "file_section_header">Attached</div>
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                             <div class = 'comment_user_icon'></div>
@@ -383,10 +377,8 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
+                                            <div class = "file_section_header">Attached</div>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
@@ -536,9 +528,8 @@
 
                                                     {{/ifCond}}
                                                     {{#if file_id}}
-                                                    <div class = "file_section_header">Files</div>
-                                                    <div class='post_attachment_review'><img {{theFileType file_share_type file_id}} </div>
-
+                                                        <div class = "file_section_header">Attached</div>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                                     {{/if}}
                                                     {{#if embed_link}}
                                                     
@@ -662,10 +653,8 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         <div class = 'comment_user_icon'></div>
@@ -933,10 +922,8 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>

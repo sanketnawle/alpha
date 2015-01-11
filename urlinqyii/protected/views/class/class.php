@@ -105,12 +105,12 @@
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
                 <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
-                <div class = "center_text"><p id = "group_name"><?php echo $class->class_name; ?></p></div>
+                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
                     <em class ="small_icon_map"></em>
-                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                    <span><?php echo $class->location; ?></span>
                 </div>
                 <div class = "group_info_block" id = "class_schedule">
                     <em class ="small_icon_map"></em>
@@ -187,6 +187,9 @@
         <div class="panel active panel_feed" id="panel_1">
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
+                    <div class = "scroll_element">
+
+                    </div>
                     <div id = "fixed_element" class = "planner_group">
                         <?php
                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));

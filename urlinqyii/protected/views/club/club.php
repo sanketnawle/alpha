@@ -65,7 +65,7 @@
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
                             <div class = "group_name">
                                 <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                <div class = "center_text"><p id = "group_name"><?php echo $club->group_name; ?></p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">

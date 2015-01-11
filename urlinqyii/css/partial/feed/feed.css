@@ -199,13 +199,14 @@ span.time_icon{
 }
 
 .post_msg{
-margin-left: 18px;
+margin-left: 16.5px;
 padding-top: 2px;
 width: 100%;
 line-height: 21px;
 
 font-size: 13.8px;
 
+position: relative;
 color: #333;
 
 font-weight: 400;
@@ -1666,18 +1667,20 @@ max-width: 530px;
 
 .post_attachment_review
 {
-width: 520px;
+width: calc(100% - 2px);
+width: -webkit-calc(100% - 2px);
 border-radius: 1px;
 color: #FFF;
 line-height: 32px;
 height: 32px;
 float: left;
 font-size: 13.5px;
-padding-left: 7px;
-margin-right: -4px;
+/* padding-left: 7px; */
+margin-right: 0px;
 
 margin-bottom: 7px;
 margin-top: -1px;
+padding-left: 8px;
 }
 
 div.post_attachment_review:hover span.download_icon{
