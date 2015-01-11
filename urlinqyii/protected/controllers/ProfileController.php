@@ -525,12 +525,31 @@ class ProfileController extends Controller
         }
         if(isset($_POST['year_name'])){
             $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $student_attributes->year_name = $_POST['year_name'];
-            if($student_attributes->save()){
-                $new_data['year_name'] = "success";
+            if($student_attributes){
+                $student_attributes->year_name = $_POST['year_name'];
+                if($student_attributes->save()){
+                    $new_data['year_name'] = "success";
+                }else{
+                    $new_data['year_name'] = $student_attributes->getErrors();
+                }
             }else{
-                $new_data['year_name'] = $student_attributes->getErrors();
+                $new_data['year_name'] = "error not a student";
             }
+
+        }
+        if(isset($_POST['year'])){
+            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
+            if($student_attributes){
+                $student_attributes->year = $_POST['year'];
+                if($student_attributes->save()){
+                    $new_data['year'] = "success";
+                }else{
+                    $new_data['year'] = $student_attributes->getErrors();
+                }
+            }else{
+                $new_data['year'] = "error not a student";
+            }
+
         }
         if(isset($_POST['school'])){
 
@@ -874,14 +893,28 @@ class ProfileController extends Controller
         }
 
         $data['followed']=array();
-        foreach($user->usersFollowed as $i=>$user){
-            $data['followed'][$i]['user_name']=$user->firstname." ".$user->lastname;
-            $data['followed'][$i]['user_school']=$user->school->school_name;
+        foreach($user->usersFollowed as $i=>$fuser){
+            $data['followed'][$i]['user_id']=$fuser->user_id;
+            $data['followed'][$i]['professor']=$fuser->user_type == "p";
+            $data['followed'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+            $data['followed'][$i]['admin']=$fuser->user_type == "a";
+            $data['followed'][$i]['user_school']=$fuser->school->school_name;
+            $data['followed'][$i]['user_department']=$fuser->department->department_name;
+            $data['followed'][$i]['profile_pic'] = ($fuser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $data['followed'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
         }
         $data['following']=array();
-        foreach($user->usersFollowing as $i=>$user){
-            $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
-            $data['following'][$i]['user_school']=$user->school->school_name;
+        foreach($user->usersFollowing as $i=>$fuser){
+            $data['following'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+            $data['following'][$i]['user_id']=$fuser->user_id;
+            $data['following'][$i]['professor']=$fuser->user_type == "p";
+            $data['following'][$i]['admin']=$fuser->user_type == "a";
+            $data['following'][$i]['user_school']=$fuser->school->school_name;
+            $data['following'][$i]['user_department']=$fuser->department->department_name;
+            $data['following'][$i]['profile_pic'] = ($fuser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
         }
         $data['showcase_size']= sizeof($user->showcase);
         $data['showcase']=array();
