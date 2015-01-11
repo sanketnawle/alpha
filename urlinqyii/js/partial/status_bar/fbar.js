@@ -538,6 +538,18 @@ $(document).ready(function() {
         
     });
 
+    $(document).delegate('.opportunity_more_options', "click", function () { 
+        if($("#fbar_holder").hasClass("opps_more_options")){
+            $(this).closest("#fbar_holder").removeClass("opps_more_options");
+            $(this).text("More Options");
+        }
+        else{
+            $(this).closest("#fbar_holder").addClass("opps_more_options");
+            $(this).text("Fewer Options");
+        }
+        
+    });
+
     $(document).delegate('.question_type_button', "click", function () { 
         var $button_selected = $(this);
         $(".question_type_button.active").removeClass("active");    

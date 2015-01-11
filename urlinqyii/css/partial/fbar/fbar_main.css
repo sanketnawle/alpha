@@ -56,7 +56,10 @@ section#fbar_buttons .fbar_buttonwrapper {
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
     background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
+}
 
+section#fbar_buttons .fbar_buttonwrapper.fbar_twoprong {
+width:271px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper:last-of-type {
@@ -88,12 +91,22 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text {
     margin-top: 9px;
 }
 
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.announce_button_text{
+    width: 130px;
+
+    margin-left: 17px;
+}
+
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.post_button_text {
     margin-left: -7px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.files_button_text {
     margin-left: -8px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.discussion_button_text {
+    margin-left: 37px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text {
@@ -147,6 +160,14 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
     background-position: 0px -61px !important;
 }
 
+i.fbar_button_icon#fbar_icon_discuss2{
+    width: 42px;
+    height: 44px;
+    top: 0px;
+    left: 44px;
+    background-position: 0px -61px !important;
+}
+
 .fbar_button_icon#fbar_icon_notes {
     width: 40px;
     height: 46px;
@@ -161,6 +182,14 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
     background-position: 0px -103px;
     top: -3px;
     left: 17px;
+}
+
+.fbar_button_icon#fbar_icon_announcement {
+    width: 40px;
+    height: 46px;
+    background-position: 0px -251px;
+    top: -3px;
+    left: 27px;
 }
 
 .fbar_button_icon#fbar_icon_opportunity {
@@ -296,7 +325,7 @@ div.form_wrapper section.post_form_template#event_form:before {
 }
 
 div.form_wrapper section.post_form_template#opportunity_form:before {
-    right: 102px;
+    right: 103px;
 }
 
 form#fbar_form.true_or_false div.form_wrapper section.post_form_template#question_form:before {
@@ -714,15 +743,15 @@ div.event_form_hide_content {
 }
 
 #fbar_holder.notes div.notes_form_hide_content {
-    display: none !important;
+    display: none!important;
 }
 
 #fbar_holder.event div.event_form_hide_content {
-    display: none !important;
+    display: none!important;
 }
 
-#fbar_holder.event div.event_form_content {
-    display: inline-block !important;
+#fbar_holder.event div.event_form_content, #fbar_holder.opportunity div.opportunity_form_content{
+    display: inline-block!important;
 }
 
 #fbar_holder.opportunity div#opportunity_form_content {
@@ -915,7 +944,7 @@ ul.menu_audience ul.dropit-submenu li a {
 }
 
 #fbar_holder.question div#question_form_content, #fbar_holder.discuss div#discussion_form_content,
-#fbar_holder.notes div#notes_form_content, #fbar_holder.event div#event_form_content, #fbar_holder.opportunity div#opportunity_form_content {
+#fbar_holder.notes div#notes_form_content, #fbar_holder.event div#event_form_content, #fbar_holder.opportunity div#opportunity_form_content{
     display: inline-block;
     font-size: 13px;
     font-weight: 500;
@@ -979,14 +1008,27 @@ div.help-box {
 
 div.upload_file_wrap {
     position: relative;
-
     height: 87px;
     border-bottom: 1px solid rgba(181, 181, 181, 0.46);
+}
+
+div.submission_inputs_wrap{
+    position: relative;
+    height: 87px;
+    margin-top: -3px;
+    display:none;
+    border-top: 1px solid rgba(181, 181, 181, 0.46);
 }
 
 div.upload_file_wrap.photo_flier_upload_box {
     border-top: 1px solid rgba(181, 181, 181, 0.46);
     border-bottom: none !important;
+}
+
+input.submission_input{
+    width: 190px;
+    margin-left: 40px;
+    padding: 6px 7px;
 }
 
 div.upload_half {
@@ -1282,11 +1324,10 @@ input.event_location {
     background-color: #fff;
 }
 
-div.event_input_hidden {
+div.event_input_hidden, div.opportunity_input_hidden {
     display: none;
     opacity: 0;
     transition: all 1s ease-in-out;
-
 }
 
 div.repeat_activator {
@@ -1317,7 +1358,7 @@ div.repeat_activator em.down_arrow {
     top: -2px;
 }
 
-div#fbar_holder.events_more_options div.event_input_hidden {
+div#fbar_holder.events_more_options div.event_input_hidden, div#fbar_holder.opps_more_options div.opportunity_input_hidden{
     display: block;
     opacity: 1;
 }
@@ -1326,18 +1367,18 @@ div#fbar_holder.events_more_options div.event_input_hidden.repeat_event_input {
     display: inline-block;
 }
 
-div.event_more_options {
+div.event_more_options, div.opportunity_more_options{
     font-size: 14px;
-    padding: 13px 14px !important;
+    padding: 12.5px 14px !important;
     color: #AAACB2;
     border-radius: 0px !important;
 }
 
-div.event_more_options:hover {
+div.event_more_options:hover, div.opportunity_more_options:hover{
     background: rgba(232, 232, 232, 0.59);
 }
 
-div.event_more_options:active {
+div.event_more_options:active, div.opportunity_more_options:active{
     background: rgba(232, 232, 232, 1);
 }
 
@@ -1392,6 +1433,7 @@ div.input_wrap.event_when {
 div.input_wrap.opportunity_deadline{
     margin-left:0px;
     margin-top:11px;
+    margin-bottom:4px;
 }
 
 #event_start_date {

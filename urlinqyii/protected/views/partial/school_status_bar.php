@@ -19,33 +19,26 @@
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
     <!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
     <div id = "fbar_new">
-
         <section id = "fbar_buttons">
-            <div class = "fbar_buttonwrapper" id = "fbar_button_discuss" data-post_button_type = "discuss">
-                <i class = "fbar_button_icon" id = "fbar_icon_discuss">
+            <div class = "fbar_buttonwrapper fbar_twoprong" id = "fbar_button_announcement" data-post_button_type = "announcement">
+                <i class = "fbar_button_icon" id = "fbar_icon_announcement">
                 </i>
-                <p class = "fbar_button_text post_button_text">Post</p>
+                <p class = "fbar_button_text announce_button_text">Announcement</p>
             </div>
-            <div class = "fbar_buttonwrapper" id = "fbar_button_event" data-post_button_type = "event">
-                <i class = "fbar_button_icon" id = "fbar_icon_event">
+            <div class = "fbar_buttonwrapper fbar_twoprong fbar_button_last" id = "fbar_button_discuss" data-post_button_type = "discuss">
+                <i class = "fbar_button_icon" id = "fbar_icon_discuss2">
                 </i>
-                <p class = "fbar_button_text events_button_text">Event</p>
-            </div>
-            <div class = "fbar_buttonwrapper" id = "fbar_button_opportunity" data-post_button_type = "opportunity">
-                <i class = "fbar_button_icon" id = "fbar_icon_opportunity">
-                </i>
-                <p class = "fbar_button_text opportunity_button_text">Opportunity</p>
+                <p class = "fbar_button_text discussion_button_text">Disccusion</p>
             </div>
         </section>
-
         <section id = "fbar_postbox">
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">Department Name</span></span></div></a>
-                        <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>  
+                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">School</span></span></div></a>
+                        <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Discussion</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
-                        <div id = "opportunity_form_content" class = "post_type_header active post_type_opportunity"><span>Opportunity - Job/Research/Project</span></div>                 
+                        <div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>                 
                         <div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "hide_both">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>
                     </header>
 
@@ -53,56 +46,6 @@
                         <div class = "discussion_textarea input_wrap">
                             <textarea class = "autofocus post_text_area" placeholder = "Start a discussion"></textarea>
                         </div>
-                    </section>
-
-                    <section id = "notes_form" class = "post_form_template fbar_contents_fix">
-                        <div class = "upload_file_wrap">
-
-                            <div class = "upload_half half_1">
-                                <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
-                            </div>
-
-                            <div class = "upload_half half_2">
-                                <div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
-                                <div><div class = "upload_button upload_button_alone">Choose File</div></div>
-                            </div>
-
-                        </div>  
-
-                        <div class = "file_textarea input_wrap">
-                            <textarea class = "autofocus post_text_area" placeholder = "Write file details"></textarea>
-                        </div>
-                    </section>
-
-                    <section id = "opportunity_form" class = "post_form_template fbar_contents_fix">
-                        
-                        <div class = "input_wrap">
-                            <input placeholder = "What is the opportunity?" id = "event_title" class = "autofocus" type = "text" name = "event_title">
-                        </div>
-                        <div class = "opportunity_textarea input_wrap">
-                            <textarea class = "post_text_area" placeholder = "Write a brief description of the opportunity"></textarea>
-                        </div>
-                        <div class = "input_wrap opportunity_deadline">
-                            <label for = "opportunity_due_date">Deadline for Applying:</label><input placeholder = "Date" class = "fbar_date_time" type = "text" id = "opportunity_due_date" name = "opportunity_due_date"><input placeholder = "Time" id = "start_time" class = "fbar_date_time fbar_time_input" type = "text" name = "event_start_time">
-                        </div>
-
-                        <div class = "submission_inputs_wrap opportunity_input_hidden">
-                            <div class = "upload_half half_1">
-                                <div><p class = "upload_hint">Upload Application</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
-                            </div>
-
-                            <div class = "upload_half half_2">
-                                <div><p class = "upload_hint">Submission Link/Email</p></div>
-                                <div><input placeholder = "Web or email address" class = "fbar_date_time submission_input"></div>
-                            </div>
-                        </div>
-
-
-                        
-                        
-                        
                     </section>
 
                     <section id = "event_form" class = "post_form_template fbar_contents_fix">
@@ -171,7 +114,6 @@
                             </div>
                         </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
-                        <div style = "display:none" class = "opportunity_form_content opportunity_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
                             Post

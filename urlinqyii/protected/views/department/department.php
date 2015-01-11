@@ -60,7 +60,17 @@
 
                 <div id="content_panel">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
-                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');"></div>
+                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                        <div class = "group_name">
+                            <div class = "center_text"><p id = "group_name"><?php echo $department->department_name; ?></p></div>
+                        </div>
+                        <div class = "group_right_info group_info_boxes">
+                            <div class = "group_info_block" id = "location">
+                                <em class ="small_icon_map"></em>
+                                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                            </div>
+                        </div>
+                    </div>
 
 
 

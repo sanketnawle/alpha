@@ -33,6 +33,21 @@
     display: none;
 }
 
+p.middot_leftpanel{
+    margin: 0;
+    display: inline;
+    position: relative;
+    top: 2px;
+    color: #777;
+}
+
+a.MyBox_SO.edit_profile{
+    color:#777;
+}
+
+a.MyBox_SO.edit_profile:hover{
+    color:#029acf;
+}
 
 
 .LeftPanel_Content{
@@ -284,7 +299,7 @@ ul.LeftPanel_GroupsList{
     margin: 8px 0px 14px;
     padding: 0;
     position: relative;
-    margin-left: 0px;
+    margin-left: -6px;
 }
 
 ul.LeftPanel_GroupsList li{

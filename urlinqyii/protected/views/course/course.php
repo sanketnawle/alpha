@@ -75,21 +75,7 @@
 
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
-                        <?php if($is_member){ ?>
-                            <div id="group_user_action_button" class="member" data-action_url="/leave">
-                                <div id="group_user_action_button_text">Member</div>
-                            </div>
-                        <?php }else{ ?>
-                            <div id="group_user_action_button" class="non_member" data-action_url="/join">
-                                <div id="group_user_action_button_text">Join</div>
-                            </div>
-                        <?php } ?>
 
-                        <div id="tab_more_button">
-                            <div id="tab_more_button_image"></div>
-                        </div>
-
-                        <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'course','origin_id'=>$course->course_id)); ?>
 
 
                     </div>
