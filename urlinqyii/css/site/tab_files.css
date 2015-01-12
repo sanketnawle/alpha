@@ -223,7 +223,7 @@ div#files_header_bottom_line{
 
 div.files_sub_panel{
     width:100%;
-    min-height: 250px;
+    min-height: 40px;
     display:none;
 }
 

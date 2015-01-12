@@ -14,6 +14,7 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
@@ -57,12 +58,13 @@
     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
 
         <div class = "group_name">
-            <div class = "center_text">Tisch School of the Arts</div>
+            <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
+            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
         </div>
         <div class = "group_right_info group_info_boxes">
             <div class = "group_info_block" id = "location">
                 <em class ="small_icon_map"></em>
-                <span>721 Broadway New York, NY (212) 998-1900</span>
+                <span><?php echo $school->school_location; ?></span>
             </div>
         </div>
 
@@ -113,8 +115,15 @@
 
                     <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
                     <?php if($user->school_id == $school->school_id){ ?>
-                        <div id="group_user_action_button" >
-                            <div id="group_user_action_button_text">My school</div>
+                        <div id="group_user_action_button" class = "my_school_btn">
+                            <div id="group_user_action_button_text">My School</div>
+                        </div>
+                        <div class="help_div light" id="help_4">
+                            <div class="wedge">
+                            </div>
+                            <div class="box">
+                                This is your primary school. Change this information by editing your profile. 
+                            </div>
                         </div>
                     <?php } ?>
 
@@ -125,8 +134,25 @@
                 </div>
 
 
-                <div class="panel active" id="panel_1">
-                    SCHOOL INFO GOES HERE
+                <div class="panel active panel_feed" id="panel_1">
+                    <div id = "planner_column" class = "planner_column_group">
+                        <div id = "right_column_specs">
+                            <div id = "fixed_element" class = "planner_group">
+
+                            </div>
+                        </div>                           
+                    </div>
+                    <div id = "feed_column" class = "feed_column_group">
+                        <div id = "stream_holder" class = "stream_holder_home">
+                            <div id = "fbar_wrapper" class = "fbar_home">
+                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>'','pg_src'=>'school.php','target_type'=>'school')); ?>
+                            </div>
+
+                            <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/<?php echo $school->school_id; ?>/feed')); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 

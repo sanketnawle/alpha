@@ -57,12 +57,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}}style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                             </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 Anonymous
@@ -92,8 +92,8 @@
                                                                 {{text}}
                                                     </span>
                                                     {{#if file_id}}
-                                                    Flion
-                                                    <div class='post_attachment_review'><img {{theFileType file_share_type file_id}} </div>
+                                                    <div class = "file_section_header">Attached</div>
+                                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
 
                                                     {{/if}}
                                                     {{#if embed_link}}
@@ -211,17 +211,15 @@
                                     </div>
                                    
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
 
 
                                     <div class = 'comment_owner_container'>
                                         <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -240,7 +238,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show all replies
+                                    Show All
                                 </div>
                             {{/if}}
                         </div>
@@ -259,7 +257,7 @@
 
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Write a reply...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -275,7 +273,7 @@
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
                                     <a class='reply_button fresh_green_button'>
-                                        Add Comment
+                                        Post Reply
                                     </a>
                                 </div>
                             </div>
@@ -288,7 +286,7 @@
                                         <span class = 'comment_anon_text'>Post Anonymously</span>
                                     </div>
                                     <a class = 'reply_button fresh_green_button'>
-                                        Add this Comment
+                                        Post Reply
                                     </a>
                             </form>
                         </div>
@@ -307,15 +305,13 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
+                                            <div class = "file_section_header">Attached</div>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -347,15 +343,13 @@
                         </div>
 
                         {{#if file_id}}
-                        <div class='cmt_f_attach' title=''>
-                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                            <a href=''>sdafsdaffg</a>
-                        </div>
+                            <div class = "file_section_header">Attached</div>
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                             <div class = 'comment_user_icon'></div>
                         </div>
-                        <span class = 'comment_owner'>
+                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                             {{#if anon}}
                                 Anonymous
                             {{else}}
@@ -383,15 +377,13 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class='cmt_f_attach' title=''>
-                                                <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                    <a href=''>sdafsdaffg</a>
-                                            </div>
+                                            <div class = "file_section_header">Attached</div>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
-                                        <span class = 'comment_owner'>
+                                        <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                             {{#if anon}}
                                                 Anonymous
                                             {{else}}
@@ -410,7 +402,7 @@
 
                      {{/each}}
                                 <div id='show_more' class='morecmt_bar'>
-                                            Show all replies  
+                                            Show All 
                                 </div>
 
             </script>
@@ -432,12 +424,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
@@ -536,9 +528,8 @@
 
                                                     {{/ifCond}}
                                                     {{#if file_id}}
-                                                    
-                                                    <div class='post_attachment_review'><img {{theFileType file_share_type file_id}} </div>
-
+                                                        <div class = "file_section_header">Attached</div>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                                     {{/if}}
                                                     {{#if embed_link}}
                                                     
@@ -662,15 +653,13 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         <div class = 'comment_user_icon'></div>
                                     </div>
-                                    <span class = 'comment_owner'>
+                                    <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                         {{#if anon}}
                                             Anonymous
                                         {{else}}
@@ -689,7 +678,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show all replies
+                                    Show All
                                 </div>
                              {{/if}}
 
@@ -706,7 +695,7 @@
 
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Add a comment...' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Respond' required></textarea><div class = "or_answer_div"><span>or </span><span class = "answer_section_flash">Answer</span></div>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -758,12 +747,12 @@
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
                                                         {{/if}}
                                                     </div>
 
-                                                    <span class = 'post_owner'>
+                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
                                                             {{#if anon}}
                                                                 {{#if pownership}}
@@ -933,15 +922,13 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class='cmt_f_attach' title=''>
-                                            <img src='http://www.urlinq.com/beta/src/comment_attach.png'>
-                                                <a href=''>sdafsdaffg</a>
-                                        </div>
+                                        <div class = "file_section_header">Attached</div>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>
                                     </div>
-                                    <span class = 'comment_owner'>
+                                    <span class = 'comment_owner profile_link' user_id={{user_id}} >
                                         {{#if anon}}
                                             Anonymous
                                         {{else}}
@@ -960,7 +947,7 @@
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
-                                    Show all replies
+                                    Show All
                                 </div>
                             {{/if}}
                         </div>
@@ -975,7 +962,7 @@
                         <div class = 'commentform'>
                             <div>
                                 <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                <textarea class = 'form-control postval' placeholder = 'Add a comment...' required></textarea>
+                                <textarea class = 'form-control postval' placeholder = 'Write a reply...' required></textarea>
                                 <div class = 'dragdrop_functions'>
                                     <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                     <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -991,7 +978,7 @@
                                     <span class = 'comment_anon_text'>Post Anonymously</span>
                                 </div>
                                 <a class = 'reply_button fresh_green_button'>
-                                    Add Comment
+                                    Post Reply
                                 </a>
                             </div>
                         </div>

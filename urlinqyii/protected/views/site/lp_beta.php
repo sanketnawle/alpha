@@ -40,6 +40,9 @@ header('location:home.php');
 ?>
 <html>
 <head>
+    <script>
+        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+    </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Your University - On Urlinq</title>
   <meta name="viewport" content="width=device-width, initial-scale=.68">
@@ -181,6 +184,103 @@ header('location:home.php');
 
 
   });
+
+
+
+    $(document).on('submit','#register',function(e){
+        e.preventDefault();
+
+        var $form = jQuery(this);
+
+
+        var post_url = $form.attr('action');
+
+
+
+        var account_types = 's';
+
+
+
+
+        var password = $('#password').val();
+        var email = $('#email').val();
+        var firstname = $('#fname').val();
+        var lastname = $('#lname').val();
+
+
+
+        //Error checking
+
+        //Check if the user seleted a user type
+        var $account_type_chosen = $('.account-type-chosen');
+        if($account_type_chosen.length){
+            if($account_type_chosen.hasClass('student')){
+                account_types = 's';
+            }else{
+                account_types = 'p';
+            }
+        }else{
+            alert('Please select if you are a student or professor.');
+            return;
+        }
+
+        if(firstname.length == 0){
+            alert('Please input a first name');
+            return;
+        }
+
+        if(lastname.length == 0){
+            alert('Please input a last name');
+            return;
+        }
+
+        if(email.indexOf('nyu.edu') < 0){
+            alert('An NYU email address is required.');
+            return;
+        }
+
+        if(password.length < 5){
+            alert('Password must be atleast 5 characters');
+            return;
+        }
+
+
+
+
+
+
+        var post_data = {
+            password: password,
+            firstname: firstname,
+            lastname: lastname,
+            account_types: account_types,
+            email: email
+        };
+
+
+
+        console.log(JSON.stringify(post_data));
+
+        alert(JSON.stringify(post_data));
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    alert(JSON.stringify(response));
+                    window.location.href = base_url + '/onboard';
+                }else{
+                    alert(JSON.stringify(response));
+
+                    if(response['error_id'] == 10){
+                        //The user is already active, so just send them to /home
+                        window.location.href = base_url + '/home';
+                    }
+                }
+            }, 'json'
+        );
+    });
 
 
 

@@ -4,6 +4,8 @@
 <head>
     <script>
         var globals = {};
+
+
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'class'; ?>';
 
@@ -29,6 +31,9 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
     <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
@@ -100,12 +105,12 @@
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
                 <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
-                <div class = "center_text"><p id = "group_name">Theories of Musical Instruments</p></div>
+                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
                 <div class = "group_info_block" id = "location">
                     <em class ="small_icon_map"></em>
-                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                    <span><?php echo $class->location; ?></span>
                 </div>
                 <div class = "group_info_block" id = "class_schedule">
                     <em class ="small_icon_map"></em>
@@ -182,6 +187,9 @@
         <div class="panel active panel_feed" id="panel_1">
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
+                    <div class = "scroll_element">
+
+                    </div>
                     <div id = "fixed_element" class = "planner_group">
                         <?php
                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));
@@ -799,18 +807,14 @@
         							<p>Is this class open to the public?</p>
         						</div>
         						<div class="status">
-        							<ul class="settings_status_dropit">
-        								<li>
-        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
-        									<ul id="settings_status_dropit_sub">
-        										<li><a href="#">Public</a></li>
-        										<li><a href="#">Private</a></li>
-        									</ul>
-        								</li>
-        							</ul>		
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_open">
+        								<label><input id="status_check" type="radio" name="openStatus" value="Public"checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="openStatus" value="Private">Private</label>
+        							</form>
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>
@@ -819,18 +823,14 @@
         							<p>Who can see the members of this class?</p>
         						</div>
         						<div class="status">
-        							<ul class="settings_status_dropit">
-        								<li>
-        									<a  id="settings_status_dropit_label" href="#">Status Drop</a>
-        									<ul id="Settings_status_dropit_sub">
-        										<li><a href="#">Anyone</a></li>
-        										<li><a href="#">Members Only</a></li>
-        									</ul>
-        								</li>
-        							</ul>
+        							<p class="status_text">Inner html</p>
+        							<form class="status_form" id="status_form_privacy">
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Public" checked>Public</label><br>
+        								<label><input id="status_check" type="radio" name="privacyStatus" value="Members Only">Members Only</label>
+        							</form>
         						</div>
         						<div class="edit">
-        							<img src="../assets/settings_imgs/bluePen.png">
+        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
         							Edit
         						</div>
         					</div>

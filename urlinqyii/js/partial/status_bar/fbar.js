@@ -502,6 +502,10 @@ $(document).ready(function() {
             $("#post_btn").text("Add Files");
         }
 
+        if($("#fbar_holder").hasClass("opportunity")){
+            $("#post_btn").text("Share Opportunity");
+        }
+
 
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form')
@@ -509,8 +513,10 @@ $(document).ready(function() {
             $button_section.addClass("hide");
             $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
-                $("form#fbar_form").css({"overflow":"visible"});
+                
                 $(".autofocus").focus();
+
+                $("form#fbar_form").css({"overflow":"visible"});
                 next2();
             });
             next();
@@ -527,6 +533,18 @@ $(document).ready(function() {
         }
         else{
             $(this).closest("#fbar_holder").addClass("events_more_options");
+            $(this).text("Fewer Options");
+        }
+        
+    });
+
+    $(document).delegate('.opportunity_more_options', "click", function () { 
+        if($("#fbar_holder").hasClass("opps_more_options")){
+            $(this).closest("#fbar_holder").removeClass("opps_more_options");
+            $(this).text("More Options");
+        }
+        else{
+            $(this).closest("#fbar_holder").addClass("opps_more_options");
             $(this).text("Fewer Options");
         }
         
@@ -631,13 +649,14 @@ $(document).ready(function() {
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
-        $("form#fbar_form").css({"overflow":"hidden"});
+        
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
             $button_section.removeClass("faded");
             $button_section.removeClass("hide");
                     $("#fbar_holder").removeClass("discuss");
+                    $("#fbar_holder").removeClass("opportunity");
                     $("#fbar_holder").removeClass("question");
                     $("#fbar_holder").removeClass("event");
                     $("#fbar_holder").removeClass("notes");
@@ -647,7 +666,8 @@ $(document).ready(function() {
                     $(".question_type_button.active").removeClass("active");    
                     $(".question_type_button.regular_question").addClass("active"); 
                     $("#fbar_holder").removeClass("events_more_options");  
-                    $(".event_more_options").text("More Options");                  
+                    $(".event_more_options").text("More Options");    
+                    $("form#fbar_form").css({"overflow":"hidden"});              
             next();
 
         });
