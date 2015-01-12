@@ -106,32 +106,26 @@ class SiteController extends Controller
 
 
 
-    function send_email($to_email, $subject, $message, $from_email){
-//        $headers = 'From: ' . $from_email . "\r\n" .
-//            'X-Mailer: PHP/' . phpversion();
-//
-//        return mail($to_email, $subject, $message, $headers);
+    function send_verification_email($to_email, $subject, $message, $from_email, $data){
+
+        $mail = new YiiMailer('confirmation', $data);
+
+        $mail->setFrom($from_email, 'urlinq team');
+        $mail->setSubject($subject);
+        $mail->setTo($to_email);
 
 
-        require("PHPMailer-master/class.phpmailer.php"); //or select the proper destination for this file if your page is in some   //other folder
-        ini_set("SMTP","ssl://smtp.gmail.com");
-        ini_set("smtp_port","465"); //No further need to edit your configuration files.
-        $mail = new PHPMailer();
-        $mail->SMTPAuth = true;
-        $mail->Host = "smtp.gmail.com"; // SMTP server
-        $mail->SMTPSecure = "ssl";
-        $mail->Username = "trials.php@gmail.com"; //account with which you want to send mail. Or use this account. i dont care :-P
-        $mail->Password = "trials.php.php"; //this account's password.
-        $mail->Port = "465";
-        $mail->IsSMTP();  // telling the class to use SMTP
-        $rec1="trials.php@gmail.com"; //receiver. email addresses to which u want to send the mail.
-        $mail->AddAddress($rec1);
-        $mail->Subject  = "Eventbook";
-        $mail->Body     = "Hello hi, testing";
-        $mail->WordWrap = 200;
-        return $mail->Send();
+        //$mail->SMTPDebug = 1;
 
+        return $mail->send();
 
+//        if($mail->send()){
+//            return true;
+//        }else{
+//            $data = array('success'=>false,'error_id'=>6,'error_msg'=>$mail->getError());
+//            $this->renderJSON($data);
+//            return;
+//        }
 
     }
 
@@ -154,14 +148,20 @@ class SiteController extends Controller
             $user = User::model()->find('user_id=:id',array(':id'=>$user_id));
             if($user){
                 //User has successfully verified.
-                //Set their status to verified
-                $user->user_status = 'active';
+                //Set their status to onboarding so we know they
+                //still have some steps to complete
+                $user->status = 'onboarding';
 
                 if($user->save(false)){
                     //Delete user_confirmation for this user
                     if($user_confirmation->delete()){
-                        $data = array('success'=>true);
-                        $this->renderJSON($data);
+
+                        //If the user confirmation was successful, redirect back to
+                        //onboarding at step 3
+                        Yii::app()->session['onboarding_step'] = 3;
+                        Yii::app()->session['department_id'] = $user->department_id;
+                        Yii::app()->session['school_id'] = $user->school_id;
+                        $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
                         return;
                     }else{
                         $data = array('success'=>false,'error_id'=>6,'error_msg'=>'Error deleting user confirmation');
@@ -228,8 +228,9 @@ class SiteController extends Controller
                     $user_email = $user->user_email;
                     $subject = 'Urlinq verification email';
                     $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
-                    $from = 'urlinq@urlinq.com';
-                    if($this->send_email($user_email, $subject, $message, $from)){
+                    $from = 'team@urlinq.com';
+                    $email_data = array('key'=>$user_confirmation_test->key_email);
+                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
                         //Function is done
                         return;
                     }else{
@@ -250,8 +251,9 @@ class SiteController extends Controller
                         $user_email = $user->user_email;
                         $subject = 'Urlinq verification email';
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
-                        $from = 'urlinq@urlinq.com';
-                        if($this->send_email($user_email, $subject, $message, $from)){
+                        $from = 'team@urlinq.com';
+                        $email_data = array('key'=>$user_confirmation->key_email);
+                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
                             //Function is done
                             return;
                         }else{
@@ -524,6 +526,9 @@ class SiteController extends Controller
 //            $user = User::model()->find('user_email=:user_email',array(':user_email'=>$email));
 //
 
+            Yii::app()->session['onboarding_step'] = -1;
+            //Yii::app()->session->destroy();
+
 
             Yii::app()->session['first_name'] = $firstname;
             Yii::app()->session['last_name'] = $lastname;
@@ -533,6 +538,7 @@ class SiteController extends Controller
             Yii::app()->session['user_type'] = $user_type;
 
 
+
             include "password_encryption.php";
 
             if($user_type == 'p'){
@@ -540,8 +546,13 @@ class SiteController extends Controller
                 if($professor){
                     $_SESSION['user_id']= $professor->user_id;
                     $_SESSION['professor'] = 1;
-                    $this->render('test',array('error'=>'Professor with id ' . strval($_SESSION['user_id']) . 'exists'));
+
+
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Professor with id ' . strval($_SESSION['user_id']) . 'exists');
+                    $this->renderJSON($data);
                     return;
+
+
                     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select?professor=1');
                 }else{
                     $professor = new User;
@@ -566,21 +577,25 @@ class SiteController extends Controller
 
                     Yii::app()->session['user_id'] = $professor->user_id;
 
-                    $this->render('test',array('error'=>'Professor with id ' . strval($_SESSION['user_id']) . ' was created'));
+
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Professor with id ' . strval($_SESSION['user_id']) . ' was created');
+                    $this->renderJSON($data);
                     return;
+
                     //$this->redirect(Yii::app()->getBaseUrl(true) . '/professor_verify');
                 }
             }elseif($user_type == 's'){
                 //Check if the user is already in the database
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
-                    $_SESSION['user_id'] = $user->user_id;
+                    Yii::app()->session['user_id'] = $user->user_id;
+
 
                     if($user->status === 'invited'){
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
-                    }else if($user->status === 'temp'){
+                    }else if($user->status === 'unverified'){
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
@@ -605,7 +620,7 @@ class SiteController extends Controller
                     $user->school_id = null;
                     //$user->department_id = null;
                     $user->department_id = null;
-                    $user->status = 'temp';
+                    $user->status = 'unverified';
                     $user->save(false);
 
 
@@ -621,10 +636,13 @@ class SiteController extends Controller
                     Yii::app()->session['user_id'] = $user->user_id;
 
 
+
                     //Redirect to home page for now
 
-                    $this->render('onboard',array('error'=>'User with id ' . $user->user_id . ' was created'));
+                    $data = array('success'=>true, 'msg'=>'new user was created');
+                    $this->renderJSON($data);
                     return;
+
                     //$this->redirect(Yii::app()->getBaseUrl(true) . '/');
 
                     //->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select');

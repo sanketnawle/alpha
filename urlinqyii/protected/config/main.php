@@ -17,6 +17,7 @@ return array(
     'import'=>array(
         'application.models.*',
         'application.components.*',
+        'ext.YiiMailer.YiiMailer',
     ),
 
     'modules'=>array(
@@ -33,6 +34,12 @@ return array(
 
     // application components
     'components'=>array(
+
+
+
+
+
+
         'user'=>array(
             // enable cookie-based authentication
             'allowAutoLogin'=>true,
@@ -57,7 +64,7 @@ return array(
             //MUST ENABLE mod_rewrite IN APACHE AND HAVE PROPER .htaccess file FOR CLEAN URLS TO WORK
             'rules'=>array(
                 //Maps multiple views in one line
-                '<action:(contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail)>'=>'site/<action>',
+                '<action:(contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify)>'=>'site/<action>',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 

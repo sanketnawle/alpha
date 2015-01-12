@@ -1,6 +1,15 @@
 $(document).ready(function () {
     /*if authority is professor, let progress flag to be 2, first two step is redundant for professor*/
+
+
     var progress_flag = 0;
+
+
+    //If the onboarding step was set by the php,
+    //go to that step at the start
+    if(onboarding_step > -1){
+        progress_flag = onboarding_step;
+    }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
     var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Join these Classes", "Continue", "Continue", "Let's Get Started"];
@@ -24,6 +33,8 @@ $(document).ready(function () {
 
     var course_list = ["Web Programming", "Data Mining", "Computer Organization", "Dynamic Languages", "Machine Vision"];
     var course_id_list = ["cid0", "cid1", "cid2", "cid3", "cid4"];
+
+
     var people_list = ["Ross Kopelman", "Jake Lazarus", "Kuan Wang", "Alex Lopez"];
     var clubs_list = ["Archery Club", "Kendo Club", "Boxing Club"];
 
@@ -31,22 +42,39 @@ $(document).ready(function () {
     var selected_data = {};
 
 
-
     init();
 
+
     function init(){
-        //Get university id based on email function call will be here in the future
-        //When there are multiple univs
-        var university_id = '1';
-        //Get the schools at this university then start onboarding
-        $.getJSON(base_url + '/university/getSchools?university_id=1',function(json_data){
-            if(json_data['success']){
-                school_list = json_data['schools'];
-                start_onboarding();
-            }else{
-                alert('Error getting school data');
-            }
-        });
+
+        if(progress_flag == 3){
+
+            //Load the course/class data before initializing
+            $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
+                if(json_data['success']){
+                    course_list = json_data['courses'];
+                    start_onboarding();
+                }else{
+                    alert('Error getting school data');
+                }
+            });
+
+        }else{
+            //Get university id based on email function call will be here in the future
+            //When there are multiple univs
+            var university_id = '1';
+            //Get the schools at this university then start onboarding
+            $.getJSON(base_url + '/university/getSchools?university_id=1',function(json_data){
+                if(json_data['success']){
+                    school_list = json_data['schools'];
+                    start_onboarding();
+                }else{
+                    alert('Error getting school data');
+                }
+            });
+        }
+
+
     }
 
 
@@ -201,15 +229,17 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
+                var classes = course_list[i]['classes'];
+                var cs = classes.length;
+
                 var id_from_php = course_id_list[i];
-                $tthread.append("<div class='step_3_card' id=" + id_from_php + "><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0'>" + course_list[i] + "</div><div class='step_3_line_1'><div class='step_3_line_1_0'><span>2</span> sections</div>  	<span class='adot'>&#8226;</span> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div></div><div class='step_3_hide'><div class='cover_line'>choose your section</div><div class='step_3_card_section_detail'></div></div></div>");
+                $tthread.append("<div class='step_3_card' id=" + id_from_php + " data-course_id='" + course_list[i]['course_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0'>" + course_list[i]['course_name'] + "</div><div class='step_3_line_1'><div class='step_3_line_1_0'><span>" + cs.toString() + "</span> " + ((cs == 1) ? 'section' : 'sections') +"</div>  	<span class='adot'>&#8226;</span> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div></div><div class='step_3_hide'><div class='cover_line'>choose your section</div><div class='step_3_card_section_detail'></div></div></div>");
 
                 var $expand = $("#" + id_from_php).find(".step_3_card_section_detail");
 
-                var classes = ["c1", "c2"];
-                var cs = classes.length;
+
                 for (var j = 0; j < cs; j++) {
-                    $expand.append("<div class='step_3_card_section_detail_card' id=" + cs[j] + "><input type='checkbox' class='section_check' ><div class='section_detail_right'>Thu 10:00-11:30pm, Fri 12:30-01:00pm - Lenhart Schubert</div></div>");
+                    $expand.append("<div class='step_3_card_section_detail_card' data-class_id='" + classes[j]['class_id'] + "' id=" + classes[j]['class_name'] + "><input type='checkbox' class='section_check' ><div class='section_detail_right'>Thu 10:00-11:30pm, Fri 12:30-01:00pm - Lenhart Schubert</div></div>");
                 }
             }
 
@@ -231,7 +261,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_4_card'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
+                $tthread.append("<div class='step_4_card' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
 
             }
 
@@ -256,7 +286,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_3_card step_5_card'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
+                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
             }
 
         }else if (curr == 6) {
@@ -276,12 +306,75 @@ $(document).ready(function () {
     }
 
 
-    $(document).delegate(".next_progress", "click", function () {
+
+    $(document).delegate(".next_progress", "click", function (evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+
         if (is_active_btn($(this))) {
-            if (progress_flag < 6) {
+            if(progress_flag == 3){
+                selected_data['classes'] = [];
+                $('.step_3_card_section_detail_card.section_selected').each(function(){
+                    var class_id = $(this).attr('data-class_id');
+                    selected_data['classes'].push(class_id);
+
+
+                    $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
+                        if(json_data['success']){
+                            people_list = json_data['users'];
+
+                            progress_flag++;
+                            progress_check(progress_flag);
+                            content_paint(progress_flag);
+                            return;
+                        }else{
+                            alert('Error getting suggested users data');
+                        }
+                    });
+
+                });
+                console.log(JSON.stringify(selected_data));
+            }else if(progress_flag == 4){
+                selected_data['follow_users'] = [];
+                $('.blue_btn.card_4_btn.followed').each(function(){
+                    var user_id = $(this).parent().attr('data-user_id');
+                    selected_data['follow_users'].push(user_id);
+
+
+                    $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
+                        if(json_data['success']){
+                            clubs_list = json_data['clubs'];
+
+                            progress_flag++;
+                            progress_check(progress_flag);
+                            content_paint(progress_flag);
+                            return;
+                        }else{
+                            alert('Error getting suggested users data');
+                        }
+                    });
+
+                });
+                console.log(JSON.stringify(selected_data));
+            }else if(progress_flag == 5){
+                selected_data['clubs'] = [];
+                $('.club_join.green_join_btn.followed').each(function(){
+                    var user_id = $(this).closest('.step_5_card').attr('data-group_id');
+                    selected_data['clubs'].push(user_id);
+
+
+                    progress_flag++;
+                    progress_check(progress_flag);
+                    content_paint(progress_flag);
+                    return;
+
+                });
+                console.log(JSON.stringify(selected_data));
+            }else if (progress_flag < 6) {
                 progress_flag++;
                 progress_check(progress_flag);
                 content_paint(progress_flag);
+                return;
             }
         }
     });
@@ -299,6 +392,10 @@ $(document).ready(function () {
 
             if(progress_flag == 1){
                 delete selected_data["school_id"];
+            }
+
+            if(progress_flag == 4){
+                delete selected_data["classes"];
             }
 
             progress_flag--;

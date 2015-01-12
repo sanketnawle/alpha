@@ -261,17 +261,18 @@ header('location:home.php');
 
         console.log(JSON.stringify(post_data));
 
-        alert(JSON.stringify(post_data));
 
         $.post(
             post_url,
             post_data,
             function(response) {
+
+                alert(JSON.stringify(response));
+
                 if(response['success']){
-                    alert(JSON.stringify(response));
+
                     window.location.href = base_url + '/onboard';
                 }else{
-                    alert(JSON.stringify(response));
 
                     if(response['error_id'] == 10){
                         //The user is already active, so just send them to /home
