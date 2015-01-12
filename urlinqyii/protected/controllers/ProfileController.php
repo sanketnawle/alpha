@@ -485,16 +485,7 @@ class ProfileController extends Controller
         $new_data = array();
         $user_id = $_POST['user'];
         $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
-        if(isset($_POST['year'])){
-            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $student_attributes->year = $_POST['year'];
-            if($student_attributes->save()){
-                $new_data['year'] = "success";
-            }else{
-                $new_data['year'] = $student_attributes->getErrors();
-            }
 
-        }
         if(isset($_POST['bio'])){
             $user->user_bio = $_POST['bio'];
             if($user->save()){
@@ -524,7 +515,7 @@ class ProfileController extends Controller
             }
         }
         if(isset($_POST['year_name'])){
-            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
+            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
             if($student_attributes){
                 $student_attributes->year_name = $_POST['year_name'];
                 if($student_attributes->save()){
@@ -538,7 +529,7 @@ class ProfileController extends Controller
 
         }
         if(isset($_POST['year'])){
-            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
+            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
             if($student_attributes){
                 $student_attributes->year = $_POST['year'];
                 if($student_attributes->save()){
@@ -632,22 +623,26 @@ class ProfileController extends Controller
         }
 
         if(isset($_POST['majors'])){
-            if($_POST['majors'][0] === 'none'){
+            if(isset($_POST['majors'][0]) && $_POST['majors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
                 $new_data['major'] = 'success';
             }
             $new_data['major']= $this->updateMajorsMinors($_POST['majors'],'major',$user_id);
         }
         if(isset($_POST['minors'])){
-            if($_POST['minors'][0] === 'none'){
+            if(isset($_POST['minors'][0]) && $_POST['minors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'minor'));
                 $new_data['minor'] = 'success';
             }
             $new_data['minor']= $this->updateMajorsMinors($_POST['minors'],'minor',$user_id);
         }
         if(isset($_POST['research'])){
-            if($_POST['research'][0] !== 'none')
-            $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
+            if(isset($_POST['research'][0]) && $_POST['research'][0] === 'none'){
+                UserInterest::model()->deleteAll('user_id=:uid',array(':uid'=>$user_id));
+            }else{
+                $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
+            }
+
         }
         $this->renderJSON($new_data);
     }
@@ -880,7 +875,8 @@ class ProfileController extends Controller
                 $data['majors'][$i]['name']=$major->name;
             }
             $data['year_name'] = $user->studentAttributes->year_name;
-            $data['year'] = ($user->studentAttributes->year % 100);
+            $data['year_truncated'] = ($user->studentAttributes->year % 100);
+            $data['grad_year'] = $user->studentAttributes->year;
         }else if($user->user_type=="p"){
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
