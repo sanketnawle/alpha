@@ -23,6 +23,7 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                        success: function(response) {
                        fd_store = new FormData();
                         fd_store.append("file_id", response["file_id"]);
+                        file_id = response["file_id"];
                         fd_store.append("class_id", globals.origin_id);
 
                         /*response_data = $.parseJSON(response);*/
@@ -36,6 +37,8 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                                       $('#pdfContainer').html("");
                                       previous = "";
                                       events={};
+                                      added_events = [];
+                                      $('div#events_list').html("");
                                       pdf_year= (new Date()).getFullYear();
                                       run_pdf_algo(true);
                                    },

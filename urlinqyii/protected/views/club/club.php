@@ -65,7 +65,7 @@
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
                             <div class = "group_name">
                                 <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                <div class = "center_text"><p id = "group_name">NYU Cheese Club</p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">
@@ -143,7 +143,7 @@
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element" class = "planner_group">
                                         <?php
-                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->club_id; ?>'));
+                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->group_id; ?>'));
                                         ?>    
                                     </div>
                                 </div>                           
@@ -155,7 +155,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->club_id; ?>/feed')); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->group_id; ?>/feed')); ?>
                                     </div>
                                 </div>
                             </div>

@@ -60,7 +60,17 @@
 
                 <div id="content_panel">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
-                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');"></div>
+                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                        <div class = "group_name">
+                            <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
+                        </div>
+                        <div class = "group_right_info group_info_boxes">
+                            <div class = "group_info_block" id = "location">
+                                <em class ="small_icon_map"></em>
+                                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -126,8 +136,29 @@
                     </div>
 
 
-                    <div class="panel active" id="panel_1">
-                        CLASS FEED GOES HERE
+                    <div class="panel active panel_feed" id="panel_1">
+                        <div id = "planner_column" class = "planner_column_group planner_column_department">
+                            <div id = "right_column_specs">
+                                <div id = "fixed_element" class = "planner_group">
+                                    <?php
+                                    echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'department','origin_id'=>'<?php echo $department->department_id; ?>'));
+                                    ?>    
+                                </div>
+                            </div>                           
+                        </div>
+                        <div id = "feed_column" class = "feed_column_group">
+                            <div id = "stream_holder" class = "stream_holder_home">
+                                <div id = "fbar_wrapper" class = "fbar_home">
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>'','pg_src'=>'department.php','target_type'=>'department')); ?>
+                                </div>
+
+                                <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/<?php echo $department->department_id; ?>/feed')); ?>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
 
                     <div class="panel tab_group_info" id="panel_2">

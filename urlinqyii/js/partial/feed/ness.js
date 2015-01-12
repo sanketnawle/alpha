@@ -92,7 +92,8 @@ $(document).ready(function(e) {
             var ta = $(this);
 
             ta.attr("focused", "yes");
-
+            $(".or_answer_div").hide();
+            $(this).attr("placeholder", "Respond");
             ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
             ta.parents(".postcomment").find(".pre_expand_comment_fx").hide();
             ta.parents(".postcomment").find(".comment_owner_container").show();
@@ -101,6 +102,12 @@ $(document).ready(function(e) {
             ta.closest(".commentform").find(".reply_functions").show();
             ta.closest(".posts").find(".feed_upload_textprompt").show();
         }
+    });
+
+    $(document).on("click", 'span.answer_section_flash', function(){
+        var $mc_question_answers = $(this).closest(".post").find(".mc_question_one_choice");
+        $mc_question_answers.css({"border-color":"rgb(45, 171, 228)"});
+        setTimeout(function(){$mc_question_answers.css({"border-color":"rgba(239, 239, 239, 0.72)"})}, 1500);
     });
 
     $(document).on("keyup",".form-control", function (e) {
@@ -212,7 +219,7 @@ $(document).ready(function(e) {
         var fl = ta.closest(".postcomment").find(".filelistbox").find(".status");
         if(ta.val().trim() == "" && fl.length == 0) {
             ta.removeAttr("focused");
-
+            $(".or_answer_div").show();
             ta.parents(".postcomment").find(".comment_owner_container").hide();
             ta.closest(".postcomment").find(".reply_user_icon").show();
             ta.parents(".postcomment").find(".pre_expand_comment_fx").show();
@@ -249,10 +256,14 @@ $(document).ready(function(e) {
         }
     });
 
+
+    
     $(document).delegate(".post_comment_btn", "click", function () {
         var fa = $(this).closest(".posts").find(".form-control");
         setTimeout(function () { fa.trigger("focus"); }, 1);
     });
+
+
 
     var load = 'yes';
     var feeds = $("#posts");

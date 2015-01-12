@@ -1,4 +1,3 @@
-var user_id = 7;
 
 $(document).on('click', '.profile_link', function(){
         open_profile(base_url, $(this).attr('user_id'));
@@ -88,7 +87,7 @@ $(document).on('click','.add_showcase_button',function(){
     $('#profile_overlay').show();
     $('#add_showcase_form').show();
 });
-$(document).on('click','.cancel_showcase_form',function(){
+$(document).on('click','#cancel_showcase_form',function(){
     $('#add_showcase_form').hide();
     $('#profile_overlay').hide();
 
@@ -297,6 +296,8 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
     data.append('name',$('#name_input').val());
     data.append('department',$('#department_dropdown').val());
     data.append('email',$('#email_input').val());
+    data.append('year',$('#year_dropdown').val());
+    data.append('year_name',$('#level_dropdown').val());
     if($('#office_section').length){
         data.append('location',$('#office_input').val());
         data.append('hours',$('#hours_input').val());

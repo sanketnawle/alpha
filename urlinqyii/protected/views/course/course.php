@@ -54,7 +54,15 @@
 
                 <div id="content_panel">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
-                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');"></div>
+                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
+                        <div class = "group_name">
+                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name; ?></span></p></div>
+                        </div>
+                        <div class = "group_right_info group_info_boxes">
+                            <div class = "group_info_block" id = "professors">
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -75,28 +83,39 @@
 
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
-                        <?php if($is_member){ ?>
-                            <div id="group_user_action_button" class="member" data-action_url="/leave">
-                                <div id="group_user_action_button_text">Member</div>
-                            </div>
-                        <?php }else{ ?>
-                            <div id="group_user_action_button" class="non_member" data-action_url="/join">
-                                <div id="group_user_action_button_text">Join</div>
-                            </div>
-                        <?php } ?>
 
-                        <div id="tab_more_button">
-                            <div id="tab_more_button_image"></div>
-                        </div>
-
-                        <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'course','origin_id'=>$course->course_id)); ?>
 
 
                     </div>
 
 
                     <div class="panel active" id="panel_1">
-                        CLASS FEED GOES HERE
+                        <div class = "tab_content_holder">
+                            <div class="tab_header"> 
+                                <div class = "float_Right">
+                                    <span class = "sort_label">Order:</span>
+                                    <div class = "order_sort_dropdown">
+                                        <span>Courses High to Low</span>
+                                        <em class = "dropdown_arrow">
+                                        </em>
+                                    </div>
+                                    <div class = "small_search fade_input_small">
+                                        <em id = "left_search_icon">
+                                        </em>
+                                        <input type = "text" name = "people_search_input" placeholder = "Search courses" class = "name_search_input small_search_input">
+                                    </div>                                        
+                                </div>
+                                <div class = "header_sentence">
+                                    Courses this Semester
+                                </div>
+                            </div>
+                            <div class = "group_info_tab_content tab_content">
+
+
+
+
+                            </div>
+                        </div>
                     </div>
 
 

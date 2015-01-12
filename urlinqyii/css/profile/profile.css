@@ -680,12 +680,21 @@ button.add_showcase_button {
 }
 #cancel_showcase_form{
     float:right;
-
+    cursor:pointer;
     margin-left:10px;
 }
 #description_section{
     clear:both;
     border-top: 2px black;
+}
+div.members_card_wrapper {
+    display: inline;
+    margin-bottom: 22px;
+}
+.members_card.normal_size {
+    width: 166px;
+    display: inline-block;
+    margin-top: 10px;
 }
 /*
 #add_showcase i{
