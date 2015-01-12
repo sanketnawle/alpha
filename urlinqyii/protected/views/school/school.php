@@ -62,10 +62,12 @@
             <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
         </div>
         <div class = "group_right_info group_info_boxes">
-            <div class = "group_info_block" id = "location">
-                <em class ="small_icon_map"></em>
-                <span><?php echo $school->school_location; ?></span>
-            </div>
+                <?php if($school->school_location) { ?>
+                <div class = "group_info_block" id = "location">
+                    <em class ="small_icon_map"></em>
+                    <span><?php echo $school->school_location; ?></span>
+                </div>
+                <?php } else { }?>
         </div>
 
     </div>
@@ -138,7 +140,10 @@
                     <div id = "planner_column" class = "planner_column_group">
                         <div id = "right_column_specs">
                             <div id = "fixed_element" class = "planner_group">
-
+                                <div class = "about_box">
+                                    <h5>About</h5>
+                                    <p><?php echo $school->school_description; ?></p>
+                                </div>
                             </div>
                         </div>                           
                     </div>
@@ -324,7 +329,7 @@
     <!--            </div>-->
 
     </div>
-    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'school','origin_id'=>'')); ?>
+    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
 
     </div>
     <!--        <div id="right_menu_panel">-->

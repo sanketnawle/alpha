@@ -156,11 +156,6 @@
             </div>
 
             <div id="planner_body_holder">
-                <div id="free_planner_wrap" style="display: none;">
-                    <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="free_planner_message">Schedule clear</span>
-                    <span class="create_planner_message">Add a todo</span>
-                </div>
 
 
                 <div id="event_list">

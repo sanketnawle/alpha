@@ -108,10 +108,13 @@
                 <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
+                <?php if($class->location) { ?>
                 <div class = "group_info_block" id = "location">
                     <em class ="small_icon_map"></em>
                     <span><?php echo $class->location; ?></span>
                 </div>
+                <?php } else { }?>
+
                 <div class = "group_info_block" id = "class_schedule">
                     <em class ="small_icon_map"></em>
                     <span>Mon 9:30 am - 11:00 am, Wed 10:00 am - 11:30 am, Fri 9:30 am - 11:00 am</span>
@@ -187,9 +190,6 @@
         <div class="panel active panel_feed" id="panel_1">
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
-                    <div class = "scroll_element">
-
-                    </div>
                     <div id = "fixed_element" class = "planner_group">
                         <?php
                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'class','origin_id'=>'<?php echo $class->class_id; ?>'));
@@ -200,7 +200,7 @@
             <div id = "feed_column" class = "feed_column_group">
                 <div id = "stream_holder" class = "stream_holder_home">
                     <div id = "fbar_wrapper" class = "fbar_home">
-                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
+                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
