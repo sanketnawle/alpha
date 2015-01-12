@@ -55,6 +55,11 @@ class UserController extends Controller
 
     }
 
+
+
+
+
+
     public function actionUnfollow()
     {
         if(!isset($_POST['user_id'])){
@@ -81,6 +86,35 @@ class UserController extends Controller
             return;
         }
     }
+
+
+    //Returns people this user should follow
+    public function actionGetSuggestedUsers(){
+
+
+
+        $user = $this->get_current_user();
+
+
+//        $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE department_id = ' . $user->department_id . ' AND user_id != ' . $user->user_id . ' LIMIT 10'));
+//
+//
+//
+//        if(count($users) < 1){
+//            array_merge($users,$this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE school_id = ' . $user->school_id . ' AND user_id != ' . $user->user_id . ' LIMIT 10')));
+//        }
+//
+//        if(count($users) < 1){
+//            array_merge($users,));
+//        }
+
+
+        $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE user_id != ' . $user->user_id . ' LIMIT 10'));
+        $data = array('success'=>true,'users'=>$users);
+        $this->renderJSON($data);
+        return;
+    }
+
 
     public function convertModelToArray($models) {
         if (is_array($models))

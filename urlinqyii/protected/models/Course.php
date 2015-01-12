@@ -17,9 +17,9 @@
  *
  * The followings are the available model relations:
  * @property Class[] $classes
- * @property File $pictureFile
  * @property Department $department
  * @property School $school
+ * @property File $pictureFile
  * @property User[] $users
  */
 class Course extends CActiveRecord
@@ -59,10 +59,10 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'classes' => array(self::HAS_MANY, 'Class', 'course_id'),
-			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
+			'classes' => array(self::HAS_MANY, 'ClassModel', 'course_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
+			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
 			'users' => array(self::MANY_MANY, 'User', 'course_follow(course_id, user_id)'),
 		);
 	}

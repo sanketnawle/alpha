@@ -120,6 +120,30 @@ class SchoolController extends Controller
     }
 
 
+    public function actionGetClubs(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = school::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+            $school_data = $this->get_model_associations($school,array('clubs'=>array('pictureFile')));
+            $data = array('success'=>true,'clubs'=>$school_data['clubs']);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
 
 
     // Uncomment the following methods and override them if needed

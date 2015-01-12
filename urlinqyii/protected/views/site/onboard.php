@@ -8,6 +8,28 @@
             last_name = '<?php echo Yii::app()->session['last_name']; ?>';
             user_type = '<?php echo Yii::app()->session['user_type']; ?>';
 
+
+
+            onboarding_step = -1;
+            department_id = null;
+            school_id = null;
+
+            <?php if(isset(Yii::app()->session['onboarding_step'])) { ?>
+
+
+
+            onboarding_step = '<?php echo Yii::app()->session['onboarding_step']; ?>';
+            department_id = '<?php echo Yii::app()->session['department_id']; ?>';
+            school_id = '<?php echo Yii::app()->session['school_id']; ?>';
+
+            console.log('ONBOARDING STEP: ' + onboarding_step.toString());
+            console.log('department_id: ' + department_id.toString());
+
+
+            <?php } ?>
+
+
+
             console.log('user_id: ' + user_id);
             console.log('email: ' + email);
             console.log('first_name: ' + first_name);
