@@ -275,20 +275,22 @@ $(document).ready(function(){
         $(window).on('resize', function(){
              var group_name_left = $("p#group_name").position().left;
             $("div.center_admin").css({"left":group_name_left})
-        });       
+        });  
+
+        setTimeout(function() {
+                $("div.center_admin").animate({
+                    opacity: "1",
+                }, 400);
+        }, 250 );     
 
         setTimeout(function() {
                 $("#group_name").animate({
                     top: "0px",
                     opacity: "1",
                 }, 600);
-        }, 250 );
+        }, 650 );
 
-        setTimeout(function() {
-                $("div.center_admin").animate({
-                    opacity: "1",
-                }, 600);
-        }, 750 );
+        
     });
 
 
