@@ -1,8 +1,9 @@
 ﻿<link rel="stylesheet" type="text/css" href="../../../../../alpha/urlinqyii/css/partial/planner/datepicker.css"/>
 <link rel="stylesheet" href="../../../../../alpha/urlinqyii/css/calendar/create_event.css">
+<link rel="stylesheet" href="../../../../../alpha/urlinqyii/css/partial/fbar/fbar_main.css">
 <script src="../../../../../alpha/urlinqyii/js/date_selector/date_selector.js" type="text/javascript"></script>
 <script src="../../../../../alpha/urlinqyii/js/calendar/create_event/create_event.js"></script>
-
+<script src="../../../../../alpha/urlinqyii/js/location_input/location_input.js"></script>
 <script src="../../../../../alpha/urlinqyii/js/calendar_selector.js" type="text/javascript"></script>
 
 
@@ -16,7 +17,7 @@
                 <form action="/event/create" id="create_event_form">
 
                     <div id="top_buttons_holder" class="create_event_section">
-                        <div id="create_event_back_button" class="grey_button">Back</div>
+                        <div id="create_event_back_button" class="grey_button"><span></span>Back</div>
 
                         <input id="create_event_submit_button" class='button' type="submit" name="event_submit" value="CREATE">
                         <div id="create_event_discard_button" class="grey_button">Discard</div>
@@ -37,9 +38,9 @@
                         <input id="create_event_start_time_input" class="time_input text_input" type="text" name="event_start_time" value="">
 
                         <div class="arrow_divider"></div>
-
-                        <input id="create_event_end_date_input" class="date_input text_input event_date" type="text" name="event_start_date" value="" >
                         <input id="create_event_end_time_input" class="time_input text_input" type="text" name="event_start_time" value="">
+                        <input id="create_event_end_date_input" class="date_input text_input event_date" type="text" name="event_start_date" value="" >
+                        
 
 
 
@@ -52,6 +53,12 @@
 
                         <input type="checkbox" id="allday_checkbox" name="allday" value="allday">
                         <label for="todo_checkbox">All day</label>
+                        <div id="create_event_repeat_holder" style = "display:inline-block;">
+                            <select>
+                                <option value="no-repeat">No repeat</option>
+                                <option value="repeat">repeat</option>
+                            </select>
+                        </div>
                     </div>
 
 
@@ -73,8 +80,7 @@
 
                         <div id="create_event_category_select_holder">
                             <div id="create_event_category_label_holder">
-                                <div id="create_event_category_label_image"></div>
-                                <div id="create_event_category_label">Add Category</div>
+                                <div id="create_event_category_label"><div id="create_event_category_label_image"></div>Add Category</div>
                             </div>
 
                             <div id="create_event_category_holder">
@@ -114,12 +120,12 @@
 
 
                                 <div class="category_list" data-group_type="club">
-                                    <div class="category" data-category="homework">
-                                        <div class="category_name">Club</div>
+                                    <div class="category" data-category="club_meeting">
+                                        <div class="category_name">Club Meeting</div>
                                     </div>
 
                                     <div class="category" data-category="project">
-                                        <div class="category_name">Club</div>
+                                        <div class="category_name">Volunteer Event</div>
                                     </div>
 
                                     <div class="category" data-category="meeting">
@@ -149,15 +155,8 @@
 
                     <div id="create_event_middle_bottom_holder" class="create_event_section">
                         <div id="create_event_location_input_holder">
-                            <label id="create_event_location_input_label" for="event_location_input">Where</label>
-                            <input type="text" id="event_location_input" name="event_location" value="" class="text_input">
-                        </div>
-
-                        <div id="create_event_repeat_holder">
-                            <select>
-                                <option value="no-repeat">No repeat</option>
-                                <option value="repeat">repeat</option>
-                            </select>
+                            <label class = "where_label" for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "calendar_page_event_location_input gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_location"><span class = "where_icon"></span>
+                            <div class = "location_matches_list"></div>
                         </div>
                     </div>
 
@@ -180,7 +179,7 @@
 
                             <input id="event_invite_input" name="event_invite_input" placeholder="Enter names" class="text_input invite_input">
 
-                            <div id="create_event_invite_button" class="grey_button invite_people_button">Invite</div>
+                            <div id="create_event_invite_button" class="green_button invite_people_button">Invite</div>
 
                             <div id="invite_list">
 

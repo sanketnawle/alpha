@@ -169,6 +169,36 @@ margin-top: 10px;
 margin-left: -5px;
 padding-left: 5px;
 }
+
+div.about_box{
+    width: 235px; 
+    height: max-height:364px; font-family: 'Open Sans', sans-serif; background: #fff; 
+    max-height: 365px;
+    border-radius: 5px; display: block;  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+}
+
+div.about_box h5{
+    
+    font-family: Avenir; font-size: 14px; background-color: transparent;  color: #999; margin-top: 0;
+    margin-bottom: 0;
+    position: relative; border-radius: 4px 4px 0px 0px; 
+    border-bottom: 1px solid #dbdcdc; margin-left: 10px; margin-right: 10px;
+    font-weight: 500; font-size: 14.5px; 
+    color: #444; 
+    padding: 14px 0px 2px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-transform: uppercase;
+}
+
+div.about_box p{
+    margin: 8px 10px;
+    
+    font-size: 12.7px;
+    color: #575757;
+    overflow: scroll;
+    max-height: 340px;
+    padding-bottom: 14px;
+    margin-top: 0;
+    padding-top: 8px;
 }
 
 #planner_column.planner_column_home #right_column_specs {
@@ -1644,6 +1674,10 @@ div.group_info_block{
     margin-bottom:16px;
     font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+div.group_info_block:hover{
+    background-color: rgba(25, 26, 27, 1);
 }
 
 div.group_info_block span{

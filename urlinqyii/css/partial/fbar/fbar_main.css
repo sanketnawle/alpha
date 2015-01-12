@@ -833,6 +833,10 @@ input#event_title {
     margin-top: 0px;
 }
 
+div#fbar_holder.fbar_homepage input#post_title{
+    width:498px!important;
+}
+
 input#post_title:focus {
     border-color: #ccc;
 }
@@ -1312,6 +1316,7 @@ input.event_location {
 
 .fbar_date_time#event_location.gray_bg {
     background: #f5f5f5;
+    border-top: 1px solid #D2D2D2;
 }
 
 .fbar_date_time#event_location.valid_location_entered {
