@@ -849,7 +849,7 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user_id()));
+        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
         $data['school']=$user->school->school_name;
@@ -947,7 +947,7 @@ class ProfileController extends Controller
 
         if(!$data['own_profile']){
             $data['is_following']=UserConnection::model()->exists('from_user_id = :u1 and to_user_id = :u2 ',
-                array(':u1'=>$this->get_current_user_id(),':u2'=>$user->user_id));
+                array(':u1'=>$this->get_current_user()->user_id,':u2'=>$user->user_id));
         }
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
