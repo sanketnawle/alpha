@@ -1,6 +1,6 @@
 
 $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $(this).attr('user_id'));
+        open_profile(base_url, $(this).attr('user_id'),$(this).text());
 
 });
 $(document).on('click', '.close_modal', function(){

@@ -858,8 +858,13 @@ class ProfileController extends Controller
         $data['email']=$user->user_email;
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
-            $data['classes'][$i]['name']=$class->course->course_name;
+            $data['classes'][$i]['course_name']=$class->course->course_name;
             $data['classes'][$i]['section']=$class->section_id;
+            $data['classes'][$i]['department_name']=$class->department->department_name;
+            $data['classes'][$i]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+            $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $data['classes'][$i]['description']= $class->course->course_desc;
         }
         foreach($user->groups as $i=>$club){
             $data['clubs'][$i]['name']=$club->group_name;

@@ -696,6 +696,29 @@ div.members_card_wrapper {
     display: inline-block;
     margin-top: 10px;
 }
+/*classes*/
+.info_line.info_about{
+    width:39% !important;
+}
+.group_box{
+    height:162px !important;
+}
+
+div.group_box div.float_Left.group_image{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30%;
+    height: 96%;
+    margin-top: 3px;
+    margin-left: 3px;
+    border-radius: 2px;
+    cursor: pointer;
+    opacity: .87;
+    -webkit-transition: opacity 0.15s;
+    -moz-transition: opacity 0.15s;
+    transition: opacity 0.15s;
+}
 /*
 #add_showcase i{
     -webkit-background-size: auto;
