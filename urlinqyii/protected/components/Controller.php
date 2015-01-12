@@ -79,14 +79,23 @@ class Controller extends CController
     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     //}
     //at the top of your controller's function
-    function get_current_user(){
+
+    //If post is passed in, check if token is set
+    //If token is set, check if it is valid
+    function get_current_user($post = null){
+        if($post && isset($post['token'])){
+            $user_token = UserToken::model()->find('token=:token',array(':token'=>$post['token']));
+            if($user_token){
+                return User::model()->find('user_id=:id', array(':id'=>$user_token->user_id));
+            }else{
+                return null;
+            }
+        }
+
         return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
     }
 
 
-    function get_current_user_id(){
-        return Yii::app()->session['user_id'];
-    }
 
 
 
