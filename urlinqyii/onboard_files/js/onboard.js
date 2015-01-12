@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
     var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Join these Classes", "Continue", "Continue", "Let's Get Started"];
-    var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"]
+    var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they’re up to.", "These are some of the most active clubs at your school.", ""];
@@ -290,7 +290,11 @@ $(document).ready(function () {
             }
 
         }else if (curr == 6) {
-            $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'><span>Female</span></div>");
+            if(user_type == 's'){
+                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div> </div></div></div>   <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'  value='F'><span>Female</span></div>");
+            }else if(user_type == 'p' || user_type == 'a'){
+                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span></div>");
+            }
 
             $canvas.find(".ui.dropdown").dropdown();
         }
@@ -306,12 +310,54 @@ $(document).ready(function () {
     }
 
 
+    $(document).on('click','.last_step_btn',function(e){
+        e.stopPropagation();
+
+        var gender = $('input[name=gender]:checked').val();
+        //Check if gender is null
+        if(!gender){
+            alert('Please select a gender');
+            return;
+        }
+
+
+
+        var picture_file_id = '1';
+
+        var post_url = base_url + '/finishOnboarding';
+
+        var post_data = selected_data;
+        post_data['gender'] = gender;
+
+        post_data['picture_file_id'] = picture_file_id;
+
+         $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+                    window.location.href = base_url + '/home';
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+
+    });
+
 
     $(document).delegate(".next_progress", "click", function (evt) {
         evt.stopPropagation();
         evt.preventDefault();
 
+
+
+
         if (is_active_btn($(this))) {
+
+            $(this).addClass("inactive_btn");
+
+
             if(progress_flag == 3){
                 selected_data['classes'] = [];
                 $('.step_3_card_section_detail_card.section_selected').each(function(){
