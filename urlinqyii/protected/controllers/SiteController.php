@@ -106,6 +106,191 @@ class SiteController extends Controller
 
 
 
+    function send_email($to_email, $subject, $message, $from_email){
+//        $headers = 'From: ' . $from_email . "\r\n" .
+//            'X-Mailer: PHP/' . phpversion();
+//
+//        return mail($to_email, $subject, $message, $headers);
+
+
+        require("PHPMailer-master/class.phpmailer.php"); //or select the proper destination for this file if your page is in some   //other folder
+        ini_set("SMTP","ssl://smtp.gmail.com");
+        ini_set("smtp_port","465"); //No further need to edit your configuration files.
+        $mail = new PHPMailer();
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.gmail.com"; // SMTP server
+        $mail->SMTPSecure = "ssl";
+        $mail->Username = "trials.php@gmail.com"; //account with which you want to send mail. Or use this account. i dont care :-P
+        $mail->Password = "trials.php.php"; //this account's password.
+        $mail->Port = "465";
+        $mail->IsSMTP();  // telling the class to use SMTP
+        $rec1="trials.php@gmail.com"; //receiver. email addresses to which u want to send the mail.
+        $mail->AddAddress($rec1);
+        $mail->Subject  = "Eventbook";
+        $mail->Body     = "Hello hi, testing";
+        $mail->WordWrap = 200;
+        return $mail->Send();
+
+
+
+    }
+
+
+
+
+    public function actionVerify(){
+        if(!isset($_GET['key'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'key not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $key = $_GET['key'];
+
+        $user_confirmation = UserConfirmation::model()->find('key_email=:key',array(':key'=>$key));
+        if($user_confirmation){
+            $user_id = $user_confirmation->user_id;
+
+            $user = User::model()->find('user_id=:id',array(':id'=>$user_id));
+            if($user){
+                //User has successfully verified.
+                //Set their status to verified
+                $user->user_status = 'active';
+
+                if($user->save(false)){
+                    //Delete user_confirmation for this user
+                    if($user_confirmation->delete()){
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
+                    }else{
+                        $data = array('success'=>false,'error_id'=>6,'error_msg'=>'Error deleting user confirmation');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }else{
+                    $data = array('success'=>false,'error_id'=>5,'error_msg'=>'Error saving user');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is not valid');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>2 , 'error_msg'=> 'invalid key');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+    public function actionSendVerificationEmail(){
+        if(!isset($_POST['school_id']) || !isset($_POST['department_id']) || !$this->get_current_user_id()){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $school_id = $_POST['school_id'];
+        $department_id = $_POST['department_id'];
+
+        $school = School::model()->find('school_id=:id',array(':id'=>$school_id));
+        $department = Department::model()->find('department_id=:id',array(':id'=>$department_id));
+
+        if(!$school || !$department){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'school or department doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        if($department->school_id != $school->school_id){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'department is not in school');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user();
+
+        if($user){
+            $user->school_id = $school_id;
+            $user->department_id = $department_id;
+
+            if($user->save(false)){
+
+
+                //Check if this user already has a user confirmation
+                $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
+                if($user_confirmation_test){
+                    //If the user already has a confirmation, send another email with the same token
+                    $user_email = $user->user_email;
+                    $subject = 'Urlinq verification email';
+                    $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
+                    $from = 'urlinq@urlinq.com';
+                    if($this->send_email($user_email, $subject, $message, $from)){
+                        //Function is done
+                        return;
+                    }else{
+                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }else{
+                    //If there isnt already a user confirmation,
+                    //create a new one
+                    include_once 'UniqueTokenGenerator.php';
+                    //Create a user_confirmation for this user
+                    $user_confirmation = new UserConfirmation;
+                    $user_confirmation->key_email = token();
+                    $user_confirmation->user_id = $user->user_id;
+
+                    if($user_confirmation->save(false)){
+                        $user_email = $user->user_email;
+                        $subject = 'Urlinq verification email';
+                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                        $from = 'urlinq@urlinq.com';
+                        if($this->send_email($user_email, $subject, $message, $from)){
+                            //Function is done
+                            return;
+                        }else{
+                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                    }else{
+                        $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>5,'error_msg'=>'error saving user');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not defined');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+
+
+
+        $data = array('success'=>true);
+        $this->renderJSON($data);
+        return;
+    }
+
+
+
+
+
     public function actionTest()
     {
 
@@ -249,44 +434,82 @@ class SiteController extends Controller
     }
 
 
+
+    public function actionOnboard(){
+        $user = $this->get_current_user();
+        //If this user is already active, redirect to home page
+        if($user && $user->status == 'active'){
+            $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
+        }
+
+
+        //Check the required session variables
+        //If they are not all set, redirect back to the login/signup page
+        $first_name = Yii::app()->session['first_name'];
+        $last_name = Yii::app()->session['last_name'];
+        $user_type = Yii::app()->session['user_type'];
+        $email = Yii::app()->session['email'];
+        $password = Yii::app()->session['password'];
+
+
+        if(!$first_name || !$last_name || !$user_type || !$email || !$password){
+            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+        }
+
+
+
+
+
+        $this->render('onboard',array());
+    }
+
+
+
     public function actionRegister(){
 
-        if(isset($_POST['password']) ||isset($_POST['firstname']) ||isset($_POST['lastname']) ||isset($_POST['account-types']) ||isset($_POST['email'])){
+        if(isset($_POST['password']) ||isset($_POST['firstname']) ||isset($_POST['lastname']) ||isset($_POST['account_types']) ||isset($_POST['email'])){
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
-            $user_type = $_POST['account-types'];
+            $user_type = $_POST['account_types'];
             $password = $_POST['password'];
 
             if($firstname == '' || $lastname == '' || $user_type == '' || $email == ''){
-                $this->render('test',array('error'=>'All fields are required'));
+                $data = array('success'=>false,'error_id'=>2);
+                $this->renderJSON($data);
                 return;
             }
 
             if(strlen($password) < 6){
-                $this->render('test',array('error'=>'Password is too short'));
+                $data = array('success'=>false,'error_id'=>3, 'error'=>'Password is too short');
+                $this->renderJSON($data);
                 return;
             }
 
             if(strpos($firstname,$password) > 0){
-                $this->render('test',array('error'=>'Password cannot be in name'));
+                $data = array('success'=>false,'error_id'=>4, 'error'=>'Password cant be in name');
+                $this->renderJSON($data);
                 return;
             }
 
             if(strpos($lastname,$password) > 0){
-                $this->render('test',array('error'=>'Password cannot be in lastname'));
+                $data = array('success'=>false,'error_id'=>5, 'error'=>'password cant be in lastname');
+                $this->renderJSON($data);
                 return;
             }
 
             if(strpos($email,'nyu.edu') == false){
                 if(strpos($email,'poly.edu')){
-                    $this->render('test',array('error'=>'Poly emails are not accepted at this time'));
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Poly emails are not accepted at this time');
+                    $this->renderJSON($data);
                     return;
                 }else if(strpos($email,'.edu')){
-                    $this->render('test',array('error'=>'Only NYU emails are accepted at this time'));
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Only NYU emails are accepted at this time');
+                    $this->renderJSON($data);
                     return;
                 }else{
-                    $this->render('test',array('error'=>'.edu email must be used'));
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'.edu email must be used');
+                    $this->renderJSON($data);
                     return;
                 }
             }
@@ -301,11 +524,13 @@ class SiteController extends Controller
 //            $user = User::model()->find('user_email=:user_email',array(':user_email'=>$email));
 //
 
-//            $_SESSION['firstname'] = $firstname;
-//            $_SESSION['lastname'] = $lastname;
-//            $_SESSION['user_type'] = $user_type;
-//            $_SESSION['email'] = $email;
-//            $_SESSION['password'] = $password;
+
+            Yii::app()->session['first_name'] = $firstname;
+            Yii::app()->session['last_name'] = $lastname;
+            Yii::app()->session['user_type'] = $user_type;
+            Yii::app()->session['email'] = $email;
+            Yii::app()->session['password'] = $password;
+            Yii::app()->session['user_type'] = $user_type;
 
 
             include "password_encryption.php";
@@ -352,19 +577,21 @@ class SiteController extends Controller
                     $_SESSION['user_id'] = $user->user_id;
 
                     if($user->status === 'invited'){
-                        $this->render('test',array('error'=>'User with id ' . $user->user_id . ' was already invited and stored in DB. Redirecting to school_select'));
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
                         return;
-                        //$this->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select');
                     }else if($user->status === 'temp'){
-
-                        //<a href="/beta/php/afterselect.php">click here</a>
-                        $this->render('test',array('error'=>'User with id ' . $user->user_id . ' already registered, redirect to school_select'));
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
                         return;
-                    }else if($user->status==='active'){ //echo "You are already registered.If you forget the password.";
-                        $this->render('test',array('error'=>'User with id ' . $user->user_id . ' is already active. Redirect home'));
+                    }else if($user->status==='active'){
+
+                        $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                        $this->renderJSON($data);
                         return;
                     }else{
-                        $this->render('test',array('error'=>'User with id ' . $user->user_id . ' already registered, redirect to school_select'));
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
                         return;
                     }
                 }else{
@@ -396,7 +623,7 @@ class SiteController extends Controller
 
                     //Redirect to home page for now
 
-                    $this->render('test',array('error'=>'User with id ' . $user->user_id . ' was created'));
+                    $this->render('onboard',array('error'=>'User with id ' . $user->user_id . ' was created'));
                     return;
                     //$this->redirect(Yii::app()->getBaseUrl(true) . '/');
 
@@ -410,7 +637,8 @@ class SiteController extends Controller
 
 
         }else{
-            $this->render('test',array('error'=>'A parameter is not set'));
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
             return;
         }
 

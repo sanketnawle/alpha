@@ -34,7 +34,7 @@ jQuery(document).ready(function(){
     colors = ['a','b','c','d','e','f'];
     color_index = 0;
     function show_user_group(group_json, group_div_selector){
-        group_json['color_class'] = colors[color_index];
+
         //Normally source would be jQuery("#group_template").html(); but for whatever reason
         //angular doesnt let jquery select the handlebars template if it is in the html
         var source = $('#provider_template').html();

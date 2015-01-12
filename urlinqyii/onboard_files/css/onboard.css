@@ -534,7 +534,7 @@ body {
  background: #EFEFEF;
 border: 1px solid #ddd;
 position: relative;
-box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.06) inset;   
+box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.06) inset;
 }
 
 .step_6_card_r1_choice:hover{

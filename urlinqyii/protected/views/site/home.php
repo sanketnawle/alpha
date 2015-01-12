@@ -6,6 +6,7 @@
         <script>
             origin_type = '<?php echo "home" ?>';
             origin_id = '';
+            base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
         </script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
