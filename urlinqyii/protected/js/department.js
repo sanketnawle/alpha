@@ -86,7 +86,7 @@ $(document).ready(function(){
     var univ_id = $.urlParam('dept_id');
     /*var orgin="null";
      var orgin=$.urlParam('orgin');
-     if(orgin=="onboard"){
+     if(orgin=="onboard_files"){
      //alert("in if");
      $('.tabmembers').removeClass('tab-inactive');
      $('.tabmembers').addClass('group-tab-active');

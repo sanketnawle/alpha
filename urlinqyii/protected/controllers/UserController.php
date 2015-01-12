@@ -82,16 +82,91 @@ class UserController extends Controller
         }
     }
 
+    public function convertModelToArray($models) {
+        if (is_array($models))
+            $arrayMode = TRUE;
+        else {
+            $models = array($models);
+            $arrayMode = FALSE;
+        }
+
+        $result = array();
+        foreach ($models as $model) {
+            $attributes = $model->getAttributes();
+            $relations = array();
+            foreach ($model->relations() as $key => $related) {
+                if ($model->hasRelated($key)) {
+                    $relations[$key] = self::convertModelToArray($model->$key);
+                }
+            }
+            $all = array_merge($attributes, $relations);
+
+            if ($arrayMode)
+                array_push($result, $all);
+            else
+                $result = $all;
+        }
+        return $result;
+    }
 
 
     public function actionGetGroupData(){
-        if(!$this->authenticated()){
-            $this->redirect(array('/home'));
-        }
+//        if(!$this->authenticated()){
+//            $this->redirect(array('/home'));
+//        }
 
         $user = $this->get_current_user();
+
+
         if($user){
-            $data = array('success'=>true,'classes'=>$user->classes,'clubs'=>$user->groups);
+
+
+
+            $user_data = $this->get_model_associations($user,array('classes','groups'));
+
+
+
+            for($i = 0;$i < count($user_data['classes']);++$i){
+//                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$classes[$i]['class_id']));
+//                $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
+//                $classes[$i]['color'] = array('hex'=>$color->hex);
+
+                //$user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
+
+                //$user_data['classes'][$i] = array_merge($user_data['classes'][$i], array('color'=>array('hex'=>'#FABBB3')));
+
+//                $data = array('success'=>true,'user'=>);
+//                $this->renderJSON($data);
+//                return;
+                //$user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
+                //array_push($clubs[$i]['color'],array('hex'=>'#FABBB3'));
+
+
+                //$classes[$i] = $this->array_push_assoc($classes[$i], 'color', array('hex'=>'#FABBB3'));
+
+
+                $user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
+            }
+
+
+
+
+            for($i = 0;$i < count($user_data['groups']);++$i){
+//                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$clubs[$i]['group_id']));
+//                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+//                $clubs[$i]['color'] = array('hex'=>$color->hex);
+//                array_push($clubs[$i],array('color'=>array('hex'=>'#FABBB3')));
+                //$clubs[$i] = array('hex'=>'#FABBB3');
+                //$clubs[$i] = $this->array_push_assoc($clubs[$i], 'color', array('hex'=>'#FABBB3'));
+                //$user_data['groups'][$i] = array_merge($user_data['groups'][$i], array('color'=>array('hex'=>'#FABBB3')));
+
+
+                $user_data['groups'][$i]['color'] = array('hex'=>'#FABBB3');
+            }
+
+
+
+            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['groups']);
             $this->renderJSON($data);
             return;
         }else{

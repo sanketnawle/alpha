@@ -102,7 +102,7 @@
     <?php echo Yii::app()->runController('partial/topbar'); ?>
 
     <script id="provider_template" type="text/x-handlebars-template">
-        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}'>
+        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}' style='background-color: {{color.hex}}'>
             <img width="25" height="25" src="http://lorempixel.com/60/60" class="icon">
             <div ng-uc-check="" class="check ng-scope checked {{color_class}}" checked="">
                 <i class="x"></i><i class="xx"></i>

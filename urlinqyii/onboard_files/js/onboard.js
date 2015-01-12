@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     /*if authority is professor, let progress flag to be 2, first two step is redundant for professor*/
     var progress_flag = 0;
 
@@ -14,15 +13,50 @@ $(document).ready(function () {
 
     /*the following lists should be retreived from php*/
     var school_list = ["NYU Stern School of Business", "NYU Polytechnic School of Engineering", "NYU Steinhardt School of Education"];
+
+
+
+
+
     var department_list = ["Department of Computer Science", "Department of Chemistry", "Department of Mathematics", "Department of Biology", "Department of Physics"];
+
+
+
     var course_list = ["Web Programming", "Data Mining", "Computer Organization", "Dynamic Languages", "Machine Vision"];
     var course_id_list = ["cid0", "cid1", "cid2", "cid3", "cid4"];
     var people_list = ["Ross Kopelman", "Jake Lazarus", "Kuan Wang", "Alex Lopez"];
     var clubs_list = ["Archery Club", "Kendo Club", "Boxing Club"];
 
-    /*initialize*/
-    progress_check(progress_flag);
-    content_paint(progress_flag);
+
+    var selected_data = {};
+
+
+
+    init();
+
+    function init(){
+        //Get university id based on email function call will be here in the future
+        //When there are multiple univs
+        var university_id = '1';
+        //Get the schools at this university then start onboarding
+        $.getJSON(base_url + '/university/getSchools?university_id=1',function(json_data){
+            if(json_data['success']){
+                school_list = json_data['schools'];
+                start_onboarding();
+            }else{
+                alert('Error getting school data');
+            }
+        });
+    }
+
+
+    function start_onboarding(){
+        /*initialize*/
+        progress_check(progress_flag);
+        content_paint(progress_flag);
+    }
+
+
 
 
     function progress_check(curr) {
@@ -94,8 +128,10 @@ $(document).ready(function () {
     $(".content_inner").slimScroll({ wrapperClass: "scroll-wrapper", barClass: "scroll-bar" });
 
     function content_paint(curr) {
-        $canvas = $(".content_canvas");
-        $canvas.html("");
+        var $canvas = $(".content_canvas");
+
+        $canvas.empty();
+
         $inner = $(".content_inner");
         $frame = $(".progress_content");
 
@@ -106,43 +142,45 @@ $(document).ready(function () {
         $inner[0].scrollTop = 0;
 
         $(".canvas_banner").remove();
+        console.log("CURR " + curr.toString());
 
         if (curr == 0) {
+            console.log('inside curr = 0');
             var ns = school_list.length, i = 0;
 
-            function repeat(i) {
+            function school_repeat(i) {
                 if (i == ns) return;
-                $stepCard = $("<div class='step_0_card y' />")
-                $stepCard.html("<div class='card_0_info'>" + "<img class='card_0_glyph' src='img/defaultGlyph.png'>" + "<div class='card_0_text'><div class='card_0_text_0'>" + school_list[i] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
+                if(progress_flag != 0) return;
+                console.log('REPEATING SCHOOL. CURR = ' + curr);
+                $stepCard = $("<div class='step_0_card y school' data-school_id='" + school_list[i]['school_id'] + "' data-school_name='" + school_list[i]['school_name'] + "' />");
+                $stepCard.html("<div class='card_0_info'>" + "<img class='card_0_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'>" + "<div class='card_0_text'><div class='card_0_text_0'>" + school_list[i]['school_name'] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
                 $canvas.append($stepCard);
                 setTimeout(function () {
                     $stepCard.removeClass("y");
-                    repeat(++i);
+                    school_repeat(++i);
                 }, 250);
             }
-            repeat(i);
-        }
+            school_repeat(i);
+        }else if (curr == 1) {
+            console.log('inside curr = 1');
 
-        if (curr == 1) {
             var ns = department_list.length, i = 0;
-            function repeat(i) {
+            function department_repeat(i) {
                 if (i == ns) return;
-                $stepCard = $("<div class='step_0_card y' />")
-                $stepCard.html("<div class='card_0_info'><div class='card_0_text'><div class='card_0_text_0'>" + department_list[i] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
+                if(progress_flag != 1) return;
+                console.log('REPEATING DEPARTMENT. CURR = ' + curr);
+                $stepCard = $("<div class='step_0_card y department'data-department_id=" + department_list[i]['department_id'] + "/>");
+                $stepCard.html("<div class='card_0_info'><div class='card_0_text'><div class='card_0_text_0'>" + department_list[i]['department_name'] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
                 $canvas.append($stepCard);
                 setTimeout(function () {
                     $stepCard.removeClass("y");
-                    repeat(++i);
+                    department_repeat(++i);
                 }, 250);
             }
-            repeat(i);
-        }
-
-        if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='img/EmailConfirmIcon.png'></div>");
-        }
-
-        if (curr == 3) {
+            department_repeat(i);
+        } else if (curr == 2) {
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/defaultGlyph.png'</div>");
+        } else if (curr == 3) {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
 
@@ -164,7 +202,7 @@ $(document).ready(function () {
                 }
 
                 var id_from_php = course_id_list[i];
-                $tthread.append("<div class='step_3_card' id=" + id_from_php + "><div class='step_3_show'><img class='card_3_glyph' src='img/defaultGlyph.png'><div class='step_3_line_0'>" + course_list[i] + "</div><div class='step_3_line_1'><div class='step_3_line_1_0'><span>2</span> sections</div>  	<span class='adot'>&#8226;</span> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div></div><div class='step_3_hide'><div class='cover_line'>choose your section</div><div class='step_3_card_section_detail'></div></div></div>");
+                $tthread.append("<div class='step_3_card' id=" + id_from_php + "><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0'>" + course_list[i] + "</div><div class='step_3_line_1'><div class='step_3_line_1_0'><span>2</span> sections</div>  	<span class='adot'>&#8226;</span> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div></div><div class='step_3_hide'><div class='cover_line'>choose your section</div><div class='step_3_card_section_detail'></div></div></div>");
 
                 var $expand = $("#" + id_from_php).find(".step_3_card_section_detail");
 
@@ -175,9 +213,7 @@ $(document).ready(function () {
                 }
             }
 
-        }
-
-        if (curr == 4) {
+        }else if (curr == 4) {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -195,13 +231,11 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_4_card'><img class='card_4_glyph' src='img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
+                $tthread.append("<div class='step_4_card'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
 
             }
 
-        }
-
-        if (curr == 5) {
+        }else if (curr == 5) {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
 
@@ -222,13 +256,11 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_3_card step_5_card'><div class='step_3_show'><img class='card_3_glyph' src='img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
+                $tthread.append("<div class='step_3_card step_5_card'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
             }
 
-        }
-
-        if (curr == 6) {
-            $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'><span>Female</span></div>");
+        }else if (curr == 6) {
+            $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'><span>Female</span></div>");
 
             $canvas.find(".ui.dropdown").dropdown();
         }
@@ -264,23 +296,96 @@ $(document).ready(function () {
 
     $(document).delegate(".progress_goback", "click", function () {
         if ((progress_flag > 0) && (progress_flag != 3)) {
+
+            if(progress_flag == 1){
+                delete selected_data["school_id"];
+            }
+
             progress_flag--;
             progress_check(progress_flag);
             content_paint(progress_flag);
         };
     });
 
-    $(document).delegate(".step_0_card", "click", function () {
+    $(document).delegate(".school", "click", function () {
         var $self = $(this);
-        $(".step_0_card").addClass("left");
-        $self.removeClass("left");
-        setTimeout(function () {
-            $self.addClass("right");
-            setTimeout(function () {
-                $(".next_progress").click();
-            }, 750);
-        }, 250);
+
+        var school_id = $self.attr('data-school_id');
+        $.getJSON(base_url + '/school/getDepartments?school_id=' + school_id,function(json_data){
+            if(json_data['success']){
+                selected_data['school_id'] = school_id;
+
+                department_list = json_data['departments'];
+                $(".step_0_card").addClass("left");
+                $self.removeClass("left");
+                setTimeout(function () {
+                    $self.addClass("right");
+                    setTimeout(function () {
+                        $(".next_progress").click();
+                    }, 750);
+                }, 250);
+
+            }else{
+                alert('Error getting school data');
+            }
+        });
+
     });
+
+
+
+    function send_verification_email(payload_function){
+        var post_url = base_url + '/sendVerificationEmail';
+        var post_data = {school_id: selected_data['school_id'], department_id: selected_data['department_id']};
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    try{
+                        payload_function();
+                    }catch(err) {
+                        console.log("error calling payload function");
+                    }
+
+                    alert(JSON.stringify(response));
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+    }
+
+
+    $(document).delegate(".department", "click", function () {
+        var $self = $(this);
+
+
+
+        var department_id = $self.attr('data-department_id');
+        selected_data['department_id'] = department_id;
+
+
+        function run_this(){
+            $(".step_0_card").addClass("left");
+            $self.removeClass("left");
+            setTimeout(function () {
+                $self.addClass("right");
+                setTimeout(function () {
+                    $(".next_progress").click();
+                }, 750);
+            }, 250);
+        }
+
+        send_verification_email(run_this);
+
+
+
+
+
+    });
+
 
     $(document).delegate(".step_3_card", "mouseenter", function () {
         $(this).addClass("expanded_pseudo");
@@ -384,6 +489,24 @@ $(document).ready(function () {
 
     $(document).delegate(".pt_upload_btn", "click", function () {
         $(this).closest(".step_6_card_r0").find(".step_6_upload").click();
+    });
+
+
+
+    $(document).on('keyup','.onboard_textarea_t0', function(){
+        if(progress_flag == 0){
+            var $school_input = $(this);
+            var input_string = $school_input.val();
+
+            var $content_canvas = $('.content_canvas');
+
+            $content_canvas.children('div').each(function(){
+                var $child = $(this);
+                if($child.attr('data-school_name').indexOf(input_string) < 0){
+                    $child.hide();
+                }
+            });
+        }
     });
 
 });

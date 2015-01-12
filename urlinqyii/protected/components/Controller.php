@@ -46,17 +46,29 @@ class Controller extends CController
     }
 
     //Checks to see if current user is authenticated
-    //Returns true or false
+    //Returns a valid user object (which will equate to true) or false
     //Use like this for controller action functions that need to be authenticated
     //if(!$this->authenticated()){
     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     //}
+    //or
+    //$user = $this->authenticated();
+    //if($user){}
     public function authenticated(){
-        if(isset(Yii::app()->session['user_id'])){
-            return true;
+        $user = $this->get_current_user();
+
+
+        if($user && $user->status == 'active'){
+            return $user;
         }else{
             return false;
         }
+
+//        if(isset(Yii::app()->session['user_id'])){
+//            return true;
+//        }else{
+//            return false;
+//        }
     }
 
     //Returns the current User model
