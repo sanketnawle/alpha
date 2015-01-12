@@ -2970,9 +2970,10 @@ padding: 5px;
 -moz-transition: border-color .23s;
 -webkit-transition: border-color .23s;
 transition: border-color .23s;
-height: 30px;
+/* height: 30px; */
 border: 2px solid rgba(239, 239, 239, 0.72);
 border-radius: 2px;
+position: relative;
 }
 
 /*.mc_question_choice_letter{
@@ -2994,8 +2995,14 @@ padding: 3px 3px 0 3px;
 text-align: center;
 position: relative;
 
-color: #FFF; position: relative; font-size: 11px; background-color: rgba(153, 153, 153, 0.78); border-radius: 2px;
+color: #FFF; 
+position: absolute; 
+margin-left: 25px;
+font-size: 11px; 
+top: 50%;
+background-color: rgba(153, 153, 153, 0.78); border-radius: 2px;
 font-family: Avenir;
+margin-top: -7px;
 }
 .choice_letter{
 position: relative;
@@ -3030,9 +3037,8 @@ top: 4px;
 padding: 5px;
 /* background-color: #F7F7F7; */
 padding: 2px;
-padding-left: 5px;
-width: 77%;
-height: 20px;
+padding-left: 52px;
+width: 85%;
 /* border: solid 1px #D5D5D5; */
 font-family: arial;
 border-radius: 2px;
@@ -3042,7 +3048,7 @@ border-radius: 2px;
 
 position: relative;
 left: -5px;
-height: 20px;
+
 padding-top: 2px;
 padding-bottom: 2px;
 
@@ -3052,7 +3058,7 @@ top: 1px;
 
 background: #FFF!important;
 
-padding-left: 5px;
+padding-left: 6px;
 border-radius: 2px;
 text-align: middle;
 
@@ -3150,6 +3156,13 @@ span.download_count{
     margin-right: 4px;
     font-weight: 200;
     margin-top: 0px;
+}
+
+input.mc_question_radio_button{
+    position: absolute;
+    top: 50%;
+    margin-top: -5.5px;
+    left: 8px;
 }
 
 .list_of_people{

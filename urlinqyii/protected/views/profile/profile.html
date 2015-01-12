@@ -149,7 +149,7 @@
         </div>
         <div id="name_info_wrapper">
             <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
-                {{else}} {{firstname}} {{lastname}} '{{year}}{{/if}}</div>
+                {{else}} {{firstname}} {{lastname}} '{{year_truncated}}{{/if}}</div>
             {{#if professor}}
             <div id="university_info">{{university}}</div>
             <div id="office_hours_info">{{office_hours}}</div>
@@ -272,9 +272,9 @@
                     <div class="info_label" id = "level_label">
                         Academic Level:
                     </div>
-                    <a href="#" class="info_name" id="level_name">{{year_name}}</a>
+                    <div class="info_name" id="level_name">{{year_name}}</div>
                     <select class="edit_field" id="level_dropdown">
-                        <option selected value="Freshman">Freshman</option>
+                        <option value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>
                         <option value="Junior">Junior</option>
                         <option value="Senior">Senior</option>
@@ -286,9 +286,15 @@
                     <div class="info_label" id = "year_label">
                         Year of Graduation:
                     </div>
-                    <a href="#" class="info_name" id="year">{{grad_year}}</a>
+                    <div class="info_name" id="year">{{grad_year}}</div>
                     <select class="edit_field" id="year_dropdown">
-                        <option selected></option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
                     </select>
                 </div>
             {{/if}}

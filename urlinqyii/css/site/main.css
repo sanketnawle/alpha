@@ -169,6 +169,36 @@ margin-top: 10px;
 margin-left: -5px;
 padding-left: 5px;
 }
+
+div.about_box{
+    width: 235px; 
+    height: max-height:364px; font-family: 'Open Sans', sans-serif; background: #fff; 
+    max-height: 365px;
+    border-radius: 5px; display: block;  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+}
+
+div.about_box h5{
+    
+    font-family: Avenir; font-size: 14px; background-color: transparent;  color: #999; margin-top: 0;
+    margin-bottom: 0;
+    position: relative; border-radius: 4px 4px 0px 0px; 
+    border-bottom: 1px solid #dbdcdc; margin-left: 10px; margin-right: 10px;
+    font-weight: 500; font-size: 14.5px; 
+    color: #444; 
+    padding: 14px 0px 2px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-transform: uppercase;
+}
+
+div.about_box p{
+    margin: 8px 10px;
+    
+    font-size: 12.7px;
+    color: #575757;
+    overflow: scroll;
+    max-height: 340px;
+    padding-bottom: 14px;
+    margin-top: 0;
+    padding-top: 8px;
 }
 
 #planner_column.planner_column_home #right_column_specs {
@@ -366,6 +396,12 @@ div.tab div.tab_content{
 
 div.tab.feed div.tab_img{
     background-image: url('../../assets/main/tab_bar/feed_icon.png');
+}
+
+div.tab.classes div.tab_img{
+    background-image: url('../../assets/main/tab_bar/TabIcon_Classes.png');
+    background-position: 0px 16px;
+    margin-right: 4px;
 }
 
 div.tab.syllabus div.tab_img{
@@ -620,7 +656,10 @@ box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146,
 
 .float_Right{
     float: right;
+}
 
+.float_Center{
+    float: center;
 }
 
 .group_name{
@@ -956,6 +995,17 @@ ul.tabnav_tabs li{
 
 .tab_group_info .tab_content_holder .tab_header{
 padding-top: 7px;
+}
+
+.tab_header.tab_header_course
+{
+    width: 537px;
+}
+
+div.float_Center.courses_list{
+    margin:0 auto;
+    display:block;
+    width:470px;
 }
 
 #tabnav{
@@ -1633,6 +1683,15 @@ div.group_info_boxes{
     width: 237px;
 }
 
+div.group_info_boxes.course_info_box{
+width:270px;
+}
+
+div.department_of{
+    font-size: 22px;
+    text-transform: initial;
+}
+
 div.group_info_block{
     padding: 7px 12px 7px 12px; 
     background: rgba(18, 19, 20, 0.9); border-radius: 5px 0 0 5px;
@@ -1644,6 +1703,74 @@ div.group_info_block{
     margin-bottom:16px;
     font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+div.group_info_block:hover{
+    background-color: rgba(25, 26, 27, 1);
+}
+
+div.group_info_block.course_description{
+opacity:1!important;
+border-radius: 5px;
+background: #fff; 
+font-weight:500;
+color: #121212;
+border-radius: 5px; 
+font-size: 13.5px;
+padding-top: 10px;
+display: block; padding-bottom: 3px; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+}
+
+div.group_info_block.course_description:hover{
+opacity:1!important;  
+background: #FFF!important;
+}
+
+div.course_description h4.course_credits{
+border-top: 1px solid #D7D7D7;
+margin-top: 12px;
+font-size: 16px;
+margin-bottom: 8px;
+}
+
+div.course_description h4.course_credits span.cred_icon{
+
+border-radius: 2px;
+margin-top: 12px;
+margin-left: 5px;
+height: 24px;
+width: 23px;
+background-image: url(http://localhost:8888/alpha/urlinqyii/assets/small_icons.png);
+background-position: -38px -768px;
+display: inline-block;
+}
+
+div.course_description h4.course_credits span.cred_val{
+font-size: 17px;
+font-family: Avenir;
+font-weight: bold;
+color: #333;
+line-height: 14px;   
+padding: 0px 1px 0px 8px;
+display: inline-block;
+position: relative;
+top: -5px;
+}
+
+span.cred_val {}
+
+div.course_description h4.course_credits span.cred_name{
+  display: inline-block;  
+  font-size: 17px;
+    font-family: Avenir;
+    font-weight: bold;
+    
+  color: #333;
+  line-height: 17px;   
+    
+  position: relative;
+  top: -5px;
+  display: inline-block;
 }
 
 div.group_info_block span{

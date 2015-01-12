@@ -96,6 +96,10 @@ class Controller extends CController
     }
 
 
+    function get_current_user_id(){
+        return Yii::app()->session['user_id'];
+    }
+
 
 
 
@@ -140,6 +144,7 @@ class Controller extends CController
         if($this->is_assoc($model_names)){
             foreach($model_names as $nested_model_name => $nested_attributes) {
                 $name = trim($nested_model_name); //in case of spaces around commas
+
                 $model_values = $model->{$name};
 
                 //Check if the model association data is not null
@@ -195,6 +200,17 @@ class Controller extends CController
         return $row;
     }
 
+
+    function models_to_array($models){
+        $array = array();
+
+        foreach($models as $model){
+            array_push($array,$this->model_to_array($model));
+        }
+
+        return $array;
+
+    }
 
     function model_to_array($this_model){
         $row = array();
