@@ -1,6 +1,6 @@
 
 $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $(this).attr('user_id'));
+        open_profile(base_url, $(this).attr('user_id'),$(this).text());
 
 });
 $(document).on('click', '.close_modal', function(){
@@ -20,8 +20,8 @@ function open_profile(base_url,user_id){
         }else{
             render_profile(base_url,json_profile_data);
         }
-
     });
+
 
 }
 function render_profile(base_url,data){
@@ -29,6 +29,19 @@ function render_profile(base_url,data){
     $.ajax({ url: base_url + '/protected/views/profile/profile.html',
         dataType:'html',
         success: function(html) {
+            $.ajax({ url: base_url + '/profile/returnFeed?user='+data.user_id,
+                dataType:'html',
+                success: function(html) {
+                    $('#profile_panel_1 > #feed_wrapper').append(html);
+                }
+            });
+            $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
+                dataType:'html',
+                success: function(html) {
+                    $('#profile_panel_1 > #fbar_wrapper').append(html);
+                    $('#profile_panel_1').find('#fbar_new').addClass('profile');
+                }
+            });
             numShowcase=data.showcase_size;
             var template = Handlebars.compile(html);
             $('body').append(template(data));
@@ -692,4 +705,34 @@ $(document).on('click','.edit_showcase_button.cancel',function(){
     $showcase_item.find('.showcase_edit_field').hide();
     $showcase_item.find('.edit_showcase_button').hide();
     $showcase_item.find('.edit_showcase_button.edit').show();
+});
+$(document).on('keyup','.search_bar',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.members_card_wrapper').each(function(){
+       $(this).hide();
+       if(($(this).attr('data-name')).search(new RegExp(search_text,'i'))>-1){
+           $(this).show();
+       }
+    });
+});
+$(document).on('keyup','.search_bar.users',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.members_card_wrapper').each(function(){
+        $(this).hide();
+        if(($(this).attr('data-name')).match(new RegExp(search_text,'i'))){
+            $(this).show();
+        }
+    });
+});
+$(document).on('keyup','.search_bar.groups',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.group_box').each(function(){
+        $(this).hide();
+        if(($(this).attr('data-name')).match(new RegExp(search_text,'i'))){
+            $(this).show();
+        }
+    });
 });

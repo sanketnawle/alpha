@@ -171,7 +171,7 @@
 }
 
 .info_section{
-    border-bottom: 1px  grey;
+    border-bottom: 1px solid grey;
     font-weight: 10px;
 }
 
@@ -696,137 +696,51 @@ div.members_card_wrapper {
     display: inline-block;
     margin-top: 10px;
 }
-/*
-#add_showcase i{
-    -webkit-background-size: auto;
-    background-image: url('../../assets/ProfilePageIconMap.png');
-    background-position: -23px -91px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    height: 18px;
-    width: 18px;
-    z-index: 9;
-    position: absolute;
-    margin-left: 6px;
-    margin-top: 1.5px;
-    cursor: pointer;
+/*classes*/
+.info_line.info_about{
+    width:39% !important;
 }
-#add_showcase textarea{
-    border: 1px solid #e5e5e5;
-    outline: none;
-    resize: none;
-    border-radius: 4px;
-    height: 19px;
-    font-size: 12.2px;
-    font-family: 'OpenSans', sans-serif;
-    padding-top: 9px;
-    padding-left: 10px;
-    letter-spacing: 0.2px;
-    margin-top: 13px;
-}
-#add_showcase textarea:focus{
-    outline: none;
-}
-#add_showcase #title_entry{
-    width: 446px;
-    margin-top: 11px;
+.group_box{
+    height:162px !important;
 }
 
-#add_showcase #desc_entry{
-    width: 446px;
-}
-#add_showcase #link_entry{
-    width: 237px;
-    height: 19px;
-    -webkit-background-size: 5.5%;
-    background-size: 6%;
-    background-image: url('../../assets/link_icon_small.png');
-    background-position:8px 7px;
-    background-repeat: no-repeat;
-    padding-left: 28px;
-}
-#add_showcase button, .edit_showcase_form button{
-    background-color: #e9e9e9;
-    color: #444;
-    width: 167px;
-    height: 32px;
-    border: none;
-    font-size: 13px;
-    padding-left: 26px;
-    margin-left: 22px;
-    position: absolute;
-    top: 99px;
+div.group_box div.float_Left.group_image{
 
-    margin-top: 59px;
-}
-#add_showcase button, #add_showcase input, .edit_showcase_form button{
-    border-radius: 4px;
-    font-weight: 600;
-    font-family: 'OpenSans', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30%;
+    height: 96%;
+    margin-top: 3px;
+    margin-left: 3px;
+    border-radius: 2px;
     cursor: pointer;
+    opacity: .87;
+    -webkit-transition: opacity 0.15s;
+    -moz-transition: opacity 0.15s;
+    transition: opacity 0.15s;
 }
 
-#add_showcase button i, .edit_showcase_form button i{
-    -webkit-background-size: auto;
-    background-image: url('../../assets/ProfilePageIconMap.png');
-    background-position: -24px -74px;
+.search_bar{
+    position: relative;
+
+    height: 21px;
+    width: 80%;
+    margin-left: 64px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    background-size: 3%;
+    border: 1px solid grey;
+    background-image: url('../../assets/SearchIcon.png');
+    background-position: 8px 7px;
     background-repeat: no-repeat;
-    background-size: auto;
-    margin-left: -22px;
-    margin-top: 0px;
+    padding: 5px;
+    padding-left: 30px;
 }
-.showcase_submit {
-    margin-top: 55px;
-    margin-left: 212px;
-    font-family: 'OpenSans', sans-serif;
-    font-weight: 600;
-    padding-bottom: 22px;
+#fbar_new.profile{
+    width: 82%;
+    margin: auto;
+    margin-top:20px;
 }
-.showcase_submit span{
-    font-size: 13.8px;
-    color: #828282;
-    cursor: pointer;
-}
-.showcase_submit input{
-    width: 182px;
-    height: 30px;
-    color: white;
-    background-color: #13d59f;
-    border: 1px solid #10c491;
-    font-size: 14.1px;
-    margin-left: 14px;
-    box-shadow: 0px 1px 1px #10c491;
-}
-.description-section{
-    font-size: 12.6px;
-    font-family: 'OpenSans', sans-serif;
-    width: 455px;
-    height: auto;
-    line-height: 1.2;
-}
-.description-section .top-description{
-    width: 433px;
-    border-top: 1px solid #333;
-    padding-top: 11px;
-    padding-left: 7px;
-}
-.description-section .bottom-description{
-    width: 448px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 11px;
-    padding-top: 12px;
-    padding-left: 7px;
-}
-.description-section i {
-    -webkit-background-size: auto;
-    background-image: url('../../assets/ProfilePageIconMap.png');
-    background-position: -24px -36px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    margin-top: -11px;
-    right: 9px;
-    cursor: pointer;
-}*/
 /*
 div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{
     opacity: 1.0;
