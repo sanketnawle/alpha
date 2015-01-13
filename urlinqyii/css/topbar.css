@@ -131,7 +131,7 @@
 
     .topbar > .right {
         float: right;
-        width: 22%;
+        width: 22%;    /* 22% */
         height: 100%;
     }
 
