@@ -44,12 +44,12 @@
     <div id="page">
 
 
-        <div id="main_panel">
+        <div id="main_panel" class = "group_responsiveness">
 
 
             <div id="content_holder">
 
-                <div id="left_panel">
+                <div id="left_panel" class = "group_responsiveness">
                     <!--                        <section class='leftbar_bag'>-->
                     <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'origin_name'=>$department->department_name)); ?>
                     <!--                        </section>-->
@@ -58,7 +58,7 @@
 
 
 
-                <div id="content_panel">
+                <div id="content_panel" class = "group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                         <div class = "group_name">
@@ -346,8 +346,7 @@
             </div>
         </div>
 
-        <div id="right_panel">
-
+        <div id="right_panel" class = "group_responsiveness">
             RIGHT PANEL GOES HERE
         </div>
 

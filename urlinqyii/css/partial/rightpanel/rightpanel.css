@@ -1,3 +1,8 @@
+div#right_panel_content_holder{
+    height: 100%;
+
+}
+
 div#panel_header{
     border-bottom: 1px solid #D8D8D8;  margin-left: 0px;    
 
@@ -7,9 +12,10 @@ div#panel_header{
     text-align: right;
     margin-left: 0px;
     padding-left: 10px;
-    margin-right: 27px;
-    text-shadow: 0 -1px rgba(255, 255, 255, 1);
-    font-family: Avenir; font-weight: 500; font-size: 14.5px; color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    margin-right: 10px;
+    /* text-shadow: 0 -1px rgba(255, 255, 255, 1); */
+    font-family: Avenir; font-weight: 500; font-size: 14.5px; 
+    color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-transform: uppercase;
 }
 
@@ -21,15 +27,355 @@ span.right_panel_assets{
 }
 
 span.activity_icon.right_panel_assets{
-    width: 9px;
-    height: 14.56px;  
-    margin-right: -16px;
+    height: 10.56px;
+    width: 7px;
+    margin-left: 6px;
     display: inline-block;
-    float: right; 
-    margin-top: 0px;
-    background: #fd702d; 
-    background-image: -webkit-linear-gradient(#fd702d,#ff8d56); 
-    background-image: -moz-linear-gradient(#fd702d,#ff8d56); 
-    background-image: -o-linear-gradient(#fd702d,#ff8d56); 
+    float: right;
+    margin-top: 2px;
+    background: #fd702d;
+    background-image: -webkit-linear-gradient(#fd702d,#ff8d56);
+    background-image: -moz-linear-gradient(#fd702d,#ff8d56);
+    background-image: -o-linear-gradient(#fd702d,#ff8d56);
     background-image: linear-gradient(#fd702d,#ff8d56);
 }
+
+div.right_panel_suggestions_section{
+    padding: 10px 10px;
+
+    height: 210px;
+    padding-right: 0;
+}
+
+div.right_panel_suggestions_section div.suggestions_header{
+    padding-top: 5px;
+    height:23px;
+}
+
+div.right_panel_suggestions_section div.suggestions_header h5{
+    margin: 0;
+    
+    font-size: 17px;
+    float: left;
+    font-weight: 500;
+    color: #747474;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+div.right_panel_suggestions_section div.suggestions_header > a{
+    font-size: 11.5px;
+    
+    margin: 0px 2px;
+    position: relative;
+    color: #029acf;
+    font-family: Avenir;
+    margin-left: 0;
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.suggest_specific{
+    color: #029acf;
+    
+    background: #eee;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.suggest_specific:hover{
+    
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.suggest_specific:active{
+    
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.refresh{
+    color: #029acf;
+    top: 5px;
+}
+
+body#body_home div.right_panel_suggestions_section div.suggestions_header a.refresh{
+    top: 0px;
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.refresh:hover{
+    text-decoration: underline;
+}
+
+div.right_panel_suggestions_section div.suggestions_header a.refresh:active{
+    color: #016283!important;
+    text-decoration: underline;
+}
+
+div.right_panel_suggestions_section div.suggestions_header span.middot{
+    position: relative;
+    
+    top: 5px;
+    font-size: 11.5px;
+    color: #66757f;
+    font-weight: bold;
+    margin: 4px;
+}
+
+body#body_home div.right_panel_suggestions_section div.suggestions_header span.middot{
+    top:1px;
+}
+
+div#right_panel_bottom_section{
+    position: absolute;
+
+    bottom: 0px;
+    left: 0px;
+    padding: 14px 10px;
+    right: 0px;
+    padding-right: 0px;
+    border-top: 1px solid #D8D8D8;
+    margin-right: 10px;
+    padding-top: 10px;
+}
+
+div#right_panel_bottom_section h6{
+    margin: 0;
+    
+    color: #747474;
+    font-family: Avenir;
+    font-size: 10.5px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+div#right_panel_bottom_section > div.suggestion_type{
+    border: 1px solid #EEE;
+    padding: 2px 4px;
+    margin-bottom: 6px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    opacity: .5;
+    height: 30px;
+    color: #989898;
+    cursor: pointer;
+}
+
+div#right_panel_bottom_section > div.suggestion_type:hover{
+    opacity: 1;
+    
+    color: #555;
+    background-color: #f8f8f8;
+}
+
+div#right_panel_bottom_section > div.suggestion_type.active{
+    background-color: #f5f5f5;
+    
+    border-color: #EFEFEF;
+    opacity: 1;
+    cursor: default;
+}
+
+div#right_panel_bottom_section > div.suggestion_type.active:hover{
+    cursor: default;
+    
+    background-color: #f5f5f5; border-color: #EFEFEF;
+    opacity: 1;
+}
+
+div#right_panel_bottom_section > div.suggestion_type > span.suggestions_type_icon{
+    background-image: url(../../../assets/small_icons.png);
+    
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    float: left;
+    background-size: auto;
+    background-position: 0px -802px;
+}
+
+div#right_panel_bottom_section > div.suggestion_type.active > span.suggestions_type_icon{
+    
+}
+
+div#right_panel_bottom_section > div.suggestion_type.university > span.suggestions_type_icon{
+    background-position: 0px -765px;
+    
+}
+
+div#right_panel_bottom_section > div.suggestion_type.school > span.suggestions_type_icon{
+    
+}
+
+div#right_panel_bottom_section > div.suggestion_type > span.suggestions_type_text{
+    font-weight: 600;
+
+    font-size: 12.2px;
+    padding-left: 5px;
+    line-height: 32px;
+}
+
+div#right_panel_bottom_section > div.suggestion_type.active > span.suggestions_type_text{
+    color: #333; };
+
+}
+
+div.suggestion_unit_container{
+
+}
+
+div.suggestion_unit_container div.suggestion_block{
+    border-top: 0; 
+    padding: 8px 0; 
+    padding-top: 11px;
+
+}
+
+div.suggestion_block a.suggestion_pic_wrapper{ margin-right: 8px; display: block; };
+
+}
+
+div.suggestion_block a.suggestion_pic_wrapper div.{
+    
+}
+
+div.suggestion_block_right{
+    display: block; font-weight: bold; line-height: 13px; 
+    width: 140px; 
+    margin-left: 44px;
+    font-size: 13px;
+    word-wrap: break-word;
+
+}
+
+div.suggestion_pic{
+    width: 44px;
+    height: 44px;
+    background-image: url(../../../assets/neuroProf.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3.2px;
+}
+
+div.suggestion_block_right div.suggestion_title{
+    display: block;
+    
+    height: 25px;
+    margin-top: 0px;  -webkit-font-smoothing: antialiased;
+}
+
+div.suggestion_block_right div.suggestion_title > a{
+    font-weight: 600;
+    
+    display: inline-block;
+}
+
+div.suggestion_block_right div.suggestion_title > a > div{
+    text-overflow: ellipsis; white-space: nowrap;
+    
+    overflow: hidden;
+    height: 16px;
+}
+
+div.suggestion_block_right div.suggestion_title > a > div > span{
+    font-weight: 500;
+    
+    color: #333;
+    font-size: 13.5px;   
+    -moz-osx-font-smoothing: grayscale;
+     -webkit-font-smoothing: antialiased;
+}
+
+div.member_count{
+    display: inline-block;
+
+    margin-left: 3px;
+    position: relative;
+    top: 0px;
+    opacity: .7;
+}
+
+div.member_count .count{
+    font-family: Avenir;
+    
+    color: #999;
+    font-size: 10.25px;
+    font-weight: 500;
+}
+
+div.member_count .member_art{
+    background-image: url(../../../assets/small_icons.png); background-size: auto; width: 10px; 
+    height: 11px; 
+    background-position: -35px -818px;
+    margin-right: 0px; border: none;
+    
+    display: inline-block;
+    margin-left: 1px;
+    opacity: .8;
+}
+
+div.suggestion_btn_wrapper a#group_join_button, div.suggestion_btn_wrapper a#suggested_user_follow_button{
+    border: 1px solid #eee; 
+    border-bottom-color: #E4E4E4;
+    background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
+    background-image: linear-gradient(#fafafa, #f8f8f8);    color: #575757!important;
+
+    padding: 3.5px 10px;
+    font-weight: 600;
+    border-radius: 3px;
+    font-size: 11.8px; 
+}
+
+div.suggestion_btn_wrapper a#group_join_button:hover, div.suggestion_btn_wrapper a#suggested_user_follow_button:hover{
+    border-color:#E4E4E4;
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 
+    border-bottom-color:#DDD;
+}
+
+div.suggestion_btn_wrapper a#group_join_button:active,div.suggestion_btn_wrapper a#group_join_button:focus, div.suggestion_btn_wrapper a#suggested_user_follow_button:active, div.suggestion_btn_wrapper a#suggested_user_follow_button:focus{
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    background: #EEE;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+}
+
+div.suggestion_btn_wrapper a#group_join_button > span.gray_add_icon{
+    background-image: url(../../../assets/gray_add_icon.png);
+
+    background-size: auto;
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+    margin-right: 4px;
+    top: 2px;
+    display: inline-block;
+    position: relative;
+}
+
+div.suggestion_btn_wrapper a > span.follow_icon{
+    background-image: url(../../../assets/small_icons.png); background-size: auto; 
+    width: 17px; 
+    height: 11px; background-repeat: no-repeat; margin-right: 4px; 
+    background-position: -2px -845px;
+    top: 2px; display: inline-block; position: relative;
+
+}
+
+div.suggestion_btn_wrapper{
+    display: inline-block;
+    
+    /* float: left; */
+}
+
+a#suggested_user_follow_button{
+
+}
+
+a.follow_icon_btn{
+
+}
+
+a.follow_icon_btn > img{
+    
+}
+
+
+
