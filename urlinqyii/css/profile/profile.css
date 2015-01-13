@@ -39,6 +39,7 @@
 }
 #modal_header{
     height: 331px;
+    background-color: black;
 }
 .controls{
     float:left;
@@ -171,7 +172,7 @@
 }
 
 .info_section{
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #d8d8d8;
     font-weight: 10px;
 }
 
@@ -302,8 +303,15 @@ a.info_name{
     text-overflow: ellipsis;
     overflow: hidden;
     width: 80%;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     margin-left: 10px;
+}
+.edit_field.gender{
+    width:10%;
+}
+#bio_input{
+    height:60px;
+    resize: none;
 }
 .user_pic{
     width:160px;
@@ -415,7 +423,7 @@ div.profile_tab:hover div.profile_tab_text{
     position:relative;
     width:100%;
     height: 278px;
-    background-color: #808080;
+
     color: white;
     overflow: hidden;
 }

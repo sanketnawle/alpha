@@ -55,6 +55,11 @@ function render_profile(base_url,data){
                 $('#research_section').hide();
             }
 
+            if(data.gender=="M"){
+                $('#radio_male').prop('checked',true);
+            }else if(data.gender=="F"){
+                $('#radio_female').prop('checked',true);
+            }
             $('#name_input').val(data.firstname+" "+data.lastname);
             $('#email_input').val(data.email);
         }
@@ -109,7 +114,7 @@ $(document).on('click','#cancel_showcase_form',function(){
     $('#link_entry').val('');
     $('#title_entry').val('');
     $('#desc_entry').val('');
-    $('#link_entry').prop('disabled',false);
+
 });
 
 
@@ -120,6 +125,7 @@ function render_new_showcase(data){
         success: function(html) {
             var template = Handlebars.compile(html);
             var index=parseInt($('.showcase_item.center').attr('showcase_index'));
+            //increment indices of entries in the center or after the center
             $('.showcase_item').each(function(){
                 $(this).attr('showcase_index',function(i,currValue){
                     currValue = parseInt(currValue);
@@ -129,6 +135,7 @@ function render_new_showcase(data){
             $('.showcase_item.center').removeClass('center');
 
             data.index = index;
+            //add new showcase entry using the returned template
             if($('.showcase_item').length>0){
                 $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
             }else{
@@ -191,7 +198,9 @@ $(document).on('submit','form[id=add_showcase]', function (event) {
                 $('#link_entry').val('');
                 $('#title_entry').val('');
                 $('#desc_entry').val('');
-                $('#link_entry').prop('disabled',false);
+                $('#upfile').val('');
+                upload_file = null;
+
                 render_new_showcase(data);
                 //alert(JSON.stringify(data));
             }else{
@@ -303,6 +312,8 @@ $(document).on('click','#edit_profile_button.not_editing',function(){
         $('.edit_field.research:eq('+i+')').val($(this).text());
     });
 
+    //bio
+    $('#bio_input').val($('#bio').text());
     $('.info_section.account').show();
 
     //office hours and location
@@ -325,8 +336,12 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
     data.append('name',$('#name_input').val());
     data.append('department',$('#department_dropdown').val());
     data.append('email',$('#email_input').val());
-    data.append('year',$('#year_dropdown').val());
-    data.append('year_name',$('#level_dropdown').val());
+    data.append('bio',$('#bio_input').val());
+    data.append('gender',$('.edit_field.gender:checked').val());
+    if($('#year_section').length){
+        data.append('year',$('#year_dropdown').val());
+        data.append('year_name',$('#level_dropdown').val());
+    }
     if($('#office_section').length){
         data.append('location',$('#office_input').val());
         data.append('hours',$('#hours_input').val());
@@ -377,32 +392,27 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
         success: function(result)
         {
-          /* if(result.year == "success"){
-                if(new_year){
-                    $('.school-info').text($('.school-info').text().replace(/\d{4}/,new_year));
-                }
-            }else if(result.year){
-                alert(result.year);
-            }
-            if(result.year_name == "success"){
-                $('.school-info').text($('.school-info').text().replace(/(Freshman|Sophomore|Junior|Senior|Master|PhD)/,new_year_name));
-            }else if(result.year_name){
-                alert(result.year_name);
-            }
-            if(result.bio && result.bio != "success"){
-                alert(result.bio);
-                $('.info-block textarea').val(bio);
-            }*/
             var any_errors = false;
             if(result.year_name == "success"){
                 $('#level_name').text($('#level_dropdown').val());
+                var match =(new RegExp("at (.+)$")).exec($('#year_info').text());
+                $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
             }else if(result.year_name){
                 alert(result.year_name);
             }
             if(result.year == "success"){
                 $('#year').text($('#year_dropdown').val());
+                $('#name_info').text((new RegExp("([^']+) '")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
             }else if(result.year){
                 alert(result.year);
+            }
+            if(result.bio == "success"){
+                $('#bio').text($('#bio_input').val());
+            }else if(result.bio){
+                alert(result.bio);
+            }
+            if(result.gender && result.gender != "success"){
+                alert(result.gender);
             }
             if(!any_major){
                 alert('why');
@@ -476,7 +486,11 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
 
             }
             if(result.name == "success"){
-                $('#name_info').text($('#name_input').val());
+                if($('#office_section').length){
+                    $('#name_info').text("Professor "+$('#name_input').val());
+                }else{
+                    $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
+                }
             }else if(result.name){
                 alert(result.name);
                 any_errors = true;
@@ -509,6 +523,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
             }
             if(result.hours == "success"){
                 $('#office_hours').text($('#hours_input').val());
+                $('#office_hours_info').text($('#hours_input').val());
             }else if(result.hours){
                 alert(result.hours);
                 any_errors = true;

@@ -1,4 +1,31 @@
 $(document).ready(function () {
+
+
+
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
+
     /*if authority is professor, let progress flag to be 2, first two step is redundant for professor*/
 
 
@@ -288,7 +315,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_4_card' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
+                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
 
             }
 
@@ -317,11 +344,24 @@ $(document).ready(function () {
             }
 
         }else if (curr == 6) {
-            if(user_type == 's'){
-                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div> </div></div></div>   <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'  value='F'><span>Female</span></div>");
-            }else if(user_type == 'p' || user_type == 'a'){
-                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span></div>");
-            }
+
+
+            //var data = {base_url: base_url, user_type: user_type};
+            var data = {base_url: base_url, user_type: 'p'};
+
+            var source   = $("#last_panel_template").html();
+            var template = Handlebars.compile(source);
+            var generated_html = template(data);
+
+            var $content = $(generated_html);
+
+            $canvas.append($content).hide().fadeIn();
+
+//            if(user_type == 's'){
+//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div> </div></div></div>   <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'  value='F'><span>Female</span></div>");
+//            }else if(user_type == 'p' || user_type == 'a'){
+//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span></div>");
+//            }
 
             $canvas.find(".ui.dropdown").dropdown();
         }
@@ -363,6 +403,25 @@ $(document).ready(function () {
             selected_data['clubs'] = null;
         }
 
+        user_type = 'p';
+
+
+        if(user_type == 'a' || user_type == 'p'){
+            //Get office hours/location and research interests
+
+            selected_data['admin_type'] = $('#admin_type_menu').attr('data-value');
+
+            selected_data['office_hours'] = $('#office_hours_input').val();
+
+            selected_data['office_location'] = $('#office_location_input').val();
+            selected_data['research_interests'] = $('#research_interests_input').val();
+        }else{
+            //Get graduation date
+            selected_data['graduation_date'] = $('#graduation_date_menu').attr('data-value')
+
+
+        }
+
         var picture_file_id = '1';
 
         var post_url = base_url + '/finishOnboarding';
@@ -376,24 +435,75 @@ $(document).ready(function () {
         console.log(JSON.stringify(post_data));
         alert(JSON.stringify(post_data));
 
-         $.post(
-            post_url,
-            post_data,
-            function(response) {
-                if(response['success']){
-                    window.location.href = base_url + '/home';
-                }else{
-                    $this_btn.removeClass('inactive_btn');
-                    alert(JSON.stringify(response));
-                }
-            }, 'json'
-        );
+//         $.post(
+//            post_url,
+//            post_data,
+//            function(response) {
+//                if(response['success']){
+//                    window.location.href = base_url + '/home';
+//                }else{
+//                    $this_btn.removeClass('inactive_btn');
+//                    alert(JSON.stringify(response));
+//                }
+//            }, 'json'
+//        );
 
     });
 
 
+
+
+
     //Time inbetween each verification email request
     var email_time = 15000; //15 seconds between each allowed resend
+
+
+    function change_to_user_follow_panel(){
+        selected_data['classes'] = [];
+        $('.step_3_card_section_detail_card.section_selected').each(function(){
+            var class_id = $(this).attr('data-class_id');
+            selected_data['classes'].push(class_id);
+        });
+
+
+        $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
+            if(json_data['success']){
+                people_list = json_data['users'];
+
+                progress_flag++;
+                progress_check(progress_flag);
+                content_paint(progress_flag);
+                return;
+            }else{
+                alert('Error getting suggested users data');
+            }
+        });
+        console.log(JSON.stringify(selected_data));
+    }
+
+
+
+    function change_to_club_panel(){
+        selected_data['follow_users'] = [];
+        $('.blue_btn.card_4_btn.followed').each(function(){
+            var user_id = $(this).parent().attr('data-user_id');
+            selected_data['follow_users'].push(user_id);
+        });
+
+        $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
+            if(json_data['success']){
+                clubs_list = json_data['clubs'];
+
+                progress_flag++;
+                progress_check(progress_flag);
+                content_paint(progress_flag);
+                return;
+            }else{
+                alert('Error getting suggested users data');
+            }
+        });
+        console.log(JSON.stringify(selected_data));
+    }
 
 
     $(document).delegate(".next_progress", "click", function (evt) {
@@ -433,46 +543,12 @@ $(document).ready(function () {
                 }
             }
             else if(progress_flag == 3){
-                selected_data['classes'] = [];
-                $('.step_3_card_section_detail_card.section_selected').each(function(){
-                    var class_id = $(this).attr('data-class_id');
-                    selected_data['classes'].push(class_id);
-                });
-
-
-                $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
-                    if(json_data['success']){
-                        people_list = json_data['users'];
-
-                        progress_flag++;
-                        progress_check(progress_flag);
-                        content_paint(progress_flag);
-                        return;
-                    }else{
-                        alert('Error getting suggested users data');
-                    }
-                });
-                console.log(JSON.stringify(selected_data));
+                change_to_user_follow_panel();
             }else if(progress_flag == 4){
-                selected_data['follow_users'] = [];
-                $('.blue_btn.card_4_btn.followed').each(function(){
-                    var user_id = $(this).parent().attr('data-user_id');
-                    selected_data['follow_users'].push(user_id);
-                });
 
-                $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
-                    if(json_data['success']){
-                        clubs_list = json_data['clubs'];
+                change_to_club_panel();
 
-                        progress_flag++;
-                        progress_check(progress_flag);
-                        content_paint(progress_flag);
-                        return;
-                    }else{
-                        alert('Error getting suggested users data');
-                    }
-                });
-                console.log(JSON.stringify(selected_data));
+
             }else if(progress_flag == 5){
                 selected_data['clubs'] = [];
                 $('.club_join.green_join_btn.followed').each(function(){
@@ -498,7 +574,14 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".skip_progress", "click", function () {
-        if (progress_flag < 6) {
+
+
+        if(progress_flag == 3){
+            change_to_user_follow_panel();
+        }else if(progress_flag == 4){
+            change_to_club_panel();
+        }
+        else if (progress_flag < 6) {
             progress_flag++;
             progress_check(progress_flag);
             content_paint(progress_flag);
@@ -739,8 +822,70 @@ $(document).ready(function () {
                     }
                 });
             }
+        }else if(progress_flag == 3){
+            var $user_name_input = $(this);
+            var input_string = $user_name_input.val().toLowerCase();
+
+            var $content_canvas = $('.content_canvas');
+
+            if(input_string == ''){
+                $content_canvas.find('div.step_3_card').each(function(){
+                    var $child = $(this);
+                    $child.show();
+                });
+            }else{
+                $content_canvas.find('div.step_3_card').each(function(){
+                    var $child = $(this);
+
+
+                    if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
+
+                        console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
+
+                        $child.show();
+                    }else{
+                        $child.hide();
+                    }
+                });
+            }
+        }else if(progress_flag == 4){
+            var $user_name_input = $(this);
+            var input_string = $user_name_input.val().toLowerCase();
+
+            var $content_canvas = $('.content_canvas');
+
+            if(input_string == ''){
+                $content_canvas.find('div.step_4_card').each(function(){
+                    var $child = $(this);
+                    $child.show();
+                });
+            }else{
+                $content_canvas.find('div.step_4_card').each(function(){
+                    var $child = $(this);
+
+
+                    if($child.attr('data-user_name').toLowerCase().indexOf(input_string) > -1){
+
+                        console.log('user_name: ' + $child.attr('data-user_name') + '    input_string: ' + input_string);
+
+                        $child.show();
+                    }else{
+                        $child.hide();
+                    }
+                });
+            }
         }
     });
+
+
+    $(document).on('click','.item', function(){
+        var $this_item = $(this);
+        //Set this value as the menu selected value
+
+        $this_item.closest('.menu').attr('data-value',$this_item.attr('data-value'));
+
+    });
+
 
 
     $(document).on('keyup','.onboard_textarea_t1', function(){

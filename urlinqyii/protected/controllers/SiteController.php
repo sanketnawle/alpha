@@ -112,35 +112,17 @@ class SiteController extends Controller
 
 
     function actionSendVerificationEmailFunction(){
-
-//        //$to_email, $subject, $message, $from_email, $data
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
             return;
         }
-//
+
         $key = $_POST['key'];
         $to_email = $_POST['to_email'];
         $subject = $_POST['subject'];
         $from_email = $_POST['from_email'];
-
-
-//        $key = 'lkajsd';
-//        $to_email = 'afl294@nyu.edu';
-//        $subject = 'lol';
-//        $from_email = 'team@urlinq.com';
         $message = $_POST['message'];
-//
-//        $mail = new YiiMailer('confirmation', array('key'=>$key));
-//        $mail->setFrom($from_email, 'urlinq team');
-//        $mail->setSubject($subject);
-//        $mail->setTo($to_email);
-//
-//
-//        $mail->SMTPDebug = 1;
-//
-//        return $mail->send();
 
 
         if (ERunActions::runBackground())
@@ -149,20 +131,8 @@ class SiteController extends Controller
 		}
 		else
 		{
-			//this code will be executed immediately
-			//echo 'Time-consuming process has been started'
-			//user->setFlash ...render ... redirect,
+
 		}
-
-
-//        if($mail->send()){
-//            return true;
-//        }else{
-//            $data = array('success'=>false,'error_id'=>6,'error_msg'=>$mail->getError());
-//            $this->renderJSON($data);
-//            return;
-//        }
-
     }
 
 
@@ -287,7 +257,7 @@ class SiteController extends Controller
                 $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
                 $from = 'team@urlinq.com';
 
-                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
                 //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
                 //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
 
@@ -393,7 +363,7 @@ class SiteController extends Controller
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
                         $from = 'team@urlinq.com';
 
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
                         //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
 
 
@@ -751,14 +721,31 @@ class SiteController extends Controller
         $user->gender = $gender;
 
         if($user->user_type == 'a' || $user->user_type == 'p'){
-            if(!isset($_POST['office_hours']) || !isset($_POST['office_location'])){
-                $data = array('success'=>false, 'error_id'=>7, 'error_msg'=>'professor data not set');
-                $this->renderJSON($data);
-                return;
+//            if(!isset($_POST['office_hours']) || !isset($_POST['office_location'])){
+//                $data = array('success'=>false, 'error_id'=>7, 'error_msg'=>'professor data not set');
+//                $this->renderJSON($data);
+//                return;
+//            }
+
+            $office_location = '';
+            $office_hours = '';
+            $research_interests = '';
+            $designation = 'professor';
+
+            if(isset($_POST['office_hours'])){
+                $office_hours = $_POST['office_hours'];
             }
 
-            $office_location = $_POST['office_location'];
-            $office_hours = $_POST['office_hours'];
+            if(isset($_POST['office_location'])){
+                $office_location = $_POST['office_hours'];
+            }
+
+            if(isset($_POST['research_interests'])){
+                $office_location = $_POST['office_hours'];
+            }
+
+//            $office_location = $_POST['office_location'];
+//            $office_hours = $_POST['office_hours'];
 
             $professor_attribute = new ProfessorAttribute;
             $professor_attribute->professor_id = $user->user_id;
