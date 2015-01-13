@@ -112,35 +112,17 @@ class SiteController extends Controller
 
 
     function actionSendVerificationEmailFunction(){
-
-//        //$to_email, $subject, $message, $from_email, $data
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
             return;
         }
-//
+
         $key = $_POST['key'];
         $to_email = $_POST['to_email'];
         $subject = $_POST['subject'];
         $from_email = $_POST['from_email'];
-
-
-//        $key = 'lkajsd';
-//        $to_email = 'afl294@nyu.edu';
-//        $subject = 'lol';
-//        $from_email = 'team@urlinq.com';
         $message = $_POST['message'];
-//
-//        $mail = new YiiMailer('confirmation', array('key'=>$key));
-//        $mail->setFrom($from_email, 'urlinq team');
-//        $mail->setSubject($subject);
-//        $mail->setTo($to_email);
-//
-//
-//        $mail->SMTPDebug = 1;
-//
-//        return $mail->send();
 
 
         if (ERunActions::runBackground())
@@ -149,20 +131,8 @@ class SiteController extends Controller
 		}
 		else
 		{
-			//this code will be executed immediately
-			//echo 'Time-consuming process has been started'
-			//user->setFlash ...render ... redirect,
+
 		}
-
-
-//        if($mail->send()){
-//            return true;
-//        }else{
-//            $data = array('success'=>false,'error_id'=>6,'error_msg'=>$mail->getError());
-//            $this->renderJSON($data);
-//            return;
-//        }
-
     }
 
 
