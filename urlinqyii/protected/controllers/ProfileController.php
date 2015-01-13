@@ -852,23 +852,39 @@ class ProfileController extends Controller
         $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
-        $data['school']=$user->school->school_name;
-        $data['university']=$user->school->university->university_name;
-        $data['department']=$user->department->department_name;
+        if($user->school){
+            $data['school']=$user->school->school_name;
+            if($user->school->university){
+                $data['university']=$user->school->university->university_name;
+            }
+        }
+        if($user->department){
+            $data['department']=$user->department->department_name;
+        }
+
         $data['email']=$user->user_email;
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
-            $data['classes'][$i]['course_name']=$class->course->course_name;
+            if($class->course){
+                $data['classes'][$i]['course_name']=$class->course->course_name;
+                $data['classes'][$i]['description']= $class->course->course_desc;
+            }
+            if($class->department){
+                $data['classes'][$i]['department_name']=$class->department->department_name;
+                $data['classes'][$i]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+            }
             $data['classes'][$i]['section']=$class->section_id;
-            $data['classes'][$i]['department_name']=$class->department->department_name;
-            $data['classes'][$i]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
             $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
-            $data['classes'][$i]['description']= $class->course->course_desc;
+
         }
         foreach($user->groups as $i=>$club){
-            $data['clubs'][$i]['name']=$club->group_name;
-            //$data['clubs'][$i]['picture']=$club->;
+            $data['clubs'][$i]['club_name']=$club->group_name;
+            $data['clubs'][$i]['website']=$club->website;
+            $data['clubs'][$i]['club_picture']= ($club->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
+            $data['clubs'][$i]['description']= $club->group_desc;
+            $data['clubs'][$i]['member_count']= sizeof($club->users);
         }
         if($user->user_type=="s"){
             $data['minors']=array();
@@ -879,13 +895,15 @@ class ProfileController extends Controller
             foreach($user->majors as $i=>$major){
                 $data['majors'][$i]['name']=$major->name;
             }
-            $data['year_name'] = $user->studentAttributes->year_name;
-            $data['year_truncated'] = ($user->studentAttributes->year % 100);
-            $data['grad_year'] = $user->studentAttributes->year;
-        }else if($user->user_type=="p"){
+            if($user->studentAttributes){
+                $data['year_name'] = $user->studentAttributes->year_name;
+                $data['year_truncated'] = ($user->studentAttributes->year % 100);
+                $data['grad_year'] = $user->studentAttributes->year;
+            }
+        }else if($user->user_type=="p" && $user->professorAttribute){
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
-         }
+        }
         if(sizeof($user->userInterests)>0){
             $data['research'] = array();
             foreach($user->userInterests as $i=>$interest){
@@ -899,8 +917,10 @@ class ProfileController extends Controller
             $data['followed'][$i]['professor']=$fuser->user_type == "p";
             $data['followed'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
             $data['followed'][$i]['admin']=$fuser->user_type == "a";
-            $data['followed'][$i]['user_school']=$fuser->school->school_name;
-            $data['followed'][$i]['user_department']=$fuser->department->department_name;
+            if($fuser->school)
+                $data['followed'][$i]['user_school']=$fuser->school->school_name;
+            if($fuser->department)
+                $data['followed'][$i]['user_department']=$fuser->department->department_name;
             $data['followed'][$i]['profile_pic'] = ($fuser->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['followed'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
@@ -911,8 +931,10 @@ class ProfileController extends Controller
             $data['following'][$i]['user_id']=$fuser->user_id;
             $data['following'][$i]['professor']=$fuser->user_type == "p";
             $data['following'][$i]['admin']=$fuser->user_type == "a";
-            $data['following'][$i]['user_school']=$fuser->school->school_name;
-            $data['following'][$i]['user_department']=$fuser->department->department_name;
+            if($fuser->school)
+                $data['following'][$i]['user_school']=$fuser->school->school_name;
+            if($fuser->department)
+                $data['following'][$i]['user_department']=$fuser->department->department_name;
             $data['following'][$i]['profile_pic'] = ($fuser->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
@@ -957,6 +979,8 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
+        //$data['feed']= $this->renderPartial('/partial/feed',array('user'=>$this->get_current_user(), 'feed_url'=>'/profile/'.$user->user_id.'/feed'));
+
         $this->renderJSON($data);
     }
 
@@ -964,13 +988,18 @@ class ProfileController extends Controller
         if(isset($_GET['user'])){
             $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
             $result=array('schools'=>array(),'selected'=>0);
-            $university = $user->school->university;
-            foreach($university->schools as $school){
-                $result['schools'][] = array('id'=>$school->school_id
+            if($user->school){
+                $university = $user->school->university;
+                foreach($university->schools as $school){
+                    $result['schools'][] = array('id'=>$school->school_id
                     ,'name'=>$school->school_name);
+                }
+                $result['selected'] = $user->school_id;
+                $this->renderJSON($result);
             }
-            $result['selected'] = $user->school_id;
-            $this->renderJSON($result);
+            else{
+                $this->renderJSON(array('error','user has no school'));
+            }
         }
     }
 
@@ -982,14 +1011,32 @@ class ProfileController extends Controller
         }
         if(isset($_GET['user'])){
             $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
-            $departments = $user->school->departments;
-            $result['selected'] = $user->department_id;
+            if($user->school){
+                $departments = $user->school->departments;
+                $result['selected'] = $user->department_id;
+            }else{
+                $this->renderJSON(array('error','user has no school'));
+            }
         }
         foreach($departments as $department){
             $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name);
         }
         $this->renderJSON($result);
     }
+    public function actionReturnFeed(){
+        if(isset($_GET['user'])){
+            $user = User::model()->findByPk($_GET['user']);
+            $this->renderPartial('/partial/feed',array('user'=>$this->get_current_user(), 'feed_url'=>'/profile/'.$user->user_id.'/feed'));
+        }
+    }
+    public function  actionReturnFbar(){
+        if(isset($_GET['user'])){
+            $user = User::model()->findByPk($_GET['user']);
+            $this->renderPartial('/partial/question_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'pg_src'=>'profile.html','target_type'=>'user'));
+        }
+
+    }
+
 
 
 
