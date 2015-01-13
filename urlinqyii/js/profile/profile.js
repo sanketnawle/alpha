@@ -377,30 +377,17 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
         success: function(result)
         {
-          /* if(result.year == "success"){
-                if(new_year){
-                    $('.school-info').text($('.school-info').text().replace(/\d{4}/,new_year));
-                }
-            }else if(result.year){
-                alert(result.year);
-            }
-            if(result.year_name == "success"){
-                $('.school-info').text($('.school-info').text().replace(/(Freshman|Sophomore|Junior|Senior|Master|PhD)/,new_year_name));
-            }else if(result.year_name){
-                alert(result.year_name);
-            }
-            if(result.bio && result.bio != "success"){
-                alert(result.bio);
-                $('.info-block textarea').val(bio);
-            }*/
             var any_errors = false;
             if(result.year_name == "success"){
                 $('#level_name').text($('#level_dropdown').val());
+                var match =(new RegExp("at (.+)$")).exec($('#year_info').text());
+                $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
             }else if(result.year_name){
                 alert(result.year_name);
             }
             if(result.year == "success"){
                 $('#year').text($('#year_dropdown').val());
+                $('#name_info').text((new RegExp("([^']+) '")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
             }else if(result.year){
                 alert(result.year);
             }
@@ -476,7 +463,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
 
             }
             if(result.name == "success"){
-                $('#name_info').text($('#name_input').val());
+                $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
             }else if(result.name){
                 alert(result.name);
                 any_errors = true;
@@ -509,6 +496,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
             }
             if(result.hours == "success"){
                 $('#office_hours').text($('#hours_input').val());
+                $('#office_hours_info').text($('#hours_input').val());
             }else if(result.hours){
                 alert(result.hours);
                 any_errors = true;
