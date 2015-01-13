@@ -82,8 +82,9 @@
                     </div>
                 </div>
 
-
-                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>   
+                <div id="right_panel" class = "group_responsiveness">
+                    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>   
+                </div>
             </div>
         </div>
         

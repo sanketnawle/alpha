@@ -130,8 +130,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-
-            RIGHT PANEL GOES HERE
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'course','origin_id'=>'')); ?>   
         </div>
 
         <!--            <div id="div1" style="height: 500px;position:relative;">-->
@@ -141,7 +140,6 @@
         <!--            </div>-->
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
 
         </div>
         <!--        <div id="right_menu_panel">-->
