@@ -303,9 +303,20 @@ class ClassController extends Controller
 
         $class_id = $_POST['id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+
+        $user = User::model()->find('user_id=:id',array(':id'=>$user_id));
         //Check if this user is already a member for this class
         if(!$class_user){
+            $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
 
+            //See if this user is already in a class with the same course id
+            foreach($user->classes as $other_class){
+                if($other_class->course_id == $class->course_id){
+                    $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Already in a class with this course');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
 
 
             //Create new class user

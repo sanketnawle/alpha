@@ -20,8 +20,8 @@ function open_profile(base_url,user_id){
         }else{
             render_profile(base_url,json_profile_data);
         }
-
     });
+
 
 }
 function render_profile(base_url,data){
@@ -29,6 +29,19 @@ function render_profile(base_url,data){
     $.ajax({ url: base_url + '/protected/views/profile/profile.html',
         dataType:'html',
         success: function(html) {
+            $.ajax({ url: base_url + '/profile/returnFeed?user='+data.user_id,
+                dataType:'html',
+                success: function(html) {
+                    $('#profile_panel_1 > #feed_wrapper').append(html);
+                }
+            });
+            $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
+                dataType:'html',
+                success: function(html) {
+                    $('#profile_panel_1 > #fbar_wrapper').append(html);
+                    $('#profile_panel_1').find('#fbar_new').addClass('profile');
+                }
+            });
             numShowcase=data.showcase_size;
             var template = Handlebars.compile(html);
             $('body').append(template(data));
@@ -96,7 +109,7 @@ $(document).on('click','#cancel_showcase_form',function(){
     $('#link_entry').val('');
     $('#title_entry').val('');
     $('#desc_entry').val('');
-    $('#link_entry').prop('disabled',false);
+
 });
 
 
@@ -107,6 +120,7 @@ function render_new_showcase(data){
         success: function(html) {
             var template = Handlebars.compile(html);
             var index=parseInt($('.showcase_item.center').attr('showcase_index'));
+            //increment indices of entries in the center or after the center
             $('.showcase_item').each(function(){
                 $(this).attr('showcase_index',function(i,currValue){
                     currValue = parseInt(currValue);
@@ -116,6 +130,7 @@ function render_new_showcase(data){
             $('.showcase_item.center').removeClass('center');
 
             data.index = index;
+            //add new showcase entry using the returned template
             if($('.showcase_item').length>0){
                 $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
             }else{
@@ -178,7 +193,9 @@ $(document).on('submit','form[id=add_showcase]', function (event) {
                 $('#link_entry').val('');
                 $('#title_entry').val('');
                 $('#desc_entry').val('');
-                $('#link_entry').prop('disabled',false);
+                $('#upfile').val('');
+                upload_file = null;
+
                 render_new_showcase(data);
                 //alert(JSON.stringify(data));
             }else{
@@ -364,30 +381,17 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
         success: function(result)
         {
-          /* if(result.year == "success"){
-                if(new_year){
-                    $('.school-info').text($('.school-info').text().replace(/\d{4}/,new_year));
-                }
-            }else if(result.year){
-                alert(result.year);
-            }
-            if(result.year_name == "success"){
-                $('.school-info').text($('.school-info').text().replace(/(Freshman|Sophomore|Junior|Senior|Master|PhD)/,new_year_name));
-            }else if(result.year_name){
-                alert(result.year_name);
-            }
-            if(result.bio && result.bio != "success"){
-                alert(result.bio);
-                $('.info-block textarea').val(bio);
-            }*/
             var any_errors = false;
             if(result.year_name == "success"){
                 $('#level_name').text($('#level_dropdown').val());
+                var match =(new RegExp("at (.+)$")).exec($('#year_info').text());
+                $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
             }else if(result.year_name){
                 alert(result.year_name);
             }
             if(result.year == "success"){
                 $('#year').text($('#year_dropdown').val());
+                $('#name_info').text((new RegExp("([^']+) '")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
             }else if(result.year){
                 alert(result.year);
             }
@@ -463,7 +467,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
 
             }
             if(result.name == "success"){
-                $('#name_info').text($('#name_input').val());
+                $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
             }else if(result.name){
                 alert(result.name);
                 any_errors = true;
@@ -496,6 +500,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
             }
             if(result.hours == "success"){
                 $('#office_hours').text($('#hours_input').val());
+                $('#office_hours_info').text($('#hours_input').val());
             }else if(result.hours){
                 alert(result.hours);
                 any_errors = true;
@@ -692,4 +697,34 @@ $(document).on('click','.edit_showcase_button.cancel',function(){
     $showcase_item.find('.showcase_edit_field').hide();
     $showcase_item.find('.edit_showcase_button').hide();
     $showcase_item.find('.edit_showcase_button.edit').show();
+});
+$(document).on('keyup','.search_bar',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.members_card_wrapper').each(function(){
+       $(this).hide();
+       if(($(this).attr('data-name')).search(new RegExp(search_text,'i'))>-1){
+           $(this).show();
+       }
+    });
+});
+$(document).on('keyup','.search_bar.users',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.members_card_wrapper').each(function(){
+        $(this).hide();
+        if(($(this).attr('data-name')).match(new RegExp(search_text,'i'))){
+            $(this).show();
+        }
+    });
+});
+$(document).on('keyup','.search_bar.groups',function(){
+    $tab_section = $(this).parent();
+    var search_text = $.trim($(this).val());
+    $tab_section.find('.group_box').each(function(){
+        $(this).hide();
+        if(($(this).attr('data-name')).match(new RegExp(search_text,'i'))){
+            $(this).show();
+        }
+    });
 });

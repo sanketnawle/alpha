@@ -1,5 +1,10 @@
 <?php
 
+
+Yii::import('ext.runactions.components.ERunActions');
+ERunActions::runBackground(true);
+
+
 class SiteController extends Controller
 {
 
@@ -106,28 +111,32 @@ class SiteController extends Controller
 
 
 
-    function send_verification_email($to_email, $subject, $message, $from_email, $data){
+    function actionSendVerificationEmailFunction(){
+        if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
 
-        $mail = new YiiMailer('confirmation', $data);
+        $key = $_POST['key'];
+        $to_email = $_POST['to_email'];
+        $subject = $_POST['subject'];
+        $from_email = $_POST['from_email'];
+        $message = $_POST['message'];
 
-        $mail->setFrom($from_email, 'urlinq team');
-        $mail->setSubject($subject);
-        $mail->setTo($to_email);
 
+        if (ERunActions::runBackground())
+		{
+		    ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+		}
+		else
+		{
 
-        //$mail->SMTPDebug = 1;
-
-        return $mail->send();
-
-//        if($mail->send()){
-//            return true;
-//        }else{
-//            $data = array('success'=>false,'error_id'=>6,'error_msg'=>$mail->getError());
-//            $this->renderJSON($data);
-//            return;
-//        }
-
+		}
     }
+
+
+
 
 
 
@@ -187,6 +196,96 @@ class SiteController extends Controller
 
     }
 
+
+    public function actionResendVerificationEmail(){
+        if(!$this->get_current_user_id()){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user not defined');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        //Check if this user already has a user confirmation
+        $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
+        if($user_confirmation_test){
+            //If the user already has a confirmation, send another email with the same token
+            $user_email = $user->user_email;
+            $subject = 'Urlinq verification email';
+            $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
+            $from = 'team@urlinq.com';
+
+
+            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+            //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
+            //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
+
+
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+//            if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+//                //Function is done
+//                $data = array('success'=>true);
+//                $this->renderJSON($data);
+//                return;
+//            }else{
+//                $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+//                $this->renderJSON($data);
+//                return;
+//            }
+        }else{
+            //If there isnt already a user confirmation,
+            //create a new one
+            include_once 'UniqueTokenGenerator.php';
+            //Create a user_confirmation for this user
+            $user_confirmation = new UserConfirmation;
+            $user_confirmation->key_email = token();
+            $user_confirmation->user_id = $user->user_id;
+
+            if($user_confirmation->save(false)){
+                $user_email = $user->user_email;
+                $subject = 'Urlinq verification email';
+                $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                $from = 'team@urlinq.com';
+
+                ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
+                //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
+
+
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+//                if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+//                    //Function is done
+//                    return;
+//                }else{
+//                    $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+//                    $this->renderJSON($data);
+//                    return;
+//                }
+            }else{
+                $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+
+
+
+    }
+
+
     public function actionSendVerificationEmail(){
         if(!isset($_POST['school_id']) || !isset($_POST['department_id']) || !$this->get_current_user_id()){
             $data = array('success'=>false,'error_id'=>1);
@@ -229,15 +328,26 @@ class SiteController extends Controller
                     $subject = 'Urlinq verification email';
                     $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
                     $from = 'team@urlinq.com';
-                    $email_data = array('key'=>$user_confirmation_test->key_email);
-                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-                        //Function is done
-                        return;
-                    }else{
-                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-                        $this->renderJSON($data);
-                        return;
-                    }
+
+
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                    //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
+                    //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
+
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+
+//                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+//                        //Function is done
+//                        $data = array('success'=>true);
+//                        $this->renderJSON($data);
+//                        return;
+//                    }else{
+//                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+//                        $this->renderJSON($data);
+//                        return;
+//                    }
                 }else{
                     //If there isnt already a user confirmation,
                     //create a new one
@@ -252,15 +362,25 @@ class SiteController extends Controller
                         $subject = 'Urlinq verification email';
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
                         $from = 'team@urlinq.com';
-                        $email_data = array('key'=>$user_confirmation->key_email);
-                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-                            //Function is done
-                            return;
-                        }else{
-                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-                            $this->renderJSON($data);
-                            return;
-                        }
+
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                        //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
+
+
+                        //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
+
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
+//
+//                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+//                            //Function is done
+//                            return;
+//                        }else{
+//                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+//                            $this->renderJSON($data);
+//                            return;
+//                        }
                     }else{
                         $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                         $this->renderJSON($data);
@@ -497,84 +617,105 @@ class SiteController extends Controller
             return;
         }
 
+        if($classes){
+            foreach($classes as $class_id){
+                $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
+                if($class){
 
-        foreach($classes as $class_id){
-            $class = ClassModel::model()->find('class_id=:id',array(':id'=>$class_id));
-            if($class){
+                    //Check if this already exists
+                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id, ':class_id'=>$class_id));
+                    if(!$class_user){
+                        //See if this user is already in a class with the same course id
+                        foreach($user->classes as $other_class){
+                            if($other_class->course_id == $class->course_id){
+                                $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Already in a class with this course');
+                                $this->renderJSON($data);
+                                return;
+                            }
+                        }
 
-                //Check if this already exists
-                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id, ':class_id'=>$class_id));
-                if(!$class_user){
-                    $class_user = new ClassUser;
-                    $class_user->user_id = $user->user_id;
-                    $class_user->class_id = $class_id;
-                    $class_user->color_id = get_random_color();
 
-                    if($user->user_type == 'p' || $user->user_type == 'a'){
-                        $class_user->is_admin = true;
+
+                        $class_user = new ClassUser;
+                        $class_user->user_id = $user->user_id;
+                        $class_user->class_id = $class_id;
+                        $class_user->color_id = get_random_color();
+
+                        if($user->user_type == 'p' || $user->user_type == 'a'){
+                            $class_user->is_admin = true;
+                        }
+
+                        if(!$class_user->save(false)){
+                            $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving class user');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }
-
-                    if(!$class_user->save(false)){
-                        $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving class user');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                }else{
+                    $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'invalid class id');
+                    $this->renderJSON($data);
+                    return;
                 }
-            }else{
-                $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'invalid class id');
-                $this->renderJSON($data);
-                return;
             }
+        }else{
+            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'must register in atleast one class');
+            $this->renderJSON($data);
+            return;
         }
 
 
-        foreach($follow_users as $follow_user_id){
+        if($follow_users){
+            foreach($follow_users as $follow_user_id){
 
-            $user_connection = UserConnection::model()->find('from_user_id=:from_user_id and to_user_id=:to_user_id',array(':from_user_id'=>$user->user_id, ':to_user_id'=>$follow_user_id));
-            if(!$user_connection){
-                $user_connection = new UserConnection;
-                $user_connection->from_user_id = $user->user_id;
-                $user_connection->to_user_id = $follow_user_id;
-            }
-
-            if(!$user_connection->save(false)){
-                $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'error saving user connection');
-                $this->renderJSON($data);
-                return;
-            }
-        }
-
-
-
-        foreach($clubs as $group_id){
-            $group = Group::model()->find('group_id=:id',array(':id'=>$group_id));
-            if($group){
-
-                //Check if this already exists
-                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id, ':group_id'=>$group_id));
-                if(!$group_user){
-                    $group_user = new GroupUser;
-                    $group_user->user_id = $user->user_id;
-                    $group_user->group_id = $group_id;
-                    $group_user->color_id = get_random_color();
-
-                    if($user->user_type == 'p' || $user->user_type == 'a'){
-                        $group_user->is_admin = true;
-                    }
-
-                    if(!$group_user->save(false)){
-                        $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving group user');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                $user_connection = UserConnection::model()->find('from_user_id=:from_user_id and to_user_id=:to_user_id',array(':from_user_id'=>$user->user_id, ':to_user_id'=>$follow_user_id));
+                if(!$user_connection){
+                    $user_connection = new UserConnection;
+                    $user_connection->from_user_id = $user->user_id;
+                    $user_connection->to_user_id = $follow_user_id;
                 }
 
-            }else{
-                $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'invalid group id');
-                $this->renderJSON($data);
-                return;
+                if(!$user_connection->save(false)){
+                    $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'error saving user connection');
+                    $this->renderJSON($data);
+                    return;
+                }
             }
         }
+
+
+
+        if($clubs){
+            foreach($clubs as $group_id){
+                $group = Group::model()->find('group_id=:id',array(':id'=>$group_id));
+                if($group){
+
+                    //Check if this already exists
+                    $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id, ':group_id'=>$group_id));
+                    if(!$group_user){
+                        $group_user = new GroupUser;
+                        $group_user->user_id = $user->user_id;
+                        $group_user->group_id = $group_id;
+                        $group_user->color_id = get_random_color();
+
+                        if($user->user_type == 'p' || $user->user_type == 'a'){
+                            $group_user->is_admin = true;
+                        }
+
+                        if(!$group_user->save(false)){
+                            $data = array('success'=>false, 'error_id'=>5, 'error_msg'=>'Error saving group user');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                    }
+
+                }else{
+                    $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'invalid group id');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+        }
+
 
 
         $user->gender = $gender;
