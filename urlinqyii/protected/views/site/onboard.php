@@ -51,6 +51,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
@@ -164,7 +166,20 @@
 
     <script id="last_panel_template" type="text/x-handlebars-template">
         <div class='step_6_card'>
-            <div class='step_6_card_r0'><img class='card_6_glyph' src='{{base_url}}/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div>
+            <div class='step_6_card_r0'>
+
+                <!--<div class='pt_upload_btn gray_btn'>Upload Profile Picture</div>-->
+
+                <form action="/user/uploadProfileImage" class="dropzone dz-clickable files_upload_bigbox" id="profile_image_upload_form">
+                    <input type='file' class='step_6_upload' style='display:none;'>
+
+                    <!--<input class="upload_files_submit" type="submit" name="submitIT" value="Upload these Files">-->
+
+                    <input id='profile_image_submit' type="submit" name="submitIT" value="Upload this file" style='display:none;'>
+                </form>
+
+
+            </div>
 
 
 
@@ -261,7 +276,7 @@
             <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div>
                 <input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span>
                 <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span>
-            </div>");
+            </div>
 
     </script>
 

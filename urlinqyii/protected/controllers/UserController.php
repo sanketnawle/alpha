@@ -115,6 +115,52 @@ class UserController extends Controller
         return;
     }
 
+    public function actionUploadProfileImage(){
+        if (empty($_FILES)) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user();
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        include_once 'file_upload.php';
+        $local_directory = 'profile_pictures/';
+
+
+        $data = file_upload($_FILES,$local_directory);
+
+
+        if($data['success']){
+            $user->picture_file_id = $data['file_id'];
+            if($user->save(false)){
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>4);
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>3);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+
+
+
+    }
+
 
     public function convertModelToArray($models) {
         if (is_array($models))
