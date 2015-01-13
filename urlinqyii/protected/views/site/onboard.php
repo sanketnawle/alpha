@@ -2,6 +2,7 @@
     <head>
         <script>
             base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
             user_id = '<?php echo Yii::app()->session['user_id']; ?>';
             email = '<?php echo Yii::app()->session['email']; ?>';
             first_name = '<?php echo Yii::app()->session['first_name']; ?>';
@@ -50,6 +51,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
         <!--<script src="js/progressbar.js"></script>-->
@@ -79,7 +81,9 @@
                     </div>
                     <div class="progress_content">
                         <div class="content_inner">
-                            <div class="content_canvas"><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Stern School of Business</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div></div>
+                            <div class="content_canvas">
+                                  <div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div>
+                            </div>
                         </div>
                     </div>
                     <div class="progress_footer">
@@ -93,4 +97,70 @@
             </div>
         </div>
     </body>
+
+    <script id="school_template" type="text/x-handlebars-template">
+
+            <div class="step_0_card school" data-school_id='{{school_id}}' data-school_name='{{school_name}}' style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
+                <div class="card_0_info">
+                    <img class="card_0_glyph" src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
+                    <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1">32 people</div></div>
+                    <div class="green_join_btn"><span>Join</span></div>
+                </div>
+            </div>
+
+    </script>
+
+
+    <script id="school_template2" type="text/x-handlebars-template">
+
+    </script>
+
+<!--    " + cs.toString() + "</span> " + ((cs == 1) ? 'section' : 'sections') +"-->
+
+    <script id="step_3_template" type="text/x-handlebars-template">
+        <div class='step_3_card' id="course_{{course_id}}" data-course_id='{{course_id}}'>
+            <div class='step_3_show'>
+                <img class='card_3_glyph' src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
+                <div class='step_3_line_0'>{{course_name}}</div>
+                <div class='step_3_line_1'>
+                    <div class='step_3_line_1_0'><span></div>
+                    <span class='adot'>&#8226;</span>
+                    <div class='member_glyph'></div>
+                    <div class='step_3_line_1_1'><span>125</span> members</div>
+                </div>
+            </div>
+            <div class='step_3_hide'>
+                <div class='cover_line'>choose your section</div>
+                <div class='step_3_card_section_detail'></div>
+            </div>
+        </div>
+    </script>
+
+
+    <script id="step_3_sub_template" type="text/x-handlebars-template">
+        <div class='step_3_card_section_detail_card' data-class_id='{{class_id}}' id='class_{{class_id}}'>
+            <input type='checkbox' class='section_check' >
+            <div class='section_detail_right'>Thu 10:00-11:30pm, Fri 12:30-01:00pm - Lenhart Schubert</div>
+        </div>
+    </script>
+
+
+
+    <script id="department_template" type="text/x-handlebars-template">
+        <div class='step_0_card department' data-department_id="{{department_id}}" data-department_name="{{department_name}}" style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
+            <div class='card_0_info'>
+                <div class='card_0_text'><div class='card_0_text_0'>{{department_name}}</div>
+                    <div class='card_0_text_1'>32 people</div>
+                </div>
+                <div class='green_join_btn'><span>Join</span></div>
+            </div>
+        </div>
+    </script>
+
+
+
+
+
+
+
 </html>
