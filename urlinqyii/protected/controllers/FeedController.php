@@ -344,7 +344,7 @@ class FeedController extends Controller
 
             elseif($post['post_type'] == 'event'){
                 $post_event = Event::model()->findbypk('event_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['event'] = get_model_associations($post_event, array('tags'));
+                $posts [$i] ['event'] = $posts [$i] ['event'] = $post_event;
 
             }
 
