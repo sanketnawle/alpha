@@ -62,6 +62,7 @@
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                         <div class = "group_name">
+                            <div class = "center_admin"><div class = "department_of">Department of</div></div>
                             <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
                         </div>
                         <div class = "group_right_info group_info_boxes">
