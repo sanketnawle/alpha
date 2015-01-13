@@ -303,8 +303,15 @@ a.info_name{
     text-overflow: ellipsis;
     overflow: hidden;
     width: 80%;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     margin-left: 10px;
+}
+.edit_field.gender{
+    width:10%;
+}
+#bio_input{
+    height:60px;
+    resize: none;
 }
 .user_pic{
     width:160px;
