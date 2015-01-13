@@ -299,6 +299,14 @@
                 </div>
             {{/if}}
 
+            <div class="info_section" id = "bio_section">
+                <div class="info_label" id = "bio_label">
+                    Biography:
+                </div>
+                <div class="info_name" id="bio">{{bio}}</div>
+                <textarea maxlength="240" type="text" class="edit_field" id="bio_input" wrap="hard"></textarea>
+            </div>
+
             <h2 id="account_header" class="headers">Account Information</h2>
             <div class="info_section account" id = "name_section">
                 <div class="info_label" id = "name_label">
@@ -311,6 +319,13 @@
                     School Email:
                 </div>
                 <input type="text" class="edit_field" id="email_input">
+            </div>
+            <div class="info_section account" id = "gender_section">
+                <div class="info_label" id = "gender_label">
+                    Gender:
+                </div>
+                <input id="radio_male" type="radio" name="gender" class="edit_field gender" value="M">Male
+                <input id="radio_female"type="radio" name="gender" class="edit_field gender" value="F">Female
             </div>
         </div>
         <div id = "tab_contents">
