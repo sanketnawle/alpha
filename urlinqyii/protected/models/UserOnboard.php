@@ -90,7 +90,6 @@ class UserOnboard extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('home_search',$this->home_search);
 		$criteria->compare('home_planner',$this->home_planner);

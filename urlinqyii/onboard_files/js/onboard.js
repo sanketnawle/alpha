@@ -21,7 +21,7 @@ $(document).ready(function () {
     var searchbar_hint = ["Search schools", "Search departments", "", "Search classes", "Search people", "Search clubs", ""];
 
     /*the following lists should be retreived from php*/
-    var school_list = ["NYU Stern School of Business", "NYU Polytechnic School of Engineering", "NYU Steinhardt School of Education"];
+    var school_list = [];
 
 
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
     var clubs_list = ["Archery Club", "Kendo Club", "Boxing Club"];
 
 
-    var selected_data = {};
+    var selected_data = {'clubs':[], 'classes':[], 'follow_users':[], 'gender':'','picture_file_id':'1'};
 
 
     init();
@@ -158,6 +158,7 @@ $(document).ready(function () {
     function content_paint(curr) {
         var $canvas = $(".content_canvas");
 
+        $canvas.show();
         $canvas.empty();
 
         $inner = $(".content_inner");
@@ -167,6 +168,12 @@ $(document).ready(function () {
         $inner.removeClass("canvas_adjust");
         $frame.removeClass().addClass("progress_content c" + curr);
 
+
+
+
+        //Clear the search box
+        $('.onboard_textarea_t1').val('');
+
         $inner[0].scrollTop = 0;
 
         $(".canvas_banner").remove();
@@ -174,41 +181,45 @@ $(document).ready(function () {
 
         if (curr == 0) {
             console.log('inside curr = 0');
-            var ns = school_list.length, i = 0;
 
-            function school_repeat(i) {
-                if (i == ns) return;
-                if(progress_flag != 0) return;
-                console.log('REPEATING SCHOOL. CURR = ' + curr);
-                $stepCard = $("<div class='step_0_card y school' data-school_id='" + school_list[i]['school_id'] + "' data-school_name='" + school_list[i]['school_name'] + "' />");
-                $stepCard.html("<div class='card_0_info'>" + "<img class='card_0_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'>" + "<div class='card_0_text'><div class='card_0_text_0'>" + school_list[i]['school_name'] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
-                $canvas.append($stepCard);
-                setTimeout(function () {
-                    $stepCard.removeClass("y");
-                    school_repeat(++i);
-                }, 250);
+
+
+            for(i = 0; i < school_list.length; i++){
+
+                school_list[i]['base_url'] = base_url;
+
+                var source   = $("#school_template").html();
+                var template = Handlebars.compile(source);
+                var generated_html = template(school_list[i]);
+
+                var $stepCard = $(generated_html);
+
+                $canvas.append($stepCard).hide().fadeIn();
             }
-            school_repeat(i);
+
+
         }else if (curr == 1) {
             console.log('inside curr = 1');
 
-            var ns = department_list.length, i = 0;
-            function department_repeat(i) {
-                if (i == ns) return;
-                if(progress_flag != 1) return;
-                console.log('REPEATING DEPARTMENT. CURR = ' + curr);
-                $stepCard = $("<div class='step_0_card y department'data-department_id=" + department_list[i]['department_id'] + "/>");
-                $stepCard.html("<div class='card_0_info'><div class='card_0_text'><div class='card_0_text_0'>" + department_list[i]['department_name'] + "</div><div class='card_0_text_1'>32 people</div></div><div class='green_join_btn'><span>Join</span></div></div>");
-                $canvas.append($stepCard);
-                setTimeout(function () {
-                    $stepCard.removeClass("y");
-                    department_repeat(++i);
-                }, 250);
+
+            for(i = 0; i < department_list.length; i++){
+
+                department_list[i]['base_url'] = base_url;
+
+                var source   = $("#department_template").html();
+                var template = Handlebars.compile(source);
+                var generated_html = template(department_list[i]);
+
+                var $stepCard = $(generated_html);
+
+                $canvas.append($stepCard).hide().fadeIn();
             }
-            department_repeat(i);
+
+
         } else if (curr == 2) {
             $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/defaultGlyph.png'</div>");
         } else if (curr == 3) {
+            $canvas.show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
 
@@ -232,14 +243,30 @@ $(document).ready(function () {
                 var classes = course_list[i]['classes'];
                 var cs = classes.length;
 
-                var id_from_php = course_id_list[i];
-                $tthread.append("<div class='step_3_card' id=" + id_from_php + " data-course_id='" + course_list[i]['course_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0'>" + course_list[i]['course_name'] + "</div><div class='step_3_line_1'><div class='step_3_line_1_0'><span>" + cs.toString() + "</span> " + ((cs == 1) ? 'section' : 'sections') +"</div>  	<span class='adot'>&#8226;</span> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div></div><div class='step_3_hide'><div class='cover_line'>choose your section</div><div class='step_3_card_section_detail'></div></div></div>");
 
-                var $expand = $("#" + id_from_php).find(".step_3_card_section_detail");
+                course_list[i]['class_count'] = cs;
+                course_list[i]['base_url'] = base_url;
+
+                var id_from_php = course_list[i]['course_id'];
+
+                var source   = $("#step_3_template").html();
+                var template = Handlebars.compile(source);
+                var generated_html = template(course_list[i]);
+
+                var $card = $(generated_html);
+
+                $tthread.append($card).hide().fadeIn();
 
 
-                for (var j = 0; j < cs; j++) {
-                    $expand.append("<div class='step_3_card_section_detail_card' data-class_id='" + classes[j]['class_id'] + "' id=" + classes[j]['class_name'] + "><input type='checkbox' class='section_check' ><div class='section_detail_right'>Thu 10:00-11:30pm, Fri 12:30-01:00pm - Lenhart Schubert</div></div>");
+                var $expand = $("#course_" + id_from_php).find(".step_3_card_section_detail");
+
+                var sub_source   = $("#step_3_sub_template").html();
+                for (var j = 0; j < classes.length; j++) {
+                    var sub_template = Handlebars.compile(sub_source);
+                    var sub_generated_html = sub_template(classes[j]);
+
+                    var $sub_card = $(sub_generated_html);
+                    $expand.append($sub_card);
                 }
             }
 
@@ -311,6 +338,10 @@ $(document).ready(function () {
 
 
     $(document).on('click','.last_step_btn',function(e){
+
+        var $this_btn = $(this);
+        $this_btn.addClass('inactive_btn');
+
         e.stopPropagation();
 
         var gender = $('input[name=gender]:checked').val();
@@ -321,6 +352,16 @@ $(document).ready(function () {
         }
 
 
+        if(selected_data["classes"].length == 0){
+            alert('Please select at least one class');
+            return;
+        }
+
+
+
+        if(selected_data['clubs'].length == 0){
+            selected_data['clubs'] = null;
+        }
 
         var picture_file_id = '1';
 
@@ -331,6 +372,10 @@ $(document).ready(function () {
 
         post_data['picture_file_id'] = picture_file_id;
 
+
+        console.log(JSON.stringify(post_data));
+        alert(JSON.stringify(post_data));
+
          $.post(
             post_url,
             post_data,
@@ -338,6 +383,7 @@ $(document).ready(function () {
                 if(response['success']){
                     window.location.href = base_url + '/home';
                 }else{
+                    $this_btn.removeClass('inactive_btn');
                     alert(JSON.stringify(response));
                 }
             }, 'json'
@@ -346,38 +392,65 @@ $(document).ready(function () {
     });
 
 
+    //Time inbetween each verification email request
+    var email_time = 15000; //15 seconds between each allowed resend
+
+
     $(document).delegate(".next_progress", "click", function (evt) {
         evt.stopPropagation();
         evt.preventDefault();
 
 
-
+        var $this_button = $(this);
 
         if (is_active_btn($(this))) {
 
-            $(this).addClass("inactive_btn");
 
 
-            if(progress_flag == 3){
+            if(progress_flag == 2){
+                if(!$this_button.hasClass('inactive_btn')){
+                    $this_button.addClass('inactive_btn');
+
+
+                    var post_url = base_url + '/resendVerificationEmail';
+                    var post_data = {};
+                    //Send another verification email
+                    $.post(
+                        post_url,
+                        post_data,
+                        function(response) {
+                            console.log(JSON.stringify(response));
+                        }, 'json'
+                    );
+
+
+                    //Set can_send to true in email_time milliseconds
+                    setTimeout(function(){
+                        $this_button.removeClass('inactive_btn')
+                    }, email_time);
+                }else{
+                    console.log('cannot send another email yet');
+                }
+            }
+            else if(progress_flag == 3){
                 selected_data['classes'] = [];
                 $('.step_3_card_section_detail_card.section_selected').each(function(){
                     var class_id = $(this).attr('data-class_id');
                     selected_data['classes'].push(class_id);
+                });
 
 
-                    $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
-                        if(json_data['success']){
-                            people_list = json_data['users'];
+                $.getJSON(base_url + '/user/getSuggestedUsers',function(json_data){
+                    if(json_data['success']){
+                        people_list = json_data['users'];
 
-                            progress_flag++;
-                            progress_check(progress_flag);
-                            content_paint(progress_flag);
-                            return;
-                        }else{
-                            alert('Error getting suggested users data');
-                        }
-                    });
-
+                        progress_flag++;
+                        progress_check(progress_flag);
+                        content_paint(progress_flag);
+                        return;
+                    }else{
+                        alert('Error getting suggested users data');
+                    }
                 });
                 console.log(JSON.stringify(selected_data));
             }else if(progress_flag == 4){
@@ -385,21 +458,19 @@ $(document).ready(function () {
                 $('.blue_btn.card_4_btn.followed').each(function(){
                     var user_id = $(this).parent().attr('data-user_id');
                     selected_data['follow_users'].push(user_id);
+                });
 
+                $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
+                    if(json_data['success']){
+                        clubs_list = json_data['clubs'];
 
-                    $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
-                        if(json_data['success']){
-                            clubs_list = json_data['clubs'];
-
-                            progress_flag++;
-                            progress_check(progress_flag);
-                            content_paint(progress_flag);
-                            return;
-                        }else{
-                            alert('Error getting suggested users data');
-                        }
-                    });
-
+                        progress_flag++;
+                        progress_check(progress_flag);
+                        content_paint(progress_flag);
+                        return;
+                    }else{
+                        alert('Error getting suggested users data');
+                    }
                 });
                 console.log(JSON.stringify(selected_data));
             }else if(progress_flag == 5){
@@ -408,20 +479,21 @@ $(document).ready(function () {
                     var user_id = $(this).closest('.step_5_card').attr('data-group_id');
                     selected_data['clubs'].push(user_id);
 
-
-                    progress_flag++;
-                    progress_check(progress_flag);
-                    content_paint(progress_flag);
-                    return;
-
                 });
-                console.log(JSON.stringify(selected_data));
-            }else if (progress_flag < 6) {
+
+
                 progress_flag++;
                 progress_check(progress_flag);
                 content_paint(progress_flag);
                 return;
+                console.log(JSON.stringify(selected_data));
             }
+//            else if (progress_flag < 6) {
+//                progress_flag++;
+//                progress_check(progress_flag);
+//                content_paint(progress_flag);
+//                return;
+//            }
         }
     });
 
@@ -450,7 +522,9 @@ $(document).ready(function () {
         };
     });
 
-    $(document).delegate(".school", "click", function () {
+    $(document).delegate(".school", "click", function (e) {
+        //e.stopPropagation();
+//        e.preventDefault();
         var $self = $(this);
 
         var school_id = $self.attr('data-school_id');
@@ -463,9 +537,10 @@ $(document).ready(function () {
                 $self.removeClass("left");
                 setTimeout(function () {
                     $self.addClass("right");
-                    setTimeout(function () {
-                        $(".next_progress").click();
-                    }, 750);
+                    progress_flag++;
+                    progress_check(progress_flag);
+                    content_paint(progress_flag);
+                    return;
                 }, 250);
 
             }else{
@@ -501,7 +576,11 @@ $(document).ready(function () {
     }
 
 
-    $(document).delegate(".department", "click", function () {
+    $(document).delegate(".department", "click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+
         var $self = $(this);
 
 
@@ -515,17 +594,14 @@ $(document).ready(function () {
             $self.removeClass("left");
             setTimeout(function () {
                 $self.addClass("right");
-                setTimeout(function () {
-                    $(".next_progress").click();
-                }, 750);
+                progress_flag++;
+                progress_check(progress_flag);
+                content_paint(progress_flag);
+                return;
             }, 250);
         }
 
         send_verification_email(run_this);
-
-
-
-
 
     });
 
@@ -639,16 +715,61 @@ $(document).ready(function () {
     $(document).on('keyup','.onboard_textarea_t0', function(){
         if(progress_flag == 0){
             var $school_input = $(this);
-            var input_string = $school_input.val();
+            var input_string = $school_input.val().toLowerCase();
 
             var $content_canvas = $('.content_canvas');
 
-            $content_canvas.children('div').each(function(){
-                var $child = $(this);
-                if($child.attr('data-school_name').indexOf(input_string) < 0){
-                    $child.hide();
-                }
-            });
+            if(input_string == ''){
+                $content_canvas.children('div').each(function(){
+                    var $child = $(this);
+                    $child.show();
+                });
+            }else{
+                $content_canvas.children('div').each(function(){
+                    var $child = $(this);
+
+
+                    if($child.attr('data-school_name').toLowerCase().indexOf(input_string) > -1){
+
+                        console.log('school_name: ' + $child.attr('data-school_name') + '    input_string: ' + input_string);
+
+                        $child.show();
+                    }else{
+                        $child.hide();
+                    }
+                });
+            }
+        }
+    });
+
+
+    $(document).on('keyup','.onboard_textarea_t1', function(){
+        if(progress_flag == 1){
+            var $department_input = $(this);
+            var input_string = $department_input.val().toLowerCase();
+
+            var $content_canvas = $('.content_canvas');
+
+            if(input_string == ''){
+                $content_canvas.children('div').each(function(){
+                    var $child = $(this);
+                    $child.show();
+                });
+            }else{
+                $content_canvas.children('div').each(function(){
+                    var $child = $(this);
+
+
+                    if($child.attr('data-department_name').toLowerCase().indexOf(input_string) > -1){
+
+                        console.log('department_name: ' + $child.attr('data-department_name') + '    input_string: ' + input_string);
+
+                        $child.show();
+                    }else{
+                        $child.hide();
+                    }
+                });
+            }
         }
     });
 

@@ -6,10 +6,9 @@
 #LeftPanel_Holder{
     width: 230px;
 
-    padding-left: 20px;
     padding-top: 15px;
     padding-right: 14px;
-    position: fixed;
+    position: relative;
 }
 
 .LeftPanel_icons{
@@ -56,6 +55,7 @@ a.MyBox_SO.edit_profile:hover{
     margin-left: 0px;
     padding: 10px;  
     border-radius: 5px;
+    padding-left: 24px;
 }
 
 .LeftPanel_Section{
@@ -109,9 +109,8 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 em.SectionHeader_ribbon{
-    height: 11.56px;
-
-    width: 9px;
+    height: 9.56px;
+    width: 7px;
     border-radius: 1px;
     position: relative;
     margin-left: 1px;

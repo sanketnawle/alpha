@@ -36,7 +36,7 @@
         <div id="page">
 
 
-        <div id="main_panel">
+        <div id="main_panel" class = "group_responsiveness">
 
 
             <div id="content_holder">
@@ -50,7 +50,7 @@
 
 
 
-                <div id="content_panel">
+                <div id="content_panel" class = "group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                         <div class = "group_name">
@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        <div id="right_panel">
+        <div id="right_panel" class = "group_responsiveness">
 
             RIGHT PANEL GOES HERE
         </div>

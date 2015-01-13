@@ -86,6 +86,7 @@ body {
 }
 
 .content_canvas {
+    display: none;
     width: 100%;
     height: auto;
 }
@@ -128,16 +129,25 @@ body {
     opacity: 0.9;
 }
 
+
+
+
 .step_0_card {
+    background-repeat: no-repeat !important;
+    background-size: 100% 200% !important;
     border-radius: 5px;
     width: 100%;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    /*box-shadow: inset 0 0 50px rgba(0,0,0,0.5);*/
     height: 117px;
     margin-top: 12px;
     border: 1px solid rgba(255, 255, 255, 0);
     cursor: pointer;
     transition: transform .65s ease-out, opacity .65s ease-in-out;
+
+
+
 }
+
 
 .step_0_card.left {
     opacity: 0;

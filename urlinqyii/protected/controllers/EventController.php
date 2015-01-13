@@ -419,7 +419,7 @@ class EventController extends Controller
 //                end_date: event_end_date,
 //                location: event_location,
 //                event_todo: event_todo,
-//                ll_day: event_all_day
+//                all_day: event_all_day
 
         if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_todo']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
         || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
