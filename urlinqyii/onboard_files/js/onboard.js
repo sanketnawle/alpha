@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function () {
 
 
@@ -346,8 +349,8 @@ $(document).ready(function () {
         }else if (curr == 6) {
 
 
-            //var data = {base_url: base_url, user_type: user_type};
-            var data = {base_url: base_url, user_type: 'p'};
+            var data = {base_url: base_url, user_type: user_type};
+
 
             var source   = $("#last_panel_template").html();
             var template = Handlebars.compile(source);
@@ -377,10 +380,16 @@ $(document).ready(function () {
     }
 
 
+
+
+
+
+
+
     $(document).on('click','.last_step_btn',function(e){
 
         var $this_btn = $(this);
-        $this_btn.addClass('inactive_btn');
+
 
         e.stopPropagation();
 
@@ -403,8 +412,8 @@ $(document).ready(function () {
             selected_data['clubs'] = null;
         }
 
-        user_type = 'p';
 
+        $this_btn.addClass('inactive_btn');
 
         if(user_type == 'a' || user_type == 'p'){
             //Get office hours/location and research interests
@@ -424,6 +433,11 @@ $(document).ready(function () {
 
         var picture_file_id = '1';
 
+
+        var $profile_image_form = $('#profile_image_upload_form');
+
+
+
         var post_url = base_url + '/finishOnboarding';
 
         var post_data = selected_data;
@@ -435,18 +449,43 @@ $(document).ready(function () {
         console.log(JSON.stringify(post_data));
         alert(JSON.stringify(post_data));
 
-//         $.post(
-//            post_url,
-//            post_data,
-//            function(response) {
-//                if(response['success']){
-//                    window.location.href = base_url + '/home';
-//                }else{
-//                    $this_btn.removeClass('inactive_btn');
-//                    alert(JSON.stringify(response));
-//                }
-//            }, 'json'
-//        );
+
+
+        //If an image was dragged in, do this
+        if($profile_image_form.children('div.dz-preview').length){
+            lol.myDropzone.processQueue();
+
+
+             lol.myDropzone.on('success',function(file, response){
+                $profile_image_form.attr('data-file_id', response['file_id']);
+                post_data['picture_file_id'] = response['file_id'];
+                send_finish_onboarding_post_request();
+            });
+
+        }else{
+            send_finish_onboarding_post_request();
+        }
+
+
+
+
+
+
+        function send_finish_onboarding_post_request(){
+             $.post(
+                post_url,
+                post_data,
+                function(response) {
+                    if(response['success']){
+                        window.location.href = base_url + '/home';
+                    }else{
+                        $this_btn.removeClass('inactive_btn');
+                        alert(JSON.stringify(response));
+                    }
+                }, 'json'
+            );
+        }
+
 
     });
 
@@ -505,6 +544,55 @@ $(document).ready(function () {
         console.log(JSON.stringify(selected_data));
     }
 
+    var lol = {};
+    lol.myDropzone = null;
+
+
+    function change_to_last_panel(){
+
+        selected_data['clubs'] = [];
+        $('.club_join.green_join_btn.followed').each(function(){
+            var user_id = $(this).closest('.step_5_card').attr('data-group_id');
+            selected_data['clubs'].push(user_id);
+
+        });
+
+
+        progress_flag++;
+        progress_check(progress_flag);
+        content_paint(progress_flag);
+
+        console.log(JSON.stringify(selected_data));
+
+
+
+        Dropzone.autoDiscover = false;
+
+        lol.myDropzone = new Dropzone('.dropzone', {
+            url: base_url + '/user/uploadProfileImage',
+            autoProcessQueue: false,
+            parallelUploads: 4,
+            maxFilesize: 16,
+            maxFiles: 1,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+            maxfilesexceeded: function(file) {
+                this.removeAllFiles();
+                this.addFile(file);
+            },
+            init: function() {
+                this.on("success", function(file, response) {
+
+                    console.log('FILE NAME');
+                    console.log(response['original_name']);
+
+                    if(response['success']){
+                        alert('success');
+                    }
+
+                });
+            }
+        });
+    }
 
     $(document).delegate(".next_progress", "click", function (evt) {
         evt.stopPropagation();
@@ -550,19 +638,7 @@ $(document).ready(function () {
 
 
             }else if(progress_flag == 5){
-                selected_data['clubs'] = [];
-                $('.club_join.green_join_btn.followed').each(function(){
-                    var user_id = $(this).closest('.step_5_card').attr('data-group_id');
-                    selected_data['clubs'].push(user_id);
-
-                });
-
-
-                progress_flag++;
-                progress_check(progress_flag);
-                content_paint(progress_flag);
-                return;
-                console.log(JSON.stringify(selected_data));
+                change_to_last_panel();
             }
 //            else if (progress_flag < 6) {
 //                progress_flag++;
@@ -580,6 +656,8 @@ $(document).ready(function () {
             change_to_user_follow_panel();
         }else if(progress_flag == 4){
             change_to_club_panel();
+        }else if(progress_flag == 5){
+            change_to_last_panel();
         }
         else if (progress_flag < 6) {
             progress_flag++;
