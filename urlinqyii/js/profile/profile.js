@@ -109,7 +109,7 @@ $(document).on('click','#cancel_showcase_form',function(){
     $('#link_entry').val('');
     $('#title_entry').val('');
     $('#desc_entry').val('');
-    $('#link_entry').prop('disabled',false);
+
 });
 
 
@@ -120,6 +120,7 @@ function render_new_showcase(data){
         success: function(html) {
             var template = Handlebars.compile(html);
             var index=parseInt($('.showcase_item.center').attr('showcase_index'));
+            //increment indices of entries in the center or after the center
             $('.showcase_item').each(function(){
                 $(this).attr('showcase_index',function(i,currValue){
                     currValue = parseInt(currValue);
@@ -129,6 +130,7 @@ function render_new_showcase(data){
             $('.showcase_item.center').removeClass('center');
 
             data.index = index;
+            //add new showcase entry using the returned template
             if($('.showcase_item').length>0){
                 $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
             }else{
@@ -191,7 +193,9 @@ $(document).on('submit','form[id=add_showcase]', function (event) {
                 $('#link_entry').val('');
                 $('#title_entry').val('');
                 $('#desc_entry').val('');
-                $('#link_entry').prop('disabled',false);
+                $('#upfile').val('');
+                upload_file = null;
+
                 render_new_showcase(data);
                 //alert(JSON.stringify(data));
             }else{
