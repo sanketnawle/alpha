@@ -39,12 +39,12 @@
     <div id="page">
 
 
-    <div id="main_panel">
+    <div id="main_panel" class = "group_responsiveness">
 
 
     <div id="content_holder">
 
-    <div id="left_panel">
+    <div id="left_panel" class = "group_responsiveness">
         <!--                        <section class='leftbar_bag'>-->
         <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
         <!--                        </section>-->
@@ -53,7 +53,7 @@
 
 
 
-    <div id="content_panel">
+    <div id="content_panel" class = "group_responsiveness">
     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
 
@@ -317,9 +317,8 @@
     </div>
     </div>
 
-    <div id="right_panel">
-
-        RIGHT PANEL GOES HERE
+    <div id="right_panel" class = "group_responsiveness">
+        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
     </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->
@@ -329,7 +328,6 @@
     <!--            </div>-->
 
     </div>
-    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
 
     </div>
     <!--        <div id="right_menu_panel">-->

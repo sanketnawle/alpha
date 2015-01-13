@@ -46,12 +46,12 @@
         <div id="page">
 
 
-            <div id="main_panel">
+            <div id="main_panel" class = "group_responsiveness">
 
 
                 <div id="content_holder">
 
-                    <div id="left_panel">
+                    <div id="left_panel" class = "group_responsiveness">
 
                         <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
 
@@ -60,7 +60,7 @@
 
 
 
-                    <div id="content_panel">
+                    <div id="content_panel" class = "group_responsiveness">
                         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
                             <div class = "group_name">
@@ -639,9 +639,9 @@
 
                 </div>
             </div>
-
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
-
+            <div id="right_panel" class = "group_responsiveness">
+                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
+            </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->
     <!--                <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">-->
@@ -650,7 +650,6 @@
     <!--            </div>-->
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>
 
     </div>
 <!--        <div id="right_menu_panel">-->
