@@ -971,3 +971,13 @@ input:focus:-moz-placeholder {
 .progress_content.c4 .content_inner {
     padding: 10px;
 }
+
+
+
+
+#profile_image_upload_form {
+    width: 200px;
+    height: 100px;
+
+    background-color: grey;
+}

@@ -494,6 +494,14 @@ class ProfileController extends Controller
                 $new_data['bio'] = $user->getErrors();
             }
         }
+        if(isset($_POST['gender'])){
+            $user->gender = $_POST['gender'];
+            if($user->save()){
+                $new_data['gender'] = "success";
+            }else{
+                $new_data['gender'] = $user->getErrors();
+            }
+        }
         if(isset($_POST['name'])){
             $name = explode(' ',$_POST['name']);
             if(sizeof($name) < 2){
@@ -852,6 +860,8 @@ class ProfileController extends Controller
         $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
+        $data['bio']=$user->user_bio;
+        $data['gender']=$user->gender;
         if($user->school){
             $data['school']=$user->school->school_name;
             if($user->school->university){

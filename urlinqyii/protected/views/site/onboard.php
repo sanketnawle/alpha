@@ -51,6 +51,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
@@ -118,7 +120,7 @@
 <!--    " + cs.toString() + "</span> " + ((cs == 1) ? 'section' : 'sections') +"-->
 
     <script id="step_3_template" type="text/x-handlebars-template">
-        <div class='step_3_card' id="course_{{course_id}}" data-course_id='{{course_id}}'>
+        <div class='step_3_card' id="course_{{course_id}}" data-course_id='{{course_id}}' data-course_name='{{course_name}}'>
             <div class='step_3_show'>
                 <img class='card_3_glyph' src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
                 <div class='step_3_line_0'>{{course_name}}</div>
@@ -159,6 +161,124 @@
 
 
 
+
+
+
+    <script id="last_panel_template" type="text/x-handlebars-template">
+        <div class='step_6_card'>
+            <div class='step_6_card_r0'>
+
+                <!--<div class='pt_upload_btn gray_btn'>Upload Profile Picture</div>-->
+
+                <form action="/user/uploadProfileImage" class="dropzone dz-clickable files_upload_bigbox" id="profile_image_upload_form">
+                    <input type='file' class='step_6_upload' style='display:none;'>
+
+                    <!--<input class="upload_files_submit" type="submit" name="submitIT" value="Upload these Files">-->
+
+                    <input id='profile_image_submit' type="submit" name="submitIT" value="Upload this file" style='display:none;'>
+                </form>
+
+
+            </div>
+
+
+
+
+
+            {{#ifCond user_type '==' 'a'}}
+                <div class='step_6_card_r1'>
+                    <div class='step_6_card_r1_txt'>Faculty Type</div>
+                    <div class='ui dropdown step_6_card_r1_choice'>
+                        <div class='text'>Professor</div>
+                        <i class='dropdown icon'></i>
+                        <div class='menu admin_type_menu'>
+                            <div class='item' data-value='p'>Professor</div>
+                            <div class='item' data-value='a'>Administrator</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='step_6_card_r2'>
+                    <div class='step_6_card_r2_txt'>Office Location</div>
+                    <input type='text' class='ol onboard_textarea_t0'/>
+                </div>
+
+
+                <div class='step_6_card_r3'>
+                    <div class='step_6_card_r3_txt'>Research Interests</div>
+                    <input type='text' class='as onboard_textarea_t0'/>
+                </div>
+
+            {{/ifCond}}
+
+            {{#ifCond user_type '==' 'p'}}
+                <div class='step_6_card_r1'>
+                    <div class='step_6_card_r1_txt'>Faculty Type</div>
+                    <div class='ui dropdown step_6_card_r1_choice'>
+                        <div class='text'>Professor</div>
+                        <i class='dropdown icon'></i>
+                        <div class='menu' id='admin_type_menu'>
+                            <div class='item' data-value='p'>Professor</div>
+                            <div class='item' data-value='a'>Administrator</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class='step_6_card_r2'>
+                    <div class='step_6_card_r2_txt'>Office Location</div>
+                    <input type='text' id='office_location_input' class='ol onboard_textarea_t0'/>
+                </div>
+
+                <div class='step_6_card_r2'>
+                    <div class='step_6_card_r2_txt'>Office hours</div>
+                    <input type='text' id='office_hours_input' class='ol onboard_textarea_t0' placeholder="eg: 4pm - 6pm Mon, Wed"/>
+                </div>
+
+
+                <div class='step_6_card_r3'>
+                    <div class='step_6_card_r3_txt'>Research Interests</div>
+                    <input type='text' id='research_interests_input' class='as onboard_textarea_t0'/>
+                </div>
+            {{/ifCond}}
+
+
+            {{#ifCond user_type '==' 's'}}
+                <div class='step_6_card_r1'>
+                    <div class='step_6_card_r1_txt'>Graduation date</div>
+
+                    <div class='ui dropdown step_6_card_r1_choice'>
+                        <div class='text'>2015</div>
+                        <i class='dropdown icon'></i>
+                        <div class='menu' id='graduation_date_menu' data-value='2015'>
+                            <div class='item' data-value='2015'>2015</div>
+                            <div class='item' data-value='2016'>2016</div>
+                            <div class='item' data-value='2017'>2017</div>
+                            <div class='item' data-value='2018'>2018</div>
+                        </div>
+                    </div>
+                </div>
+            {{/ifCond}}
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div>
+                <input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span>
+                <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span>
+            </div>
+
+    </script>
 
 
 

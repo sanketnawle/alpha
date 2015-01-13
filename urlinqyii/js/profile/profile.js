@@ -55,6 +55,11 @@ function render_profile(base_url,data){
                 $('#research_section').hide();
             }
 
+            if(data.gender=="M"){
+                $('#radio_male').prop('checked',true);
+            }else if(data.gender=="F"){
+                $('#radio_female').prop('checked',true);
+            }
             $('#name_input').val(data.firstname+" "+data.lastname);
             $('#email_input').val(data.email);
         }
@@ -307,6 +312,8 @@ $(document).on('click','#edit_profile_button.not_editing',function(){
         $('.edit_field.research:eq('+i+')').val($(this).text());
     });
 
+    //bio
+    $('#bio_input').val($('#bio').text());
     $('.info_section.account').show();
 
     //office hours and location
@@ -329,8 +336,12 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
     data.append('name',$('#name_input').val());
     data.append('department',$('#department_dropdown').val());
     data.append('email',$('#email_input').val());
-    data.append('year',$('#year_dropdown').val());
-    data.append('year_name',$('#level_dropdown').val());
+    data.append('bio',$('#bio_input').val());
+    data.append('gender',$('.edit_field.gender:checked').val());
+    if($('#year_section').length){
+        data.append('year',$('#year_dropdown').val());
+        data.append('year_name',$('#level_dropdown').val());
+    }
     if($('#office_section').length){
         data.append('location',$('#office_input').val());
         data.append('hours',$('#hours_input').val());
@@ -394,6 +405,14 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
                 $('#name_info').text((new RegExp("([^']+) '")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
             }else if(result.year){
                 alert(result.year);
+            }
+            if(result.bio == "success"){
+                $('#bio').text($('#bio_input').val());
+            }else if(result.bio){
+                alert(result.bio);
+            }
+            if(result.gender && result.gender != "success"){
+                alert(result.gender);
             }
             if(!any_major){
                 alert('why');
@@ -467,7 +486,11 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
 
             }
             if(result.name == "success"){
-                $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
+                if($('#office_section').length){
+                    $('#name_info').text("Professor "+$('#name_input').val());
+                }else{
+                    $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
+                }
             }else if(result.name){
                 alert(result.name);
                 any_errors = true;
