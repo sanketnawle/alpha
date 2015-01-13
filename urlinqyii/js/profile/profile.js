@@ -1,30 +1,33 @@
 
 $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $(this).attr('user_id'),$(this).text());
-
+    open_profile(base_url, $(this).attr('user_id'),$(this).hasClass('edit_profile'));
 });
 $(document).on('click', '.close_modal', function(){
     $('#profile_wrapper').hide();
     $('#profile_background_overlay').hide();
 });
-function open_profile(base_url,user_id){
+function open_profile(base_url,user_id,edit_mode){
     //  var numShowcase;
     $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
         if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
             $('#profile_wrapper').show();
             $('#profile_background_overlay').show();
+            if(edit_mode==true){
+                $('#edit_profile_button.not_editing').click();
+            }
         }else if($('#profile_wrapper').length){
             $('#profile_wrapper').remove();
             $('#profile_background_overlay').remove();
-            render_profile(base_url,json_profile_data);
+            render_profile(base_url,json_profile_data,edit_mode);
+
         }else{
-            render_profile(base_url,json_profile_data);
+            render_profile(base_url,json_profile_data,edit_mode);
         }
     });
 
 
 }
-function render_profile(base_url,data){
+function render_profile(base_url,data,edit_mode){
 
     $.ajax({ url: base_url + '/protected/views/profile/profile.html',
         dataType:'html',
@@ -62,6 +65,11 @@ function render_profile(base_url,data){
             }
             $('#name_input').val(data.firstname+" "+data.lastname);
             $('#email_input').val(data.email);
+            if(edit_mode==true){
+
+                    $('#edit_profile_button.not_editing').click();
+
+            }
         }
     });
 }
