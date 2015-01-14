@@ -506,6 +506,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
             if(result.school == "success"){
                 $('#school_name').text(
                     $('#school_dropdown > option[value='+$('#school_dropdown').val()+']').text());
+                $('#school_name').attr('href',base_url+'/school/'+$('#school_dropdown').val());
             }
             else if(result.school){
                 alert(result.school);
@@ -514,6 +515,7 @@ $(document).on('click','#edit_profile_button.editing',function(){  //submit chan
             if(result.department == "success"){
                 $('#department_name').text(
                     $('#department_dropdown > option[value='+$('#department_dropdown').val()+']').text());
+                $('#department_name').attr('href',base_url+'/department/'+$('#department_dropdown').val());
             }
             else if(result.department){
                 alert(result.department);

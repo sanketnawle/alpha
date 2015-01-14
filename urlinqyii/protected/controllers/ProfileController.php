@@ -864,12 +864,14 @@ class ProfileController extends Controller
         $data['gender']=$user->gender;
         if($user->school){
             $data['school']=$user->school->school_name;
+            $data['school_id']=$user->school->school_id;
             if($user->school->university){
                 $data['university']=$user->school->university->university_name;
             }
         }
         if($user->department){
             $data['department']=$user->department->department_name;
+            $data['department_id']=$user->department->department_id;
         }
 
         $data['email']=$user->user_email;
