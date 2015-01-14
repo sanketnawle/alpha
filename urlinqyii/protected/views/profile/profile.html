@@ -169,7 +169,7 @@
             <div class="profile_tab classes" data-panel_id="2">
                 <div class="profile_tab_content">
 
-                    <div class="profile_tab_text">Classes</div>
+                    <div class="profile_tab_text">Classes <span class="profile_tab_amount">{{num_classes}}</span></div>
                 </div>
 
             </div>
@@ -177,7 +177,7 @@
             <div class="profile_tab clubs" data-panel_id="3">
                 <div class="profile_tab_content">
 
-                    <div class="profile_tab_text">Clubs</div>
+                    <div class="profile_tab_text">Clubs <span class="profile_tab_amount">{{num_clubs}}</span></div>
                 </div>
 
             </div>
@@ -185,7 +185,8 @@
             <div class="profile_tab Followers" data-panel_id="4">
                 <div class="profile_tab_content">
 
-                    <div class="profile_tab_text">Followers</div>
+                    <div class="profile_tab_text">Followers <span class="profile_tab_amount">{{num_followers}}</span></div>
+
                 </div>
 
             </div>
@@ -193,7 +194,7 @@
             <div class="profile_tab Following" data-panel_id="5">
                 <div class="profile_tab_content">
 
-                    <div class="profile_tab_text">Following</div>
+                    <div class="profile_tab_text">Following <span class="profile_tab_amount">{{num_following}}</span></div>
                 </div>
 
             </div>
@@ -387,9 +388,9 @@
 
             <div class="profile_panel" id="profile_panel_4"> <!-- followers -->
                 <input id="followers_search_bar" class="search_bar users" placeholder="Search {{firstname}}'s followers">
-                {{#if following}}
+                {{#if followers}}
                 <div class="user_wrapper">
-                    {{#each following}}
+                    {{#each followers}}
                     <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                         <div class = "members_card admin normal_size">
                             <div class = "members_card_img" style="background-image: url({{profile_pic}});">
@@ -431,9 +432,9 @@
             </div>
             <div class="profile_panel" id="profile_panel_5"> <!-- following -->
                 <input id="following_search_bar" class="search_bar users" placeholder="Search users {{firstname}} follows">
-                {{#if followed}}
+                {{#if following}}
                 <div class="user_wrapper">
-                    {{#each followed}}
+                    {{#each following}}
                     <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                         <div class = "members_card admin normal_size">
                             <div class = "members_card_img" style="background-image: url({{profile_pic}});">

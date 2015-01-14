@@ -386,6 +386,12 @@ div.profile_tab div.profile_tab_content{
     text-shadow: none!important;
     font-family: "Avenir", Arial, sans-serif;
 }
+span.profile_tab_amount{
+    color: black;
+    font-size: 15px;
+    left: 5px;
+    position: relative;
+}
 
 
 
