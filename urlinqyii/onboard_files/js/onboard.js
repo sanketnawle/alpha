@@ -223,7 +223,7 @@ $(document).ready(function () {
         $inner[0].scrollTop = 0;
 
 
-
+         $('.skip_progress').show();
          $(".canvas_banner").remove();
 
         console.log("CURR " + curr.toString());
@@ -246,6 +246,8 @@ $(document).ready(function () {
                 $canvas.append($stepCard).hide().fadeIn();
             }
 
+            $('.skip_progress').hide();
+
 
         }else if (curr == 1) {
             console.log('inside curr = 1');
@@ -264,13 +266,22 @@ $(document).ready(function () {
                 $canvas.append($stepCard).hide().fadeIn();
             }
 
+            $('.skip_progress').hide();
+
 
         } else if (curr == 2) {
+
+
             $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/defaultGlyph.png'</div>");
+
+            $('.skip_progress').hide();
         } else if (curr == 3) {
             $canvas.show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
+
+            //hide skp button
+            $('.skip_progress').hide();
 
 
             $canvas.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[progress_flag] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
@@ -523,7 +534,7 @@ $(document).ready(function () {
 
 
         console.log(JSON.stringify(post_data));
-        alert(JSON.stringify(post_data));
+        //alert(JSON.stringify(post_data));
 
 
 
@@ -664,7 +675,7 @@ $(document).ready(function () {
                     console.log(response['original_name']);
 
                     if(response['success']){
-                        alert('success');
+                        //alert('success');
                     }
 
                 });
@@ -796,7 +807,7 @@ $(document).ready(function () {
                         console.log("error calling payload function");
                     }
 
-                    alert(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
                 }else{
                     alert(JSON.stringify(response));
                 }
@@ -957,9 +968,22 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".follow_all_btn", "click", function () {
+
+
+
         $(".card_4_btn").removeClass("followed");
         $(".card_4_btn").addClass("followed");
         $(".card_4_btn").find("span").text("Following");
+
+
+
+
+        //Loop thru all the card 4 buttons and get the user id from the parent
+        $(".card_4_btn").each(function(){
+            selected_data['follow_users'].push($(this).closest('.step_4_card').attr('data-user_id'));
+        });
+
+        $('.next_progress').removeClass('inactive_btn');
     });
 
     $(document).delegate(".club_join", "click", function () {
