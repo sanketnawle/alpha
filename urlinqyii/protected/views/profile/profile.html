@@ -166,7 +166,7 @@
                     {{else}} {{firstname}} {{lastname}} {{year_truncated}}{{/if}}</div>
                 {{#if professor}}
 
-                <div id="office_hours_info"><span class = "office_hours_label"></span>{{office_hours}}</div>
+                <div id="office_hours_info"><span class = "office_hours_label"></span> {{office_hours}}</div>
                 {{else}}
                     {{#if year_name}}
                     <div id="year_info">{{year_name}} at {{school}}</div>
@@ -224,14 +224,14 @@
                     <div class="info_label" id = "school_label">
                         School:
                     </div>
-                    <a href="#" class="info_name" id="school_name">{{school}}</a>
+                    <a href="{{base_url}}/school/{{school_id}}" class="info_name" id="school_name">{{school}}</a>
                     <select class="edit_field" id="school_dropdown"></select>
                 </div>
                 <div class="info_section" id = "department_section">
                     <div class="info_label" id = "department_label">
                         Department:
                     </div>
-                    <a href="#" class="info_name" id="department_name">{{department}}</a>
+                    <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}}</a>
                     <select class="edit_field" id="department_dropdown"></select>
                 </div>
                 <div class="info_section" id = "research_section">
