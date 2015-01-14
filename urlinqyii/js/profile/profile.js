@@ -5,10 +5,18 @@ $(document).ready(function() {
     $(document).on('click', '.close_modal', function(){
         $('#profile_wrapper').addClass("animated bounceInUp");
         $('#profile_background_overlay').fadeOut(300);
+        $("#page").removeClass("profile_stop_scroll");
+        $("body").removeClass("profile_stop_scroll");
+        $("body#body_home").removeClass("profile_stop_scroll");
     });
     function open_profile(base_url,user_id,edit_mode){
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
+           
+            $("#page").addClass("profile_stop_scroll");
+            $("body").addClass("profile_stop_scroll");
+            $("body#body_home").addClass("profile_stop_scroll");
+
             if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
                 $('#profile_wrapper').show();
                 $('#profile_background_overlay').fadeIn(300);
