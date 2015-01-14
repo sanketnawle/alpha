@@ -48,7 +48,11 @@ class DepartmentController extends Controller
             return;
         }
 
-        $department_data = $this->get_model_associations($department,array('courses'=>array('classes'=>array('pictureFile'),'pictureFile'=>array())));
+        $department_data = $this->get_model_associations($department,array('courses'=>array('classes'=>array('pictureFile','professor'),'pictureFile'=>array(), 'department'=>array())));
+
+        //Loop through the courses and get the member count
+
+
         $data = array('success'=>true, 'courses'=> $department_data['courses']);
         $this->renderJSON($data);
         return;

@@ -477,6 +477,9 @@ $(document).ready(function() {
 
     $(document).delegate('.fbar_buttonwrapper', "click", function () { 
         var $button_selected = $(this);
+        var $fbar_new = $("#fbar_new");
+
+        $fbar_new.addClass("fbar_shadow");
 
 
         
@@ -649,7 +652,9 @@ $(document).ready(function() {
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
-        
+        var $fbar_new = $("#fbar_new");
+
+        $fbar_new.removeClass("fbar_shadow");
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){

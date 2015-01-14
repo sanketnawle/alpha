@@ -88,6 +88,37 @@ class UserController extends Controller
     }
 
 
+
+    //Get the classes which this user is a professor for
+    //returns error if user is not a professor
+    public function actionGetClassesProfessor(){
+        $user = $this->get_current_user();
+        if(!$user){
+            $data = array('success'=>false, 'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+        if($user->user_type != 'p'){
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user is not a professor');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $classes = ClassModel::model()->findAll('professor_id=:id', array(':id'=>$user->user_id));
+
+        for($i = 0;$i < count($classes); $i++){
+            $classes[$i] = $this->get_model_associations($classes[$i],array('pictureFile'=>array(), 'course'=>array('pictureFile'), 'department'=>array('pictureFile')));
+        }
+
+        $data = array('success'=>true,'classes'=>$classes);
+        $this->renderJSON($data);
+        return;
+
+
+    }
+
     //Returns people this user should follow
     public function actionGetSuggestedUsers(){
 

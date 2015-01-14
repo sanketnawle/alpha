@@ -24,6 +24,8 @@ $(document).ready(function () {
                 return (v1 && v2) ? options.fn(this) : options.inverse(this);
             case '||':
                 return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
             default:
                 return options.inverse(this);
         }
@@ -71,7 +73,7 @@ $(document).ready(function () {
 
     var selected_data = {'clubs':[], 'classes':[], 'follow_users':[], 'gender':'','picture_file_id':'1'};
 
-
+    var professor_classes = [];
     init();
 
 
@@ -79,17 +81,31 @@ $(document).ready(function () {
 
         if(progress_flag == 3){
 
-            //Load the course/class data before initializing
-            $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
-                if(json_data['success']){
-                    course_list = json_data['courses'];
-                    start_onboarding();
-                }else{
-                    alert('Error getting school data');
-                }
-            });
 
-        }else{
+//            var $canvas = $('.progress_content');
+            get_course_data();
+
+
+
+
+            function get_course_data(){
+                //Load the course/class data before initializing
+                $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
+                    if(json_data['success']){
+                        course_list = json_data['courses'];
+                        start_onboarding();
+                    }else{
+                        alert('Error getting school data');
+                    }
+                });
+            }
+
+
+        }else if(progress_flag == 2){
+            //If the flag starts at 2, send a verification email
+            send_verification_email();
+        }
+        else{
             //Get university id based on email function call will be here in the future
             //When there are multiple univs
             var university_id = '1';
@@ -206,7 +222,10 @@ $(document).ready(function () {
 
         $inner[0].scrollTop = 0;
 
-        $(".canvas_banner").remove();
+
+
+         $(".canvas_banner").remove();
+
         console.log("CURR " + curr.toString());
 
         if (curr == 0) {
@@ -253,7 +272,45 @@ $(document).ready(function () {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
 
-            $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
+
+            $canvas.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[progress_flag] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
+
+
+
+            //If this user is a professor, check to see if we have any classes for them
+            if(user_type == 'p'){
+                $.getJSON(base_url + '/user/getClassesProfessor', function(json_data){
+                    if(json_data['success']){
+                        professor_classes = json_data['classes'];
+
+
+                        for(var i = 0; i < professor_classes.length; i++){
+
+                            professor_classes[i]['base_url'] = base_url;
+
+                            var source   = $("#professor_class_template").html();
+                            var template = Handlebars.compile(source);
+                            var generated_html = template(professor_classes[i]);
+
+                            var $professor_class = $(generated_html);
+
+//                            alert(generated_html);
+
+                            $canvas.prepend($professor_class);
+                        }
+
+                        if(professor_classes.length != 0){
+                            $canvas.prepend($("<div id='professor_classes_label'>According to our records, you teach these classes: </div>"));
+                        }else{
+                            //$canvas.prepend($("<div id='professor_classes_label'></div>"));
+                        }
+
+                    }else{
+                        alert('Error getting school data');
+                    }
+                });
+            }
+
 
 
             $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
@@ -346,6 +403,11 @@ $(document).ready(function () {
                 $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
             }
 
+
+            if(clubs_list.length == 0){
+                $('.next_progress').removeClass('inactive_btn');
+            }
+
         }else if (curr == 6) {
 
 
@@ -402,8 +464,16 @@ $(document).ready(function () {
 
 
         if(selected_data["classes"].length == 0){
-            alert('Please select at least one class');
-            return;
+            if(user_type == 'p'){
+                if(professor_classes.length == 0){
+                    alert('Please select at least one class');
+                }else{
+                    selected_data['classes'] = null;
+                }
+            }else if(user_type == 's'){
+                alert('Please select at least one class');
+                return;
+            }
         }
 
 
@@ -411,6 +481,12 @@ $(document).ready(function () {
         if(selected_data['clubs'].length == 0){
             selected_data['clubs'] = null;
         }
+
+        if(selected_data['follow_users'].length == 0){
+            selected_data['follow_users'] = null;
+        }
+
+
 
 
         $this_btn.addClass('inactive_btn');
@@ -459,6 +535,8 @@ $(document).ready(function () {
              lol.myDropzone.on('success',function(file, response){
                 $profile_image_form.attr('data-file_id', response['file_id']);
                 post_data['picture_file_id'] = response['file_id'];
+
+
                 send_finish_onboarding_post_request();
             });
 
@@ -594,6 +672,10 @@ $(document).ready(function () {
         });
     }
 
+
+
+
+
     $(document).delegate(".next_progress", "click", function (evt) {
         evt.stopPropagation();
         evt.preventDefault();
@@ -602,24 +684,10 @@ $(document).ready(function () {
         var $this_button = $(this);
 
         if (is_active_btn($(this))) {
-
-
-
             if(progress_flag == 2){
                 if(!$this_button.hasClass('inactive_btn')){
                     $this_button.addClass('inactive_btn');
-
-
-                    var post_url = base_url + '/resendVerificationEmail';
-                    var post_data = {};
-                    //Send another verification email
-                    $.post(
-                        post_url,
-                        post_data,
-                        function(response) {
-                            console.log(JSON.stringify(response));
-                        }, 'json'
-                    );
+                    send_verification_email();
 
 
                     //Set can_send to true in email_time milliseconds
@@ -767,6 +835,51 @@ $(document).ready(function () {
     });
 
 
+
+
+    $(document).on('click','.section_check', function(e){
+
+        e.stopPropagation();
+
+
+        console.log('SECTION CHECK CLICK');
+        var $this_section_check = $(this);
+
+
+        if(user_type == 'p' && $this_section_check.closest('.step_3_card_section_detail_card').attr('data-professor_id') != ''){
+
+            $this_section_check.prop('checked', false);
+            $this_section_check.parent().removeClass('section_selected');
+
+
+            alert('There is already a professor for this class');
+            return;
+        }
+
+        //since the checkbox automatically checks before this function gets called
+        //, check if its NOT checked
+        if(!$this_section_check.prop("checked")){
+            $this_section_check.prop('checked', false);
+            $this_section_check.parent().removeClass('section_selected');
+            return;
+        }
+
+
+        var $step_3_card = $this_section_check.closest('.step_3_card');
+
+        //Go through all the other checkboxes and uncheck them
+        $step_3_card.find('.section_check').each(function(){
+            $(this).prop('checked', false);
+            $(this).parent().removeClass('section_selected');
+        });
+
+
+        $this_section_check.prop('checked', true);
+        $this_section_check.parent().addClass('section_selected');
+
+
+    });
+
     $(document).delegate(".step_3_card", "mouseenter", function () {
         $(this).addClass("expanded_pseudo");
     });
@@ -776,15 +889,20 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".step_3_show", "click", function () {
-        if (!$(this).closest(".step_3_card").hasClass("step_5_card")) {
-            if ($(this).closest(".step_3_card").hasClass("expanded")) {
-                $(this).closest(".step_3_card").removeClass("expanded");
-                $(this).closest(".step_3_card").find(".step_3_hide").hide();
-            } else {
-                $(this).closest(".step_3_card").addClass("expanded");
-                $(this).closest(".step_3_card").find(".step_3_hide").show();
+
+        if(!$(this).hasClass('professor_class')){
+            if (!$(this).closest(".step_3_card").hasClass("step_5_card")) {
+                if ($(this).closest(".step_3_card").hasClass("expanded")) {
+                    $(this).closest(".step_3_card").removeClass("expanded");
+                    $(this).closest(".step_3_card").find(".step_3_hide").hide();
+                } else {
+                    $(this).closest(".step_3_card").addClass("expanded");
+                    $(this).closest(".step_3_card").find(".step_3_hide").show();
+                }
             }
         }
+
+
     });
 
     $(document).delegate(".step_5_card", "click", function (e) {
@@ -915,15 +1033,18 @@ $(document).ready(function () {
                 $content_canvas.find('div.step_3_card').each(function(){
                     var $child = $(this);
 
+                    if(!$child.hasClass('professor_class')){
+                        if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
 
-                    if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
+                            console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
 
-                        console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
-
-                        $child.show();
-                    }else{
-                        $child.hide();
+                            $child.show();
+                        }else{
+                            $child.hide();
+                        }
                     }
+
+
                 });
             }
         }else if(progress_flag == 4){
@@ -954,6 +1075,9 @@ $(document).ready(function () {
             }
         }
     });
+
+
+
 
 
     $(document).on('click','.item', function(){

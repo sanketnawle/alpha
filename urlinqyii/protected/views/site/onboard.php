@@ -122,13 +122,13 @@
     <script id="step_3_template" type="text/x-handlebars-template">
         <div class='step_3_card' id="course_{{course_id}}" data-course_id='{{course_id}}' data-course_name='{{course_name}}'>
             <div class='step_3_show'>
-                <img class='card_3_glyph' src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
+                <img class='card_3_glyph' src='{{base_url}}{{pictureFile.file_url}}'>
                 <div class='step_3_line_0'>{{course_name}}</div>
                 <div class='step_3_line_1'>
-                    <div class='step_3_line_1_0'><span></div>
-                    <span class='adot'>&#8226;</span>
-                    <div class='member_glyph'></div>
-                    <div class='step_3_line_1_1'><span>125</span> members</div>
+                    <div class='step_3_line_1_0'><span>{{department.department_name}}</span></div>
+                    <!--<span class='adot'>&#8226;</span>-->
+                    <!--<div class='member_glyph'></div>-->
+
                 </div>
             </div>
             <div class='step_3_hide'>
@@ -140,9 +140,10 @@
 
 
     <script id="step_3_sub_template" type="text/x-handlebars-template">
-        <div class='step_3_card_section_detail_card' data-class_id='{{class_id}}' id='class_{{class_id}}'>
+        <div class='step_3_card_section_detail_card' data-class_id='{{class_id}}' id='class_{{class_id}}' data-professor_id='{{professor.user_id}}'>
             <input type='checkbox' class='section_check' >
-            <div class='section_detail_right'>Thu 10:00-11:30pm, Fri 12:30-01:00pm - Lenhart Schubert</div>
+            <div class='section_detail_right'>{{#if professor}}<div class='class_section_id'>professor: {{professor.firstname}} {{professor.lastname}}</div>{{/if}} {{#ifCond class_datetime '!=' 'null'}}<div class='class_datetime'>{{class_datetime}}</div>{{/ifCond}} {{#if section_id}}<div class='class_section_id'>id: {{section_id}}</div>{{/if}} {{#ifCond location '!=' ''}}<div class='class_section_id'>location: {{location}}</div>{{/ifCond}}
+            </div>
         </div>
     </script>
 
@@ -280,6 +281,40 @@
 
     </script>
 
+
+
+    <script id="professor_class_template" type="text/x-handlebars-template">
+
+        <div class='step_3_card professor_class' id="class_{{class_id}}" data-class_id='{{class_id}}' data-course_id='{{course_id}}' data-class_name='{{class_name}}'>
+            <div class='step_3_show'>
+                <img class='card_3_glyph' src='{{base_url}}{{department.pictureFile.file_url}}'>
+                <!--<img class="card_3_glyph" src='{{base_url}}/onboard_files/img/defaultGlyph.png'>-->
+                <div class='step_3_line_0'>{{class_name}}</div>
+
+                {{#if class_datetime}}
+                    <div class='class_datetime'><span>{{class_datetime}}</span></div>
+                {{/if}}
+
+                <div class='step_3_line_1'>
+                    <div class='step_3_line_1_0'><span>{{department.department_name}}</span></div>
+                    <!--<span class='adot'>&#8226;</span>-->
+                    <!--<div class='member_glyph'></div>-->
+
+                </div>
+            </div>
+
+        </div>
+
+            <!--<div class="professor_class step_3_card" data-class_id='{{class_id}}' data-class_name='{{class_name}}' style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>-->
+                <!--<div class="professor_class_info">-->
+                    <!--<div class="professor_class_text">-->
+                        <!--<div class="professor_class_text_0">{{class_name}}</div>-->
+                        <!--<div class="professor_class_text_1">32 people</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+    </script>
 
 
 

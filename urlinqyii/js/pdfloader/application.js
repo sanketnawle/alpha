@@ -4,6 +4,7 @@ var events={};
 var pdf_year= (new Date()).getFullYear();
 
 window.onload = function () {
+  load_events();
   run_pdf_algo(false);
   
 };
@@ -320,19 +321,8 @@ var added_events = new Array();
 
 var add_event_to_ui = function(events_generated){
   html_text = "";
-  var month = new Array();
-    month[0] = "Jan";
-    month[1] = "Feb";
-    month[2] = "Mar";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "Jun";
-    month[6] = "Jul";
-    month[7] = "Aug";
-    month[8] = "Sep";
-    month[9] = "Oct";
-    month[10] = "Nov";
-    month[11] = "Dec";
+  var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#13D298"];            
+ 
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
     if(stamp && added_events.indexOf(String(stamp))<0){
@@ -343,9 +333,13 @@ var add_event_to_ui = function(events_generated){
          type: "GET",
          data: get_data_json,
          success: function(response) {
+          var color = colors[Math.floor(colors.length * Math.random())];
+            if(color != lastColor){
+                var current_color = "background-color:"+color;
+            }
           //var parsed_response = ;
           html_text='<div id="'+response+'" class = "syllabus_event editable">\
-                    <div class = "day_month_box day_box_color">\
+                    <div  style="'+current_color+'" class = "day_month_box day_box_color">\
                         <div class = "calendar_top_border"></div>\
                         <div class = "calendar_bottom_section">\
                             <span class = "day">'+stamp.getDate()+'</span>\
@@ -363,6 +357,8 @@ var add_event_to_ui = function(events_generated){
                     </div>\
                 </div>';
             $('div#events_list').append(html_text);
+            var lastColor = color;
+            
          },
          error: function(jqXHR, textStatus, errorMessage) {
              console.log(errorMessage); // Optional

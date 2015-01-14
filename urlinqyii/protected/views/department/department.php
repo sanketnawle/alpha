@@ -230,7 +230,7 @@
                                 <?php foreach($department->admins as $member){ ?>
                                     <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
-                                            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                            <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                 <?php if($member->user_type == 'p'){ ?>
                                                     <span class = "title">Professor</span>
@@ -243,7 +243,7 @@
                                                 <span class = "class_year">Senior</span>
                                             </div>
                                             <div class = "user_main_info">
-                                                <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                                <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                             </div>
                                             <div class = "user_more_info">
                                                 <a class = "department_link"><?php echo $department->department_name; ?></a>
@@ -297,7 +297,7 @@
                                 <?php foreach($department->students as $member){ ?>
                                     <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
-                                            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                            <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                 <?php if($member->user_type == 'p'){ ?>
                                                     <span class = "title">Professor</span>
@@ -310,7 +310,7 @@
                                                 <span class = "class_year">Senior</span>
                                             </div>
                                             <div class = "user_main_info">
-                                                <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                                <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                             </div>
                                             <div class = "user_more_info">
                                                 <a class = "department_link"><?php echo $department->department_name; ?></a>

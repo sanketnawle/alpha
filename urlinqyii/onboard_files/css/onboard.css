@@ -94,7 +94,6 @@ body {
 .content_inner {
     height: 100% !important;
     position: relative;
-    height: 100%;
     overflow-y: auto;
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
@@ -323,9 +322,12 @@ body {
 
 .step_3_line_0 {
     float: left;
-    min-width: 200px;
+    width: 80%;
     margin-left: 8px;
     font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .step_3_line_1 {
@@ -968,6 +970,11 @@ input:focus:-moz-placeholder {
     padding-bottom: 45px;
 }
 
+
+.progress_content.c3 {
+    padding-bottom: 60px;
+}
+
 .progress_content.c4 .content_inner {
     padding: 10px;
 }
@@ -980,4 +987,16 @@ input:focus:-moz-placeholder {
     height: 100px;
 
     background-color: grey;
+}
+
+
+.professor_class {
+    /*float: left;*/
+    /*width: 150px;*/
+    /*height: 100px;*/
+    /*background-size: cover;*/
+}
+
+#professor_classes_label {
+    padding-top: 10px;
 }

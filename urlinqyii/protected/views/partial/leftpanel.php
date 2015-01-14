@@ -40,7 +40,7 @@
 									<a class = "MyBox_ProfileLink profile_link" user_id="<?php echo $user->user_id?>">
 										<?php echo $user->firstname . " " . $user->lastname?>
 									</a>
-									<a class = "MyBox_SO edit_profile">Edit profile</a>
+									<a class = "MyBox_SO edit_profile profile_link" user_id="<?php echo $user->user_id?>">Edit profile</a>
 									<p class = "middot_leftpanel">&#xb7;</p>
 									<a class = "MyBox_SO" href="<?php echo Yii::app()->getBaseUrl(true); ?>/logout">Sign out</a>
 									
