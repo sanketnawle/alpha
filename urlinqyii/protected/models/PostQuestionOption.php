@@ -5,10 +5,11 @@
  *
  * The followings are the available columns in table 'post_question_option':
  * @property integer $option_id
+ * @property integer $post_id
  * @property string $option_text
  *
  * The followings are the available model relations:
- * @property Post[] $posts
+ * @property PostQuestionOptionAnswer $postQuestionOptionAnswer
  */
 class PostQuestionOption extends CActiveRecord
 {
@@ -28,11 +29,12 @@ class PostQuestionOption extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('option_text', 'required'),
+			array('post_id, option_text', 'required'),
+			array('post_id', 'numerical', 'integerOnly'=>true),
 			array('option_text', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('option_id, option_text', 'safe', 'on'=>'search'),
+			array('option_id, post_id, option_text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,7 +46,7 @@ class PostQuestionOption extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'posts' => array(self::MANY_MANY, 'Post', 'post_question_option_answer(option_id, post_id)'),
+			'postQuestionOptionAnswer' => array(self::HAS_ONE, 'PostQuestionOptionAnswer', 'option_id'),
 		);
 	}
 
@@ -55,6 +57,7 @@ class PostQuestionOption extends CActiveRecord
 	{
 		return array(
 			'option_id' => 'Option',
+			'post_id' => 'Post',
 			'option_text' => 'Option Text',
 		);
 	}
@@ -78,6 +81,7 @@ class PostQuestionOption extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('option_id',$this->option_id);
+		$criteria->compare('post_id',$this->post_id);
 		$criteria->compare('option_text',$this->option_text,true);
 
 		return new CActiveDataProvider($this, array(
