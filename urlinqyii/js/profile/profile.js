@@ -801,14 +801,14 @@ $(document).ready(function() {
 
     });
     $(document).on('mouseenter', '.user_follow_button.following', function () {
-        var $follow_button_wrapper = $('.user_follow_button').parent('.follow_button_wrapper');
+        var $follow_button_wrapper = $(this).parent('.follow_button_wrapper');
         $follow_button_wrapper.addClass('unfollow');
-        $('.user_follow_button').text('Unfollow');
+        $(this).text('Unfollow');
     });
     $(document).on('mouseleave', '.user_follow_button.following', function () {
-        var $follow_button_wrapper = $('.user_follow_button').parent('.follow_button_wrapper');
+        var $follow_button_wrapper = $(this).parent('.follow_button_wrapper');
         $follow_button_wrapper.removeClass('unfollow');
-        $('.user_follow_button').text('Following');
+        $(this).text('Following');
     });
 });
 
