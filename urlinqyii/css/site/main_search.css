@@ -576,7 +576,7 @@ input.filter_textinput:focus, input.filter_textinput:active{
 	
 }
 
-@media screen and (max-width: 1313px) {
+@media screen and (max-width: 1255px) {
 
 	div.page_search .black_background_row{
 		right:0px!important;
@@ -587,6 +587,9 @@ input.filter_textinput:focus, input.filter_textinput:active{
 		width: -webkit-calc(100% - 260px);
 		width: -moz-calc(100% - 260px);
 		width: calc(100% - 260px);
+	}
+	div#right_panel{
+		display:none;
 	}
 
 }
