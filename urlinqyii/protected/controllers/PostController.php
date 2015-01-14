@@ -285,16 +285,21 @@ class PostController extends Controller
             }
 
 
-            $user_id = $this->get_current_user_id();
+            $user = $this->get_current_user($_POST);
+            if(!$user){
+                $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>"error found user");
+                $this->renderJSON($return_data);
+                return;
+            }
             $post_id = $_POST['post_id'];
-            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
+            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
 
 
             //Make sure the user hasnt already liked this post
             if(!$post_like){
                 $post_like = new PostLike;
                 $post_like->post_id = $post_id;
-                $post_like->user_id = $user_id;
+                $post_like->user_id = $user->user_id;
                 $post_like->save(false);
                 if($post_like) {
 
@@ -304,7 +309,7 @@ class PostController extends Controller
                     $this->renderJSON($return_data);
                     return;
                 }else{
-                    $return_data = array('success'=>false,'error_id'=>3);
+                    $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>"error saving post_user table");
                     $this->renderJSON($return_data);
                     return;
                 }
@@ -325,22 +330,33 @@ class PostController extends Controller
 
     public function actionUnlike()
     {
-        if(!isset($_POST['post_id'])){
-            $return_data = array('success'=>false,'error_id'=>1);
-            $this->renderJSON($return_data);
-            return;
-        }
+        try {
+            if (!isset($_POST['post_id'])) {
+                $return_data = array('success' => false, 'error_id' => 1);
+                $this->renderJSON($return_data);
+                return;
+            }
 
 
-        $user_id = $this->get_current_user_id();
-        $post_id = $_POST['post_id'];
-        $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
-        if($post_like->delete()){
-            $return_data = array('success'=>true);
-            $this->renderJSON($return_data);
-            return;
-        }else{
-            $return_data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error deleting post_like');
+            $user = $this->get_current_user($_POST);
+            if (!$user) {
+                $return_data = array('success' => false, 'error_id' => 2, 'error_msg' => "error found user");
+                $this->renderJSON($return_data);
+                return;
+            }
+            $post_id = $_POST['post_id'];
+            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
+            if ($post_like->delete()) {
+                $return_data = array('success' => true);
+                $this->renderJSON($return_data);
+                return;
+            } else {
+                $return_data = array('success' => false, 'error_id' => 2, 'error_msg' => 'Error deleting post_like');
+                $this->renderJSON($return_data);
+                return;
+            }
+        }catch(Exception $e){
+            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
             $this->renderJSON($return_data);
             return;
         }

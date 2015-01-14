@@ -343,8 +343,34 @@ class FeedController extends Controller
             }
 
             elseif($post['post_type'] == 'event'){
-                $post_event = Event::model()->findbypk('event_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['event'] = $posts [$i] ['event'] = $post_event;
+                $post_event = Event::model()->findByPK($post['origin_id']);
+                $event = $this->model_to_array($post_event);
+
+                $origin = $event['origin_type'];
+                $origin_id = $event['origin_id'];
+
+                if($origin != 'user'){
+                    $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
+                    $command = Yii::app()->db->createCommand($sql);
+                    $origin_data = $command->queryRow();
+                    //echo json_encode($origin_data);
+                    $event['origin_name'] = $origin_data[$origin . '_name'];
+                    $event['origin_color_id'] = $origin_data['color_id'];
+                    //array_push($events_data,$event);
+                }else{
+                    $event['origin_name'] = null;
+                    $event['origin_color_id'] = null;
+                }
+                $user = $this->get_current_user($_GET);
+                $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
+                if($event_attending){
+                    $event['is_attending'] = true;
+                }
+                else{
+                    $event['is_attending'] = false;
+                }
+
+                $posts [$i] ['event'] = $posts [$i] ['event'] = $event;
 
             }
 

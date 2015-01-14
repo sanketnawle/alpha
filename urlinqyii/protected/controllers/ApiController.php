@@ -292,7 +292,8 @@ class ApiController extends Controller
                 return;
             }
             //temp the user_token table not right on the real server
-            $user = $this->get_current_user_id($_POST);
+            //$user = $this->get_current_user_id($_POST);
+            $user = User::model()->find('user_id=:id', array(':id'=>$_POST['user_id']));
             //$user = $this->get_current_user($_POST);
             if ($user) {
                 $user_confirmation_test = UserConfirmation::model()->find('user_id=:id', array(':id' => $user->user_id));
@@ -303,16 +304,10 @@ class ApiController extends Controller
                     $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
                     $from = 'team@urlinq.com';
                     $email_data = array('key' => $user_confirmation_test->key_email);
-                    if ($this->send_verification_email($user_email, $subject, $message, $from, $email_data)) {
-                        //Function is done
-                        $data = array('success' => true, 'user_id' => $user->user_id);
-                        $this->renderJSON($data);
-                        return;
-                    } else {
-                        $data = array('success' => false, 'error_id' => 7, 'error_msg' => 'error sending email');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                    $data = array('success' => true, 'user_id' => $user->user_id);
+                    $this->renderJSON($data);
+                    return;
                 } else {
                     //If there isnt already a user confirmation,
                     //create a new one
@@ -328,16 +323,10 @@ class ApiController extends Controller
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
                         $from = 'team@urlinq.com';
                         $email_data = array('key' => $user_confirmation->key_email);
-                        if ($this->send_verification_email($user_email, $subject, $message, $from, $email_data)) {
-                            //Function is done
-                            $data = array('success' => true, 'user_id' => $user->user_id);
-                            $this->renderJSON($data);
-                            return;
-                        } else {
-                            $data = array('success' => false, 'error_id' => 7, 'error_msg' => 'error sending email');
-                            $this->renderJSON($data);
-                            return;
-                        }
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                        $data = array('success' => true, 'user_id' => $user->user_id);
+                        $this->renderJSON($data);
+                        return;
                     } else {
                         $data = array('success' => false, 'error_id' => 6, 'error_msg' => 'error saving user confirmation');
                         $this->renderJSON($data);
@@ -395,8 +384,9 @@ class ApiController extends Controller
 
                 if(isset($_FILES['file']) && $_FILES['file'] != null){
                     include "file_upload.php";
+                    $local_directory = 'profile_pictures/';
                     $file_id = null;
-                    $file_upload_response = file_upload($_FILES,'',$user->user_id);
+                    $file_upload_response = file_upload($_FILES,$local_directory,$user->user_id);
                     if($file_upload_response['success']){
                         $file_id = $file_upload_response['file_id'];
                     }else{
@@ -437,14 +427,7 @@ class ApiController extends Controller
                     $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
                     $from = 'team@urlinq.com';
                     $email_data = array('key'=>$user_confirmation_test->key_email);
-                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-                        //Function is done
-                        //return;
-                    }else{
-                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
                 }else{
                     //If there isnt already a user confirmation,
                     //create a new one
@@ -460,15 +443,7 @@ class ApiController extends Controller
                         $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
                         $from = 'team@urlinq.com';
                         $email_data = array('key'=>$user_confirmation->key_email);
-                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-                            //Function is done
-                            //$data = array('success'=>true, 'user_id'=>$user->user_id);
-                            //return;
-                        }else{
-                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-                            $this->renderJSON($data);
-                            return;
-                        }
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
                     }else{
                         $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
                         $this->renderJSON($data);
@@ -483,11 +458,6 @@ class ApiController extends Controller
                 $this->renderJSON($data);
                 return;
             }
-
-
-
-
-
 
 
         //Send email verifications here
@@ -509,6 +479,102 @@ class ApiController extends Controller
         return;
         } catch (Exception $e) {
             $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionCreateEvent()
+    {
+//        $data = array('success'=>true);
+//        $this->renderJSON($_POST);
+//        return;
+
+//        var post_data = {
+//        event:{
+//            event_name: 'Test event',
+//                origin_type:' club',
+//                origin_id: 1,
+//                title: 'Test Event',
+//                description: 'This is my test event description',
+//                start_time: '10:10:10',
+//                end_time: '11:11:11',
+//                start_date: '2014-12-01',
+//                end_date: '2014-12-01',
+//                location: 'Manhattan'
+//            }
+//        };
+
+
+        if(!isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['description'])
+            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_data = $_POST['event'];
+
+
+        try {
+
+            $picture_file_id = null;
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
+                include "file_upload.php";
+
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
+                if ($file_upload_response['success']) {
+                    $picture_file_id = $file_upload_response['file_id'];
+                } else {
+                    $picture_file_id = null;
+                }
+            } else {
+                $picture_file_id = null;
+            }
+            $event = new Event;
+            $event->title = $event_data['event_name'];
+            $event->description = $event_data['description'];
+            $event->event_type = $event_data['event_type'];
+            //$user->$this->get_current_user($_POST);
+            //$event->user_id = $this->get_current_user_id($_POST);
+            $event->user_id = $_POST['user_id'];
+            $event->origin_type = $event_data['origin_type'];
+            $event->origin_id = $event_data['origin_id'];
+            $event->start_date = $event_data['start_date'];
+            $event->end_date = $event_data['end_date'];
+            $event->start_time = $event_data['start_time'];
+            $event->end_time = $event_data['end_time'];
+            $event->location = $event_data['location'];
+            $event->file_id = $picture_file_id;
+            //$event->save(false);
+
+            if($event->save(false)){
+                //If this event was successfully created, check if there
+                //were any invitations sent out for this event
+                if(isset($_POST['event']['invites'])){
+                    include_once "invite/invite.php";
+                    //Loop thru the invites and send an invite to each user
+                    foreach($_POST['event']['invites'] as $invite_user_id){
+                        send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                    }
+                }
+
+
+
+                //$event = $this->model_to_array($event);
+                //$event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
+
+                $data = array('success'=>true,'event_id'=>$event->event_id);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error creating event ');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
             $this->renderJSON($data);
             return;
         }
@@ -886,7 +952,7 @@ class ApiController extends Controller
         $user_id = $_POST['user_id'];
         $department_id = $_POST['department_id'];
 
-        $department_user = ClassUser::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
+        $department_user = DepartmentFollow::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
         //Check if this user is even in this class
         if($department_user){
             //Check if we destroy this shit successfully
@@ -919,7 +985,18 @@ class ApiController extends Controller
         $user_id = $_GET['user_id'];
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
         $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
-
+        $user = $this->get_current_user($_GET);
+        if($user && ($user->user_id != $user_id)) {
+            $is_attending = UserConnection::model()->find("from_user_id=:user_id and to_user_id=:id", array(":id"=>$user_id, ":user_id"=>$user->user_id));
+            if($is_attending){
+                $data['user']['is_following'] = true;
+            }
+            else{
+                $data['user']['is_following'] = false;
+            }
+        }else{
+            $data['user']['is_following'] = false;
+        }
         $this->renderJSON($data);
         return;
     }
@@ -1145,6 +1222,18 @@ class ApiController extends Controller
             $data['department']['members'] = $users;
             $data['department']['class_count'] = count($department->classes);
             $data['department']['member_count'] = count($department->members);
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['department']['is_attending'] = true;
+                }
+                else{
+                    $data['department']['is_attending'] = false;
+                }
+            }else{
+                $data['department']['is_attending'] = false;
+            }
 
 
 
@@ -1302,6 +1391,18 @@ class ApiController extends Controller
             $data['group']['admins'] = $group->admins;
             $data['group']['members'] = $group->members;
 
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = GroupUser::model()->find("group_id=:id and user_id=:user_id", array(":id"=>$group_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['group']['is_attending'] = true;
+                }
+                else{
+                    $data['group']['is_attending'] = false;
+                }
+            }else{
+                $data['group']['is_attending'] = false;
+            }
 
             $this->renderJSON($data);
             return;
@@ -1339,6 +1440,20 @@ class ApiController extends Controller
             $data['class']['students'] = $class->students;
             $data['class']['course'] = $class->course;
             $data['class']['professor'] = $class->professorUser;
+
+
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = ClassUser::model()->find("class_id=:id and user_id=:user_id", array(":id"=>$class_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['class']['is_attending'] = true;
+                }
+                else{
+                    $data['class']['is_attending'] = false;
+                }
+            }else{
+                $data['class']['is_attending'] = false;
+            }
 
             $this->renderJSON($data);
             return;
@@ -1579,7 +1694,7 @@ class ApiController extends Controller
             }
 
 
-            include 'password_encryption.php';
+            include 'UniqueTokenGenerator.php';
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
             $salt = $user_login->salt;
@@ -1589,7 +1704,7 @@ class ApiController extends Controller
 
             if($user_login->password == $hashed_password){ //user has successfully logged in
                 //Generate the token
-                $token = salt();
+                $token = generateUniqueToken($user->user_id, $email);
 
                 //Save token to database
                 $user_token = new UserToken;
@@ -1686,7 +1801,7 @@ class ApiController extends Controller
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
 
-                    if($origin != ''){
+                    if($origin != 'user'){
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1697,6 +1812,14 @@ class ApiController extends Controller
                     }else{
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
+                    }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
                     }
                     array_push($events_data,$event);
                 }
@@ -1715,6 +1838,73 @@ class ApiController extends Controller
             return;
         }
 
+    }
+
+    public function actionAttendEvent(){
+        if(!isset($_POST['event_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $event_user = EventUser::model()->find('event_id=:id and user_id=:user_id', array(':id'=>$event_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this class
+        if(!$event_user){
+            //Create new class user
+            $event_user_new = new EventUser();
+            $event_user_new->event_id = $event_id;
+            $event_user_new->user_id = $user_id;
+            //If we save successfully, user is now apart of class
+            if($event_user_new->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving event_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already attending the class');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+    public function actionUnattendEvent(){
+        if(!isset($_POST['event_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $event_user = EventUser::model()->find('event_id=:id and user_id=:user_id', array(':id'=>$event_id,':user_id'=>$user_id));
+        //Check if this user is even in this class
+        if($event_user){
+            //Check if we destroy this shit successfully
+            if($event_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting event_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not attending event');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
 
@@ -1741,7 +1931,7 @@ class ApiController extends Controller
                     $event = $this->model_to_array($event);
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
-                    if ($origin != '') {
+                    if ($origin != 'user') {
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1753,6 +1943,15 @@ class ApiController extends Controller
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
                     }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
+                    }
+
                     array_push($events_data, $event);
                 }
             }
@@ -1806,7 +2005,7 @@ class ApiController extends Controller
                     $event = $this->model_to_array($event);
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
-                    if ($origin != '') {
+                    if ($origin != 'user') {
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1818,6 +2017,16 @@ class ApiController extends Controller
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
                     }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
+                    }
+
+
                     array_push($events_data, $event);
                 }
             }

@@ -482,177 +482,184 @@ class ProfileController extends Controller
 
     }
     public function actionEditProfile(){
-        $new_data = array();
-        $user_id = $_POST['user'];
-        $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
+        try {
+            $new_data = array();
+            $user_id = $_POST['user'];
+            $user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
 
-        if(isset($_POST['bio'])){
-            $user->user_bio = $_POST['bio'];
-            if($user->save()){
-                $new_data['bio'] = "success";
-            }else{
-                $new_data['bio'] = $user->getErrors();
-            }
-        }
-        if(isset($_POST['gender'])){
-            $user->gender = $_POST['gender'];
-            if($user->save()){
-                $new_data['gender'] = "success";
-            }else{
-                $new_data['gender'] = $user->getErrors();
-            }
-        }
-        if(isset($_POST['name'])){
-            $name = explode(' ',$_POST['name']);
-            if(sizeof($name) < 2){
-                $user->firstname = $name;
-            }else if(sizeof($name) == 2){
-                $user->firstname = $name[0];
-                $user->lastname = $name[1];
-            }else{
-                $user->firstname = $name[0];
-                $user->lastname = $name[1];
-                for($i = 2;$i<sizeof($name);$i++){
-                    $user->lastname .= ' '.$name[$i];
+            if (isset($_POST['bio'])) {
+                $user->user_bio = $_POST['bio'];
+                if ($user->save()) {
+                    $new_data['bio'] = "success";
+                } else {
+                    $new_data['bio'] = $user->getErrors();
                 }
             }
-            if($user->save()){
-                $new_data['name'] = "success";
-            }else{
-                $new_data['name'] = $user->getErrors();
-            }
-        }
-        if(isset($_POST['year_name'])){
-            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            if($student_attributes){
-                $student_attributes->year_name = $_POST['year_name'];
-                if($student_attributes->save()){
-                    $new_data['year_name'] = "success";
-                }else{
-                    $new_data['year_name'] = $student_attributes->getErrors();
-                }
-            }else{
-                $new_data['year_name'] = "error not a student";
-            }
-
-        }
-        if(isset($_POST['year'])){
-            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            if($student_attributes){
-                $student_attributes->year = $_POST['year'];
-                if($student_attributes->save()){
-                    $new_data['year'] = "success";
-                }else{
-                    $new_data['year'] = $student_attributes->getErrors();
-                }
-            }else{
-                $new_data['year'] = "error not a student";
-            }
-
-        }
-        if(isset($_POST['school'])){
-
-            $school = School::model()->find('school_id=:sid',array(':sid'=>$_POST['school']));
-            if($user->school_id != $school->school_id){
-                if($school){
-                    $user->school_id = $school->school_id;
-                    if($user->save()){
-                        $new_data['school'] = "success";
-                        // $new_data['new_school_id'] = $school->school_id;
-                    }else{
-                        $new_data['school'] = $user->getErrors();
-                    }
-                }else{
-                    $new_data['school'] = $school->getErrors();
+            if (isset($_POST['gender'])) {
+                $user->gender = $_POST['gender'];
+                if ($user->save()) {
+                    $new_data['gender'] = "success";
+                } else {
+                    $new_data['gender'] = $user->getErrors();
                 }
             }
-        }
-        if(isset($_POST['department'])){
-            $department = Department::model()->find('department_id=:did',array(':did'=>$_POST['department']));
-            if($user->department_id != $department->department_id){
-                if($department){
-                    $user->department_id = $department->department_id;
-                    if($user->save()){
-                        $new_data['department'] = "success";
-                        // $new_data['new_school_id'] = $school->school_id;
-                    }else{
-                        $new_data['department'] = $user->getErrors();
-                    }
-                }else{
-                    $new_data['department'] = $department->getErrors();
-                }
-            }
-        }
-        if(isset($_POST['location'])){
-            $location = $_POST['location'];
-            if($user->user_type =="p"){
-                $professorAttribute=$user->professorAttribute;
-                if($professorAttribute->office_location!=$location){
-                    $professorAttribute->office_location=$location;
-                    if($professorAttribute->save()){
-                        $new_data['location'] = "success";
-                        // $new_data['new_school_id'] = $school->school_id;
-                    }else{
-                        $new_data['location'] = $professorAttribute->getErrors();
+            if (isset($_POST['name'])) {
+                $name = explode(' ', $_POST['name']);
+                if (sizeof($name) < 2) {
+                    $user->firstname = $name;
+                } else if (sizeof($name) == 2) {
+                    $user->firstname = $name[0];
+                    $user->lastname = $name[1];
+                } else {
+                    $user->firstname = $name[0];
+                    $user->lastname = $name[1];
+                    for ($i = 2; $i < sizeof($name); $i++) {
+                        $user->lastname .= ' ' . $name[$i];
                     }
                 }
-            }else{
-                $new_data['location'] = "error: not a professor";
+                if ($user->save()) {
+                    $new_data['name'] = "success";
+                } else {
+                    $new_data['name'] = $user->getErrors();
+                }
             }
-        }
-        if(isset($_POST['hours'])){
-            $hours = $_POST['hours'];
-            if($user->user_type =="p"){
-                $professorAttribute=$user->professorAttribute;
-                if($professorAttribute->office_hours!=$hours){
-                    $professorAttribute->office_hours=$hours;
-                    if($professorAttribute->save()){
-                        $new_data['hours'] = "success";
-                        // $new_data['new_school_id'] = $school->school_id;
-                    }else{
-                        $new_data['hours'] = $professorAttribute->getErrors();
+            if (isset($_POST['year_name'])) {
+                $student_attributes = StudentAttributes::model()->find('user_id=:uid', array(':uid' => $user_id));
+                if ($student_attributes) {
+                    $student_attributes->year_name = $_POST['year_name'];
+                    if ($student_attributes->save()) {
+                        $new_data['year_name'] = "success";
+                    } else {
+                        $new_data['year_name'] = $student_attributes->getErrors();
+                    }
+                } else {
+                    $new_data['year_name'] = "error not a student";
+                }
+
+            }
+            if (isset($_POST['year'])) {
+                $student_attributes = StudentAttributes::model()->find('user_id=:uid', array(':uid' => $user_id));
+                if ($student_attributes) {
+                    $student_attributes->year = $_POST['year'];
+                    if ($student_attributes->save()) {
+                        $new_data['year'] = "success";
+                    } else {
+                        $new_data['year'] = $student_attributes->getErrors();
+                    }
+                } else {
+                    $new_data['year'] = "error not a student";
+                }
+
+            }
+            if (isset($_POST['school'])) {
+
+                $school = School::model()->find('school_id=:sid', array(':sid' => $_POST['school']));
+                if ($user->school_id != $school->school_id) {
+                    if ($school) {
+                        $user->school_id = $school->school_id;
+                        if ($user->save()) {
+                            $new_data['school'] = "success";
+                            // $new_data['new_school_id'] = $school->school_id;
+                        } else {
+                            $new_data['school'] = $user->getErrors();
+                        }
+                    } else {
+                        $new_data['school'] = $school->getErrors();
                     }
                 }
-            }else{
-                $new_data['hours'] = "error: not a professor";
             }
-        }
-        if(isset($_POST['email'])){
-            if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                $user->user_email = $_POST['email'];
-                if($user->save()){
-                    $new_data['email'] = "success";
-                }else{
-                    $new_data['email'] = $user->getErrors();
+            if (isset($_POST['department'])) {
+                $department = Department::model()->find('department_id=:did', array(':did' => $_POST['department']));
+                if ($user->department_id != $department->department_id) {
+                    if ($department) {
+                        $user->department_id = $department->department_id;
+                        if ($user->save()) {
+                            $new_data['department'] = "success";
+                            // $new_data['new_school_id'] = $school->school_id;
+                        } else {
+                            $new_data['department'] = $user->getErrors();
+                        }
+                    } else {
+                        $new_data['department'] = $department->getErrors();
+                    }
                 }
-            }else{
-                $new_data['email'] = "not a valid email";
             }
-        }
+            if (isset($_POST['location'])) {
+                $location = $_POST['location'];
+                if ($user->user_type == "p") {
+                    $professorAttribute = $user->professorAttribute;
+                    if ($professorAttribute->office_location != $location) {
+                        $professorAttribute->office_location = $location;
+                        if ($professorAttribute->save()) {
+                            $new_data['location'] = "success";
+                            // $new_data['new_school_id'] = $school->school_id;
+                        } else {
+                            $new_data['location'] = $professorAttribute->getErrors();
+                        }
+                    }
+                } else {
+                    $new_data['location'] = "error: not a professor";
+                }
+            }
+            if (isset($_POST['hours'])) {
+                $hours = $_POST['hours'];
+                if ($user->user_type == "p") {
+                    $professorAttribute = $user->professorAttribute;
+                    if ($professorAttribute->office_hours != $hours) {
+                        $professorAttribute->office_hours = $hours;
+                        if ($professorAttribute->save()) {
+                            $new_data['hours'] = "success";
+                            // $new_data['new_school_id'] = $school->school_id;
+                        } else {
+                            $new_data['hours'] = $professorAttribute->getErrors();
+                        }
+                    }
+                } else {
+                    $new_data['hours'] = "error: not a professor";
+                }
+            }
+            if (isset($_POST['email'])) {
+                if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                    $user->user_email = $_POST['email'];
+                    if ($user->save()) {
+                        $new_data['email'] = "success";
+                    } else {
+                        $new_data['email'] = $user->getErrors();
+                    }
+                } else {
+                    $new_data['email'] = "not a valid email";
+                }
+            }
 
-        if(isset($_POST['majors'])){
-            if(isset($_POST['majors'][0]) && $_POST['majors'][0] === 'none'){
-                UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
-                $new_data['major'] = 'success';
+            if (isset($_POST['majors'])) {
+                if (isset($_POST['majors'][0]) && $_POST['majors'][0] === 'none') {
+                    UserMajor::model()->deleteAll('user_id = :uid and focus = :focus', array(':uid' => $user_id, ':focus' => 'major'));
+                    $new_data['major'] = 'success';
+                }
+                $new_data['major'] = $this->updateMajorsMinors($_POST['majors'], 'major', $user_id);
             }
-            $new_data['major']= $this->updateMajorsMinors($_POST['majors'],'major',$user_id);
-        }
-        if(isset($_POST['minors'])){
-            if(isset($_POST['minors'][0]) && $_POST['minors'][0] === 'none'){
-                UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'minor'));
-                $new_data['minor'] = 'success';
+            if (isset($_POST['minors'])) {
+                if (isset($_POST['minors'][0]) && $_POST['minors'][0] === 'none') {
+                    UserMajor::model()->deleteAll('user_id = :uid and focus = :focus', array(':uid' => $user_id, ':focus' => 'minor'));
+                    $new_data['minor'] = 'success';
+                }
+                $new_data['minor'] = $this->updateMajorsMinors($_POST['minors'], 'minor', $user_id);
             }
-            $new_data['minor']= $this->updateMajorsMinors($_POST['minors'],'minor',$user_id);
-        }
-        if(isset($_POST['research'])){
-            if(isset($_POST['research'][0]) && $_POST['research'][0] === 'none'){
-                UserInterest::model()->deleteAll('user_id=:uid',array(':uid'=>$user_id));
-            }else{
-                $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
-            }
+            if (isset($_POST['research'])) {
+                if (isset($_POST['research'][0]) && $_POST['research'][0] === 'none') {
+                    UserInterest::model()->deleteAll('user_id=:uid', array(':uid' => $user_id));
+                } else {
+                    $new_data['research'] = $this->actionAddResearchInterests($_POST['research'], $user_id);
+                }
 
+            }
+            $this->renderJSON($new_data);
+            return;
+        }catch (Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
         }
-        $this->renderJSON($new_data);
     }
     public function actionEditShowcase(){
         if(isset($_POST['file']) && isset($_POST['user']) && isset($_POST['title']) && isset($_POST['desc'])){

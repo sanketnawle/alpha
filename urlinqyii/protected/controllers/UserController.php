@@ -115,6 +115,15 @@ class UserController extends Controller
         return;
     }
 
+    public function actionNotifications(){
+        $user = $this->get_current_user($_GET);
+        $notifications = Notification::model()->findAll("user_id=:user_id",array());
+    }
+
+    public function actionReminders(){
+
+    }
+
     public function actionUploadProfileImage(){
         if (empty($_FILES)) {
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set', '_files'=>$_FILES,'_post'=>$_POST);
@@ -122,7 +131,7 @@ class UserController extends Controller
             return;
         }
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_POST);
         if(!$user){
             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
             $this->renderJSON($data);
@@ -134,7 +143,7 @@ class UserController extends Controller
         $local_directory = 'profile_pictures/';
 
 
-        $data = file_upload($_FILES,$local_directory);
+        $data = file_upload($_FILES,$local_directory, $user->user_id);
 
 
         if($data['success']){
