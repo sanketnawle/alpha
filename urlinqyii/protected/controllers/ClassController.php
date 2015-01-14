@@ -287,7 +287,7 @@ class ClassController extends Controller
         $class_id = $_GET["class_id"];
         $user_id = $this->get_current_user_id();
 
-        $class_events = ClassSyllabusEvent::model()->findAll('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+        $class_events = ClassSyllabusEvent::model()->findAll('class_id=:id and user_id=:user_id order by event_date desc', array(':id'=>$class_id,':user_id'=>$user_id));
 
         $this->renderJSON($class_events);
     }    
