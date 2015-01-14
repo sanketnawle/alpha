@@ -864,12 +864,14 @@ class ProfileController extends Controller
         $data['gender']=$user->gender;
         if($user->school){
             $data['school']=$user->school->school_name;
+            $data['school_id']=$user->school->school_id;
             if($user->school->university){
                 $data['university']=$user->school->university->university_name;
             }
         }
         if($user->department){
             $data['department']=$user->department->department_name;
+            $data['department_id']=$user->department->department_id;
         }
 
         $data['email']=$user->user_email;
@@ -886,8 +888,8 @@ class ProfileController extends Controller
             $data['classes'][$i]['section']=$class->section_id;
             $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
-
         }
+
         foreach($user->groups as $i=>$club){
             $data['clubs'][$i]['club_name']=$club->group_name;
             $data['clubs'][$i]['website']=$club->website;
@@ -921,25 +923,11 @@ class ProfileController extends Controller
             }
         }
 
-        $data['followed']=array();
-        foreach($user->usersFollowed as $i=>$fuser){
-            $data['followed'][$i]['user_id']=$fuser->user_id;
-            $data['followed'][$i]['professor']=$fuser->user_type == "p";
-            $data['followed'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
-            $data['followed'][$i]['admin']=$fuser->user_type == "a";
-            if($fuser->school)
-                $data['followed'][$i]['user_school']=$fuser->school->school_name;
-            if($fuser->department)
-                $data['followed'][$i]['user_department']=$fuser->department->department_name;
-            $data['followed'][$i]['profile_pic'] = ($fuser->pictureFile) ?
-                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
-            $data['followed'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
-        }
         $data['following']=array();
-        foreach($user->usersFollowing as $i=>$fuser){
-            $data['following'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+        foreach($user->usersFollowed as $i=>$fuser){
             $data['following'][$i]['user_id']=$fuser->user_id;
             $data['following'][$i]['professor']=$fuser->user_type == "p";
+            $data['following'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
             $data['following'][$i]['admin']=$fuser->user_type == "a";
             if($fuser->school)
                 $data['following'][$i]['user_school']=$fuser->school->school_name;
@@ -948,6 +936,20 @@ class ProfileController extends Controller
             $data['following'][$i]['profile_pic'] = ($fuser->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
+        }
+        $data['followers']=array();
+        foreach($user->usersFollowing as $i=>$fuser){
+            $data['followers'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+            $data['followers'][$i]['user_id']=$fuser->user_id;
+            $data['followers'][$i]['professor']=$fuser->user_type == "p";
+            $data['followers'][$i]['admin']=$fuser->user_type == "a";
+            if($fuser->school)
+                $data['followers'][$i]['user_school']=$fuser->school->school_name;
+            if($fuser->department)
+                $data['followers'][$i]['user_department']=$fuser->department->department_name;
+            $data['followers'][$i]['profile_pic'] = ($fuser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $data['followers'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
         }
         $data['showcase_size']= sizeof($user->showcase);
         $data['showcase']=array();
@@ -989,8 +991,10 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
-        //$data['feed']= $this->renderPartial('/partial/feed',array('user'=>$this->get_current_user(), 'feed_url'=>'/profile/'.$user->user_id.'/feed'));
-
+        $data['num_classes'] = sizeof($user->classes);
+        $data['num_clubs'] = sizeof($user->groups);
+        $data['num_following'] = sizeof($user->usersFollowed);
+        $data['num_followers'] = sizeof($user->usersFollowing);
         $this->renderJSON($data);
     }
 

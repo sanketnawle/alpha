@@ -444,6 +444,12 @@ div.profile_tab div.profile_tab_content{
     font-family: Avenir;
     cursor: default;
 }
+span.profile_tab_amount{
+    color: black;
+    font-size: 15px;
+    left: 5px;
+    position: relative;
+}
 
 div.profile_tab.active .profile_tab_text{
     color: #333!important;

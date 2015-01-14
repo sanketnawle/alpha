@@ -956,6 +956,28 @@ $(document).ready(function () {
     });
 
 
+    $(document).on('click','.section_check', function(){
+
+        console.log('SECTION CHECK CLICK');
+        var $this_section_check = $(this);
+
+
+        var $step_3_card = $this_section_check.closest('.step_3_card');
+
+        //Go through all the other checkboxes and uncheck them
+        $step_3_card.find('.section_check').each(function(){
+            $(this).prop('checked', false);
+            $(this).parent().removeClass('section_selected');
+        });
+
+
+        $this_section_check.prop('checked', true);
+        $this_section_check.parent().addClass('section_selected');
+
+
+    });
+
+
     $(document).on('click','.item', function(){
         var $this_item = $(this);
         //Set this value as the menu selected value
