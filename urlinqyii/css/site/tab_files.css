@@ -532,7 +532,7 @@ ol.files_list li.file div.views a.extra_padding{
     display: block;
 }
 
-img{
+.tab_files img{
     width: 40px;
     height: 40px;
 }

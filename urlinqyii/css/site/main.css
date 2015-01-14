@@ -20,12 +20,24 @@ body{
     background: #FAFAFA;
 }
 
+body.profile_stop_scroll{
+    overflow: hidden!important;
+}
+
+body#body_home.profile_stop_scroll{
+    overflow: hidden!important;
+}
+
+div#page.profile_stop_scroll{
+    overflow: hidden!important;
+}
+
 body.body_group{
 
 }
 
 body#body_home{
-    overflow:auto!important;
+    overflow:auto;
     background: #fff;
 }
 
