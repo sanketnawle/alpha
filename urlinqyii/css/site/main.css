@@ -111,7 +111,6 @@ body#body_home{
 
     display: block;
     /* overflow: hidden; */
-    height: 5000px;
     width: 830px;
     z-index: 50;
 
@@ -1772,7 +1771,7 @@ margin-top: 12px;
 margin-left: 5px;
 height: 24px;
 width: 23px;
-background-image: url(http://localhost:8888/alpha/urlinqyii/assets/small_icons.png);
+background-image: url(../../assets/small_icons.png);
 background-position: -38px -768px;
 display: inline-block;
 }

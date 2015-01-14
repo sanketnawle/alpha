@@ -408,8 +408,9 @@
                     </div>
                 </div>
             </div>
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'search','origin_id'=>'')); ?>   
-      
+            <div id="right_panel">
+                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'search','origin_id'=>'')); ?>   
+            </div>
         </div>
     </div>
 

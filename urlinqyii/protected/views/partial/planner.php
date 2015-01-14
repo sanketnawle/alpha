@@ -158,7 +158,7 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="free_planner_message">   Your schedule's free</span>
+                    <span class="free_planner_message">   Your schedule&#x27;s free</span>
                     <span class="create_planner_message">   Fill out your planner</span>
                 </div>
 

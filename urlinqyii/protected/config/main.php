@@ -46,7 +46,7 @@ return array(
         ),
         // uncomment the following to enable URLs in path-format
         //*
-//		'urlManager'=>array(
+//      'urlManager'=>array(
 //            'urlFormat'=>'path',
 //            'showScriptName'=>false,
 //            'rules'=>array(
@@ -55,7 +55,7 @@ return array(
 //                'test' => 'site/test',
 //
 //            ),
-//		),
+//      ),
         'urlManager'=>array(
             'urlFormat'=>'path',
             'showScriptName'=>false,
@@ -129,47 +129,47 @@ return array(
             ),
         ),
         //*/
-//		'db'=>array(
-//			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-//		),
+//      'db'=>array(
+//          'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+//      ),
 
         // uncomment the following to use a MySQL database
 
-//		'db'=>array(
-//			'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
-//			'emulatePrepare' => true,
-//			'username' => 'root',
-//			'password' => '',
-//			'charset' => 'utf8',
-//		),
+//      'db'=>array(
+//          'connectionString' => 'mysql:host=localhost;dbname=urlinq_new',
+//          'emulatePrepare' => true,
+//          'username' => 'root',
+//          'password' => '',
+//          'charset' => 'utf8',
+//      ),
         'db'=>get_db_array(),
-		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
-		),
-		'log'=>array(
-			'class'=>'CLogRouter',
-			'routes'=>array(
-				array(
-					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
-				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-				),
-				*/
-			),
-		),
-	),
+        'errorHandler'=>array(
+            // use 'site/error' action to display errors
+            'errorAction'=>'site/error',
+        ),
+        'log'=>array(
+            'class'=>'CLogRouter',
+            'routes'=>array(
+                array(
+                    'class'=>'CFileLogRoute',
+                    'levels'=>'error, warning',
+                ),
+                // uncomment the following to show log messages on web pages
+                /*
+                array(
+                    'class'=>'CWebLogRoute',
+                ),
+                */
+            ),
+        ),
+    ),
 
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
+    // application-level parameters that can be accessed
+    // using Yii::app()->params['paramName']
+    'params'=>array(
+        // this is used in contact page
+        'adminEmail'=>'webmaster@example.com',
+    ),
 
 
 );
