@@ -58,6 +58,8 @@ class University extends CActiveRecord
 			'schools' => array(self::HAS_MANY, 'School', 'university_id'),
 			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
+            'clubs'=>array(self::HAS_MANY, 'Group', array('school_id'=>'school_id'), 'through'=>'schools')
+
 		);
 	}
 

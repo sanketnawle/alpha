@@ -132,8 +132,20 @@ class SchoolController extends Controller
         $school = school::model()->find('school_id=:id',array(':id'=>$id));
 
         if($school){
+
+            $clubs = array();
+
             $school_data = $this->get_model_associations($school,array('clubs'=>array('pictureFile')));
-            $data = array('success'=>true,'clubs'=>$school_data['clubs']);
+
+
+            $clubs = $school_data['clubs'];
+            if(count($clubs) < 5){
+                //add some clubs from the university
+                $university_data = $this->get_model_associations($school->university,array('clubs'=>array('pictureFile')));
+                $clubs = $university_data['clubs'];
+            }
+
+            $data = array('success'=>true,'clubs'=>$clubs);
             $this->renderJSON($data);
             return;
         }else{

@@ -170,6 +170,9 @@ class SiteController extends Controller
                         Yii::app()->session['onboarding_step'] = 3;
                         Yii::app()->session['department_id'] = $user->department_id;
                         Yii::app()->session['school_id'] = $user->school_id;
+                        Yii::app()->session['user_type'] = $user->user_type;
+
+
                         $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
                         return;
                     }else{
@@ -658,9 +661,21 @@ class SiteController extends Controller
                 }
             }
         }else{
-            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'must register in atleast one class');
-            $this->renderJSON($data);
-            return;
+
+            if($user->user_type == 'p'){
+                //Check if professor is the current professor of any classes.
+                //If not, return an error
+                $class = ClassModel::model()->find('professor_id=:id',array(':id'=>$user->user_id));
+                if(!$class){
+                    $data = array('success'=>false, 'error_id'=>15, 'error_msg'=>'Professor must be a professor of atleast one class if they are to select no additional classes during onboarding');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else if($user->user_type == 's'){
+                $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'must register in atleast one class');
+                $this->renderJSON($data);
+                return;
+            }
         }
 
 
@@ -731,33 +746,66 @@ class SiteController extends Controller
             $office_hours = '';
             $research_interests = '';
             $designation = 'professor';
+            $admin_type = 'p';
 
             if(isset($_POST['office_hours'])){
                 $office_hours = $_POST['office_hours'];
             }
 
             if(isset($_POST['office_location'])){
-                $office_location = $_POST['office_hours'];
+                $office_location = $_POST['office_location'];
             }
 
             if(isset($_POST['research_interests'])){
-                $office_location = $_POST['office_hours'];
+                $research_interests = $_POST['research_interests'];
+            }
+
+            if(isset($_POST['admin_type'])){
+                $admin_type = $_POST['admin_type'];
+                if($admin_type != 'p' && $admin_type != 'a'){
+                    $data = array('success'=>false, 'error_id'=>13, 'error_msg'=>'invalid admin_type');
+                    $this->renderJSON($data);
+                    return;
+                }
             }
 
 //            $office_location = $_POST['office_location'];
 //            $office_hours = $_POST['office_hours'];
 
-            $professor_attribute = new ProfessorAttribute;
-            $professor_attribute->professor_id = $user->user_id;
-            $professor_attribute->designation = 'professor';
-            $professor_attribute->office_location = $office_location;
-            $professor_attribute->office_hours = $office_hours;
 
-            if(!$professor_attribute->save(false)){
-                $data = array('success'=>false, 'error_id'=>8, 'error_msg'=>'Error saving professor data');
-                $this->renderJSON($data);
-                return;
+            //Check if professor attributes already exist
+            $professor_attribute = ProfessorAttribute::model()->find('professor_id=:id',array(':id'=>$user->user_id));
+            if($professor_attribute){
+                $professor_attribute->professor_id = $user->user_id;
+                $professor_attribute->designation = 'professor';
+                $professor_attribute->office_location = $office_location;
+                $professor_attribute->office_hours = $office_hours;
+
+                $user->user_type = $admin_type;
+
+                if(!$professor_attribute->save(false)){
+                    $data = array('success'=>false, 'error_id'=>16, 'error_msg'=>'Error saving professor data');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $professor_attribute = new ProfessorAttribute;
+                $professor_attribute->professor_id = $user->user_id;
+                $professor_attribute->designation = 'professor';
+                $professor_attribute->office_location = $office_location;
+                $professor_attribute->office_hours = $office_hours;
+
+
+                $user->user_type = $admin_type;
+
+                if(!$professor_attribute->save(false)){
+                    $data = array('success'=>false, 'error_id'=>8, 'error_msg'=>'Error saving professor data');
+                    $this->renderJSON($data);
+                    return;
+                }
             }
+
+
 
         }
 
@@ -855,15 +903,24 @@ class SiteController extends Controller
 
             include "password_encryption.php";
 
-            if($user_type == 'p'){
+            if($user_type == 'p' || $user_type == 'a'){
                 $professor = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($professor){
                     //Professor is already in our database
 
 
                     Yii::app()->session['user_id'] = $professor->user_id;
-                    Yii::app()->session['user_type'] = 'p';
-                    Yii::app()->session['onboarding_step'] = 2;
+                    Yii::app()->session['user_type'] = $user_type;
+
+
+
+                    if($professor->school_id && $professor->department_id){
+                        Yii::app()->session['onboarding_step'] = 2; //Take the professor directly to email verification
+                    }else{
+                        Yii::app()->session['onboarding_step'] = 0;
+                    }
+
+
 
                     $data = array('success'=>true);
                     $this->renderJSON($data);
