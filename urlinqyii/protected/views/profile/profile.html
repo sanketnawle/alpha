@@ -155,9 +155,8 @@
                 {{else}}
                 <button type="button" id="follow_button" class="edit_or_follow_button
                     {{#if is_following}}following{{/if}}">
-                    <span class = "follow_icon_profile_page"></span>
-                    {{#if is_following}}Following
-                    {{else}}Follow{{/if}}</button>
+                    {{#if is_following}}<span class = "follow_icon_profile_page"></span>Following
+                    {{else}}<span class = "follow_icon_profile_page"></span>Follow{{/if}}</button>
                 {{/if}}
                 <div id="cancel_edit_button">x</div>
             </div>
@@ -218,6 +217,7 @@
             </div>
         </div>
         <div id="main_content">
+            <div id = "mock_left_bar"></div>
             <div id = "left_info_bar">
                 <h2 id="academic_header" class="headers">Academic Information</h2>
                 <div class="info_section" id = "school_section">
