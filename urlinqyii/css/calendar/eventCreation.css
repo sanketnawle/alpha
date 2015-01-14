@@ -8,7 +8,8 @@ bottom: 0;
 left: 0;
 z-index: 210;
 position: fixed;
-background: rgba(18, 19, 20, 0.90);
+
+	background: rgba(36, 108, 179, 0.9);
 height: 100%;
 width: 100%;
 display: table;
@@ -32,16 +33,20 @@ border-bottom: none;
 }
 
 div.dialog .overlay .wrapper div.content{
-	width: 60%;
+	width: 100%;
 margin: auto;
-background: #fff;
+
+	background: rgba(0, 0, 0, 0);
 height: 100%;
--webkit-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
--moz-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.78);
+
+
+
 position: absolute;
 left: 0px;
 right: 0px;
 bottom: 0px;
-top: 100px;
+
+	overflow-x: hidden;
+	top: 100px;
+	overflow-y: scroll;
 }

@@ -101,8 +101,6 @@ $(document).ready(function(){
     });
 
     $('input:checkbox').on("click", function(){
-
-        alert('???');
         if( $(this).is(':checked') ){
             var x = $(this).val();
             $(x).css("text-decoration", "line-through");

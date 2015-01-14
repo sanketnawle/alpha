@@ -95,6 +95,69 @@ class SchoolController extends Controller
 
     }
 
+
+    public function actionGetDepartments(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = school::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+            $school_data = $this->get_model_associations($school,array('departments'=>array('pictureFile')));
+            $data = array('success'=>true,'departments'=>$school_data['departments']);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+    public function actionGetClubs(){
+        if(!isset($_GET['school_id'])){
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $id = $_GET['school_id'];
+        $school = school::model()->find('school_id=:id',array(':id'=>$id));
+
+        if($school){
+
+            $clubs = array();
+
+            $school_data = $this->get_model_associations($school,array('clubs'=>array('pictureFile')));
+
+
+            $clubs = $school_data['clubs'];
+            if(count($clubs) < 5){
+                //add some clubs from the university
+                $university_data = $this->get_model_associations($school->university,array('clubs'=>array('pictureFile')));
+                $clubs = $university_data['clubs'];
+            }
+
+            $data = array('success'=>true,'clubs'=>$clubs);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

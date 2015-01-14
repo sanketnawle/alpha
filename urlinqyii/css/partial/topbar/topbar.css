@@ -11,11 +11,9 @@
     cursor: default;
 }
 
-
 .topbar {
     height: 48px;
     position: fixed!important;
-
     left: 0;
     right: 0;
     top: 0;
@@ -27,13 +25,12 @@
 }
 
 #topbar_responsive_holder{
-    max-width: 1145px; margin: 0px auto; padding-right: 220px;
-
+    max-width: 1145px;
+    margin: 0px auto; 
+    padding-right: 220px;
     height: 48px;
     position: relative;
 }
-
-
 
     .topbar > #topbar_responsive_holder > .left {
         overflow: auto;
@@ -162,7 +159,7 @@
 
     .topbar > #topbar_responsive_holder > .right {
         float: right;
-        width: 270px;
+/*         width: 270px; */
         height: 48px;
         margin-right:20px!important;
         display: inline-block;
@@ -173,7 +170,6 @@
             position: relative;
             height: 31px;
             border-right: 1px solid #fff;
-        
             margin-top: 10px;
             padding-right: 8px;
             border-radius: 0px;
@@ -205,13 +201,11 @@
             .topbar > #topbar_responsive_holder > .right .notify .button {
                 height: 80%;
                 width: 100%;
-            
                 margin-left: 2px;
 }
 
             .topbar > #topbar_responsive_holder > .right .notify.calendar .button,.topbar > #topbar_responsive_holder > .right .notify.board .button {
                 padding-top: 4px;
-            
                 padding-left: 5px;
                 padding-right: 7px;
                 padding-bottom: 4px;
@@ -222,7 +216,6 @@
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
                     text-align: center;
                     color: rgba(255, 255, 255, 0.95);
-                
                     display: inline-block;
                     bottom: 10px;
                     position: relative;
@@ -419,7 +412,7 @@
 
 @media(max-width:1248px){
 .topbar > #topbar_responsive_holder > .left a{
-    margin-left:10px!important;
+    margin-left:2px!important;
 }
 }
 

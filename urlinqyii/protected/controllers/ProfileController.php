@@ -485,22 +485,21 @@ class ProfileController extends Controller
         $new_data = array();
         $user_id = $_POST['user'];
         $user = User::model()->find('user_id=:uid',array(':uid'=>$user_id));
-        if(isset($_POST['year'])){
-            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $student_attributes->year = $_POST['year'];
-            if($student_attributes->save()){
-                $new_data['year'] = "success";
-            }else{
-                $new_data['year'] = $student_attributes->getErrors();
-            }
 
-        }
         if(isset($_POST['bio'])){
             $user->user_bio = $_POST['bio'];
             if($user->save()){
                 $new_data['bio'] = "success";
             }else{
                 $new_data['bio'] = $user->getErrors();
+            }
+        }
+        if(isset($_POST['gender'])){
+            $user->gender = $_POST['gender'];
+            if($user->save()){
+                $new_data['gender'] = "success";
+            }else{
+                $new_data['gender'] = $user->getErrors();
             }
         }
         if(isset($_POST['name'])){
@@ -524,13 +523,32 @@ class ProfileController extends Controller
             }
         }
         if(isset($_POST['year_name'])){
-            $student_attributes = StudentAttrib::model()->find('user_id=:uid',array(':uid'=>$user_id));
-            $student_attributes->year_name = $_POST['year_name'];
-            if($student_attributes->save()){
-                $new_data['year_name'] = "success";
+            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
+            if($student_attributes){
+                $student_attributes->year_name = $_POST['year_name'];
+                if($student_attributes->save()){
+                    $new_data['year_name'] = "success";
+                }else{
+                    $new_data['year_name'] = $student_attributes->getErrors();
+                }
             }else{
-                $new_data['year_name'] = $student_attributes->getErrors();
+                $new_data['year_name'] = "error not a student";
             }
+
+        }
+        if(isset($_POST['year'])){
+            $student_attributes = StudentAttributes::model()->find('user_id=:uid',array(':uid'=>$user_id));
+            if($student_attributes){
+                $student_attributes->year = $_POST['year'];
+                if($student_attributes->save()){
+                    $new_data['year'] = "success";
+                }else{
+                    $new_data['year'] = $student_attributes->getErrors();
+                }
+            }else{
+                $new_data['year'] = "error not a student";
+            }
+
         }
         if(isset($_POST['school'])){
 
@@ -613,22 +631,26 @@ class ProfileController extends Controller
         }
 
         if(isset($_POST['majors'])){
-            if($_POST['majors'][0] === 'none'){
+            if(isset($_POST['majors'][0]) && $_POST['majors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'major'));
                 $new_data['major'] = 'success';
             }
             $new_data['major']= $this->updateMajorsMinors($_POST['majors'],'major',$user_id);
         }
         if(isset($_POST['minors'])){
-            if($_POST['minors'][0] === 'none'){
+            if(isset($_POST['minors'][0]) && $_POST['minors'][0] === 'none'){
                 UserMajor::model()->deleteAll('user_id = :uid and focus = :focus',array(':uid'=>$user_id,':focus'=>'minor'));
                 $new_data['minor'] = 'success';
             }
             $new_data['minor']= $this->updateMajorsMinors($_POST['minors'],'minor',$user_id);
         }
         if(isset($_POST['research'])){
-            if($_POST['research'][0] !== 'none')
-            $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
+            if(isset($_POST['research'][0]) && $_POST['research'][0] === 'none'){
+                UserInterest::model()->deleteAll('user_id=:uid',array(':uid'=>$user_id));
+            }else{
+                $new_data['research']= $this->actionAddResearchInterests($_POST['research'],$user_id);
+            }
+
         }
         $this->renderJSON($new_data);
     }
@@ -835,21 +857,48 @@ class ProfileController extends Controller
         }
         $data = array();
         $data['user_id']=intval($user->user_id);
-        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user_id()));
+        $data['own_profile']= (intval($user->user_id) == intval($this->get_current_user()->user_id));
         $data['firstname']=$user->firstname;
         $data['lastname']=$user->lastname;
-        $data['school']=$user->school->school_name;
-        $data['university']=$user->school->university->university_name;
-        $data['department']=$user->department->department_name;
+        $data['bio']=$user->user_bio;
+        $data['gender']=$user->gender;
+        if($user->school){
+            $data['school']=$user->school->school_name;
+            $data['school_id']=$user->school->school_id;
+            if($user->school->university){
+                $data['university']=$user->school->university->university_name;
+            }
+        }
+        if($user->department){
+            $data['department']=$user->department->department_name;
+            $data['department_id']=$user->department->department_id;
+        }
+
         $data['email']=$user->user_email;
         $data['classes']=array();
         foreach($user->classes as $i=>$class){
-            $data['classes'][$i]['name']=$class->course->course_name;
+            if($class->course){
+                $data['classes'][$i]['course_name']=$class->course->course_name;
+                $data['classes'][$i]['description']= $class->course->course_desc;
+            }
+            if($class->department){
+                $data['classes'][$i]['department_name']=$class->department->department_name;
+                $data['classes'][$i]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+            }
             $data['classes'][$i]['section']=$class->section_id;
+            $data['classes'][$i]['class_id']=$class->class_id;
+            $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
         }
+
         foreach($user->groups as $i=>$club){
-            $data['clubs'][$i]['name']=$club->group_name;
-            //$data['clubs'][$i]['picture']=$club->;
+            $data['clubs'][$i]['club_name']=$club->group_name;
+            $data['clubs'][$i]['club_id']=$club->group_id;
+            $data['clubs'][$i]['website']=$club->website;
+            $data['clubs'][$i]['club_picture']= ($club->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
+            $data['clubs'][$i]['description']= $club->group_desc;
+            $data['clubs'][$i]['member_count']= sizeof($club->users);
         }
         if($user->user_type=="s"){
             $data['minors']=array();
@@ -860,12 +909,15 @@ class ProfileController extends Controller
             foreach($user->majors as $i=>$major){
                 $data['majors'][$i]['name']=$major->name;
             }
-            $data['year_name'] = $user->studentAttributes->year_name;
-            $data['year'] = ($user->studentAttributes->year % 100);
-        }else if($user->user_type=="p"){
+            if($user->studentAttributes){
+                $data['year_name'] = $user->studentAttributes->year_name;
+                $data['year_truncated'] = ($user->studentAttributes->year % 100);
+                $data['grad_year'] = $user->studentAttributes->year;
+            }
+        }else if($user->user_type=="p" && $user->professorAttribute){
             $data['office_location'] = $user->professorAttribute->office_location;
             $data['office_hours'] = $user->professorAttribute->office_hours;
-         }
+        }
         if(sizeof($user->userInterests)>0){
             $data['research'] = array();
             foreach($user->userInterests as $i=>$interest){
@@ -873,15 +925,33 @@ class ProfileController extends Controller
             }
         }
 
-        $data['followed']=array();
-        foreach($user->usersFollowed as $i=>$user){
-            $data['followed'][$i]['user_name']=$user->firstname." ".$user->lastname;
-            $data['followed'][$i]['user_school']=$user->school->school_name;
-        }
         $data['following']=array();
-        foreach($user->usersFollowing as $i=>$user){
-            $data['following'][$i]['user_name']=$user->firstname." ".$user->lastname;
-            $data['following'][$i]['user_school']=$user->school->school_name;
+        foreach($user->usersFollowed as $i=>$fuser){
+            $data['following'][$i]['user_id']=$fuser->user_id;
+            $data['following'][$i]['professor']=$fuser->user_type == "p";
+            $data['following'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+            $data['following'][$i]['admin']=$fuser->user_type == "a";
+            if($fuser->school)
+                $data['following'][$i]['user_school']=$fuser->school->school_name;
+            if($fuser->department)
+                $data['following'][$i]['user_department']=$fuser->department->department_name;
+            $data['following'][$i]['profile_pic'] = ($fuser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
+        }
+        $data['followers']=array();
+        foreach($user->usersFollowing as $i=>$fuser){
+            $data['followers'][$i]['user_name']=$fuser->firstname." ".$fuser->lastname;
+            $data['followers'][$i]['user_id']=$fuser->user_id;
+            $data['followers'][$i]['professor']=$fuser->user_type == "p";
+            $data['followers'][$i]['admin']=$fuser->user_type == "a";
+            if($fuser->school)
+                $data['followers'][$i]['user_school']=$fuser->school->school_name;
+            if($fuser->department)
+                $data['followers'][$i]['user_department']=$fuser->department->department_name;
+            $data['followers'][$i]['profile_pic'] = ($fuser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $data['followers'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
         }
         $data['showcase_size']= sizeof($user->showcase);
         $data['showcase']=array();
@@ -918,11 +988,15 @@ class ProfileController extends Controller
 
         if(!$data['own_profile']){
             $data['is_following']=UserConnection::model()->exists('from_user_id = :u1 and to_user_id = :u2 ',
-                array(':u1'=>$this->get_current_user_id(),':u2'=>$user->user_id));
+                array(':u1'=>$this->get_current_user()->user_id,':u2'=>$user->user_id));
         }
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
+        $data['num_classes'] = sizeof($user->classes);
+        $data['num_clubs'] = sizeof($user->groups);
+        $data['num_following'] = sizeof($user->usersFollowed);
+        $data['num_followers'] = sizeof($user->usersFollowing);
         $this->renderJSON($data);
     }
 
@@ -930,13 +1004,18 @@ class ProfileController extends Controller
         if(isset($_GET['user'])){
             $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
             $result=array('schools'=>array(),'selected'=>0);
-            $university = $user->school->university;
-            foreach($university->schools as $school){
-                $result['schools'][] = array('id'=>$school->school_id
+            if($user->school){
+                $university = $user->school->university;
+                foreach($university->schools as $school){
+                    $result['schools'][] = array('id'=>$school->school_id
                     ,'name'=>$school->school_name);
+                }
+                $result['selected'] = $user->school_id;
+                $this->renderJSON($result);
             }
-            $result['selected'] = $user->school_id;
-            $this->renderJSON($result);
+            else{
+                $this->renderJSON(array('error','user has no school'));
+            }
         }
     }
 
@@ -948,14 +1027,32 @@ class ProfileController extends Controller
         }
         if(isset($_GET['user'])){
             $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
-            $departments = $user->school->departments;
-            $result['selected'] = $user->department_id;
+            if($user->school){
+                $departments = $user->school->departments;
+                $result['selected'] = $user->department_id;
+            }else{
+                $this->renderJSON(array('error','user has no school'));
+            }
         }
         foreach($departments as $department){
             $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name);
         }
         $this->renderJSON($result);
     }
+    public function actionReturnFeed(){
+        if(isset($_GET['user'])){
+            $user = User::model()->findByPk($_GET['user']);
+            $this->renderPartial('/partial/feed',array('user'=>$this->get_current_user(), 'feed_url'=>'/profile/'.$user->user_id.'/feed'));
+        }
+    }
+    public function  actionReturnFbar(){
+        if(isset($_GET['user'])){
+            $user = User::model()->findByPk($_GET['user']);
+            $this->renderPartial('/partial/question_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'pg_src'=>'profile.html','target_type'=>'user'));
+        }
+
+    }
+
 
 
 

@@ -223,7 +223,7 @@ div#files_header_bottom_line{
 
 div.files_sub_panel{
     width:100%;
-    min-height: 250px;
+    min-height: 40px;
     display:none;
 }
 
@@ -532,7 +532,7 @@ ol.files_list li.file div.views a.extra_padding{
     display: block;
 }
 
-img{
+.tab_files img{
     width: 40px;
     height: 40px;
 }

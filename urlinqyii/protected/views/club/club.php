@@ -26,7 +26,8 @@
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
-
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
@@ -46,12 +47,12 @@
         <div id="page">
 
 
-            <div id="main_panel">
+            <div id="main_panel" class = "group_responsiveness">
 
 
                 <div id="content_holder">
 
-                    <div id="left_panel">
+                    <div id="left_panel" class = "group_responsiveness">
 
                         <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id,'origin_name'=>$club->group_name)); ?>
 
@@ -60,12 +61,12 @@
 
 
 
-                    <div id="content_panel">
+                    <div id="content_panel" class = "group_responsiveness">
                         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
                             <div class = "group_name">
                                 <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                <div class = "center_text"><p id = "group_name">NYU Cheese Club</p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">
@@ -143,7 +144,7 @@
                                 <div id = "right_column_specs">
                                     <div id = "fixed_element" class = "planner_group">
                                         <?php
-                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->club_id; ?>'));
+                                        echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->group_id; ?>'));
                                         ?>    
                                     </div>
                                 </div>                           
@@ -155,7 +156,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->club_id; ?>/feed')); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->group_id; ?>/feed')); ?>
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +302,7 @@
                                     <?php foreach($club->members as $member){ ?>
                                         <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                             <div class = "members_card admin normal_size">
-                                                <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                                <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                     <?php if($member->user_type == 'p'){ ?>
                                                         <span class = "title">Professor</span>
@@ -314,7 +315,7 @@
                                                     <span class = "class_year">Senior</span>
                                                 </div>
                                                 <div class = "user_main_info">
-                                                    <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                                    <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                                 </div>
                                                 <div class = "user_more_info">
                                                     <a class = "department_link"><?php echo $member->department->department_name; ?></a>
@@ -639,9 +640,9 @@
 
                 </div>
             </div>
-
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
-
+            <div id="right_panel" class = "group_responsiveness">
+                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
+            </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->
     <!--                <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">-->
@@ -650,7 +651,6 @@
     <!--            </div>-->
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>
 
     </div>
 <!--        <div id="right_menu_panel">-->

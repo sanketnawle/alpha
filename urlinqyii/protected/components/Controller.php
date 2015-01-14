@@ -46,17 +46,29 @@ class Controller extends CController
     }
 
     //Checks to see if current user is authenticated
-    //Returns true or false
+    //Returns a valid user object (which will equate to true) or false
     //Use like this for controller action functions that need to be authenticated
     //if(!$this->authenticated()){
     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     //}
+    //or
+    //$user = $this->authenticated();
+    //if($user){}
     public function authenticated(){
-        if(isset(Yii::app()->session['user_id'])){
-            return true;
+        $user = $this->get_current_user();
+
+
+        if($user && $user->status == 'active'){
+            return $user;
         }else{
             return false;
         }
+
+//        if(isset(Yii::app()->session['user_id'])){
+//            return true;
+//        }else{
+//            return false;
+//        }
     }
 
     //Returns the current User model
@@ -67,7 +79,19 @@ class Controller extends CController
     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/');
     //}
     //at the top of your controller's function
-    function get_current_user(){
+
+    //If post is passed in, check if token is set
+    //If token is set, check if it is valid
+    function get_current_user($post = null){
+        if($post && isset($post['token'])){
+            $user_token = UserToken::model()->find('token=:token',array(':token'=>$post['token']));
+            if($user_token){
+                return User::model()->find('user_id=:id', array(':id'=>$user_token->user_id));
+            }else{
+                return null;
+            }
+        }
+
         return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
     }
 
@@ -75,6 +99,7 @@ class Controller extends CController
     function get_current_user_id(){
         return Yii::app()->session['user_id'];
     }
+
 
 
 
@@ -119,6 +144,7 @@ class Controller extends CController
         if($this->is_assoc($model_names)){
             foreach($model_names as $nested_model_name => $nested_attributes) {
                 $name = trim($nested_model_name); //in case of spaces around commas
+
                 $model_values = $model->{$name};
 
                 //Check if the model association data is not null
@@ -174,6 +200,17 @@ class Controller extends CController
         return $row;
     }
 
+
+    function models_to_array($models){
+        $array = array();
+
+        foreach($models as $model){
+            array_push($array,$this->model_to_array($model));
+        }
+
+        return $array;
+
+    }
 
     function model_to_array($this_model){
         $row = array();

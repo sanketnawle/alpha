@@ -29,6 +29,36 @@ class DepartmentController extends Controller
         $this->renderJSON($data);
     }
 
+
+    public function actionGetCourses(){
+        if(!isset($_GET['department_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'department id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $department_id = $_GET['department_id'];
+
+        $department = Department::model()->find('department_id=:id',array(':id'=>$department_id));
+
+        if(!$department){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=> 'department doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $department_data = $this->get_model_associations($department,array('courses'=>array('classes'=>array('pictureFile','professor'),'pictureFile'=>array(), 'department'=>array())));
+
+        //Loop through the courses and get the member count
+
+
+        $data = array('success'=>true, 'courses'=> $department_data['courses']);
+        $this->renderJSON($data);
+        return;
+
+    }
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

@@ -86,12 +86,12 @@
         <div id="page">
 
 
-        <div id="main_panel">
+        <div id="main_panel" class = "group_responsiveness">
 
 
         <div id="content_holder">
 
-        <div id="left_panel">
+        <div id="left_panel" class = "group_responsiveness">
             <!--                        <section class='leftbar_bag'>-->
             <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id,'origin_name'=>$class->class_name)); ?>
             <!--                        </section>-->
@@ -100,18 +100,21 @@
 
 
 
-        <div id="content_panel">
+        <div id="content_panel" class = "group_responsiveness">
         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'class','origin_id'=>$class->class_id,'origin'=>$class)); ?>
         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
             <div class = "group_name">
                 <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Nasir Memon</div></div>
-                <div class = "center_text"><p id = "group_name">Theories of Musical Instruments</p></div>
+                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
             </div>
             <div class = "group_right_info group_info_boxes">
+                <?php if($class->location) { ?>
                 <div class = "group_info_block" id = "location">
                     <em class ="small_icon_map"></em>
-                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                    <span><?php echo $class->location; ?></span>
                 </div>
+                <?php } else { }?>
+
                 <div class = "group_info_block" id = "class_schedule">
                     <em class ="small_icon_map"></em>
                     <span>Mon 9:30 am - 11:00 am, Wed 10:00 am - 11:30 am, Fri 9:30 am - 11:00 am</span>
@@ -197,7 +200,7 @@
             <div id = "feed_column" class = "feed_column_group">
                 <div id = "stream_holder" class = "stream_holder_home">
                     <div id = "fbar_wrapper" class = "fbar_home">
-                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
+                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user,'origin_type'=>'class','origin_id'=>'','pg_src'=>'class.php','target_type'=>'class')); ?>
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
@@ -741,7 +744,7 @@
                     <?php foreach($class->students as $member){ ?>
                         <div class = "members_card_wrapper regular_member" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->full_name(); ?>">
                             <div class = "members_card admin normal_size">
-                                <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                     <?php if($member->user_type == 'p'){ ?>
                                         <span class = "title">Professor</span>
@@ -754,7 +757,7 @@
                                     <span class = "class_year">Senior</span>
                                 </div>
                                 <div class = "user_main_info">
-                                    <a class = "name profile_link"><?php echo $member->firstname . ' ' . $member->lastname; ?></a>
+                                    <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->firstname . ' ' . $member->lastname; ?></a>
                                 </div>
                                 <div class = "user_more_info">
                                     <a class = "department_link"><?php echo $member->department->department_name; ?></a>
@@ -1004,14 +1007,13 @@
         </div>
         </div>
 
-        <div id="right_panel">
-
-            RIGHT PANEL GOES HERE
+        <div id="right_panel" class = "group_responsiveness">
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
         </div>
 
 
         </div>
-        <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
+        
 
         </div>
 

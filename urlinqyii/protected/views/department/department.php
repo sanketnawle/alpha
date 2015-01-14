@@ -44,12 +44,12 @@
     <div id="page">
 
 
-        <div id="main_panel">
+        <div id="main_panel" class = "group_responsiveness">
 
 
             <div id="content_holder">
 
-                <div id="left_panel">
+                <div id="left_panel" class = "group_responsiveness">
                     <!--                        <section class='leftbar_bag'>-->
                     <?php echo $this->renderPartial('/partial/leftpanel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'origin_name'=>$department->department_name)); ?>
                     <!--                        </section>-->
@@ -58,9 +58,20 @@
 
 
 
-                <div id="content_panel">
+                <div id="content_panel" class = "group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
-                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');"></div>
+                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                        <div class = "group_name">
+                            <div class = "center_admin"><div class = "department_of">Department of</div></div>
+                            <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
+                        </div>
+                        <div class = "group_right_info group_info_boxes">
+                            <div class = "group_info_block" id = "location">
+                                <em class ="small_icon_map"></em>
+                                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -126,8 +137,29 @@
                     </div>
 
 
-                    <div class="panel active" id="panel_1">
-                        CLASS FEED GOES HERE
+                    <div class="panel active panel_feed" id="panel_1">
+                        <div id = "planner_column" class = "planner_column_group planner_column_department">
+                            <div id = "right_column_specs">
+                                <div id = "fixed_element" class = "planner_group">
+                                    <?php
+                                    echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'department','origin_id'=>'<?php echo $department->department_id; ?>'));
+                                    ?>    
+                                </div>
+                            </div>                           
+                        </div>
+                        <div id = "feed_column" class = "feed_column_group">
+                            <div id = "stream_holder" class = "stream_holder_home">
+                                <div id = "fbar_wrapper" class = "fbar_home">
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>'','pg_src'=>'department.php','target_type'=>'department')); ?>
+                                </div>
+
+                                <div id = "feed_wrapper" class = "feed_wrapper_home">
+                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/<?php echo $department->department_id; ?>/feed')); ?>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
 
                     <div class="panel tab_group_info" id="panel_2">
@@ -198,7 +230,7 @@
                                 <?php foreach($department->admins as $member){ ?>
                                     <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
-                                            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                            <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                 <?php if($member->user_type == 'p'){ ?>
                                                     <span class = "title">Professor</span>
@@ -211,7 +243,7 @@
                                                 <span class = "class_year">Senior</span>
                                             </div>
                                             <div class = "user_main_info">
-                                                <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                                <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                             </div>
                                             <div class = "user_more_info">
                                                 <a class = "department_link"><?php echo $department->department_name; ?></a>
@@ -265,7 +297,7 @@
                                 <?php foreach($department->students as $member){ ?>
                                     <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                         <div class = "members_card admin normal_size">
-                                            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
+                                            <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">
 
                                                 <?php if($member->user_type == 'p'){ ?>
                                                     <span class = "title">Professor</span>
@@ -278,7 +310,7 @@
                                                 <span class = "class_year">Senior</span>
                                             </div>
                                             <div class = "user_main_info">
-                                                <a class = "name profile_link"><?php echo $member->full_name(); ?></a>
+                                                <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                             </div>
                                             <div class = "user_more_info">
                                                 <a class = "department_link"><?php echo $department->department_name; ?></a>
@@ -314,9 +346,8 @@
             </div>
         </div>
 
-        <div id="right_panel">
-
-            RIGHT PANEL GOES HERE
+        <div id="right_panel" class = "group_responsiveness">
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'department','origin_id'=>'')); ?>   
         </div>
 
         <!--            <div id="div1" style="height: 500px;position:relative;">-->
