@@ -277,13 +277,13 @@ $(document).ready(function() {
     }
 
     //edit profile
-    var any_major;
+
     var any_research;
     var schools_loaded = false;
     $(document).on('click','#edit_profile_button.not_editing',function(){
         $('#profile_overlay').show();
         $('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
-        any_major=$()
+        any_major=!$('#major_section >.info_name.undeclared').is(':visible');
         $('.info_name').hide();
         $('.headers').show();
         $('.edit_field').show();
@@ -315,8 +315,9 @@ $(document).ready(function() {
                 $('.edit_field.major:eq('+i+')').val($(this).text());
             }
         });
-        any_major=!$('#major_section >.info_name.undeclared').is(':visible');
+
         //minors
+        any_minor=$('#minor_section').is(':visible');
         $('#minor_section').show();
         $('.info_name.minor').each(function(i){
             $('.edit_field.minor:eq('+i+')').val($(this).text());
@@ -344,6 +345,8 @@ $(document).ready(function() {
         $('#cancel_edit_button').show();
         $('#cancel_edit_button').css('display','inline-block');
     });
+    var any_major;
+    var any_minor;
     var any_research=false;
     $(document).on('click','#edit_profile_button.editing',function(){  //submit changes
         //alert('done');
@@ -375,6 +378,7 @@ $(document).ready(function() {
         }
 
         if(major_changed){
+            any_major=false;
             $('.edit_field.major').each(function(index){
                 if($(this).val()){
                     any_major = true;
@@ -386,7 +390,7 @@ $(document).ready(function() {
             }
         }
         if(minor_changed){
-            var any_minor = false;
+            any_minor = false;
             $('.edit_field.minor').each(function(index){
                 if($(this).val()){
                     any_minor = true;
@@ -419,7 +423,7 @@ $(document).ready(function() {
                 }
                 if(result.year == "success"){
                     $('#year').text($('#year_dropdown').val());
-                    $('#name_info').text((new RegExp("([^']+) '")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
+                    $('#name_info').text((new RegExp("([^0-9]+) ")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
                 }else if(result.year){
                     alert(result.year);
                 }
@@ -431,10 +435,6 @@ $(document).ready(function() {
                 if(result.gender && result.gender != "success"){
                     alert(result.gender);
                 }
-                if(!any_major){
-                    alert('why');
-                    $('#major_section > .info_name.undeclared').show();
-                }
                 if(result.major == "success"){
                     $('#major_section > .info_name.major').remove();
                     if(any_major){
@@ -448,25 +448,6 @@ $(document).ready(function() {
                 } else if(result.major){
                     alert(result.major);
                     any_errors = true;
-                    // $('input[name=major_name]').val(majors[0]);
-                }
-                if(result.major == "success"){
-                    $('#major_section > .info_name.major').remove();
-                    if(any_major){
-                        $('.edit_field.major').each(function(index){
-                            if($(this).val()){
-                                $('#major_section').append('<div class= "info_name major">'+$(this).val()+'</div>');
-                            }
-                        });
-                    }
-
-                } else if(result.major){
-                    alert(result.major);
-                    any_errors = true;
-                    // $('input[name=major_name]').val(majors[0]);
-                }
-                if(!any_research){
-                    $('#research_section').hide();
                 }
                 if(result.research == "success"){
                     $('#research_section > .info_name.research').remove();
@@ -481,10 +462,6 @@ $(document).ready(function() {
                 } else if(result.research){
                     alert(result.research);
                     any_errors = true;
-                    // $('input[name=major_name]').val(majors[0]);
-                }
-                if(!any_minor){
-                    $('#minor_section').hide();
                 }
                 if(result.minor == "success"){
                     $('#minor_section > .info_name.minor').remove();
@@ -571,13 +548,18 @@ $(document).ready(function() {
     });
 
     $(document).on('click','#cancel_edit_button',function(){
-        if(!any_research){
-            $("#research_section").hide();
-        }
-
         closeEditProfile();
     });
     function closeEditProfile(){
+        if(!any_research){
+            $("#research_section").hide();
+        }
+        if(!any_major){
+            $('.undeclared').show();
+        }
+        if(!any_minor){
+            $('#minor_section').hide();
+        }
         $('.headers').hide();
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
@@ -769,6 +751,64 @@ $(document).ready(function() {
                 $(this).show();
             }
         });
+    });
+    $(document).on('click', '.user_follow_button', function () {
+
+        var $user_follow_button = $(this);
+
+        var user_id = $user_follow_button.closest('.members_card_wrapper').attr('data-user_id');
+
+
+        var $follow_button_wrapper = $user_follow_button.parent('.follow_button_wrapper');
+
+        var verb = '';
+        if ($follow_button_wrapper.hasClass('unfollow')) {
+            verb = 'unfollow';
+        } else {
+            verb = 'follow';
+        }
+
+
+        var post_url = base_url + '/user/' + user_id + '/' + verb;
+
+
+        alert(post_url);
+
+
+        var post_data = {user_id: user_id};
+
+        $.post(
+            post_url,
+            post_data,
+            function (response) {
+                if (response['success']) {
+
+                    if (verb == 'unfollow') {
+                        $follow_button_wrapper.removeClass('unfollow');
+                        $user_follow_button.removeClass('following');
+                        $user_follow_button.text('Follow');
+                    } else {
+                        $user_follow_button.addClass('following');
+                        $user_follow_button.text('Following');
+                    }
+
+                } else {
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+
+
+    });
+    $(document).on('mouseenter', '.user_follow_button.following', function () {
+        var $follow_button_wrapper = $(this).parent('.follow_button_wrapper');
+        $follow_button_wrapper.addClass('unfollow');
+        $(this).text('Unfollow');
+    });
+    $(document).on('mouseleave', '.user_follow_button.following', function () {
+        var $follow_button_wrapper = $(this).parent('.follow_button_wrapper');
+        $follow_button_wrapper.removeClass('unfollow');
+        $(this).text('Following');
     });
 });
 
