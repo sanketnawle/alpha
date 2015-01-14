@@ -283,7 +283,14 @@ class ClassController extends Controller
         echo $syllabus_event->event_id;
     }
 
+    public function actionGetEvents(){
+        $class_id = $_GET["class_id"];
+        $user_id = $this->get_current_user_id();
 
+        $class_events = ClassSyllabusEvent::model()->findAll('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
+
+        $this->renderJSON($class_events);
+    }    
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
         include_once "color/color.php";
@@ -326,7 +333,6 @@ class ClassController extends Controller
         }else{
             //user is apart of this class
             $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already in the class');
-            $this->renderJSON($data);
             return;
         }
 

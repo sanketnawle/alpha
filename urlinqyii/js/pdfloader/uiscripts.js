@@ -57,3 +57,52 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
             alert("Invalid file! Please upload .pdf format");
         }
 });
+
+ var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "Apr";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
+
+var load_events = function () {
+  $.ajax({
+         url: "GetEvents",
+         type: "GET",
+         data: {"class_id":globals.origin_id},
+         success: function(response) {
+          $.each(response,function(index,value){
+            var d = new Date(value["event_date"]);
+            html_text='<div id="'+value["event_id"]+'" class = "syllabus_event editable">\
+                    <div class = "day_month_box day_box_color">\
+                        <div class = "calendar_top_border"></div>\
+                        <div class = "calendar_bottom_section">\
+                            <span class = "day">'+d.getDate()+'</span>\
+                            <span class = "month">'+month[d.getMonth()]+'</span>\
+                        </div>\
+                    </div>\
+                    <div class = "event_name_buttons">\
+                        <span class ="event_name_text">\
+                            Midterm 1\
+                        </span>\
+                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value["event_title"]+'"">\
+                        <div class = "done_editing_button">\
+                            Done\
+                        </div>\
+                    </div>\
+                </div>';
+            $('div#events_list').append(html_text);
+          });
+         },
+         error: function(jqXHR, textStatus, errorMessage) {
+             console.log(errorMessage); // Optional
+         }
+      });
+};

@@ -4,6 +4,7 @@ var events={};
 var pdf_year= (new Date()).getFullYear();
 
 window.onload = function () {
+  load_events();
   run_pdf_algo(false);
   
 };
@@ -320,19 +321,7 @@ var added_events = new Array();
 
 var add_event_to_ui = function(events_generated){
   html_text = "";
-  var month = new Array();
-    month[0] = "Jan";
-    month[1] = "Feb";
-    month[2] = "Mar";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "Jun";
-    month[6] = "Jul";
-    month[7] = "Aug";
-    month[8] = "Sep";
-    month[9] = "Oct";
-    month[10] = "Nov";
-    month[11] = "Dec";
+ 
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
     if(stamp && added_events.indexOf(String(stamp))<0){
