@@ -886,12 +886,14 @@ class ProfileController extends Controller
                 $data['classes'][$i]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
             }
             $data['classes'][$i]['section']=$class->section_id;
+            $data['classes'][$i]['class_id']=$class->class_id;
             $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
         }
 
         foreach($user->groups as $i=>$club){
             $data['clubs'][$i]['club_name']=$club->group_name;
+            $data['clubs'][$i]['club_id']=$club->group_id;
             $data['clubs'][$i]['website']=$club->website;
             $data['clubs'][$i]['club_picture']= ($club->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
