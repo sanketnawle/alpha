@@ -858,15 +858,16 @@ class SiteController extends Controller
             if($user_type == 'p'){
                 $professor = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($professor){
-                    $_SESSION['user_id']= $professor->user_id;
-                    $_SESSION['professor'] = 1;
+                    //Professor is already in our database
 
 
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Professor with id ' . strval($_SESSION['user_id']) . 'exists');
+                    Yii::app()->session['user_id'] = $professor->user_id;
+                    Yii::app()->session['user_type'] = 'p';
+                    Yii::app()->session['onboarding_step'] = 2;
+
+                    $data = array('success'=>true);
                     $this->renderJSON($data);
                     return;
-
-
                     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select?professor=1');
                 }else{
                     $professor = new User;
@@ -897,9 +898,11 @@ class SiteController extends Controller
                     $user_login->save(false);
 
                     Yii::app()->session['user_id'] = $professor->user_id;
+                    Yii::app()->session['user_type'] = 'p';
+                    Yii::app()->session['onboarding_step'] = 0;
 
 
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Professor with id ' . strval($_SESSION['user_id']) . ' was created');
+                    $data = array('success'=>true);
                     $this->renderJSON($data);
                     return;
 
