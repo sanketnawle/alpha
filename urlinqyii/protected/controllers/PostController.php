@@ -275,6 +275,51 @@ class PostController extends Controller
     // 1 - Post id isnt set
     // 2 - like already exists
     // 3 - error creating post like
+    public function actionAnswer(){
+        try{
+            if(!isset($_POST['post_id']) || !isset($_POST['option_id'])){
+                $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+                $this->renderJSON($return_data);
+                return;
+            }
+            $option_id = $_POST['option_id'];
+            $user = $this->get_current_user($_POST);
+            if($user){
+                $answer = PostQuestionOptionAnswer::model()->find('option_id=:id and user_id=:user_id', array(":id"=>$option_id, ":user_id"=>$user->user_id));
+                if($answer){
+                    $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'user already answered');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+                $answer_new = new PostQuestionOptionAnswer;
+                $answer_new->user_id = $user->user_id;
+                $answer_new->option_id = $option_id;
+
+                if($answer->save(false)){
+                    $data=array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }
+                else{
+                    $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'error saving answer to database');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+            }
+            else{
+                $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not exists');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+        }catch (Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+    }
     public function actionLike()
     {
         try{
