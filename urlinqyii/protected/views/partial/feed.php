@@ -92,7 +92,7 @@
                                                                 {{text}}
                                                     </span>
                                                     {{#if file_id}}
-                                                    <div class = "file_section_header">Attached</div>
+                                                    
                                                     <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
 
                                                     {{/if}}
@@ -211,7 +211,7 @@
                                     </div>
                                    
                                     {{#if file_id}}
-                                        <div class = "file_section_header">Attached</div>
+                                        
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
 
@@ -305,7 +305,7 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class = "file_section_header">Attached</div>
+                                            
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
@@ -343,7 +343,7 @@
                         </div>
 
                         {{#if file_id}}
-                            <div class = "file_section_header">Attached</div>
+                            
                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
@@ -377,7 +377,7 @@
                                         </div>
                                         
                                         {{#if file_id}}
-                                            <div class = "file_section_header">Attached</div>
+                                            
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
@@ -528,7 +528,7 @@
 
                                                     {{/ifCond}}
                                                     {{#if file_id}}
-                                                        <div class = "file_section_header">Attached</div>
+                                                        
                                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                                     {{/if}}
                                                     {{#if embed_link}}
@@ -653,7 +653,7 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class = "file_section_header">Attached</div>
+                                        
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
@@ -922,7 +922,7 @@
                                     </div>
                                        
                                     {{#if file_id}}
-                                        <div class = "file_section_header">Attached</div>
+                                        
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>

@@ -126,6 +126,12 @@ class UserController extends Controller
 
         $user = $this->get_current_user();
 
+        if(!$user){
+            $data = array('success'=>false, 'error_id'=>1);
+            $this->renderJSON($data);
+            return;
+        }
+
 
 //        $users = $this->models_to_array(User::model()->findAllBySql('SELECT * FROM `user` WHERE department_id = ' . $user->department_id . ' AND user_id != ' . $user->user_id . ' LIMIT 10'));
 //

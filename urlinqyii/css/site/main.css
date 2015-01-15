@@ -9,11 +9,15 @@ html{
     margin: 0;
     -webkit-tap-highlight-color:transparent;
     background: #FAFAFA;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
 }
 
 body{
     margin: 0;
     padding: 0;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
     min-width:745px;
     font-family: 'Open Sans', sans-serif;
     overflow: hidden;
@@ -38,7 +42,8 @@ body.body_group{
 
 body#body_home{
     overflow:auto;
-    background: #fff;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
 }
 
 
@@ -111,7 +116,6 @@ body#body_home{
 
     display: block;
     /* overflow: hidden; */
-    height: 5000px;
     width: 830px;
     z-index: 50;
 
@@ -1772,7 +1776,7 @@ margin-top: 12px;
 margin-left: 5px;
 height: 24px;
 width: 23px;
-background-image: url(http://localhost:8888/alpha/urlinqyii/assets/small_icons.png);
+background-image: url(../../assets/small_icons.png);
 background-position: -38px -768px;
 display: inline-block;
 }
