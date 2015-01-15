@@ -348,6 +348,7 @@ $(document).ready(function() {
     var any_major;
     var any_minor;
     var any_research=false;
+    var match;
     $(document).on('click','#edit_profile_button.editing',function(){  //submit changes
         //alert('done');
         var data = new FormData();
@@ -416,24 +417,33 @@ $(document).ready(function() {
                 var any_errors = false;
                 if(result.year_name == "success"){
                     $('#level_name').text($('#level_dropdown').val());
-                    var match =(new RegExp("at (.+)$")).exec($('#year_info').text());
-                    $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
+                    match =(new RegExp("at (.+)$")).exec($('#year_info').text());
+                    if(match){
+                        $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
+                    }
                 }else if(result.year_name){
                     alert(result.year_name);
+                    any_errors = true;
                 }
                 if(result.year == "success"){
                     $('#year').text($('#year_dropdown').val());
-                    $('#name_info').text((new RegExp("([^0-9]+) ")).exec($('#name_info').text())[1]+" '"+(parseInt($('#year').text())%100));
+                    match =(new RegExp("([^0-9]+) ")).exec($('#name_info').text());
+                    if(match) {
+                        $('#name_info').text(match[1] + " " + (parseInt($('#year').text()) % 100));
+                    }
                 }else if(result.year){
                     alert(result.year);
+                    any_errors = true;
                 }
                 if(result.bio == "success"){
                     $('#bio').text($('#bio_input').val());
                 }else if(result.bio){
                     alert(result.bio);
+                    any_errors = true;
                 }
                 if(result.gender && result.gender != "success"){
                     alert(result.gender);
+                    any_errors = true;
                 }
                 if(result.major == "success"){
                     $('#major_section > .info_name.major').remove();
@@ -483,7 +493,10 @@ $(document).ready(function() {
                     if($('#office_section').length){
                         $('#name_info').text("Professor "+$('#name_input').val());
                     }else{
-                        $('#name_info').text($('#name_input').val()+" '"+(new RegExp("'([0-9]+)$")).exec($('#name_info').text())[1]);
+                        match = (new RegExp("([0-9]+)$")).exec($('#name_info').text());
+                        if(match){
+                            $('#name_info').text($('#name_input').val()+" "+match[1]);
+                        }
                     }
                 }else if(result.name){
                     alert(result.name);
