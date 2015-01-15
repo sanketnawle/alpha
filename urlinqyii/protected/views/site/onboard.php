@@ -84,7 +84,7 @@
                     <div class="progress_content">
                         <div class="content_inner">
                             <div class="content_canvas">
-                                  <div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><span>Join</span></div></div></div>
+                                  <div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                 <div class="card_0_info">
                     <img class="card_0_glyph" src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
                     <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1">32 people</div></div>
-                    <div class="green_join_btn"><span>Join</span></div>
+                    <div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div>
                 </div>
             </div>
 
@@ -155,7 +155,7 @@
                 <div class='card_0_text'><div class='card_0_text_0'>{{department_name}}</div>
                     <div class='card_0_text_1'>32 people</div>
                 </div>
-                <div class='green_join_btn'><span>Join</span></div>
+                <div class='green_join_btn'><em class = 'white_plus_icon'></em><span>Join</span></div>
             </div>
         </div>
     </script>
@@ -178,6 +178,9 @@
 
                     <input id='profile_image_submit' type="submit" name="submitIT" value="Upload this file" style='display:none;'>
                 </form>
+                <div class = "update_picture_text">
+                    <p>Upload your profile picture</p>
+                </div>
 
 
             </div>
