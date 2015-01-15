@@ -6,6 +6,10 @@
  * The followings are the available columns in table 'post_question_option_answer':
  * @property integer $option_id
  * @property integer $user_id
+ *
+ * The followings are the available model relations:
+ * @property PostQuestionOption $option
+ * @property User $user
  */
 class PostQuestionOptionAnswer extends CActiveRecord
 {
@@ -41,6 +45,8 @@ class PostQuestionOptionAnswer extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'option' => array(self::BELONGS_TO, 'PostQuestionOption', 'option_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 

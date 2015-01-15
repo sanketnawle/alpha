@@ -267,7 +267,7 @@ header('location:home.php');
             post_data,
             function(response) {
 
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
 
                 if(response['success']){
 
