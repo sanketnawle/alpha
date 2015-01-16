@@ -204,7 +204,7 @@
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/<?php echo $class->class_id; ?>/feed')); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/'.$class->class_id.'/feed')); ?>
                     </div>
 
 

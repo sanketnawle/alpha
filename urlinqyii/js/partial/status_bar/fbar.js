@@ -810,7 +810,7 @@ $(document).ready(function() {
                         //console.log(this_file);
 
                         console.log('last modified of this file from dropzone: ' + this_file.lastModified);
-                        console.log('last modified of this file last shit fuck  : ' + last_modified.toString())
+                        console.log('last modified of this file last shit fuck  : ' + last_modified.toString());
 
 
                         console.log('1 name: ' + this_file.name.toString());
