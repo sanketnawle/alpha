@@ -17,7 +17,31 @@ $(document).ready(function() {
     //liking a post
 
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
 
 
 
@@ -472,18 +496,24 @@ $(document).ready(function() {
             single_post.embed_link = findUrlInPost(single_post['text']);
 
         }
-        if(single_post['post_type'] === "discussion"){
+
+
+
+        alert(JSON.stringify(single_post));
+
+
+        if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
             $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "notes") {
+        else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
             console.log('note');
             var source   = $("#post_note_template").html();
             var template = Handlebars.compile(source);
             $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "question") {
+        else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
             console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
@@ -1165,7 +1195,10 @@ $(document).ready(function() {
     });
 
 
+    $('.upload_button').click(function(){
 
+        $('.dropzone').click();
+    });
 
     $('#post_attachments').click(function(){
 

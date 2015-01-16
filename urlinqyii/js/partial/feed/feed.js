@@ -40,7 +40,7 @@ $(document).ready(function(){
             if(json_feed_data['success']){
                 //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
-                render_posts(json_feed_data['feed']);
+                render_posts(json_feed_data['feed'].reverse());
             }else{
                 alert('failed to get feed');
             }
@@ -117,28 +117,31 @@ $(document).ready(function(){
             single_post.embed_link = findUrlInPost(single_post['text']);
 
         }
-        if(single_post['post_type'] === "discussion"){
+        if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").append(template(single_post));
+            $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "notes") {
+        else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
             console.log('note');
             var source   = $("#post_note_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").append(template(single_post));
+            $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "question") {
+        else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
             console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").append(template(single_post));
+            $("#posts").prepend(template(single_post));
 
         }
-        else if(single_post['post_type'] === "discussion") {
-
+        else {
+            var source   = $("#post_template").html();
+            var template = Handlebars.compile(source);
+            $("#posts").prepend(template(single_post));
         }
     }
+
 
     //findUrlInPost("hellllhttps://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll oasdfjlei'dfdfd'https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll");
 
