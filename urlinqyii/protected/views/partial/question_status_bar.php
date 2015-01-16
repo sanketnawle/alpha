@@ -6,6 +6,7 @@
 
 </script>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
 <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
@@ -16,6 +17,12 @@
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
 	<!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
+
+    <form action="/post/create" class="dropzone dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+
+    </form>
+
 	<div id = "fbar_new">
 		<section id = "fbar_buttons">
 			<div class = "fbar_buttonwrapper" id = "fbar_button_discuss" data-post_button_type = "discuss">
@@ -66,7 +73,7 @@
 						</ul>
 						<div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>	
 						<div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>					
-						<div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "hide_both">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>
+						<div id = "question_form_content" class = "question_type_button active regular_question" id = "hide_both_question_types" data-question_post_type = "question">Regular Question</div><div id = "question_form_content" class = "question_type_button multiple_choice_btn" data-question_post_type = "multiple_choice"><em></em>Multiple Choice</div><div id = "question_form_content" data-question_post_type = "true_false" class = "question_type_button true_or_false_btn"><em></em>True or False</div>
 					</header>
 
 					<section id = "discussion_form" class = "post_form_template fbar_contents_fix">
@@ -201,6 +208,8 @@
                             </div>
 						</div>
 						<div id = "post_attachments" class = "notes_form_hide_content help_div_shower">
+
+
 							<span></span>
 							<div class="help-div fbar_helpers">
                                 <div class="help-box">Attach files/notes</div>
@@ -220,7 +229,17 @@
 			</form>
 		</section>
 	</div>
-</div> 
+
+
+
+
+
+
+<script id='post_file_template' type="text/x-handlebars-template">
+
+        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
+
+</script>
 
 
 

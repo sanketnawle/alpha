@@ -7,36 +7,40 @@
 function getFileMimeType($file) {
     if (function_exists('finfo_file')) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $type = finfo_file($finfo, $file);
-    finfo_close($finfo);
-} else {
-    require_once 'upgradephp/ext/mime.php';
-    $type = mime_content_type($file);
-}
-
-if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
-    $secondOpinion = exec('file -b --mime-type ' . escapeshellarg($file), $foo, $returnCode);
-    if ($returnCode === 0 && $secondOpinion) {
-        $type = $secondOpinion;
+        $type = finfo_file($finfo, $file);
+        finfo_close($finfo);
+    } else {
+        require_once 'upgradephp/ext/mime.php';
+        $type = mime_content_type($file);
     }
-}
 
-if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
-    require_once 'upgradephp/ext/mime.php';
-    $exifImageType = exif_imagetype($file);
-    if ($exifImageType !== false) {
-        $type = image_type_to_mime_type($exifImageType);
+    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+        $secondOpinion = exec('file -b --mime-type ' . escapeshellarg($file), $foo, $returnCode);
+        if ($returnCode === 0 && $secondOpinion) {
+            $type = $secondOpinion;
+        }
     }
-}
+
+    if (!$type || in_array($type, array('application/octet-stream', 'text/plain'))) {
+        require_once 'upgradephp/ext/mime.php';
+        $exifImageType = exif_imagetype($file);
+        if ($exifImageType !== false) {
+            $type = image_type_to_mime_type($exifImageType);
+        }
+    }
 
     return $type;
 }
 
 
-function file_upload($files, $path="") {
+function file_upload($files, $path="", $user_id="") {
     //example of path: 'uploads/preview/'
-    $user = User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']));
-
+    if($user_id == ""){
+        $user = User::model()->find('user_id=:id', array(':id' => Yii::app()->session['user_id']));
+    }
+    else{
+        $user = User::model()->find('user_id=:id', array(':id' => $user_id));
+    }
     if(isset($files["file"])){
         include "UniqueTokenGenerator.php";
 
@@ -65,7 +69,7 @@ function file_upload($files, $path="") {
         //Create file in file table here
         $file = new File;
         $file->file_name = $random_name . '.' . $extension;
-        $file->original_name = $files["file"]["name"];
+        //$file->original_name = $files["file"]["name"];
         $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
         $file->file_type = $file_type;
         $file->file_extension = $extension;
@@ -75,7 +79,7 @@ function file_upload($files, $path="") {
 
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
-        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'original_name'=>$file->original_name,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension,'created_timestamp'=>date("Y-m-d H:i:s"),'download_count'=>$file->download_count);
+        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id/*,'original_name'=>$file->original_name*/,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension,'created_timestamp'=>date("Y-m-d H:i:s")/*,'download_count'=>$file->download_count*/);
     }else {
         //$this->renderJSON(array('success'=>false));
         return array('success'=>false);

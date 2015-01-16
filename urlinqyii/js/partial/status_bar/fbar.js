@@ -16,6 +16,13 @@ $(document).ready(function() {
     //*starts* Code to make the post request for a post 
     //liking a post
 
+
+
+
+
+
+
+
     setTimeout(function(){
         sample();
     }, 1000);
@@ -485,6 +492,9 @@ $(document).ready(function() {
         
         var button_selected_type = $button_selected.attr("data-post_button_type");
         $("#fbar_holder").addClass(button_selected_type);
+        $("#fbar_holder").attr('data-post_type', button_selected_type);
+
+
         if($("#fbar_holder").hasClass("event")){
             $("#post_btn").text("Create Event");
         }
@@ -553,9 +563,14 @@ $(document).ready(function() {
         
     });
 
+
     $(document).delegate('.question_type_button', "click", function () { 
         var $button_selected = $(this);
-        $(".question_type_button.active").removeClass("active");    
+        $(".question_type_button.active").removeClass("active");
+
+
+
+        $('#fbar_holder').attr('data-post_type', $button_selected.attr('data-question_post_type'));
         $(this).addClass("active"); 
         var question_button_selected_type = $button_selected.attr("data-question_post_type"); 
         var parent_form = $button_selected.closest("#fbar_form");
@@ -656,6 +671,8 @@ $(document).ready(function() {
 
         $fbar_new.removeClass("fbar_shadow");
 
+        $("#fbar_holder").attr('data-post_type','');
+
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
             $button_section.removeClass("faded");
@@ -665,6 +682,7 @@ $(document).ready(function() {
                     $("#fbar_holder").removeClass("question");
                     $("#fbar_holder").removeClass("event");
                     $("#fbar_holder").removeClass("notes");
+
                     $form_section.removeClass("true_or_false");
                     $form_section.removeClass("mult_choice");
                     $form_section.removeClass("regular_question");
@@ -686,5 +704,199 @@ $(document).ready(function() {
         var selected_audience_text = $selected_audience.find("a").text();
         $(".selected_audience").text(selected_audience_text);
     });
+
+
+    Dropzone.autoDiscover = false;
+    var global = {};
+    global.myDropzone = new Dropzone('.dropzone', {
+        url: base_url + '/user/uploadProfileImage',
+        autoProcessQueue: false,
+        parallelUploads: 4,
+        maxFilesize: 16,
+        maxFiles: 10,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+        maxfilesexceeded: function(file) {
+            this.removeAllFiles();
+            this.addFile(file);
+        },
+        init: function() {
+            this.on("success", function(file, response) {
+
+                console.log('FILE NAME');
+                console.log(response['original_name']);
+
+                if(response['success']){
+                    //alert('success');
+                }
+                //global.myDropzone.emit("addedfile", file);
+            });
+
+
+            this.on('addedfile',function(file){
+
+                console.log(file);
+
+
+                var source = $('#post_file_template').html();
+
+                var template = Handlebars.compile(source);
+
+
+
+                var file_type = file['type'];
+
+                if(file['name'].indexOf('.doc') > -1){
+                    file['file_type'] = 'doc';
+                }else if(file['name'].indexOf('.ppt') > -1){
+                    file['file_type'] = 'ppt';
+                }else if(file['name'].indexOf('.pdf') > -1){
+                    file['file_type'] = 'pdf';
+                }else if(file['name'].indexOf('.xls') > -1){
+                    file['file_type'] = 'xls';
+                }else if(file['name'].indexOf('.zip') > -1){
+                    file['file_type'] = 'doc';
+                }else if(file['name'].indexOf('.jpg') > -1){
+                    file['file_type'] = 'jpg';
+                }else if(file['name'].indexOf('.png') > -1 ){
+                    file['file_type'] = 'png';
+                }else if(file['name'].indexOf('.gif') > -1){
+                    file['file_type'] = 'doc';
+                }
+
+                var generated_html = template(file);
+
+                var $file = $(generated_html);
+
+
+
+                // Create the remove button
+                var removeButton = $("<span class='file_x_icon'>Remove file</span>");
+
+                // Add the button to the file preview element.
+                $file.append(removeButton);
+
+                var last_modified = $file.attr('data-last_modified');
+                var name = $file.attr('data-name');
+
+                $file.find('.file_x_icon').on('click',function(e) {
+                    console.log('REMOVE');
+
+                    var $x_icon = $(this);
+
+                    // Make sure the button click doesn't submit the form:
+                    e.preventDefault();
+                    e.stopPropagation();
+
+
+
+
+//                    $('.fbar_file').each(function(){
+//                        var $this_file = $(this);
+//
+//                        if($this_file.attr('data-last_modified') == last_modified.toString()){
+//                            global.myDropzone.removeFile(this_file);
+//                        }
+//                    });
+
+
+
+                    // Remove the file preview
+
+
+                    //alert(global.myDropzone.files);
+                    console.log(global.myDropzone.files);
+                    for(var i = 0; i < global.myDropzone.files.length; i++){
+                        var this_file = global.myDropzone.files[i];
+                        //console.log(this_file);
+
+                        console.log('last modified of this file from dropzone: ' + this_file.lastModified);
+                        console.log('last modified of this file last shit fuck  : ' + last_modified.toString())
+
+
+                        console.log('1 name: ' + this_file.name.toString());
+                        console.log('2 name: ' + name.toString());
+
+                        if(this_file.lastModified.toString() == last_modified.toString() && this_file.name.toString() == name.toString()){
+                            global.myDropzone.removeFile(this_file);
+                            $('.fbar_file[data-name="' + this_file.name + '"][data-last_modified="' + this_file.lastModified + '"]').remove();
+
+                        }
+                    }
+
+
+                    console.log('Current dropzone files');
+                    console.log(global.myDropzone.files);
+
+                });
+
+
+                $('.post_form_template').append($file);
+
+
+                // Capture the Dropzone instance as closure.
+                var _this = this;
+
+
+
+
+
+
+
+                global.myDropzone.files.push(file);
+
+
+
+
+
+
+
+
+
+
+
+
+            })
+
+        }
+
+
+
+//        addedfile: function(file){
+//
+//            alert(JSON.stringify(file));
+//
+//            return file;
+//        }
+    });
+
+
+
+
+
+
+
+
+
+
+    $('#fbar_form').submit(function(e){
+        e.preventDefault();
+    });
+
+
+
+
+    $('#post_attachments').click(function(){
+
+        $('.dropzone').click();
+    });
+
+
+
+
+
+
+
+
+
 
 });
