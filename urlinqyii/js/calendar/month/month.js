@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
 
 
 
-
+    
     var weekday = new Array(7);
     weekday[0]=  "Sunday";
     weekday[1] = "Monday";

@@ -1517,3 +1517,19 @@ div.photo_flier_upload_box {
 }
 
 
+.file_x_icon {
+    font-weight: 600;
+    font-size: 25.5px;
+    display: inline-block;
+    margin-top: 4px;
+    float: right;
+    width: 25px;
+    height: 25px;
+    background-position: 0px -955px;
+    cursor: pointer;
+    background-size: auto;
+
+    background-image: url(http://localhost/alpha/urlinqyii/assets/small_icons.png);
+}
+
+

@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
         var name = $invite_input.attr('data-name');
         var email = $invite_input.attr('data-email');
         var id = $invite_input.attr('data-id');
-
+        var file_url = $invite_input.attr('data-file_url');
 
         if(id == '' || name == '' || email == ''){
 
@@ -52,6 +52,7 @@ jQuery(document).ready(function(){
             user_json['user_name'] = name;
             user_json['user_email'] = email;
             user_json['id'] = id;
+            user_json['file_url'] = file_url;
 
 
             var source = jQuery('#user_template').html();
@@ -65,6 +66,7 @@ jQuery(document).ready(function(){
             $invite_input.attr('data-name','');
             $invite_input.attr('data-email','');
             $invite_input.attr('data-id','');
+            $invite_input.attr('data-file_url','');
 
 
             $invite_input.val('');
@@ -81,13 +83,12 @@ jQuery(document).ready(function(){
 
 
     function show_user_invite(user_json){
-
         //Insert the users
         var source = jQuery('#invite_user_template').html();
         var template = Handlebars.compile(source);
 
+        user_json['base_url'] = base_url;
         user_json['user_name'] = user_json['firstname'] + " " + user_json['lastname'];
-
 
         var generated_html = template(user_json);
 
@@ -102,6 +103,7 @@ jQuery(document).ready(function(){
         $invite_input.attr('data-id','');
         $invite_input.attr('data-name','');
         $invite_input.attr('data-email','');
+        $invite_input.attr('data-file_url','');
 
 
         var $invite_popup = $invite_input.closest('.invite_holder').find('#invite_popup');
@@ -172,6 +174,7 @@ jQuery(document).ready(function(){
         var user_id = $invite_user_holder.attr('data-id');
         var user_name = $invite_user_holder.attr('data-name');
         var user_email = $invite_user_holder.attr('data-email');
+        var user_file_url = $invite_user_holder.attr('data-file_url');
 
         var $invite_input = $invite_user_holder.closest('.invite_holder').find('.invite_input');
 
@@ -182,6 +185,7 @@ jQuery(document).ready(function(){
         $invite_input.attr('data-id', user_id);
         $invite_input.attr('data-name', user_name);
         $invite_input.attr('data-email', user_email);
+        $invite_input.attr('data-file_url', user_file_url);
 
         $invite_input.val(user_name + ' <' + user_email + '>');
 

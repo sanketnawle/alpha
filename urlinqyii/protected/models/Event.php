@@ -91,7 +91,7 @@ class Event extends CActiveRecord
             'acceptedInvites' => array(self::HAS_MANY,'Invite',array('origin_id'=>'event_id'),'condition'=>'origin_type = "event" AND choice = 1'),
             'event' => array(self::HAS_ONE,'Event',array('origin_id'=>'event_id'),'condition'=>'origin_type = "event"'),
 
-            'attendees'=>array(self::HAS_MANY, 'User', array('user_id'=>'user_id'), 'through'=>'invites')
+            'attendees'=>array(self::MANY_MANY, 'User', 'event_user(event_id, user_id)')
 		);
 	}
 

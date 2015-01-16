@@ -96,8 +96,13 @@ class Controller extends CController
     }
 
 
-    function get_current_user_id(){
-        return Yii::app()->session['user_id'];
+    function get_current_user_id($post = null){
+        if($post && isset($post['user_id'])) {
+            return User::model()->find('user_id=:id', array(':id'=>$post['user_id']))->user_id;
+        }
+        else{
+            return User::model()->find('user_id=:id', array(':id'=>Yii::app()->session['user_id']))->user_id;
+        }
     }
 
 
