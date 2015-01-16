@@ -58,13 +58,24 @@ class PostController extends Controller
 
 	public function actionCreate()
 	{
-//        $return_data = array('success'=>true,'post'=>$_POST);
-//        $this->renderJSON($return_data);
-//        return;
+
+//{"text":"asdasd","post_type":"discuss","origin_id":"","origin_type":"class","sub_text":"","privacy":"","anon":0,"like_count":0}
+
+
+        //Because of limitations with dropzone js, if files are being uploaded,
+        //I must send the post parameters as a JSON string rather than just sending them normally
+        //So if files are present, we need to decode the JSON string into an array
+        if(isset($_FILES['file'])) {
+            $_POST['post'] = json_decode($_POST['post'], true);
+        }
 
 
 
-
+        if(!isset($_POST['post']['text']) || !isset($_POST['post']['origin_type']) || !isset($_POST['post']['origin_id']) || !isset($_POST['post']['post_type']) || !isset($_POST['post']['sub_text']) || !isset($_POST['post']['privacy']) || !isset($_POST['post']['anon'])){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'All data is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
 
 
 
@@ -88,7 +99,7 @@ class PostController extends Controller
             if(isset($_POST['post'])){
 
 
-                $model->attributes=$_POST['post'];
+                $model->attributes = $_POST['post'];
                 $model->user_id = 7;
     //            $model->created_at = NOW();
     //            $model->last_activity =  = NOW();
@@ -111,7 +122,7 @@ class PostController extends Controller
 
 
                     //Save post files
-                    if (count($_FILES['file']) > 0) {
+                    if(isset($_FILES['file'])) {
                         $file_ary = $this->reArrayFiles($_FILES['file']);
 
                         foreach ($file_ary as $file) {
@@ -136,9 +147,7 @@ class PostController extends Controller
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
 
-                    if(isset($_POST['post']['question']) && ($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type')){
-                        $model->post_type = 'question';
-                        $model->save(false);
+                    if(isset($_POST['post']['question']) && ($model->post_type == 'question' || $model->post_type == 'multiple_choice' || $model->post_type == 'true_false')){
 
 
                         $question = new PostQuestion;
@@ -146,10 +155,12 @@ class PostController extends Controller
                         $question->post_id = $post_id;
                         $question->save(false);
 
-                        $correct_answer_key = $_POST['post']['question']['answer'];
+                        $correct_answer_index = $_POST['post']['question']['answer_index'];
 
                         //if(count($_POST['post']['question']['choices']) > 0){
-                        foreach ($_POST['post']['question']['choices'] as $key => $option_text) {
+
+                        for($i = 0; $i < count($_POST['post']['question']['options']); $i++){
+                            $option_text = $_POST['post']['question']['options'][$i];
 
                             $option = new PostQuestionOption;
                             $option->option_text = $option_text;
@@ -157,7 +168,7 @@ class PostController extends Controller
                             $option->save(false);
 
 
-                            if($key == $correct_answer_key){
+                            if($i == $correct_answer_index){
                                 $question->correct_answer_id = $option->option_id;
                                 $question->save(false);
                             }
