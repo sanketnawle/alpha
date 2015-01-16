@@ -6,6 +6,9 @@
 
 </script>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
@@ -18,7 +21,7 @@
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
 	<!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
 
-    <form action="/post/create" class="dropzone dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
+    <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
         <input type='file' class='step_6_upload' style='display:none;'>
 
     </form>
@@ -241,5 +244,7 @@
 
 </script>
 
+
+<?php echo $this->renderPartial('/partial/feed_templates',array()); ?>
 
 

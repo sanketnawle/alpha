@@ -112,10 +112,10 @@ $(document).ready(function(){
         //Event Posts
         //Announcements
         //Oppurtunities
-        
+
         if(findUrlInPost(single_post['text'])) {
             single_post.embed_link = findUrlInPost(single_post['text']);
-           
+
         }
         if(single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();

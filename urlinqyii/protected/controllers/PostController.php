@@ -39,11 +39,33 @@ class PostController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 
+
+
+    function reArrayFiles(&$file_post) {
+
+        $file_ary = array();
+        $file_count = count($file_post['name']);
+        $file_keys = array_keys($file_post);
+
+        for ($i=0; $i<$file_count; $i++) {
+            foreach ($file_keys as $key) {
+                $file_ary[$i][$key] = $file_post[$key][$i];
+            }
+        }
+
+        return $file_ary;
+    }
+
 	public function actionCreate()
 	{
 //        $return_data = array('success'=>true,'post'=>$_POST);
 //        $this->renderJSON($return_data);
 //        return;
+
+
+
+
+
 
 
 
@@ -53,11 +75,11 @@ class PostController extends Controller
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);
 
-            $model->file_id = NULL;
-            if(isset($_FILES['fileUpload'])) {
-                $file = file_upload($_FILES);
-                $model->file_id = $file['file_id'];
-            }
+//            $model->file_id = NULL;
+//            if(isset($_FILES['fileUpload'])) {
+//                $file = file_upload($_FILES);
+//                $model->file_id = $file['file_id'];
+//            }
             // else{
             //     // echo 'file_upload failed';
             // }
@@ -66,12 +88,15 @@ class PostController extends Controller
             if(isset($_POST['post'])){
 
 
-                    $model->attributes=$_POST['post'];
-                    $model->user_id = 7;
-        //            $model->created_at = NOW();
-        //            $model->last_activity =  = NOW();
-                    $model->save(false);
+                $model->attributes=$_POST['post'];
+                $model->user_id = 7;
+    //            $model->created_at = NOW();
+    //            $model->last_activity =  = NOW();
+                $model->save(false);
                 $post_id = $model->post_id;
+
+
+
 
 
 
@@ -84,10 +109,34 @@ class PostController extends Controller
                 if($model){
 
 
+
+                    //Save post files
+                    if (count($_FILES['file']) > 0) {
+                        $file_ary = $this->reArrayFiles($_FILES['file']);
+
+                        foreach ($file_ary as $file) {
+
+
+
+                            $file_data = file_upload2($file, 'post_files/');
+
+
+                            $post_file = new PostFile;
+                            $post_file->post_id = $model->post_id;
+                            $post_file->file_id = $file_data['file_id'];
+                            if(!$post_file->save(false)){
+                                $return_data = array('success'=>false, 'error_msg'=>'error uploading file');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+                        }
+                    }
+
+
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
 
-                    if(($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type') && isset  ($_POST['post']['question'])){
+                    if(isset($_POST['post']['question']) && ($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type')){
                         $model->post_type = 'question';
                         $model->save(false);
 

@@ -117,7 +117,7 @@ $(document).ready(function(){
 
     Dropzone.autoDiscover = false;
 
-    var myDropzone = new Dropzone('.dropzone', {
+    var myDropzone = new Dropzone('.dropzone.tab_files', {
         url: base_url + '/' + origin_type + '/fileUpload',
         autoProcessQueue: false,
         parallelUploads: 4,
