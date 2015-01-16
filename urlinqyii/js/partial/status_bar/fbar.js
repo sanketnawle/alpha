@@ -462,6 +462,41 @@ $(document).ready(function() {
 
     }
 
+
+    function render_post(single_post){
+        //Event Posts
+        //Announcements
+        //Oppurtunities
+
+        if(findUrlInPost(single_post['text'])) {
+            single_post.embed_link = findUrlInPost(single_post['text']);
+
+        }
+        if(single_post['post_type'] === "discussion"){
+            var source   = $("#post_template").html();
+            var template = Handlebars.compile(source);
+            $("#posts").prepend(template(single_post));
+        }
+        else if(single_post['post_type'] === "notes") {
+            console.log('note');
+            var source   = $("#post_note_template").html();
+            var template = Handlebars.compile(source);
+            $("#posts").prepend(template(single_post));
+        }
+        else if(single_post['post_type'] === "question") {
+            console.log("question");
+            var source   = $("#post_question_template").html();
+            var template = Handlebars.compile(source);
+            $("#posts").prepend(template(single_post));
+
+        }
+        else {
+            var source   = $("#post_template").html();
+            var template = Handlebars.compile(source);
+            $("#posts").prepend(template(single_post));
+        }
+    }
+
     function findUrlInPost( text ) {
         var source = (text || '').toString();
         var urlArray = [];
@@ -663,7 +698,9 @@ $(document).ready(function() {
     });
 
 
-    $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
+
+
+    function close_fbar(){
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
@@ -686,15 +723,18 @@ $(document).ready(function() {
                     $form_section.removeClass("true_or_false");
                     $form_section.removeClass("mult_choice");
                     $form_section.removeClass("regular_question");
-                    $(".question_type_button.active").removeClass("active");    
-                    $(".question_type_button.regular_question").addClass("active"); 
-                    $("#fbar_holder").removeClass("events_more_options");  
-                    $(".event_more_options").text("More Options");    
-                    $("form#fbar_form").css({"overflow":"hidden"});              
+                    $(".question_type_button.active").removeClass("active");
+                    $(".question_type_button.regular_question").addClass("active");
+                    $("#fbar_holder").removeClass("events_more_options");
+                    $(".event_more_options").text("More Options");
+                    $("form#fbar_form").css({"overflow":"hidden"});
             next();
 
         });
+    }
 
+    $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
+        close_fbar();
     });
 
     $('textarea').autosize();
@@ -706,11 +746,20 @@ $(document).ready(function() {
     });
 
 
+
+
+
+    last_file_count = 0;
+    success_counter = 0;
     Dropzone.autoDiscover = false;
     var global = {};
-    global.myDropzone = new Dropzone('.dropzone', {
-        url: base_url + '/user/uploadProfileImage',
+
+    var $fbar_dropzone_form = $('.dropzone#fbar_file_form');
+//    Dropzone.options.fbar_file_form = {
+    global.myDropzone = new Dropzone('form#fbar_file_form', {
+        url: base_url + '/post/create',
         autoProcessQueue: false,
+        uploadMultiple: true,
         parallelUploads: 4,
         maxFilesize: 16,
         maxFiles: 10,
@@ -722,14 +771,43 @@ $(document).ready(function() {
         init: function() {
             this.on("success", function(file, response) {
 
-                console.log('FILE NAME');
-                console.log(response['original_name']);
+                console.log('RESPONSE');
+                console.log(response);
 
-                if(response['success']){
-                    //alert('success');
+                console.log('success counter: ' + success_counter.toString());
+                success_counter++;
+
+                if(success_counter == last_file_count){
+                    console.log('LAST SUCCESS');
+
+                    if(response['success']){
+                        //alert('success');
+
+
+                        reset_fbar();
+                        render_post(response['post']);
+
+                    }
+                    //global.myDropzone.emit("addedfile", file);
                 }
-                //global.myDropzone.emit("addedfile", file);
+
+
             });
+
+
+        this.on("sendingmultiple", function(file, xhr, formData) {
+            last_file_count = global.myDropzone.files.length;
+            success_counter = 0;
+            var post_data = get_post_data();
+
+//            $.each(post_data, function(key, value){
+//                alert(key + ' ' + value);
+//                formData.append(key, value);
+//            });
+
+
+            formData.append('post', post_data);
+        });
 
 
             this.on('addedfile',function(file){
@@ -842,7 +920,7 @@ $(document).ready(function() {
 
 
 
-                global.myDropzone.files.push(file);
+                //global.myDropzone.files.push(file);
 
 
 
@@ -868,12 +946,109 @@ $(document).ready(function() {
 //            return file;
 //        }
     });
+//    }
 
 
 
 
 
 
+    function reset_fbar(){
+        var $fbar_holder = $('#fbar_holder');
+
+        var post_type = $fbar_holder.attr('data-post_type');
+
+
+
+
+        //Clear all dropzone files
+        global.myDropzone.files = [];
+
+
+        //Clear the text input
+        $fbar_holder.find('.post_text_area').val('');
+
+
+        //Delete the previews from the hidden file field
+        $fbar_holder.find('div.dz-preview').each(function(){
+            $(this).remove();
+        });
+
+
+         //Delete the visible file barz
+        $fbar_holder.find('div.fbar_file').each(function(){
+            $(this).remove();
+        });
+
+
+
+
+
+
+
+        //Reset the post type
+        $fbar_holder.attr('data-post_type','');
+
+
+        close_fbar();
+    }
+
+    function get_post_data(){
+        var $fbar_holder = $('#fbar_holder');
+
+        var post_type = $fbar_holder.attr('data-post_type');
+
+
+        var $post_text_area = $fbar_holder.find('.post_text_area');
+
+        var post_text = $post_text_area.val();
+
+
+        var post_data = {};
+        post_data['text'] = post_text;
+
+
+
+        return post_data;
+    }
+
+    function validate_post_data(){
+
+    }
+
+
+
+    $(document).on('click', '.post_btn', function(){
+        var $fbar_holder = $('#fbar_holder');
+
+        var post_type = $fbar_holder.attr('data-post_type');
+
+
+        var $post_text_area = $fbar_holder.find('.post_text_area');
+
+        var post_text = $post_text_area.val();
+
+
+        if(post_text == ''){
+            alert('Please input some text');
+        }
+
+
+        //Check if there are any files
+        var $file_form = $('#fbar_file_form');
+        //alert($file_form.children('div.dz-preview').length);
+        console.log(global.myDropzone.files);
+
+
+        console.log('SENDING FILES');
+        global.myDropzone.processQueue();
+
+
+
+        //$file_form.submit();
+
+
+    });
 
 
 
