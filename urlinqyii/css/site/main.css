@@ -9,11 +9,15 @@ html{
     margin: 0;
     -webkit-tap-highlight-color:transparent;
     background: #FAFAFA;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
 }
 
 body{
     margin: 0;
     padding: 0;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
     min-width:745px;
     font-family: 'Open Sans', sans-serif;
     overflow: hidden;
@@ -38,7 +42,8 @@ body.body_group{
 
 body#body_home{
     overflow:auto;
-    background: #fff;
+    background-image: url(../../assets/noise_bg.gif);
+    background-color: #FAFAF9;
 }
 
 
