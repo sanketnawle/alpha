@@ -157,7 +157,7 @@
                             </div>
 
                             <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/<?php echo $school->school_id; ?>/feed')); ?>
+                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/'.$school->school_id.'/feed')); ?>
                             </div>
                         </div>
                     </div>
