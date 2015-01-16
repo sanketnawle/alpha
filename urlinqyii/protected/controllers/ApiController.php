@@ -6,6 +6,40 @@ class ApiController extends Controller
     //Error ids
     // 1 - file id is not set
     // 2 - File doesnt exist
+    public function actionGetFileUrls(){
+        if(!isset($_GET['file_ids'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
+            $this->renderJSON($data);
+            return;
+        }
+        else{
+            $file_urls = array();
+            $file_ids = $_GET['file_ids'];
+            if(count($file_ids)){
+                for($i=0; $i<count($file_ids); $i++){
+                    $file_id = $file_ids[$i];
+                    $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
+                    if($file){
+                        array_push($file_urls, $file->file_url);
+                    }else{
+                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+                $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
+                $this->renderJSON($data);
+                return;
+            }
+            else{
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+    }
+
+
     public function actionGetFileUrl(){
         if(!isset($_GET['file_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_id isnt set');
@@ -55,7 +89,7 @@ class ApiController extends Controller
         $email = $_GET['email'];
 
 
-        if(strpos($email,'nyu.edu') < 0){
+        if((strpos($email,'nyu.edu') == false) && (strpos($email,'urlinq.com') == false)){
             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'NOT A VALID EMAIL');
             $this->renderJSON($data);
             return;
@@ -85,10 +119,10 @@ class ApiController extends Controller
                 return;
             }
             $picture_file_id = null;
-            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
                 include "file_upload.php";
 
-                $file_upload_response = file_upload($_FILES);
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
                 if ($file_upload_response['success']) {
                     $picture_file_id = $file_upload_response['file_id'];
                 } else {
@@ -109,12 +143,16 @@ class ApiController extends Controller
             $post_new->anon = $_POST['anon'];
             $post_new->text = $_POST['text'];
             $post_new->file_id = $picture_file_id;
+
             if($_POST['privacy'] == 'all') {
                 $post_new->privacy = '';
             }else if($_POST['privacy'] == 'admin'){
                 $post_new->privacy = 'admin';
             }else if($_POST['privacy'] == 'members'){
                 $post_new->privacy = 'members';
+            }
+            else{
+                $post_new->privacy = '';
             }
             if(!$post_new->save(false)){
                 $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving post to database');
@@ -135,24 +173,23 @@ class ApiController extends Controller
 
     public function actionCreateQuestion(){
         try{
-            if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy']) || !isset($_POST['options']) || !isset($_POST['anon'])){
-                $data =array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            if(!isset($_POST['user_id']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy']) || !isset($_POST['anon'])) {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'required data not set');
                 $this->renderJSON($data);
             }
-            $options = $_POST['options'];
             //echo 'options: '.$options;
             $picture_file_id = null;
-            if (isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null) {
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
                 include "file_upload.php";
 
-                $file_upload_response = file_upload($_FILES);
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
                 if ($file_upload_response['success']) {
                     $picture_file_id = $file_upload_response['file_id'];
                 } else {
-                    $picture_file_id = 1;
+                    $picture_file_id = null;
                 }
             } else {
-                $picture_file_id = 1;
+                $picture_file_id = null;
             }
 
             $post_new = new Post();
@@ -191,6 +228,22 @@ class ApiController extends Controller
                     $question = $_POST['answer'];
                 }
 
+                $options = null;
+                if(isset($_POST['options'])){
+                    $options = $_POST['options'];
+                }
+                else{
+                    if(!$question_new->save(false)){
+                        $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'Error saving question to database');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                    else{
+                        $data = array('success'=> true, 'post_id'=>$post_new->post_id);
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
                 //get options and correct answer id
                 for($i = 0; $i<count($options); $i++) {
                     $option_new = new PostQuestionOption();
@@ -222,7 +275,7 @@ class ApiController extends Controller
                 return;
             }
         }catch (Exception $e){
-            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving post to database');
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>$e->getMessage());
             $this->renderJSON($data);
             return;
         }
@@ -231,10 +284,72 @@ class ApiController extends Controller
     //Error ids
     // 1 - all data required is not set
     // 2 - error saving user to database
+    public function actionResendEmail(){
+        try {
+            if (!isset($_POST['user_id'])) {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'All data is not set');
+                $this->renderJSON($data);
+                return;
+            }
+            //temp the user_token table not right on the real server
+            //$user = $this->get_current_user_id($_POST);
+            $user = User::model()->find('user_id=:id', array(':id'=>$_POST['user_id']));
+            //$user = $this->get_current_user($_POST);
+            if ($user) {
+                $user_confirmation_test = UserConfirmation::model()->find('user_id=:id', array(':id' => $user->user_id));
+                if ($user_confirmation_test) {
+                    //If the user already has a confirmation, send another email with the same token
+                    $user_email = $user->user_email;
+                    $subject = 'Urlinq verification email';
+                    $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
+                    $from = 'team@urlinq.com';
+                    $email_data = array('key' => $user_confirmation_test->key_email);
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                    $data = array('success' => true, 'user_id' => $user->user_id);
+                    $this->renderJSON($data);
+                    return;
+                } else {
+                    //If there isnt already a user confirmation,
+                    //create a new one
+                    include_once 'UniqueTokenGenerator.php';
+                    //Create a user_confirmation for this user
+                    $user_confirmation = new UserConfirmation;
+                    $user_confirmation->key_email = token();
+                    $user_confirmation->user_id = $user->user_id;
+
+                    if ($user_confirmation->save(false)) {
+                        $user_email = $user->user_email;
+                        $subject = 'Urlinq verification email';
+                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                        $from = 'team@urlinq.com';
+                        $email_data = array('key' => $user_confirmation->key_email);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                        $data = array('success' => true, 'user_id' => $user->user_id);
+                        $this->renderJSON($data);
+                        return;
+                    } else {
+                        $data = array('success' => false, 'error_id' => 6, 'error_msg' => 'error saving user confirmation');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                }
+            } else {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'user does not exist');
+                $this->renderJSON($data);
+                return;
+            }
+        }catch(Exception $e){
+            $data = array('success' => false, 'error_id' => 2, 'error_msg' => $e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
     public function actionSignup() {
 
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['user_type'])
-          || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
+            || !isset($_POST['school_id']) || !isset($_POST['department_id'])){
 
 
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -242,13 +357,6 @@ class ApiController extends Controller
             return;
         }
 
-
-        if(isset($_POST['facebook_flag'])){
-            $facebook_email = $_POST['facebook_email'];
-            $facebook_token = $_POST['facebook_token'];
-
-
-        }
 
         //|| isset($_FILES['uploadFile'])
         $email = $_POST['email'];
@@ -258,24 +366,7 @@ class ApiController extends Controller
         $user_type = $_POST['user_type'];
         $school_id = $_POST['school_id'];
         $department_id = $_POST['department_id'];
-        $picture_file_id = null;
-
-
-
-        if(isset($_FILES['uploadFile']) && $_FILES['uploadFile'] != null){
-            include "file_upload.php";
-
-            $file_upload_response = file_upload($_FILES);
-            if($file_upload_response['success']){
-                $picture_file_id = $file_upload_response['file_id'];
-            }else{
-                $picture_file_id = 1;
-            }
-        }else{
-            $picture_file_id = 1;
-        }
-
-
+        //$picture_file_id = null;
 
 
         $user = new User;
@@ -286,10 +377,31 @@ class ApiController extends Controller
             $user->user_type = $user_type;
             $user->school_id = $school_id;
             $user->department_id = $department_id;
-            $user->picture_file_id = $picture_file_id;
-            $user->save(false);
+            $user->picture_file_id = null;
 
-            if($user){
+
+            if($user->save(false)){
+
+                if(isset($_FILES['file']) && $_FILES['file'] != null){
+                    include "file_upload.php";
+                    $local_directory = 'profile_pictures/';
+                    $file_id = null;
+                    $file_upload_response = file_upload($_FILES,$local_directory,$user->user_id);
+                    if($file_upload_response['success']){
+                        $file_id = $file_upload_response['file_id'];
+                    }else{
+                        $file_id = 1;
+                    }
+                }else{
+                    $file_id = 1;
+                }
+                $user->picture_file_id = $file_id;
+                if($user->save(false)){
+                    $data = array('success'=> false,'error_id'=> 5, 'error_msg'=>'error saving user picture into db');
+                    $this->renderJSON($data);
+                    return;
+                }
+
                 include "password_encryption.php";
                 $salt = salt();
                 $hashed_password = hash_password($password,$salt);
@@ -298,26 +410,54 @@ class ApiController extends Controller
                 $user_login->user_id = $user->user_id;
                 $user_login->password = $hashed_password;
                 $user_login->salt = $salt;
-                $user_login->save(false);
-                if(!$user_login){
+
+                if(!$user_login->save(false)){
                     $data = array('success'=> false,'error_id'=> 4, 'error_msg'=>'error saving user login to db');
                     $this->renderJSON($data);
                     return;
                 }
+
+                //after saving user login, send email confirmation
+
+                $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
+                if($user_confirmation_test){
+                    //If the user already has a confirmation, send another email with the same token
+                    $user_email = $user->user_email;
+                    $subject = 'Urlinq verification email';
+                    $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
+                    $from = 'team@urlinq.com';
+                    $email_data = array('key'=>$user_confirmation_test->key_email);
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                }else{
+                    //If there isnt already a user confirmation,
+                    //create a new one
+                    include_once 'UniqueTokenGenerator.php';
+                    //Create a user_confirmation for this user
+                    $user_confirmation = new UserConfirmation;
+                    $user_confirmation->key_email = token();
+                    $user_confirmation->user_id = $user->user_id;
+
+                    if($user_confirmation->save(false)){
+                        $user_email = $user->user_email;
+                        $subject = 'Urlinq verification email';
+                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                        $from = 'team@urlinq.com';
+                        $email_data = array('key'=>$user_confirmation->key_email);
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
+                    }else{
+                        $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+
+
+
             }else{
                 $data = array('success'=> false,'error_id'=> 3, 'error_msg'=>'Error saving user to database');
                 $this->renderJSON($data);
                 return;
             }
-        } catch (Exception $e) {
-            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
-            $this->renderJSON($data);
-            return;
-        }
-
-
-
-
 
 
         //Send email verifications here
@@ -337,17 +477,225 @@ class ApiController extends Controller
         $data = $this->login($email,$password);
         $this->renderJSON($data);
         return;
+        } catch (Exception $e) {
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving user to database');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
+    public function actionCreateEvent()
+    {
+//        $data = array('success'=>true);
+//        $this->renderJSON($_POST);
+//        return;
 
-    //ERROR ID's
-    // 1 - All data is not set
-    public function actionFacebookLogin(){
-        if(!isset($_POST['facebook_email']) && !isset($_POST['facebook_token'])){
+//        var post_data = {
+//        event:{
+//            event_name: 'Test event',
+//                origin_type:' club',
+//                origin_id: 1,
+//                title: 'Test Event',
+//                description: 'This is my test event description',
+//                start_time: '10:10:10',
+//                end_time: '11:11:11',
+//                start_date: '2014-12-01',
+//                end_date: '2014-12-01',
+//                location: 'Manhattan'
+//            }
+//        };
+
+
+        if(!isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['description'])
+            || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
             $this->renderJSON($data);
             return;
         }
+
+        $event_data = $_POST['event'];
+
+
+        try {
+
+            $picture_file_id = null;
+            if (isset($_FILES['file']) && $_FILES['file'] != null) {
+                include "file_upload.php";
+
+                $file_upload_response = file_upload($_FILES,'',$_POST['user_id']);
+                if ($file_upload_response['success']) {
+                    $picture_file_id = $file_upload_response['file_id'];
+                } else {
+                    $picture_file_id = null;
+                }
+            } else {
+                $picture_file_id = null;
+            }
+            $event = new Event;
+            $event->title = $event_data['event_name'];
+            $event->description = $event_data['description'];
+            $event->event_type = $event_data['event_type'];
+            //$user->$this->get_current_user($_POST);
+            //$event->user_id = $this->get_current_user_id($_POST);
+            $event->user_id = $_POST['user_id'];
+            $event->origin_type = $event_data['origin_type'];
+            $event->origin_id = $event_data['origin_id'];
+            $event->start_date = $event_data['start_date'];
+            $event->end_date = $event_data['end_date'];
+            $event->start_time = $event_data['start_time'];
+            $event->end_time = $event_data['end_time'];
+            $event->location = $event_data['location'];
+            $event->file_id = $picture_file_id;
+            //$event->save(false);
+
+            if($event->save(false)){
+                //If this event was successfully created, check if there
+                //were any invitations sent out for this event
+                if(isset($_POST['event']['invites'])){
+                    include_once "invite/invite.php";
+                    //Loop thru the invites and send an invite to each user
+                    foreach($_POST['event']['invites'] as $invite_user_id){
+                        send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                    }
+                }
+
+
+
+                //$event = $this->model_to_array($event);
+                //$event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
+
+                $data = array('success'=>true,'event_id'=>$event->event_id);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error creating event ');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }catch(Exception $e){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+    public function actionCreateReply()
+    {
+        try {
+            $user = $this->get_current_user($_POST);
+            if($user) {
+                $model = new Reply;
+                // Uncomment the following line if AJAX validation is needed
+                // $this->performAjaxValidation($model);
+                if (isset($_POST['comment'])) {
+                    $model->attributes = $_POST['comment'];
+                    $model->user_id = $user->user_id;
+                    if ($model->save(false)){
+                        $data = array('success' => true, 'reply_id'=> $model->reply_id);
+                        $this->renderJSON($data);
+                        return;
+                    }
+                    else{
+                        $data = array('success' => false, 'error_id' => 2, 'error_msg' => 'error saving comment');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+                else{
+                    $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'All data is not set');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+            else{
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'All data is not set');
+                $this->renderJSON($data);
+                return;
+            }
+        }catch(Exception $e){
+            $data = array('success' => false, 'error_id' => 2, 'error_msg' => $e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+    //ERROR ID's
+    // 1 - All data is not set
+    public function actionFacebookLogin(){
+        try{
+            if (!isset($_POST['facebook_email']) || !isset($_POST['facebook_token'])) {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'All data is not set');
+                $this->renderJSON($data);
+                return;
+            }
+            $facebook_email = $_POST['facebook_email'];
+            $facebook_user = UserAuthProvider::model()->findBySql("select * from `user_auth_provider` where `auth_id`='$facebook_email'");
+            if (!$facebook_user) {
+                    $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'facebook user not exists');
+                    $this->renderJSON($data);
+                    return;
+            } else {
+                $user_id = $facebook_user->user_id;
+                $user_p = UserLogin::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+                $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+                $password = $user_p->password;
+                $username = $user->user_email;
+                $data = $this->login($username, $password);
+                $this->renderJSON($data);
+                return;
+            }
+        }catch (Exception $e){
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+    public function actionLinkFacebook(){
+        try{
+            if (!isset($_POST['user_id']) || !isset($_POST['facebook_id'])) {
+                $data = array('success' => false, 'error_id' => 1, 'error_msg' => 'All data is not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $facebook_id = $_POST['facebook_id'];
+            $facebook_user = UserAuthProvider::model()->findBySql("select * from `user_auth_provider` where `auth_id`='$facebook_id'");
+            if (!$facebook_user) {
+                $facebook_new = new UserAuthProvider();
+                $facebook_new->auth_id = $facebook_id;
+                $facebook_new->fb_email = $_POST['facebook_id'];
+                $facebook_new->auth_key = $_POST['facebook_token'];
+                $facebook_new->auth_provider = 'facebook';
+                if($facebook_new->save(false)){
+                    $data = array('success' => false, 'error_id'=>3, 'error_msg'=>'user not');
+                    $this->renderJSON($data);
+                    return;
+                }
+                else{
+                    $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>'error saving facebook information');
+                    $this->renderJSON($data);
+                    return;
+                }
+            } else {
+                $user_id = $facebook_user->user_id;
+                $user_p = UserLogin::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+                $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
+                $password = $user_p->password;
+                $username = $user->user_email;
+                $data = $this->login($username, $password);
+                $this->renderJSON($data);
+                return;
+            }
+        }catch (Exception $e){
+            $data = array('success'=> false,'error_id'=> 2, 'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+
     }
 
     public function actionUserFollow()
@@ -604,7 +952,7 @@ class ApiController extends Controller
         $user_id = $_POST['user_id'];
         $department_id = $_POST['department_id'];
 
-        $department_user = ClassUser::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
+        $department_user = DepartmentFollow::model()->find('department_id=:id and user_id=:user_id', array(':id'=>$department_id,':user_id'=>$user_id));
         //Check if this user is even in this class
         if($department_user){
             //Check if we destroy this shit successfully
@@ -637,7 +985,18 @@ class ApiController extends Controller
         $user_id = $_GET['user_id'];
         $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
         $data = array('success'=>true,'user'=>$this->get_model_associations($user,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array())));
-
+        $user = $this->get_current_user($_GET);
+        if($user && ($user->user_id != $user_id)) {
+            $is_attending = UserConnection::model()->find("from_user_id=:user_id and to_user_id=:id", array(":id"=>$user_id, ":user_id"=>$user->user_id));
+            if($is_attending){
+                $data['user']['is_following'] = true;
+            }
+            else{
+                $data['user']['is_following'] = false;
+            }
+        }else{
+            $data['user']['is_following'] = false;
+        }
         $this->renderJSON($data);
         return;
     }
@@ -863,6 +1222,18 @@ class ApiController extends Controller
             $data['department']['members'] = $users;
             $data['department']['class_count'] = count($department->classes);
             $data['department']['member_count'] = count($department->members);
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = DepartmentFollow::model()->find("department_id=:id and user_id=:user_id", array(":id"=>$department_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['department']['is_attending'] = true;
+                }
+                else{
+                    $data['department']['is_attending'] = false;
+                }
+            }else{
+                $data['department']['is_attending'] = false;
+            }
 
 
 
@@ -1020,6 +1391,18 @@ class ApiController extends Controller
             $data['group']['admins'] = $group->admins;
             $data['group']['members'] = $group->members;
 
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = GroupUser::model()->find("group_id=:id and user_id=:user_id", array(":id"=>$group_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['group']['is_attending'] = true;
+                }
+                else{
+                    $data['group']['is_attending'] = false;
+                }
+            }else{
+                $data['group']['is_attending'] = false;
+            }
 
             $this->renderJSON($data);
             return;
@@ -1057,6 +1440,20 @@ class ApiController extends Controller
             $data['class']['students'] = $class->students;
             $data['class']['course'] = $class->course;
             $data['class']['professor'] = $class->professorUser;
+
+
+            $user = $this->get_current_user($_GET);
+            if($user) {
+                $is_attending = ClassUser::model()->find("class_id=:id and user_id=:user_id", array(":id"=>$class_id, ":user_id"=>$user->user_id));
+                if($is_attending){
+                    $data['class']['is_attending'] = true;
+                }
+                else{
+                    $data['class']['is_attending'] = false;
+                }
+            }else{
+                $data['class']['is_attending'] = false;
+            }
 
             $this->renderJSON($data);
             return;
@@ -1297,7 +1694,7 @@ class ApiController extends Controller
             }
 
 
-            include 'password_encryption.php';
+            include 'UniqueTokenGenerator.php';
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
             $salt = $user_login->salt;
@@ -1307,7 +1704,7 @@ class ApiController extends Controller
 
             if($user_login->password == $hashed_password){ //user has successfully logged in
                 //Generate the token
-                $token = salt();
+                $token = generateUniqueToken($user->user_id, $email);
 
                 //Save token to database
                 $user_token = new UserToken;
@@ -1320,7 +1717,7 @@ class ApiController extends Controller
                 //$this->renderJSON($data);
 
             }else{ //user login failed
-                return array('success'=>false,'error_id'=>3,'error'=>'user with email: ' . $email . ' doesnt exist');
+                return array('success'=>false,'error_id'=>3,'error'=>'user password not correct');
                 //$this->renderJSON($data);
 
             }
@@ -1404,7 +1801,7 @@ class ApiController extends Controller
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
 
-                    if($origin != ''){
+                    if($origin != 'user'){
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1415,6 +1812,14 @@ class ApiController extends Controller
                     }else{
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
+                    }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
                     }
                     array_push($events_data,$event);
                 }
@@ -1433,6 +1838,73 @@ class ApiController extends Controller
             return;
         }
 
+    }
+
+    public function actionAttendEvent(){
+        if(!isset($_POST['event_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $event_user = EventUser::model()->find('event_id=:id and user_id=:user_id', array(':id'=>$event_id,':user_id'=>$user_id));
+        //Check if this user is already a member for this class
+        if(!$event_user){
+            //Create new class user
+            $event_user_new = new EventUser();
+            $event_user_new->event_id = $event_id;
+            $event_user_new->user_id = $user_id;
+            //If we save successfully, user is now apart of class
+            if($event_user_new->save(false)){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error saving event_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user already attending the class');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+    public function actionUnattendEvent(){
+        if(!isset($_POST['event_id']) || !isset($_POST['user_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $event_user = EventUser::model()->find('event_id=:id and user_id=:user_id', array(':id'=>$event_id,':user_id'=>$user_id));
+        //Check if this user is even in this class
+        if($event_user){
+            //Check if we destroy this shit successfully
+            if($event_user->delete()){
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'error deleting event_user table');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            //user is not apart of this class
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not attending event');
+            $this->renderJSON($data);
+            return;
+        }
     }
 
 
@@ -1459,7 +1931,7 @@ class ApiController extends Controller
                     $event = $this->model_to_array($event);
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
-                    if ($origin != '') {
+                    if ($origin != 'user') {
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1471,6 +1943,15 @@ class ApiController extends Controller
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
                     }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
+                    }
+
                     array_push($events_data, $event);
                 }
             }
@@ -1524,7 +2005,7 @@ class ApiController extends Controller
                     $event = $this->model_to_array($event);
                     $origin = $event['origin_type'];
                     $origin_id = $event['origin_id'];
-                    if ($origin != '') {
+                    if ($origin != 'user') {
                         $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
                         $command = Yii::app()->db->createCommand($sql);
                         $origin_data = $command->queryRow();
@@ -1536,6 +2017,16 @@ class ApiController extends Controller
                         $event['origin_name'] = null;
                         $event['origin_color_id'] = null;
                     }
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
+                    }
+
+
                     array_push($events_data, $event);
                 }
             }
@@ -1551,67 +2042,55 @@ class ApiController extends Controller
     }
 
 
+    function send_verification_email($to_email, $subject, $message, $from_email, $data){
 
-    //Takes in a string and returns a list of users whose
-    //name or email contains that string
-    public function actionSearchUsers(){
-        if(!isset($_GET['input_string'])){
-            $data = array('success'=>false,'error_id'=>1,'error'=>'input string is not set');
-            $this->renderJSON($data);
-            return;
-        }
+        $mail = new YiiMailer('confirmation', $data);
+
+        $mail->setFrom($from_email, 'urlinq team');
+        $mail->setSubject($subject);
+        $mail->setTo($to_email);
 
 
-        $input_string = $_GET['input_string'];
+        //$mail->SMTPDebug = 1;
 
+        return $mail->send();
 
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname ) LIKE '%" . $input_string . "%' OR user_email LIKE '%" . $input_string . "%'");
-
-
-
-        $users_data = array();
-        foreach($users as $user){
-            array_push($users_data, $this->get_model_associations($user, array('pictureFile')));
-        }
-
-
-        if(count($users_data) >= 0){
-            $data = array('success'=>true,'users'=>$users_data);
-            $this->renderJSON($data);
-            return;
-        }else{
-            $data = array('success'=>false,'error_id'=>2,'error'=>'error getting users');
-            $this->renderJSON($data);
-            return;
-        }
+//        if($mail->send()){
+//            return true;
+//        }else{
+//            $data = array('success'=>false,'error_id'=>6,'error_msg'=>$mail->getError());
+//            $this->renderJSON($data);
+//            return;
+//        }
 
     }
 
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
+        return array(
+            'inlineFilterName',
+            array(
+                'class'=>'path.to.FilterClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+
+    public function actions()
+    {
+        // return external action classes, e.g.:
+        return array(
+            'action1'=>'path.to.ActionClass',
+            'action2'=>array(
+                'class'=>'path.to.AnotherActionClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+    */
 }
