@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $(document).on('click', '.profile_link', function(){
         open_profile(base_url, $(this).attr('user_id'),$(this).hasClass('edit_profile'));
+
     });
     $(document).on('click', '.close_modal', function(){
         $('#profile_wrapper').addClass("animated bounceInUp");
@@ -41,17 +42,20 @@ $(document).ready(function() {
         $.ajax({ url: base_url + '/protected/views/profile/profile.html',
             dataType:'html',
             success: function(html) {
-                $.ajax({ url: base_url + '/profile/returnFeed?user='+data.user_id,
-                    dataType:'html',
-                    success: function(html) {
-                        $('#profile_panel_1 > #feed_wrapper').append(html);
+
+                $.getJSON( base_url + '/profile/'+data.user_id+'/feed', function( json_feed_data ) {
+                    if(json_feed_data['success']){
+                        //alert(JSON.stringify(json_feed_data));
+//                alert(JSON.stringify(json_feed_data));
+                        render_posts(json_feed_data['feed']);
+                    }else{
+                        alert('failed to get feed');
                     }
                 });
                 $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
                     dataType:'html',
                     success: function(html) {
-                        $('#profile_panel_1 > #fbar_wrapper').append(html);
-                        $('#profile_panel_1').find('#fbar_new').addClass('profile');
+                        $('#profile_fbar_wrapper').append(html);
                     }
                 });
                 numShowcase=data.showcase_size;
@@ -82,6 +86,113 @@ $(document).ready(function() {
             }
         });
     }
+    function render_posts(jsonData){
+
+        $.each(jsonData ,function(key,post) {
+            //alert(JSON.stringify(post));
+            //jsonData['key'].jsonData[key]['replies'][0]);
+            //if(jsonData[key]['anon'] === '0') jsonData[key]['anon'] = '';
+            //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
+            //var time = new Date(jsonData[key]['created_time']);
+            //jsonData[key]['created_time'] = time
+            if(post['reply_count'] >  2) {
+                post.show_more = true;
+
+                var post_id = post['post_id'];
+                var theReplies = post['replies'];
+                replies[post_id.toString()] = theReplies;
+                post['replies'] = [post['replies'][0], post['replies'][1]];
+            }
+
+
+
+            for(i = 0; i < post['replies'].length; i++){
+                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
+
+            }
+
+            if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
+                var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+                for(i = 0; i < post['options'].length; i++){
+                    post['options'][i]['the_choice_letter'] = alphabet.charAt(i);
+
+                }
+            }
+
+
+
+
+            post['update_timestamp'] = moment(post['update_timestamp'], "X").fromNow();
+
+
+
+            profile_render_post(post);
+        });
+    }
+
+    function render_post_with_url(single_post){
+
+        single_post.embed_link = findUrlInPost();
+
+    }
+
+    function profile_render_post(single_post){
+        //Event Posts
+        //Announcements
+        //Oppurtunities
+
+        if(findUrlInPost(single_post['text'])) {
+            single_post.embed_link = findUrlInPost(single_post['text']);
+
+        }
+        if(single_post['post_type'] === "discussion"){
+            var source   = $("#post_template").html();
+            var template = Handlebars.compile(source);
+            $("#profile_posts").append(template(single_post));
+        }
+        else if(single_post['post_type'] === "notes") {
+            console.log('note');
+            var source   = $("#post_note_template").html();
+            var template = Handlebars.compile(source);
+            $("#profile_posts").append(template(single_post));
+        }
+        else if(single_post['post_type'] === "question") {
+            console.log("question");
+            var source   = $("#post_question_template").html();
+            var template = Handlebars.compile(source);
+            $("#profile_posts").append(template(single_post));
+
+        }
+        else if(single_post['post_type'] === "discussion") {
+
+        }
+    }
+
+    //findUrlInPost("hellllhttps://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll oasdfjlei'dfdfd'https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll");
+
+
+    //Parsess through a chunck of text to find an url the end is delimitted by a space and the front by either https
+    function findUrlInPost( text ) {
+
+        var source = (text || '').toString();
+        var urlArray = [];
+        var url;
+        var matchArray;
+        var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((www:)?[_.\w-]+([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+        while( (matchArray = regexToken.exec( source )) !== null ) {
+            var token = matchArray[0];
+            urlArray.push( token );
+        }
+
+        if(urlArray[0]) {
+            if(urlArray[0][0] != 'h') urlArray[0] = "http://" + urlArray[0];
+            return urlArray[0];
+        }
+        return false;
+    }
+    var i = 0;
+    var replies = {};
     $(document).on('click', '.profile_tab',function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');

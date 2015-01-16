@@ -858,10 +858,13 @@ div.group_box div.float_Left.group_image{
     padding: 18px 18px 18px 30px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
-#fbar_new.profile{
+#profile_fbar_wrapper{
     width: 82%;
     margin: auto;
     margin-top:20px;
+}
+#profile_feed_wrapper{
+    margin-left: 65px;
 }
 /*
 div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{
