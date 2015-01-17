@@ -169,9 +169,9 @@
         .topbar > #topbar_responsive_holder > .right .notify {
             float: left;
             position: relative;
-            height: 31px;
-            border-right: 1px solid #fff;
-            margin-top: 10px;
+            height: 22px;
+            border-right: 1px solid rgba(255, 255, 255, 0.87);
+            margin-top: 14px;
             padding-right: 8px;
             border-radius: 0px;
             padding-left: 8px;
@@ -185,14 +185,23 @@
 .topbar > #topbar_responsive_holder > .right .notify.board{
     border-right:none;
     border-radius:0px 2px 2px 0px;
+    padding-left: 0px;
 }
 
 .topbar > #topbar_responsive_holder > .right , .topbar > #topbar_responsive_holder > .center{
 
 }
 
+.notify.board > .button{
+border-radius:0px 3px 3px 0px;
+}
 
-        .topbar > #topbar_responsive_holder > .right .notify:hover,.topbar > #topbar_responsive_holder > .right .notify.active{
+.notify.calendar > .button{
+    border-radius:3px 0px 0px 3px;
+}
+
+
+        .topbar > #topbar_responsive_holder > .right .notify:hover > .button,.topbar > #topbar_responsive_holder > .right .notify.active > .button {
             background: rgba(18, 19, 20, 0.333); 
             -moz-transition: all .12s ease;
             -webkit-transition: all .12s ease;
@@ -202,16 +211,18 @@
             .topbar > #topbar_responsive_holder > .right .notify .button {
                 height: 80%;
                 width: 100%;
-                margin-left: 2px;
+                margin-left: 1px;
 }
 
             .topbar > #topbar_responsive_holder > .right .notify.calendar .button,.topbar > #topbar_responsive_holder > .right .notify.board .button {
                 padding-top: 4px;
                 padding-left: 5px;
-                padding-right: 7px;
-                padding-bottom: 4px;
-                height: 28px;
+                padding-right: 1px;
+                padding-bottom: 1px;
+                height: 27px;
                 font-family: Avenir;
+                position: relative;
+                top: -5px;
 }
 
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button div,.topbar > #topbar_responsive_holder > .right .notify.board .button div {
@@ -415,15 +426,21 @@ body .topbar > div.calendar_link{
 
     right: 5px;
     top: 5px;
-    height: 38px;
-    width: 38px;
+    height: 39px;
+    width: 44px;
     /* background-color: black; */
 }
 body .topbar > div.calendar_link > a{
     cursor: pointer;
     /* position: relative; */
-    
-    }
+    display: block;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    border-radius: 2.5px;
+    top: 0;
+}
 
 body .topbar > div.calendar_link > a > div.calendar_icon{
     background-image: url(../../../assets/quick_calendar_icon.png);
@@ -433,7 +450,7 @@ body .topbar > div.calendar_link > a > div.calendar_icon{
     cursor: pointer;
     margin: 8px;
     background-size: cover;
-    left: -13px;
+    left: -6px;
     position: relative;
 }
 
@@ -495,12 +512,9 @@ body#body_calendar .topbar > div.calendar_link{
 }
 }
 
-@media(max-width:1092px){
+@media(max-width:1175px){
 div.icon_text{
     display:none!important;
-}
-.topbar > #topbar_responsive_holder > .right .notify{
-    padding-right:5px!important;
 }
 .topbar>.right .notify .notify-window{
     left:-180px!important;

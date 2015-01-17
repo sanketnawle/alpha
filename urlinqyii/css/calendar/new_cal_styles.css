@@ -7,27 +7,13 @@ body{
 	background-color: #FAFAF9;
 }
 
-body#body_calendar .topbar > #topbar_responsive_holder > .left a.urlinq > span{
-background-image: url(../../assets/calendar_home_after.png);
-background-size:auto;
-width: 5px;
-height: 9px;
-left: -12px;
-display:inline-block;
-line-height: 1;
-background-repeat: no-repeat;
-position: absolute;
-top: 21px;
-transition: left 190ms ease-out;
-}
+
 
 body#body_calendar .topbar > #topbar_responsive_holder{
 	max-width:1250px;
 }
 
-body#body_calendar .topbar > #topbar_responsive_holder > .left > a{
-margin-left: 5px;
-}
+
 
 
 .body .month-view .month-grid .grid-item{
@@ -42,9 +28,9 @@ background-color: #f5f5f5;
 div.day_event_holder div.event_start_time {
 font-weight: bold;
 font-size: 11px;
-left: 5px;
+left: 15px;
 display: block;
-top: 1px;
+top: 2px;
 position: relative;
 }
 
@@ -71,7 +57,7 @@ div.day_event_holder.colorfied span.icon.icon-clock{
 div.day_event_holder div.event_name{
 font-weight: 600;
 font-size: 14.5px;
-margin-left: 4px;
+margin-left: 14px;
 }
 
 .body .day-view div.day-grid{
@@ -83,10 +69,27 @@ div.grid-event.week_event_holder.event_holder{
 	min-height:48px;
 }
 
+
+div.white_bg_line_blocker{
+position: absolute;
+top: 0;
+bottom: 0;
+z-index:-1;
+left: 0;
+right: 0;
+}
+
+.body .grid-view .grid .grid-item .grid-event.week_event_holder.event_holder,.body .grid-view .grid .grid-item .grid-event.week_event_holder.event_holder:hover{
+	background-color:#FFF;
+	margin-top:0px;
+}
+
 .body .day-view .day-grid div.day_event_holder{
-	border:none;
-	margin-top: 6px;
-	min-height: 48px;
+border: none;
+min-height: 50px;
+background: #FFF;
+border-radius: 1px;
+margin-top: 4px;
 }
 
 div.day_event_holder div.event_location {
@@ -115,7 +118,7 @@ top: 3px;
 div.day_event_holder div.event_description {
 display: inline-block;
 font-size: 13.6px;
-line-height: 20px;
+line-height: 24px;
 padding-left: 10px;
 }
 
@@ -137,13 +140,14 @@ margin-right: 7px;
 background-position: 0;
 }
 
-a.event_origin_link{
+a.event_origin_link {
 position: absolute;
-left: 5px;
-bottom: 0px;
-margin: 2px 3px 2.5px 0px;
-font-size: 12px;
-color: #575757!important;
+right: 0px;
+bottom: 50%;
+height: 15px;
+margin: 2px 3px -7.5px 0px;
+font-size: 11.5px;
+color: #1D1D1D!important;
 }
 
 a.event_origin_link:hover > span.origin_name_text{
@@ -177,19 +181,35 @@ position: absolute;
 text-align: right;
 right: 0px;
 font-weight: bold;
-border: 1px solid #575757;
 top: 0px;
 font-size: 11px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 padding: 4px 6px 3px 3px;
-border-top: none;
-border-right: none;
 border-radius: 0px 0px 0px 2px;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type, div.event_holder.day_event_holder.colorfied > div.event_name, div.event_holder.day_event_holder.colorfied > div.event_start_time{
 	color:#FFF!important;
+}
+
+div.event_name.month_event_name
+{
+	width:calc(100% - 40px);
+	width: -webkit-calc(100% - 44px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 20px;
+	white-space: nowrap;
+}
+
+.body .month-view .month-grid div.grid-item
+{
+	overflow-y:hidden;
+}
+
+.ul-calendar .leftbar .providers .provider div.title{
+	background: #FFF!important;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type{
@@ -200,9 +220,24 @@ div.month_day_event.event_holder.colorfied > div {
 	color:#FFF!important;
 }
 
-div.month_day_event.event_holder.colorfied > div.event_color_bar.color_bar_month {
+div.month_day_event.event_holder.colorfied > div.event_color_bar.color_bar_month{
 	background-color:#FFF!important;
 }
+
+div.day_event_holder.event_holder.colorfied > div.event_color_bar.color_bar_day, div.week_event_holder.event_holder.colorfied > div.event_color_bar.color_bar_week {
+	background-color:#FFF!important;
+}
+
+div.day_event_holder.event_holder > div.event_color_bar.color_bar_day, div.event_color_bar.color_bar_week {
+    width: 4px;
+
+    border-radius: 10000000px;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 5px;
+}
+
 
 div.body .month-view .month-grid{
 	bottom:11px;
@@ -329,13 +364,13 @@ transform: rotate(0deg);
 
 .body .month-view .month-grid .grid-item .month_day_event .event_start_time {
 float: right;
-width: 35px;
+width: 33px;
 text-align: right;
 font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
 color: #787878;
-font-size: 11px;
+font-size: 10.5px;
 line-height: 20px;
-padding-right: 3px;
+padding-right: 2px;
 }
 
 

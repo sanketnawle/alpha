@@ -293,17 +293,6 @@ top: 7px;
 left:3px;
 }
 
-div.event_color_bar.color_bar_week{
-    height: 5px;
-    
-    display: inline-block;
-    float: left;
-    border-radius: 12px;
-    width: 5px;
-    margin-right: 4px;
-    position: relative;
-    top: 5px;
-}
 
 .ul-calendar .toolbar div.wrap div.column {
 padding: 14px 0 8px;

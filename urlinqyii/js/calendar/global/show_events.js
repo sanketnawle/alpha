@@ -11,6 +11,7 @@ function show_day_event(event_json){
     event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
+    var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
     var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
@@ -56,7 +57,7 @@ function show_day_event(event_json){
         var event_hour_length =  hour_difference + (minute_difference / 60); //in hour form with decimals for minutes
         console.log('EVENT HOUR LENGTH');
         console.log(event_hour_length);
-        var event_height = (event_hour_length * time_range_height) - 4;
+        var event_height = (event_hour_length * time_range_height);
         //event_height += (parseInt(event_json['end_time'].substring(3,5)) / 60) * time_range_height;
 
 
@@ -99,7 +100,7 @@ function show_day_event(event_json){
         html_object.css({'height':event_height.toString() + 'px'});
         html_object.css({'z-index':time_range_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
-        html_object.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .23)"});
+        color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .10)"});
 
 
 
@@ -127,6 +128,7 @@ function show_week_day_event(event_json){
 
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
+    var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
     var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
@@ -217,7 +219,7 @@ function show_week_day_event(event_json){
         html_object.css({'z-index':event_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
 
-        html_object.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .23)"});
+        color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .1)"});
 
         $grid_item_selector.append(html_object);
 
@@ -245,6 +247,8 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
+
 
 
 
