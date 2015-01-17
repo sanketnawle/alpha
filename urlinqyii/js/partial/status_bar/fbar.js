@@ -6,8 +6,7 @@ var privacy = 'campus';
 var anon = 0;
 var origin_type = 'class';
 var question_type = "regular_type";
-//this value hardcoded for now - based on our phonecall 
-var origin_id = 25;
+
 
 
 
@@ -280,14 +279,14 @@ $(document).ready(function() {
     $(document).on('click', '.post-btn', function() {
         var jsonData = {
                 'origin_type': origin_type,
-                'origin_id': origin_id,
+                'globals.origin_id': globals.origin_id,
                 'post_type': post_type,
                 'anon': anon,
                 'privacy': privacy
         };
         //console.log(post_type);
             //Checks if all the bases types are satisfied 
-        if (origin_type && origin_id && post_type && (anon === 0 || anon === 1) && privacy) {
+        if (origin_type && globals.origin_id && post_type && (anon === 0 || anon === 1) && privacy) {
             //DISCUSSION POSTS
             if (post_type === "discussion") {
                 var text = $('.postTxtarea').val();
@@ -782,11 +781,11 @@ $(document).ready(function() {
     last_file_count = 0;
     success_counter = 0;
     Dropzone.autoDiscover = false;
-    var global = {};
+
 
     var $fbar_dropzone_form = $('.dropzone#fbar_file_form');
 //    Dropzone.options.fbar_file_form = {
-    global.myDropzone = new Dropzone('form#fbar_file_form', {
+    globals.myDropzone = new Dropzone('form#fbar_file_form', {
         url: base_url + '/post/create',
         autoProcessQueue: false,
         uploadMultiple: true,
@@ -818,7 +817,7 @@ $(document).ready(function() {
                         render_post(response['post']);
 
                     }
-                    //global.myDropzone.emit("addedfile", file);
+                    //globals.myDropzone.emit("addedfile", file);
                 }
 
 
@@ -826,7 +825,7 @@ $(document).ready(function() {
 
 
         this.on("sendingmultiple", function(file, xhr, formData) {
-            last_file_count = global.myDropzone.files.length;
+            last_file_count = globals.myDropzone.files.length;
             success_counter = 0;
             var post_data = get_post_data();
 
@@ -898,7 +897,7 @@ $(document).ready(function() {
 //                        var $this_file = $(this);
 //
 //                        if($this_file.attr('data-last_modified') == last_modified.toString()){
-//                            global.myDropzone.removeFile(this_file);
+//                            globals.myDropzone.removeFile(this_file);
 //                        }
 //                    });
 
@@ -907,10 +906,10 @@ $(document).ready(function() {
                     // Remove the file preview
 
 
-                    //alert(global.myDropzone.files);
-                    console.log(global.myDropzone.files);
-                    for(var i = 0; i < global.myDropzone.files.length; i++){
-                        var this_file = global.myDropzone.files[i];
+                    //alert(globals.myDropzone.files);
+                    console.log(globals.myDropzone.files);
+                    for(var i = 0; i < globals.myDropzone.files.length; i++){
+                        var this_file = globals.myDropzone.files[i];
                         //console.log(this_file);
 
                         console.log('last modified of this file from dropzone: ' + this_file.lastModified);
@@ -921,7 +920,7 @@ $(document).ready(function() {
                         console.log('2 name: ' + name.toString());
 
                         if(this_file.lastModified.toString() == last_modified.toString() && this_file.name.toString() == name.toString()){
-                            global.myDropzone.removeFile(this_file);
+                            globals.myDropzone.removeFile(this_file);
                             $('.fbar_file[data-name="' + this_file.name + '"][data-last_modified="' + this_file.lastModified + '"]').remove();
 
                         }
@@ -929,7 +928,7 @@ $(document).ready(function() {
 
 
                     console.log('Current dropzone files');
-                    console.log(global.myDropzone.files);
+                    console.log(globals.myDropzone.files);
 
                 });
 
@@ -946,7 +945,7 @@ $(document).ready(function() {
 
 
 
-                //global.myDropzone.files.push(file);
+                //globals.myDropzone.files.push(file);
 
 
 
@@ -988,7 +987,7 @@ $(document).ready(function() {
 
 
         //Clear all dropzone files
-        global.myDropzone.files = [];
+        globals.myDropzone.files = [];
 
 
         //Clear the text input
@@ -1038,8 +1037,8 @@ $(document).ready(function() {
         post_data['post_type'] = post_type;
 
 
-        post_data['origin_id'] = origin_id;
-        post_data['origin_type'] = origin_type;
+        post_data['origin_id'] = globals.origin_id;
+        post_data['origin_type'] = globals.origin_type;
         post_data['sub_text'] = '';
         post_data['privacy'] = '';
         post_data['anon'] = 0;
@@ -1102,8 +1101,13 @@ $(document).ready(function() {
 
 
         var post_data = {'post_id': post_id};
+
+
+
+
+
         $.post(
-            base_url + '/post/delete',
+            globals.base_url + '/post/delete',
             post_data,
             function(response) {
 
@@ -1142,7 +1146,7 @@ $(document).ready(function() {
         //Check if there are any files
         var $file_form = $('#fbar_file_form');
         //alert($file_form.children('div.dz-preview').length);
-        console.log(global.myDropzone.files);
+        console.log(globals.myDropzone.files);
 
 
         var post_data = get_post_data();
@@ -1156,7 +1160,7 @@ $(document).ready(function() {
             }
         }else if(post_type == 'notes' || post_type == 'files'){
             //Check if there is atleast one file
-            if(global.myDropzone.files.length == 0){
+            if(globals.myDropzone.files.length == 0){
                 alert('Please upload atleast one file.');
                 return;
             }
@@ -1183,14 +1187,17 @@ $(document).ready(function() {
 
 
         //If there are any files, submit the post request through dropzone
-        if(global.myDropzone.files.length > 0){
-            global.myDropzone.processQueue();
+        if(globals.myDropzone.files.length > 0){
+            globals.myDropzone.processQueue();
         }else{
             //otherwise, make a post request to post/create manually
             //alert('MANUAL POST REQUEST');
 
 
             var post_request_data = {'post':post_data};
+
+
+            console.log(post_request_data);
             //alert(JSON.stringify(post_data));
             $.post(
                 base_url + '/post/create',

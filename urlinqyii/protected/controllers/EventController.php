@@ -57,10 +57,8 @@ class EventController extends Controller
 
 
 
-        $all_events = array_merge($events,$events_attending);
-        for($i=0;$i<count($all_events);$i++){
-            $all_events[$i]['color'] = $this->get_user_event_color($user,$all_events[$i]);
-        }
+        $all_events = $this->add_event_data(array_merge($events,$events_attending));
+
 
         $data = array('success'=>true,'events'=>$all_events);
 
@@ -68,6 +66,35 @@ class EventController extends Controller
         return;
 
 
+    }
+
+    function add_event_data($events){
+        for($i=0;$i<count($events);$i++){
+            $events[$i]['color'] = $this->get_user_event_color($this->get_current_user(),$events[$i]);
+
+
+            //Get the origin data
+            if($events[$i]['origin_type'] == 'class'){
+                $events[$i]['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$events[$i]['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $events[$i]['origin']['name'] = $events[$i]['origin']['class_name'];
+            }else if($events[$i]['origin_type'] == 'department'){
+                $events[$i]['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$events[$i]['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $events[$i]['origin']['name'] = $events[$i]['origin']['department_name'];
+            }else if($events[$i]['origin_type'] == 'school'){
+                $events[$i]['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$events[$i]['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $events[$i]['origin']['name'] = $events[$i]['origin']['school_name'];
+
+            }else if($events[$i]['origin_type'] == 'club' || $events[$i]['origin_type'] == 'group'){
+                $events[$i]['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$events[$i]['origin_id'])));
+                //reassign the name to make it easier to get in the handlebars
+                $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
+            }
+        }
+
+        return $events;
     }
 
 
@@ -90,10 +117,8 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
 
+        $events = $this->add_event_data($events);
 
-        for($i=0;$i<count($events);$i++){
-            $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
-        }
 
 
 
@@ -125,11 +150,7 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
 
-        for($i=0;$i<count($events);$i++){
-            $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
-        }
-
-        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+        $data = array('success'=>true,'events'=>$this->add_event_data(array_merge($events,$events_attending)));
 
         $this->renderJSON($data);
         return;
