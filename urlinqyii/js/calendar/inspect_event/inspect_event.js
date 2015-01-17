@@ -37,7 +37,9 @@ function hide_inspect(){
 jQuery(document).ready(function(){
     last_clicked_event_id = null;
 
-
+    jQuery(document).on('click', 'a.event_origin_link', function(event){
+        event.stopPropagation();
+    });
 
     jQuery(document).on('click', '.event_holder', function(event){
         event.stopPropagation();
