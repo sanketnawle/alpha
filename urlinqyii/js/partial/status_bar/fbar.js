@@ -1053,7 +1053,7 @@ $(document).ready(function() {
             post_data['question']['anonymous'] = 0;
             post_data['question']['live_answers'] = 0;
             post_data['text'] = $('#post_title').val();
-            post_data['sub_text'] = post_text;
+            post_data['sub_text'] = $fbar_holder.find('.question_textarea').find('.post_text_area').val();
 
             if(post_type == 'multiple_choice'){
                 post_data['question']['options'] = [];
@@ -1082,11 +1082,41 @@ $(document).ready(function() {
 
         }
 
+        if(post_type == 'notes' || post_type == 'files'){
+            post_data['text'] = $fbar_holder.find('.file_textarea').find('.post_text_area').val();
+        }
+
 
 
         return post_data;
     }
 
+
+
+    $(document).on('click', '.option_delete', function(){
+
+        var $delete_button = $(this);
+        var $post = $delete_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+
+        var post_data = {'post_id': post_id};
+        $.post(
+            base_url + '/post/delete',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully deleted post ' + post_id);
+                    $post.remove();
+                }else{
+                    alert('Error deleting this post, please try again later');
+                }
+            }, 'json'
+        );
+
+    });
 
 
 

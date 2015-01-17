@@ -8,6 +8,8 @@
 
         origin_type = '<?php echo $origin_type; ?>';
         origin_id = '<?php echo $origin_id; ?>';
+
+
     </script>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/ness.js"> </script>
     <script src="https://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
