@@ -13,7 +13,7 @@ jQuery(document).ready(function(){
     jQuery(document).on('click', '.grid-item', function(event){
 
         //Hide the other popup
-        jQuery('#inspect_event_popup_week').removeClass('active');
+        hide_inspect();
 
         event.stopPropagation();
         var $day_time_div = jQuery(this);
@@ -34,8 +34,11 @@ jQuery(document).ready(function(){
         if(!$create_week_day_event_popup.is(":visible")){
             if((event.pageY - 180) <= 0){
                 $create_week_day_event_popup.css('top', event.pageY + 15);
+                jQuery($create_week_day_event_popup).addClass("top_position");
             }else{
                 $create_week_day_event_popup.css('top', event.pageY - 180);
+                jQuery($create_week_day_event_popup).removeClass("top_position");
+
             }
             $create_week_day_event_popup.css('left', event.pageX - 160);
 

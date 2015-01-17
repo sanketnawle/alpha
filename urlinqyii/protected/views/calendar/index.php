@@ -33,9 +33,8 @@
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/semester.less" type="text/css" rel="stylesheet/less">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/dialog.less" type="text/css" rel="stylesheet/less">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/jq-datepicker.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/eventCreation.css" type="text/css" rel="stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/eventCreation.css" type = "text/css" rel = "stylesheet">
-
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/new_cal_styles.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/time_selector/time_selector.css" type = "text/css" rel = "stylesheet">
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
 
@@ -136,9 +135,9 @@
             <!-- ng-click="openNewEvent()" for create button -->
             <div class="create">
                 <div class="button">
-                    <div id='create_new_event_button' class="full" ng-click="openNewEvent()">Create Event</div>
+                    <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create Event</div>
                     <div class="quick">
-                        <i>&nbsp;</i>
+                        <i></i>
                         <div class="quick-dialog">
                             <div class="wedge"></div>
                             <form>
@@ -263,27 +262,31 @@ Set the class name on your input to 'time_input' -->
 
 
 <script id="day_event_template" type="text/x-handlebars-template">
-    <div class="day_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
-        <div class="event_start_time">{{formatted_start_time}}</div>
-        <div class="event_name">{{title}}</div>
+    <div class="day_event_holder event_holder" data-rgb = {{color.rgb}} data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}" style = "border-left:2.5px solid {{color.hex}};">
+        <div class="event_start_time" style = "color:#FFF;" >{{formatted_start_time}}</div>
+        <div class="event_name" style = "color:{{color.hex}}" >{{title}}</div>
         <div class = "event_type">{{event_type}}</span>
-        <div class="event_location"><span></span>{{location}}</div>
+        <div class="event_location" style = "color:{{color.hex}}"><span></span>{{location}}</div>
         <div class="event_description">{{description}}</div>
     </div>
 </script>
 
 <script id="week_day_event_template" type="text/x-handlebars-template">
-    <div class="grid-event week_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
-        <div class="event_start_time">{{formatted_start_time}}</div>
+    <div class="grid-event week_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}" style = "border-left:2.5px solid {{color.hex}};">
+        <div class = "event_color_bar color_bar_week" style = "background-color:{{color.hex}}"></div>
+        
         <div class="event_name">{{title}}</div>
-        <div class="event_description">{{description}}</div>
+
+        <div class="event_start_time">{{formatted_start_time}}</div>
+
+        <div class="event_location"><span></span>{{location}}</div>
     </div>
 </script>
 
 
 <script id="month_event_template" type="text/x-handlebars-template">
     <div class="month_day_event event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}">
-        <div class = "event_color_bar color_bar_month" class = "color:{{color.hex}}"></div>
+        <div class = "event_color_bar color_bar_month" style = "background-color:{{color.hex}}"></div>
         
         <div class="event_name month_event_name">{{title}}</div>
 
