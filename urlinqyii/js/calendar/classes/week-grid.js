@@ -145,8 +145,11 @@ var WeekGrid = (function (WeekGrid) {
                             hour_index++;
                         }
 
-                        var grid_item_ele = new GridItem().ele;
+                        if(i <= 7){
+                            jQuery(grid_item_ele).addClass("all_day_week_grid_item");
+                        }
 
+                        var grid_item_ele = new GridItem().ele;
 
 
                         //Check if the current grid date is out of range of the current month

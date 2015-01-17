@@ -6,8 +6,8 @@
 </div>
 <div class="week-view grid-view toscroll">
     <div class="time-strip">
-        <div class="time">All day</div>
-        <div class="time">12 am</div>
+        <div class="time all_day">all-day</div>
+        <div class="time"></div>
         <div class="time" ng-repeat="i in [] | range:1:12">{{i}} am</div>
         <div class="time">12 pm</div>
         <div class="time" ng-repeat="i in [] | range:1:12">{{i}} pm</div>
@@ -22,7 +22,7 @@
     <div id="inspect_event_exit_button" class="popup_exit_button"></div>
     <div id="inspect_event_text"></div>
     <div id="inspect_event_description"></div>
-    <div id="inspect_event_delete_button_week">Delete</div>
+    <div id="inspect_event_delete_button_week"><span class = "delete_text">Delete</span><span class = "delete_icon"></span></div>
     <div id="inspect_event_edit_button" class="popup_edit_button">Edit event</div>
 </div>
 

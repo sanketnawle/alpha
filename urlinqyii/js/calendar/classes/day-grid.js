@@ -150,20 +150,20 @@ var DayGrid = (function (DayGrid) {
 
             var html_string = '<div class="day_grid_item"><div class="day_time">12pm</div></div>';
             if(i == 0){
-                html_string = '<div class="day_grid_item all_day"><div class="day_time">All day</div></div>';
+                html_string = '<div class="day_grid_item all_day"><div class="day_time">all-day</div></div>';
             }
 
             var grid_item_ele = jQuery(html_string);
 
             if(i != 0){
                 if(i == 1){
-                    grid_item_ele.find('.day_time').text('12am');
+                    grid_item_ele.find('.day_time').text('');
                 }else if(i == 13){
-                    grid_item_ele.find('.day_time').text('12pm');
+                    grid_item_ele.find('.day_time').text('12 pm');
                 }else if(i < 13){
-                    grid_item_ele.find('.day_time').text((i - 1).toString() + 'am');
+                    grid_item_ele.find('.day_time').text((i - 1).toString() + ' am');
                 }else{
-                    grid_item_ele.find('.day_time').text((i - 13).toString() + 'pm');
+                    grid_item_ele.find('.day_time').text((i - 13).toString() + ' pm');
                 }
             }
 
