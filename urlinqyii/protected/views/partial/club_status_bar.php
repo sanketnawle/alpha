@@ -17,6 +17,14 @@
 
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
+
+
+    <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
+    <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+
+    </form>
+
     <!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
     <div id = "fbar_new">
         <section id = "fbar_buttons">
@@ -154,16 +162,27 @@
 
 
 
-    <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
-    <input type='file' class='step_6_upload' style='display:none;'>
+</div>
+
+
+<script id='audience_template' type="text/x-handlebars-template">
+    <li class = "audience_name" data-audience='{{audience}}' data-audience_id='{{id}}'>
+        <a>{{name}}</a>
+    </li>
+</script>
+
+
+<script id='post_file_template' type="text/x-handlebars-template">
+
+        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
+
+</script>
+
 
 
 
 
 <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
-
-</form>
-</div> 
 
 
 

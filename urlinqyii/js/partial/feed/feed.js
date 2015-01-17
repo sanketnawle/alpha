@@ -122,25 +122,25 @@ $(document).ready(function(){
         if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
         else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
             console.log('note');
             var source   = $("#post_note_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
         else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
             console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
 
         }
         else {
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
     }
 
@@ -246,6 +246,37 @@ $(document).ready(function(){
         $reply_form.submit();
     });
 
+
+
+    $(document).on('click', '.option_delete', function(){
+
+        var $delete_button = $(this);
+
+
+
+        var $post = $delete_button.closest('.post');
+
+        var post_id = $post.attr('data-post_id');
+
+
+        var post_data = {'post_id': post_id};
+
+
+        $.post(
+            globals.base_url + '/post/delete',
+            post_data,
+            function(response) {
+
+                if(response['success']){
+                    console.log('Successfully deleted post ' + post_id);
+                    $post.remove();
+                }else{
+                    alert('Error deleting this post, please try again later');
+                }
+            }, 'json'
+        );
+
+    });
 
     $(document).on('submit','.reply_form', function(event){
         event.preventDefault();

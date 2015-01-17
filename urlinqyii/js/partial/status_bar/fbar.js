@@ -488,34 +488,28 @@ $(document).ready(function() {
             single_post.embed_link = findUrlInPost(single_post['text']);
 
         }
-
-
-
-        //alert(JSON.stringify(single_post));
-
-
         if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
         else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
             console.log('note');
             var source   = $("#post_note_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
         else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
             console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
 
         }
         else {
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post));
+            $("#posts").prepend(template(single_post)).hide().fadeIn();;
         }
     }
 
@@ -618,6 +612,120 @@ $(document).ready(function() {
             $(this).text("Fewer Options");
         }
         
+    });
+
+
+    if(globals.origin_type == 'user'){
+        //Populate the audience select
+        $.getJSON(base_url + '/user/getGroupData', function(json_data){
+            var $audience_select_list = $("#audience_select_list");
+
+
+            $audience_select_list.hide();
+
+            $.each(json_data['classes'], function(index, class_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                class_json['name'] = class_json['class_name'];
+                class_json['id'] = class_json['class_id'];
+                class_json['audience'] = 'class';
+
+                var generated_html = template(class_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+
+            $.each(json_data['clubs'], function(index, club_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                club_json['name'] = club_json['group_name'];
+                club_json['id'] = club_json['group_id'];
+
+                club_json['audience'] = 'club';
+
+                var generated_html = template(club_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+            $.each(json_data['groups'], function(index, group_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                group_json['name'] = group_json['group_name'];
+                group_json['id'] = group_json['group_id'];
+
+                group_json['audience'] = 'group';
+
+                var generated_html = template(group_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+
+
+
+        });
+    }
+
+    $(document).on('click', '.audience_name', function(){
+        var $audience = $(this);
+        var $audience_select_list = $audience.closest('#audience_select_list');
+
+        var audience = $audience.attr('data-audience');
+        var audience_id = $audience.attr('data-audience_id');
+
+        var audience_name = $audience.text();
+
+
+        var $audience_select_div = $audience_select_list.closest('.menu_audience').find('#audience_select');
+        $audience_select_div.attr('data-audience_id', audience_id);
+        $audience_select_div.attr('data-audience', audience);
+
+
+
+        var $audience_text = $audience_select_div.find('.selected_audience');
+
+
+        $audience_text.text(audience_name);
+
+        $audience_select_list.hide();
+
+    });
+
+
+    $(document).on('click', '.privacy_list', function(){
+        var $privacy_list_option = $(this);
+
+        //Remove the other active privacy option
+        $('.privacy_list.active').removeClass('active');
+
+        $privacy_list_option.addClass('active');
+
+        var privacy_option = $privacy_list_option.attr('data-privacy');
+
+        var $privacy_dropdown = $privacy_list_option.closest('.privacy_dropdown');
+
+        $privacy_dropdown.attr('data-privacy', privacy_option);
+    });
+
+    $(document).on('click', '#audience_select', function(){
+
     });
 
 
@@ -1033,8 +1141,30 @@ $(document).ready(function() {
         post_data['origin_type'] = globals.origin_type;
         post_data['origin_id'] = globals.origin_id;
 
+
+        //If we are on home or profile page, check if the
+        //user has set a different audience
+        if(globals.origin_type == 'user'){
+            var $audience_select = $fbar_holder.find('#audience_select');
+            var audience = $audience_select.attr('data-audience');
+
+
+            if(audience != 'followers'){
+                var audience_id = $audience_select.attr('data-audience_id');
+                post_data['origin_type'] = audience;
+                post_data['origin_id'] = audience_id;
+            }
+        }
+
+
+
         post_data['sub_text'] = '';
         post_data['privacy'] = '';
+
+
+
+        post_data = $fbar_holder.find('.privacy_dropdown').attr('privacy');
+
         post_data['anon'] = 0;
 
         post_data['like_count'] = 0;
@@ -1086,35 +1216,7 @@ $(document).ready(function() {
 
 
 
-    $(document).on('click', '.option_delete', function(){
 
-        var $delete_button = $(this);
-        var $post = $delete_button.closest('.post');
-
-        var post_id = $post.attr('data-post_id');
-
-
-        var post_data = {'post_id': post_id};
-
-
-
-
-
-        $.post(
-            globals.base_url + '/post/delete',
-            post_data,
-            function(response) {
-
-                if(response['success']){
-                    console.log('Successfully deleted post ' + post_id);
-                    $post.remove();
-                }else{
-                    alert('Error deleting this post, please try again later');
-                }
-            }, 'json'
-        );
-
-    });
 
 
 
