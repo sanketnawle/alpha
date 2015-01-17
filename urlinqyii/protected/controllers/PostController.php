@@ -77,7 +77,11 @@ class PostController extends Controller
             return;
         }
 
-
+        if($_POST['post']['origin_type'] == '' || $_POST['post']['origin_id'] = ''){
+            $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'invalid origin', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
 
 
         try{
@@ -387,20 +391,53 @@ class PostController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete()
-	{
-//        $model=$this->loadModel($_GET['id']);
+	public function actionDelete(){
 
-        if($model->user_id == self::$cur_user_id) {
-            if($this->loadModel($_GET['id'])->delete())
-                echo "delete_success";
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
         }
-        else
-            echo "Access Denied";
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
+        $user = $this->get_current_user();
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        //Make sure this user created this post
+        if($post->user_id != $user->user_id){
+            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        //If all goes well, delete the post
+        if($post->delete()){
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting post');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+
+
+
 	}
 
 

@@ -769,18 +769,18 @@
                                                 </div>
 
                                                 <div class = 'post_msg post_file_msg'>
-                                                    <span class='msg_span seemore_anchor'>
+                                                    <span class='msg_span seemore_anchor'>{{text}}</span>
 
 
 
 
-                                        {{#each files}}
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                    {{#each files}}
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
 
-                                        {{/each}}
+                                                    {{/each}}
 
-                                    </div>
-                                    </span>
+                                                </div>
+
 
 
 
