@@ -152,11 +152,11 @@
                             <div id = "feed_column" class = "feed_column_group">
                                 <div id = "stream_holder" class = "stream_holder_home">
                                     <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$club->group_id)); ?>
+                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user, 'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/'.$club->group_id.'/feed', 'origin_type'=>'class','origin_id'=>$club->group_id)); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/'.$club->group_id.'/feed', 'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
                                     </div>
                                 </div>
                             </div>

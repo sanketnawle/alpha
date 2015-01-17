@@ -1,6 +1,6 @@
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type={{post_type}}>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}">
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -32,13 +32,21 @@
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if origin_id}}
-                                                        {{#if origin_type}}
+
+
+
+                                                    {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
+
+
+                                                        {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{target_name}}
+                                                                {{origin.name}}
                                                             </span>
-                                                        {{/if}}
-                                                    {{/if}}
+                                                        {{/ifCond}}
+
+                                                    {{/ifCond}}
+
+
                                                 </div>
                                                 <div class = 'post_time'> <span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'>
@@ -408,13 +416,22 @@
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if origin_id}}
+
+
+
+
+                                                    {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
+
+
                                                         {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
                                                                 {{origin.name}}
                                                             </span>
                                                         {{/ifCond}}
-                                                    {{/if}}
+
+                                                    {{/ifCond}}
+
+
                                                 </div>
                                                 <div class = 'post_time'><span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'>
@@ -754,13 +771,19 @@
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if origin_id}}
-                                                        {{#if origin_type}}
+
+                                                    {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
+
+
+                                                        {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{target_name}}
+                                                                {{origin.name}}
                                                             </span>
-                                                        {{/if}}
-                                                    {{/if}}
+                                                        {{/ifCond}}
+
+                                                    {{/ifCond}}
+
+
                                                 </div>
                                                 <div class = 'post_time'><span class = "time_icon"></span>
                                                      <time class='timeago' datetime= '{{created_time}}'>

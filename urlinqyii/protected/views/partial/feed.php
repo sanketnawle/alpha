@@ -47,7 +47,7 @@
 
 
 
-                <?php echo $this->renderPartial('/partial/feed_templates',array()); ?>
+                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
 
 
             </div>

@@ -111,6 +111,34 @@ class ApiController extends Controller
     }
 
 
+    //Takes in a string and returns a list of users whose
+    //name or email contains that string
+    public function actionSearchUsers(){
+        if(!isset($_GET['input_string'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'input string is not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $input_string = $_GET['input_string'];
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname ) LIKE '%" . $input_string . "%' OR user_email LIKE '%" . $input_string . "%'");
+        $users_data = array();
+        foreach($users as $user){
+            array_push($users_data, $this->get_model_associations($user, array('pictureFile')));
+        }
+        if(count($users_data) >= 0){
+            $data = array('success'=>true,'users'=>$users_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2,'error'=>'error getting users');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
+
     public function actionCreatePost(){
         try{
             if(!isset($_POST['user_id']) || !isset($_POST['anon']) || !isset($_POST['text']) || !isset($_POST['origin_type']) || !isset($_POST['privacy'])){

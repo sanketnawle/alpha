@@ -264,39 +264,32 @@ class FeedController extends Controller
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
-//                $sec_id = $class->section_id;
-//                $course = $class->course;
-//                $course_name = $course->course_name;
-//                $posts [$i] ['origin_name'] = $course_name." (".$sec_id.")";
-//                $posts [$i] ['origin_pic_id'] = $class->picture_file_id;
-
-
-                $posts [$i] ['origin'] = $this->get_model_associations($class,array('pictureFile', 'course'));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($class,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['class_name'];
             }
             elseif($post['origin_type']=="course"){
                 $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $course->course_name;
-                $posts [$i] ['origin_pic_id'] = $course->picture_file_id;
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($course,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['course_name'];
             }
             elseif($post['origin_type']=="department"){
-                $dept = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $dept->dept_name;
-                $posts [$i] ['origin_pic_id'] = $dept->picture_file_id;
+                $department = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($department,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['department_name'];
             }
 
             elseif($post['origin_type']=="school"){
-                $origin = School::model()->find('school_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $origin->school_name;
-                $posts [$i] ['origin_pic_id'] = $origin->picture_file_id;
+                $school = School::model()->find('school_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($school,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['school_name'];
             }
-            elseif($post['origin_type']=="group"){
-                $origin = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $origin->group_name;
-                $posts [$i] ['origin_pic_id'] = $origin->picture_file_id;
+            elseif($post['origin_type'] == "group" || $post['origin_type'] == 'club'){
+                $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
+                $posts[$i]['origin'] = $this->model_to_array($this->get_model_associations($group,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['group_name'];
             }
             else{
-                $posts [$i] ['origin_name'] = NULL;
-                $posts [$i] ['origin_pic_id'] = NULL;
+                $posts[$i]['origin'] = null;
             }
 
             if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $this->get_current_user_id())){
@@ -539,7 +532,7 @@ class FeedController extends Controller
     {
         $posts_sql_club = "SELECT distinct *
 		  from post p
-		  where (p.origin_type = 'group' and p.origin_id = '".$_GET['id']."')
+		  where ((p.origin_type = 'group' or p.origin_type = 'club') and p.origin_id = '". $_GET['id'] ."')
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 

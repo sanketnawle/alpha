@@ -1,11 +1,4 @@
-/*NOTE:post_type, privacy_flag and anon change based on what the user selects  - 
-the code to change them is added to the rest of the jquery of status_bar.html -> it basically changes the value of the
-var on('click')*/
-var post_type = 'discussion';
-var privacy = 'campus';
-var anon = 0;
-var origin_type = 'class';
-var question_type = "regular_type";
+
 
 
 
@@ -374,7 +367,7 @@ $(document).ready(function() {
                         //get the text
                         jsonData.text = text;
                         //make the AJAX Call
-                        alert(JSON.stringify(jsonData));
+                        //alert(JSON.stringify(jsonData));
                         postStatusAjax(jsonData);
 
                      }
@@ -465,7 +458,7 @@ $(document).ready(function() {
             data: post_data,
             dataType: 'json',
             success: function(json_data) {
-                alert(JSON.stringify(json_data));
+                //alert(JSON.stringify(json_data));
                 //code to add this post to the feed
                 var source = $("#post_template").html();
                 var template = Handlebars.compile(source);
@@ -498,7 +491,7 @@ $(document).ready(function() {
 
 
 
-        alert(JSON.stringify(single_post));
+        //alert(JSON.stringify(single_post));
 
 
         if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
@@ -1037,8 +1030,9 @@ $(document).ready(function() {
         post_data['post_type'] = post_type;
 
 
-        post_data['origin_id'] = globals.origin_id;
         post_data['origin_type'] = globals.origin_type;
+        post_data['origin_id'] = globals.origin_id;
+
         post_data['sub_text'] = '';
         post_data['privacy'] = '';
         post_data['anon'] = 0;

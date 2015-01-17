@@ -157,6 +157,11 @@
     <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
     <input type='file' class='step_6_upload' style='display:none;'>
 
+
+
+
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
+
 </form>
 </div> 
 
