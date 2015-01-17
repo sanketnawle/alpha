@@ -74,7 +74,7 @@ function file_upload($files, $path="", $user_id="") {
         //Create file in file table here
         $file = new File;
         $file->file_name = $random_name . '.' . $extension;
-        //$file->original_name = $files["file"]["name"];
+        $file->original_name = $files["file"]["name"];
         $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
         $file->file_type = $file_type;
         $file->file_extension = $extension;
@@ -138,7 +138,7 @@ function file_upload2($file_data, $path="", $user_id="") {
         //Create file in file table here
         $file = new File;
         $file->file_name = $random_name . '.' . $extension;
-        //$file->original_name = $file_data["name"];
+        $file->original_name = $file_data["name"];
         $file->file_url = $file_url = "/" . $local_directory . $random_name . '.' . $extension;
         $file->file_type = $file_type;
         $file->file_extension = $extension;

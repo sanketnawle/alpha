@@ -58,13 +58,24 @@ class PostController extends Controller
 
 	public function actionCreate()
 	{
-//        $return_data = array('success'=>true,'post'=>$_POST);
-//        $this->renderJSON($return_data);
-//        return;
+
+//{"text":"asdasd","post_type":"discuss","origin_id":"","origin_type":"class","sub_text":"","privacy":"","anon":0,"like_count":0}
+
+
+        //Because of limitations with dropzone js, if files are being uploaded,
+        //I must send the post parameters as a JSON string rather than just sending them normally
+        //So if files are present, we need to decode the JSON string into an array
+        if(isset($_FILES['file'])) {
+            $_POST['post'] = json_decode($_POST['post'], true);
+        }
 
 
 
-
+        if(!isset($_POST['post']['text']) || !isset($_POST['post']['origin_type']) || !isset($_POST['post']['origin_id']) || !isset($_POST['post']['post_type']) || !isset($_POST['post']['sub_text']) || !isset($_POST['post']['privacy']) || !isset($_POST['post']['anon'])){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'All data is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
 
 
 
@@ -85,19 +96,30 @@ class PostController extends Controller
             // }
 
 
+
+            $user = $this->get_current_user();
+            if(!$user){
+                $return_data = array('success'=>false, 'error_id'=>2, 'error_msg' => 'user is not logged in');
+                $this->renderJSON($return_data);
+                return;
+            }
+
             if(isset($_POST['post'])){
 
 
-                $model->attributes=$_POST['post'];
-                $model->user_id = 7;
+                $model->attributes = $_POST['post'];
+
+                $model->post_type = $_POST['post']['post_type'];
+                $model->user_id = $user->user_id;
     //            $model->created_at = NOW();
     //            $model->last_activity =  = NOW();
+
+
+
+
+
                 $model->save(false);
                 $post_id = $model->post_id;
-
-
-
-
 
 
 
@@ -109,9 +131,12 @@ class PostController extends Controller
                 if($model){
 
 
+                    $post_data = $this->model_to_array($model);
+                    $post_data['user_info'] = $this->model_to_array($user);
 
                     //Save post files
-                    if (count($_FILES['file']) > 0) {
+                    if(isset($_FILES['file'])) {
+                        $post_data['files'] = array();
                         $file_ary = $this->reArrayFiles($_FILES['file']);
 
                         foreach ($file_ary as $file) {
@@ -129,6 +154,9 @@ class PostController extends Controller
                                 $this->renderJSON($return_data);
                                 return;
                             }
+
+                            array_push($post_data['files'], $this->model_to_array($post_file->file));
+
                         }
                     }
 
@@ -136,36 +164,92 @@ class PostController extends Controller
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
 
-                    if(isset($_POST['post']['question']) && ($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type')){
-                        $model->post_type = 'question';
-                        $model->save(false);
+                    if(isset($_POST['post']['question']) && ($model->post_type == 'question' || $model->post_type == 'multiple_choice' || $model->post_type == 'true_false')){
 
+                        $post_data['question'] = array('options'=>array());
 
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
                         $question->post_id = $post_id;
                         $question->save(false);
 
-                        $correct_answer_key = $_POST['post']['question']['answer'];
 
-                        //if(count($_POST['post']['question']['choices']) > 0){
-                        foreach ($_POST['post']['question']['choices'] as $key => $option_text) {
+                        if($model->post_type == 'multiple_choice' && isset($_POST['post']['question']['answer_index'])){
+                            $correct_answer_index = $_POST['post']['question']['answer_index'];
 
+                            $post_data['question']['answer_index'] = $correct_answer_index;
+
+
+                            for($i = 0; $i < count($_POST['post']['question']['options']); $i++){
+                                $option_text = $_POST['post']['question']['options'][$i];
+
+                                if($option_text != ''){
+                                    $option = new PostQuestionOption;
+                                    $option->option_text = $option_text;
+                                    $option->post_id = $post_id;
+                                    $option->save(false);
+
+
+                                    if($i == $correct_answer_index){
+                                        $question->correct_answer_id = $option->option_id;
+                                        $question->save(false);
+                                    }
+
+                                    array_push($post_data['question']['options'], $this->model_to_array($option));
+                                }
+                            }
+                        }else if($model->post_type == 'true_false'){
                             $option = new PostQuestionOption;
-                            $option->option_text = $option_text;
+                            $option->option_text = 'True';
                             $option->post_id = $post_id;
                             $option->save(false);
 
+                            array_push($post_data['question']['options'], $this->model_to_array($option));
 
-                            if($key == $correct_answer_key){
-                                $question->correct_answer_id = $option->option_id;
-                                $question->save(false);
-                            }
+                            $option = new PostQuestionOption;
+                            $option->option_text = 'False';
+                            $option->post_id = $post_id;
+                            $option->save(false);
+
+                            array_push($post_data['question']['options'], $this->model_to_array($option));
                         }
+
+
+                        //if(count($_POST['post']['question']['choices']) > 0){
+
+
                         //}
                     }
 
-                    $return_data = array('success'=>true,'post'=>$model);
+
+                    //Get the origin data
+                    if($model->origin_type == 'class'){
+                        $post_data['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$model->origin_id)));
+                        //reassign the name to make it easier to get in the handlebars
+                        $post_data['origin']['name'] = $post_data['class_name'];
+                    }else if($model->origin_type == 'department'){
+                        $post_data['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$model->origin_id)));
+                        //reassign the name to make it easier to get in the handlebars
+                        $post_data['origin']['name'] = $post_data['department_name'];
+                    }else if($model->origin_type == 'school'){
+                        $post_data['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$model->origin_id)));
+                        //reassign the name to make it easier to get in the handlebars
+                        $post_data['origin']['name'] = $post_data['school_name'];
+
+                    }else if($model->origin_type == 'club' || $model->origin_type == 'group'){
+                        $post_data['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$model->origin_id)));
+                        //reassign the name to make it easier to get in the handlebars
+                        $post_data['origin']['name'] = $post_data['group_name'];
+                    }
+
+                    //This user obviously owns this post
+                    $post_data['pownership'] = true;
+
+
+
+                    $post_data['user_info'] = $this->get_model_associations($user, array('pictureFile'));
+
+                    $return_data = array('success'=>true,'post'=>$post_data);
                     $this->renderJSON($return_data);
                     return;
 

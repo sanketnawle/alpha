@@ -17,7 +17,31 @@ $(document).ready(function() {
     //liking a post
 
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
 
 
 
@@ -472,18 +496,24 @@ $(document).ready(function() {
             single_post.embed_link = findUrlInPost(single_post['text']);
 
         }
-        if(single_post['post_type'] === "discussion"){
+
+
+
+        alert(JSON.stringify(single_post));
+
+
+        if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
             var source   = $("#post_template").html();
             var template = Handlebars.compile(source);
             $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "notes") {
+        else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
             console.log('note');
             var source   = $("#post_note_template").html();
             var template = Handlebars.compile(source);
             $("#posts").prepend(template(single_post));
         }
-        else if(single_post['post_type'] === "question") {
+        else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
             console.log("question");
             var source   = $("#post_question_template").html();
             var template = Handlebars.compile(source);
@@ -805,21 +835,17 @@ $(document).ready(function() {
 //                formData.append(key, value);
 //            });
 
-
-            formData.append('post', post_data);
+            formData.append('post', JSON.stringify(post_data));
+            //formData.append('post_json', JSON.stringify(post_data));
         });
 
 
             this.on('addedfile',function(file){
-
                 console.log(file);
-
 
                 var source = $('#post_file_template').html();
 
                 var template = Handlebars.compile(source);
-
-
 
                 var file_type = file['type'];
 
@@ -1005,14 +1031,68 @@ $(document).ready(function() {
 
 
         var post_data = {};
+
+
+
         post_data['text'] = post_text;
+        post_data['post_type'] = post_type;
+
+
+        post_data['origin_id'] = origin_id;
+        post_data['origin_type'] = origin_type;
+        post_data['sub_text'] = '';
+        post_data['privacy'] = '';
+        post_data['anon'] = 0;
+
+        post_data['like_count'] = 0;
+
+
+        if(post_type == 'question' || post_type == 'true_false' || post_type == 'multiple_choice'){
+            post_data['question'] = {};
+
+            post_data['question']['anonymous'] = 0;
+            post_data['question']['live_answers'] = 0;
+            post_data['text'] = $('#post_title').val();
+            post_data['sub_text'] = post_text;
+
+            if(post_type == 'multiple_choice'){
+                post_data['question']['options'] = [];
+
+                post_data['question']['answer_index'] = '';
+
+
+                //Get the options
+                $('.question_choice_line').each(function(index){
+                    var $question_div = $(this);
+                    var option_text = $question_div.find('.multiple_choice_answer').val();
+                    if(option_text != ''){
+                        //See if this is the right answer
+                        var correct_answer = $question_div.find('.answer_check').find('input').is(":checked");
+
+
+                        if(correct_answer){
+                            post_data['question']['answer_index'] = index;
+                        }
+
+                        post_data['question']['options'].push(option_text);
+                    }
+
+                });
+            }
+
+        }
 
 
 
         return post_data;
     }
 
-    function validate_post_data(){
+
+
+
+    function post_data_is_valid(post_data){
+
+
 
     }
 
@@ -1026,12 +1106,7 @@ $(document).ready(function() {
 
         var $post_text_area = $fbar_holder.find('.post_text_area');
 
-        var post_text = $post_text_area.val();
 
-
-        if(post_text == ''){
-            alert('Please input some text');
-        }
 
 
         //Check if there are any files
@@ -1040,8 +1115,70 @@ $(document).ready(function() {
         console.log(global.myDropzone.files);
 
 
+        var post_data = get_post_data();
+
+//        alert(JSON.stringify(post_data));
+        //Check if this data is good
+        if(post_type == 'discuss'){
+            if(post_data['text'] == ''){
+                alert('Please input post text');
+                return;
+            }
+        }else if(post_type == 'notes' || post_type == 'files'){
+            //Check if there is atleast one file
+            if(global.myDropzone.files.length == 0){
+                alert('Please upload atleast one file.');
+                return;
+            }
+        }else if(post_type == 'question' ){
+
+            if(post_data['text'] == ''){
+                alert('Please input a question');
+                return;
+            }
+
+            if(post_type == 'multiple_choice'){
+                if(post_type['question']['options'].length < 2){
+                    alert('Please input atleast 2 options for a question');
+                    return;
+                }
+            }
+
+        }
+
+
+
+
         console.log('SENDING FILES');
-        global.myDropzone.processQueue();
+
+
+        //If there are any files, submit the post request through dropzone
+        if(global.myDropzone.files.length > 0){
+            global.myDropzone.processQueue();
+        }else{
+            //otherwise, make a post request to post/create manually
+            //alert('MANUAL POST REQUEST');
+
+
+            var post_request_data = {'post':post_data};
+            //alert(JSON.stringify(post_data));
+            $.post(
+                base_url + '/post/create',
+                post_request_data,
+                function(response) {
+
+                    console.log(JSON.stringify(response));
+
+                    if(response['success']){
+                        reset_fbar();
+                        render_post(response['post']);
+                    }else{
+
+                    }
+                }, 'json'
+            );
+        }
+
 
 
 
@@ -1058,7 +1195,10 @@ $(document).ready(function() {
     });
 
 
+    $('.upload_button').click(function(){
 
+        $('.dropzone').click();
+    });
 
     $('#post_attachments').click(function(){
 

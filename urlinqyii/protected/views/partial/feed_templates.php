@@ -1,39 +1,39 @@
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type={{post_type}}>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#if anon}}
+                                                {{#ifCond anon '==' 1}}
                                                     <a href ='profile.php?user_id={{user_id}}'> Link
                                                 {{else}}
                                                     <a>
-                                                {{/if}}
+                                                {{/ifCond}}
                                                     <div class = 'image_container'>
 
-                                                        {{#if anon}}
+                                                        {{#ifCond anon '==' 1}}
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' user_id={{user_id}}style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            <div class = 'post_user_icon profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                             </div>
-                                                        {{/if}}
+                                                        {{/ifCond}}
                                                     </div>
 
-                                                    <span class = 'post_owner profile_link' user_id={{user_id}} >
+                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
                                                         {{#if user_id}}
-                                                            {{#if anon}}
+                                                            {{#ifCond anon '==' 1}}
                                                                 Anonymous
                                                             {{else}}
                                                                 {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/if}}
+                                                            {{/ifCond}}
                                                         {{else}}
                                                             Invalid User
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if target_id}}
-                                                        {{#if target_type}}
+                                                    {{#if origin_id}}
+                                                        {{#if origin_type}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
                                                                 {{target_name}}
                                                             </span>
@@ -49,11 +49,16 @@
                                                     <span class='msg_span seemore_anchor'>
                                                                 {{text}}
                                                     </span>
-                                                    {{#if file_id}}
 
-                                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
 
-                                                    {{/if}}
+                                                        
+                                                    {{#each files}}
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+
+                                                    {{/each}}
+
+
+
                                                     {{#if embed_link}}
 
                                                         <p class='f_hidden_p'><a href='{{embed_link}}'>{{embed_link}}
@@ -170,7 +175,7 @@
 
                                     {{#if file_id}}
 
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
 
 
@@ -178,11 +183,11 @@
                                         <div class = 'comment_user_icon'></div>
                                         </div>
                                         <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                                            {{#if anon}}
+                                            {{#ifCond anon '==' 1}}
                                                 Anonymous
                                             {{else}}
                                                 {{user_info.user_name}}
-                                            {{/if}}
+                                            {{/ifCond}}
                                         </span>
                                          <div class = 'comment_time'>
                                             <div class='ct_ts'>
@@ -264,17 +269,17 @@
 
                                         {{#if file_id}}
 
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
                                         <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                                            {{#if anon}}
+                                            {{#ifCond anon '==' 1}}
                                                 Anonymous
                                             {{else}}
                                                 {{user_info.user_name}}
-                                            {{/if}}
+                                            {{/ifCond}}
                                         </span>
                                         <div class = 'comment_time'>
                                             <div class='ct_ts'>
@@ -302,17 +307,17 @@
 
                         {{#if file_id}}
 
-                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                             <div class = 'comment_user_icon'></div>
                         </div>
                         <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                            {{#if anon}}
+                            {{#ifCond anon '==' 1}}
                                 Anonymous
                             {{else}}
                                 {{user_info.user_name}}
-                            {{/if}}
+                            {{/ifCond}}
                         </span>
                         <div class = 'comment_time'>
                             <div class='ct_ts'>
@@ -336,17 +341,17 @@
 
                                         {{#if file_id}}
 
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
                                         <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                             <div class = 'comment_user_icon'></div>
                                         </div>
                                         <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                                            {{#if anon}}
+                                            {{#ifCond anon '==' 1}}
                                                 Anonymous
                                             {{else}}
                                                 {{user_info.user_name}}
-                                            {{/if}}
+                                            {{/ifCond}}
                                         </span>
                                         <div class = 'comment_time'>
                                             <div class='ct_ts'>
@@ -367,29 +372,29 @@
 
             <script id="post_question_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#if anon}}
+                                                {{#ifCond anon '==' 1}}
                                                     <a href ='profile.php?user_id={{user_id}}'> Link
                                                 {{else}}
                                                     <a>
-                                                {{/if}}
+                                                {{/ifCond}}
                                                     <div class = 'image_container'>
 
-                                                        {{#if anon}}
+                                                        {{#ifCond anon '==' 1}}
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
                                                             <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
-                                                        {{/if}}
+                                                        {{/ifCond}}
                                                     </div>
 
                                                     <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
-                                                            {{#if anon}}
+                                                            {{#ifCond anon '==' 1}}
                                                                 {{#if pownership}}
                                                                     Anonymous (you)
                                                                 {{else}}
@@ -397,18 +402,18 @@
                                                                 {{/if}}
                                                             {{else}}
                                                                 {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/if}}
+                                                            {{/ifCond}}
                                                         {{else}}
                                                             Invalid User
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if target_id}}
-                                                        {{#if target_type}}
+                                                    {{#if origin_id}}
+                                                        {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{target_name}}
+                                                                {{origin.name}}
                                                             </span>
-                                                        {{/if}}
+                                                        {{/ifCond}}
                                                     {{/if}}
                                                 </div>
                                                 <div class = 'post_time'><span class = "time_icon"></span>
@@ -416,8 +421,11 @@
                                                         {{update_timestamp}}
                                                      </time>
                                                 </div>
-                                                {{#if que_list}}
-                                                    {{#each que_list}}
+
+
+
+                                                {{#if question.options}}
+                                                    {{#each question.options}}
                                                     <span class = 'experts_icon'></span>
                                                         <a href='http://www.urlinq.com/beta/profile.php?user_id={{user_id}}'>
                                                     <span class = 'experts_name'>
@@ -433,49 +441,58 @@
                                                                 {{sub_text}}
                                                     </div>
 
-                                                    {{#ifCond question.question_type '==' 'true_or_false'}}
-
-                                                        <div class="true_choice">
-                                                            <input type="radio" name="true_or_false" id="true_radio">
-                                                            </input>
-                                                            <div class="true_or_false_span" id="true"> True </div>
-                                                            <span class="true_or_false_percent" id="true_percent" value="{{true_percent}}">
-                                                             {{true_percent}}%
-                                                             </span>
-                                                        </div>
-                                                        <div class="false_choice">
-                                                            <input type="radio" name="true_or_false" id="false_radio">
-                                                            </input>
-                                                            <div class="true_or_false_span" id="false"> False </div>
-                                                            <span class="true_or_false_percent" id="false_percent" value="{{false_percent}}">
-                                                            {{false_percent}}%
-                                                             </span>
-                                                        </div>
-
-                                                    {{/ifCond}}
-
-
-                                                    {{#ifCond question.question_type '==' 'multiple_choice'}}
-                                                        <div class="mc_question">
-                                                            {{#each options}}
-                                                                <div class="mc_question_one_choice" id="{{the_choice_letter}}">
+                                                    {{#ifCond post_type '==' 'true_false'}}
+                                                         <div class="mc_question">
+                                                            {{#each question.options}}
+                                                                <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
 
                                                                     <input type="radio" class="mc_question_radio_button" name="letter" >
 
                                                                     </input>
                                                                     <div class="mc_question_choice_letter" >
-                                                                            <span class="choice_letter" id="{{the_choice_letter}}">
-                                                                                {{the_choice_letter}}
+                                                                            <span class="choice_letter" id="{{question.answer_index}}">
+                                                                                {{question.answer_index}}
                                                                             </span>
                                                                     </div>
 
                                                                     <div class="mc_question_choice_text">
-                                                                        {{#if anon}}
+                                                                        {{#ifCond anon '==' 1}}
                                                                             <span class="choice_text"> {{option_text}} </span>
                                                                         {{else}}
                                                                             <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
 
-                                                                        {{/if}}
+                                                                        {{/ifCond}}
+                                                                    </div>
+
+                                                                </div>
+
+                                                            {{/each}}
+                                                        </div>
+
+                                                    {{/ifCond}}
+
+
+                                                    {{#ifCond post_type '==' 'multiple_choice'}}
+                                                        <div class="mc_question">
+                                                            {{#each question.options}}
+                                                                <div class="mc_question_one_choice" id="{{question.answer_index}}" data-option_id="{{option_id}}">
+
+                                                                    <input type="radio" class="mc_question_radio_button" name="letter" >
+
+                                                                    </input>
+                                                                    <div class="mc_question_choice_letter" >
+                                                                            <span class="choice_letter" id="{{question.answer_index}}">
+                                                                                {{question.answer_index}}
+                                                                            </span>
+                                                                    </div>
+
+                                                                    <div class="mc_question_choice_text">
+                                                                        {{#ifCond anon '==' 1}}
+                                                                            <span class="choice_text"> {{option_text}} </span>
+                                                                        {{else}}
+                                                                            <span class="choice_text" style="background-color: #E0E0E0; width : {{percent_selected}}%" id="{{the_choice_letter}}expanding"> {{option_text}} </span>
+
+                                                                        {{/ifCond}}
                                                                     </div>
 
                                                                 </div>
@@ -485,10 +502,21 @@
 
 
                                                     {{/ifCond}}
+
+
+
                                                     {{#if file_id}}
 
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                                     {{/if}}
+
+
+
+
+
+
+
+
                                                     {{#if embed_link}}
 
                                                         <p class='f_hidden_p'>
@@ -612,17 +640,17 @@
 
                                     {{#if file_id}}
 
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
                                     <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         <div class = 'comment_user_icon'></div>
                                     </div>
                                     <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                                        {{#if anon}}
+                                        {{#ifCond anon '==' 1}}
                                             Anonymous
                                         {{else}}
                                             {{user_info.user_name}}
-                                        {{/if}}
+                                        {{/ifCond}}
                                     </span>
                                      <div class = 'comment_time'>
                                         <div class='ct_ts'>
@@ -694,25 +722,25 @@
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#if anon}}
+                                                {{#ifCond anon '==' 1}}
                                                     <a href ='profile.php?user_id={{user_id}}'> Link
                                                 {{else}}
                                                     <a>
-                                                {{/if}}
+                                                {{/ifCond}}
                                                     <div class = 'image_container'>
 
-                                                        {{#if anon}}
+                                                        {{#ifCond anon '==' 1}}
                                                           <div class = 'post_user_icon post_user_icon_anonymous'>
                                                           </div>
                                                         {{else}}
                                                             <div class = 'post_user_icon profile_link' user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                                           </div>
-                                                        {{/if}}
+                                                        {{/ifCond}}
                                                     </div>
 
                                                     <span class = 'post_owner profile_link' user_id={{user_id}} >
                                                         {{#if user_id}}
-                                                            {{#if anon}}
+                                                            {{#ifCond anon '==' 1}}
                                                                 {{#if pownership}}
                                                                     Anonymous (you)
                                                                 {{else}}
@@ -720,14 +748,14 @@
                                                                 {{/if}}
                                                             {{else}}
                                                                 {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/if}}
+                                                            {{/ifCond}}
                                                         {{else}}
                                                             Invalid User
                                                         {{/if}}
                                                     </span>
                                                     </a>
-                                                    {{#if target_id}}
-                                                        {{#if target_type}}
+                                                    {{#if origin_id}}
+                                                        {{#if origin_type}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
                                                                 {{target_name}}
                                                             </span>
@@ -739,57 +767,17 @@
                                                         {{update_timestamp}}
                                                      </time>
                                                 </div>
+
                                                 <div class = 'post_msg post_file_msg'>
                                                     <span class='msg_span seemore_anchor'>
-                                                            <div class = 'file-wrapper'>
-                                                    <div class = 'file-container'>
-                                                        <div class = 'file-pic-wrap'>
-                                                            <div class = 'file-img file-img-type-doc'>
-                                                                    <div class='file-thumb-cover'>
-                                                                        <div class='file-download2'>
-                                                                            Download
-                                                                        </div>
-                                                                    </div>
-                                                            <div>
-                                                        </div>
-
-
-                                                        <a class = 'file-download' href='javascript:download({{file_id}})'>
-
-                                                        </a>
-
-
-                                                        {{#if gdrive}}
-                                                            <a class = 'file-download' target='_blank' href='javascript:download({{file_id}})'>
-                                                                Go To Drive
-                                                            </a>
-                                                        {{/if}}
-
-
-                                                    </div>
 
 
 
-                                                <div class = 'file-text-data'>
-                                                    <div class = 'file-text-title'>
-                                                        THE NOTE NAME
-                                                    </div>
 
-                                                    {{#if gdrive}}
-                                                        <span class='google_drive_icon'></span>
-                                                    {{/if}}
-                                                    <div class = 'file-text-type'>
-                                                        {{file_share_type}}
-                                                    </div>
-                                                    <div class = 'file-text-about'>
-                                                        {{text}}
+                                        {{#each files}}
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
 
-                                                    </div>
-
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{/each}}
 
                                     </div>
                                     </span>
@@ -879,19 +867,22 @@
                                         {{reply_msg}}
                                     </div>
 
-                                    {{#if file_id}}
+                                    {{#each files}}
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
 
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{file.original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{file.original_name}}<span class = "download_icon"></span></div></a>
-                                    {{/if}}
+                                    {{/each}}
+
+
+
                                     <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
                                         <div class = 'comment_user_icon'></div>
                                     </div>
                                     <span class = 'comment_owner profile_link' user_id={{user_id}} >
-                                        {{#if anon}}
+                                        {{#ifCond anon '==' 1}}
                                             Anonymous
                                         {{else}}
                                             {{user_info.user_name}}
-                                        {{/if}}
+                                        {{/ifCond}}
                                     </span>
                                      <div class = 'comment_time'>
                                         <div class='ct_ts'>

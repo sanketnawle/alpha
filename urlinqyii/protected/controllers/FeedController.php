@@ -257,19 +257,21 @@ class FeedController extends Controller
                 $posts[$i]['pownership'] = FALSE;
 
             // getting and appending the origin
-            if($post['origin_type']=="user"){
-                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
+            if($post['origin_type'] == "user"){
+//                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
+//                $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
 
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
-                $sec_id = $class->section_id;
-                $course = $class->course;
-                $course_name = $course->course_name;
-                $posts [$i] ['origin_name'] = $course_name." (".$sec_id.")";
-                $posts [$i] ['origin_pic_id'] = $class->picture_file_id;
-//                $posts [$i] ['origin'] = $this->get_model_associations($class,array('pictureFile','coverFile', 'course'));
+//                $sec_id = $class->section_id;
+//                $course = $class->course;
+//                $course_name = $course->course_name;
+//                $posts [$i] ['origin_name'] = $course_name." (".$sec_id.")";
+//                $posts [$i] ['origin_pic_id'] = $class->picture_file_id;
+
+
+                $posts [$i] ['origin'] = $this->get_model_associations($class,array('pictureFile', 'course'));
             }
             elseif($post['origin_type']=="course"){
                 $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
@@ -316,22 +318,22 @@ class FeedController extends Controller
 
 
             // handle question type posts
-            if($post['post_type'] == 'question'){
+            if($post['post_type'] == 'question' || $post['post_type'] == 'multiple_choice' || $post['post_type'] == 'true_false'){
                 $post_que = PostQuestion::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
-                $posts [$i] ['active'] = $post_que->active;
+                $posts[$i]['active'] = $post_que->active;
                 $posts[$i]['question'] = self::convertModelToArray($post_que);
 
                 // give correct answer, if NOT active
                 if($post_que->active == 0)
-                    $posts [$i] ['answer'] = PostQuestionOption::model()->findAll('option_id=:id', array(':id'=>$post_que['correct_answer_id']));
+                    $posts [$i] ['answer_index'] = PostQuestionOption::model()->findAll('option_id=:id', array(':id'=>$post_que['correct_answer_id']));
                 else
                     $posts [$i] ['answer'] = NULL;
 
                 // adding all the options to the array
                 $post_que_options = PostQuestionOption::model()->findAll('post_id=:id', array(':id'=>$post['post_id']));
                 $options = self::convertModelToArray($post_que_options);
-                $posts [$i] ['options'] = self::getOptionsInfo($options);
+                $posts[$i]['question']['options'] = self::getOptionsInfo($options);
 
 //                // adding info of participants
 //                $option_ids = array_column($options, 'option_id');
@@ -372,6 +374,15 @@ class FeedController extends Controller
 
                 $posts [$i] ['event'] = $posts [$i] ['event'] = $event;
 
+            }
+
+            //See if there are any files associated with this post
+            $post_files = PostFile::model()->findAll('post_id=:id',array(':id'=>$post['post_id']));
+            if($post_files && count($post_files) > 0){
+                $posts[$i]['files'] = [];
+                foreach($post_files as $post_file){
+                    array_push($posts[$i]['files'],$this->model_to_array($post_file->file));
+                }
             }
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
@@ -419,16 +430,17 @@ class FeedController extends Controller
                                                                             from class_user cu join class cs
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = ".self::$user->user_id." and cs.semester = '".self::$cur_sem."' and cs.`year` = ".date('Y').")))
-                              order by last_activity DESC
+                              ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;
                   
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
         if($posts = $command->queryAll())
-            $success_post = TRUE;
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
         else
-            $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>false, 'is_admin'=> FALSE));
+
+
 
 //        $this->renderJSON($posts);
 	}
