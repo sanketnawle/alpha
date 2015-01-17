@@ -56,3 +56,6 @@
 .icon-arrow-small-right:before {
   content: "f";
 }
+.icon-ellipsis:before {
+  content: "g";
+}

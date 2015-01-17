@@ -7,6 +7,29 @@ body{
 	background-color: #FAFAF9;
 }
 
+body#body_calendar .topbar > #topbar_responsive_holder > .left a.urlinq > span{
+background-image: url(../../assets/calendar_home_after.png);
+background-size:auto;
+width: 5px;
+height: 9px;
+left: -12px;
+display:inline-block;
+line-height: 1;
+background-repeat: no-repeat;
+position: absolute;
+top: 21px;
+transition: left 190ms ease-out;
+}
+
+body#body_calendar .topbar > #topbar_responsive_holder{
+	max-width:1250px;
+}
+
+body#body_calendar .topbar > #topbar_responsive_holder > .left > a{
+margin-left: 5px;
+}
+
+
 .body .month-view .month-grid .grid-item{
 	color:#333;
 }
@@ -314,3 +337,13 @@ font-size: 11px;
 line-height: 20px;
 padding-right: 3px;
 }
+
+
+
+/*Responsive topbar*/
+@media screen and (max-width: 1310px){
+.topbar #topbar_responsive_holder {
+padding-right: 0px!important;
+}
+}
+
