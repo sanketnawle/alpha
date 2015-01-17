@@ -40,9 +40,8 @@ jQuery(document).ready(function(){
     last_month_day_date_selected = null;
     jQuery(document).on('click', '.day_grid_item', function(event){
 
-        //Hide the other popup
-        jQuery('#inspect_event_popup_day').removeClass('active');
-
+        //Hide the other popups
+        hide_inspect();
         event.stopPropagation();
         var $day_div = jQuery(this);
         var this_date = $day_div.attr('data-date');
@@ -65,8 +64,10 @@ jQuery(document).ready(function(){
         if(!$create_day_event_popup.is(":visible")){
             if((event.pageY - 180) <= 0){
                 $create_day_event_popup.css('top', event.pageY + 15);
+                jQuery($create_day_event_popup).addClass("top_position");
             }else{
                 $create_day_event_popup.css('top', event.pageY - 180);
+                jQuery($create_day_event_popup).removeClass("top_position");
             }
             $create_day_event_popup.css('left', event.pageX - 160);
 
@@ -83,7 +84,7 @@ jQuery(document).ready(function(){
             if(this_date != last_month_day_date_selected){
                 //We clicked a different event than the event we were already looking at
                 //switch the inspect_event_popup_month to this event
-                if((event.pageY - 180) <= 0){
+                if((event.pageY - 200) <= 0){
                     $create_day_event_popup.css('top', event.pageY + 15);
                 }else{
                     $create_day_event_popup.css('top', event.pageY - 180);

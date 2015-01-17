@@ -1,3 +1,34 @@
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function hide_inspect(){
+    jQuery('.inspect_event_popup').removeClass('active');
+
+    jQuery('.event_holder').each(function(){
+        var $event_holder = jQuery(this);
+        var event_holder_hex = $event_holder.attr("data-hex");
+        var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
+        var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
+        var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
+        if($event_holder.hasClass('colorfied')){
+            $event_holder.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .25)"});
+            $event_holder.removeClass('colorfied');
+        }
+    });
+}
+
 jQuery(document).ready(function(){
     last_clicked_event_id = null;
 
@@ -6,8 +37,14 @@ jQuery(document).ready(function(){
     jQuery(document).on('click', '.event_holder', function(event){
         event.stopPropagation();
 
+        jQuery(".create_event_popup").removeClass("active");
 
+
+        hide_inspect();
         var $event_div = jQuery(this);
+        var event_div_hex = $event_div.attr("data-hex");
+        jQuery($event_div).addClass("colorfied");
+        jQuery($event_div).css({"background-color": event_div_hex});
         var event_id = $event_div.attr('data-id');
 
         console.log('inspect event: ' + event_id);
@@ -20,10 +57,12 @@ jQuery(document).ready(function(){
 
 
         if(!$inspect_event_popup.is(":visible")){
-            if((event.pageY - 180) <= 0){
+            if((event.pageY - 220) <= 0){
                 $inspect_event_popup.css('top', event.pageY + 15);
+                jQuery($inspect_event_popup).addClass("top_position");
             }else{
                 $inspect_event_popup.css('top', event.pageY - 180);
+                jQuery($inspect_event_popup).removeClass("top_position");
             }
             $inspect_event_popup.css('left', event.pageX - 140);
 
@@ -34,7 +73,13 @@ jQuery(document).ready(function(){
             $inspect_event_popup.find('#inspect_event_text').text(inspect_event_text);
             $inspect_event_popup.find('#inspect_event_description').text($event_div.attr('data-description'));
 
+
+            $event_div.css({});
+
             $inspect_event_popup.addClass('active');
+
+
+
         }else{
             if($event_div.attr('data-id') != last_clicked_event_id){
                 //We clicked a different event than the event we were already looking at
@@ -59,7 +104,7 @@ jQuery(document).ready(function(){
 
 
             }else{
-                $inspect_event_popup.removeClass('active');
+                hide_inspect();
             }
         }
 
@@ -69,10 +114,11 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click','.popup_edit_button', function(){
+        jQuery('.grid-item.prem').removeClass('making_event');
         var $this_popup_button = jQuery(this);
         var $inspect_event_popup = $this_popup_button.closest('.inspect_event_popup');
         //Hide the popup
-        $inspect_event_popup.removeClass('active');
+        hide_inspect();
 
 
 
@@ -170,8 +216,11 @@ jQuery(document).ready(function(){
 
 
 
-    jQuery(document).on('click','.popup_exit_button',function(){
-        event.stopPropagation();
+    jQuery(document).on('click','.popup_exit_button',function(e){
+        hide_inspect();
+        jQuery(".event_holder").removeClass("colorfied");
+        jQuery('.grid-item.prem').removeClass('making_event');
+        e.stopPropagation();
         //Clear the text from the event create
         try{
             jQuery(this).closest('.popup').find('.popup_create_event_name_input').val('');
