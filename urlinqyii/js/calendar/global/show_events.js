@@ -76,7 +76,7 @@ function show_day_event(event_json){
         var left_pixels = 50;
         //Leave 15 pixels on the right so new events can be created
         //by clicking that space
-        var width = $grid_item_selector.width() - 25;
+        var width = $grid_item_selector.width();
         //check if other events are within this time range
         var $this_day_time_events = $grid_item_selector.find('.day_event_holder');
         if($this_day_time_events.length){

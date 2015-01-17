@@ -7,6 +7,29 @@ body{
 	background-color: #FAFAF9;
 }
 
+body#body_calendar .topbar > #topbar_responsive_holder > .left a.urlinq > span{
+background-image: url(../../assets/calendar_home_after.png);
+background-size:auto;
+width: 5px;
+height: 9px;
+left: -12px;
+display:inline-block;
+line-height: 1;
+background-repeat: no-repeat;
+position: absolute;
+top: 21px;
+transition: left 190ms ease-out;
+}
+
+body#body_calendar .topbar > #topbar_responsive_holder{
+	max-width:1250px;
+}
+
+body#body_calendar .topbar > #topbar_responsive_holder > .left > a{
+margin-left: 5px;
+}
+
+
 .body .month-view .month-grid .grid-item{
 	color:#333;
 }
@@ -16,9 +39,39 @@ color: #878787;
 background-color: #f5f5f5;
 }
 
+div.day_event_holder div.event_start_time {
+font-weight: bold;
+font-size: 11px;
+left: 5px;
+display: block;
+top: 1px;
+position: relative;
+}
+
+span.right_arrow_head_icon{
+
+}
+
+/*
+div.day_event_holder span.icon.icon-clock{
+position: relative;
+font-size: 12px;
+left: 4px;
+top: 2px;
+float: left;
+height: 11px;
+}
+
+div.day_event_holder.colorfied span.icon.icon-clock{
+	color: #fff!important;
+}
+
+*/
+
 div.day_event_holder div.event_name{
-	font-weight:600;
-	font-size:13.5px;
+font-weight: 600;
+font-size: 14.5px;
+margin-left: 4px;
 }
 
 .body .day-view div.day-grid{
@@ -32,8 +85,42 @@ div.grid-event.week_event_holder.event_holder{
 
 .body .day-view .day-grid div.day_event_holder{
 	border:none;
-	margin-top: 8px;
-	min-height:46px;
+	margin-top: 6px;
+	min-height: 48px;
+}
+
+div.day_event_holder div.event_location {
+font-family: Avenir;
+text-transform: capitalize;
+float: right;
+color: #333;
+line-height: 20px;
+position: absolute;
+text-align: right;
+right: 0px;
+font-weight: bold;
+bottom: 0px;
+font-size: 13px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+margin: 4px 6px 3px 3px;
+}
+
+div.event_location > span {
+font-size: 14px;
+position: relative;
+top: 3px;
+}
+
+div.day_event_holder div.event_description {
+display: inline-block;
+font-size: 13.6px;
+line-height: 20px;
+padding-left: 10px;
+}
+
+div.day_event_holder.event_holder.colorfied div.event_description, div.day_event_holder.event_holder.colorfied div.event_location, div.day_event_holder.event_holder.colorfied div.event_location > span{
+	color:#FFF!important;
 }
 
 .ul-calendar .leftbar .create div.button .full > i {
@@ -50,8 +137,63 @@ margin-right: 7px;
 background-position: 0;
 }
 
-div.event_holder.day_event_holder.colorfied > div.event_name{
+a.event_origin_link{
+position: absolute;
+left: 5px;
+bottom: 0px;
+margin: 2px 3px 2.5px 0px;
+font-size: 12px;
+color: #575757!important;
+}
+
+a.event_origin_link:hover > span.origin_name_text{
+	text-decoration: underline;
+}
+
+span.right_arrow_head_icon{
+background-image: url(../../assets/calendar_origin_link_icon.png);
+display: inline-block;
+width: 11px;
+left: -1px;
+background-position: -2px 0px;
+height: 10px;
+position: relative;
+}
+
+div.day_event_holder.event_holder.colorfied > a.event_origin_link > span.right_arrow_head_icon{
+	background-position: -18px 0px;
+}
+
+div.day_event_holder.event_holder.colorfied > a.event_origin_link{
 	color:#FFF!important;
+}
+
+div.event_type{
+font-family: Avenir;
+text-transform: uppercase;
+float: right;
+color: #575757;
+position: absolute;
+text-align: right;
+right: 0px;
+font-weight: bold;
+border: 1px solid #575757;
+top: 0px;
+font-size: 11px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+padding: 4px 6px 3px 3px;
+border-top: none;
+border-right: none;
+border-radius: 0px 0px 0px 2px;
+}
+
+div.event_holder.day_event_holder.colorfied > div.event_type, div.event_holder.day_event_holder.colorfied > div.event_name, div.event_holder.day_event_holder.colorfied > div.event_start_time{
+	color:#FFF!important;
+}
+
+div.event_holder.day_event_holder.colorfied > div.event_type{
+	border-color:#FFF;
 }
 
 div.month_day_event.event_holder.colorfied > div {
@@ -195,3 +337,13 @@ font-size: 11px;
 line-height: 20px;
 padding-right: 3px;
 }
+
+
+
+/*Responsive topbar*/
+@media screen and (max-width: 1310px){
+.topbar #topbar_responsive_holder {
+padding-right: 0px!important;
+}
+}
+

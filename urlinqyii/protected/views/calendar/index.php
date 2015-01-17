@@ -22,6 +22,8 @@
     <!-- Fonts -->
     <link href="http://goo.gl/CHQFJX" rel="stylesheet" type="text/css"><!-- Open Sans:3->8-5 -->
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css" rel="stylesheet" type="text/css"><!-- Avenir:L,N,B -->
+    <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/icon_font/styles.css" rel="stylesheet" type="text/css"><!-- ICON FONT-->
+
     <!-- Styles -->
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/master.less" type="text/css" rel="stylesheet/less">
     <!--<link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/calendar/transition.css" type="text/css" rel="stylesheet">-->
@@ -97,7 +99,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/calendar/inspect_event/inspect_event.js"></script>
 
 </head>
-<body>
+<body id = "body_calendar">
     <?php echo Yii::app()->runController('partial/topbar'); ?>
 
     <script id="provider_template" type="text/x-handlebars-template">
@@ -263,11 +265,17 @@ Set the class name on your input to 'time_input' -->
 
 <script id="day_event_template" type="text/x-handlebars-template">
     <div class="day_event_holder event_holder" data-rgb = {{color.rgb}} data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}" style = "border-left:2.5px solid {{color.hex}};">
-        <div class="event_start_time" style = "color:#FFF;" >{{formatted_start_time}}</div>
-        <div class="event_name" style = "color:{{color.hex}}" >{{title}}</div>
-        <div class = "event_type">{{event_type}}</span>
-        <div class="event_location" style = "color:{{color.hex}}"><span></span>{{location}}</div>
-        <div class="event_description">{{description}}</div>
+        <div class="event_start_time" style = "color:{{color.hex}};">{{formatted_start_time}}</div>
+        <div class="event_name" style = "color:{{color.hex}}" >{{title}}</div><div class="event_description" style = "color:{{color.hex}}">{{description}}</div>
+        <div class = "event_type" style = "border-color:{{color.hex}}; color:{{color.hex}}">{{event_type}}</div>
+        
+        {{#if location}}
+        <div class="event_location" style = "color:{{color.hex}}"><span style = "color:{{color.hex}}" class = "icon icon-pin-map" ></span>{{location}}</div>
+        {{/if}}
+
+        {{#if origin.name}}
+        <a class="event_origin_link" href="<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}"><span class = "origin_name_text">{{origin.name}}</span> <span class= "right_arrow_head_icon"></span></a>
+        {{/if}}
     </div>
 </script>
 

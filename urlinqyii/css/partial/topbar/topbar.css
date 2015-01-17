@@ -33,7 +33,7 @@
 }
 
     .topbar > #topbar_responsive_holder > .left {
-        overflow: auto;
+        overflow: visible;
         margin-left: 23px;
         height: 48px;
         margin-right: 0px;
@@ -57,6 +57,7 @@
                 background-repeat: no-repeat;
                 background-position: center 16px;
             
+                position: relative;
                 cursor: pointer;
 }
 
@@ -161,7 +162,7 @@
         float: right;
 /*         width: 270px; */
         height: 48px;
-        margin-right:20px!important;
+        margin-right:50px!important;
         display: inline-block;
 }
 
@@ -251,14 +252,13 @@
                 .topbar > #topbar_responsive_holder > .right .notify.calendar .button .icon {
                     background-repeat: no-repeat;
                     background-position: -25px 0px;
-                    width: 28px;
+                    width: 25px;
                     margin: auto;
                     display: inline-block;
                     height: 23px;
-                
                     position: relative;
-                    top: 1px;
-}
+                    top: 0px;
+                    }
 
                 .topbar > #topbar_responsive_holder > .right .notify.board:hover .button .icon, .topbar > #topbar_responsive_holder > .right .notify.board.active .button .icon {
                 }
@@ -408,6 +408,85 @@
 .mainsearch:focus:-moz-placeholder {
     transition: opacity 0.15s;
     opacity: .4;
+}
+
+body .topbar > div.calendar_link{
+    position: absolute;
+
+    right: 5px;
+    top: 5px;
+    height: 38px;
+    width: 38px;
+    /* background-color: black; */
+}
+body .topbar > div.calendar_link > a{
+    cursor: pointer;
+    /* position: relative; */
+    
+    }
+
+body .topbar > div.calendar_link > a > div.calendar_icon{
+    background-image: url(../../../assets/quick_calendar_icon.png);
+    
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 8px;
+    background-size: cover;
+    left: -13px;
+    position: relative;
+}
+
+body .topbar > div.calendar_link > a > div.quick_cal_arrow{
+background-image: url(../../../assets/quick_cal_arrow.png);
+background-size:auto;
+width: 6px;
+height: 9px;
+right: 5px;
+display:inline-block;
+line-height: 1;
+background-repeat: no-repeat;
+position: absolute;
+top: 16px;
+transition: left 190ms ease-out;
+}
+
+    body .topbar > div.calendar_link > a:hover > div.calendar_icon{
+    cursor: pointer;
+    
+    }
+        body .topbar > div.calendar_link > a:active > div.calendar_icon{
+    cursor: pointer;
+    
+    }
+
+
+body#body_calendar .topbar > div.calendar_link{
+    display:none;
+    }
+
+@media(max-width:1348px){
+#topbar_responsive_holder{
+    padding-right:196px;
+}
+}
+
+@media(max-width:1330px){
+#topbar_responsive_holder{
+    padding-right:186px;
+}
+}
+
+@media(max-width:1315px){
+#topbar_responsive_holder{
+    padding-right:150px;
+}
+}
+
+@media(max-width:1310px){
+.topbar > #topbar_responsive_holder > div.right{
+    margin-right:27px!important;
+}
 }
 
 @media(max-width:1248px){
