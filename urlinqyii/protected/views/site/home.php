@@ -6,10 +6,20 @@
         <script>
             //origin_type = '<?php echo "home" ?>';
 
-            origin_type = '<?php echo "user" ?>';
+<!--            origin_type = '--><?php //echo "user" ?><!--';-->
+<!---->
+<!--            origin_id = '--><?php //echo $user->user_id; ?><!--';-->
+<!--            base_url = '--><?php //echo Yii::app()->getBaseUrl(true); ?><!--';-->
 
-            origin_id = '<?php echo $user->user_id; ?>';
-            base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
+            var globals = {};
+
+
+            globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+            globals.origin_type = '<?php echo 'user'; ?>';
+            globals.origin_id = '<?php echo $user->user_id; ?>';
+
+
 
         </script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
