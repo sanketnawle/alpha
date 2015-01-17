@@ -77,7 +77,7 @@ class PostController extends Controller
             return;
         }
 
-        if($_POST['post']['origin_type'] == '' || $_POST['post']['origin_id'] = ''){
+        if($_POST['post']['origin_type'] == '' || $_POST['post']['origin_id'] == ''){
             $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'invalid origin', '$POST'=>$_POST);
             $this->renderJSON($return_data);
             return;
@@ -115,6 +115,7 @@ class PostController extends Controller
 
                 $model->post_type = $_POST['post']['post_type'];
                 $model->user_id = $user->user_id;
+                $model->origin_id = $_POST['post']['origin_id'];
     //            $model->created_at = NOW();
     //            $model->last_activity =  = NOW();
 
@@ -226,25 +227,72 @@ class PostController extends Controller
                     }
 
 
-                    //Get the origin data
-                    if($model->origin_type == 'class'){
-                        $post_data['origin'] = $this->model_to_array(ClassModel::model()->find('class_id=:id',array(':id'=>$model->origin_id)));
-                        //reassign the name to make it easier to get in the handlebars
-                        $post_data['origin']['name'] = $post_data['class_name'];
-                    }else if($model->origin_type == 'department'){
-                        $post_data['origin'] = $this->model_to_array(Department::model()->find('department_id=:id',array(':id'=>$model->origin_id)));
-                        //reassign the name to make it easier to get in the handlebars
-                        $post_data['origin']['name'] = $post_data['department_name'];
-                    }else if($model->origin_type == 'school'){
-                        $post_data['origin'] = $this->model_to_array(School::model()->find('school_id=:id',array(':id'=>$model->origin_id)));
-                        //reassign the name to make it easier to get in the handlebars
-                        $post_data['origin']['name'] = $post_data['school_name'];
 
-                    }else if($model->origin_type == 'club' || $model->origin_type == 'group'){
-                        $post_data['origin'] = $this->model_to_array(Group::model()->find('group_id=:id',array(':id'=>$model->origin_id)));
-                        //reassign the name to make it easier to get in the handlebars
-                        $post_data['origin']['name'] = $post_data['group_name'];
+                    try{
+                        //Get the origin data
+                        if($model->origin_type == 'class'){
+
+                            $class = ClassModel::model()->find('class_id=:id',array(':id'=>$model->origin_id));
+                            if($class){
+                                $post_data['origin'] = $this->model_to_array($class);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['class_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'class doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }else if($model->origin_type == 'department'){
+                            $department = Department::model()->find('department_id=:id',array(':id'=>$model->origin_id));
+
+                            if($department){
+                                $post_data['origin'] = $this->model_to_array($department);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['department_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }else if($model->origin_type == 'school'){
+
+                            $school = School::model()->find('school_id=:id',array(':id'=>$model->origin_id));
+
+
+                            if($school){
+                                $post_data['origin'] = $this->model_to_array($school);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['school_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+
+                        }else if($model->origin_type == 'club' || $model->origin_type == 'group'){
+                            $group = Group::model()->find('group_id=:id',array(':id'=>$model->origin_id));
+
+                            if($group){
+                                $post_data['origin'] = $this->model_to_array($group);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['group_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }
+                    }catch(Exception $e){
+                        $return_data = array('success'=>false,'post'=>$post_data, 'origin_id'=>$model->origin_id);
+                        $this->renderJSON($return_data);
+                        return;
                     }
+
+
 
                     //This user obviously owns this post
                     $post_data['pownership'] = true;

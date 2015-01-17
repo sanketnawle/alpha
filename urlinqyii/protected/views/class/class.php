@@ -9,9 +9,11 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'class'; ?>';
 
-        globals.origin_id = '<?php echo $class->class_id; ?>';
+
 
         globals.origin_name = '<?php echo $class->class_name; ?>';
+
+        globals.origin_id = '<?php echo $class->class_id; ?>';
 
         globals.is_admin = '<?php echo $is_admin ? 'true' : 'false'; ?>';
 

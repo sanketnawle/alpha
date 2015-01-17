@@ -239,7 +239,7 @@ jQuery(document).ready(function(){
 
         var event_category = jQuery('div.category.selected').attr('data-category') ? jQuery('div.category.selected').attr('data-category'):'';
 
-        var event_location = jQuery('#event_location_input').val();
+        var event_location = jQuery('#event_location').val();
         var event_description = jQuery('#event_description_input').val();
 
 

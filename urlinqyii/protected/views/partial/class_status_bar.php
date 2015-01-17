@@ -226,6 +226,11 @@
     <input type='file' class='step_6_upload' style='display:none;'>
 
 </form>
+
+
+
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
+
 </div> 
 
 

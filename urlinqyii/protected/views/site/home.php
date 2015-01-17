@@ -4,12 +4,6 @@
 
     <head>
         <script>
-            //origin_type = '<?php echo "home" ?>';
-
-<!--            origin_type = '--><?php //echo "user" ?><!--';-->
-<!---->
-<!--            origin_id = '--><?php //echo $user->user_id; ?><!--';-->
-<!--            base_url = '--><?php //echo Yii::app()->getBaseUrl(true); ?><!--';-->
 
 
             var globals = {};
