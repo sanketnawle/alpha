@@ -96,20 +96,19 @@
 
 
                 {{#if showcase}}
-                <button class="add_showcase_button" type="button">+ Add a Showcase</button>
+                <button class="update_showcase_button" type="button"><span></span>Update your Portfolio</button>
                 {{else}}
-                <div class = "add_showcase_text empty"><p>Express your interests!</p></div>
+                <div class = "add_showcase_text empty"><p>Share a paper, project, or presentation</p></div>
                 <button  class="add_showcase_button empty" type="button">Start Your Academic Portfolio</button>
                 {{/if}}
                 <div id="add_showcase_form">
                     <form id="add_showcase">
 
-                        Adding a New Showcase
+                        <h5 class = "update_showcase_header">Add your Showcase</h5>
                         <input type="text" id="title_entry" name="title_entry" placeholder="Provide a title for your showcase, or add a link below and we'll do it for you">
                         <textarea id="desc_entry" name="desc_entry" placeholder="Add a description"></textarea>
-                        <input id="link_entry" name="link_entry" placeholder="Paste a link to your showcase">
-                        OR
-                        <button type="button" id="upload_link_button" ><i></i>Upload Showcase</button>
+
+                        <button type="button" id="upload_link_button" ><i></i>Upload</button>
                         <div style='height: 0px;width:0px; overflow:hidden;'>
                             <input id="upfile" type="file" value="upload"/>
                         </div>
@@ -118,15 +117,6 @@
                             <input type="submit" id="create_showcase_form" value="+ Add this Showcase">
                         </div>
                     </form>
-                    <div id="description_section">
-                        <i id="close_description"></i>
-                        <div id="top_description">
-                            - Show your peers and friends what academic research and articles you're interested in or have contributed to.
-                        </div>
-                        <div id="bottom_description">
-                            - Display presentations or projects that you want to share with the people in your academic network.
-                        </div>
-                    </div>
                 </div>
                <!-- <div class="edit-showcase-form">
                     <span>Editing this Showcase</span>
@@ -164,8 +154,9 @@
                 <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
                     {{else}} {{firstname}} {{lastname}} {{year_truncated}}{{/if}}</div>
                 {{#if professor}}
-
-                <div id="office_hours_info"><span class = "office_hours_label"></span> {{office_hours}}</div>
+                    {{#if office_hours}}
+                        <div id="office_hours_info"><span class = "office_hours_label">Office Hours:</span> {{office_hours}}</div>
+                    {{/if}}
                 {{else}}
                     {{#if year_name}}
                     <div id="year_info">{{year_name}} at {{school}}</div>
