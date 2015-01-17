@@ -202,7 +202,7 @@
             <div id = "feed_column" class = "feed_column_group">
                 <div id = "stream_holder" class = "stream_holder_home">
                     <div id = "fbar_wrapper" class = "fbar_home">
-                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id, 'origin'=>$class)); ?>
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">

@@ -40,7 +40,7 @@
 
                                                         {{#ifCond origin_type '!=' 'user'}}
                                                             <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{origin.name}}
+                                                                <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
                                                             </span>
                                                         {{/ifCond}}
 
@@ -171,8 +171,11 @@
 
                     </div>
 
+
+
+                    <div class="master_comments" id="{{post_id}}">
                     {{#if replies}}
-                        <div class="master_comments" id="{{post_id}}">
+
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
@@ -212,8 +215,12 @@
                                     Show All
                                 </div>
                             {{/if}}
-                        </div>
+
                     {{/if}}
+                    </div>
+
+
+
 
                     <div class = 'postcomment'>
                         <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
@@ -645,6 +652,9 @@
                     </div>
 
                     </div>
+
+
+
                     <div class="master_comments" id="{{post_id}}" data-post_id='{{post_id}}'>
                     {{#if replies}}
 
@@ -735,7 +745,7 @@
 
             <script id="post_note_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -881,8 +891,10 @@
 
                     </div>
 
+
+                    <div class="master_comments" id="{{post_id}}">
                     {{#if replies}}
-                        <div class="master_comments" id="{{post_id}}">
+
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
@@ -922,8 +934,11 @@
                                     Show All
                                 </div>
                             {{/if}}
-                        </div>
+
                     {{/if}}
+                    </div>
+
+
 
                     <div class = 'postcomment'>
                         <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
@@ -932,27 +947,31 @@
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
                         <div class = 'reply_user_icon'></div>
                         <div class = 'commentform'>
-                            <div>
-                                <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                <textarea class = 'form-control postval' placeholder = 'Write a reply...' required></textarea>
-                                <div class = 'dragdrop_functions'>
-                                    <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
-                                    <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
-                                    <div class='filelistbox'></div>
+
+
+                            <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
+                                <div>
+                                    <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
+                                    <textarea class = 'reply_text_textarea form-control postval' placeholder = 'Write a reply...' required></textarea>
+                                    <div class = 'dragdrop_functions'>
+                                        <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
+                                        <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
+                                        <div class='filelistbox'></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class = 'reply_functions'>
-                                <div class='check_wrap'>
-                                    <input type='checkbox' id='flat_0' class='flat7c'/>
-                                    <label for='flat7' class='flat7b'>
-                                        <span class='move'></span>
-                                    </label>
-                                    <span class = 'comment_anon_text'>Post Anonymously</span>
+                                <div class = 'reply_functions'>
+                                    <div class='check_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                        <label for='flat7' class='flat7b'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                                    </div>
+                                    <a class = 'reply_button fresh_green_button'>
+                                        Post Reply
+                                    </a>
                                 </div>
-                                <a class = 'reply_button fresh_green_button'>
-                                    Post Reply
-                                </a>
-                            </div>
+                            </form>
                         </div>
                         <div class = 'reply_functions'>
                                 <div class='check_wrap'>

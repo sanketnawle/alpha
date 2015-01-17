@@ -16,6 +16,14 @@
 
 <div id = "fbar_holder" data-post_type = "">
 	<!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
+
+    <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
+    <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+
+    </form>
+
+
 	<div id = "fbar_new">
 		<section id = "fbar_buttons">
 			<div class = "fbar_buttonwrapper" id = "fbar_button_discuss" data-post_button_type = "discuss">
@@ -40,29 +48,9 @@
 				<div class = "form_wrapper">
 					<header id = "fbar_header" class = "fbar_contents_fix">
 						<ul class = "menu_audience">
-							<li>
-								<a><div id = "audience_select"><span>To <span class = "selected_audience">Followers</span></span><em class = "down_arrow"></em></div></a>
-								<ul>
-									<li class = "audience_name">
-										<a>Faculty</a>
-									</li>
-									<li class = "audience_name">
-										<a>Class 1</a>
-									</li>
-									<li class = "audience_name">
-										<a>Class 2</a>
-									</li>
-									<li class = "audience_name">
-										<a>Class 3</a>
-									</li>
-									<li class = "audience_name">
-										<a>Club 1</a>
-									</li>
-									<li class = "audience_name">
-										<a>Club 2</a>
-									</li>
-								</ul>
-							</li>
+                            <a><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $origin->class_name; ?></span></span></div></a>
+
+
 						</ul>
 						<div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>	
 						<div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>					
@@ -222,16 +210,31 @@
 	</div>
 
 
-<form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
-    <input type='file' class='step_6_upload' style='display:none;'>
 
-</form>
+
+
+</div>
+
+
+
+<script id='audience_template' type="text/x-handlebars-template">
+    <li class = "audience_name" data-audience='{{audience}}' data-audience_id='{{id}}'>
+        <a>{{name}}</a>
+    </li>
+</script>
+
+
+<script id='post_file_template' type="text/x-handlebars-template">
+
+        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
+
+</script>
+
+
 
 
 
 <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
-
-</div> 
 
 
 

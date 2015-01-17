@@ -21,6 +21,8 @@
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
 	<!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
 
+
+    <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
     <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
         <input type='file' class='step_6_upload' style='display:none;'>
 
@@ -51,26 +53,13 @@
 					<header id = "fbar_header" class = "fbar_contents_fix">
 						<ul class = "menu_audience">
 							<li>
-								<a><div id = "audience_select"><span>To <span class = "selected_audience">Followers</span></span><em class = "down_arrow"></em></div></a>
-								<ul>
-									<li class = "audience_name">
-										<a>Faculty</a>
+								<a><div id = "audience_select" data-audience="followers" data-audience_id=""><span>To <span class = "selected_audience">Followers</span></span><em class = "down_arrow"></em></div></a>
+								<ul id="audience_select_list">
+                                    <li class = "audience_name" data-audience="followers" data-audience_id="">
+										<a>Followers</a>
 									</li>
-									<li class = "audience_name">
-										<a>Class 1</a>
-									</li>
-									<li class = "audience_name">
-										<a>Class 2</a>
-									</li>
-									<li class = "audience_name">
-										<a>Class 3</a>
-									</li>
-									<li class = "audience_name">
-										<a>Club 1</a>
-									</li>
-									<li class = "audience_name">
-										<a>Club 2</a>
-									</li>
+
+
 								</ul>
 							</li>
 						</ul>
@@ -191,10 +180,10 @@
 							<ul class = "menu privacy_menu">
 								<li class = "no_relative">
 									<a class = "privacy_dropdown_link"></a>
-									<ul class = "privacy_dropdown">
-										<li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Members</a><span></span></li>
-										<li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Admin</a><span></span></li>
-										<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>
+									<ul class = "privacy_dropdown" data-privacy="all">
+                                        <li class = "privacy_list active" data-privacy='all' style = "position:relative; border-bottom: 1px solid #fff;"><a>All</a><span></span></li>
+										<li class = "privacy_list" data-privacy='students' style = "position:relative; border-bottom: 1px solid #fff;"><a>Students</a><span></span></li>
+										<li class = "privacy_list" data-privacy='admins' style = "position:relative;"><a>Admins</a><span></span></li>
 										<div class="help-wedge">
                                 		</div>
 									</ul>
@@ -235,7 +224,11 @@
 
 
 
-
+<script id='audience_template' type="text/x-handlebars-template">
+    <li class = "audience_name" data-audience='{{audience}}' data-audience_id='{{id}}'>
+        <a>{{name}}</a>
+    </li>
+</script>
 
 
 <script id='post_file_template' type="text/x-handlebars-template">

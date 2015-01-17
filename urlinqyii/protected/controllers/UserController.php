@@ -480,7 +480,7 @@ class UserController extends Controller
 
 
 
-            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['groups']);
+            $data = array('success'=>true,'user'=>$user_data,'classes'=>$user_data['classes'],'clubs'=>$user_data['groups'], 'groups'=>array());
             $this->renderJSON($data);
             return;
         }else{
