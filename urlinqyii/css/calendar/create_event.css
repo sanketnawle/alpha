@@ -601,12 +601,7 @@ div#create_event_invite_label{
 cursor: default;
 height: 20px;
 margin-right: 3px;
-background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-color: transparent!important;
-background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
+background-color: transparent;
 background-size: 20px 20px;
 border: none;
 }
@@ -617,7 +612,7 @@ div#create_month_day_event_text{
 
 div.event_name{
     display: inline-block;
-
+    line-height: 20px;
     float: left;
     font-family: 'Helvetica neue', Helvetica, Arial, sans-serif; font-size: 13px;
     color: #222;
@@ -629,7 +624,7 @@ color: #c3c3c3;
 }
 
 .body .month-view .month-grid .grid-item.td {
-border-top-width: 1px;
+border-top-width: 0px;
 background-color: rgba(39,137,228,.06);
 box-shadow: inset 0 0 0 1px #2789e4;
 color: #2789e4;

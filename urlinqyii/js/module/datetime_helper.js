@@ -35,10 +35,10 @@ function date_to_string(date){
 //4pm
 function date_to_am_pm_string(datetime_obj){
     var hours = datetime_obj.getHours();
-    var am_pm = 'am';
+    var am_pm = ' am';
 
     if(hours >= 12){
-        am_pm = 'pm';
+        am_pm = ' pm';
         if(hours > 12){
             hours -= 12;
         }

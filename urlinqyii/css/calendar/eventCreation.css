@@ -92,11 +92,6 @@ color:#777;
 .body .month-view .month-grid .grid-item div.month_day_event {
 cursor: default;
 height: 20px;
-background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
-background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%);
 background-size: 20px 20px;
 }
 
@@ -287,15 +282,15 @@ div.event_color_bar{
 }
 
 div.event_color_bar.color_bar_month{
-    height: 5px;
-    
-    display: inline-block;
-    float: left;
-    border-radius: 12px;
-    width: 5px;
-    margin-right: 4px;
-    position: relative;
-    top: 5px;
+height: 5px;
+display: inline-block;
+float: left;
+border-radius: 12px;
+width: 5px;
+margin-right: 4px;
+position: relative;
+top: 7px;
+left:4px;
 }
 
 div.event_color_bar.color_bar_week{

@@ -22,10 +22,15 @@ function hide_inspect(){
         var event_holder_rgb_r = hexToRgb(event_holder_hex).r;
         var event_holder_rgb_g = hexToRgb(event_holder_hex).g;
         var event_holder_rgb_b = hexToRgb(event_holder_hex).b;
-        if($event_holder.hasClass('colorfied')){
+        if($event_holder.hasClass('colorfied') && $event_holder.hasClass('month_day_event')){
+            $event_holder.css({"background-color":"transparent"});
+            $event_holder.removeClass('colorfied');
+        }          
+        else if($event_holder.hasClass('colorfied')){
             $event_holder.css({"background-color":"rgba(" + event_holder_rgb_r + "," + event_holder_rgb_g + "," + event_holder_rgb_b + ", .25)"});
             $event_holder.removeClass('colorfied');
         }
+
     });
 }
 
@@ -57,8 +62,8 @@ jQuery(document).ready(function(){
 
 
         if(!$inspect_event_popup.is(":visible")){
-            if((event.pageY - 220) <= 0){
-                $inspect_event_popup.css('top', event.pageY + 15);
+            if((event.pageY - 180) <= 0){
+                $inspect_event_popup.css('top', event.pageY + 20);
                 jQuery($inspect_event_popup).addClass("top_position");
             }else{
                 $inspect_event_popup.css('top', event.pageY - 180);

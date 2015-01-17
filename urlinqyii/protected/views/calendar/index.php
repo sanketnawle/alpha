@@ -273,7 +273,6 @@ Set the class name on your input to 'time_input' -->
 
 <script id="week_day_event_template" type="text/x-handlebars-template">
     <div class="grid-event week_event_holder event_holder" data-hex={{color.hex}} data-location="{{location}}" data-id="{{event_id}}" data-event_type="{{event_type}}" data-origin_type="{{origin_type}}" data-origin_id="{{origin_id}}" data-name="{{title}}" data-start_date="{{start_date}}" data-end_date="{{end_date}}" data-start_time="{{start_time}}" data-end_time="{{end_time}}" data-description="{{description}}" style = "border-left:2.5px solid {{color.hex}};">
-        <div class = "event_color_bar color_bar_week" style = "background-color:{{color.hex}}"></div>
         
         <div class="event_name">{{title}}</div>
 
