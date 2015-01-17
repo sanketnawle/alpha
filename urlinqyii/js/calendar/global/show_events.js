@@ -99,7 +99,7 @@ function show_day_event(event_json){
         html_object.css({'height':event_height.toString() + 'px'});
         html_object.css({'z-index':time_range_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
-        html_object.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .25)"});
+        html_object.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .23)"});
 
 
 
@@ -132,7 +132,7 @@ function show_week_day_event(event_json){
     var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
     html_object.find('.event_start_time').text(event_time_text);
 
-
+    event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
     var start_time_hour = ints_to_time(parseInt(event_json['start_time'].substring(0,2)),0,0);
 
     //if this is an all day event, show it at the top and stop this function
@@ -217,7 +217,7 @@ function show_week_day_event(event_json){
         html_object.css({'z-index':event_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
 
-        html_object.css({'background-color': event_json['color']['hex']});
+        html_object.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .23)"});
 
         $grid_item_selector.append(html_object);
 
@@ -268,7 +268,6 @@ function show_month_event(event_json){
         var $dom_object = jQuery(generated_html);
         $dom_object.attr('ng-click','clickMonthDayEvent()');
 
-        $dom_object.css({'background-color': event_json['color']['hex']});
         $grid_item_selector.append($dom_object);
 
 //        var $month_day_event = $('.month_day_event[data-id="' + event_json['event_id'] + '"]');

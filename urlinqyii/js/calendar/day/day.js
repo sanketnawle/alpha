@@ -41,8 +41,9 @@ jQuery(document).ready(function(){
     jQuery(document).on('click', '.day_grid_item', function(event){
 
         //Hide the other popups
-        hide_inspect();
+        
         event.stopPropagation();
+        hide_inspect();
         var $day_div = jQuery(this);
         var this_date = $day_div.attr('data-date');
         var this_date_obj = new Date(this_date + ' 00:00:00');

@@ -81,8 +81,9 @@ jQuery(document).ready(function(){
 
     jQuery(document).on('click','#inspect_event_delete_button_month',function(event){
         //alert('MONTH');
-        hide_inspect();
+
         event.stopPropagation();
+        hide_inspect();
         var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
         var event_id = last_clicked_event_id;
 
@@ -108,6 +109,7 @@ jQuery(document).ready(function(){
 
     last_month_day_date_selected = null;
     jQuery(document).on('click', '.grid-item.prem', function(event){
+        hide_inspect();
         jQuery(".event_holder").removeClass("colorfied");
         //Hide the other popup
         jQuery('#inspect_event_popup_month').removeClass('active');
