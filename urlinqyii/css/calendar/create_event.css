@@ -64,15 +64,15 @@ textarea:focus:-moz-placeholder {
 }
 
 #create_event_holder {
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.83);
     height: 750px;
     border-radius: 5px;
     padding: 10px;
-    top: 16px;
-    padding-top: 16px;
+    top: 0px;
+    padding-top: 11px;
     width: 768px;
     position: relative;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding-left: 20px;
     margin-bottom: 75px;
     bottom: 16px;
@@ -156,21 +156,19 @@ margin-top: -10px;
     border-radius: 3px;
     color: #FFF;
     position: relative;
-    background: #25A1D2;
-    line-height: 36px;
-    border: 1px solid #1d99cf;
-    box-shadow: inset 0 1px 1px rgba(236, 236, 236, 0.17), inset 0 -1px 1px #2899CB, 0 0 1px #62BFF7, 0 0 1px #ffffff;
+    line-height: 33px;
 
 
-    width: 120px;
+    width: 108px;
 
-    margin-right: 4px;
+    margin-right: 6px;
     vertical-align: top;
     font-size: 14.4px;
-    height: 36px;
+    height: 33px;
     font-family: Avenir;
-    margin-left: 4px;
+    margin-left: 6px;
     /* font-weight: bold; */
+    text-transform: uppercase; border-radius: 4px; color: #FFF; position: relative; cursor: pointer; background-color: #278CD5; background: linear-gradient(to bottom, #278cd5 0%, #1b7bc0 100%); background: -o-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background: -ms-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background: -moz-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background-image: -webkit-linear-gradient(top, #278cd5, #1b7bc0); border: 1px solid #1779C0!important; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset, inset -1px 0 0 rgba(255, 255, 255, 0.19), inset 1px 0 0 rgba(255, 255, 255, 0.27); border-bottom: 1px solid rgba(9, 124, 166, 0.74) !important;
 }
 
 
@@ -181,9 +179,9 @@ margin-top: -10px;
     font-family: Avenir;
     border-radius: 3px;
     position: relative;
-    line-height: 36px;
+    line-height: 33px;
     vertical-align: top;
-    height: 36px;
+    height: 33px;
     border: 1px solid #C0C0C0; -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #999 !important; background-color: #EFEFEF; cursor: default; 
     font-size: 14.3px; font-weight: 500;
 }
@@ -254,8 +252,9 @@ div#create_event_top_holder > label{
 
 
 #top_buttons_holder {
-    height: 44px;
+    height: 40px;
     width: 1000px;
+    border-bottom: 1px solid rgba(212, 212, 212, 0.78);
 }
 
 .date_input {
@@ -376,6 +375,7 @@ label.where_label{
     padding-right: 5px;
     height: 100%;
     padding-top: 3px;
+    padding-top: 7px;
     background-color: white;
 }
 
@@ -432,6 +432,7 @@ label.where_label{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 25px;
     color: #575757;
 }
 
@@ -497,6 +498,7 @@ div.category.selected div.category_name{
 
 .category_list.active {
     display: block;
+    margin-top: 6px;
 }
 
 
@@ -648,6 +650,30 @@ border: none;
 background: none;
 font-size: 100%;
 font-family: "Open Sans", Arial, sans-serif;
+}
+
+div.mini_calendar_cover{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background:rgba(255,255,255,.87);
+    z-index:-1;
+}
+
+div.mini_calendar_cover.enabled{
+    z-index:100;
+
+}
+
+.ul-calendar .leftbar .create .button.left_panel_create_button.disabled{
+background-image: none;
+background: #ebebeb !important;
+border: 1px solid #ddd !important;
+color: #aaa !important;
+cursor: default;
+box-shadow: none!important;
 }
 
 div.group.selected > div.group_name{

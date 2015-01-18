@@ -16,15 +16,15 @@ $(document).ready(function() {
     function get_group_suggestions_data(base_url, suggest_type,$element_to_replace,group_type){
         var request_url = base_url+"/user/groupSuggestions";
         var request_data;
-        var class_id_1 = $(".suggestion_block.group_suggestion:eq(0)").attr('data-suggestion_id');
-        var class_id_2 = $(".suggestion_block.group_suggestion:eq(1)").attr('data-suggestion_id');
-        var club_id = $(".suggestion_block.group_suggestion:eq(2)").attr('data-suggestion_id');
-        //alert(""+class_id_1 + class_id_2 + club_id);
-        if(class_id_1 && class_id_2 && club_id){
+        var club_id_1 = $(".suggestion_block.group_suggestion:eq(0)").attr('data-suggestion_id');
+        var club_id_2 = $(".suggestion_block.group_suggestion:eq(1)").attr('data-suggestion_id');
+        var class_id = $(".suggestion_block.group_suggestion:eq(2)").attr('data-suggestion_id');
+
+        if(club_id_1 && club_id_2 && class_id){
             request_data = {suggestion_type: suggest_type,
-                previous_class_id_1: class_id_1,
-                previous_class_id_2: class_id_1,
-                previous_club_id: club_id};
+                previous_club_id_1: club_id_1,
+                previous_club_id_2: club_id_2,
+                previous_class_id: class_id};
         }else{
             request_data = {suggestion_type: suggest_type};
         }
@@ -33,16 +33,16 @@ $(document).ready(function() {
         var $suggestion_container = $("#groups_to_join > .suggestion_unit_container")
         $.getJSON(request_url,request_data,function(group_data){
             if($element_to_replace){
-                if(group_type == "class"){
-                    if(group_data.classes.length==0){
+                if(group_type == "club"){
+                    if(group_data.clubs.length==0){
                         $element_to_replace.remove();
                     }else{
-                        $element_to_replace.replaceWith(template(group_data.classes[0]));
+                        $element_to_replace.replaceWith(template(group_data.clubs[0]));
                     }
 
-                }else if(group_type == "club"){
-                    if(group_data.club){
-                        $element_to_replace.replaceWith(template(group_data.club));
+                }else if(group_type == "class"){
+                    if(group_data.class){
+                        $element_to_replace.replaceWith(template(group_data.class));
                     }else{
                         $element_to_replace.remove();
                     }
@@ -50,11 +50,11 @@ $(document).ready(function() {
 
             }else {
                 $suggestion_container.empty();
-                $.each(group_data.classes, function (index, class_data) {
-                    $suggestion_container.append(template(class_data));
+                $.each(group_data.clubs, function (index, club_data) {
+                    $suggestion_container.append(template(club_data));
                 });
-                if(group_data.club){
-                    $suggestion_container.append(template(group_data.club));
+                if(group_data.class){
+                    $suggestion_container.append(template(group_data.class));
                 }
 
             }
@@ -105,7 +105,7 @@ $(document).ready(function() {
         var post_url;
         var post_data = {id:$group_block.attr('data-suggestion_id'),user_id:user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
-        if($('.suggestion_block.group_suggestion').index($group_block)==2){
+        if($('.suggestion_block.group_suggestion').index($group_block)<2){
             post_url = base_url+"/club/join";
             $.post(post_url,post_data,function(){
                 var club_id = $group_block.attr('data-suggestion_id');

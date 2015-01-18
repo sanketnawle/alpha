@@ -128,7 +128,7 @@ jQuery(document).ready(function(){
                     }
 
                 }
-
+                $create_day_event_popup.addClass('active');
                 var inspect_event_text = format_event_date_text(this_date_obj);
                 $create_day_event_popup.find('#create_day_event_when').text('When: ' + inspect_event_text);
 
