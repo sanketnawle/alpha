@@ -144,10 +144,15 @@
                 </div>
                 <button type="button" id="edit_profile_button" class="edit_or_follow_button not_editing">Edit Profile</button>
                 {{else}}
-                <button type="button" id="follow_button" class="edit_or_follow_button
-                    {{#if is_following}}following{{/if}}">
-                    {{#if is_following}}<span class = "follow_icon_profile_page"></span>Following
-                    {{else}}<span class = "follow_icon_profile_page"></span>Follow{{/if}}</button>
+                    {{#if is_following}}
+                    <button type="button" id="follow_button" class="edit_or_follow_button following">
+                        <span class = "follow_icon_profile_page"></span>Following
+                    </button>
+                    {{else}}
+                    <button type="button" id="follow_button" class="edit_or_follow_button">
+                        <span class = "follow_icon_profile_page"></span>Follow
+                    </button>
+                    {{/if}}
                 {{/if}}
                 <div id="cancel_edit_button">x</div>
             </div>
