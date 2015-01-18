@@ -562,6 +562,12 @@ class SiteController extends Controller
 
     public function actionOnboard(){
         $user = $this->get_current_user();
+
+
+        if(!$user){
+            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+        }
+
         //If this user is already active, redirect to home page
         if($user && $user->status == 'active'){
             $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
@@ -575,6 +581,8 @@ class SiteController extends Controller
         $user_type = Yii::app()->session['user_type'];
         $email = Yii::app()->session['email'];
         $password = Yii::app()->session['password'];
+
+
 
 
         if(!$first_name || !$last_name || !$user_type || !$email || !$password){

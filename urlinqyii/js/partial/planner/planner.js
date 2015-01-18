@@ -35,9 +35,19 @@ $(document).ready(function(){
     });
 
     setTimeout(function(){
-            $(".free_planner_message").fadeOut(150);
-            $(".create_planner_message").fadeIn(150);
-    }, 3850);
+            $(".free_planner_message").addClass('animated fadeOutDown');
+    }, 2300);
+
+    setTimeout(function(){
+            $(".create_planner_message").addClass('animated fadeInDown');
+            $(".create_planner_message").css({"opacity":"1"});
+    }, 2700);
+
+    setTimeout(function(){
+            $(".point").addClass('animated fadeIn');
+            $(".point").css({"opacity":"1"});
+    }, 3600);
+    
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     var y = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
@@ -75,8 +85,7 @@ $(document).ready(function(){
 
 
     $(".entry_field_placeholder").on('click',function(){
-      $(".nav-icon-plus").toggleClass('hide-plus');
-      $(".nav-icon").toggleClass('bounce-minus');
+
     });
 
 
@@ -592,11 +601,13 @@ function add_event(event_json){
 
 
 //For somereason these has to be outside of the .ready()
-$(document).on('click','#add_todo',function(){
+$(document).on('click','#add_todo, .create_planner_message',function(){
     show_planner_creation_form();
-    $(this).find("#add_todo_text").text("Discard");
+    $("#add_todo_text").text("Discard");
     $(".entry_field_placeholder").css({"width":"62.5px"});
-    $(this).addClass("cancel_form");
+    $("#add_todo").addClass("cancel_form");
+    $(".nav-icon-plus").toggleClass('hide-plus');
+    $(".nav-icon").toggleClass('bounce-minus');
 });
 
 $(document).on('click','.cancel_form',function(){

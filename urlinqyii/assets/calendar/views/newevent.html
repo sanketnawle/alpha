@@ -195,18 +195,18 @@
 
                         <!--template for user that is in the invite list-->
                         <script id="user_template" type="text/x-handlebars-template">
-                            <div class="invite_user_list_item" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}">
-                                <div class="invite_user_list_item_name">{{user_name}}</div>
-                                <div class="invite_user_list_item_email">{{user_email}}</div>
-                                <div class="invite_user_list_item_remove_button">x</div>
+                            <div class="invite_user_list_item" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}" data-file_url = "{{base_url}}{{pictureFile.file_url}}">
+                                <div class="invite_user_list_item_name invited_user_name">{{user_name}}</div>
                             </div>
                         </script>
 
                         <!--template for user in the dropdown -->
                         <script id="invite_user_template" type="text/x-handlebars-template">
-                            <div class="invite_user_holder" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}">
-                                <div class="invite_user_name">{{user_name}}</div>
-                                <div class="invite_user_email">{{user_email}}</div>
+                            <div class="invite_user_holder" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}" data-file_url = "{{base_url}}{{pictureFile.file_url}}">
+                                <div class = "inviting_user_photo cal_user_photo" style = "background-image:url('{{base_url}}{{pictureFile.file_url}}')"></div>
+                                <div class="invite_user_list_item_name inviting_user_name">{{user_name}}</div>
+
+
                             </div>
                         </script>
                     </div>
@@ -217,7 +217,7 @@
             </div>
 
 
-            <div class = "calLayer" style="display: none;">
+            <div id = "calLayer" style="display: none;">
                 <section id = "mounth" class="mounth">
                     <header class="minical-header">
                         <h1 class="minical-h1"></h1>

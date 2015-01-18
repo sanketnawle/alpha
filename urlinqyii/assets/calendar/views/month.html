@@ -11,12 +11,11 @@
 
 
 <div id="inspect_event_popup_month" class="inspect_event_popup popup">
-    <div id="inspect_event_title">Test event title</div>
+    <div id="inspect_event_title"></div>
     <div id="inspect_event_exit_button" class="popup_exit_button"></div>
-    <div id="inspect_event_text"></div>
     <div id="inspect_event_description"></div>
-    <div id="inspect_event_delete_button_month">Delete</div>
-    <div id="inspect_event_edit_button" class="popup_edit_button">Edit event</div>
+    <div id="inspect_event_delete_button_month"><span class = "delete_text">Delete</span><span class = "delete_icon"></span></div>
+    <div id="inspect_event_edit_button" class="popup_edit_button">Edit event<span class = "edit_icon"></span></div>
 </div>
 
 <div id="create_month_day_event_popup" class="create_event_popup popup">
@@ -26,7 +25,7 @@
 
     <form id='create_month_day_event_form' method="post" action="/event/create">
         <input id="create_month_day_event_input" class='popup_create_event_name_input' name="event_input" type="text" class="text_input">
-        <label for="create_month_day_event_button">What: </label>
+        <label for="create_month_day_event_button" class = "quick_event_label">What: </label>
         <div class="cb-example">e.g., 11:59pm Lab report due</div>
         <input type="submit" class="" id="create_month_day_event_button" name="create_month_day_event_button" value="Create event">
     </form>

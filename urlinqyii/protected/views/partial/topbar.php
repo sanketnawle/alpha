@@ -20,7 +20,7 @@
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
-                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"></a>
+                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"><span></span></a>
             </div>
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
@@ -224,6 +224,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class = "calendar_link">
+            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar" >
+                <div class = "calendar_icon">
+                </div>
+                <div class = "quick_cal_arrow">
+                </div>
+            </a>
         </div>
     </div>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>

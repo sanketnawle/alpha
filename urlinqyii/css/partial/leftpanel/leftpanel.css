@@ -323,7 +323,6 @@ ul.LeftPanel_GroupsList li a{
 }
 
 ul.LeftPanel_GroupsList li a:hover{
-background: #eee;
 color: #029acf;
 }
 
@@ -337,12 +336,11 @@ ul.LeftPanel_GroupsList li a.current_group, ul.LeftPanel_GroupsList li a.current
     cursor:default;
 }
 
-a.LeftPanel_DSContentBoxName:hover{
-    text-decoration: underline;
-    opacity:.95;
+a.LeftPanel_DSContentBoxName:hover > h5{
+    color: #029acf;
 }
 
-a.LeftPanel_DSContentBoxName:active{
-    opacity:1;
+a.LeftPanel_DSContentBoxName:active > h5{
+    color: #016283!important;
 }
 

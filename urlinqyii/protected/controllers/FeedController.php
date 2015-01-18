@@ -257,44 +257,39 @@ class FeedController extends Controller
                 $posts[$i]['pownership'] = FALSE;
 
             // getting and appending the origin
-            if($post['origin_type']=="user"){
-                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
+            if($post['origin_type'] == "user"){
+//                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
+//                $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
 
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
-                $sec_id = $class->section_id;
-                $course = $class->course;
-                $course_name = $course->course_name;
-                $posts [$i] ['origin_name'] = $course_name." (".$sec_id.")";
-                $posts [$i] ['origin_pic_id'] = $class->picture_file_id;
-//                $posts [$i] ['origin'] = $this->get_model_associations($class,array('pictureFile','coverFile', 'course'));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($class,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['class_name'];
             }
             elseif($post['origin_type']=="course"){
                 $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $course->course_name;
-                $posts [$i] ['origin_pic_id'] = $course->picture_file_id;
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($course,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['course_name'];
             }
             elseif($post['origin_type']=="department"){
-                $dept = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $dept->dept_name;
-                $posts [$i] ['origin_pic_id'] = $dept->picture_file_id;
+                $department = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($department,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['department_name'];
             }
 
             elseif($post['origin_type']=="school"){
-                $origin = School::model()->find('school_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $origin->school_name;
-                $posts [$i] ['origin_pic_id'] = $origin->picture_file_id;
+                $school = School::model()->find('school_id=:id', array(':id'=>$post['origin_id']));
+                $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($school,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['school_name'];
             }
-            elseif($post['origin_type']=="group"){
-                $origin = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['origin_name'] = $origin->group_name;
-                $posts [$i] ['origin_pic_id'] = $origin->picture_file_id;
+            elseif($post['origin_type'] == "group" || $post['origin_type'] == 'club'){
+                $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
+                $posts[$i]['origin'] = $this->model_to_array($this->get_model_associations($group,array('pictureFile')));
+                $posts[$i]['origin']['name'] = $posts[$i]['origin']['group_name'];
             }
             else{
-                $posts [$i] ['origin_name'] = NULL;
-                $posts [$i] ['origin_pic_id'] = NULL;
+                $posts[$i]['origin'] = null;
             }
 
             if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $this->get_current_user_id())){
@@ -316,22 +311,22 @@ class FeedController extends Controller
 
 
             // handle question type posts
-            if($post['post_type'] == 'question'){
+            if($post['post_type'] == 'question' || $post['post_type'] == 'multiple_choice' || $post['post_type'] == 'true_false'){
                 $post_que = PostQuestion::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
-                $posts [$i] ['active'] = $post_que->active;
+                $posts[$i]['active'] = $post_que->active;
                 $posts[$i]['question'] = self::convertModelToArray($post_que);
 
                 // give correct answer, if NOT active
                 if($post_que->active == 0)
-                    $posts [$i] ['answer'] = PostQuestionOption::model()->findAll('option_id=:id', array(':id'=>$post_que['correct_answer_id']));
+                    $posts [$i] ['answer_index'] = PostQuestionOption::model()->findAll('option_id=:id', array(':id'=>$post_que['correct_answer_id']));
                 else
                     $posts [$i] ['answer'] = NULL;
 
                 // adding all the options to the array
                 $post_que_options = PostQuestionOption::model()->findAll('post_id=:id', array(':id'=>$post['post_id']));
                 $options = self::convertModelToArray($post_que_options);
-                $posts [$i] ['options'] = self::getOptionsInfo($options);
+                $posts[$i]['question']['options'] = self::getOptionsInfo($options);
 
 //                // adding info of participants
 //                $option_ids = array_column($options, 'option_id');
@@ -343,9 +338,22 @@ class FeedController extends Controller
             }
 
             elseif($post['post_type'] == 'event'){
-                $post_event = Event::model()->findbypk('event_id=:id', array(':id'=>$post['origin_id']));
-                $posts [$i] ['event'] = get_model_associations($post_event, array('tags'));
 
+                $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
+
+                $event = $this->model_to_array($post_event->event);
+
+
+                $posts[$i]['event'] = $event;
+            }
+
+            //See if there are any files associated with this post
+            $post_files = PostFile::model()->findAll('post_id=:id',array(':id'=>$post['post_id']));
+            if($post_files && count($post_files) > 0){
+                $posts[$i]['files'] = [];
+                foreach($post_files as $post_file){
+                    array_push($posts[$i]['files'],$this->model_to_array($post_file->file));
+                }
             }
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
@@ -381,28 +389,42 @@ class FeedController extends Controller
         //             order by last_activity DESC
         //             LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
+
+        $user = $this->get_current_user();
+
+
+        $privacy_type = $user->user_type;
+
+        if($privacy_type == 'p'){
+
+            //Group professors and admins in the same privacy setting
+            $privacy_type = 'a';
+        }
+
         $posts_sql_home = "SELECT distinct *
                             from post
                             join post_user_inv
                               on (post.post_id = post_user_inv.post_id)
-                           where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = ".self::$user->user_id.")
-                              or post_user_inv.user_id = ".self::$user->user_id.")
-                              or (origin_type = 'university' and origin_id = ".self::$user->school_id.")
-                              or (origin_type = 'department' and origin_id = ".self::$user->department_id.")
+                           where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = " . $user->user_id .")
+                              or post_user_inv.user_id = " . $user->user_id . ")
+                              or (origin_type = 'university' and origin_id = " . $user->school_id . ")
+                              or (origin_type = 'department' and origin_id = " . $user->department_id .")
                               or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
                                                                             from class_user cu join class cs
                                                                               on (cu.class_id = cs.class_id)
-                                                                              where user_id = ".self::$user->user_id." and cs.semester = '".self::$cur_sem."' and cs.`year` = ".date('Y').")))
-                              order by last_activity DESC
+                                                                              where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
+                              and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
+                              ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;
                   
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
         if($posts = $command->queryAll())
-            $success_post = TRUE;
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
         else
-            $success_post = FALSE;
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>false, 'is_admin'=> FALSE));
+
+
 
 //        $this->renderJSON($posts);
 	}
@@ -501,7 +523,7 @@ class FeedController extends Controller
     {
         $posts_sql_club = "SELECT distinct *
 		  from post p
-		  where (p.origin_type = 'group' and p.origin_id = '".$_GET['id']."')
+		  where ((p.origin_type = 'group' or p.origin_type = 'club') and p.origin_id = '". $_GET['id'] ."')
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 

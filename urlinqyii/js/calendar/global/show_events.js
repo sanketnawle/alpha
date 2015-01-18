@@ -5,10 +5,13 @@ function show_day_event(event_json){
     //angular doesnt let jquery select the handlebars template if it is in the html
     var source = jQuery('#day_event_template').html();
     var template = Handlebars.compile(source);
+    event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
+
 
     event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
+    var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
     var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
@@ -37,7 +40,7 @@ function show_day_event(event_json){
 
 
         //Size in pixels of the time ranges
-        var time_range_height = 40;
+        var time_range_height = 50;
 
         //Start after the all day events + 15 for the padding bottom
         var top_pixels = jQuery("div.day_grid_item.all_day").height() + 15;
@@ -54,7 +57,7 @@ function show_day_event(event_json){
         var event_hour_length =  hour_difference + (minute_difference / 60); //in hour form with decimals for minutes
         console.log('EVENT HOUR LENGTH');
         console.log(event_hour_length);
-        var event_height = (event_hour_length * time_range_height) + 1;
+        var event_height = (event_hour_length * time_range_height);
         //event_height += (parseInt(event_json['end_time'].substring(3,5)) / 60) * time_range_height;
 
 
@@ -74,7 +77,7 @@ function show_day_event(event_json){
         var left_pixels = 50;
         //Leave 15 pixels on the right so new events can be created
         //by clicking that space
-        var width = $grid_item_selector.width() - 15;
+        var width = $grid_item_selector.width();
         //check if other events are within this time range
         var $this_day_time_events = $grid_item_selector.find('.day_event_holder');
         if($this_day_time_events.length){
@@ -85,11 +88,10 @@ function show_day_event(event_json){
             //Loop through each event and change the styling
             jQuery.each($this_day_time_events, function(index,$day_time_event){
                 $($day_time_event).css({'width': width.toString() + 'px'});
-                $($day_time_event).css({'left': left_pixels + 'px'});
+                $($day_time_event).css({'left': left_pixels + 10 + 'px'});
                 left_pixels += width;
             });
         }
-
 
 
         html_object.css({'position':'absolute'});
@@ -98,8 +100,7 @@ function show_day_event(event_json){
         html_object.css({'height':event_height.toString() + 'px'});
         html_object.css({'z-index':time_range_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
-
-        html_object.css({'background-color':event_json['color']['hex']});
+        color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .10)"});
 
 
 
@@ -127,12 +128,13 @@ function show_week_day_event(event_json){
 
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
+    var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
     var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
     html_object.find('.event_start_time').text(event_time_text);
 
-
+    event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
     var start_time_hour = ints_to_time(parseInt(event_json['start_time'].substring(0,2)),0,0);
 
     //if this is an all day event, show it at the top and stop this function
@@ -192,7 +194,7 @@ function show_week_day_event(event_json){
         var left_pixels = 0;
         //Leave 15 pixels on the right so new events can be created
         //by clicking that space
-        var width = $grid_item_selector.width() - 15;
+        var width = $grid_item_selector.width();
         //check if other events are within this time range
         var $this_day_time_events = $grid_item_selector.find('.day_event_holder');
         if($this_day_time_events.length){
@@ -217,7 +219,7 @@ function show_week_day_event(event_json){
         html_object.css({'z-index':event_height.toString()});
         html_object.css({'width': width.toString() + 'px'});
 
-        html_object.css({'background-color': event_json['color']['hex']});
+        color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .1)"});
 
         $grid_item_selector.append(html_object);
 
@@ -230,6 +232,21 @@ function show_week_day_event(event_json){
 }
 
 
+
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
 
 
 
@@ -255,7 +272,6 @@ function show_month_event(event_json){
         var $dom_object = jQuery(generated_html);
         $dom_object.attr('ng-click','clickMonthDayEvent()');
 
-        $dom_object.css({'background-color': event_json['color']['hex']});
         $grid_item_selector.append($dom_object);
 
 //        var $month_day_event = $('.month_day_event[data-id="' + event_json['event_id'] + '"]');

@@ -39,12 +39,65 @@ class PostController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 
+
+
+    function reArrayFiles(&$file_post) {
+
+        $file_ary = array();
+        $file_count = count($file_post['name']);
+        $file_keys = array_keys($file_post);
+
+        for ($i=0; $i<$file_count; $i++) {
+            foreach ($file_keys as $key) {
+                $file_ary[$i][$key] = $file_post[$key][$i];
+            }
+        }
+
+        return $file_ary;
+    }
+
 	public function actionCreate()
 	{
-//        $return_data = array('success'=>true,'post'=>$_POST);
-//        $this->renderJSON($return_data);
-//        return;
 
+//{"text":"asdasd","post_type":"discuss","origin_id":"","origin_type":"class","sub_text":"","privacy":"","anon":0,"like_count":0}
+
+
+        //Because of limitations with dropzone js, if files are being uploaded,
+        //I must send the post parameters as a JSON string rather than just sending them normally
+        //So if files are present, we need to decode the JSON string into an array
+        if(isset($_FILES['file'])) {
+            $_POST['post'] = json_decode($_POST['post'], true);
+        }
+
+
+
+        if(!isset($_POST['post']['text']) || !isset($_POST['post']['origin_type']) || !isset($_POST['post']['origin_id']) || !isset($_POST['post']['post_type']) || !isset($_POST['post']['sub_text']) || !isset($_POST['post']['privacy']) || !isset($_POST['post']['anon'])){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'All data is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        if($_POST['post']['origin_type'] == '' || $_POST['post']['origin_id'] == ''){
+            $return_data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'invalid origin', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        if($_POST['post']['privacy'] != '' && $_POST['post']['privacy'] != 's' && $_POST['post']['privacy'] != 'a'){
+            $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'invalid privacy setting', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+
+        if($_POST['post']['post_type'] == 'event' && !isset($_POST['post']['event'])){
+
+            $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'Event is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
 
 
         try{
@@ -53,26 +106,41 @@ class PostController extends Controller
             // Uncomment the following line if AJAX validation is needed
             // $this->performAjaxValidation($model);
 
-            $model->file_id = NULL;
-            if(isset($_FILES['fileUpload'])) {
-                $file = file_upload($_FILES);
-                $model->file_id = $file['file_id'];
-            }
+//            $model->file_id = NULL;
+//            if(isset($_FILES['fileUpload'])) {
+//                $file = file_upload($_FILES);
+//                $model->file_id = $file['file_id'];
+//            }
             // else{
             //     // echo 'file_upload failed';
             // }
 
 
+
+            $user = $this->get_current_user();
+            if(!$user){
+                $return_data = array('success'=>false, 'error_id'=>2, 'error_msg' => 'user is not logged in');
+                $this->renderJSON($return_data);
+                return;
+            }
+
             if(isset($_POST['post'])){
 
 
-                    $model->attributes=$_POST['post'];
-                    $model->user_id = 7;
-        //            $model->created_at = NOW();
-        //            $model->last_activity =  = NOW();
-                    $model->save(false);
-                $post_id = $model->post_id;
+                $model->attributes = $_POST['post'];
 
+                $model->post_type = $_POST['post']['post_type'];
+                $model->user_id = $user->user_id;
+                $model->origin_id = $_POST['post']['origin_id'];
+    //            $model->created_at = NOW();
+    //            $model->last_activity =  = NOW();
+
+
+
+
+
+                $model->save(false);
+                $post_id = $model->post_id;
 
 
 
@@ -84,39 +152,202 @@ class PostController extends Controller
                 if($model){
 
 
+                    $post_data = $this->model_to_array($model);
+                    $post_data['user_info'] = $this->model_to_array($user);
+
+                    //Save post files
+                    if(isset($_FILES['file'])) {
+                        $post_data['files'] = array();
+                        $file_ary = $this->reArrayFiles($_FILES['file']);
+
+                        foreach ($file_ary as $file) {
+
+
+
+                            $file_data = file_upload2($file, 'post_files/');
+
+
+                            $post_file = new PostFile;
+                            $post_file->post_id = $model->post_id;
+                            $post_file->file_id = $file_data['file_id'];
+                            if(!$post_file->save(false)){
+                                $return_data = array('success'=>false, 'error_msg'=>'error uploading file');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                            array_push($post_data['files'], $this->model_to_array($post_file->file));
+
+                        }
+                    }
+
+
+
+
+                    if($model->post_type == 'event'){
+
+
+                        $event = new Event;
+                        $event->title = $_POST['post']['event']['title'];
+                        $event->description = $_POST['post']['event']['description'];
+                        $event->event_type = 'event';
+                        $event->user_id = $this->get_current_user_id();
+                        $event->origin_type = $_POST['post']['event']['origin_id'];
+                        $event->origin_id = $_POST['post']['event']['origin_id'];
+                        $event->start_date = $_POST['post']['event']['start_date'];
+                        $event->end_date = $_POST['post']['event']['end_date'];
+                        $event->start_time = $_POST['post']['event']['start_time'];
+                        $event->end_time = $_POST['post']['event']['end_time'];
+                        $event->location = $_POST['post']['event']['location'];
+                        $event->all_day = '';
+
+                        $event->save(false);
+
+
+                        $post_event = new PostEvent;
+                        $post_event->post_id = $model->post_id;
+                        $post_event->event_id = $event->event_id;
+                        $post_event->save(false);
+
+                        $post_data['event'] = $this->model_to_array($event);
+                    }
+
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
 
-                    if(($_POST['post']['question_type'] == 'multiple_type' || $_POST['post']['question_type'] == 'true_type') && isset  ($_POST['post']['question'])){
-                        $model->post_type = 'question';
-                        $model->save(false);
+                    if(isset($_POST['post']['question']) && ($model->post_type == 'question' || $model->post_type == 'multiple_choice' || $model->post_type == 'true_false')){
 
+                        $post_data['question'] = array('options'=>array());
 
                         $question = new PostQuestion;
                         //$question->attributes = $_POST['PostQuestion'];
                         $question->post_id = $post_id;
                         $question->save(false);
 
-                        $correct_answer_key = $_POST['post']['question']['answer'];
 
-                        //if(count($_POST['post']['question']['choices']) > 0){
-                        foreach ($_POST['post']['question']['choices'] as $key => $option_text) {
+                        if($model->post_type == 'multiple_choice' && isset($_POST['post']['question']['answer_index'])){
+                            $correct_answer_index = $_POST['post']['question']['answer_index'];
 
+                            $post_data['question']['answer_index'] = $correct_answer_index;
+
+
+                            for($i = 0; $i < count($_POST['post']['question']['options']); $i++){
+                                $option_text = $_POST['post']['question']['options'][$i];
+
+                                if($option_text != ''){
+                                    $option = new PostQuestionOption;
+                                    $option->option_text = $option_text;
+                                    $option->post_id = $post_id;
+                                    $option->save(false);
+
+
+                                    if($i == $correct_answer_index){
+                                        $question->correct_answer_id = $option->option_id;
+                                        $question->save(false);
+                                    }
+
+                                    array_push($post_data['question']['options'], $this->model_to_array($option));
+                                }
+                            }
+                        }else if($model->post_type == 'true_false'){
                             $option = new PostQuestionOption;
-                            $option->option_text = $option_text;
+                            $option->option_text = 'True';
                             $option->post_id = $post_id;
                             $option->save(false);
 
+                            array_push($post_data['question']['options'], $this->model_to_array($option));
 
-                            if($key == $correct_answer_key){
-                                $question->correct_answer_id = $option->option_id;
-                                $question->save(false);
-                            }
+                            $option = new PostQuestionOption;
+                            $option->option_text = 'False';
+                            $option->post_id = $post_id;
+                            $option->save(false);
+
+                            array_push($post_data['question']['options'], $this->model_to_array($option));
                         }
+
+
+                        //if(count($_POST['post']['question']['choices']) > 0){
+
+
                         //}
                     }
 
-                    $return_data = array('success'=>true,'post'=>$model);
+
+
+                    try{
+                        //Get the origin data
+                        if($model->origin_type == 'class'){
+
+                            $class = ClassModel::model()->find('class_id=:id',array(':id'=>$model->origin_id));
+                            if($class){
+                                $post_data['origin'] = $this->model_to_array($class);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['class_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'class doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }else if($model->origin_type == 'department'){
+                            $department = Department::model()->find('department_id=:id',array(':id'=>$model->origin_id));
+
+                            if($department){
+                                $post_data['origin'] = $this->model_to_array($department);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['department_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }else if($model->origin_type == 'school'){
+
+                            $school = School::model()->find('school_id=:id',array(':id'=>$model->origin_id));
+
+
+                            if($school){
+                                $post_data['origin'] = $this->model_to_array($school);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['school_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+
+                        }else if($model->origin_type == 'club' || $model->origin_type == 'group'){
+                            $group = Group::model()->find('group_id=:id',array(':id'=>$model->origin_id));
+
+                            if($group){
+                                $post_data['origin'] = $this->model_to_array($group);
+                                //reassign the name to make it easier to get in the handlebars
+                                $post_data['origin']['name'] = $post_data['origin']['group_name'];
+                            }else{
+                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $this->renderJSON($return_data);
+                                return;
+                            }
+
+                        }
+                    }catch(Exception $e){
+                        $return_data = array('success'=>false,'post'=>$post_data, 'origin_id'=>$model->origin_id);
+                        $this->renderJSON($return_data);
+                        return;
+                    }
+
+
+
+                    //This user obviously owns this post
+                    $post_data['pownership'] = true;
+
+
+
+                    $post_data['user_info'] = $this->get_model_associations($user, array('pictureFile'));
+
+                    $return_data = array('success'=>true,'post'=>$post_data);
                     $this->renderJSON($return_data);
                     return;
 
@@ -249,25 +480,105 @@ class PostController extends Controller
 //		));
 	}
 
+
+
+
+    public function actionAnswerQuestion(){
+        if(!isset($_POST['option_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $user = $this->get_current_user($_GET);
+
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $option_id = $_POST['option_id'];
+
+        $option = PostQuestionOption::model()->find('option_id=:id', array(':id'=>$option_id));
+
+        if(!$option){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'option is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post_id = $option->post_id;
+
+
+        //Check if this user has already voted for this question
+        //$answer = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$option_id, ':user_id'=>$user->user_id));
+        $answer = PostQuestionOptionAnswer::model()->findBySql("SELECT * FROM post_question_option_answer JOIN post_question ON (post_question.post_id = " . $post_id . ") WHERE post_question_option_answer.user_id = " . $user->user_id);
+
+        if($answer){
+            //This user has already answered a question
+
+        }
+
+
+
+
+    }
+
+
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete()
-	{
-//        $model=$this->loadModel($_GET['id']);
+	public function actionDelete(){
 
-        if($model->user_id == self::$cur_user_id) {
-            if($this->loadModel($_GET['id'])->delete())
-                echo "delete_success";
+        if(!isset($_POST['post_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
         }
-        else
-            echo "Access Denied";
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-//		if(!isset($_GET['ajax']))
-//			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
+        $user = $this->get_current_user();
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post = Post::model()->find('post_id=:id',array(':id'=>$_POST['post_id']));
+
+        if(!$post){
+            $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'post doesnt exist');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        //Make sure this user created this post
+        if($post->user_id != $user->user_id){
+            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        //If all goes well, delete the post
+        if($post->delete()){
+            $return_data = array('success'=>true);
+            $this->renderJSON($return_data);
+            return;
+        }else{
+            $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting post');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+
+
+
 	}
 
 
@@ -275,6 +586,51 @@ class PostController extends Controller
     // 1 - Post id isnt set
     // 2 - like already exists
     // 3 - error creating post like
+    public function actionAnswer(){
+        try{
+            if(!isset($_POST['post_id']) || !isset($_POST['option_id'])){
+                $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+                $this->renderJSON($return_data);
+                return;
+            }
+            $option_id = $_POST['option_id'];
+            $user = $this->get_current_user($_POST);
+            if($user){
+                $answer = PostQuestionOptionAnswer::model()->find('option_id=:id and user_id=:user_id', array(":id"=>$option_id, ":user_id"=>$user->user_id));
+                if($answer){
+                    $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>'user already answered');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+                $answer_new = new PostQuestionOptionAnswer;
+                $answer_new->user_id = $user->user_id;
+                $answer_new->option_id = $option_id;
+
+                if($answer->save(false)){
+                    $data=array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }
+                else{
+                    $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'error saving answer to database');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+
+            }
+            else{
+                $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user not exists');
+                $this->renderJSON($return_data);
+                return;
+            }
+
+        }catch (Exception $e){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>$e->getMessage());
+            $this->renderJSON($data);
+            return;
+        }
+    }
     public function actionLike()
     {
         try{
@@ -285,16 +641,21 @@ class PostController extends Controller
             }
 
 
-            $user_id = $this->get_current_user_id();
+            $user = $this->get_current_user($_POST);
+            if(!$user){
+                $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>"error found user");
+                $this->renderJSON($return_data);
+                return;
+            }
             $post_id = $_POST['post_id'];
-            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
+            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
 
 
             //Make sure the user hasnt already liked this post
             if(!$post_like){
                 $post_like = new PostLike;
                 $post_like->post_id = $post_id;
-                $post_like->user_id = $user_id;
+                $post_like->user_id = $user->user_id;
                 $post_like->save(false);
                 if($post_like) {
 
@@ -304,7 +665,7 @@ class PostController extends Controller
                     $this->renderJSON($return_data);
                     return;
                 }else{
-                    $return_data = array('success'=>false,'error_id'=>3);
+                    $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>"error saving post_user table");
                     $this->renderJSON($return_data);
                     return;
                 }
@@ -325,22 +686,33 @@ class PostController extends Controller
 
     public function actionUnlike()
     {
-        if(!isset($_POST['post_id'])){
-            $return_data = array('success'=>false,'error_id'=>1);
-            $this->renderJSON($return_data);
-            return;
-        }
+        try {
+            if (!isset($_POST['post_id'])) {
+                $return_data = array('success' => false, 'error_id' => 1);
+                $this->renderJSON($return_data);
+                return;
+            }
 
 
-        $user_id = $this->get_current_user_id();
-        $post_id = $_POST['post_id'];
-        $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user_id);
-        if($post_like->delete()){
-            $return_data = array('success'=>true);
-            $this->renderJSON($return_data);
-            return;
-        }else{
-            $return_data = array('success'=>false,'error_id'=>2,'error_msg'=>'Error deleting post_like');
+            $user = $this->get_current_user($_POST);
+            if (!$user) {
+                $return_data = array('success' => false, 'error_id' => 2, 'error_msg' => "error found user");
+                $this->renderJSON($return_data);
+                return;
+            }
+            $post_id = $_POST['post_id'];
+            $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
+            if ($post_like->delete()) {
+                $return_data = array('success' => true);
+                $this->renderJSON($return_data);
+                return;
+            } else {
+                $return_data = array('success' => false, 'error_id' => 2, 'error_msg' => 'Error deleting post_like');
+                $this->renderJSON($return_data);
+                return;
+            }
+        }catch(Exception $e){
+            $return_data = array('success'=>false,'error_id'=>3,'error_msg'=>$e->getMessage());
             $this->renderJSON($return_data);
             return;
         }

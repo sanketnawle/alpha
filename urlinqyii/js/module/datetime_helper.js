@@ -3,6 +3,11 @@ var week_days_long = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday"
 var months_short = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
+function date_to_month_string(date_obj){
+    return months_short[date_obj.getMonth()];
+}
+
+
 
 //returns a string like Fri, Jan 9
 function date_to_day_of_week_string(this_date){
@@ -35,10 +40,10 @@ function date_to_string(date){
 //4pm
 function date_to_am_pm_string(datetime_obj){
     var hours = datetime_obj.getHours();
-    var am_pm = 'am';
+    var am_pm = ' am';
 
     if(hours >= 12){
-        am_pm = 'pm';
+        am_pm = ' pm';
         if(hours > 12){
             hours -= 12;
         }

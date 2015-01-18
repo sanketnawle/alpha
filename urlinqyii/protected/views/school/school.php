@@ -3,14 +3,15 @@
 
 <head>
     <script>
-        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        origin_type = '<?php echo 'school'; ?>';
-
-        origin_id = '<?php echo $school->school_id; ?>';
+        var globals = {};
+        globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        globals.origin_type = '<?php echo 'school'; ?>';
+        globals.origin_id = '<?php echo $school->school_id; ?>';
+        globals.origin_name = '<?php echo $school->school_name; ?>';
 
     </script>
 
-
+    
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
@@ -21,7 +22,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
-
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main_groups.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
@@ -153,11 +154,11 @@
                     <div id = "feed_column" class = "feed_column_group">
                         <div id = "stream_holder" class = "stream_holder_home">
                             <div id = "fbar_wrapper" class = "fbar_home">
-                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>'','pg_src'=>'school.php','target_type'=>'school')); ?>
+                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id,'pg_src'=>'school.php','target_type'=>'school')); ?>
                             </div>
 
                             <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/<?php echo $school->school_id; ?>/feed')); ?>
+                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/'.$school->school_id.'/feed', 'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
                             </div>
                         </div>
                     </div>

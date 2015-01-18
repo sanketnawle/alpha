@@ -17,12 +17,17 @@
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
 
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
+
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_files.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
 
+
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 
@@ -63,19 +68,32 @@
 
                     <div id="content_panel" class = "group_responsiveness">
                         <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'club','origin_id'=>$club->group_id,'origin'=>$club)); ?>
-                        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
-                            <div class = "group_name">
-                                <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
-                            </div>
-                            <div class = "group_right_info group_info_boxes">
-                                <div class = "group_info_block" id = "location">
-                                    <em class ="small_icon_map"></em>
-                                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
-                                </div>
-                            </div>
-                        </div>
 
+                        <?php if($is_admin){ ?>
+                            <form action="/post/create" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                                <input type='file' class='step_6_upload' style='display:none;'>
+                        <?php } ?>
+
+                                <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
+                                    <div class = "group_name">
+                                        <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
+                                        <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
+                                    </div>
+                                    <div class = "group_right_info group_info_boxes">
+                                        <div class = "group_info_block" id = "location">
+                                            <em class ="small_icon_map"></em>
+                                            <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                            <?php if($is_admin){ ?>
+                                                <div class="upload_cover_photo_button">Upload cover photo</div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <!--        close the cover photo dropzone form if user is an admin -->
+                        <?php if($is_admin){ ?>
+                            </form>
+                        <?php } ?>
 
 
 
@@ -152,11 +170,11 @@
                             <div id = "feed_column" class = "feed_column_group">
                                 <div id = "stream_holder" class = "stream_holder_home">
                                     <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user,'origin_type'=>'club','origin_id'=>'','pg_src'=>'club.php','target_type'=>'club')); ?>
+                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user, 'origin_type'=>'club','origin_id'=>$club->group_id, 'origin'=>$club)); ?>
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/<?php echo $club->group_id; ?>/feed')); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/'.$club->group_id.'/feed', 'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +281,7 @@
 
 
 
-                        <form action="<?php echo Yii::app()->getBaseUrl(true);?>/class/fileUpload" class="dropzone dz-clickable files_upload_bigbox" id="demo-upload">
+                        <form action="<?php echo Yii::app()->getBaseUrl(true);?>/class/fileUpload" class="dropzone dz-clickable files_upload_bigbox tab_files" id="demo-upload">
                             <div class="bigbox_bigmessage">
                             </div>
                             <input type="hidden" name="id" value="<?php echo $club->group_id; ?>">

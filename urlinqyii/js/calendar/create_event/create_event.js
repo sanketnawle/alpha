@@ -173,7 +173,8 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click','#create_new_event_button',function(){
-
+        jQuery(".left_panel_create_button.left_panel_create_button").addClass("disabled");
+        jQuery(".mini_calendar_cover").addClass("enabled");
         var $dialog = jQuery('#dialog');
         $dialog.show();
 //        if($dialog.is(":visible")){
@@ -185,6 +186,8 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click','#create_event_discard_button',function(e){
+        jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
         var $dialog = jQuery('#dialog');
         $dialog.hide();
         reset_create_event_form();
@@ -192,6 +195,8 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('click','#create_event_back_button',function(e){
+        jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
         var $dialog = jQuery('#dialog');
         $dialog.hide();
         reset_create_event_form();
@@ -205,6 +210,8 @@ jQuery(document).ready(function(){
 
 
     jQuery(document).on('submit','#create_event_form',function(event){
+        jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
         var $form = jQuery(this);
         event.preventDefault();
 
@@ -239,7 +246,7 @@ jQuery(document).ready(function(){
 
         var event_category = jQuery('div.category.selected').attr('data-category') ? jQuery('div.category.selected').attr('data-category'):'';
 
-        var event_location = jQuery('#event_location_input').val();
+        var event_location = jQuery('#event_location').val();
         var event_description = jQuery('#event_description_input').val();
 
 

@@ -126,6 +126,17 @@ jQuery(document).ready(function(){
         update_time_input($(this));
     });
 
+
+    jQuery(document).on('scroll','.time_input', function(e){
+        e.stopPropagation();
+    });
+
+
+    $( "#page" ).scroll(function() {
+        console.log('WINDOW SCROLL');
+        $('#time_selector').removeClass('active');
+    });
+
 //    jQuery(document).on('keyup','.time_input', function(){
 //        update_time_input($(this));
 //    });
@@ -136,6 +147,7 @@ jQuery(document).ready(function(){
     var $last_selected_time_input = null;
 
     jQuery(document).on('click','.time_input', function(e){
+
         e.stopPropagation();
         var $time_input = $(this);
         var $time_selector = $('#time_selector');
@@ -152,7 +164,7 @@ jQuery(document).ready(function(){
         var input_position = $time_input.offset();
 
         //Set the position of the time selector to underneath this time input
-        $time_selector.css({'position': 'absolute'});
+        $time_selector.css({'position': 'fixed'});
         $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
         $time_selector.css({'z-index': '1000'});

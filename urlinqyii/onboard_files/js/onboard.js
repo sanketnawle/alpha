@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Join these Classes", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
@@ -59,16 +59,6 @@ $(document).ready(function () {
 
 
 
-    var department_list = ["Department of Computer Science", "Department of Chemistry", "Department of Mathematics", "Department of Biology", "Department of Physics"];
-
-
-
-    var course_list = ["Web Programming", "Data Mining", "Computer Organization", "Dynamic Languages", "Machine Vision"];
-    var course_id_list = ["cid0", "cid1", "cid2", "cid3", "cid4"];
-
-
-    var people_list = ["Ross Kopelman", "Jake Lazarus", "Kuan Wang", "Alex Lopez"];
-    var clubs_list = ["Archery Club", "Kendo Club", "Boxing Club"];
 
 
     var selected_data = {'clubs':[], 'classes':[], 'follow_users':[], 'gender':'','picture_file_id':'1'};
@@ -171,6 +161,12 @@ $(document).ready(function () {
             $(".progress_footer_glyph_0").hide();
         }
 
+        if (curr == 3) {
+            $(".next_progress").addClass("step_3_adjust");
+        } else{
+            $(".next_progress").removeClass("step_3_adjust");
+        }
+
         if (curr < 2) {
             $(".next_progress").hide();
             $(".onboard_textarea_t1").addClass("onboard_textarea_t2");
@@ -223,7 +219,7 @@ $(document).ready(function () {
         $inner[0].scrollTop = 0;
 
 
-
+         $('.skip_progress').show();
          $(".canvas_banner").remove();
 
         console.log("CURR " + curr.toString());
@@ -246,6 +242,8 @@ $(document).ready(function () {
                 $canvas.append($stepCard).hide().fadeIn();
             }
 
+            $('.skip_progress').hide();
+
 
         }else if (curr == 1) {
             console.log('inside curr = 1');
@@ -264,13 +262,19 @@ $(document).ready(function () {
                 $canvas.append($stepCard).hide().fadeIn();
             }
 
+            $('.skip_progress').hide();
+
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/defaultGlyph.png'</div>");
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $('.skip_progress').hide();
         } else if (curr == 3) {
             $canvas.show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
+
+            //hide skp button
+            $('.skip_progress').hide();
 
 
             $canvas.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[progress_flag] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
@@ -375,7 +379,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='blue_btn card_4_btn'> <span>Follow</span></div></div>");
+                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
 
             }
 
@@ -400,7 +404,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join green_join_btn'>Join</div></div></div>");
+                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
             }
 
 
@@ -523,7 +527,7 @@ $(document).ready(function () {
 
 
         console.log(JSON.stringify(post_data));
-        alert(JSON.stringify(post_data));
+        //alert(JSON.stringify(post_data));
 
 
 
@@ -664,7 +668,7 @@ $(document).ready(function () {
                     console.log(response['original_name']);
 
                     if(response['success']){
-                        alert('success');
+                        //alert('success');
                     }
 
                 });
@@ -796,7 +800,7 @@ $(document).ready(function () {
                         console.log("error calling payload function");
                     }
 
-                    alert(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
                 }else{
                     alert(JSON.stringify(response));
                 }
@@ -957,9 +961,22 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".follow_all_btn", "click", function () {
+
+
+
         $(".card_4_btn").removeClass("followed");
         $(".card_4_btn").addClass("followed");
         $(".card_4_btn").find("span").text("Following");
+
+
+
+
+        //Loop thru all the card 4 buttons and get the user id from the parent
+        $(".card_4_btn").each(function(){
+            selected_data['follow_users'].push($(this).closest('.step_4_card').attr('data-user_id'));
+        });
+
+        $('.next_progress').removeClass('inactive_btn');
     });
 
     $(document).delegate(".club_join", "click", function () {
@@ -972,7 +989,7 @@ $(document).ready(function () {
             $(this).closest(".step_5_card").removeClass("expanded");
         } else {
             $(this).addClass("followed");
-            $(this).text("Joined");
+            $(this).text("Member");
             n++;
             $(".canvas_banner").find(".right_txt").find("span").text(n);
             $(this).closest(".step_5_card").addClass("expanded");

@@ -51,7 +51,7 @@ body {
     float: left;
     margin-left: 4px;
     line-height: 32px;
-    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial',sans-serif;
+    font-family: Avenir;
     margin-top: 7px;
 }
 
@@ -97,7 +97,7 @@ body {
     overflow-y: auto;
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
-    padding: 0px 10px 10px;
+    padding: 0px 5px 10px;
 }
 
 .progress_footer {
@@ -295,14 +295,15 @@ body {
 }
 
 .step_3_card {
-    width: 260px;
+    width: 275px;
     border-radius: 4px;
     border: 1px solid white;
-    color: #555;
+    color: #777;
     float: left;
-    padding-left: 5px;
+    padding-left: 7px;
     margin-bottom: 10px;
     cursor: pointer;
+    padding-right: 3px;
 }
 
 .step_3_show {
@@ -315,40 +316,50 @@ body {
 .card_3_glyph {
     height: 40px;
     width: 40px;
+    border: 1px solid transparent;
     float: left;
-    border-radius: 4px;
-    border: 1px solid #dbdbdb;
+    border-radius: 3px;
 }
 
 .step_3_line_0 {
     float: left;
     width: 80%;
-    margin-left: 8px;
-    font-size: 14.5px;
+    margin-left: 6px;
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 500;
+    margin-top: 2px;
 }
 
 .step_3_line_1 {
     float: left;
     min-width: 200px;
-    margin-left: 8px;
-    font-size: 13px;
+    margin-left: 6px;
+    font-size: 12px;
     font-weight: 300;
     height: 20px;
 }
 
 .step_3_line_1_0 {
     float: left;
+    width: 205px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding-bottom: 4px;
 }
 
 .step_3_line_1_0 span {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 12px;
+    top: 3px;
+    position: relative;
+    opacity: .5;
+    color: #121212;
 }
 
 .step_3_line_1_1 span {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .adot {
@@ -362,6 +373,7 @@ body {
 .member_glyph {
     height: 12px;
     width: 12px;
+    display: none;
     float: left;
     background: url('../img/OnboardingIconMap.png') repeat scroll -1px -16px transparent;
     margin-top: 3px;
@@ -380,29 +392,32 @@ body {
 .cover_line {
     float: left;
     text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: -9px;
+    font-size: 10.5px;
+    margin-top: -7px;
+    color: #999;
+    font-family: Avenir;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     padding-left: 3px;
     padding-right: 3px;
-    background-color: #f9f9f9;
     z-index: 1;
+    background: #f5f5f5;
 }
 
 .step_3_card_section_detail {
-    margin-top: 10px;
+    margin-top: 6px;
     float: left;
 }
 
 .step_3_card_section_detail_card {
-    border-radius: 6px;
+    border-radius: 0;
     width: 100%;
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 1.5px;
+    padding-left: 3.5px;
     padding-right: 1.5px;
     float: left;
-    margin-bottom: 1px;
+    border-radius: 2px;
+    margin-bottom: 5px;
 }
 
 .step_3_card_section_detail_card:hover {
@@ -413,30 +428,34 @@ body {
     float: left;
     width: 13px;
     height: 13px;
+    margin-left: 3px;
+    margin-top: 3px;
 }
 
 .section_detail_right {
     float: left;
-    width: 210px;
+    width: 203px;
     font-size: 12px;
     margin-left: 5px;
-    white-space: pre-line;
-    margin-top: -3px;
+    padding-bottom: 2px;
+    margin-top: -1px;
+    color: #121212;
 }
 
 .expanded {
-    background-color: #f9f9f9;
-    border: 1px solid #eeeeee;
+    background-color: #f5f5f5;
+    color: #1F1F1F;
 }
 
 .expanded_pseudo {
-    background-color: #f9f9f9;
-    border: 1px solid #eeeeee;
+    background-color: #F5F5F5;
+    color: #333;
+    border-color: #eee;
 }
 
 .section_selected {
-    background-color: #efefef;
-    font-weight: 600;
+    background-color: #eee;
+    color: #121212;  
 }
 
 .step_4_card {
@@ -462,8 +481,8 @@ body {
 
 
 .club_adjust {
-    min-width: 120px;
-    max-width: 120px;
+    min-width: 142px;
+    max-width: 142px;
 }
 
 
@@ -472,10 +491,9 @@ body {
 }
 
 .step_6_card_r0 {
-    margin-top: 20px;
+    margin-top: 31px;
     width: 100%;
     float: left;
-    padding-left: 40px;
 }
 
 
@@ -491,7 +509,6 @@ body {
     float: left;
     margin-top: 25px;
     width: 100%;
-    padding-left: 40px;
 }
 
 .step_6_card_r2 {
@@ -513,19 +530,18 @@ body {
     width: 100%;
     font-size: 14px;
     font-weight: 600;
-    padding-left: 75px;
 }
 
 .step_6_card_r4 span {
     float: left;
-    margin-top: 4px;
+    margin-top: 2px;
     margin-left: 4px;
 }
 
 .step_6_card_r4_input {
     float: left;
     margin-left: 14px;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 
@@ -561,9 +577,11 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
 }
 
 .step_6_card_r1_txt {
-    float: left;
     font-size: 14px;
     font-weight: 600;
+    float: left; 
+    font-size: 13px; font-weight: 600; 
+    margin-top: 4px; font-family: Avenir; font-weight: 500;
 }
 
 .step_6_card_r2_txt {
@@ -582,9 +600,11 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
 
 .step_6_card_r4_txt {
     float: left;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     margin-top: 4px;
+    font-family: Avenir;
+    font-weight: 500;
 }
 
 .item {
@@ -599,6 +619,7 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     resize: none;
     height: 30px;
     width: 280px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     font-size: 13px;
     font-weight: 300!important;
     padding-left: 6px;
@@ -685,8 +706,8 @@ input.onboard_textarea_t1:-ms-input-placeholder {
 
 .next_progress {
     float: left;
-    margin-left: 16px;
-    margin-top: 11px;
+    margin-left: 13px;
+    margin-top: 8px;
 }
 
 .btn_glyph_0 {
@@ -756,37 +777,28 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
     cursor: pointer;
     padding-left: 16px;
     padding-right: 16px;
-    line-height: 32px;
-    height: 33px;
+    line-height: 35px;
+    height: 35px;
+    /* font-family: Avenir; */
     text-align: center;
     border-radius: 4px;
     font-size: 14.2px;
-    font-weight: 600;
+    font-weight: 500;
     color: #FFF;
     outline: medium none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: all 0.15s ease 0s;
     color: white;
-    border-radius: 4px;
-    background-color: #45a8cf;
-    border: 1px solid rgb(29, 153, 207);
-    -moz-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
-    box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
-    -webkit-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    border-radius: 4px;     
+    background-color: #27D579; background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C); border: 1px solid #1ECD77; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset; border-bottom: 1px solid rgba(9, 166, 89, 0.74);
 }
 
 .blue_btn:hover {
-background: #55BCE5;
+    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%); background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background-image: -webkit-linear-gradient(top,#09E78A,#1CE883); border: 1px solid rgba(3, 144, 74, 0.24); border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 
 }
 
 .blue_btn:active {
-background: #3397BE;
-
--moz-box-shadow: inset 0 1px 1px rgba(24, 138, 158, 1),inset 0 -1px 1px rgba(28, 129, 174, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset; 
-box-shadow: inset 0 1px 1px rgba(24, 138, 158, 1),inset 0 -1px 1px rgba(28, 129, 174, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset; 
--webkit-box-shadow: inset 0 1px 1px rgba(24, 138, 158, 1),inset 0 -1px 1px rgba(28, 129, 174, 1), 0 0 1px rgba(250, 250, 250, 0.5) inset, 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); background: #02DB6F; border: 1px solid #2FB750; border-top: 1px solid #1BAD3E;
+  
 }
 
 
@@ -809,27 +821,28 @@ box-shadow: inset 0 1px 1px rgba(24, 138, 158, 1),inset 0 -1px 1px rgba(28, 129,
 }
 
 .club_join {
-    margin-top: -17px!important;
+    display: inline-block;
+    margin-top: -15px;
+    float: right;
+    margin-right: 5px;
 }
 
 .green_join_btn {
     float: right;
     margin-right: 10px;
-    transition: all 0.25s ease-in;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 13.8px;
+    padding: 6px 8px;
+    font-size: 12.2px;
     font-weight: 600;
+    font-family: Avenir;
+    text-transform: uppercase;
     outline: medium none;
+    font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     cursor: pointer !important;
     color: #FFF !important;
-    background: #08D09C;
-    border-radius: 4px;
-    border: 1px solid #0AB286;
-    -webkit-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
-    -moz-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
-    box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;    
+    border-radius: 4px;    
+    background-color: #27D579; background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C); border: 1px solid #1ECD77; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset; border-bottom: 1px solid rgba(9, 166, 89, 0.74);
 }
 
 .green_btn {
@@ -852,32 +865,30 @@ box-shadow: inset 0 1px 1px rgba(24, 138, 158, 1),inset 0 -1px 1px rgba(28, 129,
     font-family: "Helvetica Neue",Helvetica,arial,sans-serif;
 }
 
-.step_0_card:hover .green_join_btn{ 
-    background-color: #03EBAE;
-    border-bottom: 1px solid #0C9E78;
+.step_0_card:hover .green_join_btn{
+ 
 
+    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%); background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background-image: -webkit-linear-gradient(top,#09E78A,#1CE883); border: 1px solid rgba(3, 144, 74, 0.24); border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
-.step_0_card:active .green_join_btn{ 
+.step_0_card:active .green_join_btn{
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); background: #02DB6F; border: 1px solid #2FB750; border-top: 1px solid #1BAD3E;
+ 
 
-background: #0BC897;
-box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset;
--webkit-box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset;
+
 }
 
 .green_join_btn:hover {
-    background-color: #03EBAE;
-    border-bottom: 1px solid #0C9E78;
+    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%); background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%); background-image: -webkit-linear-gradient(top,#09E78A,#1CE883); border: 1px solid rgba(3, 144, 74, 0.24); border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
 .green_join_btn:active {
-background: #0BC897;
-box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset;
--webkit-box-shadow: inset 0 1px 1px rgba(31, 182, 139, 1),inset 0 -1px 1px rgba(7, 207, 145, 1), 0 0 1px rgba(250, 250, 250, 0.52) inset, 0 0 1px rgba(255, 255, 255, 0.54) inset;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); background: #02DB6F; border: 1px solid #2FB750; border-top: 1px solid #1BAD3E;
 }
 
 .last_step_btn {
     font-size: 14.2px;
+    margin-top: 8px!important;
     text-shadow: none;
 }
 
@@ -975,18 +986,112 @@ input:focus:-moz-placeholder {
     padding-bottom: 60px;
 }
 
-.progress_content.c4 .content_inner {
+.progress_content.c4 .content_inner, .progress_content.c3 .content_inner {
     padding: 10px;
+}
+
+div.follow_btn{
+    max-width: 98px!important;
+
+}
+
+em.follow_icon{
+    background-image: url(../img/gray_follow_icon.png); background-size: auto; 
+    width: 16px; 
+    height: 13px; background-repeat: no-repeat; 
+    margin-right: 5px; 
+    background-position: 0px 2px; top: 2px; display: inline-block; position: relative;
+}
+
+div.follow_btn.followed{
+
 }
 
 
 
+div.follow_btn.followed > em.follow_icon{
+    background-position: -25px 2px;
+}
+
+em.gray_plus_icon{
+    display:inline-block;
+    width:10px;
+    background-image: url(../img/gray_add_icon.png); background-size: auto; width: 10px; height: 10px; background-repeat: no-repeat; margin-right: 4px; top: 2px; display: inline-block; position: relative;
+}
+
+em.white_plus_icon{
+    display:inline-block;
+    width:10px;
+    background-image: url(../img/white_add_icon.png); background-size: auto; 
+    width: 8px; 
+    height: 8px; 
+    background-position: -1px -1px;
+    background-repeat: no-repeat; 
+    margin-right: 6px; 
+    top: 0px; display: inline-block; position: relative;
+}
+
+div.gray_join_btn.followed{
+
+}
+
+div.gray_join_btn.followed > em.gray_plus_icon{
+    display:none;
+}
+
+div.gray_join_btn, div.follow_btn{
+border: 1px solid #eee;
+border-bottom-color: #E4E4E4;
+background-color: #fcfcfc;
+background-image: -webkit-linear-gradient(#fafafa, #f8f8f8);
+background-image: linear-gradient(#fafafa, #f8f8f8);
+color: #575757!important;
+padding: 5.5px 9px;
+font-weight: 600;
+border-radius: 3px;
+max-width: 68px;
+cursor: pointer;
+font-size: 11.8px;
+}
+
+div.gray_join_btn:hover, div.follow_btn:hover{
+border-color: #E4E4E4;
+-moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 border-bottom-color:#DDD;
+}
+
+div.dz-filename, div.dz-size, div.dz-message, div.dz-success-mark, div.dz-error-mark{
+    display:none;
+}
+
+div.update_picture_text{
+
+}
+
+div.next_progress.step_3_adjust{
+margin-top: 10px!important;
+}
+
+div.update_picture_text > p{
+    
+}
+
+div.gray_join_btn:active, div.follow_btn:active{
+-webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+-moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+background: #EEE;
+box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+}
 
 #profile_image_upload_form {
-    width: 200px;
-    height: 100px;
-
-    background-color: grey;
+    width: 103px;
+    height: 103px;
+    background-image: url(../img/6.png);
+    background-size: cover;
+    background-color: #f5f5f5;
+    border: 1px solid #eee;
+    border-radius: 4px;
 }
 
 

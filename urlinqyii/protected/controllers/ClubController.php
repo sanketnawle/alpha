@@ -65,36 +65,20 @@ class ClubController extends Controller
 
         $user = $this->get_current_user();
 
-
-        $is_admin = Yii::app()->db->createCommand()
-            ->select('is_admin')
-            ->from('group_user u')
-            ->where('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id,':group_id'=>$club->group_id))
-            ->queryRow();
-
-
-
-
-        //SELECT count(*) as file_count FROM posts p JOIN groups_files gf on (p.target_id = gf.group_id) WHERE  ((p.target_type = 'groups' and p.file_id is not null and p.target_id = ?) or gf.group_id = ?
-//        $file_count = Yii::app()->db->createCommand()
-//            ->select('*')
-//            ->from('posts p')
-//            ->join('groups_files gf')
-//            ->on('p.target_id = gf.group_id')
-//            ->where('(p.target_type = "groups" and p.file_id is not null and p.target_id=:target_id) or gf.group_id =:group_id', array(':target_id'=>$club->group_id,':group_id'=>$club->group_id))
-//            ->queryRow();
-
-        $file_count = 5;
-
+        $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$club->group_id, ':user_id'=>$user->user_id));
 
         $is_member = false;
-
-        foreach ($club->users as $club_user) {
-            if($club_user->user_id == $user['user_id']){
-                $is_member = true;
-                break;
+        $is_admin = false;
+        if($group_user){
+            $is_member = true;
+            if($group_user->is_admin){
+                $is_admin = true;
             }
         }
+
+
+
+        $file_count = 5;
 
         $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, un.school_name from `user_connection` c, user u, school un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.school_id = u.school_id AND u.status = 'active'";
 
@@ -103,26 +87,6 @@ class ClubController extends Controller
         $command = Yii::app()->db->createCommand($sql);
         $connected_users = $command->queryAll();
 
-
-//        if (isset($_GET['group_id'])) {
-//            $group_id = $_GET['group_id'];
-//        }
-//        if (isset($_SESSION['user_type'])) {
-//            $user_type = $_SESSION['user_type'];
-//        }
-//        $get_admin_flag_query = "SELECT is_admin FROM group_users WHERE user_id = ? AND group_id = ?";
-//        $get_admin_flag_stmt = $con->prepare($get_admin_flag_query);
-//
-//
-//        if($get_admin_flag_stmt != null){
-//            $get_admin_flag_stmt->bind_param("ii",$user_id, $group_id);
-//            $get_admin_flag_stmt->execute();
-//            $get_admin_flag_stmt->bind_result($admin_flag);
-//            $get_admin_flag_stmt->fetch();
-//            $get_admin_flag_stmt->close();
-//        }
-//        $get_course_about_query = "SELECT G.group_desc FROM groups G WHERE G.group_id = ?";
-//        $get_course_about_stmt = $con->prepare($get_course_about_query);
 
 
 
