@@ -135,8 +135,8 @@ em.pl_blue_circle{
     display: none;
 }
 #eventImg{
-    padding: 39px 0px 31px 36px;
-    width: 160px;
+    padding: 33px 0px 32px 46px;
+    width: 140px;
 }
 
 span.create_planner_message {}
@@ -147,20 +147,56 @@ span.create_planner_message {}
 .free_planner_message, .create_planner_message{
     display: inline;
     position: absolute;
-    font-size: 12px;
+    font-size: 13.2px;
     margin: 0 auto;
-    top: 146px;
-    left: 64px;
+    top: 123px;
+    left: 59px;
     font-family: Avenir;
 }
 .create_planner_message{
-    display: none;
-    color: #27292b;
+    color: #333;
     cursor: pointer;
     text-decoration: none;
     width: auto;
     
 }
+
+.point{
+    display: block;
+
+    font-size: 11px;
+    text-align: left;
+    position: absolute;
+    width: 150px;
+    left: 58px;
+    margin: 0 auto;
+    bottom: 57px;
+    color: #545454;
+} 
+
+.point em{
+    background: #777;
+    
+    border-radius: 999px;
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+}
+
+.point.point1{
+
+}
+
+.point.point2{
+
+}
+
+.point.point2 {
+    bottom: 38px;
+
+}
+
+
 .create_planner_message:hover{
     text-decoration: underline;
 }
@@ -366,7 +402,7 @@ input.event_title{
     /*left: 0;*/
     max-height: 330px;
     font-size: 12px;
-    min-height:202px;
+    min-height: 214px;
     width: 100%;
     -moz-transition: all .15s linear;
     -webkit-transition: all .15s linear; 
