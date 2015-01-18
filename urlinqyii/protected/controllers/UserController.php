@@ -491,6 +491,132 @@ class UserController extends Controller
 
 
     }
+    public function actionGroupSuggestions(){
+        $user = $this->get_current_user();
+        if(!($user->school)){
+            $this->renderJSON(array('success'=>false,'message'=>'user does not have school'));
+            return;
+        }
+        if($_GET['suggestion_type'] === "university_wide_suggestions"){
+            $university = $user->school->university;
+            if(isset($_GET['previous_class_id_1']) && isset($_GET['previous_class_id_2'])
+                && isset($_GET['previous_group_id'])){
+                $suggested_classes = ClassModel::model()->findAllBySql(
+                    'select c.* from class c, school s
+                where s.university_id='.$university->university_id.' and c.school_id=s.school_id
+                 and c.class_id !='.$_GET['previous_class_id_1'].'
+                and c.class_id !='.$_GET['previous_class_id_2'].' ORDER BY rand() limit 2');
+                $suggested_clubs = Group::model()->findAllBySql(
+                    'select g.* from `group` g, school s
+                where s.university_id='.$university->university_id.' and g.school_id=s.school_id
+                 and g.group_id !='.$_GET['previous_group_id'].' ORDER BY rand() limit 1');
+            }else{
+                $suggested_classes = ClassModel::model()->findAllBySql(
+                    'select c.* from class c, school s
+                where s.university_id='.$university->university_id.'
+                and c.school_id=s.school_id ORDER BY rand() limit 2');
+                $suggested_clubs = Group::model()->findAllBySql(
+                    'select g.* from `group` g, school s
+                where s.university_id='.$university->university_id.' and
+                g.school_id=s.school_id ORDER BY rand() limit 1');
+            }
+
+
+        }else if($_GET['suggestion_type'] === "user_school_specific_suggestions"){
+            $school =  $user->school;
+            if(isset($_GET['previous_class_id_1']) && isset($_GET['previous_class_id_2'])
+                && isset($_GET['previous_group_id'])){
+                $suggested_classes = ClassModel::model()->findAllBySql(
+                    'select c.* from class c
+                where c.school_id='.$school->school_id.' and c.class_id !='.$_GET['previous_class_id_1'].'
+                and c.class_id !='.$_GET['previous_class_id_2'].' ORDER BY rand() limit 2');
+                $suggested_clubs = Group::model()->findAllBySql(
+                    'select g.* from `group` g
+                where g.school_id='.$school->school_id.' and g.group_id !='.$_GET['previous_group_id'].' ORDER BY rand() limit 1');
+            }else{
+                $suggested_classes = ClassModel::model()->findAllBySql(
+                    'select c.* from class c
+                where c.school_id='.$school->school_id.' ORDER BY rand() limit 2');
+                $suggested_clubs = Group::model()->findAllBySql(
+                    'select g.* from `group` g
+                where g.school_id='.$school->school_id.' ORDER BY rand() limit 1');
+            }
+        }else{
+            $this->renderJSON(array('success'=>false,'message'=>'invalid suggestion_type'));
+        }
+
+        $result = array('classes'=>array());
+        foreach($suggested_classes as $i=>$class){
+            $result['classes'][$i]['picture'] = ($class->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+            $result['classes'][$i]['is_group'] = true;
+            $result['classes'][$i]['has_members'] = sizeof($class->users) >0;
+            $result['classes'][$i]['member_count'] = sizeof($class->users);
+            $result['classes'][$i]['type'] = "group_suggestion";
+            $result['classes'][$i]['id'] = $class->class_id;
+            if($class->course){
+                $result['classes'][$i]['title'] = $class->course->course_name;
+            }
+
+        }
+        foreach($suggested_clubs as $club){
+            $result['club']['picture'] = ($club->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
+            $result['club']['is_group'] = true;
+            $result['club'][$i]['type'] = "group_suggestion";
+            $result['club']['has_members'] = sizeof($club->users) >0;
+            $result['club']['member_count'] = sizeof($club->users);
+            $result['club']['id'] = $club->group_id;
+            $result['club']['title'] = $club->group_name;
+        }
+        $this->renderJSON($result);
+    }
+    public function actionUserSuggestions(){
+        $user = $this->get_current_user();
+        if(!($user->school)){
+            $this->renderJSON(array('success'=>false,'message'=>'user does not have school'));
+            return;
+        }
+        if($_GET['suggestion_type'] === "university_wide_suggestions"){
+            $university = $user->school->university;
+            if(isset($_GET['previous_user_id_1']) && isset($_GET['previous_user_id_2'])) {
+                $suggested_users = User::model()->findAllBySql(
+                    'select u.* from user u, school s
+                where s.university_id=' . $university->university_id . ' and u.school_id=s.school_id
+                and u.user_id !=' . $_GET['previous_user_id_1'] . '
+                and u.user_id !=' . $_GET['previous_user_id_2'] . ' ORDER BY rand() limit 2');
+            }else{
+                $suggested_users = User::model()->findAllBySql(
+                    'select u.* from user u, school s
+                where s.university_id=' . $university->university_id . ' and u.school_id=s.school_id ORDER BY rand() limit 2');
+            }
+        }else if($_GET['suggestion_type'] === "user_school_specific_suggestions"){
+            $school =  $user->school;
+            if(isset($_GET['previous_user_id_1']) && isset($_GET['previous_user_id_2'])) {
+                $suggested_users = User::model()->findAllBySql(
+                    'select u.* from user u
+                where c.school_id=' . $school->school_id . ' and c.class_id !=' . $_GET['previous_class_id_1'] . '
+                and c.class_id !=' . $_GET['previous_user_id_2'] . ' ORDER BY rand() limit 2');
+            }else{
+                $suggested_users = User::model()->findAllBySql(
+                    'select u.* from user u
+                where c.school_id=' . $school->school_id . ' ORDER BY rand() limit 2');
+            }
+        }else{
+            $this->renderJSON(array('success'=>false,'message'=>'invalid suggestion_type '.$_GET['suggestion_type']));
+        }
+
+        $result = array();
+        foreach($suggested_users as $i=>$suser){
+            $result[$i]['picture'] = ($suser->pictureFile) ?
+                Yii::app()->getBaseUrl(true).$suser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+            $result[$i]['is_group'] = false;
+            $result[$i]['type'] = "user_suggestion";
+            $result[$i]['id'] = $suser->user_id;
+            $result[$i]['title'] = $suser->firstname." ".$suser->lastname;
+        }
+        $this->renderJSON($result);
+    }
 
 
 
