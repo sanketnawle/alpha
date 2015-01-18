@@ -499,34 +499,43 @@ class UserController extends Controller
         }
         if($_GET['suggestion_type'] === "university_wide_suggestions"){
             $university = $user->school->university;
-            if(isset($_GET['previous_class_id_1']) && isset($_GET['previous_class_id_2'])
-                && isset($_GET['previous_club_id'])){
+            $department = $user->department;
+            if(isset($_GET['previous_class_id']) && isset($_GET['previous_club_id_2'])
+                && isset($_GET['previous_club_id_1'])){
+                //to generate a random class, first we get the count
+
                 $suggested_classes = ClassModel::model()->findAllBySql(
                     'select c.* from class c, school s
                 where s.university_id='.$university->university_id.' and c.school_id=s.school_id
-                and c.class_id !='.$university->university_id.'
-                and c.class_id !='.$_GET['previous_class_id_2'].'
+
+                and c.class_id !='.$_GET['previous_class_id'].'
+                and (c.department_id in (select department_id from department where department_name = "'
+                    .$department->department_name.'") or c.school_id = '.$user->school_id.')
                 and not exists (select * from class_user where class_id = c.class_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and user_id='.$user->user_id.') order by rand() limit 1');
                 $suggested_clubs = Group::model()->findAllBySql(
                     'select g.* from `group` g, school s
                 where s.university_id='.$university->university_id.' and g.school_id=s.school_id
-                 and g.group_id !='.$_GET['previous_club_id'].'
+                 and g.group_id !='.$_GET['previous_club_id_1'].'
+                 and g.group_id !='.$_GET['previous_club_id_2'].'
                  and not exists (select * from group_user where group_id = g.group_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }else{
                 $suggested_classes = ClassModel::model()->findAllBySql(
                     'select c.* from class c, school s
                 where s.university_id='.$university->university_id.'
-                and c.school_id=s.school_id and not exists
+                and c.school_id=s.school_id
+                and (c.department_id in (select department_id from department where department_name = "'
+                    .$department->department_name.'") or c.school_id = '.$user->school_id.')
+                 and not exists
                 (select * from class_user where class_id = c.class_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and user_id='.$user->user_id.') order by rand() limit 1');
                 $suggested_clubs = Group::model()->findAllBySql(
                     'select g.* from `group` g, school s
                 where s.university_id='.$university->university_id.' and
                 g.school_id=s.school_id and not exists
                 (select * from group_user where group_id = g.group_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }
 
 
@@ -538,52 +547,59 @@ class UserController extends Controller
                     'select c.* from class c
                 where c.school_id='.$school->school_id.' and c.class_id !='.$_GET['previous_class_id_1'].'
                 and c.class_id !='.$_GET['previous_class_id_2'].'
+                and c.department_id = '.$user->department_id.'
                 and not exists (select * from class_user where class_id = c.class_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
                 $suggested_clubs = Group::model()->findAllBySql(
                     'select g.* from `group` g
                 where g.school_id='.$school->school_id.' and g.group_id !='.$_GET['previous_club_id'].'
                 and not exists (select * from group_user where group_id = g.group_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }else{
                 $suggested_classes = ClassModel::model()->findAllBySql(
                     'select c.* from class c
                 where c.school_id='.$school->school_id.'
+                and c.department_id = '.$user->department_id.'
                 and not exists (select * from class_user where class_id = c.class_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
                 $suggested_clubs = Group::model()->findAllBySql(
                     'select g.* from `group` g
                 where g.school_id='.$school->school_id.' and not exists
                 (select * from group_user where group_id = g.group_id
-                    and user_id='.$user->user_id.') ORDER BY rand() limit 1');
+                    and user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }
         }else{
             $this->renderJSON(array('success'=>false,'message'=>'invalid suggestion_type'));
         }
 
-        $result = array('classes'=>array());
-        foreach($suggested_classes as $i=>$class){
-            $result['classes'][$i]['picture'] = ($class->pictureFile) ?
-                Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
-            $result['classes'][$i]['is_group'] = true;
-            $result['classes'][$i]['has_members'] = sizeof($class->users) >0;
-            $result['classes'][$i]['member_count'] = sizeof($class->users);
-            $result['classes'][$i]['type'] = "group_suggestion";
-            $result['classes'][$i]['id'] = $class->class_id;
-            if($class->course){
-                $result['classes'][$i]['title'] = $class->course->course_name;
-            }
+        $result = array('clubs'=>array());
 
+        //grab a random row from suggested_classes
+        $class_count = sizeof($suggested_classes);
+        $class = $suggested_classes[rand(0,$class_count-1)];
+
+        $result['class']['picture'] = ($class->pictureFile) ?
+            Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+        $result['class']['is_group'] = true;
+        $result['class']['has_members'] = sizeof($class->users) >0;
+        $result['class']['member_count'] = sizeof($class->users);
+        $result['class']['type'] = "group_suggestion";
+        $result['class']['id'] = $class->class_id;
+        $result['class']['link'] = ' href='.Yii::app()->getBaseUrl(true)."/class/".$class->class_id;
+        if($class->course){
+            $result['class']['title'] = $class->course->course_name;
         }
-        foreach($suggested_clubs as $club){
-            $result['club']['picture'] = ($club->pictureFile) ?
+
+        foreach($suggested_clubs as $i=>$club){
+            $result['clubs'][$i]['picture'] = ($club->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
-            $result['club']['is_group'] = true;
-            $result['club']['type'] = "group_suggestion";
-            $result['club']['has_members'] = sizeof($club->users) >0;
-            $result['club']['member_count'] = sizeof($club->users);
-            $result['club']['id'] = $club->group_id;
-            $result['club']['title'] = $club->group_name;
+            $result['clubs'][$i]['is_group'] = true;
+            $result['clubs'][$i]['type'] = "group_suggestion";
+            $result['clubs'][$i]['has_members'] = sizeof($club->users) >0;
+            $result['clubs'][$i]['member_count'] = sizeof($club->users);
+            $result['clubs'][$i]['id'] = $club->group_id;
+            $result['clubs'][$i]['title'] = $club->group_name;
+            $result['clubs'][$i]['link'] = ' href='.Yii::app()->getBaseUrl(true)."/club/".$club->group_id.'';
         }
         $this->renderJSON($result);
     }
@@ -601,6 +617,7 @@ class UserController extends Controller
                 where s.university_id=' . $university->university_id . ' and u.school_id=s.school_id
                 and u.user_id !=' . $_GET['previous_user_id_1'] . '
                 and u.user_id !=' . $_GET['previous_user_id_2'] . '
+                and u.user_id !=' . $user->user_id . '
                 and not exists
                 (select * from user_connection where to_user_id = u.user_id
                     and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
@@ -608,6 +625,7 @@ class UserController extends Controller
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u, school s
                 where s.university_id=' . $university->university_id . ' and u.school_id=s.school_id
+                and u.user_id !=' . $user->user_id . '
                 and not exists
                 (select * from user_connection where to_user_id = u.user_id
                     and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
@@ -618,13 +636,15 @@ class UserController extends Controller
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u
                 where u.school_id=' . $school->school_id . ' and u.user_id !=' . $_GET['previous_user_id_1'] . '
-                and u.user_id !=' . $_GET['previous_user_id_2'] . ' and not exists
+                and u.user_id !=' . $_GET['previous_user_id_2'] . '
+                 and u.user_id !=' . $user->user_id . ' and not exists
                 (select * from user_connection where to_user_id = u.user_id
                     and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }else{
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u
-                where c.school_id=' . $school->school_id . ' and not exists
+                where u.school_id=' . $school->school_id . '
+                 and u.user_id !=' . $user->user_id . ' and not exists
                 (select * from user_connection where to_user_id = u.user_id
                     and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }
@@ -639,7 +659,9 @@ class UserController extends Controller
             $result[$i]['is_group'] = false;
             $result[$i]['type'] = "user_suggestion";
             $result[$i]['id'] = $suser->user_id;
-            $result[$i]['title'] = $suser->firstname." ".$suser->lastname;
+            $result[$i]['title'] = $suser->user_type=="p" ? "Professor ".$suser->lastname : $suser->firstname.' '.$suser->lastname;
+            $result[$i]['profile_link']=" profile_link";
+            $result[$i]['profile_user_id'] = " user_id=".$suser->user_id;
         }
         $this->renderJSON($result);
     }
