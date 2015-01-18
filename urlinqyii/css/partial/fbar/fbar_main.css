@@ -1532,4 +1532,6 @@ div.photo_flier_upload_box {
     background-image: url(http://localhost/alpha/urlinqyii/assets/small_icons.png);
 }
 
-
+input.error {
+    background-color: red;
+}

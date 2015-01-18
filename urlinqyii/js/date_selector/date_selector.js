@@ -76,6 +76,8 @@ $(document).ready(function(){
 
         var $this_cal = jQuery(this).closest("#calLayer");
 
+        $this_cal.hide();
+
         if (!jQuery(this).hasClass("disable")) {
             if (blinkflag == 0) {
                 var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
