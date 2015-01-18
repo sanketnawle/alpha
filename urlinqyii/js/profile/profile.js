@@ -759,6 +759,8 @@ $(document).ready(function() {
             {
                 if(data.status == "success"){
                     $('#profile_picture').css('background-image','url('+data.file_url+')');
+                    $('.post_user_icon[data-user_id='+user_id+']').css('background-image','url('+data.file_url+')');
+                    $('img.MyBox_Picture').attr('src',data.file_url);
                 }else{
                     alert(data.message);
                 }
