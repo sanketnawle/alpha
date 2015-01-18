@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(document).on('click', '.profile_link', function(){
-        open_profile(base_url, $(this).attr('user_id'),$(this).hasClass('edit_profile'));
+        open_profile(base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
     });
 
     $(document).on('click', '.close_modal', function(){
@@ -17,13 +17,14 @@ $(document).ready(function() {
             $("body").addClass("profile_stop_scroll");
             $("body#body_home").addClass("profile_stop_scroll");
 
-            if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
+            /*if($('#profile_wrapper').attr('data-user_id')==json_profile_data.user_id){
 
 
                 if(edit_mode==true){
                     $('#edit_profile_button.not_editing').click();
                 }
-            }else if($('#profile_wrapper').length){
+            }else */
+            if($('#profile_wrapper').length){
                 $('#profile_wrapper').remove();
                 $('#profile_background_overlay').remove();
 
@@ -780,19 +781,28 @@ $(document).ready(function() {
         $.ajax({
             url: base_url+'/profile/followUser',
             type: 'POST',
-            data: {user_to_follow:$('#profile_wrapper').attr('user_id'),user:user_id,follow:follow},
+            data: {user_to_follow:$('#profile_wrapper').attr('data-user_id'),user:user_id,follow:follow},
             dataType: 'json',
             success: function(data)
             {
                 if(data.status == "success"){
+                    var follower_count = parseInt($('#num_followers').text());
                     if(follow){
-
+                        $.ajax({ url: base_url + '/protected/views/profile/user_box.html',
+                            dataType:'html',
+                            success: function(html){
+                                var template = Handlebars.compile(html);
+                                $('#followers_list').append(template(data));
+                                $('#num_followers').text(follower_count+1);
+                            }
+                        });
                         $('#follow_button').addClass('following');
                         $('#follow_button').text('Following');
                     }else{
-
+                        $('#followers_list').find('.members_card_wrapper[data-user_id='+data.user_id+']').remove();
                         $('#follow_button').removeClass('following');
                         $('#follow_button').text('Follow');
+                        $('#num_followers').text(follower_count-1);
                     }
 
                 }else{
@@ -892,8 +902,8 @@ $(document).ready(function() {
     $(document).on('click', '.user_follow_button', function () {
 
         var $user_follow_button = $(this);
-
-        var user_id = $user_follow_button.closest('.members_card_wrapper').attr('data-user_id');
+        var $user_box =  $user_follow_button.closest('.members_card_wrapper');
+        var user_id = $user_box.attr('data-user_id');
 
 
         var $follow_button_wrapper = $user_follow_button.parent('.follow_button_wrapper');
@@ -919,14 +929,40 @@ $(document).ready(function() {
             post_data,
             function (response) {
                 if (response['success']) {
-
+                    var own_profile = $('#profile_wrapper').attr('data-user_id');
+                    var $other_follow_button;
+                    var following_count;
+                    if($follow_button_wrapper.closest('.user_wrapper').attr('id')=="followers_list"){
+                        $other_follow_button = $('#following_list').find('.members_card_wrapper[data-user_id='+user_id+']').find('.user_follow_button');
+                    }else if($follow_button_wrapper.closest('.user_wrapper').attr('id')=="following_list"){
+                        $other_follow_button = $('#followers_list').find('.members_card_wrapper[data-user_id='+user_id+']').find('.user_follow_button');
+                    }
                     if (verb == 'unfollow') {
                         $follow_button_wrapper.removeClass('unfollow');
                         $user_follow_button.removeClass('following');
                         $user_follow_button.text('Follow');
+                        if($other_follow_button){
+                            $other_follow_button.removeClass('following');
+                            $other_follow_button.text('Follow');
+                        }
+                        if(own_profile){
+                            $('#following_list').find('.members_card_wrapper[data-user_id='+user_id+']').remove();
+                            following_count = parseInt($('#num_following').text());
+                            $('#num_following').text(following_count-1);
+                        }
                     } else {
                         $user_follow_button.addClass('following');
                         $user_follow_button.text('Following');
+                        if($other_follow_button){
+                            $other_follow_button.addClass('following');
+                            $other_follow_button.text('Following');
+                        }
+                        if(own_profile){
+                            $user_box.clone().appendTo('#following_list');
+                            //increment count
+                            following_count = parseInt($('#num_following').text());
+                            $('#num_following').text(following_count+1);
+                        }
                     }
 
                 } else {

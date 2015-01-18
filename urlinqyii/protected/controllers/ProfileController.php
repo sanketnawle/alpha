@@ -734,14 +734,31 @@ class ProfileController extends Controller
                 $userFollow->to_user_id = $_POST['user_to_follow'];
                 $userFollow->timestamp = new CDbExpression('NOW()');
                 if($userFollow->save()){
-                    $this->renderJSON(array('status'=>'success'));
+                    $user = $this->get_current_user();
+                    $result['status']="success";
+                    $result['user_name']=$user->firstname." ".$user->lastname;
+                    $result['user_id']=$user->user_id;
+                    $result['professor']=$user->user_type == "p";
+                    $result['admin']=$user->user_type == "a";
+                    if($user->studentAttributes){
+                        $result['year']=$user->studentAttributes->year_name;
+                    }
+                    if($user->school)
+                        $result['user_school']=$user->school->school_name;
+                    if($user->department)
+                        $result['user_department']=$user->department->department_name;
+                    $result['profile_pic'] = ($user->pictureFile) ?
+                        Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
+                    $result['own_profile'] = true;
+                    $this->renderJSON($result);
                 }
                 else{
+
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
                 }
             }else if($userFollow && !$_POST['follow']){
                 if($userFollow->delete()){
-                    $this->renderJSON(array('status'=>'success'));
+                    $this->renderJSON(array('status'=>'success','user_id'=>$_POST['user']));
                 }
                 else{
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
@@ -945,6 +962,7 @@ class ProfileController extends Controller
             $data['following'][$i]['profile_pic'] = ($fuser->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
+            $data['following'][$i]['own_profile'] = $fuser->user_id == $this->get_current_user()->user_id;
         }
         $data['followers']=array();
         foreach($user->usersFollowing as $i=>$fuser){
@@ -959,6 +977,7 @@ class ProfileController extends Controller
             $data['followers'][$i]['profile_pic'] = ($fuser->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['followers'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
+            $data['followers'][$i]['own_profile'] = $fuser->user_id == $this->get_current_user()->user_id;
         }
         $data['showcase_size']= sizeof($user->showcase);
         $data['showcase']=array();

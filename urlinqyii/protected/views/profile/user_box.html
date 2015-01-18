@@ -1,0 +1,37 @@
+<div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
+    <div class = "members_card admin normal_size">
+        <div class = "members_card_img profile_link" data-user_id='{{user_id}}' style="background-image: url('{{profile_pic}}');">
+
+            {{#if professor}}
+            <span class = "title">Professor</span>
+            {{else}}
+            <span class = "title">Student</span>
+            <span class = "class_year">{{year}}</span>
+            {{/if}}
+
+
+        </div>
+        <div class = "user_main_info">
+            <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
+        </div>
+        <div class = "user_more_info">
+            <a class = "department_link">{{user_department}}</a>
+        </div>
+        {{#if own_profile}}
+        {{else}}
+        <div class = "user_card_button_holder">
+            <div class = "follow_button_wrapper following_wrapper">
+                {{#if is_following}}
+                <div class = "user_follow_button following">Following</div>
+                {{else}}
+                <div class = "user_follow_button">Follow</div>
+                {{/if}}
+                <div class = "user_message_button message_active">
+                    <em class = "white_message_icon">
+                    </em>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>
