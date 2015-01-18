@@ -1001,12 +1001,13 @@ ul.tabnav_tabs li{
     top:-28px;
 }
 .tab_members .tab_content_holder .tab_header, .tab_group_info .tab_content_holder .tab_header{
-    border-bottom: 1px solid #d4d4d4;
+    border-bottom: 1px solid #e2e2e2;
     padding: 15px 2px 5px;
     height: 35px;
 }
 .tab_members .tab_content_holder .tab_header{
     padding-top:17px!important;
+    padding-bottom: 6px;
 }
 
 .tab_group_info .tab_content_holder .tab_header{
@@ -1686,14 +1687,16 @@ background-image: none,url(../../assets/wire_icons.svg);
 background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
-height: 20px;
-width: 30px;
+
+    height: 11px;
+
+    width: 20px;
 position: absolute;
 top: -10px;
 display: block;
 
-    left: 15px;
-    background-position: 8px -141px;
+    left: 26px;
+    background-position: -2px -141px;
 content: " ";
 }
 
