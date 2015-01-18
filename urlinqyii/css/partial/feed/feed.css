@@ -3018,10 +3018,11 @@ position: relative;
 
 color: #FFF; 
 position: absolute; 
+display: none!important;
 margin-left: 25px;
 font-size: 11px; 
 top: 50%;
-background-color: rgba(153, 153, 153, 0.78); border-radius: 2px;
+/* background-color: rgba(153, 153, 153, 0.78); */ border-radius: 2px;
 font-family: Avenir;
 margin-top: -7px;
 }
@@ -3058,7 +3059,7 @@ top: 4px;
 padding: 5px;
 /* background-color: #F7F7F7; */
 padding: 2px;
-padding-left: 52px;
+padding-left: 36px;
 width: 85%;
 /* border: solid 1px #D5D5D5; */
 font-family: arial;
