@@ -1433,26 +1433,28 @@ $(document).ready(function() {
     function init(){
 
 
-        if(origin_type == '')
-        //get the current datetime object
-        var datetime = new Date();
-        //sql formatted timestring
-        var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+        if(globals.origin_type == 'club' || globals.origin_type == 'department'){
+//            //get the current datetime object
+//            var datetime = new Date();
+//            //sql formatted timestring
+//            var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+//
+//            //Set the default time for the time_inputs
+//            var $start_time_input = $('#create_event_start_time_input');
+//            $start_time_input.attr('data-time',start_time_string);
+//            $start_time_input.val(time_string_to_am_pm_string(start_time_string));
+//
+//
+//
+//            var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+//
+//            //Set the default time for the time_inputs
+//            var $end_time_input = $('#create_event_end_time_input');
+//
+//            $end_time_input.attr('data-time',end_time_string);
+//            $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+        }
 
-        //Set the default time for the time_inputs
-        var $start_time_input = $('#create_event_start_time_input');
-        $start_time_input.attr('data-time',start_time_string);
-        $start_time_input.val(time_string_to_am_pm_string(start_time_string));
-
-
-
-        var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
-
-        //Set the default time for the time_inputs
-        var $end_time_input = $('#create_event_end_time_input');
-
-        $end_time_input.attr('data-time',end_time_string);
-        $end_time_input.val(time_string_to_am_pm_string(end_time_string));
 
 
 
