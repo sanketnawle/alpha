@@ -11,6 +11,7 @@ $(document).ready(function() {
         //Change active tab
         $('.suggestion_type.active').removeClass('active');
         $suggestion_type.addClass('active');
+        init();
     });
     function get_group_suggestions_data(base_url, suggest_type,$element_to_replace,group_type){
         var request_url = base_url+"/user/groupSuggestions";
@@ -33,9 +34,18 @@ $(document).ready(function() {
         $.getJSON(request_url,request_data,function(group_data){
             if($element_to_replace){
                 if(group_type == "class"){
-                    $element_to_replace.replaceWith(template(group_data.classes[0]));
-                }else{
-                    $element_to_replace.replaceWith(template(group_data.club));
+                    if(group_data.classes.length==0){
+                        $element_to_replace.remove();
+                    }else{
+                        $element_to_replace.replaceWith(template(group_data.classes[0]));
+                    }
+
+                }else if(group_type == "club"){
+                    if(group_data.club){
+                        $element_to_replace.replaceWith(template(group_data.club));
+                    }else{
+                        $element_to_replace.remove();
+                    }
                 }
 
             }else {
@@ -43,7 +53,10 @@ $(document).ready(function() {
                 $.each(group_data.classes, function (index, class_data) {
                     $suggestion_container.append(template(class_data));
                 });
-                $suggestion_container.append(template(group_data.club));
+                if(group_data.club){
+                    $suggestion_container.append(template(group_data.club));
+                }
+
             }
         });
     }
@@ -65,7 +78,12 @@ $(document).ready(function() {
         var $suggestion_container = $("#who_to_follow > .suggestion_unit_container");
         $.getJSON(request_url,request_data,function(user_data){
             if($element_to_replace){
-                $element_to_replace.replaceWith(template(user_data[0]));
+                if(user_data.length==0){
+                    $element_to_replace.remove();
+                }else{
+                    $element_to_replace.replaceWith(template(user_data[0]));
+                }
+
             }else{
                 $suggestion_container.empty();
                 $.each(user_data,function(index,single_user_data){

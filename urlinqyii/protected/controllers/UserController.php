@@ -617,8 +617,8 @@ class UserController extends Controller
             if(isset($_GET['previous_user_id_1']) && isset($_GET['previous_user_id_2'])) {
                 $suggested_users = User::model()->findAllBySql(
                     'select u.* from user u
-                where c.school_id=' . $school->school_id . ' and c.class_id !=' . $_GET['previous_class_id_1'] . '
-                and c.class_id !=' . $_GET['previous_user_id_2'] . ' and not exists
+                where u.school_id=' . $school->school_id . ' and u.user_id !=' . $_GET['previous_user_id_1'] . '
+                and u.user_id !=' . $_GET['previous_user_id_2'] . ' and not exists
                 (select * from user_connection where to_user_id = u.user_id
                     and from_user_id='.$user->user_id.') ORDER BY rand() limit 2');
             }else{
