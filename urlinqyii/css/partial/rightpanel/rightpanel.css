@@ -227,7 +227,7 @@ div.suggestion_unit_container div.suggestion_block{
 
 }
 
-div.suggestion_block a.suggestion_pic_wrapper{ margin-right: 8px; display: block; };
+div.suggestion_block a.suggestion_pic_wrapper{ margin-right: 6px; display: block; };
 
 }
 
@@ -277,9 +277,15 @@ div.suggestion_block_right div.suggestion_title > a > div > span{
     font-weight: 500;
     
     color: #333;
-    font-size: 13.5px;   
+    font-size: 12.5px;   
     -moz-osx-font-smoothing: grayscale;
      -webkit-font-smoothing: antialiased;
+    text-overflow: ellipsis; white-space: nowrap; 
+    display: block;
+    overflow: hidden;
+    width: 131px;
+    margin-top: 1px;
+    height:15.5px;
 }
 
 div.member_count{

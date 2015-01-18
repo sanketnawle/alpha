@@ -1434,31 +1434,131 @@ $(document).ready(function() {
 
 
         if(globals.origin_type == 'club' || globals.origin_type == 'department'){
-//            //get the current datetime object
-//            var datetime = new Date();
-//            //sql formatted timestring
-//            var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
-//
-//            //Set the default time for the time_inputs
-//            var $start_time_input = $('#create_event_start_time_input');
-//            $start_time_input.attr('data-time',start_time_string);
-//            $start_time_input.val(time_string_to_am_pm_string(start_time_string));
-//
-//
-//
-//            var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
-//
-//            //Set the default time for the time_inputs
-//            var $end_time_input = $('#create_event_end_time_input');
-//
-//            $end_time_input.attr('data-time',end_time_string);
-//            $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+            //get the current datetime object
+            var datetime = new Date();
+
+
+            var $start_date_input = $('#event_start_date');
+            $start_date_input.attr('data-date', date_to_string(datetime));
+            $start_date_input.val(date_to_day_of_week_string(datetime));
+
+
+
+            var $end_date_input = $('#event_end_date');
+            $end_date_input.attr('data-date', date_to_string(datetime));
+            $end_date_input.val(date_to_day_of_week_string(datetime));
+
+
+            //sql formatted timestring
+            var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+
+            //Set the default time for the time_inputs
+            var $start_time_input = $('#start_time');
+            $start_time_input.attr('data-time',start_time_string);
+            $start_time_input.val(time_string_to_am_pm_string(start_time_string));
+
+
+
+            var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+
+            //Set the default time for the time_inputs
+            var $end_time_input = $('#event_end_time');
+
+            $end_time_input.attr('data-time',end_time_string);
+            $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+
+
+            function verify_date_inputs(){
+                var $event_start_date = $('#event_start_date');
+                var $event_start_time = $('#start_time');
+                var $event_end_date = $('#event_end_date');
+                var $event_end_time = $('#event_end_time');
+
+
+                var event_start_date = $event_start_date.attr('data-date');
+                var event_start_time = $event_start_time.attr('data-time');
+
+                var event_end_date = $event_end_date.attr('data-date');
+                var event_end_time = $event_end_time.attr('data-time');
+
+
+                //Make sure the start date is less than the end date
+                var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
+                var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+
+
+                console.log('- start date time object -');
+                console.log(start_datetime_object);
+
+
+                console.log('- end date time object -');
+                console.log(end_datetime_object);
+
+
+                if(end_datetime_object < start_datetime_object){
+                    //alert('end time must be after start time');
+
+
+                    //Create just date objects
+                    //so we can compare the date only
+                    var start_date = new Date(date_to_string(start_datetime_object) + ' 00:00:00');
+                    var end_date = new Date(date_to_string(end_datetime_object) + ' 00:00:00');
+                    //Set the end time input as an error
+                    if(start_date > end_date){
+                        $event_end_date.addClass('error');
+                        $event_end_time.removeClass('error');
+                    }else {
+                        $event_end_time.addClass('error');
+                        $event_end_date.removeClass('error');
+                    }
+
+
+                }else{
+                    $event_end_date.removeClass('error');
+                    $event_end_time.removeClass('error');
+                }
+            }
+
+
+
+            jQuery(document).on('focusout', '.date_input', function(){
+                verify_date_inputs();
+            });
+
+
+            jQuery(document).on('click', '.calcell', function(e){
+                console.log('create event js');
+                verify_date_inputs();
+                console.log("IS THIS EVEN FIRING???");
+
+
+
+                e.stopPropagation();
+            });
+
+            jQuery(document).on('click', '.dates', function(){
+                verify_date_inputs();
+            });
+
+
+            jQuery(document).on('click', '.time_selector_div', function(){
+                verify_date_inputs();
+            });
+
+            jQuery(document).on('click', '.text_input', function(){
+                console.log('VERIFYING DATE INPUTS');
+                verify_date_inputs();
+            });
+
         }
 
 
 
 
     }
+
+
+
 
 
 

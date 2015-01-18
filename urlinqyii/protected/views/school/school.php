@@ -67,7 +67,7 @@
         </div>
         <div class = "group_right_info group_info_boxes">
                 <?php if($school->school_location) { ?>
-                <div class = "group_info_block" id = "location">
+                <div class = "group_info_block school_location" id = "location">
                     <em class ="small_icon_map"></em>
                     <span><?php echo $school->school_location; ?></span>
                 </div>
