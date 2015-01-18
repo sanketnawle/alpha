@@ -31,35 +31,7 @@
 
 					<!--GROUP SUGGESTION -->
 					<div class = "suggestion_unit_container">
-						<div class = "suggestion_block group_suggestion">
-							<a class = "suggestion_pic_wrapper float_Left">
-								<div class = "suggestion_pic">
-								</div>
-							</a>
-							<div class = "suggestion_block_right">
-								<div class = "suggestion_title">
-									<a>
-										<div>
-											<span>Suggestion Title</span>
-										</div>
-									</a>
-								</div>
-								<!--only show member count if there is a member count -->
-								
-								<div class = "suggestion_btn_wrapper">
-									<a role = "button" id = "group_join_button">
-										<span src = "" class = "gray_add_icon"></span>Join
-									</a>
-								</div>
-								<div class = "member_count">
-									<!--<span class = "member_art"></span>-->
-									<span class = "count">25 members</span>
-								</div>
 
-								
-
-							</div>
-						</div>
 					</div>
 
 				</div> 
@@ -71,34 +43,15 @@
 						<h5>Who to Follow</h5><span class = "middot">&#xb7;</span><a id="users_refresh" class = "refresh">Refresh</a>
 					</div>
 					<div class = "suggestion_unit_container">
-						<div class = "suggestion_block user_suggestion">
-							<a class = "suggestion_pic_wrapper float_Left">
-								<div class = "suggestion_pic">
-								</div>
-							</a>
-							<div class = "suggestion_block_right">
-								<div class = "suggestion_title">
-									<a>
-										<div>
-											<span>User to Follow</span>
-										</div>
-									</a>
-								</div>
-								<div class = "suggestion_btn_wrapper">
-									<a role = "button" id = "suggested_user_follow_button">
-										<span class = "follow_icon"></span>Follow
-									</a>
-								</div>
-							</div>
-						</div>
+
 					</div>
 				</div> 
 				<div id = "right_panel_bottom_section">
 					<h6>Suggestions From:</h6>
-					<div class = "suggestion_type university active" data-suggestion_type = "university_wide_suggestions">
+					<div class = "suggestion_type university" data-suggestion_type = "university_wide_suggestions">
 						<span class = "suggestions_type_icon"></span><span class = "suggestions_type_text">Your University</span>
 					</div>
-					<div class = "suggestion_type school" data-suggestion_type = "user_school_specific_suggestions">
+					<div class = "suggestion_type school active" data-suggestion_type = "user_school_specific_suggestions">
 						<span class = "suggestions_type_icon"></span><span class = "suggestions_type_text">Your School</span>
 					</div>
 				</div>
@@ -108,13 +61,13 @@
 </html>
 <script id="suggestion_template" type="text/x-handlebars-template">
     <div class = "suggestion_block {{type}}" data-suggestion_id={{id}}>
-        <a class = "suggestion_pic_wrapper float_Left">
+        <a {{link}} class = "suggestion_pic_wrapper float_Left{{profile_link}}" {{profile_user_id}}>
             <div class = "suggestion_pic" style="background-image: url({{picture}});">
             </div>
         </a>
         <div class = "suggestion_block_right">
-            <div class = "suggestion_title">
-                <a>
+            <div class = "suggestion_title{{profile_link}}" {{profile_user_id}}>
+                <a {{link}}>
                     <div>
                         <span>{{title}}</span>
                     </div>
