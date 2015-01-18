@@ -253,8 +253,8 @@ Set the class name on your input to 'time_input' -->
     <div class='time_selector_div' data-time='21:00:00' value="21:00:00">9:00pm</div>
     <div class='time_selector_div' data-time='21:30:00' value="21:30:00">9:30pm</div>
 
-    <div class='time_selector_div' data-time='22:00:00' value="22:00:00">20:00pm</div>
-    <div class='time_selector_div' data-time='22:30:00' value="22:30:00">20:30pm</div>
+    <div class='time_selector_div' data-time='22:00:00' value="22:00:00">10:00pm</div>
+    <div class='time_selector_div' data-time='22:30:00' value="22:30:00">10:30pm</div>
 
     <div class='time_selector_div' data-time='23:00:00' value="23:00:00">11:00pm</div>
     <div class='time_selector_div' data-time='23:30:00' value="23:30:00">11:30pm</div>

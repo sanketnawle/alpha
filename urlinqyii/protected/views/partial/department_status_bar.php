@@ -6,7 +6,10 @@
 
 </script>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
+<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css">
+
+<script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
+
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/location_input/location_input.js"></script>
 <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
@@ -17,6 +20,14 @@
 
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
+
+
+    <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
+    <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
+        <input type='file' class='step_6_upload' style='display:none;'>
+
+    </form>
+
     <!--<div class = "dark_overlay" id = "dark_overlay_fbar"></div>-->
     <div id = "fbar_new">
 
@@ -186,5 +197,17 @@
     </div>
 </div> 
 
+
+<script id='post_file_template' type="text/x-handlebars-template">
+
+        <div class='{{file_type}} post_attachment_review fbar_file' data-name='{{name}}' style='float: none' data-file_name='{{name}}' data-last_modified='{{lastModified}}'>{{name}}</div>
+
+</script>
+
+
+
+
+
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
 
 

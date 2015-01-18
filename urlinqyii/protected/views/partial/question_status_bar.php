@@ -10,12 +10,19 @@
 
 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
-<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css"> 
+<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css">
+
+
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/render_post.js"> </script>
+
 <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/status_bar/fbar.js"></script>
 <!--BELOW ARE SCRIPTS AND LINKS FOR DROPDOWN MENU API -->
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropit.js'></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/dropit.css" type="text/css" />
 <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/jquery.autosize.js'></script>
+
+
+
 
 
 <div id = "fbar_holder" class = "fbar_homepage" data-post_type = "">
@@ -24,7 +31,7 @@
 
     <!--  This is the hidden form that is submitting when there are files. Should be in every status bar page  -->
     <form action="/post/create" class="dropzone fbar_file_form dz-clickable files_upload_bigbox" id="fbar_file_form" style="display: none;">
-        <input type='file' class='step_6_upload' style='display:none;'>
+        <input type='file' class='post_file_upload_input' style='display:none;'>
 
     </form>
 
@@ -177,13 +184,15 @@
 					<footer id = "fbar_footer" class = "fbar_contents_fix">
 						<!--<div id = "post_anonymously"><input type='checkbox' value='0' class='post_anon_val'><span class = 'comment_anon_text'>Post Anonymously</span></div>-->
 						<div id = "post_privacy" class = "help_div_shower">
+
+
 							<ul class = "menu privacy_menu">
 								<li class = "no_relative">
 									<a class = "privacy_dropdown_link"></a>
-									<ul class = "privacy_dropdown" data-privacy="all">
-                                        <li class = "privacy_list active" data-privacy='all' style = "position:relative; border-bottom: 1px solid #fff;"><a>All</a><span></span></li>
-										<li class = "privacy_list" data-privacy='students' style = "position:relative; border-bottom: 1px solid #fff;"><a>Students</a><span></span></li>
-										<li class = "privacy_list" data-privacy='admins' style = "position:relative;"><a>Admins</a><span></span></li>
+									<ul class = "privacy_dropdown" data-privacy="">
+                                        <li class = "privacy_list active" data-privacy='' style = "position:relative; border-bottom: 1px solid #fff;"><a>All</a><span></span></li>
+										<li class = "privacy_list" data-privacy='s' style = "position:relative; border-bottom: 1px solid #fff;"><a>Students</a><span></span></li>
+										<li class = "privacy_list" data-privacy='a' style = "position:relative;"><a>Admins</a><span></span></li>
 										<div class="help-wedge">
                                 		</div>
 									</ul>
@@ -193,6 +202,8 @@
 		                        </li>
 
 	                        </ul>
+
+
 	                        <div id = "privacy_tooltip" class="help-div fbar_helpers">
                                 <div class="help-box">Edit privacy</div>
                                 <div class="help-wedge">

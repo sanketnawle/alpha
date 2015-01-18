@@ -479,39 +479,7 @@ $(document).ready(function() {
     }
 
 
-    function render_post(single_post){
-        //Event Posts
-        //Announcements
-        //Oppurtunities
 
-        if(findUrlInPost(single_post['text'])) {
-            single_post.embed_link = findUrlInPost(single_post['text']);
-
-        }
-        if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
-            var source   = $("#post_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-        else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
-            console.log('note');
-            var source   = $("#post_note_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-        else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
-            console.log("question");
-            var source   = $("#post_question_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-
-        }
-        else {
-            var source   = $("#post_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-    }
 
     function findUrlInPost( text ) {
         var source = (text || '').toString();
@@ -831,6 +799,8 @@ $(document).ready(function() {
 
 
     function close_fbar(){
+
+
         var $button_section = $('#fbar_buttons');
         var $form_section = $('form#fbar_form');
 
@@ -864,7 +834,7 @@ $(document).ready(function() {
     }
 
     $(document).delegate('#fbar_footer > #cancel_btn', "click", function () {
-        close_fbar();
+        reset_fbar();
     });
 
     $('textarea').autosize();
@@ -893,7 +863,7 @@ $(document).ready(function() {
         parallelUploads: 4,
         maxFilesize: 16,
         maxFiles: 10,
-        acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+        acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.doc,.docx,.ppt,.pptx,.zip,.xls,.xlsx,.pdf",
         maxfilesexceeded: function(file) {
             this.removeAllFiles();
             this.addFile(file);
@@ -1106,6 +1076,14 @@ $(document).ready(function() {
             $(this).remove();
         });
 
+        //Reset the privacy settings
+        //Remove the other active privacy option
+        $fbar_holder.find('.privacy_list.active').removeClass('active');
+
+
+        var $privacy_dropdown = $fbar_holder.find('.privacy_dropdown');
+        $privacy_dropdown.attr('data-privacy','');
+        $privacy_dropdown.children().first().addClass('active');
 
 
 
@@ -1162,8 +1140,15 @@ $(document).ready(function() {
         post_data['privacy'] = '';
 
 
+        var privacy_setting = $fbar_holder.find('.privacy_dropdown').attr('data-privacy');
 
-        post_data = $fbar_holder.find('.privacy_dropdown').attr('privacy');
+        if(privacy_setting && privacy_setting != ''){
+             //If privacy setting isnt empty, set it to the selected setting
+            //Otherwise, put an empty string
+            post_data['privacy'] = privacy_setting;
+        }
+
+
 
         post_data['anon'] = 0;
 
@@ -1209,6 +1194,41 @@ $(document).ready(function() {
             post_data['text'] = $fbar_holder.find('.file_textarea').find('.post_text_area').val();
         }
 
+
+
+
+        if(post_type == 'event'){
+            //Get the event data from fbar
+
+            var event_title = $('#event_title').val();
+            var start_date = $('#event_start_date').attr('data-date');
+            var start_time = $('#start_time').attr('data-time');
+            var end_date = $('#event_end_date').attr('data-date');
+            var end_time = $('#event_end_time').attr('data-time');
+            var location = $('#event_location').val();
+
+            var description = $('.event_textarea').find('.post_text_area').val();
+
+
+
+
+
+            post_data['event'] = {};
+            post_data['event']['title'] = event_title;
+            post_data['event']['start_date'] = (start_date) ? start_date : '';
+            post_data['event']['start_time'] = (start_time) ? start_time : '';
+            post_data['event']['end_date'] = (end_date) ? end_date : '';
+            post_data['event']['end_time'] = (end_time) ? end_time : '';
+            post_data['event']['description'] = description;
+            post_data['event']['location'] = location;
+            post_data['event']['origin_type'] = globals.origin_type;
+            post_data['event']['origin_id'] = globals.origin_id;
+
+
+        }
+
+
+        alert(JSON.stringify(post_data));
 
 
         return post_data;
@@ -1277,6 +1297,51 @@ $(document).ready(function() {
         }
 
 
+        if(post_type == 'event'){
+            if(post_data['event']['title'] == ''){
+                alert('Please input a title');
+                return;
+            }
+
+            if(post_data['event']['start_date'] == ''){
+                alert('Please input a start date');
+                return;
+            }
+
+            if(post_data['event']['start_time'] == ''){
+                alert('Please input a start time');
+                return;
+            }
+
+            if(post_data['event']['end_date'] == ''){
+                alert('Please input an end date');
+                return;
+            }
+
+            if(post_data['event']['end_time'] == ''){
+                alert('Please input an end time');
+                return;
+            }
+
+
+
+            var start_datetime = new Date(post_data['event']['start_date'] + ' ' + post_data['event']['start_time']);
+            var end_datetime = new Date(post_data['event']['end_date'] + ' ' + post_data['event']['end_time']);
+
+
+            if(end_datetime < start_datetime){
+                if(post_data['event']['start_date'] == post_data['event']['end']){
+                    alert('Invalid end time');
+                    return;
+                }else{
+                    alert('Invalid end date');
+                    return;
+                }
+            }
+
+        }
+
+
 
 
         console.log('SENDING FILES');
@@ -1328,20 +1393,70 @@ $(document).ready(function() {
     });
 
 
-    $('.upload_button').click(function(){
 
-        $('.dropzone').click();
+
+    // .off('click', '#selector_id').
+    $(document).on('click', '.upload_button', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        $('.fbar_file_form.dropzone').click();
     });
 
-    $('#post_attachments').click(function(){
 
-        $('.dropzone').click();
+    $(document).on('click', '#post_photos', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        $('.fbar_file_form.dropzone').click();
+    });
+
+
+
+//    $('.upload_button').click(function(e){
+//        e.stopPropagation();
+//
+//        $('.dropzone').click();
+//    });
+
+    $('#post_attachments').click(function(e){
+        e.stopPropagation();
+        $('.fbar_file_form.dropzone').click();
     });
 
 
 
 
 
+    init();
+
+    function init(){
+
+
+        if(origin_type == '')
+        //get the current datetime object
+        var datetime = new Date();
+        //sql formatted timestring
+        var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
+
+        //Set the default time for the time_inputs
+        var $start_time_input = $('#create_event_start_time_input');
+        $start_time_input.attr('data-time',start_time_string);
+        $start_time_input.val(time_string_to_am_pm_string(start_time_string));
+
+
+
+        var end_time_string = ints_to_time(datetime.getHours() + 1,datetime.getMinutes(),datetime.getSeconds());
+
+        //Set the default time for the time_inputs
+        var $end_time_input = $('#create_event_end_time_input');
+
+        $end_time_input.attr('data-time',end_time_string);
+        $end_time_input.val(time_string_to_am_pm_string(end_time_string));
+
+
+
+    }
 
 
 

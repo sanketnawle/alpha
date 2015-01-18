@@ -338,35 +338,13 @@ class FeedController extends Controller
             }
 
             elseif($post['post_type'] == 'event'){
-                $post_event = Event::model()->findByPK($post['origin_id']);
-                $event = $this->model_to_array($post_event);
 
-                $origin = $event['origin_type'];
-                $origin_id = $event['origin_id'];
+                $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
-                if($origin != 'user'){
-                    $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
-                    $command = Yii::app()->db->createCommand($sql);
-                    $origin_data = $command->queryRow();
-                    //echo json_encode($origin_data);
-                    $event['origin_name'] = $origin_data[$origin . '_name'];
-                    $event['origin_color_id'] = $origin_data['color_id'];
-                    //array_push($events_data,$event);
-                }else{
-                    $event['origin_name'] = null;
-                    $event['origin_color_id'] = null;
-                }
-                $user = $this->get_current_user($_GET);
-                $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
-                if($event_attending){
-                    $event['is_attending'] = true;
-                }
-                else{
-                    $event['is_attending'] = false;
-                }
+                $event = $this->model_to_array($post_event->event);
 
-                $posts [$i] ['event'] = $posts [$i] ['event'] = $event;
 
+                $posts[$i]['event'] = $event;
             }
 
             //See if there are any files associated with this post
@@ -414,6 +392,15 @@ class FeedController extends Controller
 
         $user = $this->get_current_user();
 
+
+        $privacy_type = $user->user_type;
+
+        if($privacy_type == 'p'){
+
+            //Group professors and admins in the same privacy setting
+            $privacy_type = 'a';
+        }
+
         $posts_sql_home = "SELECT distinct *
                             from post
                             join post_user_inv
@@ -426,6 +413,7 @@ class FeedController extends Controller
                                                                             from class_user cu join class cs
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
+                              and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
                               ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;
                   
