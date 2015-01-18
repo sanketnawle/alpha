@@ -54,6 +54,13 @@ jQuery(document).ready(function(){
                 hours = 0;
             }
 
+            if(hours.toString().charAt(0) == '0'){
+                hours = hours.toString().charAt(1);
+            }
+
+            if(minutes.toString().charAt(0) == '0'){
+                minutes = minutes.toString().charAt(1);
+            }
 
             //The start time is now in SQL time format
             // 00:00:00
@@ -78,6 +85,11 @@ jQuery(document).ready(function(){
             }else if(hours == 12 && am_pm == 'am'){
                 hours = 0;
             }
+
+            if(hours.toString().charAt(0) == '0'){
+                hours = hours.toString().charAt(1);
+            }
+
 
             //The start time is now in SQL time format
             // 00:00:00
