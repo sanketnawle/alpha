@@ -1742,6 +1742,10 @@ div.group_info_block{
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
+div.group_info_block.school_location{
+    margin-top:40px;
+}
+
 div.group_info_block:hover{
     background-color: rgba(25, 26, 27, 1);
 }
