@@ -333,7 +333,7 @@ div#fbar_wrapper.fbar_group{
 
 
 
-    background: no-repeat fixed;
+    background-repeat: no-repeat;
     
 
     background-position: center center!important;

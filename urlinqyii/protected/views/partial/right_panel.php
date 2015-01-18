@@ -66,7 +66,7 @@
             </div>
         </a>
         <div class = "suggestion_block_right">
-            <div class = "suggestion_title{{profile_link}}" {{profile_user_id}}>
+            <div class = "suggestion_title{{profile_link}}" title = "{{title}}" {{profile_user_id}}>
                 <a {{link}}>
                     <div>
                         <span>{{title}}</span>
