@@ -899,7 +899,7 @@ $(document).ready(function() {
             }
         });
     });
-    $(document).on('click', '.user_follow_button', function () {
+    $(document).on('click', '.user_follow_button.profile', function () {
 
         var $user_follow_button = $(this);
         var $user_box =  $user_follow_button.closest('.members_card_wrapper');
