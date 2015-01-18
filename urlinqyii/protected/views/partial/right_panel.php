@@ -123,7 +123,7 @@
             <!--only show member count if there is a member count -->
             {{#if is_group}}
                 <div class = "suggestion_btn_wrapper">
-                    <a role = "button" id = "group_join_button">
+                    <a role = "button" class = "group_join_button">
                         <span src = "" class = "gray_add_icon"></span>Join
                     </a>
                 </div>
@@ -135,7 +135,7 @@
                 {{/if}}
             {{else}}
                 <div class = "suggestion_btn_wrapper">
-                    <a role = "button" id = "suggested_user_follow_button">
+                    <a role = "button" class = "suggested_user_follow_button">
                         <span class = "follow_icon"></span>Follow
                     </a>
                 </div>

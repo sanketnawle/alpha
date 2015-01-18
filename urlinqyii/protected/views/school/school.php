@@ -3,10 +3,11 @@
 
 <head>
     <script>
-        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        origin_type = '<?php echo 'school'; ?>';
-
-        origin_id = '<?php echo $school->school_id; ?>';
+        var globals = {};
+        globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        globals.origin_type = '<?php echo 'school'; ?>';
+        globals.origin_id = '<?php echo $school->school_id; ?>';
+        globals.origin_name = '<?php echo $school->school_name; ?>';
 
     </script>
 
