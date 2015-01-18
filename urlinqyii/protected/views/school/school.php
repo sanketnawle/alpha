@@ -146,7 +146,27 @@
                             <div id = "fixed_element" class = "planner_group">
                                 <div class = "about_box">
                                     <h5>About</h5>
-                                    <p><?php echo $school->school_description; ?></p>
+
+                                    <?php if($school->founded) { ?>
+                                        <p class = "founded_text"><span class = "founded_icon"></span>Founded in <?php echo $school->founded; ?></p>
+                                    <?php } else { }?>
+
+                                    <?php if($school->school_description) { ?>
+                                        <p><?php echo $school->school_description; ?></p>
+                                    <?php } else { }?>
+
+                                    <div class = "about_section_group_links">
+                                        <div class = "about_section_border_top"></div>
+                                        <?php if($school->twitter_link) { ?>
+                                            <a target="_blank" class = "social_icon_link" href = "<?php echo $school->twitter_link; ?>"><em class = "twitter_icon"></em></a>
+                                        <?php } else { }?>
+                                        <?php if($school->fb_link) { ?>
+                                            <a target="_blank" class = "social_icon_link" href = "<?php echo $school->fb_link; ?>"><em class = "fb_icon"></em></a>
+                                        <?php } else { }?>
+                                        <?php if($school->weblink) { ?>
+                                            <a target="_blank" class = "weblink" href = "<?php echo $school->weblink; ?>">web</a>
+                                        <?php } else { }?>
+                                    </div>
                                 </div>
                             </div>
                         </div>                           
