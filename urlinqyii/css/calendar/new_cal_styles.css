@@ -138,6 +138,7 @@ top: 3px;
 left: 11px;
 margin-right: 7px;
 background-position: 0;
+display:none;
 }
 
 a.event_origin_link {

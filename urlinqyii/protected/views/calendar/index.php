@@ -136,8 +136,8 @@
         <div class="leftbar">
             <!-- ng-click="openNewEvent()" for create button -->
             <div class="create">
-                <div class="button">
-                    <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create Event</div>
+                <div class="button left_panel_create_button">
+                    <div id='create_new_event_button' class="full" ng-click="openNewEvent()"><i></i> Create</div>
                     <div class="quick">
                         <i></i>
                         <div class="quick-dialog">
@@ -156,6 +156,7 @@
             <div class="providers clubs"></div>
             <div class="providers depts"></div>
             <div class="mini-calendar" ng-controller="MiniMonthController">
+                <div class = "mini_calendar_cover"></div>
                 <div class="header row1">
                     <a ng-click="goPrevMonth()" class="arrow left" ng-uc-check></a>
                     <a ng-click="goNextMonth()" class="arrow right" ng-uc-check></a>

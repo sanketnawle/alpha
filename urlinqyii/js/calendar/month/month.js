@@ -1,5 +1,6 @@
 jQuery(document).ready(function(){
-
+    var grid_number = (".grid-item").length;
+    console.log(grid_number);
 
 
 
