@@ -1,10 +1,9 @@
 $(document).ready(function() {
     $(document).on('click', '.profile_link', function(){
         open_profile(base_url, $(this).attr('user_id'),$(this).hasClass('edit_profile'));
-
     });
+
     $(document).on('click', '.close_modal', function(){
-        $('#profile_wrapper').addClass("animated bounceInUp");
         $('#profile_background_overlay').fadeOut(300);
         $("#page").removeClass("profile_stop_scroll");
         $("body").removeClass("profile_stop_scroll");
@@ -19,8 +18,7 @@ $(document).ready(function() {
             $("body#body_home").addClass("profile_stop_scroll");
 
             if($('#profile_wrapper').attr('user_id')==json_profile_data.user_id){
-                $('#profile_wrapper').show();
-                $('#profile_background_overlay').fadeIn(300);
+
 
                 if(edit_mode==true){
                     $('#edit_profile_button.not_editing').click();
@@ -28,11 +26,15 @@ $(document).ready(function() {
             }else if($('#profile_wrapper').length){
                 $('#profile_wrapper').remove();
                 $('#profile_background_overlay').remove();
+
+
                 render_profile(base_url,json_profile_data,edit_mode);
 
             }else{
+
                 render_profile(base_url,json_profile_data,edit_mode);
             }
+            $('#profile_background_overlay').fadeIn(300);
         });
 
 
@@ -49,7 +51,7 @@ $(document).ready(function() {
 //                alert(JSON.stringify(json_feed_data));
                         render_posts(json_feed_data['feed']);
                     }else{
-                        alert('failed to get feed');
+                        console.log('failed to get feed');
                     }
                 });
                 $.ajax({ url: base_url + '/profile/returnFbar?user='+data.user_id,
@@ -217,10 +219,11 @@ $(document).ready(function() {
        // alert($('.showcase_item.center').attr('showcase_index'));
     });
     $(document).on('click','.showcase_arrow.right',function(){
+
         var index=parseInt($('.showcase_item.center').attr('showcase_index'));
         if(index<numShowcase-1){
             index++;
-
+            $('.showcase_arrow.left').show();
             $('.showcase_items').css('margin-left', 260 - (index)*495);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
@@ -228,15 +231,25 @@ $(document).ready(function() {
         //alert($('.showcase_item.center').attr('showcase_index'));
     });
     $(document).on('click','.add_showcase_button',function(){
-
+        $(".add_showcase_text").fadeOut(250);
+        $(".showcase_items").fadeOut(250);
+        $(this).fadeOut(150).delay(250).queue(function(next){
+            $('#profile_overlay').fadeIn(300);
+            $('#add_showcase_form').fadeIn(300);
+            $("#title_entry").focus();
+            next();
+        });
        //$('.overlay').css('z-index',2500);
-        $('#profile_overlay').show();
-        $('#add_showcase_form').show();
+
     });
     $(document).on('click','#cancel_showcase_form',function(){
-        $('#add_showcase_form').hide();
-        $('#profile_overlay').hide();
-
+        $(".showcase_items").fadeIn(250);
+        $('#add_showcase_form').fadeOut(350).delay(150).queue(function(next){
+            $('.add_showcase_text').fadeIn(200);
+            $('.add_showcase_button').fadeIn(50);
+            next();
+        });
+        
         //kinyi add showcase to showcase bar: data.title, data.desc, data.file_extension, data.preview_file
         //reset form
         $('#link_entry').val('');

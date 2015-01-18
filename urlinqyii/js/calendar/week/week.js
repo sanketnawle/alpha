@@ -25,22 +25,42 @@ jQuery(document).ready(function(){
 
         var end_time = ints_to_time(this_time_int + 1,0,0);
 
+        //FOR X POSITION CHECKING IN COMPARISON TO WINDOW WIDTH //
+
+        var $window = $(window);
+        var windowsize = $window.width();
+        var click_x_difference = windowsize - event.pageX;
         //Add the event_id to the inspect_event_popup_week for easy access
         $create_week_day_event_popup.attr('data-date', this_date);
         //Add the event_id to the inspect_event_popup_week for easy access
         $create_week_day_event_popup.attr('data-start_time', this_time);
         $create_week_day_event_popup.attr('data-end_time', end_time);
-
         if(!$create_week_day_event_popup.is(":visible")){
-            if((event.pageY - 180) <= 0){
+            if(event.pageY <= 300){
                 $create_week_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_week_day_event_popup).addClass("top_position");
+                if(click_x_difference <= 187){
+                    $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($create_week_day_event_popup).addClass("right_position");
+                }
+                else{
+                    $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($create_week_day_event_popup).removeClass("right_position");
+                }
             }else{
-                $create_week_day_event_popup.css('top', event.pageY - 180);
+                $create_week_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_week_day_event_popup).removeClass("top_position");
+                if(click_x_difference <= 187){
+                    $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($create_week_day_event_popup).addClass("right_position");
+                }
+                else{
+                    $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($create_week_day_event_popup).removeClass("right_position");
+                }
 
             }
-            $create_week_day_event_popup.css('left', event.pageX - 160);
+            
 
     //            Mon, January 5, 4:30pm – 5:30pm
             var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
@@ -55,12 +75,30 @@ jQuery(document).ready(function(){
             if(this_date != last_month_day_date_selected){
                 //We clicked a different event than the event we were already looking at
                 //switch the inspect_event_popup_week to this event
-                if((event.pageY - 180) <= 0){
+                if(event.pageY <= 300){
                     $create_week_day_event_popup.css('top', event.pageY + 15);
+                    jQuery($create_week_day_event_popup).addClass("top_position");
+                    if(click_x_difference <= 187){
+                        $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($create_week_day_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($create_week_day_event_popup).removeClass("right_position");
+                    }
                 }else{
-                    $create_week_day_event_popup.css('top', event.pageY - 180);
+                    $create_week_day_event_popup.css('top', event.pageY - 230);
+                    jQuery($create_week_day_event_popup).removeClass("top_position");
+                    if(click_x_difference <= 187){
+                        $create_week_day_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($create_week_day_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($create_week_day_event_popup).removeClass("right_position");
+                    }
+
                 }
-                $create_week_day_event_popup.css('left', event.pageX - 160);
 
                 var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
                 $create_week_day_event_popup.find('#create_week_day_event_when').text('When: ' + inspect_event_text);
