@@ -647,7 +647,7 @@ class UserController extends Controller
             $result[$i]['id'] = $suser->user_id;
             $result[$i]['title'] = $suser->user_type=="p" ? "Professor ".$suser->lastname : $suser->firstname.' '.$suser->lastname;
             $result[$i]['profile_link']=" profile_link";
-            $result[$i]['profile_user_id'] = " user_id=".$suser->user_id;
+            $result[$i]['profile_user_id'] = " data-user_id=".$suser->user_id;
         }
         $this->renderJSON($result);
     }
