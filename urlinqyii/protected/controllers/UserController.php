@@ -570,6 +570,7 @@ class UserController extends Controller
         $result['class']['has_members'] = sizeof($class->users) >0;
         $result['class']['member_count'] = sizeof($class->users);
         $result['class']['type'] = "group_suggestion";
+        $result['class']['group_type'] = "class_suggestion";
         $result['class']['id'] = $class->class_id;
         $result['class']['link'] = ' href='.Yii::app()->getBaseUrl(true)."/class/".$class->class_id;
         if($class->course){
@@ -581,6 +582,7 @@ class UserController extends Controller
                 Yii::app()->getBaseUrl(true).$club->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/club.png';
             $result['clubs'][$i]['is_group'] = true;
             $result['clubs'][$i]['type'] = "group_suggestion";
+            $result['clubs'][$i]['type'] = "club_suggestion";
             $result['clubs'][$i]['has_members'] = sizeof($club->users) >0;
             $result['clubs'][$i]['member_count'] = sizeof($club->users);
             $result['clubs'][$i]['id'] = $club->group_id;

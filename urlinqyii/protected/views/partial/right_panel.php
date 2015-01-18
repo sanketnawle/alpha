@@ -60,13 +60,13 @@
 	</body>
 </html>
 <script id="suggestion_template" type="text/x-handlebars-template">
-    <div class = "suggestion_block {{type}}" data-suggestion_id={{id}}>
+    <div class = "suggestion_block {{type}} {{group_type}}" data-suggestion_id={{id}}>
         <a {{link}} class = "suggestion_pic_wrapper float_Left{{profile_link}}" {{profile_user_id}}>
             <div class = "suggestion_pic" style="background-image: url({{picture}});">
             </div>
         </a>
         <div class = "suggestion_block_right">
-            <div class = "suggestion_title{{profile_link}}" {{profile_user_id}}>
+            <div class = "suggestion_title{{profile_link}}" title = "{{title}}" {{profile_user_id}}>
                 <a {{link}}>
                     <div>
                         <span>{{title}}</span>
