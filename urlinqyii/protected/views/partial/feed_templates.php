@@ -39,8 +39,11 @@
 
 
                                                         {{#ifCond origin_type '!=' 'user'}}
-                                                            <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                            <span class = 'post_format'>
+                                                                <em class = "posted_to"></em> 
+                                                                <span class = 'post_group'>
+                                                                    <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                                </span>
                                                             </span>
                                                         {{/ifCond}}
 
@@ -431,8 +434,11 @@
 
 
                                                         {{#ifCond origin_type '!=' 'user'}}
-                                                            <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{origin.name}}
+                                                            <span class = 'post_format'>
+                                                                <em class = "posted_to"></em> 
+                                                                <span class = 'post_group'>
+                                                                    <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                                </span>
                                                             </span>
                                                         {{/ifCond}}
 
@@ -831,8 +837,11 @@
 
 
                                                         {{#ifCond origin_type '!=' 'user'}}
-                                                            <span class = 'post_format'> posted to <span class = 'post_group'>
-                                                                {{origin.name}}
+                                                            <span class = 'post_format'>
+                                                                <em class = "posted_to"></em> 
+                                                                <span class = 'post_group'>
+                                                                    <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                                </span>
                                                             </span>
                                                         {{/ifCond}}
 

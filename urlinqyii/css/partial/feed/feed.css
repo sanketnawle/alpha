@@ -23,6 +23,19 @@ border-radius: 5px;
 padding-bottom: 3px;
 }
 
+em.posted_to{
+background-image: url(../../../assets/small_icons.png);
+display: inline-block;
+width: 11px;
+background-size: auto;
+height: 19px;
+background-position: -44px -463px;
+position: relative;
+left: -9px;
+top: 11px;
+opacity: .8;
+}
+
 .post_main{
 padding-top: 5px;
 padding-right: 10px;
@@ -140,13 +153,13 @@ text-decoration: none;
 
 .post_owner, .post_group{
 color: #029acf;
-
-font-size: 15px;
-
+font-size: 14.8px;
 top: 9px;
 position: relative;
 cursor: pointer;
-font-weight: 600;
+font-weight: bold;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 left: -12px;
 display: inline-block;
 }
@@ -1670,7 +1683,7 @@ max-width: 530px;
 {
 width: calc(100% - 2px);
 width: -webkit-calc(100% - 2px);
-border-radius: 1px;
+border-radius: 2px;
 color: #FFF;
 line-height: 32px;
 height: 32px;
@@ -1701,7 +1714,7 @@ span.download_icon{
 }
 
 .jpg.post_attachment_review, .png.post_attachment_review{
-background: #5F15AE; 
+background: #FF0E69;
 }
 
 .pptx.post_attachment_review, .ppt.post_attachment_review{
@@ -2101,6 +2114,12 @@ position: relative;
 
 time.timeago{
     font-weight: 200;
+    letter-spacing: .6px;
+}
+
+span.post_group > a{
+color: #029acf;
+font-size: 14.5px;
 }
 
 
@@ -2967,6 +2986,7 @@ span.answer_section_flash:active{
 /*start new question type*/
 .mc_question_one_choice{
 width: 100%;
+margin-top:-2px;
 padding: 5px;
 -moz-transition: border-color .23s;
 -webkit-transition: border-color .23s;
@@ -2998,10 +3018,11 @@ position: relative;
 
 color: #FFF; 
 position: absolute; 
+display: none!important;
 margin-left: 25px;
 font-size: 11px; 
 top: 50%;
-background-color: rgba(153, 153, 153, 0.78); border-radius: 2px;
+/* background-color: rgba(153, 153, 153, 0.78); */ border-radius: 2px;
 font-family: Avenir;
 margin-top: -7px;
 }
@@ -3038,7 +3059,7 @@ top: 4px;
 padding: 5px;
 /* background-color: #F7F7F7; */
 padding: 2px;
-padding-left: 52px;
+padding-left: 36px;
 width: 85%;
 /* border: solid 1px #D5D5D5; */
 font-family: arial;

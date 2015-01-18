@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
                     jQuery($create_day_event_popup).addClass("right_position");
                 }
                 else{
-                    $create_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_day_event_popup.css('left', event.pageX - 182.5);
                     jQuery($create_day_event_popup).removeClass("right_position");
                 }
             }else{
@@ -86,7 +86,7 @@ jQuery(document).ready(function(){
                     jQuery($create_day_event_popup).addClass("right_position");
                 }
                 else{
-                    $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                    $create_day_event_popup.css('left', event.pageX - 182.5);
                     jQuery($create_day_event_popup).removeClass("right_position");
                 }
 
@@ -112,7 +112,7 @@ jQuery(document).ready(function(){
                         jQuery($create_day_event_popup).addClass("right_position");
                     }
                     else{
-                        $create_day_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($create_day_event_popup).css('left', event.pageX - 182.5);
                         jQuery($create_day_event_popup).removeClass("right_position");
                     }
                 }else{
@@ -123,7 +123,7 @@ jQuery(document).ready(function(){
                         jQuery($create_day_event_popup).addClass("right_position");
                     }
                     else{
-                        $create_week_day_event_popup.css('left', event.pageX - 182.5);
+                        $create_day_event_popup.css('left', event.pageX - 182.5);
                         jQuery($create_day_event_popup).removeClass("right_position");
                     }
 

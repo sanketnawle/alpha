@@ -441,41 +441,27 @@ class UserController extends Controller
 
 
             for($i = 0;$i < count($user_data['classes']);++$i){
-//                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$classes[$i]['class_id']));
-//                $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
-//                $classes[$i]['color'] = array('hex'=>$color->hex);
 
-                //$user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
+                $user_data['classes'][$i] = $this->model_to_array($user_data['classes'][$i]);
 
-                //$user_data['classes'][$i] = array_merge($user_data['classes'][$i], array('color'=>array('hex'=>'#FABBB3')));
+                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$user_data['classes'][$i]['class_id']));
+                $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
 
-//                $data = array('success'=>true,'user'=>);
-//                $this->renderJSON($data);
-//                return;
-                //$user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
-                //array_push($clubs[$i]['color'],array('hex'=>'#FABBB3'));
-
-
-                //$classes[$i] = $this->array_push_assoc($classes[$i], 'color', array('hex'=>'#FABBB3'));
-
-
-                $user_data['classes'][$i]['color'] = array('hex'=>'#FABBB3');
+                $user_data['classes'][$i]['color'] = array('hex'=>$color->hex);
             }
 
 
 
 
             for($i = 0;$i < count($user_data['groups']);++$i){
-//                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$clubs[$i]['group_id']));
-//                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
-//                $clubs[$i]['color'] = array('hex'=>$color->hex);
-//                array_push($clubs[$i],array('color'=>array('hex'=>'#FABBB3')));
-                //$clubs[$i] = array('hex'=>'#FABBB3');
-                //$clubs[$i] = $this->array_push_assoc($clubs[$i], 'color', array('hex'=>'#FABBB3'));
-                //$user_data['groups'][$i] = array_merge($user_data['groups'][$i], array('color'=>array('hex'=>'#FABBB3')));
-
-
+                $user_data['groups'][$i] = $this->model_to_array($user_data['groups'][$i]);
                 $user_data['groups'][$i]['color'] = array('hex'=>'#FABBB3');
+
+                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$user_data['groups'][$i]['group_id']));
+                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+
+                $user_data['groups'][$i]['color'] = array('hex'=>$color->hex);
+
             }
 
 
