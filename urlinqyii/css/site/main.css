@@ -1845,5 +1845,18 @@ div.group_info_block#class_schedule em{
 /*width: 18%;*/
 /*}*/
 
+.upload_cover_photo_button {
+    cursor: pointer;
+}
+
+
+form#cover_photo_form div.dz-preview {
+    display: none !important;
+}
+
+form#cover_photo_form div.dz-details {
+    display: none !important;
+}
+
 
 

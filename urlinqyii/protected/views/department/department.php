@@ -60,18 +60,34 @@
 
                 <div id="content_panel" class = "group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
-                    <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
-                        <div class = "group_name">
-                            <div class = "center_admin"><div class = "department_of">Department of</div></div>
-                            <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
-                        </div>
-                        <div class = "group_right_info group_info_boxes">
-                            <div class = "group_info_block" id = "location">
-                                <em class ="small_icon_map"></em>
-                                <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+
+
+                    <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
+                        <form action="/api/uploadCoverPhoto" id="cover_photo_form" style="padding: 0px; margin: 0px;">
+                        <input type='file' class='step_6_upload' style='display:none;'>
+                    <?php } ?>
+
+
+                        <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                            <div class = "group_name">
+                                <div class = "center_admin"><div class = "department_of">Department of</div></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
+                            </div>
+                            <div class = "group_right_info group_info_boxes">
+                                <div class = "group_info_block" id = "location">
+                                    <em class ="small_icon_map"></em>
+                                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                    <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
+                                        <div class="upload_cover_photo_button">Upload cover photo</div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    <!--        close the cover photo dropzone form if user is an admin -->
+                    <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
+                        </form>
+                    <?php } ?>
 
 
 

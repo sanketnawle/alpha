@@ -452,6 +452,73 @@ $(document).ready(function(){
 
 
 
+    last_file_count = 0;
+    success_counter = 0;
+    Dropzone.autoDiscover = false;
+
+    //Try to bind this, if it fails, thats because
+    //the element is not on the page because they arent an admin
+    try{
+
+        globals.myDropzone = new Dropzone('form#cover_photo_form', {
+
+            url: globals.base_url + '/api/uploadCoverPhoto',
+            autoProcessQueue: true,
+            uploadMultiple: false,
+            parallelUploads: 4,
+            maxFilesize: 30,
+            maxFiles: 1,
+            createImageThumbnails: false,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+            maxfilesexceeded: function(file) {
+                this.removeAllFiles();
+                this.addFile(file);
+            },
+            init: function() {
+                this.on("success", function(file, response) {
+
+                    console.log('cover upload response');
+                    console.log(response);
+
+                    if(response['success']){
+                        $('#cover_photo').css({'background-image': 'url("' + globals.base_url + response['file']['file_url'] + '")'});
+                    }else{
+                        alert("Error uploading cover photo");
+                    }
+
+                });
+
+
+                this.on("sending", function(file, xhr, formData) {
+
+
+
+                    formData.append('origin_type', globals.origin_type);
+                    formData.append('origin_id', globals.origin_id);
+                });
+
+
+                this.on('addedfile',function(file){
+
+                })
+            }
+
+        });
+
+
+        $(document).on('click', '.upload_cover_photo_button', function(){
+            $('form#cover_photo_form').click();
+        });
+
+
+
+    }catch(err){
+        console.log('User is not admin so cover photo form is not allowed');
+    }
+
+
+
+
 
 
 

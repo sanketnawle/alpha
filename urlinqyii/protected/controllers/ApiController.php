@@ -2010,6 +2010,202 @@ class ApiController extends Controller
 //        }
     }
 
+
+    public function actionUploadCoverPhoto(){
+        if(!isset($_POST['origin_type']) || !isset($_POST['origin_id']) || !isset($_FILES['file'])){
+            $data = array('success'=>false,'error_id'=>1,'error'=>'data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error'=>'user is not logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $origin_type = $_POST['origin_type'];
+        $origin_id = $_POST['origin_id'];
+
+
+        if($origin_type == 'class'){
+            $class = ClassModel::model()->find('class_id=:id',array(":id"=>$origin_id));
+
+            if(!$class){
+                $data = array('success'=>false,'error_id'=>3,'error'=>'invalid class');
+                $this->renderJSON($data);
+                return;
+            }
+
+            //If this user is not the professor, make sure he is an admin
+            if($user->user_id != $class->professor_id){
+                $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
+                if(!$class_user){
+                    $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+                if(!$class_user->is_admin){
+                    $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+
+
+            //User is now forsure an admin. Upload the photo
+            $file_data = $this->upload_cover_file($origin_type, $origin_id, $_FILES);
+            if($file_data['success']){
+//                $class_file = $class->coverFile;
+//                if($class_file){
+////                    $local_directory = $class_file->file_url;
+////                    unlink($local_directory);
+////                    //Delete the old file
+//                    $class_file->delete();
+//                }
+
+
+                //Assign this file id as the new cover id
+                $class->picture_file_id = $file_data['file_id'];
+                $class->cover_file_id = $file_data['file_id'];
+                $class->save(false);
+
+                $data = array('success'=>true, 'file'=>$file_data);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false, 'error_msg'=>'Error uploading class cover photo');
+                $this->renderJSON($data);
+                return;
+            }
+        }else if($origin_type == 'club' || $origin_type == 'group'){
+
+
+            $group = Group::model()->find('group_id=:id',array(":id"=>$origin_id));
+
+            if(!$group){
+                $data = array('success'=>false,'error_id'=>3,'error'=>'invalid group');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$origin_id));
+            if(!$group_user){
+                $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this group');
+                $this->renderJSON($data);
+                return;
+            }
+
+            if(!$group_user->is_admin){
+                $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this group');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            //User is now forsure an admin. Upload the photo
+            $file_data = $this->upload_cover_file($origin_type, $origin_id, $_FILES);
+            if($file_data['success']){
+//                $group_file = $group->coverFile;
+//                if($group_file){
+////                    $local_directory = $group_file->file_url;
+////                    unlink($local_directory);
+////                    //Delete the old file
+//                    $group_file->delete();
+//                }
+
+
+                //Assign this file id as the new cover id
+                $group->picture_file_id = $file_data['file_id'];
+                $group->cover_file_id = $file_data['file_id'];
+                $group->save(false);
+
+                $data = array('success'=>true, 'file'=>$file_data);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false, 'error_msg'=>'Error uploading group cover photo');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else if($origin_type == 'department'){
+            
+            
+            $department = Department::model()->find('department_id=:id',array(":id"=>$origin_id));
+
+            if(!$department){
+                $data = array('success'=>false,'error_id'=>3,'error'=>'invalid department');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            if($user->department_id != $department->department_id){
+                $data = array('success'=>false,'error_id'=>6,'error'=>'user is not a member of this department');
+                $this->renderJSON($data);
+                return;
+            }
+
+            if($user->user_type != 'a' && $user->user_type != 'p'){
+                $data = array('success'=>false,'error_id'=>7,'error'=>'user is not an admin');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            //User is now forsure an admin. Upload the photo
+            $file_data = $this->upload_cover_file($origin_type, $origin_id, $_FILES);
+            if($file_data['success']){
+//                $department_file = $department->coverFile;
+//                if($department_file){
+////                    $local_directory = $department_file->file_url;
+////                    unlink($local_directory);
+////                    //Delete the old file
+//                    $department_file->delete();
+//               }
+
+
+                //Assign this file id as the new cover id
+                $department->picture_file_id = $file_data['file_id'];
+                $department->cover_file_id = $file_data['file_id'];
+                $department->save(false);
+
+                $data = array('success'=>true, 'file'=>$file_data);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false, 'error_msg'=>'Error uploading department cover photo');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }else if($origin_type == 'school'){
+
+        }
+
+
+
+
+
+
+    }
+
+
+    function upload_cover_file($origin_type, $origin_id, $files){
+        include_once "file_upload.php";
+        $local_directory = $origin_type . '/' . $origin_id . '/';
+        $data = file_upload($files,$local_directory);
+        return $data;
+    }
+
     public function actionGetUserMonthEvents(){
         if(!isset($_GET['user_id']) || !isset($_GET['date'])){
             $data = array('success'=>false,'error_id'=>1,'error'=>'email is not set');
@@ -2092,6 +2288,9 @@ class ApiController extends Controller
 //        }
 
     }
+
+
+
 
 
 
