@@ -513,16 +513,47 @@ class PostController extends Controller
 
 
         //Check if this user has already voted for this question
-        //$answer = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$option_id, ':user_id'=>$user->user_id));
-        $answer = PostQuestionOptionAnswer::model()->findBySql("SELECT * FROM post_question_option_answer JOIN post_question ON (post_question.post_id = " . $post_id . ") WHERE post_question_option_answer.user_id = " . $user->user_id);
+        $post = $option->post;
 
-        if($answer){
-            //This user has already answered a question
+        $options = $post->postQuestionOptions;
 
+        foreach($options as $this_option){
+
+            //Check if the user voted for this option
+            $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+
+            if($user_vote){
+                if($user_vote->option_id == $option->option_id){
+                    //User already voted for this shit
+                    $return_data = array('success'=>true);
+                    $this->renderJSON($return_data);
+                    return;
+                }else{
+                    //Delete this vote because the user sent a new one
+                    $user_vote->delete();
+                }
+            }else{
+                if($this_option->option_id == $option->option_id){
+                    $new_user_vote = new PostQuestionOptionAnswer;
+                    $new_user_vote->option_id = $option->option_id;
+                    $new_user_vote->user_id = $user->user_id;
+
+                    if($new_user_vote->save(false)){
+                        $return_data = array('success'=>true);
+                        $this->renderJSON($return_data);
+                        return;
+                    }else{
+                        $return_data = array('success'=>false, 'error_msg'=>'error saving vote', 'user_vote'=>$new_user_vote);
+                        $this->renderJSON($return_data);
+                        return;
+                    }
+                }
+            }
         }
 
-
-
+        $return_data = array('success'=>false, 'error_msg'=>'error with everything');
+        $this->renderJSON($return_data);
+        return;
 
     }
 

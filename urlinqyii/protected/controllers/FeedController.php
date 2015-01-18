@@ -232,6 +232,7 @@ class FeedController extends Controller
     }
 
     public function addPostData($posts){
+        $user = $this->get_current_user();
         foreach($posts as $i=>$post){
 //            echo "#".$post['privacy']."*".$post['origin_type']."*".$post['origin_id']."#";
             if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'])){
@@ -317,11 +318,24 @@ class FeedController extends Controller
                 $posts[$i]['active'] = $post_que->active;
                 $posts[$i]['question'] = self::convertModelToArray($post_que);
 
-                // give correct answer, if NOT active
-                if($post_que->active == 0)
-                    $posts [$i] ['answer_index'] = PostQuestionOption::model()->findAll('option_id=:id', array(':id'=>$post_que['correct_answer_id']));
-                else
-                    $posts [$i] ['answer'] = NULL;
+                // check if this user has answered this question
+
+                 //Check if this user has already voted for this question
+
+                $post_model = Post::model()->find('post_id=:post_id',array(':post_id'=>$post['post_id']));
+
+                $posts[$i]['user_answer_option_id'] = null;
+
+                $options = $post_model->postQuestionOptions;
+
+                foreach($options as $this_option){
+                    //Check if the user voted for this option
+                    $user_vote = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$this_option->option_id, ':user_id'=>$user->user_id));
+                    if($user_vote){
+                        $posts[$i]['user_answer_option_id'] = $user_vote->option_id;
+                    }
+                }
+
 
                 // adding all the options to the array
                 $post_que_options = PostQuestionOption::model()->findAll('post_id=:id', array(':id'=>$post['post_id']));

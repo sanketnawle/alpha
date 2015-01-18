@@ -94,6 +94,13 @@ function time_string_to_am_pm_string(time_string){
 
 }
 
+
+//Takes in a datetime object and returns an SQL formatted string like this:
+// 11:01:45
+function datetime_to_time_string(datetime_obj){
+    return ints_to_time(datetime_obj.getHours(), datetime_obj.getMinutes(), datetime_obj.getSeconds());
+}
+
 var weekday = new Array(7);
 weekday[0]=  "Sunday";
 weekday[1] = "Monday";

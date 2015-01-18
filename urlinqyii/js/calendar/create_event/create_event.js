@@ -29,17 +29,37 @@ jQuery(document).ready(function(){
     }
 
 
+//    function verify_date_inputs(){
+//        var event_start_date = $('#create_event_start_date_input').attr('data-date');
+//        var event_start_time = $('#create_event_start_time_input').attr('data-time');
+//
+//        var event_end_date = $('#create_event_end_date_input').attr('data-date');
+//        var event_end_time = $('#create_event_end_time_input').attr('data-time');
     function verify_date_inputs(){
-        var event_start_date = $('#create_event_start_date_input').attr('data-date');
-        var event_start_time = $('#create_event_start_time_input').attr('data-time');
+        var $event_start_date = $('#create_event_start_date_input');
+        var $event_start_time = $('#create_event_start_time_input');
+        var $event_end_date = $('#create_event_end_date_input');
+        var $event_end_time = $('#create_event_end_time_input');
 
-        var event_end_date = $('#create_event_end_date_input').attr('data-date');
-        var event_end_time = $('#create_event_end_time_input').attr('data-time');
+
+        var event_start_date = $event_start_date.attr('data-date');
+        var event_start_time = $event_start_time.attr('data-time');
+
+        var event_end_date = $event_end_date.attr('data-date');
+        var event_end_time = $event_end_time.attr('data-time');
 
 
         //Make sure the start date is less than the end date
         var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
         var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+
+
+        console.log('- start date time object -');
+        console.log(start_datetime_object);
+
+
+        console.log('- end date time object -');
+        console.log(end_datetime_object);
 
 
         if(end_datetime_object < start_datetime_object){
@@ -50,19 +70,36 @@ jQuery(document).ready(function(){
             //so we can compare the date only
             var start_date = new Date(date_to_string(start_datetime_object) + ' 00:00:00');
             var end_date = new Date(date_to_string(end_datetime_object) + ' 00:00:00');
-            //Set the end time input as an error
-            if(start_date > end_date){
-                $('#create_event_end_date_input').addClass('error');
-                $('#create_event_end_time_input').removeClass('error');
+
+
+            if(start_date == end_date){
+                var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+                //make the time an hour from the start time
+                $event_end_time.attr('data-time', new_end_time_string);
+                $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+            }else if(start_date > end_date){
+                //If the start date is greater than the end date,
+                //make the end date the start date
+                $event_end_date.val(date_to_day_of_week_string(start_date));
+                $event_end_time.attr('data-date', date_to_string(start_date));
+
+                var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
+                //make the time an hour from the start time
+                $event_end_time.attr('data-time', new_end_time_string);
+                $event_end_time.val(time_string_to_am_pm_string(new_end_time_string));
+
+
+    //                        $event_end_date.addClass('error');
+    //                        $event_end_time.removeClass('error');
             }else {
-                $('#create_event_end_time_input').addClass('error');
-                $('#create_event_end_date_input').removeClass('error');
+                $event_end_time.addClass('error');
+                $event_end_date.removeClass('error');
             }
 
 
         }else{
-            $('#create_event_end_date_input').removeClass('error');
-            $('#create_event_end_time_input').removeClass('error');
+            $event_end_date.removeClass('error');
+            $event_end_time.removeClass('error');
         }
     }
 

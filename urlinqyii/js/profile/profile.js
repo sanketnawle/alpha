@@ -759,6 +759,8 @@ $(document).ready(function() {
             {
                 if(data.status == "success"){
                     $('#profile_picture').css('background-image','url('+data.file_url+')');
+                    $('.post_user_icon[data-user_id='+user_id+']').css('background-image','url('+data.file_url+')');
+                    $('img.MyBox_Picture').attr('src',data.file_url);
                 }else{
                     alert(data.message);
                 }
@@ -798,11 +800,15 @@ $(document).ready(function() {
                         });
                         $('#follow_button').addClass('following');
                         $('#follow_button').text('Following');
+
+                        $('#follow_button > .follow_icon_profile_page').hide();
                     }else{
                         $('#followers_list').find('.members_card_wrapper[data-user_id='+data.user_id+']').remove();
                         $('#follow_button').removeClass('following');
                         $('#follow_button').text('Follow');
+                        $('#follow_button').prepend('<span class = "follow_icon_profile_page"></span>');
                         $('#num_followers').text(follower_count-1);
+                        $('#follow_button > .follow_icon_profile_page').show();
                     }
 
                 }else{

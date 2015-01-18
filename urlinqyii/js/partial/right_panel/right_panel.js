@@ -16,10 +16,9 @@ $(document).ready(function() {
     function get_group_suggestions_data(base_url, suggest_type,$element_to_replace,group_type){
         var request_url = base_url+"/user/groupSuggestions";
         var request_data;
-        var club_id_1 = $(".suggestion_block.group_suggestion:eq(0)").attr('data-suggestion_id');
-        var club_id_2 = $(".suggestion_block.group_suggestion:eq(1)").attr('data-suggestion_id');
-        var class_id = $(".suggestion_block.group_suggestion:eq(2)").attr('data-suggestion_id');
-
+        var club_id_1 = $(".suggestion_block.group_suggestion.club_suggestion:eq(0)").attr('data-suggestion_id') || -1;
+        var club_id_2 = $(".suggestion_block.group_suggestion.club_suggestion:eq(1)").attr('data-suggestion_id') || -1;
+        var class_id = $(".suggestion_block.group_suggestion.class_suggestion").attr('data-suggestion_id') || -1;
         if(club_id_1 && club_id_2 && class_id){
             request_data = {suggestion_type: suggest_type,
                 previous_club_id_1: club_id_1,
@@ -63,8 +62,8 @@ $(document).ready(function() {
     function get_user_suggestions_data(base_url, suggest_type, $element_to_replace){
         var request_url = base_url+"/user/userSuggestions";
         var request_data;
-        var user_id_1 = $(".suggestion_block.user_suggestion:eq(0)").attr('data-suggestion_id');
-        var user_id_2 = $(".suggestion_block.user_suggestion:eq(1)").attr('data-suggestion_id');
+        var user_id_1 = $(".suggestion_block.user_suggestion:eq(0)").attr('data-suggestion_id') || -1;
+        var user_id_2 = $(".suggestion_block.user_suggestion:eq(1)").attr('data-suggestion_id') || -1;
         if(user_id_1 && user_id_2){
             request_data = {suggestion_type: suggest_type,
                 previous_user_id_1: user_id_1,
@@ -105,7 +104,7 @@ $(document).ready(function() {
         var post_url;
         var post_data = {id:$group_block.attr('data-suggestion_id'),user_id:user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
-        if($('.suggestion_block.group_suggestion').index($group_block)<2){
+        if($group_block.hasClass('club_suggestion')){
             post_url = base_url+"/club/join";
             $.post(post_url,post_data,function(){
                 var club_id = $group_block.attr('data-suggestion_id');
