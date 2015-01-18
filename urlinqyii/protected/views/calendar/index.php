@@ -103,11 +103,11 @@
     <?php echo Yii::app()->runController('partial/topbar'); ?>
 
     <script id="provider_template" type="text/x-handlebars-template">
-        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}' style='background-color: {{color.hex}}'>
-            <div ng-uc-check="" class="check ng-scope checked {{color_class}}" checked="">
-                <i class="x"></i><i class="xx"></i>
+        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}'>
+            <div ng-uc-check="" style='background-color: {{color.hex}}' class="check ng-scope checked {{color_class}}" checked="">
+                <i class="checkmark"></i>
             </div>
-            <div class="title" style="box-shadow: rgb(170, 170, 170) 3px 0px 8px -3px;">{{name}}</div>
+            <a href="<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}"><div class="title" style = "border:1px solid transparent;">{{name}}</div></a>
         </div>
     </script>
 

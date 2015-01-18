@@ -14,7 +14,24 @@ body#body_calendar .topbar > #topbar_responsive_holder{
 }
 
 
+div.check > i.checkmark{
+    display: none;
 
+    background-image: url(../../assets/small_icons.png);
+    background-color: transparent!important;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px!important;
+    background-position: -32px -122px;
+    top: 4px;
+    left: 3px;
+}
+
+div.check.checked > i.checkmark{
+    display: block;
+
+}
 
 .body .month-view .month-grid .grid-item{
 	color:#333;
@@ -212,6 +229,7 @@ div.event_name.month_event_name
 .ul-calendar .leftbar .providers .provider div.title{
 	background: #FFF!important;
 	box-shadow: !important;
+	z-index:10000000000;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type{

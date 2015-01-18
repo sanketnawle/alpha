@@ -183,8 +183,10 @@
                 margin-bottom: 4px;
                 cursor: default;
                 clear: both;
+                box-shadow:none!important;
                 @min-height: 25px;
                 min-height: @min-height;
+                height:25px;
                 overflow: auto;
 
                 .icon {
@@ -195,14 +197,16 @@
                 }
 
                 .check {
-                    .check-box(14px);
+                    .check-box(16px);
                     .color-schemes();
+                    -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.35) inset;
+                    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.35) inset;
+                    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.35) inset;
                     float: left;
                     border: none;
                     opacity: 1;
                     margin-top: 5px;
                     margin-right: 5px;
-                    box-shadow: none;
 
                     i {
                         background-color: #FFF;
@@ -214,7 +218,9 @@
                     text-overflow: ellipsis;
                     line-height: @min-height;
                     white-space: nowrap;
+                    border-left:none!important;
                     .font-open-sans();
+                    border-radius:0px 2.5px 2.5px 0px;
                     color: #333;
                     font-size: @ideal-font-size - 1;
                     text-transform: capitalize;
@@ -222,9 +228,11 @@
 
                 &:hover .title {
                     position: absolute;
-                    background-color: #f5f5f5;
+                    background-color: #fff;
                     z-index: 20;
-                    margin-left: 19px;
+                    border:1px solid #eee!important;
+                    border-left:none!important;
+                    margin-left: 21px;
                     padding-right: 12px;                    
                 }
             }
