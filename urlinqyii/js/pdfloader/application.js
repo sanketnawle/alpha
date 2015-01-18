@@ -2,6 +2,8 @@ var file_id = 0;
 var previous = "";
 var events={};
 var pdf_year= (new Date()).getFullYear();
+var previous_title_empty = false;
+var previous_title_index = "";
 
 window.onload = function () {
   load_events();
@@ -117,6 +119,24 @@ var run_pdf_algo = function(db){
 
 
 function highlightText(db){
+  var data_cs = $('div.textLayer').children();
+  var previous_css = "0";
+  var div_dict = {};
+  $.each(data_cs,function(index,value){
+    if($(value).css("top")==previous_css || $(value).text()[0].match(/[a-z]/g)){
+
+      div_dict[previous_css]+=" "+$(value).text();
+
+    }
+    else{
+      div_dict[$(value).css("top")] = $(value).text();
+      previous_css = $(value).css("top");
+    }
+  });
+  $.each(div_dict,function(index,value){
+   get_date_v2(value);
+  });
+  add_event_to_ui(events);
   var full_text = "";
   var text = $('div.textLayer').children();
   $.each(text,function(index, value){
@@ -135,11 +155,7 @@ function highlightText(db){
     next = $(text[index+2]).text();
     var text_value = $(value).text();
     var matched = chronotext(text_value);
-    if(matched && $.trim(matched[0][0]).length>2 && isNaN($.trim(matched[0][0]))){
-          if(db){
-          get_date(text_value+" "+$(text[index+1]).text().slice(0,5));
-          }
-
+    if(matched && $.trim(matched[0][0]).length>3 && isNaN($.trim(matched[0][0]))){
           if(text_value.indexOf(matched[0][0])<0){
             $(value).html('<span style="opacity:0.1;background-color:#2E0854;">'+$(value).text()+'</span>');
           }
@@ -177,156 +193,18 @@ var chronotext = function(input){
     }
   }
 
-var get_date= function(input){
-  input = input.replace(/\s{2,}/g, ' ');
-  var raw_input = input;
-  var found = false;
-  /*
-    matches mm/dd, mm-dd, mm.dd
-    matches mm/dd/yy mm-dd-yy mm.dd.yy mm/dd/yyyy mm-dd-yyyy mm.dd.yyyy
-    matches Full month name dd,
-  */
-  var months = "(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)";
-  var days = "(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)";
-  var days_one_char = "(1|2|3|4|5|6|7|8|9)";
-  var years = "([1-3][0-9][0-9][0-9])";
-  var times = "((([1-9])|(0[1-9])|(1[0-9])|(2[0-4])):((0[0-9])|([1-5][0-9])|(60))|((1|2|3|4|5|6|7|8|9)(| )(am|pm)))";
-  var times_moment = "("+times+"(| )(am|pm))";
 
-  var matched_month = input.match(new RegExp(months+"( |, | , |. | . )"+days, 'ig'));
-  if (!matched_month){
-    matched_month = input.match(new RegExp(months+"( |, | , |. | . )"+days_one_char, 'ig'));
-  }
-  if(matched_month){
-    for(i=0;i<matched_month.length;i++){
-      var final_date = "";
-      input = input.slice(input.indexOf(matched_month[i])+matched_month[i].length, input.length); //input.replace(matched_month[i],"");
-      final_date+=matched_month[i]+",";
-      var matched_year = input.match(new RegExp(years, 'ig'));
-      if (matched_year){
-      final_date+=" "+matched_year[0];
-      input = input.slice(input.indexOf(matched_year[0])+matched_year[0].length, input.length);//input.replace(matched_year[0],"")
-      }
-      else{
-        final_date+=" "+pdf_year;
-      }
-      var matched_time = input.match(new RegExp(times_moment, 'ig')) ;
-      if(matched_time){
-        matched_time[0] = $.trim(matched_time[0]);
-        if(matched_time.indexOf(" ")<0){
-          matched_time[0] =matched_time[0].slice(0,matched_time[0].length-2) +" "+ matched_time[0].slice(matched_time[0].length-2,matched_time[0].length);
-        }
-          matched_time[0] = format_time(matched_time[0])
-        final_date+=" "+matched_time[0].toUpperCase();
-      input = input.slice(input.indexOf(matched_time[0])+matched_time[0].length, input.length);//input.replace(matched_time[0],"")
-      }
-      else {
-        matched_time = input.match(new RegExp(times, 'ig'));
-        if(matched_time){
-          matched_time[0] = $.trim(matched_time[0]);
-          if(matched_time.indexOf(" ")<0){
-            matched_time[0] =matched_time[0].slice(0,matched_time[0].length-2) +" "+ matched_time[0].slice(matched_time[0].length-2,matched_time[0].length);
-          }
-          matched_time[0] = format_time(matched_time[0])
-          final_date+=" "+matched_time[0].toUpperCase();
-          input = input.slice(input.indexOf(matched_time[0])+matched_time[0].length, input.length);//input.replace(matched_time[0],"")
-        }
-      }
-      if(!events.hasOwnProperty(final_date)){
-        var title = get_title(((previous+" "+raw_input).split(matched_month)[0]).split(".").pop());
-        events[final_date] = title;
-      }
-    }
-  }
-  var stage_two_input = input;
-  var mmddyyyy = "(([1-3]?[0-9])\/([1-3]?[0-9])\/([0-9][0-9][0-9][0-9]))|(([1-3]?[0-9])-([1-3]?[0-9])-(([0-9][0-9][0-9][0-9])))|(([1-3]?[0-9]).([1-3]?[0-9]).(([0-9][0-9][0-9][0-9])))";
-  var mmddyy = "(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{2})";
-  var mmdd = "([1-3]?[0-9])\/([1-3]?[0-9])";
-  var matched_mmddyyyy = stage_two_input.match(new RegExp(mmddyyyy, 'ig'));
-  if (matched_mmddyyyy){
-    if(!events.hasOwnProperty(matched_mmddyyyy[0])){
-      var title = get_title(((previous+" "+raw_input).split(matched_mmddyyyy)[0]).split(".").pop());
-        events[matched_mmddyyyy[0]] = title;
-      }
-  }
-  else{
-    var matched_mmddyy = stage_two_input.match(new RegExp(mmddyy));
-    if(matched_mmddyy){
-      if(!events.hasOwnProperty(matched_mmddyy[0])){
-        var title = get_title(((previous+" "+raw_input).split(matched_mmddyy)[0]).split(".").pop());
-        events[matched_mmddyy[0]] = title;
-      }
-    }
-    else{
-      var matched_mmdd = stage_two_input.match(new RegExp(mmdd, 'ig'));
-      if (matched_mmdd){
-        matched_mmdd[0] = matched_mmdd[0]+"/"+pdf_year;
-        if(!events.hasOwnProperty(matched_mmdd[0])){
-          var title = get_title(((previous+" "+raw_input).split(matched_mmdd)[0]).split(".").pop());
-            events[matched_mmdd[0]] = title;
-          }
-      }
-    }
-  }
-  add_event_to_ui(events);
-}
-
-
-var format_time = function(time_value){
-  time_value = time_value.replace(/\s{2,}/g, ' ');
-  var split_space = time_value.split(" ");
-  var split_time = split_space[0].split(":");
-  if(split_time.length>1){
-    if(split_time[0].length==1){
-      if(split_time[1].length==1){
-        return "0"+split_time[0]+":0"+split_time[1]+" " + split_space[1];
-      }
-      else{
-        return "0"+split_time[0]+":"+split_time[1]+" " + split_space[1];
-      }
-    }
-    else{
-      if(split_time[1].length==1){
-        return split_time[0]+":0"+split_time[1]+" " + split_space[1];
-      }
-      else{
-        return split_time[0]+":"+split_time[1]+" " + split_space[1];
-      }
-    }
-  }
-  else{
-    if(split_time[0].length==1){
-      return "0"+split_time[0]+":00 " + split_space[1];
-    }
-    else{
-      return split_time[0]+":00 " + split_space[1];
-    }
-  }
-}
-
-
-var get_title = function(title){
-  var junk = ",|-|.|!|\/";
-  var after_rep_junk = title.replace(new RegExp(junk), "");
-  var after_rep_num = after_rep_junk.replace(new RegExp("[0-9]", "g"), "")
-  if($.trim(after_rep_num).length<4){
-    return next;
-  }
-  else{
-    return title;
-  }
-}
 
 var added_events = new Array();
 
 var add_event_to_ui = function(events_generated){
   html_text = "";
   var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#13D298"];            
- 
+  
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
     if(stamp && added_events.indexOf(String(stamp))<0){
-      var php_time = stamp.getFullYear()+"-"+(stamp.getMonth()+1)+"-"+stamp.getDate()+" "+stamp.getHours()+":"+stamp.getMinutes()+":"+stamp.getSeconds();
+      var php_time = pdf_year+"-"+(stamp.getMonth()+1)+"-"+stamp.getDate()+" "+stamp.getHours()+":"+stamp.getMinutes()+":"+stamp.getSeconds();
       var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
       $.ajax({
          url: "StoreEvent",
@@ -372,3 +250,92 @@ var add_event_to_ui = function(events_generated){
     }
   });
 }
+
+
+
+
+var get_date_v2= function(input){
+  input = input.replace(/\s{2,}/g, ' ');
+  
+  /*
+    matches mm/dd, mm-dd, mm.dd
+    matches mm/dd/yy mm-dd-yy mm.dd.yy mm/dd/yyyy mm-dd-yyyy mm.dd.yyyy
+    matches Full month name dd,
+  */
+  var title = "";
+  var stri = input.match(/((01|02|03|04|05|06|07|08|09|10|11|12)|(1|2|3|4|5|6|7|8|9))(\/)((01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)|(1|2|3|4|5|6|7|8|9))(((\/)(([0-9][0-9])|([1-3][0-9][0-9][0-9])))?)/ig);
+  var replacing = /(?!(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|am|pm|AM|PM|Am|Pm)\b)\b([a-z]+|@|th|nd)/ig;
+  var replace_special = /@|!/g;
+  if (stri){
+    if(stri.length>1){
+      $.each(stri, function(index,value){
+        stri[index] = value.replace(replacing, "");
+        stri[index] = value.replace(replace_special, "");
+        var split_text=input.split(value);
+        input = split_text[1];
+        title = split_text[0];
+        if(!events.hasOwnProperty(stri[index])){
+          events[stri[index]] = title;
+        }
+      });
+    }
+    else{
+      $.each(stri, function(index,value){
+        stri[index] = value.replace(replacing, "");
+        stri[index] = value.replace(replace_special, "");
+        title=input.replace(value,"");
+        if(!events.hasOwnProperty(stri[index])){
+          events[stri[index]] = title;
+          if($.trim(title) == ""){
+            previous_title_empty = true;
+            previous_title_index = stri[index];
+          }
+        }
+      });
+    }
+  }
+   else{
+    if(previous_title_empty){
+      events[previous_title_index] = input;
+      previous_title_empty = false;
+    }
+  }
+
+  var stri_2 = input.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s?)(|,|\.)(\s?)((01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)|(1|2|3|4|5|6|7|8|9))(\s?)(|,|\.)(\s?)((([0-9][0-9])|([1-3][0-9][0-9][0-9]))?)/ig);
+  if (stri_2){
+    if(stri_2.length>1){
+      $.each(stri_2, function(index,value){
+        var split_text=input.split(value);
+        input = split_text[1];
+        title = split_text[0];
+        stri_2[index] = value.replace(replacing, "");
+        stri_2[index] = value.replace(replace_special, "");
+        if(!events.hasOwnProperty(stri_2[index])){
+          events[stri_2[index]] = title;
+        }
+      });
+    }
+    else{
+      $.each(stri_2, function(index,value){
+        title=input.replace(value,"");
+        stri_2[index] = value.replace(replacing, "");
+        stri_2[index] = value.replace(replace_special, "");
+        if(!events.hasOwnProperty(stri_2[index])){
+          events[stri_2[index]] = title;
+          if($.trim(title) == ""){
+            previous_title_empty = true;
+            previous_title_index = stri_2[index];
+          }
+        }
+      });
+    }
+
+  }
+  else{
+    if(!stri && previous_title_empty){
+      events[previous_title_index] = input;
+      previous_title_empty = false;
+    }
+  }
+}
+
