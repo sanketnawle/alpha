@@ -84,6 +84,22 @@ class PostController extends Controller
         }
 
 
+        if($_POST['post']['privacy'] != '' && $_POST['post']['privacy'] != 's' && $_POST['post']['privacy'] != 'a'){
+            $return_data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'invalid privacy setting', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+
+        if($_POST['post']['post_type'] == 'event' && !isset($_POST['post']['event'])){
+
+            $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'Event is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
         try{
             $model=new Post;
 
@@ -165,6 +181,36 @@ class PostController extends Controller
                         }
                     }
 
+
+
+
+                    if($model->post_type == 'event'){
+
+
+                        $event = new Event;
+                        $event->title = $_POST['post']['event']['title'];
+                        $event->description = $_POST['post']['event']['description'];
+                        $event->event_type = 'event';
+                        $event->user_id = $this->get_current_user_id();
+                        $event->origin_type = $_POST['post']['event']['origin_id'];
+                        $event->origin_id = $_POST['post']['event']['origin_id'];
+                        $event->start_date = $_POST['post']['event']['start_date'];
+                        $event->end_date = $_POST['post']['event']['end_date'];
+                        $event->start_time = $_POST['post']['event']['start_time'];
+                        $event->end_time = $_POST['post']['event']['end_time'];
+                        $event->location = $_POST['post']['event']['location'];
+                        $event->all_day = '';
+
+                        $event->save(false);
+
+
+                        $post_event = new PostEvent;
+                        $post_event->post_id = $model->post_id;
+                        $post_event->event_id = $event->event_id;
+                        $post_event->save(false);
+
+                        $post_data['event'] = $this->model_to_array($event);
+                    }
 
                     //echo $post_id = $model->post_id;
     //                echo "awesome";
@@ -433,6 +479,53 @@ class PostController extends Controller
 //			'model'=>$model,
 //		));
 	}
+
+
+
+
+    public function actionAnswerQuestion(){
+        if(!isset($_POST['option_id'])){
+            $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $user = $this->get_current_user($_GET);
+
+        if(!$user){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
+        $option_id = $_POST['option_id'];
+
+        $option = PostQuestionOption::model()->find('option_id=:id', array(':id'=>$option_id));
+
+        if(!$option){
+            $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'option is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
+
+        $post_id = $option->post_id;
+
+
+        //Check if this user has already voted for this question
+        //$answer = PostQuestionOptionAnswer::model()->find('option_id=:option_id and user_id=:user_id', array(':option_id'=>$option_id, ':user_id'=>$user->user_id));
+        $answer = PostQuestionOptionAnswer::model()->findBySql("SELECT * FROM post_question_option_answer JOIN post_question ON (post_question.post_id = " . $post_id . ") WHERE post_question_option_answer.user_id = " . $user->user_id);
+
+        if($answer){
+            //This user has already answered a question
+
+        }
+
+
+
+
+    }
+
 
 	/**
 	 * Deletes a particular model.

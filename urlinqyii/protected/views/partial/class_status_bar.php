@@ -166,13 +166,16 @@
 					<footer id = "fbar_footer" class = "fbar_contents_fix">
 						<!--<div id = "post_anonymously"><input type='checkbox' value='0' class='post_anon_val'><span class = 'comment_anon_text'>Post Anonymously</span></div>-->
 						<div id = "post_privacy" class = "help_div_shower">
+
+
+
 							<ul class = "menu privacy_menu">
 								<li class = "no_relative">
 									<a class = "privacy_dropdown_link"></a>
-									<ul class = "privacy_dropdown">
-										<li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Members</a><span></span></li>
-										<li class = "privacy_list" style = "position:relative; border-bottom: 1px solid #fff;"><a>Admin</a><span></span></li>
-										<li class = "privacy_list" style = "position:relative;"><a>Members</a><span></span></li>
+									<ul class = "privacy_dropdown" data-privacy="">
+                                        <li class = "privacy_list active" data-privacy='' style = "position:relative; border-bottom: 1px solid #fff;"><a>All</a><span></span></li>
+										<li class = "privacy_list" data-privacy='s' style = "position:relative; border-bottom: 1px solid #fff;"><a>Students</a><span></span></li>
+										<li class = "privacy_list" data-privacy='a' style = "position:relative;"><a>Admins</a><span></span></li>
 										<div class="help-wedge">
                                 		</div>
 									</ul>
@@ -182,6 +185,9 @@
 		                        </li>
 
 	                        </ul>
+
+
+
 	                        <div id = "privacy_tooltip" class="help-div fbar_helpers">
                                 <div class="help-box">Edit privacy</div>
                                 <div class="help-wedge">

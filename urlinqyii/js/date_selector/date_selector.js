@@ -47,16 +47,23 @@ $(document).ready(function(){
 
 
 
-    jQuery(document).delegate('.date_input', 'click', function () {
-        if(jQuery(this).is($recent_date_input) && jQuery('.calLayer').css("display") == 'block'){
-            jQuery('.calLayer').hide();
-        }else {
+    jQuery(document).delegate('.date_input', 'click', function (e) {
+        e.stopPropagation();
+
+        if(jQuery(this).is($recent_date_input) && jQuery('#calLayer').css("display") == 'block'){
+            jQuery('#calLayer').hide();
+        } else {
 
             $recent_date_input = jQuery(this);
-            jQuery('.calLayer').css({position:'absolute', top: $recent_date_input.position().top + 40, left: $recent_date_input.position().left});
-            jQuery('.calLayer').show();
+            jQuery('#calLayer').css({position:'absolute', top: $recent_date_input.position().top + 145, left: $recent_date_input.position().left + 20});
+            jQuery('#calLayer').show();
         }
 
+    });
+
+
+    jQuery(document).on('click', function(){
+        jQuery('#calLayer').hide();
     });
 
 
@@ -67,7 +74,7 @@ $(document).ready(function(){
         console.log('date selector js');
 
 
-        var $this_cal = jQuery(this).closest(".calLayer");
+        var $this_cal = jQuery(this).closest("#calLayer");
 
         if (!jQuery(this).hasClass("disable")) {
             if (blinkflag == 0) {

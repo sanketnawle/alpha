@@ -110,39 +110,7 @@ $(document).ready(function(){
 
     }
 
-    function render_post(single_post){
-        //Event Posts
-        //Announcements
-        //Oppurtunities
 
-        if(findUrlInPost(single_post['text'])) {
-            single_post.embed_link = findUrlInPost(single_post['text']);
-
-        }
-        if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
-            var source   = $("#post_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-        else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
-            console.log('note');
-            var source   = $("#post_note_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-        else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
-            console.log("question");
-            var source   = $("#post_question_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-
-        }
-        else {
-            var source   = $("#post_template").html();
-            var template = Handlebars.compile(source);
-            $("#posts").prepend(template(single_post)).hide().fadeIn();;
-        }
-    }
 
 
     //findUrlInPost("hellllhttps://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll oasdfjlei'dfdfd'https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll");
@@ -167,6 +135,28 @@ $(document).ready(function(){
         }
         return false;
     }
+
+
+
+
+    $(document).on('click', '.mc_question_radio_button', function() {
+        var $radio = $(this);
+        var option_id = $radio.closest('.mc_question_one_choice').attr('data-option_id');
+
+        alert(option_id);
+
+        var post_url = base_url + '/post/answerQuestion';
+
+        var post_data = {option_id: option_id};
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                alert(JSON.stringify(response));
+            },'json'
+        );
+    });
 
 
     var i = 0;

@@ -743,6 +743,51 @@
                     </div>
             </script>
 
+
+
+            <script id="post_event_template" type="text/x-handlebars-template">
+                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}">
+                    <div class = 'post_main'>
+
+                        <div class = 'post_head'>
+                            <div class = 'post_event_date_box'>
+                                <div class='post_event_month'>{{event.month}}</div>
+                                <div class='post_event_day'>{{event.day_number}}</div>
+                            </div>
+
+
+
+
+                            <div class='post_event_content'>
+                                <div class='post_event_title'>{{event.title}}</div>
+                                <div class='post_event_type_holder'>
+                                    <div class='post_event_type'>{{event.type}}</div>
+
+                                </div>
+
+
+                                <div class='post_event_calendar_button'>Add to calendar</div>
+
+
+                                <div class='post_event_time_holder'>
+                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                </div>
+
+
+                                {{#each files}}
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                {{/each}}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+
+
             <script id="post_note_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
