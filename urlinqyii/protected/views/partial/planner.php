@@ -158,8 +158,10 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="free_planner_message">   Your schedule&#x27;s free</span>
-                    <span class="create_planner_message">   Fill out your planner</span>
+                    <span class="free_planner_message" >   Your schedule&#x27;s free</span>
+                    <span class="create_planner_message" style = "opacity:0">   Fill out your planner</span>
+                    <span class="point point1" style = "opacity:0"> <em></em> classwork notifications</span>
+                    <span class="point point2" style = "opacity:0"> <em></em> social and fast</span>
                 </div>
 
                 <div id="event_list">
@@ -223,6 +225,7 @@
                     </div>
                 </div>
 
+                <!--
                 <div id="planner_bottom_holder">
                     <div id="planner_bottom_bar_line"></div>
 
@@ -230,6 +233,7 @@
                         <div id="planner_bottom_text"><a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">View monthly calendar</a></div>
                     </div>
                 </div>
+                -->
 
             </div>
 

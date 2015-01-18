@@ -121,19 +121,39 @@ jQuery(document).ready(function(){
         var this_date_obj = new Date(this_date);
         var $create_month_day_event_popup = jQuery('#create_month_day_event_popup');
 
+        var $window = $(window);
+        var windowsize = $window.width();
+        var click_x_difference = windowsize - event.pageX;
+
         //Add the event_id to the inspect_event_popup_month for easy access
         $create_month_day_event_popup.attr('data-date', this_date);
 
 
         if(!$create_month_day_event_popup.is(":visible")){
-            if((event.pageY - 180) <= 0){
+            if(event.pageY <= 300){
                 $create_month_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_month_day_event_popup).addClass("top_position");
+                if(click_x_difference <= 187){
+                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($create_month_day_event_popup).addClass("right_position");
+                }
+                else{
+                    $create_month_day_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($create_month_day_event_popup).removeClass("right_position");
+                }
             }else{
-                $create_month_day_event_popup.css('top', event.pageY - 180);
+                $create_month_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_month_day_event_popup).removeClass("top_position");
+                if(click_x_difference <= 187){
+                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($create_month_day_event_popup).addClass("right_position");
+                }
+                else{
+                    $create_month_day_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($create_month_day_event_popup).removeClass("right_position");
+                }
+
             }
-            $create_month_day_event_popup.css('left', event.pageX - 160);
 
 
             var inspect_event_text = format_event_date_text(this_date_obj);
@@ -148,12 +168,30 @@ jQuery(document).ready(function(){
             if(this_date != last_month_day_date_selected){
                 //We clicked a different event than the event we were already looking at
                 //switch the inspect_event_popup_month to this event
-                if((event.pageY - 180) <= 0){
+                if(event.pageY <= 300){
                     $create_month_day_event_popup.css('top', event.pageY + 15);
+                    jQuery($create_month_day_event_popup).addClass("top_position");
+                    if(click_x_difference <= 187){
+                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($create_month_day_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $create_month_day_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($create_month_day_event_popup).removeClass("right_position");
+                    }
                 }else{
-                    $create_month_day_event_popup.css('top', event.pageY - 180);
+                    $create_month_day_event_popup.css('top', event.pageY - 230);
+                    jQuery($create_month_day_event_popup).removeClass("top_position");
+                    if(click_x_difference <= 187){
+                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($create_month_day_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $create_month_day_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($create_month_day_event_popup).removeClass("right_position");
+                    }
+
                 }
-                $create_month_day_event_popup.css('left', event.pageX - 160);
 
                 var inspect_event_text = format_event_date_text(this_date_obj);
                 $create_month_day_event_popup.find('#create_month_day_event_when').text('When: ' + inspect_event_text);

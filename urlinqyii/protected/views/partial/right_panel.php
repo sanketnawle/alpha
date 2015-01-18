@@ -26,7 +26,7 @@
 				</div>
 				<div id = "groups_to_join" class = "right_panel_suggestions_section">
 					<div class = "suggestions_header">
-						<h5>Groups to Join</h5><span class = "middot">&#xb7;</span><a class = "refresh">Refresh</a><!--<span class = "middot">&#xb7;</span><a class = "suggest_specific suggest_classes">Classes</a><span class = "middot">&#xb7;</span><a class = "suggest_specific suggest_clubs">Clubs</a>-->
+						<h5>Groups to Join</h5><span class = "middot">&#xb7;</span><a id="groups_refresh" class = "refresh">Refresh</a><!--<span class = "middot">&#xb7;</span><a class = "suggest_specific suggest_classes">Classes</a><span class = "middot">&#xb7;</span><a class = "suggest_specific suggest_clubs">Clubs</a>-->
 					</div>
 
 					<!--GROUP SUGGESTION -->
@@ -60,15 +60,15 @@
 
 							</div>
 						</div>
-
 					</div>
+
 				</div> 
 
 				<!--USER FOLLOW SUGGESTION -->
 
-				<div id = "who_to_folow" class = "right_panel_suggestions_section">
+				<div id = "who_to_follow" class = "right_panel_suggestions_section">
 					<div class = "suggestions_header">
-						<h5>Who to Follow</h5><span class = "middot">&#xb7;</span><a class = "refresh">Refresh</a>
+						<h5>Who to Follow</h5><span class = "middot">&#xb7;</span><a id="users_refresh" class = "refresh">Refresh</a>
 					</div>
 					<div class = "suggestion_unit_container">
 						<div class = "suggestion_block user_suggestion">
@@ -106,4 +106,42 @@
 		</div>
 	</body>
 </html>
+<script id="suggestion_template" type="text/x-handlebars-template">
+    <div class = "suggestion_block {{type}}" data-suggestion_id={{id}}>
+        <a class = "suggestion_pic_wrapper float_Left">
+            <div class = "suggestion_pic" style="background-image: url({{picture}});">
+            </div>
+        </a>
+        <div class = "suggestion_block_right">
+            <div class = "suggestion_title">
+                <a>
+                    <div>
+                        <span>{{title}}</span>
+                    </div>
+                </a>
+            </div>
+            <!--only show member count if there is a member count -->
+            {{#if is_group}}
+                <div class = "suggestion_btn_wrapper">
+                    <a role = "button" class = "group_join_button">
+                        <span src = "" class = "gray_add_icon"></span>Join
+                    </a>
+                </div>
+                {{#if has_members}}
+                    <div class = "member_count">
+                        <!--<span class = "member_art"></span>-->
+                        <span class = "count">{{member_count}} members</span>
+                    </div>
+                {{/if}}
+            {{else}}
+                <div class = "suggestion_btn_wrapper">
+                    <a role = "button" class = "suggested_user_follow_button">
+                        <span class = "follow_icon"></span>Follow
+                    </a>
+                </div>
+            {{/if}}
 
+
+        </div>
+    </div>
+</script>

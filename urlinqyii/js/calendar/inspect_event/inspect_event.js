@@ -55,7 +55,9 @@ jQuery(document).ready(function(){
         var event_title = $event_div.attr("data-name");
         var event_description = $event_div.attr("data-description");
         jQuery($event_div).addClass("colorfied");
-        
+        var $window = $(window);
+        var windowsize = $window.width();
+        var click_x_difference = windowsize - event.pageX;       
 
         if($event_div.hasClass('month_day_event')){
             jQuery($event_div).css({"background-color": event_div_hex});
@@ -80,14 +82,30 @@ jQuery(document).ready(function(){
         jQuery($inspect_event_description).text(event_description);
 
         if(!$inspect_event_popup.is(":visible")){
-            if((event.pageY - 180) <= 0){
-                $inspect_event_popup.css('top', event.pageY + 20);
+            if(event.pageY <= 300){
+                $inspect_event_popup.css('top', event.pageY + 15);
                 jQuery($inspect_event_popup).addClass("top_position");
+                if(click_x_difference <= 187){
+                    $inspect_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($inspect_event_popup).addClass("right_position");
+                }
+                else{
+                    $inspect_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($inspect_event_popup).removeClass("right_position");
+                }
             }else{
-                $inspect_event_popup.css('top', event.pageY - 220);
+                $inspect_event_popup.css('top', event.pageY - 230);
                 jQuery($inspect_event_popup).removeClass("top_position");
+                if(click_x_difference <= 187){
+                    $inspect_event_popup.css('left', event.pageX - 328.5);
+                    jQuery($inspect_event_popup).addClass("right_position");
+                }
+                else{
+                    $inspect_event_popup.css('left', event.pageX - 182.5);
+                    jQuery($inspect_event_popup).removeClass("right_position");
+                }
+
             }
-            $inspect_event_popup.css('left', event.pageX - 140);
 
             //            Mon, October 27, 2014, 8am – 11am
             var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');
@@ -107,16 +125,30 @@ jQuery(document).ready(function(){
             if($event_div.attr('data-id') != last_clicked_event_id){
                 //We clicked a different event than the event we were already looking at
                 //switch the inspect_event_popup_week to this event
-                if((event.pageY - 180) <= 0){
+                if(event.pageY <= 300){
                     $inspect_event_popup.css('top', event.pageY + 15);
+                    jQuery($inspect_event_popup).addClass("top_position");
+                    if(click_x_difference <= 187){
+                        $inspect_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($inspect_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $inspect_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($inspect_event_popup).removeClass("right_position");
+                    }
                 }else{
-                    $inspect_event_popup.css('top', event.pageY - 220);
+                    $inspect_event_popup.css('top', event.pageY - 230);
+                    jQuery($inspect_event_popup).removeClass("top_position");
+                    if(click_x_difference <= 187){
+                        $inspect_event_popup.css('left', event.pageX - 328.5);
+                        jQuery($inspect_event_popup).addClass("right_position");
+                    }
+                    else{
+                        $inspect_event_popup.css('left', event.pageX - 182.5);
+                        jQuery($inspect_event_popup).removeClass("right_position");
+                    }
+
                 }
-
-
-
-                $inspect_event_popup.css('left', event.pageX - 140);
-
 
                 //            Mon, October 27, 2014, 8am – 11am
                 var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');

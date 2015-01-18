@@ -152,10 +152,10 @@ div#modal_controls.student_modal_controls_student{
 }
 #profile_picture_wrapper{
     position: relative;
-    border: 3px solid #fff;
+    border: 2px solid #fff;
     float:left;
     background-color: rgba(255, 255, 255, 0.8);
-    height: 202px;
+    height: 200px;
     margin-left: 13px;   
     margin-top: -132px; 
     border-radius: 5px; 
@@ -293,7 +293,7 @@ div.add_showcase_text{
     margin: 0 auto;
 
     display: block;
-    width: 275px;
+    width: 390px;
     margin-top: 77px;
 }
 
@@ -327,6 +327,45 @@ div.add_showcase_text > p{
     color:black;
 }
 
+button.update_showcase_button.add_showcase_button {
+width: 150px;
+position: absolute;
+margin-left: -75px;
+left: 50%;
+bottom: 20px;
+}
+
+button#upload_link_button{
+
+}
+
+div#showcase_submit{
+
+}
+
+button.upload_link_button > i{
+    
+}
+
+button.update_showcase_button > span{
+    
+}
+
+div.showcase_type{
+    font-family: Avenir;
+
+    text-shadow: none;
+    right: 40px;
+    position: absolute;
+    line-height: 28px;
+    margin: 5px 0px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0 7px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 2px;
+}
+
 .edit_or_follow_button{
     height: 16%;
 
@@ -337,7 +376,7 @@ div.add_showcase_text > p{
     border-radius: 4px;
     margin: auto;
     z-index:2;
-    margin-top: 4px;
+    margin-top: 3px;
     ckground-color: #f2f2f2;    
     color: #575757;
     font-size: 14px; -moz-transition: all .1s ease; -webkit-transition: all .1s ease; transition: all .1s ease; 
@@ -524,24 +563,18 @@ div.profile_tab:hover div.profile_tab_text{
     overflow: hidden;
 }
 button.download_showcase_button {
-    width: 28px;
+    width: 32px;
     left: 5px;
-    height: 28px;
-    top: 5px;
-    border-radius: 4px;
+    height: 32px;
+    top: 4px;
+    border-radius: 2px;
     position: absolute;
-    /* border: 1px solid #898585; */
+    background-color: rgba(237, 224, 224, 0.35);
     border: 1px solid white;
-    background-color: transparent;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
-    background-color: rgba(71, 71, 71, 0.49);
-    border-color: #868686 #8F8F8F #797979;
-    -moz-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-    box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
-    -webkit-box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146, 146, 146, 0.46);
     font-weight: bold;
     text-align: center;
     -webkit-font-smoothing: antialiased;
@@ -550,23 +583,26 @@ button.download_showcase_button {
 button.download_showcase_button.link{
     width:47px;
 }
+
 .download_button_icon {
-    width: 21px;
-    height: 21px;
-    left: -1px;
-    top: 2px;
-    position: absolute;
-    background-image: url('../../assets/download_white_icon.png');
-    background-position: 0px;
-    background-repeat: no-repeat;
-    background-size: 70%;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    text-align: center;
-    -moz-osx-font-smoothing: grayscale;
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
+width: 21px;
+height: 21px;
+left: -6px;
+position: relative;
+top: 1px;
+display: block;
+background-image: url('../../assets/download_white_icon.png');
+background-position: 0px;
+background-repeat: no-repeat;
+background-size: 61%;
+-webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+text-align: center;
+-moz-osx-font-smoothing: grayscale;
+-o-transform: rotate(180deg);
+transform: rotate(180deg);
 }
+
 .link_button_icon {
     width: 28px;
     height: 18px;
@@ -586,22 +622,22 @@ button.download_showcase_button.link{
     clear: left;
     position: relative;
     transition: all 0.5s ease-in-out;
-    top: 10px;
+    top: 2px;
 }
 .showcase_item{
     width: 480px;
     display: inline-block;
-    height: 278px;
+    height: 269px;
     margin-right: 10px;
+    background: rgba(255, 255, 255, 0.22);
     position: relative;
+    border-bottom: 1px solid #919191;
     background-repeat: no-repeat;
     background-size: cover;
     /*temporary*/
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    border-left: 1px solid #919191;
+    border-right: 1px solid #919191;
+    border-top: 1px solid #919191;
 }
 
 .showcase_url{
@@ -610,7 +646,7 @@ button.download_showcase_button.link{
 
 .showcase_label{
     position:relative;
-    height: 38px;
+    height: 40px;
     width: 460px;
     text-align: right;
     text-overflow: ellipsis;
@@ -631,8 +667,11 @@ button.download_showcase_button.link{
 }
 .showcase_title{
     margin-bottom: 15px;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
     padding-bottom: 10px;
+    font-family: Avenir;
+    font-size: 18px;
+    text-transform: capitalize;
 }
 .showcase_item.center{
 
@@ -643,8 +682,13 @@ button.download_showcase_button.link{
     cursor: pointer;
     text-decoration: underline;
     position:absolute;
-    top: 44px;
+    top: 9px;
+    background-size: auto;
     right:10px;
+    background-image: url(../../assets/small_icons.png);
+    width: 22px;
+    height: 22px;
+    background-position: -35px -613px;
 }
 #profile_foreground_overlay{
     width:100%;
@@ -656,9 +700,9 @@ button.download_showcase_button.link{
 }
 #add_showcase_form{
     display: none;
-    position: fixed;
-    top: 74px;
-    background-color: white;
+    position: absolute;
+    top: 30px;
+    background-color: rgba(255, 255, 255, 0);
     color: black;
     width: 500px;
     padding:10px;
@@ -666,7 +710,6 @@ button.download_showcase_button.link{
     height: 278px;
     z-index: 10000;
     border-radius: 0px 0px 3px 3px;
-    box-shadow: -10px 0px 20px -8px #e1e1e1;
 
 }
 button.add_showcase_button {
@@ -713,7 +756,7 @@ button.add_showcase_button:active{
 .showcase_arrow {
     width: 20px;
     position: absolute;
-    height: 20px;
+    height: 28px;
     display: inline-block;
     top: 82%;
     z-index: 1000;
@@ -721,17 +764,15 @@ button.add_showcase_button:active{
 }
 
 .showcase_arrow.left {
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    transform: rotate(-54deg) skew(-20deg);
-    left: 267px;
+    left: 260px; background-image: url(../../assets/small_icons.png); background-size: auto!important;  
+    background-position: 0px -860px;
+    display:none;
 }
 
 .showcase_arrow.right {
-    border-top: 1px solid white;
-    border-right: 1px solid white;
-    transform: rotate(54deg) skew(20deg);
-    right: 267px;
+    right: 260px;
+    background-image: url(../../assets/small_icons.png); background-size: auto!important; float: left; 
+    background-position: -32px -860px;
 }
 .edit_showcase_button{
 
@@ -784,10 +825,18 @@ button.add_showcase_button:active{
 #add_showcase input, #add_showcase textarea{
     margin-left: 10px;
     display:block;
-    padding: 5px;
-    border-radius: 4px;
+    padding: 9px 10px;
+    font-size: 13.5px;
+    resize: none;
+    border-radius: 3px;
+    border: 1px solid #151515;
+    border-top-color: #000;
     width:90%;
+    color: #FFF;
+    border-top-width: 0px;
+    background: rgba(255, 255, 255, 0.11);
     margin-bottom: 10px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.23), 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
 #create_showcase_form{
     float:right;
@@ -795,6 +844,8 @@ button.add_showcase_button:active{
     background-color: #00c32c;
     color:#ffffff;
     border:none;
+    position: relative;
+    left: 26px!important;
 }
 #cancel_showcase_form{
     float:right;
@@ -836,6 +887,47 @@ div.group_box div.float_Left.group_image{
     -webkit-transition: opacity 0.15s;
     -moz-transition: opacity 0.15s;
     transition: opacity 0.15s;
+}
+
+h5.update_showcase_header{
+    font-family: Avenir;
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: 2.5px;
+    color: #FFF;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+form#add_showcase input#title_entry{
+
+}
+
+form#add_showcase button#upload_link_button{
+
+}
+
+form#add_showcase button#upload_link_button:hover{
+
+}
+
+form#add_showcase button#upload_link_button > i{
+
+}
+
+span#cancel_showcase_form{
+    font-weight: 600; font-size: 25.5px; display: inline-block; 
+    margin: 5px 10px; float: right; width: 25px; height: 25px; 
+    opacity: .65;
+    right: -23px;
+    position: relative;
+    background-position: -36px -612px; cursor: pointer; 
+    background-size: auto; background-image: url(../../assets/small_icons.png);
+
+}
+
+form#add_showcase input#desc_entry{
+    
 }
 
 .search_bar{

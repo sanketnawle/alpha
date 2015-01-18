@@ -210,6 +210,7 @@ div.event_name.month_event_name
 
 .ul-calendar .leftbar .providers .provider div.title{
 	background: #FFF!important;
+	box-shadow: !important;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type{
@@ -336,13 +337,13 @@ background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
 height: 20px;
-width: 30px;
+width: 18px;
 position: absolute;
 bottom: -10px;
 display: block;
-margin-left: -15px;
+margin-left: -9px;
 left: 50%;
-background-position: 8px -141px;
+background-position: -5px -141px;
 content: " ";
 -webkit-transform: rotate(180deg);
 transform: rotate(180deg);
@@ -359,6 +360,10 @@ div.create_event_popup.top_position::after, div.inspect_event_popup.top_position
 top: -10px;
 -webkit-transform: rotate(0deg);
 transform: rotate(0deg);
+}
+
+div.create_event_popup.right_position::after, div.inspect_event_popup.right_position::after {
+left:85%;
 }
 
 

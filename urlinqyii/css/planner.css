@@ -1,22 +1,21 @@
 
 .planner_container{
     width: 235px;
-    height: 100%;
+    max-height: 100%;
     font-family: 'Open Sans', sans-serif;
     background: #fff;
-    border-radius: 3px;
-    border: 1px solid #d9d9d9; 
-    overflow: hidden;
-    display: block;
-    /* box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */ -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); 
-    /* -webkit-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.05); */
-    padding-bottom: 40px;
+    border-radius: 5px; 
+    display: block;  
+    padding-bottom: 3px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
 }
 .planner_header_panel{
     font-family: Avenir;
     font-size: 14px;
     background-color: transparent;
-    height: 37px;
+    height: 38px;
     color: #999;
     position: relative;
     border-radius: 4px 4px 0px 0px;
@@ -25,7 +24,7 @@
     margin-right: 10px;
 }
 .planner_header{
-    padding: 14px 0px 4px 0px;
+    padding: 16px 0px 4px 0px;
     font-size: 17px;
     font-family: Avenir;
     font-weight: 200;
@@ -44,14 +43,14 @@
     position: relative;
     border-radius: 0px 0px 4px 4px;
     z-index: 1;
-    float: left;
     height: auto;
     margin: 0px auto;
+    display:none;
 
 }
 .entry_field{
     height: 0px;
-    /* height: 140px; */
+    height: 140px;
     width: 215px;
     margin-left: 10px;
     margin-right: 10px;
@@ -61,7 +60,9 @@
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
-    margin-bottom: 22px;
+    padding-bottom: 7px;
+    margin-top: -8px;
+    margin-bottom: 27px;
 }
 
 
@@ -99,16 +100,18 @@ height: 12px;
 background-position: 0px -14px;
 top: 2px;
 position: relative;
+left: -1px;
 }
 
 em.pl_blue_circle{
-    width:11px;
-    height:11px;
+    width: 6px;
+    height: 6px;
     border-radius:1000px;
     background:#029acf;
     display:inline-block;
     position:relative;
-    top:2px;
+    top: -1px;
+    right: 2px;
 }
 
 .entry_field_placeholder:hover{
@@ -132,7 +135,8 @@ em.pl_blue_circle{
     display: none;
 }
 #eventImg{
-    padding: 45px 0px 20px 16px;
+    padding: 45px 0px 32px 46px;
+    width: 140px;
 }
 
 span.create_planner_message {}
@@ -145,8 +149,9 @@ span.create_planner_message {}
     position: absolute;
     font-size: 12px;
     margin: 0 auto;
-    top: 169px;
-    left: 59px;
+    top: 138px;
+    left: 64px;
+    font-family: Avenir;
 }
 .create_planner_message{
     display: none;
@@ -194,7 +199,7 @@ span.create_planner_message {}
     height: 120px;
     background-color: rgba(250, 250, 250, 0);
     position: relative;
-    top: 8px;
+    top: 11px;
     border-radius: 4px;
     border: 1px solid rgba(229, 229, 229, 0);
     margin-left: -1px;
@@ -216,27 +221,30 @@ span.create_planner_message {}
     left: -1px;
 }
 .event_date{
-    width: 102px;
-    height: 22px;
-    cursor: pointer;
-    font-size: 13px;
-    background-repeat: no-repeat;
-    background-image: url('../../../assets/partial/planner/calendar.png');
-    margin-left: 4px;
-    background-position: 88px 8px;
-    background-size: 13px;
-    border: 1px solid #d7d7d7;
-    border-radius: 2px;
-    -moz-transition: all .2s ease;
-    outline: none;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    padding: 3px 0px 2px 6px;
-    font-size: 12.5px;
-    font-weight: 500;
-    border: 1px solid #d9d9d9; border-top-color: #c0c0c0;
+width: 100px;
+height: 24px;
+cursor: pointer;
+background-repeat: no-repeat;
+background-image: url("../../../assets/partial/planner/calendar.png");
+margin-left: 5px;
+background-position: 88px 10px;
+background-size: 13px auto;
+border-radius: 2px;
+outline: medium none;
+transition: all 0.2s ease 0s;
+-moz-osx-font-smoothing: grayscale;
+padding: 3px 0px 2px 6px;
+font-size: 12.5px;
+font-weight: 400;
+border-width: 1px;
+border-style: solid;
+border-right: 1px solid #D9D9D9;
+border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
 }
 
 .event_time{
@@ -308,27 +316,26 @@ span.create_planner_message {}
     white-space: normal;
 
 
-    height: 311px;
+    max-height: 329px;
     
 
     overflow-y: auto;
-
-    float: left;
+    
     
 
-    clear: right;
-    
+    top: -10px;
 
-    margin-top: -27px;
+    position: relative;
 
 }
 
 input.event_title{
     width: 206px;
     border-radius: 2px;
+    font-family: 'Open Sans', sans-serif;
     border: 1px solid #d9d9d9;
     border-top-color: #c0c0c0;
-    height: 26px;
+    height: 27px;
     font-size: 13px;
     padding-left: 6px;
 }
@@ -337,19 +344,16 @@ input.event_title{
 
 .event{
     display: block;
-    width: 100%;
     position: relative;
-    height: 38px;
+    height: 34px;
 
     margin-bottom: 4px;
     padding-bottom: 8px;
 }
 
 #planner_header_holder {
-    float: left;
-    clear: right;
     width: 100%;
-    height: 41px;
+    height: 38px;
     z-index: 100;
 
     margin: 0px auto;
@@ -357,12 +361,12 @@ input.event_title{
 }
 
 #planner_body_holder{
-    float: left;
-    clear: right;
-    /*position: relative;*/
+    position: relative;
     /*top: 4px;*/
     /*left: 0;*/
+    max-height: 330px;
     font-size: 12px;
+    min-height:202px;
     width: 100%;
     -moz-transition: all .15s linear;
     -webkit-transition: all .15s linear; 
@@ -373,14 +377,44 @@ input.event_title{
 
 
 #planner_bottom_holder{
+    
 
 
 
-    width: 100%;
+    position: absolute;
+
+
+
     height: 50px;
 
-    float: left;
+    
+    
+
+
+
+
+
+
+    bottom: -54px;
+
+
+
     clear: right;
+    
+
+
+
+    left: 22px;
+
+
+
+    right: 22px;
+
+
+
+
+
+
 }
 
 @import url(http://weloveiconfonts.com/api/?family=entypo);
@@ -389,13 +423,13 @@ input.event_title{
 
 
 .nav-icon{
-  background:#575757;
-  position:fixed;
-  right: 11px; 
-  top: 23px;
-  width: 10px; 
-  height: 2px;
-  cursor:pointer;cursor:hand;
+    background:#575757;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    width: 10px;
+    height: 2px;
+    cursor: pointer;
 } 
 .nav-icon .nav-icon-plus{
     background:#575757;
@@ -465,8 +499,8 @@ input.event_title{
     display: inline-block;
     float: left;
     width: 80%;
-    margin-top: 6px;
-    margin-left: 10px;
+    margin-top: 3px;
+    margin-left: 8px;
 
     font-size: 12px;
     font-weight: 600;
@@ -484,10 +518,10 @@ input.event_title{
     display: block;
     height: 10px;
 
-    margin-top: 8px;
+    margin-top: 12px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     font-size: 13px;
 }
@@ -525,7 +559,7 @@ input.event_title{
     top: 0px;
     height: 1px;
     width: 210px;
-    background-color: #dbdcdc;
+    background-color: rgba(219, 220, 220, 0);
     margin: 0px auto;
 
     border-radius: 1px;
@@ -535,6 +569,8 @@ input.event_title{
     font-size: 13px;
     font-weight: bold;
     color: #000000;
+    position: relative;
+    margin-top: 0px;
 }
 
 
@@ -552,10 +588,33 @@ input.event_title{
 
 
 #planner_bottom_text {
-    margin-top: 15px;
-    margin-left:  50px;
+    margin: 0 auto;
+    margin-top: 7px;
+    display: inline-block;
     color: #029acf;
+    padding: 6px 0px;
+    width: 100%;
+    text-transform: capitalize;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 26px;
+    font-size: 15px;
 }
+
+#planner_bottom_text > a{
+    color: #029acf;
+    font-family: Avenir;
+}
+
+#planner_bottom_text:hover {
+    background: #eee;
+}
+
+#planner_bottom_text:active {
+    background: #ddd;
+}
+
 
 /* checkbox styling and selecting */
 
@@ -579,10 +638,7 @@ label.planner_checkbox_label:after{
     -o-transform: rotate(-54deg);
     -ms-transform: rotate(-54deg);
     transform: rotate(-54deg);
-    
-    -webkit-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+
 }
 
 .checkbox_hint{
@@ -673,35 +729,50 @@ margin-left: 7px;
 /*If the event is completed, strike out its name*/
 .event.complete div.event_name {
     text-decoration: line-through;
+    color:#999!important;
 }
 
 
 .event_name {
     font-size: 13.5px;
 
-    color: #333;
+    color: #222;
     text-transform: capitalize;
-    font-weight: 500;
     padding-bottom: 2px;
+    -moz-osx-font-smoothing: grayscale; 
+    -webkit-font-smoothing: antialiased;
 }
 /* Set the background colors for the different types of events */
 
 #past_events div.event{
-    background-color: #fff;
+    /*
+    background-color: #FFE0E8;
+    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;*/
+}
+
+div.event.complete{
+    background: #F5F5F5!important;
+}
+
+div.event.complete div.event_name, div.event.complete div.event_date_time{
+    color:#999!important;
 }
 
 
 #todays_events div.event{
-    background-color: #fffbf0;
+    /*background-color: rgba(2, 154, 207, 0.13);
+    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;*/
 }
 
 #tomorrows_events div.event{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .event_date_time{
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
+    /* font-family: Avenir; */
+    color: #222;
 }
 
 #todays_events{
@@ -835,13 +906,13 @@ margin-left: 7px;
 
 .tp1{
     position: absolute;
-    height: 25px;
-    width: 63px;
+    height: 27px;
+    width: 67px;
     border-radius: 2px;
-    left: 149px;
+    left: 145px;
     top: 0px;
     font-size: 12.5px;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     color: #333;
     border: 1px solid #d9d9d9; border-top-color: #c0c0c0;
