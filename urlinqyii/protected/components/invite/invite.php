@@ -16,7 +16,7 @@ function send_invite($actor_id, $user_id, $origin_id, $origin_type){
     if($invite->save(false)){
         include_once "notification/notification.php";
         //If this invitation was successful, create a notification for the user
-        send_notification($actor_id, $user_id, $origin_id, $origin_type);
+        send_notification('invite', $actor_id, $user_id, $origin_id, $origin_type);
 
     }
 }
