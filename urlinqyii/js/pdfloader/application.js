@@ -210,7 +210,7 @@ var add_event_to_ui = function(events_generated){
       var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
       $.ajax({
          url: "StoreEvent",
-         type: "GET",
+         type: "POST",
          data: get_data_json,
          success: function(response) {
           var color = colors[Math.floor(colors.length * Math.random())];

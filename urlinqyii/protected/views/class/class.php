@@ -275,13 +275,13 @@
                         <div class = "syllabus_events_wrapper">
                             <header class = "class_tasks">
                                 <h5>Class Work</h5>
-                                <label>Order:</label>
+                                <!-- <label>Order:</label>
                                 <ul class = "menu">
                                     <li>
                                         <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
                                         <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
                                     </li>
-                                </ul>
+                                </ul> -->
 
 
                             </header>
