@@ -156,6 +156,7 @@ div#modal_controls.student_modal_controls_student{
     float:left;
     background-color: rgba(255, 255, 255, 0.8);
     height: 200px;
+    width:165px;
     margin-left: 13px;   
     margin-top: -132px; 
     border-radius: 5px; 
@@ -330,7 +331,6 @@ div.add_showcase_text > p{
 button.update_showcase_button.add_showcase_button {
 width: 150px;
 position: absolute;
-/*margin-left: -75px;*/
 left: 50%;
 bottom: 20px;
 }

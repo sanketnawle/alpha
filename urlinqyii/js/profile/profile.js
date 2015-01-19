@@ -718,11 +718,11 @@ $(document).ready(function() {
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
         $('.edit_field').hide();
-        $('#edit_profile_button').css('margin-left','15px');
+        //$('#edit_profile_button').css('margin-left','15px');
         $('#edit_profile_button').text('Edit Profile');
         $('#cancel_edit_button').hide();
         $('#profile_overlay').hide();
-        $('#profile_picture_wrapper').css('z-index','');
+        //$('#profile_picture_wrapper').css('z-index','');
         $('#edit_profile_button').removeClass('editing');
         $('#edit_profile_button').addClass('not_editing');
     }
