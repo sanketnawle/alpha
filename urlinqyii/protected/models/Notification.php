@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'notification':
  * @property integer $notification_id
+ * @property string $type
  * @property integer $actor_id
  * @property integer $user_id
  * @property integer $origin_id
@@ -38,11 +39,12 @@ class Notification extends CActiveRecord
 		return array(
 			array('actor_id, user_id, origin_id, origin_type, created_time', 'required'),
 			array('actor_id, user_id, origin_id, status, group_check_pt', 'numerical', 'integerOnly'=>true),
+			array('type', 'length', 'max'=>12),
 			array('origin_type', 'length', 'max'=>50),
 			array('check_point', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('notification_id, actor_id, user_id, origin_id, origin_type, status, check_point, group_check_pt, created_time', 'safe', 'on'=>'search'),
+			array('notification_id, type, actor_id, user_id, origin_id, origin_type, status, check_point, group_check_pt, created_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +68,7 @@ class Notification extends CActiveRecord
 	{
 		return array(
 			'notification_id' => 'Notification',
+			'type' => 'type of notification',
 			'actor_id' => 'user whose action created this notification',
 			'user_id' => 'User who this notification is for',
 			'origin_id' => 'Origin',
@@ -96,6 +99,7 @@ class Notification extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('notification_id',$this->notification_id);
+		$criteria->compare('type',$this->type,true);
 		$criteria->compare('actor_id',$this->actor_id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('origin_id',$this->origin_id);

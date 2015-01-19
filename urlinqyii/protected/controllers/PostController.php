@@ -679,6 +679,10 @@ class PostController extends Controller
                 return;
             }
             $post_id = $_POST['post_id'];
+
+            $post = Post::model()->find('post_id=:id', array(':id'=>$post_id));
+
+
             $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
 
 
@@ -692,6 +696,12 @@ class PostController extends Controller
 
                     //Notification is causing error, commented out for now
                     //self::createNotification("liked", $_GET['id']);
+
+
+                    include_once "notification/notification.php";
+
+                    send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
+
                     $return_data = array('success'=>true);
                     $this->renderJSON($return_data);
                     return;

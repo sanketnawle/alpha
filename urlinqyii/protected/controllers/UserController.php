@@ -155,11 +155,20 @@ class UserController extends Controller
     public function actionNotifications(){
         $user = $this->get_current_user($_GET);
         if($user) {
-            $notifications = Notification::model()->findAll("user_id=:user_id", array(":user_id" => $user->user_id));
+
+//            $data = array('success'=>true,'notifications'=>$user->notifications);
+//            $this->renderJSON($data);
+//            return;
+
+
+            $notifications = $user->notifications;
             if ($notifications) {
+
+
                 $notifications_new = array();
                 foreach ($notifications as $notification) {
                     $notification = $this->model_to_array($notification);
+                    $notification_type = $notification['type'];
                     $origin = $notification['origin_type'];
                     $origin_id = $notification['origin_id'];
                     $actor_id = $notification['actor_id'];
@@ -179,7 +188,7 @@ class UserController extends Controller
 
                     $notification['actor'] = $this->get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
-                    if($origin == 'event'){
+                    if($notification_type == 'event'){
                         $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                         if(!$event){
                             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
@@ -214,7 +223,7 @@ class UserController extends Controller
 
                         $notification['origin'] = $event;
                     }
-                    elseif($origin == 'follow'){
+                    elseif($notification_type == 'follow'){
                         $follow = User::model()->find("user_id=:user_id", array(":user_id"=>$origin_id));
 
                         if(!$follow){
@@ -224,7 +233,7 @@ class UserController extends Controller
                         }
                         $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
                     }
-                    elseif($origin == 'reply'){
+                    elseif($notification_type == 'reply'){
                         $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                         if(!$reply){
                             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
@@ -237,7 +246,7 @@ class UserController extends Controller
                         $reply['post']=$post;
                         $notification['origin']= $reply;
                     }
-                    elseif($origin == 'liked'){
+                    elseif($notification_type == 'like'){
                         $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
                         if(!$post){
                             $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
