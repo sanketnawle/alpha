@@ -381,30 +381,13 @@ class FeedController extends Controller
 	public function actionGetHomePosts()
 	{
 
+        $user = $this->get_current_user($_GET);
 
-        if(!$this->authenticated() || !isset($_GET['token'])){
 
+        if(!$user){
+            $this->renderJSON(array('success'=>false, 'error_msg'=>'User not logged in'));
+            return;
         }
-
-//      print_r(User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id)));
-
-        // $posts_sql_home = "SELECT distinct *
-        //            from post
-        //            join post_user_inv
-        //              on (post.post_id = post_user_inv.post_id)
-        //           where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = ".self::$user->user_id.")
-        //             or post_user_inv.user_id = ".self::$user->user_id.")
-        //             or (origin_type = 'university' and origin_id = ".self::$user->school_id.")
-        //             or (origin_type = 'department' and origin_id = ".self::$user->department_id.")
-        //             or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
-        //                                                           from class_user cu join class cs
-        //                                                             on (cu.class_id = cs.class_id)
-        //                                                             where user_id = ".self::$user->user_id." and cs.semester = '".self::$cur_sem."' and cs.`year` = ".date('Y').")))
-        //             order by last_activity DESC
-        //             LIMIT ".self::$start_rec.",".self::POST_LIMIT;
-
-
-        $user = $this->get_current_user();
 
 
         $privacy_type = $user->user_type;
