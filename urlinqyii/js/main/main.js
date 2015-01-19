@@ -5,7 +5,6 @@ $(document).ready(function(){
 
 
 
-
     $('.tab').click(function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
@@ -234,7 +233,6 @@ $(document).ready(function(){
     });    
 
 
-    $(function(){
 
         var $quote = $("#group_name > #name_title");
         var $class_title_info = $(".class_title_info");
@@ -270,28 +268,13 @@ $(document).ready(function(){
         }    
 
         var group_name_left = $("p#group_name").position().left;
-        $("div.center_admin").css({"left":group_name_left})
+        $("div.center_admin").css({"left":group_name_left});
 
         $(window).on('resize', function(){
              var group_name_left = $("p#group_name").position().left;
             $("div.center_admin").css({"left":group_name_left})
-        });  
+        });          
 
-        setTimeout(function() {
-                $("div.center_admin").animate({
-                    opacity: "1",
-                }, 400);
-        }, 250 );     
-
-        setTimeout(function() {
-                $("#group_name").animate({
-                    top: "0px",
-                    opacity: "1",
-                }, 600);
-        }, 650 );
-
-        
-    });
 
 
 

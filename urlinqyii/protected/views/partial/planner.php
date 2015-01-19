@@ -158,10 +158,9 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="free_planner_message" >   Your schedule&#x27;s free</span>
-                    <span class="create_planner_message" style = "opacity:0">   Fill out your planner</span>
-                    <span class="point point1" style = "opacity:0"> <em></em> classwork notifications</span>
-                    <span class="point point2" style = "opacity:0"> <em></em> social and fast</span>
+                    <span class="create_planner_message" style = "opacity:1">   Fill out your planner</span>
+                    <span class="point point1" style = "opacity:1"> <em></em> classwork reminders</span>
+                    <span class="point point2" style = "opacity:1"> <em></em> syncs with cal</span>
                 </div>
 
                 <div id="event_list">

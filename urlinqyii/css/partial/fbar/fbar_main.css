@@ -10,9 +10,9 @@ div#fbar_new {
     -moz-transition: height 450ms ease, box-shadow 250 ease;
     -webkit-transition: height 450ms ease, box-shadow 250 ease;
     transition: height 450ms ease, box-shadow 250 ease;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.035);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
 }
 
 form#fbar_form {
@@ -20,9 +20,9 @@ form#fbar_form {
 }
 
 div#fbar_new:hover {
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.09);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.09);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.09);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
 }
 
 div#fbar_new.fbar_shadow{

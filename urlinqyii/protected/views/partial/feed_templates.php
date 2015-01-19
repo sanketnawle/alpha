@@ -756,16 +756,35 @@
                     <div class = 'post_main event_post'>
 
                         <div class = 'post_head'>
-                            <div class = 'post_event_date_box'>
+                            <div class = 'post_event_date_box' style = "background-color:{{event.color.hex}};">
                                 <div class = "top_dark_area"></div>
                                 <div class='post_event_month post_event_date_box_text'>{{event.month}}</div>
                                 <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
                             </div>
                             <div class = "event_post_toparea">
                                 <div class='post_event_title'>{{event.title}}</div>
-                                <div class='post_event_type_holder'>
-                                    <div class='post_event_type'>{{event.type}}</div>
+                                {{#if event.location}}
+                                <div class = "post_event_location_holder">
+                                    <div class = "post_event_location"><span class = "location_icon_dark"></span>{{event.location}}</div>
                                 </div>
+                                {{/if}}
+                                {{#if event.origin_type}}
+                                <div class = "event_context">
+                                    <span class = "down_right_arrow_icon"></span>
+                                    <div class='post_event_type_holder'>
+                                        {{#if event.event_type}}
+                                            <div class = "post_event_type">{{event.event_type}} in </div>
+                                        {{/if}}
+                                    </div>
+                                    <div class = "post_event_origin_holder">
+                                        {{#ifCond event.origin_type '==' 'user'}}
+
+                                        {{else}}
+                                            <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                        {{/ifCond}}
+                                    </div>
+                                </div>
+                                {{/if}} 
                             </div>
 
 
@@ -773,7 +792,15 @@
 
                             <div class='post_event_content'>
 
-                                <div class='post_event_calendar_button'>Add to calendar</div>
+                                {{#if event.description}}
+                                    <div class = "event_description_holder">
+                                        <p>{{event.description}}</p>
+                                    </div>
+                                {{/if}}
+                                {{#each files}}
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                {{/each}}
+                                <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
 
 
                                 <div class='post_event_time_holder'>
@@ -781,9 +808,7 @@
                                 </div>
 
 
-                                {{#each files}}
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                {{/each}}
+                                
                             </div>
 
 

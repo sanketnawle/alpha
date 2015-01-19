@@ -50,11 +50,11 @@ $(document).ready(function(){
     });
 
 	// Handle the highlighting for the other_view_tab
-    $('a#settings_link').mouseover(function(){
+    $('a#about_link').mouseover(function(){
         $(this).closest("#other_views_box").addClass("top_row_hover");
     });
 
-    $('a#settings_link').mouseleave(function(){
+    $('a#about_link').mouseleave(function(){
         $(this).closest("#other_views_box").removeClass("top_row_hover");
     });
 

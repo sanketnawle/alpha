@@ -128,14 +128,12 @@
                     </div>
                     <?php } else { }?>
 
+                    <?php if($is_admin){ ?>
                     <div class = "group_info_block" id = "class_schedule">
-                        <em class ="small_icon_map"></em>
-                        <span>Mon 9:30 am - 11:00 am, Wed 10:00 am - 11:30 am, Fri 9:30 am - 11:00 am</span>
-
-                        <?php if($is_admin){ ?>
-                            <div class="upload_cover_photo_button">Upload cover photo</div>
-                        <?php } ?>
+                        <div class="upload_cover_photo_button">Upload cover photo</div>
                     </div>
+                    <?php } ?>
+                    
                 </div>
 
 
@@ -812,216 +810,43 @@
             </div>
         </div>
         
-        <!-- INSERTING NEW PANELS HERE STARTING WITH ID = panel_5  -->
-        <div class="panel tab_settings" id="panel_5">
-        	<div class="tab_content_holder">
-        		<div class="tab_header">
-        			<img class="tab_settings_icon" src="../assets/settings_imgs/gear.png">
-	        		<div class="header_sentence">Class Settings</div>
-        		</div>
-        		<div class="settings_tab_content">
-        			<div class="admin_settings_wrapper">
-        				<div class="admin_settings">
-        					<div class="header">
-        						<p>Administrative Settings</p>
-        					</div>
-        					<div class="row">
-        						<div class="text">
-        							<p>Is this class open to the public?</p>
-        						</div>
-        						<div class="status">
-        							<p class="status_text">Inner html</p>
-        							<form class="status_form" id="status_form_open">
-        								<label><input id="status_check" type="radio" name="openStatus" value="Public"checked>Public</label><br>
-        								<label><input id="status_check" type="radio" name="openStatus" value="Private">Private</label>
-        							</form>
-        						</div>
-        						<div class="edit">
-        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
-        							Edit
-        						</div>
-        					</div>
-        					<div class="row">
-        						<div class="text">
-        							<p>Who can see the members of this class?</p>
-        						</div>
-        						<div class="status">
-        							<p class="status_text">Inner html</p>
-        							<form class="status_form" id="status_form_privacy">
-        								<label><input id="status_check" type="radio" name="privacyStatus" value="Public" checked>Public</label><br>
-        								<label><input id="status_check" type="radio" name="privacyStatus" value="Members Only">Members Only</label>
-        							</form>
-        						</div>
-        						<div class="edit">
-        							<img class="edit_img" src="../assets/settings_imgs/bluePen.png">
-        							Edit
-        						</div>
-        					</div>
-						</div>
-        			</div>
-           			<div class="personal_notification_settings_wrapper">
-	        			<div class="personal_notification_settings">
-	        				<div class="header">
-	        					<p>Personal Notification Settings</p>
-	        				</div>
-	        				<div class="row_no_click">
-	        					<p id="left_text">Notifications are OFF for this class</p>
-	        					<div id="right_slider">
-		        					<div class="switch">
-										<input id="cmn-toggle" class="cmn-toggle cmn-toggle-round" type="checkbox">
-										<label for="cmn-toggle"></label>
-									</div>
-	        					</div>
-	        				</div>
-	        			</div>
-        			</div>
-        			<div class="admins_wrapper">
-        				<div class="admins">
-        					<div class="header">
-        						<p>Class TAs and Admins</p>
-        					</div>
-        					<div class="row">
-        						<img class="admins_image" src="../assets/dummy-pic.jpg">
-        						<p class="admins_name">Professor Larry Herman</p>
-        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
-        					</div>
-        					<div class="row">
-        						<img class="admins_image" src="../assets/farring.png">
-        						<p class="admins_name">Jeffery Bigham</p>
-        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
-        					</div>
-        					<form>
-        						<input class="add_admin" type="text" placeholder="Add a new admin to this class">
-        						<img id="add_admin_img" src="../assets/settings_imgs/add-icon.png">
-        					</form>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </div>
         
         <!-- About Tab -->
         <div class="panel tab_about" id="panel_6">
-        	<div class="tab_content_holder">
-        	
-        		<div class="tab_header">
-        			<img class="tab_about_icon" src="../assets/about_icon.png">
-	        		<div class="header_sentence">About this Class - Guided Studies in Biomedical Engineering</div>
-        		</div>
-        		
-        		<div class="about_tab_content">
-        		
-        			<div class="description_wrapper">
-        				<div class="description">
-        					<div class="description_header">
-        						<p>Class Description</p>
-        					</div>
-        					<div class="description_blurb">
-        						<p>This course is a must-take class in Biomedical Engineering. It enables the user to have a strong foundation and take future advanced courses.</p>
-        					</div>
-        					<div class="description_info_row">
-        						<img class="description_time_img" src="../assets/settings_imgs/clock.png">
-        						<p class="description_time_p">Monday 08:00 am - 09:20 am, Wednesday 08:00 am - 09:20 am</p>
-							</div>
-							<div class="description_info_row">
-        						<img class="description_location_img" src="../assets/settings_imgs/location.png">
-        						<p class="description_location_p">Class Location</p>
-							</div>
-							<div class="description_info_row">
-        						<img class="description_department_img" src="../assets/settings_imgs/department.png">
-        						<p class="description_department_p">Department of Biomedical Engineering</p>
-							</div>
-						</div>
-        			</div>
-        			
-           			<div class="prof_description_wrapper">
-	        			<div class="prof_description">
-	        				<div class="header">
-	        					<img class="prof_description_pic" src="../assets/dummy-pic.jpg">
-	        					<div class="prof_description_info">
-	        						<p class="prof_name">Professor Larry Herman</p>
-	        						<p class="prof_description_text">OFFICE HOURS:</p>
-	        						<p class="prof_hours">Monday 08:00pm - 09:00pm</p>
-	        						<p class="prof_description_text">OFFICE LOCATION:</p>
-	        						<p class="prof_location">Gavett 207</p>
-	        					</div>
-	        				</div>
-	        				<div class="prof_blurb">
-	        					<p id="classes_taught">Other classes taught</p><hr><br>
-	        					<div class="prof_row">
-		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
-		        					<p class="class_taught">MS Thesis in Biomedical Engineering</p>
-	        					</div>
-	        					<div class="prof_row">
-		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
-		        					<p class="class_taught">PhD Thesis in Biomedical Engineering</p>
+            
+            <div class="tab_content_holder">
+               
+                <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
+                <div class="about_tab_header">
+                    <div class = "about_header_sentence">
+                        ARE YOU IN THIS CLASS?
+                    </div>
+                    <div class = "floatRight">
+                        <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
+                    </div>
+                    <div class = "about_header_data">
+                        To see this class's planner, feed, and materials, enroll in this class <span class = "non_member_join_pointer"></span>
+                    </div>      
+                </div>
 
-	        					</div>
-	        					<div class="prof_row">
-		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
-		        					<p class="class_taught">Biostatistics</p>
+                <div class = "about_tab_middle">
+                    <div class = "classic_about_box">
+                        About
+                    </div>
+                    <div class = "cool_members_box">
+                        <div class = "admin_about_section">
+                            admin
+                        </div>
+                        <div class = "members_about_section">
+                            members
+                        </div>
+                    </div>
+                </div>
 
-	        					</div>
-	        					<div class="prof_row">
-		        					<img class="prof_class_img" src="../assets/syllabus_icon_active.png">
-		        					<p class="class_taught">Guided Studies in Biomedical...</p>
-	        					</div>
-	        				</div>
-	        			</div>
-        			</div>
-        			
-        			<div class="people_you_know_wrapper">
-        				<div class="people_you_know">
-        					<div class="header">
-        						<p>Friends who have taken this class</p>
-        					</div>	
-        					<div class="slider_wrapper">
-        						<ul class="slider">
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>    
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>
-        							<li class="slider_pic">
-	        							<img src="../assets/dummy-pic.jpg">
-        							</li>    						
-        						</ul>
-        					</div>	
-        					<img class="slider_button_left" src="../assets/syllabus_icon_active.png">
-        					<img class="slider_button_right" src="../assets/syllabus_icon_active.png">	            
-        				</div>
-        			</div>
-        			
-        		</div>
-        	</div>
-        </div>
-        
-        <div class="panel tab_calendar" id="panel_7">
-        	This will be a calendar
-        </div>
-        
+            </div>
+
+        </div>  
+
         
 
 
