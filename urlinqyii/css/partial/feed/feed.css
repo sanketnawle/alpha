@@ -3217,16 +3217,59 @@ z-index: 999;
 
 /*events*/
 .post_event_date_box {
-    height: 80px;
-    width: 80px;
+    height: 58px;
+    width: 58px;
     background-color: red;
     float: left;
-    margin-top: 20px;
+    margin-top: 1px;
+    border-radius: 0px 2.4px 2.4px 0px;
 }
 
+div.post_event_month{ 
 
+    font-size: 12.5px; font-weight: 600; text-transform: capitalize; letter-spacing: .5px;
+    
 
+    margin-top: 8px; 
 
+}
+
+div.post_event_day{
+    font-size: 17px; font-weight: 600; line-height: 11px; 
+    margin-top: 5px;
+ 
+}
+
+div.post_event_date_box div.top_dark_area{
+background: rgba(0, 0, 0, 0.13);
+width: 100%;
+height: 8px;    
+}
+
+div.post_main.event_post{
+    border-radius:5px;
+}
+
+div.post_main.event_post div.post_head{
+    margin-left:0px;
+}
+
+div.post_event_date_box_text{
+    color: #fff; width: 100%; display: block; font-family: Avenir; text-align: center;
+    
+}
+
+div.post_event_title{
+
+}
+
+div.post_event_type_holder{
+
+}
+
+div.post_event_type_holder div.post_event_type{
+
+}
 
 .post_event_content {
     float: right;
@@ -3236,6 +3279,23 @@ z-index: 999;
     padding-bottom: 20px;
 
 }
+
+.post_event_calendar_button{
+
+}
+
+div.post_event_time_holder{
+
+}
+
+div.post_event_time_holder > .post_event_start_time{
+    
+}
+
+div.post_event_time_holder > .post_event_end_time{
+    
+}
+
 
 
 .post_event_calendar_button {

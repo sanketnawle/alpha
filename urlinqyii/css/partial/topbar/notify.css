@@ -150,7 +150,6 @@
     text-align: right;
     float: right;
     margin: 0 12px 0 5px;
-    overflow: auto;
     position: relative;
     z-index: 10;
 }
