@@ -448,6 +448,14 @@ div.tab.courses div.tab_img{
     width:23px;
 }
 
+div.tab.about div.tab_img{
+background-image: url('../../assets/main/tab_bar/tab_about_icon.png');
+background-position: 0px 17px;
+width: 17px;
+background-size: contain;
+margin-right: 5px;
+}
+
 div.tab.materials div.tab_img{
     background-image: url('../../assets/main/tab_bar/TabIcon_files.png');
     background-position: 0px 17px;
@@ -647,7 +655,7 @@ box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146,
     cursor: pointer;
 }
 
-#group_user_action_button:hover{
+#group_user_action_button.member:hover{
     background: #e84a5a!important;
     border-color: #bd2f33;
     box-shadow: none!important;
@@ -1686,7 +1694,7 @@ div#other_views_box.top_row_hover:before{
 }
 
 body#body_home div#content_panel div#nav_bar{
-    border-radius:4px!important;
+    border-radius:4px;
 }
 
 #other_views_box a#calendar_link{
