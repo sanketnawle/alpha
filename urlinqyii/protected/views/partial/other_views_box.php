@@ -11,7 +11,7 @@
     		<span class = "title_description">Adjust notifcations, admin roles, group privacy, and member visibility.</span>
     	</div>
     </a>-->
-    <a id = "about_link settings_link"  class="other_views_tab" data-panel_id="6">
+    <a id = "about_link"  class="other_views_tab" data-panel_id="6">
     	<div class = "title_body">
     		<span class ="title"><em></em>About</span>
     		<span class = "title_description">View this group's description and other details.</span>

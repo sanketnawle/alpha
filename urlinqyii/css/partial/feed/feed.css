@@ -226,7 +226,7 @@ text-align: left;
 padding-right: 4px;
 margin-bottom: 0px;
 display: inline-block;
-max-width: 523px;
+max-width: 525px;
 margin-top: 24px;
 
 
@@ -1679,8 +1679,8 @@ max-width: 530px;
 
 .post_attachment_review
 {
-width: calc(100% - 2px);
-width: -webkit-calc(100% - 2px);
+width: calc(100% - 7px);
+width: -webkit-calc(100% - 7px);
 border-radius: 2px;
 color: #FFF;
 line-height: 32px;
@@ -1692,6 +1692,7 @@ margin-right: 0px;
 
 margin-bottom: 7px;
 margin-top: -1px;
+box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset;
 padding-left: 8px;
 }
 

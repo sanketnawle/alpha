@@ -30,7 +30,8 @@
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-
+        
+        <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
@@ -512,149 +513,44 @@
                         <div class="panel tab_analytics" id="panel_4">
                             PANEL 4
                         </div>
-                        
-                        <!-- INSERTING NEW PANELS HERE STARTING WITH ID = panel_5  -->
-				        <div class="panel tab_settings" id="panel_5">
-				        	<div class="tab_content_holder">
-				        		<div class="tab_header">
-				        			<img class="tab_settings_icon" src="../assets/settings_imgs/gear.png">
-					        		<div class="header_sentence">Club Settings</div>
-				        		</div>
-				        		<div class="settings_tab_content">
-				        			<div class="admin_settings_wrapper">
-				        				<div class="admin_settings">
-				        					<div class="header">
-				        						<p>Administrative Settings</p>
-				        					</div>
-				        					<div class="row">
-				        						<div class="text">
-				        							<p>Is this class open to the public?</p>
-				        						</div>
-				        						<div class="status">
-				        							<p>Public</p>
-				        						</div>
-				        						<div class="edit">
-				        							<img src="../assets/settings_imgs/bluePen.png">
-				        							Edit
-				        						</div>
-				        					</div>
-				        					<div class="row">
-				        						<div class="text">
-				        							<p>Who can see the members of this class?</p>
-				        						</div>
-				        						<div class="status">
-				        							<p>Anyone</p>
-				        						</div>
-				        						<div class="edit">
-				        							<img src="../assets/settings_imgs/bluePen.png">
-				        							Edit
-				        						</div>
-				        					</div>
-										</div>
-				        			</div>
-				           			<div class="personal_notification_settings_wrapper">
-					        			<div class="personal_notification_settings">
-					        				<div class="header">
-					        					<p>Personal Notification Settings</p>
-					        				</div>
-					        				<div class="row_no_click">
-					        					<p id="left_text">Notifications are OFF for this class</p>
-					        					<div id="right_slider">
-						        					<div class="switch">
-														<input id="cmn-toggle" class="cmn-toggle cmn-toggle-round" type="checkbox">
-														<label for="cmn-toggle"></label>
-													</div>
-					        					</div>
-					        				</div>
-					        			</div>
-				        			</div>
-				        			<div class="admins_wrapper">
-				        				<div class="admins">
-				        					<div class="header">
-				        						<p>Club Admins</p>
-				        					</div>
-				        					<div class="row">
-				        						<img class="admins_image" src="../assets/dummy-pic.jpg">
-				        						<p class="admins_name">Professor Larry Herman</p>
-				        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
-				        					</div>
-				        					<div class="row">
-				        						<img class="admins_image" src="../assets/farring.png">
-				        						<p class="admins_name">Jeffery Bigham</p>
-				        						<img class="admins_delete" src="../assets/settings_imgs/delete.png">
-				        					</div>
-				        					<form>
-				        						<input class="add_admin" type="text" placeholder="Add a new admin to this class">
-				        						<img id="add_admin_img" src="../assets/settings_imgs/add-icon.png">
-				        					</form>
-				        				</div>
-				        			</div>
-				        		</div>
-				        	</div>
-				        </div>
-				        
-				        <!-- About Tab -->
-				        <div class="panel tab_about" id="panel_6">
-				        	<div class="tab_content_holder">
-				        	
-				        		<div class="tab_header">
-				        			<img class="tab_about_icon" src="../assets/about_icon.png">
-					        		<div class="header_sentence">About this Club - Brazilian Jiu Jitsu</div>
-				        		</div>
-				        		
-				        		<div class="about_tab_content">
-				        		
-				        			<div class="description_wrapper">
-				        				<div class="description">
-				        					<div class="description_header">
-				        						<p>Club Description</p>
-				        					</div>
-				        					<div class="description_blurb">
-				        						<p>The Brazilian Jiu-Jitsu club meets weekly in Coles Gym to instruct members on the modern art of fighting, calming the soul, and strengthening the heart.</p>
-				        					</div>
-				        					<div class="description_info_row">
-				        						<img class="description_time_img" src="../assets/settings_imgs/clock.png">
-				        						<p class="description_time_p">Monday 08:00 am - 09:20 am, Wednesday 08:00 am - 09:20 am</p>
-											</div>
-											<div class="description_info_row">
-				        						<img class="description_location_img" src="../assets/settings_imgs/location.png">
-				        						<p class="description_location_p">Class Location</p>
-											</div>
-											<div class="description_info_row">
-				        						<img class="description_department_img" src="../assets/settings_imgs/department.png">
-				        						<p class="description_department_p">Department of Biomedical Engineering</p>
-											</div>
-										</div>
-				        			</div>
-				        			
-				           			<div class="recent_events_wrapper">
-					        			<div class="recent_events">
-					        				<div class="header">
-					        					<p>Most Recent Events</p>
-					        				</div>	
-					        				<div class="recent_events_content">
-					        				</div>				        										        			
-					        			</div>
-				        			</div>
-				        			
-				        			<div class="people_you_know_wrapper">
-				        				<div class="people_you_know">
-				        					<div class="header">
-				        						<p>Friends in this club</p>
-				        					</div>
-				        				</div>
-				        			</div>
-				        			
-				        		</div>
-				        	</div>
-				        </div>
-				        
-				        <div class="panel tab_calendar" id="panel_7">
-				        	This will be a calendar
-				        </div>
-                        
-                        
 
+                        <!-- About Tab -->
+                        <div class="panel tab_about" id="panel_6">
+            
+                            <div class="tab_content_holder">
+                               
+                                <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
+                                <div class="about_tab_header">
+                                    <div class = "about_header_sentence">
+                                        ARE YOU IN THIS CLASS?
+                                    </div>
+                                    <div class = "floatRight">
+                                        <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
+                                    </div>
+                                    <div class = "about_header_data">
+                                        To see this class's planner, feed, and materials, enroll in this class <span class = "non_member_join_pointer"></span>
+                                    </div>      
+                                </div>
+
+                                <div class = "about_tab_middle">
+                                    <div class = "classic_about_box">
+                                        About
+                                    </div>
+                                    <div class = "cool_members_box">
+                                        <div class = "admin_about_section">
+                                            admin
+                                        </div>
+                                        <div class = "members_about_section">
+                                            members
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>                       
+
+                        
                     </div>
 
                 </div>

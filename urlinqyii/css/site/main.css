@@ -1685,6 +1685,10 @@ div#other_views_box.top_row_hover:before{
     
 }
 
+body#body_home div#content_panel div#nav_bar{
+    border-radius:4px!important;
+}
+
 #other_views_box a#calendar_link{
     
 }
@@ -1695,7 +1699,7 @@ background-image: none,url(../../assets/wire_icons.svg);
 background-repeat: no-repeat;
 background-size: 305px auto;
 background-position: 4px -142px;
-height: 20px;
+height: 10px;
 width: 30px;
 position: absolute;
 top: -10px;
