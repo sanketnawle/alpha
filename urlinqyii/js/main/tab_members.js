@@ -17,9 +17,19 @@ $(document).ready(function(){
             $people_search_input.closest(".tab_content_holder").find(".tab_content").children('div').each(function () {
                 var $item = $(this);
                 $item.show();
-                if($item.data('name').toLowerCase().indexOf(search_string) == -1){
-                    $item.hide();
+
+                if(globals.origin_type == 'course'){
+                    if($item.attr('data-section_id').toLowerCase().indexOf(search_string) == -1){
+                        $item.hide();
+                    }
+                }else{
+                    if($item.data('name').toLowerCase().indexOf(search_string) == -1){
+                        $item.hide();
+                    }
                 }
+
+
+
             });
         }else{
             $people_search_input.closest(".tab_content_holder").find(".tab_content").children('div').each(function () {
