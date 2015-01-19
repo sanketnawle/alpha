@@ -8,7 +8,7 @@ div.LeftPanel_SectionContent div.LeftPanel_DeptSchoolHolder{
 
 div#content_panel div#nav_bar{
 	top: 63px!important;
-	border-radius: 2px!important;
+	border-radius: 4px;
 	width: 551px;
 	margin-left: 15px;
 }
@@ -26,7 +26,7 @@ div.LeftPanel_DeptSchoolHolder div.LeftPanel_DSContentBox{
 }
 
 div#nav_bar{
-	border-radius:2px!important;
+	border-radius:4px;
 }
 
 div#nav_bar:hover {

@@ -81,6 +81,11 @@ $(document).ready(function() {
                 }
                 $('#name_input').val(data.firstname+" "+data.lastname);
                 $('#email_input').val(data.email);
+                if(numShowcase<=1){
+                    $('.showcase_controls').hide();
+                }else{
+                    $('.showcase_arrow.left').hide();
+                }
                 if(edit_mode==true){
 
                         $('#edit_profile_button.not_editing').click();
@@ -234,6 +239,7 @@ $(document).ready(function() {
     $(document).on('click','.add_showcase_button',function(){
         $(".add_showcase_text").fadeOut(250);
         $(".showcase_items").fadeOut(250);
+        $(".showcase_controls").fadeOut(250);
         $(this).fadeOut(150).delay(250).queue(function(next){
             $('#profile_overlay').fadeIn(300);
             $('#add_showcase_form').fadeIn(300);
@@ -245,6 +251,7 @@ $(document).ready(function() {
     });
     $(document).on('click','#cancel_showcase_form',function(){
         $(".showcase_items").fadeIn(250);
+        $(".showcase_controls").fadeIn(250);
         $('#add_showcase_form').fadeOut(350).delay(150).queue(function(next){
             $('.add_showcase_text').fadeIn(200);
             $('.add_showcase_button').fadeIn(50);
@@ -276,16 +283,21 @@ $(document).ready(function() {
                 });
                 $('.showcase_item.center').removeClass('center');
 
-                data.index = index;
+
                 //add new showcase entry using the returned template
                 if($('.showcase_item').length>0){
+                    data.index = index;
+                    if($('.showcase_item').length>=1){
+                        $(".showcase_controls").fadeIn(250);
+                    }
                     $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
                 }else{
+                    data.index=0;
                     $('.showcase_items').append(template(data));
-                    $('.showcase_controls').show();
+                    //$('.showcase_controls').show();
                     //$('#modal_header').removeAttr('style');
                     $('.add_showcase_button').removeClass('empty');
-                    $('.add_showcase_button').text('+ Add a Showcase');
+                    $('.add_showcase_button').text('+ Update your Showcase');
 
                 }
                 numShowcase++;
@@ -400,7 +412,7 @@ $(document).ready(function() {
             $('.showcase_item[showcase_index='+(index-1)+']').addClass('center');
         }
         numShowcase--;
-        if(numShowcase==0){
+        if(numShowcase==1){
             $('.showcase_controls').hide();
         }
     }
@@ -706,11 +718,11 @@ $(document).ready(function() {
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
         $('.edit_field').hide();
-        $('#edit_profile_button').css('margin-left','15px');
+        //$('#edit_profile_button').css('margin-left','15px');
         $('#edit_profile_button').text('Edit Profile');
         $('#cancel_edit_button').hide();
         $('#profile_overlay').hide();
-        $('#profile_picture_wrapper').css('z-index','');
+        //$('#profile_picture_wrapper').css('z-index','');
         $('#edit_profile_button').removeClass('editing');
         $('#edit_profile_button').addClass('not_editing');
     }
