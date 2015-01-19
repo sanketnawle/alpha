@@ -330,7 +330,7 @@ div.add_showcase_text > p{
 button.update_showcase_button.add_showcase_button {
 width: 150px;
 position: absolute;
-margin-left: -75px;
+/*margin-left: -75px;*/
 left: 50%;
 bottom: 20px;
 }
@@ -766,7 +766,6 @@ button.add_showcase_button:active{
 .showcase_arrow.left {
     left: 260px; background-image: url(../../assets/small_icons.png); background-size: auto!important;  
     background-position: 0px -860px;
-    display:none;
 }
 
 .showcase_arrow.right {
