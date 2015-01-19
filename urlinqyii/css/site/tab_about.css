@@ -36,7 +36,7 @@ div.about_tab_header{
 .floatRight > div.join_button{
     height: 28px; color: #fff; padding-left: 3px; 
     margin-top: -1px;
-    line-height: 28px;
+    line-height: 30px;
     text-align: center;
     border-radius: 4px; 
     width: 104px; 
@@ -50,8 +50,47 @@ div.about_tab_header{
     border-bottom: 1px solid rgba(9, 166, 89, 0.31);
 }
 
+div.class_description_holder{
+	font-size: 13.5px;
+	top: -7px;
+	color: #121212;
+	font-weight: 500;
+	margin: 0 10px;
+	position: relative;
+}
+
 div.panel.tab_about{
 	padding: 0 6px;
+	font-family: 'Open Sans', sans-serif;
+	margin-top: -27px!important;
+}
+
+span.red_time_icon{
+    border-radius: 2px; 
+    margin-top: 2px; margin-left: 5px; height: 24px; 
+    width: 23px; background-image: url(../../assets/small_icons.png); 
+    background-position: -35px -1057px; display: inline-block;
+
+}
+
+h4.course_credits span.time_val{
+    font-size: 13.5px; font-weight: 500; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
+    color: #333;
+
+    padding: 0px 1px 0px 8px;
+    position: relative;
+    top: -6px;
+}
+
+h4.course_credits span.time_val.two_lines{
+    text-transform: capitalize;
+	
+    display: block;
+    padding-left: 36px;
+    position: relative;
+    top: -29px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 div.join_button:hover{
@@ -80,7 +119,7 @@ div.join_button > span{ background-image: url("../../assets/small_icons.png"); p
 div.about_header_data{
 	font-size:14.2px;
 	color:#222;
-	padding-top: 6px;
+	padding-top: 3px;
 }
 
 div.about_header_data > p{
@@ -93,19 +132,55 @@ div.about_header_data > p{
 }
 
 span.non_member_join_pointer{
+    background-position: -30px -47px;
 
+    width: 23px;
+    height: 13px;
+    position: relative;
+    top: 1px;
+    left: -4px;
 }
 
 div.about_tab_middle{
+    margin-top: 17px;
 
+}
+
+div.about_tab_middle > div{
+    display: inline-block;
+    background: #FFF; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    border-radius: 5px;
+    min-height: 300px;
 }
 
 div.about_tab_middle div.classic_about_box{
-
+    width: 33%;
+    float: right;
 }
 
 div.about_tab_middle div.cool_members_box{
+    width: 65%;
+    min-height: 300px;
+}
 
+div.cool_members_box > div > h5, div.classic_about_box > h5{
+font-family: Avenir;
+font-size: 14px;
+background-color: transparent;
+color: #999;
+margin-top: 0;
+margin-bottom: 0;
+position: relative;
+border-radius: 4px 4px 0px 0px;
+border-bottom: 1px solid #dbdcdc;
+font-weight: 500;
+font-size: 14.5px;
+margin: 0 10px;
+color: #444;
+padding: 14px 0px 2px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-transform: uppercase;
 }
 
 div.cool_members_box div.admin_about_section{

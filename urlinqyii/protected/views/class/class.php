@@ -847,7 +847,7 @@
                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
                 <?php if($is_member){ ?>
                 
-                <div>classsssic</div>
+                
 
                 <?php }else{ ?>
 
@@ -871,14 +871,38 @@
                     
                     <div class = "cool_members_box">
                         <div class = "admin_about_section">
-                            admin
+                            <?php if($class->professor_id) { ?>
+                            <h5>Professor</h5>
+                            <div class = "member_info_holder">
+                                <div class = "admin_photo" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                                </div>
+                            </div>
                         </div>
                         <div class = "members_about_section">
-                            members
+                            <h5>Students</h5>
+                            <div class = "member_info_holder">
+
+                            </div>
                         </div>
                     </div>
                     <div class = "classic_about_box">
-                        About
+                        <h5>About</h5>
+                        <?php if($class->course->course_credits) { ?>
+                            <h4 class = "course_credits"><span class ="cred_icon"></span><span class = "cred_val"><?php echo $class->course->course_credits; ?></span> <span class = "cred_name">Credits</span></h4>
+                        <?php } else { }?>
+
+                        <?php if($class->class_datetime) { ?>
+                            <h4 class = "course_credits"><span class ="red_time_icon"></span><span class = "time_val two_lines"><?php echo $class->semester; ?> <?php echo $class->year; ?></span><span class = "time_val two_lines"><?php echo $class->class_datetime; ?></span></h4>
+                        <?php }elseif($class->year) { ?>
+                            <h4 class = "course_credits"><span class ="red_time_icon"></span><span class = "time_val"><?php echo $class->semester; ?> <?php echo $class->year; ?></span></h4>
+                        <?php } else { }?>
+
+                        <?php if($class->course->course_desc) { ?>
+                            <div class = "class_description_holder">
+                                <?php echo $class->course->course_desc; ?>
+                            </div>
+                        <?php } else { }?>
+
                     </div>
                 </div>
 
