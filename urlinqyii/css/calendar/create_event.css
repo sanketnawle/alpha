@@ -151,16 +151,12 @@ margin-top: -10px;
 #create_event_submit_button {
     display: inline-block;
     padding: 0px 12px;
-
     text-transform: uppercase;
     border-radius: 3px;
     color: #FFF;
     position: relative;
     line-height: 33px;
-
-
     width: 108px;
-
     margin-right: 6px;
     vertical-align: top;
     font-size: 14.4px;
@@ -168,9 +164,36 @@ margin-top: -10px;
     font-family: Avenir;
     margin-left: 6px;
     /* font-weight: bold; */
-    text-transform: uppercase; border-radius: 4px; color: #FFF; position: relative; cursor: pointer; background-color: #278CD5; background: linear-gradient(to bottom, #278cd5 0%, #1b7bc0 100%); background: -o-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background: -ms-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background: -moz-linear-gradient(top, #278cd5 0%, #1b7bc0 100%); background-image: -webkit-linear-gradient(top, #278cd5, #1b7bc0); border: 1px solid #1779C0!important; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset, inset -1px 0 0 rgba(255, 255, 255, 0.19), inset 1px 0 0 rgba(255, 255, 255, 0.27); border-bottom: 1px solid rgba(9, 124, 166, 0.74) !important;
+    text-transform: uppercase; border-radius: 4px; color: #FFF; position: relative; cursor: pointer; 
+    background-color: rgba(6, 155, 207, 0.8);
+    border: 1px solid #029acf!important;
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
+#create_event_submit_button:hover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902));
+    background-color: rgb(6, 155, 207);
+    -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+}
+
+#create_event_submit_button:active{
+    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+    background-color: rgb(6, 155, 207);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.14902), rgba(0, 0, 0, 0.14902));
+}
+
+#create_event_submit_button:focus{
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+    background-color: #069BCF;
+}
 
 .grey_button {
     padding: 0px 12px!important;

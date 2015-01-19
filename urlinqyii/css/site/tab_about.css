@@ -25,6 +25,14 @@ div.about_tab_header{
     color: #575757;
 }
 
+div.admin_text_data_box{
+
+}
+
+div.admin_text_data_box div.admin_name{
+	
+}
+
 .floatRight{
 	float:right;
 }
@@ -51,18 +59,49 @@ div.about_tab_header{
 }
 
 div.class_description_holder{
-	font-size: 13.5px;
+	font-size: 13px;
 	top: -7px;
 	color: #121212;
 	font-weight: 500;
 	margin: 0 10px;
+	max-height: 326px;
 	position: relative;
+	overflow-y: scroll;
+	display: block;
+	padding-top: 8px;
+	padding-bottom: 5px;
+	margin-top: 14px;
+	border-top: 1px solid #dbdcdc;
 }
 
 div.panel.tab_about{
 	padding: 0 6px;
 	font-family: 'Open Sans', sans-serif;
-	margin-top: -27px!important;
+}
+
+div.panel.tab_about div.tab_content_holder{
+	position: relative;
+	top: -10px;
+}
+
+div.member_info_holder{
+    padding: 14px 10px 10px 10px;
+
+}
+
+div.admin_photo{
+    width: 180px;
+    background-size: cover;
+    height: 150px;
+    background-repeat: no-repeat;
+    border-radius: 2.5px;
+     -webkit-transition: opacity .25s ease-in; /* For Safari 3.1 to 6.0 */
+    transition: opacity .25s ease-in;  
+    cursor:pointer;
+}
+
+div.admin_photo:hover{
+	opacity:.77;
 }
 
 span.red_time_icon{
@@ -150,17 +189,17 @@ div.about_tab_middle > div{
     display: inline-block;
     background: #FFF; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
     border-radius: 5px;
-    min-height: 300px;
 }
 
 div.about_tab_middle div.classic_about_box{
     width: 33%;
     float: right;
+    max-height: 450px;
 }
 
 div.about_tab_middle div.cool_members_box{
     width: 65%;
-    min-height: 300px;
+    min-height: 450px;
 }
 
 div.cool_members_box > div > h5, div.classic_about_box > h5{
