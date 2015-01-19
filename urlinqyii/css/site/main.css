@@ -740,10 +740,8 @@ div.center_text p#group_name span.bottom{
 }
 
 .group_name > .center_text > p{
-    opacity:0;
     display:inline-block;
     margin:0;
-    top:15px;
     position:relative;
     padding:0!important;
 }
@@ -784,7 +782,6 @@ div.center_admin{
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     color: #FFF;
     font-family: Avenir;
-    opacity:0;
     font-size: 15px;
     text-transform: capitalize;
     position: absolute;

@@ -107,7 +107,7 @@
             <div ng-uc-check="" style='background-color: {{color.hex}}' class="check ng-scope checked {{color_class}}" checked="">
                 <i class="checkmark"></i>
             </div>
-            <a href="<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}"><div class="title" style = "border:1px solid transparent;">{{name}}</div></a>
+            <div class="title" style = "border:1px solid transparent;">{{name}}</div>
         </div>
     </script>
 
@@ -151,9 +151,11 @@
                     <div class="sep"></div>
                 </div>
             </div>
-            <div class="providers class"></div>
-            <div class="providers clubs"></div>
-            <div class="providers depts"></div>
+            <div class = "providers_scrollable">
+                <div class="providers class"></div>
+                <div class="providers clubs"></div>
+                <div class="providers depts"></div>
+            </div>
             <div class="mini-calendar" ng-controller="MiniMonthController">
                 <div class = "mini_calendar_cover"></div>
                 <div class="header row1">

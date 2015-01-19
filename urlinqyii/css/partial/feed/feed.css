@@ -1716,7 +1716,7 @@ background: #CDCDCD;
 }
 
 .pptx.post_attachment_review, .ppt.post_attachment_review{
-background: rgba(255, 80, 2, 0.65); 
+background: #ff5d0f;
 }
 
 .doc.post_attachment_review, .docx.post_attachment_review{
@@ -3348,6 +3348,20 @@ div.event_post_toparea{
     cursor: pointer;
     display: inline-block;
     font-size: 11.9px;
+}
+
+.post_event_calendar_button:hover{
+    border-color: #E4E4E4;
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+    box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 border-bottom-color:#DDD;
+}
+
+.post_event_calendar_button:active{
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    background: #EEE;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 }
 
 .post_event_location_holder{

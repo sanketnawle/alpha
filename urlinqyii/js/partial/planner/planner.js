@@ -34,19 +34,7 @@ $(document).ready(function(){
         }
     });
 
-    setTimeout(function(){
-            $(".free_planner_message").addClass('animated fadeOutDown');
-    }, 2300);
 
-    setTimeout(function(){
-            $(".create_planner_message").addClass('animated fadeInDown');
-            $(".create_planner_message").css({"opacity":"1"});
-    }, 2700);
-
-    setTimeout(function(){
-            $(".point").addClass('animated fadeIn');
-            $(".point").css({"opacity":"1"});
-    }, 3600);
     
 
     var w = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
