@@ -353,12 +353,30 @@ class FeedController extends Controller
 
             elseif($post['post_type'] == 'event'){
 
+                $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
+
+
+
+
                 $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
                 $event = $this->model_to_array($post_event->event);
 
 
                 $posts[$i]['event'] = $event;
+
+
+                if($post_model->origin_type == 'class'){
+                    $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
+                    if($class_user){
+                        $posts[$i]['event']['color'] = $class_user->color;
+                    }
+                }else if($post_model->origin_type == 'group' || $post_model->origin_type == 'club'){
+                    $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
+                    if($group_user){
+                        $posts[$i]['event']['color'] = $group_user->color;
+                    }
+                }
             }
 
             //See if there are any files associated with this post
