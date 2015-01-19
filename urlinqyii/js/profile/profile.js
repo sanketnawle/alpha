@@ -312,10 +312,8 @@ $(document).ready(function() {
         // START A LOADING SPINNER HE
         // Create a formdata object and add the files
         var data = new FormData();
-        if(upload_file){
+        if(upload_file) {
             data.append("file", upload_file);
-        }else if($('#link_entry').val() != ''){
-            data.append("link_url",$('#link_entry').val());
         }else{
             alert('Please upload a file or provide a link to your file');
         }

@@ -363,11 +363,11 @@ class ProfileController extends Controller
         }
 
 
-        $previous_showcase = Showcase::model()->find('title=:title',array(':title'=>$_POST['title']));
+        /*$previous_showcase = Showcase::model()->find('title=:title',array(':title'=>$_POST['title']));
         if($previous_showcase){
             $this->renderJSON(array('status'=>'error','message'=>'this file is already in your showcase'));
             return;
-        }
+        }*/
         $showcase = new Showcase();
         $showcase->user_id = $_POST['user'];
         $showcase->file_id = $result['file_id'];
@@ -392,22 +392,32 @@ class ProfileController extends Controller
          $result['type'] = $type;
          $result['url'] = ($type == "url");
          if($type == "pdf"){
-             $result['color']= "#f15c61"; //red
+             $result['color']= "#d14c3f"; //red
          }
          else if($type == "doc" || $type == "docx"){
-             $result['color']= "#2a5896"; //blue
+             $result['color']= "#2ea0da"; //blue
          }
          else if($type == "ppt" || $type == "pptx"){
-             $result['color']= "#FD702D"; //orange
+             $result['color']= "rgba(255, 80, 2, 0.65)"; //orange
          }
+         else if($type == "png" || $type == "jpg"){
+             $result['color']= "#FF0E69";
+         }
+         else if($type == "xls" || $type == "xlsx" || $type == "csv"){
+             $result['color']= "#4eb63b";
+         }
+         else if($type == "zip"){
+             $result['color']= "#999";
+         }
+
          else if($type == "url"){
              $result['color']= "transparent";
-             if(isset($preview_image)){
+             if($showcase->preview_image){
                  $result['preview']=Yii::app()->getBaseUrl(true).$showcase->preview_image->file_url;
              }
              $result['link']=$showcase->file->file_name;
          }else {
-             $result['color']= "#ffffff"; //white
+             $result['color']= "transparent";
          }
          $result['status'] = 'success';
         $this->renderJSON($result);
@@ -991,14 +1001,24 @@ class ProfileController extends Controller
             $data['showcase'][$i]['type'] = $type;
             $data['showcase'][$i]['url'] = ($type == "url");
             if($type == "pdf"){
-                $data['showcase'][$i]['color']= "#f15c61"; //red
+                $data['showcase'][$i]['color']= "#d14c3f"; //red
             }
             else if($type == "doc" || $type == "docx"){
-                $data['showcase'][$i]['color']= "#2a5896"; //blue
+                $data['showcase'][$i]['color']= "#2ea0da"; //blue
             }
             else if($type == "ppt" || $type == "pptx"){
-                $data['showcase'][$i]['color']= "#FD702D"; //orange
+                $data['showcase'][$i]['color']= "rgba(255, 80, 2, 0.65)"; //orange
             }
+            else if($type == "png" || $type == "jpg"){
+                $data['showcase'][$i]['color']= "#FF0E69";
+            }
+            else if($type == "xls" || $type == "xlsx" || $type == "csv"){
+                $data['showcase'][$i]['color']= "#4eb63b";
+            }
+            else if($type == "zip"){
+                $data['showcase'][$i]['color']= "#999";
+            }
+
             else if($type == "url"){
                 $data['showcase'][$i]['color']= "transparent";
                 if($showcase->preview_image){
@@ -1006,7 +1026,7 @@ class ProfileController extends Controller
                 }
                 $data['showcase'][$i]['link']=$showcase->file->file_name;
             }else {
-                $data['showcase'][$i]['color']= "#ffffff"; //white
+                $data['showcase'][$i]['color']= "transparent";
             }
          }
         $data['base_url'] = Yii::app()->getBaseUrl(true);
