@@ -213,7 +213,7 @@ $(document).ready(function() {
         var index=parseInt($('.showcase_item.center').attr('showcase_index'));
         if(index>0){
             index--;
-            $('.showcase_items').css('margin-left', 260 - (index)*495);
+            $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
         }
@@ -225,7 +225,7 @@ $(document).ready(function() {
         if(index<numShowcase-1){
             index++;
             $('.showcase_arrow.left').show();
-            $('.showcase_items').css('margin-left', 260 - (index)*495);
+            $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
         }
@@ -283,7 +283,7 @@ $(document).ready(function() {
                 }else{
                     $('.showcase_items').append(template(data));
                     $('.showcase_controls').show();
-                    $('#modal_header').removeAttr('style');
+                    //$('#modal_header').removeAttr('style');
                     $('.add_showcase_button').removeClass('empty');
                     $('.add_showcase_button').text('+ Add a Showcase');
 
@@ -344,6 +344,7 @@ $(document).ready(function() {
                     upload_file = null;
 
                     render_new_showcase(data);
+                    $(".showcase_items").fadeIn(250);
                     //alert(JSON.stringify(data));
                 }else{
                     //alert(JSON.stringify(data));
@@ -392,7 +393,7 @@ $(document).ready(function() {
             })
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
         }else if(numShowcase>1){
-            $('.showcase_items').css('margin-left', 260-(index-1)*495);
+            $('.showcase_items').css('margin-left', 260-(index-1)*496);
             $('.showcase_item[showcase_index='+(index-1)+']').addClass('center');
         }
         numShowcase--;
