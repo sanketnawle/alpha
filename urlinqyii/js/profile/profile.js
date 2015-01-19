@@ -343,6 +343,11 @@ $(document).ready(function() {
 
                     render_new_showcase(data);
                     $(".showcase_items").fadeIn(250);
+                    $('#add_showcase_form').fadeOut(350).delay(150).queue(function(next){
+                        $('.add_showcase_text').fadeIn(200);
+                        $('.add_showcase_button').fadeIn(50);
+                        next();
+                    });
                     //alert(JSON.stringify(data));
                 }else{
                     //alert(JSON.stringify(data));
