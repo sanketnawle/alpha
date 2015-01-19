@@ -112,3 +112,20 @@ var load_events = function () {
          }
       });
 };
+
+
+$(document).on("click",'.done_editing_button', function(){
+
+var title = $(this).siblings().closest('input').val();
+var id = $(this).parent().parent().attr('id');
+$.ajax({
+       url: "UpdateSyllabusEvent",
+       type: "POST",
+       data: {"id":id,"title":title},
+       success: function(response) {
+       },
+       error: function(jqXHR, textStatus, errorMessage) {
+           console.log(errorMessage); // Optional
+       }
+    });
+});

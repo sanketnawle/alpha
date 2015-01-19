@@ -1494,6 +1494,38 @@ class ApiController extends Controller
 
     }
 
+
+
+    //ERROR ID's
+    // 1 - All data is not set
+    // 2 - Club doesnt exist
+    public function actionGetCourseData(){
+        if(!isset($_GET['course_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'department_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $course_id = $_GET['course_id'];
+        //$user = User::model()->findAll(array("select"=>"user_email"));
+        $course = Course::model()->find("course_id=:course_id",array(":course_id"=>$course_id));
+
+        if($course){
+            $data = array('success'=>true,'course'=>$this->get_model_associations($course,array('pictureFile'=>array(), 'department'=>array(), 'users'=>array('pictureFile'))));
+
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>2);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+    }
+
+
+
     //ERROR ID's
     // 1 - All data is not set
     // 2 - group doesnt exist
