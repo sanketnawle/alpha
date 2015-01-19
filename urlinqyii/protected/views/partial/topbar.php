@@ -11,15 +11,9 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
 
-
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
-
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/topbar.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/notify.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/leftpanel/leftpanel.css' />
-
-
-
 </head>
 <body>
     <div class="topbar">
@@ -240,7 +234,7 @@
             </a>
         </div>
     </div>
-
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
 </html>
 
