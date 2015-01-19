@@ -72,10 +72,10 @@ function time_string_to_am_pm_string(time_string){
 
 
     var hours = datetime_obj.getHours();
-    var am_pm = 'am';
+    var am_pm = ' am';
 
     if(hours >= 12){
-        am_pm = 'pm';
+        am_pm = ' pm';
         if(hours > 12){
             hours -= 12;
         }
