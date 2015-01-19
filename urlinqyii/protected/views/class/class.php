@@ -148,6 +148,7 @@
 
         <div id="tab_bar">
 
+            <?php if($is_member){ ?>
             <div class="tab feed active" data-panel_id="1">
                 <div class="tab_content">
                     <div class="tab_img"></div>
@@ -183,7 +184,26 @@
             </div>
 
 
+            <?php }else{ ?>
 
+            <div class="tab about active" data-panel_id="6">
+                <div class="tab_content">
+                    <div class="tab_img"></div>
+                    <div class="tab_text">About this Class</div>
+                </div>
+                <div class="tab_wedge"></div>
+            </div>
+
+            <div class="tab members" data-panel_id="4">
+                <div class="tab_content">
+                    <div class="tab_img"></div>
+                    <div class="tab_text">Members</div>
+                    <div class = "tab_amount"><?php echo count($class->users);?></div>
+                </div>
+                <div class="tab_wedge"></div>
+            </div>
+
+            <?php } ?>
 
             <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
             <?php if($is_member){ ?>
@@ -205,7 +225,7 @@
 
         </div>
 
-
+        <?php if($is_member){ ?>
         <div class="panel active panel_feed" id="panel_1">
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
@@ -275,13 +295,13 @@
                         <div class = "syllabus_events_wrapper">
                             <header class = "class_tasks">
                                 <h5>Class Work</h5>
-                                <label>Order:</label>
+                                <!-- <label>Order:</label>
                                 <ul class = "menu">
                                     <li>
                                         <a href = "#"><div class = "order_sort_dropdown"><span id = "selected_syllabus_event_order">Kind</span><em></em></div></a>
                                         <ul><div class = "order_dropdown_box"><li id = "syllabus_event_order_kind" class = "syllabus_event_order"><a href = "#">Kind</a></li><li id = "syllabus_event_order_date" class = "syllabus_event_order"><a href = "#">Date</a></li></div></ul>
                                     </li>
-                                </ul>
+                                </ul> -->
 
 
                             </header>
@@ -687,6 +707,10 @@
         <!--</form>-->
         </div>
 
+        
+
+        <?php } ?>
+
         <div class="panel tab_members" id="panel_4">
             <div class="tab_content_holder">
                 <div class="tab_header">
@@ -812,27 +836,39 @@
         
         
         <!-- About Tab -->
+        <?php if($is_member){ ?>
         <div class="panel tab_about" id="panel_6">
+        <?php }else{ ?>
+        <div class="panel tab_about active" id="panel_6">
+        <?php } ?>
             
             <div class="tab_content_holder">
                
                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
+                <?php if($is_member){ ?>
+                
+                <div>classsssic</div>
+
+                <?php }else{ ?>
+
                 <div class="about_tab_header">
                     <div class = "about_header_sentence">
-                        ARE YOU IN THIS CLASS?
+                        <p>ARE YOU IN THIS CLASS?</p>
                     </div>
-                    <div class = "floatRight">
-                        <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
-                    </div>
-                    <div class = "about_header_data">
-                        To see this class's planner, feed, and materials, enroll in this class <span class = "non_member_join_pointer"></span>
-                    </div>      
+                    <div class = "about_header_body">
+                        <div class = "floatRight">
+                            <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
+                        </div>
+                        <div class = "about_header_data">
+                            <p>To see this class's planner, feed, and materials, enroll now <span class = "non_member_join_pointer small_icon_map"></span></p>
+                        </div> 
+                    </div>     
                 </div>
 
+                <?php } ?>
+
                 <div class = "about_tab_middle">
-                    <div class = "classic_about_box">
-                        About
-                    </div>
+                    
                     <div class = "cool_members_box">
                         <div class = "admin_about_section">
                             admin
@@ -840,6 +876,9 @@
                         <div class = "members_about_section">
                             members
                         </div>
+                    </div>
+                    <div class = "classic_about_box">
+                        About
                     </div>
                 </div>
 

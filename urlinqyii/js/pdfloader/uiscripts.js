@@ -84,7 +84,7 @@ var load_events = function () {
             if(color != lastColor){
                 var current_color = "background-color:"+color;
             }
-            var d = new Date(value["event_date"]);
+            var d = new Date(value["start_date"]);
             html_text='<div id="'+value["event_id"]+'" class = "syllabus_event editable">\
                     <div style="'+current_color+'" class = "day_month_box day_box_color">\
                         <div class = "calendar_top_border"></div>\
@@ -97,7 +97,7 @@ var load_events = function () {
                         <span class ="event_name_text">\
                             Midterm 1\
                         </span>\
-                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value["event_title"]+'"">\
+                        <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value["title"]+'"">\
                         <div class = "done_editing_button">\
                             Done\
                         </div>\

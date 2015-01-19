@@ -136,7 +136,9 @@ function highlightText(db){
   $.each(div_dict,function(index,value){
    get_date_v2(value);
   });
+  if(db){
   add_event_to_ui(events);
+  }
   var full_text = "";
   var text = $('div.textLayer').children();
   $.each(text,function(index, value){
@@ -208,7 +210,7 @@ var add_event_to_ui = function(events_generated){
       var get_data_json = {"class_id":globals.origin_id,"file_id":String(file_id),"event_title":value,"event_date":php_time,"event_type":"default"}; 
       $.ajax({
          url: "StoreEvent",
-         type: "GET",
+         type: "POST",
          data: get_data_json,
          success: function(response) {
           var color = colors[Math.floor(colors.length * Math.random())];
@@ -339,3 +341,4 @@ var get_date_v2= function(input){
   }
 }
 
+//(((.*)((\d{1,2}\s?am|pm)|(((\d{1,2}:\d{1,2})?)(\s?)((am|pm)?))))?)
