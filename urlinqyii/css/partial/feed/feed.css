@@ -14,7 +14,7 @@ float: left;
 width: 552px;
 padding-top: 5px;
 position: relative;   
-margin-bottom: 12px;
+margin-bottom: 10px;
 border-radius: 5px;
 /* background: rgba(255, 255, 255, 1); */
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; 
@@ -150,13 +150,13 @@ text-decoration: none;
 }
 
 .post_owner, .post_group{
-color: #029acf;
-font-size: 14.8px;
+color: #029acf; 
+font-size: 15.5px;
 top: 9px;
 position: relative;
 cursor: pointer;
-font-weight: bold;
--webkit-font-smoothing: antialiased;
+/* font-weight: bold; */
+/* -webkit-font-smoothing: antialiased; */
 -moz-osx-font-smoothing: grayscale;
 left: -12px;
 display: inline-block;
@@ -2117,7 +2117,7 @@ time.timeago{
 
 span.post_group > a{
 color: #029acf;
-font-size: 14.5px;
+font-size: 15px;
 }
 
 
@@ -3258,7 +3258,12 @@ div.post_event_date_box_text{
 }
 
 div.post_event_title{
+    color: #333;   
+    font-size: 15.5px;
 
+    font-weight: 500;
+    padding: 19px 56px;
+    text-transform: capitalize;
 }
 
 div.post_event_type_holder{
@@ -3294,7 +3299,13 @@ div.post_event_time_holder > .post_event_end_time{
     
 }
 
+div.event_post_toparea{
+    padding-bottom: 7px; border-bottom: 1px solid #eee;
 
+    height: 60px;
+    width: 530px;
+    margin: 0 11px;
+}
 
 .post_event_calendar_button {
 
