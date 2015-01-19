@@ -151,6 +151,8 @@ class PostController extends Controller
                 //$_POST['Post'] -> $_POST['Post'] plz
                 if($model){
 
+                    include_once 'notification/notification.php';
+
 
                     $post_data = $this->model_to_array($model);
                     $post_data['user_info'] = $this->model_to_array($user);
@@ -283,6 +285,15 @@ class PostController extends Controller
                                 $post_data['origin'] = $this->model_to_array($class);
                                 //reassign the name to make it easier to get in the handlebars
                                 $post_data['origin']['name'] = $post_data['origin']['class_name'];
+
+
+                                //Send a notification to everyone in this class about this post
+                                foreach($class->users as $class_user){
+                                    if($class_user->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$class_user->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'class doesnt exist');
                                 $this->renderJSON($return_data);
@@ -296,6 +307,14 @@ class PostController extends Controller
                                 $post_data['origin'] = $this->model_to_array($department);
                                 //reassign the name to make it easier to get in the handlebars
                                 $post_data['origin']['name'] = $post_data['origin']['department_name'];
+
+                                //Send a notification to everyone in this class about this post
+                                foreach($department->users as $department_user){
+                                    if($department_user->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');
                                 $this->renderJSON($return_data);
@@ -311,6 +330,14 @@ class PostController extends Controller
                                 $post_data['origin'] = $this->model_to_array($school);
                                 //reassign the name to make it easier to get in the handlebars
                                 $post_data['origin']['name'] = $post_data['origin']['school_name'];
+
+
+                                //Send a notification to everyone in this class about this post
+                                foreach($school->users as $school_user){
+                                    if($school_user->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$school_user->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
                                 $this->renderJSON($return_data);
@@ -325,6 +352,14 @@ class PostController extends Controller
                                 $post_data['origin'] = $this->model_to_array($group);
                                 //reassign the name to make it easier to get in the handlebars
                                 $post_data['origin']['name'] = $post_data['origin']['group_name'];
+
+                                //Send a notification to everyone in this class about this post
+                                foreach($group->users as $group_user){
+                                    if($group_user->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$group_user->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
                                 $this->renderJSON($return_data);

@@ -38,22 +38,30 @@ class ClassController extends Controller
         foreach($schedules as $schedule){
             $schedule_strings[] = $schedule->day . ' ' . $schedule->start_time . ' to ' . $schedule->end_time;
         }
+
+
+
+
         $is_member = false;
-
-        foreach ($class->users as $student) {
-            if($user->user_id == $student->user_id){
-                $is_member = true;
-                break;
-            }
-        }
-
         $is_admin = false;
-        foreach ($class->admins as $student) {
-            if($user->user_id == $student->user_id){
+
+        $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$class->class_id, ':user_id'=>$user->user_id));
+        if($class_user){
+            $is_member = true;
+            if($class_user->is_admin){
                 $is_admin = true;
-                break;
+            }
+        }else{
+            if($class->professor_id == $user->user_id){
+                $is_admin = true;
             }
         }
+
+
+
+
+
+
 
         $files =  Yii::app()->db->createCommand()
         ->select('u.firstname, u.lastname, c.text_msg, f.* ')

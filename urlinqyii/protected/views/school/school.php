@@ -14,6 +14,9 @@
     
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
+
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
+
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/school/school_main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">

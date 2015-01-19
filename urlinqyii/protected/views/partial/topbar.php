@@ -166,62 +166,13 @@
                         <div class="window">
                             <div class="header">Notifications</div>
                             <ul class="entries">
-                                <li class="per">
-                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="follow btn">Follow</div>
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">Shaleen Smith is now following you.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">10 mins ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="inf">
-                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?2)"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">Professor Wolfram has made an announcement in your class, Theories of the French Republic.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 day ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="qus done">
-                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?3)"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">Jenna Appleseed has asked a question in your class, Computational Biology.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 day ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="per done">
-                                    <div class="icon"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="follow msg">Following</div>
-                                        </div>
-                                        <div class="message">Dante Aligheri is now following you.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 hour ago</div>
-                                        </div>
-                                    </div>
-                                </li>
+
+
+
+
+
+
+
                             </ul>
                         </div>
                     </div>
@@ -247,5 +198,131 @@
     </div>
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 </body>
+
+
+
+
+
+<script id='notification_template' type="text/x-handlebars-template">
+    <li class="per notification" data-id='{{notification_id}}' data-type="{{type}}">
+        <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
+        <div class="content">
+            <div class="right">
+                {{#ifCond type '==' 'follow'}}
+                    {{#if following_back}}
+                        <div class="follow msg">Following</div>
+                    {{else}}
+                        <div class="follow btn">Follow</div>
+                    {{/if}}
+                {{/ifCond}}
+
+                <div class="dismiss">Dismiss</div>
+                <div class="close"></div>
+            </div>
+
+
+            {{#ifCond type '==' 'follow'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} is now following you.</div>
+            {{/ifCond}}
+
+            {{#ifCond type '==' 'like'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post!</div>
+            {{/ifCond}}
+
+            {{#ifCond type '==' 'reply'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} replied to your post: {{origin.reply_msg}}</div>
+            {{/ifCond}}
+
+            {{#ifCond type '==' 'post'}}
+                <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{origin.text}}</div>
+            {{/ifCond}}
+
+
+            {{#ifCond type '==' 'announcement'}}
+                <div class="message">Professor {{actor.lastname}} has made an announcement in your class, {{origin.class_name}}</div>
+            {{/ifCond}}
+
+            <div class="time">
+                <div class="icon"></div>
+                <div class="stamp">{{formatted_created_time}}</div>
+            </div>
+        </div>
+    </li>
+
+
+
+</script>
+
+
+<!--  <li class="per">-->
+<!--        <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>-->
+<!--        <div class="content">-->
+<!--            <div class="right">-->
+<!--                <div class="follow btn">Follow</div>-->
+<!--                <div class="dismiss">Dismiss</div>-->
+<!--                <div class="close"></div>-->
+<!--            </div>-->
+<!--            <div class="message">Shaleen Smith is now following you.</div>-->
+<!--            <div class="time">-->
+<!--                <div class="icon"></div>-->
+<!--                <div class="stamp">10 mins ago</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
+<!---->
+<!---->
+<!---->
+<!--    <li class="inf">-->
+<!--        <div class="icon" style="background-image: url(http://lorempixel.com/34/34?2)"></div>-->
+<!--        <div class="content">-->
+<!--            <div class="right">-->
+<!--                <div class="dismiss">Dismiss</div>-->
+<!--                <div class="close"></div>-->
+<!--            </div>-->
+<!--            <div class="message">Professor Wolfram has made an announcement in your class, Theories of the French Republic.</div>-->
+<!--            <div class="time">-->
+<!--                <div class="icon"></div>-->
+<!--                <div class="stamp">1 day ago</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
+<!---->
+<!---->
+<!--    <li class="qus done">-->
+<!--        <div class="icon" style="background-image: url(http://lorempixel.com/34/34?3)"></div>-->
+<!--        <div class="content">-->
+<!--            <div class="right">-->
+<!--                <div class="dismiss">Dismiss</div>-->
+<!--                <div class="close"></div>-->
+<!--            </div>-->
+<!--            <div class="message">Jenna Appleseed has asked a question in your class, Computational Biology.</div>-->
+<!--            <div class="time">-->
+<!--                <div class="icon"></div>-->
+<!--                <div class="stamp">1 day ago</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
+<!---->
+<!---->
+<!---->
+<!--    <li class="per done">-->
+<!--        <div class="icon"></div>-->
+<!--        <div class="content">-->
+<!--            <div class="right">-->
+<!--                <div class="follow msg">Following</div>-->
+<!--            </div>-->
+<!--            <div class="message">Dante Aligheri is now following you.</div>-->
+<!--            <div class="time">-->
+<!--                <div class="icon"></div>-->
+<!--                <div class="stamp">1 hour ago</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </li>-->
+
+
+
+
+
+
 </html>
 
