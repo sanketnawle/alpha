@@ -10,6 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
 
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/topbar.css' />
     <link rel='stylesheet' type='text/css' href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/topbar/notify.css' />
@@ -77,7 +78,11 @@
                         <div class="icon"></div>
                         <div class = "icon_text">Reminders</div>
                     </div>
-                    <div class="notify-window">
+
+
+
+
+                    <div class="notify-window" id="reminders" style="display: none;">
                         <div class="wedge"></div>
                         <div class="window">
                             <div class="header">Invitations and Reminders</div>
@@ -152,13 +157,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="notify board">
-                    <div class="button">
-                        <div class="icon"></div>
-                        <div class = "icon_text">Notifications</div>
-                    </div>
-                    <div class="notify-window">
+
+
+
+
+                    <div class="notify-window" id="notifications" style="display: none;">
                         <div class="wedge"></div>
                         <div class="window">
                             <div class="header">Notifications</div>
@@ -222,6 +225,14 @@
                             </ul>
                         </div>
                     </div>
+
+                </div>
+                <div class="notify board">
+                    <div class="button">
+                        <div class="icon"></div>
+                        <div class = "icon_text">Notifications</div>
+                    </div>
+
                 </div>
             </div>
         </div>
