@@ -761,17 +761,17 @@
                                 <div class='post_event_month post_event_date_box_text'>{{event.month}}</div>
                                 <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
                             </div>
+                            <div class = "event_post_toparea">
+                                <div class='post_event_title'>{{event.title}}</div>
+                                <div class='post_event_type_holder'>
+                                    <div class='post_event_type'>{{event.type}}</div>
+                                </div>
+                            </div>
 
 
 
 
                             <div class='post_event_content'>
-                                <div class='post_event_title'>{{event.title}}</div>
-                                <div class='post_event_type_holder'>
-                                    <div class='post_event_type'>{{event.type}}</div>
-
-                                </div>
-
 
                                 <div class='post_event_calendar_button'>Add to calendar</div>
 
