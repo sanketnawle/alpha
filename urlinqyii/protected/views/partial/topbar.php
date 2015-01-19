@@ -161,7 +161,7 @@
                     <div class="notify-window">
                         <div class="wedge"></div>
                         <div class="window">
-                            <div class="header">Announcements, Questions and Followers</div>
+                            <div class="header">Notifications</div>
                             <ul class="entries">
                                 <li class="per">
                                     <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>

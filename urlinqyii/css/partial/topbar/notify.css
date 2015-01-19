@@ -2,14 +2,14 @@
     font-family: 'Open Sans'}
 .topbar > #topbar_responsive_holder .right .notify .notify-window {
     position: absolute;
-    top:  86%;
+    top: 100%;
     right: auto;
     bottom: auto;
-    left:  -137px;
+    left: -84px;
     z-index: 10;
-    width: 0;
-    opacity: 0;
-    height: 0;
+    width: 360px;
+    /* opacity: 0; */
+    /* height: 0; */
     overflow: hidden;
     padding: 0 5px 5px;
 }
@@ -29,16 +29,17 @@
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window {
     margin-top: 8px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow:  0 0 10px -3px #999;
+    border-radius: 3px; 
+    -webkit-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.3); 
+    -moz-box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.3); 
+    box-shadow: 0 0 7px 0 rgba(111, 111, 111, 0.3);
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window * {
-    opacity: 0;
-    -webkit-transform: scale(.99);
+    /* opacity: 0; */
     -moz-transform: scale(.99);
     -ms-transform: scale(.99);
     -o-transform: scale(.99);
-    transform: scale(.99);
+    /* transform: scale(.99); */
     -webkit-transition: opacity .1s, transform .2s;
     -moz-transition: opacity .1s, transform .2s;
     -o-transition: opacity .1s, transform .2s;
@@ -47,10 +48,14 @@
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .header {
     text-align: center;
-    padding:  14px;
-    border-bottom: 2px solid #d4d4d4;
+    padding: 12px 14px 10px;
+    border-bottom: 2px solid #e6e5e6;
     font-family: 'Avenir';
     font-weight:  500;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    color: #575757;
+    text-transform: capitalize;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable {
     overflow: auto;
@@ -66,7 +71,7 @@
     max-height: 300px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li {
-    border-top: 1px solid #d4d4d4;
+    border-top: 1px solid #e6e5e6;
     background-color: #fff;
     position: relative;
     overflow: auto;
@@ -86,7 +91,7 @@
     height: 34px;
     background-image: url(../../../assets/noti_sprite.png);
     background-position: 35px -35px;
-    border-radius:  4px;
+    border-radius: 2.5px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.text {
     background-position: 35px 0;
@@ -101,6 +106,7 @@
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date {
     background-position: 0 0;
     color: #fff;
+    background: #777;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div {
     text-align: center;
@@ -108,16 +114,19 @@
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div.month {
     font-size: 10px;
     line-height: 11px;
-    margin-top: 3px;
+    font-family: Avenir;
+    margin-top: 5px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li>.icon.date div.day {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 17px;
+    font-family: Avenir;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .message {
-    font-size: 85%;
-    margin-top: 12px;
+    font-size: 12.5px;
+    margin-top: 8px;
     font-weight:  400;
+    color: #333;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .time {
     clear: left;
@@ -133,14 +142,14 @@
     font-family: 'Roboto';
     margin-top: 4px;
     font-size: 75%;
-    color: #888;
+    font-weight: 400;
+    color: #989898;
     margin-bottom: 12px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right {
     text-align: right;
     float: right;
     margin: 0 12px 0 5px;
-    overflow: auto;
     position: relative;
     z-index: 10;
 }
@@ -152,23 +161,24 @@
     padding: 3px 5px;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn {
-    color: #333;
-    border: 1px solid #ddd;
-    border-color: #e5e5e5 #ccc #ccc;
-    background-color: #eee;
-    background-image: -webkit-gradient(linear,  left top,  left bottom,  color-stop(0,  #fff),  color-stop(100% #eee));
-    background-image: -webkit-linear-gradient(top,  #fff 0,  #eee 100%);
-    background-image: -moz-linear-gradient(top,  #fff 0,  #eee 100%);
-    background-image: -ms-linear-gradient(top,  #fff 0,  #eee 100%);
-    background-image: -o-linear-gradient(top,  #fff 0,  #eee 100%);
-    background-image: linear-gradient(top,  #fff 0,  #eee 100%);
     border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), inset 0 1px 0 #fff, inset -1px 0 0 #fff, inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 1px 0 0 #fff;
+    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn:hover {
-    color: #000;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 0 #fff, inset -1px 0 0 #f8f8f8, inset 0 -1px 0 rgba(248, 248, 248, 0.5), inset 1px 0 0 #f8f8f8;
+border-color: #E4E4E4;
+-moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+-webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1);
+box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 border-bottom-color:#DDD;
 }
+.topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.btn:active {
+
+-webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+-moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+background: #EEE;
+box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+
+}
+
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li .content .right .follow.msg {
     color: #000;
     font-weight: 600;
@@ -223,8 +233,8 @@
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable .entries li.done {
     opacity: .75;
-    background-color: #eee;
-    border-top-color: #bbb;
+    background-color: #f5f5f5;
+    border-top-color: #e6e5e6;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .footer {
     text-align: center;

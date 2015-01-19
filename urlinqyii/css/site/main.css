@@ -217,7 +217,7 @@ div.about_box h5{
 }
 
 div.about_box p{
-    margin: 8px 10px;
+    margin: 9px 10px;
     
     font-size: 12.7px;
     color: #575757;
@@ -225,7 +225,7 @@ div.about_box p{
     max-height: 340px;
     padding-bottom: 0px;
     margin-top: 0;
-    padding-top: 8px;
+    padding-top: 4px;
 }
 
 #planner_column.planner_column_home #right_column_specs {
@@ -1760,7 +1760,7 @@ p.founded_text{
     color: #575757!important;
     margin-bottom: 0px!important;
     padding-bottom: 0px!important;
-    padding-top: 6px!important;
+    padding-top: 2px!important;
 }
 
 p.founded_text > span.founded_icon{
