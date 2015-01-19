@@ -2334,6 +2334,16 @@ box-shadow: 0 1px 0 rgba(0,0,0,.15),0 2px 0 rgba(255,255,255,.9),inset 0 0 2px r
 	right: -20px;
 }
 
+/* EVENT POSTS */
+
+div.post_event_month{
+
+}
+
+div.post_event_day{
+	
+}
+
 #help-view-more .help-wedge{
 border-color: transparent;
 border-bottom-color: #3C3C3C;

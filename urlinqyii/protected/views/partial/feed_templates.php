@@ -753,12 +753,13 @@
 
             <script id="post_event_template" type="text/x-handlebars-template">
                 <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}">
-                    <div class = 'post_main'>
+                    <div class = 'post_main event_post'>
 
                         <div class = 'post_head'>
                             <div class = 'post_event_date_box'>
-                                <div class='post_event_month'>{{event.month}}</div>
-                                <div class='post_event_day'>{{event.day_number}}</div>
+                                <div class = "top_dark_area"></div>
+                                <div class='post_event_month post_event_date_box_text'>{{event.month}}</div>
+                                <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
                             </div>
 
 
