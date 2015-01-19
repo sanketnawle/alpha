@@ -136,7 +136,9 @@ function highlightText(db){
   $.each(div_dict,function(index,value){
    get_date_v2(value);
   });
+  if(db){
   add_event_to_ui(events);
+  }
   var full_text = "";
   var text = $('div.textLayer').children();
   $.each(text,function(index, value){
@@ -339,3 +341,4 @@ var get_date_v2= function(input){
   }
 }
 
+//(((.*)((\d{1,2}\s?am|pm)|(((\d{1,2}:\d{1,2})?)(\s?)((am|pm)?))))?)
