@@ -31,13 +31,13 @@ background-size: auto;
 height: 19px;
 background-position: -44px -463px;
 position: relative;
-left: -9px;
+left: -10.5px;
 top: 11px;
 opacity: .8;
 }
 
 .post_main{
-padding-top: 5px;
+padding-top: 7px;
 padding-right: 10px;
 width: 540px;
 opacity: 1;
@@ -74,14 +74,12 @@ border-left: none;
 display: block;
 position:absolute;
 background-color: transparent;
-
 width: 530px;
-
 margin-left: -68px;
 border-radius: 0px;
 height: auto;
 cursor: default;
-padding-bottom: 10px;
+padding-bottom: 7px;
 border-bottom: 1px solid #eee;
 }
 
@@ -2325,12 +2323,12 @@ position: absolute;
 background-image: url('../../../assets/play_btns.png');
 background-repeat: no-repeat;
 background-position: 0% 0%;
-background-size: auto;
-height: 72px;
-width: 72px;
+background-size: cover;
+height: 58px;
+width: 58px;
 z-index: 100;
-margin-left: 42px;
-margin-top: 38px;
+margin-left: 37px;
+margin-top: 32px;
 }
 
 
