@@ -316,17 +316,27 @@
                                             <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                         </div>
                                         <div class = "user_more_info">
-                                            <a class = "department_link"><?php echo $user->department->department_name; ?></a>
+                                            <a class = "department_link"><?php echo $member->department->department_name; ?></a>
                                         </div>
+                                        <?php if($user->user_id !== $member->user_id){ ?>
                                         <div class = "user_card_button_holder">
+
+                                            <?php if($user->is_following($member->user_id)){ ?>
                                             <div class = "follow_button_wrapper following_wrapper">
                                                 <div class = "user_follow_button following">Following</div>
-                                                <div class = "user_message_button message_active">
-                                                    <em class = "white_message_icon">
-                                                    </em>
+                                                <?php }else{ ?>
+                                                <div class = "follow_button_wrapper following_wrapper">
+                                                    <div class = "user_follow_button">Follow</div>
+                                                    <?php } ?>
+                                                    <div class = "user_message_button message_active">
+                                                        <em class = "white_message_icon">
+                                                        </em>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
-                                        </div>
+                                            <?php } ?>
                                     </div>
                                 </div>
 

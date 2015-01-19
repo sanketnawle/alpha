@@ -264,6 +264,8 @@
                                             <div class = "user_more_info">
                                                 <a class = "department_link"><?php echo $department->department_name; ?></a>
                                             </div>
+
+                                            <?php if($user->user_id !== $member->user_id){ ?>
                                             <div class = "user_card_button_holder">
 
                                                 <?php if($user->is_following($member->user_id)){ ?>
@@ -281,6 +283,7 @@
 
 
                                             </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
