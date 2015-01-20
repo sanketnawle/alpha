@@ -21,7 +21,7 @@
 
     </script>
       
-
+    <title><?php echo $class->class_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
 
@@ -269,7 +269,7 @@
                     <div class = "full_syllabus_box syllabus_tagger">
 
                         <div class = "title">
-                            Class Syllabus <div class = "syllabus_like_btn"><span class = "post_like_icon"></span>Like</div><div class = "syllabus_download_btn"><span class = "download_icon"></span>Download</div>
+                            Class Syllabus <div style="padding-right:20px;" class = "syllabus_download_btn"><a id="class_syllabus_pdf" download>Download</a></div>
                         </div>
                         <div id="pdfContainer">
                         </div>

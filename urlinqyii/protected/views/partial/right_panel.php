@@ -17,7 +17,7 @@
 					<div>
 						
 						<span>                        
-				             Suggested
+				             Campus Suggestions
 				         </span>
 				         <span class = "activity_icon right_panel_assets">
 				        </span>
