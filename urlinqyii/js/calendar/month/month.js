@@ -110,6 +110,7 @@ jQuery(document).ready(function(){
 
     last_month_day_date_selected = null;
     jQuery(document).on('click', '.grid-item.prem', function(event){
+        jQuery(".popup_create_event_name_input").focus();
         hide_inspect();
         jQuery(".event_holder").removeClass("colorfied");
         //Hide the other popup
@@ -158,13 +159,12 @@ jQuery(document).ready(function(){
 
 
             var inspect_event_text = format_event_date_text(this_date_obj);
-            $create_month_day_event_popup.find('#create_month_day_event_when').text('When: ' + inspect_event_text);
+            $create_month_day_event_popup.find('#create_month_day_event_when').text(inspect_event_text);
 
 
             $create_month_day_event_popup.addClass('active');
 
-            //Focus the input field
-            jQuery('#create_month_day_event_input').focus();
+            
         }else{
             if(this_date != last_month_day_date_selected){
                 //We clicked a different event than the event we were already looking at
@@ -195,7 +195,7 @@ jQuery(document).ready(function(){
                 }
 
                 var inspect_event_text = format_event_date_text(this_date_obj);
-                $create_month_day_event_popup.find('#create_month_day_event_when').text('When: ' + inspect_event_text);
+                $create_month_day_event_popup.find('#create_month_day_event_when').text(inspect_event_text);
 
             }else{
                 $create_month_day_event_popup.removeClass('active');

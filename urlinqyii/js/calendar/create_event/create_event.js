@@ -81,7 +81,8 @@ jQuery(document).ready(function(){
                 //If the start date is greater than the end date,
                 //make the end date the start date
                 $event_end_date.val(date_to_day_of_week_string(start_date));
-                $event_end_time.attr('data-date', date_to_string(start_date));
+                $event_end_date.attr('data-date', date_to_string(start_date));
+
 
                 var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
                 //make the time an hour from the start time
@@ -454,6 +455,8 @@ jQuery(document).ready(function(){
 
         var $dialog = jQuery('#dialog');
         $dialog.hide();
+        jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
         reset_create_event_form();
     });
 

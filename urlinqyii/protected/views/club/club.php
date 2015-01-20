@@ -112,7 +112,11 @@
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Files/Photos</div>
-                                    <div class = "tab_amount"><?php echo count($club->files);?></div>
+                                    <div class = "tab_amount">
+                                        <?php if(count($club->files)>0){
+                                            echo count($club->files);
+                                        } ?>
+                                    </div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>
@@ -121,7 +125,11 @@
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
                                     <div class="tab_text">Members</div>
-                                    <div class = "tab_amount"><?php echo count($club->members); ?></div>
+                                    <div class = "tab_amount">
+                                        <?php if(count($club->members)>0){
+                                            echo count($club->members);
+                                        } ?>
+                                    </div>
                                 </div>
                                 <div class="tab_wedge"></div>
                             </div>

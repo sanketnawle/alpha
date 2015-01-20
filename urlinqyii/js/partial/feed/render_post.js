@@ -52,19 +52,32 @@ function render_post(single_post){
     if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
-        $("#posts").prepend(template(single_post)).hide().fadeIn();
+        if(globals.profile_open){
+            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+        }else{
+            $("#posts").prepend(template(single_post)).hide().fadeIn();
+        }
+
     }
     else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
         console.log('note');
         var source   = $("#post_note_template").html();
         var template = Handlebars.compile(source);
-        $("#posts").prepend(template(single_post)).hide().fadeIn();
+        if(globals.profile_open){
+            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+        }else{
+            $("#posts").prepend(template(single_post)).hide().fadeIn();
+        }
     }
     else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
         console.log("question");
         var source   = $("#post_question_template").html();
         var template = Handlebars.compile(source);
-        $("#posts").prepend(template(single_post)).hide().fadeIn();
+        if(globals.profile_open){
+            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+        }else{
+            $("#posts").prepend(template(single_post)).hide().fadeIn();
+        }
 
     }
     else if (single_post['post_type'] == 'event'){
@@ -86,7 +99,11 @@ function render_post(single_post){
     else {
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
-        $("#posts").prepend(template(single_post)).hide().fadeIn();
+        if(globals.profile_open){
+            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+        }else{
+            $("#posts").prepend(template(single_post)).hide().fadeIn();
+        }
     }
 }
 

@@ -11,6 +11,7 @@ jQuery(document).ready(function(){
     last_month_day_date_selected = null;
 
     jQuery(document).on('click', '.grid-item', function(event){
+        jQuery(".popup_create_event_name_input").focus();
 
         //Hide the other popup
         hide_inspect();
@@ -64,13 +65,13 @@ jQuery(document).ready(function(){
 
     //            Mon, January 5, 4:30pm – 5:30pm
             var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
-            $create_week_day_event_popup.find('#create_week_day_event_when').text('When: ' + inspect_event_text);
+            $create_week_day_event_popup.find('#create_week_day_event_when').text(inspect_event_text);
 
 
             $create_week_day_event_popup.addClass('active');
 
             //Focus the input field
-            jQuery('#create_week_day_event_input').focus();
+            
         }else{
             if(this_date != last_month_day_date_selected){
                 //We clicked a different event than the event we were already looking at
@@ -101,7 +102,7 @@ jQuery(document).ready(function(){
                 }
 
                 var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
-                $create_week_day_event_popup.find('#create_week_day_event_when').text('When: ' + inspect_event_text);
+                $create_week_day_event_popup.find('#create_week_day_event_when').text(inspect_event_text);
 
             }else{
                 $create_week_day_event_popup.removeClass('active');

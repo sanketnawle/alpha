@@ -21,18 +21,14 @@
                 text-transform: uppercase;
                 border-radius: 4px;
                 color: #FFF;
+                border: 1px solid transparent;
                 position: relative;
                 cursor: pointer;
-                background-color: #278CD5;
-                background: linear-gradient(to bottom, #278CD5 0%, #1B7BC0 100%);
-                background: -o-linear-gradient(top, #278CD5 0%, #1B7BC0 100%);
-                background: -ms-linear-gradient(top, #278CD5 0%, #1B7BC0 100%);
-                background: -moz-linear-gradient(top, #278CD5 0%, #1B7BC0 100%);
-                background-image: -webkit-linear-gradient(top, #278CD5, #1B7BC0);
-                border: 1px solid #1779C0!important;
-                -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset;
-                box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset, inset -1px 0 0 rgba(255, 255, 255, 0.19), inset 1px 0 0 rgba(255, 255, 255, 0.27);
-                border-bottom: 1px solid rgba(9, 124, 166, 0.74) !important;
+                background-color: rgba(6, 155, 207, 0.8);
+                border: 1px solid #029acf!important;
+                box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+                -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+                -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 
 
                 .full {
@@ -136,21 +132,24 @@
                 }
 
                 &:hover {
-                    border-bottom: 1px solid rgba(3, 93, 126, 0.74) !important;
-                    background-color: #0F86DB;
-                    background: linear-gradient(to bottom, #0D8EEC 0%, #0F86DB 100%);
-                    background: -o-linear-gradient(top, #0D8EEC 0%, #0F86DB 100%);
-                    background: -ms-linear-gradient(top, #0D8EEC 0%, #0F86DB 100%);
-                    background: -moz-linear-gradient(top, #0D8EEC 0%, #0F86DB 100%);
-                    background-image: -webkit-linear-gradient(top, #0D8EEC, #0F86DB);
-                    border: 1px solid #1779C0!important;
-                    -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset;
+                    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902));
+                    background-color: rgb(6, 155, 207);
+                    -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+                    -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
+                    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
                 }
                 &:active{
-                    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-                    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-                    border-top: 1px solid #1B6AAD;
-                    background-color: #2084CB;
+                    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+                    -moz-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+                    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px 0px inset;
+                    background-color: rgb(6, 155, 207);
+                    background-image: linear-gradient(rgba(0, 0, 0, 0.14902), rgba(0, 0, 0, 0.14902));
+                }
+                &:focus{
+                    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+                    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+                    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 155, 207, 0.5);
+                    background-color: #069BCF;
                 }
             }
         }

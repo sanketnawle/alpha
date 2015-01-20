@@ -68,7 +68,7 @@
 
                                     <input class="edit_showcase_title showcase_edit_field">
                                     <div class="showcase_description">
-                                        {{description}}
+                                        {{description}}&nbsp;
                                     </div>
                                     <textarea class="edit_showcase_description showcase_edit_field"></textarea>
                                     <button class="edit_showcase_button cancel">
@@ -109,6 +109,7 @@
                             <textarea id="desc_entry" name="desc_entry" placeholder="Add a description..."></textarea>
 
                             <button type="button" id="upload_link_button" ><i></i>Upload File</button>
+                            <div id="upload_file_name"></div>
                             <div style='height: 0px;width:0px; overflow:hidden;'>
                                 <input id="upfile" type="file" value="upload"/>
                             </div>
@@ -154,7 +155,7 @@
                     </button>
                     {{/if}}
                 {{/if}}
-                <div id="cancel_edit_button">x</div>
+                <div id="cancel_edit_button"></div>
             </div>
             <div id="name_info_wrapper">
                 <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}

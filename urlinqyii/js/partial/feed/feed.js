@@ -184,6 +184,7 @@ $(document).ready(function(){
 
     $(document).on('click','.post_like', function(){
         var $post_like_button = $(this);
+        var $like_number = $post_like_button.find('.like_number');
         var post_id = $(this).closest('.post').attr('data-post_id');
 
         var post_data = {post_id: post_id, user_id: user_id};
@@ -195,6 +196,11 @@ $(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
+                    if($like_number.length){
+                        $like_number.text(parseInt($like_number.text())+1);
+                    }else{
+                        $post_like_button.append('<div class = "like_number">1</div>');
+                    }
                     $post_like_button.find(".post_like_link").text("Unlike");
                     $post_like_button.removeClass('post_like');
                     $post_like_button.addClass('post_liked');
@@ -209,7 +215,7 @@ $(document).ready(function(){
     $(document).on('click','.post_liked', function(){
         var $post_like_button = $(this);
         var post_id = $(this).closest('.post').attr('data-post_id');
-
+        var $like_number = $post_like_button.find('.like_number');
         var post_data = {post_id: post_id, user_id: user_id};
 
         var post_url = base_url + '/post/unlike';
@@ -219,6 +225,13 @@ $(document).ready(function(){
             post_data,
             function(response) {
                 if(response['success']){
+                    if($like_number){
+                        if(parseInt($like_number.text())==1){
+                            $like_number.remove();
+                        }else{
+                            $like_number.text(parseInt($like_number.text())-1);
+                        }
+                    }
                     $post_like_button.find(".post_like_link").text("Like");
                     $post_like_button.removeClass('post_liked');
                     $post_like_button.addClass('post_like');

@@ -384,6 +384,10 @@ div.showcase_type{
     padding: 3.5px 0px; font-weight: 600; 
     border-radius: 4px; 
 }
+.edit_or_follow_button.editing{
+    width:80%;
+}
+
 #follow_button.following{
     background-color:dodgerblue;
     color:white;
@@ -417,10 +421,16 @@ span.follow_icon_profile_page{
 }
 
 #cancel_edit_button{
-    display:none;
-
-    font-size: 26px;
-    margin-left: 8px;
+    display: none;
+    /* font-size: 26px; */
+    /* margin-top: 5px; */
+    height: 20px;
+    width: 22px;
+    margin-left: 3px;
+    background-image: url('../../assets/ProfilePageIconMap.png');
+    background-repeat: no-repeat;
+    background-position: -24px -47px;
+    background-size: 290%;
 }
 .headers{
     display: none;
@@ -912,6 +922,11 @@ form#add_showcase button#upload_link_button:hover{
 
 form#add_showcase button#upload_link_button > i{
 
+}
+
+#upload_file_name{
+    display: inline-block;
+    color:white;
 }
 
 span#cancel_showcase_form{
