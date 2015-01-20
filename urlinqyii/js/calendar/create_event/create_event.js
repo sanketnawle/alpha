@@ -454,6 +454,8 @@ jQuery(document).ready(function(){
 
         var $dialog = jQuery('#dialog');
         $dialog.hide();
+        jQuery(".left_panel_create_button.left_panel_create_button").removeClass("disabled");
+        jQuery(".mini_calendar_cover").removeClass("enabled");
         reset_create_event_form();
     });
 

@@ -6,7 +6,7 @@ top: 0;
 right: 0;
 bottom: 0;
 left: 194px;
-z-index: 210;
+z-index: 10000000;
 position: fixed;
 background: rgba(255, 255, 255, 0.84);
 height: 100%;
@@ -257,8 +257,17 @@ span.edit_icon{
     
 }
 
-input.popup_create_event_name_input{
+input.popup_create_event_name_input {
+border: 1px solid;
+border-color: #c0c0c0 #d8d8d8 #d8d8d8;
+border-radius: 2px;
+padding: 2.5px 6px;
+width: 286px;
+}
 
+input.popup_create_event_name_input:focus{
+	outline: #0087C2 auto 2px;
+	outline-offset: -2px;
 }
 
 #inspect_event_title{

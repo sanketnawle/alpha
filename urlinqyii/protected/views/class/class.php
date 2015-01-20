@@ -117,7 +117,7 @@
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
                 <div class = "group_name">
-                    <div class = "center_admin"><div class = "professor_image"></div><div class = "professor_name">Professor Mehrer</div></div>
+                    <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class -> professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
                     <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
@@ -169,7 +169,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Materials</div>
-                    <div class = "tab_amount"><?php echo count($class->files);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->files)>0){
+                            echo count($class->files);
+                        } ?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -178,7 +182,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Members</div>
-                    <div class = "tab_amount"><?php echo count($class->users);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->users)>0){
+                            echo count($class->users);
+                        }?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -198,7 +206,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Members</div>
-                    <div class = "tab_amount"><?php echo count($class->users);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->users)>0){
+                            echo count($class->users);
+                        }?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -847,7 +859,7 @@
                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
                 <?php if($is_member){ ?>
                 
-                <div>classsssic</div>
+                
 
                 <?php }else{ ?>
 
@@ -870,15 +882,45 @@
                 <div class = "about_tab_middle">
                     
                     <div class = "cool_members_box">
+                        <?php if($class->professor_id) { ?>
                         <div class = "admin_about_section">
-                            admin
+                            <h5>Professor</h5>
+                            <div class = "member_info_holder">
+                                <div class = "admin_photo" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class -> professor->pictureFile->file_url; ?>');"></div>
+                                <div class = "admin_text_data_box">
+                                    <div class = "admin_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div>
+                                    <div class = "admin_email_address"></div>
+                                    <div class = "admin_location"></div>
+                                    <div class = "admin_bio"></div>
+                                </div>
+                            </div>
                         </div>
+                        <?php } else { }?>
                         <div class = "members_about_section">
-                            members
+                            <h5>Students</h5>
+                            <div class = "member_info_holder">
+
+                            </div>
                         </div>
                     </div>
                     <div class = "classic_about_box">
-                        About
+                        <h5>About</h5>
+                        <?php if($class->course->course_credits) { ?>
+                            <h4 class = "course_credits"><span class ="cred_icon"></span><span class = "cred_val"><?php echo $class->course->course_credits; ?></span> <span class = "cred_name">Credits</span></h4>
+                        <?php } else { }?>
+
+                        <?php if($class->class_datetime) { ?>
+                            <h4 class = "course_credits"><span class ="red_time_icon"></span><span class = "time_val two_lines"><?php echo $class->semester; ?> <?php echo $class->year; ?></span><span class = "time_val two_lines"><?php echo $class->class_datetime; ?></span></h4>
+                        <?php }elseif($class->year) { ?>
+                            <h4 class = "course_credits"><span class ="red_time_icon"></span><span class = "time_val" style = "font-size:14.5px; text-transform:capitalize;"><?php echo $class->semester; ?> <?php echo $class->year; ?></span></h4>
+                        <?php } else { }?>
+
+                        <?php if($class->course->course_desc) { ?>
+                            <div class = "class_description_holder">
+                                <?php echo $class->course->course_desc; ?>
+                            </div>
+                        <?php } else { }?>
+
                     </div>
                 </div>
 

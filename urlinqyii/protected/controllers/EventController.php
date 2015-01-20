@@ -356,7 +356,7 @@ class EventController extends Controller
 
 
     public function actionGetSuggestedEvents(){
-        $events = Event::model()->findAll(array('limit'=>15) );
+        $events = Event::model()->findAll(array('limit'=>40) );
 
         $data = array('success'=>true,'events'=>$events);
         $this->renderJSON($data);

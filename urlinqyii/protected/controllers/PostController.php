@@ -732,14 +732,21 @@ class PostController extends Controller
                     //Notification is causing error, commented out for now
                     //self::createNotification("liked", $_GET['id']);
 
+                    $post->like_count = $post->like_count + 1;
+                    $post->save(false);
+                    if($post){
+                        include_once "notification/notification.php";
 
-                    include_once "notification/notification.php";
+                        send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
 
-                    send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
-
-                    $return_data = array('success'=>true);
-                    $this->renderJSON($return_data);
-                    return;
+                        $return_data = array('success'=>true);
+                        $this->renderJSON($return_data);
+                        return;
+                    }else{
+                        $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>"error saving post table");
+                        $this->renderJSON($return_data);
+                        return;
+                    }
                 }else{
                     $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>"error saving post_user table");
                     $this->renderJSON($return_data);
@@ -777,11 +784,20 @@ class PostController extends Controller
                 return;
             }
             $post_id = $_POST['post_id'];
+            $post = Post::model()->find('post_id=:id', array(':id'=>$post_id));
             $post_like = PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post_id . ' AND user_id=' . $user->user_id);
             if ($post_like->delete()) {
-                $return_data = array('success' => true);
-                $this->renderJSON($return_data);
-                return;
+                $post->like_count = $post->like_count - 1;
+                $post->save(false);
+                if($post){
+                    $return_data = array('success' => true);
+                    $this->renderJSON($return_data);
+                    return;
+                }else{
+                    $return_data = array('success'=>false,'error_id'=>3, 'error_msg'=>"error saving post table");
+                    $this->renderJSON($return_data);
+                    return;
+                }
             } else {
                 $return_data = array('success' => false, 'error_id' => 2, 'error_msg' => 'Error deleting post_like');
                 $this->renderJSON($return_data);

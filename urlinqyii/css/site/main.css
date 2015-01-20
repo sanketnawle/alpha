@@ -674,6 +674,7 @@ box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146,
     position: relative;
     padding: 0px 12px;
     margin-top:-20px;
+    margin-bottom: 140px;
 }
 
 .panel.active{
@@ -707,7 +708,7 @@ div.center_text p#group_name span.class_title_info{
 font-size: 12.3px;
 margin-left:5.5px;
 text-align: left;
-font-weight:400;
+font-weight:600;
 float:right;
 margin-top: 6px;
 line-height: 14.2px;
@@ -1880,14 +1881,23 @@ opacity:1!important;
 background: #FFF!important;
 }
 
-div.course_description h4.course_credits{
+div.course_description h4.course_credits, div.classic_about_box h4.course_credits{
 border-top: 1px solid #D7D7D7;
 margin-top: 12px;
 font-size: 16px;
 margin-bottom: 8px;
 }
 
-div.course_description h4.course_credits span.cred_icon{
+div.classic_about_box > h4.course_credits{
+    border-top:none!important;
+    margin: 0 10px;
+    margin-bottom: 5px;
+    max-height: 40px;
+}
+
+
+
+div.course_description h4.course_credits span.cred_icon, div.classic_about_box h4.course_credits span.cred_icon{
 
 border-radius: 2px;
 margin-top: 12px;
@@ -1899,32 +1909,30 @@ background-position: -38px -768px;
 display: inline-block;
 }
 
-div.course_description h4.course_credits span.cred_val{
-font-size: 17px;
-font-family: Avenir;
-font-weight: bold;
-color: #333;
+div.course_description h4.course_credits span.cred_val, div.classic_about_box h4.course_credits span.cred_val{
 line-height: 14px;   
 padding: 0px 1px 0px 8px;
 display: inline-block;
 position: relative;
 top: -5px;
+font-size: 17px; 
+font-weight: 600; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
+color: #222;
 }
 
 span.cred_val {}
 
-div.course_description h4.course_credits span.cred_name{
-  display: inline-block;  
-  font-size: 17px;
-    font-family: Avenir;
-    font-weight: bold;
+div.course_description h4.course_credits span.cred_name, div.classic_about_box h4.course_credits span.cred_name{  
     
-  color: #333;
+    
+    
   line-height: 17px;   
     
   position: relative;
   top: -5px;
   display: inline-block;
+  font-size: 17px; font-weight: 500; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
+  color: #575757;
 }
 
 div.group_info_block span{

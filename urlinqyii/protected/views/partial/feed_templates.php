@@ -122,11 +122,13 @@
                                                                 <p class = 'post_like_link'>Like</p>
                                                         {{/ifCond}}
 
+                                                                {{#ifCond like_count '>=' 1}}
                                                                 <div class = 'like_number'>
-                                                                    {{#if like_count}}
+
                                                                     {{like_count}}
-                                                                    {{/if}}
+
                                                                 </div>
+                                                                {{/ifCond}}
 
                                                             </div>
 
@@ -601,11 +603,14 @@
                                                                 <p class = 'post_like_link'>Like</p>
                                                         {{/ifCond}}
 
+                                                                {{#ifCond like_count '>=' 1}}
                                                                 <div class = 'like_number'>
-                                                                    {{#if like_count}}
+
                                                                     {{like_count}}
-                                                                    {{/if}}
+
                                                                 </div>
+                                                                {{/ifCond}}
+
 
                                                             </div>
 
@@ -919,11 +924,14 @@
                                                                 <p class = 'post_like_link'>Like</p>
                                                         {{/ifCond}}
 
+                                                                {{#ifCond like_count '>=' 1}}
                                                                 <div class = 'like_number'>
-                                                                    {{#if like_count}}
+
                                                                     {{like_count}}
-                                                                    {{/if}}
+
                                                                 </div>
+                                                                {{/ifCond}}
+
 
                                                             </div>
 

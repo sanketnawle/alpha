@@ -73,6 +73,9 @@ $(document).ready(function() {
                 if(!data.research){
                     $('#research_section').hide();
                 }
+                if(!data.bio){
+                    $('#bio_section').hide();
+                }
 
                 if(data.gender=="M"){
                     $('#radio_male').prop('checked',true);
@@ -216,11 +219,16 @@ $(document).ready(function() {
     var numShowcase=0;
     $(document).on('click','.showcase_arrow.left',function(){
         var index=parseInt($('.showcase_item.center').attr('showcase_index'));
+
         if(index>0){
             index--;
+            $('.showcase_arrow.right').show();
             $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
+            if(index==0){
+                $('.showcase_arrow.left').hide();
+            }
         }
        // alert($('.showcase_item.center').attr('showcase_index'));
     });
@@ -233,6 +241,9 @@ $(document).ready(function() {
             $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
+            if(index==numShowcase-1){
+                $('.showcase_arrow.right').hide();
+            }
         }
         //alert($('.showcase_item.center').attr('showcase_index'));
     });
@@ -288,7 +299,12 @@ $(document).ready(function() {
                 if($('.showcase_item').length>0){
                     data.index = index;
                     if($('.showcase_item').length>=1){
+                        $(".showcase_arrow.left").show();
+                        $(".showcase_arrow.right").show();
                         $(".showcase_controls").fadeIn(250);
+                        if(index==0){
+                            $(".showcase_arrow.left").hide();
+                        }
                     }
                     $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
                 }else{
@@ -411,16 +427,21 @@ $(document).ready(function() {
             $('.showcase_items').css('margin-left', 260-(index-1)*496);
             $('.showcase_item[showcase_index='+(index-1)+']').addClass('center');
         }
+        if(index==numShowcase-2){
+            $('.showcase_arrow.right').hide();
+        }
         numShowcase--;
         if(numShowcase==1){
             $('.showcase_controls').hide();
         }
+
     }
 
     //edit profile
 
     var any_research;
-    var schools_loaded = false;
+    var any_bio;
+
     $(document).on('click','#edit_profile_button.not_editing',function(){
         $('#profile_overlay').show();
         $('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
@@ -429,15 +450,15 @@ $(document).ready(function() {
         $('.headers').show();
         $('.edit_field').show();
         //school
-        if(!schools_loaded){
-            $.getJSON( base_url + "/profile/getSchools",{user: user_id}, function( result) {
-                $.each(result.schools,function(i,school){
-                    $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
-                });
-                $('#school_dropdown').val(result.selected);
-                schools_loaded=true;
+
+        $.getJSON( base_url + "/profile/getSchools",{user: user_id}, function( result) {
+            $.each(result.schools,function(i,school){
+                $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
             });
-        }
+            $('#school_dropdown').val(result.selected);
+            schools_loaded=true;
+        });
+
 
         //department
         $('#department_dropdown').empty();
@@ -472,6 +493,9 @@ $(document).ready(function() {
         });
 
         //bio
+        any_bio=$('#bio_section').is(':visible');
+        $('#bio_section').show();
+
         $('#bio_input').val($('#bio').text());
         $('.info_section.account').show();
 
@@ -498,8 +522,9 @@ $(document).ready(function() {
         data.append('name',$('#name_input').val());
         data.append('department',$('#department_dropdown').val());
         data.append('email',$('#email_input').val());
-        data.append('bio',$('#bio_input').val());
         data.append('gender',$('.edit_field.gender:checked').val());
+
+        data.append('bio',$('#bio_input').val());
         if($('#year_section').length){
             data.append('year',$('#year_dropdown').val());
             data.append('year_name',$('#level_dropdown').val());
@@ -543,6 +568,7 @@ $(document).ready(function() {
                 data.append('minors[0]', "none");
             }
         }
+        any_bio = $.trim($('#bio_input').val()) != "";
 
         $('#major_section > .info_name.undeclared').hide();
         $.ajax({
@@ -713,6 +739,9 @@ $(document).ready(function() {
         }
         if(!any_minor){
             $('#minor_section').hide();
+        }
+        if(!any_bio){
+            $('#bio_section').hide();
         }
         $('.headers').hide();
         $('.info_section.account').hide();
