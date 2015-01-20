@@ -1,13 +1,29 @@
 $(document).ready(function() {
+    var old_fbar;
+    var old_origin_type;
+    var old_origin_id;
     $(document).on('click', '.profile_link', function(){
+        old_fbar = $('#fbar_holder')[0].outerHTML
+
+        old_origin_id = globals.origin_id;
+        old_origin_type = origin_type;
+        globals.origin_id = user_id;
+        globals.origin_type = 'user';
+        globals.profile_open = true;
         open_profile(base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
+        $('#fbar_holder').remove();
     });
 
     $(document).on('click', '.close_modal', function(){
+        $('#fbar_wrapper').prepend(old_fbar);
+        globals.origin_id = old_origin_id;
+        globals.origin_type = old_origin_type;
+        globals.profile_open = false;
         $('#profile_background_overlay').fadeOut(300);
         $("#page").removeClass("profile_stop_scroll");
         $("body").removeClass("profile_stop_scroll");
         $("body#body_home").removeClass("profile_stop_scroll");
+
     });
     function open_profile(base_url,user_id,edit_mode){
         //  var numShowcase;
@@ -61,9 +77,12 @@ $(document).ready(function() {
                         $('#profile_fbar_wrapper').append(html);
                     }
                 });
+
                 numShowcase=data.showcase_size;
                 var template = Handlebars.compile(html);
                 $('body').append(template(data));
+
+
                 if(!data.minors || data.minors.length==0){
                     $('#minor_section').hide();
                 }
