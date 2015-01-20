@@ -1,5 +1,33 @@
 $(document).ready(function(){
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
+
+
+
     init();
     function init(){
         get_search_results(q);
@@ -71,7 +99,6 @@ $(document).ready(function(){
 
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
-            //alert(JSON.stringify(users_json[index]));
             show_users(users_json[index]);
         });
         //Get each course attribute and generate HTML!
@@ -138,13 +165,13 @@ $(document).ready(function(){
 
         var source   = $("#user_search_results").html();
         var template = Handlebars.compile(source);
-        var context = {
-            fullname: result_json['firstname'] + " " + result_json['lastname'],
-            department: result_json['department_name'],
-            url: base_url + "/assets/default/user.png",
-            id: result_json["user_id"]
-        }
-        var generated_html = template(context);
+
+
+
+        result_json['fullname'] = result_json['firstname'] + " " + result_json['lastname'];
+        result_json['url'] = base_url + "/assets/default/user.png";
+
+        var generated_html = template(result_json);
         $('.ContentSlider').append(generated_html).hide().fadeIn();
     }
 
