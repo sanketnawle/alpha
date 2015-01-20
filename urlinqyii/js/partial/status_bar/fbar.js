@@ -1400,7 +1400,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        globals.$fbar.find('.fbar_file_form.dropzone').click();
+        $('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1408,7 +1408,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        globals.$fbar.find('.fbar_file_form.dropzone').click();
+        $('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1419,9 +1419,9 @@ $(document).ready(function() {
 //        $('.dropzone').click();
 //    });
 
-    $('#post_attachments').click(function(e){
+    $(document).on('click', '#post_attachments',function(e){
         e.stopPropagation();
-        globals.$fbar.find('.fbar_file_form.dropzone').click();
+        $('.fbar_file_form.dropzone').click();
     });
 
 
