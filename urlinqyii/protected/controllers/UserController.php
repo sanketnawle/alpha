@@ -155,7 +155,9 @@ class UserController extends Controller
 
 
 
-    public function get_notifications_data($notifications){
+    public function get_notifications_data($user, $notifications){
+
+
         $notifications_new = array();
         foreach ($notifications as $notification) {
             $notification = $this->model_to_array($notification);
@@ -182,40 +184,76 @@ class UserController extends Controller
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
 
-            if($notification_type == 'event'){
-                $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
-                if(!$event){
-                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
+            if($notification_type == 'invite'){
+
+                $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id']));
+
+                if(!$invite){
+                    $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
                     $this->renderJSON($data);
                     return;
                 }
 
-                $event = $this->model_to_array($event);
-                $origin_event = $event['origin_type'];
-                $origin__event_id = $event['origin_id'];
+                $notification['invite_id'] = $invite->invite_id;
+                $notification['invite_choice'] = $invite->choice;
 
-                if($origin != 'user'){
-                    $sql = "SELECT " . $origin_event . '_name, color_id FROM `' . $origin_event . '`  WHERE ' . $origin_event . '_id = ' . $origin__event_id;
-                    $command = Yii::app()->db->createCommand($sql);
-                    $origin_data = $command->queryRow();
-                    //echo json_encode($origin_data);
-                    $event['origin_name'] = $origin_data[$origin_event . '_name'];
-                    $event['origin_color_id'] = $origin_data['color_id'];
-                    //array_push($events_data,$event);
-                }else{
-                    $event['origin_name'] = null;
-                    $event['origin_color_id'] = null;
-                }
 
-                $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
-                if($event_attending){
-                    $event['is_attending'] = true;
-                }
-                else{
-                    $event['is_attending'] = false;
-                }
+                if($notification['origin_type'] == 'event'){
+                    $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
+                    if(!$event){
+                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
 
-                $notification['origin'] = $event;
+                    $event = $this->model_to_array($event);
+                    $origin_event = $event['origin_type'];
+                    $origin__event_id = $event['origin_id'];
+
+                    if($origin != 'user'){
+                        $sql = "SELECT " . $origin_event . '_name, color_id FROM `' . $origin_event . '`  WHERE ' . $origin_event . '_id = ' . $origin__event_id;
+                        $command = Yii::app()->db->createCommand($sql);
+                        $origin_data = $command->queryRow();
+                        //echo json_encode($origin_data);
+                        $event['origin_name'] = $origin_data[$origin_event . '_name'];
+                        $event['origin_color_id'] = $origin_data['color_id'];
+                        //array_push($events_data,$event);
+                    }else{
+                        $event['origin_name'] = null;
+                        $event['origin_color_id'] = null;
+                    }
+
+
+                    $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
+                    if($event_attending){
+                        $event['is_attending'] = true;
+                    }
+                    else{
+                        $event['is_attending'] = false;
+                    }
+
+                    $notification['origin'] = $event;
+                }else if($notification['origin_type'] == 'class'){
+                    $class = ClassModel::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
+                    if(!$class){
+                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'class doesnt exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                    $notification['origin'] = $this->model_to_array($class);
+                    $notification['origin']['name'] = $class->class_name;
+                }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
+                    $group = Group::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
+                    if(!$group){
+                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                    $notification['origin'] = $this->model_to_array($group);
+                    $notification['origin']['name'] = $group->group_name;
+                }
             }
             elseif($notification_type == 'follow'){
                 $follow = User::model()->find("user_id=:user_id", array(":user_id"=>$origin_id));
@@ -226,6 +264,9 @@ class UserController extends Controller
                     return;
                 }
                 $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+            }
+            elseif($notification_type == 'invite'){
+
             }
             elseif($notification_type == 'reply'){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
@@ -301,7 +342,7 @@ class UserController extends Controller
 
             if ($notifications) {
 
-                $this->renderJSON($this->get_notifications_data($notifications));
+                $this->renderJSON($this->get_notifications_data($user, $notifications));
                 return;
             } else {
                 $data = array('success'=>true,'notifications'=>array());
@@ -340,7 +381,7 @@ class UserController extends Controller
 
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id > ' . $last_notification_id . ' ORDER BY notification_id DESC limit 0,5');
             if ($notifications) {
-                $this->renderJSON($this->get_notifications_data($notifications));
+                $this->renderJSON($this->get_notifications_data($user, $notifications));
                 return;
 
             } else {
@@ -354,6 +395,44 @@ class UserController extends Controller
             $this->renderJSON($data);
             return;
         }
+    }
+
+
+    public function actionNotificationsSeen(){
+        if(!isset($_POST['notification_id_list'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'notification_id_list is not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $notification_id_list = $_POST['notification_id_list'];
+
+
+        for($i = 0; $i < count($notification_id_list); $i++){
+            $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification_id_list[$i]));
+            if($notification){
+                if($notification->status == 'new'){
+                    $notification->status = 'seen';
+                    if(!$notification->save(false)){
+                        $data = array('success'=>false,'error_id'=>3,'error_msg'=>'error saving notification');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'invalid notification id');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }
+
+
+
+        $data = array('success'=>true);
+        $this->renderJSON($data);
+        return;
     }
 
 

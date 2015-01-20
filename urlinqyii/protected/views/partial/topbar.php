@@ -182,6 +182,7 @@
                     <div class="button">
                         <div class="icon"></div>
                         <div class = "icon_text">Notifications</div>
+                        <div id="new_notification_count_holder"><span id="new_notification_count"></span></div>
                     </div>
 
                 </div>
@@ -204,7 +205,7 @@
 
 
 <script id='notification_template' type="text/x-handlebars-template">
-    <li class="per notification" data-id='{{notification_id}}' data-type="{{type}}">
+    <li class="per notification" data-id='{{notification_id}}' data-type="{{type}}" data-status='{{status}}'>
         <div class="icon" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{actor.pictureFile.file_url}}')"></div>
         <div class="content">
             <div class="right">
@@ -235,6 +236,50 @@
 
             {{#ifCond type '==' 'post'}}
                 <div class="message">{{actor.firstname}} {{actor.lastname}} posted{{#if origin.post_origin}} in {{origin.post_origin.name}}{{/if}}: {{origin.text}}</div>
+            {{/ifCond}}
+
+            {{#ifCond type '==' 'invite'}}
+                {{#ifCond origin_type '==' 'event'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the event {{origin.title}}</div>
+
+                    {{#ifCond invite_choice '==' 0}}
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Add to calendar</div>
+                    {{else}}
+                        <div class="message">Added to calendar</div>
+                    {{/ifCond}}
+                {{/ifCond}}
+
+                {{#ifCond origin_type '==' 'class'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.class_name}}</div>
+
+                    {{#ifCond invite_choice '==' 0}}
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join class</div>
+                    {{else}}
+                        <div class="message">Member</div>
+                    {{/ifCond}}
+
+                {{/ifCond}}
+
+                {{#ifCond origin_type '==' 'club'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.group_name}}</div>
+
+                    {{#ifCond invite_choice '==' 0}}
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join club</div>
+                    {{else}}
+                        <div class="message">Member</div>
+                    {{/ifCond}}
+                {{/ifCond}}
+
+                {{#ifCond origin_type '==' 'group'}}
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.group_name}}</div>
+
+                    {{#ifCond invite_choice '==' 0}}
+                        <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join group</div>
+                    {{else}}
+                        <div class="message">Member</div>
+                    {{/ifCond}}
+                {{/ifCond}}
+
             {{/ifCond}}
 
 

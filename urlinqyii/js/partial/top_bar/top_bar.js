@@ -49,7 +49,6 @@ $(document).ready(function(){
             if(json_data['success']){
                 console.log(JSON.stringify(json_data));
                 if(json_data['notifications'].length > 0){
-                    $notifications_button.addClass('notifications');
 
                     for(var i = 0; i < json_data['notifications'].length; i++){
                         notifications.unshift(json_data['notifications'][i]);
@@ -73,6 +72,10 @@ $(document).ready(function(){
 
     var template_source = $('#notification_template').html();
 
+
+    //Holds the # of new notifications user hasnt viewed yet
+    var new_count = 0;
+
     //Clears the notifications and adds the latest ones
     function update_notifications_div(){
         var $notifications_holder = $notifications.find('.entries');
@@ -80,9 +83,15 @@ $(document).ready(function(){
         $notifications_holder.empty();
 
 
+
         for(var i = 0; i < notifications.length; i++){
             var template = Handlebars.compile(template_source);
 
+
+
+            if(notifications[i]['status'] == 'new'){
+                new_count++;
+            }
 
             var date = new Date(notifications[i]['created_time']);
             //Database stores datetime's as UTC
@@ -96,13 +105,116 @@ $(document).ready(function(){
 
             $notifications_holder.append(generated_html).hide().fadeIn();
         }
+
+
+        //Show the new notification count
+        if(new_count > 0){
+            $notifications_button.addClass('new_notifications');
+            $notifications_button.find('#new_notification_count').text(new_count);
+        }
+
+    }
+
+
+
+    //Passes the notifications id's visible on this page and
+    //sets their statuses to 'seen'
+    function notifications_seen(){
+        var notification_id_list = [];
+
+        for(var i = 0; i < notifications.length; i++){
+            notification_id_list.push(notifications[i]['notification_id']);
+        }
+
+
+        var post_url = base_url + '/user/notificationsSeen';
+
+        var post_data = {notification_id_list: notification_id_list};
+
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                alert(JSON.stringify(response));
+            }, 'json'
+        );
     }
 
 
 
 
+    function position_notifications(){
+
+        //get the noti button
+        var $notification_button = $('.notify.board');
+
+        //var $notifications = $('#notifications');
+//        $notifications.css({'top': $notification_button.position().top});
+//        $notifications.css({'left': $notification_button.position().left});
+        $notifications.css({'position': 'absolute'});
+
+        var x = $notifications_button.width();
+
+        var left_position = ((116/83) * x) - 186;
+
+        $notifications.css({'left': left_position});
+
+
+        // 126 : -20  126/-20 = -6.3
+
+        // 43 : -136 =
+
+
+    }
+
+
+
+    $(document).on('click', '.accept_invite_button', function(){
+        var $accept_invite_button = $(this);
+
+        var origin_type = $accept_invite_button.attr('data-origin_type');
+        var origin_id = $accept_invite_button.attr('data-origin_id');
+
+        var invite_id = $accept_invite_button.attr('data-invite_id');
+
+
+        var post_data = {origin_type: origin_type, origin_id: origin_id, invite_id: invite_id};
+
+        var post_url = globals.base_url + '/invite/accept';
+
+        $.post(
+            post_url,
+            post_data,
+            function (response){
+                alert(JSON.stringify(response));
+            }, 'json'
+        );
+
+
+    });
+
+
+
     $(document).on('click', '.notify.board', function(){
         $notifications_button.removeClass('new_notifications');
+        $notifications_button.find('#new_notification_count').text('');
+        new_count = 0;
+
+
+        position_notifications();
+
+
+        //If the latest notification has not been seen,
+        //update notifications to seen
+
+        //first notification
+        var first_status = $notifications.find('.entries').children().first().attr('data-status');
+        if(first_status == 'new'){
+            notifications_seen();
+        }
+
+
 
         var $notify = $('#notifications');
 
@@ -111,10 +223,14 @@ $(document).ready(function(){
         if($notify.is(":visible")){
             $notify.hide();
         }else{
-
-
-
             $notify.show();
+
+            //Loop thru all the notifications that have status "new"
+            //and set them to "seen"
+            $('.notification[data-status="new"]').each(function(){
+                $(this).attr('data-status', 'seen');
+            });
+
         }
 
     });
