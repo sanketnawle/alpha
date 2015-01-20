@@ -14,6 +14,10 @@ class SearchController extends Controller
         $school = $user->school->school_name;
         $this->render('search', array('user'=>$user,'school' =>$school, 'q'=>$q));
     }
+
+
+
+
     public function actionJson()
     { //We want to render JSON to the front-end so search.js can decode it
         $query = Yii::app()->request->getQuery('q');
@@ -24,7 +28,7 @@ class SearchController extends Controller
 
         //just gets everything that contains the search string (unspecific search)
         $usql = Yii::app()->db->createCommand()
-            ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
+            ->select('u.firstname, u.lastname, u.user_id, u.user_type, d.department_name, d.department_id, u.picture_file_id')
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))

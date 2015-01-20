@@ -8,7 +8,9 @@
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
-
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js" > </script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
@@ -223,7 +225,14 @@
                 <div class="dismiss">Dismiss</div>
                 <div class="close"></div>
             </div>
-            <div class="message">On {{day_of_week}}, you have a {{event_type}} due in the class, {{origin.name}}.</div>
+
+            {{#ifCond origin_type '==' 'class'}}
+                {{#ifCond event_type '==' 'exam'}}
+                    <div class="message">On {{day_of_week}}, you have a {{event_type}} in class, {{origin.name}}.</div>
+                {{/ifCond}}
+            {{/ifCond}}
+
+
             <div class="time">
                 <div class="icon"></div>
                 <div class="stamp">{{formatted_end_time}}</div>
