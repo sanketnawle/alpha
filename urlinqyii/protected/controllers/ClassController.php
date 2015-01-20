@@ -280,8 +280,8 @@ class ClassController extends Controller
         $event->origin_id = $_POST["class_id"];
         $event->start_date = $_POST["event_date"];
         $event->end_date = $_POST["event_date"];
-        $event->start_time = null;
-        $event->end_time = null;
+        $event->start_time = "00:00:00";
+        $event->end_time = "00:00:00";
         $event->location = "";
         $event->all_day = 0;
         $event->file_id = $_POST["file_id"];
@@ -293,6 +293,15 @@ class ClassController extends Controller
         echo $event->event_id;
     }
 
+    public function actionUpdateSyllabusEvent(){
+        $event = Event::model()->find('event_id=:id', array(':id'=>$_POST["id"]));
+        if($event){
+            $event->updateByPk($event->event_id, array("title"=>$_POST["title"]));
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }
+    }
     public function actionGetEvents(){
         $class_id = $_GET["class_id"];
         $user_id = $this->get_current_user_id();

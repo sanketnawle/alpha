@@ -95,7 +95,12 @@
                                 <div class = "group_right_info group_info_boxes course_info_box">
                                     <div class = "group_info_block course_description" id = "professors">
                                         <?php echo $course->course_desc; ?>
+
+                        
+                                        <?php if($course->course_credits) { ?>
                                         <h4 class = "course_credits"><span class ="cred_icon"></span><span class = "cred_val"><?php echo $course->course_credits; ?></span> <span class = "cred_name">Credits</span></h4>
+                                        <?php } else { }?>
+                                        
                                     </div>
                                 </div>
                             </div>
