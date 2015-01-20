@@ -30,15 +30,15 @@ div.admin_text_data_box{
 }
 
 div.admin_text_data_box div.admin_name{
-	
+    
 }
 
 .floatRight{
-	float:right;
+    float:right;
 }
 
 .about_header_body{
-	padding: 12px 10px 14px 10px;
+    padding: 12px 10px 14px 10px;
 }
 
 .floatRight > div.join_button{
@@ -59,29 +59,29 @@ div.admin_text_data_box div.admin_name{
 }
 
 div.class_description_holder{
-	font-size: 13px;
-	top: -7px;
-	color: #121212;
-	font-weight: 500;
-	margin: 0 10px;
-	max-height: 326px;
-	position: relative;
-	overflow-y: scroll;
-	display: block;
-	padding-top: 8px;
-	padding-bottom: 5px;
-	margin-top: 14px;
-	border-top: 1px solid #dbdcdc;
+    font-size: 13px;
+    top: -7px;
+    color: #121212;
+    font-weight: 500;
+    margin: 0 10px;
+    max-height: 326px;
+    position: relative;
+    overflow-y: scroll;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-top: 14px;
+    border-top: 1px solid #dbdcdc;
 }
 
 div.panel.tab_about{
-	padding: 0 6px;
-	font-family: 'Open Sans', sans-serif;
+    padding: 0 6px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 div.panel.tab_about div.tab_content_holder{
-	position: relative;
-	top: -10px;
+    position: relative;
+    top: -10px;
 }
 
 div.member_info_holder{
@@ -101,14 +101,17 @@ div.admin_photo{
 }
 
 div.admin_photo:hover{
-	opacity:.77;
+    opacity:.77;
 }
 
 span.red_time_icon{
     border-radius: 2px; 
-    margin-top: 2px; margin-left: 5px; height: 24px; 
+    margin-top: 2px; 
+    margin-left: 5px; height: 24px; 
     width: 23px; background-image: url(../../assets/small_icons.png); 
-    background-position: -35px -1057px; display: inline-block;
+    background-position: -20px -677px;
+    background-color: #F04054;
+    display: inline-block;
 
 }
 
@@ -123,7 +126,7 @@ h4.course_credits span.time_val{
 
 h4.course_credits span.time_val.two_lines{
     text-transform: capitalize;
-	
+    
     display: block;
     padding-left: 36px;
     position: relative;
@@ -133,7 +136,7 @@ h4.course_credits span.time_val.two_lines{
 }
 
 div.join_button:hover{
-	background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%);
+    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%);
 background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
 background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
 background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
@@ -143,7 +146,7 @@ border-bottom: 1px solid rgba(3, 144, 74, 0.39);
 }
 
 div.join_button:active{
-	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 background: #02DB6F;
 border: 1px solid #2FB750;
@@ -156,9 +159,9 @@ div.join_button > span{ background-image: url("../../assets/small_icons.png"); p
 
 
 div.about_header_data{
-	font-size:14.2px;
-	color:#222;
-	padding-top: 3px;
+    font-size:14.2px;
+    color:#222;
+    padding-top: 3px;
 }
 
 div.about_header_data > p{
@@ -227,5 +230,5 @@ div.cool_members_box div.admin_about_section{
 }
 
 div.cool_members_box div.members_about_section{
-	
+    
 }

@@ -3313,6 +3313,7 @@ div.event_description_holder{
 }
 
 div.event_description_holder > p{
+    margin: -5px 0 10px 0;
     
 }
 
