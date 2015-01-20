@@ -424,6 +424,20 @@ class ClassController extends Controller
 
     }
 
+    public function actionGetClassColor(){
+        $class_id= $_POST["class_id"];
+        
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$class_id));
+
+        $color = Color::model()->find('color_id=:id', array(':id'=>$class["color_id"]));
+        if($color){
+            echo $color["hex"];
+        }
+        else{
+            echo "#3ab9f7";
+        }
+    }
+
     //Returns only files uploaded by the professor
     public function actionClassFiles (){
         if(!isset($_GET['id'])){
