@@ -1,5 +1,33 @@
 $(document).ready(function(){
 
+    Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+        switch (operator) {
+            case '==':
+                return (v1 == v2) ? options.fn(this) : options.inverse(this);
+            case '===':
+                return (v1 === v2) ? options.fn(this) : options.inverse(this);
+            case '<':
+                return (v1 < v2) ? options.fn(this) : options.inverse(this);
+            case '<=':
+                return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+            case '>':
+                return (v1 > v2) ? options.fn(this) : options.inverse(this);
+            case '>=':
+                return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+            case '&&':
+                return (v1 && v2) ? options.fn(this) : options.inverse(this);
+            case '||':
+                return (v1 || v2) ? options.fn(this) : options.inverse(this);
+            case '!=':
+                return (v1 != v2) ? options.fn(this) : options.inverse(this);
+            default:
+                return options.inverse(this);
+        }
+    });
+
+
+
     init();
     function init(){
         get_search_results(q);
@@ -71,7 +99,6 @@ $(document).ready(function(){
 
         //get each user attributes and generate HTML!
         $.each(users_json, function(index, user){
-            //alert(JSON.stringify(users_json[index]));
             show_users(users_json[index]);
         });
         //Get each course attribute and generate HTML!
@@ -96,40 +123,74 @@ $(document).ready(function(){
 
         //alert("length: " + users_json.length);
 
-        //Appropriate filters rendered as results come in
-        $('#category1').parent().parent().hide(); //all
-        $('#category2').parent().parent().hide(); //courses
-        $('#category3').parent().parent().hide(); //professors
-        $('#category4').parent().parent().hide(); //students
-        $('#category5').parent().parent().hide(); //clubs
-        $('#category6').parent().parent().hide(); //departments
-
-        if (courses_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category2').parent().parent().show(); //courses
-            //alert("courses react");
-        }
-        if(professors_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category3').parent().parent().show(); //professors
-            //alert("professors react");
-        }
-        if(students_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category4').parent().parent().show(); //students
-            //alert("students react");
-        }
-        if(clubs_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category5').parent().parent().show(); //clubs
-            //alert("clubs react");
-        }
-        if (departments_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category6').parent().parent().show(); //departments
-            //alert("departments react");
-        }
+//        //Appropriate filters rendered as results come in
+//        $('#category1').parent().parent().hide(); //all
+//        $('#category2').parent().parent().hide(); //courses
+//        $('#category3').parent().parent().hide(); //professors
+//        $('#category4').parent().parent().hide(); //students
+//        $('#category5').parent().parent().hide(); //clubs
+//        $('#category6').parent().parent().hide(); //departments
+//
+//        if (courses_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category2').parent().parent().show(); //courses
+//            //alert("courses react");
+//        }
+//        if(professors_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category3').parent().parent().show(); //professors
+//            //alert("professors react");
+//        }
+//        if(students_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category4').parent().parent().show(); //students
+//            //alert("students react");
+//        }
+//        if(clubs_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category5').parent().parent().show(); //clubs
+//            //alert("clubs react");
+//        }
+//        if (departments_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category6').parent().parent().show(); //departments
+//            //alert("departments react");
+//        }
     }
+
+
+
+
+
+
+    $(document).on('click', '.filter_section', function(){
+        var $filter_section = $(this);
+
+
+
+        var filter = $filter_section.attr('data-filter');
+
+
+        if(filter == 'all'){
+            $('.search_result_panel').each(function(){
+                $(this).show();
+            });
+        }else{
+            //Hide all sections except the one clicked
+            $('.search_result_panel').each(function(){
+                if($(this).attr('id') == filter){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+            });
+        }
+
+
+    });
+
+
+
 
     //Handlebars HTML Generation
     function show_users(result_json){
@@ -138,13 +199,13 @@ $(document).ready(function(){
 
         var source   = $("#user_search_results").html();
         var template = Handlebars.compile(source);
-        var context = {
-            fullname: result_json['firstname'] + " " + result_json['lastname'],
-            department: result_json['department_name'],
-            url: base_url + "/assets/default/user.png",
-            id: result_json["user_id"]
-        }
-        var generated_html = template(context);
+
+
+
+        result_json['fullname'] = result_json['firstname'] + " " + result_json['lastname'];
+        result_json['url'] = base_url + "/assets/default/user.png";
+
+        var generated_html = template(result_json);
         $('.ContentSlider').append(generated_html).hide().fadeIn();
     }
 
@@ -164,9 +225,9 @@ $(document).ready(function(){
             members_value: "Be the first to join",
             name: result_json['course_name'],
             url: base_url + "/course/" + result_json['course_id']
-        }
+        };
         var generated_html = template(context);
-        $('.vert-area').append(generated_html).hide().fadeIn();
+        $('#courses').append(generated_html).hide().fadeIn();
     }
 
     function show_clubs(result_json) {
@@ -179,7 +240,7 @@ $(document).ready(function(){
             name: result_json['group_name']
         }
         var generated_html = template(context);
-        $('.vert-area').append(generated_html).hide().fadeIn();
+        $('#clubs').append(generated_html).hide().fadeIn();
     }
 
     function show_departments(result_json) {
@@ -194,7 +255,7 @@ $(document).ready(function(){
         }
 
         var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
+        $('#departments').append(generated_html).hide().fadeIn();
     }
 
 

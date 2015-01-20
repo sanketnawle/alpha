@@ -2183,21 +2183,21 @@ background-size: cover;
 float: left;
 
 
-border-radius: 2.4px;
+border-radius: 0pz;
 
 
 width: 112px!important;
 
 
-height: 109px!important;
+height: 112px!important;
 transition:opacity .15s ease-in-out;
 position: relative;
 
 
-left: 8px;
+left: 3px;
 
 
-top: 7px;
+top: 3px;
 opacity:.85;
 overflow: hidden;
 }
@@ -2206,7 +2206,11 @@ div.post_lr_link_msg div.link-wrapper div.link-container a.link-anchor-box div.l
 height: 119px;
 border: 2px solid rgba(239, 239, 239, 0.72);
 border-radius: 0px;
-transition: border-color .15s ease-in-out;
+display: inline-block;
+transition: t;
+left: 2px!important;
+float: left;
+top: 2px!important;
 padding-left: 112px;
 transition: background-color .15s ease-in-out;
 /* background-color: rgba(0,0,0,.6); */
@@ -2218,7 +2222,9 @@ line-height: 22px;
 font-size: 18px;
 font-weight: 500;
 max-height: 47px;
+top: 0px!important;
 padding-left: 12px;
+left: 0px!important;
 padding-top: 5px;
 word-wrap: break-word;
 overflow: hidden;
@@ -2232,6 +2238,9 @@ font-size: 12px;
 font-weight: 200;
 font-family: Avenir;
 max-height: 80px;
+top: 0px!important;
+width: 400px!important;
+left: 0px!important;
 padding-left: 12px;
 padding-right:10px;
 line-height: 16px;
@@ -3421,8 +3430,6 @@ div.event_context span.down_right_arrow_icon{
     background-position: -34px -441px;
 }
 
-
-
-
-
-
+div.playable_wrap{
+    position:absolute;
+}

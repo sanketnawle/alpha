@@ -69,7 +69,7 @@ jQuery(document).ready(function(){
 
 
             $create_week_day_event_popup.addClass('active');
-
+            jQuery('#create_week_day_event_input').focus();
             //Focus the input field
             
         }else{
