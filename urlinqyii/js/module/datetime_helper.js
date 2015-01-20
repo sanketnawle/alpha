@@ -9,6 +9,11 @@ function date_to_month_string(date_obj){
 
 
 
+function date_to_day_name(date_obj){
+    return week_days_long[date_obj.getDay()];
+}
+
+
 //returns a string like Fri, Jan 9
 function date_to_day_of_week_string(this_date){
     return week_days_short[this_date.getDay()] + ', ' + months_short[this_date.getMonth()] + ' ' + this_date.getDate();

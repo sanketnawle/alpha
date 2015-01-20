@@ -4,8 +4,9 @@ var events={};
 var pdf_year= (new Date()).getFullYear();
 var previous_title_empty = false;
 var previous_title_index = "";
-
+var class_color = "";
 window.onload = function () {
+  class_color = get_class_color();
   load_events();
   run_pdf_algo(false);
   
@@ -104,6 +105,7 @@ var run_pdf_algo = function(db){
          type: "GET",
          success: function(response) {
             if(response["file_url"]){
+              $("a#class_syllabus_pdf").attr("href",globals.base_url+response["file_url"]);
               $('div#pdfContainer').attr("pdf_location",response["file_url"]);
               loadPdf(globals.base_url+response["file_url"]);
             }
@@ -159,10 +161,10 @@ function highlightText(db){
     var matched = chronotext(text_value);
     if(matched && $.trim(matched[0][0]).length>3 && isNaN($.trim(matched[0][0]))){
           if(text_value.indexOf(matched[0][0])<0){
-            $(value).html('<span style="opacity:0.1;background-color:#2E0854;">'+$(value).text()+'</span>');
+            $(value).html('<span style="border-bottom: 1px solid '+class_color+';">'+$(value).text()+'</span>');
           }
           else{
-          var after_rep=text_value.replace(matched[0][0],'<span style="opacity:0.1;background-color:#2E0854;">'+matched[0][0]+'</span>');
+          var after_rep=text_value.replace(matched[0][0],'<span style="border-bottom: 1px solid '+class_color+';">'+matched[0][0]+'</span>');
           $(value).html(after_rep);
           }
           $(value).attr("analyzed","1");
@@ -185,7 +187,7 @@ var chronotext = function(input){
       return data;
     }
     else{
-      var matched_month = input.match("(Jan(.|,)|Feb(.|,)|Mar(.|,)|Apr(.|,)|May(.|,)|Jun(.|,)|Jul(.|,)|Aug(.|,)|Sep(.|,)|Oct(.|,)|Nov(.|,)|Dec(.|,))",'ig')
+      var matched_month = input.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(,|\.)/ig);
       if(matched_month){
         var mon = [];
         mon[0]=matched_month;
@@ -201,7 +203,6 @@ var added_events = new Array();
 
 var add_event_to_ui = function(events_generated){
   html_text = "";
-  var colors = ["#f6932b","#60dd29","#3ab9f7","#fcc827","#f0405b","#ab7f4c","#83B233","#9612D7","#2F52BE","2FBE72","#F76700","#F7EA00","#EA2B4F","#383737","#5BA2DD","#13D298"];            
   
   $.each(events_generated,function(index, value){
     var stamp = new Date(Date.parse(index));
@@ -213,13 +214,9 @@ var add_event_to_ui = function(events_generated){
          type: "POST",
          data: get_data_json,
          success: function(response) {
-          var color = colors[Math.floor(colors.length * Math.random())];
-            if(color != lastColor){
-                var current_color = "background-color:"+color;
-            }
           //var parsed_response = ;
           html_text='<div id="'+response+'" class = "syllabus_event editable">\
-                    <div  style="'+current_color+'" class = "day_month_box day_box_color">\
+                    <div  style="background-color:'+class_color+';" class = "day_month_box day_box_color">\
                         <div class = "calendar_top_border"></div>\
                         <div class = "calendar_bottom_section">\
                             <span class = "day">'+stamp.getDate()+'</span>\
@@ -237,7 +234,6 @@ var add_event_to_ui = function(events_generated){
                     </div>\
                 </div>';
             $('div#events_list').append(html_text);
-            var lastColor = color;
             
          },
          error: function(jqXHR, textStatus, errorMessage) {

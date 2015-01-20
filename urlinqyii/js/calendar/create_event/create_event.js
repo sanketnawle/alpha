@@ -81,7 +81,8 @@ jQuery(document).ready(function(){
                 //If the start date is greater than the end date,
                 //make the end date the start date
                 $event_end_date.val(date_to_day_of_week_string(start_date));
-                $event_end_time.attr('data-date', date_to_string(start_date));
+                $event_end_date.attr('data-date', date_to_string(start_date));
+
 
                 var new_end_time_string = ints_to_time(start_datetime_object.getHours() + 1, start_datetime_object.getMinutes(), start_datetime_object.getSeconds());
                 //make the time an hour from the start time
