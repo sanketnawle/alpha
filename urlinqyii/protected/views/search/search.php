@@ -55,7 +55,7 @@
         <div id="page" class = "page_search page_search_all_members_results">
             <div class = "black_background_row">
             </div>
-            <div class = "horizontal_scroll_holder">
+            <div class = "horizontal_scroll_holder" id="users">
                 <div class = "horizontal_scroll_holder_search" id = "horizontal_scroll_holder">
                         <!-- horizontal scroll members cards -->
                     <div class = "horiz-area">
@@ -104,12 +104,12 @@
                                     SEARCH FILTERS
                                 </span>
                             </div>
-                            <div class = "members_all_filter filter_section active" data-filter_id="1">
+                            <div class = "members_all_filter filter_section active" data-filter_id="1" data-filter="all">
                                 <div class = "filter_name no_name_marginbtm">
                                     <span class = "filter_on_indicator">Showing </span><span>All Results</span>
                                 </div>
                             </div>
-                            <div class = "not_members_all_filter filter_section" data-filter_id="2">
+                            <div class = "not_members_all_filter filter_section" data-filter_id="2" data-filter="courses">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -134,7 +134,7 @@
                                     <input type = "text" class = "filter_textinput" name = "professor_name" placeholder = "Narrow by professor...">
                                 </div>
                             </div>
-                            <div class = "not_members_all_filter filter_section" data-filter_id="3">
+                            <div class = "not_members_all_filter filter_section" data-filter_id="3" data-filter="clubs">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -151,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class = "not_members_all_filter filter_section" data-filter_id="4">
+                            <div class = "not_members_all_filter filter_section" data-filter_id="4" data-filter="departments">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class = "members_all_filter filter_section" data-filter_id="5">
+                            <div class = "members_all_filter filter_section" data-filter_id="5" data-filter="faculty">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class = "members_all_filter filter_section" data-filter_id="6">
+                            <div class = "members_all_filter filter_section" data-filter_id="6" data-filter="students">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -219,7 +219,7 @@
                                     </div>                                    
                                 </div>
                             </div>
-                            <div class = "not_members_all_filter filter_section" data-filter_id="7">
+                            <div class = "not_members_all_filter filter_section" data-filter_id="7" data-filter="events">
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
@@ -238,7 +238,52 @@
                                 <span class = "search_results_header_sentence">
                                     Search Results for <span class = "query">'Economics' </span><span class = "results_count">6300</span>
                                 </span>
-                            </div>         
+                            </div>
+
+
+
+
+                            <div class='search_result_panel' id="courses">
+
+
+                            </div>
+
+
+                            <div class='search_result_panel' id="clubs">
+
+
+                            </div>
+
+
+                            <div class='search_result_panel' id="departments">
+
+
+                            </div>
+
+
+                            <div class='search_result_panel' id="faculty">
+
+
+                            </div>
+
+
+                            <div class='search_result_panel' id="students">
+
+
+                            </div>
+
+                            <div class='search_result_panel' id="events">
+
+
+                            </div>
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
