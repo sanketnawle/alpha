@@ -123,40 +123,74 @@ $(document).ready(function(){
 
         //alert("length: " + users_json.length);
 
-        //Appropriate filters rendered as results come in
-        $('#category1').parent().parent().hide(); //all
-        $('#category2').parent().parent().hide(); //courses
-        $('#category3').parent().parent().hide(); //professors
-        $('#category4').parent().parent().hide(); //students
-        $('#category5').parent().parent().hide(); //clubs
-        $('#category6').parent().parent().hide(); //departments
-
-        if (courses_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category2').parent().parent().show(); //courses
-            //alert("courses react");
-        }
-        if(professors_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category3').parent().parent().show(); //professors
-            //alert("professors react");
-        }
-        if(students_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category4').parent().parent().show(); //students
-            //alert("students react");
-        }
-        if(clubs_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category5').parent().parent().show(); //clubs
-            //alert("clubs react");
-        }
-        if (departments_json.length != 0) {
-            $('#category1').parent().parent().show(); //all
-            $('#category6').parent().parent().show(); //departments
-            //alert("departments react");
-        }
+//        //Appropriate filters rendered as results come in
+//        $('#category1').parent().parent().hide(); //all
+//        $('#category2').parent().parent().hide(); //courses
+//        $('#category3').parent().parent().hide(); //professors
+//        $('#category4').parent().parent().hide(); //students
+//        $('#category5').parent().parent().hide(); //clubs
+//        $('#category6').parent().parent().hide(); //departments
+//
+//        if (courses_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category2').parent().parent().show(); //courses
+//            //alert("courses react");
+//        }
+//        if(professors_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category3').parent().parent().show(); //professors
+//            //alert("professors react");
+//        }
+//        if(students_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category4').parent().parent().show(); //students
+//            //alert("students react");
+//        }
+//        if(clubs_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category5').parent().parent().show(); //clubs
+//            //alert("clubs react");
+//        }
+//        if (departments_json.length != 0) {
+//            $('#category1').parent().parent().show(); //all
+//            $('#category6').parent().parent().show(); //departments
+//            //alert("departments react");
+//        }
     }
+
+
+
+
+
+
+    $(document).on('click', '.filter_section', function(){
+        var $filter_section = $(this);
+
+
+
+        var filter = $filter_section.attr('data-filter');
+
+
+        if(filter == 'all'){
+            $('.search_result_panel').each(function(){
+                $(this).show();
+            });
+        }else{
+            //Hide all sections except the one clicked
+            $('.search_result_panel').each(function(){
+                if($(this).attr('id') == filter){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+            });
+        }
+
+
+    });
+
+
+
 
     //Handlebars HTML Generation
     function show_users(result_json){
@@ -177,51 +211,45 @@ $(document).ready(function(){
 
 
     function show_courses(result_json) {
-        var source   = $("#vertical_course_results").html();
+        var source   = $("#course_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            description: result_json["course_desc"],
-            admin_key: "School",
-            department_key: "Department",
-            members_key: "Members",
-            admin_value: result_json["school_name"],
-            department_value: result_json["department_name"],
-            department_url: base_url + '/department/' + result_json['department_id'],
-            members_value: "Be the first to join",
-            name: result_json['course_name'],
-            url: base_url + "/course/" + result_json['course_id']
-        }
-        var generated_html = template(context);
-        $('.vert-area').append(generated_html).hide().fadeIn();
+//        var context =
+//        {
+//            description: result_json["course_desc"],
+//            admin_key: "School",
+//            department_key: "Department",
+//            members_key: "Members",
+//            admin_value: result_json["school_name"],
+//            department_value: result_json["department_name"],
+//            department_url: base_url + '/department/' + result_json['department_id'],
+//            members_value: "Be the first to join",
+//            name: result_json['course_name'],
+//            url: base_url + "/course/" + result_json['course_id']
+//        };
+        var generated_html = template(result_json);
+        $('#courses').append(generated_html).hide().fadeIn();
     }
 
     function show_clubs(result_json) {
-        var source   = $("#vertical_club_results").html();
+        var source   = $("#club_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            imgurl: base_url + "/assets/default/user.png",
-            cluburl: base_url + "/club/" + result_json['group_id'],
-            name: result_json['group_name']
-        }
-        var generated_html = template(context);
-        $('.vert-area').append(generated_html).hide().fadeIn();
+//        var context =
+//        {
+//            imgurl: base_url + "/assets/default/user.png",
+//            cluburl: base_url + "/club/" + result_json['group_id'],
+//            name: result_json['group_name']
+//        }
+        var generated_html = template(result_json);
+        $('#clubs').append(generated_html).hide().fadeIn();
     }
 
     function show_departments(result_json) {
-        var source   = $("#vertical_dept_results").html();
+        var source   = $("#department_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            imgurl: base_url + "/assets/default/dept_dp.png",
-            cluburl: base_url + "/department/" + result_json['department_id'],
-            name: result_json['department_name'],
-            description: result_json['description_name']
-        }
 
-        var generated_html = template(context);
-        $('.results-main-sec').append(generated_html).hide().fadeIn();
+
+        var generated_html = template(result_json);
+        $('#departments').append(generated_html).hide().fadeIn();
     }
 
 

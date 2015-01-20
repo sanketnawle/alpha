@@ -503,52 +503,52 @@ $(document).ready(function() {
 
     $(document).delegate('.fbar_buttonwrapper', "click", function () { 
         var $button_selected = $(this);
-        var $fbar_new = $("#fbar_new");
+        var $fbar_new = globals.$fbar.find("#fbar_new");
 
         $fbar_new.addClass("fbar_shadow");
 
 
         
         var button_selected_type = $button_selected.attr("data-post_button_type");
-        $("#fbar_holder").addClass(button_selected_type);
-        $("#fbar_holder").attr('data-post_type', button_selected_type);
+        globals.$fbar.find("#fbar_holder").addClass(button_selected_type);
+        globals.$fbar.find("#fbar_holder").attr('data-post_type', button_selected_type);
 
 
-        if($("#fbar_holder").hasClass("event")){
-            $("#post_btn").text("Create Event");
+        if(globals.$fbar.find("#fbar_holder").hasClass("event")){
+            globals.$fbar.find("#post_btn").text("Create Event");
         }
 
-        if($("#fbar_holder").hasClass("discuss")){
-            $("#post_btn").text("Post");
+        if(globals.$fbar.find("#fbar_holder").hasClass("discuss")){
+            globals.$fbar.find("#post_btn").text("Post");
         }
 
-        if($("#fbar_holder").hasClass("question")){
-            $("#post_btn").text("Add Question");
+        if(globals.$fbar.find("#fbar_holder").hasClass("question")){
+            globals.$fbar.find("#post_btn").text("Add Question");
         }
 
-        if($("#fbar_holder").hasClass("question")){
-            $("#post_btn").text("Add Question");
+        if(globals.$fbar.find("#fbar_holder").hasClass("question")){
+            globals.$fbar.find("#post_btn").text("Add Question");
         }
 
-        if($("#fbar_holder").hasClass("notes")){
-            $("#post_btn").text("Add Files");
+        if(globals.$fbar.find("#fbar_holder").hasClass("notes")){
+            globals.$fbar.find("#post_btn").text("Add Files");
         }
 
-        if($("#fbar_holder").hasClass("opportunity")){
-            $("#post_btn").text("Share Opportunity");
+        if(globals.$fbar.find("#fbar_holder").hasClass("opportunity")){
+            globals.$fbar.find("#post_btn").text("Share Opportunity");
         }
 
 
-        var $button_section = $('#fbar_buttons');
-        var $form_section = $('form#fbar_form')
+        var $button_section = globals.$fbar.find('#fbar_buttons');
+        var $form_section = globals.$fbar.find('form#fbar_form')
         $button_section.addClass("faded").delay(150).queue(function(next){
             $button_section.addClass("hide");
             $form_section.addClass("show").delay(250).queue(function(next2){
                 $form_section.addClass("fadeIn");
-                
-                $(".autofocus").focus();
 
-                $("form#fbar_form").css({"overflow":"visible"});
+                globals.$fbar.find(".autofocus").focus();
+
+                globals.$fbar.find("form#fbar_form").css({"overflow":"visible"});
                 next2();
             });
             next();
@@ -559,7 +559,7 @@ $(document).ready(function() {
 
     
     $(document).delegate('.event_more_options', "click", function () { 
-        if($("#fbar_holder").hasClass("events_more_options")){
+        if(globals.$fbar.find("#fbar_holder").hasClass("events_more_options")){
             $(this).closest("#fbar_holder").removeClass("events_more_options");
             $(this).text("More Options");
         }
@@ -571,7 +571,7 @@ $(document).ready(function() {
     });
 
     $(document).delegate('.opportunity_more_options', "click", function () { 
-        if($("#fbar_holder").hasClass("opps_more_options")){
+        if(globals.$fbar.find("#fbar_holder").hasClass("opps_more_options")){
             $(this).closest("#fbar_holder").removeClass("opps_more_options");
             $(this).text("More Options");
         }
@@ -586,7 +586,7 @@ $(document).ready(function() {
     if(globals.origin_type == 'user'){
         //Populate the audience select
         $.getJSON(base_url + '/user/getGroupData', function(json_data){
-            var $audience_select_list = $("#audience_select_list");
+            var $audience_select_list = globals.$fbar.find("#audience_select_list");
 
 
             $audience_select_list.hide();
@@ -703,26 +703,26 @@ $(document).ready(function() {
 
 
 
-        $('#fbar_holder').attr('data-post_type', $button_selected.attr('data-question_post_type'));
+        globals.$fbar.find('#fbar_holder').attr('data-post_type', $button_selected.attr('data-question_post_type'));
         $(this).addClass("active"); 
         var question_button_selected_type = $button_selected.attr("data-question_post_type"); 
         var parent_form = $button_selected.closest("#fbar_form");
         if(question_button_selected_type == "multiple_choice"){
             $(parent_form).addClass("mult_choice");
             $(parent_form).removeClass("true_or_false");
-            $(".autofocus").focus();
+            globals.$fbar.find(".autofocus").focus();
             $(parent_form).removeClass("regular_question");
         }
         if(question_button_selected_type == "true_false"){
             $(parent_form).addClass("true_or_false");
-            $(".autofocus").focus();
+            globals.$fbar.find(".autofocus").focus();
             $(parent_form).removeClass("mult_choice");
             $(parent_form).removeClass("regular_question");
         }
         if(question_button_selected_type == "hide_both"){
             $(parent_form).addClass("regular_question");
             $(parent_form).removeClass("mult_choice");
-            $(".autofocus").focus();
+            globals.$fbar.find(".autofocus").focus();
             $(parent_form).removeClass("true_or_false");
         }
     });
@@ -759,10 +759,10 @@ $(document).ready(function() {
             $(this).prop("checked", false);
         }
         else {
-            if($(".answer_check input").prop("checked", true)) {
-                $(".answer_check input").prop("checked", false);
-                $(".answer_check").removeClass("selected_answer");
-                $(".answer_check").css("display", "none");
+            if($globals.$fbar.find(".answer_check input").prop("checked", true)) {
+                globals.$fbar.find(".answer_check input").prop("checked", false);
+                globals.$fbar.find(".answer_check").removeClass("selected_answer");
+                globals.$fbar.find(".answer_check").css("display", "none");
                 $(this).prop("checked", true);
                 $(this).parent().addClass("selected_answer");
                 $(this).parent().css("display", "inline-block");
@@ -771,28 +771,28 @@ $(document).ready(function() {
     }); 
 
 
-    $('.menu_audience').dropit({
+    globals.$fbar.find('.menu_audience').dropit({
     });
-    $('.privacy_menu').dropit({
+    globals.$fbar.find('.privacy_menu').dropit({
     });
 
     $(".privacy_dropdown_link").click(function(){
-        $("#privacy_tooltip").hide();
+        globals.$fbar.find("#privacy_tooltip").hide();
     });
 
     $("li.privacy_list").click(function(){
-        $("li.privacy_list").removeClass("active");
+        globals.$fbar.find("li.privacy_list").removeClass("active");
         $(this).addClass("active");
     });
 
     
 
     $(".privacy_dropdown_link").mouseenter(function(){
-        $("#privacy_tooltip").fadeIn(250);
+        globals.$fbar.find("#privacy_tooltip").fadeIn(250);
     });
 
     $(".privacy_dropdown_link").mouseleave(function(){
-        $("#privacy_tooltip").fadeOut(250);
+        globals.$fbar.find("#privacy_tooltip").fadeOut(250);
     });
 
 
@@ -801,33 +801,33 @@ $(document).ready(function() {
     function close_fbar(){
 
 
-        var $button_section = $('#fbar_buttons');
-        var $form_section = $('form#fbar_form');
+        var $button_section = globals.$fbar.find('#fbar_buttons');
+        var $form_section = globals.$fbar.find('form#fbar_form');
 
-        var $fbar_new = $("#fbar_new");
+        var $fbar_new = globals.$fbar.find("#fbar_new");
 
         $fbar_new.removeClass("fbar_shadow");
 
-        $("#fbar_holder").attr('data-post_type','');
+        globals.$fbar.find("#fbar_holder").attr('data-post_type','');
 
         $form_section.removeClass("fadeIn");
         $form_section.removeClass("show").delay(350).queue(function(next){
             $button_section.removeClass("faded");
             $button_section.removeClass("hide");
-                    $("#fbar_holder").removeClass("discuss");
-                    $("#fbar_holder").removeClass("opportunity");
-                    $("#fbar_holder").removeClass("question");
-                    $("#fbar_holder").removeClass("event");
-                    $("#fbar_holder").removeClass("notes");
+                    globals.$fbar.find("#fbar_holder").removeClass("discuss");
+                    globals.$fbar.find("#fbar_holder").removeClass("opportunity");
+                    globals.$fbar.find("#fbar_holder").removeClass("question");
+                    globals.$fbar.find("#fbar_holder").removeClass("event");
+                    globals.$fbar.find("#fbar_holder").removeClass("notes");
 
                     $form_section.removeClass("true_or_false");
                     $form_section.removeClass("mult_choice");
                     $form_section.removeClass("regular_question");
-                    $(".question_type_button.active").removeClass("active");
-                    $(".question_type_button.regular_question").addClass("active");
-                    $("#fbar_holder").removeClass("events_more_options");
-                    $(".event_more_options").text("More Options");
-                    $("form#fbar_form").css({"overflow":"hidden"});
+                    globals.$fbar.find(".question_type_button.active").removeClass("active");
+                    globals.$fbar.find(".question_type_button.regular_question").addClass("active");
+                    globals.$fbar.find("#fbar_holder").removeClass("events_more_options");
+                    globals.$fbar.find(".event_more_options").text("More Options");
+                    globals.$fbar.find("form#fbar_form").css({"overflow":"hidden"});
             next();
 
         });
@@ -837,12 +837,12 @@ $(document).ready(function() {
         reset_fbar();
     });
 
-    $('textarea').autosize();
+    globals.$fbar.find('textarea').autosize();
 
-    $('.audience_name').click(function(){
+    globals.$fbar.find('.audience_name').click(function(){
         var $selected_audience = $(this);
         var selected_audience_text = $selected_audience.find("a").text();
-        $(".selected_audience").text(selected_audience_text);
+        globals.$fbar.find(".selected_audience").text(selected_audience_text);
     });
 
 
@@ -1050,7 +1050,7 @@ $(document).ready(function() {
 
 
     function reset_fbar(){
-        var $fbar_holder = $('#fbar_holder');
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
 
         var post_type = $fbar_holder.attr('data-post_type');
 
@@ -1098,7 +1098,7 @@ $(document).ready(function() {
     }
 
     function get_post_data(){
-        var $fbar_holder = $('#fbar_holder');
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
 
         var post_type = $fbar_holder.attr('data-post_type');
 
@@ -1249,7 +1249,7 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.post_btn', function(){
-        var $fbar_holder = $('#fbar_holder');
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
 
         var post_type = $fbar_holder.attr('data-post_type');
 
@@ -1260,7 +1260,7 @@ $(document).ready(function() {
 
 
         //Check if there are any files
-        var $file_form = $('#fbar_file_form');
+        var $file_form = globals.$fbar.find('#fbar_file_form');
         //alert($file_form.children('div.dz-preview').length);
         console.log(globals.myDropzone.files);
 
@@ -1388,7 +1388,7 @@ $(document).ready(function() {
 
 
 
-    $('#fbar_form').submit(function(e){
+    globals.$fbar.find('#fbar_form').submit(function(e){
         e.preventDefault();
     });
 
@@ -1419,7 +1419,7 @@ $(document).ready(function() {
 //        $('.dropzone').click();
 //    });
 
-    $('#post_attachments').click(function(e){
+    $(document).on('click', '#post_attachments',function(e){
         e.stopPropagation();
         $('.fbar_file_form.dropzone').click();
     });

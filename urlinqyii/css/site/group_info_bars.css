@@ -82,6 +82,9 @@ top: 8px;
 position: relative;
 }
 
+
+
+
 div.group_info_tab_content div.group_box:hover div.float_Left.group_image{
     opacity:.9;
 }

@@ -15,6 +15,7 @@
 
 
 
+
         </script>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
@@ -36,6 +37,9 @@
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+        <script>
+            globals.$fbar = $('#fbar_wrapper');
+        </script>
     </head>
 
 
