@@ -50,14 +50,23 @@ class SearchController extends Controller
             ->andWhere("u.user_type = 'p'")
             ->limit(30)
             ->queryAll();
-        $csql = Yii::app()->db->createCommand()
-            ->select('c.course_name, c.course_id, c.course_desc, d.department_name, d.department_id, s.school_name, s.school_id, c.picture_file_id')
-            ->from('course c')
-            ->join('department d','c.department_id = d.department_id')
-            ->join('school s', 's.school_id = d.school_id')
-            ->where(array('like', "c.course_name", '%'.$query.'%'))
-            ->limit(30)
-            ->queryAll();
+
+
+        $courses = Course::model()->findAllBySql('SELECT * FROM `course` course_name LIKE %' . $query . '% LIMIT 30');
+        for($i = 0; $i < count($courses); $i++){
+            $courses[$i] = $this->get_model_associations($courses[$i], array('pictureFile', 'department'));
+        }
+//        $csql = Yii::app()->db->createCommand()
+//            ->select('c.course_name, c.course_id, c.course_desc, d.department_name, d.department_id, s.school_name, s.school_id, c.picture_file_id')
+//            ->from('course c')
+//            ->join('department d','c.department_id = d.department_id')
+//            ->join('school s', 's.school_id = d.school_id')
+//            ->where(array('like', "c.course_name", '%'.$query.'%'))
+//            ->limit(30)
+//            ->queryAll();
+
+
+
         $dsql = Yii::app()->db->createCommand()
             ->select('d.department_name, d.department_id, d.department_description, s.school_name, s.school_id, d.picture_file_id')
             ->from('department d')
@@ -77,11 +86,28 @@ class SearchController extends Controller
             ->select('name')
             ->from('major')
             ->queryAll();
-        $departments = Yii::app()->db->createCommand()
-            ->select('department_name')
-            ->from('department')
-            ->where('school_id=:sid', array(':sid'=>$user->school->school_id))
-            ->queryAll();
+
+
+        $departments = Department::model()->findAllBySql('SELECT * FROM `department` where department_name LIKE %' .$query. '% LIMIT 30');
+        for($i = 0; $i < count($departments); $i++){
+            $course_count = count($departments[$i]->courses);
+            $faculty_count = count($departments[$i]->admins);
+
+            $student_count = count($departments[$i]->students);
+
+
+            $departments[$i] = $this->get_model_associations($departments[$i], array('pictureFile'));
+
+            $departments[$i]['course_count'] = $course_count;
+            $departments[$i]['faculty_count'] = $faculty_count;
+            $departments[$i]['student_count'] = $student_count;
+
+        }
+//        $departments = Yii::app()->db->createCommand()
+//            ->select('department_name')
+//            ->from('department')
+//            ->where('school_id=:sid', array(':sid'=>$user->school->school_id))
+//            ->queryAll();
 
         //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
         $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%'";
@@ -184,8 +210,8 @@ class SearchController extends Controller
                 'query'=>$query,
                 'filter'=>$filter,
                 'users'=>$usql,
-                'courses'=>$csql,
-                'departments'=>$dsql,
+                'courses'=>$courses,
+                'departments'=>$departments,
                 'clubs'=>$groupContent,
                 'students'=>$students,
                 'professors'=>$professors,
