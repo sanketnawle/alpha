@@ -299,7 +299,12 @@ $(document).ready(function() {
                 if($('.showcase_item').length>0){
                     data.index = index;
                     if($('.showcase_item').length>=1){
+                        $(".showcase_arrow.left").show();
+                        $(".showcase_arrow.right").show();
                         $(".showcase_controls").fadeIn(250);
+                        if(index==0){
+                            $(".showcase_arrow.left").hide();
+                        }
                     }
                     $('.showcase_item[showcase_index='+(index+1)+']').before(template(data));
                 }else{
@@ -422,10 +427,14 @@ $(document).ready(function() {
             $('.showcase_items').css('margin-left', 260-(index-1)*496);
             $('.showcase_item[showcase_index='+(index-1)+']').addClass('center');
         }
+        if(index==numShowcase-2){
+            $('.showcase_arrow.right').hide();
+        }
         numShowcase--;
         if(numShowcase==1){
             $('.showcase_controls').hide();
         }
+
     }
 
     //edit profile
