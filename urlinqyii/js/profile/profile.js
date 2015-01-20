@@ -219,11 +219,16 @@ $(document).ready(function() {
     var numShowcase=0;
     $(document).on('click','.showcase_arrow.left',function(){
         var index=parseInt($('.showcase_item.center').attr('showcase_index'));
+
         if(index>0){
             index--;
+            $('.showcase_arrow.right').show();
             $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
+            if(index==0){
+                $('.showcase_arrow.left').hide();
+            }
         }
        // alert($('.showcase_item.center').attr('showcase_index'));
     });
@@ -236,6 +241,9 @@ $(document).ready(function() {
             $('.showcase_items').css('margin-left', 260 - (index)*496);
             $('.showcase_item.center').removeClass('center');
             $('.showcase_item[showcase_index='+(index)+']').addClass('center');
+            if(index==numShowcase-1){
+                $('.showcase_arrow.right').hide();
+            }
         }
         //alert($('.showcase_item.center').attr('showcase_index'));
     });
