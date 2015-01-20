@@ -924,6 +924,11 @@ form#add_showcase button#upload_link_button > i{
 
 }
 
+#upload_file_name{
+    display: inline-block;
+    color:white;
+}
+
 span#cancel_showcase_form{
     font-weight: 600; font-size: 25.5px; display: inline-block; 
     margin: 5px 10px; float: right; width: 25px; height: 25px; 

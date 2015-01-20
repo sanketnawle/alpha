@@ -290,9 +290,10 @@ $(document).ready(function() {
         
         //kinyi add showcase to showcase bar: data.title, data.desc, data.file_extension, data.preview_file
         //reset form
-        $('#link_entry').val('');
+        $('#upload_file_name').text('');
         $('#title_entry').val('');
         $('#desc_entry').val('');
+        upload_file = null;
 
     });
 
@@ -348,9 +349,11 @@ $(document).ready(function() {
     {
 
         upload_file = event.target.files[0];
+        if($('#title_entry').val()==""){
+            $('#title_entry').val(upload_file.name.substring(0,upload_file.name.lastIndexOf('.')));
+        }
+        $('#upload_file_name').text(upload_file.name);
 
-        $('#link_entry').val(upload_file.name);
-        $('#link_entry').prop("disabled", true);
     });
 
     $(document).on('submit','form[id=add_showcase]', function (event) {
@@ -382,7 +385,7 @@ $(document).ready(function() {
                     $('#profile_overlay').hide();
 
                     //reset form
-                    $('#link_entry').val('');
+                    $('#upload_file_name').text('');
                     $('#title_entry').val('');
                     $('#desc_entry').val('');
                     $('#upfile').val('');
