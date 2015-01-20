@@ -23,7 +23,7 @@ $(document).ready(function(){
         $.getJSON(globals.base_url + "/user/reminders", function(json_data){
             if(json_data['success']){
                 reminders = json_data['reminders'];
-
+                update_reminders_div();
             }else{
                 console.log('Error getting reminders.');
             }
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 
 
-
+    var template_source = $('#reminder_template').html();
     //Clears the reminders and adds the latest ones
     function update_reminders_div(){
         var $reminders_holder = $reminders.find('.entries');
@@ -47,16 +47,19 @@ $(document).ready(function(){
 
 
 
-            if(reminders[i]['status'] == 'new'){
-                new_count++;
-            }
 
-            var date = new Date(reminders[i]['created_time']);
-            //Database stores datetime's as UTC
-            //so always convert the UTC date to local date for the users timezone
-            date = utc_to_local(date);
+            var end_date = new Date(reminders[i]['end_date']);
 
-            reminders[i]['formatted_created_time'] = moment(date).fromNow();
+            end_date = utc_to_local(end_date);
+            reminders[i]['formatted_end_time'] = moment(end_date).fromNow();
+
+
+            reminders[i]['day_of_week'] = date_to_day_name(end_date);
+
+
+            reminders[i]['month'] = date_to_month_string(end_date);
+            reminders[i]['day'] = end_date.getDate();
+
 
             var generated_html = template(reminders[i]);
 
@@ -65,11 +68,6 @@ $(document).ready(function(){
         }
 
 
-        //Show the new notification count
-        if(new_count > 0){
-            $reminders_button.addClass('new_reminders');
-            $reminders_button.find('#new_notification_count').text(new_count);
-        }
 
     }
 

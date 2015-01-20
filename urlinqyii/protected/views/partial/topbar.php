@@ -91,69 +91,13 @@
                     <div class="notify-window" id="reminders" style="display: none;">
                         <div class="wedge"></div>
                         <div class="window">
-                            <div class="header">Invitations and Reminders</div>
+                            <div class="header">Reminders</div>
                             <ul class="entries">
-                                <li class="eve">
-                                    <div class="icon"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="follow btn">Add to calendar</div>
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">Rachel Borowitz invited you to  the event, Cheese Club Bake Sale.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">10 mins ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tdo">
-                                    <div class="icon text">
-                                        <div>Exam</div>
-                                    </div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">In 1 week, you have a Supply and Demand Exam in the class, Principles of Economics.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 day ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="tdo">
-                                    <div class="icon date">
-                                        <div class="month">Nov</div>
-                                        <div class="day">20</div>
-                                    </div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="dismiss">Dismiss</div>
-                                            <div class="close"></div>
-                                        </div>
-                                        <div class="message">On Thursday, you have a reading due in the class, Principles of Economics.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 day ago</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="eve done">
-                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>
-                                    <div class="content">
-                                        <div class="right">
-                                            <div class="follow msg">Event Added</div>
-                                        </div>
-                                        <div class="message">MapReduce Gene Analysis was added to Computational Biology's calendar.</div>
-                                        <div class="time">
-                                            <div class="icon"></div>
-                                            <div class="stamp">1 hour ago</div>
-                                        </div>
-                                    </div>
-                                </li>
+
+
+
+
+
                             </ul>
                             <div class="footer">
                                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
@@ -208,6 +152,86 @@
 
 
 
+
+
+<!--                                <li class="eve">-->
+<!--                                    <div class="icon"></div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="follow btn">Add to calendar</div>-->
+<!--                                            <div class="dismiss">Dismiss</div>-->
+<!--                                            <div class="close"></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">Rachel Borowitz invited you to  the event, Cheese Club Bake Sale.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">10 mins ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!---->
+<!---->
+<!--                                <li class="tdo">-->
+<!--                                    <div class="icon text">-->
+<!--                                        <div>Exam</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="dismiss">Dismiss</div>-->
+<!--                                            <div class="close"></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">In 1 week, you have a Supply and Demand Exam in the class, Principles of Economics.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">1 day ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                <li class="eve done">-->
+<!--                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="follow msg">Event Added</div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">MapReduce Gene Analysis was added to Computational Biology's calendar.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">1 hour ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+
+
+
+
+
+<script id="reminder_template" type="text/x-handlebars-template">
+
+    <li class="tdo">
+        <div class="icon date">
+            <div class="month">{{month}}</div>
+            <div class="day">{{day}}</div>
+        </div>
+        <div class="content">
+            <div class="right">
+                <div class="dismiss">Dismiss</div>
+                <div class="close"></div>
+            </div>
+            <div class="message">On {{day_of_week}}, you have a {{event_type}} due in the class, {{origin.name}}.</div>
+            <div class="time">
+                <div class="icon"></div>
+                <div class="stamp">{{formatted_end_time}}</div>
+            </div>
+        </div>
+    </li>
+
+</script>
 
 
 <script id='notification_template' type="text/x-handlebars-template">
