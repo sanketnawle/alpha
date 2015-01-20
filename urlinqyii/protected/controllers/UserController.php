@@ -438,72 +438,147 @@ class UserController extends Controller
 
     public function actionReminders(){
         $user = $this->get_current_user($_GET);
+
+
+
         if($user){
-            $event_users = EventUser::model()->findAll("user_id=:user_id", array(":user_id"=>$user->user_id));
-            $events = array();
-            foreach($event_users as $event_user){
-                $event_user = Event::model()->find("event_id=:id", array(":id"=>$event_user->event_id));
-                if($event_user){
-                    array_push($events, $event_user);
-                }
-            }
-            if(!$events){
-                $data = array('success'=>true,'reminders'=>array());
-                $this->renderJSON($data);
-                return;
-            }
-            $events_new = array();
+
+            $today = date("Y-m-d");
+
+            $datetime = new DateTime($today);
+            $datetime->modify('+7 days');
+            $five_days_from_today = $datetime->format('Y-m-d');
+
+
+            //            $sql = "SELECT * FROM `event` WHERE user_id = " . $user->user_id . " AND (start_date >= '" . $today . "' AND start_date <= '" . $five_days_from_today . "') OR (end_date >= '" . $today . "' AND end_date <= '" . $five_days_from_today ."')";
+
+            $sql = "SELECT * FROM `event` WHERE user_id = " . $user->user_id . " AND (end_date >= '" . $today . "' AND end_date <= '" . $five_days_from_today ."')";
+
+            //Get the events that start or end within the next 5 days for the current user
+            $events = Event::model()->findAllBySql($sql);
+
+
+            $events_data = array();
             foreach($events as $event){
-                $event = $this->model_to_array($event);
-                $origin = $event['origin_type'];
-                $origin_id = $event['origin_id'];
+                $event_data = $this->model_to_array($event);
 
-                if($origin != 'user'){
-                    $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
-                    $command = Yii::app()->db->createCommand($sql);
-                    $origin_data = $command->queryRow();
-                    //echo json_encode($origin_data);
-                    $event['origin_name'] = $origin_data[$origin . '_name'];
-                    $event['origin_color_id'] = $origin_data['color_id'];
-                    //array_push($events_data,$event);
-                }else{
-                    $event['origin_name'] = null;
-                    $event['origin_color_id'] = null;
-                }
+                if($event->origin_type == 'class'){
 
-                $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
-                if($event_attending){
-                    $event['is_attending'] = true;
-                }
-                else{
-                    $event['is_attending'] = false;
-                }
-
-                $date = date($event['start_date'] . " 00:00:00", time());
-                $datetime = new DateTime($date);
-                $date = $datetime->format('Y-m-d');
-
-                $today = date('Y-m-d');
-
-                $datetime->modify('-5 days');
-                $five_days = $datetime->format('Y-m-d');
-
-                if($event['event_type'] == 'exam'){
-                    if($five_days < $today){
-                        array_push($events_new, $event);
+                    //Make we care about this type of event for classes
+                    if($event->event_type != 'exam'){
+                        continue;
                     }
-                }
-                else{
-                    if($date == $today){
-                        array_push($events_new, $event);
+
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    if(!$class){
+                        $data = array('success'=>false, 'error_msg'=>'Class doesnt exist');
+                        $this->renderJSON($data);
+                        return;
                     }
+
+                    $event_data['origin'] = $this->model_to_array($class);
+                    $event_data['origin']['name'] = $class->class_name;
+
+                    array_push($events_data, $event_data);
+
+                }else if($event->origin_type == 'club' || $event->origin_type == 'group'){
+
+                    //Make we care about this type of event for groupes
+//                    if($event->event_type != 'exam'){
+//                        continue;
+//                    }
+
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    if(!$group){
+                        $data = array('success'=>false, 'error_msg'=>'group doesnt exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
+
+                    $event_data['origin'] = $this->model_to_array($group);
+                    $event_data['origin']['name'] = $group->group_name;
+
+                    array_push($events_data, $event_data);
                 }
 
-            //array_push($events_new, $event);
             }
-            $data = array('success'=>true,'reminders'=>$events_new);
+
+            $data = array('success'=>true,'reminders'=>$events_data);
             $this->renderJSON($data);
             return;
+
+
+
+
+
+
+//
+//
+//            $event_users = EventUser::model()->findAll("user_id=:user_id", array(":user_id"=>$user->user_id));
+//            $events = array();
+//            foreach($event_users as $event_user){
+//                $event_user = Event::model()->find("event_id=:id", array(":id"=>$event_user->event_id));
+//                if($event_user){
+//                    array_push($events, $event_user);
+//                }
+//            }
+//            if(!$events){
+//                $data = array('success'=>true,'reminders'=>array());
+//                $this->renderJSON($data);
+//                return;
+//            }
+//            $events_new = array();
+//            foreach($events as $event){
+//                $event = $this->model_to_array($event);
+//                $origin = $event['origin_type'];
+//                $origin_id = $event['origin_id'];
+//
+//                if($origin != 'user'){
+//                    $sql = "SELECT " . $origin . '_name, color_id FROM `' . $origin . '`  WHERE ' . $origin . '_id = ' . $origin_id;
+//                    $command = Yii::app()->db->createCommand($sql);
+//                    $origin_data = $command->queryRow();
+//                    //echo json_encode($origin_data);
+//                    $event['origin_name'] = $origin_data[$origin . '_name'];
+//                    $event['origin_color_id'] = $origin_data['color_id'];
+//                    //array_push($events_data,$event);
+//                }else{
+//                    $event['origin_name'] = null;
+//                    $event['origin_color_id'] = null;
+//                }
+//
+//                $event_attending = EventUser::model()->find("user_id=:user_id and event_id=:event_id", array(":user_id"=>$user->user_id, ":event_id"=>$event['event_id']));
+//                if($event_attending){
+//                    $event['is_attending'] = true;
+//                }
+//                else{
+//                    $event['is_attending'] = false;
+//                }
+//
+//                $date = date($event['start_date'] . " 00:00:00", time());
+//                $datetime = new DateTime($date);
+//                $date = $datetime->format('Y-m-d');
+//
+//                $today = date('Y-m-d');
+//
+//                $datetime->modify('-5 days');
+//                $five_days = $datetime->format('Y-m-d');
+//
+//                if($event['event_type'] == 'exam'){
+//                    if($five_days < $today){
+//                        array_push($events_new, $event);
+//                    }
+//                }
+//                else{
+//                    if($date == $today){
+//                        array_push($events_new, $event);
+//                    }
+//                }
+//
+//            //array_push($events_new, $event);
+//            }
+//            $data = array('success'=>true,'reminders'=>$events_new);
+//            $this->renderJSON($data);
+//            return;
 
         }
         else{
