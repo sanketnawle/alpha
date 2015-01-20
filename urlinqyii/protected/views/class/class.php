@@ -169,7 +169,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Materials</div>
-                    <div class = "tab_amount"><?php echo count($class->files);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->files)>0){
+                            echo count($class->files);
+                        } ?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -178,7 +182,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Members</div>
-                    <div class = "tab_amount"><?php echo count($class->users);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->users)>0){
+                            echo count($class->users);
+                        }?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
@@ -198,7 +206,11 @@
                 <div class="tab_content">
                     <div class="tab_img"></div>
                     <div class="tab_text">Members</div>
-                    <div class = "tab_amount"><?php echo count($class->users);?></div>
+                    <div class = "tab_amount">
+                        <?php if(count($class->users)>0){
+                            echo count($class->users);
+                        }?>
+                    </div>
                 </div>
                 <div class="tab_wedge"></div>
             </div>
