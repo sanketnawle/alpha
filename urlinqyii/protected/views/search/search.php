@@ -22,8 +22,18 @@
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main_search.css">
+
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_courses.css">
+
+
+
+
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+
+    link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     
 
@@ -243,25 +253,25 @@
 
 
 
-                            <div class='search_result_panel' id="courses">
+                            <div class='search_result_panel group_info_tab_content tab_content' id="courses">
 
 
                             </div>
 
 
-                            <div class='search_result_panel' id="clubs">
+                            <div class='search_result_panel group_info_tab_content tab_content' id="clubs">
 
 
                             </div>
 
 
-                            <div class='search_result_panel' id="departments">
+                            <div class='search_result_panel group_info_tab_content tab_content' id="departments">
 
 
                             </div>
 
 
-                            <div class='search_result_panel' id="faculty">
+                            <div class='search_result_panel ' id="faculty">
 
 
                             </div>
@@ -343,6 +353,79 @@
         </div>
     </div>
 
+
+</script>
+
+
+
+
+<script id="course_template" type="text/x-handlebars-template">
+
+    <div class = "group_box group_course_box" data-name="{{course_name}}">
+        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');">
+        </div>
+        <div class = "group_box_main_info">
+            <a href='<?php echo Yii::app()->getBaseUrl(true); ?>/course/{{course_id}}' class = "group_link">{{course_name}}</a>
+            <div class = "float_Right">
+                <span class = "group_type">Course</span>
+            </div>
+        </div>
+        <div class = "group_box_secondary_info_section">
+            <div class= "info_line indent">4 open classes</div>
+            <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true); ?>/department/{{department.department_id}}">{{department.department_name}}</a></div>
+            <div class = "info_line info_about">{{course_desc}}</div>
+        </div>
+    </div>
+
+</script>
+
+
+<script id="club_template" type="text/x-handlebars-template">
+
+    <div class = "group_box group_course_box club_box">
+        <div class = "float_Left group_image">
+            <a class = "group_link">NYU Cheese Club</a>
+            <span class = "group_type group_with_button">Club</span>
+
+        </div>
+        <div class = "group_box_main_info">
+
+            <div class = "float_Right">
+                <div class = "group_bar_button_holder">
+                    <div class = "join_button_wrapper">
+                        <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Join Club</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "group_box_secondary_info_section">
+            <div class= "info_line indent">35 members</div>
+            <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
+            <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
+        </div>
+    </div>
+
+</script>
+
+
+<script id="department_template" type="text/x-handlebars-template">
+    <div class="group_box group_course_box">
+        <div class="float_Left group_image">
+            <div class="department_alias">
+                CBE
+            </div>
+        </div>
+        <div class="group_box_main_info">
+            <a class="group_link">{{department_name}}</a>
+            <div class="float_Right">
+                <span class="group_type">Department</span>
+            </div>
+        </div>
+        <div class="group_box_secondary_info_section">
+            <div class="info_line indent"><span>{{faculty_count}} faculty </span><b>·</b><span> {{student_count}} student{{#ifCond student_count '!=' 1}}s{{else}}{{/ifCond}}</span></div>
+            <div class="info_line indent">{{course_count}} courses</div>
+        </div>
+    </div>
 
 </script>
 

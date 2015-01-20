@@ -211,50 +211,44 @@ $(document).ready(function(){
 
 
     function show_courses(result_json) {
-        var source   = $("#vertical_course_results").html();
+        var source   = $("#course_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            description: result_json["course_desc"],
-            admin_key: "School",
-            department_key: "Department",
-            members_key: "Members",
-            admin_value: result_json["school_name"],
-            department_value: result_json["department_name"],
-            department_url: base_url + '/department/' + result_json['department_id'],
-            members_value: "Be the first to join",
-            name: result_json['course_name'],
-            url: base_url + "/course/" + result_json['course_id']
-        };
-        var generated_html = template(context);
+//        var context =
+//        {
+//            description: result_json["course_desc"],
+//            admin_key: "School",
+//            department_key: "Department",
+//            members_key: "Members",
+//            admin_value: result_json["school_name"],
+//            department_value: result_json["department_name"],
+//            department_url: base_url + '/department/' + result_json['department_id'],
+//            members_value: "Be the first to join",
+//            name: result_json['course_name'],
+//            url: base_url + "/course/" + result_json['course_id']
+//        };
+        var generated_html = template(result_json);
         $('#courses').append(generated_html).hide().fadeIn();
     }
 
     function show_clubs(result_json) {
-        var source   = $("#vertical_club_results").html();
+        var source   = $("#club_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            imgurl: base_url + "/assets/default/user.png",
-            cluburl: base_url + "/club/" + result_json['group_id'],
-            name: result_json['group_name']
-        }
-        var generated_html = template(context);
+//        var context =
+//        {
+//            imgurl: base_url + "/assets/default/user.png",
+//            cluburl: base_url + "/club/" + result_json['group_id'],
+//            name: result_json['group_name']
+//        }
+        var generated_html = template(result_json);
         $('#clubs').append(generated_html).hide().fadeIn();
     }
 
     function show_departments(result_json) {
-        var source   = $("#vertical_dept_results").html();
+        var source   = $("#department_template").html();
         var template = Handlebars.compile(source);
-        var context =
-        {
-            imgurl: base_url + "/assets/default/dept_dp.png",
-            cluburl: base_url + "/department/" + result_json['department_id'],
-            name: result_json['department_name'],
-            description: result_json['description_name']
-        }
 
-        var generated_html = template(context);
+
+        var generated_html = template(result_json);
         $('#departments').append(generated_html).hide().fadeIn();
     }
 

@@ -209,6 +209,9 @@
                             </div>
                         </div>
                         <div class = "group_info_tab_content">
+
+
+
                             <div class = "group_box group_course_box">
                                 <div class = "float_Left group_image">
                                     <div class = "department_alias">
@@ -227,6 +230,9 @@
                                     <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This course explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics.</div></div></div>
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
