@@ -247,8 +247,9 @@ jQuery(document).ready(function(){
         $create_event_form.attr("action", "/event/update");
         //add the event id to the form so its easy to pull off during the post request
         $create_event_form.attr('data-event_id', event_id);
-
-        $create_event_form.find('#create_event_submit_button').val('UPDATE');
+        jQuery(".left_panel_create_button.left_panel_create_button").addClass("disabled");
+        jQuery(".mini_calendar_cover").addClass("enabled");
+        $create_event_form.find('#create_event_submit_button').val('SAVE');
 
         //Check if there is an element with this origin type and id
         var $this_origin_type = jQuery('.group[data-group_type="' + event_origin_type + '"][data-id="' + event_origin_id + '"]');

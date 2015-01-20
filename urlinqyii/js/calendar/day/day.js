@@ -44,6 +44,7 @@ jQuery(document).ready(function(){
         
         event.stopPropagation();
         hide_inspect();
+        jQuery(".popup_create_event_name_input").focus();
         var $day_div = jQuery(this);
         var this_date = $day_div.attr('data-date');
         var this_date_obj = new Date(this_date + ' 00:00:00');
@@ -93,7 +94,7 @@ jQuery(document).ready(function(){
             }
 
             var inspect_event_text = format_event_date_text(this_date_obj) + " " +  date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
-            $create_day_event_popup.find('#create_day_event_when').text('When: ' + inspect_event_text);
+            $create_day_event_popup.find('#create_day_event_when').text(inspect_event_text);
 
 
             $create_day_event_popup.addClass('active');
@@ -130,7 +131,7 @@ jQuery(document).ready(function(){
                 }
                 $create_day_event_popup.addClass('active');
                 var inspect_event_text = format_event_date_text(this_date_obj);
-                $create_day_event_popup.find('#create_day_event_when').text('When: ' + inspect_event_text);
+                $create_day_event_popup.find('#create_day_event_when').text(inspect_event_text);
 
             }else{
                 $create_day_event_popup.removeClass('active');
