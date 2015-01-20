@@ -178,9 +178,40 @@
 
 
                                 {{#ifCond complete '==' 'complete'}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0" checked="checked"><label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0" checked="checked">
+                                    <label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
+                                    <div class="checkbox_hint complete_hint">
+                                        <div class="hint_box">
+                                            Mark as Complete
+                                        </div>
+                                        <div class="hint_wedge">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox_hint incomplete_hint">
+                                        <div class="hint_box">
+                                            Mark as Incomplete
+                                        </div>
+                                        <div class="hint_wedge">
+                                        </div>
+                                    </div>
                                 {{else}}
-                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0"><label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
+                                    <input type="checkbox" class='event_checkbox_input' name="event_{{event_id}}_input" id="event_{{event_id}}_input" value="#event_data0">
+                                    <label class = "planner_checkbox_label" for = "event_{{event_id}}_input"></label>
+                                    <div class="checkbox_hint complete_hint">
+                                        
+                                        <div class="hint_box">
+                                            Mark as Complete
+                                        </div>
+                                        <div class="hint_wedge">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox_hint incomplete_hint">
+                                        <div class="hint_box">
+                                            Mark as Incomplete
+                                        </div>
+                                        <div class="hint_wedge">
+                                        </div>
+                                    </div>
                                 {{/ifCond}}
                             </div>
                         </div>

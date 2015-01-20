@@ -434,7 +434,23 @@ opacity: .55;
 }
 
 .body .popup div.popup_edit_button{
+    font-family: Avenir;
 
+    color: #777;
+    font-size: 14px;
+    right: 18px;
+}
+
+.body .popup div.popup_edit_button > strong{
+	background-image: url(../../assets/small_icons.png);
+	background-position: -40px -490px;
+	display: inline-block;
+	z-index: 10000;
+	width: 15px;
+	position: relative;
+	height: 12px;
+	top: 1px;
+	left: 1px;
 }
 
 .body div#inspect_event_delete_button_day{
@@ -459,8 +475,15 @@ div#create_month_day_event_when, div#create_week_day_event_when, div#create_day_
 
 }
 
-.body .popup div.popup_edit_button strong{ 
+9.body .popup div.popup_edit_button strong{
+    background-image: url(../../assets/small_icons.png); 
+    background-position: -40px -464px; 
+    display: inline-block;  top: 17px; 
+    opacity: 1;
+ 
 	
+    width: 18px;
+    height: 16px;
 }
 
 form#create_month_day_event_form, form#create_week_day_event_form, form#create_day_event_form{
