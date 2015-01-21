@@ -60,9 +60,9 @@ top: 56px;
     background-color:rgba(18, 19, 20, 0.333);
 }
 
-.menu_hidden .menu_hider_icon{
+/*.menu_hidden .menu_hider_icon{
     background-position: -75px -996px;
-}
+}*/
 
 .topbar {
     height: 48px;
