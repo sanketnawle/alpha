@@ -57,6 +57,12 @@ $(document).ready(function(){
             //alert(JSON.stringify(search_json_data)); //test, returns JSON object
 
             if(search_json_data['success']){
+
+                //Set the text for the query
+                $('.search_results_header_sentence').find('.query').text("'" + local_q + "'");
+                $('.search_results_header_sentence').find('.query').text("'" + local_q + "'");
+
+                $('#top_search_bar').val(local_q);
                 //alert(JSON.stringify(search_json_data)); //test, returns JSON object
                 //alert(JSON.stringify(search_json_data));
                 show_search_results(search_json_data);
@@ -69,6 +75,14 @@ $(document).ready(function(){
     function show_search_results(search_json_data){
         //stick all JSON in appropriate JSON object (by type)
         var users_json = search_json_data['users'] != undefined ? search_json_data['users'] : [];
+
+        if(users_json.length == 0){
+            $('.horizontal_scroll_holder').hide();
+        }else{
+            $('.horizontal_scroll_holder').show();
+        }
+
+
         var students_json = search_json_data['students'] != undefined ? search_json_data['students'] : [];
         var professors_json = search_json_data['professors'] != undefined ? search_json_data['professors'] : [];
         var courses_json = search_json_data['courses'] != undefined ? search_json_data['courses'] : [];
@@ -77,7 +91,13 @@ $(document).ready(function(){
         var schools_json = search_json_data['schools'] != undefined ? search_json_data['schools'] : [];
         var majors_json = search_json_data['majors'] != undefined ? search_json_data['majors'] : [];
         var alldepts_json = search_json_data['allDepartments'] != undefined ? search_json_data['allDepartments'] : [];
+        var events_json = search_json_data['events'] != undefined ? search_json_data['events'] : [];
 
+
+
+
+
+       // $('.filter_section[data-filter="schools"]').find('.search_filter_count').text(schools_json.length);
         //for the left sidebar
         $.each(schools_json, function(index, course){
             //alert(JSON.stringify(schools_json[index]['school_name']));
@@ -101,12 +121,24 @@ $(document).ready(function(){
         $.each(users_json, function(index, user){
             show_users(users_json[index]);
         });
+
+
+
+
+
+        $('.filter_section[data-filter="courses"]').find('.search_filter_count').text(courses_json.length);
+
         //Get each course attribute and generate HTML!
         $.each(courses_json, function(index, course){
             //alert("Show Courses!");
             //show_courses_head(courses_json[index]);
             show_courses(courses_json[index]);
         });
+
+
+
+
+        $('.filter_section[data-filter="clubs"]').find('.search_filter_count').text(clubs_json.length);
 
         //Get each clubs attribute and generate HTML!
         $.each(clubs_json, function(index, club){
@@ -115,10 +147,41 @@ $(document).ready(function(){
             show_clubs(clubs_json[index]);
         });
 
+
+        $('.filter_section[data-filter="departments"]').find('.search_filter_count').text(departments_json.length);
+
+
         //Get each department attribute and generate HTML!
         $.each(departments_json, function(index, dept){
             //alert("Show Departments!");
             show_departments(departments_json[index]);
+        });
+
+
+        $('.filter_section[data-filter="faculty"]').find('.search_filter_count').text(professors_json.length);
+
+        //get each user attributes and generate HTML!
+        $.each(professors_json, function(index, user){
+            show_faculty(professors_json[index]);
+        });
+
+
+
+        $('.filter_section[data-filter="students"]').find('.search_filter_count').text(students_json.length);
+
+        //get each user attributes and generate HTML!
+        $.each(students_json, function(index, user){
+            show_student(students_json[index]);
+        });
+
+
+
+        $('.filter_section[data-filter="events"]').find('.search_filter_count').text(events_json.length);
+
+
+        //get each user attributes and generate HTML!
+        $.each(events_json, function(index, user){
+            show_event(events_json[index]);
         });
 
         //alert("length: " + users_json.length);
@@ -197,7 +260,7 @@ $(document).ready(function(){
         //We present users and professors in the same place, but label them by type (s or p)
         //alert('user_id: ' + JSON.stringify(result_json["user_id"]));
 
-        var source   = $("#user_search_results").html();
+        var source   = $("#user_template").html();
         var template = Handlebars.compile(source);
 
 
@@ -207,6 +270,55 @@ $(document).ready(function(){
 
         var generated_html = template(result_json);
         $('.ContentSlider').append(generated_html).hide().fadeIn();
+    }
+
+
+
+    //Handlebars HTML Generation
+    function show_faculty(result_json){
+        //We present users and professors in the same place, but label them by type (s or p)
+        //alert('user_id: ' + JSON.stringify(result_json["user_id"]));
+
+        var source   = $("#user_template").html();
+        var template = Handlebars.compile(source);
+
+
+
+        result_json['fullname'] = result_json['firstname'] + " " + result_json['lastname'];
+        result_json['url'] = base_url + "/assets/default/user.png";
+
+        var generated_html = template(result_json);
+        $('#faculty').append(generated_html).hide().fadeIn();
+    }
+
+    //Handlebars HTML Generation
+    function show_student(result_json){
+        //We present users and professors in the same place, but label them by type (s or p)
+        //alert('user_id: ' + JSON.stringify(result_json["user_id"]));
+
+        var source   = $("#user_template").html();
+        var template = Handlebars.compile(source);
+
+
+
+        result_json['fullname'] = result_json['firstname'] + " " + result_json['lastname'];
+        result_json['url'] = base_url + "/assets/default/user.png";
+
+        var generated_html = template(result_json);
+        $('#students').append(generated_html).hide().fadeIn();
+    }
+
+
+    //Handlebars HTML Generation
+    function show_event(result_json){
+        //We present users and professors in the same place, but label them by type (s or p)
+        //alert('user_id: ' + JSON.stringify(result_json["user_id"]));
+
+        var source   = $("#event_template").html();
+        var template = Handlebars.compile(source);
+
+        var generated_html = template(result_json);
+        $('#students').append(generated_html).hide().fadeIn();
     }
 
 

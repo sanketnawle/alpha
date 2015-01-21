@@ -469,25 +469,48 @@ class SiteController extends Controller
 			$email = $_POST['login_email'];
             $password = $_POST['login_password'];
 
+            if(!$this->valid_email($email)){
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'This email is not supported');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
             $user = User::model()->find('user_email=:user_email',array(':user_email'=>$email));
+
+
+            if(!$user){
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'Account does not exist');
+                $this->renderJSON($data);
+                return;
+            }
+
+
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
             $salt = $user_login->salt;
 
             $hashed_password = hash_password($password,$salt);
-            if($user_login->password == $hashed_password){ //user has successfully logged in
 
+
+            if($user_login->password == $hashed_password){
+                //user has successfully logged in
                 Yii::app()->session['user_id'] = $user->user_id;
-                $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
 
-            }else{ //user login failed
 
-                $this->redirect(Yii::app()->getBaseUrl(true) . '/login');
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                //user login failed
+                $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'Invalid login');
+                $this->renderJSON($data);
+                return;
             }
 
 		}
-		// display the login form
-		$this->render('login',array());
+
 	}
 
     public function actionLogout() {

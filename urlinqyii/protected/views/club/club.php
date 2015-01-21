@@ -359,10 +359,11 @@
                                                         <div class = "follow_button_wrapper following_wrapper">
                                                             <div class = "user_follow_button">Follow</div>
                                                     <?php } ?>
-                                                            <div class = "user_message_button message_active">
-                                                                <em class = "white_message_icon">
-                                                                </em>
-                                                            </div>
+                                                            <a href="mailto:<?php echo $member->user_email?>">
+                                                                <div class = "user_message_button message_active">
+                                                                    <em class = "white_message_icon"></em>
+                                                                </div>
+                                                            </a>
                                                         </div>
 
 

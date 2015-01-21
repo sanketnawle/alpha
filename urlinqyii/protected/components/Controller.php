@@ -105,7 +105,19 @@ class Controller extends CController
         }
     }
 
+    function valid_email($email){
+        $valid_emails = ['nyu.edu', 'urlinq.com'];
 
+        foreach($valid_emails as $valid_email){
+            if(strpos($email, $valid_email)){
+                return true;
+            }
+        }
+
+
+        return false;
+
+    }
 
 
     function is_assoc($array) {

@@ -246,7 +246,7 @@
                         <div class = "search_results_main">
                             <div class = "search_results_header">
                                 <span class = "search_results_header_sentence">
-                                    Search Results for <span class = "query">'Economics' </span><span class = "results_count">6300</span>
+                                    Search Results for <span class = "query">'Economics' </span><span class = "results_count"></span>
                                 </span>
                             </div>
 
@@ -314,9 +314,9 @@
 
 
 
-<script id="user_search_results" type="text/x-handlebars-template">
+<script id="user_template" type="text/x-handlebars-template">
 
-    <div class = "members_card_wrapper slide" data-user_id='{{user_id}}'>
+    <div class = "members_card_wrapper slide" data-user_id='{{user_id}}' data-school_id='{{school_id}}' data-department_id='{{department_id}}'>
         <div class = "members_card admin normal_size" data-user_id='1'>
             <div class = "members_card_img">
                 {{#ifCond user_type '==' 's'}}
@@ -361,7 +361,7 @@
 
 <script id="course_template" type="text/x-handlebars-template">
 
-    <div class = "group_box group_course_box" data-name="{{course_name}}">
+    <div class = "group_box group_course_box" data-course_id='{{course_id}}' data-name="{{course_name}}" data-school_id='{{school_id}}' data-school_id='{{professor_id}}'>
         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');">
         </div>
         <div class = "group_box_main_info">
@@ -382,9 +382,9 @@
 
 <script id="club_template" type="text/x-handlebars-template">
 
-    <div class = "group_box group_course_box club_box">
+    <div class = "group_box group_course_box club_box" data-group_id='{{group_id}}' data-school_id='{{school_id}}'>
         <div class = "float_Left group_image">
-            <a class = "group_link">NYU Cheese Club</a>
+            <a class = "group_link">{{group_name}}</a>
             <span class = "group_type group_with_button">Club</span>
 
         </div>
@@ -401,7 +401,7 @@
         <div class = "group_box_secondary_info_section">
             <div class= "info_line indent">35 members</div>
             <div class= "info_line indent info_line_events"><span></span>5 events this month</div>
-            <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, the reptilian brain, GSR, and behavioral economics. This club explores neurotechnology and its application in the field of digital marketing and advertising. Topics covered include eye-tracking, fMRI, </div></div></div>
+            <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about">{{group_desc}}</div></div></div>
         </div>
     </div>
 
@@ -417,6 +417,7 @@
         </div>
         <div class="group_box_main_info">
             <a class="group_link">{{department_name}}</a>
+            <a class="group_link">{{school.school_name}</a>
             <div class="float_Right">
                 <span class="group_type">Department</span>
             </div>

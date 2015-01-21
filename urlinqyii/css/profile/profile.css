@@ -768,19 +768,24 @@ button.add_showcase_button:active{
     position: absolute;
     height: 28px;
     display: inline-block;
+    cursor: pointer;
     top: 82%;
     z-index: 1000;
 
 }
 
 .showcase_arrow.left {
-    left: 260px; background-image: url(../../assets/small_icons.png); background-size: auto!important;  
+    left: 263px;
+    background-image: url(../../assets/small_icons.png);
+    background-size: auto!important;
     background-position: 0px -860px;
 }
 
 .showcase_arrow.right {
     right: 260px;
-    background-image: url(../../assets/small_icons.png); background-size: auto!important; float: left; 
+    background-image: url(../../assets/small_icons.png);
+    background-size: auto!important;
+    float: left;
     background-position: -32px -860px;
 }
 .edit_showcase_button{
@@ -965,12 +970,17 @@ form#add_showcase input#desc_entry{
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 #profile_fbar_wrapper{
-    width: 82%;
+    width: 552px;
     margin: auto;
     margin-top:20px;
 }
 #profile_feed_wrapper{
     margin-left: 65px;
+}
+div.user_more_info{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 /*
 div.tab.active div.tab_img,div.tab.active div.tab_text, div.tab.active:hover div.tab_img, div.tab.active:hover div.tab_text{

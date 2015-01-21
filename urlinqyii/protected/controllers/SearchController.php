@@ -39,7 +39,7 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->andWhere("u.user_type = 's'")
+            ->where("u.user_type = 's'")
             ->limit(30)
             ->queryAll();
         $professors = Yii::app()->db->createCommand()
@@ -47,12 +47,12 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->andWhere("u.user_type = 'p'")
+            ->where("u.user_type = 'p'")
             ->limit(30)
             ->queryAll();
 
 
-        $courses = Course::model()->findAllBySql('SELECT * FROM `course` course_name LIKE %' . $query . '% LIMIT 30');
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' LIMIT 30");
         for($i = 0; $i < count($courses); $i++){
             $courses[$i] = $this->get_model_associations($courses[$i], array('pictureFile', 'department'));
         }
@@ -88,7 +88,7 @@ class SearchController extends Controller
             ->queryAll();
 
 
-        $departments = Department::model()->findAllBySql('SELECT * FROM `department` where department_name LIKE %' .$query. '% LIMIT 30');
+        $departments = Department::model()->findAllBySql("SELECT * FROM `department` WHERE department.department_name LIKE '%" .$query. "%' LIMIT 30");
         for($i = 0; $i < count($departments); $i++){
             $course_count = count($departments[$i]->courses);
             $faculty_count = count($departments[$i]->admins);
@@ -96,7 +96,7 @@ class SearchController extends Controller
             $student_count = count($departments[$i]->students);
 
 
-            $departments[$i] = $this->get_model_associations($departments[$i], array('pictureFile'));
+            $departments[$i] = $this->get_model_associations($departments[$i], array('pictureFile', 'school'));
 
             $departments[$i]['course_count'] = $course_count;
             $departments[$i]['faculty_count'] = $faculty_count;
