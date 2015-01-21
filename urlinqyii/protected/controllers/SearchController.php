@@ -43,6 +43,7 @@ class SearchController extends Controller
             $class = $this->get_model_associations($class, array('pictureFile'));
             $class['origin_type'] = 'class';
             $class['origin_name'] = $class['class_name'];
+            $class['origin_id'] = $class['class_id'];
 
             array_push($results, $class);
         }
@@ -55,6 +56,7 @@ class SearchController extends Controller
             $school = $this->get_model_associations($school, array('pictureFile'));
             $school['origin_type'] = 'school';
             $school['origin_name'] = $school['school_name'];
+            $school['origin_id'] = $school['school_id'];
 
 
             array_push($results, $school);
@@ -92,7 +94,7 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->where("u.user_type = 's'")
+            ->andWhere("u.user_type = 's'")
             ->limit(30)
             ->queryAll();
         $professors = Yii::app()->db->createCommand()
@@ -100,7 +102,7 @@ class SearchController extends Controller
             ->from('user u')
             ->join('department d','u.department_id = d.department_id')
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->where("u.user_type = 'p'")
+            ->andWhere("u.user_type = 'p'")
             ->limit(30)
             ->queryAll();
 

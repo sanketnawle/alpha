@@ -75,6 +75,10 @@ $(document).ready(function(){
         window.location.replace(base_url + '/' + link_type + '/' + link_id);
     });
 
+    $(function(){
+        $('.nav_drop_down_scrollable').slimScroll();
+    });
+
 
 
 });

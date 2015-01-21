@@ -40,7 +40,8 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                                       added_events = [];
                                       $('div#events_list').html("");
                                       pdf_year= (new Date()).getFullYear();
-                                      run_pdf_algo(true);
+                                      file_resp = get_pdf();
+                                      run_pdf_algo(true, globals.base_url+file_resp["file_url"]);
                                    },
                                    error: function(jqXHR, textStatus, errorMessage) {
                                        console.log(errorMessage); // Optional
@@ -72,11 +73,11 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
     month[10] = "Nov";
     month[11] = "Dec";
 
-var load_events = function () {
+var load_events = function (pdf_id) {
   $.ajax({
          url: "GetEvents",
          type: "GET",
-         data: {"class_id":globals.origin_id},
+         data: {"class_id":globals.origin_id, "file_id":pdf_id},
          success: function(response) {
           $.each(response,function(index,value){
             var d = new Date(value["start_date"]);

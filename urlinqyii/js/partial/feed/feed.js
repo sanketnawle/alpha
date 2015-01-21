@@ -325,6 +325,38 @@ $(document).ready(function(){
 
 
 
+    $(document).on('click', '.post_event_calendar_button', function(){
+        alert("lol");
+
+
+        var $calendar_button = $(this);
+
+        var $event_post = $calendar_button.closest('.post');
+
+        var event_id = $event_post.attr('data-event_id');
+        var origin_type = $event_post.attr('data-origin_type');
+        var origin_id = $event_post.attr('data-origin_id');
+
+
+        var post_url = globals.base_url + '/event/attend';
+        var post_data = {event_id: event_id};
+
+        $.post(
+            post_url,
+            post_data,
+            function(response){
+                alert(JSON.stringify(response));
+            }
+        );
+
+
+    });
+
+
+
+
+
+
     /*$("div.master_comments").each(function() {
         var $master_comments_list = $(this);
         var $master_comments_comment = $(this).find("div.comments");
