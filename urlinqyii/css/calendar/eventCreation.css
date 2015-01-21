@@ -266,12 +266,22 @@ width: 278px;
 }
 
 input.popup_create_event_name_input:focus{
-	outline: #0087C2 auto 2px;
-	outline-offset: -2px;
+    outline: #0087C2 auto 2px;
+    outline-offset: -2px;
 }
 
 #inspect_event_title{
-
+    font-family: Avenir; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    font-weight: 500;   
+    font-size: 15.5px; 
+    width: 100%!important;
+    padding-bottom: 2px;
+    height: 27px;
+    position: relative;
+    top: -4px;
+    line-height: 27px;
 }
 
 div.ul-calendar .toolbar .wrap .column.right form {

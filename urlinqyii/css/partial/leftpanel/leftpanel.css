@@ -3,9 +3,22 @@
 
 }
 
+body.left_panel_hidden #LeftPanel_Holder{
+    left:-250px;
+}
+
+body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_panel{
+    display:none;
+    overflow: hidden;
+}
+
 #LeftPanel_Holder{
     width: 230px;
-
+    -webkit-transition: .3s cubic-bezier(0.23,1,0.32,1) left;
+    -moz-transition: .3s cubic-bezier(0.23,1,0.32,1) left;
+    -o-transition: .3s cubic-bezier(0.23,1,0.32,1) left;
+    transition: .3s cubic-bezier(0.23,1,0.32,1) left;
+    left:0px;
     padding-top: 15px;
     padding-right: 14px;
     position: relative;

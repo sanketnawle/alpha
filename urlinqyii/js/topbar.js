@@ -14,6 +14,20 @@ $(function() {
 
 
 
+    $(document).delegate(".menu_hider.menu_shown", "click", function() {
+        alert();
+        $(this).removeClass("menu_shown");
+        $(this).addClass("menu_hidden");
+         $("body").addClass("left_panel_hidden").delay(350).queue(function(next){
+            $("body").addClass("left_panel_hidden_p2");
+            next();
+        });
+    });
+
+    $( document ).delegate( ".topbar_search_input", "click", function() {
+        //$(".graph_search").show();
+    });
+
     $( document ).delegate( ".topbar_search_input", "click", function() {
         //$(".graph_search").show();
     });
