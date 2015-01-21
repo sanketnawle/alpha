@@ -40,7 +40,8 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
                                       added_events = [];
                                       $('div#events_list').html("");
                                       pdf_year= (new Date()).getFullYear();
-                                      run_pdf_algo(true);
+                                      file_resp = get_pdf();
+                                      run_pdf_algo(true, globals.base_url+file_resp["file_url"]);
                                    },
                                    error: function(jqXHR, textStatus, errorMessage) {
                                        console.log(errorMessage); // Optional
