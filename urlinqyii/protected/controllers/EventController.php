@@ -598,6 +598,140 @@ class EventController extends Controller
     }
 
 
+    public function actionAttend(){
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'User doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_id = $_POST['event_id'];
+
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+        if(!$event){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        //Check if this user is already attending
+        if($event->user_id == $user->user_id){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already attending');
+            $this->renderJSON($data);
+            return;
+        }else{
+            //or check if the user is already a user for this event
+            $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event->event_id, ':user_id'=>$user->user_id));
+            if($event_user){
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'User is already attending');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+
+        include_once 'color/color.php';
+
+        $event_user = new EventUser;
+        $event_user->event_id = $event->event_id;
+        $event_user->user_id = $user->user_id;
+        $event_user->color_id = get_random_color();
+
+        if($event_user->save(false)){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>5,'error_msg'=>'Error saving user');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+
+    public function actionLeave(){
+        if(!isset($_POST['event_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'id not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'User doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $event_id = $_POST['event_id'];
+
+        $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
+        if(!$event){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'Event doesnt exist');
+            $this->renderJSON($data);
+            return;
+        }
+
+        //Check if this user is already attending
+        if($event->user_id == $user->user_id){
+
+            //Since user is the owner of this event, delete it
+            if($event->delete()){
+
+            }
+
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already attending');
+            $this->renderJSON($data);
+            return;
+        }else{
+            //or check if the user is already a user for this event
+            $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event->event_id, ':user_id'=>$user->user_id));
+            if($event_user){
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'User is already attending');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+
+        include_once 'color/color.php';
+
+        $event_user = new EventUser;
+        $event_user->event_id = $event->event_id;
+        $event_user->user_id = $user->user_id;
+        $event_user->color_id = get_random_color();
+
+        if($event_user->save(false)){
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>5,'error_msg'=>'Error saving user');
+            $this->renderJSON($data);
+            return;
+        }
+
+    }
+
+
+
+
+
 
     public function actionCheck(){
         if(!isset($_POST['event_id'])){
