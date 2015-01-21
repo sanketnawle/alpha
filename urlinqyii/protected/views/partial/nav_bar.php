@@ -23,7 +23,7 @@
             <div class="nav_text">Schools</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
-                <div id="nav_drop_down_scrollable">
+                <div class="nav_drop_down_scrollable">
                     <?php foreach($origin->school->university->schools as $school){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
                     <?php } ?>
@@ -38,7 +38,7 @@
             <div class="nav_text">Departments</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
-                <div id="nav_drop_down_scrollable">
+                <div class="nav_drop_down_scrollable">
                     <?php foreach($user->school->departments as $department){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
                     <?php } ?>
@@ -53,7 +53,7 @@
             <div class="nav_text">Clubs</div>
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
-                <div id="nav_drop_down_scrollable">
+                <div class="nav_drop_down_scrollable">
                     <?php foreach($user->school->groups as $club){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $club->group_id; ?>"><?php echo $club->group_name; ?></div>
                     <?php } ?>
