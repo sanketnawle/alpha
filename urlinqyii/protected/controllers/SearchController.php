@@ -15,7 +15,60 @@ class SearchController extends Controller
         $this->render('search', array('user'=>$user,'school' =>$school, 'q'=>$q));
     }
 
+    public function actionQuickSearch(){
+        if(!isset($_GET['q'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'q not set');
+            $this->renderJSON($data);
+            return;
+        }
 
+        $query = $_GET['q'];
+
+        $results = array();
+
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%' LIMIT 2");
+
+        foreach($users as $user){
+            $user = $this->get_model_associations($user, array('pictureFile'));
+            $user['origin_type'] = 'user';
+            $user['origin_name'] = $user['firstname'] . ' ' . $user['lastname'];
+            array_push($results, $user);
+        }
+        //array_push($results, $users);
+
+
+        $classes = ClassModel::model()->findAllBySql("SELECT * FROM `class` WHERE class_name LIKE '%" . $query ."%' LIMIT 2");
+
+        foreach($classes as $class){
+            $class = $this->get_model_associations($class, array('pictureFile'));
+            $class['origin_type'] = 'class';
+            $class['origin_name'] = $class['class_name'];
+
+            array_push($results, $class);
+        }
+
+        //array_push($results, $classes);
+
+        $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' LIMIT 2");
+
+        foreach($schools as $school){
+            $school = $this->get_model_associations($school, array('pictureFile'));
+            $school['origin_type'] = 'school';
+            $school['origin_name'] = $school['school_name'];
+
+
+            array_push($results, $school);
+        }
+
+        //array_push($results, $schools);
+
+
+
+
+        $data = array('success'=>true,'results'=>$results);
+        $this->renderJSON($data);
+        return;
+    }
 
 
     public function actionJson()
