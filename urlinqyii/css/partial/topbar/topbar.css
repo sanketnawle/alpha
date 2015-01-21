@@ -11,6 +11,59 @@
     cursor: default;
 }
 
+body#body_home .menu_hider, body#body_calendar .menu_hider{
+display:none;
+}
+
+.menu_hider{
+display:inline-block;
+width: 15px;
+height: 27px;
+position: relative;
+top: -10px;
+left: -2px;
+border-radius: 2px;
+}
+
+body.left_panel_hidden_p2 div#content_panel{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+body.left_panel_hidden_p2 #nav_bar{
+margin-left: auto;
+margin-right: auto;
+position: relative;
+top: 9px;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #nav_bar{
+margin-left: auto;
+margin-right: auto;
+position: fixed;
+top: 56px;
+}
+
+
+.menu_hider_icon{
+    background-image: url(../../../assets/small_icons.png);
+    
+    width: 12px;
+    height: 20px;
+    background-position: -105px -996px;
+    position: relative;
+    top: 3px;
+    left: -1px;
+}
+
+.menu_hider:hover{
+    background-color:rgba(18, 19, 20, 0.333);
+}
+
+.menu_hidden .menu_hider_icon{
+    background-position: -75px -996px;
+}
+
 .topbar {
     height: 48px;
     position: fixed!important;
@@ -55,21 +108,12 @@
                 background-image: url(../../../assets/logo.png);
                 background-size: auto 20px;
                 background-repeat: no-repeat;
+                display:inline-block;
                 background-position: center 16px;
             
                 position: relative;
                 cursor: pointer;
-}
-
-            .topbar > #topbar_responsive_holder > .left a.urlinq:hover {
-                width: 64px;
-                display: block;
-                background-image: url(../../../assets/logo.png);
-                background-size: auto 20px;
-                background-repeat: no-repeat;
-                background-position: center 16px;
-            
-                cursor: pointer;
+                left: -2px;
 }
 
             .topbar > #topbar_responsive_holder > .left a.menu {
@@ -118,7 +162,7 @@
             border-radius: 4px;
             position: absolute;
             cursor: text;
-            top: 9px;
+            top: 8px;
             overflow: hidden;
         
             /* border: 1px solid #000; */

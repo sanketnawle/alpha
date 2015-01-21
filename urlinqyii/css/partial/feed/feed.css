@@ -170,10 +170,6 @@ text-decoration: underline;
 
 }
 
-.post_owner:active, .post_group:active{
-color: #016283;
-}
-
 
 .post_time{
 font-size: 12px;
@@ -260,40 +256,28 @@ outline: none;
 border-color: transparent;
 border: 1px solid transparent;
 
-margin-left: -2px;
-margin-bottom: -4px;
+top: 9px;
+position: relative;
 }
 
 .post_lc .post_like{
 height: 100%;
 padding-right: 2px;
-min-width: 84px;
 border-radius: 0px;
 padding-top: 5px;
 padding-bottom: 5px;
-float: left;
 display: inline-block;
 -moz-transition: all .15s ease;
 -webkit-transition: all .15s ease;
 transition: all .15s ease;
                    
 color: #029acf;
+margin-left: 20px;
 }
 
 .post_lc .post_liked{
-height: 100%;
-padding-right: 2px;
-min-width: 86px;
-border-radius: 0px;
-padding-top: 5px;
-padding-bottom: 5px;
-float: left;
-display: inline-block;
--moz-transition: all .15s ease;
--webkit-transition: all .15s ease;
-transition: all .15s ease;
+    height: 100%; padding-right: 2px; border-radius: 0px; padding-top: 5px; padding-bottom: 5px; display: inline-block; -moz-transition: all .15s ease; -webkit-transition: all .15s ease; transition: all .15s ease; color: #029acf; margin-left: 20px;
                    
-color: #029acf;
 
 }
 
@@ -321,30 +305,21 @@ cursor: default;
 color: #029acf;
 }
 
-.like_number{
+.like_number,.reply_number{
 display: inline-block;
 line-height: 7px;
 
-font-weight: 600;
-text-indent: 4px;
+font-weight: 100;
+text-indent: 0px;
 
 text-shadow: none;
-font-size: 12.5px;
-padding-left: 0px;
-padding-top: 4px;
-padding-right: 6px;
-top: -8px;
+font-size: 15.5px;
+top: 16px;
 border-radius: 1px;
-padding-bottom: 4px;
+/* padding-bottom: 4px; */
 font-family: Avenir;
-display: inline-block;
-position: relative;
--webkit-box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2), 1px 1px 0px rgba(255, 255, 255, 0.67) inset, -1px -1px 0px rgba(255, 255, 255, 0.45) inset;
--moz-box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2), 1px 1px 0px rgba(255, 255, 255, 0.67) inset, -1px -1px 0px rgba(255, 255, 255, 0.45) inset; 
-box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2), 1px 1px 0px rgba(255, 255, 255, 0.67) inset, -1px -1px 0px rgba(255, 255, 255, 0.45) inset; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; 
-background: #F0FAFF; 
-color: #029acf; 
-background: rgba(62, 160, 199, 0.21); border: 1px solid #3ea0c7;
+position: absolute;      
+color: #777;  
 }
 
 
@@ -356,34 +331,24 @@ color:#666;
 .post_like_icon{
 background-image: url(../../../assets/small_icons.png);
 background-size: auto;
-background-position: 0px -220px;
+background-position: 0px -1205px;
 border: none;
 display: inline-block;
 /* float: left; */
-margin-left: 15px;
--moz-transform: scale(.67); 
--webkit-transform: scale(.67); 
-transform: scale(.67);
-width: 25px;
+-moz-transform: scale(0.42); 
+-webkit-transform: scale(0.42); 
+transform: scale(0.42);
+width: 38px;
 box-shadow: none;
-margin-top: 1px;
-height: 23px;
+float: left;
+height: 37px;
+position: relative;
+top: -5px;
 }
 
 .post_lc .post_liked .post_like_icon{
-/*background-image: url(http://www.urlinq.com/beta/src/like-button-sprite.png);*/
-background-size: auto;
-background-position: left top;
-display: inline-block;
-margin-left: 15px;
--moz-transform: scale(.67);
--webkit-transform: scale(.67);
-transform: scale(.67);
-width: 25px;
-box-shadow: none;
-margin-top: 1px;
-height: 23px;
-background-position: 0px -248px;
+    background-image: url(../../../assets/small_icons.png); background-size: auto; 
+    background-position: -123px -1205px; border: none; display: inline-block; /* float: left; */ -moz-transform: scale(.67); -webkit-transform: scale(.67); transform: scale(0.42); width: 38px; box-shadow: none; float: left; height: 37px; position: relative; top: -5px;
 }
 
 .post_lc .post_like:hover > p.post_like_link{
@@ -393,40 +358,56 @@ background-position: 0px -248px;
 }
 
 .post_lc .post_like:hover > .post_like_icon{
-    background-position: 0px -248px;
+    background-position: -61px -1205px;
 }
 
 p.post_like_link{
     display: inline-block;
     
     margin: 0;
-    font-size: 12.2px;
-    font-weight: bold; 
+    font-size: 12.8px;
+    font-weight: 500; 
     position: relative;
-    top: -8px;
-    left: -4px;
+    top: 5px;
+    float: left;
+    left: -7px;
+    color: #575757;
 }
 
 span.reply_icon{
-    -moz-transform: scale(.73); 
-    -webkit-transform: scale(.73); 
-    transform: scale(.73);
+    -moz-transform: scale(.43); 
+    -webkit-transform: scale(.43); 
+    transform: scale(.43);
 
     background-image: url(../../../assets/small_icons.png); background-size: auto; 
-    background-position: 0px -269px;
+    background-position: 0px -1158px;
     background-repeat: no-repeat;
-    width: 23px;
-    height: 29px;
+    width: 53px;
+    height: 37px;
     display: inline-block;
-    top: 0px!important;
+    top: -2px!important;
+}
+
+div.post_comment_btn:hover > span.reply_icon{
+    background-position: -60px -1158px;
+}
+
+div.post_comment_btn:hover> span.reply_link_text{
+}
+
+div.post_comment_btn:active> span{
+    opacity:.77;
 }
 
 .post_comment_btn span{
-    font-size: 12.5px;
-    font-weight: bold;
+    font-size: 12.8px;
+    font-weight: 500;
     position: relative;
-    top: -8px; 
-    padding-left: 1px;
+    display: block; 
+    float: left;
+    color: #575757;
+    top: 9px;
+    margin-left: -19px;
 }
 
 .post_lc .post_comment_btn, .show_analytics_btn{
@@ -437,14 +418,14 @@ font-weight: 500;
 padding-left: 0px;
 color: #029acf;
 font-size: 14px;
-height: 27px;
+height: 36px;
 text-transform: Capitalize;
-padding-right: 15px;
-float: left;
+padding-right: 20px;
  
 border-radius: 0px;    
       
 display: inline-block; margin: 0; 
+margin-left: 21px;
 font-size: 12px; font-weight: bold; position: relative;  
 }
 
@@ -521,12 +502,13 @@ margin-left: -2px;
 position: relative;
 width: 524px;
 margin-bottom: 1px;
+margin-left: -12px;
 }
 
 .post_tools .post_functions{
 display: inline-block;
 float: right;
-margin-top: 2px;
+margin-top: 14px;
 margin-right: -29px;
 height: 25px;
 }
@@ -567,7 +549,6 @@ opacity:0;
 -webkit-transition: all .125s ease-in-out;
 transition: all .125s ease-in-out;
 right: -20px;
-bottom: 12px;
 /*-ms-transform: scale(1,.9);
 -webkit-transform: scale(1,.9); 
 transform: scale(1,.9);*/

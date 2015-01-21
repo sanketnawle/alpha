@@ -291,7 +291,6 @@ Set the class name on your input to 'time_input' -->
 
         <div class="event_start_time">{{formatted_start_time}}</div>
 
-        <div class="event_location"><span></span>{{location}}</div>
     </div>
 </script>
 

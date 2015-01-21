@@ -295,7 +295,7 @@ $(document).ready(function(){
 
         var anonymous = false;
         var reply_user_id = user_id;
-
+        var $reply_count = $reply_form.closest(".post").find('.reply_number');
 
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
 
@@ -310,6 +310,12 @@ $(document).ready(function(){
                     var template = Handlebars.compile(source);
                     $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
                     $reply_form.find('.reply_text_textarea').val('');
+
+                    if($reply_count.length){
+                        $reply_count.text(parseInt($reply_count.text())+1);
+                    }else{
+                        $reply_form.closest(".post").find('.post_comment_btn').append('<div class = "reply_number">1</div>');
+                    }
                 }else{
                     alert(JSON.stringify(response));
                 }
