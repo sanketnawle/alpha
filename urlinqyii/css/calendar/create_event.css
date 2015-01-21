@@ -548,8 +548,10 @@ div.category.selected div.category_name{
     font-size: 13px;
 }
 
+
 .category.selected {
-    background-color: #e2e2e2;
+   background-color: #e2e2e2;
+   padding-left: 5px;
 }
 
 .category:hover{
