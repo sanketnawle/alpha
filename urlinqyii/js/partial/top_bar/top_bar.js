@@ -17,6 +17,19 @@ $(document).ready(function(){
         });
     });
 
+    $("#page").scroll(function() {
+	        var y=$(this).scrollTop()*0.0045;
+	        var opacityShift = y*1;
+	        //alert(y);
+	        $("div.menu_hider").css({"opacity":1-opacityShift});
+	        if($(this).scrollTop() >= 290){
+	        	$("div.menu_hider").css({"pointer-events":"none"});
+	        }
+	        else{
+	        	$("div.menu_hider").css({"pointer-events":"auto"});
+	        }
+    }); 
+
 
 
 });
