@@ -363,6 +363,8 @@ border-image: none;
 
     position: relative;
 
+    overflow-x: hidden;
+
 }
 
 input.event_title{
@@ -554,10 +556,10 @@ input.event_title{
     display: block;
     height: 10px;
 
-    margin-top: 12px;
+    margin-top: 8px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
     font-size: 13px;
 }
@@ -687,33 +689,35 @@ label.planner_checkbox_label:after{
     z-index: -1;
     pointer-events: none;
     z-index: 99;
-    right: -93px;
-    margin-top: 2px;
+    right: 30px;
+    margin-top: 1px;
 }
 .hint_wedge{
-    border-color: transparent;
-    border-bottom-color: #444;
-    border-style: dashed dashed solid;
-    border-width: 0 6.5px 6.5px;
     display: block;
     z-index: 1;
-    height: 0;
-    width: 0;
     position: relative;
-    left: 10px;
+    width: 0; 
+    float: left;
+    height: 0; 
+    margin-top: 6px;
+    display: inline-block;
+    border-style: solid; 
+    border-width: 5px 0 5px 5px; 
+    border-color: transparent transparent transparent rgba(68, 68, 68, 0.67);
 }
 .hint_box{
-    width: 105px;
-    font-size: 11px;
-    line-height: 14px;
+    font-size: 10.5px;
+    line-height: 12px;
     text-align: center;
     text-shadow: none;
-    padding: 7px;
+    display: inline-block;
+    float: left;
+    padding: 5px 7px;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    border-radius: 4px;
+    font-weight: 500;
+    border-radius: 2px;
     color: white;
-    background-color: #444;
+    background-color: rgba(68, 68, 68, 0.67);
 }
 
 label.planner_checkbox_label {
@@ -955,6 +959,16 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
 }
 .tp1:focus{
     outline: none;
+}
+
+.event.not_complete label.planner_checkbox_label:hover ~ div.checkbox_hint.complete_hint{
+z-index: 1000;
+opacity:1;
+}
+
+.event.complete label.planner_checkbox_label:hover ~ div.checkbox_hint.incomplete_hint{
+z-index:1;
+opacity:1;
 }
 
 /* MINICAL CSS START */
