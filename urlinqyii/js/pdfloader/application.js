@@ -5,14 +5,16 @@ var pdf_year= (new Date()).getFullYear();
 var previous_title_empty = false;
 var previous_title_index = "";
 var class_color = "";
+
 window.onload = function () {
   class_color = get_class_color();
-  load_events();
-  run_pdf_algo(false);
+  file_json = get_pdf();
+  load_events(file_json["file_id"]);
+  run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   
 };
 
-var run_pdf_algo = function(db){
+var run_pdf_algo = function(db, pdf_url){
   if (typeof PDFJS === 'undefined') {
     alert('Built version of pdf.js is not found\nPlease run `node make generic`');
     return;
@@ -23,7 +25,7 @@ var run_pdf_algo = function(db){
   function loadPdf(pdfPath) {
     var pdf = PDFJS.getDocument(pdfPath);
     return pdf.then(renderPdf);
-  }
+  } 
 
   function renderPdf(pdf) {
     var numPages = pdf.numPages;
@@ -100,25 +102,30 @@ var run_pdf_algo = function(db){
     // We might be interested when rendering complete and text layer is built.
     return Promise.all([renderTask.promise, textLayerPromise]);
   }
-  $.ajax({
+              loadPdf(pdf_url);
+  
+}
+
+function get_pdf(){
+  var resp = $.ajax({
          url: "GetSyllabusPDF?class_id="+globals.origin_id,
          type: "GET",
+         async: false,
          success: function(response) {
-            if(response["file_url"]){
-              $("a#class_syllabus_pdf").attr("href",globals.base_url+response["file_url"]);
-              $('div#pdfContainer').attr("pdf_location",response["file_url"]);
-              loadPdf(globals.base_url+response["file_url"]);
-            }
             
          },
          error: function(jqXHR, textStatus, errorMessage) {
              console.log(errorMessage); // Optional
          }
       });
-
+  var respJSON = $.parseJSON(resp.responseText);
+  if(respJSON){
+              $("a#class_syllabus_pdf").attr("href",globals.base_url+respJSON["file_url"]);
+              $('div#pdfContainer').attr("pdf_location",respJSON["file_url"]);
+              return respJSON;
+            }
+  return false;
 }
-
-
 
 function highlightText(db){
   var data_cs = $('div.textLayer').children();
