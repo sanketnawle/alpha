@@ -26,20 +26,20 @@ function toggleMenu(active) {
     var weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     $(function () {
         $(".topbar .center form")
-            .click(function () { $(".text", $(this)).focus(); })
-            .submit(function (e) {
-                if ($(".text", $(this)).val().trim() == "") {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+//            .click(function () { $(".text", $(this)).focus(); })
+//            .submit(function (e) {
+//                if ($(".text", $(this)).val().trim() == "") {
+//                    e.preventDefault();
+//                    return false;
+//                }
+//            });
         $(".topbar .center form .text").on("focus", function () {
-            var text = $(this);
-            if (text.val().trim() == "") text.closest(".center").find(".prelist").show();
-            else text.closest(".center").find(".postlist").show();
+//            var text = $(this);
+//            if (text.val().trim() == "") text.closest(".center").find(".prelist").show();
+//            else text.closest(".center").find(".postlist").show();
         }).on("blur", function () {
-            $(this).closest(".center").find(".prelist").hide();
-            $(this).closest(".center").find(".postlist").hide();
+//            $(this).closest(".center").find(".prelist").hide();
+//            $(this).closest(".center").find(".postlist").hide();
         }).on("keyup", function (e) {
             e = e || event;
             var text = $(this);
@@ -51,90 +51,94 @@ function toggleMenu(active) {
                 postlist.hide();
                 text.closest(".center").find(".prelist").show();
             } else {
-                var query = text.val().trim();
-                $.ajax({
-                    url: "lptopbar_search.php",
-                    data: {
-                        q: query,
-                        ajax: true
-                    },
-                    success: function (result) {
-                        result = eval(result);
-                        postlist.html("");
-                        result.forEach(function (e) {
-                            var link = $("<a />");
-                            var href = "../"; // change to ./ once you are in root
-                            var cls = "src";
-                            switch (e.type) {
-                                case "pro":
-                                case "stu":
-                                    href += "profile.php?user_id=";
-                                    cls = "pro";
-                                    break;
-                                case "cls":
-                                    href += "courses.php?user_id=";
-                                    cls = "cls";
-                                    break;
-                                case "dpt":
-                                    href += "department.php?user_id=";
-                                    cls = "dpt";
-                                    break;
-                                case "clb":
-                                    href += "clubs.php?user_id=";
-                                    cls = "clb";
-                                    break;
-                            }
-                            link.attr("href", href + e.id);
+//                var query = text.val().trim();
+//
+//
+//                $.ajax({
+//                    url: "lptopbar_search.php",
+//                    data: {
+//                        q: query,
+//                        ajax: true
+//                    },
+//                    success: function (result) {
+//                        result = eval(result);
+//                        postlist.html("");
+//                        result.forEach(function (e) {
+//                            var link = $("<a />");
+//                            var href = "../"; // change to ./ once you are in root
+//                            var cls = "src";
+//                            switch (e.type) {
+//                                case "pro":
+//                                case "stu":
+//                                    href += "profile.php?user_id=";
+//                                    cls = "pro";
+//                                    break;
+//                                case "cls":
+//                                    href += "courses.php?user_id=";
+//                                    cls = "cls";
+//                                    break;
+//                                case "dpt":
+//                                    href += "department.php?user_id=";
+//                                    cls = "dpt";
+//                                    break;
+//                                case "clb":
+//                                    href += "clubs.php?user_id=";
+//                                    cls = "clb";
+//                                    break;
+//                            }
+//                            link.attr("href", href + e.id);
+//
+//                            var disp = e.name.replace(new RegExp("(" + query + ")", "ig"), "<b>$1</b>");
+//
+//                            link.append($("<div class='icon " + cls + "'><div>")).append("<span>" + disp + "</span>");
+//                            postlist.append($("<li />").append(link));
+//                        });
+//                        postlist.append("<li><a href='search_beta.php?query=" + query + "'>" +
+//                        "Seee all results for \"" + query + "\"</a></li>");
+//                    }
+//                });
 
-                            var disp = e.name.replace(new RegExp("(" + query + ")", "ig"), "<b>$1</b>");
-
-                            link.append($("<div class='icon " + cls + "'><div>")).append("<span>" + disp + "</span>");
-                            postlist.append($("<li />").append(link));
-                        });
-                        postlist.append("<li><a href='search_beta.php?query=" + query + "'>" +
-                        "Seee all results for \"" + query + "\"</a></li>");
-                    }
-                })
-                text.closest(".center").find(".postlist").show();
-                text.closest(".center").find(".prelist").hide();
             }
         });
-        $(".leftpanel .scrollable .title").click(function () {
-            var title = $(this);
-            var clubs = $(".leftpanel .scrollable.club");
-            var classes = $(".leftpanel .scrollable.class");
-            (title.parents(".scrollable")[0] == classes[0] ? function () {
-                //classes.toggleClass("min");
-                // case 1: 50 50
-                if (!(classes.hasClass("full") || classes.hasClass("min"))) {
-                    classes.addClass("min");
-                    clubs.addClass("full");
-                } else if (classes.hasClass("min")) {
-                    if (clubs.hasClass("min")) {
-                        classes.removeClass("min").addClass("full");
-                    } else {
-                        classes.removeClass("min");
-                        clubs.removeClass("full");
-                    }
-                } else if (classes.hasClass("full")) {
-                    classes.removeClass("full").addClass("min");
-                }
-            } : function () {
-                if (!(clubs.hasClass("full") || clubs.hasClass("min"))) {
-                    clubs.addClass("min");
-                    classes.addClass("full");
-                } else if (clubs.hasClass("min")) {
-                    if (classes.hasClass("min")) {
-                        clubs.removeClass("min").addClass("full");
-                    } else {
-                        clubs.removeClass("min");
-                        classes.removeClass("full");
-                    }
-                } else if (clubs.hasClass("full")) {
-                    clubs.removeClass("full").addClass("min");
-                }
-            })();
-        });
+
+
+
+//        $(".leftpanel .scrollable .title").click(function () {
+//            var title = $(this);
+//            var clubs = $(".leftpanel .scrollable.club");
+//            var classes = $(".leftpanel .scrollable.class");
+//            (title.parents(".scrollable")[0] == classes[0] ? function () {
+//                //classes.toggleClass("min");
+//                // case 1: 50 50
+//                if (!(classes.hasClass("full") || classes.hasClass("min"))) {
+//                    classes.addClass("min");
+//                    clubs.addClass("full");
+//                } else if (classes.hasClass("min")) {
+//                    if (clubs.hasClass("min")) {
+//                        classes.removeClass("min").addClass("full");
+//                    } else {
+//                        classes.removeClass("min");
+//                        clubs.removeClass("full");
+//                    }
+//                } else if (classes.hasClass("full")) {
+//                    classes.removeClass("full").addClass("min");
+//                }
+//            } : function () {
+//                if (!(clubs.hasClass("full") || clubs.hasClass("min"))) {
+//                    clubs.addClass("min");
+//                    classes.addClass("full");
+//                } else if (clubs.hasClass("min")) {
+//                    if (classes.hasClass("min")) {
+//                        clubs.removeClass("min").addClass("full");
+//                    } else {
+//                        clubs.removeClass("min");
+//                        classes.removeClass("full");
+//                    }
+//                } else if (clubs.hasClass("full")) {
+//                    clubs.removeClass("full").addClass("min");
+//                }
+//            })();
+//        });
         $(".leftpanel .profile .title").click(function () {
             var menu = $(".menu", $(this));
             var profilemenu = $(".profile-menu", $(this).parents(".profile"));
