@@ -72,11 +72,11 @@ $(document).on("change",'#syllabus_pdf_upload', function(event){
     month[10] = "Nov";
     month[11] = "Dec";
 
-var load_events = function () {
+var load_events = function (pdf_id) {
   $.ajax({
          url: "GetEvents",
          type: "GET",
-         data: {"class_id":globals.origin_id},
+         data: {"class_id":globals.origin_id, "file_id":pdf_id},
          success: function(response) {
           $.each(response,function(index,value){
             var d = new Date(value["start_date"]);

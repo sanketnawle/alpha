@@ -308,9 +308,10 @@ class ClassController extends Controller
     }
     public function actionGetEvents(){
         $class_id = $_GET["class_id"];
+        $file_id = $_GET["file_id"];
         $user_id = $this->get_current_user_id();
 
-        $class_events = Event::model()->findAll('origin_id=:id and user_id=:user_id order by start_date desc', array(':id'=>$class_id,':user_id'=>$user_id));
+        $class_events = Event::model()->findAll('origin_id=:id and user_id=:user_id and file_id=:file_id order by start_date desc', array(':id'=>$class_id,':user_id'=>$user_id, ':file_id'=>$file_id));
 
         $this->renderJSON($class_events);
     }    
