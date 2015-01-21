@@ -243,6 +243,10 @@ class ClassController extends Controller
         $file_id = $_POST["file_id"];
         $user_id = $this->get_current_user_id();
         $official_syllabus = false;
+        $current_user = $this->get_current_user();
+        if($current_user["user_type"] == "p"){
+            $official_syllabus = true;
+        }
         $check_syllabus = ClassSyllabus::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id, ':user_id'=>$user_id));
         if($check_syllabus){
             $check_syllabus->updateByPk($check_syllabus->id, array("file_id"=>$file_id));
@@ -411,7 +415,10 @@ class ClassController extends Controller
     public function actionGetSyllabusPDF(){
         $class_id= $_GET["class_id"];
         $user_id = $this->get_current_user_id();
+        $class_syllabus = ClassSyllabus::model()->find('class_id=:id and official_syllabus=1', array(':id'=>$class_id));
+        if(!$class_syllabus){
         $class_syllabus = ClassSyllabus::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id, ':user_id'=>$user_id));
+        }
 
         if($class_syllabus){
             $file= File::model()->find('file_id=:id', array(':id'=>$class_syllabus["file_id"]));

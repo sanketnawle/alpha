@@ -24,7 +24,7 @@ var run_pdf_algo = function(db){
   function loadPdf(pdfPath) {
     var pdf = PDFJS.getDocument(pdfPath);
     return pdf.then(renderPdf);
-  }
+  } 
 
   function renderPdf(pdf) {
     var numPages = pdf.numPages;
