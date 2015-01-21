@@ -819,7 +819,14 @@
                                 {{#each files}}
                                     <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                 {{/each}}
-                                <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+
+
+                                {{#ifCond user_attending '==' false}}
+                                    <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+                                {{else}}
+                                    <div class='post_event_calendar_button added'><span class = "add_to_cal_icon"></span>Added to Calendar</div>
+                                {{/ifCond}}
+
 
 
                                 <div class='post_event_time_holder'>

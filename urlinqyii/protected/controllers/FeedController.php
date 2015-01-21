@@ -364,6 +364,19 @@ class FeedController extends Controller
 
 
                 $posts[$i]['event'] = $event;
+                $posts[$i]['user_attending'] = false;
+
+
+
+                if($event['user_id'] == $user->user_id){
+                    $posts[$i]['user_attending'] = true;
+                }else{
+                    $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event['event_id'], ':user_id'=>$user->user_id));
+                    if($event_user){
+                        $posts[$i]['user_attending'] = true;
+                    }
+                }
+
 
 
                 if($post_model->origin_type == 'class'){

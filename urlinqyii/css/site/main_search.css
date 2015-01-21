@@ -33,7 +33,7 @@ div.horizontal_scroll_holder{
 }
 
 div.page_search.page_search_all_members_results  .black_background_row, div.page_search.page_search_all_members_results div.horizontal_scroll_holder{
-	/*display:block!important;*/
+	display:block!important;
 }
 
 

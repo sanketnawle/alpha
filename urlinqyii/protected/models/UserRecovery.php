@@ -5,8 +5,11 @@
  *
  * The followings are the available columns in table 'user_recovery':
  * @property integer $user_id
- * @property string $key1
- * @property string $expiry
+ * @property string $recovery_key
+ * @property string $expires_at
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
 class UserRecovery extends CActiveRecord
 {
@@ -26,12 +29,12 @@ class UserRecovery extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, key1, expiry', 'required'),
+			array('user_id, recovery_key, expires_at', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('key1', 'length', 'max'=>255),
+			array('recovery_key', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, key1, expiry', 'safe', 'on'=>'search'),
+			array('user_id, recovery_key, expires_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +46,7 @@ class UserRecovery extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -53,8 +57,8 @@ class UserRecovery extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'key1' => 'Key1',
-			'expiry' => 'Expiry',
+			'recovery_key' => 'Recovery Key',
+			'expires_at' => 'Expires At',
 		);
 	}
 
@@ -77,8 +81,8 @@ class UserRecovery extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('key1',$this->key1,true);
-		$criteria->compare('expiry',$this->expiry,true);
+		$criteria->compare('recovery_key',$this->recovery_key,true);
+		$criteria->compare('expires_at',$this->expires_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

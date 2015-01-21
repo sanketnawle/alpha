@@ -44,6 +44,32 @@ $(document).ready(function(){
     });
 
 
+    $(document).on('keydown', '#top_search_bar', function(event){
+        event.stopPropagation();
+        var key = event.which;
+            switch(key) {
+              case 37:
+                  alert('LFET');
+                  break;
+              case 38:
+                  alert('UP');
+                  break;
+              case 39:
+
+                  alert('RIGHT');
+                  // Key right.
+                  break;
+              case 40:
+
+                  $('.search_result').first().hover();
+
+                  alert('down');
+                  // Key down.
+                  break;
+        }
+  });
+
+
     $(document).on('keyup', '#top_search_bar', function(){
         var $search_bar = $(this);
         var search_input = $search_bar.val();
@@ -77,10 +103,15 @@ $(document).ready(function(){
         $.getJSON(globals.base_url + '/search/quickSearch?q=' + search_input, function(json_data){
             clear_search_results();
             if(json_data['success']){
-                $.each(json_data['results'], function(index, result_json){
-                    console.log(result_json);
-                    show_search_result(result_json);
-                });
+                if(json_data['results'].length == 0){
+                    clear_search_results();
+                    hide_search_results();
+                }else{
+                    $.each(json_data['results'], function(index, result_json){
+                        console.log(result_json);
+                        show_search_result(result_json);
+                    });
+                }
             }else{
 
             }
@@ -91,7 +122,7 @@ $(document).ready(function(){
         var source = $('#search_result_template').html();
         var template = Handlebars.compile(source);
         var generated_html = template(result_json);
-        $('.prelist').append(generated_html).hide().fadeIn();
+        $('.prelist').append(generated_html).hide().fadeIn(100);
     }
 
 
@@ -101,20 +132,20 @@ $(document).ready(function(){
     });
 
 
+//    $(document).on('click', '.search_result', function(e){
+//        e.stopPropagation();
+//
+//    });
+
+
+
+
+
+
     $(document).on('click', '.search_result', function(e){
-        e.stopPropagation();
-
-    });
-
-
-
-
-
-
-    $(document).on('click', '.search_result', function(e){
-        e.stopPropagation();
-        e.preventDefault();
-        alert('click happened');
+//        e.stopPropagation();
+//        e.preventDefault();
+//        alert('click happened');
 
 
 

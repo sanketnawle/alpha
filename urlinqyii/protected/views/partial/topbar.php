@@ -63,7 +63,7 @@
 <!--                    <li class="search_preview">-->
 <!--                        <a>-->
 <!--                            <div class="icon prof" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
-<!--                            <!--<span>Professors in Your School</span>-->-->
+<!--                            <!--<span>Professors in Your School</span>-->
 <!--                            <span>Professors at The --><?php //echo $school?><!--</span>-->
 <!--                        </a>-->
 <!--                    </li>-->
@@ -163,7 +163,12 @@
 <script id="search_result_template" type="text/x-handlebars-template">
 
         <li class="search_result" data-origin_type='{{origin_type}}'>
-            <a>
+            {{#ifCond origin_type '==' 'user'}}
+                <a class='profile_link' data-user_id='{{user_id}}' >
+            {{else}}
+                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin_type}}/{{origin_id}}" >
+            {{/ifCond}}
+
                 <div class="icon dpt" style="background-image: url('<?php echo  Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');"></div>
 
                 <span>{{origin_type}} - {{origin_name}}</span>
@@ -177,58 +182,6 @@
 
 
 
-<!--                                <li class="eve">-->
-<!--                                    <div class="icon"></div>-->
-<!--                                    <div class="content">-->
-<!--                                        <div class="right">-->
-<!--                                            <div class="follow btn">Add to calendar</div>-->
-<!--                                            <div class="dismiss">Dismiss</div>-->
-<!--                                            <div class="close"></div>-->
-<!--                                        </div>-->
-<!--                                        <div class="message">Rachel Borowitz invited you to  the event, Cheese Club Bake Sale.</div>-->
-<!--                                        <div class="time">-->
-<!--                                            <div class="icon"></div>-->
-<!--                                            <div class="stamp">10 mins ago</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!---->
-<!---->
-<!--                                <li class="tdo">-->
-<!--                                    <div class="icon text">-->
-<!--                                        <div>Exam</div>-->
-<!--                                    </div>-->
-<!--                                    <div class="content">-->
-<!--                                        <div class="right">-->
-<!--                                            <div class="dismiss">Dismiss</div>-->
-<!--                                            <div class="close"></div>-->
-<!--                                        </div>-->
-<!--                                        <div class="message">In 1 week, you have a Supply and Demand Exam in the class, Principles of Economics.</div>-->
-<!--                                        <div class="time">-->
-<!--                                            <div class="icon"></div>-->
-<!--                                            <div class="stamp">1 day ago</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!--                                <li class="eve done">-->
-<!--                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>-->
-<!--                                    <div class="content">-->
-<!--                                        <div class="right">-->
-<!--                                            <div class="follow msg">Event Added</div>-->
-<!--                                        </div>-->
-<!--                                        <div class="message">MapReduce Gene Analysis was added to Computational Biology's calendar.</div>-->
-<!--                                        <div class="time">-->
-<!--                                            <div class="icon"></div>-->
-<!--                                            <div class="stamp">1 hour ago</div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
 
 
 
@@ -321,7 +274,7 @@
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'club'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.group_name}}</div>
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the club {{origin.group_name}}</div>
 
                     {{#ifCond invite_choice '==' 0}}
                         <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join club</div>
@@ -331,7 +284,7 @@
                 {{/ifCond}}
 
                 {{#ifCond origin_type '==' 'group'}}
-                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the class {{origin.group_name}}</div>
+                    <div class="message">{{actor.firstname}} {{actor.lastname}} invited you to the group {{origin.group_name}}</div>
 
                     {{#ifCond invite_choice '==' 0}}
                         <div class="accept_invite_button" data-invite_id='{{invite_id}}' data-origin_type='{{origin_type}}' data-origin_id='{{origin_id}}'>Join group</div>
@@ -427,6 +380,58 @@
 
 
 
+<!--                                <li class="eve">-->
+<!--                                    <div class="icon"></div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="follow btn">Add to calendar</div>-->
+<!--                                            <div class="dismiss">Dismiss</div>-->
+<!--                                            <div class="close"></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">Rachel Borowitz invited you to  the event, Cheese Club Bake Sale.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">10 mins ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!---->
+<!---->
+<!--                                <li class="tdo">-->
+<!--                                    <div class="icon text">-->
+<!--                                        <div>Exam</div>-->
+<!--                                    </div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="dismiss">Dismiss</div>-->
+<!--                                            <div class="close"></div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">In 1 week, you have a Supply and Demand Exam in the class, Principles of Economics.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">1 day ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--                                <li class="eve done">-->
+<!--                                    <div class="icon" style="background-image: url(http://lorempixel.com/34/34?1)"></div>-->
+<!--                                    <div class="content">-->
+<!--                                        <div class="right">-->
+<!--                                            <div class="follow msg">Event Added</div>-->
+<!--                                        </div>-->
+<!--                                        <div class="message">MapReduce Gene Analysis was added to Computational Biology's calendar.</div>-->
+<!--                                        <div class="time">-->
+<!--                                            <div class="icon"></div>-->
+<!--                                            <div class="stamp">1 hour ago</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
 
 
 </html>

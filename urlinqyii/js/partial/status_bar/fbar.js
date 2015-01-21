@@ -1388,6 +1388,9 @@ $(document).ready(function() {
 
 
 
+
+
+
     globals.$fbar.find('#fbar_form').submit(function(e){
         e.preventDefault();
     });

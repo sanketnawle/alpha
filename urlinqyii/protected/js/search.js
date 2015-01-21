@@ -82,6 +82,10 @@ $(document).ready(function(){
             $('.horizontal_scroll_holder').show();
         }
 
+        if(users_json.length < 6){
+            $('.arrow_container.arrow_next').hide();
+        }
+
 
         var students_json = search_json_data['students'] != undefined ? search_json_data['students'] : [];
         var professors_json = search_json_data['professors'] != undefined ? search_json_data['professors'] : [];
