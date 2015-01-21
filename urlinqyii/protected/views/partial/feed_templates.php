@@ -134,6 +134,13 @@
 
                                                         <div class = 'post_comment_btn'>
                                                             <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            {{#ifCond reply_count '>=' 1}}
+                                                            <div class = 'reply_number'>
+
+                                                                {{reply_count}}
+
+                                                            </div>
+                                                            {{/ifCond}}
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
@@ -616,6 +623,13 @@
 
                                                         <div class = 'post_comment_btn'>
                                                             <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            {{#ifCond reply_count '>=' 1}}
+                                                            <div class = 'reply_number'>
+
+                                                                {{reply_count}}
+
+                                                            </div>
+                                                            {{/ifCond}}
                                                         </div>
 
                                                         <div class = 'show_analytics_btn'>
@@ -937,6 +951,13 @@
 
                                                         <div class = 'post_comment_btn'>
                                                             <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            {{#ifCond reply_count '>=' 1}}
+                                                            <div class = 'reply_number'>
+
+                                                                {{reply_count}}
+
+                                                            </div>
+                                                            {{/ifCond}}
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>

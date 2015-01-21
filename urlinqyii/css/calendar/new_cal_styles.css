@@ -28,6 +28,16 @@ div.check > i.checkmark{
     left: 3px;
 }
 
+div.title_background{
+opacity: .1;
+position: absolute;
+top: 8px;
+bottom: 160px;
+border-radius: 2px;
+left: 8px;
+right: 42px;
+}
+
 div.check.checked > i.checkmark{
     display: block;
 
@@ -349,6 +359,15 @@ div#create_month_day_event_popup{
 
 }
 
+div.inspect_event_title div.abs_color_splash{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	opacity: .18;
+}
+
 div.create_event_popup::after, div.inspect_event_popup::after{
 content: "";
 background-image: none,url(../../assets/wire_icons.svg);
@@ -434,11 +453,27 @@ opacity: .55;
 }
 
 .body .popup div.popup_edit_button{
+    font-family: Avenir;
 
+    color: #777;
+    font-size: 14px;
+    right: 18px;
 }
 
-.body div#inspect_event_delete_button_day{
+.body .popup div.popup_edit_button > strong{
+	background-image: url(../../assets/small_icons.png);
+	background-position: -40px -490px;
+	display: inline-block;
+	z-index: 10000;
+	width: 15px;
+	position: relative;
+	height: 12px;
+	top: 1px;
+	left: 1px;
+}
 
+.body #inspect_event_popup_week div#inspect_event_delete_button_week, .body div#inspect_event_delete_button_month, .body div#inspect_event_delete_button_day{
+width:65px!important;
 }
 
 span.create_event_when_label{
@@ -459,8 +494,53 @@ div#create_month_day_event_when, div#create_week_day_event_when, div#create_day_
 
 }
 
-.body .popup div.popup_edit_button strong{ 
-	
+span.delete_text{
+font-family: Avenir;
+color: #777;
+font-size: 14px;
+display: inline-block;
+float: left;
+margin-left: -3px;
+}
+
+div.week_event_holder div.event_name{
+position: absolute;
+left: 12px;
+top: 4px;
+}
+
+div.week_event_holder.colorfied div.event_name{
+color:#fff!important;
+}
+
+div.week_event_holder div.event_start_time{
+position: absolute;
+left: 15px;
+top: 24px;
+color: #333;
+}
+
+div.week_event_holder.colorfied div.event_start_time{
+color:#FFF!important;
+}
+
+span.delete_icon{
+    background-image: url(../../assets/small_icons.png); 
+    background-position: -75px -491px; 
+    display: inline; z-index: 10000; width: 15px; position: relative; height: 12px; 
+    top: 3px; 
+    float: left;
+    left: -6px;
+
+}
+
+.popup div.popup_edit_button strong{
+    background-image: url(../../assets/small_icons.png); 
+    background-position: -40px -464px; 
+    display: inline-block;  top: 17px; 
+    opacity: 1;
+    width: 18px;
+    height: 16px;
 }
 
 form#create_month_day_event_form, form#create_week_day_event_form, form#create_day_event_form{

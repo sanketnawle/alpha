@@ -973,6 +973,7 @@ class ProfileController extends Controller
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['following'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
             $data['following'][$i]['own_profile'] = $fuser->user_id == $this->get_current_user()->user_id;
+            $data['following'][$i]['email'] = $fuser->user_email;
         }
         $data['followers']=array();
         foreach($user->usersFollowing as $i=>$fuser){
@@ -988,6 +989,7 @@ class ProfileController extends Controller
                 Yii::app()->getBaseUrl(true).$fuser->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
             $data['followers'][$i]['is_following'] = $this->get_current_user()->isFollowing($fuser);
             $data['followers'][$i]['own_profile'] = $fuser->user_id == $this->get_current_user()->user_id;
+            $data['followers'][$i]['email'] = $fuser->user_email;
         }
         $data['showcase_size']= sizeof($user->showcase);
         $data['showcase']=array();

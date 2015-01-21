@@ -8,12 +8,14 @@
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
-
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/moment.js" > </script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/notifications.js"></script>
-
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 
 
 
@@ -27,53 +29,63 @@
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
+                <div class = "menu_hider menu_shown">
+                    <div class = "menu_hider_icon"></div>
+                </div>
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"><span></span></a>
             </div>
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
                 <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-                    <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">
-                    <li>
-                        <a>
-                            <div class="icon dpt"></div>
-                            <span><?php echo $department?> Professors</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon crs"></div>
-                            <span>Courses in the <?php echo $department?> Department</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon prof"></div>
-                            <!--<span>Professors in Your School</span>-->
-                            <span>Professors at The <?php echo $school?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon crs"></div>
-                            <span>Courses at The <?php echo $school?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon clb"></div>
-                            <!--<span>Clubs at The <?php echo $school?></span>-->
-                            <span>Clubs Your Friends Are In</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon sch"></div>
-                            <span>Search Your School</span>
-                        </a>
-                    </li>
+
+
+
+
+
+
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon dpt" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>--><?php //echo $department?><!-- Professors</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon crs" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Courses in the --><?php //echo $user->department->department_name; ?><!-- Department</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon prof" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <!--<span>Professors in Your School</span>-->-->
+<!--                            <span>Professors at The --><?php //echo $school?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon crs" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Courses at The --><?php //echo $school?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon clb" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->-->
+<!--                            <span>Clubs Your Friends Are In</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon sch" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Search Your School</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
                 <ul class="postlist"></ul>
             </div>        
@@ -147,7 +159,18 @@
             </a>
         </div>
     </div>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
+
+<script id="search_result_template" type="text/x-handlebars-template">
+
+        <li class="search_result" data-origin_type='{{origin_type}}'>
+            <a>
+                <div class="icon dpt" style="background-image: url('<?php echo  Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');"></div>
+
+                <span>{{origin_type}} - {{origin_name}}</span>
+            </a>
+        </li>
+    </script>
+
 </body>
 
 
@@ -223,7 +246,14 @@
                 <div class="dismiss">Dismiss</div>
                 <div class="close"></div>
             </div>
-            <div class="message">On {{day_of_week}}, you have a {{event_type}} due in the class, {{origin.name}}.</div>
+
+            {{#ifCond origin_type '==' 'class'}}
+                {{#ifCond event_type '==' 'exam'}}
+                    <div class="message">On {{day_of_week}}, you have a {{event_type}} in class, {{origin.name}}.</div>
+                {{/ifCond}}
+            {{/ifCond}}
+
+
             <div class="time">
                 <div class="icon"></div>
                 <div class="stamp">{{formatted_end_time}}</div>

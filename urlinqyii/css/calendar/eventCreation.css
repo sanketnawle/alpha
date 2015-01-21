@@ -111,11 +111,15 @@ padding: 3px;
 font-size: 11.7px;
 font-weight: 600;
 font-family: Avenir;
-margin-top: -19px;
+margin-top: 0px;
 padding-bottom: 0;
 font-family: 'Helvetica neue', Helvetica, Arial, sans-serif;
 -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
+.body .month-view .month-grid div.grid-item.prem div.date{
+    margin-top: -19px;
+}
+
 
 .body .header.row1 > .left > * {
 float: left;
@@ -262,16 +266,26 @@ border: 1px solid;
 border-color: #c0c0c0 #d8d8d8 #d8d8d8;
 border-radius: 2px;
 padding: 2.5px 6px;
-width: 286px;
+width: 278px;
 }
 
 input.popup_create_event_name_input:focus{
-	outline: #0087C2 auto 2px;
-	outline-offset: -2px;
+    outline: #0087C2 auto 2px;
+    outline-offset: -2px;
 }
 
 #inspect_event_title{
-
+    font-family: Avenir; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    font-weight: 500;   
+    font-size: 15.5px; 
+    width: 100%!important;
+    padding-bottom: 2px;
+    height: 27px;
+    position: relative;
+    top: -4px;
+    line-height: 27px;
 }
 
 div.ul-calendar .toolbar .wrap .column.right form {

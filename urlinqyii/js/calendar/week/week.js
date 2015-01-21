@@ -23,6 +23,7 @@ jQuery(document).ready(function(){
         var this_time = $day_time_div.attr('data-time');
         var this_time_int = parseInt($day_time_div.attr('data-time_num'));
         var $create_week_day_event_popup = jQuery('#create_week_day_event_popup');
+        
 
         var end_time = ints_to_time(this_time_int + 1,0,0);
 
@@ -69,7 +70,7 @@ jQuery(document).ready(function(){
 
 
             $create_week_day_event_popup.addClass('active');
-
+            jQuery('#create_week_day_event_input').focus();
             //Focus the input field
             
         }else{

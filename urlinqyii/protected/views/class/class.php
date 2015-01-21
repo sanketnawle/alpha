@@ -21,7 +21,7 @@
 
     </script>
       
-
+    <title><?php echo $class->class_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
 
@@ -827,10 +827,11 @@
                                         <div class = "follow_button_wrapper following_wrapper">
                                             <div class = "user_follow_button">Follow</div>
                                             <?php } ?>
-                                            <div class = "user_message_button message_active">
-                                                <em class = "white_message_icon">
-                                                </em>
-                                            </div>
+                                            <a href="mailto:<?php echo $member->user_email?>">
+                                                <div class = "user_message_button message_active">
+                                                    <em class = "white_message_icon"></em>
+                                                </div>
+                                            </a>
                                         </div>
 
 

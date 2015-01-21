@@ -38,6 +38,8 @@ function hide_inspect(){
 jQuery(document).ready(function(){
     last_clicked_event_id = null;
 
+
+
     jQuery(document).on('click', 'a.event_origin_link', function(event){
         event.stopPropagation();
     });
@@ -46,7 +48,7 @@ jQuery(document).ready(function(){
         event.stopPropagation();
 
         jQuery(".create_event_popup").removeClass("active");
-
+        jQuery('.grid-item.prem').removeClass('making_event');
 
         hide_inspect();
         var $event_div = jQuery(this);
@@ -57,7 +59,7 @@ jQuery(document).ready(function(){
         jQuery($event_div).addClass("colorfied");
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;       
+        var click_x_difference = windowsize - event.pageX;      
 
         if($event_div.hasClass('month_day_event')){
             jQuery($event_div).css({"background-color": event_div_hex});
@@ -74,10 +76,13 @@ jQuery(document).ready(function(){
         //Create variables to fill with content in inspect boxes//
         var $inspect_event_popup = jQuery('.inspect_event_popup');
         var $inspect_event_title = jQuery($inspect_event_popup).find("#inspect_event_title");
+        var $inspect_event_title_background = jQuery($inspect_event_popup).find("div.title_background");
         var $inspect_event_description = jQuery($inspect_event_popup).find("#inspect_event_description");
         //Add the event_id to the inspect_event_popup_week for easy access
         $inspect_event_popup.attr('data-event_id', event_id);
         jQuery($inspect_event_title).css({"color":event_div_hex});
+
+        jQuery($inspect_event_title_background).css({"background-color":event_div_hex});
         jQuery($inspect_event_title).text(event_title);
         jQuery($inspect_event_description).text(event_description);
 

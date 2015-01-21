@@ -42,6 +42,12 @@ header('location:home.php');
 <head>
     <script>
         base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
+
+        var globals = {};
+        globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
+
     </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Your University - On Urlinq</title>
@@ -423,6 +429,52 @@ header('location:home.php');
                   </div>
                   <div class = "signin-wrap">
                     <!-- php/afterlogin.php -->
+
+                      <script>
+                        $(document).on('submit', '#login', function(e){
+                            var $form = $(this);
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            var post_url = globals.base_url + '/login';
+
+                            var post_data = $form.serializeArray();
+
+
+
+
+                            $.post(
+                                post_url,
+                                post_data,
+                                function(response){
+                                    alert(JSON.stringify(response));
+
+                                    if(response['success']){
+                                        window.location.replace(globals.base_url + '/home');
+                                    }else{
+                                        if(response['error_id'] == 2){
+                                            alert('Email is not supported');
+
+                                            var email_position = $('input#login_email').offset();
+                                            var $error_div = $("<div id='login_error_popup'>Invalid email</div>");
+
+                                            $error_div.css({'position': 'absolute'});
+                                            $error_div.css({'top': email_position.top + 50});
+                                            $error_div.css({'left': email_position.left});
+
+
+                                            $('body').append($error_div);
+
+                                        }else if(response['error_id'] == 3){
+                                            alert('Invalid login');
+                                        }
+                                    }
+                                }, 'json'
+                            );
+                        });
+
+                      </script>
+
                     <form name = "login" id = "login" method = "post" action = "<?php echo Yii::app()->request->baseUrl; ?>/login">
                       <input type = "text" name = "login_email" id = "login_email" autocomplete = "on" placeholder = "School Email">
                       <input type = "password" name = "login_password" id = "login_password" placeholder = "Password">

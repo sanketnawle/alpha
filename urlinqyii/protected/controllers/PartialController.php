@@ -33,7 +33,12 @@ class PartialController extends Controller
         $user_id = Yii::app()->session['user_id'];
 
         //$user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
+        $user = $this->get_current_user();
+        if(!$user){
+            $return_data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'User is not logged in');
+            $this->renderJSON($return_data);
+            return;
+        }
         //$user = $this->get_current_user();
         $school = $user->school->school_name;
         //Changed by Alex. This line was causing errors lkajsdl
