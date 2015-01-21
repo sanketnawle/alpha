@@ -24,6 +24,11 @@
     transition: background-color .15s ease;    
 }
 
+body#body_home div#content_panel div#nav_bar{
+    position:relative;
+    top: 15.5px!important;
+}
+
 div#nav_bar:hover{
     background-color: rgba(25, 26, 27, 1);
 }
@@ -181,6 +186,12 @@ div.nav_section.active div#home_nav_icon {
     border-top: none;
 }
 
+body#body_home div#content_panel div#nav_bar div#nav_drop_down_container {
+    position: absolute;
+    height: 205px;
+    top: 38px!important;
+    
+}
 
 .nav_drop_down_section{
     padding-top: 6px;
