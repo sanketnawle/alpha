@@ -77,4 +77,7 @@ jQuery(document).ready(function(){
             });
         }
     });
+    $(function(){
+        $('.providers_scrollable').slimScroll();
+    });
 });
