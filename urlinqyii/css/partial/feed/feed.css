@@ -305,7 +305,7 @@ cursor: default;
 color: #029acf;
 }
 
-.like_number{
+.like_number,.reply_number{
 display: inline-block;
 line-height: 7px;
 

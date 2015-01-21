@@ -5,6 +5,7 @@ var pdf_year= (new Date()).getFullYear();
 var previous_title_empty = false;
 var previous_title_index = "";
 var class_color = "";
+
 window.onload = function () {
   class_color = get_class_color();
   load_events();

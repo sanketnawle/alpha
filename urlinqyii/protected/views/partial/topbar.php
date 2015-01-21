@@ -15,7 +15,7 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/notifications.js"></script>
-
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 
 
 
@@ -41,44 +41,51 @@
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">
-                    <li>
-                        <a>
-                            <div class="icon dpt"></div>
-                            <span><?php echo $department?> Professors</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon crs"></div>
-                            <span>Courses in the <?php echo $department?> Department</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon prof"></div>
-                            <!--<span>Professors in Your School</span>-->
-                            <span>Professors at The <?php echo $school?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon crs"></div>
-                            <span>Courses at The <?php echo $school?></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon clb"></div>
-                            <!--<span>Clubs at The <?php echo $school?></span>-->
-                            <span>Clubs Your Friends Are In</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <div class="icon sch"></div>
-                            <span>Search Your School</span>
-                        </a>
-                    </li>
+
+
+
+
+
+
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon dpt" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>--><?php //echo $department?><!-- Professors</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon crs" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Courses in the --><?php //echo $user->department->department_name; ?><!-- Department</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon prof" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <!--<span>Professors in Your School</span>-->-->
+<!--                            <span>Professors at The --><?php //echo $school?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon crs" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Courses at The --><?php //echo $school?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon clb" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->-->
+<!--                            <span>Clubs Your Friends Are In</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="search_preview">-->
+<!--                        <a>-->
+<!--                            <div class="icon sch" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
+<!--                            <span>Search Your School</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
                 <ul class="postlist"></ul>
             </div>        
@@ -152,7 +159,18 @@
             </a>
         </div>
     </div>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
+
+<script id="search_result_template" type="text/x-handlebars-template">
+
+        <li class="search_result" data-origin_type='{{origin_type}}'>
+            <a>
+                <div class="icon dpt" style="background-image: url('<?php echo  Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');"></div>
+
+                <span>{{origin_type}} - {{origin_name}}</span>
+            </a>
+        </li>
+    </script>
+
 </body>
 
 
