@@ -33,7 +33,7 @@ div.horizontal_scroll_holder{
 }
 
 div.page_search.page_search_all_members_results  .black_background_row, div.page_search.page_search_all_members_results div.horizontal_scroll_holder{
-	display:block!important;
+	/*display:block!important;*/
 }
 
 
@@ -154,7 +154,7 @@ div.page_search.page_search_all_members_results #main_panel.main_panel_search{
 	display:block;
 	margin: 0 auto;
 	margin: 0 12.5px;
-	position: absolute; top: 0px; 
+	/*position: absolute; top: 0px;*/
 
 	/* padding-left: 100px; */
 }

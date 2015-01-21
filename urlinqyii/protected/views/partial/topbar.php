@@ -34,7 +34,7 @@
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
                 <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-                    <input type="text" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">
