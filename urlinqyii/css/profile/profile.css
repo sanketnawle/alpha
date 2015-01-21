@@ -931,7 +931,13 @@ form#add_showcase button#upload_link_button > i{
 
 #upload_file_name{
     display: inline-block;
-    color:white;
+    color: white;
+    top: 5px;
+    position: relative;
+    width: 78%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 span#cancel_showcase_form{
