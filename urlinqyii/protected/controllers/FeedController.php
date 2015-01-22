@@ -421,6 +421,27 @@ class FeedController extends Controller
         }
 
 
+        //I was getting issues passing the date time string
+        //in the standard ?created_at=2015-14-12 11:11:11 format,
+        //so I put the data in a param and the created_at and last_activity into
+        //a json string then decoded it here so it wouldnt get fucked up
+        //in transit
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
         $privacy_type = $user->user_type;
 
         if($privacy_type == 'p'){
@@ -442,15 +463,18 @@ class FeedController extends Controller
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
                               and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
+                              and created_at < '" . $created_at . "'
                               ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;
-                  
+
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
-        if($posts = $command->queryAll())
+        if($posts = $command->queryAll()){
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
-        else
-            $this->renderJSON(array('success'=>false, 'is_admin'=> FALSE));
+        }else{
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+        }
+
 
 
 
@@ -459,6 +483,22 @@ class FeedController extends Controller
 
     public function actionGetProfilePosts()
     {
+
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
         // check if the cur_user is the owner of the profile page currently viewing
         if ($prof_mod = User::model()->find('user_id=:id', array(':id'=> $_GET['id']))){
             if ($prof_mod->user_id == self::$cur_user_id)
@@ -472,23 +512,47 @@ class FeedController extends Controller
 
         $posts_sql_profile = "SELECT distinct *
 				  from post p
-				  where p.user_id = ".self::$user->user_id."
+				  where p.created_at < '" . $created_at . "' and p.user_id = ".self::$user->user_id."
 				  OR (p.origin_type = 'user' and p.origin_id = ".$_GET['id'].")
 					ORDER BY last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
-        $posts = $command->queryAll();
-        if($posts){
-            $success_post = TRUE;
+        if($posts = $command->queryAll()){
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            return;
         }else{
-            $success_post = FALSE;
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+            return;
         }
 
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
     }
 
     public function actionGetClassPosts()
     {
+
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $this->renderJSON(array('success'=>false));
+            return;
+        }
+
+
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
         // check if the current user is the admin of the class
         if ($cl_mod = ClassUser::model()->findbypk(array('class_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
             $is_member = TRUE;
@@ -505,18 +569,25 @@ class FeedController extends Controller
 
         $posts_sql_class = "SELECT distinct *
 		  from post p
-		  where (p.origin_type = 'class' and p.origin_id = '".$_GET['id']."')
-			order by last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+		  where (p.origin_type = 'class' and p.origin_id = '".$_GET['id']."') and created_at < '" . $created_at ."'
+			order by last_activity DESC	LIMIT " . self::$start_rec . "," . self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_class);
 
-        if($posts = $command->queryAll())
-            $success_post = TRUE;
-        else
-            $success_post = FALSE;
-
-        $this->renderJSON(array('success'=>$success_post, 'is_member'=> $is_member, 'is_admin'=>$is_admin,
+        if($posts = $command->queryAll()){
+            $this->renderJSON(array('success'=>true, 'is_member'=> $is_member, 'is_admin'=>$is_admin,
             'feed'=>self::getReplies(self::addPostData($posts))));
+            return;
+        }else{
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+            return;
+        }
+
+
+
+
+
+
     }
 
     public function actionGetCoursePosts()
@@ -549,65 +620,154 @@ class FeedController extends Controller
 
     public function actionGetClubPosts()
     {
+
+
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $this->renderJSON(array('success'=>false, 'error_id'=>1, 'error_msg'=>'User is not logged in'));
+            return;
+        }
+
+
+        //I was getting issues passing the date time string
+        //in the standard ?created_at=2015-14-12 11:11:11 format,
+        //so I put the data in a param and the created_at and last_activity into
+        //a json string then decoded it here so it wouldnt get fucked up
+        //in transit
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
+
         $posts_sql_club = "SELECT distinct *
 		  from post p
 		  where ((p.origin_type = 'group' or p.origin_type = 'club') and p.origin_id = '". $_GET['id'] ."')
-			order by last_activity DESC
+		    and created_at < '" . $created_at ."'
+			order by created_at DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_club);
 
-        if($posts = $command->queryAll())
-            $success_post = TRUE;
-        else
-            $success_post = FALSE;
+        if($posts = $command->queryAll()){
 
-        // check if the current user is an admin to this group/club feed
-        if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
-            $is_member = TRUE;
-            if ($g_mod->is_admin == 1)
-                $is_admin = TRUE;
-            else
+            // check if the current user is an admin to this group/club feed
+            if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+                $is_member = TRUE;
+                if ($g_mod->is_admin == 1)
+                    $is_admin = TRUE;
+                else
+                    $is_admin = FALSE;
+            }
+            else{
+                $is_member = FALSE;
                 $is_admin = FALSE;
+            }
+            // check ends
+
+            $command = Yii::app()->db->createCommand($posts_sql_club);
+            if($posts = $command->queryAll()){
+                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+                return;
+            }else{
+                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+                return;
+            }
         }
         else{
-            $is_member = FALSE;
-            $is_admin = FALSE;
+            $this->renderJSON(array('success'=>true,'feed'=>array()));
+            return;
         }
-        // check ends
 
-        $this->renderJSON(array('success'=>$success_post, 'is_member'=>$is_member, 'is_admin'=> $is_admin,
-            'feed'=>self::getReplies(self::addPostData($posts))));
+
+
+
+
     }
 
     public function actionGetDepartmentPosts()
     {
+
+
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
         $posts_sql_dept = "SELECT distinct *
 		  from post p
-		  where (p.origin_type = 'department' and p.origin_id = '".$_GET['id']."')
+		  where (p.origin_type = 'department' and p.origin_id = '" . $_GET['id'] . "')
+		    and created_at < '" . $created_at ."'
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
-
-        $command = Yii::app()->db->createCommand($posts_sql_dept);
-
-        if($posts = $command->queryAll())
-            $success_post = TRUE;
-        else
-            $success_post = FALSE;
 
         if(self::$user->user_type == "p")
             $is_admin = TRUE;
         else
             $is_admin = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+        $command = Yii::app()->db->createCommand($posts_sql_dept);
+
+        if($posts = $command->queryAll()){
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            return;
+        }else{
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+            return;
+        }
+
+
+
     }
 
     public function actionGetSchoolPosts()
     {
+
+
+
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
+
         $posts_sql_school = "SELECT distinct *
 		  from post p
 		  where (p.origin_type = 'school' and p.origin_id = '".$_GET['id']."')
+		    and created_at < '" . $created_at ."'
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
@@ -628,9 +788,28 @@ class FeedController extends Controller
 
     public function actionGetUniversityPosts()
     {
+
+
+        $created_at = new DateTime('now');
+        $created_at = $created_at->format('Y-m-d H:i:s');
+        $last_activity = new DateTime('now');
+        $created_at = $last_activity->format('Y-m-d H:i:s');
+        if(isset($_GET['params']) || isset($_GET['created_at']) && isset($_GET['last_activity'])){
+            $params = json_decode($_GET['params'], true);
+
+            if(isset($params['created_at'])){
+                $created_at = $params['created_at'];
+                $last_activity = $params['last_activity'];
+            }
+
+        }
+
+
+
         $posts_sql_univ = "SELECT distinct *
 		  from post p
 		  where (p.origin_type = 'university' and p.origin_id = '".$_GET['id']."')
+		    and created_at < '" . $created_at ."'
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
