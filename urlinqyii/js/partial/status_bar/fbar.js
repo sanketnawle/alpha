@@ -885,7 +885,7 @@ $(document).ready(function() {
 
 
                         reset_fbar();
-                        render_post(response['post']);
+                        render_post(response['post'],'prepend');
 
                     }
                     //globals.myDropzone.emit("addedfile", file);
@@ -1380,7 +1380,7 @@ $(document).ready(function() {
 
                     if(response['success']){
                         reset_fbar();
-                        render_post(response['post']);
+                        render_post(response['post'],'prepend');
                     }else{
 
                     }

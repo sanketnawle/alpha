@@ -1,6 +1,6 @@
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}">
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}"  data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -399,7 +399,7 @@
 
             <script id="post_question_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">
@@ -771,7 +771,7 @@
 
 
             <script id="post_event_template" type="text/x-handlebars-template">
-                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}">
+                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}" data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                     <div class = 'post_main event_post'>
 
                         <div class = 'post_head'>
@@ -848,7 +848,7 @@
 
             <script id="post_note_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>
-                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}'>
+                            <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
                                         <div class="post_head">
                                             <div class="post_title">

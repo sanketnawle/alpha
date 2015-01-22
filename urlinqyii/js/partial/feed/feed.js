@@ -36,13 +36,45 @@ $(document).ready(function(){
     }
 
 
+
+    var last_created_at = '';
+    var last_last_activity = '';
+
     function get_post_data(base_url,feed_url){
 
-        $.getJSON( base_url + feed_url, function( json_feed_data ) {
+
+        var get_data = {};
+
+        //See if there are any posts on the page.
+        //If there is, get the last one
+        //and strip its created_at and last_activity data
+        var $first_post = $('#posts').find('.post').last();
+
+
+        var param_string = '';
+        if($first_post.length){
+            var created_at = $first_post.attr('data-created_at');
+            var last_activity = $first_post.attr('data-last_activity');
+
+            if(created_at === last_created_at){
+                console.log('returning request');
+                //Dont remake the same request
+                return;
+            }
+
+            get_data['created_at'] = created_at;
+            get_data['last_activity'] = last_activity;
+
+            last_created_at = created_at;
+        }
+
+
+
+        $.getJSON( base_url + feed_url, {params: JSON.stringify(get_data)}, function( json_feed_data ) {
             if(json_feed_data['success']){
                 //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
-                render_posts(json_feed_data['feed'].reverse());
+                render_posts(json_feed_data['feed']);
             }else{
                 alert('failed to get feed');
             }
@@ -135,6 +167,16 @@ $(document).ready(function(){
         }
         return false;
     }
+
+
+
+
+//    $('body').scroll(function() {
+//
+////       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+////           alert("bottom!");
+////       }
+//    });
 
 
 
@@ -326,14 +368,18 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.post_event_calendar_button', function(){
-        alert("lol");
+
+
 
 
         var $calendar_button = $(this);
 
-        var $event_post = $calendar_button.closest('.post');
+        var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
         var event_id = $event_post.attr('data-event_id');
+
+        alert(event_id);
+
         var origin_type = $event_post.attr('data-origin_type');
         var origin_id = $event_post.attr('data-origin_id');
 
@@ -345,7 +391,12 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
-                alert(JSON.stringify(response));
+                if(response['success']){
+                    $calendar_button.addClass('added');
+                    $calendar_button.text('Added to Calendar');
+                }else{
+                    alert(JSON.stringify(response));
+                }
             }
         );
 
@@ -353,9 +404,69 @@ $(document).ready(function(){
     });
 
 
+    function isElementInViewport (el) {
+
+        //special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+            el = el[0];
+        }
+
+        var rect = el.getBoundingClientRect();
+
+        return (
+            rect.top >= 0
+//            rect.top >= 0 &&
+//            rect.left >= 0 &&
+//            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+//            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+        );
+    }
+
+
+    $( "#page" ).scroll(function() {
+        //Get the offset of the last post on the page
+        var last_post = $('#posts').find('.post').last();
+        console.log('LAST POST VISIBLE?');
+        console.log(isElementInViewport(last_post));
+
+        //If the last post is in the viewport, load more posts
+        if(isElementInViewport(last_post)){
+            //Loads more previous posts
+            get_post_data(base_url,feed_url);
+        }
+    });
+
+    $(document).scroll(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+//        console.log('height');
+//        console.log($(document).height());
+//        console.log('document scroll top');
+//        console.log($(document).scrollTop());
+//
+//
+//        console.log('window height');
+//        console.log($(window).height());
+
+//        if($(document).scrollTop() + $(window).height() >= $(document).height() - 50){
+//            console.log('BOTTOM');
+//        }
 
 
 
+        //Get the offset of the last post on the page
+        var last_post = $('#posts').find('.post').last();
+        console.log('LAST POST VISIBLE?');
+        console.log(isElementInViewport(last_post));
+
+        //If the last post is in the viewport, load more posts
+        if(isElementInViewport(last_post)){
+            //Loads more previous posts
+            get_post_data(base_url,feed_url);
+        }
+
+
+    });
 
     /*$("div.master_comments").each(function() {
         var $master_comments_list = $(this);
@@ -364,10 +475,6 @@ $(document).ready(function(){
     });*/
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
-
-
-
-
 });
 
 

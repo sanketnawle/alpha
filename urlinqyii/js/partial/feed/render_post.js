@@ -16,7 +16,12 @@ function findUrlInPost( text ) {
     return false;
 }
 
-function render_post(single_post){
+function render_post(single_post, prepend){
+
+
+    if (prepend === undefined) prepend = "append";
+    console.log(prepend);
+
     //Event Posts
     //Announcements
     //Oppurtunities'
@@ -53,9 +58,22 @@ function render_post(single_post){
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
-            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+
+            if(prepend == 'prepend'){
+                $("#profile_posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#profile_posts").append($(template(single_post)).hide().fadeIn());
+            }
+
+
         }else{
-            $("#posts").prepend(template(single_post)).hide().fadeIn();
+            if(prepend == 'prepend'){
+                $("#posts").prepend($(template(single_post)).hide().fadeIn());
+
+            }else{
+                $("#posts").append($(template(single_post)).hide().fadeIn());
+
+            }
         }
 
     }
@@ -64,9 +82,22 @@ function render_post(single_post){
         var source   = $("#post_note_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
-            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+
+            if(prepend == 'prepend'){
+                $("#profile_posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#profile_posts").append($(template(single_post)).hide().fadeIn());
+            }
+
+
         }else{
-            $("#posts").prepend(template(single_post)).hide().fadeIn();
+
+            if(prepend == 'prepend'){
+                $("#posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#posts").append($(template(single_post)).hide().fadeIn());
+            }
+
         }
     }
     else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
@@ -74,9 +105,24 @@ function render_post(single_post){
         var source   = $("#post_question_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
-            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+
+
+            if(prepend == 'prepend'){
+                $("#profile_posts").prepend($(template(single_post)).hide().fadeIn());
+
+            }else{
+                $("#profile_posts").append($(template(single_post)).hide().fadeIn());
+
+            }
+
         }else{
-            $("#posts").prepend(template(single_post)).hide().fadeIn();
+
+
+            if(prepend == 'prepend'){
+               $("#posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#posts").append($(template(single_post)).hide().fadeIn());
+            }
         }
 
     }
@@ -94,15 +140,35 @@ function render_post(single_post){
 
         var source = $("#post_event_template").html();
         var template = Handlebars.compile(source);
-        $("#posts").prepend(template(single_post)).hide().fadeIn();
+
+        if(prepend == 'prepend'){
+           $("#posts").prepend($(template(single_post)).hide().fadeIn());
+        }else{
+            $("#posts").append($(template(single_post)).hide().fadeIn());
+        }
+
+
     }
     else {
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
-            $("#profile_posts").prepend(template(single_post)).hide().fadeIn();
+
+            if(prepend == 'prepend'){
+               $("#profile_posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#profile_posts").append($(template(single_post)).hide().fadeIn());
+            }
+
+
         }else{
-            $("#posts").prepend(template(single_post)).hide().fadeIn();
+
+            if(prepend == 'prepend'){
+               $("#posts").prepend($(template(single_post)).hide().fadeIn());
+            }else{
+                $("#posts").append($(template(single_post)).hide().fadeIn());
+            }
+
         }
     }
 }

@@ -127,7 +127,7 @@ jQuery(document).ready(function(){
 
 
         //If it didnt match any of those, show this input as an error
-        $time_input.addClass('error');
+        //$time_input.addClass('error');
     }
 
     jQuery(document).on('focusout','.time_input', function(){

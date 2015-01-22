@@ -689,41 +689,34 @@ class EventController extends Controller
 
         //Check if this user is already attending
         if($event->user_id == $user->user_id){
-
             //Since user is the owner of this event, delete it
             if($event->delete()){
-
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Error deleting event');
+                $this->renderJSON($data);
+                return;
             }
-
-            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already attending');
-            $this->renderJSON($data);
-            return;
         }else{
             //or check if the user is already a user for this event
             $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event->event_id, ':user_id'=>$user->user_id));
             if($event_user){
-                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'User is already attending');
+                if($event_user->delete()){
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    $data = array('success'=>false,'error_id'=>4,'error_msg'=>'Error deleting event user');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'User is not apart of this event');
                 $this->renderJSON($data);
                 return;
             }
-        }
-
-
-        include_once 'color/color.php';
-
-        $event_user = new EventUser;
-        $event_user->event_id = $event->event_id;
-        $event_user->user_id = $user->user_id;
-        $event_user->color_id = get_random_color();
-
-        if($event_user->save(false)){
-            $data = array('success'=>true);
-            $this->renderJSON($data);
-            return;
-        }else{
-            $data = array('success'=>false,'error_id'=>5,'error_msg'=>'Error saving user');
-            $this->renderJSON($data);
-            return;
         }
 
     }

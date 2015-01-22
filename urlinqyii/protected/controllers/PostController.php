@@ -140,6 +140,12 @@ class PostController extends Controller
 
 
                 $model->save(false);
+                $model->last_activity = $model->created_at;
+
+                $model->save(false);
+
+
+
                 $post_id = $model->post_id;
 
 

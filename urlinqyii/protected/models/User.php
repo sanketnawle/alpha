@@ -87,6 +87,9 @@ class User extends CActiveRecord
 
 
 
+
+
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */

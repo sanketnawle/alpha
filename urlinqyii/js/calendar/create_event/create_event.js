@@ -99,6 +99,9 @@ jQuery(document).ready(function(){
 
 
         }else{
+            $event_start_date.removeClass('error');
+            $event_start_time.removeClass('error');
+
             $event_end_date.removeClass('error');
             $event_end_time.removeClass('error');
         }
