@@ -336,14 +336,18 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.post_event_calendar_button', function(){
-        alert("lol");
+
+
 
 
         var $calendar_button = $(this);
 
-        var $event_post = $calendar_button.closest('.post');
+        var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
         var event_id = $event_post.attr('data-event_id');
+
+        alert(event_id);
+
         var origin_type = $event_post.attr('data-origin_type');
         var origin_id = $event_post.attr('data-origin_id');
 
@@ -355,7 +359,12 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
-                alert(JSON.stringify(response));
+                if(response['success']){
+                    $calendar_button.addClass('added');
+                    $calendar_button.text('Added to Calendar');
+                }else{
+                    alert(JSON.stringify(response));
+                }
             }
         );
 

@@ -381,12 +381,14 @@ class ClassController extends Controller
             return;
         }
 
-        $user_id = null;
-        if(isset($_POST['user_id'])){
-            $user_id = $_POST['user_id'];
-        }else {
-            $user_id = $this->get_current_user_id();
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'user not logged in');
+            $this->renderJSON($data);
+            return;
         }
+
+        $user_id = $user->user_id;
 
         $class_id = $_POST['id'];
         $class_user = ClassUser::model()->find('class_id=:id and user_id=:user_id', array(':id'=>$class_id,':user_id'=>$user_id));
@@ -394,6 +396,26 @@ class ClassController extends Controller
         if($class_user){
             //Check if we destroy this shit successfully
             if($class_user->delete()){
+
+                //Loop through all events this user has for this class and delete them
+                //Or else the database will get fucked up
+                $user_events = Event::model()->findAllBySql("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+
+                //Get the events that this
+                $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND event.origin_type = 'class' AND event.origin_id = " . $class_id);
+
+                $all_events = array_merge($events,$user_events);
+                foreach($all_events as $event){
+                    $event->delete();
+                }
+
+
+
+                foreach($user_events as $event){
+                    $event->delete();
+                }
+
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
