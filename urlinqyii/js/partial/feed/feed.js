@@ -139,6 +139,16 @@ $(document).ready(function(){
 
 
 
+//    $('body').scroll(function() {
+//
+////       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+////           alert("bottom!");
+////       }
+//    });
+
+
+
+
     $(document).on('click', '.mc_question_radio_button', function() {
         var $radio = $(this);
         var option_id = $radio.closest('.mc_question_one_choice').attr('data-option_id');
@@ -355,7 +365,21 @@ $(document).ready(function(){
 
 
 
+    $(document).scroll(function() {
+//        console.log('height');
+//        console.log($(document).height());
+//        console.log('document scroll top');
+//        console.log($(document).scrollTop());
+//
+//
+//        console.log('window height');
+//        console.log($(window).height());
 
+        if($(document).scrollTop() + $(window).height() >= $(document).height() - 50){
+            console.log('BOTTOM');
+        }
+
+    });
 
     /*$("div.master_comments").each(function() {
         var $master_comments_list = $(this);
@@ -364,10 +388,6 @@ $(document).ready(function(){
     });*/
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
-
-
-
-
 });
 
 
