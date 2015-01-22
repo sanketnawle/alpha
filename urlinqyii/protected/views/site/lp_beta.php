@@ -431,6 +431,13 @@ header('location:home.php');
                     <!-- php/afterlogin.php -->
 
                       <script>
+
+                        $(document).on('submit', '#reset', function(e){
+                          var $form = $(this);
+                          e.preventDefault();
+                          e.stopPropagation();
+                        });
+
                         $(document).on('submit', '#login', function(e){
                             var $form = $(this);
                             e.preventDefault();
@@ -456,11 +463,11 @@ header('location:home.php');
                                             alert('Email is not supported');
 
                                             var email_position = $('input#login_email').offset();
-                                            var $error_div = $("<div id='login_error_popup'>Invalid email</div>");
-
+                                            var $error_div = $("<div id='login_error_popup'>Invalid email <form id='reset'><input type='text' name='email' value='email'/><input type='submit' value='submit'/></form></div>");
                                             $error_div.css({'position': 'absolute'});
                                             $error_div.css({'top': email_position.top + 50});
                                             $error_div.css({'left': email_position.left});
+
 
 
                                             $('body').append($error_div);

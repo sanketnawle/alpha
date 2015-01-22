@@ -498,6 +498,11 @@ $(document).ready(function(){
     }catch(err){
         console.log('User is not admin so cover photo form is not allowed');
     }
+    $(function(){
+        $('p.founded_text').slimScroll({
+            height: 'auto'
+        });
+    });
 
 
 

@@ -772,6 +772,9 @@ $(document).on('click','#create_todo_form',function(e){
             }
         }, 'json'
     );
+    $(function(){
+        $('#event_list').slimScroll();
+    });
 });
 
 

@@ -432,6 +432,9 @@ font-size: 12px; font-weight: bold; position: relative;
 .post_comment_btn:hover > span.reply_link_text{
     /* border-bottom:1px solid #029acf; */
 }
+.post_comment_btn > span.reply_link_text{
+    margin-right: 8px;
+}
 
 .show_analytics_btn{
 border-radius: 0px 5px 5px 0px;

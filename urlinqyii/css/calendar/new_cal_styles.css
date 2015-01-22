@@ -241,6 +241,9 @@ div.event_name.month_event_name
 	box-shadow: !important;
 	z-index:10000000000;
 }
+.ul-calendar .leftbar .providers .provider{
+    overflow: visible;
+}
 
 div.event_holder.day_event_holder.colorfied > div.event_type{
 	border-color:#FFF;

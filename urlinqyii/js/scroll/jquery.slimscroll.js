@@ -335,7 +335,9 @@
           if (isWheel)
           {
             // move bar with mouse wheel
-            delta = parseInt(bar.css('top')) + y * parseInt(o.wheelStep) / 100 * bar.outerHeight();
+              if (y > .50) y = .50;
+              if (y < -.50) y = -.50;
+              delta = parseInt(bar.css('top')) + y * parseInt(o.wheelStep) / 100 * bar.outerHeight();
 
             // move bar, make sure it doesn't go out
             delta = Math.min(Math.max(delta, 0), maxTop);
