@@ -1058,7 +1058,13 @@ $(document).ready(function() {
 
 
         //Clear all dropzone files
-        globals.myDropzone.files = [];
+        if(globals.profile_open){
+            globals.profileDropzone.files = [];
+        }else{
+            globals.myDropzone.files = [];
+        }
+
+
 
 
         //Clear the text input
@@ -1266,7 +1272,12 @@ $(document).ready(function() {
 
     $(document).on('click', '.post_btn', function(){
         var $fbar_holder = globals.$fbar.find('#fbar_holder');
-
+        var dropzone;
+        if(globals.profile_open){
+            dropzone = globals.profileDropzone;
+        }else{
+            dropzone = globals.myDropzone;
+        }
         var post_type = $fbar_holder.attr('data-post_type');
 
 
@@ -1278,7 +1289,7 @@ $(document).ready(function() {
         //Check if there are any files
         var $file_form = globals.$fbar.find('#fbar_file_form');
         //alert($file_form.children('div.dz-preview').length);
-        console.log(globals.myDropzone.files);
+        console.log(dropzone.files);
 
 
         var post_data = get_post_data();
@@ -1292,7 +1303,7 @@ $(document).ready(function() {
             }
         }else if(post_type == 'notes' || post_type == 'files'){
             //Check if there is atleast one file
-            if(globals.myDropzone.files.length == 0){
+            if(dropzone.files.length == 0){
                 alert('Please upload atleast one file.');
                 return;
             }
@@ -1388,8 +1399,8 @@ $(document).ready(function() {
 
 
         //If there are any files, submit the post request through dropzone
-        if(globals.myDropzone.files.length > 0){
-            globals.myDropzone.processQueue();
+        if(dropzone.files.length > 0){
+            dropzone.processQueue();
         }else{
             //otherwise, make a post request to post/create manually
             //alert('MANUAL POST REQUEST');
@@ -1443,7 +1454,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1451,7 +1462,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1464,7 +1475,7 @@ $(document).ready(function() {
 
     $(document).on('click', '#post_attachments',function(e){
         e.stopPropagation();
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 

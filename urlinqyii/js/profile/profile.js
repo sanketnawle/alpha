@@ -74,13 +74,19 @@ $(document).ready(function() {
                     dataType:'html',
                     success: function(html) {
                         $('#profile_fbar_wrapper').append(html);
+                        globals.$fbar.find('.menu_audience').dropit({});
+                        globals.$fbar.find('.privacy_menu').dropit({});
+                        populate_audience_select();
+                        set_dropzone();
                     }
                 });
 
                 numShowcase=data.showcase_size;
                 var template = Handlebars.compile(html);
                 $('body').append(template(data));
+
                 globals.$fbar = $('#profile_fbar_wrapper');
+
 
                 if(!data.minors || data.minors.length==0){
                     $('#minor_section').hide();
@@ -113,6 +119,215 @@ $(document).ready(function() {
 
                 }
             }
+        });
+    }
+    function populate_audience_select(){
+        $.getJSON(base_url + '/user/getGroupData', function(json_data){
+            var $audience_select_list = globals.$fbar.find("#audience_select_list");
+
+
+            $audience_select_list.hide();
+
+            $.each(json_data['classes'], function(index, class_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                class_json['name'] = class_json['class_name'];
+                class_json['id'] = class_json['class_id'];
+                class_json['audience'] = 'class';
+
+                var generated_html = template(class_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+
+            $.each(json_data['clubs'], function(index, club_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                club_json['name'] = club_json['group_name'];
+                club_json['id'] = club_json['group_id'];
+
+                club_json['audience'] = 'club';
+
+                var generated_html = template(club_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+            $.each(json_data['groups'], function(index, group_json){
+                var source = $('#audience_template').html();
+                var template = Handlebars.compile(source);
+
+
+                group_json['name'] = group_json['group_name'];
+                group_json['id'] = group_json['group_id'];
+
+                group_json['audience'] = 'group';
+
+                var generated_html = template(group_json);
+                var $audience = $(generated_html);
+
+
+
+                $audience_select_list.append($audience.hide().fadeIn());
+            });
+
+
+
+
+        });
+    }
+    function set_dropzone(){
+        globals.profileDropzone = new Dropzone('form#profile_fbar_file_form', {
+            url: base_url + '/post/create',
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 4,
+            maxFilesize: 16,
+            maxFiles: 10,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.doc,.docx,.ppt,.pptx,.zip,.xls,.xlsx,.pdf",
+            maxfilesexceeded: function(file) {
+                this.removeAllFiles();
+                this.addFile(file);
+            },
+            init: function() {
+                this.on("success", function(file, response) {
+
+                    console.log('RESPONSE');
+                    console.log(response);
+
+                    console.log('success counter: ' + success_counter.toString());
+                    success_counter++;
+
+                    if(success_counter == last_file_count){
+                        console.log('LAST SUCCESS');
+
+                        if(response['success']){
+                            //alert('success');
+
+
+                            reset_fbar();
+                            render_post(response['post']);
+
+                        }
+                    }
+
+
+                });
+
+
+                this.on("sendingmultiple", function(file, xhr, formData) {
+                    last_file_count = globals.profileDropzone.files.length;
+                    success_counter = 0;
+                    var post_data = get_post_data();
+
+
+                    formData.append('post', JSON.stringify(post_data));
+                    //formData.append('post_json', JSON.stringify(post_data));
+                });
+
+
+                this.on('addedfile',function(file){
+                    console.log(file);
+
+                    var source = $('#post_file_template').html();
+
+                    var template = Handlebars.compile(source);
+
+                    var file_type = file['type'];
+
+                    if(file['name'].indexOf('.doc') > -1){
+                        file['file_type'] = 'doc';
+                    }else if(file['name'].indexOf('.ppt') > -1){
+                        file['file_type'] = 'ppt';
+                    }else if(file['name'].indexOf('.pdf') > -1){
+                        file['file_type'] = 'pdf';
+                    }else if(file['name'].indexOf('.xls') > -1){
+                        file['file_type'] = 'xls';
+                    }else if(file['name'].indexOf('.zip') > -1){
+                        file['file_type'] = 'doc';
+                    }else if(file['name'].indexOf('.jpg') > -1){
+                        file['file_type'] = 'jpg';
+                    }else if(file['name'].indexOf('.png') > -1 ){
+                        file['file_type'] = 'png';
+                    }else if(file['name'].indexOf('.gif') > -1){
+                        file['file_type'] = 'doc';
+                    }
+
+                    var generated_html = template(file);
+
+                    var $file = $(generated_html);
+
+
+
+                    // Create the remove button
+                    var removeButton = $("<span class='file_x_icon'>Remove file</span>");
+
+                    // Add the button to the file preview element.
+                    $file.append(removeButton);
+
+                    var last_modified = $file.attr('data-last_modified');
+                    var name = $file.attr('data-name');
+
+                    $file.find('.file_x_icon').on('click',function(e) {
+                        console.log('REMOVE');
+
+                        var $x_icon = $(this);
+
+                        // Make sure the button click doesn't submit the form:
+                        e.preventDefault();
+                        e.stopPropagation();
+
+
+
+
+                        // Remove the file preview
+
+
+                        //alert(globals.myDropzone.files);
+                        console.log(globals.profileDropzone.files);
+                        for(var i = 0; i < globals.profileDropzone.files.length; i++){
+                            var this_file = globals.profileDropzone.files[i];
+                            //console.log(this_file);
+
+                            console.log('last modified of this file from dropzone: ' + this_file.lastModified);
+                            console.log('last modified of this file last shit fuck  : ' + last_modified.toString());
+
+
+                            console.log('1 name: ' + this_file.name.toString());
+                            console.log('2 name: ' + name.toString());
+
+                            if(this_file.lastModified.toString() == last_modified.toString() && this_file.name.toString() == name.toString()){
+                                globals.profileDropzone.removeFile(this_file);
+                                $('.fbar_file[data-name="' + this_file.name + '"][data-last_modified="' + this_file.lastModified + '"]').remove();
+
+                            }
+                        }
+
+                        console.log('Current dropzone files');
+                        console.log(globals.profileDropzone.files);
+
+                    });
+
+                    globals.$fbar.find('.post_form_template').append($file);
+
+                    // Capture the Dropzone instance as closure.
+                    var _this = this;
+
+                })
+
+            }
+
         });
     }
     function render_posts(jsonData){
@@ -156,7 +371,7 @@ $(document).ready(function() {
 
 
 
-            profile_render_post(post);
+            render_post(post);
         });
     }
 
@@ -166,7 +381,8 @@ $(document).ready(function() {
 
     }
 
-    function profile_render_post(single_post){
+    /*function profile_render_post(single_post){
+        console.log('asdf');
         //Event Posts
         //Announcements
         //Oppurtunities
@@ -196,7 +412,7 @@ $(document).ready(function() {
         else if(single_post['post_type'] === "discussion") {
 
         }
-    }
+    }*/
 
     //findUrlInPost("hellllhttps://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll oasdfjlei'dfdfd'https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll https://looooowww.sitepoint.com/jquery-basic-regex-selector-examples/chellll");
 
@@ -222,6 +438,143 @@ $(document).ready(function() {
     }
     var i = 0;
     var replies = {};
+
+    function get_post_data(){
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
+
+        var post_type = $fbar_holder.attr('data-post_type');
+
+
+        var $post_text_area = $fbar_holder.find('.post_text_area');
+
+        var post_text = $post_text_area.val();
+
+
+        var post_data = {};
+
+
+
+        post_data['text'] = post_text;
+        post_data['post_type'] = post_type;
+
+
+        post_data['origin_type'] = globals.origin_type;
+        post_data['origin_id'] = globals.origin_id;
+
+
+        //If we are on home or profile page, check if the
+        //user has set a different audience
+        if(globals.origin_type == 'user'){
+            var $audience_select = $fbar_holder.find('#audience_select');
+            var audience = $audience_select.attr('data-audience');
+
+
+            if(audience != 'followers'){
+                var audience_id = $audience_select.attr('data-audience_id');
+                post_data['origin_type'] = audience;
+                post_data['origin_id'] = audience_id;
+            }
+        }
+
+
+
+        post_data['sub_text'] = '';
+        post_data['privacy'] = '';
+
+
+        var privacy_setting = $fbar_holder.find('.privacy_dropdown').attr('data-privacy');
+
+        if(privacy_setting && privacy_setting != ''){
+            //If privacy setting isnt empty, set it to the selected setting
+            //Otherwise, put an empty string
+            post_data['privacy'] = privacy_setting;
+        }
+
+
+
+        post_data['anon'] = 0;
+
+        post_data['like_count'] = 0;
+
+
+        if(post_type == 'question' || post_type == 'true_false' || post_type == 'multiple_choice'){
+            post_data['question'] = {};
+
+            post_data['question']['anonymous'] = 0;
+            post_data['question']['live_answers'] = 0;
+            post_data['text'] = $('#post_title').val();
+            post_data['sub_text'] = $fbar_holder.find('.question_textarea').find('.post_text_area').val();
+
+            if(post_type == 'multiple_choice'){
+                post_data['question']['options'] = [];
+
+                post_data['question']['answer_index'] = '';
+
+
+                //Get the options
+                $('.question_choice_line').each(function(index){
+                    var $question_div = $(this);
+                    var option_text = $question_div.find('.multiple_choice_answer').val();
+                    if(option_text != ''){
+                        //See if this is the right answer
+                        var correct_answer = $question_div.find('.answer_check').find('input').is(":checked");
+
+
+                        if(correct_answer){
+                            post_data['question']['answer_index'] = index;
+                        }
+
+                        post_data['question']['options'].push(option_text);
+                    }
+
+                });
+            }
+
+        }
+
+        if(post_type == 'notes' || post_type == 'files'){
+            post_data['text'] = $fbar_holder.find('.file_textarea').find('.post_text_area').val();
+        }
+
+
+
+
+        if(post_type == 'event'){
+            //Get the event data from fbar
+
+            var event_title = $('#event_title').val();
+            var start_date = $('#event_start_date').attr('data-date');
+            var start_time = $('#start_time').attr('data-time');
+            var end_date = $('#event_end_date').attr('data-date');
+            var end_time = $('#event_end_time').attr('data-time');
+            var location = $('#event_location').val();
+
+            var description = $('.event_textarea').find('.post_text_area').val();
+
+
+
+
+
+            post_data['event'] = {};
+            post_data['event']['title'] = event_title;
+            post_data['event']['start_date'] = (start_date) ? start_date : '';
+            post_data['event']['start_time'] = (start_time) ? start_time : '';
+            post_data['event']['end_date'] = (end_date) ? end_date : '';
+            post_data['event']['end_time'] = (end_time) ? end_time : '';
+            post_data['event']['description'] = description;
+            post_data['event']['location'] = location;
+            post_data['event']['origin_type'] = globals.origin_type;
+            post_data['event']['origin_id'] = globals.origin_id;
+
+
+        }
+
+
+        alert(JSON.stringify(post_data));
+
+
+        return post_data;
+    }
     $(document).on('click', '.profile_tab',function(){
         var $tab = $(this);
         var panel_id = $tab.attr('data-panel_id');
@@ -1056,5 +1409,93 @@ $(document).ready(function() {
         $follow_button_wrapper.removeClass('unfollow');
         $(this).text('Following');
     });
+
+    function reset_fbar(){
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
+
+        var post_type = $fbar_holder.attr('data-post_type');
+
+
+
+
+        //Clear all dropzone files
+        if(globals.profile_open){
+            globals.profileDropzone.files = [];
+        }else{
+            globals.myDropzone.files = [];
+        }
+
+
+
+
+        //Clear the text input
+        $fbar_holder.find('.post_text_area').val('');
+
+
+        //Delete the previews from the hidden file field
+        $fbar_holder.find('div.dz-preview').each(function(){
+            $(this).remove();
+        });
+
+
+        //Delete the visible file barz
+        $fbar_holder.find('div.fbar_file').each(function(){
+            $(this).remove();
+        });
+
+        //Reset the privacy settings
+        //Remove the other active privacy option
+        $fbar_holder.find('.privacy_list.active').removeClass('active');
+
+
+        var $privacy_dropdown = $fbar_holder.find('.privacy_dropdown');
+        $privacy_dropdown.attr('data-privacy','');
+        $privacy_dropdown.children().first().addClass('active');
+
+
+
+
+
+
+        //Reset the post type
+        $fbar_holder.attr('data-post_type','');
+
+
+        close_fbar();
+    }
+    function close_fbar(){
+
+
+        var $button_section = globals.$fbar.find('#fbar_buttons');
+        var $form_section = globals.$fbar.find('form#fbar_form');
+
+        var $fbar_new = globals.$fbar.find("#fbar_new");
+
+        $fbar_new.removeClass("fbar_shadow");
+
+        globals.$fbar.find("#fbar_holder").attr('data-post_type','');
+
+        $form_section.removeClass("fadeIn");
+        $form_section.removeClass("show").delay(350).queue(function(next){
+            $button_section.removeClass("faded");
+            $button_section.removeClass("hide");
+            globals.$fbar.find("#fbar_holder").removeClass("discuss");
+            globals.$fbar.find("#fbar_holder").removeClass("opportunity");
+            globals.$fbar.find("#fbar_holder").removeClass("question");
+            globals.$fbar.find("#fbar_holder").removeClass("event");
+            globals.$fbar.find("#fbar_holder").removeClass("notes");
+
+            $form_section.removeClass("true_or_false");
+            $form_section.removeClass("mult_choice");
+            $form_section.removeClass("regular_question");
+            globals.$fbar.find(".question_type_button.active").removeClass("active");
+            globals.$fbar.find(".question_type_button.regular_question").addClass("active");
+            globals.$fbar.find("#fbar_holder").removeClass("events_more_options");
+            globals.$fbar.find(".event_more_options").text("More Options");
+            globals.$fbar.find("form#fbar_form").css({"overflow":"hidden"});
+            next();
+
+        });
+    }
 });
 
