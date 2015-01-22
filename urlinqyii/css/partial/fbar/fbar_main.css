@@ -814,7 +814,7 @@ div.event_form_hide_content {
 #fbar_holder.question div#question_form_content:active {
 }
 
-input#post_title, input#event_title {
+input#post_title, input#event_title, input#opportunity_title {
     width: 520px;
     position: relative;
     padding: 7px 10px;

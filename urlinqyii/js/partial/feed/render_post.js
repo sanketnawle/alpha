@@ -126,7 +126,7 @@ function render_post(single_post, prepend){
         }
 
     }
-    else if (single_post['post_type'] == 'event'){
+    else if (single_post['post_type'] == 'event' || single_post['post_type'] == 'opportunity'){
 
         var event_start_date = new Date(single_post['event']['start_date'] + ' 00:00:00');
 

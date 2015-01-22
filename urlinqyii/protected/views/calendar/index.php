@@ -6,6 +6,13 @@
         window.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
         window.views_url = base_url + "/assets/calendar/views";
         window.css_url = base_url + "/css/calendar";
+
+
+        var globals = {};
+
+
+        globals.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
+
     </script>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>

@@ -351,7 +351,7 @@ class FeedController extends Controller
 
             }
 
-            elseif($post['post_type'] == 'event'){
+            elseif($post['post_type'] == 'event' || $post['post_type'] == 'opportunity'){
 
                 $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 

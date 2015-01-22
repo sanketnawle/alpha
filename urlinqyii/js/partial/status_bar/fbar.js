@@ -1202,14 +1202,12 @@ $(document).ready(function() {
 
             var event_title = $('#event_title').val();
             var start_date = $('#event_start_date').attr('data-date');
-            var start_time = $('#start_time').attr('data-time');
+            var start_time = $('#event_start_time').attr('data-time');
             var end_date = $('#event_end_date').attr('data-date');
             var end_time = $('#event_end_time').attr('data-time');
             var location = $('#event_location').val();
 
             var description = $('.event_textarea').find('.post_text_area').val();
-
-
 
 
 
@@ -1228,7 +1226,25 @@ $(document).ready(function() {
         }
 
 
-        alert(JSON.stringify(post_data));
+
+        if(post_type == 'opportunity'){
+            post_data['opportunity'] = {};
+
+            var end_date = $('#opportunity_due_date').attr('data-date');
+            var end_time = $('#opportunity_start_time').attr('data-time');
+            var title = $('#opportunity_title').val();
+            var description = $('.opportunity_textarea').find('.post_text_area').val();
+
+            post_data['opportunity']['title'] = title;
+            post_data['opportunity']['description'] = description;
+            post_data['opportunity']['end_date'] = (end_date) ? end_date : '';
+            post_data['opportunity']['end_time'] = (end_time) ? end_time : '';
+            post_data['opportunity']['origin_type'] = globals.origin_type;
+            post_data['opportunity']['origin_id'] = globals.origin_id;
+        }
+
+
+        //alert(JSON.stringify(post_data));
 
 
         return post_data;
@@ -1340,6 +1356,30 @@ $(document).ready(function() {
             }
 
         }
+
+
+
+
+        if(post_type == 'opportunity'){
+            if(post_data['opportunity']['title'] == ''){
+                alert('Please input a title');
+                return;
+            }
+
+
+            if(post_data['opportunity']['end_date'] == ''){
+                alert('Please input an end date');
+                return;
+            }
+
+            if(post_data['opportunity']['end_time'] == ''){
+                alert('Please input an end time');
+                return;
+            }
+
+
+        }
+
 
 
 
@@ -1456,7 +1496,7 @@ $(document).ready(function() {
             var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
 
             //Set the default time for the time_inputs
-            var $start_time_input = $('#start_time');
+            var $start_time_input = $('#event_start_time');
             $start_time_input.attr('data-time',start_time_string);
             $start_time_input.val(time_string_to_am_pm_string(start_time_string));
 
@@ -1473,7 +1513,7 @@ $(document).ready(function() {
 
             function verify_date_inputs(){
                 var $event_start_date = $('#event_start_date');
-                var $event_start_time = $('#start_time');
+                var $event_start_time = $('#event_start_time');
                 var $event_end_date = $('#event_end_date');
                 var $event_end_time = $('#event_end_time');
 

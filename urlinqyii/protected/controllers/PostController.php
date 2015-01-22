@@ -100,6 +100,14 @@ class PostController extends Controller
         }
 
 
+        if($_POST['post']['post_type'] == 'opportunity' && !isset($_POST['post']['opportunity'])){
+
+            $return_data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'opportunity is not set', '$POST'=>$_POST);
+            $this->renderJSON($return_data);
+            return;
+        }
+
+
         try{
             $model=new Post;
 
@@ -207,6 +215,35 @@ class PostController extends Controller
                         $event->start_time = $_POST['post']['event']['start_time'];
                         $event->end_time = $_POST['post']['event']['end_time'];
                         $event->location = $_POST['post']['event']['location'];
+                        $event->all_day = '';
+
+                        $event->save(false);
+
+
+                        $post_event = new PostEvent;
+                        $post_event->post_id = $model->post_id;
+                        $post_event->event_id = $event->event_id;
+                        $post_event->save(false);
+
+                        $post_data['event'] = $this->model_to_array($event);
+                    }else if($model->post_type == 'opportunity'){
+
+
+                        $now = new DateTime('now');
+
+
+                        $event = new Event;
+                        $event->title = $_POST['post']['opportunity']['title'];
+                        $event->description = $_POST['post']['opportunity']['description'];
+                        $event->event_type = 'event';
+                        $event->user_id = $this->get_current_user_id();
+                        $event->origin_type = $_POST['post']['origin_type'];
+                        $event->origin_id = $_POST['post']['origin_id'];
+                        $event->start_date = $now->format('Y-m-d');
+                        $event->end_date = $_POST['post']['opportunity']['end_date'];
+                        $event->start_time = $now->format('H:i:s');
+                        $event->end_time = $_POST['post']['opportunity']['end_time'];
+                        $event->location = '';
                         $event->all_day = '';
 
                         $event->save(false);

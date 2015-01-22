@@ -1,3 +1,4 @@
+$ = jQuery;
 $(document).ready(function(){
     $(document).delegate(".menu_hider.menu_shown", "click", function() {
         $(this).removeClass("menu_shown");
