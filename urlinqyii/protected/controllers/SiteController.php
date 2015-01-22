@@ -1127,62 +1127,61 @@ public function actionSendReset(){
             $data = array('success'=>false, 'error_id'=>1);
             $this->renderJSON($data);
             return;
-   
         }
 
-        // $email = $_POST['email'];
-        // $user = User::model->find('user_email=:email',array(':email'=>$email));
+        $email = $_POST['email'];
+        $user = User::model()->find('user_email=:email',array(':email'=>$email));
 
-        // if($user){
-        //     if($user->save(false)){
-        //         //Check if this user already has a user confirmation
-        //         $user_recovery_test = UserRecovery::model()->find('user_id=:id',array(':id'=>$user->user_id));
-        //         if($user_recovery_test){
-        //             //If the user already has a confirmation, send another email with the same token
-        //             $user_email = $user->user_email;
-        //             $subject = 'Urlinq User Recovery';
-        //             $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test->recovery_key;
-        //             $from = 'team@urlinq.com';
+        if($user){
+            if($user->save(false)){
+                //Check if this user already has a user confirmation
+                $user_recovery_test = UserRecovery::model()->find('user_id=:id',array(':id'=>$user->user_id));
+                if($user_recovery_test){
+                    //If the user already has a confirmation, send another email with the same token
+                    $user_email = $user->user_email;
+                    $subject = 'Urlinq User Recovery';
+                    $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test->recovery_key;
+                    $from = 'team@urlinq.com';
 
-        //             ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
-        //             $data = array('success'=>true);
-        //             $this->renderJSON($data);
-        //             return;
-        //         }else{
-        //             //If there isnt already a user confirmation,
-        //             //create a new one
-        //             include_once 'UniqueTokenGenerator.php';
-        //             //Create a user_confirmation for this user
-        //             $user_recovery = new UserRecovery;
-        //             $user_recovery->recovery_key = token();
-        //             $user_recovery->user_id = $user->user_id;
+                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
+                    $data = array('success'=>true);
+                    $this->renderJSON($data);
+                    return;
+                }else{
+                    //If there isnt already a user confirmation,
+                    //create a new one
+                    include_once 'UniqueTokenGenerator.php';
+                    //Create a user_confirmation for this user
+                    $user_recovery = new UserRecovery;
+                    $user_recovery->recovery_key = token();
+                    $user_recovery->user_id = $user->user_id;
 
-        //             if($user_recovery->save(false)){
-        //                 $user_email = $user->user_email;
-        //                 $subject = 'Urlinq User Recovery';
-        //                 $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery->recovery_key;
-        //                 $from = 'team@urlinq.com';
+                    if($user_recovery->save(false)){
+                        $user_email = $user->user_email;
+                        $subject = 'Urlinq User Recovery';
+                        $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery->recovery_key;
+                        $from = 'team@urlinq.com';
 
-        //                 ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
-        //                 $data = array('success'=>true);
-        //                 $this->renderJSON($data);
-        //                 return;
-        //             }else{
-        //                 $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
-        //                 $this->renderJSON($data);
-        //                 return;
-        //             }
-        //         }
-        //     }else{
-        //         $data = array('success'=>false,'error_id'=>5,'error_msg'=>'error saving user');
-        //         $this->renderJSON($data);
-        //         return;
-        //     }
-        // }else{
-        //     $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not defined');
-        //     $this->renderJSON($data);
-        //     return;
-        // }
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery->recovery_key),$contentType=null);
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
+                    }else{
+                        $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+            }else{
+                $data = array('success'=>false,'error_id'=>5,'error_msg'=>'error saving user');
+                $this->renderJSON($data);
+                return;
+            }
+        }else{
+            $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not defined');
+            $this->renderJSON($data);
+            return;
+        }
 
         $data = array('success'=>true);
         $this->renderJSON($data);

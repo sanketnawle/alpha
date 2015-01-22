@@ -114,7 +114,7 @@
                                     SEARCH FILTERS
                                 </span>
                             </div>
-                            <div class = "members_all_filter filter_section active" data-filter_id="1" data-filter="all">
+                            <div class = "members_all_filter filter_section" data-filter_id="1" data-filter="all">
                                 <div class = "filter_name no_name_marginbtm">
                                     <span class = "filter_on_indicator">Showing </span><span>All Results</span>
                                 </div>
@@ -134,7 +134,7 @@
                                         <em class = "dropdown_arrow">
                                         </em>
                                     </div>
-                                    <div class = "dropdown_popout active popout_down">
+                                    <div class = "dropdown_popout popout_down">
                                     </div> 
                                     <div class = "filter_dropdown">
                                         <span>Department</span>
@@ -220,7 +220,7 @@
                                         <em class = "dropdown_arrow">
                                         </em>
                                     </div>
-                                    <div class = "dropdown_popout active popout_up">
+                                    <div class = "dropdown_popout popout_up">
                                     </div>                                     
                                     <div class = "filter_dropdown last">
                                         <span>Class Year</span>

@@ -880,14 +880,14 @@ div.members_card_wrapper {
     margin-top: 10px;
 }
 /*classes*/
-.info_line.info_about{
+#profile_wrapper .info_line.info_about{
     width:39% !important;
 }
-.group_box{
+#profile_wrapper .group_box{
     height:162px !important;
 }
 
-div.group_box div.float_Left.group_image{
+#profile_wrapper div.group_box div.float_Left.group_image{
 
     background-size: cover;
     background-repeat: no-repeat;

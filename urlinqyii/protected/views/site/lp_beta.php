@@ -436,6 +436,15 @@ header('location:home.php');
                           var $form = $(this);
                           e.preventDefault();
                           e.stopPropagation();
+                          var post_url = globals.base_url + '/sendReset';
+                          var post_data = $form.serializeArray();
+                          $.post(
+                            post_url,
+                            post_data,
+                            function(response){
+                              alert(JSON.stringify(response));
+                            }, 'json'
+                          );
                         });
 
                         $(document).on('submit', '#login', function(e){

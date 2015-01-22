@@ -29,6 +29,12 @@ body#body_home div#content_panel div#nav_bar{
     top: 15.5px!important;
 }
 
+div#nav_bar .slimScrollBar{
+    background:#fff!important;
+    opacity:.4!important;
+    right:2.5px!important;
+}
+
 div#nav_bar:hover{
     background-color: rgba(25, 26, 27, 1);
 }

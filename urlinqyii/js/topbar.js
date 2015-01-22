@@ -15,7 +15,6 @@ $(function() {
 
 
     $(document).delegate(".menu_hider.menu_shown", "click", function() {
-        alert();
         $(this).removeClass("menu_shown");
         $(this).addClass("menu_hidden");
          $("body").addClass("left_panel_hidden").delay(350).queue(function(next){

@@ -337,7 +337,7 @@ box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(2
     border-bottom-color:#DDD;
 }
 
-div.suggestion_btn_wrapper a.group_join_button:active,div.suggestion_btn_wrapper a.group_join_button:focus, div.suggestion_btn_wrapper a.suggested_user_follow_button:active, div.suggestion_btn_wrapper a.suggested_user_follow_button:focus{
+div.suggestion_btn_wrapper a.group_join_button:active, div.suggestion_btn_wrapper a.group_join_button.joined,div.suggestion_btn_wrapper a.group_join_button:focus, div.suggestion_btn_wrapper a.suggested_user_follow_button:active, div.suggestion_btn_wrapper a.suggested_user_follow_button:focus, div.suggestion_btn_wrapper a.suggested_user_follow_button.followed{
     -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     background: #EEE;
@@ -357,13 +357,20 @@ div.suggestion_btn_wrapper a.group_join_button > span.gray_add_icon{
     position: relative;
 }
 
+div.suggestion_btn_wrapper a.group_join_button > span.gray_add_icon.joined_icon{
+background-position: 0px -10px;
+}
+
 div.suggestion_btn_wrapper a > span.follow_icon{
     background-image: url(../../../assets/small_icons.png); background-size: auto; 
     width: 17px; 
     height: 11px; background-repeat: no-repeat; margin-right: 4px; 
     background-position: -2px -845px;
     top: 2px; display: inline-block; position: relative;
+}
 
+div.suggestion_btn_wrapper a > span.follow_icon.followed_icon{
+    background-position: -78px -845px;
 }
 
 div.suggestion_btn_wrapper{

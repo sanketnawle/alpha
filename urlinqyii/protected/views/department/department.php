@@ -58,7 +58,7 @@
 
 
 
-                <div id="content_panel" class = "group_responsiveness">
+                <div id="content_panel" class = "department_content_panel group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
 
 

@@ -55,7 +55,7 @@
 
 
 
-                <div id="content_panel" class = "group_responsiveness">
+                <div id="content_panel" class = "course_content_panel group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                         <div class = "group_name">

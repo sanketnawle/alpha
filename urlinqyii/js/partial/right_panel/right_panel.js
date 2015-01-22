@@ -101,6 +101,9 @@ $(document).ready(function() {
     });
     $(document).on('click','.group_join_button',function(){
         var $group_block = $(this).closest('.suggestion_block');
+        var $join_icon = $(this).find(".gray_add_icon");
+        $(this).addClass("joined");
+        $join_icon.addClass("joined_icon");
         var post_url;
         var post_data = {id:$group_block.attr('data-suggestion_id'),user_id:user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
@@ -134,6 +137,9 @@ $(document).ready(function() {
     });
     $(document).on('click','.suggested_user_follow_button',function(){
         var $user_block = $(this).closest('.suggestion_block');
+        var $follow_icon = $(this).find(".follow_icon");
+        $(this).addClass("followed");
+        $follow_icon.addClass("followed_icon");
         var post_url = base_url+"/user/follow";
         var post_data = {user_id:$user_block.attr('data-suggestion_id'),from_user_id:user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
