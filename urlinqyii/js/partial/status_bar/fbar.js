@@ -885,7 +885,7 @@ $(document).ready(function() {
 
 
                         reset_fbar();
-                        render_post(response['post']);
+                        render_post(response['post'],'prepend');
 
                     }
                     //globals.myDropzone.emit("addedfile", file);
@@ -1058,7 +1058,13 @@ $(document).ready(function() {
 
 
         //Clear all dropzone files
-        globals.myDropzone.files = [];
+        if(globals.profile_open){
+            globals.profileDropzone.files = [];
+        }else{
+            globals.myDropzone.files = [];
+        }
+
+
 
 
         //Clear the text input
@@ -1202,14 +1208,12 @@ $(document).ready(function() {
 
             var event_title = $('#event_title').val();
             var start_date = $('#event_start_date').attr('data-date');
-            var start_time = $('#start_time').attr('data-time');
+            var start_time = $('#event_start_time').attr('data-time');
             var end_date = $('#event_end_date').attr('data-date');
             var end_time = $('#event_end_time').attr('data-time');
             var location = $('#event_location').val();
 
             var description = $('.event_textarea').find('.post_text_area').val();
-
-
 
 
 
@@ -1228,7 +1232,25 @@ $(document).ready(function() {
         }
 
 
-        alert(JSON.stringify(post_data));
+
+        if(post_type == 'opportunity'){
+            post_data['opportunity'] = {};
+
+            var end_date = $('#opportunity_due_date').attr('data-date');
+            var end_time = $('#opportunity_start_time').attr('data-time');
+            var title = $('#opportunity_title').val();
+            var description = $('.opportunity_textarea').find('.post_text_area').val();
+
+            post_data['opportunity']['title'] = title;
+            post_data['opportunity']['description'] = description;
+            post_data['opportunity']['end_date'] = (end_date) ? end_date : '';
+            post_data['opportunity']['end_time'] = (end_time) ? end_time : '';
+            post_data['opportunity']['origin_type'] = globals.origin_type;
+            post_data['opportunity']['origin_id'] = globals.origin_id;
+        }
+
+
+        //alert(JSON.stringify(post_data));
 
 
         return post_data;
@@ -1250,7 +1272,12 @@ $(document).ready(function() {
 
     $(document).on('click', '.post_btn', function(){
         var $fbar_holder = globals.$fbar.find('#fbar_holder');
-
+        var dropzone;
+        if(globals.profile_open){
+            dropzone = globals.profileDropzone;
+        }else{
+            dropzone = globals.myDropzone;
+        }
         var post_type = $fbar_holder.attr('data-post_type');
 
 
@@ -1262,7 +1289,7 @@ $(document).ready(function() {
         //Check if there are any files
         var $file_form = globals.$fbar.find('#fbar_file_form');
         //alert($file_form.children('div.dz-preview').length);
-        console.log(globals.myDropzone.files);
+        console.log(dropzone.files);
 
 
         var post_data = get_post_data();
@@ -1276,7 +1303,7 @@ $(document).ready(function() {
             }
         }else if(post_type == 'notes' || post_type == 'files'){
             //Check if there is atleast one file
-            if(globals.myDropzone.files.length == 0){
+            if(dropzone.files.length == 0){
                 alert('Please upload atleast one file.');
                 return;
             }
@@ -1344,12 +1371,36 @@ $(document).ready(function() {
 
 
 
+        if(post_type == 'opportunity'){
+            if(post_data['opportunity']['title'] == ''){
+                alert('Please input a title');
+                return;
+            }
+
+
+            if(post_data['opportunity']['end_date'] == ''){
+                alert('Please input an end date');
+                return;
+            }
+
+            if(post_data['opportunity']['end_time'] == ''){
+                alert('Please input an end time');
+                return;
+            }
+
+
+        }
+
+
+
+
+
         console.log('SENDING FILES');
 
 
         //If there are any files, submit the post request through dropzone
-        if(globals.myDropzone.files.length > 0){
-            globals.myDropzone.processQueue();
+        if(dropzone.files.length > 0){
+            dropzone.processQueue();
         }else{
             //otherwise, make a post request to post/create manually
             //alert('MANUAL POST REQUEST');
@@ -1369,7 +1420,7 @@ $(document).ready(function() {
 
                     if(response['success']){
                         reset_fbar();
-                        render_post(response['post']);
+                        render_post(response['post'],'prepend');
                     }else{
 
                     }
@@ -1403,7 +1454,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1411,7 +1462,7 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
 
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1424,7 +1475,7 @@ $(document).ready(function() {
 
     $(document).on('click', '#post_attachments',function(e){
         e.stopPropagation();
-        $('.fbar_file_form.dropzone').click();
+        globals.$fbar.find('.fbar_file_form.dropzone').click();
     });
 
 
@@ -1456,7 +1507,7 @@ $(document).ready(function() {
             var start_time_string = ints_to_time(datetime.getHours(),datetime.getMinutes(),datetime.getSeconds());
 
             //Set the default time for the time_inputs
-            var $start_time_input = $('#start_time');
+            var $start_time_input = $('#event_start_time');
             $start_time_input.attr('data-time',start_time_string);
             $start_time_input.val(time_string_to_am_pm_string(start_time_string));
 
@@ -1473,7 +1524,7 @@ $(document).ready(function() {
 
             function verify_date_inputs(){
                 var $event_start_date = $('#event_start_date');
-                var $event_start_time = $('#start_time');
+                var $event_start_time = $('#event_start_time');
                 var $event_end_date = $('#event_end_date');
                 var $event_end_time = $('#event_end_time');
 
