@@ -3,6 +3,56 @@
 class ApiController extends Controller
 {
 
+     
+    public function actionGetUserPictureID(){
+
+     if(!isset($_GET['user_id'])){
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $user_id = $_GET['user_id'];
+        $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+        if($user){
+
+            $file_urls = array();
+            $file_ids = $user->pictureFile->file_url;
+            if(count($file_ids)){
+                for($i=0; $i<count($file_ids); $i++){
+                    $file_id = $file_ids[$i];
+                    $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
+                    if($file){
+                        array_push($file_urls, $file->file_url);
+                    }else{
+                        $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+                $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
+                $this->renderJSON($data);
+                return;
+            }
+        } else{
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
+                $this->renderJSON($data);
+                return;
+            }
+        }
+
+
+            $data = array('success'=>true, 'followers'=>$followers_data);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
+            $this->renderJSON($data);
+            return;
+        }
+    }
+
+
+
     //Error ids
     // 1 - file id is not set
     // 2 - File doesnt exist
