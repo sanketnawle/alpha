@@ -681,9 +681,8 @@ font-weight: 500;
 }
 
 div.providers_scrollable{
-    height: -webkit-calc(100% - 222px);
     height: calc(100% - 222px);
-    overflow-y: scroll;
+    overflow: hidden;
 }
 
 div#create_event_category_label{
