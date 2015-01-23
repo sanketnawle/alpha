@@ -8,7 +8,7 @@
             globals.origin_name = '<?php echo $club->group_name; ?>';
         </script>
 
-        <title><?php echo $club->club_name; ?></title>
+        <title><?php echo $club->group_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
             <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
 

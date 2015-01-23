@@ -1,0 +1,6 @@
+[26-Apr-2014 14:11:13] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8
+[26-Apr-2014 14:27:46] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8
+[26-Apr-2014 22:36:24] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8
+[27-May-2014 08:35:41] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8
+[27-May-2014 08:36:08] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8
+[27-May-2014 09:17:50] PHP Fatal error:  Call to undefined function  getstudentdetail() in /home6/campusla/public_html/urlinq/DEMO/include/header.php on line 8

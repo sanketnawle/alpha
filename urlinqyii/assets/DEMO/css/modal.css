@@ -1,0 +1,92 @@
+body{
+	font-family: 'Helvetica';
+
+}
+td{
+	font-family: 'Helvetica';
+	color:#3a3a3a;
+	text-align: left;
+	text-align: -webkit-left;
+	font-size: 15px;
+
+}
+.parameter{
+	font-family: 'Helvetica';
+	padding-bottom: 25px;
+
+}
+#upload {
+	position: relative;
+	left: -12px;
+	width: 65px;
+	height: 22px;
+	font-size: 13px;
+	top: 18px;
+	color: white;
+	background-color: #568EEE;
+	border-width: 1pt;
+	border-color: #29447e #29447e #1a356e;
+}
+#image{
+	position: absolute;
+	left: 148px;
+	top: 140px;
+
+}
+#file_name{
+	width: 220px;
+	height: 22px;
+	font-size: 15px;
+	position: absolute;
+	left: 150px;
+	top: 13px;
+}
+select{
+	position: relative;
+	-webkit-appearance: none;
+	left: -10px;
+	top: -10px;
+	font-family: "Helvetica";
+	font-size: 16px;
+	border-radius: 3px;
+	border: 1px solid #d3d3da;
+	color: #3a3a3a;
+	text-shadow: 0px 1px 0px white;
+	border-radius: 3px;
+	font-size: 16px;
+	height: 23px !important;
+	width: 115px !important;
+	background-image: none;
+	font-size: 12.5px;
+	padding-left: 7px !important;
+	background-image: url("../images/selectArrows.png"), linear-gradient(#F6F6FF, #E2E2E3);
+	background-repeat: no-repeat;
+	background-position: 92% 55%;
+}
+#file_description {
+	position: absolute;
+	left: 150px;
+	top: 50px;
+
+	width: 220px;
+	border-top: 1px inset;
+	border-bottom-color: #CECECE;
+	border-right-color: #CECECE;
+	border-left-color: #CECECE;
+	border-spacing: 2px;
+	resize:none!important;
+}
+.radio{
+	position: absolute;
+	left:145px;
+}
+label{
+	padding-right: 6px;
+}
+.button{
+	padding-right: 3px;
+}
+#visibility {
+	padding-bottom: 18px !important;
+
+}
