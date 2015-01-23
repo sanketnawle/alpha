@@ -7,6 +7,10 @@ div#page.page_search{
 	top:0px;
 }
 
+a{
+	text-decoration: none;
+}
+
 div.page_search .black_background_row{
     left: 0px;
     display:none;

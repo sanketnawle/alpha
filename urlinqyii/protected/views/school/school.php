@@ -11,7 +11,7 @@
 
     </script>
 
-    
+    <title><?php echo $school->school_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
 
@@ -269,7 +269,7 @@
                                     <div class = "float_Right">
                                         <div class = "group_bar_button_holder">
                                             <div class = "join_button_wrapper">
-                                                <div class = "group_join_button nonmember"><em class = "white_add_icon"></em>Join Club</div>
+                                                <div class = "group_join_button nonmember"><em class = "dark_add_icon"></em>Join Club</div>
                                             </div>
                                         </div>
                                     </div>

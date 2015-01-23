@@ -983,14 +983,15 @@ left: 20px;
     border: 1px solid #C7C7C7;
     
     width: 210px;
-    padding-left: 29px;
-    padding-right: 22px;
+    padding-left: 25px;
+    padding-right: 15px;
     height: 30px;
     background: #fff;
     box-shadow: none;
     outline: none;
     border-radius: 3px;
-    font-size: 13.5px;
+    font-size: 13px;
+    line-height: 30px;
 }
 
 .small_search em{
@@ -1114,6 +1115,7 @@ ul.tabnav_tabs li.active{
     background-size: auto;
     background-repeat: no-repeat;
     z-index: 1000;
+    background-position: 0px 1px;
 }
 
 .tab_members .tab_content_holder .tab_header div.header_sentence, .tab_group_info .tab_content_holder .tab_header div.header_sentence{
@@ -1534,9 +1536,19 @@ textarea:focus:-moz-placeholder {
    #main_panel.group_responsiveness{
         padding-right:0px;
     }
+
+    body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
+        padding-right:220px;
+    }
+
     #right_panel.group_responsiveness{
         display:none;
     }
+
+    body.left_panel_hidden.left_panel_hidden_p2 #right_panel.group_responsiveness{
+        display:block;
+    }
+
     #content_panel.group_responsiveness{
         margin-left: 280px;
     }
@@ -1573,6 +1585,16 @@ textarea:focus:-moz-placeholder {
     }*/
 }
 
+@media screen and (max-width: 1198px) {
+     body.left_panel_hidden.left_panel_hidden_p2 #right_panel.group_responsiveness{
+        display:none!important;
+    }   
+
+        body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
+        padding-right:0px!important;
+    }
+}
+
 @media screen and (max-width: 1090px) {
     #left_panel{
         display:none!important;
@@ -1583,22 +1605,42 @@ textarea:focus:-moz-placeholder {
         margin-left:0px!important;
     }
 
+    body div#content_panel.course_content_panel div.group_info_tab_content div.group_box{
+        max-width:-webkit-calc(100% - 286px)!important;
+        max-width:calc(100% - 286px)!important;
+    }
 
     #nav_bar{
     width: 100%!important;
     right: 0px!important;
-    border-radius: 0px!important;
+    border-radius: 5px!important;
     }
-    #tab_bar{
+
+    body#body_home div#content_panel div#nav_bar{
+        width:551px!important;
+    }
+
+    body div#tab_bar{
     left: 0px!important;
     width: 100%!important;
     }
+
+    body.left_panel_hidden.left_panel_hidden_p2 div#tab_bar{
+        width: 100%!important;
+        left: 0px!important;
+    }
+
+    div.menu_hider{
+        display:none;
+    }
+
+
     #topbar_responsive_holder{
     
     }
 
     #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
-        top:114px;
+        top:62px!important;
     }
 
     .panel_feed div#feed_column.feed_column_group{
@@ -1876,7 +1918,10 @@ color: #121212;
 border-radius: 5px; 
 font-size: 13.5px;
 padding-top: 10px;
-display: block; padding-bottom: 3px; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
+display: block; padding-bottom: 3px; 
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07); 
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07); 
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 }
 
 div.group_info_block.course_description:hover{

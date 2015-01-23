@@ -37,7 +37,7 @@
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
                 <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search courses, clubs, and people">
+                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search your university">
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">
@@ -165,13 +165,13 @@
         <li class="search_result" data-origin_type='{{origin_type}}'>
             {{#ifCond origin_type '==' 'user'}}
                 <a class='profile_link' data-user_id='{{user_id}}' >
+                <span>{{origin_name}}</span>
+                <div class="icon dpt search_result_icon" style="background-image: url('<?php echo  Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');"></div>
             {{else}}
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin_type}}/{{origin_id}}" >
+                <span>{{origin_name}}</span>
+                <div class = "search_result_icon non_profile_icon">{{origin_type}}</div>
             {{/ifCond}}
-
-                <div class="icon dpt" style="background-image: url('<?php echo  Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}');"></div>
-
-                <span>{{origin_type}} - {{origin_name}}</span>
             </a>
         </li>
     </script>

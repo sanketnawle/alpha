@@ -1,21 +1,27 @@
 $ = jQuery;
 $(document).ready(function(){
-    $(document).delegate(".menu_hider.menu_shown", "click", function() {
+    $(document).delegate(".menu_hider.menu_shown", "click", function(e) {
+
+        e.stopPropagation();
         $(this).removeClass("menu_shown");
         $(this).addClass("menu_hidden");
-         $("body").addClass("left_panel_hidden").delay(175).queue(function(next){
+         $("body").addClass("left_panel_hidden").delay(100).queue(function(next){
             $("body").addClass("left_panel_hidden_p2");
             next();
         });
     });
 
-    $(document).delegate(".menu_hider.menu_hidden", "click", function() {
+    $(document).delegate(".menu_hider.menu_hidden", "click", function(e) {
+
+        e.stopPropagation();
         $(this).removeClass("menu_hidden");
         $(this).addClass("menu_shown");
-         $("body").removeClass("left_panel_hidden_p2").delay(100).queue(function(next){
+         $("body").removeClass("left_panel_hidden_p2").delay(50).queue(function(next){
             $("body").removeClass("left_panel_hidden");
             next();
-        });
+        });  
+
+        
     });
 
     $("#page").scroll(function() {
@@ -41,6 +47,7 @@ $(document).ready(function(){
             hide_search_results();
         }else{
             $('.prelist').show();
+            $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});
         }
     });
 
@@ -50,21 +57,17 @@ $(document).ready(function(){
         var key = event.which;
             switch(key) {
               case 37:
-                  alert('LFET');
                   break;
               case 38:
-                  alert('UP');
                   break;
               case 39:
 
-                  alert('RIGHT');
                   // Key right.
                   break;
               case 40:
 
                   $('.search_result').first().hover();
 
-                  alert('down');
                   // Key down.
                   break;
         }
@@ -81,6 +84,7 @@ $(document).ready(function(){
         }else{
             clear_search_results();
             hide_search_results();
+            $(".topbar .center form").css({"border-radius":"4px"});
         }
 
 
@@ -107,11 +111,12 @@ $(document).ready(function(){
                 if(json_data['results'].length == 0){
                     clear_search_results();
                     hide_search_results();
+                    $(".topbar .center form").css({"border-radius":"4px"});
                 }else{
                     $.each(json_data['results'], function(index, result_json){
-                        console.log(result_json);
                         show_search_result(result_json);
                     });
+                    $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});
                 }
             }else{
 
@@ -123,7 +128,31 @@ $(document).ready(function(){
         var source = $('#search_result_template').html();
         var template = Handlebars.compile(source);
         var generated_html = template(result_json);
-        $('.prelist').append(generated_html).hide().fadeIn(100);
+        $('.prelist').append(generated_html).hide().fadeIn(50);
+        
+        var $search_result_element = $(".search_result");
+        $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});
+        $search_result_element.each(function () {
+            var search_result_element_type = $(this).attr("data-origin_type");
+            var $search_result_icon = $(this).find(".search_result_icon.non_profile_icon");
+            var search_result_element_type = $(this).attr("data-origin_type");
+            if(search_result_element_type == 'class'){
+                $search_result_icon.addClass('class');
+
+            }
+            if(search_result_element_type == 'school'){
+                $search_result_icon.addClass('school');
+
+            }
+            if(search_result_element_type == 'department'){
+                $search_result_icon.addClass('department');
+
+            }
+            if(search_result_element_type == 'club'){
+                $search_result_icon.addClass('club');
+
+            }
+        });
     }
 
 
@@ -155,6 +184,7 @@ $(document).ready(function(){
 
     $(document).on('click', function(){
         $('.prelist').hide();
+        $(".topbar .center form").css({"border-radius":"4px"});
     });
 
 });

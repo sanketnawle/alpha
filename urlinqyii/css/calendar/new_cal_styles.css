@@ -245,6 +245,10 @@ div.event_name.month_event_name
     overflow: visible;
 }
 
+.ul-calendar .leftbar .slimScrollDiv {
+    overflow: visible !important;
+}
+
 div.event_holder.day_event_holder.colorfied > div.event_type{
 	border-color:#FFF;
 }

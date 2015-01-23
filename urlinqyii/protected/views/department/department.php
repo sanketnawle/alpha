@@ -10,7 +10,7 @@
 
     </script>
 
-
+    <title><?php echo $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
@@ -58,7 +58,7 @@
 
 
 
-                <div id="content_panel" class = "group_responsiveness">
+                <div id="content_panel" class = "department_content_panel group_responsiveness">
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'department','origin_id'=>$department->department_id,'origin'=>$department)); ?>
 
 

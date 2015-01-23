@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
         get_user_groups();
     }
 
-
+    var provider_height;
     function get_user_groups(){
         jQuery.getJSON(base_url + '/user/getGroupData', function(json_data){
             var $classes_div = $('.providers.class');
@@ -43,7 +43,17 @@ jQuery(document).ready(function(){
         $(group_div_selector).append(generated_html);
 
         update_color_index();
+        provider_height = $('.providers_scrollable').height();
+        $('.providers_scrollable').slimScroll({
+            height: provider_height
+        });
     }
+    $(window).on('resize',function(){
+        provider_height = $('.leftbar').height() - 222;
+        $('.providers_scrollable').slimScroll({
+            height: provider_height
+        });
+    })
 
     function update_color_index(){
         color_index++;
@@ -77,7 +87,5 @@ jQuery(document).ready(function(){
             });
         }
     });
-    $(function(){
-        $('.providers_scrollable').slimScroll();
-    });
+
 });
