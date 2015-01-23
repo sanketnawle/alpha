@@ -1110,11 +1110,20 @@ class SiteController extends Controller
 
     public function actionFileUpload() {
 
-        include "file_upload.php";
+        include_once "file_upload.php";
+
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $this->renderJSON(array('success'=>false, 'error_msg'=>'user is not logged in'));
+            return;
+        }
+
+        $path = $_POST['path'];
 
 
 
-        $data = file_upload($_FILES);
+        $data = file_upload($_FILES, $path, $user->user_id);
         $this->renderJSON($data);
         return;
 
@@ -1122,7 +1131,7 @@ class SiteController extends Controller
 
     }
 
-public function actionSendReset(){
+    public function actionSendReset(){
         if(!isset($_POST['email'])){
             $data = array('success'=>false, 'error_id'=>1);
             $this->renderJSON($data);

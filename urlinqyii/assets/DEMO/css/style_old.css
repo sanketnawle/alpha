@@ -1,0 +1,584 @@
+@import url("http://fonts.googleapis.com/css?family=Lato");
+
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background: white;
+}
+
+a:link {text-decoration:none; color: #848484;}
+a:visited {text-decoration:none; color: #848484}
+a:hover {text-decoration:underline; color: #848484}
+a:active {text-decoration:none; color: #848484} 
+
+#banner
+{	
+position: absolute;
+top: 0px;
+left: 0px;
+right: 0px;
+
+width: 100%;
+height: 60px;
+z-index: 12;
+
+background-color:#06E1FF;
+}
+
+#banner #logo
+{
+position: absolute;
+text-align:center;
+float: left;
+margin-top:0px;
+margin-bottom:0px;
+margin-right:0px;
+margin-left:110px;
+
+width:200px;
+height:60px;
+}
+
+#banner #logo #temporaryLogo
+{
+position: absolute;
+left: 0px;
+top: 0px;
+font-size: 2.8em;
+color:white;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+#banner #searchwrap
+{
+position: absolute;
+top:0px;
+left:80%;
+width:160px;
+height:50px;
+}
+
+#banner #searchwrap #search
+{
+position:absolute;
+top:10px;
+left:0px;
+height: 30px;
+width: 180px;
+background-image: url(../images/search.png) ;
+background-position: left center;
+background-repeat:no-repeat;
+font-size:15px;
+padding-left:30px;
+
+border-radius: 3px;
+border: none;
+}
+
+#banner #searchwrap #search {
+  outline:none;
+}
+#sidebar-fix
+{	
+position: absolute;
+position: fixed;
+top: 0px;
+left: 0px;
+width: 18%;
+min-height: 200%;
+z-index: 9;
+
+box-shadow: 2px 2px 2px #D8D8D8;
+//border-right: 1px solid #aaaaaa;
+
+}
+
+#sidebar-nonfix
+{
+position: absolute;
+top: 60px;
+left: 0px;
+width: 18%;
+min-height: 100%;
+z-index: 9;
+}
+
+#sidebar-nonfix #userwrap
+{
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100px;
+}
+
+#sidebar-nonfix #userwrap #frame
+{
+position: absolute;
+top: 0px;
+left: 0px;
+width: 60px;
+height: 60px;
+
+margin-top:25px;
+margin-bottom:0px;
+margin-right:5px;
+margin-left:14px;
+}
+
+#sidebar-nonfix #userwrap #frame #photo
+{
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+border-radius: 50px/50px;
+}
+
+#sidebar-nonfix #userwrap #description
+{
+position: absolute;
+top: 0px;
+right: 0px;
+min-height: 100PX;
+margin-top: 15px;
+margin-bottom: 0px;
+margin-right: 60px;
+margin-left: 0px;
+width: 100px;
+}
+
+#sidebar-nonfix #userwrap #description #name
+{
+position: absolute;
+left: 0px;
+bottom: 0px;
+width: 150PX;
+height:75px;
+}
+
+#sidebar-nonfix #userwrap #description #name #channel:link
+{
+color: #464B53;
+font-weight:bold;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+text-decoration: none;
+}
+#sidebar-nonfix #userwrap #description #name #channel:visited
+{
+font-weight:bold;
+color: #464B53;
+text-decoration: none;
+}
+#sidebar-nonfix #userwrap #description #name #channel:hover
+{
+font-weight:bold;
+text-decoration: underline;
+}
+#sidebar-nonfix #userwrap #description #name #channel:active
+{
+font-weight:bold;
+text-decoration: none;
+}
+
+#cover
+{	
+position: absolute;
+top: 60px;
+left: 18%;
+width: 82%;
+height: 200px;
+z-index: 8;
+
+background-color: black;
+background-image: url(../images/cover.png);
+background-position: left center;
+background-repeat:no-repeat;
+//not necessary need if we have a good cover picture
+ 
+
+}
+
+#titlewrap
+{	
+position: absolute;
+right: 0px;
+top:0px;
+text-align:center;
+min-width: 300px;
+height: 305px;
+min-width: 45%;
+z-index: 10;
+
+}
+
+#titlewrap #title
+{	
+text-align:center;
+position: absolute;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+font-size: 1.6em;
+color: white;
+bottom:0px;
+max-width:75%;
+margin-bottom: 55px;
+}
+
+#titlewrap #cover-frame
+{	
+position: absolute;
+left: 75%;
+bottom: 10px;
+width:130px;
+height: 130px;
+
+border-style: solid;
+border-color: white;
+border-width: 2px;
+border-radius: 4px;
+}
+
+#titlewrap #cover-frame #department-photo
+{
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+
+border-radius: 4px;
+}
+
+#navigator
+{
+position: absolute;
+top: 260px;
+left: 18%;
+right: 0px;
+width: 82%;
+height: 45px;
+z-index: 8;
+
+background-color:#C8E9FF;
+
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+font-size: 0.9em;
+}
+
+#navigator #t0
+{
+position: absolute;
+width:90px;
+height:100%;
+left: 20px;
+bottom: 0px;
+text-align: center;
+line-height:300%;
+}
+
+#navigator #t1
+{
+position: absolute;
+width:90px;
+height:100%;
+left: 110px;
+bottom: 0px;
+text-align: center;
+line-height:300%;
+}
+
+#navigator #t2
+{
+position: absolute;
+width:90px;
+height:100%;
+left: 200px;
+bottom: 0px;
+text-align: center;
+line-height:300%;
+}
+
+
+#navigator a
+{
+color: #666666;
+background-color:#ACC0B1;
+text-decoration:none !important;
+}
+
+.tab
+{
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+}
+
+.here
+{
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+background-color: white;
+font-weight: bold;
+color:#323232;
+}
+
+.tab:hover
+{
+    background-color:#D8D8D8;
+}
+
+
+#tabs
+{	
+position: absolute;
+top: 210px;
+left: 18%;
+right: 0px;
+width: 62%;
+height: 100%;
+}
+
+#tabs #loader
+{
+position: absolute;
+top:95px;
+left:20px;
+right:20px;
+min-height: 100%;
+background-color: white;
+z-index: 10;
+}
+
+#calender-fix
+{	
+position: absolute;
+position: fixed;
+float: right;
+top: 0px;
+right: 0px;
+width: 20%;
+min-height: 200%;
+z-index: 7;
+
+border-style:solid;
+border-width:1.5px;
+border-color:#EDEDD9;
+}
+
+#calender-nonfix
+{
+position: absolute;
+top: 305px;
+left: 80%;
+width: 20%;
+min-height: 100%;
+z-index: 7;
+overflow:auto;
+}
+
+#calender-nonfix #title
+{
+position: absolute;
+top:0px;
+left:0px;
+width: 100%;
+height: 60px;
+}
+
+#calender-nonfix #title #make
+{
+position: absolute;
+top:0px;
+left:0px;
+width: 40px;
+height: 40px;
+
+margin-top:12px;
+margin-bottom:0px;
+margin-right:10px;
+margin-left:10px;
+}
+
+#calender-nonfix #title #make #titleicon
+{
+position: absolute;
+top:0px;
+left:0px;
+width: 40px;
+height: 40px;
+}
+
+#calender-nonfix #title #today
+{
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+font-size: 1.1em;
+color:#323232;
+
+position: absolute;
+top:0px;
+right:0px;
+width: 77%;
+
+margin-top:28px;
+margin-bottom:0px;
+margin-right:0px;
+margin-left:10px;
+}
+
+#calender-nonfix #events
+{
+position: absolute;
+top:80px;
+left:0px;
+width: 100%;
+min-height: 100%;
+}
+
+#poster
+{
+position: absolute;
+top:30px;
+height:100px;
+width:100%;
+}
+
+
+#poster #posterwrap
+{
+position: absolute;
+top: 30px;
+left: 20px;
+width: 65%;
+height: 49%;
+background-color: #cccccc;
+-webkit-border-radius: 2;
+-moz-border-radius: 2;
+border-radius:2;
+}
+
+#poster #posterwrap #postto
+{
+position: absolute;
+top:10px;
+left:10px;
+font-size: 0.8em;
+font-family: Verdana, Geneva, sans-serif;
+color:color:#323232;
+}
+
+#poster #posterwrap #pbutton
+{
+  position: absolute;
+  right:20px;
+  bottom: 9px;
+  height:30px;
+  width:60px;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #2BADEB;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size:0.9em;
+  text-decoration: none;
+  border: none;
+  z-index:13;
+}
+
+#poster #posterwrap #pbutton:hover
+{
+  background: #323232;
+  text-decoration: none;
+}
+
+#poster #posterwrap #text
+{
+position:absolute;
+left:6px;
+bottom:5px;
+width:80%;
+height:30px;
+font-size:1.1em;
+z-index:5;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+border: 2px solid #cccccc;
+line-height:30px;
+resize: none;
+outline: none;
+box-shadow: none;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+}
+
+#poster #wedge { 
+position: absolute;
+top: 23px;
+left: 30px;
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-bottom: 7px solid #cccccc;
+}
+
+#poster #chaticon
+{
+position: absolute;
+left:0;
+margin-left:22px;
+top:-10px;
+height:30px;
+width:30px;
+background-image: url('../../images/chat.png');
+background-size: cover;
+}
+
+
+#topics
+{
+position: absolute;
+top:130px;
+min-height:100%;
+width:100%;
+border-top: 1.5px solid #cccccc;
+
+font-family: Verdana, Geneva, sans-serif;
+font-size:0.9em;
+color:#323232;
+}
+
+.anevent{
+top: 0px;
+left: 0px;
+width: 100%;
+height: 80px;
+font-family: Verdana,Geneva,sans-serif;
+color: rgb(50, 50, 50);
+font-size: 0.9em;}
+
+.anicon{
+
+top: 20px;
+left: 10px;
+width: 45px;
+height: 45px;
+background-image: url("../images/event.png");
+background-size: cover;
+background-repeat: no-repeat;
+text-align: center;
+line-height: 55px;"
+}
+
+.what{
+top: 20px;
+left: 65px;
+}
+.where
+{
+
+top: 45px;
+left: 65px;
+}

@@ -239,7 +239,9 @@ word-break: break-word;
 -webkit-hyphens: auto;
 -moz-hyphens: auto;
 hyphens: auto;
+margin-bottom: 10px;
 font-size: 14px;
+display: block;
 }
 
 .post_tools .post_lc{
@@ -335,9 +337,9 @@ background-position: 0px -1205px;
 border: none;
 display: inline-block;
 /* float: left; */
--moz-transform: scale(0.42); 
--webkit-transform: scale(0.42); 
-transform: scale(0.42);
+-moz-transform: scale(0.49); 
+-webkit-transform: scale(0.49); 
+transform: scale(0.49);
 width: 38px;
 box-shadow: none;
 float: left;
@@ -500,7 +502,7 @@ margin-right: 3px;
 
 .post_tools{
 display: inline-block;
-margin-top: 10px; 
+margin-top: 7px; 
 margin-left: -2px;
 position: relative;
 width: 524px;

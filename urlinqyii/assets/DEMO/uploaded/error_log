@@ -1,0 +1,5 @@
+[26-Sep-2014 00:50:01 America/Denver] PHP Notice:  Array to string conversion in /home6/campusla/public_html/urlinq/DEMO/uploaded/test.php on line 5
+[26-Sep-2014 01:40:35 America/Denver] PHP Warning:  mysql_query() expects parameter 1 to be string, object given in /home6/campusla/public_html/urlinq/DEMO/uploaded/test.php on line 10
+[26-Sep-2014 01:42:50 America/Denver] PHP Warning:  mysql_query() expects parameter 1 to be string, object given in /home6/campusla/public_html/urlinq/DEMO/uploaded/test.php on line 10
+[26-Sep-2014 01:43:01 America/Denver] PHP Warning:  mysql_query() expects parameter 1 to be string, object given in /home6/campusla/public_html/urlinq/DEMO/uploaded/test.php on line 10
+[26-Sep-2014 01:43:22 America/Denver] PHP Warning:  mysql_query() expects parameter 1 to be string, object given in /home6/campusla/public_html/urlinq/DEMO/uploaded/test.php on line 11

@@ -1613,8 +1613,13 @@ textarea:focus:-moz-placeholder {
     #nav_bar{
     width: 100%!important;
     right: 0px!important;
-    border-radius: 0px!important;
+    border-radius: 5px!important;
     }
+
+    body#body_home div#content_panel div#nav_bar{
+        width:551px!important;
+    }
+
     body div#tab_bar{
     left: 0px!important;
     width: 100%!important;
@@ -1635,7 +1640,7 @@ textarea:focus:-moz-placeholder {
     }
 
     #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
-        top:114px;
+        top:62px!important;
     }
 
     .panel_feed div#feed_column.feed_column_group{

@@ -57,21 +57,17 @@ $(document).ready(function(){
         var key = event.which;
             switch(key) {
               case 37:
-                  alert('LFET');
                   break;
               case 38:
-                  alert('UP');
                   break;
               case 39:
 
-                  alert('RIGHT');
                   // Key right.
                   break;
               case 40:
 
                   $('.search_result').first().hover();
 
-                  alert('down');
                   // Key down.
                   break;
         }
@@ -118,7 +114,6 @@ $(document).ready(function(){
                     $(".topbar .center form").css({"border-radius":"4px"});
                 }else{
                     $.each(json_data['results'], function(index, result_json){
-                        console.log(result_json);
                         show_search_result(result_json);
                     });
                     $(".topbar .center form").css({"border-radius":"4px 4px 0px 0px"});

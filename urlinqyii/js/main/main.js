@@ -37,7 +37,6 @@ $(document).ready(function(){
 
         var scroll_offset_top = $page.scrollTop();
         ////console.log("OFFSET");
-        console.log(scroll_offset_top);
 //        alert(scroll_offset_top);
 
         var y = $page.scrollTop()*0.32;
@@ -460,8 +459,6 @@ $(document).ready(function(){
             init: function() {
                 this.on("success", function(file, response) {
 
-                    console.log('cover upload response');
-                    console.log(response);
 
                     if(response['success']){
                         $('#cover_photo').css({'background-image': 'url("' + globals.base_url + response['file']['file_url'] + '")'});
@@ -496,7 +493,6 @@ $(document).ready(function(){
 
 
     }catch(err){
-        console.log('User is not admin so cover photo form is not allowed');
     }
     $(function(){
         $('p.founded_text').slimScroll({

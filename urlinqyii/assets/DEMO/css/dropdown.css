@@ -1,0 +1,194 @@
+
+.cd-dropdown,
+.cd-select {
+	position: relative;
+	width: 125px;
+	margin: 20px auto;
+	display: block;
+}
+
+.cd-dropdown > span {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	color: #616161;
+	font-size: 13px;
+	background: #fff;
+	display: block;
+	position: relative;
+	cursor: pointer;
+}
+
+.cd-dropdown > span:after {
+	content: '\25BC';
+	position: absolute;
+	right: 0px;
+	width: 10px;
+	text-align: center;
+	font-size: 11px;
+	padding: 10px;
+	line-height: 0px;
+	border-left: 1px solid #ddd;
+}
+
+.cd-dropdown.cd-active > span:after {
+	content: '\25B2';
+}
+
+.cd-dropdown ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: relative;
+}
+
+.cd-dropdown ul li {
+	display: block;
+	top:24px;
+}
+
+.cd-dropdown ul li span {
+	width: 100%;
+	background: #fff;
+	line-height: 20px;
+	display: block;
+	color: #616161;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.cd-dropdown > span,
+.cd-dropdown ul li span {
+	-webkit-backface-visibility: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.cd-dropdown > span span[class^="icon-"],
+.cd-dropdown > span span[class*=" icon-"]{
+}
+
+/* Select fallback styling */
+.cd-select {
+	border: 1px solid #ddd;
+}
+
+
+.cd-dropdown {
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	-o-perspective: 800px;
+	-ms-perspective: 800px;
+	perspective: 800px;
+}
+
+.cd-dropdown > span {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transform-origin: 50% 0%;
+	-moz-transform-origin: 50% 0%;
+	-o-transform-origin: 50% 0%;
+	-ms-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+
+	-webkit-transition: -webkit-transform .3s;
+	-moz-transition: -moz-transform .3s;
+	-o-transition: -o-transform .3s;
+	-ms-transition: -ms-transform .3s;
+	transition: transform .3s;
+}
+
+.cd-dropdown > span:active {
+	-webkit-transform: rotateX(60deg);
+	-moz-transform: rotateX(60deg);
+	-o-transform: rotateX(60deg);
+	-ms-transform: rotateX(60deg);
+	transform: rotateX(60deg);
+}
+
+.cd-dropdown > span,
+.cd-dropdown ul li:nth-last-child(-n+3) span {
+	padding-left: 32px;
+	background-color: rgb(234,234,234);
+}
+
+.cd-dropdown ul {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+}
+
+.cd-dropdown ul li {
+	position: absolute;
+	width: 100%;
+}
+
+.cd-active.cd-dropdown > span {
+	color: #3576E7;
+	padding-left: 32px;
+}
+
+.cd-active.cd-dropdown > span,
+.cd-active.cd-dropdown ul li span {
+	box-shadow: 0 1px 0px #AFAFAF;
+	border: 1px solid #AFAFAF;
+	border-bottom: 0px solid;
+}
+
+.cd-active.cd-dropdown ul li span {
+	-webkit-transition: all 0.2s linear 0s;
+	-moz-transition: all 0.2s linear 0s;
+	-ms-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s;
+}
+
+.cd-active.cd-dropdown ul li span:hover {
+	background: #3576E7;
+	color: #fff;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.svg#icomoon') format('svg'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.cd-dropdown span[class^="icon-"]:before, 
+.cd-dropdown span[class*=" icon-"]:before {
+	font-family: 'icomoon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	position: absolute;
+	font-size: 13px;
+	line-height: 38px;
+	width: 12px;
+	top: 50%;
+	left: 10px;
+	margin-top: -17px;
+	text-align: center;
+}
+.icon-globe:before {
+	content: "\e602";
+}
+.icon-users:before {
+	content: "\e600";
+}
+.icon-briefcase:before {
+	content: "\e601";
+}
