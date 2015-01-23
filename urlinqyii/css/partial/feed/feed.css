@@ -80,7 +80,7 @@ border-radius: 0px;
 height: auto;
 cursor: default;
 padding-bottom: 7px;
-border-bottom: 1px solid #eee;
+border-bottom: 1px solid #f5f5f5;
 }
 
 .post_tag{
@@ -350,7 +350,7 @@ top: -5px;
 
 .post_lc .post_liked .post_like_icon{
     background-image: url(../../../assets/small_icons.png); background-size: auto; 
-    background-position: -123px -1205px; border: none; display: inline-block; /* float: left; */ -moz-transform: scale(.67); -webkit-transform: scale(.67); transform: scale(0.42); width: 38px; box-shadow: none; float: left; height: 37px; position: relative; top: -5px;
+    background-position: -123px -1205px; border: none; display: inline-block; /* float: left; */ -moz-transform: scale(.49); -webkit-transform: scale(.49); transform: scale(0.49); width: 38px; box-shadow: none; float: left; height: 37px; position: relative; top: -5px;
 }
 
 .post_lc .post_like:hover > p.post_like_link{
@@ -660,7 +660,7 @@ div.master_comments{
     margin: 0px 2px 0px auto;
     width: 550px;
     border-bottom: none;
-    padding-top: 3px;
+    padding-top: 1px;
     border-radius: 0;
     position: relative;
     background: rgba(255, 255, 255, 0.6);
@@ -677,7 +677,7 @@ margin-top: 0px;
 padding-bottom: 6px;
 border-radius: 0px;
 position: relative;
-border-bottom: dotted 1px #ddd;
+border-bottom: 1px solid #f5f5f5;
 }
 
 .comments:hover{
@@ -1801,7 +1801,7 @@ div.mc_question{
 
 div.question_subtext_span{
 margin: 8px auto 12px;
-width: 95%;
+width: 99%;
 font-size: 14px;
 color: #444;
 }

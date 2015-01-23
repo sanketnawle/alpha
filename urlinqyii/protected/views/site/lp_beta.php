@@ -516,7 +516,7 @@ header('location:home.php');
                           </span>
                         </button>
                         
-                        <div class = "fb_signin_wrap">
+                        <!--<div class = "fb_signin_wrap">
                           <button name = "fb_signin" id = "fb_signin" onclick="fb_login();" type = "button" class = "rounded Button fb_signin smallBtn">
                             <em class = "fb_icon">
                             </em>
@@ -529,7 +529,7 @@ header('location:home.php');
                               Sign In with Facebook
                             </div>
                           </div>
-                        </div>
+                        </div>-->
 
                     </form>
                   </div>
@@ -624,8 +624,8 @@ header('location:home.php');
                       <h4 class = "header">Sign Up
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup">45</div>
-                      <div class = "signup-slog">seconds to get started</div>
+                      <div class = "time-to-signup">Learn extra</div>
+                      <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>
                   <div class = "registration-form">
@@ -663,13 +663,13 @@ header('location:home.php');
                         </ul>
                       </div>
                       <div class = "fname-lname-sec registration-sec-texts">
-                        <input type = "text" name ="firstname" id = "fname" autocomplete = "on" placeholder = "First Name"
+                        <input type = "text" name ="firstname" id = "fname" autocomplete = "on" placeholder = "First name"
                           value="<?php if(isset($_SESSION['register_firstname'])){
                                              echo $_SESSION['register_firstname'];
                                         }else{
                                         }                                            
                                   ?>">
-                        <input type = "text" name ="lastname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last Name"
+                        <input type = "text" name ="lastname" class = "lname" id = "lname" autocomplete = "on" placeholder = "Last name"
                          value="<?php if(isset($_SESSION['register_lastname'])){
                                              echo $_SESSION['register_lastname'];
                                         }else{
@@ -677,7 +677,7 @@ header('location:home.php');
                                   ?>">
                       </div>
                       <div class = "registration-sec-texts">
-                        <input type = "email" name = "email" autocomplete = "off" id="email" placeholder = "Your School Email"
+                        <input type = "email" name = "email" autocomplete = "off" id="email" placeholder = "School email"
                         value="<?php if(isset($_SESSION['register_email'])){
                                              echo $_SESSION['register_email'];
                                         }else{
@@ -699,7 +699,7 @@ header('location:home.php');
                     </form>
                   </div>
 
-                  <div class = "footer-sec">
+                  <!--<div class = "footer-sec">
                     <div class = "leftLine">
                     </div>
                     <div class = "or-head">
@@ -712,7 +712,7 @@ header('location:home.php');
                       <span class = "buttonText">Continue with Facebook</span>
                     </button>
 
-                  </div>
+                  </div>-->
                   <div class = "lp_terms">
                     <p class = "lp_terms_p">
                       By clicking Create Your Account or Continue with Facebook, you agree to our <a href = "/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "/legal/privacy" target = "_blank">Data Use Policy</a>.
