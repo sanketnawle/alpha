@@ -4,13 +4,13 @@
     {
 
          
-        public function actionGetUserPictureID(){
+        public function actionGetUserPictureID() {
 
          if(!isset($_GET['user_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
                 $this->renderJSON($data);
                 return;
-            }
+        }
             $user_id = $_GET['user_id'];
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
             if($user){
@@ -32,19 +32,13 @@
                     $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
-                }
-            } else{
+                } else {
                     $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
                     $this->renderJSON($data);
                     return;
-                }
             }
 
-
-                $data = array('success'=>true, 'followers'=>$followers_data);
-                $this->renderJSON($data);
-                return;
-            }else{
+            } else{
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
                 $this->renderJSON($data);
                 return;
