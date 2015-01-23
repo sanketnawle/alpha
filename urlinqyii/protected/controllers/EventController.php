@@ -16,26 +16,52 @@ class EventController extends Controller
         }
 
 
+        $origin_id = '';
+        try{
+            $origin_id = $event['origin_id'];
+        }catch(Exception $e){
+            $origin_id = $event->origin_id;
+        }
+
+
         if($origin_type == 'class'){
 
+
             $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id',array(':user_id'=>$user->user_id,':class_id'=>$event['origin_id']));
-            $class = $class_user->class;
+
             if($class_user){
                 $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
                 return $color;
-            }else if($user->user_id == $class->professor_id){
-                $color = Color::model()->find('color_id=:id',array(':id'=>$class->color_id));
-                return $color;
             }else{
-                $data = array('success'=>false,'error_id'=>2,'user_id'=>$user->user_id, 'class_id'=>$event['origin_id']);
-                $this->renderJSON($data);
-                return;
+                $class = ClassModel::model()->find('class_id=:id', array(':id'=>$origin_id));
+                if($class){
+                    if($user->user_id == $class->professor_id){
+                        $color = Color::model()->find('color_id=:id',array(':id'=>$class->color_id));
+                        return $color;
+                    }else{
+                        $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                        return $color;
+                    }
+                }else{
+                    $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                    return $color;
+                }
+
+//                $data = array('success'=>false,'error_id'=>2,'user_id'=>$user->user_id, 'class_id'=>$event['origin_id']);
+//                $this->renderJSON($data);
+//                return;
             }
 
         }else if($origin_type == 'club' || $origin_type == 'group'){
             $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$event['origin_id']));
-            $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
-            return $color;
+            if($group_user){
+                $color = Color::model()->find('color_id=:id',array(':id'=>$group_user->color_id));
+                return $color;
+            }else{
+                $color = Color::model()->find('color_id=:id',array(':id'=>3));
+                return $color;
+            }
+
         }else {
             $color = Color::model()->find('color_id=:id',array(':id'=>3));
             return $color;

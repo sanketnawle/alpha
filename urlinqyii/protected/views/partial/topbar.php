@@ -29,7 +29,7 @@
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
-                <div class = "menu_hider menu_shown">
+                <div class = "menu_hider menu_hidden">
                     <div class = "menu_hider_icon"></div>
                 </div>
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"><span></span></a>

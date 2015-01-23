@@ -779,9 +779,9 @@ class PostController extends Controller
                     $post->save(false);
                     if($post){
                         include_once "notification/notification.php";
-
-                        send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
-
+                        if($post->user_id != $user->user_id){
+                           send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
+                        }
                         $return_data = array('success'=>true);
                         $this->renderJSON($return_data);
                         return;
