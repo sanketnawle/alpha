@@ -1,0 +1,41 @@
+﻿
+
+<div ng-include="getHeaderUrl()"></div>
+<div class="header row2 week">
+    <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}} {{getDate(i)}}</span>
+</div>
+<div class="week-view grid-view toscroll">
+    <div class="time-strip">
+        <div class="time all_day">all-day</div>
+        <div class="time"></div>
+        <div class="time" ng-repeat="i in [] | range:1:12">{{i}} am</div>
+        <div class="time">12 pm</div>
+        <div class="time" ng-repeat="i in [] | range:1:12">{{i}} pm</div>
+    </div>
+    <div class="week-grid grid" id="week-grid"></div>
+</div>
+
+
+
+<div id="inspect_event_popup_week" class="inspect_event_popup popup">
+    <div id="inspect_event_title"></div>
+    <div id="inspect_event_exit_button" class="popup_exit_button"></div>
+    <div id="inspect_event_description"></div>
+    <div id="inspect_event_delete_button_week"><span class = "delete_icon"></span><span class = "delete_text">Delete</span></div>
+    <div id="inspect_event_edit_button" class="popup_edit_button">Edit<strong></strong></div>
+</div>
+
+
+<div id="create_week_day_event_popup" class="create_event_popup popup">
+    <div id="create_week_day_event_exit_button" class="popup_exit_button"></div>
+    <div id="create_week_day_event_text"><div class = "create_event_popup_title">Create event</div></div>
+    <span class = "create_event_when_label">When: </span><div id="create_week_day_event_when"></div>
+
+    <form id='create_week_day_event_form' method="post" action="/event/create">
+        <input id="create_week_day_event_input" class='popup_create_event_name_input' name="event_input" type="text" class="text_input">
+        <label for="create_week_day_event_input">What: </label>
+        <div class="cb-example">e.g., Meeting with professor</div>
+        <input type="submit" class="" id="create_week_day_event_button" name="create_week_day_event_button" value="Add event">
+    </form>
+
+</div>

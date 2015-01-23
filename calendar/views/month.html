@@ -1,0 +1,7 @@
+﻿<div ng-include="'views/header.html'"></div>
+<div class="header row2 month">
+    <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}}</span>
+</div>
+<div class="month-view grid-view">
+    <div class="month-grid grid" id="month-grid"></div>
+</div>

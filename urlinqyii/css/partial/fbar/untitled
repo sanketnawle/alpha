@@ -1,0 +1,300 @@
+div#fbar_new{
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;    
+    margin-bottom: 12px; 
+    border-radius: 5px;  
+    position: relative;
+    height: auto;
+    word-wrap: break-word;
+    min-height: 60px;
+    -moz-transition: height 450ms ease;
+    -webkit-transition: height 450ms ease;
+    transition: height 450ms ease;
+}
+
+.post_form_template{
+    display:none;
+}
+
+
+
+div#fbar_new section#fbar_buttons{
+    -moz-transition: opacity 450ms ease; 
+    -webkit-transition: opacity 450ms ease; 
+    transition: opacity 450ms ease;
+    padding: 0 1px 0 7px;
+    text-align: center;
+    height: auto;
+}
+
+section#fbar_buttons .fbar_buttonwrapper{
+    float: left; position: relative; 
+    top: 0px; left: 0; 
+    cursor: pointer;
+    width: 180.5px; 
+    height: 37px; 
+    padding: 12px 0px 11px 0px; color: #696969; 
+    display: inline-block;
+    font-size: 15px; opacity: .9; font-weight: normal; text-decoration: none; -webkit-font-smoothing: antialiased; 
+    background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center;
+
+}
+
+section#fbar_buttons .fbar_buttonwrapper:last-of-type{
+    background-image:none!important;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon{
+    background-image: url(../../../assets/Fbar_icon_map.png);
+    -moz-transform: scale(.87);
+    -webkit-transform: scale(.87);
+    transform: scale(.87);  
+    background-size: auto;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    margin-left: 27px;
+    float: left;
+    margin-top: 3px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper .fbar_button_text{
+    font-weight: 600;
+
+    display: inline-block;
+    float: left;
+    margin-left: 0px;
+    width: 87px;
+    text-align: center;
+    margin-top: 9px;
+}
+
+section#fbar_buttons .fbar_buttonwrapper:hover{
+    color:#222;
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    -ms-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: .06s;
+    -moz-transition-duration: .06s;
+    -ms-transition-duration: .06s;
+    -o-transition-duration: .06s;
+    transition-duration: .06s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;    
+}
+
+.fbar_buttonwrapper > i{
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -ms-transition-property: transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: .06s;
+    -moz-transition-duration: .06s;
+    -ms-transition-duration: .06s;
+    -o-transition-duration: .06s;
+    transition-duration: .06s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -ms-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+
+section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon{
+    -moz-transform: scale(.9);
+    -webkit-transform: scale(.9);
+    transform: scale(.9);
+    
+}
+
+
+.fbar_button_icon#fbar_icon_discuss{
+    width: 42px;
+    
+    height: 44px;
+    left: 2px;
+    background-position: 0px -60px!important;
+}
+
+.fbar_button_icon#fbar_icon_notes{
+    width: 42px; 
+    height: 46px;
+    
+    background-position: 0px -14px;
+    top: -3px;
+    left: 10px;
+}
+
+.fbar_button_icon#fbar_icon_question{
+    background-position: 0px -152px;
+    
+    width: 40px;
+    height: 46px;
+    top: -3px;
+}
+
+.fbar_button_icon#fbar_icon_event{
+    
+}
+
+.fbar_button_icon#fbar_icon_opportunity{
+    
+}
+
+div.dark_overlay#dark_overlay_fbar{
+
+}
+
+div.dark_overlay#dark_overlay_fbar.active{
+    z-index: 100000;
+    opacity:1;
+}
+
+form#fbar_form{
+    height:auto;
+    opacity:0;
+    pointer-events:none;
+    max-height:0px;
+    -moz-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -ms-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -o-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    -webkit-transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+    transition: opacity .25s cubic-bezier(0.550,0.085,0.680,0.530), max-height 0.45s cubic-bezier(0.550,0.085,0.680,0.530);
+}
+
+div.form_wrapper{
+    height:200px;
+}
+
+div.form_wrapper header{
+
+}
+
+div.form_wrapper header img#fbar_user_icon{
+    width: 54px;
+
+    height: 54px;
+    background-size: cover;
+    left: -10px;
+    position: relative;
+    top: 7px;
+    border-radius: 4.8px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.21), -1px -1px 1px rgba(0, 0, 0, 0.28);
+    padding: 1px;
+    background: #FFF;
+}
+
+div.form_wrapper header div#audience_select{
+    border-radius: 3px; background: #E5E5E5; border: 1px solid #ddd; position: relative; 
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    margin-bottom: 8px; box-shadow: 1px 0px 0px rgba(255, 255, 255, 0.78) inset, -1px 0px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px -1px 0px rgba(216, 216, 216, 0.4) inset;
+
+}
+
+div.form_wrapper section{
+    margin: 0 auto;
+
+    width: 90%;
+    margin-top: -10px;
+    border: 1px solid #d9d9d9;
+    min-height: 110px;
+    border-radius: 4px;
+    border-top-color: #c0c0c0;
+}
+
+div.form_wrapper section.post_form_template{
+
+}
+
+div.form_wrapper section.post_form_template#discussion_form{
+
+}
+
+div.form_wrapper section.post_form_template#notes_form{
+
+}
+
+div.form_wrapper section.post_form_template#question_form{
+
+}
+
+
+div.form_wrapper footer{
+    width: 90%;
+
+    margin: 0 auto;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    height: 24px;
+    padding: 7px 0px;
+}
+
+div.form_wrapper footer .post_btn{
+    float: right;
+
+    padding: 6px 13px;
+    font-size: 15.5px;
+    padding-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: Avenir;
+    border-radius: 4px;
+    background: #08D09C; 
+    color: #FFF;
+    border-radius: 4px; border: 1px solid #0AB286; -webkit-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; -moz-box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset; box-shadow: inset 0 1px 1px rgba(30, 250, 193, 0.57),inset 0 -1px 1px rgba(23, 190, 147, 0.55), 0 0 1px rgba(250, 250, 250, 0.42) inset, 0 0 1px rgba(255, 255, 255, 0.31) inset;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+div.form_wrapper footer .cancel_btn{
+    border: 1px solid #C0C0C0; 
+    background-color: #F0F0F0; 
+    float: left;  -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); color: #575757!important;
+
+    padding: 6px 13px;  
+    text-transform: capitalize; 
+    font-size: 15px; 
+    font-family: Avenir;
+    border-radius: 4px; line-height: 15px;
+    padding-bottom: 8px;
+    padding-top: 10px;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+.faded{
+    opacity:0!important;
+    z-index:0;
+}
+
+.hide{
+    display:none!important;
+}
+
+.fadeIn{
+    opacity:1!important;
+}
+
+form#fbar_form.show{
+    pointer-events:auto;
+    max-height: 330px;
+}
+
+
+/* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
+#fbar_holder.discuss section#discussion_form {
+    display:block;
+} 
+#fbar_holder.notes section#notes_form {
+    display:block;
+} 
+#fbar_holder.question section#question_form {
+    display:block;
+} 

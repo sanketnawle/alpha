@@ -1,0 +1,11 @@
+.feed_planner_bag .rightsec
+{
+position: absolute!important;
+margin-left: 682px;
+margin-top: 254px;
+}
+
+.feed_planner_bag .rightsec .n_pf_5
+{
+  display: block!important;
+}

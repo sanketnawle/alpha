@@ -1,0 +1,29 @@
+div.tab_group_info{
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+div.tab_group_info #tab_content_holder{
+    position: relative;
+
+    top: -20px;
+}
+
+.tab_group_info #tab_content_holder #tab_header div.float_Right #small_search{
+    display: inline-block;
+
+}
+
+.tab_group_info #tab_content_holder #tab_header div.float_Right #small_search em{
+    width: 16px; 
+    height: 16px; 
+    background-position: 0px 0px; position: relative; left: 28px;
+    top: 3px;
+}
+
+#courses_tab_content{
+    padding: 25px 0 0 0;
+	
+    position: relative;
+    width: 100%;
+}

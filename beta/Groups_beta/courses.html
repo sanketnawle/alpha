@@ -1,0 +1,1801 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="backgroundGroup.css">
+<link rel = "stylesheet" type = "text/css" href = "feedGroup.css"> 
+<link rel = "stylesheet" type = "text/css" href = "group.css"> 
+<link rel = "stylesheet" type = "text/css" href = "coursesCardUI.css"> 
+<link rel = "stylesheet" type = "text/css" href = "courses.css"> 
+<link rel = "stylesheet" type = "text/css" href = "school_department.css"> 
+
+<link rel = "stylesheet" type = "text/css" href = "leftmenu.css"><link rel="stylesheet" type="text/css" href="planner.css">
+<script src='md5.js'></script>
+<link rel="stylesheet" type="text/css" href="datepicker.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+<script src = "courses.js"></script>
+ <script src="feed.js"></script> 
+ <script src="school.js"></script> 
+  <script src="group.js"></script> 
+  <script src="leftmenu.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+
+<script>
+
+
+$(document).ready(function() {
+
+/*Start Learn Button Animation JQUERY */
+
+     $(document).delegate(".studybtn","mouseenter",function(){
+        var thisBox = $(this).closest(".coursesBtns").find(".study_box_open");   
+        $(this).closest(".coursesBtns").find(".modal_loading2").css({"display":"none","opacity":"0"});
+        $(this).closest(".coursesBtns").find(".js_wrap").css({"height":"auto","opacity":"1"});
+        $(this).closest(".coursesBtns").find(".study_box_open").show();
+        setTimeout(
+            function(){
+             $(thisBox).css({"top":"3px","height":"18px","opacity": "1"});
+             setTimeout(
+            function(){
+                $(thisBox).css({"height":"150px"});
+            },
+            300)
+            },
+            250)
+
+
+    });
+
+
+     $(document).delegate('.study_box_open',"mouseleave",function(){
+        var thisBox = $(this);    
+        setTimeout(
+            function(){
+               $(thisBox).css({"top":"3px","height":"0px","opacity": "0"});
+                setTimeout(function(){
+                $(thisBox).hide();
+            },
+            300)
+            }, 
+            250)
+    });
+
+
+     $(document).delegate('.study_type_btn',"click", function(){
+        
+        if(!$(this).hasClass("pressedGraybtn")){
+            $(this).find(".check").animate({left:0,opacity:0},150, function(){
+                    $(this).find(".check").delay(400).hide();
+            });
+            $(".pressedGraybtn").removeClass("pressedGraybtn");
+            $(this).prepend("<em class = 'check'></em>");
+            $(this).find(".check").animate({left:16,opacity:1},200, function(){
+                $(this).closest(".js_wrap").delay(250).animate({height:0,opacity:0},300);
+                $(".modal_loading2").show();
+                $(".modal_loading2").delay(500).animate({opacity:1},100, function(){
+                    setTimeout(
+                        function(){
+                            $(".study_box_open").css({"top":"3px","height":"0px","opacity": "0"});
+
+                        },
+                        200)
+                    
+                });
+                
+
+            });
+
+            $(this).addClass("pressedGraybtn");
+
+
+            if($(this).hasClass("majorType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Major");
+            }
+            if($(this).hasClass("minorType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Minor");
+            }
+            if($(this).hasClass("interestType")){
+                $(this).closest(".coursesBtns").find(".studybtn").text("My Interest");
+            }
+
+
+        }
+
+
+
+
+        else{
+            $(this).find(".check").animate({left:0,opacity:0},150, function(){
+                $(this).find(".check").delay(400).hide();
+            });
+            $(this).removeClass("pressedGraybtn");
+            $(".studybtn").text("Concentrate");
+            
+        }
+        
+    });
+
+/*End Learn Button Animation JQUERY */
+
+
+
+
+
+
+
+    $('.group_location').mouseenter(function(){
+        $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").show();
+        $(this).closest(".group-head-top-sec").find(".modal_loading3").delay(200).animate({opacity:0},150, function(){
+                $(this).closest(".group-head-top-sec").find(".location-pic-container").delay(50).css({"height":"160"});
+                $(this).closest(".group-head-top-sec").find(".location_building_pic").show();
+
+        });
+
+
+
+
+
+    });
+
+
+    $('.group_location').mouseleave(function(){
+        $(this).closest(".group-head-top-sec").find(".location-pic-div-wrap").hide();
+        $(this).closest(".group-head-top-sec").find(".location-pic-container").css({"height":"60px"});
+        $(this).closest(".group-head-top-sec").find(".modal_loading3").css({"opacity":"1"});
+        $(this).closest(".group-head-top-sec").find(".location_building_pic").hide();
+    });
+
+    /*jQuery for showing more or less classes, and movement of related about div 
+
+    $(document).delegate(".moreClasses","click", function(){
+
+            if(!$(this).hasClass("lessClasses")){
+                $(this).addClass("lessClasses");
+                $(".hidden").show();
+                $(this).find("span").text("Hide 3 Classes");
+                $(".moreClassesIcon").addClass("lessClassesIcon");
+                $(".feed-tab-rightsec").css("margin-top","182px");
+
+            }
+            else{
+                $(this).removeClass("lessClasses");
+                $(".hidden").hide();
+                $(this).find("span").text("3 More Classes");
+                $(".moreClassesIcon").removeClass("lessClassesIcon");
+                $(".feed-tab-rightsec").css("margin-top","0px");
+            }            
+
+
+
+
+    });
+
+*/
+
+    
+    $(window).scroll(function() {
+        if($(".tabFeed").hasClass("group-tab-active")){
+            if($(window).scrollTop()>203){
+                $(".uiHeaderFx").css({"border-bottom-color":"transparent","background-image":"none"});
+
+            }
+            else{
+                $(".uiHeaderFx").css({
+                            "border-bottom-color":"#e9eaed",
+                            "background-image": "-moz-linear-gradient(45deg,#F7F7F7,#F0F0F0)",
+                            "background-image": "-webkit-linear-gradient(45deg,#F7F7F7,#F0F0F0)",
+                            "background-image": "linear-gradient(45deg,#F7F7F7,#F0F0F0)"
+                    });
+            }
+        }
+
+    });
+
+    /*
+    $(window).scroll(function() {
+
+        if($(".tabFeed").hasClass("group-tab-active")){
+            if($(".moreClasses").hasClass("lessClasses")){
+                if($(window).scrollTop()>35){
+                    $(".feed-tab-rightsec").css({"position":"fixed","margin-top":"192px"});
+                    $(".classesExpandUI").css({"border-radius":"4px","position":"fixed","top":"58px","left":"1028px",
+                        "-webkit-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "-moz-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "box-shadow": "0px 1px 2px rgba(0,0,0,0.2)"
+                    });
+                    
+                }
+                else{
+                    $(".feed-tab-rightsec").css({"position":"relative","margin-top":"184px"});
+                    $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                        "-webkit-box-shadow": "none",
+                        "-moz-box-shadow": "none",
+                        "box-shadow": "none"
+                    });
+                    
+                }
+            }
+            else{
+                if($(window).scrollTop()>35){
+                    $(".feed-tab-rightsec").css({"position":"fixed","margin-top":"10px"});
+                    $(".classesExpandUI").css({"border-radius":"4px","position":"fixed","top":"58px","left":"1028px",
+                        "-webkit-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "-moz-box-shadow": "0px 1px 2px rgba(0,0,0,0.2)",
+                        "box-shadow": "0px 1px 2px rgba(0,0,0,0.2)"
+                    });
+                    
+                }
+                else{
+                    $(".feed-tab-rightsec").css({"position":"relative","margin-top":"0px"});
+                    $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                        "-webkit-box-shadow": "none",
+                        "-moz-box-shadow": "none",
+                        "box-shadow": "none"
+                    });
+                    
+                }
+            }
+
+        }
+
+        
+
+    });
+
+*/
+
+    $('.cancelBtn').click(function(){
+        $(".modal_body").animate({opacity:0},300,function(){
+            $(this).closest(".modal_body").hide();
+            $(".modal_coverPhoto_container").css({"height":"60px","width":"320px"});
+            $(".modal_content").hide();
+            $(".modal_content").css("opacity","0");
+            $(".main").removeClass("fe");
+        });
+
+    });
+
+    $('.filterselectorBtn').mousedown(function(){
+
+        if(!$(this).hasClass("selectorBtnDown")){
+            $(this).addClass("selectorBtnDown");
+            $(this).closest(".uiToggle").addClass("openToggle");
+        }
+        else{
+            $(this).removeClass("selectorBtnDown");
+            $(this).closest(".uiToggle").removeClass("openToggle");
+        }
+        
+    });
+
+
+
+     $(document).on("mousedown", function (e) {
+        var elem = $(e.target);
+        if (elem.hasClass("uiFlyout") || elem.hasClass("uiMenu") || elem.hasClass("MenuInner") || elem.hasClass("menuItem") || elem.hasClass("li.menuItem a") || elem.hasClass("filterselectorBtn")) {
+            return;
+        }
+        else {
+           $(".filterselectorBtn").removeClass("selectorBtnDown");
+            $(".filterselectorBtn").closest(".uiToggle").removeClass("openToggle");
+        }
+    });
+
+
+
+
+
+    $('.upload_cover').click(function(){
+        $(".modal_loading").show();
+        $(".modal_loading").css("opacity","1");
+        $(".main").addClass("fe");
+        $(".modal_coverPhoto_body").show();
+        $(".modal_coverPhoto_body").animate({opacity:1},400, function(){
+            $(".modal_loading").delay(250).animate({opacity:0},100);
+            $(".modal_loading").hide();
+            $(".modal_content").show();
+            $(".modal_content").delay(500).animate({opacity:1},200);
+            $(".modal_coverPhoto_container").animate({
+                height:355,
+                width:520
+            },500, function(){
+                $(".inputPhotoName").focus();
+            });
+        });
+        $("html, body").animate({ scrollTop: 150 }, 600);
+
+        return false;
+     });
+
+
+    $(document).delegate(".followBtn","click",function(){
+        if(!$(this).hasClass("unfollowBtn")){
+            $(".study_box_open").css("left","112px");
+            $(this).html("<em class = 'unfollow-icon'></em>Unfollow this Course");
+            $(this).addClass("unfollowBtn");
+        }
+        else{
+            $(".study_box_open").css("left","88px");
+            $(this).html("<em></em>Folow this Course");
+            $(this).removeClass("unfollowBtn");
+        }
+    });
+
+    $(document).delegate(".joinBtn","click",function(){
+        if(!$(this).hasClass("joinedBtn")){
+            $(this).html("<img class = 'modal_animation' src = 'src/loadingAnimation.gif'>");
+            $(this).delay(450).queue(function(n){
+                $(this).html("Member");
+                $(this).addClass("joinedBtn"); n();
+            });
+            
+            
+        }
+        else{
+             $(this).removeClass("joinedBtn");
+             $(this).text("Join");
+        }
+    });
+
+    $(document).delegate(".joinedBtn","mouseover",function(){
+        $(this).html("Leave");
+    });
+    $(document).delegate(".joinedBtn","mouseleave",function(){
+        $(this).html("Member");
+    });
+    /* THIS IS the navigational javascript for the courses page */
+
+    $(document).delegate(".tab-inactive","click",function(){
+        if ($(this).hasClass("tabCourse")) {
+            $(".feed-tab-rightsec").css("margin-top","0px");
+            $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                    "-webkit-box-shadow": "none",
+                    "-moz-box-shadow": "none",
+                    "box-shadow": "none"
+            });
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab1-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabAbout-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-inactive");
+            }
+            if ($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")) {
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+            //$(this).find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-inactive");
+            //$(this).find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-active");
+
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","460px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+            $(".feed-tab-content").hide();
+            $(".feed-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".files-tab-content").stop().animate({ opacity: "0"},300);
+            $(".files-tab-content").hide();
+            $(".members-tab-content").stop().animate({ opacity: "0"},300);
+            $(".members-tab-content").hide();
+            $(".courses-tab-content").animate({ opacity: "1"},300);
+            $(".courses-tab-content").show();
+        }
+        if($(this).hasClass("tabAbout")){
+            $(".feed-tab-rightsec").css("margin-top","0px");
+
+            $(".classesExpandUI").css({"border-radius":"4px", "position":"absolute","top":"45px","left":"initial",
+                    "-webkit-box-shadow": "none",
+                    "-moz-box-shadow": "none",
+                    "box-shadow": "none"
+            });
+            
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab1-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab1-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab1-icon-inactive");
+            }
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabClasses-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-inactive");
+            }
+
+
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","591px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+
+            $(".feed-tab-content").stop().animate({ opacity: "0"},300);
+            $(".feed-tab-content").hide();
+            $(".departments-tab-content").stop().animate({ opacity: "0"},300);
+            $(".departments-tab-content").hide();
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".files-tab-content").stop().animate({ opacity: "0"},300);
+            $(".files-tab-content").hide()
+            
+            
+
+            $(".members-tab-content").show();
+            $(".members-tab-content").animate({ opacity: "1"},300);
+
+            
+            
+            
+        }
+
+        if($(this).hasClass("tabFeed")){
+
+            
+            
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabAbout-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabAbout-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabAbout-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabc-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabc-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabc-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tabClasses-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tabClasses-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tabClasses-icon-inactive");
+            }
+
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab2-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab2-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab2-icon-inactive");
+            }
+            
+            if($(".group-tab-active").find(".tab-title").find(".tab-icon").hasClass("tab3-icon-active")){
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").removeClass("tab3-icon-active");
+                $(".group-tab-active").find(".tab-title").find(".tab-icon").addClass("tab3-icon-inactive");
+            }
+
+            $(this).find(".tab-title").find(".tab-icon").removeClass("tab1-icon-inactive");
+            $(this).find(".tab-title").find(".tab-icon").addClass("tab1-icon-active");
+            $(".group-tab-active").addClass("tab-inactive");
+            $(".group-tab-active").removeClass("group-tab-active");
+            $(".tab-wedge-down").css("left","310px");
+            $(this).removeClass("tab-inactive");
+            $(this).addClass("group-tab-active");
+
+            
+            $(".syllabus-tab-content").stop().animate({ opacity: "0"},300);
+            $(".syllabus-tab-content").hide();
+            $(".about-content").stop().animate({ opacity: "0"},300);
+            $(".about-content").hide();
+            $(".files-tab-content").stop().animate({ opacity: "0"},300);
+            $(".files-tab-content").hide()
+            $(".members-tab-content").stop().animate({ opacity: "0"},300);
+            $(".members-tab-content").hide();
+            $(".courses-tab-content").stop().animate({ opacity: "0"},300);
+            $(".courses-tab-content").hide();
+            $(".departments-tab-content").stop().animate({ opacity: "0"},300);
+            $(".departments-tab-content").hide();
+            $(".feed-tab-content").show();
+            $(".feed-tab-content").animate({ opacity: "1"},300);
+            
+        }       
+    });
+
+
+
+
+});
+
+</script>
+</head>
+<body>
+    <div class = "root">
+        <div class = "modal_coverPhoto_body modal_body">
+            <div class = "modal_coverPhoto_container">
+                <div class = "modal_loading">
+                    <img class = "modal_animation" src = "src/loadingAnimation.gif">
+                </div>
+                <div class = "modal_content">
+                    <div class = "modal_header">
+                        <span claSubmit ss = "floatL white">
+                            Cover Photo
+                        </span>
+                        <em class = "floatR cancelBtn close">
+                        </em>
+                    </div>
+                    <div class = "modal_main">
+                        <form>
+                            <label for = "cover_name" class = "label_left">
+                                Cover Photo Name
+                            </label>
+                            <input class = "inputBig inputPhotoName" id = "cover_name" placeholder = "Enter a name for this photo...">
+                            <div class = "uploadedPhotoFrame">
+                                <div class = "noPhotoText">
+                                    No photo uploaded
+                                </div>
+                                <div class = "photoicon">
+                                </div>
+                                
+                                <button class = "uploadPhotoBtn">
+                                    Upload Photo
+                                </button> 
+                            </div>
+                            <div class = "btmleft">
+
+                                <button type=  "button" class = "cancelBtn grayBtn">
+                                    Cancel
+                                </button> 
+                                <button type=  "button" class = "blueBtn">
+                                    Submit
+                                </button> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "top-bar">
+            <div class = "top-bar-wrapper">
+                <ul class = "noselect nav">
+                    <li class = "burger-wrap">
+                        <a id = "burger" class = "burger popover-target">
+                            <img src = "src/logo.png" class = "logo">
+                            <img src = "src/burger_closed.png" class = "burger">
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class = "main">
+            <div class = "leftsec">
+                <div id = "tray" class = "leftmenu">
+                    <div class = "group_search">
+                        <input type = "text" placeholder = "Search your courses & clubs" class = "search_groups" id = "tray_search">
+                        <i class = "icon_search"></i>
+                        <a class = "join-group">
+                            <i class = "add-icon"></i>
+                        </a>
+                    </div>
+                    <div class = "search-results">
+                        <!-- Show dynamic search as you type results here from user's groups list -->
+                    </div>
+
+                    <div class = "groups_list">
+                        <div class = "course-groups-list sub-list">
+                            <div class = "sub-list-header">
+                                <span>COURSES</span>
+
+                            </div>
+                            <a class = "group course-group">
+                                <div class = "group-pic"></div>
+                                <div class = "details">
+                                    <div class = "group-name">Computational Biology
+                                    </div>
+                                    <div class = "group-admin">
+                                        <strong class = "admin-title">Professor</strong>
+                                        <span class = "admin-name">Garrigan</span>
+                                    </div>
+                                </div>
+                                <div class = "badge">
+                                </div>
+                            </a>
+                            <a class = "group course-group">
+                                <div class = "group-pic" style = "background-image:url(src/philosophy.jpeg)"></div>
+                                <div class = "details">
+                                    <div class = "group-name">Moral Philosophy
+                                    </div>
+                                    <div class = "group-admin">
+                                        <strong class = "admin-title">Professor</strong>
+                                        <span class = "admin-name">FitzPatrick</span>
+                                    </div>
+                                </div>
+                                <div class = "badge">
+                                </div>
+                            </a>    
+                            <a class = "group course-group">
+                                <div class = "group-pic" style = "background-image:url(src/neuroscience.jpg)"></div>
+                                <div class = "details">
+                                    <div class = "group-name">NYU Polytechnic School of Engineering
+                                    </div>
+                                    <div class = "group-admin">
+                                        <strong class = "admin-title">Professor</strong>
+                                        <span class = "admin-name">Miller</span>
+                                    </div>
+                                </div>
+                                <div class = "badge">
+                                </div>
+                            </a>
+                            <a class = "group course-group">
+                                <div class = "group-pic" style = "background-image:url(src/economics.jpg)"></div>
+                                <div class = "details">
+                                    <div class = "group-name">Microeconomics
+                                    </div>
+                                    <div class = "group-admin">
+                                        <strong class = "admin-title">Professor</strong>
+                                        <span class = "admin-name">Landsburg</span>
+                                    </div>
+                                </div>
+                                <div class = "badge">
+                                </div>
+                            </a>
+                            <a class = "group course-group">
+                                <div class = "group-pic" style = "background-image:url(src/bigdata.jpg)"></div>
+                                <div class = "details">
+                                    <div class = "group-name">Big Data Computer Systems
+                                    </div>
+                                    <div class = "group-admin">
+                                        <strong class = "admin-title">Professor</strong>
+                                        <span class = "admin-name">Shen</span>
+                                    </div>
+                                </div>
+                                <div class = "badge">
+                                </div>
+                            </a>                    
+                        </div>
+                        <div class = "clubs-groups-list sub-list">
+                            <div class = "sub-list-header">
+                                <span>CLUBS</span>
+
+                            </div>                          
+                            <a class = "group club-group">
+
+                            </a>
+                            <a class = "group club-group">
+
+                            </a>                                
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class = "main-mid-sec">
+
+                <div class = "mid_right_sec mid_right_sec_course">
+                    <div class = "group-head-sec">
+                        <div class = "group-head-top-sec">
+                            
+                            <div class = "classesExpandUI">
+                                <div class = "uiHeader uiHeaderFx">
+                                    5 Classes this Semester
+                                </div>
+                                <div class="uiListWrapper">
+                                    <ul class = "uiList classList">
+                                        <li class = "classLi">
+
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">M 9:00am, Th 10:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                                <span class = "midline-dot">
+                                                    &#183;
+                                                </span>
+                                                 <span class = "classInfo classCode">NSC201A</span>
+                                            </div>
+
+                                            <div class ="rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+
+                                        </li>
+                                        <li class = "classLi">
+                                            <div class = "leftFloat classDetails">
+                                                <img src = "src/memon.jpg">
+                                                <span class = "classInfo">MWF 10:00am-11:00am</span>
+                                                
+                                                <span class = "classInfo">Prof Memon</span>
+                                            </div>
+                                            <div class = "rightFloat">
+                                                <button title = "Join this section" class = "joinBtn">Join</button>
+                                            <div>
+                                        </li>
+
+
+
+                                    </ul>
+                                    <div class = "uiBtm moreClasses">
+                                        <span>3 More Classes</span><em class = "moreClassesIcon"></em>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        <div class = "group-pic-frame">
+                            <div style = "background:no-repeat url(src/neuroProf.jpg)" class = "group-pic">
+                            </div>
+                        </div>
+                        <div class = "group-header-left group-header-above">
+
+                            
+                            <div class = "group-title course-group-title">
+                                <div class = "group-name">
+                                    Principles of Neurobiology
+                                </div>
+                                <span class = "group-id">
+                                    NSC 201
+                                </span>
+                                <br>
+                                <div class= "btnWrap">
+                                    <button class = "followBtn">
+                                        <em></em>
+                                        Follow this Course
+                                    </button>
+                                </div>
+                                <div class= "courseDepartment">
+                                    <a><span>Neuroscience Department</span></a>
+                                </div>
+
+                                                    
+                            </div>  
+
+                                                    
+                        </div>
+
+                        <div class = "group-head-footer">
+                            <div class = "group-header-tab">
+                                <ul class = "group-nav">
+                                    <li class = "group-tab">
+                                        <a class = "tabFeed tab-anchor group-tab-active">
+                                            <div class = "tab-title">
+                                                COURSE FEED
+                                                <span class = "tab-icon tab1-icon-active"></span>
+                                            </div>
+
+                                        </a>
+                                    </li>
+                                    
+                                    <li class = "group-tab">
+                                        <a class = "tabCourse tab-anchor tab-inactive">
+                                            <div class = "tab-title">
+                                                OPEN CLASSES
+                                                <span class = "tab-icon tabClasses-icon-inactive"></span>
+                                            </div>
+                                            <div class = "status tab-number">
+                                                <span class = "badge">
+                                                    5
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>    
+                                    <li class = "group-tab">
+                                        <a class = "tabAbout tab-anchor-last tab-anchor tab-inactive">
+                                            <div class = "tab-title">
+                                                ABOUT
+                                                <span class = "tab-icon tabAbout-icon-inactive"></span>
+                                            </div>
+                                            <div class = "status tab-number">
+                                                <span class = "badge">
+                                                    5
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li> 
+                                                        
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class = "tab-wedge-down">
+                        </div>
+                    </div>
+                    <div class = "midsec">
+                        <div class = "feed-tab-content">
+
+                            <!-- Place the Fbar above the Filter -->
+
+
+                            <div id = "posts">
+                                <div class = "filter-wrapper cross">
+                                    <div class = "uiToggle">
+                                        <a class = "filterselectorBtn">
+
+                                            All Posts 
+                                            <em>
+                                            </em>
+                                        </a>
+                                        <div class = "uiSelectorMenuWrapper uiFlyout">
+                                            <div class = "uiMenu">
+                                                <ul class = "MenuInner">
+                                                    <li class = "menuItem menuItemActive">
+                                                        <a class = "a1"><span>
+                                                            <em></em>All Posts</span></a>
+                                                    </li>
+                                                    <li class = "menuItem">
+                                                        <a class = "a2"><span><em></em>Faculty Posts</span></a>
+                                                    </li>
+                                                    <li class = "menuItem">
+                                                        <a class = "a3"><span><em></em>Student Posts</span></a>
+                                                    </li>
+                                                    <li class = "menuItem">
+                                                        <a class = "a4"><span><em></em>Events</span></a>
+                                                    </li>
+                                                    <li class = "menuItem">
+                                                        <a class = "a5"><span><em></em>Questions</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id = "123456789">
+
+                                    <!--a post start-->                     
+                                    <div class = "posts" id = "226">
+                                        <div class = "post_main">
+                                            <div class = "post_head">
+
+                                                    <div class = "post_title">
+                                                        <a>
+                                                            <div class = "image_container">
+                                                                <div class = "post_user_icon"></div>
+                                                            </div>                                          
+                                                            <span class = "post_owner">Professor Farrington</span>
+                                                        </a>
+                                                        <!--hide below span if post not in a group-->
+                                                        <span class = "post_format">made an announcement </span>
+                                                        
+                                                    </div>
+                                                    <div class = "post_time">Anouncement made 2 hours ago</div><span class = "mid-stop">&#183;</span>
+                                                    <div class = "post_seen">
+                                                        <div class = "seen_icon"></div><span>27</span>
+                                                        <div class = 'card-tag'>
+                                                            <div class = 'tag-wedge'></div>
+                                                            <div class = 'tag-box'><span></span></div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class = "post_tag">
+                                                <span>Biology</span>
+                                            </div>
+                                            <div class = "post_msg">
+                                                <span class='msg_span'>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum... 
+                                                </span>
+                                                <span class='pst_seemore'>see more</span>
+                                            </div>
+                                            <div class = "post_edit">
+                                                <textarea class = "edit_area"></textarea>
+                                                <div class = "edit_toolbar">
+                                                    <button class = "edit_done">Done</button>
+                                                    <button class = "edit_cancel">Cancel</button>
+                                                </div>
+                                            </div>
+                                            <div class = "post_tools">
+                                                <div class = "post_lc">
+                                                    <div class = "post_like">
+                                                        <div class = "post_like_icon"></div>
+                                                        <div class = "like_number unliked">7</div>
+                                                    </div>
+                                                    <div class = "post_comment_btn">
+                                                        Comment
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class='posttool-select'>
+                                                    <span class='field'>Visible to Campus</span>
+
+                                                    <div class = "visi_functions_box">
+                                                        <div class = "visi_functions_option">Campus</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "visi_functions_option">Only Students</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "visi_functions_option">Only Faculty</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "visi_functions_option">Only Me</div>
+                                                    </div>
+
+                                                </div>
+                                                
+
+                                                <div class = "post_functions">
+                                                    <div class = "post_functions_showr">
+                                                    </div>
+                                                    <div class = "post_functions_box">
+                                                        <div class = "post_functions_option option_edit">Edit this Post</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "post_functions_option option_delete">Delete this Post</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "post_functions_option option_hide">Hide this Post</div>
+                                                        <hr class = "post_options_hr">
+                                                        <div class = "post_functions_option option_report">Report this Post</div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class = "comments">
+                                            <!--a comment-->
+                                            <div class = "post_comment" id = "12414113">
+                                                <div class = "comment_delete">
+                                                    <i class = "fa fa-times"></i>
+                                                </div>
+                                                <div class = "comment_updown">
+                                                    <div class = "comment_upvote">
+                                                    </div>
+                                                    
+                                                    <div class = "score unvoted">0</div>
+                                                    
+                                                    <div class = "comment_downvote">
+                                                    </div>
+                                                </div>
+
+                                                <div class = "comment_main">
+                                                    <a>
+                                                        <div class = "comment_owner_container"><div class = "comment_user_icon"></div></div>                                        
+                                                        <span class = "comment_owner">Jun Lee</span>
+                                                    </a>
+                                                    <span class = "comment_msg" id = "380"><p>The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture.
+                                                        The theories of borgeuoise republics and their images depicted in the media are poor representations of the entire domestic culture... 
+                                                        <span class='pst_seemore'>see more</span>
+                                                    </p>
+                                                    </span>
+                                                </div>
+                                                <div class = "comment_time">1 hour ago</div>
+
+                                            </div>
+                                            <!--a comment end-->
+                                        </div>
+                                        
+                                        <!--comment input html-->
+                                        <div class = "postcomment">
+                                            <div class = "commentform">
+                                                <div class = "reply_user_icon"></div>
+                                                <div class = "reply_tawrapper">
+                                                    <textarea class = "form-control postval" rows = "3" placeholder = "Add to the discussion" required></textarea>
+                                                    <img class = "reply_attach" src = "src/comment_attach.png">
+                                                </div>
+                                                <div class = "reply_functions">
+                                                    <div class='check_wrap'>
+                                                        <input type="checkbox" id="flat_0" class='flat7c'/>
+                                                        <label for="flat7" class="flat7b">
+                                                            <span class="move"></span>
+                                                        </label>
+                                                        <span class = "comment_anon_text">Post Anonymously</span>
+                                                    </div>
+                                                    <a class = "reply_button">
+                                                        Reply
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--comment input html end-->
+
+                                    </div>
+                                    <!--a post end-->       
+
+
+
+
+
+                                </div>
+                            </div>  
+                            <div class = "feed-tab-rightsec">
+                                <div class = "group-about">
+                                    
+                                    <div class = "box-header">
+                                        <span class = "bh-t1">
+                                            ABOUT
+                                        </span>
+                                        
+                                    </div>
+                                    <div class = "box-content content-about">Urlinq should strive for an "intimate" connection with customers' feelings. "We will truly understand their needs better than any other company," Lazarus wrote.</div>
+                                    <div class = "box-header">
+                                        <a class = "bh-t2">
+                                            Invite email list
+                                        </a>
+                                    </div>
+                                    <div class = "box-content content-invite">
+                                        <form rel = "" method = "post">
+                                            <input type = "hidden" autocomplete = "off">
+                                            <i class = "plusIcon"></i>
+                                            <div class = "invite-input-wrap">
+                                                <div class = "innerWrap">
+                                                    <input type = "text" class = "inputText inviteInput" name = "Invite form" placeholder = "Share this course with someone">
+                                                    <div class = "search-icon" title = "Search people">
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "members-tab-content">
+                            <div class = "members-search-top">
+                                <form>
+                                    <div class = "searchWrapper searchWrapperMembers">
+                                        <input placeholder = "Search students and faculty at NYU Polytechnic" class = "tabSearcher ajax">
+                                        </input>
+                                    </div>
+                                    <button class = "submitSearch submitSearchMembers">
+                                    </button>
+                                </form>
+                                
+                            </div>
+                            <div class = "members-header">
+                                Professors and TAs (2)
+                            </div>
+                            <div class = "members-header-line">
+                            </div>
+                            <div class = "members-list-wrap">
+                                <div class = "member">
+                                    <div class = "member-person prof-member-person">
+                                        <div class = "member-wrap prof-member-wrap">
+                                            <div class = "person-thumb">
+                                                <div class = "picwrap" style = "background-image:url(src/dummy-pic.jpg)"></div>
+                                                <div class = "member-bio">
+                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+                                                    <strong>View Profile</strong>
+                                                </div>
+                                            </div>
+                                            <h3 class = "person-title">
+                                                <strong>Professor Zeroni</strong>
+                                                <span>
+                                                    <a>NYU College of Arts and Sciences</a>
+                                                </span>
+                                            </h3>
+                                            <div class = "follow-btn">
+                                                <a class = "follow">
+                                                    Follow
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "member">
+                                    <div class = "member-person ta-member-person">
+                                        <div class = "member-wrap ta-member-wrap">
+                                            <div class = "person-thumb">
+                                                <div class = "picwrap" style = "background-image:url(src/dummy-pic.jpg)"></div>
+                                                <div class = "member-bio">
+                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+                                                    <strong>View Profile</strong>
+                                                </div>
+                                            </div>
+                                            <h3 class = "person-title">
+                                                <strong>TA Hector Zeroni</strong>
+                                                <span>
+                                                    <a>NYU School of Engineering</a>
+                                                </span>
+                                            </h3>
+                                            <div class = "follow-btn">
+                                                <a class = "follow">
+                                                    Follow
+                                                </a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class = "members-header members-students">
+                                Students (22)
+                            </div>
+                            <div style = "width: 853px"class = "members-header-line">
+                            </div>
+                            <div class = "members-list-wrap student-member-list">
+                                <div class = "member">
+                                    <div class = "member-person">
+                                        <div class = "member-wrap">
+                                            <div class = "person-thumb">
+                                                <div class = "picwrap" style = "background-image:url(src/dummy-pic.jpg)"></div>
+                                                <div class = "member-bio">
+                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+                                                    
+                                                    <strong>View Profile</strong>
+                                                </div>
+                                            </div>
+                                            <h3 class = "person-title">
+                                                <strong>TA Hector Zeroni</strong>
+                                                <span>
+                                                    <a>NYU School of Engineering</a>
+                                                </span>
+                                            </h3>
+                                            <div class = "follow-btn">
+                                                <a class = "follow">
+                                                    Follow
+                                                </a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class = "member">
+                                    <div class = "member-person">
+                                        <div class = "member-wrap">
+                                            <div class = "person-thumb">
+                                                <div class = "picwrap" style = "background-image:url(src/dummy-pic.jpg)"></div>
+                                                <div class = "member-bio">
+                                                    <span>Surfing, Beatles, Snowboarding and a whole lot of other exciting stuff</span>
+                                                    <strong>View Profile</strong>
+
+                                                </div>
+                                            </div>
+                                            <h3 class = "person-title">
+                                                <strong>TA Hector Zeroni</strong>
+                                                <span>
+                                                    <a>NYU School of Engineering</a>
+                                                </span>
+                                            </h3>
+                                            <div class = "follow-btn">
+                                                <a class = "follow">
+                                                    Follow
+                                                </a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class = "syllabus-tab-content">
+                            syllabus tab
+                        </div>
+                        <div class = "courses-tab-content">
+
+                            <div class = "coursesCards card-wrapper">
+                                
+
+                                <div class = "item courses-selector">
+                                    <div class = "courses ajax">
+                                        <div class = "course-top course-row">
+                                            <div class = "leftFloat">
+                                                <div class = "frame">
+                                                    <img width = "44px" height = "44px" src = "src/neuroscience.jpg" class = "coursePicture">
+                                                </div>
+                                                <a class = "classLink">
+                                                    <h3 class = "course-name">Neuroscience and Advertising</h3>
+                                                </a>
+                                                <!-- For Courses, hide the ID here and instead show the various class ID's in the next row -->
+                                                <h4 class = "section-id">
+                                                    NSC203A
+                                                </h4>
+                                                <div class = "course-professor">
+                                                     <span>Taught by</span>
+                                                    <img  width = "21px" height = "21px" src = "src/memon.jpg" class = "professorPicture">
+                                                    <a class = "courseCardLink">Professor Herbert</a>
+                                                </div>
+                                            </div>
+                                            <div class = "classUIBtn">
+                                                <!-- change "Class" to "Course" and button to follow, for courses in the button below"-->
+                                                <button class = "joinBtn JoinBtnLong">
+                                                    Join this Class
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class = "course-row course-middle-top">
+                                            <!--Hide Professor and time for and reviews for courses -->
+                                          
+                                            <div class = "leftFloat course-column time-column">
+                                                <em class = "schedule-free">
+                                                </em>
+                                                <p class = "course-info">
+                                                    M 10:00am-11:00am W 1:30pm-4:00pm
+                                                </p>
+                                                <div class = "help-div-left" id = "help-classTime">
+                                                    <div class = "help-wedge">
+                                                    </div>
+                                                    <div class = "help-box">
+                                                        You have no other classes at this time.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <!--For courses show the following HTML = the different class sections for this course  -->
+                                            <div class = "leftFloat course-column reviews-column">
+                                                <a class = "courseCardLink">
+                                                    Read Reviews (20) 
+                                                </a>
+                                                <em class = "right-arrow right-arrow-blue"></em>
+                                            </div>
+                                        </div>
+                                        <div class = "course-row course-middle-bottom">
+                                            <div class = "courseDescription">
+                                                Calculating the actual coordinates of your box and doing the bounds checks will be tough, and will rely on mouse events anyways to get the mouse's current coordinates. Tracking mouseover/mouseouts has the issues you mentioned. 
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- This bottom row displays other students who are either members of this class or following this course show 8-->
+
+                                        <div class = "course-row course-bottom">
+                                            <div class = "courseMember friendMember">
+
+                                                <img class = "courseMemberPic MemberPicBig" src = "src/myPic.png">
+                                                <div class = "courseMembersWrapper">
+                                                    <a>Jacob Lazarus</a>
+                                                    <span>and <b>4</b> others you know have taken this class</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class = "item courses-selector">
+                                    <div class = "courses ajax">
+                                        <div class = "course-top course-row">
+                                            <div class = "leftFloat">
+                                                <div class = "frame">
+                                                    <img width = "44px" height = "44px" src = "src/neuroscience.jpg" class = "coursePicture">
+                                                </div>
+                                                <a class = "classLink">
+                                                    <h3 class = "course-name">Neuroscience and Advertising</h3>
+                                                </a>
+                                                <!-- For Courses, hide the ID here and instead show the various class ID's in the next row -->
+                                                <h4 class = "section-id">
+                                                    NSC203A
+                                                </h4>
+                                                <div class = "course-professor">
+                                                     <span>Taught by</span>
+                                                    <img  width = "21px" height = "21px" src = "src/memon.jpg" class = "professorPicture">
+                                                    <a class = "courseCardLink">Professor Herbert</a>
+                                                </div>
+                                            </div>
+                                            <div class = "classUIBtn">
+                                                <!-- change "Class" to "Course" and button to follow, for courses in the button below"-->
+                                                <button class = "joinBtn JoinBtnLong">
+                                                    Join this Class
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class = "course-row course-middle-top">
+                                            <!--Hide Professor and time for and reviews for courses -->
+                                          
+                                            <div class = "leftFloat course-column time-column">
+                                                <em class = "schedule-free">
+                                                </em>
+                                                <p class = "course-info">
+                                                    M 10:00am-11:00am W 1:30pm-4:00pm
+                                                </p>
+                                                <div class = "help-div-left" id = "help-classTime">
+                                                    <div class = "help-wedge">
+                                                    </div>
+                                                    <div class = "help-box">
+                                                        You have no other classes at this time.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <!--For courses show the following HTML = the different class sections for this course  -->
+                                            <div class = "leftFloat course-column reviews-column">
+                                                <a class = "courseCardLink">
+                                                    Read Reviews (20) 
+                                                </a>
+                                                <em class = "right-arrow right-arrow-blue"></em>
+                                            </div>
+                                        </div>
+                                        <div class = "course-row course-middle-bottom">
+                                            <div class = "courseDescription">
+                                                Calculating the actual coordinates of your box and doing the bounds checks will be tough, and will rely on mouse events anyways to get the mouse's current coordinates. Tracking mouseover/mouseouts has the issues you mentioned. 
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- This bottom row displays other students who are either members of this class or following this course show 8-->
+
+                                        <div class = "course-row course-bottom">
+                                            <div class = "courseMember friendMember">
+
+                                                <img class = "courseMemberPic MemberPicBig" src = "src/myPic.png">
+                                                <div class = "courseMembersWrapper">
+                                                    <a>Jacob Lazarus</a>
+                                                    <span>and <b>4</b> others have taken this class</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class = "about-content">
+                            <div class = "about-tab-leftsec">
+                                <div class = "about-tab-about about-tab-block">
+                                    <div class = "tab-block-header">
+                                        <div class = "block-head-left">
+                                            About
+                                        </div>
+                                        <div class = "block-head-right">
+                                            <a class = "edit-about">
+                                                Edit
+                                                <i class = "edit-icon">
+
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class = "tab-block-content">
+                                        Receive a potato-salad themed haiku written by me, your name carved into a potato that will be used in the potato salad, a signed jar of mayonnaise, the potato salad recipe, hang out in the kitchen with me while I make the potato salad, choose a potato-salad-appropriate ingredient to add to the potato salad, receive a bite of the potato salad, a photo of me making the potato salad, a 'thank you' posted to our website and I will say your name out loud while making the potato salad.
+                                    </div>
+                                </div>
+                                <div class = "about-tab-members about-tab-block">
+                                    <div class = "tab-block-header">
+                                        <div class = "block-head-left">
+                                            STUDENTS YOU KNOW IN THIS SCHOOL <span>(8)</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class = "tab-block-content tab-block-content-scroll">
+                                        <div class = "members-scrollwrap">
+                                            <ul class = "people-you-know">
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <span class = "grade">Grad</span>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+                                                <li class = "people-box">
+                                                    <div class = "person-pic-wrap">
+                                                    </div>
+                                                    <div class = "person-title-wrap">
+                                                        <p>Kushal Kadaba</p>
+                                                    </div>
+                                                    <div class = "after-click-effect"></div>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+                                        <a class = "ddbox-hor-scroller hor-scroller-left">
+                                            <div class = "ddbox-hor-scroller-cont">
+                                            </div>
+                                            <i class = "ddbox-hor-scroll-icon-left">
+                                            </i>
+                                        </a>
+                                        <a class = "ddbox-hor-scroller hor-scroller-right">
+                                            <div class = "ddbox-hor-scroller-cont">
+                                            </div>
+                                            <i class = "ddbox-hor-scroll-icon-right">
+                                            </i>
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                                <div class = "about-tab-prof about-tab-block">
+                                    <a class = "prof-header"><div class = "tab-block-header">
+                                        <div class = "block-head-left">
+                                            PROFESSOR GARRIGAN
+                                        </div>
+                                        
+                                    </div></a>
+                                </div>
+                                <div class = "about-tab-ratings about-tab-block">
+                                    <div class = "tab-block-header">
+                                        <div class = "block-head-left">
+                                            COURSE REVIEWS <span>(28)</span> <span class = "tab-block-view">View all</span>
+                                        </div>
+
+                                        
+                                    </div>
+                                    <div class = "tab-block-content tab-block-content-reviews">
+                                        <div class = "tab-block-topsec">
+                                            <div class = "tab-block-left">
+                                                <div class = "reviews-average">
+                                                    <div class = "reviews-sec-header-2">Average Rating<span> (28 students reviewed)</span></div>
+                                                    <h2>4.6</h2>
+                                                    <div class = "reviews-rating">
+                                                        <div class = "rating-stars-filled">
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/filled_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/filled_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/filled_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/filled_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/filled_star.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class = "rating-stars-empty">
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/empty_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/empty_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/empty_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/empty_star.png">
+                                                            </div>
+                                                            <div class = "rating_star">
+                                                                <img class = "img" src = "src/empty_star.png">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                            <div class = "tab-block-right">
+                                            
+                                                <div class = "reviews-distribution">
+                                                    <div class = "reviews-sec-header">Distribution</div>
+                                                    <div class = "lfloat dist-stars">
+                                                        <div class = "star-dist">
+                                                            5 &#9733;
+                                                        </div>
+                                                        <div class = "star-dist">
+                                                            4 &#9733;
+                                                        </div>
+                                                        <div class = "star-dist">
+                                                            3 &#9733;
+                                                        </div>
+                                                        <div class = "star-dist">
+                                                            2 &#9733;
+                                                        </div>
+                                                        <div class = "star-dist">
+                                                            1 &#9733;
+                                                        </div>
+                                                    </div>
+                                                    <div class = "rfloat dist-bars">
+                                                        <div class = "dist-bar-wrap">
+                                                            <div class = "bar-dist"></div>
+                                                            <div class = "bar-val">9</div>
+                                                        </div>
+                                                        <div class = "dist-bar-wrap">
+                                                            <div class = "bar-dist"></div>
+                                                            <div class = "bar-val">7</div>
+                                                        </div>
+                                                        <div class = "dist-bar-wrap">
+                                                            <div class = "bar-dist"></div>
+                                                            <div class = "bar-val">5</div>
+                                                        </div>
+                                                        <div class = "dist-bar-wrap">
+                                                            <div class = "bar-dist"></div>
+                                                            <div class = "bar-val">2</div>
+                                                        </div>
+                                                        <div class = "dist-bar-wrap">
+                                                            <div class = "bar-dist"></div>
+                                                            <div class = "bar-val">5</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class = "create-review-btn">
+                                                    Write a Review
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "tab-block-reviewssec">
+                                            <div class = "tab-block-create-review">
+                                                <div class = "create-rating-stars-filled">
+                                                    <div class = "rating_star r_s_ur rating_star_unrated rating_star_unrated1">
+                                                        <img class = "img" src = "src/filled_star.png">
+
+                                                    </div>
+                                                    <div class = "rating_star r_s_ur rating_star_unrated rating_star_unrated2">
+                                                        <img class = "img" src = "src/filled_star.png">
+
+                                                    </div>
+                                                    <div class = "rating_star r_s_ur rating_star_unrated rating_star_unrated3">
+                                                        <img class = "img" src = "src/filled_star.png">
+
+                                                    </div>
+                                                    <div class = "rating_star r_s_ur rating_star_unrated rating_star_unrated4">
+                                                        <img class = "img" src = "src/filled_star.png">
+
+                                                    </div>
+                                                    <div class = "rating_star r_s_ur rating_star_unrated rating_star_unrated5">
+                                                        <img class = "img" src = "src/filled_star.png">
+
+                                                    </div>
+
+                                                </div>
+
+                                                
+
+                                                <div class = "grade_stars">
+                                                    <div class = "rating_star grey_star r_s_ur grating_star_unrated1">
+                                                        <img class = "img" src = "src/filled_star.png">
+                                                        
+                                                    </div>
+                                                    <div class = "rating_star grey_star r_s_ur grating_star_unrated2">
+                                                        <img class = "img" src = "src/filled_star.png">
+                                                        
+                                                    </div>
+                                                    <div class = "rating_star grey_star r_s_ur grating_star_unrated3">
+                                                        <img class = "img" src = "src/filled_star.png">
+                                                        
+                                                    </div>
+                                                    <div class = "rating_star grey_star r_s_ur grating_star_unrated4">
+                                                        <img class = "img" src = "src/filled_star.png">
+                                                        
+                                                    </div>
+                                                    <div class = "rating_star grey_star r_s_ur grating_star_unrated5">
+                                                        <img class = "img" src = "src/filled_star.png">
+                                                        
+                                                    </div>
+                                                </div>
+
+
+                                                <div class = "create-rating-stars-empty">
+                                                    <div class = "r_s_ur rating_star rating_star_empty1">
+                                                        <img class = "img" src = "src/empty_star.png">
+                                                    </div>
+                                                    <div class = "r_s_ur rating_star rating_star_empty2">
+                                                        <img class = "img" src = "src/empty_star.png">
+                                                    </div>
+                                                    <div class = "r_s_ur rating_star rating_star_empty3">
+                                                        <img class = "img" src = "src/empty_star.png">
+                                                    </div>
+                                                    <div class = "r_s_ur rating_star rating_star_empty4">
+                                                        <img class = "img" src = "src/empty_star.png">
+                                                    </div>
+                                                    <div class = "r_s_ur rating_star rating_star_empty5">
+                                                        <img class = "img" src = "src/empty_star.png">
+                                                    </div>
+                                                </div>
+                                                <div class = "help-div" id = "help-star-1">
+                                                    <div class = "help-star-wedge">
+                                                    </div>
+                                                    <div class = "help-star-box">
+                                                        Poor
+                                                    </div>
+                                                </div>
+                                                <div class = "help-div" id = "help-star-2">
+                                                    <div class = "help-star-wedge">
+                                                    </div>
+                                                    <div class = "help-star-box">
+                                                        Fair
+                                                    </div>
+                                                </div>
+                                                <div class = "help-div" id = "help-star-3">
+                                                    <div class = "help-star-wedge">
+                                                    </div>
+                                                    <div class = "help-star-box">
+                                                        Good
+                                                    </div>
+                                                </div>
+
+                                                <div class = "help-div" id = "help-star-4">
+                                                    <div class = "help-star-wedge">
+                                                    </div>
+                                                    <div class = "help-star-box">
+                                                        Very Good
+                                                    </div>
+                                                </div>
+                                                <div class = "help-div" id = "help-star-5">
+                                                    <div class = "help-star-wedge">
+                                                    </div>
+                                                    <div class = "help-star-box">
+                                                        Excellent
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                            <div class = "tab-block-review">
+                                                <div class = "review-pic">
+                                                </div>
+                                                <div class = "review-rightsec">
+                                                    <div class = "reviewer-name">
+                                                        Jacqueline Herssens
+                                                    </div>
+                                                    <div class = "reviewer-rating">
+                                                    </div>
+                                                    <div class = "review-text">
+                                                        Neurochemical Foundations of Behavior.... in the title of this establishment alone, you have everything that a student interested in psychology and medicine should love and recognize as awesome. Of all the courses I took in college, this one was definitely the greatest. For sure a "must take" class in the Neuro department. Professor Miller is the absolute best!
+                                                    </div>
+                                                    <div class = "review-actions">
+                                                        <button class = "like-btn"></button>
+                                                        <span class = "midline-dot">
+                                                            &#183;
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                
+                            </div>
+                            <div class = "about-tab-rightsec">
+                                <div class = "group-about group-about-2">
+                                    <div class = "box-header">
+                                        <span class = "bh-t1">
+                                            RECENT UPLOAD
+                                        </span>
+                                        <span class = "midline-dot">
+                                            &#183;
+                                        </span>
+                                        <a style = "font-weight:600;" class = "bh-t2">
+                                            Upload a file
+                                        </a>
+                                    </div>
+                                    <div class = "box-content content-file">
+                                        <a class = "file-download">
+                                        <div class = "file-icon">
+                                        </div>
+                                        <div class= "file-name">
+                                            Who is Ross Kopelman?
+                                        </div>
+                                        </a>
+                                        <div class ="file-created">
+                                            <a class = "file-creator">Jacob Lazarus</a> <span> uploaded July 8th</span>
+                                        </div>
+                                    </div>
+
+                                    <div class = "box-header">
+                                        <a class = "bh-t2">
+                                            Invite email list
+                                        </a>
+                                    </div>
+                                    <div class = "box-content content-invite">
+                                        <form rel = "" method = "post">
+                                            <input type = "hidden" autocomplete = "off">
+                                            <i class = "plusIcon"></i>
+                                            <div class = "invite-input-wrap">
+                                                <div class = "innerWrap">
+                                                    <input type = "text" class = "inputText inviteInput" name = "Invite form" placeholder = "Invite people to join this course">
+                                                    <div class = "search-icon" title = "Search people">
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class = "group-about-subjects">
+                                    <div class = "box-header">
+                                        Course <strong> Topics</strong>
+                                        <span class = "help-icon-right">
+                                        </span>
+                                        <div class = "help-div" id = "help-1">
+                                            <div class = "help-wedge">
+                                            </div>
+                                            <div class = "help-box">
+                                                Add up to 10 topics that are covered in this course. Drag subjects up or down to order them as you like.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "group-subjects-wrap">
+                                        <ul id = "sortable" class = "group-subjects ui-sortable">
+                                            <li class = "ui-state-default subject">
+                                                Genomics
+                                            </li>
+                                            <li class = "ui-state-default subject">
+                                                Statistical Biology
+                                            </li>
+                                            <li class = "ui-state-default subject">
+                                                Biological Algorithms
+                                            </li>
+                                            <li class = "ui-state-default subject">
+                                                Data Mining  
+                                            </li>
+                                            <li class = "ui-state-default subject">
+                                                Neural Networks  
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html> 

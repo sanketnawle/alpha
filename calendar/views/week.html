@@ -1,0 +1,14 @@
+﻿<div ng-include="'views/header.html'"></div>
+<div class="header row2 week">
+    <span ng-repeat="i in [] | range:7" class="grid-column">{{getDayName(i)}} {{getDate(i)}}</span>
+</div>
+<div class="week-view grid-view">
+    <div class="time-strip">
+        <div class="time">All day</div>
+        <div class="time">12 am</div>
+        <div class="time" ng-repeat="i in [] | range:1:12">{{i}} am</div>
+        <div class="time">12 pm</div>
+        <div class="time" ng-repeat="i in [] | range:1:12">{{i}} pm</div>
+    </div>
+    <div class="week-grid grid" id="week-grid"></div>
+</div>

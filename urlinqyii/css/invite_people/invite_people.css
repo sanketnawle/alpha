@@ -1,0 +1,128 @@
+#invite_popup {
+display: none;
+padding: 5px;
+width: 219px;
+background-color: white;
+background: #FFF;
+border: 1px solid rgba(219, 219, 219, 1);
+-webkit-box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.05);
+-moz-box-shadow: 0 0 4px 0 rgba(111, 111, 111, 0.05);
+border-radius: 1px 1px 3px 3px;
+top: auto!important;
+margin-top: -7px;
+border-top: none;
+max-height: 236px;
+overflow: scroll;
+overflow-x: hidden;
+}
+
+
+#invite_popup.active {
+    display: block;
+}
+
+div.day_event_holder {
+
+}
+
+
+div.day_event_holder {
+	
+}
+
+div.week_event_holder{
+
+}
+
+div.month_event_holder{
+	
+}
+
+div.day_event_holder div.event_start_time{
+
+}
+
+div.day_event_holder div.event_end_time{
+	
+}
+
+div.day_event_holder div.event_description{
+	
+}
+
+div.day_event_holder div.event_location{
+	
+}
+
+div.day_event_holder div.event_location > span{
+	
+}
+
+div#inspect_event_delete_button_month{
+
+}
+
+
+div#inspect_event_delete_button_month:hover{
+	
+}
+
+div#inspect_event_delete_button_month:active{
+	
+}
+
+div#inspect_event_delete_button_month:hover > span.delete_text{
+	
+}
+
+
+div.invite_user_holder{
+    margin: 1px 0px;
+
+    padding: 5px 3px;
+}
+
+input#create_month_day_event_button{
+
+}
+
+div.invite_user_holder:hover {
+
+}
+
+div.invite_user_holder .invite_user_name{
+    
+}
+
+div.invite_user_holder .invite_user_email{
+    
+}
+
+.invite_user_holder {
+    cursor: pointer;
+
+}
+
+.invite_user_holder:hover{
+}
+
+.invite_user_holder:active{
+}
+
+.invite_input {
+    background-color: white;
+}
+
+.invite_input.error {
+    background-color: red;
+}
+
+
+.invite_people_button {
+    cursor: pointer;
+}
+
+
+.invite_user_list_item_remove_button {
+    cursor: pointer;
+}
