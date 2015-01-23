@@ -172,7 +172,7 @@
                         <div class='event {{complete}}' data-event_id='{{event_id}}'>
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
-                                <div class='event_date_time'>{{end_date}}</div>
+                                <div class='event_date_time'>{{start_time}}</div>
                             </div>
                             <div class='event_checkbox_holder'>
 

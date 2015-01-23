@@ -284,6 +284,8 @@ $(document).ready(function(){
         }
 
 
+
+
         $.each(json_data['events'], function(index, event) {
             add_event(event);
         });
@@ -507,6 +509,8 @@ function show_event(event,event_div_id){
     }else{
         event['complete'] = 'not_complete';
     }
+
+    event['start_time'] = time_string_to_am_pm_string(event['start_time']);
 
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
