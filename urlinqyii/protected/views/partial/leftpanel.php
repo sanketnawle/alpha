@@ -32,7 +32,7 @@
 				<div class = "LeftPanel_MyBox">
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink">
-							<img class = "MyBox_Picture profile_link" user_id="<?php echo $user->user_id?>" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
+							<img class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
 						</a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
