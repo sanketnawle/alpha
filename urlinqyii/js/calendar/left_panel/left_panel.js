@@ -43,7 +43,7 @@ jQuery(document).ready(function(){
         $(group_div_selector).append(generated_html);
 
         update_color_index();
-        provider_height = $('.providers_scrollable').outerHeight(true);
+        provider_height = $('.providers_scrollable').height();
         $('.providers_scrollable').slimScroll({
             height: provider_height
         });
@@ -87,4 +87,5 @@ jQuery(document).ready(function(){
             });
         }
     });
+
 });
