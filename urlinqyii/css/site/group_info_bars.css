@@ -354,7 +354,7 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 
 div.join_button_wrapper div.group_join_button{
     cursor: pointer;
-    color: #fff; 
+    color: #575757; 
     font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     font-size: 12.2px; display: inline-block;  
     line-height: 26px;

@@ -1616,6 +1616,10 @@ textarea:focus:-moz-placeholder {
     border-radius: 5px!important;
     }
 
+    body.body_group #nav_bar{
+         border-radius: 0px!important;
+    }
+
     body#body_home div#content_panel div#nav_bar{
         width:551px!important;
     }

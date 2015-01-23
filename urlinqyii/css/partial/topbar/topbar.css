@@ -15,6 +15,15 @@ body#body_home .menu_hider, body#body_calendar .menu_hider, body.body_searchpage
 display:none;
 }
 
+body.body_group #topbar_responsive_holder{
+max-width:1450px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float:none;
+    margin-left:110px;
+}
+
 .search_result_icon{
     cursor: pointer;
 
@@ -24,17 +33,26 @@ display:none;
 
 }
 
+#new_notification_count_holder{
+
+}
+
+#new_notification_count{
+
+}
+
 .search_result_icon.non_profile_icon{
     text-transform: uppercase;
     color: #fff;
-    border-radius: 2px;
+    border-radius: 100px;
     float: right;
     line-height: 8px;
     font-size: 9px;
     font-weight: bold;
     font-family: Avenir;
     padding: 6px 5px 4px;
-    background-color: #393d41;
+    background-color: #3A3A3A;
+    border: 1px solid #000;
     display: inline-block;
     margin: 6px 6px 5px 0px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
@@ -49,8 +67,13 @@ background: linear-gradient(45deg,#84b9fa,#1e9ff9);
 border: 1px solid rgb(0, 143, 255);    
 }
 
-.search_result_icon.non_profile_icon.class{
-    background-color: #E8514F; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; background: -webkit-linear-gradient(45deg,#f16b6a,#E8514F); background: linear-gradient(45deg,#f16b6a,#E8514F); border: 1px solid #DB605F;
+/*.search_result_icon.non_profile_icon.class{
+    background-color: #E8514F; 
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px; 
+    background: -webkit-linear-gradient(45deg,#f16b6a,#E8514F);  
+     background: linear-gradient(45deg,#f16b6a,#E8514F); 
+    border: 1px solid #DB605F; 
     
 }
 
@@ -70,6 +93,8 @@ border: 1px solid rgb(255, 112, 0);
 .search_result_icon.non_profile_icon.user{
     
 }
+
+*/
 
 .menu_hider{
 display:inline-block;
@@ -93,6 +118,14 @@ margin-right: auto;
 position: relative;
 top: 9px;
 width: 980px;
+}
+
+body.left_panel_hidden_p2 #fixed_element{
+    position:relative;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 #fixed_element{
+    position:relative;
 }
 
 body.left_panel_hidden.left_panel_hidden_p2 #nav_bar{

@@ -29,7 +29,7 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
     </head>
 
-    <body>
+    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
 
         <?php echo Yii::app()->runController('partial/topbar'); ?>
         <div id="wrapper">

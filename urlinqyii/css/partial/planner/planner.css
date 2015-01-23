@@ -352,7 +352,7 @@ border-image: none;
     white-space: normal;
 
 
-    max-height: 329px;
+    max-height: 345px;
     
 
     overflow-y: auto;
@@ -402,7 +402,7 @@ input.event_title{
     position: relative;
     /*top: 4px;*/
     /*left: 0;*/
-    max-height: 330px;
+    max-height: 345px;
     font-size: 12px;
     min-height: 214px;
     width: 100%;
@@ -548,7 +548,7 @@ input.event_title{
     display: inline-block;
     float: right;
     width: 15%;
-    padding-top: 11px;
+    padding-top: 10px;
 }
 
 
