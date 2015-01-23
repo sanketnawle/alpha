@@ -50,22 +50,22 @@ header('location:home.php');
 
     </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-  <title>Your University - On Urlinq</title>
+  <title>Urlinq - Campus Companion</title>
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
-
+<link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
 
     <!--special css is linked if and only if signup is off& announcement board is up-->
     <!--<link href="lp_beta_announce_special.css" rel='stylesheet' type='text/css'>-->
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>
 
-  <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
-  <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
 
 
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/getURLPara.js"></script>
@@ -163,6 +163,21 @@ header('location:home.php');
     $(this).removeClass("error_box_log_color");
   });
   /*error handling end*/
+
+  setTimeout(function() {
+    $('div.icon_section.icon_green').addClass('animated fadeInLeft');
+    $('div.icon_section.icon_green').css({"opacity":"1"});
+  },1000);
+
+  setTimeout(function() {
+    $('div.icon_section.icon_red').addClass('animated fadeInLeft');
+    $('div.icon_section.icon_red').css({"opacity":"1"});
+  },1300);
+
+  setTimeout(function() {
+    $('div.icon_section.icon_blue').addClass('animated fadeInLeft');
+    $('div.icon_section.icon_blue').css({"opacity":"1"});
+  },1600);
 
   $(window).scroll(function() {
 
@@ -295,7 +310,7 @@ header('location:home.php');
     $('.ur-video-playing').show();
     $('.ur-video-playing').animate({opacity:1},200);
 
-  }, 800);
+  }, 600);
 
   $(function () {
     var $header = $(".marketing_animation");
@@ -543,33 +558,39 @@ header('location:home.php');
 
                 </div>
               </div>-->
-              <div class="fb-like" data-href="https://facebook.com/joinurlinq" data-width="60" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
+              <div class="fb-like" data-href="https://facebook.com/urlinq" data-width="60" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
 
-              <video preload = 'auto' autoplay loop preload = "auto" id = "ur-video-loop" class = "ur-video-playing" muted>
+              <video preload = 'auto' autoplay loop preload = "auto" id = "ur-video-loop" class = "ur-video-playing" style='width:100%;' muted>
                   
-                  <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop.mp4" type = "video/mp4">
-                  <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop.webm" type = "video/webm">
+                  <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.mp4" type = "video/mp4">
+                  <source src="<?php echo Yii::app()->request->baseUrl; ?>/assets/UrMovieLoop4.webm" type = "video/webm">
                   
               </video>
-              <div class = "urlinq-marketing">
-                <div class = "wrapper-1280">
-                  <div class = "grabber">
-                  <div class = "grabber-container">
-                      <div class = "slider-items-wrapper">
-                        <div class = "text-switcher state1">
-                          
-                           <div class = "feature-description">
-                            <p class = "marketing_animation"></p>
-                          </div>
-
-                        </div>
-
-                      </div>
-
+              <div class = "about_section">
+                <div class = "focus_area">
+                  <div class = "icon_section icon_green" style = "opacity:0">
+                    <em class = "icon_img icon_img_g">
+                    </em>
+                    <h5>
+                      The planner that plans for you - it's never been easier to keep track of everything happening in your academic life. 
+                    </h5>
+                  </div>
+                  <div class = "icon_section icon_red" style = "opacity:0">
+                    <em class = "icon_img icon_img_r">
+                    </em>
+                    <h5 style = "top:20px;">
+                      Ask questions, share notes, and discover events with the students and professors at your school.
+                    </h5>
+                  </div>
+                  <div class = "icon_section icon_blue" style = "opacity:0">
+                    <em class = "icon_img icon_img_b">
+                    </em>
+                    <h5>
+                      Search your university - nothing is off limits when you can search for classes, clubs, departments, and your friends within them. 
+                    </h5>
                   </div>
                 </div>
-              </div>
               </div>
              
 
