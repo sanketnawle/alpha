@@ -2,6 +2,7 @@ $(document).ready(function() {
     var old_origin_type;
     var old_origin_id;
     globals.$fbar = $('#fbar_wrapper');
+
     $(document).on('click', '.profile_link', function(){
 
 
@@ -628,6 +629,7 @@ $(document).ready(function() {
             $("#title_entry").focus();
             next();
         });
+        already_submitted = false;
        //$('.overlay').css('z-index',2500);
 
     });
@@ -643,10 +645,13 @@ $(document).ready(function() {
         //kinyi add showcase to showcase bar: data.title, data.desc, data.file_extension, data.preview_file
         //reset form
         $('#upload_file_name').text('');
+
         $('#title_entry').val('');
         $('#desc_entry').val('');
+        if($('form#add_showcase').length){
+            $('form#add_showcase')[0].reset();
+        }
         upload_file = null;
-
     });
 
 
@@ -707,82 +712,91 @@ $(document).ready(function() {
         $('#upload_file_name').text(upload_file.name);
 
     });
-
+    var already_submitted = false;
     $(document).on('submit','form[id=add_showcase]', function (event) {
         event.stopPropagation(); // Stop stuff happening
         event.preventDefault(); // Totally stop stuff happening
         // START A LOADING SPINNER HE
         // Create a formdata object and add the files
-        var data = new FormData();
-        if(upload_file) {
-            data.append("file", upload_file);
-        }else{
-            alert('Please upload a file or provide a link to your file');
-        }
-        data.append("title", $('#title_entry').val());
-        data.append("desc", $('#desc_entry').val());
-        data.append("user", user_id);
-        $.ajax({
-            url: base_url+'/profile/addShowcase',
-            type: 'POST',
-            data: data,
-            cache: false,
-            dataType: 'json',
-            processData: false, // Don't process the files
-            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-            success: function(data)
-            {
-                if(data.status == "success"){
-                    $('#add_showcase_form').hide();
-                    $('#profile_overlay').hide();
-
-                    //reset form
-                    $('#upload_file_name').text('');
-                    $('#title_entry').val('');
-                    $('#desc_entry').val('');
-                    $('#upfile').val('');
-                    upload_file = null;
-
-                    render_new_showcase(data);
-                    $(".showcase_items").fadeIn(250);
-                    $('#add_showcase_form').fadeOut(350).delay(150).queue(function(next){
-                        $('.add_showcase_text').fadeIn(200);
-                        $('.add_showcase_button').fadeIn(50);
-                        next();
-                    });
-                    //alert(JSON.stringify(data));
-                }else{
-                    //alert(JSON.stringify(data));
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-                alert('err'+jqXHR+textStatus+errorThrown);
+        if(!already_submitted){
+            var data = new FormData();
+            if(upload_file) {
+                data.append("file", upload_file);
+            }else{
+                alert('Please upload a file or provide a link to your file');
             }
-        });
+            data.append("title", $('#title_entry').val());
+            data.append("desc", $('#desc_entry').val());
+            data.append("user", user_id);
+            $.ajax({
+                url: base_url+'/profile/addShowcase',
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'json',
+                processData: false, // Don't process the files
+                contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                success: function(data)
+                {
+                    if(data.status == "success"){
+                        $('#add_showcase_form').hide();
+                        $('#profile_overlay').hide();
+
+                        //reset form
+                        $('#upload_file_name').text('');
+                        $('#title_entry').val('');
+                        $('#desc_entry').val('');
+                        $('#upfile').val('');
+                        upload_file = null;
+
+                        render_new_showcase(data);
+                        $(".showcase_items").fadeIn(250);
+                        $('#add_showcase_form').fadeOut(350).delay(150).queue(function(next){
+                            $('.add_showcase_text').fadeIn(200);
+                            $('.add_showcase_button').fadeIn(50);
+                            next();
+                        });
+                        already_submitted = true;
+                        if($('form#add_showcase').length){
+                            $('form#add_showcase')[0].reset();
+                        }
+                        //alert(JSON.stringify(data));
+                    }else{
+                        alert(JSON.stringify(data));
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert('err'+jqXHR+textStatus+errorThrown);
+                }
+            });
+        }
+
     });
 
     //delete showcase
     $(document).on('click','.showcase_delete',function(){
         var file_id = parseInt($('.showcase_item.center').attr('file_id'));
-        $.ajax({
-            url: base_url+'/profile/deleteShowcase',
-            type: 'POST',
-            data: {file_id:file_id},
-            dataType: 'json',
-            success: function(result)
-            {
-                if(result.status == "success"){
-                    deleteShowcaseElement();
-                }else{
-                    alert(result.status);
+        if($(this).closest('.showcase_item').hasClass('center')){
+            $.ajax({
+                url: base_url+'/profile/deleteShowcase',
+                type: 'POST',
+                data: {file_id:file_id},
+                dataType: 'json',
+                success: function(result)
+                {
+                    if(result.status == "success"){
+                        deleteShowcaseElement();
+                    }else{
+                        alert(result.status);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert(errorThrown);
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-                alert(errorThrown);
-            }
-        });
+            });
+        }
 
     });
     function deleteShowcaseElement(){
