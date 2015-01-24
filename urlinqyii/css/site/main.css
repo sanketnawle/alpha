@@ -235,8 +235,9 @@ div#planner_column.planner_column_group{
 }
 
 #planner_column.planner_column_home #right_column_specs #fixed_element{
-    top: 62px;
-    height: 364px;
+    top: 15px;
+    height: 380px;
+    position: relative;
 }
 
 #planner_column.planner_column_group #right_column_specs #fixed_element{
