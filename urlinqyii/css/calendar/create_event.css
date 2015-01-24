@@ -138,6 +138,9 @@ padding-left: 2px;
 padding-top: 18px;
 position: relative;
 }
+.body .month-view .month-grid div.grid-item {
+    padding-top: 18px;
+}
 
 .body .month-view .month-grid div.grid-item .date {
 text-align: right;

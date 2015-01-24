@@ -214,7 +214,7 @@ jQuery(document).ready(function(){
 
     jQuery(document).on('submit','#create_month_day_event_form',function(e){
         e.stopPropagation();
-        jQuery('.grid-item.prem').removeClass('making_event');
+        jQuery('.grid-item').removeClass('making_event');
         var $form = jQuery(this);
         var $create_month_day_event_popup = $form.closest('#create_month_day_event_popup');
         e.preventDefault();
