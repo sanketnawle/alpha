@@ -355,15 +355,15 @@ border-image: none;
     max-height: 345px;
     
 
-    overflow-y: auto;
+
     
     
 
-    top: -10px;
+    /*top: -10px;*/
 
     position: relative;
 
-    overflow-x: hidden;
+    overflow: hidden;
 
 }
 
@@ -402,9 +402,10 @@ input.event_title{
     position: relative;
     /*top: 4px;*/
     /*left: 0;*/
-    max-height: 345px;
+    /*max-height: 345px;*/
     font-size: 12px;
-    min-height: 214px;
+    /*min-height: 214px;*/
+    height: 214px;
     width: 100%;
     -moz-transition: all .15s linear;
     -webkit-transition: all .15s linear; 
@@ -982,4 +983,8 @@ opacity:1;
 .slimScrollDiv {
     width:100% !important;
     top:-9px;
+}
+
+.slimScrollBar {
+   /* margin-top: -10px;*/
 }
