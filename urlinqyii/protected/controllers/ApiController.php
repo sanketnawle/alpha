@@ -16,10 +16,8 @@
             if($user){
 
                 $file_urls = array();
-                $file_ids = $user->pictureFile->file_url;
-                if(count($file_ids)){
-                    for($i=0; $i<count($file_ids); $i++){
-                        $file_id = $file_ids[$i];
+                $file_id = $user->pictureFile->file_url;
+                if($file_id){
                         $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
                         if($file){
                             array_push($file_urls, $file->file_url);
@@ -28,7 +26,7 @@
                             $this->renderJSON($data);
                             return;
                         }
-                    }
+                    
                     $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
