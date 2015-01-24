@@ -1223,7 +1223,7 @@ public function actionSendReset(){
             Yii::app()->session['user_id'] = $user->user_id;
             $data = array('success'=>true);
             $this->renderJSON($data);
-            $user_recovery->delete()
+            $user_recovery->delete();
             return;
         }
     }

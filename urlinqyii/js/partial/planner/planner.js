@@ -285,10 +285,12 @@ $(document).ready(function(){
 
 
 
-
+        var planner_height;
         $.each(json_data['events'], function(index, event) {
             add_event(event);
         });
+
+
 
 //        console.log(json_data);
 //        var past_events = json_data['past_due_events'];
@@ -776,10 +778,11 @@ $(document).on('click','#create_todo_form',function(e){
             }
         }, 'json'
     );
-    $(function(){
-        $('#event_list').slimScroll();
-    });
+
 });
+    $('#event_list').slimScroll({
+        height: '329px'
+    });
 
 
 });

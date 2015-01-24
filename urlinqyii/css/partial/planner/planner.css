@@ -979,4 +979,7 @@ opacity:1;
     display:none;
 }
 
-
+.slimScrollDiv {
+    width:100% !important;
+    top:-9px;
+}
