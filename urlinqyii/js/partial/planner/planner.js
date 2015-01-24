@@ -250,6 +250,7 @@ $(document).ready(function(){
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);
+
             }else{
                 alert('error getting planner events');
             }
@@ -285,10 +286,11 @@ $(document).ready(function(){
 
 
 
-
+        var planner_height;
         $.each(json_data['events'], function(index, event) {
             add_event(event);
         });
+
 
 //        console.log(json_data);
 //        var past_events = json_data['past_due_events'];
@@ -516,6 +518,7 @@ function show_event(event,event_div_id){
     var template = Handlebars.compile(source);
     var generated_html = template(event);
     $(event_div_id).append(generated_html).hide().fadeIn();
+
 }
 
 //Checks the date of the event and
@@ -776,10 +779,19 @@ $(document).on('click','#create_todo_form',function(e){
             }
         }, 'json'
     );
-    $(function(){
-        $('#event_list').slimScroll();
-    });
+
 });
+    //$('#event_list').slimScroll({
+    //    height: '329px'
+    //});
+
+
+});
+$(window).load(function(){
+
+        $('#event_list').slimScroll({
+            height: '214px'
+        });
 
 
 });
