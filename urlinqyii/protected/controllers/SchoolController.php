@@ -105,7 +105,7 @@ class SchoolController extends Controller
 
 
         $id = $_GET['school_id'];
-        $school = school::model()->find('school_id=:id',array(':id'=>$id));
+        $school = School::model()->find('school_id=:id',array(':id'=>$id));
 
         if($school){
             $school_data = $this->get_model_associations($school,array('departments'=>array('pictureFile')));
@@ -129,7 +129,7 @@ class SchoolController extends Controller
 
 
         $id = $_GET['school_id'];
-        $school = school::model()->find('school_id=:id',array(':id'=>$id));
+        $school = School::model()->find('school_id=:id',array(':id'=>$id));
 
         if($school){
 

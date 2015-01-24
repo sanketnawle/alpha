@@ -109,13 +109,13 @@ jQuery(document).ready(function(){
 
 
     last_month_day_date_selected = null;
-    jQuery(document).on('click', '.grid-item.prem', function(event){
+    jQuery(document).on('click', '.grid-item', function(event){
         jQuery(".popup_create_event_name_input").focus();
         hide_inspect();
         jQuery(".event_holder").removeClass("colorfied");
         //Hide the other popup
         jQuery('#inspect_event_popup_month').removeClass('active');
-        jQuery('.grid-item.prem').removeClass('making_event');
+        jQuery('.grid-item').removeClass('making_event');
         event.stopPropagation();
         var $day_div = jQuery(this);
         jQuery($day_div).addClass("making_event");
@@ -214,7 +214,7 @@ jQuery(document).ready(function(){
 
     jQuery(document).on('submit','#create_month_day_event_form',function(e){
         e.stopPropagation();
-        jQuery('.grid-item.prem').removeClass('making_event');
+        jQuery('.grid-item').removeClass('making_event');
         var $form = jQuery(this);
         var $create_month_day_event_popup = $form.closest('#create_month_day_event_popup');
         e.preventDefault();

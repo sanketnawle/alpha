@@ -457,20 +457,6 @@ class SiteController extends Controller
         $this->renderJSON($data);
     }
 
-
-
-    public function actionReset() {
-        if(isset($_POST['email'])) {
-            $email = $_POST['email'];
-            if(!$this->valid_email($email)){
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'This email is not supported');
-                $this->renderJSON($data);
-                return;
-            }
-
-        }
-    }
-
 	public function actionLogin() {
 
 
@@ -1130,8 +1116,7 @@ class SiteController extends Controller
 
 
     }
-
-    public function actionSendReset(){
+public function actionSendReset(){
         if(!isset($_POST['email'])){
             $data = array('success'=>false, 'error_id'=>1);
             $this->renderJSON($data);
@@ -1149,7 +1134,7 @@ class SiteController extends Controller
                     //If the user already has a confirmation, send another email with the same token
                     $user_email = $user->user_email;
                     $subject = 'Urlinq User Recovery';
-                    $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test->recovery_key;
+                    $message = Yii::app()->getBaseUrl(true) . '/reset?key=' . $user_recovery_test['recovery_key'];
                     $from = 'team@urlinq.com';
 
                     ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_recovery_test->recovery_key),$contentType=null);
@@ -1195,12 +1180,52 @@ class SiteController extends Controller
         $data = array('success'=>true);
         $this->renderJSON($data);
         return;
+}
+
+    public function actionReset() {
+        if(!isset($_GET['key'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'Invalid Token');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $token = $_GET['key'];
+        $user_recovery = UserRecovery::model()->find('recovery_key=:token',array(':token'=>$token));
+
+        if($user_recovery){
+            $user = User::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
+            $this->render('reset',array('email'=>$user->user_email,'token'=>$token));
+            return;
+        }
+
     }
 
+    public function actionDoReset(){
+        include "password_encryption.php";
+        $token = $_POST['token'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+        if ($password != $confirm_password) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'Passwords do not match');
+            $this->renderJSON($data);
+            return;
+        }
+        $user_recovery = UserRecovery::model()->find('recovery_key=:token',array(':token'=>$token));
+        if($user_recovery){
+            $user = User::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
+            $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user_recovery->user_id));
+            $salt = $user_login->salt;
+            $hashed_password = hash_password($password,$salt);
 
-
-
-
-
+            // The password gets changed here
+            $user_login->password = $hashed_password;
+            $user_login->save(false);
+            Yii::app()->session['user_id'] = $user->user_id;
+            $data = array('success'=>true);
+            $this->renderJSON($data);
+            $user_recovery->delete();
+            return;
+        }
+    }
 
 }

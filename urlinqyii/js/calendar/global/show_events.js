@@ -265,7 +265,7 @@ function show_month_event(event_json){
 
     var generated_html = template(event_json);
     //            var grid_item_selector = ele.querySelector("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
-    var $grid_item_selector = jQuery("div.grid-item.prem[data-date='" + event_json['start_date'] + "']");
+    var $grid_item_selector = jQuery("div.grid-item[data-date='" + event_json['start_date'] + "']");
 
     if($grid_item_selector){
 
