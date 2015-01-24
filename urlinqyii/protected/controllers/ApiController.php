@@ -1808,7 +1808,8 @@ public function actionLogin() {
                 }
 
 
-                include 'UniqueTokenGenerator.php';
+                include_once 'UniqueTokenGenerator.php';
+                include_once "password_encryption.php";
                 $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
                 $salt = $user_login->salt;
