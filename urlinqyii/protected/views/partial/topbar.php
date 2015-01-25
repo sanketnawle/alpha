@@ -76,7 +76,7 @@
 <!--                    <li class="search_preview">-->
 <!--                        <a>-->
 <!--                            <div class="icon clb" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
-<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->-->
+<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->
 <!--                            <span>Clubs Your Friends Are In</span>-->
 <!--                        </a>-->
 <!--                    </li>-->

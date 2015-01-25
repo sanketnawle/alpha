@@ -362,6 +362,7 @@ $(document).ready(function () {
             }
 
         }else if (curr == 4) {
+            $('.skip_progress').show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -384,9 +385,10 @@ $(document).ready(function () {
             }
 
         }else if (curr == 5) {
+
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
-
+            $('.skip_progress').show();
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> joined</div></div>");
 
 
@@ -413,7 +415,7 @@ $(document).ready(function () {
             }
 
         }else if (curr == 6) {
-
+            $('.skip_progress').hide();
 
             var data = {base_url: base_url, user_type: user_type};
 
@@ -797,6 +799,7 @@ $(document).ready(function () {
                     try{
                         payload_function();
                     }catch(err) {
+                        console.log(err);
                         console.log("error calling payload function");
                     }
 

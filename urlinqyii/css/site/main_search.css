@@ -81,7 +81,7 @@ div.page_search.page_search_all_members_results  .black_background_row, div.page
 }
 
 div.page_search.page_search_all_members_results #main_panel.main_panel_search{
-	top: 270px!important;
+	/*top: 270px!important;*/
 }
 
 #content_panel.content_panel_search{

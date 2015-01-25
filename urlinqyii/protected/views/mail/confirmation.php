@@ -60,7 +60,7 @@
 
 
                                     <p class="mobileGetBigP" style="color:#2a2a2a;display:block;font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;text-align:left;line-height:1.714em;font-size: 16.5px;margin:0 auto;padding: 0 0 10px;" align="center">
-                                        Hi Jacob,
+                                        Hi <?php echo $user_firstname; ?>,
                                         <br>
                                         <span style="margin-top:10px;display:block;">Welcome to Urlinq! To complete your registration, click this link <a href="<?php echo $message; ?>"><?php echo $message; ?></a></span>
                                     </p>

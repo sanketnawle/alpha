@@ -45,6 +45,7 @@ class Department extends CActiveRecord
 			array('department_name', 'length', 'max'=>255),
 			array('alias', 'length', 'max'=>20),
 			array('department_description, department_location', 'safe'),
+            array('department_tag, alias', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('department_id, school_id, department_name, department_description, department_location, alias, picture_file_id, cover_file_id', 'safe', 'on'=>'search'),
@@ -84,6 +85,7 @@ class Department extends CActiveRecord
 			'department_description' => 'Department Description',
 			'department_location' => 'Department Location',
 			'alias' => 'Alias',
+            'department_tag' => 'Department Tag',
 			'picture_file_id' => 'Picture File',
 			'cover_file_id' => 'Cover File',
 		);
@@ -110,6 +112,7 @@ class Department extends CActiveRecord
 		$criteria->compare('department_id',$this->department_id);
 		$criteria->compare('school_id',$this->school_id);
 		$criteria->compare('department_name',$this->department_name,true);
+        $criteria->compare('department_tag',$this->department_tag,true);
 		$criteria->compare('department_description',$this->department_description,true);
 		$criteria->compare('department_location',$this->department_location,true);
 		$criteria->compare('alias',$this->alias,true);
