@@ -18,7 +18,7 @@
                 $file_id = $user->pictureFile->file_url;
                 if($file_id){
                     
-                    $data = array('success'=>true,'file_url'=>$file_url,'base_url'=>Yii::app()->getBaseUrl(true));
+                    $data = array('success'=>true,'file_url'=>$file_id,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
                 } else {
