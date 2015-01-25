@@ -15,11 +15,10 @@
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
             if($user){
 
-                $file_urls = array();
                 $file_id = $user->pictureFile->file_url;
                 if($file_id){
                     
-                    $data = array('success'=>true,'file_url'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
+                    $data = array('success'=>true,'file_url'=>$file_url,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
                 } else {
