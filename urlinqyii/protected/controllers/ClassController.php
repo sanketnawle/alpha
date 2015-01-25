@@ -306,6 +306,10 @@ class ClassController extends Controller
             return;
         }
     }
+
+
+
+
     public function actionGetEvents(){
         $class_id = $_GET["class_id"];
         $file_id = $_GET["file_id"];
@@ -314,7 +318,12 @@ class ClassController extends Controller
         $class_events = Event::model()->findAll('origin_id=:id and file_id=:file_id order by start_date desc', array(':id'=>$class_id, ':file_id'=>$file_id));
 
         $this->renderJSON($class_events);
-    }    
+    }
+
+
+
+
+
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
         include_once "color/color.php";
