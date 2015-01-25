@@ -1357,7 +1357,7 @@ $(document).ready(function() {
 
 
             if(end_datetime < start_datetime){
-                if(post_data['event']['start_date'] == post_data['event']['end']){
+                if(post_data['event']['start_date'] == post_data['event']['end_date']){
                     alert('Invalid end time');
                     return;
                 }else{
