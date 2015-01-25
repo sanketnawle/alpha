@@ -76,14 +76,33 @@ jQuery(document).ready(function(){
         //Create variables to fill with content in inspect boxes//
         var $inspect_event_popup = jQuery('.inspect_event_popup');
         var $inspect_event_title = jQuery($inspect_event_popup).find("#inspect_event_title");
-        var $inspect_event_title_background = jQuery($inspect_event_popup).find("div.title_background");
+        var $inspect_event_when = jQuery($inspect_event_popup).find("#inspect_event_when");
+        var $inspect_event_where = jQuery($inspect_event_popup).find("#inspect_event_where");
+        var $inspect_event_who = jQuery($inspect_event_popup).find("#inspect_event_who");
+        var $inspect_event_whentime = jQuery($inspect_event_popup).find("#inspect_event_whentime");
         var $inspect_event_description = jQuery($inspect_event_popup).find("#inspect_event_description");
+        var $inspect_event_title_background = jQuery($inspect_event_popup).find("div.title_background");
         //Add the event_id to the inspect_event_popup_week for easy access
         $inspect_event_popup.attr('data-event_id', event_id);
         jQuery($inspect_event_title).css({"color":event_div_hex});
 
         jQuery($inspect_event_title_background).css({"background-color":event_div_hex});
         jQuery($inspect_event_title).text(event_title);
+
+        /* Adding event data to inspect event box, but only if data length is more than 1 because appending labels too */
+
+        /* Getting data from attributes */
+        var event_where = $event_div.attr("data-location");
+        var event_starttime = time_string_to_am_pm_string($event_div.attr("data-start_time"));
+        var event_endtime = time_string_to_am_pm_string($event_div.attr("data-end_time"));
+        var event_timewhen_data = "at " + event_starttime;
+
+        if(event_where.length >= 1){
+            jQuery($inspect_event_where).html("<span>Where:</span>" + event_where);
+        }
+
+        
+        jQuery($inspect_event_whentime).text(event_timewhen_data);
         jQuery($inspect_event_description).text(event_description);
 
         if(!$inspect_event_popup.is(":visible")){
@@ -115,7 +134,7 @@ jQuery(document).ready(function(){
             //            Mon, October 27, 2014, 8am – 11am
             var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');
             var start_time = $event_div.attr('data-start_time');
-            var inspect_event_text = format_event_date_text(this_date);
+            var inspect_event_text = date_to_day_of_week_string_long(this_date);
             $inspect_event_popup.find('#inspect_event_text').text(inspect_event_text);
             $inspect_event_popup.find('#inspect_event_description').text($event_div.attr('data-description'));
 
@@ -158,7 +177,7 @@ jQuery(document).ready(function(){
                 //            Mon, October 27, 2014, 8am – 11am
                 var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');
                 var start_time = $event_div.attr('data-start_time');
-                var inspect_event_text = format_event_date_text(this_date);
+                var inspect_event_text = date_to_day_of_week_string_long(this_date);
                 $inspect_event_popup.find('#inspect_event_text').text(inspect_event_text);
                 $inspect_event_popup.find('#inspect_event_description').text($event_div.attr('data-description'));
 

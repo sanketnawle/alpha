@@ -24,6 +24,11 @@ body{
     background: #FAFAFA;
 }
 
+
+body.body_searchpage #wrapper{
+    padding-top:26px;
+}
+
 body.profile_stop_scroll{
     overflow: hidden!important;
 }

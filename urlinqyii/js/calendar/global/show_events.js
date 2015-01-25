@@ -94,6 +94,8 @@ function show_day_event(event_json){
         }
 
 
+
+
         html_object.css({'position':'absolute'});
         html_object.css({'top': top_pixels.toString() + 'px'});
         html_object.css({'left': left_pixels + 'px'});
@@ -103,7 +105,7 @@ function show_day_event(event_json){
         color_block.css({'background-color':"rgba(" + event_json['color']['rgb']['r'] + "," + event_json['color']['rgb']['g'] + "," + event_json['color']['rgb']['b'] + ", .10)"});
 
 
-
+        
 
         $grid_item_selector.append(html_object);
 

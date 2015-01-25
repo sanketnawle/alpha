@@ -1,6 +1,7 @@
 var week_days_short = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-var week_days_long = ["Sunday","Monday","Tueday","Wednesday","Thursday","Friday","Saturday"];
+var week_days_long = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var months_short = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var months_long = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
 function date_to_month_string(date_obj){
@@ -17,6 +18,11 @@ function date_to_day_name(date_obj){
 //returns a string like Fri, Jan 9
 function date_to_day_of_week_string(this_date){
     return week_days_short[this_date.getDay()] + ', ' + months_short[this_date.getMonth()] + ' ' + this_date.getDate();
+}
+
+//returns a string like Friday, January 9
+function date_to_day_of_week_string_long(this_date){
+    return week_days_long[this_date.getDay()] + ', ' + months_long[this_date.getMonth()] + ' ' + this_date.getDate();
 }
 
 
@@ -117,7 +123,7 @@ weekday[6] = "Saturday";
 
 
 function format_event_date_text(date_obj){
-    return weekday[date_obj.getDay()].substring(0, 3) + ' ' + (date_obj.getMonth() + 1).toString() + '/' + (date_obj.getDate()).toString();
+    return weekday[date_obj.getDay()].substring(0, 3) + ', ' + (date_obj.getMonth() + 1).toString() + '/' + (date_obj.getDate()).toString();
 }
 
 

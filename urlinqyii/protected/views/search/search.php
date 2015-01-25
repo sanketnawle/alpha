@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <span class = "filter_header_sentence">
-                                    SEARCH FILTERS
+                                    University Search
                                 </span>
                             </div>
                             <div class = "members_all_filter filter_section" data-filter_id="1" data-filter="all">
