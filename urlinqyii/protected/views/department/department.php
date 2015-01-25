@@ -10,7 +10,7 @@
 
     </script>
 
-    <title><?php echo $department->department_name; ?></title>
+    <title><?php echo $department->department_tag . ' - ' . $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
@@ -71,7 +71,7 @@
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                             <div class = "group_name">
                                 <div class = "center_admin"><div class = "department_of">Department of</div></div>
-                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">

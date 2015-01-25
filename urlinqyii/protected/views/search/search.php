@@ -63,10 +63,10 @@
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper" class = "wrapper_searchpage">
         <div id="page" class = "page_search page_search_all_members_results">
-            <div class = "black_background_row">
+            <div class = "black_background_row" style="display: none !important; ">
             </div>
-            <div class = "horizontal_scroll_holder" id="users">
-                <div class = "horizontal_scroll_holder_search" id = "horizontal_scroll_holder">
+            <div class = "horizontal_scroll_holder" id="users" style="display: none !important;">
+                <div class = "horizontal_scroll_holder_search" id = "horizontal_scroll_holder" style="display: none;">
                         <!-- horizontal scroll members cards -->
                     <div class = "horiz-area">
                         <div class = "horiz-wrapper">

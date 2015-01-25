@@ -112,6 +112,22 @@ class SiteController extends Controller
 
 
     function actionSendVerificationEmailFunction(){
+
+//        $user = $this->get_current_user();
+//        if(!$user){
+//            $data = array('success'=>false);
+//            $this->renderJSON($data);
+//            return;
+//        }
+
+//
+//        if($user->status != 'unverified'){
+//            $data = array('success'=>false);
+//            $this->renderJSON($data);
+//            return;
+//        }
+
+
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
@@ -128,6 +144,9 @@ class SiteController extends Controller
         if (ERunActions::runBackground())
 		{
 		    ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
 		}
 		else
 		{
@@ -201,12 +220,6 @@ class SiteController extends Controller
 
 
     public function actionResendVerificationEmail(){
-        if(!$this->get_current_user_id()){
-            $data = array('success'=>false,'error_id'=>1);
-            $this->renderJSON($data);
-            return;
-        }
-
 
         $user = $this->get_current_user();
 
@@ -290,7 +303,7 @@ class SiteController extends Controller
 
 
     public function actionSendVerificationEmail(){
-        if(!isset($_POST['school_id']) || !isset($_POST['department_id']) || !$this->get_current_user_id()){
+        if(!isset($_POST['school_id']) || !isset($_POST['department_id'])){
             $data = array('success'=>false,'error_id'=>1);
             $this->renderJSON($data);
             return;
@@ -316,7 +329,7 @@ class SiteController extends Controller
 
         $user = $this->get_current_user();
 
-        if($user){
+        if($user && $user->status == 'unverified'){
             $user->school_id = $school_id;
             $user->department_id = $department_id;
 
