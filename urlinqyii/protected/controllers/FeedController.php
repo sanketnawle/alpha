@@ -678,7 +678,7 @@ class FeedController extends Controller
 
             $command = Yii::app()->db->createCommand($posts_sql_club);
             if($posts = $command->queryAll()){
-                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
                 return;
             }else{
                 $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
@@ -738,7 +738,7 @@ class FeedController extends Controller
         $command = Yii::app()->db->createCommand($posts_sql_dept);
 
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
@@ -794,7 +794,7 @@ class FeedController extends Controller
 
 
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>array()));
@@ -805,6 +805,12 @@ class FeedController extends Controller
 
     public function actionGetUniversityPosts()
     {
+
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $this->renderJSON(array('success'=>false, 'error_msg'=>'user not signed in'));
+            return;
+        }
 
 
         $created_at = new DateTime('now');
@@ -842,7 +848,7 @@ class FeedController extends Controller
 
 
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>array()));
