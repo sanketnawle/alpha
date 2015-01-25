@@ -325,7 +325,9 @@
                                             <a class = "name profile_link" data-user_id='<?php echo $member->user_id; ?>'><?php echo $member->full_name(); ?></a>
                                         </div>
                                         <div class = "user_more_info">
-                                            <a class = "department_link"><?php echo $member->department->department_name; ?></a>
+                                            <?php if($member->department){ ?>
+                                                <a class = "department_link"><?php echo $member->department->department_name; ?></a>
+                                            <?php } ?>
                                         </div>
                                         <?php if($user->user_id !== $member->user_id){ ?>
                                         <div class = "user_card_button_holder">

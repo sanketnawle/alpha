@@ -293,7 +293,7 @@ class FeedController extends Controller
                 $posts[$i]['origin'] = null;
             }
 
-            if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $this->get_current_user_id())){
+            if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $user->user_id)){
                 $posts [$i] ['like_status'] = TRUE;
             }else{
                 $posts [$i] ['like_status'] = FALSE;
