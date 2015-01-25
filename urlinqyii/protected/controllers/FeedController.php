@@ -231,8 +231,8 @@ class FeedController extends Controller
         return $options;
     }
 
-    public function addPostData($posts){
-        $user = $this->get_current_user();
+    public function addPostData($posts, $user){
+
         foreach($posts as $i=>$post){
 //            echo "#".$post['privacy']."*".$post['origin_type']."*".$post['origin_id']."#";
             if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'])){
@@ -470,7 +470,7 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
         }
