@@ -51,9 +51,11 @@ $(document).ready(function(){
             if(json_data['success']){
                 notifications = json_data['notifications'];
 
-                update_notifications_div();
+                if(notifications.length){
+                    update_notifications_div();
+                    poll_notifications();
+                }
 
-                poll_notifications();
             }else{
                 console.log('Error getting notifications.');
             }

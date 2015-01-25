@@ -124,7 +124,7 @@
 
                                 <?php foreach($course->classes as $class){ ?>
                                     <?php $class_students = $class->students; ?>
-                                    <div class = "group_box group_course_box" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
+                                    <div class = "group_box group_course_box" data-class_id="<?php echo $class->class_id; ?>" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
@@ -137,7 +137,7 @@
 
                                             <div class= "info_line indent">Section: <?php echo $class->section_id; ?></div>
                                             <?php if($class->class_datetime){ ?>
-                                                <div class= "info_line indent">Section: <?php echo $class->class_datime; ?></div>
+                                                <div class= "info_line indent">Time: <?php echo $class->class_datetime; ?></div>
                                             <?php } ?>
 
                                             <div class= "info_line indent"><?php echo count($class_students); ?> students</div>

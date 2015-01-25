@@ -47,9 +47,7 @@ class EventController extends Controller
                     return $color;
                 }
 
-//                $data = array('success'=>false,'error_id'=>2,'user_id'=>$user->user_id, 'class_id'=>$event['origin_id']);
-//                $this->renderJSON($data);
-//                return;
+
             }
 
         }else if($origin_type == 'club' || $origin_type == 'group'){

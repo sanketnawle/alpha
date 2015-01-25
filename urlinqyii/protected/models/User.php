@@ -177,7 +177,24 @@ class User extends CActiveRecord
             'classUsersAll' => array(self::HAS_MANY, 'ClassUser', 'user_id'),
             'classUsersForFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="following" or privacy="public"'),
             'classUsersForNonFollowers' => array(self::HAS_MANY, 'ClassUser', 'user_id','on'=>'privacy="public"'),
-            'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
+
+
+
+            'all_groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)'),
+            'groups' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)', 'on'=>'group_type="group"'),
+            'clubs' => array(self::MANY_MANY, 'Group', 'group_user(user_id,group_id)', 'on'=>'group_type="club"'),
+
+
+//            'groups'=>array(self::MANY_MANY, 'Group', array('group_type'=>'group'), 'through'=>'all_groups'),
+//
+//            'clubs'=>array(self::MANY_MANY, 'Group', array('group_type'=>'club'), 'through'=>'all_groups'),
+
+            #worksz
+
+
+
+
+
 
             'classes' => array(self::MANY_MANY, 'ClassModel', 'class_user(user_id, class_id)'),
 

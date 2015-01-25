@@ -231,8 +231,8 @@ class FeedController extends Controller
         return $options;
     }
 
-    public function addPostData($posts){
-        $user = $this->get_current_user();
+    public function addPostData($posts, $user){
+
         foreach($posts as $i=>$post){
 //            echo "#".$post['privacy']."*".$post['origin_type']."*".$post['origin_id']."#";
             if(!self::validatePrivacy($post['privacy'],$post['origin_type'],$post['origin_id'])){
@@ -293,7 +293,7 @@ class FeedController extends Controller
                 $posts[$i]['origin'] = null;
             }
 
-            if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $this->get_current_user_id())){
+            if(PostLike::model()->findBySql("SELECT * FROM post_like WHERE post_id=" . $post['post_id'] . ' AND user_id=' . $user->user_id)){
                 $posts [$i] ['like_status'] = TRUE;
             }else{
                 $posts [$i] ['like_status'] = FALSE;
@@ -470,7 +470,7 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_home);
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
         }
@@ -699,6 +699,13 @@ class FeedController extends Controller
     public function actionGetDepartmentPosts()
     {
 
+        $user = $this->get_current_user($_GET);
+
+        if(!$user){
+            $this->renderJSON(array('success'=>false));
+            return;
+        }
+
 
         $created_at = new DateTime('now');
         $created_at = $created_at->format('Y-m-d H:i:s');
@@ -723,7 +730,7 @@ class FeedController extends Controller
 			order by last_activity DESC
 			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
-        if(self::$user->user_type == "p")
+        if($user->user_type == "p")
             $is_admin = TRUE;
         else
             $is_admin = FALSE;
@@ -745,7 +752,12 @@ class FeedController extends Controller
     public function actionGetSchoolPosts()
     {
 
+        $user = $this->get_current_user($_GET);
 
+        if(!$user){
+            $this->renderJSON(array('success'=>false));
+            return;
+        }
 
         $created_at = new DateTime('now');
         $created_at = $created_at->format('Y-m-d H:i:s');
@@ -773,17 +785,22 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_school);
 
-        if($posts = $command->queryAll())
-            $success_post = TRUE;
-        else
-            $success_post = FALSE;
 
-        if(self::$user->user_type == "p")
+
+        if($user->user_type == "p")
             $is_admin = TRUE;
         else
             $is_admin = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+
+        if($posts = $command->queryAll()){
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            return;
+        }else{
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>array()));
+            return;
+        }
+
     }
 
     public function actionGetUniversityPosts()
@@ -815,17 +832,22 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_univ);
 
-        if($posts = $command->queryAll())
-            $success_post = TRUE;
-        else
-            $success_post = FALSE;
+
 
         if(self::$user->user_type == "p")
             $is_admin = TRUE;
         else
             $is_admin = FALSE;
 
-        $this->renderJSON(array('success'=>$success_post, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+
+
+        if($posts = $command->queryAll()){
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            return;
+        }else{
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>array()));
+            return;
+        }
     }
 
     public function actionGetPost()
