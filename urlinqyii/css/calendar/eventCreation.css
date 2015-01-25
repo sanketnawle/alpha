@@ -274,11 +274,11 @@ input.popup_create_event_name_input:focus{
     font-family: Avenir; 
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale; 
-    font-weight: 500;   
-    font-size: 15.5px; 
+    font-weight: 600;   
+    font-size: 17px; 
     width: 100%!important;
     padding-bottom: 2px;
-    height: 27px;
+    height: 25px;
     position: relative;
     top: -4px;
     line-height: 27px;

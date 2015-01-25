@@ -18,6 +18,14 @@ div.tab_group_info .tab_content_holder{
     top: 3px;
 }
 
+.group_join_button.nonmember > em.white_add_icon{
+background-image: url(../../../assets/gray_add_icon.png);
+background-size: auto;
+width: 10px;
+background-position: 0px 0px;
+height: 10px;
+}
+
 #courses_tab_content{
     padding: 25px 0 0 0;
     position: relative;

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Calendar</title>
+    <title>Urlinq Calendar</title>
     <script>
         window.base_url = "<?php echo Yii::app()->getBaseUrl(true); ?>";
         window.views_url = base_url + "/assets/calendar/views";
@@ -110,7 +110,7 @@
     <?php echo Yii::app()->runController('partial/topbar'); ?>
 
     <script id="provider_template" type="text/x-handlebars-template">
-        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}'>
+        <div class="provider" data-origin_type='{{type}}' data-origin_id='{{id}}' title = "{{name}}">
             <div ng-uc-check="" style='background-color: {{color.hex}}' class="check ng-scope checked {{color_class}}" checked="">
                 <i class="checkmark"></i>
             </div>
