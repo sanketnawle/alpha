@@ -18,26 +18,18 @@
                 $file_urls = array();
                 $file_id = $user->pictureFile->file_url;
                 if($file_id){
-                        $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
-                        if($file){
-                            array_push($file_urls, $file->file_url);
-                        }else{
-                            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
-                            $this->renderJSON($data);
-                            return;
-                        }
                     
-                    $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
+                    $data = array('success'=>true,'file_url'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
                 } else {
-                    $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
+                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'file_id are not set');
                     $this->renderJSON($data);
                     return;
             }
 
             } else{
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'user not exists');
                 $this->renderJSON($data);
                 return;
             }
