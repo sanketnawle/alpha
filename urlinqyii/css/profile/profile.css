@@ -227,16 +227,16 @@ div#modal_controls.student_modal_controls_student{
     margin-left: 10px;
 }
 .info_name{
-     text-decoration: none;
-     margin-top:5px;
-     margin-left:10px;
-     margin-bottom: 10px;
-     font-size: 14px;
-     display: block;
- 
-     font-weight: 600;
-     text-transform: capitalize;
-     color: #333;
+text-decoration: none;
+margin-top: 5px;
+margin-left: 10px;
+margin-bottom: 10px;
+font-size: 14px;
+margin-right: 5px;
+display: block;
+font-weight: 600;
+text-transform: capitalize;
+color: #333;
 }
 a.info_name{
     text-decoration: none;
@@ -291,11 +291,10 @@ a.info_name{
 }
 
 div.add_showcase_text{
-    margin: 0 auto;
-
-    display: block;
-    width: 390px;
-    margin-top: 77px;
+margin: 0 auto;
+display: block;
+width: 540px;
+margin-top: 77px;
 }
 
 div.add_showcase_text > p{

@@ -144,11 +144,10 @@
                                                         </div>
                                                     </div>
                                                             <div class = 'post_functions'>
-                                                <div class = 'post_functions_showr'>
+                                                <div class = 'post_functions_showr shower'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        //<div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
                                             <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
@@ -639,11 +638,10 @@
 
                                                     </div>
                                         <div class = 'post_functions'>
-                                                <div class = 'post_functions_showr'>
+                                                <div class = 'post_functions_showr shower'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        //<div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
                                             <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
@@ -972,7 +970,6 @@
                                                 </div>
                                                 <div class = 'post_functions_box'>
                                                     {{#if pownership}}
-                                                        //<div class = 'post_functions_option option_edit'>Edit</div>
                                             <hr class = 'post_options_hr'>
                                             <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}

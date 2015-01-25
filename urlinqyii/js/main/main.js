@@ -83,7 +83,7 @@ $(document).ready(function(){
             $tab_wedge.css({'height':'0px'});
             $cover_photo.css({'opacity':'0'});
             $("#fixed_element.planner_group").css({'position':'fixed'});
-            $("#fixed_element.planner_group").css({'top':'125px'});
+            $("#fixed_element.planner_group").css({'top':'130px'});
 
         }if(Math.floor(scroll_offset_top) <= 236){
             $nav_bar.css({'position':'fixed'});

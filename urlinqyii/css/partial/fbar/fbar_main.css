@@ -78,10 +78,7 @@ section#fbar_buttons .fbar_buttonwrapper:last-of-type {
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon {
-    background-image: url(../../../assets/Fbar_icon_map.png);
-    -moz-transform: scale(.65);
-    -webkit-transform: scale(.65);
-    transform: scale(.65);
+    background-image: url(../../../assets/Fbar_action_icons.png);
     background-size: auto;
     background-repeat: no-repeat;
     position: relative;
@@ -95,43 +92,43 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text {
     font-weight: 600;
     display: inline-block;
     float: left;
-    margin-left: -6px;
+    margin-left: 6px;
     width: 87px;
     -webkit-user-select: none;
     text-align: center;
-    margin-top: 9px;
+    margin-top: 8px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.announce_button_text{
     width: 130px;
 
-    margin-left: 17px;
+    margin-left: 30px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.post_button_text {
-    margin-left: -7px;
+    margin-left: 5px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.files_button_text {
-    margin-left: -8px;
+    margin-left: 3px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.discussion_button_text {
-    margin-left: 37px;
+    margin-left: 46px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.question_button_text {
-    margin-left: -3px;
+    margin-left: 7px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.event_button_text {}
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.notes_button_text {
-    margin-left: -2px;
+    margin-left: 4px;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.opportunity_button_text {
-    margin-left: -10px;
+    margin-left: 5px;
     width: 95px;
 }
 
@@ -164,59 +161,59 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
 }
 
 .fbar_button_icon#fbar_icon_discuss {
-    width: 42px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
     top: 0px;
-    left: 21px;
-    background-position: 0px -61px !important;
+    left: 30px;
+    background-position: 0px -21px !important;
 }
 
 i.fbar_button_icon#fbar_icon_discuss2{
-    width: 42px;
-    height: 44px;
+    width: 30px;
+    height: 29px;
     top: 0px;
-    left: 44px;
-    background-position: 0px -61px !important;
+    left: 49px;
+    background-position: 0px -22px !important;
 }
 
 .fbar_button_icon#fbar_icon_notes {
-    width: 40px;
-    height: 46px;
-    background-position: 0px -14px;
+    width: 30px;
+    height: 30px;
+    background-position: 0px 10px;
     top: -3px;
-    left: 18px;
+    left: 26px;
 }
 
 .fbar_button_icon#fbar_icon_event {
-    width: 40px;
-    height: 46px;
-    background-position: 0px -103px;
-    top: -3px;
-    left: 17px;
+    width: 27px;
+    height: 27px;
+    background-position: 0px -54px;
+    top: 3px;
+    left: 24px;
 }
 
 .fbar_button_icon#fbar_icon_announcement {
-    width: 40px;
-    height: 46px;
-    background-position: 0px -251px;
-    top: -3px;
-    left: 27px;
+    width: 28px;
+    height: 28px;
+    background-position: 0px -146px;
+    top: 4px;
+    left: 36px;
 }
 
 .fbar_button_icon#fbar_icon_opportunity {
-    width: 42px;
-    height: 46px;
-    background-position: 0px -201px;
-    top: -3px;
-    left: -5px;
+    width: 27px;
+    height: 26px;
+    background-position: 0px -177px;
+    top: 3px;
+    left: 3px;
 }
 
 .fbar_button_icon#fbar_icon_question {
-    background-position: 0px -152px;
-    width: 40px;
-    height: 46px;
-    margin-top: -1px !important;
-    left: 7px;
+    background-position: 2px -85px;
+    width: 28px;
+    height: 27px;
+    margin-top: 5px !important;
+    left: 12px;
 }
 
 div.dark_overlay#dark_overlay_fbar {

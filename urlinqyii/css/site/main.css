@@ -69,6 +69,10 @@ body#body_home #wrapper{
     padding-top:47px!important;
 }
 
+div#nav_bar .slimScrollDiv{
+    top:0px;
+}
+
 
 #page{
 
@@ -185,10 +189,14 @@ div#planner_column.planner_column_home{
 
 }
 
+div.cover_photo_update_icon{
+    
+}
+
 .panel_feed{
 margin-top: 32px;
 padding: 0px 8px!important;
-top: -20px;
+top: -15px;
 }
 
 .panel_feed div#feed_column.feed_column_group{
@@ -243,6 +251,12 @@ div#planner_column.planner_column_group{
     top: 15px;
     height: 380px;
     position: relative;
+}
+
+#planner_column.planner_column_home #right_column_specs #fixed_element .planner_container{
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 #planner_column.planner_column_group #right_column_specs #fixed_element{
@@ -762,6 +776,7 @@ div.center_text p#group_name span.bottom{
 p#group_name span#name_title{
     margin-left:0;
     float:left;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 div.professor_image,div.admin_image{
@@ -1650,7 +1665,7 @@ textarea:focus:-moz-placeholder {
     }
 
     #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
-        top:62px!important;
+        top:15px!important;
     }
 
     .panel_feed div#feed_column.feed_column_group{

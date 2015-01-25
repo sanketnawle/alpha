@@ -117,7 +117,7 @@
 		</div>
 
 
-        <div class = "LeftPanelSection LeftPanel_Clubs">
+        <!--<div class = "LeftPanelSection LeftPanel_Clubs">
 			<div class = "LeftPanel_SectionHeader">
 				<div class = "SectionHeader_holder">
 					<div class = "float_Left">
@@ -139,7 +139,7 @@
                     <?php } ?>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 
 
 	</div>
