@@ -59,7 +59,7 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'classes' => array(self::HAS_MANY, 'ClassModel', 'class_id'),
+			'classes' => array(self::HAS_MANY, 'ClassModel', 'course_id'),
 			'department' => array(self::BELONGS_TO, 'Department', 'department_id'),
 			'school' => array(self::BELONGS_TO, 'School', 'school_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),
