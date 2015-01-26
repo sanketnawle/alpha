@@ -150,10 +150,10 @@
 
 
     <script id="department_template" type="text/x-handlebars-template">
-        <div class='step_0_card department' data-department_id="{{department_id}}" data-department_name="{{department_name}}" style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
+        <div class='step_0_card department' data-department_id="{{department_id}}" data-department_name="{{department_name}} ({{department_tag}})" style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
             <div class='card_0_info'>
-                <div class='card_0_text'><div class='card_0_text_0'>{{department_name}}</div>
-                    <div class='card_0_text_1'>32 people</div>
+                <div class='card_0_text'><div class='card_0_text_0'>{{department_name}} ({{department_tag}})</div>
+                    <div class='card_0_text_1'>{{users.length}} people</div>
                 </div>
                 <div class='green_join_btn'><em class = 'white_plus_icon'></em><span>Join</span></div>
             </div>

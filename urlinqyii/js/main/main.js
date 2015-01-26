@@ -373,7 +373,7 @@ $(document).ready(function(){
     // department - follow/unfollow
     // To simplify this, follow is join and unfollow is leave for departments as well
 //    $('#group_user_action_button').click(function(){
-    $(document).on('click','#group_user_action_button',function(e){
+    $(document).on('click','.group_user_action_button, #group_user_action_button',function(e){
         e.stopPropagation();
 
 

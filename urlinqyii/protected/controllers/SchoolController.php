@@ -108,7 +108,7 @@ class SchoolController extends Controller
         $school = School::model()->find('school_id=:id',array(':id'=>$id));
 
         if($school){
-            $school_data = $this->get_model_associations($school,array('departments'=>array('pictureFile')));
+            $school_data = $this->get_model_associations($school,array('departments'=>array('pictureFile', 'users')));
             $data = array('success'=>true,'departments'=>$school_data['departments']);
             $this->renderJSON($data);
             return;
