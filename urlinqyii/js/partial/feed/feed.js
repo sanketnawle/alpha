@@ -397,6 +397,10 @@ function ready(globals){
 
         var $calendar_button = $(this);
 
+        if($calendar_button.hasClass('added')){
+            return;
+        }
+
         var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
         var event_id = $event_post.attr('data-event_id');
@@ -428,6 +432,9 @@ function ready(globals){
 
 
     function isElementInViewport (el) {
+        if(el === undefined){
+            return;
+        }
 
         //special bonus for those using jQuery
         if (typeof jQuery === "function" && el instanceof jQuery) {
@@ -489,7 +496,7 @@ function ready(globals){
 
         if(last_post.length){
             //If the last post is in the viewport, load more posts
-            if(isElementInViewport(last_post)){
+            if(last_post != undefined && isElementInViewport(last_post)){
                 //Loads more previous posts
                 get_post_data(globals.base_url,globals.feed_url);
             }

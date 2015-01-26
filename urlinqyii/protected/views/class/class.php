@@ -10,8 +10,8 @@
         globals.origin_type = '<?php echo 'class'; ?>';
 
 
-
-        globals.origin_name = '<?php echo $class->class_name; ?>';
+        //must define name with " because there could be ' in the string
+        globals.origin_name = "<?php echo $class->class_name; ?>";
 
         globals.origin_id = '<?php echo $class->class_id; ?>';
 
@@ -747,22 +747,25 @@
             <div class="tab_content_holder">
                 <div class="tab_header">
                     <div class = "float_Right">
-                        
-                        <div class = "admin_member_controls">
-                            <div class = "add_people_button remove" id = "remove_button">
-                                Remove People
+
+                        <?php if($is_admin){ ?>
+                            <div class = "admin_member_controls">
+                                <div class = "add_people_button remove" id = "remove_button">
+                                    Remove People
+                                </div>
                             </div>
-                        </div> 
-                        <div class = "remove_state_controls">
-                            <span class ="removed_count"></span>
-                            <div class = "remove" id = "done_removing_button">
-                                <em></em>
-                                <span>Done</span>
+                            <div class = "remove_state_controls">
+                                <span class ="removed_count"></span>
+                                <div class = "remove" id = "done_removing_button">
+                                    <em></em>
+                                    <span>Done</span>
+                                </div>
                             </div>
-                        </div>   
-                        <div class = "add_people_button">
-                            Add Members
-                        </div>                   
+                            <div class = "add_people_button">
+                                Add Members
+                            </div>
+
+                        <?php } ?>
                         <div class="fade_input_small small_search">
                             <em class = "left_search_icon">
                             </em>

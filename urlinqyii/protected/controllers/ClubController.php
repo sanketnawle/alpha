@@ -78,6 +78,14 @@ class ClubController extends Controller
 
 
 
+
+        if($club->privacy && !$is_admin){
+            //user cannot see this page
+            $this->redirect(array('/home'));
+        }
+
+
+
         $file_count = 5;
 
         $sql = "SELECT u.user_id, u.user_type, u.firstname, u.lastname, un.school_name from `user_connection` c, user u, school un where c.from_user_id = " . $user->user_id . " AND c.to_user_id = u.user_id and un.school_id = u.school_id AND u.status = 'active'";
@@ -386,6 +394,11 @@ class ClubController extends Controller
                     $event->delete();
                 }
 
+                //We also need to delete all posts that have the type event from this user in this group
+                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND  origin_type = "club" AND origin_id = ' . $group_id);
+                foreach($posts as $post){
+                    $post->delete();
+                }
 
                 $data = array('success'=>true);
                 $this->renderJSON($data);

@@ -577,7 +577,7 @@ class FeedController extends Controller
 
         if($posts = $command->queryAll()){
             $this->renderJSON(array('success'=>true, 'is_member'=> $is_member, 'is_admin'=>$is_admin,
-            'feed'=>self::getReplies(self::addPostData($posts))));
+            'feed'=>self::getReplies(self::addPostData($posts, $user))));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));

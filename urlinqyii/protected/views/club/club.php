@@ -5,7 +5,7 @@
             globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
             globals.origin_type = '<?php echo 'club'; ?>';
             globals.origin_id = '<?php echo $club->group_id; ?>';
-            globals.origin_name = '<?php echo $club->group_name; ?>';
+            globals.origin_name = "<?php echo $club->group_name; ?>";
             globals.user_id = '<?php echo $user->user_id; ?>';
         </script>
 
@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
+
+
 
 
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -177,12 +179,26 @@
                         <div class="panel active panel_feed" id="panel_1">
                             <div id = "planner_column" class = "planner_column_group">
                                 <div id = "right_column_specs">
+
+
+
                                     <div id = "fixed_element" class = "planner_group">
+
+                                        <div class="classic_about_box" id="group_about_box">
+                                            <h5>About</h5>
+
+                                            <div class="class_description_holder"><?php echo $club->group_desc; ?></div>
+
+                                        </div>
+
                                         <?php
                                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->group_id; ?>'));
                                         ?>    
                                     </div>
-                                </div>                           
+                                </div>
+
+
+
                             </div>
                             <div id = "feed_column" class = "feed_column_group">
                                 <div id = "stream_holder" class = "stream_holder_home">
@@ -195,6 +211,9 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
 
