@@ -39,7 +39,7 @@
 
 
         </script>
-
+        <title>Urlinq</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css">
@@ -49,7 +49,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/progressbar.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/css/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
-
+        <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
@@ -84,7 +84,7 @@
                     <div class="progress_content">
                         <div class="content_inner">
                             <div class="content_canvas">
-                                  <div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1">32 people</div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div>
+                                  <div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Polytechnic School of Engineering</div><div class="card_0_text_1"></div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div><div class="step_0_card"><div class="card_0_info"><img class="card_0_glyph" src="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/img/defaultGlyph.png"><div class="card_0_text"><div class="card_0_text_0">NYU Steinhardt School of Education</div><div class="card_0_text_1"></div></div><div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div></div></div>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
             <div class="step_0_card school" data-school_id='{{school_id}}' data-school_name='{{school_name}}' style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
                 <div class="card_0_info">
                     <img class="card_0_glyph" src='{{base_url}}/onboard_files/img/defaultGlyph.png'>
-                    <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1">32 people</div></div>
+                    <div class="card_0_text"><div class="card_0_text_0">{{school_name}}</div><div class="card_0_text_1"></div></div>
                     <div class="green_join_btn"><em class = 'white_plus_icon'></em><span>Join</span></div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
         <div class='step_0_card department' data-department_id="{{department_id}}" data-department_name="{{department_name}}" style='background: url("{{base_url}}{{pictureFile.file_url}}") center center;'>
             <div class='card_0_info'>
                 <div class='card_0_text'><div class='card_0_text_0'>{{department_name}}</div>
-                    <div class='card_0_text_1'>32 people</div>
+                    <div class='card_0_text_1'></div>
                 </div>
                 <div class='green_join_btn'><em class = 'white_plus_icon'></em><span>Join</span></div>
             </div>
@@ -312,7 +312,7 @@
                 <!--<div class="professor_class_info">-->
                     <!--<div class="professor_class_text">-->
                         <!--<div class="professor_class_text_0">{{class_name}}</div>-->
-                        <!--<div class="professor_class_text_1">32 people</div>-->
+                        <!--<div class="professor_class_text_1"></div>-->
                     <!--</div>-->
                 <!--</div>-->
             <!--</div>-->
