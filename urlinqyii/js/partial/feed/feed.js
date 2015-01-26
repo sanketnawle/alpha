@@ -456,12 +456,11 @@ function ready(globals){
     $( "#page" ).scroll(function() {
         //Get the offset of the last post on the page
         var last_post = $('#posts').find('.post').last();
-        console.log('LAST POST VISIBLE?');
-        console.log(isElementInViewport(last_post));
+
 
         if(last_post.length){
             //If the last post is in the viewport, load more posts
-            if(isElementInViewport(last_post)){
+            if(last_post != undefined &&isElementInViewport(last_post)){
                 //Loads more previous posts
                 get_post_data(globals.base_url,globals.feed_url);
             }

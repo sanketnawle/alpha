@@ -90,6 +90,7 @@
                                             <?php } ?>
 
                                             <?php if($club->contact_email != ''){?>
+                                                <br>
                                                 <?php echo $club->contact_email; ?>
                                             <?php } ?>
 
@@ -97,15 +98,14 @@
                                                 <br>
                                                 <?php echo $club->website; ?>
                                             <?php } ?>
+
+
+
+                                            <br>
+                                            <?php echo $club->school->school_name; ?>
                                         </div>
                                     </div>
-                                    <?php if($club->group_desc){ ?>
-                                        <div class = "group_right_info group_info_boxes group_desc_box">
-                                            <div class = "group_info_block">
-                                                <span><?php echo $club->group_desc;?></span>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
+
                                 </div>
 
                         <!--        close the cover photo dropzone form if user is an admin -->
