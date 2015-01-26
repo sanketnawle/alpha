@@ -230,9 +230,11 @@
                         <div class = "tab_content_holder">
                             <div class = "tab_header">
                                 <div class = "float_Right">
-                                    <div class = "add_people_button">
-                                        Add Faculty
-                                    </div>
+
+<!--                                    @todo -->
+<!--                                    <div class = "add_people_button">-->
+<!--                                        Add Faculty-->
+<!--                                    </div>-->
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
@@ -302,9 +304,10 @@
                         <div class = "tab_content_holder">
                             <div class = "tab_header">
                                 <div class = "float_Right">
-                                    <div class = "add_people_button">
-                                        Add Students
-                                    </div>
+<!--                                    @todo -->
+<!--                                    <div class = "add_people_button">-->
+<!--                                        Add Students-->
+<!--                                    </div>-->
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>

@@ -60,18 +60,16 @@
 
 
                                     <p class="mobileGetBigP" style="color:#2a2a2a;display:block;font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;text-align:left;line-height:1.714em;font-size: 16.5px;margin:0 auto;padding: 0 0 10px;" align="center">
-                                        Hi <?php echo $user_firstname; ?>,
                                         <br>
-                                        <span style="margin-top:10px;display:block;">Welcome to Urlinq! To complete your registration, click this link <a href="<?php echo $message; ?>"><?php echo $message; ?></a></span>
+                                        <span style="margin-top:10px;display:block;">Welcome to Urlinq! To complete your registration, click the button below</a></span>
                                     </p>
                                 </td>
 
                             </tr>
                             <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
                                 <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0" align="center" valign="top">
-                                    <a class="mobileGetBigA" style="font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;border:1px solid;display:block;padding:14px 16px;text-decoration:none;border-radius: 2px;text-align:center;color:white!important;font-weight:bold;font-size:18.5px;white-space:nowrap;
-                                    margin:0 auto;margin-top:.25em;cursor:pointer;background-color: rgb(0,217,160); border-bottom: 3px solid rgb(8, 184, 138);">
-                                        Reset Password
+                                    <a class="mobileGetBigA" href="<?php echo $message; ?>"  style="font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;border:1px solid;display:block;padding:14px 16px;text-decoration:none;border-radius: 2px;text-align:center;color:white!important;font-weight:bold;font-size:18.5px;white-space:nowrap; margin:0 auto;margin-top:.25em;cursor:pointer;background-color: rgb(0,217,160); border-bottom: 3px solid rgb(8, 184, 138);">
+                                        Verify Email
                                     </a>
                                 </td>
                             </tr>
@@ -79,10 +77,7 @@
                                 <td style="border-collapse:collapse!important;vertical-align:top;text-align:left;padding:0;padding-top: 16px;" align="center" valign="top">
                                     <p style="
                                         color: #2a2a2a; display: block; font-family: Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif; font-weight: normal; text-align: left; line-height: 1.714em; font-size: 16.5px; margin: 0 auto; padding: 0 0 10px;
-                                    ">If you don't see the button above, <a style="
-                                        color: rgb(0,217,160);
-                                        cursor: pointer;
-                                    ">click here</a></p>
+                                    ">If you don't see the button above, <a href="<?php echo $message; ?>" style="color: rgb(0,217,160);cursor: pointer;">click here</a></p>
                                 </td>
                             </tr>
                             <tr style="vertical-align:top;text-align:left;padding:0;" align="center">
@@ -120,8 +115,6 @@
                             <tr style="vertical-align:top;text-align:left;padding:0;">
                                 <td height="70" style="border-collapse: collapse!important; vertical-align:top; text-align:left; height: auto; padding: 0px; padding-top: 0px;">
                                     <p style="color:#999999;font-size:9px;width:340px;text-align:center;font-family:Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;font-weight:normal;line-height:1.714em;margin:0 auto;padding:12px 0 10px;" align="center">
-                                        This email was sent to <span>jlazaru2@nyu.edu</span>. If you would prefer not to receive future emails from Urlinq, you may <a style="font-weight:bold;cursor:pointer;">unsubscribe</a>. 
-
                                         <br>
                                         <br>
                                         TM and copyright © 2014 Urlinq LLC. New York City.

@@ -6,7 +6,7 @@
 
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.feed_url = '<?php echo $feed_url; ?>';
-        //globals.user_id = '<?php// echo $user->user_id; ?>';
+
 
         globals.origin_type = '<?php echo $origin_type; ?>';
         globals.origin_id = '<?php echo $origin_id; ?>';

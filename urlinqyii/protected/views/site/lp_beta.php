@@ -457,7 +457,7 @@ header('location:home.php');
                             post_url,
                             post_data,
                             function(response){
-                              alert(JSON.stringify(response));
+                              //alert(JSON.stringify(response));
                             }, 'json'
                           );
                         });
@@ -478,7 +478,7 @@ header('location:home.php');
                                 post_url,
                                 post_data,
                                 function(response){
-                                    alert(JSON.stringify(response));
+                                    //alert(JSON.stringify(response));
 
                                     if(response['success']){
                                         window.location.replace(globals.base_url + '/home');

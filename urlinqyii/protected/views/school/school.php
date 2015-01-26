@@ -221,7 +221,7 @@
                             <?php foreach($departments as $department) { ?>
                                 <div class = "group_box group_course_box" data-name="<?php echo $department->department_name; ?>">
 
-                                    <div class = "float_Left group_image">
+                                    <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
                                         <div class = "department_alias">
 
                                         </div>
@@ -276,8 +276,8 @@
 
                                 <div class = "group_info_tab_content">
                                     <div class = "group_box group_course_box club_box">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id ;?>">
-                                            <div class = "float_Left group_image">
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
                                                 <div class = "group_link"><?php echo $club->group_name; ?></div>
                                                 <span class = "group_type group_with_button">Club</span>
 

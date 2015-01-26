@@ -373,7 +373,7 @@ $(document).ready(function(){
     // department - follow/unfollow
     // To simplify this, follow is join and unfollow is leave for departments as well
 //    $('#group_user_action_button').click(function(){
-    $(document).on('click','#group_user_action_button',function(e){
+    $(document).on('click','.group_user_action_button, #group_user_action_button',function(e){
         e.stopPropagation();
 
 
@@ -507,6 +507,9 @@ $(document).ready(function(){
     }
     $(function(){
         $('p.founded_text').slimScroll({
+            height: 'auto'
+        });
+        $('.group_info_boxes.group_desc_box > .group_info_block').slimScroll({
             height: 'auto'
         });
     });

@@ -78,7 +78,7 @@
 						<h4>My Classes</h4>	
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn"><span class = "search_text">Search</span></a>
+						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>"><span class = "search_text">Search</span></a>
 					</div>				
 				</div>				
 			</div>
@@ -101,7 +101,7 @@
 						<h4>My Clubs</h4>
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn">Search</a>
+						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>">Search</a>
 					</div>					
 				</div>				
 			</div>	

@@ -128,6 +128,8 @@ class SiteController extends Controller
 //        }
 
 
+
+
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
@@ -143,7 +145,12 @@ class SiteController extends Controller
 
         if (ERunActions::runBackground())
 		{
-		    ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+
+            ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+            Yii::log('lol wtf');
+
             $data = array('success'=>true,'error_id'=>'run');
             $this->renderJSON($data);
             return;
@@ -478,6 +485,19 @@ class SiteController extends Controller
 			$email = $_POST['login_email'];
             $password = $_POST['login_password'];
 
+
+
+
+            //Ross requested that we block these emails
+            $blocked_emails = array('aa3225@nyu.edu', 'abhinay.ashutosh@nyu.edu');
+            foreach($blocked_emails as $blocked_email){
+                if($email == $blocked_email){
+                    $data = array('success'=>false);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+
             if(!$this->valid_email($email)){
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'This email is not supported');
                 $this->renderJSON($data);
@@ -604,6 +624,7 @@ class SiteController extends Controller
         if($user && $user->status == 'active'){
             $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
         }
+
 
 
         //Check the required session variables
@@ -900,6 +921,17 @@ class SiteController extends Controller
                 $data = array('success'=>false,'error_id'=>5, 'error'=>'password cant be in lastname');
                 $this->renderJSON($data);
                 return;
+            }
+
+
+            //Ross requested that we block these emails
+            $blocked_emails = array('aa3225@nyu.edu', 'abhinay.ashutosh@nyu.edu');
+            foreach($blocked_emails as $blocked_email){
+                if($email == $blocked_email){
+                    $data = array('success'=>false);
+                    $this->renderJSON($data);
+                    return;
+                }
             }
 
             if(strpos($email,'nyu.edu') == false){
