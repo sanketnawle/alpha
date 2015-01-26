@@ -117,7 +117,6 @@
 		</div>
 
 
-<<<<<<< HEAD
 
         <!--<div class = "LeftPanelSection LeftPanel_Clubs">
 			<div class = "LeftPanel_SectionHeader">
@@ -143,8 +142,7 @@
 			</div>
 		</div>-->
 
-=======
->>>>>>> e6fa4c271a1ee27dc9ad9cf1945a7f1610840e98
+
 <!--        <div class = "LeftPanelSection LeftPanel_Clubs">-->
 <!--			<div class = "LeftPanel_SectionHeader">-->
 <!--				<div class = "SectionHeader_holder">-->
