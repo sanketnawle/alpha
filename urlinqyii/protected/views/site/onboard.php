@@ -39,7 +39,7 @@
 
 
         </script>
-
+        <title>Urlinq</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Urlinq</title>
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css">
@@ -50,7 +50,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/progressbar.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/css/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
-
+        <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>

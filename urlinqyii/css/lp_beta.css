@@ -20,6 +20,20 @@ background:#edefed;;
 position: relative;
 
 }
+#login_error_popup{
+    position: absolute;
+    display: inline-block;
+    border: 1px solid black;
+    background-color: rgba(39, 41, 43, 0.92);
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+
+}
+#reset_password{
+    display: inline-block;
+}
+
 
 .fb-like{
   position: absolute!important;
@@ -2477,5 +2491,8 @@ ul.color-border li:nth-child(5) {
 ul.color-border li:nth-child(5):hover {
  background-color: #de445d;
 }
+
+}
+
 
 
