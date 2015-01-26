@@ -262,7 +262,7 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     overflow-y: hidden;
     position: absolute;
     z-index:100;
-    height: 38px;
+    height: 44px;
     -webkit-transition: height 0.125s ease;
     -moz-transition: height 0.125s ease;
     transition: height 0.125s ease;      
