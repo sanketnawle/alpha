@@ -4,13 +4,13 @@
     {
 
         public function actionAddNotificationID() {
-            if(!isset($_GET['user_id']) || !isset($_GET['notification_id'])){
+            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
             }
 
-            $user_id = $_GET['user_id'];
+            $user_id = $_POST['user_id'];
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
 
             if (!$user) {
@@ -19,7 +19,7 @@
                 return;            
             }
 
-            $notification_id = str_replace(array(" "), "", $_GET['notification_id']);
+            $notification_id = str_replace(array(" "), "", $_POST['notification_id']);
             $ios_notification = new IosNotification;
             $ios_notification->user_id = $user_id;
             $ios_notification->notification_id = $notification_id;
