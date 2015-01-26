@@ -134,13 +134,16 @@
                     <?php }else{ ?>
                         <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
                     <?php } ?>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>
                     <div class = "group_info_block" id = "location">
                         <em class ="small_icon_map"></em>
                         <span><?php echo $class->location; ?></span>
+
+                        <br>
+                        <span><?php echo $class->class_datetime; ?></span>
                     </div>
                     <?php } else { }?>
 
