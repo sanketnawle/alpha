@@ -8,6 +8,7 @@
         globals.origin_type = '<?php echo 'school'; ?>';
         globals.origin_id = '<?php echo $school->school_id; ?>';
         globals.origin_name = '<?php echo $school->school_name; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
     </script>
 

@@ -18,6 +18,7 @@
         globals.is_admin = '<?php echo $is_admin ? 'true' : 'false'; ?>';
 
         globals.admin_file_panel_class = 'class';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
     </script>
       

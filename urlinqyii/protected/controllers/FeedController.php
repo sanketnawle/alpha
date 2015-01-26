@@ -483,6 +483,7 @@ class FeedController extends Controller
 
     public function actionGetProfilePosts()
     {
+        $user = $this->get_current_user($_GET);
 
         $created_at = new DateTime('now');
         $created_at = $created_at->format('Y-m-d H:i:s');
@@ -518,7 +519,7 @@ class FeedController extends Controller
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
         if($posts = $command->queryAll()){
-            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts))));
+            $this->renderJSON(array('success'=>true, 'is_admin'=>$is_admin, 'feed'=>self::getReplies(self::addPostData($posts,$user))));
             return;
         }else{
             $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));

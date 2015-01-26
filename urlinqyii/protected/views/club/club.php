@@ -6,6 +6,7 @@
             globals.origin_type = '<?php echo 'club'; ?>';
             globals.origin_id = '<?php echo $club->group_id; ?>';
             globals.origin_name = '<?php echo $club->group_name; ?>';
+            globals.user_id = '<?php echo $user->user_id; ?>';
         </script>
 
         <title><?php echo $club->group_name; ?></title>
