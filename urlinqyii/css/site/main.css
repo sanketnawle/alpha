@@ -1811,7 +1811,7 @@ div.group_info_boxes{
     width: 237px;
 }
 div.group_info_boxes.group_desc_box .group_info_block{
-    height: 100px !important;
+    height: 68px !important;
     overflow: hidden;
 }
 
