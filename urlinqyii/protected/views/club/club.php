@@ -43,7 +43,7 @@
 
     </head>
 
-    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
+    <body class = "body_group">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper">
@@ -81,11 +81,9 @@
                                         <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
                                     </div>
                                     <div class = "group_right_info group_info_boxes">
-                                        <div class = "group_info_block" id = "location">
-                                            <em class ="small_icon_map"></em>
-                                            <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                        <div class = "group_info_block">
                                             <?php if($is_admin){ ?>
-                                                <div class="upload_cover_photo_button">Upload cover photo</div>
+                                                <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
                                             <?php } ?>
                                         </div>
                                     </div>

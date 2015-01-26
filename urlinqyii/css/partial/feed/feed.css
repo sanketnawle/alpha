@@ -23,6 +23,43 @@ border-radius: 5px;
 padding-bottom: 3px;
 }
 
+.no_posts_container{
+    margin-top: 23px;
+    margin-left: -16px;
+    width: 640px;
+}
+
+.no_posts_container div.no_posts_icon{
+    background-position: 0px -1384px;
+
+    width: 100px;
+    height: 120px;
+}
+
+.no_posts_container div.no_posts_message{
+    display: inline-block;
+
+    vertical-align: top;
+    padding: 24px 8px;
+}
+
+.no_posts_container div.no_posts_message div.message_header{
+    font-size: 26px;
+
+    font-family: Avenir;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    color: #424242;
+    line-height: 44px;
+}
+
+.no_posts_container div.no_posts_message div.message_sub{
+    color: #424242;
+
+    font-size: 16px;
+    line-height: 23px;
+}
+
 em.posted_to{
 background-image: url(../../../assets/small_icons.png);
 display: inline-block;
@@ -150,7 +187,7 @@ text-decoration: none;
 }
 
 .post_owner, .post_group{
-color: #029acf; 
+color: #333; 
 font-size: 15.5px;
 top: 9px;
 position: relative;
@@ -160,6 +197,11 @@ cursor: pointer;
 -moz-osx-font-smoothing: grayscale;
 left: -12px;
 display: inline-block;
+-webkit-transition: color .218s; -moz-transition: color .218s; -o-transition: color .218s; transition: color .218s;
+}
+
+div.post:hover .post_owner, div.post:hover .post_group, div.post:hover span.post_group > a{
+    color:#029acf;
 }
 
 .post_owner:hover, .post_group:hover{
@@ -535,12 +577,24 @@ opacity:.5;
 transform: scale(.52);
 }
 
-.post_functions:hover .post_functions_showr{
+.post_functions_showr.shower{
+opacity:.5;
+}
+
+.post_functions_showr.shower:hover, .post_functions_showr.hider:hover{
+opacity:.75;
+}
+
+
+.post_functions_showr.hider{
 opacity:1;
 }
 
-.post_functions .post_functions_showr:active{
-}
+.post_functions.functions_active .post_functions_box{
+    display:block;
+    opacity:1;
+    pointer-events:all;
+} 
 
 .post_functions_box{
 -webkit-background-clip: padding-box;
@@ -548,6 +602,7 @@ width: auto;
 display: inline-block;
 cursor: default;
 position: absolute;
+pointer-events:none;
 padding-bottom: 3px;
 opacity:0;
 -moz-transition: all .125s ease-in-out;
@@ -557,6 +612,7 @@ right: -20px;
 /*-ms-transform: scale(1,.9);
 -webkit-transform: scale(1,.9); 
 transform: scale(1,.9);*/
+top: 0px;
 }
 
 .post_functions_box.show{
@@ -2103,8 +2159,9 @@ time.timeago{
 }
 
 span.post_group > a{
-color: #029acf;
+color: #333;
 font-size: 15px;
+-webkit-transition: color .218s; -moz-transition: color .218s; -o-transition: color .218s; transition: color .218s;
 }
 
 

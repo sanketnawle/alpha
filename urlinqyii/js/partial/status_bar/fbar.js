@@ -1280,6 +1280,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.post_btn', function(){
         var $fbar_holder = globals.$fbar.find('#fbar_holder');
+        $(".no_posts_container").fadeOut(100);
         var dropzone;
         if(globals.profile_open){
             dropzone = globals.profileDropzone;

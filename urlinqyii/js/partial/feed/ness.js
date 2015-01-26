@@ -5,6 +5,8 @@
 $(document).ready(function(e) {
 
 
+    
+
       
 //    var $ = jQuery;
    // $(document).on("click", ".commentform", function(){
@@ -61,27 +63,20 @@ $(document).ready(function(e) {
         $('.list_of_people').css('visibility', 'hidden');
     });
 
-    $(document).delegate(".post_functions_showr", "mouseover", function () {
+    $(document).delegate(".post_functions_showr.shower", "mousedown", function () {
         var $post_functions_showr = $(this);
+        $post_functions_showr.removeClass("shower");
+        $post_functions_showr.addClass("hider");
         $post_functions_showr.closest(".post_functions").addClass("functions_active");
-        if ($(this).closest(".post_functions").hasClass("functions_active")) {
-            $(this).closest(".post_functions").find(".post_functions_box").removeClass("show");
-            $(this).closest(".post_functions").removeClass("functions_active");
-        } else {
-            $(this).closest(".post_functions").find(".post_functions_box").addClass("show");
-            $(this).closest(".post_functions").addClass("functions_active");
-        }
     });
 
-    $(document).delegate(".post_functions_showr", "mouseout", function () {
-        if ($(this).closest(".post_functions").hasClass("functions_active")) {
-            $(this).closest(".post_functions").find(".post_functions_box").removeClass("show");
-            $(this).closest(".post_functions").removeClass("functions_active");
-        } else {
-            $(this).closest(".post_functions").find(".post_functions_box").addClass("show");
-            $(this).closest(".post_functions").addClass("functions_active");
-        }
+    $(document).delegate(".post_functions_showr.hider", "mousedown", function () {
+        var $post_functions_showr = $(this);
+        $post_functions_showr.removeClass("hider");
+        $post_functions_showr.addClass("shower");
+        $post_functions_showr.closest(".post_functions").removeClass("functions_active");
     });
+
 
     var fileList = {};
     var fileCount = 0;
@@ -256,7 +251,13 @@ $(document).ready(function(e) {
         }
     });
 
-
+    setTimeout(function() {
+        var $posts_container = $("#posts");
+        var post_count = $('div.post').length;
+        if(post_count < 1){
+            $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very beginning of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
+        }
+    }, 2500);
     
     $(document).delegate(".post_comment_btn", "click", function () {
         var fa = $(this).closest(".post").find(".form-control");
@@ -273,23 +274,6 @@ $(document).ready(function(e) {
     var pg = 1;
 
 
-    $(document).delegate('.post_functions', "mouseover", function () {
-        $(this).find('.post_functions_box').addClass("show");
-        $(this).addClass('functions_active');
-    });
-    $(document).delegate('.post_functions', "mouseout", function () {
-        $(this).find('.post_functions_box').removeClass("show");
-        $(this).removeClass('functions_active');
-    });
-
-    $(document).delegate('.functions_active', "click", function () {
-
-        //ajax add here
-
-        //appearance change when click
-        $(this).find('.post_functions_box').hide();
-        $(this).removeClass('functions_active');
-    });
 
 
 //    $(window).scroll(function () {

@@ -86,7 +86,7 @@
 
 </head>
 
-    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
+    <body class = "body_group">
 
 
 
