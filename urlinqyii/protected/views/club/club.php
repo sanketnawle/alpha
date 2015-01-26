@@ -85,6 +85,15 @@
                                             <?php if($is_admin){ ?>
                                                 <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
                                             <?php } ?>
+
+                                            <?php if($club->contact_email != ''){?>
+                                                <?php echo $club->contact_email; ?>
+                                            <?php } ?>
+
+                                            <?php if($club->website != ''){?>
+                                                <br>
+                                                <?php echo $club->website; ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
