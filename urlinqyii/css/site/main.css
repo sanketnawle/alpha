@@ -1802,13 +1802,17 @@ content: " ";
 
 div.group_right_info{
     float: right;
-
+    clear: right;
 }
 
 div.group_info_boxes{
     position: relative;
     top: 22%;
     width: 237px;
+}
+div.group_info_boxes.group_desc_box .group_info_block{
+    height: 100px !important;
+    overflow: hidden;
 }
 
 div.group_info_boxes.course_info_box{
