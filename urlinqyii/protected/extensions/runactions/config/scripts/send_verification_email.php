@@ -32,15 +32,32 @@ if (ERunActions::runBackground()){
 //    $params = '-f ' . $emailfrom;
 //    $test = mail($emailto, $subject, $messagebody, $headers, $params);
 
+
+
     $mail->Mailer='smtp';
-    $mail->Sender = "team@urlinq.com";
-    $mail->setFrom($from_email, 'urlinq team');
-    $mail->setSubject($subject);
-    $mail->setTo($to_email);
-    $mail->IsHTML(true);
-    $mail->Port= 465;
-    $mail->SMTPSecure = 'ssl';
-    $mail->SMTPDebug = 1;
+
+//    $mail->setFrom($from_email, 'urlinq team');
+//    $mail->setSubject($subject);
+//    $mail->setTo($to_email);
+//    $mail->IsHTML(true);
+//    $mail->Sender = "team@urlinq.com";
+//    $mail->Port= 465;
+//    $mail->SMTPSecure = 'ssl';
+//    $mail->SMTPDebug = 1;
+
+
+    $mail->IsSMTP(); // enable SMTP
+	$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
+	$mail->SMTPAuth = true;  // authentication enabled
+	$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+	$mail->Host = 'box791.bluehost.com';
+	$mail->Port = 465;
+	$mail->Username = 'team@urlinq.com';
+	$mail->Password = 'test#123';
+	$mail->SetFrom($from, 'Urlinq Team');
+	$mail->Subject = '';
+	$mail->Body = '';
+	$mail->AddAddress($to_email);
 
 
     $mail_response = $mail->send();

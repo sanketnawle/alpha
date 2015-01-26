@@ -34,7 +34,7 @@ return array(
     'SMTPAuth'=>true,
     'SMTPSecure' => 'ssl',
     'Host'=>"box791.bluehost.com",
-    'Port'=>26,
+    'Port'=>465,
     'Username'=>'team@urlinq.com',
     'Password'=>'test#123'
 
