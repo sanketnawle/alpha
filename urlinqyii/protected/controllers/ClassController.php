@@ -311,9 +311,17 @@ class ClassController extends Controller
 
 
     public function actionGetEvents(){
+
+        if(!isset($_GET['class_id']) || !isset($_GET['file_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'parameters not set');
+            $this->renderJSON($data);
+            return;
+        }
+
         $class_id = $_GET["class_id"];
         $file_id = $_GET["file_id"];
-        $user_id = $this->get_current_user_id();
+        $user = $this->get_current_user($_GET);
+        $user_id = $user->user_id;
 
         $class_events = Event::model()->findAll('origin_id=:id and file_id=:file_id order by start_date desc', array(':id'=>$class_id, ':file_id'=>$file_id));
 

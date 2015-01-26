@@ -205,7 +205,7 @@
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
-                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; ?></a>
+                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
                                             <div class = "float_Right">
                                                 <span class = "group_type">Course</span>
                                             </div>

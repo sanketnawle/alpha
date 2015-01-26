@@ -565,7 +565,7 @@
                 </div>
             </div>
             <div id="right_panel" class = "group_responsiveness">
-                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
+                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
             </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->

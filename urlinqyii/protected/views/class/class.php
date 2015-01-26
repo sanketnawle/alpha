@@ -271,7 +271,7 @@
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/'.$class->class_id.'/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
                     </div>
 
 
@@ -954,7 +954,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
         </div>
 
 

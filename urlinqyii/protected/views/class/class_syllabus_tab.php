@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="../protected/components/class/semantic/packaged/css/semantic.min.css">
 
 
-<script src="../js/jquery-ui-1.10.2.custom.min.js"></script>
 
 <script src="../js/jquery.timeAutocomplete.min.js" type="text/javascript"></script>
 

@@ -105,7 +105,7 @@ $(document).ready(function() {
         $(this).addClass("joined");
         $join_icon.addClass("joined_icon");
         var post_url;
-        var post_data = {id:$group_block.attr('data-suggestion_id'),user_id:user_id};
+        var post_data = {id:$group_block.attr('data-suggestion_id'),user_id: globals.user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
         if($group_block.hasClass('club_suggestion')){
             post_url = base_url+"/club/join";
@@ -141,7 +141,7 @@ $(document).ready(function() {
         $(this).addClass("followed");
         $follow_icon.addClass("followed_icon");
         var post_url = base_url+"/user/follow";
-        var post_data = {user_id:$user_block.attr('data-suggestion_id'),from_user_id:user_id};
+        var post_data = {user_id:$user_block.attr('data-suggestion_id'),from_user_id: globals.user_id};
         var suggest_type = $('.suggestion_type.active').attr('data-suggestion_type');
         post_url
         $.post(post_url,post_data,function(){

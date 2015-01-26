@@ -5,9 +5,13 @@
 		<script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/right_panel/right_panel.js"></script>
 
 		<script>
-		    base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-		    origin = '<?php echo $origin_type; ?>';
-		    origin_id = '<?php echo $origin_id; ?>';
+
+            var globals = {};
+
+		    globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+		    globals.origin_type = '<?php echo $origin_type; ?>';
+		    globals.origin_id = '<?php echo $origin_id; ?>';
+
 		</script>
 	</head>
 	<body>
