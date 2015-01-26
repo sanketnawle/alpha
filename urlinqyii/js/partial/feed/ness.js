@@ -251,13 +251,7 @@ $(document).ready(function(e) {
         }
     });
 
-    setTimeout(function() {
-        var $posts_container = $("#posts");
-        var post_count = $('div.post').length;
-        if(post_count < 1){
-            $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very beginning of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
-        }
-    }, 2500);
+
     
     $(document).delegate(".post_comment_btn", "click", function () {
         var fa = $(this).closest(".post").find(".form-control");

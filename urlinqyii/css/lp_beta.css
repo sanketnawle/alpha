@@ -24,7 +24,7 @@ position: relative;
 .fb-like{
   position: absolute!important;
 right: 20px;
-top: 20px;
+bottom: 20px;
 display:block!important;
 }
 
@@ -787,23 +787,21 @@ white-space: nowrap;
 }
 
 ul.account-types li.student label{
-    background-image: url(src/student-icon.png); background-position: center 2px;
+    background-image: url(../assets/account_type_icons.png); 
+    background-position: center -9px;
 
-    margin-top: 3px;
-    width: 37px;
-    height: 33px;
-    margin-left: 58px;
-    background-size: cover;
+    margin-top: -1px;
+    width: 76px;
+    height: 38px;
+    margin-left: 37px;
+    background-size: auto;
 }
 
 ul.account-types li.faculty label{
-    background-image: url(src/teacher-icon.png); background-position: center 2px;
-
-    margin-left: 58px;
-    background-size: cover;
-    width: 37px; 
-    height: 35px;
-    margin-top: 2px;
+    background-image: url(../assets/account_type_icons.png); 
+    background-position: center -86px; margin-top: -1px; width: 76px; height: 38px; margin-left: 37px; background-size: auto;
+ 
+ 
 }
 
 .announcement_button a{
@@ -1790,7 +1788,7 @@ div.header-sec-right div.time-to-signup{
 }
 
 ul.account-types li.student label {
-margin-left:84px;
+margin-left: 64px;
 }
 
 
@@ -1815,7 +1813,7 @@ width: 408px;
 }
 
 ul.account-types li.faculty label{
-  margin-left:84px;
+  margin-left: 64px;
 }
 
 div.signup-form-wrap {
