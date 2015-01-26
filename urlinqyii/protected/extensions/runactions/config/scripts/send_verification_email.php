@@ -37,8 +37,9 @@ if (ERunActions::runBackground()){
     $mail->setFrom($from_email, 'urlinq team');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
-    $mail->SMTPSecure = 'tls';
+    $mail->SMTPSecure = 'ssl';
     $mail->SMTPDebug = 1;
+    $mail->IsHTML(true);
 
     $mail_response = $mail->send();
 
