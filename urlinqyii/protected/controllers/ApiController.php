@@ -20,7 +20,7 @@
             }
 
             $notification_id = str_replace(array(" "), "", $_POST['notification_id']);
-            $ios_notification = new IosNotification;
+            $ios_notification = new IosNotifications;
             $ios_notification->user_id = $user_id;
             $ios_notification->notification_id = $notification_id;
 
@@ -33,6 +33,9 @@
                 $this->renderJSON($data);
                 return;   
             }
+            $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'unknown error message.');
+            $this->renderJSON($data);
+            return;   
         }
          
         public function actionGetUserPictureID() {
