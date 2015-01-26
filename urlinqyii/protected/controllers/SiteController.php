@@ -128,6 +128,8 @@ class SiteController extends Controller
 //        }
 
 
+
+
         if(!isset($_POST['to_email']) || !isset($_POST['subject']) || !isset($_POST['message']) || !isset($_POST['from_email']) || !isset($_POST['key'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
             $this->renderJSON($data);
@@ -617,6 +619,7 @@ class SiteController extends Controller
         if($user && $user->status == 'active'){
             $this->redirect(Yii::app()->getBaseUrl(true) . '/home');
         }
+
 
 
         //Check the required session variables
