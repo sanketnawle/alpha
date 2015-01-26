@@ -478,6 +478,19 @@ class SiteController extends Controller
 			$email = $_POST['login_email'];
             $password = $_POST['login_password'];
 
+
+
+
+            //Ross requested that we block these emails
+            $blocked_emails = array('aa3225@nyu.edu', 'abhinay.ashutosh@nyu.edu');
+            foreach($blocked_emails as $blocked_email){
+                if($email == $blocked_email){
+                    $data = array('success'=>false);
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
+
             if(!$this->valid_email($email)){
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'This email is not supported');
                 $this->renderJSON($data);
@@ -900,6 +913,17 @@ class SiteController extends Controller
                 $data = array('success'=>false,'error_id'=>5, 'error'=>'password cant be in lastname');
                 $this->renderJSON($data);
                 return;
+            }
+
+
+            //Ross requested that we block these emails
+            $blocked_emails = array('aa3225@nyu.edu', 'abhinay.ashutosh@nyu.edu');
+            foreach($blocked_emails as $blocked_email){
+                if($email == $blocked_email){
+                    $data = array('success'=>false);
+                    $this->renderJSON($data);
+                    return;
+                }
             }
 
             if(strpos($email,'nyu.edu') == false){
