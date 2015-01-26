@@ -373,7 +373,7 @@ $(document).ready(function() {
 
 
 
-            render_post(post);
+            render_post(post, 'prepend');
         });
     }
 

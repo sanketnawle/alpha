@@ -251,7 +251,6 @@ $(document).ready(function(e) {
         }
     });
 
-
     
     $(document).delegate(".post_comment_btn", "click", function () {
         var fa = $(this).closest(".post").find(".form-control");
