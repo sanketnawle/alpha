@@ -37,6 +37,9 @@ function ready(globals){
     //$ = jQuery.noConflict();
     //Handlebars helpers
 
+
+    first_request = true;
+
     init();
     function init(){
         get_post_data(globals.base_url,globals.feed_url);
@@ -85,12 +88,14 @@ function ready(globals){
                 //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
 
-                if(json_feed_data['feed'].length == 0){
+                if(json_feed_data['feed'].length == 0 && first_request){
                     var $posts_container = $("#posts");
                     $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very beginning of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
                 }else{
-                render_posts(json_feed_data['feed']);
+                    render_posts(json_feed_data['feed']);
                 }
+
+                first_request = false;
             }else{
                 //alert('failed to get feed');
             }
