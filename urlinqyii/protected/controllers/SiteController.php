@@ -145,7 +145,12 @@ class SiteController extends Controller
 
         if (ERunActions::runBackground())
 		{
-		    ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+
+            ERunActions::runScript('send_verification_email',$params=array('to_email'=>$to_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from_email, 'key'=>$key),$scriptPath=null);
+
+            Yii::log('lol wtf');
+
             $data = array('success'=>true,'error_id'=>'run');
             $this->renderJSON($data);
             return;
