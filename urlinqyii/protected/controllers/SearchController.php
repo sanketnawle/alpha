@@ -57,6 +57,19 @@ class SearchController extends Controller
             array_push($results, $class);
         }
 
+
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 5");
+
+        foreach($courses as $course){
+            $course = $this->get_model_associations($course, array('pictureFile'));
+            $course['origin_type'] = 'course';
+            $course['origin_name'] = $course['course_name'];
+            $course['origin_id'] = $course['course_id'];
+
+            array_push($results, $course);
+        }
+
+
         //array_push($results, $classes);
 
         $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' LIMIT 5");
@@ -174,7 +187,7 @@ class SearchController extends Controller
 //            ->queryAll();
 
         //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
-        $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%'";
+        $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%' AND g.privacy = 0;";
 
 
         //specific queries

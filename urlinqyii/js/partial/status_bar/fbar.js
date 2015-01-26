@@ -1112,7 +1112,7 @@ $(document).ready(function() {
         }
 
 
-        var $fbar_holder = $('#fbar_holder');
+        var $fbar_holder = globals.$fbar.find('#fbar_holder');
 
         var post_type = $fbar_holder.attr('data-post_type');
 
@@ -1174,7 +1174,7 @@ $(document).ready(function() {
 
             post_data['question']['anonymous'] = 0;
             post_data['question']['live_answers'] = 0;
-            post_data['text'] = $('#post_title').val();
+            post_data['text'] = globals.$fbar.find('#post_title').val();
             post_data['sub_text'] = $fbar_holder.find('.question_textarea').find('.post_text_area').val();
 
             if(post_type == 'multiple_choice'){

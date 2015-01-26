@@ -6,6 +6,7 @@
             globals.origin_type = '<?php echo 'club'; ?>';
             globals.origin_id = '<?php echo $club->group_id; ?>';
             globals.origin_name = '<?php echo $club->group_name; ?>';
+            globals.user_id = '<?php echo $user->user_id; ?>';
         </script>
 
         <title><?php echo $club->group_name; ?></title>
@@ -85,6 +86,15 @@
                                             <?php if($is_admin){ ?>
                                                 <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
                                             <?php } ?>
+
+                                            <?php if($club->contact_email != ''){?>
+                                                <?php echo $club->contact_email; ?>
+                                            <?php } ?>
+
+                                            <?php if($club->website != ''){?>
+                                                <br>
+                                                <?php echo $club->website; ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -132,13 +142,13 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab analytics" data-panel_id="4">
-                                <div class="tab_content">
-                                    <div class="tab_img"></div>
-                                    <div class="tab_text">Analytics</div>
-                                </div>
-                                <div class="tab_wedge"></div>
-                            </div>
+<!--                            <div class="tab analytics" data-panel_id="4">-->
+<!--                                <div class="tab_content">-->
+<!--                                    <div class="tab_img"></div>-->
+<!--                                    <div class="tab_text">Analytics</div>-->
+<!--                                </div>-->
+<!--                                <div class="tab_wedge"></div>-->
+<!--                            </div>-->
 
 
 

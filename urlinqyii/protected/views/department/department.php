@@ -7,6 +7,7 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'department'; ?>';
         globals.origin_id = '<?php echo $department->department_id; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
     </script>
 

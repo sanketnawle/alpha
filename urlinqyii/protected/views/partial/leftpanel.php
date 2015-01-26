@@ -116,8 +116,6 @@
 			</div>					
 		</div>
 
-
-
         <!--<div class = "LeftPanelSection LeftPanel_Clubs">
 			<div class = "LeftPanel_SectionHeader">
 				<div class = "SectionHeader_holder">

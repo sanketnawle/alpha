@@ -5,10 +5,11 @@ $(document).ready(function() {
 
     $(document).on('click', '.profile_link', function(){
 
-
         old_origin_id = globals.origin_id;
         old_origin_type = globals.origin_type;
+        //alert(globals.origin_id);
         globals.origin_id = globals.user_id;
+        //alert(globals.user_id);
         globals.origin_type = 'user';
         globals.profile_open = true;
         open_profile(globals.base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
@@ -218,7 +219,7 @@ $(document).ready(function() {
 
 
                             reset_fbar();
-                            render_post(response['post']);
+                            render_post(response['post'],'prepend');
 
                         }
                     }
@@ -372,7 +373,7 @@ $(document).ready(function() {
 
 
 
-            render_post(post);
+            render_post(post, 'prepend');
         });
     }
 
