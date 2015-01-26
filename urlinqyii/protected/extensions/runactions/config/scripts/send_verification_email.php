@@ -11,6 +11,8 @@ if (ERunActions::runBackground()){
     $message = $params['message'];
 
     $mail = new YiiMailer('confirmation', array('key'=>$key, 'message'=>$message));
+    $mail->SMTPSecure='ssl';
+    $mail->Mailer='smtps';
     $mail->setFrom($from_email, 'urlinq team');
     $mail->setSubject($subject);
     $mail->setTo($to_email);
