@@ -132,13 +132,13 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab analytics" data-panel_id="4">
-                                <div class="tab_content">
-                                    <div class="tab_img"></div>
-                                    <div class="tab_text">Analytics</div>
-                                </div>
-                                <div class="tab_wedge"></div>
-                            </div>
+<!--                            <div class="tab analytics" data-panel_id="4">-->
+<!--                                <div class="tab_content">-->
+<!--                                    <div class="tab_img"></div>-->
+<!--                                    <div class="tab_text">Analytics</div>-->
+<!--                                </div>-->
+<!--                                <div class="tab_wedge"></div>-->
+<!--                            </div>-->
 
 
 
