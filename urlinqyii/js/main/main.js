@@ -388,6 +388,14 @@ $(document).ready(function(){
         }
 
 
+
+        if(verb == 'leave'){
+            var r = confirm("Are you sure you want to leave?");
+            if (r == false) {
+                return;
+            }
+        }
+
         var post_url = globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/' + verb;
 
 
@@ -427,7 +435,7 @@ $(document).ready(function(){
                     }
 
 
-                    window.location.href(document.URL);
+                    location.reload();
                 }else{
                     alert(JSON.stringify(response));
                 }

@@ -426,11 +426,12 @@ class ClassController extends Controller
                     $event->delete();
                 }
 
-
-
-                foreach($user_events as $event){
-                    $event->delete();
+                //We also need to delete all posts that have the type event from this user in this group
+                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND  origin_type = "class" AND origin_id = ' . $class_id);
+                foreach($posts as $post){
+                    $post->delete();
                 }
+
 
 
                 $data = array('success'=>true);
