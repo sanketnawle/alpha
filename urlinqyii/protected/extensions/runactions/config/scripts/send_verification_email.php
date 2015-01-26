@@ -65,6 +65,17 @@ if (ERunActions::runBackground()){
 
     Yii::log($mail_response);
 
+
+    if($mail_response){
+        return var_dump('EMAIL SENT');
+    }
+    else
+    {
+        echo '<pre>';
+        var_dump($mail->getError());
+        echo '</pre>';
+    }
+
     return $mail_response;
 }
 
