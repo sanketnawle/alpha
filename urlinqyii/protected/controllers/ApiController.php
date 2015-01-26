@@ -3,6 +3,37 @@
     class ApiController extends Controller
     {
 
+        public function actionAddNotificationID() {
+            if(!isset($_GET['user_id']) || !isset($_GET['notification_id'])){
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $user_id = $_GET['user_id'];
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;            
+            }
+
+            $notification_id = str_replace(array(" "), "", $_GET['notification_id']);
+            $ios_notification = new IosNotification;
+            $ios_notification->user_id = $user_id;
+            $ios_notification->notification_id = $notification_id;
+
+            if ($ios_notification->save(false)) {
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            } else {
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'could not save data.');
+                $this->renderJSON($data);
+                return;   
+            }
+        }
          
         public function actionGetUserPictureID() {
 
