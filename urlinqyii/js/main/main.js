@@ -425,6 +425,9 @@ $(document).ready(function(){
                         $("ul[data-group='" + data_group + "'] a[data-" + globals.origin_type + "_" + "id='" + globals.origin_id + "']").remove();
 
                     }
+
+
+                    window.location.href(document.URL);
                 }else{
                     alert(JSON.stringify(response));
                 }

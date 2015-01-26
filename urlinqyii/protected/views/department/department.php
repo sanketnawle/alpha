@@ -76,7 +76,7 @@
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">
                                     <em class ="small_icon_map"></em>
-                                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                    <span><?php echo $department->school->school_name; ?></span>
                                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
                                         <div class="upload_cover_photo_button">Upload cover photo</div>
                                     <?php } ?>
@@ -134,13 +134,13 @@
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
                         <?php if($is_following ){ ?>
-                            <div id="group_user_action_button" class="member" data-action_url="/leave">
-                                <div id="group_user_action_button_text">Member</div>
-                            </div>
+<!--                            <div id="group_user_action_button" class="member" data-action_url="/leave">-->
+<!--                                <div id="group_user_action_button_text">Member</div>-->
+<!--                            </div>-->
                         <?php }else{ ?>
-                            <div id="group_user_action_button" class="non_member" data-action_url="/join">
-                                <div id="group_user_action_button_text">Follow</div>
-                            </div>
+<!--                            <div id="group_user_action_button" class="non_member" data-action_url="/join">-->
+<!--                                <div id="group_user_action_button_text">Follow</div>-->
+<!--                            </div>-->
                         <?php } ?>
 
                         <div id="tab_more_button">
@@ -182,12 +182,13 @@
                         <div class = "tab_content_holder">
                             <div class="tab_header"> 
                                 <div class = "float_Right">
-                                    <span class = "sort_label">Order:</span>
-                                    <div class = "order_sort_dropdown">
-                                        <span>Courses High to Low</span>
-                                        <em class = "dropdown_arrow">
-                                        </em>
-                                    </div>
+
+<!--                                    <span class = "sort_label">Order:</span>-->
+<!--                                    <div class = "order_sort_dropdown">-->
+<!--                                        <span>Courses High to Low</span>-->
+<!--                                        <em class = "dropdown_arrow">-->
+<!--                                        </em>-->
+<!--                                    </div>-->
                                     <div class = "small_search fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
@@ -205,13 +206,13 @@
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
-                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; ?></a>
+                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
                                             <div class = "float_Right">
                                                 <span class = "group_type">Course</span>
                                             </div>
                                         </div>
                                         <div class = "group_box_secondary_info_section">
-                                            <div class= "info_line indent">4 open classes</div>
+                                            <div class= "info_line indent"><?php echo count($course->classes); ?> classes</div>
                                             <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
                                             <div class = "info_line info_about"><?php echo $course->course_desc; ?></div>
                                         </div>

@@ -7,11 +7,11 @@ $(document).ready(function() {
 
 
         old_origin_id = globals.origin_id;
-        old_origin_type = origin_type;
-        globals.origin_id = user_id;
+        old_origin_type = globals.origin_type;
+        globals.origin_id = globals.user_id;
         globals.origin_type = 'user';
         globals.profile_open = true;
-        open_profile(base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
+        open_profile(globals.base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
     });
 
     $(document).on('click', '.close_modal', function(){

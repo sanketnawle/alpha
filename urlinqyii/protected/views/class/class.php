@@ -134,13 +134,16 @@
                     <?php }else{ ?>
                         <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
                     <?php } ?>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>
                     <div class = "group_info_block" id = "location">
                         <em class ="small_icon_map"></em>
                         <span><?php echo $class->location; ?></span>
+
+                        <br>
+                        <span><?php echo $class->class_datetime; ?></span>
                     </div>
                     <?php } else { }?>
 
@@ -271,7 +274,7 @@
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/'.$class->class_id.'/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
                     </div>
 
 
@@ -954,7 +957,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
         </div>
 
 

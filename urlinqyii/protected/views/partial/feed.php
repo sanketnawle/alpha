@@ -2,12 +2,15 @@
 <head>
     <title> Feed </title>
     <script>
-        base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
-        feed_url = '<?php echo $feed_url; ?>';
-        user_id = '<?php echo $user->user_id; ?>';
+        var globals = {};
 
-        origin_type = '<?php echo $origin_type; ?>';
-        origin_id = '<?php echo $origin_id; ?>';
+        globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+        globals.feed_url = '<?php echo $feed_url; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
+
+        globals.origin_type = '<?php echo $origin_type; ?>';
+        globals.origin_id = '<?php echo $origin_id; ?>';
+
 
 
     </script>

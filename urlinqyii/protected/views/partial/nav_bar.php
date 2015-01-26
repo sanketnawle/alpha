@@ -40,7 +40,7 @@
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
                     <?php foreach($user->school->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
                     <?php } ?>
                 </div>
             </div>
@@ -184,8 +184,8 @@
 
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($origin->courses as $class){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $class->course_id; ?>"><?php echo $class->course_name; ?></div>
+                    <?php foreach($origin->courses as $course){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></div>
                     <?php } ?>
                 </div>
 
@@ -224,7 +224,7 @@
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
                     <?php foreach($origin->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
                     <?php } ?>
                 </div>
 
