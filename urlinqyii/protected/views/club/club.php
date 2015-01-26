@@ -99,6 +99,13 @@
                                             <?php } ?>
                                         </div>
                                     </div>
+                                    <?php if($club->group_desc){ ?>
+                                        <div class = "group_right_info group_info_boxes group_desc_box">
+                                            <div class = "group_info_block">
+                                                <span><?php echo $club->group_desc;?></span>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
 
                         <!--        close the cover photo dropzone form if user is an admin -->

@@ -509,6 +509,9 @@ $(document).ready(function(){
         $('p.founded_text').slimScroll({
             height: 'auto'
         });
+        $('.group_info_boxes.group_desc_box > .group_info_block').slimScroll({
+            height: 'auto'
+        });
     });
 
 
