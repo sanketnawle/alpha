@@ -265,7 +265,6 @@ img.logo{
   display: inline-block;
   float: left;
   height: 32px;
-  padding-left: 20px;
 }
 
 div.main-market-area{
@@ -1226,7 +1225,7 @@ div.bottom-container{
     width: 100%;
     bottom: 0px;
     left: -43px;
-    top: 100%;
+    bottom: 0px;
     height: 100px;
     right: 0px; 
     background-color: rgba(237, 239, 237, 0);
