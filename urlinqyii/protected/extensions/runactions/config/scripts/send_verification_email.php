@@ -34,7 +34,7 @@ if (ERunActions::runBackground()){
 
 
 
-    $mail->Mailer='smtp';
+
 
 //    $mail->setFrom($from_email, 'urlinq team');
 //    $mail->setSubject($subject);
@@ -45,7 +45,7 @@ if (ERunActions::runBackground()){
 //    $mail->SMTPSecure = 'ssl';
 //    $mail->SMTPDebug = 1;
 
-
+    $mail->Mailer='smtps';
     $mail->IsSMTP(); // enable SMTP
 	$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 	$mail->SMTPAuth = true;  // authentication enabled
