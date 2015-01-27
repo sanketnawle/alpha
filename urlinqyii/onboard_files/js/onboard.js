@@ -837,7 +837,7 @@ $(document).ready(function () {
 
                     //alert(JSON.stringify(response));
                 }else{
-                    alert(JSON.stringify(response));
+                    window.location.replace(base_url);
                 }
             }, 'json'
         );
