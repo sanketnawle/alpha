@@ -208,7 +208,7 @@ white-space: normal;
 }
 
 .card_0_text_0 {
-    font-size: 18.8px;
+    font-size: 20.8px;
     font-weight: 600;
     line-height: 1.4em;
     text-overflow: ellipsis;
@@ -646,7 +646,7 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
 }
 
 .onboard_textarea_t1 {
-    width: 180px;
+    width: 250px;
     float: right;
     margin-right: 12px;
     margin-top: 12px;
@@ -663,7 +663,7 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     height: 20px;
     background: url('../img/OnboardingIconMap.png') repeat scroll 0px 2px transparent;
     position: absolute;
-    margin-left: 438px;
+    margin-left: 368px;
     margin-top: 16px;
     background-size: 120%;
 }
