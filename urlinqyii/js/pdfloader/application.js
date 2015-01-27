@@ -9,8 +9,10 @@ var class_color = "";
 window.onload = function () {
   class_color = get_class_color();
   file_json = get_pdf();
+  if(file_json["file_id"]){
   load_events(file_json["file_id"]);
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
+  }
   
 };
 

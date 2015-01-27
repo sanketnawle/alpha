@@ -1080,7 +1080,9 @@ class SiteController extends Controller
                         $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                         $this->renderJSON($data);
                         return;
-                    }else{
+                    }else if($user->status == 'onboarding'){
+                        Yii::app()->session['onboarding_step'] = 3;
+                    }else {
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
