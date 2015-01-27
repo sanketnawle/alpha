@@ -50,13 +50,13 @@ $(document).ready(function () {
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they’re up to.", "These are some of the most active clubs at your school.", ""];
 
-    var searchbar_hint = ["Search schools", "Search departments", "", "Search classes", "Search people", "Search clubs", ""];
+    var searchbar_hint = ["Search schools", "Search departments", "", "Search all classes", "Search people", "Search clubs", ""];
 
     /*the following lists should be retreived from php*/
     var school_list = [];
 
 
-
+    original_course_list = [];
 
 
 
@@ -83,6 +83,7 @@ $(document).ready(function () {
                 $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
                     if(json_data['success']){
                         course_list = json_data['courses'];
+                        original_course_list = course_list;
                         start_onboarding();
                     }else{
                         alert('Error getting school data');
@@ -180,7 +181,7 @@ $(document).ready(function () {
 
         $(".progress_hint_0").text(hint_text[curr]);
 
-        var curr_act = curr + 1;
+        var curr_act = parseInt(curr) + 1;
         $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
         if (curr == 6) { $(".progress_hint_1").html("Last Step"); };
 
@@ -319,47 +320,7 @@ $(document).ready(function () {
 
             $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
 
-            $thread0 = $("#thread_0");
-            $thread1 = $("#thread_1");
-
-            var ns = course_list.length;
-            for (var i = 0; i < ns; i++) {
-
-                if (i % 2 == 0) {
-                    $tthread = $thread0;
-                } else {
-                    $tthread = $thread1;
-                }
-
-                var classes = course_list[i]['classes'];
-                var cs = classes.length;
-
-
-                course_list[i]['class_count'] = cs;
-                course_list[i]['base_url'] = base_url;
-
-                var id_from_php = course_list[i]['course_id'];
-
-                var source   = $("#step_3_template").html();
-                var template = Handlebars.compile(source);
-                var generated_html = template(course_list[i]);
-
-                var $card = $(generated_html);
-
-                $tthread.append($card).hide().fadeIn();
-
-
-                var $expand = $("#course_" + id_from_php).find(".step_3_card_section_detail");
-
-                var sub_source   = $("#step_3_sub_template").html();
-                for (var j = 0; j < classes.length; j++) {
-                    var sub_template = Handlebars.compile(sub_source);
-                    var sub_generated_html = sub_template(classes[j]);
-
-                    var $sub_card = $(sub_generated_html);
-                    $expand.append($sub_card);
-                }
-            }
+            render_courses();
 
         }else if (curr == 4) {
             $('.skip_progress').show();
@@ -406,7 +367,7 @@ $(document).ready(function () {
                     $tthread = $thread1;
                 }
 
-                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
+                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span></span></div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
             }
 
 
@@ -449,7 +410,68 @@ $(document).ready(function () {
 
 
 
+    function render_courses(){
+            $thread0 = $("#thread_0");
 
+
+            //Only remove the classes that arent expanded and selected
+            $thread0.find('.step_3_card').each(function(){
+                if(!$(this).hasClass('expanded')){
+                    $(this).remove();
+                }
+            });
+
+
+            $thread1 = $("#thread_1");
+
+            $thread1.find('.step_3_card').each(function(){
+                if(!$(this).hasClass('expanded')){
+                    $(this).remove();
+                }
+            });
+
+
+
+            var ns = course_list.length;
+            for (var i = 0; i < ns; i++) {
+
+                if (i % 2 == 0) {
+                    $tthread = $thread0;
+                } else {
+                    $tthread = $thread1;
+                }
+
+                var classes = course_list[i]['classes'];
+                var cs = classes.length;
+
+
+                course_list[i]['class_count'] = cs;
+                course_list[i]['base_url'] = base_url;
+
+                var id_from_php = course_list[i]['course_id'];
+
+                var source   = $("#step_3_template").html();
+                var template = Handlebars.compile(source);
+                var generated_html = template(course_list[i]);
+
+                var $card = $(generated_html);
+
+                $tthread.append($card).hide().fadeIn();
+
+
+                var $expand = $("#course_" + id_from_php).find(".step_3_card_section_detail");
+
+                var sub_source   = $("#step_3_sub_template").html();
+                for (var j = 0; j < classes.length; j++) {
+                    var sub_template = Handlebars.compile(sub_source);
+                    var sub_generated_html = sub_template(classes[j]);
+
+                    var $sub_card = $(sub_generated_html);
+                    $expand.append($sub_card);
+                }
+            }
+
+    }
 
 
 
@@ -757,31 +779,41 @@ $(document).ready(function () {
         };
     });
 
+
+    var school_click_count = 0;
+
     $(document).delegate(".school", "click", function (e) {
-        //e.stopPropagation();
-//        e.preventDefault();
-        var $self = $(this);
 
-        var school_id = $self.attr('data-school_id');
-        $.getJSON(base_url + '/school/getDepartments?school_id=' + school_id,function(json_data){
-            if(json_data['success']){
-                selected_data['school_id'] = school_id;
+        //Prevent this from being clicked again
+        if(school_click_count == 0){
+            school_click_count++;
+                //e.stopPropagation();
+    //        e.preventDefault();
+            var $self = $(this);
 
-                department_list = json_data['departments'];
-                $(".step_0_card").addClass("left");
-                $self.removeClass("left");
-                setTimeout(function () {
-                    $self.addClass("right");
-                    progress_flag++;
-                    progress_check(progress_flag);
-                    content_paint(progress_flag);
-                    return;
-                }, 250);
+            var school_id = $self.attr('data-school_id');
+            $.getJSON(base_url + '/school/getDepartments?school_id=' + school_id,function(json_data){
+                if(json_data['success']){
+                    selected_data['school_id'] = school_id;
 
-            }else{
-                alert('Error getting school data');
-            }
-        });
+                    department_list = json_data['departments'];
+                    $(".step_0_card").addClass("left");
+                    $self.removeClass("left");
+                    setTimeout(function () {
+                        $self.addClass("right");
+                        progress_flag++;
+                        progress_check(progress_flag);
+                        content_paint(progress_flag);
+                        return;
+                    }, 250);
+
+                }else{
+                    alert('Error getting school data');
+                }
+            });
+        }
+
+
 
     });
 
@@ -812,32 +844,40 @@ $(document).ready(function () {
     }
 
 
+
+    var department_click_count = 0;
+
     $(document).delegate(".department", "click", function (e) {
         e.stopPropagation();
         e.preventDefault();
 
 
-        var $self = $(this);
+        if(department_click_count == 0){
+            department_click_count++;
+            var $self = $(this);
 
 
 
-        var department_id = $self.attr('data-department_id');
-        selected_data['department_id'] = department_id;
+            var department_id = $self.attr('data-department_id');
+            selected_data['department_id'] = department_id;
 
 
-        function run_this(){
-            $(".step_0_card").addClass("left");
-            $self.removeClass("left");
-            setTimeout(function () {
-                $self.addClass("right");
-                progress_flag++;
-                progress_check(progress_flag);
-                content_paint(progress_flag);
-                return;
-            }, 250);
+            function run_this(){
+                $(".step_0_card").addClass("left");
+                $self.removeClass("left");
+                setTimeout(function () {
+                    $self.addClass("right");
+                    progress_flag++;
+                    progress_check(progress_flag);
+                    content_paint(progress_flag);
+                    return;
+                }, 250);
+            }
+
+            send_verification_email(run_this);
         }
 
-        send_verification_email(run_this);
+
 
     });
 
@@ -1045,27 +1085,65 @@ $(document).ready(function () {
             var $content_canvas = $('.content_canvas');
 
             if(input_string == ''){
-                $content_canvas.find('div.step_3_card').each(function(){
-                    var $child = $(this);
-                    $child.show();
-                });
+                course_list = original_course_list;
+                render_courses();
+//                $content_canvas.find('div.step_3_card').each(function(){
+//                    var $child = $(this);
+//                    $child.show();
+//                });
             }else{
-                $content_canvas.find('div.step_3_card').each(function(){
-                    var $child = $(this);
 
-                    if(!$child.hasClass('professor_class')){
-                        if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
 
-                            console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
+                setTimeout(function() {
 
-                            $child.show();
-                        }else{
-                            $child.hide();
-                        }
+                    if($('.onboard_textarea_t0').val().toLowerCase() == input_string){
+                        //Search for classes with a name or tag similar to this
+                        $.getJSON(base_url + '/search/courses?q=' + input_string, function(json_data){
+                            if(json_data['success']){
+
+                                if(json_data['results'].length == 0){
+                                    course_list = original_course_list;
+                                    render_courses();
+                                }else{
+                                    course_list = json_data['results'];
+                                    render_courses();
+                                }
+
+
+                            }else{
+                                console.log('Error getting courses data with seach query ' + input_string);
+                            }
+                        });
                     }
 
+                }, 700);
 
-                });
+                 // Check the value searched is the latest one or not. This will help in making the ajax call work when client stops writing.
+
+
+
+
+
+
+
+
+
+//                $content_canvas.find('div.step_3_card').each(function(){
+//                    var $child = $(this);
+//
+//                    if(!$child.hasClass('professor_class')){
+//                        if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
+//
+//                            console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
+//
+//                            $child.show();
+//                        }else{
+//                            $child.hide();
+//                        }
+//                    }
+//
+//
+//                });
             }
         }else if(progress_flag == 4){
             var $user_name_input = $(this);

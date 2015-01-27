@@ -456,6 +456,8 @@ class FeedController extends Controller
                               on (post.post_id = post_user_inv.post_id)
                            where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = " . $user->user_id .")
                               or post_user_inv.user_id = " . $user->user_id . ")
+                              or (post.origin_type = 'user')
+
                               or (origin_type = 'university' and origin_id = " . $user->school_id . ")
                               or (origin_type = 'department' and origin_id = " . $user->department_id .")
                               or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
@@ -463,6 +465,7 @@ class FeedController extends Controller
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
                               and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
+
                               and created_at < '" . $created_at . "'
                               ORDER BY created_at DESC
                               LIMIT ".self::$start_rec.",".self::POST_LIMIT;

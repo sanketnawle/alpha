@@ -12,12 +12,14 @@ class DepartmentController extends Controller
 
         $user = $this->get_current_user();
 
-
+        if(strpos($user->user_email,'@urlinq.com') !== false){
+            $is_admin = true;
+        }
 
         $is_following = false;
 
 
-		$this->render('department',array('department'=>$department,'user'=>$user,'is_following'=>$is_following));
+		$this->render('department',array('department'=>$department,'user'=>$user,'is_following'=>$is_following, 'is_admin'=>$is_admin));
 	}
 
 
