@@ -572,7 +572,7 @@ $(document).ready(function() {
         }
 
 
-        alert(JSON.stringify(post_data));
+        //alert(JSON.stringify(post_data));
 
 
         return post_data;
@@ -832,8 +832,8 @@ $(document).ready(function() {
     var any_bio;
 
     $(document).on('click','#edit_profile_button.not_editing',function(){
-        $('#profile_overlay').show();
-        $('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
+        $('#profile_foreground_overlay').show();
+        //$('#left_info_bar,#profile_picture_wrapper').css('z-index','3000');
         any_major=!$('#major_section >.info_name.undeclared').is(':visible');
         $('.info_name').hide();
         $('.headers').show();
@@ -1139,7 +1139,7 @@ $(document).ready(function() {
         //$('#edit_profile_button').css('margin-left','15px');
         $('#edit_profile_button').text('Edit Profile');
         $('#cancel_edit_button').hide();
-        $('#profile_overlay').hide();
+        $('#profile_foreground_overlay').hide();
         //$('#profile_picture_wrapper').css('z-index','');
         $('#edit_profile_button').removeClass('editing');
         $('#edit_profile_button').addClass('not_editing');

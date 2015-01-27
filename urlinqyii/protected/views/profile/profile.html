@@ -218,6 +218,13 @@
             <div id = "mock_left_bar"></div>
             <div id = "left_info_bar">
                 <h2 id="academic_header" class="headers">Academic Information</h2>
+                <div class="info_section" id = "bio_section">
+                    <div class="info_label" id = "bio_label">
+                        Biography:
+                    </div>
+                    <div class="info_name" id="bio">{{bio}}</div>
+                    <textarea maxlength="240" type="text" class="edit_field" id="bio_input" wrap="hard"></textarea>
+                </div>
                 <div class="info_section" id = "school_section">
                     <div class="info_label" id = "school_label">
                         School:
@@ -225,6 +232,7 @@
                     <a href="{{base_url}}/school/{{school_id}}" class="info_name" id="school_name">{{school}}</a>
                     <select class="edit_field" id="school_dropdown"></select>
                 </div>
+
                 <div class="info_section" id = "department_section">
                     <div class="info_label" id = "department_label">
                         Department:
@@ -232,17 +240,7 @@
                     <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}}</a>
                     <select class="edit_field" id="department_dropdown"></select>
                 </div>
-                <div class="info_section" id = "research_section">
-                    <div class="info_label" id = "research_label">
-                        Research Interests:
-                    </div>
-                    {{#each research}}
-                    <div class="info_name research">{{name}}</div>
-                    {{/each}}
-                    <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
-                </div>
+
                 {{#if professor}}
                     <div class="info_section" id = "office_section">
                         <div class="info_label" id = "office_label">
@@ -314,14 +312,18 @@
                         </select>
                     </div>
                 {{/if}}
-
-                <div class="info_section" id = "bio_section">
-                    <div class="info_label" id = "bio_label">
-                        Biography:
+                <div class="info_section" id = "research_section">
+                    <div class="info_label" id = "research_label">
+                        Research Interests:
                     </div>
-                    <div class="info_name" id="bio">{{bio}}</div>
-                    <textarea maxlength="240" type="text" class="edit_field" id="bio_input" wrap="hard"></textarea>
+                    {{#each research}}
+                    <div class="info_name research">{{name}}</div>
+                    {{/each}}
+                    <input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">
                 </div>
+
 
                 <h2 id="account_header" class="headers">Account Information</h2>
                 <div class="info_section account" id = "name_section">

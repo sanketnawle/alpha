@@ -256,8 +256,13 @@ $(document).ready(function(){
             planner_origin_id = globals.user_id;
         }
 
+        //alert('GET PLANNER EVENTS');
 
-        $.getJSON( base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
+        console.log(planner_origin_type);
+        console.log(planner_origin_id);
+
+
+        $.getJSON( globals.base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);
@@ -533,7 +538,12 @@ function show_event(event,event_div_id){
         event['complete'] = 'not_complete';
     }
 
-    event['start_time'] = time_string_to_am_pm_string(event['start_time']);
+
+    //Convert the utc times to local
+    var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
+//    alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
+//    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
+    event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
 
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
@@ -547,7 +557,16 @@ function show_event(event,event_div_id){
 function add_event(event_json){
     $("#free_planner_wrap").hide();
 
-    var event_datetime = utc_to_local(new Date(event_json['end_date'] + ' ' + event_json['end_time']));
+    var event_datetime = utc_to_local(new_datetime(event_json['end_date'] + ' ' + event_json['end_time']));
+
+
+
+    console.log('ADDED EVENT TIME');
+    console.log(event_datetime);
+    console.log(event_json['end_date']);
+    console.log(event_json['end_time']);
+
+
     //var event_date = utc_to_local(new Date('2014-12-27 02:07:00'));
 
     //Check if the event is today
@@ -558,47 +577,45 @@ function add_event(event_json){
 //    alert(event_date);
 //    alert(todays_date);
 //    alert(event_date.getDate() == todays_date.getDate());
-    if(event_datetime.getDate() == todays_date.getDate()){
+    if(event_datetime < todays_date){
         if(!$("#past_due_events_header").is(":visible")){
             show_past_due_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date =  get_formatted_date(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date =  get_formatted_date(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#past_events');
         return;
     }
 
 
-    //Check if the even was yesterday
-    var yesterdays_date = new Date(todays_date);
-    yesterdays_date.setDate(todays_date.getDate() - 1);
-    if(event_datetime.getDate() == yesterdays_date.getDate()){
+
+    if(event_datetime.getDate() == todays_date.getDate()){
         if(!$("#todays_events_header").is(":visible")){
             show_todays_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date = get_formatted_time(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#todays_events');
         return;
     }
 
     //Check if the event is tomorrow
-    var tomorrows_date = new Date(todays_date);
+    var tomorrows_date = new Date();
     tomorrows_date.setDate(todays_date.getDate() + 1);
     if(event_datetime.getDate() == tomorrows_date.getDate()){
         if(!$("#tomorrows_events_header").is(":visible")){
             show_tomorrows_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date = get_formatted_time(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#tomorrows_events');
         return;
@@ -617,10 +634,10 @@ function add_event(event_json){
             show_future_label();
         }
 
-
-        var date = new Date(event_json['end_date']);
-        var formatted_date = get_formatted_time(date);
-        event_json['end_date'] = formatted_date;
+//
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#future_events');
         return;
@@ -782,14 +799,16 @@ $(document).on('click','#create_todo_form',function(e){
     }
 
     //Make sure the date is converted to UTC before passing to database
-    var todo_datetime = new Date($('#event_date').attr('data-date') + ' ' + $('#tp1').attr('data-time'));
+    var todo_datetime = new_datetime($('#event_date').attr('data-date') + ' ' + $('#tp1').attr('data-time'));
 
 
     //var todo_time = $('.event_time').attr('data-time');
 
 
     todo_datetime = local_to_utc(todo_datetime);
-    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
+    //var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
+    var todo_date = date_to_string(todo_datetime);
+
     var todo_time = addZero(todo_datetime.getHours()).toString() + ':' + addZero(todo_datetime.getMinutes()).toString() + ':' + addZero(todo_datetime.getSeconds()).toString();
 
     if(errors.length > 0){
@@ -816,7 +835,6 @@ $(document).on('click','#create_todo_form',function(e){
                 $('.entry_field_placeholder').removeClass('cancel_form');
                 $('#add_todo_text').text('Add Todo');
 
-                //alert(JSON.stringify(response));
                 hide_planner_creation_form();
                 add_event(response['event']);
                 //show_event(response['event'],'#todays_events');
@@ -833,6 +851,10 @@ $(document).on('click','#create_todo_form',function(e){
 
 
 });
+
+
+
+
 $(window).load(function(){
 
         $('#event_list').slimScroll({

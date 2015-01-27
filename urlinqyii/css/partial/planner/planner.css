@@ -358,6 +358,8 @@ border-image: none;
 
 
     max-height: 345px;
+
+    padding-top: 5px;
     
 
 
@@ -410,7 +412,7 @@ input.event_title{
     /*max-height: 345px;*/
     font-size: 12px;
     /*min-height: 214px;*/
-    height: 289px;
+    /*height: 289px;*/
     width: 100%;
     -moz-transition: all .15s linear;
     -webkit-transition: all .15s linear; 
