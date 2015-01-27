@@ -833,6 +833,10 @@ input#post_title, input#event_title, input#opportunity_title {
     box-shadow: inset 0 1px 1px rgba(200, 200, 200, 0.3);
 }
 
+input#opportunity_title{
+    margin-bottom:12px;
+}
+
 input#event_title {
     width: 520px !important;
     margin-bottom: 12px;

@@ -414,7 +414,7 @@
                         {{#each followers}}
                         <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                             <div class = "members_card admin normal_size">
-                                <div class = "members_card_img" style="background-image: url({{profile_pic}});">
+                                <div class = "members_card_img" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
 
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
@@ -426,7 +426,7 @@
 
                                 </div>
                                 <div class = "user_main_info">
-                                    <a class = "name profile_link">{{user_name}}</a>
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
                                 </div>
                                 <div class = "user_more_info">
                                     <a class = "department_link">{{user_department}}</a>
@@ -464,7 +464,7 @@
                         {{#each following}}
                         <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                             <div class = "members_card admin normal_size">
-                                <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>'" style="background-image: url({{profile_pic}});">
+                                <div class = "members_card_img profile_link" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
 
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
@@ -476,7 +476,7 @@
 
                                 </div>
                                 <div class = "user_main_info">
-                                    <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'>{{user_name}}</a>
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
                                 </div>
                                 <div class = "user_more_info">
                                     <a class = "department_link">{{user_department}}</a>

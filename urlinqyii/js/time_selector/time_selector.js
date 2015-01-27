@@ -172,6 +172,14 @@ jQuery(document).ready(function(){
 
 
 
+        //Close the time input if there is one
+        try{
+            $('#calLayer').hide();
+        }catch(err){
+            console.log('Clicked time_input with no calLayer to hide');
+        }
+
+
         //Get the position of this time input
         var input_position = $time_input.offset();
 
@@ -179,7 +187,7 @@ jQuery(document).ready(function(){
         $time_selector.css({'position': 'fixed'});
         $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
-        $time_selector.css({'z-index': '1000'});
+        $time_selector.css({'z-index': '9999'});
         //Set the time_selector to active
         $time_selector.addClass('active');
 

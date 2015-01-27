@@ -381,10 +381,15 @@ div#fbar_wrapper.fbar_group{
     /* 250 */
     
 
-    height: 340px;
+    height: 295px;
 
 }
 
+em.small_icon_time{
+    background-image: url('../../assets/small_icons.png'); background-size: auto; background-repeat: no-repeat; display: inline-block;
+    
+    background-position: -1px -682px!important;
+}
 
 
 /* tab_bar */
@@ -1240,11 +1245,12 @@ border-top: 1px solid #1BAD3E;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
     display: inline-block;
-    padding: 9px 13px;
+    padding: 9px 0px;
     vertical-align: top;
     padding-right: 12px;
-    position: absolute;
-    left: 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
 .follow_button_wrapper .user_follow_button.following{
@@ -1681,8 +1687,19 @@ textarea:focus:-moz-placeholder {
     }  
     body{
         overflow-x:scroll!important;
-        min-width:840px;
-    }     
+        min-width:880px;
+    }    
+
+}
+
+@media screen and (max-width: 900px) {
+
+    body div.topbar{
+        position:relative!important;
+    }
+    body#body_home div#wrapper, body#body_group div#wrapper{
+        padding-top: 0px!important;
+    }
 }
 
 
@@ -2058,5 +2075,6 @@ form#cover_photo_form div.dz-details {
     display: none !important;
 }
 
-
+div.no_select::selection { background:transparent; }
+div.no_select::-moz-selection { background:transparent; }
 

@@ -50,14 +50,31 @@ $(document).ready(function(){
     jQuery(document).delegate('.date_input', 'click', function (e) {
         e.stopPropagation();
 
+        //Close the time input if there is one
+        try{
+            $('#time_selector').removeClass('active');
+        }catch(err){
+            console.log('Clicked date_input with no time selector to hide');
+        }
+
+
+
         if(jQuery(this).is($recent_date_input) && jQuery('#calLayer').css("display") == 'block'){
             jQuery('#calLayer').hide();
         } else {
 
             $recent_date_input = jQuery(this);
-            jQuery('#calLayer').css({position:'absolute', top: $recent_date_input.position().top + 145, left: $recent_date_input.position().left + 20});
+            jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top + $recent_date_input.height(), left: $recent_date_input.offset().left});
             jQuery('#calLayer').show();
         }
+
+    });
+
+
+    jQuery(document).on('click', '.m-prev, .m-next', function(e){
+        e.stopPropagation();
+
+
 
     });
 

@@ -23,9 +23,12 @@
     <script>
         moment().format();
     </script>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
-    
+
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+
+
+    
+
     
 
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css"> </link>
@@ -54,7 +57,7 @@
 
                 <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
 
-
+                <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
             </div>
             
         </div> 

@@ -48,7 +48,7 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 234.5){
+        if(Math.floor(scroll_offset_top) >= 189.5){
 
             ////console.log("SETTING TO FIXED");
             
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 
             $nav_bar.css({'position':'relative'});
-            $nav_bar.css({'top':'245.5px'});
+            $nav_bar.css({'top':'200.5px'});
 
             
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) >= 278){
+        if(Math.floor(scroll_offset_top) >= 233){
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({'border-radius': '2px'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
@@ -85,12 +85,12 @@ $(document).ready(function(){
             $("#fixed_element.planner_group").css({'position':'fixed'});
             $("#fixed_element.planner_group").css({'top':'130px'});
 
-        }if(Math.floor(scroll_offset_top) <= 236){
+        }if(Math.floor(scroll_offset_top) <= 191){
             $nav_bar.css({'position':'fixed'});
             $nav_bar.css({'top':'56px'});            
         }
 
-        if(Math.floor(scroll_offset_top) <= 279){
+        if(Math.floor(scroll_offset_top) <= 234){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) <= 280){
+        if(Math.floor(scroll_offset_top) <= 235){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -278,54 +278,54 @@ $(document).ready(function(){
 
 
     //$('#create_todo_form').submit(function (e) {
-    $(document).on('click','#create_todo_form',function(e){
-        //Send post request to event/create
-        e.preventDefault();
-
-        //alert($('.event_date').val());
-
-        var $form = $(this);
-        var post_url = $form.attr('action');
-        var post_data = $(this).serializeArray();
-        var errors = [];
-
-        var todo_name = $('#event_name').val();
-
-        //Check if user input a name for todo
-        if($('#event_name').val().length == 0){
-            errors.push({name:'event_name_error',value:'You must give a name for this todo'});
-        }
-
-        //Make sure the date is converted to UTC before passing to database
-        var todo_date = new Date($('.event_date').attr('data-date'));
-        todo_date = local_to_utc(todo_date);
-        todo_date = todo_date.getUTCFullYear().toString() + "-" + (todo_date.getMonth()+ 1).toString() + "-" + todo_date.getDate().toString();
-
-        var todo_time = $('.event_time').attr('data-time');
-
-
-        if(errors.length > 0){
-//        alert(JSON.stringify(errors));
-            $('#new_listing_text').text(JSON.stringify(errors));
-            return false;
-        }
-
-        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: globals.origin_type, origin_id: globals.origin_id};
-        //alert(JSON.stringify(post_data));
-        $.post(
-            post_url,
-            post_data,
-            function(response) {
-                if(response['success']){
-                    //alert(JSON.stringify(response));
-                    add_event(response['event']);
-                    //show_event(response['event'],'#todays_events');
-                }else{
-                    alert(JSON.stringify(response));
-                }
-            }, 'json'
-        );
-    });
+//    $(document).on('click','#create_todo_form',function(e){
+//        //Send post request to event/create
+//        e.preventDefault();
+//
+//        //alert($('.event_date').val());
+//
+//        var $form = $(this);
+//        var post_url = $form.attr('action');
+//        var post_data = $(this).serializeArray();
+//        var errors = [];
+//
+//        var todo_name = $('#event_name').val();
+//
+//        //Check if user input a name for todo
+//        if($('#event_name').val().length == 0){
+//            errors.push({name:'event_name_error',value:'You must give a name for this todo'});
+//        }
+//
+//        //Make sure the date is converted to UTC before passing to database
+//        var todo_date = new Date($('.event_date').attr('data-date'));
+//        todo_date = local_to_utc(todo_date);
+//        todo_date = todo_date.getUTCFullYear().toString() + "-" + (todo_date.getMonth()+ 1).toString() + "-" + todo_date.getDate().toString();
+//
+//        var todo_time = $('.event_time').attr('data-time');
+//
+//
+//        if(errors.length > 0){
+////        alert(JSON.stringify(errors));
+//            $('#new_listing_text').text(JSON.stringify(errors));
+//            return false;
+//        }
+//
+//        post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: globals.origin_type, origin_id: globals.origin_id};
+//        //alert(JSON.stringify(post_data));
+//        $.post(
+//            post_url,
+//            post_data,
+//            function(response) {
+//                if(response['success']){
+//                    //alert(JSON.stringify(response));
+//                    add_event(response['event']);
+//                    //show_event(response['event'],'#todays_events');
+//                }else{
+//                    alert(JSON.stringify(response));
+//                }
+//            }, 'json'
+//        );
+//    });
 
  /*   $(document).on('click', '.profile_link', function(){
         //$(this).prepend("<img class='waiting_animation_circletype waiting_animation_circletype_sz10 circletype_animation_adjust_1' src='http://www.urlinq.com/beta/img/waiting_animation_circletype.GIF'>");
@@ -514,6 +514,12 @@ $(document).ready(function(){
         });
     });
 
+
+    if($("body").hasClass("body_group") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
+        $(".point").css({"left":"40px","font-size":"13px"})
+    }
 
 
 

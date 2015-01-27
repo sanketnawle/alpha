@@ -1,0 +1,109 @@
+div#reminders{
+
+}
+
+div#reminders > div{
+    margin-top: 14px;
+
+}
+
+div.reminders_header.header{
+    font-family: Avenir;
+
+    font-size: 15px;
+    font-size: 14.5px; text-transform: uppercase;
+    color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    border-bottom: 1px solid #d8d8d8;
+} 
+
+ul.reminder_entries{
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+div.reminders_footer{
+
+}
+
+div.reminders_footer > a{
+
+}
+
+
+div.reminders_footer > a > img{
+
+}
+
+div#reminders li.tdo{
+    list-style: none;
+
+}
+
+div#reminders div.icon.date{
+    display: inline-block;
+
+    width: 45px;
+    background-color: #777;
+    height: 45px;
+    font-family: Avenir;
+    border-radius: 2.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+div#reminders div.icon.date div.mini_cal_top_border{
+    position: absolute;
+	
+    top: 0px;
+    right: 0;
+    height: 7px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+div#reminders div.icon.date div.month{
+    text-align: center;
+
+    color: #FFF;
+}
+
+div#reminders div.icon.date div.day{
+    text-align: center;
+	
+    font-size: 14px; font-weight: 600; line-height: 11px; 
+    margin-top: 3px;
+    color: #FFF;
+}
+
+div#reminders li.tdo div.content{
+
+}
+
+div#reminders li.tdo div.content div.right{
+
+}
+
+div#reminders li.tdo div.content div.right div.dismiss{
+
+}
+
+div#reminders li.tdo div.content div.right div.close{
+
+}
+
+div#reminders li.tdo div.content div.time{
+
+}
+
+div#reminders li.tdo div.content div.time div.stamp{
+	
+}
+
+div#reminders li.tdo div.content div.message{
+	
+}
+
+
+

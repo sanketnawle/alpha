@@ -12,9 +12,16 @@ class SchoolController extends Controller
 
 
         $is_member = true;
+
+
+        $is_admin = false;
+
+        if(strpos($user->user_email,'@urlinq.com') !== false){
+            $is_admin = true;
+        }
         //var_dump($user);
         //$members=User::model()->find('school_id:=id', array(':id'=>1));
-        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member));
+        $this->render('school',array('user'=>$user,'school'=>$school, 'departments'=>$school->departments, 'users'=>$school->users,'is_member'=>$is_member, 'is_admin'=>$is_admin));
     }
 
     public function actionFollowDept(){

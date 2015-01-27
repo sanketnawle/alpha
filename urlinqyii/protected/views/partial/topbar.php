@@ -13,7 +13,6 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/notifications.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 
@@ -100,25 +99,7 @@
 
 
 
-                    <div class="notify-window" id="reminders" style="display: none;">
-                        <div class="wedge"></div>
-                        <div class="window">
-                            <div class="header">Reminders</div>
-                            <ul class="entries">
 
-
-
-
-
-                            </ul>
-                            <div class="footer">
-                                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
-                                    See full calendar
-                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/leftpanel/go-arrow.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -187,34 +168,6 @@
 
 
 
-<script id="reminder_template" type="text/x-handlebars-template">
-
-    <li class="tdo">
-        <div class="icon date">
-            <div class="month">{{month}}</div>
-            <div class="day">{{day}}</div>
-        </div>
-        <div class="content">
-            <div class="right">
-                <div class="dismiss">Dismiss</div>
-                <div class="close"></div>
-            </div>
-
-            {{#ifCond origin_type '==' 'class'}}
-                {{#ifCond event_type '==' 'exam'}}
-                    <div class="message">On {{day_of_week}}, you have a {{event_type}} in class, {{origin.name}}.</div>
-                {{/ifCond}}
-            {{/ifCond}}
-
-
-            <div class="time">
-                <div class="icon"></div>
-                <div class="stamp">{{formatted_end_time}}</div>
-            </div>
-        </div>
-    </li>
-
-</script>
 
 
 <script id='notification_template' type="text/x-handlebars-template">

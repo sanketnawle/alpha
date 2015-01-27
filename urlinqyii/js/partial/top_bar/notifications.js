@@ -184,7 +184,7 @@ $(document).ready(function(){
 
         var x = $notifications_button.width();
 
-        var left_position = ((116/83) * x) - 186;
+        var left_position = ((116/83) * x) - 282.5;
 
         $notifications.css({'left': left_position});
 

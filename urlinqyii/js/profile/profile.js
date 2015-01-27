@@ -572,7 +572,7 @@ $(document).ready(function() {
         }
 
 
-        alert(JSON.stringify(post_data));
+        //alert(JSON.stringify(post_data));
 
 
         return post_data;
