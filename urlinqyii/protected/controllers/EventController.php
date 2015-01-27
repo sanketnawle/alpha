@@ -216,16 +216,25 @@ class EventController extends Controller
 
 
     public function actionGetPlannerEvents(){
+
+        if(!isset($_GET['origin_type']) || !isset($_GET['origin_id'])){
+            $data = array('success'=>false, 'error_msg'=>'origin_type not set');
+            $this->renderJSON($data);
+            return;
+        }
+
         //$user_id = $_GET['user_id'];
         $user = $this->get_current_user();
 
 
         if(!$user){
-             $data = array('success'=>false, 'error_msg'=>'User not authenticated');
+            $data = array('success'=>false, 'error_msg'=>'User not authenticated');
 
             $this->renderJSON($data);
             return;
         }
+
+
 
 //        $user = User::model()->findBySql('SELECT * FROM `user` WHERE user_id=.'$user_id');
 
@@ -302,6 +311,8 @@ class EventController extends Controller
 
 
 
+        $origin_type = $_GET['origin_type'];
+        $origin_id = $_GET['origin_id'];
 
 
 
@@ -316,7 +327,16 @@ class EventController extends Controller
         $datetime->modify('+4 day');
         $end_date= $datetime->format('Y-m-d');
 
-        $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+
+
+        $events = array();
+
+        if($origin_type != 'user'){
+            $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+        }else{
+            $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+        }
+
 
 
         $data = array('success'=>true,'events'=>$events);

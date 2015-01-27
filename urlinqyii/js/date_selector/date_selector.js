@@ -50,6 +50,15 @@ $(document).ready(function(){
     jQuery(document).delegate('.date_input', 'click', function (e) {
         e.stopPropagation();
 
+        //Close the time input if there is one
+        try{
+            $('#time_selector').removeClass('active');
+        }catch(err){
+            console.log('Clicked date_input with no time selector to hide');
+        }
+
+
+
         if(jQuery(this).is($recent_date_input) && jQuery('#calLayer').css("display") == 'block'){
             jQuery('#calLayer').hide();
         } else {

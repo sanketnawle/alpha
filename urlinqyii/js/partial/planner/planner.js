@@ -249,8 +249,15 @@ $(document).ready(function(){
         //Default it to hide and fadein if there are no posts
         $('#free_planner_wrap').hide();
 
+        var planner_origin_type = globals.origin_type;
+        var planner_origin_id = globals.origin_id;
+        if(planner_origin_type == 'home'){
+            planner_origin_type = 'user';
+            planner_origin_id = globals.user_id;
+        }
 
-        $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
+
+        $.getJSON( base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);
@@ -793,7 +800,7 @@ $(document).on('click','#create_todo_form',function(e){
 
 
     var event_origin_type = globals.origin_type;
-    var event_origin_id = globals.user_id;
+    var event_origin_id = globals.origin_id;
     if(globals.origin_type == 'home'){
         event_origin_type = 'user';
         event_origin_id = globals.user_id;
