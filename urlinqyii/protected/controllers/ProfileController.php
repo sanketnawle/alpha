@@ -542,8 +542,18 @@ class ProfileController extends Controller
                     } else {
                         $new_data['year_name'] = $student_attributes->getErrors();
                     }
-                } else {
-                    $new_data['year_name'] = "error not a student";
+                } else if($user->user_type === "s"){
+                    $student_attributes = new StudentAttributes();
+                    $student_attributes->user_id = $user_id;
+                    $student_attributes->year_name = $_POST['year_name'];
+                    $student_attributes->degree_type_id = 0;
+                    if ($student_attributes->save()) {
+                        $new_data['year_name'] = "success";
+                    } else {
+                        $new_data['year_name'] = $student_attributes->getErrors();
+                    }
+                }else{
+                    $new_data['year'] = "failure: not a student";
                 }
 
             }
@@ -556,8 +566,18 @@ class ProfileController extends Controller
                     } else {
                         $new_data['year'] = $student_attributes->getErrors();
                     }
-                } else {
-                    $new_data['year'] = "error not a student";
+                } else if($user->user_type === "s"){
+                    $student_attributes = new StudentAttributes();
+                    $student_attributes->user_id = $user_id;
+                    $student_attributes->year = $_POST['year'];
+                    $student_attributes->degree_type_id = 0;
+                    if ($student_attributes->save()) {
+                        $new_data['year'] = "success";
+                    } else {
+                        $new_data['year'] = $student_attributes->getErrors();
+                    }
+                }else{
+                    $new_data['year'] = "failure: not a student";
                 }
 
             }

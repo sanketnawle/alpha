@@ -61,6 +61,10 @@ $(document).ready(function(){
     $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
 
 
+    $('#tp1').attr('data-time', ints_to_time(d.getHours(), d.getMinutes(), d.getSeconds()));
+    $('#tp1').val(date_to_am_pm_string(d));
+
+
 
     x= w[ d.getDay() ];
     $("#today_date").text( w[ d.getDay() ] + " " + ( d.getMonth() +1 )+ "/" + d.getDate() );
@@ -183,46 +187,46 @@ $(document).ready(function(){
 
 
 
-
-    $(document).delegate('.event_date', 'click', function () {
-        $('.calLayer').toggle();
-
-    });
-
-
-
-    $(".timepicker div").on("click", function(){
-        //$('.event_time').text( $(this).text() );
-        //$('.event_time').css( "margin-left", "20px" );
-        $('.tp1').val( $(this).text() );
-        $('.tp1').css('border-bottom', '1px solid #e5e5e5');
-        $('.tp1').css('border-radius', '3px');
-        $('.timepicker').fadeToggle(150);
-
-
-        $('.event_time').attr('data-time',$(this).attr('data-time'));
-    });
-
-
-
-    $('.tp1').on("keypress", function(){
-        $('.timepicker').css('display', 'none');
-        $(this).css('border-bottom', '1px solid #e5e5e5');
-    });
+//
+//    $(document).delegate('.event_date', 'click', function () {
+//        $('.calLayer').toggle();
+//
+//    });
+//
+//
+//
+//    $(".timepicker div").on("click", function(){
+//        //$('.event_time').text( $(this).text() );
+//        //$('.event_time').css( "margin-left", "20px" );
+//        $('.tp1').val( $(this).text() );
+//        $('.tp1').css('border-bottom', '1px solid #e5e5e5');
+//        $('.tp1').css('border-radius', '3px');
+//        $('.timepicker').fadeToggle(150);
+//
+//
+//        $('.event_time').attr('data-time',$(this).attr('data-time'));
+//    });
 
 
-    $(document).delegate(".tp1","click",function(){
-        $(".timepicker").show();
-    });
+
+//    $('.tp1').on("keypress", function(){
+//        $('.timepicker').css('display', 'none');
+//        $(this).css('border-bottom', '1px solid #e5e5e5');
+//    });
+//
+//
+//    $(document).delegate(".tp1","click",function(){
+//        $(".timepicker").show();
+//    });
 
 
-    $('html').click(function (e) {
-        if (e.target.id == '.timepicker') {
-            $(".timepicker").show();
-        } else {
-            $(".timepicker").hide();
-        }
-    });
+//    $('html').click(function (e) {
+//        if (e.target.id == '.timepicker') {
+//            $(".timepicker").show();
+//        } else {
+//            $(".timepicker").hide();
+//        }
+//    });
 
 
      $(document).click(function(event){
@@ -245,8 +249,15 @@ $(document).ready(function(){
         //Default it to hide and fadein if there are no posts
         $('#free_planner_wrap').hide();
 
+        var planner_origin_type = globals.origin_type;
+        var planner_origin_id = globals.origin_id;
+        if(planner_origin_type == 'home'){
+            planner_origin_type = 'user';
+            planner_origin_id = globals.user_id;
+        }
 
-        $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
+
+        $.getJSON( base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);
@@ -414,6 +425,16 @@ $(document).ready(function(){
         });
 
     }
+
+
+    function show_future_label(){
+
+        $('#future_events_header').fadeIn( "slow", function() {
+            // Animation complete
+        });
+
+    }
+
 
     function addZero(i) {
         if (i < 10) {
@@ -584,9 +605,23 @@ function add_event(event_json){
     }
 
     //Check if the event is in the next week
-    var week_from_now_date = new Date(todays_date);
-    week_from_now_date.setDate(todays_date.getDate() + 1);
-    if(event_datetime > tomorrows_date && event_datetime < week_from_now_date){
+//    var week_from_now_date = new Date(todays_date);
+//    week_from_now_date.setDate(todays_date.getDate() + 1);
+//    if(event_datetime > tomorrows_date && event_datetime < week_from_now_date){
+//        show_event(event_json,'#future_events');
+//        return;
+//    }
+
+    if(event_datetime > tomorrows_date){
+        if(!$("#future_events_header").is(":visible")){
+            show_future_label();
+        }
+
+
+        var date = new Date(event_json['end_date']);
+        var formatted_date = get_formatted_time(date);
+        event_json['end_date'] = formatted_date;
+
         show_event(event_json,'#future_events');
         return;
     }
@@ -747,7 +782,7 @@ $(document).on('click','#create_todo_form',function(e){
     }
 
     //Make sure the date is converted to UTC before passing to database
-    var todo_datetime = new Date($('.event_date').attr('data-date') + ' ' + $('.event_time').attr('data-time'));
+    var todo_datetime = new Date($('#event_date').attr('data-date') + ' ' + $('#tp1').attr('data-time'));
 
 
     //var todo_time = $('.event_time').attr('data-time');
@@ -763,13 +798,24 @@ $(document).on('click','#create_todo_form',function(e){
         return false;
     }
 
-    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id};
+
+    var event_origin_type = globals.origin_type;
+    var event_origin_id = globals.origin_id;
+    if(globals.origin_type == 'home'){
+        event_origin_type = 'user';
+        event_origin_id = globals.user_id;
+    }
+
+    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: event_origin_type, origin_id: event_origin_id};
     //alert(JSON.stringify(post_data));
     $.post(
         post_url,
         post_data,
         function(response) {
             if(response['success']){
+                $('.entry_field_placeholder').removeClass('cancel_form');
+                $('#add_todo_text').text('Add Todo');
+
                 //alert(JSON.stringify(response));
                 hide_planner_creation_form();
                 add_event(response['event']);
