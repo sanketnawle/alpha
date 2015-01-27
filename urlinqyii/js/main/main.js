@@ -515,6 +515,12 @@ $(document).ready(function(){
     });
 
 
+    if($("body").hasClass("body_group") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
+        $(".point").css({"left":"40px","font-size":"13px"})
+    }
+
 
 
 
