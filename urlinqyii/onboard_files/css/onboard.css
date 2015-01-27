@@ -178,10 +178,11 @@ body {
 
 .step_0_card.school .card_0_text{
     margin-top:-15px;
+    width: 430px;
 }
 
 .step_0_card.school .card_0_text_0{
-font-size: 22px;
+font-size: 20.5px;
 white-space: normal;
 }
 
