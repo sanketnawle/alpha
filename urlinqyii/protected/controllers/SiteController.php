@@ -886,6 +886,32 @@ class SiteController extends Controller
 
 
 
+        } else if($user->user_type == 's'){
+            if(isset($_POST['graduation_date'])){
+                $graduation_date = $_POST['graduation_date'];
+            }
+            $student_attribute = StudentAttributes::model()->find('user_id=:id',array(':id'=>$user->user_id));
+            if($student_attribute){
+                $student_attribute->user_id = $user->user_id;
+                $student_attribute->year = $graduation_date;
+
+                if(!$student_attribute->save(false)){
+                    $data = array('success'=>false, 'error_id'=>16, 'error_msg'=>'Error saving student data');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }else{
+                $student_attribute = new StudentAttributes;
+                $student_attribute->user_id = $user->user_id;
+                $student_attribute->year = $graduation_date;
+
+
+                if(!$student_attribute->save(false)){
+                    $data = array('success'=>false, 'error_id'=>8, 'error_msg'=>'Error saving student data');
+                    $this->renderJSON($data);
+                    return;
+                }
+            }
         }
 
 
