@@ -267,7 +267,7 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq. (check your spam folder)</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
             $('.skip_progress').hide();
         } else if (curr == 3) {
             $canvas.show();
