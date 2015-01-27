@@ -1687,8 +1687,19 @@ textarea:focus:-moz-placeholder {
     }  
     body{
         overflow-x:scroll!important;
-        min-width:840px;
-    }     
+        min-width:880px;
+    }    
+
+}
+
+@media screen and (max-width: 900px) {
+
+    body div.topbar{
+        position:relative!important;
+    }
+    body#body_home div#wrapper, body#body_group div#wrapper{
+        padding-top: 0px!important;
+    }
 }
 
 
