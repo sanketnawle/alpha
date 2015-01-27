@@ -62,7 +62,7 @@ $(document).ready(function(){
     var template_source = $('#reminder_template').html();
     //Clears the reminders and adds the latest ones
     function update_reminders_div(){
-        var $reminders_holder = $reminders.find('.entries');
+        var $reminders_holder = $reminders.find('.reminder_entries');
 
         $reminders_holder.empty();
 

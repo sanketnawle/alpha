@@ -172,6 +172,14 @@ jQuery(document).ready(function(){
 
 
 
+        //Close the time input if there is one
+        try{
+            $('#calLayer').hide();
+        }catch(err){
+            console.log('Clicked time_input with no calLayer to hide');
+        }
+
+
         //Get the position of this time input
         var input_position = $time_input.offset();
 
