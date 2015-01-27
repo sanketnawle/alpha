@@ -83,7 +83,7 @@ function date_to_am_pm_string(datetime_obj){
 //4pm
 function time_string_to_am_pm_string(time_string){
     var datetime_obj = new Date();
-    datetime_obj = new Date(date_to_string(datetime_obj) + 'T' + time_string);
+    datetime_obj = new_datetime(date_to_string(datetime_obj) + ' ' + time_string);
 
 
     var hours = datetime_obj.getHours();
@@ -117,7 +117,13 @@ function time_string_to_am_pm_string(time_string){
 //and converts it the safe way by making the space a T
 //returns a date object
 function new_date(date_string){
-    return new Date(date_string + 'T00:00:00');
+    var date = new Date(date_string + 'T00:00:00');
+
+    if(!isFinite(date)){
+        date = new Date(date_string + ' 00:00:00');
+    }
+
+    return date;
 }
 
 //Takes in a standard sql timestamp
@@ -125,7 +131,14 @@ function new_date(date_string){
 //and converts it the safe way by making the space a T
 //returns a datetime object
 function new_datetime(datetime_string){
-    return new Date(datetime_string.replace(' ', 'T'));
+    var date = new Date(datetime_string);
+    console.log('Date time shit');
+    console.log(date);
+    if(!isFinite(date)){
+        date = new Date(datetime_string.replace(' ', 'T'));
+    }
+
+    return date;
 }
 
 
