@@ -95,6 +95,52 @@ class SearchController extends Controller
     }
 
 
+
+
+
+
+    public function actionCourses(){
+        if(!isset($_GET['q'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'q not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        //Make sure user is logged in
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $query = $_GET['q'];
+
+        $results = array();
+
+
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 20");
+
+        foreach($courses as $course){
+            $course = $this->get_model_associations($course, array('pictureFile'=>array(),'classes'=>array('professor')));
+            $course['origin_type'] = 'course';
+            $course['origin_name'] = $course['course_name'];
+            $course['origin_id'] = $course['course_id'];
+
+            array_push($results, $course);
+        }
+
+
+
+        $data = array('success'=>true,'results'=>$results);
+        $this->renderJSON($data);
+        return;
+    }
+
+
+
     public function actionJson()
     { //We want to render JSON to the front-end so search.js can decode it
         $query = Yii::app()->request->getQuery('q');

@@ -30,11 +30,14 @@ return array(
     ),
 
 
-    'Mailer'=>'smtp',
+    'Mailer'=>'smtps',
+    'Host'=>"server.campuslayers.com",
+    'Port'=>465,
+
     'SMTPAuth'=>true,
     'SMTPSecure' => 'ssl',
-    'Host'=>"box791.bluehost.com",
-    'Port'=>465,
+
+
     'Username'=>'team@urlinq.com',
     'Password'=>'test#123'
 
