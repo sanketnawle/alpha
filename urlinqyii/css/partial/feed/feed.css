@@ -316,13 +316,15 @@ display: inline-block;
 transition: all .15s ease;
                    
 color: #029acf;
-margin-left: 20px;
+margin-left: 32px;
 }
 
 .post_lc .post_liked{
-    height: 100%; padding-right: 2px; border-radius: 0px; padding-top: 5px; padding-bottom: 5px; display: inline-block; -moz-transition: all .15s ease; -webkit-transition: all .15s ease; transition: all .15s ease; color: #029acf; margin-left: 20px;
+    height: 100%; padding-right: 2px; border-radius: 0px; padding-top: 5px; padding-bottom: 5px; display: inline-block; -moz-transition: all .15s ease; -webkit-transition: all .15s ease; transition: all .15s ease; color: #029acf; 
+    margin-left: 32px;
                    
 
+    position: relative;
 }
 
 .post_lc .post_like:hover{     
@@ -363,6 +365,7 @@ border-radius: 1px;
 /* padding-bottom: 4px; */
 font-family: Avenir;
 position: absolute;      
+right: -15px;
 color: #777;  
 }
 
@@ -375,24 +378,24 @@ color:#666;
 .post_like_icon{
 background-image: url(../../../assets/small_icons.png);
 background-size: auto;
-background-position: 0px -1205px;
+background-position: -2px -1186px;
 border: none;
 display: inline-block;
-/* float: left; */
--moz-transform: scale(0.49); 
--webkit-transform: scale(0.49); 
-transform: scale(0.49);
-width: 38px;
+/* float: left; */  
+width: 22px;
 box-shadow: none;
 float: left;
-height: 37px;
+height: 24px;
 position: relative;
-top: -5px;
+top: 1px;
 }
 
 .post_lc .post_liked .post_like_icon{
     background-image: url(../../../assets/small_icons.png); background-size: auto; 
-    background-position: -123px -1205px; border: none; display: inline-block; /* float: left; */ -moz-transform: scale(.49); -webkit-transform: scale(.49); transform: scale(0.49); width: 38px; box-shadow: none; float: left; height: 37px; position: relative; top: -5px;
+    background-position: -62px -1186px; border: none; display: inline-block; /* float: left; */    
+    width: 22px; box-shadow: none; float: left; 
+    height: 24px; position: relative; 
+    top: 1px;
 }
 
 .post_lc .post_like:hover > p.post_like_link{
@@ -402,7 +405,7 @@ top: -5px;
 }
 
 .post_lc .post_like:hover > .post_like_icon{
-    background-position: -61px -1205px;
+    background-position: -32px -1186px;
 }
 
 p.post_like_link{
@@ -414,26 +417,31 @@ p.post_like_link{
     position: relative;
     top: 5px;
     float: left;
-    left: -7px;
-    color: #575757;
+    left: 5px;
+    color: #444434;
 }
 
-span.reply_icon{
-    -moz-transform: scale(.43); 
-    -webkit-transform: scale(.43); 
-    transform: scale(.43);
+span.reply_icon{  
 
     background-image: url(../../../assets/small_icons.png); background-size: auto; 
-    background-position: 0px -1158px;
+    
+
+    background-position: 1px -1156px;
     background-repeat: no-repeat;
-    width: 53px;
-    height: 37px;
+    
+
+    width: 31px;
+    
+
+    height: 22px;
     display: inline-block;
-    top: -2px!important;
+    
+
+    top: 6px!important;
 }
 
 div.post_comment_btn:hover > span.reply_icon{
-    background-position: -60px -1158px;
+    background-position: -44px -1156px;
 }
 
 div.post_comment_btn:hover> span.reply_link_text{
@@ -449,9 +457,9 @@ div.post_comment_btn:active> span{
     position: relative;
     display: block; 
     float: left;
-    color: #575757;
+    color: #444434;
     top: 9px;
-    margin-left: -19px;
+    margin-left: -2px;
 }
 
 .post_lc .post_comment_btn, .show_analytics_btn{
@@ -469,7 +477,7 @@ padding-right: 20px;
 border-radius: 0px;    
       
 display: inline-block; margin: 0; 
-margin-left: 21px;
+margin-left: 47px;
 font-size: 12px; font-weight: bold; position: relative;  
 }
 

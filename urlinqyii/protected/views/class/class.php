@@ -144,6 +144,7 @@
                         <span><?php echo $class->location; ?></span>
 
                         <br>
+                        <em class ="small_icon_time"></em>
                         <span><?php echo $class->class_datetime; ?></span>
                     </div>
                     <?php } else { }?>
@@ -166,7 +167,7 @@
 
 
 
-        <div id="tab_bar">
+        <div id="tab_bar" class = "no_select">
 
             <?php if($is_member){ ?>
             <div class="tab feed active" data-panel_id="1">

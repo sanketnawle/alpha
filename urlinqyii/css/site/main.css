@@ -385,6 +385,11 @@ div#fbar_wrapper.fbar_group{
 
 }
 
+em.small_icon_time{
+    background-image: url('../../assets/small_icons.png'); background-size: auto; background-repeat: no-repeat; display: inline-block;
+    
+    background-position: -1px -682px!important;
+}
 
 
 /* tab_bar */
@@ -2059,5 +2064,6 @@ form#cover_photo_form div.dz-details {
     display: none !important;
 }
 
-
+div.no_select::selection { background:transparent; }
+div.no_select::-moz-selection { background:transparent; }
 
