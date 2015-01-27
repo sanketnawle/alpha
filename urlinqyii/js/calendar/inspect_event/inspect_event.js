@@ -132,7 +132,7 @@ jQuery(document).ready(function(){
             }
 
             //            Mon, October 27, 2014, 8am – 11am
-            var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');
+            var this_date = new_datetime($event_div.parent().attr('data-date') + ' 00:00:00');
             var start_time = $event_div.attr('data-start_time');
             var inspect_event_text = date_to_day_of_week_string_long(this_date);
             $inspect_event_popup.find('#inspect_event_text').text(inspect_event_text);
@@ -175,7 +175,7 @@ jQuery(document).ready(function(){
                 }
 
                 //            Mon, October 27, 2014, 8am – 11am
-                var this_date = new Date($event_div.parent().attr('data-date') + ' 00:00:00');
+                var this_date = new_datetime($event_div.parent().attr('data-date') + ' 00:00:00');
                 var start_time = $event_div.attr('data-start_time');
                 var inspect_event_text = date_to_day_of_week_string_long(this_date);
                 $inspect_event_popup.find('#inspect_event_text').text(inspect_event_text);

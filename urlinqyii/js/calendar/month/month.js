@@ -120,7 +120,9 @@ jQuery(document).ready(function(){
         var $day_div = jQuery(this);
         jQuery($day_div).addClass("making_event");
         var this_date = $day_div.attr('data-date');
-        var this_date_obj = new Date(this_date);
+
+        var this_date_obj = new_date(this_date);
+        console.log(this_date_obj);
         var $create_month_day_event_popup = jQuery('#create_month_day_event_popup');
 
         var $window = $(window);
@@ -310,6 +312,18 @@ jQuery(document).ready(function(){
 
         var event_todo = false;
         var event_all_day = true;
+
+
+        //Convert to UTC for the database
+
+        var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
+        var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
+
+        event_start_date = date_to_string(event_start_datetime);
+        event_start_time = datetime_to_time_string(event_start_datetime);
+
+        event_end_date = date_to_string(event_end_datetime);
+        event_end_time = datetime_to_time_string(event_end_datetime);
 
 
         var post_data = {
