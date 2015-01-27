@@ -32,7 +32,7 @@ function date_to_day_of_week_string_long(this_date){
 
 //returns a string like Fri, Jan 9
 function date_string_to_day_of_week_string(this_date_string){
-    var this_date = new Date(this_date_string + 'T00:00:00');
+    var this_date = new_date(this_date_string);
     return week_days_short[this_date.getDay()] + ', ' + months_short[this_date.getMonth()] + ' ' + this_date.getDate();
 }
 
@@ -132,11 +132,14 @@ function new_date(date_string){
 //returns a datetime object
 function new_datetime(datetime_string){
     var date = new Date(datetime_string);
-    console.log('Date time shit');
-    console.log(date);
+
     if(!isFinite(date)){
         date = new Date(datetime_string.replace(' ', 'T'));
     }
+
+
+//    console.log('Date time shit');
+//    console.log(date);
 
     return date;
 }
