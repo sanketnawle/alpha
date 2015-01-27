@@ -270,7 +270,7 @@ div.event_name.month_event_name
 	box-shadow: !important;
 	position:relative!important;
 	border:1px solid transparent!important;
-	z-index:100000000000000;
+	z-index:999;
 }
 .ul-calendar .leftbar .providers .provider{
     overflow: visible;
@@ -554,7 +554,7 @@ color:#fff!important;
 div.week_event_holder div.event_start_time{
 position: absolute;
 left: 15px;
-top: 24px;
+bottom: 7px;
 color: #333;
 }
 
