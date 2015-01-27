@@ -1620,6 +1620,9 @@ textarea:focus:-moz-placeholder {
         body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
         padding-right:0px!important;
     }
+    body.body_group .topbar > #topbar_responsive_holder > .right{
+        float:none;
+    }
 }
 
 @media screen and (max-width: 1090px) {

@@ -57,7 +57,7 @@
                     <div class="planner_header">
                         <?php
                             if($origin_type == 'home'){
-                                echo 'WEEK';
+                                echo '';
                             }else{
                                 echo ucfirst($origin_type);
                             }
