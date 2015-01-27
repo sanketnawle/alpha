@@ -197,7 +197,7 @@ class SiteController extends Controller
                         Yii::app()->session['department_id'] = $user->department_id;
                         Yii::app()->session['school_id'] = $user->school_id;
                         Yii::app()->session['user_type'] = $user->user_type;
-
+                        Yii::app()->session['user_type'] = $user_id;
 
                         $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
                         return;
@@ -336,85 +336,93 @@ class SiteController extends Controller
 
         $user = $this->get_current_user();
 
-        if($user && $user->status == 'unverified'){
-            $user->school_id = $school_id;
-            $user->department_id = $department_id;
+        if($user){
+            if($user->status == 'active' || $user->status == 'onboarding'){
+                $data = array('success'=>false, 'error_msg'=>'user is already verified', 'error_id'=>10);
+                $this->renderJSON($data);
+                return;
 
-            if($user->save(false)){
+            }else if($user->status == 'unverified'){
+                $user->school_id = $school_id;
+                $user->department_id = $department_id;
 
-
-                //Check if this user already has a user confirmation
-                $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
-                if($user_confirmation_test){
-                    //If the user already has a confirmation, send another email with the same token
-                    $user_email = $user->user_email;
-                    $subject = 'Urlinq verification email';
-                    $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
-                    $from = 'team@urlinq.com';
+                if($user->save(false)){
 
 
-                    ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
-                    //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
-                    //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
-
-                    $data = array('success'=>true);
-                    $this->renderJSON($data);
-                    return;
-
-//                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-//                        //Function is done
-//                        $data = array('success'=>true);
-//                        $this->renderJSON($data);
-//                        return;
-//                    }else{
-//                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-//                        $this->renderJSON($data);
-//                        return;
-//                    }
-                }else{
-                    //If there isnt already a user confirmation,
-                    //create a new one
-                    include_once 'UniqueTokenGenerator.php';
-                    //Create a user_confirmation for this user
-                    $user_confirmation = new UserConfirmation;
-                    $user_confirmation->key_email = token();
-                    $user_confirmation->user_id = $user->user_id;
-
-                    if($user_confirmation->save(false)){
+                    //Check if this user already has a user confirmation
+                    $user_confirmation_test = UserConfirmation::model()->find('user_id=:id',array(':id'=>$user->user_id));
+                    if($user_confirmation_test){
+                        //If the user already has a confirmation, send another email with the same token
                         $user_email = $user->user_email;
                         $subject = 'Urlinq verification email';
-                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                        $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation_test->key_email;
                         $from = 'team@urlinq.com';
 
-                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+
+                        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$contentType=null);
                         //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
-
-
                         //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
 
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
-//
-//                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
-//                            //Function is done
-//                            return;
-//                        }else{
-//                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
-//                            $this->renderJSON($data);
-//                            return;
-//                        }
+
+    //                    if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+    //                        //Function is done
+    //                        $data = array('success'=>true);
+    //                        $this->renderJSON($data);
+    //                        return;
+    //                    }else{
+    //                        $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+    //                        $this->renderJSON($data);
+    //                        return;
+    //                    }
                     }else{
-                        $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
-                        $this->renderJSON($data);
-                        return;
+                        //If there isnt already a user confirmation,
+                        //create a new one
+                        include_once 'UniqueTokenGenerator.php';
+                        //Create a user_confirmation for this user
+                        $user_confirmation = new UserConfirmation;
+                        $user_confirmation->key_email = token();
+                        $user_confirmation->user_id = $user->user_id;
+
+                        if($user_confirmation->save(false)){
+                            $user_email = $user->user_email;
+                            $subject = 'Urlinq verification email';
+                            $message = Yii::app()->getBaseUrl(true) . '/verify?key=' . $user_confirmation->key_email;
+                            $from = 'team@urlinq.com';
+
+                            ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendVerificationEmailFunction',$postData=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation->key_email),$contentType=null);
+                            //ERunActions::runScript('send_verification_email',$params=array('to_email'=>$user_email, 'subject'=>$subject, 'message'=>$message, 'from_email'=>$from, 'key'=>$user_confirmation_test->key_email),$scriptPath=null);
+
+
+                            //ERunActions::runAction('site/sendVerificationEmailFunction',$params=array(),$ignoreFilters=true,$ignoreBeforeAfterAction=true,$logOutput=true,$silent=false);
+
+                            $data = array('success'=>true);
+                            $this->renderJSON($data);
+                            return;
+    //
+    //                        if($this->send_verification_email($user_email, $subject, $message, $from, $email_data)){
+    //                            //Function is done
+    //                            return;
+    //                        }else{
+    //                            $data = array('success'=>false,'error_id'=>7,'error_msg'=>'error sending email');
+    //                            $this->renderJSON($data);
+    //                            return;
+    //                        }
+                        }else{
+                            $data = array('success'=>false,'error_id'=>6,'error_msg'=>'error saving user confirmation');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }
+                }else{
+                    $data = array('success'=>false,'error_id'=>5,'error_msg'=>'error saving user');
+                    $this->renderJSON($data);
+                    return;
                 }
-            }else{
-                $data = array('success'=>false,'error_id'=>5,'error_msg'=>'error saving user');
-                $this->renderJSON($data);
-                return;
             }
+
         }else{
             $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not defined');
             $this->renderJSON($data);
@@ -627,6 +635,15 @@ class SiteController extends Controller
 
 
 
+        //Take user directly to step 4
+        if($user && $user->status == 'onboarding'){
+            Yii::app()->session['onboarding_step'] = 3;
+        }
+
+
+
+
+
         //Check the required session variables
         //If they are not all set, redirect back to the login/signup page
         $first_name = Yii::app()->session['first_name'];
@@ -634,11 +651,12 @@ class SiteController extends Controller
         $user_type = Yii::app()->session['user_type'];
         $email = Yii::app()->session['email'];
         $password = Yii::app()->session['password'];
+        $user_id = Yii::app()->session['user_id'];
 
 
 
 
-        if(!$first_name || !$last_name || !$user_type || !$email || !$password){
+        if(!$first_name || !$last_name || !$user_type || !$email || !$password || !$user_id){
             $this->redirect(Yii::app()->getBaseUrl(true) . '/');
         }
 
@@ -899,6 +917,10 @@ class SiteController extends Controller
             $user_type = $_POST['account_types'];
             $password = $_POST['password'];
 
+
+
+
+
             if($firstname == '' || $lastname == '' || $user_type == '' || $email == ''){
                 $data = array('success'=>false,'error_id'=>2);
                 $this->renderJSON($data);
@@ -1042,7 +1064,8 @@ class SiteController extends Controller
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
                     Yii::app()->session['user_id'] = $user->user_id;
-
+                    Yii::app()->session['user_type'] = 's';
+                    Yii::app()->session['onboarding_step'] = 0;
 
                     if($user->status === 'invited'){
                         $data = array('success'=>true);
@@ -1087,6 +1110,8 @@ class SiteController extends Controller
                     $user_login->save(false);
 
                     Yii::app()->session['user_id'] = $user->user_id;
+                    Yii::app()->session['user_type'] = 's';
+                    Yii::app()->session['onboarding_step'] = 0;
 
 
 
