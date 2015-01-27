@@ -60,6 +60,11 @@ class ClassController extends Controller
 
 
 
+        if(strpos($user->user_email,'@urlinq.com') !== false){
+            $is_admin = true;
+        }
+
+
 
 
 
@@ -306,15 +311,32 @@ class ClassController extends Controller
             return;
         }
     }
+
+
+
+
     public function actionGetEvents(){
+
+        if(!isset($_GET['class_id']) || !isset($_GET['file_id'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'parameters not set');
+            $this->renderJSON($data);
+            return;
+        }
+
         $class_id = $_GET["class_id"];
         $file_id = $_GET["file_id"];
-        $user_id = $this->get_current_user_id();
+        $user = $this->get_current_user($_GET);
+        $user_id = $user->user_id;
 
         $class_events = Event::model()->findAll('origin_id=:id and file_id=:file_id order by start_date desc', array(':id'=>$class_id, ':file_id'=>$file_id));
 
         $this->renderJSON($class_events);
-    }    
+    }
+
+
+
+
+
     //modified by Tianming Xu at 01/07/2014
     public function actionJoin(){
         include_once "color/color.php";
@@ -409,11 +431,12 @@ class ClassController extends Controller
                     $event->delete();
                 }
 
-
-
-                foreach($user_events as $event){
-                    $event->delete();
+                //We also need to delete all posts that have the type event from this user in this group
+                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND  origin_type = "class" AND origin_id = ' . $class_id);
+                foreach($posts as $post){
+                    $post->delete();
                 }
+
 
 
                 $data = array('success'=>true);

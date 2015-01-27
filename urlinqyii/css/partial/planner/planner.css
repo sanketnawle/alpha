@@ -11,6 +11,11 @@ padding-bottom: 3px;
 -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 }
+
+body.body_club .planner_container{
+margin-top: 15px;
+}
+
 .planner_header_panel{
     font-family: Avenir;
     font-size: 14px;
@@ -168,9 +173,9 @@ span.create_planner_message {}
     text-align: left;
     position: absolute;
     width: 150px;
-    left: 58px;
+    left: 61px;
     margin: 0 auto;
-    bottom: 57px;
+    top: 140px;
     color: #545454;
 } 
 
@@ -192,7 +197,7 @@ span.create_planner_message {}
 }
 
 .point.point2 {
-    bottom: 38px;
+    top: 156px;
 
 }
 
@@ -405,7 +410,7 @@ input.event_title{
     /*max-height: 345px;*/
     font-size: 12px;
     /*min-height: 214px;*/
-    height: 214px;
+    height: 289px;
     width: 100%;
     -moz-transition: all .15s linear;
     -webkit-transition: all .15s linear; 

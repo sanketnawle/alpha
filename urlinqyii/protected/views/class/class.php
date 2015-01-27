@@ -10,14 +10,15 @@
         globals.origin_type = '<?php echo 'class'; ?>';
 
 
-
-        globals.origin_name = '<?php echo $class->class_name; ?>';
+        //must define name with " because there could be ' in the string
+        globals.origin_name = "<?php echo $class->class_name; ?>";
 
         globals.origin_id = '<?php echo $class->class_id; ?>';
 
         globals.is_admin = '<?php echo $is_admin ? 'true' : 'false'; ?>';
 
         globals.admin_file_panel_class = 'class';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
     </script>
       
@@ -34,7 +35,7 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
-
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -86,7 +87,7 @@
 
 </head>
 
-    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
+    <body class = "body_group">
 
 
 
@@ -128,14 +129,22 @@
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
                 <div class = "group_name">
-                    <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class -> professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
-                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
+
+                    <?php if($class->professor){ ?>
+                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
+                    <?php }else{ ?>
+                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
+                    <?php } ?>
+                    <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
                 <div class = "group_right_info group_info_boxes">
                     <?php if($class->location) { ?>
                     <div class = "group_info_block" id = "location">
                         <em class ="small_icon_map"></em>
                         <span><?php echo $class->location; ?></span>
+
+                        <br>
+                        <span><?php echo $class->class_datetime; ?></span>
                     </div>
                     <?php } else { }?>
 
@@ -266,7 +275,7 @@
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/'.$class->class_id.'/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
                     </div>
 
 
@@ -738,22 +747,25 @@
             <div class="tab_content_holder">
                 <div class="tab_header">
                     <div class = "float_Right">
-                        
-                        <div class = "admin_member_controls">
-                            <div class = "add_people_button remove" id = "remove_button">
-                                Remove People
+
+                        <?php if($is_admin){ ?>
+                            <div class = "admin_member_controls">
+                                <div class = "add_people_button remove" id = "remove_button">
+                                    Remove People
+                                </div>
                             </div>
-                        </div> 
-                        <div class = "remove_state_controls">
-                            <span class ="removed_count"></span>
-                            <div class = "remove" id = "done_removing_button">
-                                <em></em>
-                                <span>Done</span>
+                            <div class = "remove_state_controls">
+                                <span class ="removed_count"></span>
+                                <div class = "remove" id = "done_removing_button">
+                                    <em></em>
+                                    <span>Done</span>
+                                </div>
                             </div>
-                        </div>   
-                        <div class = "add_people_button">
-                            Add Members
-                        </div>                   
+                            <div class = "add_people_button">
+                                Add Members
+                            </div>
+
+                        <?php } ?>
                         <div class="fade_input_small small_search">
                             <em class = "left_search_icon">
                             </em>
@@ -881,7 +893,7 @@
                     </div>
                     <div class = "about_header_body">
                         <div class = "floatRight">
-                            <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
+                            <div class = "join_button group_user_action_button non_member" data-action_url="/join"><span "white_plus_sign"></span>Join Class</div>
                         </div>
                         <div class = "about_header_data">
                             <p>To see this class's planner, feed, and materials, enroll now <span class = "non_member_join_pointer small_icon_map"></span></p>
@@ -949,7 +961,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>'')); ?>
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
         </div>
 
 

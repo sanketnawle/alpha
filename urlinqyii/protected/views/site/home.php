@@ -12,6 +12,7 @@
             globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
             globals.origin_type = '<?php echo 'user'; ?>';
             globals.origin_id = '<?php echo $user->user_id; ?>';
+            globals.user_id = '<?php echo $user->user_id; ?>';
 
 
 
@@ -32,8 +33,6 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
 
-        <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
-        <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.jpg" type="image/jpg">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
@@ -98,7 +97,7 @@
                 </div>
 
                 <div id="right_panel" class = "group_responsiveness">
-                    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>'')); ?>   
+                    <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'home','origin_id'=>$user->user_id)); ?>
                 </div>
             </div>
         </div>

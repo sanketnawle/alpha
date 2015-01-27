@@ -2,16 +2,25 @@
 class SearchController extends Controller
 {
     //public function actionSearch()
-    public function actionView()
-    {
+    public function actionView(){
+
+
+        $user = $this->get_current_user();
+        if(!$user){
+            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+        }
+
         if (isset ($_GET["q"])){
             $q = Yii::app()->request->getQuery('q');
         }else{
             $q = '';
         }
-        $user = User::model()->find('user_id=:id', array(':id'=>1));
+
        // $user = $this->get_current_user();
+
         $school = $user->school->school_name;
+
+
         $this->render('search', array('user'=>$user,'school' =>$school, 'q'=>$q));
     }
 
@@ -26,7 +35,7 @@ class SearchController extends Controller
 
         $results = array();
 
-        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%' LIMIT 2");
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%' LIMIT 5");
 
         foreach($users as $user){
             $user = $this->get_model_associations($user, array('pictureFile'));
@@ -37,20 +46,33 @@ class SearchController extends Controller
         //array_push($results, $users);
 
 
-        $classes = ClassModel::model()->findAllBySql("SELECT * FROM `class` WHERE class_name LIKE '%" . $query ."%' LIMIT 2");
+        $classes = ClassModel::model()->findAllBySql("SELECT * FROM `class` JOIN `course` ON ( course.course_tag LIKE '%" . $query ."%') WHERE class_name LIKE '%" . $query ."%' LIMIT 5");
 
         foreach($classes as $class){
-            $class = $this->get_model_associations($class, array('pictureFile'));
+            $class = $this->get_model_associations($class, array('pictureFile', 'course'));
             $class['origin_type'] = 'class';
-            $class['origin_name'] = $class['class_name'];
+            $class['origin_name'] = $class['course']['course_tag'] . ' - ' . $class['class_name'];
             $class['origin_id'] = $class['class_id'];
 
             array_push($results, $class);
         }
 
+
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 5");
+
+        foreach($courses as $course){
+            $course = $this->get_model_associations($course, array('pictureFile'));
+            $course['origin_type'] = 'course';
+            $course['origin_name'] = $course['course_name'];
+            $course['origin_id'] = $course['course_id'];
+
+            array_push($results, $course);
+        }
+
+
         //array_push($results, $classes);
 
-        $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' LIMIT 2");
+        $schools = School::model()->findAllBySql("SELECT * FROM `school` WHERE school_name LIKE '%" . $query ."%' LIMIT 5");
 
         foreach($schools as $school){
             $school = $this->get_model_associations($school, array('pictureFile'));
@@ -71,6 +93,52 @@ class SearchController extends Controller
         $this->renderJSON($data);
         return;
     }
+
+
+
+
+
+
+    public function actionCourses(){
+        if(!isset($_GET['q'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'q not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        //Make sure user is logged in
+        $user = $this->get_current_user($_GET);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not authenticated');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $query = $_GET['q'];
+
+        $results = array();
+
+
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 20");
+
+        foreach($courses as $course){
+            $course = $this->get_model_associations($course, array('pictureFile'=>array(),'classes'=>array('professor')));
+            $course['origin_type'] = 'course';
+            $course['origin_name'] = $course['course_name'];
+            $course['origin_id'] = $course['course_id'];
+
+            array_push($results, $course);
+        }
+
+
+
+        $data = array('success'=>true,'results'=>$results);
+        $this->renderJSON($data);
+        return;
+    }
+
 
 
     public function actionJson()
@@ -107,7 +175,7 @@ class SearchController extends Controller
             ->queryAll();
 
 
-        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' LIMIT 30");
+        $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%' LIMIT 30");
         for($i = 0; $i < count($courses); $i++){
             $courses[$i] = $this->get_model_associations($courses[$i], array('pictureFile', 'department'));
         }
@@ -165,7 +233,7 @@ class SearchController extends Controller
 //            ->queryAll();
 
         //$psql = "Select * from post where text LIKE '%".$query."%' OR sub_text LIKE '%".$query."%'";
-        $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%'";
+        $gsql = "SELECT * FROM `group` g WHERE g.group_name LIKE '%" . $query."%' AND g.privacy = 0;";
 
 
         //specific queries

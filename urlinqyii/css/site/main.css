@@ -24,6 +24,11 @@ body{
     background: #FAFAFA;
 }
 
+
+body.body_searchpage #wrapper{
+    padding-top:26px;
+}
+
 body.profile_stop_scroll{
     overflow: hidden!important;
 }
@@ -62,6 +67,10 @@ body#body_home{
 
 body#body_home #wrapper{
     padding-top:47px!important;
+}
+
+div#nav_bar .slimScrollDiv{
+    top:0px;
 }
 
 
@@ -180,10 +189,14 @@ div#planner_column.planner_column_home{
 
 }
 
+div.cover_photo_update_icon{
+    
+}
+
 .panel_feed{
 margin-top: 32px;
 padding: 0px 8px!important;
-top: -20px;
+top: -15px;
 }
 
 .panel_feed div#feed_column.feed_column_group{
@@ -235,8 +248,15 @@ div#planner_column.planner_column_group{
 }
 
 #planner_column.planner_column_home #right_column_specs #fixed_element{
-    top: 62px;
-    height: 364px;
+    top: 15px;
+    height: 380px;
+    position: relative;
+}
+
+#planner_column.planner_column_home #right_column_specs #fixed_element .planner_container{
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 }
 
 #planner_column.planner_column_group #right_column_specs #fixed_element{
@@ -361,7 +381,7 @@ div#fbar_wrapper.fbar_group{
     /* 250 */
     
 
-    height: 340px;
+    height: 295px;
 
 }
 
@@ -756,6 +776,7 @@ div.center_text p#group_name span.bottom{
 p#group_name span#name_title{
     margin-left:0;
     float:left;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 div.professor_image,div.admin_image{
@@ -1219,11 +1240,12 @@ border-top: 1px solid #1BAD3E;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
     display: inline-block;
-    padding: 9px 13px;
+    padding: 9px 0px;
     vertical-align: top;
     padding-right: 12px;
-    position: absolute;
-    left: 0px;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
 .follow_button_wrapper .user_follow_button.following{
@@ -1644,7 +1666,7 @@ textarea:focus:-moz-placeholder {
     }
 
     #body_home #planner_column.planner_column_home #right_column_specs #fixed_element{
-        top:62px!important;
+        top:15px!important;
     }
 
     .panel_feed div#feed_column.feed_column_group{
@@ -1781,13 +1803,17 @@ content: " ";
 
 div.group_right_info{
     float: right;
-
+    clear: right;
 }
 
 div.group_info_boxes{
     position: relative;
     top: 22%;
     width: 237px;
+}
+div.group_info_boxes.group_desc_box .group_info_block{
+    height: 68px !important;
+    overflow: hidden;
 }
 
 div.group_info_boxes.course_info_box{

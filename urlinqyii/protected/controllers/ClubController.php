@@ -77,6 +77,18 @@ class ClubController extends Controller
         }
 
 
+        if(strpos($user->user_email,'@urlinq.com') !== false){
+            $is_admin = true;
+        }
+
+
+
+        if($club->privacy && !$is_admin){
+            //user cannot see this page
+            $this->redirect(array('/home'));
+        }
+
+
 
         $file_count = 5;
 
@@ -296,6 +308,29 @@ class ClubController extends Controller
         }
 
         $group_id = $_POST['id'];
+
+        //Check if this is a private group
+        $group = Group::model()->find('group_id=:id', array(':id'=>$group_id));
+        if(!$group){
+            $data = array('success'=>false,'error_id'=>2, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        //if this is a private group, make sure this user
+        //has an invitation from an admin in this class
+        if($group->privacy){
+            $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type="group"');
+            //if there is no invite for this group, dont let the user join
+            if(!$invite){
+                $data = array('success'=>false,'error_id'=>3, 'error_msg'=>'Cannot join a private group without an invitation');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }
+
+
         $group_user = GroupUser::model()->find('group_id=:id and user_id=:user_id', array(':id'=>$group_id,':user_id'=>$user_id));
         //Check if this user is already a member for this group
         if(!$group_user){
@@ -363,6 +398,11 @@ class ClubController extends Controller
                     $event->delete();
                 }
 
+                //We also need to delete all posts that have the type event from this user in this group
+                $posts = Post::model()->findAllBySql('SELECT * FROM `post` WHERE post_type = "event" AND  origin_type = "club" AND origin_id = ' . $group_id);
+                foreach($posts as $post){
+                    $post->delete();
+                }
 
                 $data = array('success'=>true);
                 $this->renderJSON($data);

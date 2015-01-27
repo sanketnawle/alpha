@@ -24,7 +24,22 @@
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($origin->school->university->schools as $school){ ?>
+
+                    <?php
+
+                        function compare_school_names($a, $b){
+                            if ($a->school_name == $b->school_name) {
+                                return 0;
+                            }
+                            return ($a->school_name < $b->school_name) ? -1 : 1;
+                        }
+
+                        $schools = $origin->school->university->schools;
+                        usort($schools, "compare_school_names");
+                    ?>
+
+
+                    <?php foreach($schools as $school){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $school->school_id; ?>"><?php echo $school->school_name; ?></div>
                     <?php } ?>
                 </div>
@@ -39,8 +54,19 @@
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($user->school->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
+                    <?php
+                        function compare_department_names($a, $b){
+                            if ($a->department_name == $b->department_name) {
+                                return 0;
+                            }
+                            return ($a->department_name < $b->department_name) ? -1 : 1;
+                        }
+
+                        $departments = $user->school->departments;
+                        usort($departments, "compare_department_names");
+                    ?>
+                    <?php foreach($departments as $department){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
                     <?php } ?>
                 </div>
             </div>
@@ -54,7 +80,21 @@
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($user->school->groups as $club){ ?>
+
+                    <?php
+
+                        function compare_group_names($a, $b){
+                            if ($a->group_name == $b->group_name) {
+                                return 0;
+                            }
+                            return ($a->group_name < $b->group_name) ? -1 : 1;
+                        }
+
+                        $clubs = $user->school->groups;
+                        usort($clubs, "compare_group_names");
+                    ?>
+
+                    <?php foreach($clubs as $club){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $club->group_id; ?>"><?php echo $club->group_name; ?></div>
                     <?php } ?>
                 </div>
@@ -184,8 +224,8 @@
 
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($origin->courses as $class){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $class->course_id; ?>"><?php echo $class->course_name; ?></div>
+                    <?php foreach($origin->courses as $course){ ?>
+                        <div class="nav_drop_down_section" data-id="<?php echo $course->course_id; ?>"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></div>
                     <?php } ?>
                 </div>
 
@@ -223,9 +263,27 @@
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="closed">
                 <div class="nav_drop_down_scrollable">
+
+                    <?php
+                        function compare_department_names($a, $b){
+                            if ($a->department_name == $b->department_name) {
+                                return 0;
+                            }
+                            return ($a->department_name < $b->department_name) ? -1 : 1;
+                        }
+
+                        $departments = $origin->departments;
+                        usort($departments, "compare_department_names");
+                    ?>
+
+
                     <?php foreach($origin->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
                     <?php } ?>
+
+
+
+
                 </div>
 
 
@@ -246,7 +304,22 @@
             <div id="nav_down_arrow"></div>
             <div id="nav_drop_down_container" class="home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
-                    <?php foreach($origin->groups as $club){ ?>
+
+                    <?php
+
+                        function compare_group_names($a, $b){
+                            if ($a->group_name == $b->group_name) {
+                                return 0;
+                            }
+                            return ($a->group_name < $b->group_name) ? -1 : 1;
+                        }
+
+                        $clubs = $origin->groups;
+                        usort($clubs, "compare_group_names");
+                    ?>
+
+
+                    <?php foreach($clubs as $club){ ?>
                         <div class="nav_drop_down_section" data-id="<?php echo $club->group_id; ?>"><?php echo $club->group_name; ?></div>
                     <?php } ?>
                 </div>

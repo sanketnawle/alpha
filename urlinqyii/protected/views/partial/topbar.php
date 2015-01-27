@@ -29,7 +29,7 @@
         <div id = "topbar_responsive_holder">
             <div class="left">
                 <!--<a href="./home.php" class="urlinq"></a>-->
-                <div class = "menu_hider menu_hidden">
+                <div class = "menu_hider menu_shown">
                     <div class = "menu_hider_icon"></div>
                 </div>
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>" class="urlinq"><span></span></a>
@@ -76,7 +76,7 @@
 <!--                    <li class="search_preview">-->
 <!--                        <a>-->
 <!--                            <div class="icon clb" style="background-image: url(--><?php //echo  Yii::app()->getBaseUrl(true) . $user->department->pictureFile->file_url; ?><!--);"></div>-->
-<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->-->
+<!--                            <!--<span>Clubs at The --><?php //echo $school?><!--</span>-->
 <!--                            <span>Clubs Your Friends Are In</span>-->
 <!--                        </a>-->
 <!--                    </li>-->

@@ -84,7 +84,7 @@ function file_upload($files, $path="", $user_id="") {
 
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'origin_type'=>$origin_type,'origin_id'=>$origin_id,'extension'=>$extension));
         //$this->renderJSON(array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension));
-        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id/*,'original_name'=>$file->original_name*/,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension,'created_timestamp'=>date("Y-m-d H:i:s")/*,'download_count'=>$file->download_count*/);
+        return array('success'=>true,'file_type'=>$file_type,'file_id'=>$file->file_id,'original_name'=>$file->original_name,'file_name'=>$random_name . '.' . $extension,'file_url'=>$file->file_url,'extension'=>$extension,'created_timestamp'=>date("Y-m-d H:i:s")/*,'download_count'=>$file->download_count*/);
     }else {
         //$this->renderJSON(array('success'=>false));
         return array('success'=>false);

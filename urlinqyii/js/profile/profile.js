@@ -5,13 +5,14 @@ $(document).ready(function() {
 
     $(document).on('click', '.profile_link', function(){
 
-
         old_origin_id = globals.origin_id;
-        old_origin_type = origin_type;
-        globals.origin_id = user_id;
+        old_origin_type = globals.origin_type;
+        //alert(globals.origin_id);
+        globals.origin_id = globals.user_id;
+        //alert(globals.user_id);
         globals.origin_type = 'user';
         globals.profile_open = true;
-        open_profile(base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
+        open_profile(globals.base_url, $(this).attr('data-user_id'),$(this).hasClass('edit_profile'));
     });
 
     $(document).on('click', '.close_modal', function(){
@@ -218,7 +219,7 @@ $(document).ready(function() {
 
 
                             reset_fbar();
-                            render_post(response['post']);
+                            render_post(response['post'],'prepend');
 
                         }
                     }
@@ -372,7 +373,7 @@ $(document).ready(function() {
 
 
 
-            render_post(post);
+            render_post(post, 'prepend');
         });
     }
 
@@ -727,7 +728,7 @@ $(document).ready(function() {
             }
             data.append("title", $('#title_entry').val());
             data.append("desc", $('#desc_entry').val());
-            data.append("user", user_id);
+            data.append("user", globals.user_id);
             $.ajax({
                 url: base_url+'/profile/addShowcase',
                 type: 'POST',
@@ -839,7 +840,7 @@ $(document).ready(function() {
         $('.edit_field').show();
         //school
 
-        $.getJSON( base_url + "/profile/getSchools",{user: user_id}, function( result) {
+        $.getJSON( base_url + "/profile/getSchools",{user: globals.user_id}, function( result) {
             $.each(result.schools,function(i,school){
                 $('#school_dropdown').append($('<option/>').attr("value", school.id).text(school.name));
             });
@@ -850,7 +851,7 @@ $(document).ready(function() {
 
         //department
         $('#department_dropdown').empty();
-        $.getJSON( base_url + "/profile/getDepartments",{user: user_id}, function( result) {
+        $.getJSON( base_url + "/profile/getDepartments",{user: globals.user_id}, function( result) {
             $.each(result.departments,function(i,department){
                 $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name));
             });
@@ -906,7 +907,7 @@ $(document).ready(function() {
         //alert('done');
         var data = new FormData();
         data.append('school',$('#school_dropdown').val());
-        data.append('user',user_id);
+        data.append('user',globals.user_id);
         data.append('name',$('#name_input').val());
         data.append('department',$('#department_dropdown').val());
         data.append('email',$('#email_input').val());
@@ -1179,7 +1180,7 @@ $(document).ready(function() {
         var data = new FormData();
 
         data.append("file", upload_file);
-        data.append("user", user_id);
+        data.append("user", globals.user_id);
         $.ajax({
             url: base_url+'/profile/changeProfilePicture',
             type: 'POST',
@@ -1192,9 +1193,9 @@ $(document).ready(function() {
             {
                 if(data.status == "success"){
                     $('#profile_picture').css('background-image','url('+data.file_url+')');
-                    $('.post_user_icon[data-user_id='+user_id+']').css('background-image','url('+data.file_url+')');
+                    $('.post_user_icon[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
                     $('img.MyBox_Picture').attr('src',data.file_url);
-                    $('.members_card_img[data-user_id='+user_id+']').css('background-image','url('+data.file_url+')');
+                    $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
                 }else{
                     alert(data.message);
                 }
@@ -1217,7 +1218,7 @@ $(document).ready(function() {
         $.ajax({
             url: base_url+'/profile/followUser',
             type: 'POST',
-            data: {user_to_follow:$('#profile_wrapper').attr('data-user_id'),user:user_id,follow:follow},
+            data: {user_to_follow:$('#profile_wrapper').attr('data-user_id'),user:globals.user_id,follow:follow},
             dataType: 'json',
             success: function(data)
             {
@@ -1278,7 +1279,7 @@ $(document).ready(function() {
         $.ajax({
             url: base_url+'/profile/editShowcase',
             type: 'POST',
-            data: {title:new_showcase_title,desc:new_showcase_desc,file:$showcase_item.attr('file_id'),user:user_id},
+            data: {title:new_showcase_title,desc:new_showcase_desc,file:$showcase_item.attr('file_id'),user: globals.user_id},
 
             dataType: 'json',
             success: function(data)

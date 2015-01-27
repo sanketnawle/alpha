@@ -97,6 +97,14 @@ div.grid-event.week_event_holder.event_holder{
 }
 
 
+div.inspect_event_detail{
+
+}
+
+div.inspect_event_detail div.inspect_label{
+	
+}
+
 div.white_bg_line_blocker{
 position: absolute;
 top: 0;
@@ -113,10 +121,10 @@ right: 0;
 
 .body .day-view .day-grid div.day_event_holder{
 border: none;
-min-height: 50px;
+min-height: 25px;
 background: #FFF;
 border-radius: 1px;
-margin-top: 4px;
+margin-top: 3px;
 }
 
 div.day_event_holder div.event_location {
@@ -221,6 +229,27 @@ div.event_holder.day_event_holder.colorfied > div.event_type, div.event_holder.d
 	color:#FFF!important;
 }
 
+div.inspect_data_oneline{
+    display: inline-block;
+
+}
+
+div.inspect_data{
+    font-size: 13px;
+	
+    /* -webkit-font-smoothing: antialiased; */ -moz-osx-font-smoothing: grayscale;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+    top: 0px;
+    padding: 2.5px 0;
+}
+
+div.inspect_event_detail{
+    line-height: 13px;
+
+}
+
 div.event_name.month_event_name
 {
 	width:calc(100% - 40px);
@@ -239,7 +268,9 @@ div.event_name.month_event_name
 .ul-calendar .leftbar .providers .provider div.title{
 	background: #FFF!important;
 	box-shadow: !important;
-	z-index:10000000000;
+	position:relative!important;
+	border:1px solid transparent!important;
+	z-index:999;
 }
 .ul-calendar .leftbar .providers .provider{
     overflow: visible;
@@ -523,7 +554,7 @@ color:#fff!important;
 div.week_event_holder div.event_start_time{
 position: absolute;
 left: 15px;
-top: 24px;
+bottom: 7px;
 color: #333;
 }
 
@@ -538,7 +569,17 @@ span.delete_icon{
     top: 3px; 
     float: left;
     left: -6px;
+}
 
+div.inspect_event_detail > span, div#inspect_event_where > span{
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 12.5px;
+}
+
+div.inspect_event_detail.inspect_event_detail_when{
+    margin-bottom: 7px;
+    margin-top: 4px;
 }
 
 .popup div.popup_edit_button strong{
@@ -548,6 +589,10 @@ span.delete_icon{
     opacity: 1;
     width: 18px;
     height: 16px;
+}
+
+span.category_description_middot{
+	
 }
 
 form#create_month_day_event_form, form#create_week_day_event_form, form#create_day_event_form{

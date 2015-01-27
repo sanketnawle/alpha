@@ -1,9 +1,136 @@
-    <?php
+<?php
 
     class ApiController extends Controller
     {
 
+        public function actionAddNotificationID() {
+            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $get_user = $this->get_current_user($_POST);
+            if (!$get_user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
+            $user_id = $_POST['user_id'];
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;            
+            }
+
+            $notification_id = str_replace(array(" "), "", $_POST['notification_id']);
+            $ios_notification = new IosNotifications;
+            $ios_notification->user_id = $user_id;
+            $ios_notification->notification_id = $notification_id;
+
+            if ($ios_notification->save(false)) {
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            } else {
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'could not save data.');
+                $this->renderJSON($data);
+                return;   
+            }
+            $data = array('success'=>false, 'error_id'=>4, 'error_msg'=>'unknown error message.');
+            $this->renderJSON($data);
+            return;   
+        }
+
+        public function actionDeleteAllNotificationIDs() {
+
+            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $get_user = $this->get_current_user($_POST);
+            if (!$get_user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
+            $user_id = $_POST['user_id'];
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;            
+            }
+
+            $user = $this->get_current_user($_POST);
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
+            $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                $notification_id->delete;
+            }
+
+        }
+
+        function notifyAlliOSDevicesForUserID($user_id, $message) {
+
+            $sql = "SELECT notification_id FROM IosNotifications WHERE user_id = $user_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                pushNotify($message, $notification_id);
+            }
+        }
          
+        function pushNotify($message, $notification_id) {
+
+            $deviceToken = $notification_id;
+            $passphrase = 'URPNCC@MondayCertificate';
+            $message = $message;
+
+            $ctx = stream_context_create();
+            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
+            stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
+
+            $fp = stream_socket_client(
+                'ssl://gateway.sandbox.push.apple.com:2195', $err,
+                $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+
+            if (!$fp)
+                return array('success'=>false,'error_id'=>2,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
+
+            $body['aps'] = array(
+                'alert' => $message,
+                'sound' => 'default'
+                );
+
+            $payload = json_encode($body);
+
+            $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
+
+            $result = fwrite($fp, $msg, strlen($msg));
+
+            if (!$result)
+                return array('success'=>false,'error_id'=>3,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
+            else
+                return array('success'=>true);
+
+            fclose($fp);
+        }
+
         public function actionGetUserPictureID() {
 
          if(!isset($_GET['user_id'])){
@@ -15,31 +142,20 @@
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
             if($user){
 
-                $file_urls = array();
-                $file_ids = $user->pictureFile->file_url;
-                if(count($file_ids)){
-                    for($i=0; $i<count($file_ids); $i++){
-                        $file_id = $file_ids[$i];
-                        $file = File::model()->find("file_id=:file_id",array(":file_id"=>$file_id));
-                        if($file){
-                            array_push($file_urls, $file->file_url);
-                        }else{
-                            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'File with id ' . $file_id . 'does not exist');
-                            $this->renderJSON($data);
-                            return;
-                        }
-                    }
-                    $data = array('success'=>true,'file_urls'=>$file_urls,'base_url'=>Yii::app()->getBaseUrl(true));
+                $file_id = $user->pictureFile->file_url;
+                if($file_id){
+                    
+                    $data = array('success'=>true,'file_url'=>$file_id,'base_url'=>Yii::app()->getBaseUrl(true));
                     $this->renderJSON($data);
                     return;
                 } else {
-                    $data = array('success'=>false,'error_id'=>1,'error_msg'=>'file_ids are not set');
+                    $data = array('success'=>false,'error_id'=>2,'error_msg'=>'file_id are not set');
                     $this->renderJSON($data);
                     return;
             }
 
             } else{
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'user not exists');
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'user not exists');
                 $this->renderJSON($data);
                 return;
             }
@@ -1808,7 +1924,8 @@ public function actionLogin() {
                 }
 
 
-                include 'UniqueTokenGenerator.php';
+                include_once 'UniqueTokenGenerator.php';
+                include_once "password_encryption.php";
                 $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
                 $salt = $user_login->salt;

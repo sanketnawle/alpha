@@ -3,3 +3,7 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php
+RewriteCond %{HTTP_HOST} ^beta\.campuslayers\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.beta\.campuslayers\.com$
+RewriteRule ^/?$ "http\:\/\/beta\.urlinq\.com" [R=301,L]
+

@@ -7,12 +7,17 @@ class CourseController extends Controller
         $course_id = $_GET['id'];
         $user = $this->get_current_user();
 
-        $course = Course::model()->find('course_id=:id', array(':id' => $course_id));
+        $course = Course::model()->find('course_id=:id', array(':id' =>$course_id));
 
         $is_member = true;
+
+
+        $is_admin = false;
         //echo CJSON::encode(array('success' => true, 'count' => count($Coursees), 'data' => $Coursees));
         //Yii::app()->end();
-        $this->render('course',array('user' => $user, 'course'=>$course,'is_member'=>$is_member));
+
+
+        $this->render('course',array('user' => $user, 'course'=>$course, 'is_member'=>$is_member, 'is_admin'=>$is_admin));
     }
 
     // Uncomment the following methods and override them if needed

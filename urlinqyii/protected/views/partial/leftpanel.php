@@ -78,7 +78,7 @@
 						<h4>My Classes</h4>	
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn"><span class = "search_text">Search</span></a>
+						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>"><span class = "search_text">Search</span></a>
 					</div>				
 				</div>				
 			</div>
@@ -101,7 +101,7 @@
 						<h4>My Clubs</h4>
 					</div>
 					<div class = "float_Right">
-						<a class = "textBtn">Search</a>
+						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>">Search</a>
 					</div>					
 				</div>				
 			</div>	
@@ -115,5 +115,57 @@
 				</ul>				
 			</div>					
 		</div>
+
+        <!--<div class = "LeftPanelSection LeftPanel_Clubs">
+			<div class = "LeftPanel_SectionHeader">
+				<div class = "SectionHeader_holder">
+					<div class = "float_Left">
+						<em class = "SectionHeader_ribbon LeftPanel_icons">
+						</em>
+						<h4>My Groups</h4>
+					</div>
+					<div class = "float_Right">
+						<a class = "textBtn">Search</a>
+					</div>
+				</div>
+			</div>
+			<div class = "LeftPanel_SectionContent">
+				<ul data-group = "clubs" class = "LeftPanel_GroupsList" id='club_list'>
+                    <?php foreach($user->groups as $club){ ?>
+                        <li>
+                            <a data-club_id = "<?php echo $club->group_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
+                        </li>
+                    <?php } ?>
+				</ul>
+			</div>
+		</div>-->
+
+
+<!--        <div class = "LeftPanelSection LeftPanel_Clubs">-->
+<!--			<div class = "LeftPanel_SectionHeader">-->
+<!--				<div class = "SectionHeader_holder">-->
+<!--					<div class = "float_Left">-->
+<!--						<em class = "SectionHeader_ribbon LeftPanel_icons">-->
+<!--						</em>-->
+<!--						<h4>My Groups</h4>-->
+<!--					</div>-->
+<!--					<div class = "float_Right">-->
+<!--						<a class = "textBtn">Search</a>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class = "LeftPanel_SectionContent">-->
+<!--				<ul data-group = "clubs" class = "LeftPanel_GroupsList" id='club_list'>-->
+<!--                    --><?php //foreach($user->groups as $club){ ?>
+<!--                        <li>-->
+<!--                            <a data-club_id = "--><?php //echo $club->group_id; ?><!--" href="--><?php //echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?><!--">--><?php //echo $club->group_name; ?><!--</a>-->
+<!--                        </li>-->
+<!--                    --><?php //} ?>
+<!--				</ul>-->
+<!--			</div>-->
+<!--		</div>-->
+
+
+
 	</div>
 </div>

@@ -70,7 +70,9 @@ class School extends CActiveRecord
 			'courses' => array(self::HAS_MANY, 'Course', 'school_id'),
 			'departments' => array(self::HAS_MANY, 'Department', 'school_id'),
 			'groups' => array(self::HAS_MANY, 'Group', 'school_id'),
-            'clubs' => array(self::HAS_MANY, 'Group', 'school_id'),
+
+            'clubs' => array(self::HAS_MANY,'Group',array('school_id'=>'school_id'),'condition'=>'group_type = "club" and privacy = "0"'),
+
 			'coverFile' => array(self::BELONGS_TO, 'File', 'cover_file_id'),
 			'university' => array(self::BELONGS_TO, 'University', 'university_id'),
 			'pictureFile' => array(self::BELONGS_TO, 'File', 'picture_file_id'),

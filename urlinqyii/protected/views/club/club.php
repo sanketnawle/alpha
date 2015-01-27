@@ -5,7 +5,8 @@
             globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
             globals.origin_type = '<?php echo 'club'; ?>';
             globals.origin_id = '<?php echo $club->group_id; ?>';
-            globals.origin_name = '<?php echo $club->group_name; ?>';
+            globals.origin_name = "<?php echo $club->group_name; ?>";
+            globals.user_id = '<?php echo $user->user_id; ?>';
         </script>
 
         <title><?php echo $club->group_name; ?></title>
@@ -16,8 +17,7 @@
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js'></script>
-
-
+        <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
 
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 		<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
+
+
 
 
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -43,7 +45,7 @@
 
     </head>
 
-    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
+    <body class = "body_group body_club">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper">
@@ -81,14 +83,28 @@
                                         <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
                                     </div>
                                     <div class = "group_right_info group_info_boxes">
-                                        <div class = "group_info_block" id = "location">
-                                            <em class ="small_icon_map"></em>
-                                            <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                        <div class = "group_info_block">
                                             <?php if($is_admin){ ?>
-                                                <div class="upload_cover_photo_button">Upload cover photo</div>
+                                                <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
                                             <?php } ?>
+
+                                            <?php if($club->contact_email != ''){?>
+                                                <br>
+                                                <?php echo $club->contact_email; ?>
+                                            <?php } ?>
+
+                                            <?php if($club->website != ''){?>
+                                                <br>
+                                                <?php echo $club->website; ?>
+                                            <?php } ?>
+
+
+
+                                            <br>
+                                            <?php echo $club->school->school_name; ?>
                                         </div>
                                     </div>
+
                                 </div>
 
                         <!--        close the cover photo dropzone form if user is an admin -->
@@ -134,13 +150,13 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
-                            <div class="tab analytics" data-panel_id="4">
-                                <div class="tab_content">
-                                    <div class="tab_img"></div>
-                                    <div class="tab_text">Analytics</div>
-                                </div>
-                                <div class="tab_wedge"></div>
-                            </div>
+<!--                            <div class="tab analytics" data-panel_id="4">-->
+<!--                                <div class="tab_content">-->
+<!--                                    <div class="tab_img"></div>-->
+<!--                                    <div class="tab_text">Analytics</div>-->
+<!--                                </div>-->
+<!--                                <div class="tab_wedge"></div>-->
+<!--                            </div>-->
 
 
 
@@ -169,12 +185,26 @@
                         <div class="panel active panel_feed" id="panel_1">
                             <div id = "planner_column" class = "planner_column_group">
                                 <div id = "right_column_specs">
+
+
+
                                     <div id = "fixed_element" class = "planner_group">
+
+                                        <div class="classic_about_box" id="group_about_box">
+                                            <h5>About</h5>
+
+                                            <div class="class_description_holder"><?php echo $club->group_desc; ?></div>
+
+                                        </div>
+
                                         <?php
                                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->group_id; ?>'));
                                         ?>    
                                     </div>
-                                </div>                           
+                                </div>
+
+
+
                             </div>
                             <div id = "feed_column" class = "feed_column_group">
                                 <div id = "stream_holder" class = "stream_holder_home">
@@ -187,6 +217,9 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
 
 
@@ -565,7 +598,7 @@
                 </div>
             </div>
             <div id="right_panel" class = "group_responsiveness">
-                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>'')); ?>   
+                <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
             </div>
 
     <!--            <div id="div1" style="height: 500px;position:relative;">-->

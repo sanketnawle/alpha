@@ -1,7 +1,13 @@
 
 <script>
-    origin_type = '<?php echo $origin_type; ?>';
-    origin_id = '<?php echo $origin_id; ?>';
+    //var globals = {};
+
+    globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+
+    //globals.user_id = '<?php //echo $user->user_id; ?>';
+
+    globals.origin_type = '<?php echo $origin_type; ?>';
+    globals.origin_id = '<?php echo $origin_id; ?>';
 
 
 </script>
@@ -89,10 +95,10 @@
 								<div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
 							</div>
 
-							<div class = "upload_half half_2">
-								<div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
-								<div><div class = "upload_button upload_button_alone">Choose File</div></div>
-							</div>
+<!--							<div class = "upload_half half_2">-->
+<!--								<div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>-->
+<!--								<div><div class = "upload_button upload_button_alone">Choose File</div></div>-->
+<!--							</div>-->
 
 						</div>	
 

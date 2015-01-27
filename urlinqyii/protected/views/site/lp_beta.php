@@ -50,7 +50,7 @@ header('location:home.php');
 
     </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-  <title>Urlinq - Campus Companion</title>
+  <title>Welcome to Urlinq</title>
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
@@ -447,7 +447,7 @@ header('location:home.php');
 
                       <script>
 
-                        $(document).on('submit', '#reset', function(e){
+                        $(document).on('submit', '#reset_password', function(e){
                           var $form = $(this);
                           e.preventDefault();
                           e.stopPropagation();
@@ -457,7 +457,7 @@ header('location:home.php');
                             post_url,
                             post_data,
                             function(response){
-                              alert(JSON.stringify(response));
+                              //alert(JSON.stringify(response));
                             }, 'json'
                           );
                         });
@@ -478,30 +478,53 @@ header('location:home.php');
                                 post_url,
                                 post_data,
                                 function(response){
-                                    alert(JSON.stringify(response));
+                                    //alert(JSON.stringify(response));
 
                                     if(response['success']){
+                                        console.log('good');
                                         window.location.replace(globals.base_url + '/home');
                                     }else{
+                                        console.log(response['error_id']);
+                                        $('#login_error_popup').remove();
+                                        var email_position = $('input#login_email').offset();
+                                        var $error_div = $("<div id='login_error_popup'></div>");
+                                        $error_div.css({'top': email_position.top + 50});
+                                        $error_div.css({'left': email_position.left});
                                         if(response['error_id'] == 2){
-                                            alert('Email is not supported');
+                                            //alert('Email is not supported');
+                                            $error_div.text('Email is not supported');
 
-                                            var email_position = $('input#login_email').offset();
-                                            var $error_div = $("<div id='login_error_popup'>Invalid email <form id='reset'><input type='text' name='email' value='email'/><input type='submit' value='submit'/></form></div>");
-                                            $error_div.css({'position': 'absolute'});
-                                            $error_div.css({'top': email_position.top + 50});
-                                            $error_div.css({'left': email_position.left});
+
+                                        }else if(response['error_id'] == 3){
+
+                                            $error_div.text('Account does not exist for this email');
 
 
 
                                             $('body').append($error_div);
+                                        }else if(response['error_id'] == 4){
+                                            //alert('Invalid login');
+                                            $error_div.text('Invalid login');
+                                            var $forgot_password_div = $("<button id='forgot_password'>Forgot Password? </button>" +
+                                            "                   <form id='reset_password' style='display:none;'>" +
+                                            "                        <input id='email' type='text' name='email' placeholder='email'/>" +
+                                            "                        <input type='submit' value='submit'/>" +
+                                            "                   </form> ");
+                                            $error_div.append($forgot_password_div);
 
-                                        }else if(response['error_id'] == 3){
-                                            alert('Invalid login');
+                                            //var $forgot_pass_div = $("<button id='forgot_password'>Forgot Password? </button> <form id='reset_password'><input type='text' name='email' placeholder='email'/><input type='submit' value='submit'/></form> </div>")
+                                            //$error_div.append($forgot_pass_div);
                                         }
+                                        $('body').append($error_div).hide.fadeIn(250);;
                                     }
                                 }, 'json'
                             );
+                        });
+
+                        $(document).on('click','#forgot_password',function(){
+                            $('#forgot_password').fadeOut(250);
+                            $('form#reset_password').fadeIn(250);
+                            $('form#reset_password input#email').val($('input#login_email').val());
                         });
 
                       </script>
@@ -715,7 +738,7 @@ header('location:home.php');
                   </div>-->
                   <div class = "lp_terms">
                     <p class = "lp_terms_p">
-                      By clicking Create Your Account or Continue with Facebook, you agree to our <a href = "/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "/legal/privacy" target = "_blank">Data Use Policy</a>.
+                      By clicking Create Your Account, you agree to our <a href = "/legal/terms" target = "_blank">Terms</a> and that you have read our <a href = "/legal/privacy" target = "_blank">Data Use Policy</a>.
                     </p>
                   </div>
               </div>

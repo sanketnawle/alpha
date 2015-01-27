@@ -48,7 +48,7 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 234.5){
+        if(Math.floor(scroll_offset_top) >= 189.5){
 
             ////console.log("SETTING TO FIXED");
             
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 
             $nav_bar.css({'position':'relative'});
-            $nav_bar.css({'top':'245.5px'});
+            $nav_bar.css({'top':'200.5px'});
 
             
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) >= 278){
+        if(Math.floor(scroll_offset_top) >= 233){
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({'border-radius': '2px'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
@@ -83,14 +83,14 @@ $(document).ready(function(){
             $tab_wedge.css({'height':'0px'});
             $cover_photo.css({'opacity':'0'});
             $("#fixed_element.planner_group").css({'position':'fixed'});
-            $("#fixed_element.planner_group").css({'top':'125px'});
+            $("#fixed_element.planner_group").css({'top':'130px'});
 
-        }if(Math.floor(scroll_offset_top) <= 236){
+        }if(Math.floor(scroll_offset_top) <= 191){
             $nav_bar.css({'position':'fixed'});
             $nav_bar.css({'top':'56px'});            
         }
 
-        if(Math.floor(scroll_offset_top) <= 279){
+        if(Math.floor(scroll_offset_top) <= 234){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) <= 280){
+        if(Math.floor(scroll_offset_top) <= 235){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -373,7 +373,7 @@ $(document).ready(function(){
     // department - follow/unfollow
     // To simplify this, follow is join and unfollow is leave for departments as well
 //    $('#group_user_action_button').click(function(){
-    $(document).on('click','#group_user_action_button',function(e){
+    $(document).on('click','.group_user_action_button, #group_user_action_button',function(e){
         e.stopPropagation();
 
 
@@ -387,6 +387,14 @@ $(document).ready(function(){
             verb = 'join';
         }
 
+
+
+        if(verb == 'leave'){
+            var r = confirm("Are you sure you want to leave?");
+            if (r == false) {
+                return;
+            }
+        }
 
         var post_url = globals.base_url + '/' + globals.origin_type + '/' + globals.origin_id + '/' + verb;
 
@@ -425,6 +433,9 @@ $(document).ready(function(){
                         $("ul[data-group='" + data_group + "'] a[data-" + globals.origin_type + "_" + "id='" + globals.origin_id + "']").remove();
 
                     }
+
+
+                    location.reload();
                 }else{
                     alert(JSON.stringify(response));
                 }
@@ -496,6 +507,9 @@ $(document).ready(function(){
     }
     $(function(){
         $('p.founded_text').slimScroll({
+            height: 'auto'
+        });
+        $('.group_info_boxes.group_desc_box > .group_info_block').slimScroll({
             height: 'auto'
         });
     });

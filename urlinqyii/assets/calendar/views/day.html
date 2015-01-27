@@ -1,4 +1,4 @@
-﻿<div class="header row1 day">
+<div class="header row1 day">
     <div class="left">
         <a ng-href="{{getTodayLink()}}" class="today">Today</a>
         <a ng-href="{{getPrevLink()}}" class="arrow left" ng-uc-check></a>
@@ -30,9 +30,26 @@
 <div id="inspect_event_popup_day" class="inspect_event_popup popup">
     <div id="inspect_event_title">
     </div>
-    <div class = "title_background">
-    </div>
+
     <div id="inspect_event_exit_button" class="popup_exit_button"></div>
+
+    <div class = "inspect_event_detail inspect_event_detail_when">
+        <span>When:</span>
+        <div id ="inspect_event_text" class = 'inspect_data inspect_data_oneline'></div>
+        <div id ="inspect_event_whentime" class = 'inspect_data inspect_data_oneline'></div>
+    </div>
+
+    <div class = "inspect_event_detail" id = "inspect_event_where_detail">
+        <div id ="inspect_event_where" class = 'inspect_data'></div>
+    </div>
+    <div class = "inspect_event_detail">
+        <div id ="inspect_event_who" class = 'inspect_data'></div>
+    </div>
+
+    <div class = "inspect_event_detail">
+        <div id="inspect_event_description" class = 'inspect_data'></div>
+    </div>
+
     <div id="inspect_event_delete_button_day"><span class = "delete_icon"></span><span class = "delete_text">Delete</span></div>
     <div id="inspect_event_edit_button" class="popup_edit_button">Edit<strong></strong></div>
 </div>

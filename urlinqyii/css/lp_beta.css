@@ -20,11 +20,25 @@ background:#edefed;;
 position: relative;
 
 }
+#login_error_popup{
+    position: absolute;
+    display: inline-block;
+    border: 1px solid black;
+    background-color: rgba(39, 41, 43, 0.92);
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+
+}
+#reset_password{
+    display: inline-block;
+}
+
 
 .fb-like{
   position: absolute!important;
 right: 20px;
-top: 20px;
+bottom: 20px;
 display:block!important;
 }
 
@@ -265,7 +279,6 @@ img.logo{
   display: inline-block;
   float: left;
   height: 32px;
-  padding-left: 20px;
 }
 
 div.main-market-area{
@@ -787,23 +800,21 @@ white-space: nowrap;
 }
 
 ul.account-types li.student label{
-    background-image: url(src/student-icon.png); background-position: center 2px;
+    background-image: url(../assets/account_type_icons.png); 
+    background-position: center -9px;
 
-    margin-top: 3px;
-    width: 37px;
-    height: 33px;
-    margin-left: 58px;
-    background-size: cover;
+    margin-top: -1px;
+    width: 76px;
+    height: 38px;
+    margin-left: 37px;
+    background-size: auto;
 }
 
 ul.account-types li.faculty label{
-    background-image: url(src/teacher-icon.png); background-position: center 2px;
-
-    margin-left: 58px;
-    background-size: cover;
-    width: 37px; 
-    height: 35px;
-    margin-top: 2px;
+    background-image: url(../assets/account_type_icons.png); 
+    background-position: center -86px; margin-top: -1px; width: 76px; height: 38px; margin-left: 37px; background-size: auto;
+ 
+ 
 }
 
 .announcement_button a{
@@ -1228,7 +1239,7 @@ div.bottom-container{
     width: 100%;
     bottom: 0px;
     left: -43px;
-    top: 100%;
+    bottom: 0px;
     height: 100px;
     right: 0px; 
     background-color: rgba(237, 239, 237, 0);
@@ -1790,7 +1801,7 @@ div.header-sec-right div.time-to-signup{
 }
 
 ul.account-types li.student label {
-margin-left:84px;
+margin-left: 64px;
 }
 
 
@@ -1815,7 +1826,7 @@ width: 408px;
 }
 
 ul.account-types li.faculty label{
-  margin-left:84px;
+  margin-left: 64px;
 }
 
 div.signup-form-wrap {
@@ -2255,10 +2266,6 @@ margin-top: 48px;
 border-radius: 4px;
 }
 
-.fb-like{
-  top:85px;
-}
-
 #countdown p.largeCD{
   font-size:42px;
 }
@@ -2484,5 +2491,8 @@ ul.color-border li:nth-child(5) {
 ul.color-border li:nth-child(5):hover {
  background-color: #de445d;
 }
+
+}
+
 
 

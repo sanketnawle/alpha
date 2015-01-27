@@ -7,19 +7,18 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'department'; ?>';
         globals.origin_id = '<?php echo $department->department_id; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
     </script>
 
-    <title><?php echo $department->department_name; ?></title>
+    <title><?php echo $department->department_tag . ' - ' . $department->department_name; ?></title>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/datetime_helper.js"></script>
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-
-
-
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -32,7 +31,7 @@
 
 </head>
 
-<body class = "body_group left_panel_hidden left_panel_hidden_p2">
+<body class = "body_group">
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
 <div id="wrapper">
@@ -71,12 +70,12 @@
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
                             <div class = "group_name">
                                 <div class = "center_admin"><div class = "department_of">Department of</div></div>
-                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
+                                <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></span></p></div>
                             </div>
                             <div class = "group_right_info group_info_boxes">
                                 <div class = "group_info_block" id = "location">
                                     <em class ="small_icon_map"></em>
-                                    <span>301 Latttimore Hall, Box 270076, Rochester, New York 14627</span>
+                                    <span><?php echo $department->school->school_name; ?></span>
                                     <?php if($user->user_type == 'a' || $user->user_type == 'p'){ ?>
                                         <div class="upload_cover_photo_button">Upload cover photo</div>
                                     <?php } ?>
@@ -134,20 +133,17 @@
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
                         <?php if($is_following ){ ?>
-                            <div id="group_user_action_button" class="member" data-action_url="/leave">
-                                <div id="group_user_action_button_text">Member</div>
-                            </div>
+<!--                            <div id="group_user_action_button" class="member" data-action_url="/leave">-->
+<!--                                <div id="group_user_action_button_text">Member</div>-->
+<!--                            </div>-->
                         <?php }else{ ?>
-                            <div id="group_user_action_button" class="non_member" data-action_url="/join">
-                                <div id="group_user_action_button_text">Follow</div>
-                            </div>
+<!--                            <div id="group_user_action_button" class="non_member" data-action_url="/join">-->
+<!--                                <div id="group_user_action_button_text">Follow</div>-->
+<!--                            </div>-->
                         <?php } ?>
 
-                        <div id="tab_more_button">
-                            <div id="tab_more_button_image"></div>
-                        </div>
 
-                        <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+
 
 
                     </div>
@@ -182,12 +178,13 @@
                         <div class = "tab_content_holder">
                             <div class="tab_header"> 
                                 <div class = "float_Right">
-                                    <span class = "sort_label">Order:</span>
-                                    <div class = "order_sort_dropdown">
-                                        <span>Courses High to Low</span>
-                                        <em class = "dropdown_arrow">
-                                        </em>
-                                    </div>
+
+<!--                                    <span class = "sort_label">Order:</span>-->
+<!--                                    <div class = "order_sort_dropdown">-->
+<!--                                        <span>Courses High to Low</span>-->
+<!--                                        <em class = "dropdown_arrow">-->
+<!--                                        </em>-->
+<!--                                    </div>-->
                                     <div class = "small_search fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
@@ -205,13 +202,13 @@
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
-                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name; ?></a>
+                                            <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
                                             <div class = "float_Right">
                                                 <span class = "group_type">Course</span>
                                             </div>
                                         </div>
                                         <div class = "group_box_secondary_info_section">
-                                            <div class= "info_line indent">4 open classes</div>
+                                            <div class= "info_line indent"><?php echo count($course->classes); ?> classes</div>
                                             <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $course->department->department_id; ?>"><?php echo $course->department->department_name; ?></a></div>
                                             <div class = "info_line info_about"><?php echo $course->course_desc; ?></div>
                                         </div>
@@ -228,9 +225,11 @@
                         <div class = "tab_content_holder">
                             <div class = "tab_header">
                                 <div class = "float_Right">
-                                    <div class = "add_people_button">
-                                        Add Faculty
-                                    </div>
+
+<!--                                    @todo -->
+<!--                                    <div class = "add_people_button">-->
+<!--                                        Add Faculty-->
+<!--                                    </div>-->
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>
@@ -300,9 +299,10 @@
                         <div class = "tab_content_holder">
                             <div class = "tab_header">
                                 <div class = "float_Right">
-                                    <div class = "add_people_button">
-                                        Add Students
-                                    </div>
+<!--                                    @todo -->
+<!--                                    <div class = "add_people_button">-->
+<!--                                        Add Students-->
+<!--                                    </div>-->
                                     <div class = "small_search" class = "fade_input_small">
                                         <em id = "left_search_icon">
                                         </em>

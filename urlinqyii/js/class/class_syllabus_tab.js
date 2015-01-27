@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 
     $("#page").scroll(function() {
-        console.log($("#page").scrollTop());
     });
 
     $('div.complete_incomplete_button.active').click(function(){

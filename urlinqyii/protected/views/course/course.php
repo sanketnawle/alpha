@@ -15,7 +15,7 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
-
+        <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/main.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -29,7 +29,7 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
     </head>
 
-    <body class = "body_group left_panel_hidden left_panel_hidden_p2">
+    <body class = "body_group">
 
         <?php echo Yii::app()->runController('partial/topbar'); ?>
         <div id="wrapper">
@@ -59,7 +59,7 @@
                     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'course','origin_id'=>$course->course_id,'origin'=>$course)); ?>
                     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url ?>');">
                         <div class = "group_name">
-                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name; ?></span></p></div>
+                            <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></span></p></div>
                         </div>
 
                     </div>
@@ -124,7 +124,7 @@
 
                                 <?php foreach($course->classes as $class){ ?>
                                     <?php $class_students = $class->students; ?>
-                                    <div class = "group_box group_course_box" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
+                                    <div class = "group_box group_course_box" data-class_id="<?php echo $class->class_id; ?>" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
                                         </div>
                                         <div class = "group_box_main_info">
@@ -137,7 +137,7 @@
 
                                             <div class= "info_line indent">Section: <?php echo $class->section_id; ?></div>
                                             <?php if($class->class_datetime){ ?>
-                                                <div class= "info_line indent">Section: <?php echo $class->class_datime; ?></div>
+                                                <div class= "info_line indent">Time: <?php echo $class->class_datetime; ?></div>
                                             <?php } ?>
 
                                             <div class= "info_line indent"><?php echo count($class_students); ?> students</div>

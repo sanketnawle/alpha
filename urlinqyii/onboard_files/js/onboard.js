@@ -44,19 +44,19 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Join your School", "Join your Department", "Resend Verification (Check spam)", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
     var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they’re up to.", "These are some of the most active clubs at your school.", ""];
 
-    var searchbar_hint = ["Search schools", "Search departments", "", "Search classes", "Search people", "Search clubs", ""];
+    var searchbar_hint = ["Search schools", "Search departments", "", "Search all classes", "Search people", "Search clubs", ""];
 
     /*the following lists should be retreived from php*/
     var school_list = [];
 
 
-
+    original_course_list = [];
 
 
 
@@ -83,6 +83,7 @@ $(document).ready(function () {
                 $.getJSON(base_url + '/department/getCourses?department_id=' + department_id.toString(),function(json_data){
                     if(json_data['success']){
                         course_list = json_data['courses'];
+                        original_course_list = course_list;
                         start_onboarding();
                     }else{
                         alert('Error getting school data');
@@ -180,7 +181,7 @@ $(document).ready(function () {
 
         $(".progress_hint_0").text(hint_text[curr]);
 
-        var curr_act = curr + 1;
+        var curr_act = parseInt(curr) + 1;
         $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
         if (curr == 6) { $(".progress_hint_1").html("Last Step"); };
 
@@ -266,7 +267,7 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq. (check your spam folder)</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
             $('.skip_progress').hide();
         } else if (curr == 3) {
             $canvas.show();
@@ -319,8 +320,117 @@ $(document).ready(function () {
 
             $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
 
+            render_courses();
+
+        }else if (curr == 4) {
+            $('.skip_progress').show();
+            $canvas.addClass("canvas_adjust");
+            $inner.addClass("canvas_adjust");
+            $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
+
+            $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
+
             $thread0 = $("#thread_0");
             $thread1 = $("#thread_1");
+
+            var ns = people_list.length;
+            for (var i = 0; i < ns; i++) {
+                if (i % 2 == 0) {
+                    $tthread = $thread0;
+                } else {
+                    $tthread = $thread1;
+                }
+
+                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
+
+            }
+
+        }else if (curr == 5) {
+
+            $canvas.addClass("canvas_adjust");
+            $inner.addClass("canvas_adjust");
+            $('.skip_progress').show();
+            $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> joined</div></div>");
+
+
+            $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
+
+            $thread0 = $("#thread_0");
+            $thread1 = $("#thread_1");
+
+            var ns = clubs_list.length;
+            for (var i = 0; i < ns; i++) {
+
+                if (i % 2 == 0) {
+                    $tthread = $thread0;
+                } else {
+                    $tthread = $thread1;
+                }
+
+                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span></span></div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
+            }
+
+
+            if(clubs_list.length == 0){
+                $('.next_progress').removeClass('inactive_btn');
+            }
+
+        }else if (curr == 6) {
+            $('.skip_progress').hide();
+
+            var data = {base_url: base_url, user_type: user_type};
+
+
+            var source   = $("#last_panel_template").html();
+            var template = Handlebars.compile(source);
+            var generated_html = template(data);
+
+            var $content = $(generated_html);
+
+            $canvas.append($content).hide().fadeIn();
+
+//            if(user_type == 's'){
+//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div> </div></div></div>   <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'  value='F'><span>Female</span></div>");
+//            }else if(user_type == 'p' || user_type == 'a'){
+//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span></div>");
+//            }
+
+            $canvas.find(".ui.dropdown").dropdown();
+        }
+
+    }
+
+    function is_active_btn(btn) {
+        if (btn.hasClass("inactive_btn")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+
+    function render_courses(){
+            $thread0 = $("#thread_0");
+
+
+            //Only remove the classes that arent expanded and selected
+            $thread0.find('.step_3_card').each(function(){
+                if(!$(this).hasClass('expanded')){
+                    $(this).remove();
+                }
+            });
+
+
+            $thread1 = $("#thread_1");
+
+            $thread1.find('.step_3_card').each(function(){
+                if(!$(this).hasClass('expanded')){
+                    $(this).remove();
+                }
+            });
+
+
 
             var ns = course_list.length;
             for (var i = 0; i < ns; i++) {
@@ -361,93 +471,7 @@ $(document).ready(function () {
                 }
             }
 
-        }else if (curr == 4) {
-            $canvas.addClass("canvas_adjust");
-            $inner.addClass("canvas_adjust");
-            $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
-
-            $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
-
-            $thread0 = $("#thread_0");
-            $thread1 = $("#thread_1");
-
-            var ns = people_list.length;
-            for (var i = 0; i < ns; i++) {
-                if (i % 2 == 0) {
-                    $tthread = $thread0;
-                } else {
-                    $tthread = $thread1;
-                }
-
-                $tthread.append("<div class='step_4_card' data-user_name='" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "' data-user_id='" + people_list[i]['user_id'].toString() + "'><img class='card_4_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='card_4_txt'>" + people_list[i]['firstname'] + ' ' + people_list[i]['lastname'] + "</div><div class='follow_btn card_4_btn'><em class = 'follow_icon'></em><span>Follow</span></div></div>");
-
-            }
-
-        }else if (curr == 5) {
-            $canvas.addClass("canvas_adjust");
-            $inner.addClass("canvas_adjust");
-
-            $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> joined</div></div>");
-
-
-            $canvas.append("<div class='a_thread' id='thread_0'></div><div class='a_thread' id='thread_1'></div>");
-
-            $thread0 = $("#thread_0");
-            $thread1 = $("#thread_1");
-
-            var ns = clubs_list.length;
-            for (var i = 0; i < ns; i++) {
-
-                if (i % 2 == 0) {
-                    $tthread = $thread0;
-                } else {
-                    $tthread = $thread1;
-                }
-
-                $tthread.append("<div class='step_3_card step_5_card' data-group_id='" + clubs_list[i]['group_id'] + "'><div class='step_3_show'><img class='card_3_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='step_3_line_0 club_adjust'>" + clubs_list[i]['group_name'] + "</div><div class='step_3_line_1 club_adjust'> <div class='member_glyph'></div><div class='step_3_line_1_1'><span>125</span> members</div></div> <div class='club_join gray_join_btn'><em class = 'gray_plus_icon'></em>Join</div></div></div>");
-            }
-
-
-            if(clubs_list.length == 0){
-                $('.next_progress').removeClass('inactive_btn');
-            }
-
-        }else if (curr == 6) {
-
-
-            var data = {base_url: base_url, user_type: user_type};
-
-
-            var source   = $("#last_panel_template").html();
-            var template = Handlebars.compile(source);
-            var generated_html = template(data);
-
-            var $content = $(generated_html);
-
-            $canvas.append($content).hide().fadeIn();
-
-//            if(user_type == 's'){
-//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div> </div></div></div>   <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender'  value='F'><span>Female</span></div>");
-//            }else if(user_type == 'p' || user_type == 'a'){
-//                $canvas.append("<div class='step_6_card'><div class='step_6_card_r0'><img class='card_6_glyph' src='" + base_url + "/onboard_files/img/defaultGlyph.png'><div class='pt_upload_btn gray_btn'>Upload Profile Picture</div><form><input type='file' class='step_6_upload' style='display:none;'></form></div><div class='step_6_card_r1'><div class='step_6_card_r1_txt'>Faculty Type</div><div class='ui dropdown step_6_card_r1_choice'><div class='text'>Professor</div><i class='dropdown icon'></i><div class='menu'><div class='item' data-value='option1'>Professor</div><div class='item' data-value='option2'>Administrator</div></div></div></div> <div class='step_6_card_r2'><div class='step_6_card_r2_txt'>Office Location</div><input type='text' class='ol onboard_textarea_t0'/></div> <div class='step_6_card_r3'><div class='step_6_card_r3_txt'>Research Interests</div><input type='text' class='as onboard_textarea_t0'/></div> <div class='step_6_card_r4'><div class='step_6_card_r4_txt'>Gender</div><input class='step_6_card_r4_input' type='radio' name='gender' value='M'><span>Male</span> <input class='step_6_card_r4_input' type='radio' name='gender' value='F'><span>Female</span></div>");
-//            }
-
-            $canvas.find(".ui.dropdown").dropdown();
-        }
-
     }
-
-    function is_active_btn(btn) {
-        if (btn.hasClass("inactive_btn")) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
-
-
 
 
 
@@ -755,31 +779,41 @@ $(document).ready(function () {
         };
     });
 
+
+    var school_click_count = 0;
+
     $(document).delegate(".school", "click", function (e) {
-        //e.stopPropagation();
-//        e.preventDefault();
-        var $self = $(this);
 
-        var school_id = $self.attr('data-school_id');
-        $.getJSON(base_url + '/school/getDepartments?school_id=' + school_id,function(json_data){
-            if(json_data['success']){
-                selected_data['school_id'] = school_id;
+        //Prevent this from being clicked again
+        if(school_click_count == 0){
+            school_click_count++;
+                //e.stopPropagation();
+    //        e.preventDefault();
+            var $self = $(this);
 
-                department_list = json_data['departments'];
-                $(".step_0_card").addClass("left");
-                $self.removeClass("left");
-                setTimeout(function () {
-                    $self.addClass("right");
-                    progress_flag++;
-                    progress_check(progress_flag);
-                    content_paint(progress_flag);
-                    return;
-                }, 250);
+            var school_id = $self.attr('data-school_id');
+            $.getJSON(base_url + '/school/getDepartments?school_id=' + school_id,function(json_data){
+                if(json_data['success']){
+                    selected_data['school_id'] = school_id;
 
-            }else{
-                alert('Error getting school data');
-            }
-        });
+                    department_list = json_data['departments'];
+                    $(".step_0_card").addClass("left");
+                    $self.removeClass("left");
+                    setTimeout(function () {
+                        $self.addClass("right");
+                        progress_flag++;
+                        progress_check(progress_flag);
+                        content_paint(progress_flag);
+                        return;
+                    }, 250);
+
+                }else{
+                    alert('Error getting school data');
+                }
+            });
+        }
+
+
 
     });
 
@@ -797,44 +831,53 @@ $(document).ready(function () {
                     try{
                         payload_function();
                     }catch(err) {
+                        console.log(err);
                         console.log("error calling payload function");
                     }
 
                     //alert(JSON.stringify(response));
                 }else{
-                    alert(JSON.stringify(response));
+                    window.location.replace(base_url);
                 }
             }, 'json'
         );
     }
 
 
+
+    var department_click_count = 0;
+
     $(document).delegate(".department", "click", function (e) {
         e.stopPropagation();
         e.preventDefault();
 
 
-        var $self = $(this);
+        if(department_click_count == 0){
+            department_click_count++;
+            var $self = $(this);
 
 
 
-        var department_id = $self.attr('data-department_id');
-        selected_data['department_id'] = department_id;
+            var department_id = $self.attr('data-department_id');
+            selected_data['department_id'] = department_id;
 
 
-        function run_this(){
-            $(".step_0_card").addClass("left");
-            $self.removeClass("left");
-            setTimeout(function () {
-                $self.addClass("right");
-                progress_flag++;
-                progress_check(progress_flag);
-                content_paint(progress_flag);
-                return;
-            }, 250);
+            function run_this(){
+                $(".step_0_card").addClass("left");
+                $self.removeClass("left");
+                setTimeout(function () {
+                    $self.addClass("right");
+                    progress_flag++;
+                    progress_check(progress_flag);
+                    content_paint(progress_flag);
+                    return;
+                }, 250);
+            }
+
+            send_verification_email(run_this);
         }
 
-        send_verification_email(run_this);
+
 
     });
 
@@ -1042,27 +1085,65 @@ $(document).ready(function () {
             var $content_canvas = $('.content_canvas');
 
             if(input_string == ''){
-                $content_canvas.find('div.step_3_card').each(function(){
-                    var $child = $(this);
-                    $child.show();
-                });
+                course_list = original_course_list;
+                render_courses();
+//                $content_canvas.find('div.step_3_card').each(function(){
+//                    var $child = $(this);
+//                    $child.show();
+//                });
             }else{
-                $content_canvas.find('div.step_3_card').each(function(){
-                    var $child = $(this);
 
-                    if(!$child.hasClass('professor_class')){
-                        if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
 
-                            console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
+                setTimeout(function() {
 
-                            $child.show();
-                        }else{
-                            $child.hide();
-                        }
+                    if($('.onboard_textarea_t0').val().toLowerCase() == input_string){
+                        //Search for classes with a name or tag similar to this
+                        $.getJSON(base_url + '/search/courses?q=' + input_string, function(json_data){
+                            if(json_data['success']){
+
+                                if(json_data['results'].length == 0){
+                                    course_list = original_course_list;
+                                    render_courses();
+                                }else{
+                                    course_list = json_data['results'];
+                                    render_courses();
+                                }
+
+
+                            }else{
+                                console.log('Error getting courses data with seach query ' + input_string);
+                            }
+                        });
                     }
 
+                }, 700);
 
-                });
+                 // Check the value searched is the latest one or not. This will help in making the ajax call work when client stops writing.
+
+
+
+
+
+
+
+
+
+//                $content_canvas.find('div.step_3_card').each(function(){
+//                    var $child = $(this);
+//
+//                    if(!$child.hasClass('professor_class')){
+//                        if($child.attr('data-course_name').toLowerCase().indexOf(input_string) > -1){
+//
+//                            console.log('course_name: ' + $child.attr('data-course_name') + '    input_string: ' + input_string);
+//
+//                            $child.show();
+//                        }else{
+//                            $child.hide();
+//                        }
+//                    }
+//
+//
+//                });
             }
         }else if(progress_flag == 4){
             var $user_name_input = $(this);

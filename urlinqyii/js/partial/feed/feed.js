@@ -1,5 +1,12 @@
 
-$(document).ready(function(){
+$(document).ready(ready(globals));
+
+
+function ready(globals){
+
+    //alert(globals.feed_url);
+    //alert(JSON.stringify(globals));
+
 
     Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
@@ -30,18 +37,24 @@ $(document).ready(function(){
     //$ = jQuery.noConflict();
     //Handlebars helpers
 
+
+    first_request = true;
+
     init();
     function init(){
-        get_post_data(base_url,feed_url);
+        get_post_data(globals.base_url,globals.feed_url);
     }
+
+
 
 
 
     var last_created_at = '';
     var last_last_activity = '';
 
-    function get_post_data(base_url,feed_url){
+    function get_post_data(this_base_url,this_feed_url){
 
+        //alert('feed url ' + this_feed_url);
 
         var get_data = {};
 
@@ -70,20 +83,29 @@ $(document).ready(function(){
 
 
 
-        $.getJSON( base_url + feed_url, {params: JSON.stringify(get_data)}, function( json_feed_data ) {
+        $.getJSON( this_base_url + this_feed_url, {params: JSON.stringify(get_data)}, function( json_feed_data ) {
             if(json_feed_data['success']){
                 //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
-                render_posts(json_feed_data['feed']);
+
+                if(json_feed_data['feed'].length == 0 && first_request){
+                    var $posts_container = $("#posts");
+                    $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very start of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
+                }else{
+                    render_posts(json_feed_data['feed']);
+                }
+
+                first_request = false;
             }else{
-                alert('failed to get feed');
+                //alert('failed to get feed');
             }
         });
 
     }
 
+
     function render_posts(jsonData){
-        
+
         $.each(jsonData ,function(key,post) {
             //alert(JSON.stringify(post));
             //jsonData['key'].jsonData[key]['replies'][0]);
@@ -109,19 +131,19 @@ $(document).ready(function(){
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            
+
                 for(i = 0; i < post['options'].length; i++){
                     post['options'][i]['the_choice_letter'] = alphabet.charAt(i);
 
-                }    
+                }
             }
-            
+
 
 
 
             post['update_timestamp'] = moment(post['update_timestamp'], "X").fromNow();
 
-            
+
 
             render_post(post);
         });
@@ -137,7 +159,7 @@ $(document).ready(function(){
     });
 
     function render_post_with_url(single_post){
-        
+
         single_post.embed_link = findUrlInPost();
 
     }
@@ -185,9 +207,9 @@ $(document).ready(function(){
         var $radio = $(this);
         var option_id = $radio.closest('.mc_question_one_choice').attr('data-option_id');
 
-        alert(option_id);
+        //alert(option_id);
 
-        var post_url = base_url + '/post/answerQuestion';
+        var post_url = globals.base_url + '/post/answerQuestion';
 
         var post_data = {option_id: option_id};
 
@@ -195,7 +217,8 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
-                alert(JSON.stringify(response));
+                console.log(response);
+                //alert(JSON.stringify(response));
             },'json'
         );
     });
@@ -229,9 +252,9 @@ $(document).ready(function(){
         var $like_number = $post_like_button.find('.like_number');
         var post_id = $(this).closest('.post').attr('data-post_id');
 
-        var post_data = {post_id: post_id, user_id: user_id};
+        var post_data = {post_id: post_id, user_id: globals.user_id};
 
-        var post_url = base_url + '/post/like';
+        var post_url = globals.base_url + '/post/like';
 
         $.post(
             post_url,
@@ -260,7 +283,7 @@ $(document).ready(function(){
         var $like_number = $post_like_button.find('.like_number');
         var post_data = {post_id: post_id, user_id: user_id};
 
-        var post_url = base_url + '/post/unlike';
+        var post_url = globals.base_url + '/post/unlike';
 
         $.post(
             post_url,
@@ -341,7 +364,7 @@ $(document).ready(function(){
 
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
 
-        var post_url = base_url + '/post/reply';
+        var post_url = globals.base_url + '/post/reply';
 
         $.post(
             post_url,
@@ -374,11 +397,15 @@ $(document).ready(function(){
 
         var $calendar_button = $(this);
 
+        if($calendar_button.hasClass('added')){
+            return;
+        }
+
         var $event_post = $calendar_button.closest('.post[data-post_type="event"]');
 
         var event_id = $event_post.attr('data-event_id');
 
-        alert(event_id);
+        //alert(event_id);
 
         var origin_type = $event_post.attr('data-origin_type');
         var origin_id = $event_post.attr('data-origin_id');
@@ -405,6 +432,9 @@ $(document).ready(function(){
 
 
     function isElementInViewport (el) {
+        if(el === undefined){
+            return;
+        }
 
         //special bonus for those using jQuery
         if (typeof jQuery === "function" && el instanceof jQuery) {
@@ -426,14 +456,17 @@ $(document).ready(function(){
     $( "#page" ).scroll(function() {
         //Get the offset of the last post on the page
         var last_post = $('#posts').find('.post').last();
-        console.log('LAST POST VISIBLE?');
-        console.log(isElementInViewport(last_post));
 
-        //If the last post is in the viewport, load more posts
-        if(isElementInViewport(last_post)){
-            //Loads more previous posts
-            get_post_data(base_url,feed_url);
+
+        if(last_post.length){
+            //If the last post is in the viewport, load more posts
+            if(last_post != undefined &&isElementInViewport(last_post)){
+                //Loads more previous posts
+                get_post_data(globals.base_url,globals.feed_url);
+            }
         }
+
+
     });
 
     $(document).scroll(function(e) {
@@ -459,11 +492,15 @@ $(document).ready(function(){
         console.log('LAST POST VISIBLE?');
         console.log(isElementInViewport(last_post));
 
-        //If the last post is in the viewport, load more posts
-        if(isElementInViewport(last_post)){
-            //Loads more previous posts
-            get_post_data(base_url,feed_url);
+
+        if(last_post.length){
+            //If the last post is in the viewport, load more posts
+            if(last_post != undefined && isElementInViewport(last_post)){
+                //Loads more previous posts
+                get_post_data(globals.base_url,globals.feed_url);
+            }
         }
+
 
 
     });
@@ -475,8 +512,8 @@ $(document).ready(function(){
     });*/
 
     $("div.comments:last-of-type").css({"border-bottom":"none"});
-});
 
+}
 
 
 

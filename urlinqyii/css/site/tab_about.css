@@ -74,6 +74,12 @@ div.class_description_holder{
     border-top: 1px solid #dbdcdc;
 }
 
+
+div#group_about_box div.class_description_holder {
+    border: none;
+    height: 90px;
+}
+
 div.panel.tab_about{
     padding: 0 6px;
     font-family: 'Open Sans', sans-serif;
@@ -230,5 +236,30 @@ div.cool_members_box div.admin_about_section{
 }
 
 div.cool_members_box div.members_about_section{
-    
+
+}
+
+
+#group_about_box {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-top-color: rgb(51, 51, 51);
+    border-top-style: none;
+    border-top-width: 0px;
+    color: rgb(51, 51, 51);
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    background-color: white;
+    height: 150px;
+    margin-top: 0px;
+
+    outline-color: rgb(51, 51, 51);
+    outline-style: none;
+    outline-width: 0px;
+
+
+    width: 235px;
+    zoom: 1;
 }
