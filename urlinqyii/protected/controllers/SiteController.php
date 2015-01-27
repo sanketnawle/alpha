@@ -334,7 +334,7 @@ class SiteController extends Controller
             return;
         }
 
-        $user = $this->get_current_user($_GET);
+        $user = $this->get_current_user();
 
         if($user){
             if($user->status == 'active' || $user->status == 'onboarding'){
