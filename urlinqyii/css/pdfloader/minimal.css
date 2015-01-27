@@ -23,8 +23,8 @@ body {
 
 /* This stuff is important! Otherwise when you select the text,
    the text in the divs will show up! */
-::selection { background:rgba(0,0,0,0.6); }
-::-moz-selection { background:rgba(0,0,0,0.6); }
+div.tab_syllabus ::selection { background:rgba(0,0,0,0.6); }
+div.tab_syllabus ::-moz-selection { background:rgba(0,0,0,0.6); }
 
 .textLayer {
     position: absolute;

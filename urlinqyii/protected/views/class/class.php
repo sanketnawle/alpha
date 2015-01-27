@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_settings.css">
 	<link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_about.css">
-
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -144,6 +144,7 @@
                         <span><?php echo $class->location; ?></span>
 
                         <br>
+                        <em class ="small_icon_time"></em>
                         <span><?php echo $class->class_datetime; ?></span>
                     </div>
                     <?php } else { }?>
@@ -166,7 +167,7 @@
 
 
 
-        <div id="tab_bar">
+        <div id="tab_bar" class = "no_select">
 
             <?php if($is_member){ ?>
             <div class="tab feed active" data-panel_id="1">

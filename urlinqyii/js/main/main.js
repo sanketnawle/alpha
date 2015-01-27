@@ -48,7 +48,7 @@ $(document).ready(function(){
         var content_panel_width = $("#content_panel").width();
 
 
-        if(Math.floor(scroll_offset_top) >= 234.5){
+        if(Math.floor(scroll_offset_top) >= 189.5){
 
             ////console.log("SETTING TO FIXED");
             
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 
             $nav_bar.css({'position':'relative'});
-            $nav_bar.css({'top':'245.5px'});
+            $nav_bar.css({'top':'200.5px'});
 
             
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) >= 278){
+        if(Math.floor(scroll_offset_top) >= 233){
             $tab_bar.css({'background-color': 'rgba(18, 19, 20, .92)'});
             $tab_bar.css({'border-radius': '2px'});
             $tab_bar.css({position: 'fixed', top: '55px',width: content_panel_width});
@@ -85,12 +85,12 @@ $(document).ready(function(){
             $("#fixed_element.planner_group").css({'position':'fixed'});
             $("#fixed_element.planner_group").css({'top':'130px'});
 
-        }if(Math.floor(scroll_offset_top) <= 236){
+        }if(Math.floor(scroll_offset_top) <= 191){
             $nav_bar.css({'position':'fixed'});
             $nav_bar.css({'top':'56px'});            
         }
 
-        if(Math.floor(scroll_offset_top) <= 279){
+        if(Math.floor(scroll_offset_top) <= 234){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
         }
 
-        if(Math.floor(scroll_offset_top) <= 280){
+        if(Math.floor(scroll_offset_top) <= 235){
             //console.log("SETTING TO RELATIVE");
             //$tab_bar.css({position: 'relative', top: '0',width: tab_bar_width});
 //            $("#cover_photo").css({"transform":"translateY("+ y+"px)"});
@@ -514,6 +514,12 @@ $(document).ready(function(){
         });
     });
 
+
+    if($("body").hasClass("body_group") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
+        $(".point").css({"left":"40px","font-size":"13px"})
+    }
 
 
 
