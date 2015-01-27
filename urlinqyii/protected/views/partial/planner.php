@@ -36,7 +36,7 @@
 
 
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
-        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/planner/planner.js"> </script>
+
 
 
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/time_selector/time_selector.js"></script>
@@ -171,7 +171,7 @@
 
                     </script>
 
-
+                    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/planner/planner.js"> </script>
 
 
                     <div class='planner_event_header' id='past_due_events_header' style="display: none;">
