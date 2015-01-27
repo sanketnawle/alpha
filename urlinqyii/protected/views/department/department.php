@@ -18,9 +18,7 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-
-
-
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
     <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -144,11 +142,8 @@
 <!--                            </div>-->
                         <?php } ?>
 
-                        <div id="tab_more_button">
-                            <div id="tab_more_button_image"></div>
-                        </div>
 
-                        <?php echo $this->renderPartial('/partial/other_views_box',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+
 
 
                     </div>
