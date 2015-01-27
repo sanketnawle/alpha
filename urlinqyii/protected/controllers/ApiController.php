@@ -10,6 +10,13 @@
                 return;
             }
 
+            $get_user = $this->get_current_user($_POST);
+            if (!$get_user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
             $user_id = $_POST['user_id'];
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
 
@@ -38,9 +45,49 @@
             return;   
         }
 
+        public function actionDeleteAllNotificationIDs() {
+
+            if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $get_user = $this->get_current_user($_POST);
+            if (!$get_user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
+            $user_id = $_POST['user_id'];
+            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;            
+            }
+
+            $user = $this->get_current_user($_POST);
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;   
+            }
+
+            $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                $notification_id->delete;
+            }
+
+        }
+
         function notifyAlliOSDevicesForUserID($user_id, $message) {
 
-            $sql = "SELECT * FROM IosNotifications WHERE user_id = $user_id;";
+            $sql = "SELECT notification_id FROM IosNotifications WHERE user_id = $user_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
             foreach($device_notification_ids as $notification_id) {
