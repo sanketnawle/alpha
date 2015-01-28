@@ -48,7 +48,7 @@ $(document).ready(function () {
     var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
-    var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what they’re up to.", "These are some of the most active clubs at your school.", ""];
+    var canvas_hint = ["", "", "", "Here are some of the most popular classes in your department.", "Share your notes, take part in discussions, and see what theyï¿½re up to.", "These are some of the most active clubs at your school.", ""];
 
     var searchbar_hint = ["Search schools", "Search departments", "", "Search all classes", "Search people", "Search clubs", ""];
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
 
 //            var $canvas = $('.progress_content');
-            get_course_data();
+
 
 
 
@@ -90,6 +90,9 @@ $(document).ready(function () {
                     }
                 });
             }
+
+
+            get_course_data();
 
 
         }else if(progress_flag == 2){
@@ -478,6 +481,10 @@ $(document).ready(function () {
 
     $(document).on('click','.last_step_btn',function(e){
 
+        alert(JSON.stringify(selected_data));
+
+        console.log(selected_data);
+
         var $this_btn = $(this);
 
 
@@ -577,7 +584,11 @@ $(document).ready(function () {
 
 
 
+
         function send_finish_onboarding_post_request(){
+
+             alert(JSON.stringify(selected_data));
+
              $.post(
                 post_url,
                 post_data,
@@ -608,6 +619,7 @@ $(document).ready(function () {
         $('.step_3_card_section_detail_card.section_selected').each(function(){
             var class_id = $(this).attr('data-class_id');
             selected_data['classes'].push(class_id);
+            //alert('PUSHING CLASS ID  ' + class_id);
         });
 
 
@@ -630,10 +642,13 @@ $(document).ready(function () {
 
     function change_to_club_panel(){
         selected_data['follow_users'] = [];
-        $('.blue_btn.card_4_btn.followed').each(function(){
-            var user_id = $(this).parent().attr('data-user_id');
+        $('.card_4_btn.followed').each(function(){
+            //alert('FOLLOWED USER ID ' + $(this).closest('.step_4_card').attr('data-user_id'));
+            var user_id = $(this).closest('.step_4_card').attr('data-user_id');
             selected_data['follow_users'].push(user_id);
         });
+
+
 
         $.getJSON(base_url + '/school/getClubs?school_id=' + school_id,function(json_data){
             if(json_data['success']){
@@ -657,7 +672,7 @@ $(document).ready(function () {
     function change_to_last_panel(){
 
         selected_data['clubs'] = [];
-        $('.club_join.green_join_btn.followed').each(function(){
+        $('.club_join.followed').each(function(){
             var user_id = $(this).closest('.step_5_card').attr('data-group_id');
             selected_data['clubs'].push(user_id);
 
@@ -883,47 +898,118 @@ $(document).ready(function () {
 
 
 
+    $(document).on('change', '.section_check', function(e) {
+        console.log('CHANGE');
+
+//        e.preventDefault();
+//         if ($(this).is(":checked")) {
+//             console.log('CHANGE FALSE');
+//             $(this).prop('checked', false);
+//         }else{
+//             console.log('CHANGE TRUE');
+//             $(this).prop('checked', true);
+//         }
+//
+
+
+
+//        console.log('SECTION CHECK CLICK');
+//        var $this_section_check = $(this);
+//
+//
+//        if(user_type == 'p' && $this_section_check.closest('.step_3_card_section_detail_card').attr('data-professor_id') != ''){
+//            $this_section_check.prop('checked', false);
+//            $this_section_check.parent().removeClass('section_selected');
+//
+//
+//            alert('There is already a professor for this class');
+//            return;
+//        }
+//
+//        console.log($this_section_check.prop("checked"));
+//
+//        if(this.checked && $this_section_check.parent().hasClass('section_selected')){
+//
+//            $this_section_check.prop('checked', false);
+//            $this_section_check.parent().removeClass('section_selected');
+//            return;
+//        }
+//
+//
+//        var $step_3_card = $this_section_check.closest('.step_3_card');
+//
+//        //Go through all the other checkboxes and uncheck them
+//        $step_3_card.find('.section_check').each(function(){
+//            $(this).prop('checked', false);
+//            $(this).parent().removeClass('section_selected');
+//        });
+//
+//
+//
+//        //$this_section_check.prop('checked', true);
+//        $this_section_check.parent().addClass('section_selected');
+
+
+    });
+
+
 
     $(document).on('click','.section_check', function(e){
+//        e.preventDefault();
+//        e.stopPropagation();
 
-        e.stopPropagation();
 
 
-        console.log('SECTION CHECK CLICK');
+//                 console.log('CLICK');
+//
+//        console.log('SECTION CHECK CLICK');
+
+//
+//
+//        if(user_type == 'p' && $this_section_check.closest('.step_3_card_section_detail_card').attr('data-professor_id') != ''){
+//
+//            $this_section_check.prop('checked', false);
+//            $this_section_check.parent().removeClass('section_selected');
+//
+//
+//            alert('There is already a professor for this class');
+//            return;
+//        }
+//
+////        //since the checkbox automatically checks before this function gets called
+////        //, check if its NOT checked
+//
+//        console.log($this_section_check.prop("checked"));
+//
+//        if($this_section_check.is(":checked") && $this_section_check.parent().hasClass('section_selected')){
+//            $this_section_check.prop('checked', false);
+//            $this_section_check.parent().removeClass('section_selected');
+//            return;
+//        }
+//
+//
+
         var $this_section_check = $(this);
-
-
-        if(user_type == 'p' && $this_section_check.closest('.step_3_card_section_detail_card').attr('data-professor_id') != ''){
-
-            $this_section_check.prop('checked', false);
-            $this_section_check.parent().removeClass('section_selected');
-
-
-            alert('There is already a professor for this class');
-            return;
-        }
-
-        //since the checkbox automatically checks before this function gets called
-        //, check if its NOT checked
-        if(!$this_section_check.prop("checked")){
-            $this_section_check.prop('checked', false);
-            $this_section_check.parent().removeClass('section_selected');
-            return;
-        }
-
-
         var $step_3_card = $this_section_check.closest('.step_3_card');
 
         //Go through all the other checkboxes and uncheck them
         $step_3_card.find('.section_check').each(function(){
-            $(this).prop('checked', false);
-            $(this).parent().removeClass('section_selected');
+            if(!$(this).is($this_section_check)){
+                $(this).prop('checked', false);
+                $(this).parent().removeClass('section_selected');
+            }
+
         });
 
-
-        $this_section_check.prop('checked', true);
-        $this_section_check.parent().addClass('section_selected');
-
+//
+//
+//        $this_section_check.prop('checked', true);
+//        $this_section_check.parent().addClass('section_selected');
+//
+////
+//        $this_section_check.prop('checked', true);
+//        $this_section_check.parent().addClass('section_selected');
+//        //alert($this_section_check.parent().attr('data-class_id'));
 
     });
 

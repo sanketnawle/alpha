@@ -1,43 +1,4 @@
-  <?php
-/*
-In this page getting the user's login info both for fb and normal login
-if he is logging in with fb sending him to fblogin.php
-normal login goes to afterlogin.php
-also we are checking if the cookies are set if they are set we are sending him to home
-If he registring with fb we are getting his details from fb javascript plugin and grabbing his first last and email
-1=select the account type
-2=All fields are to be filled
-3=password contains name
-4=please enter corresponding nyu.edu email
-5=coming soon to your university
-6=please enter  nyu.edu email
-7=password length atleast 6 chars
-to render the firstname,lastname,email,usertype if something goes wrong in the registeration 
-I am using session varaibles register_firstname,register_lastname,register_email,register_user_type
 
-*/
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-if(isset($_GET['session'])){
-  session_destroy();
-}
-if(isset($_SESSION['id'])){
-   $_SESSION['id'] = false;
-     unset($_SESSION['id']);
-     $_SESSION['firstname'] = false;
-     unset($_SESSION['firstname']);
-     $_SESSION['lastname'] = false;
-     unset($_SESSION['lastname']);
-     $_SESSION['fbemail'] = false;
-     unset($_SESSION['fbemail']);
-
-}
-if(isset($_COOKIE['beta_user_id'])){
-header('location:home.php');
-}else{
-}
-?>
 <html>
 <head>
     <script>
@@ -54,7 +15,7 @@ header('location:home.php');
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
-<link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -63,8 +24,8 @@ header('location:home.php');
     <!--<link href="lp_beta_announce_special.css" rel='stylesheet' type='text/css'>-->
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
 
 
 
