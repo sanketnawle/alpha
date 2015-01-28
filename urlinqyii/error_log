@@ -2475,3 +2475,7 @@
 [27-Jan-2015 19:43:25 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 974
 [28-Jan-2015 00:57:18 UTC] PHP Fatal error:  Call to a member function delete() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/PostController.php on line 832
 [28-Jan-2015 00:57:40 UTC] PHP Fatal error:  Call to a member function delete() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/PostController.php on line 832
+[28-Jan-2015 01:18:26 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
+[28-Jan-2015 01:18:29 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
+[28-Jan-2015 01:18:30 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
+[28-Jan-2015 01:52:02 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
