@@ -1004,6 +1004,10 @@ $(document).ready(function() {
             success: function(result)
             {
                 var any_errors = false;
+                if(result.success == false){
+                    alert('invalid user');
+                    any_errors = true;
+                }
                 if(result.year_name == "success"){
                     $('#level_name').text($('#level_dropdown').val());
                     match =(new RegExp("at (.+)$")).exec($('#year_info').text());
