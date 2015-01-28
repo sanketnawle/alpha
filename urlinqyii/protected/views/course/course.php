@@ -139,8 +139,11 @@
                                             <?php if($class->class_datetime){ ?>
                                                 <div class= "info_line indent">Time: <?php echo $class->class_datetime; ?></div>
                                             <?php } ?>
-
                                             <div class= "info_line indent"><?php echo count($class_students); ?> students</div>
+                                            <?php $professor = $class->professor; ?>
+                                            <?php if($professor){ ?>
+                                                <div class="info_line indent profile_link" data-user_id="<?php echo $class->professor->user_id; ?>"><?php echo $class->professor->firstname . ' ' . $class->professor->lastname; ?></div>
+                                            <?php } ?>
                                             <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
                                             <div class = "info_line info_about">
                                                 <?php foreach($class_students as $student){ ?>
