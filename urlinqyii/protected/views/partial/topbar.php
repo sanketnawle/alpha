@@ -185,7 +185,7 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'like'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post!</div>
+                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post: {{origin.text}}</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}
