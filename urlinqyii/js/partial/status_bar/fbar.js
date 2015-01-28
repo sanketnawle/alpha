@@ -1133,7 +1133,7 @@ $(document).ready(function() {
         post_data['origin_type'] = globals.origin_type;
         post_data['origin_id'] = globals.origin_id;
 
-        alert(globals.origin_id);
+        //alert(globals.origin_id);
 
         //If we are on home or profile page, check if the
         //user has set a different audience
