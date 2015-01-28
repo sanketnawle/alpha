@@ -159,7 +159,7 @@
                 }
             }
 
-            if($thing && $file) {
+            if($thing && $pictureFile) {
 
                 $file_id = $pictureFile->file_url;
 
