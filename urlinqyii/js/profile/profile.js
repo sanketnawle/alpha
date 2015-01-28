@@ -1082,7 +1082,7 @@ $(document).ready(function() {
                             $('#name_info').text($('#name_input').val()+" "+match[1]);
                         }
                     }
-                    $('#profile_tab_text').text($('#name_input').val()+"'s Feed")
+                    //$('.profile_tab.feed').find('.profile_tab_text').text($('#name_input').val()+"'s Feed");
                 }else if(result.name){
                     alert(result.name);
                     any_errors = true;
