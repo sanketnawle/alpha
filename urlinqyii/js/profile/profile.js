@@ -8,7 +8,7 @@ $(document).ready(function() {
         old_origin_id = globals.origin_id;
         old_origin_type = globals.origin_type;
         //alert(globals.origin_id);
-        globals.origin_id = globals.user_id;
+        globals.origin_id = $(this).attr('data-user_id');
         //alert(globals.user_id);
         globals.origin_type = 'user';
         globals.profile_open = true;

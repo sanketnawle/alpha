@@ -15,7 +15,7 @@ class FeedController extends Controller
     private static $reply_flag;
 
     public function __construct(){
-        self::$cur_user_id = Yii::app()->session['user_id'] || 1;
+        self::$cur_user_id = Yii::app()->session['user_id'];
         self::$user = User::model()->find('user_id=:id', array(':id'=> self::$cur_user_id));
         self::$cur_sem = "fall";
 
@@ -252,7 +252,7 @@ class FeedController extends Controller
             $posts[$i]['user_info'] = self::getUserInfo($post['user_id']);
 
             // post-ownership flag
-            if($post['user_id']==self::$cur_user_id)
+            if($post['user_id']==self::$user->user_id)
                 $posts[$i]['pownership'] = TRUE;
             else
                 $posts[$i]['pownership'] = FALSE;
@@ -505,7 +505,7 @@ class FeedController extends Controller
 
         // check if the cur_user is the owner of the profile page currently viewing
         if ($prof_mod = User::model()->find('user_id=:id', array(':id'=> $_GET['id']))){
-            if ($prof_mod->user_id == self::$cur_user_id)
+            if ($prof_mod->user_id == self::$user->user_id)
                 $is_admin = TRUE;
             else
                 $is_admin = FALSE;
@@ -516,8 +516,7 @@ class FeedController extends Controller
 
         $posts_sql_profile = "SELECT distinct *
 				  from post p
-				  where p.created_at < '" . $created_at . "' and p.user_id = ".self::$user->user_id."
-				  OR (p.origin_type = 'user' and p.origin_id = ".$_GET['id'].")
+				  where p.created_at < '" . $created_at . "' and (p.origin_type = 'user' and p.origin_id = ".$_GET['id'].")
 					ORDER BY last_activity DESC	LIMIT ".self::$start_rec.",".self::POST_LIMIT;
 
         $command = Yii::app()->db->createCommand($posts_sql_profile);
