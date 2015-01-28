@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/tab_members.css">
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
-    link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css">
+    <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
     

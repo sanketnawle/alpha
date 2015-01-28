@@ -300,6 +300,7 @@ form.top_search_bar_form{
                 height: 22px;
             
                 font-family: 'Open Sans', sans-serif;
+                color:#999;
 }
 
             .topbar #topbar_responsive_holder .center form .submit {
@@ -367,9 +368,7 @@ border-radius:3px
 
         .topbar > #topbar_responsive_holder > .right .notify:hover > .button,.topbar > #topbar_responsive_holder > .right .notify.active > .button {
             background: rgba(18, 19, 20, 0.333); 
-            -moz-transition: all .12s ease;
-            -webkit-transition: all .12s ease;
-            transition: all .12s ease;
+
         }
 
             .topbar > #topbar_responsive_holder > .right .notify .button {

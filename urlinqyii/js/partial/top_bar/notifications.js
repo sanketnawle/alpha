@@ -284,6 +284,9 @@ $(document).ready(function(){
 
 
 
+    $(document).on('click', '.topbar > #topbar_responsive_holder .right .notify .notify-window .window', function(e){
+        e.stopPropagation();
+    });
 
 
 

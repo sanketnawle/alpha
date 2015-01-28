@@ -3283,6 +3283,7 @@ z-index: 999;
     margin-top: 1px;
     border-radius: 3.5px;
     margin-left: 17.5px;
+    text-shadow:1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 div.post_event_month{ 

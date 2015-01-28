@@ -101,7 +101,6 @@
 
 
                                             <br>
-                                            <?php echo $club->school->school_name; ?>
                                         </div>
                                     </div>
 
@@ -187,15 +186,13 @@
                                 <div id = "right_column_specs">
 
 
+                                    <div class="classic_about_box" id="group_about_box">
+                                        <h5>About</h5>
 
-                                    <div id = "fixed_element" class = "planner_group">
+                                        <div class="class_description_holder"><?php echo $club->group_desc; ?></div>
 
-                                        <div class="classic_about_box" id="group_about_box">
-                                            <h5>About</h5>
-
-                                            <div class="class_description_holder"><?php echo $club->group_desc; ?></div>
-
-                                        </div>
+                                    </div>
+                                    <div id = "fixed_element" class = "planner_group planner_club">
 
                                         <?php
                                         echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'club','origin_id'=>'<?php echo $club->group_id; ?>'));

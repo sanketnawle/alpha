@@ -12,6 +12,11 @@ padding-bottom: 3px;
 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0, 0, 0, 0.07);
 }
 
+body#body_group #time_selector, body#body_home #time_selector{
+    width:71px;
+    margin-top: 13px;
+}
+
 body.body_club .planner_container{
 margin-top: 15px;
 }
@@ -262,19 +267,19 @@ span.create_planner_message {}
     left: -1px;
 }
 .event_date{
-width: 100px;
-height: 24px;
+width: 95px;
+height: 23px;
 cursor: pointer;
 background-repeat: no-repeat;
 background-image: url("../../../assets/partial/planner/calendar.png");
 margin-left: 5px;
-background-position: 88px 10px;
+background-position: 82px 9px;
 background-size: 13px auto;
 border-radius: 2px;
 outline: medium none;
 transition: all 0.2s ease 0s;
 -moz-osx-font-smoothing: grayscale;
-padding: 3px 0px 2px 6px;
+padding: 3px 0px 2px 5px;
 font-size: 12.5px;
 font-weight: 400;
 border-width: 1px;
@@ -316,27 +321,24 @@ border-image: none;
     display: inline-block;
     border-radius: 4px;
     float: right;
-    margin-top: -3px;
+    margin-top: -13px;
     height: 30px;
-    border-color: transparent;
     border-width: 1px;
 
     cursor: pointer;
     border: 1px solid;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-size: 12.5px;       
-    border: 1px solid #C0C0C0;           
+    font-size: 12.5px;                  
     border-radius: 3px;      
     left: 3px;           cursor:pointer;     
     top: 10px;           height: 28px;                      
-    color: #fff;
-    background-color: #45a8cf; border: 1px solid rgb(29, 153, 207); -moz-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 1px 1px rgba(59, 192, 216, 1),inset 0 -1px 1px rgba(73, 186, 236, 1), 0 0 1px rgba(250, 250, 250, 1), 0 0 1px rgba(255, 255, 255, 1);
+    color: #fff;    
+    background-color: rgba(6, 155, 207, 0.8); border: 1px solid #029acf!important; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .create_form:hover{
-    outline: 0;
-    background-color: #4CB2DA;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902)); background-color: #069bcf; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 .create_form:active{
@@ -1002,6 +1004,6 @@ opacity:1;
 }
 
 #tp1 {
-
-    width: 50px;
+    padding: 6px 7px;
+    width: 57px;
 }
