@@ -587,7 +587,7 @@ $(document).ready(function () {
 
         function send_finish_onboarding_post_request(){
 
-             alert(JSON.stringify(selected_data));
+             //alert(JSON.stringify(selected_data));
 
              $.post(
                 post_url,
