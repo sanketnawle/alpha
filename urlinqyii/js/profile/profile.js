@@ -8,7 +8,7 @@ $(document).ready(function() {
         old_origin_id = globals.origin_id;
         old_origin_type = globals.origin_type;
         //alert(globals.origin_id);
-        globals.origin_id = globals.user_id;
+        globals.origin_id = $(this).attr('data-user_id');
         //alert(globals.user_id);
         globals.origin_type = 'user';
         globals.profile_open = true;
@@ -101,6 +101,9 @@ $(document).ready(function() {
                 }
                 if(!data.bio){
                     $('#bio_section').hide();
+                }
+                if(!data.year_name){
+                    $('#level_section').hide();
                 }
 
                 if(data.gender=="M"){
@@ -859,6 +862,8 @@ $(document).ready(function() {
         });
         //year and academic level
         $('#year_dropdown').val($('#year').text());
+        any_year_name = $('#level_section').is(':visible');
+        $('#level_section').show();
         $('#level_dropdown').val($('#level_name').text());
         //majors
         $('.info_name.major').each(function(i){
@@ -884,7 +889,7 @@ $(document).ready(function() {
         //bio
         any_bio=$('#bio_section').is(':visible');
         $('#bio_section').show();
-
+        $('#bio_input').attr('rows',Math.ceil($('#bio').text().length/$('#bio_input').attr('cols')));
         $('#bio_input').val($('#bio').text());
         $('.info_section.account').show();
 
@@ -899,8 +904,14 @@ $(document).ready(function() {
         $('#cancel_edit_button').show();
         $('#cancel_edit_button').css('display','inline-block');
     });
+
+    //autoexpand and autoshrink bio
+    $(document).on('keyup','#bio_input',function(){
+        $('#bio_input').attr('rows',Math.ceil($(this).val().length/$('#bio_input').attr('cols')));
+    });
     var any_major;
     var any_minor;
+    var any_year_name;
     var any_research=false;
     var match;
     $(document).on('click','#edit_profile_button.editing',function(){  //submit changes
@@ -958,6 +969,7 @@ $(document).ready(function() {
             }
         }
         any_bio = $.trim($('#bio_input').val()) != "";
+        any_year_name = $.trim($('#level_input').val()) != "";
 
         $('#major_section > .info_name.undeclared').hide();
         $.ajax({
@@ -1131,6 +1143,9 @@ $(document).ready(function() {
         }
         if(!any_bio){
             $('#bio_section').hide();
+        }
+        if(!any_year_name){
+            $('#level_section').hide();
         }
         $('.headers').hide();
         $('.info_section.account').hide();

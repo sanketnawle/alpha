@@ -237,7 +237,7 @@ font-size: 14px;
 margin-right: 5px;
 display: block;
 font-weight: 600;
-text-transform: capitalize;
+/*text-transform: capitalize;*/
 color: #333;
 }
 a.info_name{
@@ -451,7 +451,7 @@ span.follow_icon_profile_page{
     width:10%;
 }
 #bio_input{
-    height:60px;
+    /*height:60px;*/
     resize: none;
 }
 .user_pic{
