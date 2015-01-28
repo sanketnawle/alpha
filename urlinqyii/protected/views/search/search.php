@@ -570,9 +570,9 @@
             <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
         </div>
     </div>
+</script>
 
-
-
+    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user')); ?>
 </body>
 
 
