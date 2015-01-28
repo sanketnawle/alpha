@@ -1095,20 +1095,21 @@ div.float_Center.courses_list{
     right: 0px;
 }
 
-ul.tabnav_tabs li div.tabnav_tab{
-    background-color: transparent;
-
-    border: 1px solid transparent;
-    border-radius: 3px 3px 0 0;
-    display: inline-block; 
-    padding: 10px 27px 9px; 
+ul.tabnav_tabs li div.tabnav_tab {
+background-color: transparent;
+border: 1px solid transparent;
+border-radius: 3px 3px 0 0;
+cursor: pointer;
+display: inline-block;
+padding: 10px 27px 9px;
 }
 
-ul.tabnav_tabs li.active div.tabnav_tab{
-    border: 1px solid #ddd;
-    font-weight: 600;
-    border-bottom: 1px solid #F4F4F4;
-    box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
+ul.tabnav_tabs li.active div.tabnav_tab {
+border: 1px solid #ddd;
+font-weight: 600;
+border-bottom: 1px solid #F4F4F4;
+box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
+cursor: default;
 }
 
 ul.tabnav_tabs li div.tabnav_tab span{
@@ -1144,7 +1145,7 @@ ul.tabnav_tabs li.active{
     
 }
 
-#left_search_icon{
+#left_search_icon,.left_search_icon{
     background-image: url(../../assets/left_search_icon.png);
 
     display: inline-block;
@@ -1583,6 +1584,10 @@ textarea:focus:-moz-placeholder {
         display:none;
     }
 
+    body#body_home #right_panel.group_responsiveness{
+        display:block!important;
+    }
+
     body.left_panel_hidden.left_panel_hidden_p2 #right_panel.group_responsiveness{
         display:block;
     }
@@ -1596,6 +1601,10 @@ textarea:focus:-moz-placeholder {
     .topbar #topbar_responsive_holder{
         padding-right:0px!important;
     }
+
+    body#body_home .topbar #topbar_responsive_holder{
+        padding-right: 150px!important;
+    }    
     /*.topbar > #topbar_responsive_holder > .left{
         margin-left:0px!important;
     }*/
@@ -1606,9 +1615,15 @@ textarea:focus:-moz-placeholder {
     #body_home #main_panel{
         padding-right:0px;
     }
-    #body_home #right_panel{
-        display:none;
+
+    body#body_home .topbar #topbar_responsive_holder{
+        padding-right: 0px!important;
+    }      
+
+    body#body_home #right_panel.group_responsiveness{
+        display:none!important;
     }
+
     #body_home #content_panel{
         margin-left: 280px;
     }

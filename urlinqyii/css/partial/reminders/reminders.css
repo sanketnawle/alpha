@@ -4,7 +4,14 @@ div#reminders_section{
 
 div#reminders_section > div{
     margin-top: 14px;
+}
 
+a.reminders_cal_link > div.blue_right_arrow {
+background-position: -39px -276px;
+width: 17px;
+height: 14px;
+position: relative;
+top: 2px;
 }
 
 div.reminders_header.header{
