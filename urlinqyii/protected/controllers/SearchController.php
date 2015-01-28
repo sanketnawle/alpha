@@ -178,7 +178,7 @@ class SearchController extends Controller
 //            ->limit(30)
 //            ->queryAll();
 
-        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' LIMIT 30");
+        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' AND user_type = 's' LIMIT 30");
         for($i = 0; $i < count($students); $i++){
             //CHeck if u are following this user
 
@@ -194,14 +194,18 @@ class SearchController extends Controller
             }
         }
 
-        $professors = Yii::app()->db->createCommand()
-            ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
-            ->from('user u')
-            ->join('department d','u.department_id = d.department_id')
-            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->andWhere("u.user_type = 'p'")
-            ->limit(30)
-            ->queryAll();
+        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' AND user_type = 'p' OR user_type = 'a' LIMIT 30");
+        for($i = 0; $i < count($faculty); $i++){
+            //CHeck if u are following this user
+            $faculty[$i] = $this->get_model_associations($faculty[$i], array('pictureFile'));
+
+            $user_connection = UserConnection::model()->find('from_user_id=:from_user_id and to_user_id=:to_user_id', array(':from_user_id'=>$user->user_id, ':to_user_id'=>$faculty[$i]['user_id']));
+            if($user_connection){
+                $faculty[$i]['following'] = true;
+            }else{
+                $faculty[$i]['following'] = false;
+            }
+        }
 
 
         $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query . "%' OR course_tag LIKE '%" . $query . "%' LIMIT 30");
@@ -367,7 +371,7 @@ class SearchController extends Controller
                 'departments'=>$departments,
                 'clubs'=>$groups,
                 'students'=>$students,
-                'professors'=>$professors,
+                'professors'=>$faculty,
                 'schools'=>$schools,
                 'majors'=>$majors,
                 'allDepartments'=>$departments //as opposed to 'departments' from dsql which takes query

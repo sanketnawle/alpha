@@ -144,7 +144,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">600</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Courses</span>
@@ -169,7 +169,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">400</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Clubs</span>
@@ -186,7 +186,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">50</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Departments</span>
@@ -203,7 +203,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">850</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Faculty</span>
@@ -225,7 +225,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">520</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Students</span>
@@ -254,7 +254,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">85</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name no_name_marginbtm">
                                     <span class = "filter_on_indicator">Showing </span><span>Events</span>
@@ -267,7 +267,7 @@
                         <div class = "search_results_main">
                             <div class = "search_results_header">
                                 <span class = "search_results_header_sentence">
-                                    Search Results for <span class = "query">'Economics' </span><span class = "results_count"></span>
+                                    Search Results for <span class = "query">'' </span><span class = "results_count"></span>
                                 </span>
                             </div>
 
@@ -357,7 +357,7 @@
                 <span class = "class_year">Senior</span>
             </div>
             <div class = "user_main_info">
-                <a class = "name profile_link" data-user_id="{{user_id}}">{{fullname}}</a>
+                <a class = "name profile_link" data-user_id="{{user_id}}">{{fullname}}</a></br>{{user_email}}
             </div>
             <div class = "user_more_info">
                 <a class = "department_link">{{department_name}}</a>
