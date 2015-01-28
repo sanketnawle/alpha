@@ -68,7 +68,7 @@ background-size: auto;
 height: 19px;
 background-position: -44px -463px;
 position: relative;
-left: -10.5px;
+left: 6px;
 top: 11px;
 opacity: .8;
 }
@@ -100,9 +100,9 @@ float: left;
 position: relative;
 height: 58px;
 margin-top: 1px;
-border-radius: 0px 2.4px 2.4px 0px;
+border-radius: 500px;
 cursor: pointer;
-margin-left: -11px;
+margin-left: 5px;
 background-size: cover!important;
 border-left: none;
 }
@@ -195,7 +195,7 @@ cursor: pointer;
 /* font-weight: bold; */
 /* -webkit-font-smoothing: antialiased; */
 -moz-osx-font-smoothing: grayscale;
-left: -12px;
+left: 4px;
 display: inline-block;
 -webkit-transition: color .218s; -moz-transition: color .218s; -o-transition: color .218s; transition: color .218s;
 }
@@ -228,7 +228,7 @@ font-size: 12.5px;
 font-weight: 300!important; 
 margin-top: 6px;
 color: #B6B9BE;   
-margin-left: 65px;
+margin-left: 82px;
 }
 
 span.time_icon{
@@ -3281,7 +3281,9 @@ z-index: 999;
     background-color: #777;
     float: left;
     margin-top: 1px;
-    border-radius: 0px 2.4px 2.4px 0px;
+    border-radius: 3.5px;
+    margin-left: 17.5px;
+    text-shadow:1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 div.post_event_month{ 
@@ -3324,7 +3326,7 @@ div.post_event_title{
     font-size: 15.5px;
 
     font-weight: 500;
-    padding: 8.5px 56px 4px;
+    padding: 8.5px 74px 4px;
     text-transform: capitalize;
 }
 
@@ -3456,7 +3458,7 @@ span.location_icon_dark{
 }
 
 div.event_context{
-    padding-left: 56px;
+    padding-left: 74px;
     font-size: 13.5px;
 }
 

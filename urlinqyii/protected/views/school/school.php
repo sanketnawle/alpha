@@ -36,7 +36,7 @@
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 </head>
 
-<body class = "body_group">
+<body class = "body_group body_school">
 
     <?php echo Yii::app()->runController('partial/topbar'); ?>
     <div id="wrapper">
@@ -162,7 +162,7 @@
                                     <?php } else { }?>
 
                                     <?php if($school->school_description) { ?>
-                                        <p><?php echo $school->school_description; ?></p>
+                                        <p class = "school_about"><?php echo $school->school_description; ?></p>
                                     <?php } else { }?>
 
                                     <div class = "about_section_group_links">
@@ -199,12 +199,12 @@
                     <div class="tab_content_holder">
                         <div class="tab_header"> 
                             <div class = "float_Right">
-                                <span class = "sort_label">Order:</span>
+                                <!--<span class = "sort_label">Order:</span>
                                 <div class = "order_sort_dropdown">
                                     <span>Followers High to Low</span>
                                     <em class = "dropdown_arrow">
                                     </em>
-                                </div>
+                                </div>-->
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
@@ -250,12 +250,12 @@
                     <div class="tab_content_holder">
                         <div class="tab_header"> 
                             <div class = "float_Right">
-                                <span class = "sort_label">Order:</span>
+                                <!--<span class = "sort_label">Order:</span>
                                 <div class = "order_sort_dropdown">
                                     <span>Members High to Low</span>
                                     <em class = "dropdown_arrow">
                                     </em>
-                                </div>
+                                </div>-->
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
@@ -271,10 +271,10 @@
 
                         <div class="tab_content">
 
-
+                            <div class = "group_info_tab_content">
                             <?php foreach($school->clubs as $club){?>
 
-                                <div class = "group_info_tab_content">
+                                
                                     <div class = "group_box group_course_box club_box">
                                         <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
                                             <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
@@ -301,9 +301,11 @@
                                     </div>
 
 
-                                </div>
+                                
 
                             <?php } ?>
+
+                            </div>
 
                         </div>
 

@@ -46,7 +46,7 @@ $(document).ready(function(){
         //Get the width of the content panel. The bar should always be the same width
         //as content panel
         var content_panel_width = $("#content_panel").width();
-
+        console.log(scroll_offset_top);
 
         if(Math.floor(scroll_offset_top) >= 189.5){
 
@@ -84,6 +84,8 @@ $(document).ready(function(){
             $cover_photo.css({'opacity':'0'});
             $("#fixed_element.planner_group").css({'position':'fixed'});
             $("#fixed_element.planner_group").css({'top':'130px'});
+            $("#fixed_element.planner_group.planner_club").css({'position':'relative'});
+            $("#fixed_element.planner_group.planner_club").css({'top':'0px'});
 
         }if(Math.floor(scroll_offset_top) <= 191){
             $nav_bar.css({'position':'fixed'});
@@ -130,6 +132,16 @@ $(document).ready(function(){
             //$("#cover_photo").css({"transform":"translateY("+y+"px)"});
 
 
+        }
+
+        if(Math.floor(scroll_offset_top) <= 413){
+            $("#fixed_element.planner_group.planner_club").css({'position':'relative'});
+            $("#fixed_element.planner_group.planner_club").css({'top':'0px'});
+        }        
+
+        if(Math.floor(scroll_offset_top) >= 414){
+            $("#fixed_element.planner_group.planner_club").css({'position':'fixed'});
+            $("#fixed_element.planner_group.planner_club").css({'top':'105px'});
         }
 
         //alert(y);
@@ -506,9 +518,13 @@ $(document).ready(function(){
     }catch(err){
     }
     $(function(){
-        $('p.founded_text').slimScroll({
+        $('body.body_club div#fixed_element div.about_box').slimScroll({
             height: 'auto'
         });
+        
+        $('div.about_box p.school_about').slimScroll({
+            height: '300px'
+        });        
         $('.group_info_boxes.group_desc_box > .group_info_block').slimScroll({
             height: 'auto'
         });

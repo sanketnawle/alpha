@@ -172,6 +172,8 @@ jQuery(document).ready(function(){
 
 
 
+
+
         //Close the time input if there is one
         try{
             $('#calLayer').hide();
@@ -184,7 +186,7 @@ jQuery(document).ready(function(){
         var input_position = $time_input.offset();
 
         //Set the position of the time selector to underneath this time input
-        $time_selector.css({'position': 'fixed'});
+        $time_selector.css({'position': 'absolute'});
         $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
         $time_selector.css({'z-index': '9999'});
@@ -207,6 +209,9 @@ jQuery(document).ready(function(){
 
         //Set 'active' time input field value to the selected time
         $last_selected_time_input.val(time_string_to_am_pm_string(time_string));
+
+
+        alert(time_string_to_am_pm_string(time_string));
 
         //Set the data attribute to the time_string to make it easy to pull off
         $last_selected_time_input.attr('data-time', time_string);

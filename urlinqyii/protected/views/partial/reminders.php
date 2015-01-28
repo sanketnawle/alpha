@@ -9,7 +9,7 @@
 
     </head>
     <body>
-        <div id="reminders">
+        <div id="reminders_section">
             <div>
                 <div class="reminders_header header">Reminders</div>
                 <ul class="reminder_entries">
@@ -37,10 +37,7 @@
                     <div class="day">{{day}}</div>
                 </div>
                 <div class="content">
-                    <div class="right">
-                        <div class="dismiss">Dismiss</div>
-                        <div class="close"></div>
-                    </div>
+
 
                     <div class="time">
                         <div class="stamp">{{formatted_end_time}}</div>
@@ -48,7 +45,7 @@
 
                     {{#ifCond origin_type '==' 'class'}}
                         {{#ifCond event_type '==' 'exam'}}
-                            <div class="message">{{event_type}} in {{origin.name}}.</div>
+                            <div class="message"><span class = "event_highlight">{{event_type}}</span> in {{origin.name}}.</div>
                         {{/ifCond}}
                     {{/ifCond}}
 

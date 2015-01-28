@@ -35,7 +35,7 @@
             </div>
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
-                <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
+                <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search" class = "top_search_bar_form">
                     <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search your university">
                     <button type="submit" class="submit"></button>
                 </form>
@@ -90,10 +90,10 @@
             </div>        
 
             <div class="right">
-                <div class="notify calendar">
+                <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Reminders</div>
+                        <div class = "icon_text">Notifications</div>
                     </div>
 
 
@@ -118,14 +118,6 @@
 
                             </ul>
                         </div>
-                    </div>
-
-                </div>
-                <div class="notify board">
-                    <div class="button">
-                        <div class="icon"></div>
-                        <div class = "icon_text">Notifications</div>
-                        <div id="new_notification_count_holder"><span id="new_notification_count"></span></div>
                     </div>
 
                 </div>

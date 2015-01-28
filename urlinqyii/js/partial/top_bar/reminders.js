@@ -36,12 +36,11 @@ $(document).ready(function(){
 
 
 
-    var $reminders_button = $('.notify.calendar');
 
     var reminders = [];
 
 
-    var $reminders = $('#reminders');
+    var $reminders = $('#reminders_section');
 
 
 
@@ -105,9 +104,8 @@ $(document).ready(function(){
     function position_reminders(){
 
         //get the noti button
-        var $reminders_button = $('.notify.calendar');
 
-        //var $reminders = $('#reminders');
+        //var $reminders = $('#reminders_section');
 //        $reminders.css({'top': $notification_button.position().top});
 //        $reminders.css({'left': $notification_button.position().left});
         $reminders.css({'position': 'absolute'});
@@ -161,32 +159,6 @@ $(document).ready(function(){
 
 
 
-    $(document).on('click', '.notify.calendar', function(){
-        $reminders_button.removeClass('new_reminders');
-        $reminders_button.find('#new_notification_count').text('');
-
-
-
-        //Hide the notifications drop down
-        $('#notifications').hide();
-
-        position_reminders();
-
-
-
-
-        var $reminders = $('#reminders');
-
-
-
-        if($reminders.is(":visible")){
-            $reminders.hide();
-        }else{
-            $reminders.show();
-
-        }
-
-    });
 
 
 
