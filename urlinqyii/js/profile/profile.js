@@ -67,7 +67,12 @@ $(document).ready(function() {
                     if(json_feed_data['success']){
                         //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
-                        render_posts(json_feed_data['feed']);
+                        if(json_feed_data['feed'].length == 0){
+                            var $posts_container = $("#profile_posts");
+                            $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very start of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
+                        }else{
+                            render_posts(json_feed_data['feed']);
+                        }
                     }else{
                         console.log('failed to get feed');
                     }
