@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
         event.stopPropagation();
         var $day_time_div = jQuery(this);
         var this_date = $day_time_div.attr('data-date');
-        var this_date_obj = new Date(this_date + ' 00:00:00');
+        var this_date_obj = new_date(this_date);
         var this_time = $day_time_div.attr('data-time');
         var this_time_int = parseInt($day_time_div.attr('data-time_num'));
         var $create_week_day_event_popup = jQuery('#create_week_day_event_popup');
@@ -65,7 +65,7 @@ jQuery(document).ready(function(){
             
 
     //            Mon, January 5, 4:30pm – 5:30pm
-            var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new Date(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new Date(this_date + ' ' + end_time));
+            var inspect_event_text = format_event_date_text(this_date_obj) + ' ' + date_to_am_pm_string(new_datetime(this_date + ' ' + this_time)) + ' - ' + date_to_am_pm_string(new_datetime(this_date + ' ' + end_time));
             $create_week_day_event_popup.find('#create_week_day_event_when').text(inspect_event_text);
 
 
@@ -158,6 +158,18 @@ jQuery(document).ready(function(){
         var event_todo = false;
         var event_all_day = true;
 
+
+
+        //Convert to UTC for the database
+
+        var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
+        var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
+
+        event_start_date = date_to_string(event_start_datetime);
+        event_start_time = datetime_to_time_string(event_start_datetime);
+
+        event_end_date = date_to_string(event_end_datetime);
+        event_end_time = datetime_to_time_string(event_end_datetime);
 
         var post_data = {
             event:{

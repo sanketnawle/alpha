@@ -20,7 +20,7 @@ max-width:1450px;
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
-    float:none;
+    float:right;
     margin-left:110px;
 }
 
@@ -44,15 +44,14 @@ body.body_group .topbar > #topbar_responsive_holder > .right{
 .search_result_icon.non_profile_icon{
     text-transform: uppercase;
     color: #fff;
-    border-radius: 100px;
+    border-radius: 1px;
     float: right;
     line-height: 8px;
     font-size: 9px;
     font-weight: bold;
     font-family: Avenir;
     padding: 6px 5px 4px;
-    background-color: #3A3A3A;
-    border: 1px solid #000;
+    background-color: rgba(0, 0, 0, 0.6);
     display: inline-block;
     margin: 6px 6px 5px 0px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
@@ -265,7 +264,7 @@ width: 980px!important;
 }
 
         .topbar .center form {
-            background-color: white;
+            background-color: rgba(0, 0, 0, .77);
             position: relative;
             margin-top: 0px;
             padding: 5px 7px 5px;
@@ -280,11 +279,18 @@ width: 980px!important;
             max-width: 510px;
 }
 
+form.top_search_bar_form{
+    -moz-transition:background-color .1s ease;
+    -webkit-transition:background-color .1s ease;
+    transition:background-color .1s ease;
+}
+
             .topbar .center form .text {
                 width: 100%;
                 float: left;
                 margin-right: -25px;
                 padding-right: 25px;
+                background: transparent;
                 font-size: 14.5px;
  
                 text-rendering: optimizelegibility;
@@ -329,6 +335,10 @@ width: 980px!important;
             padding-left: 8px;
 }
 
+.notify.board.notify_board_active > div.button{
+background-color:rgba(18, 19, 20, 0.333333)!important;
+}
+
 .topbar > #topbar_responsive_holder > .right .notify.calendar{
     padding-left:5px;
     border-radius:2px 0px 0px 2px;
@@ -346,7 +356,7 @@ width: 980px!important;
 }
 
 .notify.board > .button{
-border-radius:0px 3px 3px 0px;
+border-radius:3px
 }
 
 .notify.calendar > .button{
@@ -441,7 +451,8 @@ border-radius:0px 3px 3px 0px;
         padding: 4px 0px 0px;  
         background: rgba(255, 255, 255, 0.99);   
         box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
+        overflow-y: scroll;
+        max-height: 418px;
 }
 
         .topbar #topbar_responsive_holder .center ul li a {

@@ -50,8 +50,8 @@ jQuery(document).ready(function(){
 
 
         //Make sure the start date is less than the end date
-        var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
-        var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+        var start_datetime_object = new_datetime(event_start_date + ' ' + event_start_time);
+        var end_datetime_object = new_datetime(event_end_date + ' ' + event_end_time);
 
 
         console.log('- start date time object -');
@@ -68,8 +68,8 @@ jQuery(document).ready(function(){
 
             //Create just date objects
             //so we can compare the date only
-            var start_date = new Date(date_to_string(start_datetime_object) + ' 00:00:00');
-            var end_date = new Date(date_to_string(end_datetime_object) + ' 00:00:00');
+            var start_date = new_datetime(date_to_string(start_datetime_object) + ' 00:00:00');
+            var end_date = new_dattime(date_to_string(end_datetime_object) + ' 00:00:00');
 
 
             if(start_date == end_date){
@@ -309,8 +309,8 @@ jQuery(document).ready(function(){
 
 
         //Make sure the start date is less than the end date
-        var start_datetime_object = new Date(event_start_date + ' ' + event_start_time);
-        var end_datetime_object = new Date(event_end_date + ' ' + event_end_time);
+        var start_datetime_object = new_datetime(event_start_date + ' ' + event_start_time);
+        var end_datetime_object = new_datetime(event_end_date + ' ' + event_end_time);
 //        var start_time_value = parseInt(event_start_date.substring(0,2)) + parseInt(event_end_date.substring(3,5));
 //        var end_time_value = parseInt(event_end_date.substring(0,2)) + parseInt(event_end_date['end_time'].substring(3,5));
 
@@ -335,6 +335,19 @@ jQuery(document).ready(function(){
             invites.push(user_id);
         });
 
+
+
+
+        //Convert to UTC for the database
+
+        var event_start_datetime = local_to_utc(new_datetime(event_start_date + ' ' + event_start_time));
+        var event_end_datetime = local_to_utc(new_datetime(event_end_date + ' ' + event_end_time));
+
+        event_start_date = date_to_string(event_start_datetime);
+        event_start_time = datetime_to_time_string(event_start_datetime);
+
+        event_end_date = date_to_string(event_end_datetime);
+        event_end_time = datetime_to_time_string(event_end_datetime);
 
 
         var post_data = {
