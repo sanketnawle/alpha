@@ -338,8 +338,8 @@
 <script id="user_template" type="text/x-handlebars-template">
 
     <div class = "members_card_wrapper slide" data-user_id='{{user_id}}' data-school_id='{{school_id}}' data-department_id='{{department_id}}'>
-        <div class = "members_card admin normal_size" data-user_id='1'>
-            <div class = "members_card_img">
+        <div class = "members_card admin normal_size" data-user_id='{{user_id}}'>
+            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}')">
                 {{#ifCond user_type '==' 's'}}
                     <span class = "title">Student</span>
                 {{/ifCond}}
@@ -364,11 +364,21 @@
             </div>
             <div class = "user_card_button_holder">
                 <div class = "follow_button_wrapper following_wrapper">
-                    <div class = "user_follow_button following">Following</div>
-                    <div class = "user_message_button message_active">
-                        <em class = "white_message_icon">
-                        </em>
-                    </div>
+                    {{#if following}}
+                        <div data-user_id="{{user_id}}" class = "user_follow_button following">Following</div>
+                        <div class = "search_user_follow_button user_message_button message_active">
+                            <em class = "white_message_icon">
+                            </em>
+                        </div>
+                    {{else}}
+                        <div data-user_id="{{user_id}}" class = "user_follow_button">Follow</div>
+                        <div class = "search_user_follow_button user_message_button message_active">
+                            <em class = "white_message_icon">
+                            </em>
+                        </div>
+
+                    {{/if}}
+
                 </div>
             </div>
         </div>

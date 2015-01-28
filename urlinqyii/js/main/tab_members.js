@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 
     $('.user_message_button').click(function(){
-        alert('MESSAGE');
+        //alert('MESSAGE');
     });
 
 

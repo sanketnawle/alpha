@@ -57,6 +57,17 @@ class SearchController extends Controller
             array_push($results, $class);
         }
 
+        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') LIMIT 5");
+
+        foreach($groups as $group){
+            $group = $this->get_model_associations($group, array('pictureFile'));
+            $group['origin_type'] = 'club';
+            $group['origin_name'] = $group['group_name'];
+            $group['origin_id'] = $group['group_id'];
+
+            array_push($results, $group);
+        }
+
 
         $courses = Course::model()->findAllBySql("SELECT * FROM `course` WHERE course_name LIKE '%" . $query ."%' OR course_tag LIKE '%" . $query ."%' LIMIT 5");
 
@@ -157,14 +168,32 @@ class SearchController extends Controller
             ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
             ->limit(30)
             ->queryAll();
-        $students = Yii::app()->db->createCommand()
-            ->select('u.firstname, u.lastname, u.user_id, u.user_type, d.department_name, d.department_id, u.picture_file_id')
-            ->from('user u')
-            ->join('department d','u.department_id = d.department_id')
-            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
-            ->andWhere("u.user_type = 's'")
-            ->limit(30)
-            ->queryAll();
+//        $students = Yii::app()->db->createCommand()
+//            ->select('u.firstname, u.lastname, u.user_id, u.user_type, d.department_name, d.department_id, u.picture_file_id')
+//            ->from('user u')
+//            ->join('department d','u.department_id = d.department_id')
+//            ->join('file f','f.file_id = u.picture_file_id')
+//            ->where(array('like', "concat(firstname, ' ', lastname)", '%'.$query.'%'))
+//            ->andWhere("u.user_type = 's'")
+//            ->limit(30)
+//            ->queryAll();
+
+        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' LIMIT 30");
+        for($i = 0; $i < count($students); $i++){
+            //CHeck if u are following this user
+
+
+            $students[$i] = $this->get_model_associations($students[$i], array('pictureFile'));
+
+
+            $user_connection = UserConnection::model()->find('from_user_id=:from_user_id and to_user_id=:to_user_id', array(':from_user_id'=>$user->user_id, ':to_user_id'=>$students[$i]['user_id']));
+            if($user_connection){
+                $students[$i]['following'] = true;
+            }else{
+                $students[$i]['following'] = false;
+            }
+        }
+
         $professors = Yii::app()->db->createCommand()
             ->select('u.firstname, u.lastname, u.user_id, d.department_name, d.department_id, u.picture_file_id')
             ->from('user u')
@@ -272,7 +301,8 @@ class SearchController extends Controller
             ->limit(30)
             ->queryAll();
         //$schoolContent = School::model()->findAllBySql($ssql);
-        $groupContent = Group::model()->findAllBySQL($gsql);
+        $groups = Group::model()->findAllBySql("SELECT * FROM `group` WHERE LOWER(group_name) LIKE LOWER('%" . $query . "%') LIMIT 20");
+
 
         if($query == "piyd")
         {   //professors in your department
@@ -335,7 +365,7 @@ class SearchController extends Controller
                 'users'=>$usql,
                 'courses'=>$courses,
                 'departments'=>$departments,
-                'clubs'=>$groupContent,
+                'clubs'=>$groups,
                 'students'=>$students,
                 'professors'=>$professors,
                 'schools'=>$schools,

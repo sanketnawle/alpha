@@ -253,7 +253,10 @@ $(document).ready(function(){
             $follow_button.text('Following');
             $follow_button_container.removeClass("unfollow");
         }
-    });    
+    });
+
+
+
 
 
 
