@@ -152,7 +152,7 @@
                 if ($thing) {
                     $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
                 }
-            } else if (isset($_GET['club_id']) {
+            } else if (isset($_GET['club_id'])) {
                 $thing = Group::model()->find('group_id=:id', array(':id'=>$_GET['club_id']));
                 if ($thing) {
                     $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
