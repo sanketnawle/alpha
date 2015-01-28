@@ -133,16 +133,36 @@
 
         public function actionGetUserPictureID() {
 
-         if(!isset($_GET['user_id'])){
-                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
+            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id'])) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
-        }
-            $user_id = $_GET['user_id'];
-            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
-            if($user){
+            } else if (isset($_GET['user_id'])) {
+                $thing = User::model()->find("user_id=:user_id", array(":user_id"=>$_GET['user_id']));
+                if ($thing) {
+                    $pictureFile = $thing->pictureFile;
+                }
+            } else if (isset($_GET['department_id'])) {
+                $thing = Department::model()->find("department_id=:department_id", array(":department_id"=>$_GET['department_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['class_id'])) {
+                $thing = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$_GET['class_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['club_id']) {
+                $thing = Group::model()->find('group_id=:id', array(':id'=>$_GET['club_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            }
 
-                $file_id = $user->pictureFile->file_url;
+            if($thing && $file) {
+
+                $file_id = $pictureFile->file_url;
+
                 if($file_id){
                     
                     $data = array('success'=>true,'file_url'=>$file_id,'base_url'=>Yii::app()->getBaseUrl(true));
