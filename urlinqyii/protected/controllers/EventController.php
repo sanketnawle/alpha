@@ -217,11 +217,23 @@ class EventController extends Controller
 
     public function actionGetPlannerEvents(){
 
-        if(!isset($_GET['origin_type']) || !isset($_GET['origin_id'])){
-            $data = array('success'=>false, 'error_msg'=>'origin_type not set');
+
+        if(!isset($_GET['origin_type'])){
+            $data = array('success'=>false, 'error_msg'=>'Origin type not set');
             $this->renderJSON($data);
             return;
         }
+
+        $origin_type = $_GET['origin_type'];
+        $origin_id = '';
+
+
+        if(isset($_GET['origin_id'])){
+            $origin_id = $_GET['origin_id'];
+        }
+
+
+
 
         //$user_id = $_GET['user_id'];
         $user = $this->get_current_user();
@@ -311,8 +323,7 @@ class EventController extends Controller
 
 
 
-        $origin_type = $_GET['origin_type'];
-        $origin_id = $_GET['origin_id'];
+
 
 
 

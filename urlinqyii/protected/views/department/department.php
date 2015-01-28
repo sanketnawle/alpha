@@ -154,7 +154,7 @@
                             <div id = "right_column_specs">
                                 <div id = "fixed_element" class = "planner_group">
                                     <?php
-                                    echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'department','origin_id'=>'<?php echo $department->department_id; ?>'));
+                                    echo $this->renderPartial('/partial/planner',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id));
                                     ?>    
                                 </div>
                             </div>                           
@@ -162,7 +162,7 @@
                         <div id = "feed_column" class = "feed_column_group">
                             <div id = "stream_holder" class = "stream_holder_home">
                                 <div id = "fbar_wrapper" class = "fbar_home">
-                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>'','pg_src'=>'department.php','target_type'=>'department')); ?>
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
                                 </div>
 
                                 <div id = "feed_wrapper" class = "feed_wrapper_home">

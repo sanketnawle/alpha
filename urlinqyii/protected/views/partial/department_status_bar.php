@@ -1,6 +1,6 @@
 
 <script>
-    //var globals = {};
+    var globals = {};
 
     globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
 
