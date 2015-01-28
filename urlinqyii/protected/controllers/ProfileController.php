@@ -971,7 +971,11 @@ class ProfileController extends Controller
             }
             if($user->studentAttributes){
                 $data['year_name'] = $user->studentAttributes->year_name;
+
                 $data['year_truncated'] = ($user->studentAttributes->year % 100);
+                if($data['year_truncated']==0){
+                    $data['year_truncated'] = "";
+                }
                 $data['grad_year'] = $user->studentAttributes->year;
             }
         }else if($user->user_type=="p" && $user->professorAttribute){
