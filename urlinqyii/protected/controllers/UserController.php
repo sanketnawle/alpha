@@ -341,7 +341,6 @@ class UserController extends Controller
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
 
             if ($notifications) {
-
                 $this->renderJSON($this->get_notifications_data($user, $notifications));
                 return;
             } else {
