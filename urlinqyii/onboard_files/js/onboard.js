@@ -481,7 +481,7 @@ $(document).ready(function () {
 
     $(document).on('click','.last_step_btn',function(e){
 
-        alert(JSON.stringify(selected_data));
+        //alert(JSON.stringify(selected_data));
 
         console.log(selected_data);
 

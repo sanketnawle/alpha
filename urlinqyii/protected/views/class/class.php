@@ -795,7 +795,7 @@
                         if($professor){
                     ?>
                         <div class = "members_card_wrapper class_admin" data-user_id='<?php echo $professor->user_id; ?>' data-name="<?php echo $professor->full_name(); ?>">
-                            <div class = "members_card normal_size admin_size" data-user_id='1'>
+                            <div class = "members_card admin_size" data-user_id='1'>
                                 <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $professor->pictureFile->file_url; ?>');">
 
                                 </div>
