@@ -42,16 +42,25 @@
         <title>Urlinq</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Urlinq</title>
-        <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/font2.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard_font.css">
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css" type="text/css" rel="stylesheet">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+<!--        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+
+
+
+
         <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/progressbar.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/semantic/packaged/css/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->getBaseUrl(true); ?>/onboard_files/css/onboard.css">
         <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+
+
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/libs/dropzone.js'></script>
         <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
@@ -142,7 +151,7 @@
 
     <script id="step_3_sub_template" type="text/x-handlebars-template">
         <div class='step_3_card_section_detail_card' data-class_id='{{class_id}}' id='class_{{class_id}}' data-professor_id='{{professor.user_id}}'>
-            <input type='checkbox' class='section_check' >
+            <input type='checkbox' class='section_check' />
             <div class='section_detail_right'>{{#if professor}}<div class='class_section_id'>professor: {{professor.firstname}} {{professor.lastname}}</div>{{/if}} {{#ifCond class_datetime '!=' 'null'}}<div class='class_datetime'>{{class_datetime}}</div>{{/ifCond}} {{#if section_id}}<div class='class_section_id'>id: {{section_id}}</div>{{/if}} {{#ifCond location '!=' ''}}<div class='class_section_id'>location: {{location}}</div>{{/ifCond}}
             </div>
         </div>
