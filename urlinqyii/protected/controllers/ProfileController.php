@@ -495,7 +495,8 @@ class ProfileController extends Controller
         try {
             $new_data = array();
             $user_id = $_POST['user'];
-            $user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
+            //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
+            $user = $this->get_current_user();
             if($user){
                 if (isset($_POST['bio'])) {
                     $user->user_bio = $_POST['bio'];

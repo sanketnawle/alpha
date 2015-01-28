@@ -8,6 +8,7 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'search'; ?>';
         globals.origin_id = '<?php echo $user->user_id; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
     </script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
