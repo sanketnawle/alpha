@@ -63,7 +63,7 @@ $(document).ready(function(){
         var post_url = globals.base_url + '/user/' + user_id + '/' + verb;
 
 
-        alert(post_url);
+        //alert(post_url);
 
 
         var post_data = {user_id:user_id};
@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 
     $('.user_message_button').click(function(){
-        alert('MESSAGE');
+        //alert('MESSAGE');
     });
 
 
