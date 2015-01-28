@@ -1212,7 +1212,7 @@ $(document).ready(function() {
                     $('img.MyBox_Picture').attr('src',data.file_url);
                     $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
                 }else{
-                    alert(data.message);
+                    //alert(data.message);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown)
@@ -1356,7 +1356,9 @@ $(document).ready(function() {
         });
     });
     $(document).on('click', '.user_follow_button.profile', function () {
-
+        if($(this).hasClass('own_profile')){
+            return;
+        }
         var $user_follow_button = $(this);
         var $user_box =  $user_follow_button.closest('.members_card_wrapper');
         var user_id = $user_box.attr('data-user_id');
