@@ -462,7 +462,7 @@ div.header-sec div.header-sec-right{
 
 div.header-sec-right div.time-to-signup{
 
-    font-size: 22px;
+    font-size: 18px;
     padding-left: 13px;
     
 
@@ -474,8 +474,14 @@ div.header-sec-right div.time-to-signup{
     float: left;
     
 
-    line-height: 46px;
+    line-height: 20px;
     font-family: Avenir;
+    
+
+    width: 126px;
+
+    padding-top: 2px;
+
 }
 
 div.signup-slog{rgb(79, 82, 93)

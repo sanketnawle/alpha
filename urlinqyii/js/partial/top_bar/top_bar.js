@@ -140,8 +140,10 @@ $(document).ready(function(){
             var search_result_element_type = $(this).attr("data-origin_type");
             if(search_result_element_type == 'class'){
                 $search_result_icon.addClass('class');
-
             }
+            if(search_result_element_type == 'course'){
+                $search_result_icon.addClass('course');
+            }            
             if(search_result_element_type == 'school'){
                 $search_result_icon.addClass('school');
 
