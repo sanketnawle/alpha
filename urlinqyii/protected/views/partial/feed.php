@@ -2,7 +2,9 @@
 <head>
     <title> Feed </title>
     <script>
-        //var globals = {};
+        var globals = {};
+
+
 
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.feed_url = '<?php echo $feed_url; ?>';
