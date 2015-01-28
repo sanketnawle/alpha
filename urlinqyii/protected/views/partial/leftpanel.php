@@ -107,7 +107,7 @@
 			</div>	
 			<div class = "LeftPanel_SectionContent">
 				<ul data-group = "clubs" class = "LeftPanel_GroupsList" id='club_list'>
-                    <?php foreach($user->groups as $club){ ?>
+                    <?php foreach($user->clubs as $club){ ?>
                         <li>
                             <a data-club_id = "<?php echo $club->group_id; ?>" href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>"><?php echo $club->group_name; ?></a>
                         </li>
