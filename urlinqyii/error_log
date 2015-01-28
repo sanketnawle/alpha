@@ -2479,3 +2479,17 @@
 [28-Jan-2015 01:18:29 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
 [28-Jan-2015 01:18:30 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
 [28-Jan-2015 01:52:02 UTC] PHP Fatal error:  Call to a member function getErrors() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 613
+[27-Jan-2015 21:13:56 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:14:30 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:14:47 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:15:18 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:15:49 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:15:58 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:41:11 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:41:12 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:48:58 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:49:00 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[27-Jan-2015 21:49:01 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ApiController.php on line 155
+[28-Jan-2015 19:09:34 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1004
+[28-Jan-2015 19:09:37 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1004
+[28-Jan-2015 19:09:39 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1004

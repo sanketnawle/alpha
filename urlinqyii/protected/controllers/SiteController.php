@@ -634,6 +634,7 @@ class SiteController extends Controller
         }
 
 
+        Yii::app()->session['onboarding_step'] = 0;
 
         //Take user directly to step 4
         if($user && $user->status == 'onboarding'){
@@ -643,22 +644,29 @@ class SiteController extends Controller
 
 
 
+        Yii::app()->session['department_id'] = $user->department_id;
+        Yii::app()->session['school_id'] = $user->school_id;
+        Yii::app()->session['user_type'] = $user->user_type;
+        Yii::app()->session['user_id'] = $user->user_id;
+
+
+
 
         //Check the required session variables
         //If they are not all set, redirect back to the login/signup page
-        $first_name = Yii::app()->session['first_name'];
-        $last_name = Yii::app()->session['last_name'];
-        $user_type = Yii::app()->session['user_type'];
-        $email = Yii::app()->session['email'];
-        $password = Yii::app()->session['password'];
-        $user_id = Yii::app()->session['user_id'];
-
-
-
-
-        if(!$first_name || !$last_name || !$user_type || !$email || !$password || !$user_id){
-            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
-        }
+//        $first_name = Yii::app()->session['first_name'];
+//        $last_name = Yii::app()->session['last_name'];
+//        $user_type = Yii::app()->session['user_type'];
+//        $email = Yii::app()->session['email'];
+//        $password = Yii::app()->session['password'];
+//        $user_id = Yii::app()->session['user_id'];
+//
+//
+//
+//
+//        if(!$first_name || !$last_name || !$user_type || !$email || !$password || !$user_id){
+//            $this->redirect(Yii::app()->getBaseUrl(true) . '/');
+//        }
 
 
 
@@ -1108,6 +1116,10 @@ class SiteController extends Controller
                         return;
                     }else if($user->status == 'onboarding'){
                         Yii::app()->session['onboarding_step'] = 3;
+
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
                     }else {
                         $data = array('success'=>true);
                         $this->renderJSON($data);

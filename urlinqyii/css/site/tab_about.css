@@ -78,9 +78,15 @@ div.class_description_holder{
 
 div#group_about_box div.class_description_holder {
     border: none;
-    height: 90px;
+    height: 103px !important;
 }
 
+#group_about_box .slimScrollDiv{
+    top: -7px;
+}
+#group_about_box .slimScrollDiv .slimScrollBar {
+    margin-top: 7px;
+}
 div.panel.tab_about{
     padding: 0 6px;
     font-family: 'Open Sans', sans-serif;

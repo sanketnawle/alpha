@@ -537,6 +537,8 @@ div.profile_tab div.profile_tab_content{
     text-shadow: none!important;
     font-family: Avenir;
     cursor: default;
+    white-space: nowrap;
+    overflow: visible;
 }
 span.profile_tab_amount{
     color: black;

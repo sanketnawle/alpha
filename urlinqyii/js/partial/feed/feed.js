@@ -281,7 +281,7 @@ function ready(globals){
         var $post_like_button = $(this);
         var post_id = $(this).closest('.post').attr('data-post_id');
         var $like_number = $post_like_button.find('.like_number');
-        var post_data = {post_id: post_id, user_id: user_id};
+        var post_data = {post_id: post_id, user_id: globals.user_id};
 
         var post_url = globals.base_url + '/post/unlike';
 
@@ -359,12 +359,15 @@ function ready(globals){
 
 
         var anonymous = false;
-        var reply_user_id = user_id;
+        var reply_user_id = globals.user_id;
         var $reply_count = $reply_form.closest(".post").find('.reply_number');
 
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
 
         var post_url = globals.base_url + '/post/reply';
+
+        console.log('SENDING POST REPLY');
+        console.log(post_data);
 
         $.post(
             post_url,

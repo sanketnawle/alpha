@@ -67,7 +67,12 @@ $(document).ready(function() {
                     if(json_feed_data['success']){
                         //alert(JSON.stringify(json_feed_data));
 //                alert(JSON.stringify(json_feed_data));
-                        render_posts(json_feed_data['feed']);
+                        if(json_feed_data['feed'].length == 0){
+                            var $posts_container = $("#profile_posts");
+                            $posts_container.html("<div class = 'no_posts_container'><div class = 'no_posts_icon small_icon_map'></div><div class = 'no_posts_message'><div class = 'message_header'>It is the very start of this feed.</div><div class = 'message_sub'>Be the first to make a post.</div></div></div>");
+                        }else{
+                            render_posts(json_feed_data['feed']);
+                        }
                     }else{
                         console.log('failed to get feed');
                     }
@@ -104,6 +109,9 @@ $(document).ready(function() {
                 }
                 if(!data.year_name){
                     $('#level_section').hide();
+                }
+                if(!data.grad_year){
+                    $('#year_section').hide();
                 }
 
                 if(data.gender=="M"){
@@ -863,7 +871,9 @@ $(document).ready(function() {
         //year and academic level
         $('#year_dropdown').val($('#year').text());
         any_year_name = $('#level_section').is(':visible');
+        any_year = $('#year_section').is(':visible');
         $('#level_section').show();
+        $('#year_section').show();
         $('#level_dropdown').val($('#level_name').text());
         //majors
         $('.info_name.major').each(function(i){
@@ -912,22 +922,32 @@ $(document).ready(function() {
     var any_major;
     var any_minor;
     var any_year_name;
+    var any_year;
     var any_research=false;
     var match;
     $(document).on('click','#edit_profile_button.editing',function(){  //submit changes
         //alert('done');
         var data = new FormData();
-        data.append('school',$('#school_dropdown').val());
+        if($('#school_dropdown').val()){
+            data.append('school',$('#school_dropdown').val());
+        }
+        if($('#department_dropdown').val()){
+            data.append('department',$('#department_dropdown').val());
+        }
         data.append('user',globals.user_id);
         data.append('name',$('#name_input').val());
-        data.append('department',$('#department_dropdown').val());
         data.append('email',$('#email_input').val());
         data.append('gender',$('.edit_field.gender:checked').val());
-
         data.append('bio',$('#bio_input').val());
+
         if($('#year_section').length){
-            data.append('year',$('#year_dropdown').val());
-            data.append('year_name',$('#level_dropdown').val());
+            if($('#year_dropdown').val()){
+                data.append('year',$('#year_dropdown').val());
+            }
+            if($('#level_dropdown').val()){
+                data.append('year_name',$('#level_dropdown').val());
+            }
+
         }
         if($('#office_section').length){
             data.append('location',$('#office_input').val());
@@ -969,7 +989,8 @@ $(document).ready(function() {
             }
         }
         any_bio = $.trim($('#bio_input').val()) != "";
-        any_year_name = $.trim($('#level_input').val()) != "";
+        any_year_name = $.trim($('#level_dropdown').val()) != "";
+        any_year = $.trim($('#year_dropdown').val()) != "";
 
         $('#major_section > .info_name.undeclared').hide();
         $.ajax({
@@ -983,6 +1004,10 @@ $(document).ready(function() {
             success: function(result)
             {
                 var any_errors = false;
+                if(result.success == false){
+                    alert('invalid user');
+                    any_errors = true;
+                }
                 if(result.year_name == "success"){
                     $('#level_name').text($('#level_dropdown').val());
                     match =(new RegExp("at (.+)$")).exec($('#year_info').text());
@@ -1066,6 +1091,7 @@ $(document).ready(function() {
                             $('#name_info').text($('#name_input').val()+" "+match[1]);
                         }
                     }
+                    //$('.profile_tab.feed').find('.profile_tab_text').text($('#name_input').val()+"'s Feed");
                 }else if(result.name){
                     alert(result.name);
                     any_errors = true;
@@ -1147,6 +1173,9 @@ $(document).ready(function() {
         if(!any_year_name){
             $('#level_section').hide();
         }
+        if(!any_year){
+            $('#year_section').hide();
+        }
         $('.headers').hide();
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
@@ -1212,7 +1241,7 @@ $(document).ready(function() {
                     $('img.MyBox_Picture').attr('src',data.file_url);
                     $('.members_card_img[data-user_id='+globals.user_id+']').css('background-image','url('+data.file_url+')');
                 }else{
-                    alert(data.message);
+                    //alert(data.message);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown)
@@ -1356,7 +1385,9 @@ $(document).ready(function() {
         });
     });
     $(document).on('click', '.user_follow_button.profile', function () {
-
+        if($(this).hasClass('own_profile')){
+            return;
+        }
         var $user_follow_button = $(this);
         var $user_box =  $user_follow_button.closest('.members_card_wrapper');
         var user_id = $user_box.attr('data-user_id');

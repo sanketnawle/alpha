@@ -2,6 +2,15 @@
 
 
 $(document).ready(function() {
+
+
+
+
+
+
+
+
+
     $(".search_category").click(function(){
         $(".search_category").removeClass("active");
         $(this).addClass("active");
@@ -817,4 +826,7 @@ var range_slider = function (params) {
     );
 
 
-}
+
+
+
+};

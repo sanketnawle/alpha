@@ -8,6 +8,7 @@
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.origin_type = '<?php echo 'search'; ?>';
         globals.origin_id = '<?php echo $user->user_id; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
     </script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -144,7 +145,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">600</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Courses</span>
@@ -169,7 +170,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">400</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Clubs</span>
@@ -186,7 +187,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">50</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Departments</span>
@@ -203,7 +204,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">850</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Faculty</span>
@@ -225,7 +226,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">520</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name">
                                     <span class = "filter_on_indicator">Showing </span><span>Students</span>
@@ -254,7 +255,7 @@
                                 <div class = "float_Right">
                                     <em class = "search_icon">
                                     </em>
-                                    <span class = "search_filter_count">85</span>
+                                    <span class = "search_filter_count">0</span>
                                 </div>
                                 <div class = "filter_name no_name_marginbtm">
                                     <span class = "filter_on_indicator">Showing </span><span>Events</span>
@@ -267,7 +268,7 @@
                         <div class = "search_results_main">
                             <div class = "search_results_header">
                                 <span class = "search_results_header_sentence">
-                                    Search Results for <span class = "query">'Economics' </span><span class = "results_count"></span>
+                                    Search Results for <span class = "query">'' </span><span class = "results_count"></span>
                                 </span>
                             </div>
 
@@ -338,8 +339,8 @@
 <script id="user_template" type="text/x-handlebars-template">
 
     <div class = "members_card_wrapper slide" data-user_id='{{user_id}}' data-school_id='{{school_id}}' data-department_id='{{department_id}}'>
-        <div class = "members_card admin normal_size" data-user_id='1'>
-            <div class = "members_card_img">
+        <div class = "members_card admin normal_size" data-user_id='{{user_id}}'>
+            <div class = "members_card_img" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true); ?>{{pictureFile.file_url}}')">
                 {{#ifCond user_type '==' 's'}}
                     <span class = "title">Student</span>
                 {{/ifCond}}
@@ -357,18 +358,28 @@
                 <span class = "class_year">Senior</span>
             </div>
             <div class = "user_main_info">
-                <a class = "name profile_link" data-user_id="{{user_id}}">{{fullname}}</a>
+                <a class = "name profile_link" data-user_id="{{user_id}}">{{fullname}}</a></br>{{user_email}}
             </div>
             <div class = "user_more_info">
                 <a class = "department_link">{{department_name}}</a>
             </div>
             <div class = "user_card_button_holder">
                 <div class = "follow_button_wrapper following_wrapper">
-                    <div class = "user_follow_button following">Following</div>
-                    <div class = "user_message_button message_active">
-                        <em class = "white_message_icon">
-                        </em>
-                    </div>
+                    {{#if following}}
+                        <div data-user_id="{{user_id}}" class = "user_follow_button following">Following</div>
+                        <div class = "search_user_follow_button user_message_button message_active">
+                            <em class = "white_message_icon">
+                            </em>
+                        </div>
+                    {{else}}
+                        <div data-user_id="{{user_id}}" class = "user_follow_button">Follow</div>
+                        <div class = "search_user_follow_button user_message_button message_active">
+                            <em class = "white_message_icon">
+                            </em>
+                        </div>
+
+                    {{/if}}
+
                 </div>
             </div>
         </div>
@@ -570,9 +581,9 @@
             <div class="person-bottom-functions"><div class="link-button"><a class="link link-up" data-value="17">Follow</a></div></div>
         </div>
     </div>
+</script>
 
-
-
+    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user')); ?>
 </body>
 
 

@@ -3,6 +3,18 @@
 
 $(document).ready(function(){
 
+    $(function(){
+        $('body.body_club div#fixed_element div.about_box').slimScroll({
+            height: 'auto'
+        });
+
+        $('div.about_box p.school_about').slimScroll({
+            height: '300px'
+        });
+        $('#group_about_box > .class_description_holder').slimScroll({
+            height: '123px'
+        });
+    });
 
 
     $('.tab').click(function(){
@@ -241,7 +253,10 @@ $(document).ready(function(){
             $follow_button.text('Following');
             $follow_button_container.removeClass("unfollow");
         }
-    });    
+    });
+
+
+
 
 
 
@@ -517,18 +532,7 @@ $(document).ready(function(){
 
     }catch(err){
     }
-    $(function(){
-        $('body.body_club div#fixed_element div.about_box').slimScroll({
-            height: 'auto'
-        });
-        
-        $('div.about_box p.school_about').slimScroll({
-            height: '300px'
-        });        
-        $('.group_info_boxes.group_desc_box > .group_info_block').slimScroll({
-            height: 'auto'
-        });
-    });
+
 
 
     if($("body").hasClass("body_group") == true){

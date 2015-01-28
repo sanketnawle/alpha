@@ -1,43 +1,4 @@
-  <?php
-/*
-In this page getting the user's login info both for fb and normal login
-if he is logging in with fb sending him to fblogin.php
-normal login goes to afterlogin.php
-also we are checking if the cookies are set if they are set we are sending him to home
-If he registring with fb we are getting his details from fb javascript plugin and grabbing his first last and email
-1=select the account type
-2=All fields are to be filled
-3=password contains name
-4=please enter corresponding nyu.edu email
-5=coming soon to your university
-6=please enter  nyu.edu email
-7=password length atleast 6 chars
-to render the firstname,lastname,email,usertype if something goes wrong in the registeration 
-I am using session varaibles register_firstname,register_lastname,register_email,register_user_type
 
-*/
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-if(isset($_GET['session'])){
-  session_destroy();
-}
-if(isset($_SESSION['id'])){
-   $_SESSION['id'] = false;
-     unset($_SESSION['id']);
-     $_SESSION['firstname'] = false;
-     unset($_SESSION['firstname']);
-     $_SESSION['lastname'] = false;
-     unset($_SESSION['lastname']);
-     $_SESSION['fbemail'] = false;
-     unset($_SESSION['fbemail']);
-
-}
-if(isset($_COOKIE['beta_user_id'])){
-header('location:home.php');
-}else{
-}
-?>
 <html>
 <head>
     <script>
@@ -54,7 +15,7 @@ header('location:home.php');
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
-<link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/Ur_FavIcon.png" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
@@ -63,8 +24,8 @@ header('location:home.php');
     <!--<link href="lp_beta_announce_special.css" rel='stylesheet' type='text/css'>-->
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/font/avenir.css' rel='stylesheet' type='text/css'>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="jquery-ui-1.11.0/jquery-ui.min.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js"></script>
+    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
 
 
 
@@ -208,101 +169,135 @@ header('location:home.php');
 
 
 
-    $(document).on('submit','#register',function(e){
-        e.preventDefault();
+  $(document).on('submit','#register',function(e){
+      e.preventDefault();
 
-        var $form = jQuery(this);
-
-
-        var post_url = $form.attr('action');
+      var $form = jQuery(this);
 
 
-
-        var account_types = 's';
+      var post_url = $form.attr('action');
 
 
 
-
-        var password = $('#password').val();
-        var email = $('#email').val();
-        var firstname = $('#fname').val();
-        var lastname = $('#lname').val();
-
-
-
-        //Error checking
-
-        //Check if the user seleted a user type
-        var $account_type_chosen = $('.account-type-chosen');
-        if($account_type_chosen.length){
-            if($account_type_chosen.hasClass('student')){
-                account_types = 's';
-            }else{
-                account_types = 'p';
-            }
-        }else{
-            alert('Please select if you are a student or professor.');
-            return;
-        }
-
-        if(firstname.length == 0){
-            alert('Please input a first name');
-            return;
-        }
-
-        if(lastname.length == 0){
-            alert('Please input a last name');
-            return;
-        }
-
-        if(email.indexOf('nyu.edu') < 0){
-            alert('An NYU email address is required.');
-            return;
-        }
-
-        if(password.length < 5){
-            alert('Password must be atleast 5 characters');
-            return;
-        }
+      var account_types = 's';
 
 
 
 
-
-
-        var post_data = {
-            password: password,
-            firstname: firstname,
-            lastname: lastname,
-            account_types: account_types,
-            email: email
-        };
+      var password = $('#password').val();
+      var email = $('#email').val();
+      var firstname = $('#fname').val();
+      var lastname = $('#lname').val();
 
 
 
-        console.log(JSON.stringify(post_data));
+      //Error checking
+
+      var email_position = $('#email').offset();
+      var account_types_position = $('.account-types').offset();
+      var names_position = $('.fname-lname-sec').offset();
+      var password_position = $('#password').offset();
+      $('#register_error_popup').remove();
+      var $error_div = $("<div id='register_error_popup'></div>");
+
+      //Check if the user seleted a user type
+      var $account_type_chosen = $('.account-type-chosen');
+      if($account_type_chosen.length){
+          if($account_type_chosen.hasClass('student')){
+              account_types = 's';
+          }else{
+              account_types = 'p';
+          }
+      }else{
+          //alert('Please select if you are a student or professor.');
+          $error_div.text('Please select if you are a student or professor.');
+          $error_div.css({'top': account_types_position.top});
+          $error_div.css({'left': account_types_position.left - 400});
+          $('body').append($error_div).hide().fadeIn(250);
+          return;
+      }
+
+      if(firstname.length == 0){
+          //alert('Please input a first name');
+          $error_div.text('Please input a first name');
+          $error_div.css({'top': names_position.top});
+          $error_div.css({'left': names_position.left - 230});
+          $('body').append($error_div).hide().fadeIn(250);
+          return;
+      }
+
+      if(lastname.length == 0){
+          //alert('Please input a last name');
+          $error_div.text('Please input a last name');
+          $error_div.css({'top': names_position.top});
+          $error_div.css({'left': names_position.left - 230});
+          $('body').append($error_div).hide().fadeIn(250);
+          return;
+      }
+
+      if(email.indexOf('nyu.edu') < 0){
+          //alert('An NYU email address is required.');
+          $error_div.text('An NYU email address is required');
+          $error_div.css({'left': email_position.left - 310});
+          $error_div.css({'top': email_position.top});
+          $('body').append($error_div).hide().fadeIn(250);
+          return;
+      }
+
+      if(password.length < 5){
+          //alert('Password must be atleast 5 characters');
+          $error_div.text('Password must be atleast 5 characters');
+          $error_div.css({'top': password_position.top});
+          $error_div.css({'left': password_position.left - 330});
+          $('body').append($error_div).hide().fadeIn(250);
+          return;
+      }
 
 
-        $.post(
-            post_url,
-            post_data,
-            function(response) {
 
-                //alert(JSON.stringify(response));
 
-                if(response['success']){
 
-                    window.location.href = base_url + '/onboard';
-                }else{
 
-                    if(response['error_id'] == 10){
-                        //The user is already active, so just send them to /home
-                        window.location.href = base_url + '/home';
-                    }
-                }
-            }, 'json'
-        );
-    });
+      var post_data = {
+          password: password,
+          firstname: firstname,
+          lastname: lastname,
+          account_types: account_types,
+          email: email
+      };
+
+
+
+      console.log(JSON.stringify(post_data));
+
+
+      $.post(
+          post_url,
+          post_data,
+          function(response) {
+
+              //alert(JSON.stringify(response));
+
+              if(response['success']){
+
+                  window.location.href = base_url + '/onboard';
+              }else{
+
+                  if(response['error_id'] == 10){
+                      /*//The user is already active
+                      //alert('Account already exists for this email');
+                      $error_div.text('Account already exists for this email');
+                      $error_div.css({'top': email_position.top});
+                      $error_div.css({'left': email_position.left - 330});
+                      $('body').append($error_div).hide().fadeIn(250);*/
+
+                      //The user is already active, so just send them to /home
+                      window.location.href = base_url + '/home';
+                  }
+              }
+          }, 'json'
+      );
+  });
 
 
 
@@ -481,7 +476,6 @@ header('location:home.php');
                                     //alert(JSON.stringify(response));
 
                                     if(response['success']){
-                                        console.log('good');
                                         window.location.replace(globals.base_url + '/home');
                                     }else{
                                         console.log(response['error_id']);
