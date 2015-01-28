@@ -164,7 +164,7 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
             }, 'json'
         );
     }
@@ -215,7 +215,7 @@ $(document).ready(function(){
             post_url,
             post_data,
             function (response){
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
             }, 'json'
         );
 
