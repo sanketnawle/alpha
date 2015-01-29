@@ -12,6 +12,19 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     display:none;
     overflow: hidden;
 }
+#left_panel_change_picture_button{
+    position: absolute;
+    /* bottom: 10px; */
+    /* left: 10px; */
+    width: 32px;
+    top: 97px;
+    border: none;
+    height: 32px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-image: url('../../../assets/camera_icon.png');
+}
 
 #LeftPanel_Holder{
     width: 230px;
