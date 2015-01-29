@@ -812,7 +812,8 @@ class ProfileController extends Controller
             $extension = pathinfo($_FILES["file"]["name"])['extension'];
             if($extension == "jpg" || $extension == "png" || $extension == "gif"){
                 $result = file_upload($_FILES,"profile/");
-                $user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                //$user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                $user = $this->get_current_user();
                 $user->picture_file_id = $result['file_id'];
                 if($user->save()){
                     $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));

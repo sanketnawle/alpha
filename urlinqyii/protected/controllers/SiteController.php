@@ -1003,7 +1003,7 @@ class SiteController extends Controller
                 }
             }
 
-            if(strpos($email,'nyu.edu') == false){
+            if(strpos($email,'nyu.edu') == false && strpos($email, 'urlinq.com') == false){
                 if(strpos($email,'poly.edu')){
                     $data = array('success'=>false,'error_id'=>6, 'error'=>'Poly emails are not accepted at this time');
                     $this->renderJSON($data);

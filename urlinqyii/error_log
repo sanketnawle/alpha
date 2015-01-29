@@ -2595,3 +2595,8 @@
 [28-Jan-2015 22:40:23 America/Denver] PHP Parse error:  syntax error, unexpected 'send_notification' (T_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 554
 [28-Jan-2015 22:41:55 America/Denver] PHP Parse error:  syntax error, unexpected 'send_notification' (T_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 554
 [28-Jan-2015 22:43:40 America/Denver] PHP Parse error:  syntax error, unexpected 'send_notification' (T_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 554
+[29-Jan-2015 21:19:16 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1006
+[29-Jan-2015 21:19:22 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1006
+[29-Jan-2015 21:19:25 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1006
+[29-Jan-2015 21:19:59 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1006
+[29-Jan-2015 21:20:03 UTC] PHP Fatal error:  Call to a member function isFollowing() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/ProfileController.php on line 1006
