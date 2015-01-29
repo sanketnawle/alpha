@@ -246,7 +246,7 @@
 
       if(password.length < 5){
           //alert('Password must be atleast 5 characters');
-          $error_div.text('Password must be atleast 5 characters');
+          $error_div.text('Password must be at least 5 characters');
           $error_div.css({'top': password_position.top});
           $error_div.css({'left': password_position.left - 330});
           $('body').append($error_div).hide().fadeIn(250);
@@ -293,6 +293,17 @@
                       $error_div.text('Account already exists for this email');
                       $error_div.css({'top': email_position.top});
                       $error_div.css({'left': email_position.left - 330});
+                      $('body').append($error_div).hide().fadeIn(250);
+                  }else if(response['error_id'] == 6){
+                      //alert('Account already exists for this email');
+                      $error_div.text(response['error']);
+                      $error_div.css({'top': email_position.top});
+                      $error_div.css({'left': email_position.left - 330});
+                      $('body').append($error_div).hide().fadeIn(250);
+                  }else{
+                      $error_div.text(response['error']);
+                      $error_div.css({'top': password_position.top});
+                      $error_div.css({'left': password_position.left - 330});
                       $('body').append($error_div).hide().fadeIn(250);
                   }
               }
