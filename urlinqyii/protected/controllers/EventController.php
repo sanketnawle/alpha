@@ -322,38 +322,48 @@ class EventController extends Controller
 
 
 
+        try{
+
+
+            $event_count = 0;
+
+            //Get events that were due yesterday
+            $date = date("Y-m-d H:i:s", time());
+            $datetime = new DateTime($date);
+            $datetime->modify('-1 day');
+            $start_date= $datetime->format('Y-m-d');
+            $datetime->modify('+4 day');
+            $end_date= $datetime->format('Y-m-d');
 
 
 
+            $events = array();
+
+            if($origin_type != 'user'){
+                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+            }else{
+                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+            }
 
 
 
-        $event_count = 0;
+            $data = array('success'=>true,'events'=>$events);
 
-        //Get events that were due yesterday
-        $date = date("Y-m-d H:i:s", time());
-        $datetime = new DateTime($date);
-        $datetime->modify('-1 day');
-        $start_date= $datetime->format('Y-m-d');
-        $datetime->modify('+4 day');
-        $end_date= $datetime->format('Y-m-d');
+            $this->renderJSON($data);
+            return;
 
 
+        }catch(Exception $e){
+            $data = array('success'=>false, 'error_msg'=>$e->getMessage());
 
-        $events = array();
-
-        if($origin_type != 'user'){
-            $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
-        }else{
-            $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+            $this->renderJSON($data);
+            return;
         }
 
 
 
-        $data = array('success'=>true,'events'=>$events);
 
-        $this->renderJSON($data);
-        return;
+
 
 
 
@@ -550,7 +560,7 @@ class EventController extends Controller
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
-                        include_once "protected/components/notification/notification.php"
+                        include_once "protected/components/notification/notification.php";
                         send_notification('event', $invite_user_id, $event->user_id, $event->event_id, 'event');
                     }
                 }
