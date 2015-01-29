@@ -1139,7 +1139,6 @@ class SiteController extends Controller
                     }else if($user->status==='active'){
                         $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
-
                         $salt = $user_login->salt;
 
                         $hashed_password = hash_password($password,$salt);
@@ -1160,6 +1159,7 @@ class SiteController extends Controller
                         //$data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                         //$this->renderJSON($data);
                         //return;
+
 
                     }else if($user->status == 'onboarding'){
                         Yii::app()->session['user_id'] = $user->user_id;
