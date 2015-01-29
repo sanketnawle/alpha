@@ -137,8 +137,8 @@ $(document).ready(function(){
 
         $this_cal.hide();
 //
-//        if (!jQuery(this).hasClass("disable")) {
-//            if (blinkflag == 0) {
+        if (!jQuery(this).hasClass("disable")) {
+            if (blinkflag == 0) {
                 var mon = $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
                 var dayarr= jQuery(this).attr("id").split("_");
                 var day= dayarr[1];
@@ -174,7 +174,7 @@ $(document).ready(function(){
 
                 console.log(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + addZero(formatted_day_date).toString());
 
-                var selected_date = new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date) + 1).toString());
+                var selected_date = new_date(current_calendar_year.toString() + '-' + addZero(current_calendar_month).toString() + '-' + (addZero(formatted_day_date + 1)).toString());
 
 
 
@@ -183,9 +183,9 @@ $(document).ready(function(){
 
                 $recent_date_input.val(date_to_day_of_week_string(selected_date));
 
-//            }
-//        }
-//
+            }
+        }
+
 
     });
 });
