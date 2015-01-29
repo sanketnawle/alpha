@@ -211,7 +211,7 @@ jQuery(document).ready(function(){
         $last_selected_time_input.val(time_string_to_am_pm_string(time_string));
 
 
-        alert(time_string_to_am_pm_string(time_string));
+        //alert(time_string_to_am_pm_string(time_string));
 
         //Set the data attribute to the time_string to make it easy to pull off
         $last_selected_time_input.attr('data-time', time_string);
