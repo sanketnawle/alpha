@@ -932,6 +932,7 @@ class ProfileController extends Controller
         }
         if($user->department){
             $data['department']=$user->department->department_name;
+            $data['department_tag']=$user->department->department_tag;
             $data['department_id']=$user->department->department_id;
         }
 
@@ -1114,7 +1115,7 @@ class ProfileController extends Controller
             }
         }
         foreach($departments as $department){
-            $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name);
+            $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name, 'tag'=>$department->department_tag);
         }
         $this->renderJSON($result);
     }
