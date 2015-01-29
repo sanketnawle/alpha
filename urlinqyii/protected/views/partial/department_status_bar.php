@@ -378,6 +378,7 @@ Set the class name on your input to 'time_input' -->
 </div>
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+
 
 

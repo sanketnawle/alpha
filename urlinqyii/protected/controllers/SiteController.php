@@ -945,8 +945,8 @@ class SiteController extends Controller
     public function actionRegister(){
 
         if(isset($_POST['password']) ||isset($_POST['firstname']) ||isset($_POST['lastname']) ||isset($_POST['account_types']) ||isset($_POST['email'])){
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
+            $firstname = ucfirst($_POST['firstname']);
+            $lastname = ucfirst($_POST['lastname']);
             $email = $_POST['email'];
             $user_type = $_POST['account_types'];
             $password = $_POST['password'];
@@ -992,15 +992,15 @@ class SiteController extends Controller
 
             if(strpos($email,'nyu.edu') == false){
                 if(strpos($email,'poly.edu')){
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Poly emails are not accepted at this time');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Poly emails are not accepted at this time');
                     $this->renderJSON($data);
                     return;
                 }else if(strpos($email,'.edu')){
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Only NYU emails are accepted at this time');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Only NYU emails are accepted at this time');
                     $this->renderJSON($data);
                     return;
                 }else{
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'.edu email must be used');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'.edu email must be used');
                     $this->renderJSON($data);
                     return;
                 }
@@ -1036,23 +1036,48 @@ class SiteController extends Controller
                 if($professor){
                     //Professor is already in our database
 
-
-                    Yii::app()->session['user_id'] = $professor->user_id;
-                    Yii::app()->session['user_type'] = $user_type;
-
+                    if($professor->status == 'active'){
+                        $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$professor->user_id));
 
 
-                    if($professor->school_id && $professor->department_id){
-                        Yii::app()->session['onboarding_step'] = 2; //Take the professor directly to email verification
+                        $salt = $user_login->salt;
+
+                        $hashed_password = hash_password($password,$salt);
+
+
+                        if($user_login->password == $hashed_password){
+                            //user has successfully logged in
+                            Yii::app()->session['user_id'] = $professor->user_id;
+                            Yii::app()->session['user_type'] = $user_type;
+                            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                            $this->renderJSON($data);
+
+                            return;
+                        }else{
+                            //user login failed
+                            $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Email already registered');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }else{
-                        Yii::app()->session['onboarding_step'] = 0;
+                        Yii::app()->session['user_id'] = $professor->user_id;
+                        Yii::app()->session['user_type'] = $user_type;
+
+
+
+                        if($professor->school_id && $professor->department_id){
+                            Yii::app()->session['onboarding_step'] = 2; //Take the professor directly to email verification
+                        }else{
+                            Yii::app()->session['onboarding_step'] = 0;
+                        }
+
+
+
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
                     }
 
-
-
-                    $data = array('success'=>true);
-                    $this->renderJSON($data);
-                    return;
                     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select?professor=1');
                 }else{
                     $professor = new User;
@@ -1097,30 +1122,54 @@ class SiteController extends Controller
                 //Check if the user is already in the database
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
-                    Yii::app()->session['user_id'] = $user->user_id;
+
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 
                     if($user->status === 'invited'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
                     }else if($user->status === 'unverified'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
                     }else if($user->status==='active'){
+                        $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
-                        $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
-                        $this->renderJSON($data);
-                        return;
+                        $salt = $user_login->salt;
+
+                        $hashed_password = hash_password($password,$salt);
+
+
+                        if($user_login->password == $hashed_password){
+                            //user has successfully logged in
+                            Yii::app()->session['user_id'] = $user->user_id;
+                            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                            $this->renderJSON($data);
+                            return;
+                        }else{
+                            //user login failed
+                            $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Email already registered');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                        //$data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                        //$this->renderJSON($data);
+                        //return;
+
+
                     }else if($user->status == 'onboarding'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         Yii::app()->session['onboarding_step'] = 3;
 
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
                     }else {
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;

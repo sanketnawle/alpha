@@ -58,7 +58,7 @@
 
 
 
-                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
+                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type,'user_id'=>$user->user_id)); ?>
 
                 <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
             </div>

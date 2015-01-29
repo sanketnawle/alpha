@@ -449,7 +449,7 @@
         </div>
         <div class="group_box_main_info">
             <a class="group_link">{{department_name}}</a>
-            <a class="group_link">{{school.school_name}</a>
+            <a class="group_link">{{school.school_name}}</a>
             <div class="float_Right">
                 <span class="group_type">Department</span>
             </div>
@@ -583,7 +583,7 @@
     </div>
 </script>
 
-    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user')); ?>
+    <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>'user', 'user_id'=>$user->user_id)); ?>
 </body>
 
 
