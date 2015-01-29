@@ -1097,7 +1097,7 @@ class SiteController extends Controller
                 //Check if the user is already in the database
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
-                    Yii::app()->session['user_id'] = $user->user_id;
+                    //Yii::app()->session['user_id'] = $user->user_id;
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 
@@ -1110,10 +1110,30 @@ class SiteController extends Controller
                         $this->renderJSON($data);
                         return;
                     }else if($user->status==='active'){
+                        $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
-                        $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
-                        $this->renderJSON($data);
-                        return;
+                        $salt = $user_login->salt;
+
+                        $hashed_password = hash_password($password,$salt);
+
+
+                        if($user_login->password == $hashed_password){
+                            //user has successfully logged in
+                            Yii::app()->session['user_id'] = $user->user_id;
+
+
+                            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                            $this->renderJSON($data);
+                            return;
+                        }else{
+                            //user login failed
+                            $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Email already registered');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                        //$data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                        //$this->renderJSON($data);
+                        //return;
                     }else if($user->status == 'onboarding'){
                         Yii::app()->session['onboarding_step'] = 3;
 

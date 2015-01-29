@@ -284,15 +284,16 @@
               }else{
 
                   if(response['error_id'] == 10){
-                      /*//The user is already active
+                      //The user is already active
+
+                      //The user is already active, so just send them to /home
+                      window.location.href = base_url + '/home';
+                  }else if(response['error_id'] == 11){
                       //alert('Account already exists for this email');
                       $error_div.text('Account already exists for this email');
                       $error_div.css({'top': email_position.top});
                       $error_div.css({'left': email_position.left - 330});
-                      $('body').append($error_div).hide().fadeIn(250);*/
-
-                      //The user is already active, so just send them to /home
-                      window.location.href = base_url + '/home';
+                      $('body').append($error_div).hide().fadeIn(250);
                   }
               }
           }, 'json'
