@@ -1037,7 +1037,28 @@ class SiteController extends Controller
                     //Professor is already in our database
 
                     if($professor->status == 'active'){
+                        $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$professor->user_id));
 
+
+                        $salt = $user_login->salt;
+
+                        $hashed_password = hash_password($password,$salt);
+
+
+                        if($user_login->password == $hashed_password){
+                            //user has successfully logged in
+                            Yii::app()->session['user_id'] = $professor->user_id;
+                            Yii::app()->session['user_type'] = $user_type;
+                            $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
+                            $this->renderJSON($data);
+
+                            return;
+                        }else{
+                            //user login failed
+                            $data = array('success'=>false, 'error_id'=>11, 'error_msg'=>'Email already registered');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }else{
                         Yii::app()->session['user_id'] = $professor->user_id;
                         Yii::app()->session['user_type'] = $user_type;
@@ -1101,15 +1122,17 @@ class SiteController extends Controller
                 //Check if the user is already in the database
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
-                    Yii::app()->session['user_id'] = $user->user_id;
+
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 
                     if($user->status === 'invited'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
                     }else if($user->status === 'unverified'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
@@ -1124,7 +1147,7 @@ class SiteController extends Controller
 
                         if($user_login->password == $hashed_password){
                             //user has successfully logged in
-
+                            Yii::app()->session['user_id'] = $user->user_id;
                             $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                             $this->renderJSON($data);
                             return;
@@ -1139,12 +1162,14 @@ class SiteController extends Controller
                         //return;
 
                     }else if($user->status == 'onboarding'){
+                        Yii::app()->session['user_id'] = $user->user_id;
                         Yii::app()->session['onboarding_step'] = 3;
 
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
                     }else {
+                        Yii::app()->session['user_id'] = $user->user_id;
                         $data = array('success'=>true);
                         $this->renderJSON($data);
                         return;
