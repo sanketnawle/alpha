@@ -864,7 +864,7 @@ $(document).ready(function() {
         $('#department_dropdown').empty();
         $.getJSON( base_url + "/profile/getDepartments",{user: globals.user_id}, function( result) {
             $.each(result.departments,function(i,department){
-                $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name));
+                $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name+' '+department.tag));
             });
             $('#department_dropdown').val(result.selected);
         });
@@ -1146,7 +1146,7 @@ $(document).ready(function() {
         $.getJSON( base_url + "/profile/getDepartments",{school: $('#school_dropdown').val()}, function( result) {
             $('#department_dropdown').empty();
             $.each(result.departments,function(i,department){
-                $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name));
+                $('#department_dropdown').append($('<option/>').attr("value", department.id).text(department.name+' '+department.tag));
                 if(i==0){
                     $('#department_dropdown').val(department.id);
                 }
