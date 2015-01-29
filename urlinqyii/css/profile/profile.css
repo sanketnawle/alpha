@@ -23,6 +23,10 @@ border-radius: 5px;
 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+#profile_wrapper .search_bar{
+    height:4px;
+}
+
 #profile_background_overlay div.empty_gap{
     height: 100px;
 
@@ -906,7 +910,7 @@ div.members_card_wrapper {
     width:39% !important;
 }
 #profile_wrapper .group_box{
-    height:162px !important;
+    height: 184px !important;
 }
 
 #profile_wrapper div.group_box div.float_Left.group_image{
