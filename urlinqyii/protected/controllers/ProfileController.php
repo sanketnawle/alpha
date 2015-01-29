@@ -1074,7 +1074,7 @@ class ProfileController extends Controller
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
         $data['num_classes'] = sizeof($user->classes);
-        $data['num_clubs'] = sizeof($user->groups);
+        $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
         $this->renderJSON($data);
