@@ -992,15 +992,15 @@ class SiteController extends Controller
 
             if(strpos($email,'nyu.edu') == false){
                 if(strpos($email,'poly.edu')){
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Poly emails are not accepted at this time');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Poly emails are not accepted at this time');
                     $this->renderJSON($data);
                     return;
                 }else if(strpos($email,'.edu')){
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'Only NYU emails are accepted at this time');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'Only NYU emails are accepted at this time');
                     $this->renderJSON($data);
                     return;
                 }else{
-                    $data = array('success'=>false,'error_id'=>6, 'error'=>'password cant be in lastname', 'error'=>'.edu email must be used');
+                    $data = array('success'=>false,'error_id'=>6, 'error'=>'.edu email must be used');
                     $this->renderJSON($data);
                     return;
                 }
