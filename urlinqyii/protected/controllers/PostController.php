@@ -409,6 +409,24 @@ class PostController extends Controller
                                 return;
                             }
 
+                        }else if($model->origin_type == 'user'){
+                            if($user->user_id != $model->origin_id){
+
+                                $post_user_origin = User::model()->find('user_id=:id',array(':id'=>$model->origin_id));
+
+                                if($post_user_origin){
+                                    $post_data['origin'] = $this->model_to_array($post_user_origin);
+
+                                    //Send a notification to the user this post was sent to
+                                    send_notification('post',$user->user_id,$post_user_origin->user_id,$post_data['post_id'],'post');
+
+                                }else{
+                                    $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                    $this->renderJSON($return_data);
+                                    return;
+                                }
+
+                            }
                         }
                     }catch(Exception $e){
                         $return_data = array('success'=>false,'post'=>$post_data, 'origin_id'=>$model->origin_id);

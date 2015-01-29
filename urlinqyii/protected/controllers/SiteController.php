@@ -1036,23 +1036,27 @@ class SiteController extends Controller
                 if($professor){
                     //Professor is already in our database
 
+                    if($professor->status == 'active'){
 
-                    Yii::app()->session['user_id'] = $professor->user_id;
-                    Yii::app()->session['user_type'] = $user_type;
-
-
-
-                    if($professor->school_id && $professor->department_id){
-                        Yii::app()->session['onboarding_step'] = 2; //Take the professor directly to email verification
                     }else{
-                        Yii::app()->session['onboarding_step'] = 0;
+                        Yii::app()->session['user_id'] = $professor->user_id;
+                        Yii::app()->session['user_type'] = $user_type;
+
+
+
+                        if($professor->school_id && $professor->department_id){
+                            Yii::app()->session['onboarding_step'] = 2; //Take the professor directly to email verification
+                        }else{
+                            Yii::app()->session['onboarding_step'] = 0;
+                        }
+
+
+
+                        $data = array('success'=>true);
+                        $this->renderJSON($data);
+                        return;
                     }
 
-
-
-                    $data = array('success'=>true);
-                    $this->renderJSON($data);
-                    return;
                     //  $this->redirect(Yii::app()->getBaseUrl(true) . '/register/school_select?professor=1');
                 }else{
                     $professor = new User;
@@ -1110,6 +1114,8 @@ class SiteController extends Controller
                         $this->renderJSON($data);
                         return;
                     }else if($user->status==='active'){
+
+                        Yii::app()->session['user_id'] = $user->user_id;
 
                         $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                         $this->renderJSON($data);
