@@ -33,7 +33,11 @@
 					<div class = "clearfix MyBox">
 						<a class = "MyBox_PictureLink">
 							<img class = "MyBox_Picture profile_link" data-user_id="<?php echo $user->user_id?>" src="<?php echo Yii::app()->getBaseUrl(true) . $user->pictureFile->file_url; ?>">
-						</a>
+                            <button type="button" id="left_panel_change_picture_button"></button>
+                            <div style="height: 0px;width:0px; overflow:hidden;">
+                                <input id="left_panel_picture_upfile" type="file" value="upload"/>
+                            </div>
+                        </a>
 						<div class = "MyBox_text">
 							<div class = "MyBox_textcontent">
 								<div class = "MyBox_NameSO">

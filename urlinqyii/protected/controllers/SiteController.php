@@ -197,7 +197,7 @@ class SiteController extends Controller
                         Yii::app()->session['department_id'] = $user->department_id;
                         Yii::app()->session['school_id'] = $user->school_id;
                         Yii::app()->session['user_type'] = $user->user_type;
-                        Yii::app()->session['user_type'] = $user_id;
+                        Yii::app()->session['user_id'] = $user_id;
 
                         $this->redirect(Yii::app()->getBaseUrl(true) . '/onboard');
                         return;
@@ -524,6 +524,9 @@ class SiteController extends Controller
             }
 
 
+
+
+
             $user_login = UserLogin::model()->find('user_id=:user_id',array(':user_id'=>$user->user_id));
 
             $salt = $user_login->salt;
@@ -532,8 +535,18 @@ class SiteController extends Controller
 
 
             if($user_login->password == $hashed_password){
+
                 //user has successfully logged in
                 Yii::app()->session['user_id'] = $user->user_id;
+
+                if($user->status == 'onboarding'){
+                    //Send user to onboarding
+                    $data = array('success'=>false, 'error_id'=>6, 'error_msg'=>'user has not completed onboarding');
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
 
 
                 $data = array('success'=>true);
@@ -637,7 +650,7 @@ class SiteController extends Controller
         Yii::app()->session['onboarding_step'] = 0;
 
         //Take user directly to step 4
-        if($user && $user->status == 'onboarding'){
+        if($user->status == 'onboarding'){
             Yii::app()->session['onboarding_step'] = 3;
         }
 
@@ -990,7 +1003,7 @@ class SiteController extends Controller
                 }
             }
 
-            if(strpos($email,'nyu.edu') == false){
+            if(strpos($email,'nyu.edu') == false && strpos($email, 'urlinq.com') == false){
                 if(strpos($email,'poly.edu')){
                     $data = array('success'=>false,'error_id'=>6, 'error'=>'Poly emails are not accepted at this time');
                     $this->renderJSON($data);
