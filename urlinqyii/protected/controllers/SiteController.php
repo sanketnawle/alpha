@@ -1097,7 +1097,7 @@ class SiteController extends Controller
                 //Check if the user is already in the database
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
-                    //Yii::app()->session['user_id'] = $user->user_id;
+                    Yii::app()->session['user_id'] = $user->user_id;
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 
@@ -1119,8 +1119,6 @@ class SiteController extends Controller
 
                         if($user_login->password == $hashed_password){
                             //user has successfully logged in
-                            Yii::app()->session['user_id'] = $user->user_id;
-
 
                             $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                             $this->renderJSON($data);
