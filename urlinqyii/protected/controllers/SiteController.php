@@ -1115,8 +1115,6 @@ class SiteController extends Controller
                         return;
                     }else if($user->status==='active'){
 
-                        Yii::app()->session['user_id'] = $user->user_id;
-
                         $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'user has already completed onboarding.');
                         $this->renderJSON($data);
                         return;
