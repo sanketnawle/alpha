@@ -246,7 +246,7 @@
           return;
       }
 
-      if(email.indexOf('nyu.edu') < 0){
+      if(email.indexOf('nyu.edu') < 0 && email.indexOf('urlinq.com') < 0) {
           //alert('An NYU email address is required.');
           $error_div.text('An NYU email address is required');
           $error_div.css({'left': email_position.left - 310});

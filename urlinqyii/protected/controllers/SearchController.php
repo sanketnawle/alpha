@@ -178,7 +178,7 @@ class SearchController extends Controller
 //            ->limit(30)
 //            ->queryAll();
 
-        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' AND user_type = 's' LIMIT 30");
+        $students = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND user_type = 's' LIMIT 30");
         for($i = 0; $i < count($students); $i++){
             //CHeck if u are following this user
 
@@ -192,9 +192,10 @@ class SearchController extends Controller
             }else{
                 $students[$i]['following'] = false;
             }
+            $students[$i]['own_profile'] = $students[$i]['user_id'] == $this->get_current_user_id();
         }
 
-        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%' AND user_type = 'p' OR user_type = 'a' LIMIT 30");
+        $faculty = User::model()->findAllBySql("SELECT * FROM `user` WHERE (CONCAT(firstname, ' ', lastname) LIKE '%" . $query . "%' OR user_email LIKE '%" . $query . "%') AND (user_type = 'p' OR user_type = 'a') LIMIT 30");
         for($i = 0; $i < count($faculty); $i++){
             //CHeck if u are following this user
             $faculty[$i] = $this->get_model_associations($faculty[$i], array('pictureFile'));
@@ -205,6 +206,7 @@ class SearchController extends Controller
             }else{
                 $faculty[$i]['following'] = false;
             }
+            $faculty[$i]['own_profile'] = $faculty[$i]['user_id'] == $this->get_current_user_id();
         }
 
 

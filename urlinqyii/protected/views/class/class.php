@@ -880,6 +880,12 @@
 
 
                                 </div>
+                                <?php }else{?>
+                                    <div class = "user_card_button_holder">
+                                        <div class = "follow_button_wrapper following_wrapper">
+                                            <div class = "user_follow_button own_profile">Me</div>
+                                        </div>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
