@@ -259,8 +259,13 @@ class FeedController extends Controller
 
             // getting and appending the origin
             if($post['origin_type'] == "user"){
-//                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
-//                $posts [$i] ['origin'] = $origin->firstname." ".$origin->lastname;
+                $origin = User::model()->find('user_id=:id', array(':id'=>$post['origin_id']));
+
+                if($origin){
+                    $posts [$i]['origin'] = $this->model_to_array($origin);
+                }else{
+                    $posts [$i]['origin'] = null;
+                }
 
             }
             elseif($post['origin_type']=="class"){
