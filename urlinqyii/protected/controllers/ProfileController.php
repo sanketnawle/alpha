@@ -953,7 +953,7 @@ class ProfileController extends Controller
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
         }
 
-        foreach($user->groups as $i=>$club){
+        foreach($user->clubs as $i=>$club){
             $data['clubs'][$i]['club_name']=$club->group_name;
             $data['clubs'][$i]['club_id']=$club->group_id;
             $data['clubs'][$i]['website']=$club->website;

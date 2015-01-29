@@ -356,7 +356,7 @@
                                 </div>
                                 <div class = "members_tab_content tab_content">
 
-                                    <?php foreach($club->members as $member){ ?>
+                                    <?php foreach($club->users as $member){ ?>
                                         <div class = "members_card_wrapper" data-user_id='<?php echo $member->user_id; ?>' data-name="<?php echo $member->firstname . ' ' . $member->lastname; ?>">
                                             <div class = "members_card admin normal_size">
                                                 <div class = "members_card_img profile_link" data-user_id='<?php echo $member->user_id; ?>' style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $member->pictureFile->file_url; ?>');">

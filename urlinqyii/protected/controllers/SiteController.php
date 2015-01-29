@@ -945,8 +945,8 @@ class SiteController extends Controller
     public function actionRegister(){
 
         if(isset($_POST['password']) ||isset($_POST['firstname']) ||isset($_POST['lastname']) ||isset($_POST['account_types']) ||isset($_POST['email'])){
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
+            $firstname = ucfirst($_POST['firstname']);
+            $lastname = ucfirst($_POST['lastname']);
             $email = $_POST['email'];
             $user_type = $_POST['account_types'];
             $password = $_POST['password'];

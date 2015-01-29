@@ -459,13 +459,15 @@ class FeedController extends Controller
             $privacy_type = 'a';
         }
 
+        // or (post.origin_type = 'user' )
+
+
         $posts_sql_home = "SELECT distinct *
                             from post
                             join post_user_inv
                               on (post.post_id = post_user_inv.post_id)
                            where ((post_user_inv.user_id IN (SELECT to_user_id from user_connection where from_user_id = " . $user->user_id .")
                               or post_user_inv.user_id = " . $user->user_id . ")
-                              or (post.origin_type = 'user' )
 
                               or (origin_type = 'university' and origin_id = " . $user->school_id . ")
                               or (origin_type = 'department' and origin_id = " . $user->department_id .")
