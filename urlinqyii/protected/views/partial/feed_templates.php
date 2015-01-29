@@ -127,7 +127,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>
@@ -614,7 +614,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>
@@ -948,7 +948,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>

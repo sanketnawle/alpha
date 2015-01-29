@@ -56,6 +56,7 @@ div.group_info_tab_content div.group_box{
 div#content_panel.course_content_panel div.group_info_tab_content div.group_box
 {
     max-width: 505px;
+    max-height:170px;
 }
 
 body.left_panel_hidden.left_panel_hidden_p2 div#content_panel.course_content_panel div.group_info_tab_content div.group_box, body.left_panel_hidden_p2 div#content_panel.course_content_panel div.group_info_tab_content div.group_box{
@@ -238,6 +239,15 @@ div.group_box_secondary_info_section div.info_line a.department_link{
     cursor: pointer;
 }
 
+body#body_searchpage div.group_box_secondary_info_section div.info_line a.department_link{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 4px;
+    position: relative;
+    width: 402px;
+    display: inline-block;
+}
 
 div.group_box_secondary_info_section div.info_line.indent{
     padding-left: 10px;

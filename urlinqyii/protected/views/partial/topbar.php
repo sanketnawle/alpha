@@ -36,7 +36,7 @@
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
                 <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search" class = "top_search_bar_form">
-                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search your university">
+                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Look up classes, clubs, and people">
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">

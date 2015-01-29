@@ -554,9 +554,9 @@ input.filter_textinput:focus, input.filter_textinput:active{
 /* MAIN RESULTS SECTION */
 
 .search_results_main .search_results_header{
-    padding-bottom: 2px;
-
-    border-bottom: 1px solid #d4d4d4;
+padding-bottom: 2px;
+border-bottom: 1px solid #d4d4d4;
+margin-bottom: 18px;
 }
 
 .search_results_header span.search_results_header_sentence{
