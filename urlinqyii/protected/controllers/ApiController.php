@@ -4,8 +4,17 @@
     {
 
         public function actionClassesForSchool() {
+
+            $user = $this->get_current_user($_GET);
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user not logged in.');
+                $this->renderJSON($data);
+                return;
+            }
+
             if (!isset($_GET['school_id'])) {
-                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
             }
@@ -16,7 +25,7 @@
                 $this->renderJSON($data);
                 return;
             } else {
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid course.');
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid course.');
                 $this->renderJSON($data);
                 return;
             }
