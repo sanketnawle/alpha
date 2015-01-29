@@ -464,60 +464,60 @@ $(document).ready(function(){
 
 
 
-
-
-	/*date cell clicked in that mini cal, event trigger here*/
-	$(document).delegate(".calcell", "click", function () {
-			
-			var $this_cal=$(this).closest(".calLayer");
-
-			if (!$(this).hasClass("disable")) {
-			    if (blinkflag == 0) {
-			    	var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
-			    	var dayarr= $(this).attr("id").split("_");
-			    	var day= dayarr[1];
-			    	if(day === "mo") day = "Mon";
-			    	if(day === "tu") day = "Tue";
-			    	if(day === "we") day = "Wed";
-			    	if(day === "th") day = "Thu";
-			    	if(day === "fr") day = "Fri";
-			    	if(day === "sa") day = "Sat"
-			    	if(day === "su") day = "Sun"
-					var selected_day_date = $(this).text();
-
-
-
-                    //Add the selected date to the data-date attribute
-                    //So its easy to pull off while sending the post request
-                    //to create the event, and it will already be in the proper SQL
-                    //format
-                    var todays_date = new Date();
-                    var formatted_day_date = selected_day_date;
-                    if(formatted_day_date < 10){
-                        formatted_day_date  = '0' + formatted_day_date.toString();
-                    }
-                    var todays_month = todays_date.getMonth() + 1;
-                    if(todays_month < 10){
-                        todays_month = '0' + todays_month.toString();
-                    }
-                    $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
-
-
-
-
-
-			    	var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
-			    	var year= yeararr[1];
-			    	var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
-			    	$('.event_date').val(theDate);
-
-			    	
-
-
-			    	
-			    }
-			}
-    });
+//
+//
+//	/*date cell clicked in that mini cal, event trigger here*/
+//	$(document).delegate(".calcell", "click", function () {
+//
+//			var $this_cal=$(this).closest(".calLayer");
+//
+//			if (!$(this).hasClass("disable")) {
+//			    if (blinkflag == 0) {
+//			    	var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
+//			    	var dayarr= $(this).attr("id").split("_");
+//			    	var day= dayarr[1];
+//			    	if(day === "mo") day = "Mon";
+//			    	if(day === "tu") day = "Tue";
+//			    	if(day === "we") day = "Wed";
+//			    	if(day === "th") day = "Thu";
+//			    	if(day === "fr") day = "Fri";
+//			    	if(day === "sa") day = "Sat"
+//			    	if(day === "su") day = "Sun"
+//					var selected_day_date = $(this).text();
+//
+//
+//
+//                    //Add the selected date to the data-date attribute
+//                    //So its easy to pull off while sending the post request
+//                    //to create the event, and it will already be in the proper SQL
+//                    //format
+//                    var todays_date = new Date();
+//                    var formatted_day_date = selected_day_date;
+//                    if(formatted_day_date < 10){
+//                        formatted_day_date  = '0' + formatted_day_date.toString();
+//                    }
+//                    var todays_month = todays_date.getMonth() + 1;
+//                    if(todays_month < 10){
+//                        todays_month = '0' + todays_month.toString();
+//                    }
+//                    $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+//
+//
+//
+//
+//
+//			    	var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
+//			    	var year= yeararr[1];
+//			    	var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
+//			    	$('.event_date').val(theDate);
+//
+//
+//
+//
+//
+//			    }
+//			}
+//    });
 
 
 
