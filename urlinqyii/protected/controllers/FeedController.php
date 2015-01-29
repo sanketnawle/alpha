@@ -293,6 +293,7 @@ class FeedController extends Controller
                 $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
                 if($group->privacy){
                     unset($posts[$i]);
+                    continue;
                 }else{
                     $posts[$i]['origin'] = $this->model_to_array($this->get_model_associations($group,array('pictureFile')));
                     $posts[$i]['origin']['name'] = $posts[$i]['origin']['group_name'];
@@ -405,6 +406,7 @@ class FeedController extends Controller
                 }else{
                     //REmove this post from the array
                     unset($posts[$i]);
+                    continue;
                 }
 
             }
