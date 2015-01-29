@@ -373,6 +373,13 @@
             <div class = "user_more_info">
                 <a class = "department_link">{{department_name}}</a>
             </div>
+            {{#if own_profile}}
+            <div class = "user_card_button_holder">
+                <div class = "follow_button_wrapper following_wrapper">
+                    <div class = "user_follow_button profile own_profile">Me</div>
+                </div>
+            </div>
+            {{else}}
             <div class = "user_card_button_holder">
                 <div class = "follow_button_wrapper following_wrapper">
                     {{#if following}}
@@ -392,6 +399,7 @@
 
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
 

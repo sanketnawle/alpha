@@ -762,12 +762,13 @@ class ProfileController extends Controller
         $this->renderJSON($result);
     }
     public function actionFollowUser(){
-        if(isset($_POST['user']) && isset($_POST['user_to_follow'])&& isset($_POST['follow'])){
+        if(isset($_POST['user_to_follow'])&& isset($_POST['follow'])){
+            $user_id = $this->get_current_user_id();
             $userFollow = UserConnection::model()->find('from_user_id = :u1 and to_user_id = :u2 ',
-                array(':u1'=>$_POST['user'],':u2'=>$_POST['user_to_follow']));
+                array(':u1'=>$user_id,':u2'=>$_POST['user_to_follow']));
             if(!$userFollow && $_POST['follow']){
                 $userFollow = new UserConnection();
-                $userFollow->from_user_id = $_POST['user'];
+                $userFollow->from_user_id = $user_id;
                 $userFollow->to_user_id = $_POST['user_to_follow'];
                 $userFollow->timestamp = new CDbExpression('NOW()');
                 if($userFollow->save()){
@@ -795,7 +796,7 @@ class ProfileController extends Controller
                 }
             }else if($userFollow && !$_POST['follow']){
                 if($userFollow->delete()){
-                    $this->renderJSON(array('status'=>'success','user_id'=>$_POST['user']));
+                    $this->renderJSON(array('status'=>'success','user_id'=>$user_id));
                 }
                 else{
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
@@ -1081,8 +1082,9 @@ class ProfileController extends Controller
     }
 
     public function actionGetSchools(){
-        if(isset($_GET['user'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+        //if(isset($_GET['user'])){
+           // $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $user = $this->get_current_user();
             $result=array('schools'=>array(),'selected'=>0);
             if($user->school){
                 $university = $user->school->university;
@@ -1096,7 +1098,7 @@ class ProfileController extends Controller
             else{
                 $this->renderJSON(array('error','user has no school'));
             }
-        }
+        //}
     }
 
     public function actionGetDepartments(){
@@ -1105,15 +1107,16 @@ class ProfileController extends Controller
             $departments = Department::model()->findAll('school_id=:sid',array(':sid'=>$_GET['school']));
 
         }
-        if(isset($_GET['user'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
-            if($user->school){
-                $departments = $user->school->departments;
-                $result['selected'] = $user->department_id;
-            }else{
-                $this->renderJSON(array('error','user has no school'));
-            }
+        //if(isset($_GET['user'])){
+            //$user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+        $user = $this->get_current_user();
+        if($user->school){
+            $departments = $user->school->departments;
+            $result['selected'] = $user->department_id;
+        }else{
+            $this->renderJSON(array('error','user has no school'));
         }
+        //}
         foreach($departments as $department){
             $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name, 'tag'=>$department->department_tag);
         }
