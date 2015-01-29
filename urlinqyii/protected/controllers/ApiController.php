@@ -21,7 +21,7 @@
 
             $school = SchoolModel::model()->find("school_id=:school_id",array(":school_id"=>$_GET['school_id']));
             if ($school) {
-                $data = array('success'=>true, 'error_id'=>$school->courses);
+                $data = array('success'=>true, 'courses'=>$school->courses);
                 $this->renderJSON($data);
                 return;
             } else {
