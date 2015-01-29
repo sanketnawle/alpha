@@ -531,8 +531,12 @@
 
                                             //var $forgot_pass_div = $("<button id='forgot_password'>Forgot Password? </button> <form id='reset_password'><input type='text' name='email' placeholder='email'/><input type='submit' value='submit'/></form> </div>")
                                             //$error_div.append($forgot_pass_div);
+                                        }else if(response['error_id'] == 6){
+                                            window.location.replace(globals.base_url + '/onboarding');
                                         }
-                                        $('body').append($error_div).hide.fadeIn(250);;
+
+
+                                        $('body').append($error_div).hide.fadeIn(250);
                                     }
                                 }, 'json'
                             );
