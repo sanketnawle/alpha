@@ -41,7 +41,7 @@
                                                             <span class = 'post_format'>
                                                                 <em class = "posted_to"></em>
                                                                 <span class = 'post_group'>
-                                                                    <div class="profile_link" data-user_id="{{user_id}}">{{origin.firstname}} {{origin.lastname}}</div>
+                                                                    <div class="profile_link" data-user_id="{{origin_id}}">{{origin.firstname}} {{origin.lastname}}</div>
                                                                 </span>
                                                             </span>
                                                         {{/ifCond}}
