@@ -43,7 +43,9 @@ $(document).ready(function(){
 
 
     $('.user_follow_button').click(function(){
-
+        if($(this).hasClass('own_profile')){
+            return;
+        }
         var $user_follow_button = $(this);
 
         var user_id = $user_follow_button.closest('.members_card_wrapper').attr('data-user_id');
