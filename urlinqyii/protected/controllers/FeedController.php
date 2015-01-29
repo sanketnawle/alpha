@@ -369,36 +369,44 @@ class FeedController extends Controller
 
                 $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
-                $event = $this->model_to_array($post_event->event);
+
+                $event = $post_event->event;
+
+                if($event){
+                    $event = $this->model_to_array($post_event->event);
 
 
-                $posts[$i]['event'] = $event;
-                $posts[$i]['user_attending'] = false;
+                    $posts[$i]['event'] = $event;
+                    $posts[$i]['user_attending'] = false;
 
 
 
-                if($event['user_id'] == $user->user_id){
-                    $posts[$i]['user_attending'] = true;
-                }else{
-                    $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event['event_id'], ':user_id'=>$user->user_id));
-                    if($event_user){
+                    if($event['user_id'] == $user->user_id){
                         $posts[$i]['user_attending'] = true;
+                    }else{
+                        $event_user = EventUser::model()->find('event_id=:event_id and user_id=:user_id', array(':event_id'=>$event['event_id'], ':user_id'=>$user->user_id));
+                        if($event_user){
+                            $posts[$i]['user_attending'] = true;
+                        }
                     }
+
+
+                    if($post_model->origin_type == 'class'){
+                        $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
+                        if($class_user){
+                            $posts[$i]['event']['color'] = $class_user->color;
+                        }
+                    }else if($post_model->origin_type == 'group' || $post_model->origin_type == 'club'){
+                        $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
+                        if($group_user){
+                            $posts[$i]['event']['color'] = $group_user->color;
+                        }
+                    }
+                }else{
+                    //REmove this post from the array
+                    unset($posts[$i]);
                 }
 
-
-
-                if($post_model->origin_type == 'class'){
-                    $class_user = ClassUser::model()->find('class_id=:class_id and user_id=:user_id', array(':class_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
-                    if($class_user){
-                        $posts[$i]['event']['color'] = $class_user->color;
-                    }
-                }else if($post_model->origin_type == 'group' || $post_model->origin_type == 'club'){
-                    $group_user = GroupUser::model()->find('group_id=:group_id and user_id=:user_id', array(':group_id'=>$post_model->origin_id, ':user_id'=>$user->user_id));
-                    if($group_user){
-                        $posts[$i]['event']['color'] = $group_user->color;
-                    }
-                }
             }
 
             //See if there are any files associated with this post
