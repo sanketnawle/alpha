@@ -550,6 +550,8 @@ class EventController extends Controller
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                        include_once "protected/components/notification/notification.php"
+                        send_notification('event', $invite_user_id, $event->user_id, $event->event_id, 'event');
                     }
                 }
 
