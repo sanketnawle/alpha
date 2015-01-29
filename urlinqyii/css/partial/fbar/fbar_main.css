@@ -15,6 +15,14 @@ div#fbar_new {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
 }
 
+#fbar_button_announcement{
+    display:none!important;
+}
+
+section#fbar_buttons div#fbar_button_discuss.fbar_twoprong.fbar_buttonwrapper{
+    background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center!important;
+}
+
 form#fbar_form {
     margin-bottom: 0px !important;
 }

@@ -3,6 +3,35 @@
     class ApiController extends Controller
     {
 
+        public function actionClassesForSchool() {
+
+            $user = $this->get_current_user($_GET);
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user not logged in.');
+                $this->renderJSON($data);
+                return;
+            }
+
+            if (!isset($_GET['school_id'])) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $school = SchoolModel::model()->find("school_id=:school_id",array(":school_id"=>$_GET['school_id']));
+            if ($school) {
+                $data = array('success'=>true, 'courses'=>$school->courses);
+                $this->renderJSON($data);
+                return;
+            } else {
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid course.');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }
+
         public function actionAddNotificationID() {
             if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');

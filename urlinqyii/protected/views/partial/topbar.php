@@ -143,7 +143,7 @@
             {{else}}
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin_type}}/{{origin_id}}" >
                 <span>{{origin_name}}</span>
-                <div class = "search_result_icon non_profile_icon">{{origin_type}}</div>
+                <div class = "search_result_icon non_profile_icon"></div>
             {{/ifCond}}
             </a>
         </li>

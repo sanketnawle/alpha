@@ -208,7 +208,7 @@
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "people_search_input" placeholder = "Search departments..." class = "name_search_input people_search_input small_search_input">
+                                    <input type = "text" name = "people_search_input" placeholder = "Search departments" class = "name_search_input people_search_input small_search_input">
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
