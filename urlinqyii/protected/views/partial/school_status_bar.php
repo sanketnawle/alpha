@@ -158,8 +158,8 @@
 
 
 
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
 
 
 
