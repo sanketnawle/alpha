@@ -304,23 +304,19 @@ top: 9px;
 position: relative;
 }
 
-.post_lc .post_like{
-height: 100%;
-padding-right: 2px;
-border-radius: 0px;
-padding-top: 5px;
-padding-bottom: 5px;
-display: inline-block;
--moz-transition: all .15s ease;
--webkit-transition: all .15s ease;
-transition: all .15s ease;
-                   
-color: #029acf;
-margin-left: 32px;
-}
 
-.post_lc .post_liked{
-    height: 100%; padding-right: 2px; border-radius: 0px; padding-top: 5px; padding-bottom: 5px; display: inline-block; -moz-transition: all .15s ease; -webkit-transition: all .15s ease; transition: all .15s ease; color: #029acf; 
+
+.post_lc .post_liked, .post_lc .post_like{
+    height: 100%;
+    padding-right: 2px;
+    border-radius: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    -moz-transition: all .15s ease;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+    color: #029acf;
     margin-left: 32px;
                    
 
@@ -332,7 +328,7 @@ cursor: pointer;
 }
 
 .post_lc .post_liked:hover{
-cursor:default;
+cursor:pointer;
 }
 
 .post_lc .post_comment_btn:hover{
@@ -368,7 +364,9 @@ position: absolute;
 right: -15px;
 color: #777;  
 }
-
+.reply_number{
+    right: -6px;
+}
 
 
 .post_like .unliked{
@@ -472,7 +470,7 @@ color: #029acf;
 font-size: 14px;
 height: 36px;
 text-transform: Capitalize;
-padding-right: 20px;
+/*padding-right: 20px;*/
  
 border-radius: 0px;    
       

@@ -10,6 +10,16 @@
         globals.origin_id = '<?php echo $user->user_id; ?>';
         globals.user_id = '<?php echo $user->user_id; ?>';
     </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-59124667-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,6 +40,7 @@
 
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
     <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
+    <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/fbar/fbar_main.css" type = "text/css">
 
 
@@ -363,6 +374,13 @@
             <div class = "user_more_info">
                 <a class = "department_link">{{department_name}}</a>
             </div>
+            {{#if own_profile}}
+            <div class = "user_card_button_holder">
+                <div class = "follow_button_wrapper following_wrapper">
+                    <div class = "user_follow_button profile own_profile">Me</div>
+                </div>
+            </div>
+            {{else}}
             <div class = "user_card_button_holder">
                 <div class = "follow_button_wrapper following_wrapper">
                     {{#if following}}
@@ -382,6 +400,7 @@
 
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
 

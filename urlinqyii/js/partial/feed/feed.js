@@ -266,7 +266,7 @@ function ready(globals){
                     }else{
                         $post_like_button.append('<div class = "like_number">1</div>');
                     }
-                    $post_like_button.find(".post_like_link").text("Unlike");
+                    $post_like_button.find(".post_like_link").text("");
                     $post_like_button.removeClass('post_like');
                     $post_like_button.addClass('post_liked');
 

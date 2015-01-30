@@ -11,6 +11,16 @@
             globals.user_id = '<?php echo $user->user_id; ?>';
 
         </script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-59124667-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
 
         <title><?php echo $course->course_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
@@ -23,6 +33,7 @@
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
            <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 

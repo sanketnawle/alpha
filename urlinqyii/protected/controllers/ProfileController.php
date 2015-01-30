@@ -312,7 +312,6 @@ class ProfileController extends Controller
              'file_url'=>$file->file_url,'extension'=>$extension);
 
      }
-   //  public function updateMajorMinor
      public function actionAddShowcase(){
          include "file_upload.php";
          if (isset($_FILES['file'])) {
@@ -464,11 +463,17 @@ class ProfileController extends Controller
             }
             $major = Major::model()->find('name = :mname',array(':mname'=>$majorname));
             if(!$major){
-                $data = 'failure: some major names are not valid';
-                return $data;
-            }else{
-                $majors[] = $major;
+                //$data = 'failure: some major names are not valid';
+                //return $data;
+                $major = new Major();
+                $major->name = $majorname;
+                if(!$major->save()){
+                    $data=$major->getErrors();
+                    return $data;
+                }
             }
+            $majors[] = $major;
+
         }
 
 
@@ -762,12 +767,13 @@ class ProfileController extends Controller
         $this->renderJSON($result);
     }
     public function actionFollowUser(){
-        if(isset($_POST['user']) && isset($_POST['user_to_follow'])&& isset($_POST['follow'])){
+        if(isset($_POST['user_to_follow'])&& isset($_POST['follow'])){
+            $user_id = $this->get_current_user_id();
             $userFollow = UserConnection::model()->find('from_user_id = :u1 and to_user_id = :u2 ',
-                array(':u1'=>$_POST['user'],':u2'=>$_POST['user_to_follow']));
+                array(':u1'=>$user_id,':u2'=>$_POST['user_to_follow']));
             if(!$userFollow && $_POST['follow']){
                 $userFollow = new UserConnection();
-                $userFollow->from_user_id = $_POST['user'];
+                $userFollow->from_user_id = $user_id;
                 $userFollow->to_user_id = $_POST['user_to_follow'];
                 $userFollow->timestamp = new CDbExpression('NOW()');
                 if($userFollow->save()){
@@ -795,7 +801,7 @@ class ProfileController extends Controller
                 }
             }else if($userFollow && !$_POST['follow']){
                 if($userFollow->delete()){
-                    $this->renderJSON(array('status'=>'success','user_id'=>$_POST['user']));
+                    $this->renderJSON(array('status'=>'success','user_id'=>$user_id));
                 }
                 else{
                     $this->renderJSON(array('status'=>'failure','message'=>$userFollow->getErrors()));
@@ -811,7 +817,8 @@ class ProfileController extends Controller
             $extension = pathinfo($_FILES["file"]["name"])['extension'];
             if($extension == "jpg" || $extension == "png" || $extension == "gif"){
                 $result = file_upload($_FILES,"profile/");
-                $user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                //$user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                $user = $this->get_current_user();
                 $user->picture_file_id = $result['file_id'];
                 if($user->save()){
                     $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
@@ -1074,15 +1081,16 @@ class ProfileController extends Controller
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
         $data['num_classes'] = sizeof($user->classes);
-        $data['num_clubs'] = sizeof($user->groups);
+        $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
         $this->renderJSON($data);
     }
 
     public function actionGetSchools(){
-        if(isset($_GET['user'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+        //if(isset($_GET['user'])){
+           // $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+            $user = $this->get_current_user();
             $result=array('schools'=>array(),'selected'=>0);
             if($user->school){
                 $university = $user->school->university;
@@ -1096,7 +1104,7 @@ class ProfileController extends Controller
             else{
                 $this->renderJSON(array('error','user has no school'));
             }
-        }
+        //}
     }
 
     public function actionGetDepartments(){
@@ -1105,15 +1113,16 @@ class ProfileController extends Controller
             $departments = Department::model()->findAll('school_id=:sid',array(':sid'=>$_GET['school']));
 
         }
-        if(isset($_GET['user'])){
-            $user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
-            if($user->school){
-                $departments = $user->school->departments;
-                $result['selected'] = $user->department_id;
-            }else{
-                $this->renderJSON(array('error','user has no school'));
-            }
+        //if(isset($_GET['user'])){
+            //$user = User::model()->find('user_id=:uid',array(':uid'=>$_GET['user']));
+        $user = $this->get_current_user();
+        if($user->school){
+            $departments = $user->school->departments;
+            $result['selected'] = $user->department_id;
+        }else{
+            $this->renderJSON(array('error','user has no school'));
         }
+        //}
         foreach($departments as $department){
             $result['departments'][] = array('id'=>$department->department_id, 'name'=>$department->department_name, 'tag'=>$department->department_tag);
         }

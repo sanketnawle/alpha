@@ -10,8 +10,19 @@
 
 
     </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-59124667-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
   <title>Welcome to Urlinq</title>
+  <meta name="google-site-verification" content="qv_TWutBCtliggYTCBDzJeXCNfJ3Dd3L5SkIhBSxm5Y" />
   <meta name="viewport" content="width=device-width, initial-scale=.68">
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lp_beta.css" />
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/waiting_animation.css" rel='stylesheet' type='text/css'>
@@ -235,7 +246,7 @@
           return;
       }
 
-      if(email.indexOf('nyu.edu') < 0){
+      if(email.indexOf('nyu.edu') < 0 && email.indexOf('urlinq.com') < 0) {
           //alert('An NYU email address is required.');
           $error_div.text('An NYU email address is required');
           $error_div.css({'left': email_position.left - 310});
@@ -520,8 +531,12 @@
 
                                             //var $forgot_pass_div = $("<button id='forgot_password'>Forgot Password? </button> <form id='reset_password'><input type='text' name='email' placeholder='email'/><input type='submit' value='submit'/></form> </div>")
                                             //$error_div.append($forgot_pass_div);
+                                        }else if(response['error_id'] == 6){
+                                            window.location.replace(globals.base_url + '/onboarding');
                                         }
-                                        $('body').append($error_div).hide.fadeIn(250);;
+
+
+                                        $('body').append($error_div).hide.fadeIn(250);
                                     }
                                 }, 'json'
                             );
