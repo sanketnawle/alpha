@@ -64,11 +64,12 @@ section#fbar_buttons .fbar_buttonwrapper {
     top: 0px;
     left: 0;
     cursor: pointer;
-    width: 180.5px;
+    width: 179.5px;
     height: 35px;
     padding: 7px 0px 8px 0px;
     color: #747474;
     display: inline-block;
+    word-spacing: 10px;
     font-size: 15px;
     opacity: .9;
     font-weight: normal;
@@ -105,7 +106,8 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text {
     -webkit-user-select: none;
     text-align: center;
     margin-top: 7px;
-    font-size: 16.5px;  font-weight: 500;  display: inline-block; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-size: 16.5px;  font-weight: 500;  white-space: nowrap;
+    display: inline-block; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.announce_button_text{
@@ -173,7 +175,7 @@ section#fbar_buttons .fbar_buttonwrapper:hover > i.fbar_button_icon {
     width: 30px;
     height: 30px;
     top: 0px;
-    left: 32px;
+    left: 30px;
     background-position: 0px -21px !important;
 }
 

@@ -29,7 +29,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     background-position: -20px -2px;
     background-repeat: no-repeat;
     font-size: 12px;
-    padding: 8px 31px;
+    padding: 1px 31px;
     border: 1px solid #d8d8d8;
     margin-top: 12px;
     border-top-color: #c0c0c0;
@@ -559,6 +559,7 @@ span.profile_tab_amount{
     border-radius: 100px;
     font-weight: bold;
     font-size: 10px;
+    top: -2px;
     left: 5px;
     padding: 4px 7px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.66);
