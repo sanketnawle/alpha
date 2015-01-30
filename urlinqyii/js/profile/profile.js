@@ -52,7 +52,7 @@ $(document).ready(function() {
 
                 render_profile(base_url,json_profile_data,edit_mode);
             }
-            $('#profile_background_overlay').fadeIn(300);
+
         });
 
 
@@ -91,6 +91,8 @@ $(document).ready(function() {
                 numShowcase=data.showcase_size;
                 var template = Handlebars.compile(html);
                 $('body').append(template(data));
+                $('#profile_background_overlay').hide().fadeIn(300);
+                $('#profile_wrapper').addClass('animated bounceInUp');
 
                 globals.$fbar = $('#profile_fbar_wrapper');
 
