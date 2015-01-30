@@ -1085,15 +1085,26 @@ $(document).ready(function() {
 
                 }
                 if(result.name == "success"){
+                    var new_name = $('#name_input').val();
                     if($('#office_section').length){
-                        $('#name_info').text("Professor "+$('#name_input').val());
+                        $('#name_info').text("Professor "+new_name);
                     }else{
                         match = (new RegExp("([0-9]+)$")).exec($('#name_info').text());
                         if(match){
-                            $('#name_info').text($('#name_input').val()+" "+match[1]);
+                            $('#name_info').text(new_name+" "+match[1]);
+                        }else{
+                            $('#name_info').text(new_name);
                         }
                     }
-                    //$('.profile_tab.feed').find('.profile_tab_text').text($('#name_input').val()+"'s Feed");
+                    match = (new RegExp("(.+) ").exec(new_name));
+                    if(match){
+                        $('.profile_tab.feed').find('.profile_tab_text').text(match[1]+"'s Feed");
+                    }
+                    $('.MyBox_ProfileLink').text(new_name);
+                    $('.post_owner[data-user_id='+globals.user_id+']').text(new_name);
+                    $('.comment_owner[data-user_id='+globals.user_id+']').text(new_name);
+                    $('.members_card .user_main_info .name[data-user_id='+globals.user_id+']').text(new_name);
+
                 }else if(result.name){
                     alert(result.name);
                     any_errors = true;

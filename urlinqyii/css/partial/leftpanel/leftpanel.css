@@ -195,13 +195,15 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 
 .MyBox a.MyBox_PictureLink{
     float: left;
-    
+    height: 48px!important;
+
+    width: 48px!important;
     cursor: pointer;
 }
 
 a.MyBox_PictureLink img.MyBox_Picture{
     height: 48px!important;
-    
+
     width: 48px!important;
     border-radius: 500px;
 }
