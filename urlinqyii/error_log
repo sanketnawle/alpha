@@ -2720,3 +2720,6 @@
 [30-Jan-2015 10:03:19 America/Denver] PHP Parse error:  syntax error, unexpected ''event'' (T_CONSTANT_ENCAPSED_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 652
 [30-Jan-2015 10:04:04 America/Denver] PHP Parse error:  syntax error, unexpected ''event'' (T_CONSTANT_ENCAPSED_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 652
 [30-Jan-2015 10:04:47 America/Denver] PHP Parse error:  syntax error, unexpected ''event'' (T_CONSTANT_ENCAPSED_STRING) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/EventController.php on line 652
+[30-Jan-2015 21:35:57 UTC] PHP Fatal error:  Call to a member function save() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/PostController.php on line 737
+[30-Jan-2015 21:37:18 UTC] PHP Fatal error:  Call to a member function save() on a non-object in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/controllers/PostController.php on line 737
+[30-Jan-2015 21:49:08 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 66880512 bytes) in /home/campusla/public_html/urlinq/alpha/urlinqyii/protected/components/ImageCompress.php on line 11
