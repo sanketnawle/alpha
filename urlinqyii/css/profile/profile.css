@@ -24,7 +24,15 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 #profile_wrapper .search_bar{
-    height:4px;
+    height: 33px;
+    background-image: url(../../assets/small_icons.png);
+    background-position: -20px -2px;
+    background-repeat: no-repeat;
+    font-size: 12px;
+    padding: 8px 31px;
+    border: 1px solid #d8d8d8;
+    margin-top: 12px;
+    border-top-color: #c0c0c0;
 }
 
 #profile_background_overlay div.empty_gap{
@@ -273,8 +281,9 @@ a.info_name{
 }
 .groups_wrapper{
     width: 90%;
-    margin-left: 10px;
+    margin-left: auto;
     margin-top: 10px;
+    margin-right: auto;
 }
 
 .group_box{
@@ -285,7 +294,7 @@ a.info_name{
     border-radius: 3px;
     box-shadow: 0 0 0 1px rgba(0,0,0,.04),0 1px 5px rgba(0,0,0,.1);
 
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 .class_content{
     width:100%;
@@ -514,6 +523,7 @@ div.profile_tab div.profile_tab_content{
     display: none;
     color: white;
 
+    width: 723px;
 }
 
 .profile_panel.active{
@@ -545,10 +555,15 @@ div.profile_tab div.profile_tab_content{
     overflow: visible;
 }
 span.profile_tab_amount{
-    color: black;
-    font-size: 15px;
+    color: #fff;
+    border-radius: 100px;
+    font-weight: bold;
+    font-size: 10px;
     left: 5px;
+    padding: 4px 7px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.66);
     position: relative;
+    background: rgba(18, 19, 20, 0.61);
 }
 
 div.profile_tab.active .profile_tab_text{
@@ -1007,7 +1022,7 @@ form#add_showcase input#desc_entry{
     margin-top:20px;
 }
 #profile_feed_wrapper{
-    margin-left: 65px;
+    margin-left: 87px;
 }
 div.user_more_info{
     text-overflow: ellipsis;
