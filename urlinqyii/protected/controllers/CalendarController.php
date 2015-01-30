@@ -4,6 +4,17 @@ class CalendarController extends Controller
 {
 	public function actionView()
 	{
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $this->renderJSON(array('success'=>false));
+            return;
+        }
+
+
+
+
 		$this->render('index');
 	}
 

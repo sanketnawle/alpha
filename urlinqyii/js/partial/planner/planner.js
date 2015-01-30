@@ -61,6 +61,10 @@ $(document).ready(function(){
     $( ".event_date" ).attr('data-date', d.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
 
 
+    $('#tp1').attr('data-time', ints_to_time(d.getHours(), d.getMinutes(), d.getSeconds()));
+    $('#tp1').val(date_to_am_pm_string(d));
+
+
 
     x= w[ d.getDay() ];
     $("#today_date").text( w[ d.getDay() ] + " " + ( d.getMonth() +1 )+ "/" + d.getDate() );
@@ -183,46 +187,46 @@ $(document).ready(function(){
 
 
 
-
-    $(document).delegate('.event_date', 'click', function () {
-        $('.calLayer').toggle();
-
-    });
-
-
-
-    $(".timepicker div").on("click", function(){
-        //$('.event_time').text( $(this).text() );
-        //$('.event_time').css( "margin-left", "20px" );
-        $('.tp1').val( $(this).text() );
-        $('.tp1').css('border-bottom', '1px solid #e5e5e5');
-        $('.tp1').css('border-radius', '3px');
-        $('.timepicker').fadeToggle(150);
-
-
-        $('.event_time').attr('data-time',$(this).attr('data-time'));
-    });
-
-
-
-    $('.tp1').on("keypress", function(){
-        $('.timepicker').css('display', 'none');
-        $(this).css('border-bottom', '1px solid #e5e5e5');
-    });
+//
+//    $(document).delegate('.event_date', 'click', function () {
+//        $('.calLayer').toggle();
+//
+//    });
+//
+//
+//
+//    $(".timepicker div").on("click", function(){
+//        //$('.event_time').text( $(this).text() );
+//        //$('.event_time').css( "margin-left", "20px" );
+//        $('.tp1').val( $(this).text() );
+//        $('.tp1').css('border-bottom', '1px solid #e5e5e5');
+//        $('.tp1').css('border-radius', '3px');
+//        $('.timepicker').fadeToggle(150);
+//
+//
+//        $('.event_time').attr('data-time',$(this).attr('data-time'));
+//    });
 
 
-    $(document).delegate(".tp1","click",function(){
-        $(".timepicker").show();
-    });
+
+//    $('.tp1').on("keypress", function(){
+//        $('.timepicker').css('display', 'none');
+//        $(this).css('border-bottom', '1px solid #e5e5e5');
+//    });
+//
+//
+//    $(document).delegate(".tp1","click",function(){
+//        $(".timepicker").show();
+//    });
 
 
-    $('html').click(function (e) {
-        if (e.target.id == '.timepicker') {
-            $(".timepicker").show();
-        } else {
-            $(".timepicker").hide();
-        }
-    });
+//    $('html').click(function (e) {
+//        if (e.target.id == '.timepicker') {
+//            $(".timepicker").show();
+//        } else {
+//            $(".timepicker").hide();
+//        }
+//    });
 
 
      $(document).click(function(event){
@@ -245,8 +249,20 @@ $(document).ready(function(){
         //Default it to hide and fadein if there are no posts
         $('#free_planner_wrap').hide();
 
+        var planner_origin_type = globals.origin_type;
+        var planner_origin_id = globals.origin_id;
+        if(planner_origin_type == 'home'){
+            planner_origin_type = 'user';
+            planner_origin_id = globals.user_id;
+        }
 
-        $.getJSON( base_url + '/event/getPlannerEvents', function( json_data ) {
+        //alert('GET PLANNER EVENTS');
+
+        console.log(planner_origin_type);
+        console.log(planner_origin_id);
+
+
+        $.getJSON( globals.base_url + '/event/getPlannerEvents', {origin_type: planner_origin_type, origin_id: planner_origin_id}, function( json_data ) {
             //alert(JSON.stringify(json_data));
             if(json_data['success']){
                 show_events(json_data);
@@ -415,6 +431,16 @@ $(document).ready(function(){
 
     }
 
+
+    function show_future_label(){
+
+        $('#future_events_header').fadeIn( "slow", function() {
+            // Animation complete
+        });
+
+    }
+
+
     function addZero(i) {
         if (i < 10) {
             i = "0" + i;
@@ -438,60 +464,60 @@ $(document).ready(function(){
 
 
 
-
-
-	/*date cell clicked in that mini cal, event trigger here*/
-	$(document).delegate(".calcell", "click", function () {
-			
-			var $this_cal=$(this).closest(".calLayer");
-
-			if (!$(this).hasClass("disable")) {
-			    if (blinkflag == 0) {
-			    	var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
-			    	var dayarr= $(this).attr("id").split("_");
-			    	var day= dayarr[1];
-			    	if(day === "mo") day = "Mon";
-			    	if(day === "tu") day = "Tue";
-			    	if(day === "we") day = "Wed";
-			    	if(day === "th") day = "Thu";
-			    	if(day === "fr") day = "Fri";
-			    	if(day === "sa") day = "Sat"
-			    	if(day === "su") day = "Sun"
-					var selected_day_date = $(this).text();
-
-
-
-                    //Add the selected date to the data-date attribute
-                    //So its easy to pull off while sending the post request
-                    //to create the event, and it will already be in the proper SQL
-                    //format
-                    var todays_date = new Date();
-                    var formatted_day_date = selected_day_date;
-                    if(formatted_day_date < 10){
-                        formatted_day_date  = '0' + formatted_day_date.toString();
-                    }
-                    var todays_month = todays_date.getMonth() + 1;
-                    if(todays_month < 10){
-                        todays_month = '0' + todays_month.toString();
-                    }
-                    $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
-
-
-
-
-
-			    	var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
-			    	var year= yeararr[1];
-			    	var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
-			    	$('.event_date').val(theDate);
-
-			    	
-
-
-			    	
-			    }
-			}
-    });
+//
+//
+//	/*date cell clicked in that mini cal, event trigger here*/
+//	$(document).delegate(".calcell", "click", function () {
+//
+//			var $this_cal=$(this).closest(".calLayer");
+//
+//			if (!$(this).hasClass("disable")) {
+//			    if (blinkflag == 0) {
+//			    	var mon= $this_cal.find(".minical-header").find(".minical-h1").text().trim().substring(0,3);
+//			    	var dayarr= $(this).attr("id").split("_");
+//			    	var day= dayarr[1];
+//			    	if(day === "mo") day = "Mon";
+//			    	if(day === "tu") day = "Tue";
+//			    	if(day === "we") day = "Wed";
+//			    	if(day === "th") day = "Thu";
+//			    	if(day === "fr") day = "Fri";
+//			    	if(day === "sa") day = "Sat"
+//			    	if(day === "su") day = "Sun"
+//					var selected_day_date = $(this).text();
+//
+//
+//
+//                    //Add the selected date to the data-date attribute
+//                    //So its easy to pull off while sending the post request
+//                    //to create the event, and it will already be in the proper SQL
+//                    //format
+//                    var todays_date = new Date();
+//                    var formatted_day_date = selected_day_date;
+//                    if(formatted_day_date < 10){
+//                        formatted_day_date  = '0' + formatted_day_date.toString();
+//                    }
+//                    var todays_month = todays_date.getMonth() + 1;
+//                    if(todays_month < 10){
+//                        todays_month = '0' + todays_month.toString();
+//                    }
+//                    $( ".event_date" ).attr('data-date', todays_date.getFullYear() + '-' + todays_month + '-' + formatted_day_date);
+//
+//
+//
+//
+//
+//			    	var yeararr= $this_cal.find(".minical-header").find(".minical-h1").text().trim().split(" ");
+//			    	var year= yeararr[1];
+//			    	var theDate = day +", "+ mon + " " + selected_day_date; // + s[ d.getDate()%10 > 3 ? '3' : (d.getDate()%10) ]
+//			    	$('.event_date').val(theDate);
+//
+//
+//
+//
+//
+//			    }
+//			}
+//    });
 
 
 
@@ -512,7 +538,12 @@ function show_event(event,event_div_id){
         event['complete'] = 'not_complete';
     }
 
-    event['start_time'] = time_string_to_am_pm_string(event['start_time']);
+
+    //Convert the utc times to local
+    var local_event_start_time = utc_to_local(new_datetime(event['start_date'] + ' ' + event['start_time']));
+//    alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
+//    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
+    event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
 
     var source   = $("#event_template").html();
     var template = Handlebars.compile(source);
@@ -526,7 +557,16 @@ function show_event(event,event_div_id){
 function add_event(event_json){
     $("#free_planner_wrap").hide();
 
-    var event_datetime = utc_to_local(new Date(event_json['end_date'] + ' ' + event_json['end_time']));
+    var event_datetime = utc_to_local(new_datetime(event_json['end_date'] + ' ' + event_json['end_time']));
+
+
+
+    console.log('ADDED EVENT TIME');
+    console.log(event_datetime);
+    console.log(event_json['end_date']);
+    console.log(event_json['end_time']);
+
+
     //var event_date = utc_to_local(new Date('2014-12-27 02:07:00'));
 
     //Check if the event is today
@@ -537,56 +577,68 @@ function add_event(event_json){
 //    alert(event_date);
 //    alert(todays_date);
 //    alert(event_date.getDate() == todays_date.getDate());
-    if(event_datetime.getDate() == todays_date.getDate()){
+    if(event_datetime < todays_date){
         if(!$("#past_due_events_header").is(":visible")){
             show_past_due_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date =  get_formatted_date(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date =  get_formatted_date(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#past_events');
         return;
     }
 
 
-    //Check if the even was yesterday
-    var yesterdays_date = new Date(todays_date);
-    yesterdays_date.setDate(todays_date.getDate() - 1);
-    if(event_datetime.getDate() == yesterdays_date.getDate()){
+
+    if(event_datetime.getDate() == todays_date.getDate()){
         if(!$("#todays_events_header").is(":visible")){
             show_todays_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date = get_formatted_time(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#todays_events');
         return;
     }
 
     //Check if the event is tomorrow
-    var tomorrows_date = new Date(todays_date);
+    var tomorrows_date = new Date();
     tomorrows_date.setDate(todays_date.getDate() + 1);
     if(event_datetime.getDate() == tomorrows_date.getDate()){
         if(!$("#tomorrows_events_header").is(":visible")){
             show_tomorrows_label();
         }
 
-        var date = new Date(event_json['end_date']);
-        var formatted_date = get_formatted_time(date);
-        event_json['end_date'] = formatted_date;
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
 
         show_event(event_json,'#tomorrows_events');
         return;
     }
 
     //Check if the event is in the next week
-    var week_from_now_date = new Date(todays_date);
-    week_from_now_date.setDate(todays_date.getDate() + 1);
-    if(event_datetime > tomorrows_date && event_datetime < week_from_now_date){
+//    var week_from_now_date = new Date(todays_date);
+//    week_from_now_date.setDate(todays_date.getDate() + 1);
+//    if(event_datetime > tomorrows_date && event_datetime < week_from_now_date){
+//        show_event(event_json,'#future_events');
+//        return;
+//    }
+
+    if(event_datetime > tomorrows_date){
+        if(!$("#future_events_header").is(":visible")){
+            show_future_label();
+        }
+
+//
+//        var date = new_date(event_json['end_date']);
+//        var formatted_date = get_formatted_time(date);
+//        event_json['end_date'] = formatted_date;
+
         show_event(event_json,'#future_events');
         return;
     }
@@ -596,24 +648,27 @@ function add_event(event_json){
 
 
 //For somereason these has to be outside of the .ready()
-$(document).on('click','#add_todo, .create_planner_message',function(){
+$(document).on('click','#add_todo, .create_planner_message',function(event){
+    event.stopPropagation();
     show_planner_creation_form();
-    $("#add_todo_text").text("Discard");
-    $(".entry_field_placeholder").css({"width":"62.5px"});
-    $("#add_todo").addClass("cancel_form");
-    $(".nav-icon-plus").toggleClass('hide-plus');
-    $(".nav-icon").toggleClass('bounce-minus');
+
 });
 
-$(document).on('click','.cancel_form',function(){
+$(document).on('click','.cancel_form',function(event){
+    event.stopPropagation();
     hide_planner_creation_form();
-    $(this).find("#add_todo_text").text("Add Todo");
-    $(".entry_field_placeholder").css({"width":"75px"});
+
     $(this).removeClass("cancel_form");
+  
 });
 function show_planner_creation_form(){
     $("#planner_body_holder").hide();
     $(".create_event_body").fadeIn(500);
+    $("#add_todo_text").text("Discard");
+    $(".entry_field_placeholder").css({"width":"62.5px"});
+    $("#add_todo").addClass("cancel_form");
+    $(".nav-icon-plus").addClass('hide-plus');
+    $(".nav-icon").addClass('bounce-minus');
     $(this).css("display", "none");
     $("#todo_wrap").css("height", "128px");
     $(".entry_field").css("border-bottom", "1px solid #ddd");
@@ -632,6 +687,10 @@ function hide_planner_creation_form(){
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
+    $("#add_todo_text").text("Add Todo");
+    $(".nav-icon-plus").removeClass('hide-plus');
+    $(".nav-icon").removeClass('bounce-minus');  
+    $(".entry_field_placeholder").css({"width":"75px"});
 }
 
 
@@ -747,14 +806,16 @@ $(document).on('click','#create_todo_form',function(e){
     }
 
     //Make sure the date is converted to UTC before passing to database
-    var todo_datetime = new Date($('.event_date').attr('data-date') + ' ' + $('.event_time').attr('data-time'));
+    var todo_datetime = new_datetime($('#event_date').attr('data-date') + ' ' + $('#tp1').attr('data-time'));
 
 
     //var todo_time = $('.event_time').attr('data-time');
 
 
     todo_datetime = local_to_utc(todo_datetime);
-    var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
+    //var todo_date = todo_datetime.getUTCFullYear().toString() + "-" + (todo_datetime.getMonth() + 1).toString() + "-" + todo_datetime.getDate().toString();
+    var todo_date = date_to_string(todo_datetime);
+
     var todo_time = addZero(todo_datetime.getHours()).toString() + ':' + addZero(todo_datetime.getMinutes()).toString() + ':' + addZero(todo_datetime.getSeconds()).toString();
 
     if(errors.length > 0){
@@ -763,14 +824,23 @@ $(document).on('click','#create_todo_form',function(e){
         return false;
     }
 
-    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: origin, origin_id: origin_id};
+
+    var event_origin_type = globals.origin_type;
+    var event_origin_id = globals.origin_id;
+    if(globals.origin_type == 'home'){
+        event_origin_type = 'user';
+        event_origin_id = globals.user_id;
+    }
+
+    post_data = { todo_name: todo_name, todo_date: todo_date, todo_time: todo_time, origin: event_origin_type, origin_id: event_origin_id};
     //alert(JSON.stringify(post_data));
     $.post(
         post_url,
         post_data,
         function(response) {
             if(response['success']){
-                //alert(JSON.stringify(response));
+                $('.entry_field_placeholder').removeClass('cancel_form');
+
                 hide_planner_creation_form();
                 add_event(response['event']);
                 //show_event(response['event'],'#todays_events');
@@ -787,6 +857,10 @@ $(document).on('click','#create_todo_form',function(e){
 
 
 });
+
+
+
+
 $(window).load(function(){
 
         $('#event_list').slimScroll({

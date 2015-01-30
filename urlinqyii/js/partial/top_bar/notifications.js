@@ -164,7 +164,7 @@ $(document).ready(function(){
             post_url,
             post_data,
             function(response){
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
             }, 'json'
         );
     }
@@ -184,7 +184,7 @@ $(document).ready(function(){
 
         var x = $notifications_button.width();
 
-        var left_position = ((116/83) * x) - 186;
+        var left_position = ((116/83) * x) - 391.5;
 
         $notifications.css({'left': left_position});
 
@@ -215,19 +215,30 @@ $(document).ready(function(){
             post_url,
             post_data,
             function (response){
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
             }, 'json'
         );
 
 
     });
 
+    $(document).on('mouseover', '.notify.board', function(){
+        $(".notify.board > div.button").css({"background":"rgba(18, 19, 20, 0.333)"});
+    });
+
+    $(document).on('mouseleave', '.notify.board', function(){
+        $(".notify.board > div.button").css({"background":"transparent"});
+    });
 
 
-    $(document).on('click', '.notify.board', function(){
+
+    $(document).on('click', '.notify.board', function(e){
+        e.stopPropagation();
+        $(this).addClass("notify_board_active");
         $notifications_button.removeClass('new_notifications');
         $notifications_button.find('#new_notification_count').text('');
         new_count = 0;
+        $(".notify.board > div.button").css({"background":"rgba(18, 19, 20, 0.333)"});
 
 
         position_notifications();
@@ -253,8 +264,6 @@ $(document).ready(function(){
         }else{
             $notify.show();
 
-            $('#reminders').hide();
-
             //Loop thru all the notifications that have status "new"
             //and set them to "seen"
             $('.notification[data-status="new"]').each(function(){
@@ -265,8 +274,19 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click', function(){
+        var $notify = $('#notifications');
+        $notify.hide();
+        $(".notify.board > div.button").css({"background":"transparent"});
+        $(".notify.board").removeClass("notify_board_active");
+
+    });
 
 
+
+    $(document).on('click', '.topbar > #topbar_responsive_holder .right .notify .notify-window .window', function(e){
+        e.stopPropagation();
+    });
 
 
 

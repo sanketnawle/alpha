@@ -56,6 +56,7 @@ div.group_info_tab_content div.group_box{
 div#content_panel.course_content_panel div.group_info_tab_content div.group_box
 {
     max-width: 505px;
+    max-height:170px;
 }
 
 body.left_panel_hidden.left_panel_hidden_p2 div#content_panel.course_content_panel div.group_info_tab_content div.group_box, body.left_panel_hidden_p2 div#content_panel.course_content_panel div.group_info_tab_content div.group_box{
@@ -69,7 +70,7 @@ div#content_panel.course_content_panel div.info_about{
 div.group_info_tab_content div.group_box.club_box{
     width:48.25%;
     display:inline-block;
-    min-height: 240px;
+    min-height: 248px;
 }
 
 .group_box.group_course_box.club_box {}
@@ -163,13 +164,14 @@ div.group_box_main_info .group_link{
 div.group_box.club_box .group_link{
 color: #fff!important;
 font-size: 19px;
-text-shadow: 0 0px 2px rgba(0, 0, 0, 1);
-top: 70px;
+text-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
+top: 54px;
 position: relative;
 margin: 0 auto;
 display: block;
 text-transform: uppercase;
 text-align: center;
+font-weight: 600;
 }
 
 div.group_box.club_box .group_link:active{
@@ -237,6 +239,15 @@ div.group_box_secondary_info_section div.info_line a.department_link{
     cursor: pointer;
 }
 
+body#body_searchpage div.group_box_secondary_info_section div.info_line a.department_link{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 4px;
+    position: relative;
+    width: 402px;
+    display: inline-block;
+}
 
 div.group_box_secondary_info_section div.info_line.indent{
     padding-left: 10px;
@@ -253,11 +264,9 @@ div.group_box div.group_box_secondary_info_section div.info_line{
 div.group_box div.group_box_secondary_info_section div.info_line.info_about{
     font-size: 12.5px;
     font-weight: 500;
-    background: #f6f6f6;
     color: #333;
-    border: 1px solid #eee;
-    border-radius: 4px;
     padding: 6px 10px;
+    border-top: 1px solid #e2e2e2;
     margin-top: 6px;
     overflow-y: hidden;
     position: absolute;
@@ -270,7 +279,7 @@ div.group_box div.group_box_secondary_info_section div.info_line.info_about{
 
 div.group_box.group_course_box div.group_box_secondary_info_section div.info_line.info_about
 {
-margin-right:9px;
+margin-right: 0px;
 }
 
 

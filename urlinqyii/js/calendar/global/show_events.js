@@ -8,13 +8,24 @@ function show_day_event(event_json){
     event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
 
 
-    event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
+
+    var event_start_datetime = utc_to_local(new_datetime(event_json['start_date'] + ' ' + event_json['start_time']));
+    var event_end_datetime = utc_to_local(new_datetime(event_json['end_date'] + ' ' + event_json['end_time']));
+
+    event_json['start_date'] = date_to_string(event_start_datetime);
+    event_json['start_time']= datetime_to_time_string(event_start_datetime);
+
+    event_json['end_date'] = date_to_string(event_end_datetime);
+    event_json['end_time'] = datetime_to_time_string(event_end_datetime);
+
+
+    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
     var generated_html = template(event_json);
     var html_object = jQuery(generated_html);
     var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
-    var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
+    var event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
     html_object.find('.event_start_time').text(event_time_text);
 
 
@@ -124,7 +135,18 @@ function show_week_day_event(event_json){
     var source = jQuery('#week_day_event_template').html();
     var template = Handlebars.compile(source);
 
-    event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
+
+    var event_start_datetime = utc_to_local(new_datetime(event_json['start_date'] + ' ' + event_json['start_time']));
+    var event_end_datetime = utc_to_local(new_datetime(event_json['end_date'] + ' ' + event_json['end_time']));
+
+    event_json['start_date'] = date_to_string(event_start_datetime);
+    event_json['start_time']= datetime_to_time_string(event_start_datetime);
+
+    event_json['end_date'] = date_to_string(event_end_datetime);
+    event_json['end_time'] = datetime_to_time_string(event_end_datetime);
+
+
+    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
 
     //alert(event_json);
 
@@ -133,7 +155,7 @@ function show_week_day_event(event_json){
     var color_block = html_object.find('.white_bg_line_blocker');
 
     //formatted start time
-    var event_time_text = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00')) + " - " + date_to_am_pm_string(new Date(event_json['end_time'] + '00:00:00'));
+    var event_time_text = time_string_to_am_pm_string(event_json['start_time']) + " - " + time_string_to_am_pm_string(event_json['end_time']);
     html_object.find('.event_start_time').text(event_time_text);
 
     event_json['color']['rgb'] = hexToRgb(event_json['color']['hex']);
@@ -262,7 +284,18 @@ function show_month_event(event_json){
 
     var template = Handlebars.compile(source);
 
-    event_json['formatted_start_time'] = date_to_am_pm_string(new Date(event_json['start_time'] + '00:00:00'));
+
+    var event_start_datetime = utc_to_local(new_datetime(event_json['start_date'] + ' ' + event_json['start_time']));
+    var event_end_datetime = utc_to_local(new_datetime(event_json['end_date'] + ' ' + event_json['end_time']));
+
+    event_json['start_date'] = date_to_string(event_start_datetime);
+    event_json['start_time']= datetime_to_time_string(event_start_datetime);
+
+    event_json['end_date'] = date_to_string(event_end_datetime);
+    event_json['end_time'] = datetime_to_time_string(event_end_datetime);
+
+
+    event_json['formatted_start_time'] = time_string_to_am_pm_string(event_json['start_time']);
 
 
     var generated_html = template(event_json);

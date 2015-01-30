@@ -35,19 +35,31 @@
 
 
 
-                                                    {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
+                                                    {{#ifCond origin_type '==' 'user'}}
 
-
-                                                        {{#ifCond origin_type '!=' 'user'}}
+                                                        {{#ifCond origin_id '!=' '<?php echo $user_id; ?>'}}
                                                             <span class = 'post_format'>
-                                                                <em class = "posted_to"></em> 
+                                                                <em class = "posted_to"></em>
                                                                 <span class = 'post_group'>
-                                                                    <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                                    <div class="profile_link" data-user_id="{{origin_id}}">{{origin.firstname}} {{origin.lastname}}</div>
                                                                 </span>
                                                             </span>
                                                         {{/ifCond}}
 
+                                                    {{else}}
+                                                        {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
+                                                                <span class = 'post_format'>
+                                                                    <em class = "posted_to"></em>
+                                                                    <span class = 'post_group'>
+                                                                        <a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a>
+                                                                    </span>
+                                                                </span>
+                                                        {{/ifCond}}
                                                     {{/ifCond}}
+
+
+
+
 
 
                                                 </div>
@@ -115,7 +127,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>
@@ -602,7 +614,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>
@@ -936,7 +948,7 @@
                                                         {{#ifCond like_status '==' true}}
                                                             <div class = 'post_liked'>
                                                                 <span class = 'post_like_icon'></span>
-                                                                <p class = 'post_like_link'>Unlike</p>
+                                                                <p class = 'post_like_link'></p>
                                                         {{else}}
                                                             <div class = 'post_like'>
                                                                 <span class = 'post_like_icon'></span>

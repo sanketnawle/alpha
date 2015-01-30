@@ -72,5 +72,69 @@ $(document).ready(function() {
             $follow_button.text('Following');
             $follow_button_container.removeClass("unfollow");
         }
-    });        
+    });
+
+
+
+
+
+
+
+
+    $(document).on('click', '.user_follow_button', function(){
+        if($(this).hasClass('own_profile')){
+            return;
+        }
+        var $user_follow_button = $(this);
+
+        var user_id = $user_follow_button.closest('.members_card_wrapper').attr('data-user_id');
+
+
+
+        var $follow_button_wrapper = $user_follow_button.parent('.follow_button_wrapper');
+
+        var verb = '';
+        if($follow_button_wrapper.hasClass('unfollow')){
+            verb = 'unfollow';
+        }else{
+            verb = 'follow';
+        }
+
+
+        var post_url = globals.base_url + '/user/' + user_id + '/' + verb;
+
+
+        //alert(post_url);
+
+
+        var post_data = {user_id:user_id};
+
+        $.post(
+            post_url,
+            post_data,
+            function(response) {
+                if(response['success']){
+
+                    if(verb == 'unfollow'){
+                        $follow_button_wrapper.removeClass('unfollow');
+                        $user_follow_button.removeClass('following');
+                        $user_follow_button.text('Follow');
+                    }else{
+                        $user_follow_button.addClass('following');
+                        $user_follow_button.text('Following');
+                    }
+
+                }else{
+                    alert(JSON.stringify(response));
+                }
+            }, 'json'
+        );
+
+
+
+
+    });
+
+
+
 });

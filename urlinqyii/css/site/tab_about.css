@@ -54,8 +54,9 @@ div.admin_text_data_box div.admin_name{
     margin-right: 5px;
     font-weight: bold; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     font-family: Avenir;
-    padding-right: 3px; background-color: #27D579; background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C); border: 1px solid #1ECD77; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset; 
-    border-bottom: 1px solid rgba(9, 166, 89, 0.31);
+    padding-right: 3px;          
+    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important;
+    box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -webkit-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset; -moz-box-shadow: rgba(255, 255, 255, 0.14902) 0px 1px 0px 0px inset;
 }
 
 div.class_description_holder{
@@ -77,9 +78,15 @@ div.class_description_holder{
 
 div#group_about_box div.class_description_holder {
     border: none;
-    height: 90px;
+    height: 103px !important;
 }
 
+#group_about_box .slimScrollDiv{
+    top: -7px;
+}
+#group_about_box .slimScrollDiv .slimScrollBar {
+    margin-top: 7px;
+}
 div.panel.tab_about{
     padding: 0 6px;
     font-family: 'Open Sans', sans-serif;
@@ -142,26 +149,21 @@ h4.course_credits span.time_val.two_lines{
 }
 
 div.join_button:hover{
-    background: linear-gradient(to bottom, #1BEF86 0%,#08CF6C 100%);
-background: -o-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
-background: -ms-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
-background: -moz-linear-gradient(top, #1BEF86 0%,#0FDB76 100%);
-background-image: -webkit-linear-gradient(top,#09E78A,#1CE883);
-border: 1px solid rgba(3, 144, 74, 0.24);
-border-bottom: 1px solid rgba(3, 144, 74, 0.39);
+    border-color: #DAD9D9; 
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+    box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
 }
 
 div.join_button:active{
-    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
-background: #02DB6F;
-border: 1px solid #2FB750;
-border-top: 1px solid #1BAD3E;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 132, 232, 0.5); 
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 132, 232, 0.5); background: #EEE; 
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 132, 232, 0.5);
 }
 
-div.join_button > span{ background-image: url("../../assets/small_icons.png"); position: relative; background-position: -2px -643px; background-size: auto; width: 8px; height: 8px; top: 0px;
+div.join_button > span{ position: relative; background-position: 0px 0px; background-size: auto; width: 8px; height: 8px; top: 0px;
 
- margin-right: 6px; display: inline-block;}
+ margin-right: 6px; background-image: url(../../assets/gray_add_icon.png); display: inline-block;}
 
 
 div.about_header_data{
@@ -208,6 +210,7 @@ div.about_tab_middle div.classic_about_box{
 
 div.about_tab_middle div.cool_members_box{
     width: 65%;
+    display: none;
     min-height: 450px;
 }
 

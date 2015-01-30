@@ -168,7 +168,7 @@
                     {{#if year_name}}
                     <div id="year_info">{{year_name}} at {{school}}</div>
                     {{else}}
-                    <div id="year_info">{{university}}</div>
+                    <div id="year_info">{{school}}</div>
                     {{/if}}
                 {{/if}}
             </div>
@@ -218,6 +218,13 @@
             <div id = "mock_left_bar"></div>
             <div id = "left_info_bar">
                 <h2 id="academic_header" class="headers">Academic Information</h2>
+                <div class="info_section" id = "bio_section">
+                    <div class="info_label" id = "bio_label">
+                        Biography:
+                    </div>
+                    <div class="info_name" id="bio">{{bio}}</div>
+                    <textarea maxlength="240" type="text" class="edit_field" id="bio_input" cols="29" wrap="hard"></textarea>
+                </div>
                 <div class="info_section" id = "school_section">
                     <div class="info_label" id = "school_label">
                         School:
@@ -225,24 +232,15 @@
                     <a href="{{base_url}}/school/{{school_id}}" class="info_name" id="school_name">{{school}}</a>
                     <select class="edit_field" id="school_dropdown"></select>
                 </div>
+
                 <div class="info_section" id = "department_section">
                     <div class="info_label" id = "department_label">
                         Department:
                     </div>
-                    <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}}</a>
+                    <a href="{{base_url}}/department/{{department_id}}" class="info_name" id="department_name">{{department}} {{department_tag}}</a>
                     <select class="edit_field" id="department_dropdown"></select>
                 </div>
-                <div class="info_section" id = "research_section">
-                    <div class="info_label" id = "research_label">
-                        Research Interests:
-                    </div>
-                    {{#each research}}
-                    <div class="info_name research">{{name}}</div>
-                    {{/each}}
-                    <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
-                    <input type="text" class="edit_field research">
-                </div>
+
                 {{#if professor}}
                     <div class="info_section" id = "office_section">
                         <div class="info_label" id = "office_label">
@@ -314,14 +312,18 @@
                         </select>
                     </div>
                 {{/if}}
-
-                <div class="info_section" id = "bio_section">
-                    <div class="info_label" id = "bio_label">
-                        Biography:
+                <div class="info_section" id = "research_section">
+                    <div class="info_label" id = "research_label">
+                        Research Interests:
                     </div>
-                    <div class="info_name" id="bio">{{bio}}</div>
-                    <textarea maxlength="240" type="text" class="edit_field" id="bio_input" wrap="hard"></textarea>
+                    {{#each research}}
+                    <div class="info_name research">{{name}}</div>
+                    {{/each}}
+                    <input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">
+                    <input type="text" class="edit_field research">
                 </div>
+
 
                 <h2 id="account_header" class="headers">Account Information</h2>
                 <div class="info_section account" id = "name_section">
@@ -414,7 +416,7 @@
                         {{#each followers}}
                         <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                             <div class = "members_card admin normal_size">
-                                <div class = "members_card_img" style="background-image: url({{profile_pic}});">
+                                <div class = "members_card_img" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
 
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
@@ -426,12 +428,17 @@
 
                                 </div>
                                 <div class = "user_main_info">
-                                    <a class = "name profile_link">{{user_name}}</a>
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
                                 </div>
                                 <div class = "user_more_info">
                                     <a class = "department_link">{{user_department}}</a>
                                 </div>
                                 {{#if own_profile}}
+                                    <div class = "user_card_button_holder">
+                                        <div class = "follow_button_wrapper following_wrapper">
+                                            <div class = "user_follow_button profile own_profile">Me</div>
+                                        </div>
+                                    </div>
                                 {{else}}
                                 <div class = "user_card_button_holder">
 
@@ -464,7 +471,7 @@
                         {{#each following}}
                         <div class = "members_card_wrapper" data-user_id='{{user_id}}' data-name="{{user_name}}">
                             <div class = "members_card admin normal_size">
-                                <div class = "members_card_img profile_link" user_id='<?php echo $member->user_id; ?>'" style="background-image: url({{profile_pic}});">
+                                <div class = "members_card_img profile_link" data-user_id='{{user_id}}' style="background-image: url({{profile_pic}});">
 
                                     {{#if professor}}
                                     <span class = "title">Professor</span>
@@ -476,12 +483,17 @@
 
                                 </div>
                                 <div class = "user_main_info">
-                                    <a class = "name profile_link" user_id='<?php echo $member->user_id; ?>'>{{user_name}}</a>
+                                    <a class = "name profile_link" data-user_id='{{user_id}}'>{{user_name}}</a>
                                 </div>
                                 <div class = "user_more_info">
                                     <a class = "department_link">{{user_department}}</a>
                                 </div>
                                 {{#if own_profile}}
+                                <div class = "user_card_button_holder">
+                                    <div class = "follow_button_wrapper following_wrapper">
+                                        <div class = "user_follow_button profile own_profile">Me</div>
+                                    </div>
+                                </div>
                                 {{else}}
                                 <div class = "user_card_button_holder">
 

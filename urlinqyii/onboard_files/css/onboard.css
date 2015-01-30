@@ -208,7 +208,7 @@ white-space: normal;
 }
 
 .card_0_text_0 {
-    font-size: 18.8px;
+    font-size: 20.8px;
     font-weight: 600;
     line-height: 1.4em;
     text-overflow: ellipsis;
@@ -333,15 +333,17 @@ white-space: normal;
 }
 
 .step_3_line_0 {
-    float: left;
-    width: 80%;
-    margin-left: 6px;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 500;
-    margin-top: 2px;
+float: left;
+width: 80%;
+margin-left: 6px;
+font-size: 13px;
+/* white-space: nowrap; */
+overflow: hidden;
+text-overflow: ellipsis;
+font-weight: 500;
+height: 38px;
+font-family: 'Open Sans', sans-serif;
+margin-top: 2px;
 }
 
 .step_3_line_1 {
@@ -354,10 +356,13 @@ white-space: normal;
 }
 
 .step_3_line_1_0 {
-    float: left;
-    width: 205px;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    padding-bottom: 4px;
+float: left;
+width: 205px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+display: none;
+padding-bottom: 4px;
 }
 
 .step_3_line_1_0 span {
@@ -646,11 +651,12 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
 }
 
 .onboard_textarea_t1 {
-    width: 180px;
+    width: 250px;
     float: right;
     margin-right: 12px;
     margin-top: 12px;
     padding-left: 30px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .onboard_textarea_t2 {
@@ -663,7 +669,7 @@ box-shadow: 1px 0px 0px rgba(231, 231, 231, 0.78) inset, -1px 0px 0px rgba(234, 
     height: 20px;
     background: url('../img/OnboardingIconMap.png') repeat scroll 0px 2px transparent;
     position: absolute;
-    margin-left: 438px;
+    margin-left: 368px;
     margin-top: 16px;
     background-size: 120%;
 }
@@ -790,7 +796,6 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
     padding-right: 16px;
     line-height: 35px;
     height: 35px;
-    /* font-family: Avenir; */
     text-align: center;
     border-radius: 4px;
     font-size: 14.2px;
@@ -798,7 +803,8 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
     color: #FFF;
     outline: medium none;
     color: white;
-    border-radius: 4px;     
+    border-radius: 4px;    
+    font-family: 'Open Sans', sans-serif; 
     background-color: #27D579; background: linear-gradient(to bottom, #24EA88 0%,#08CF6C 100%); background: -o-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -ms-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background: -moz-linear-gradient(top, #24EA88 0%,#08CF6C 100%); background-image: -webkit-linear-gradient(top,#24EA88,#08CF6C); border: 1px solid #1ECD77; -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.07) inset; box-shadow: 0px 1px rgba(255, 255, 255, 0.23) inset, 0px -1px rgba(0, 0, 0, 0.04) inset; border-bottom: 1px solid rgba(9, 166, 89, 0.74);
 }
 
@@ -833,8 +839,8 @@ box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), in
 
 .club_join {
     display: inline-block;
-    margin-top: -15px;
     float: right;
+    margin-top: -33px;
     margin-right: 5px;
 }
 
@@ -1103,6 +1109,10 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     background-color: #f5f5f5;
     border: 1px solid #eee;
     border-radius: 4px;
+}
+
+div.section_detail_right > div{
+    font-family: 'Open Sans', sans-serif;
 }
 
 

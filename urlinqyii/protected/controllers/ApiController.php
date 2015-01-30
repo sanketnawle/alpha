@@ -3,6 +3,35 @@
     class ApiController extends Controller
     {
 
+        public function actionClassesForSchool() {
+
+            $user = $this->get_current_user($_GET);
+
+            if (!$user) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user not logged in.');
+                $this->renderJSON($data);
+                return;
+            }
+
+            if (!isset($_GET['school_id'])) {
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'required data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+            $school = SchoolModel::model()->find("school_id=:school_id",array(":school_id"=>$_GET['school_id']));
+            if ($school) {
+                $data = array('success'=>true, 'courses'=>$school->courses);
+                $this->renderJSON($data);
+                return;
+            } else {
+                $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid course.');
+                $this->renderJSON($data);
+                return;
+            }
+
+        }
+
         public function actionAddNotificationID() {
             if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
@@ -133,16 +162,36 @@
 
         public function actionGetUserPictureID() {
 
-         if(!isset($_GET['user_id'])){
-                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user_id not set');
+            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id'])) {
+                $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
-        }
-            $user_id = $_GET['user_id'];
-            $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
-            if($user){
+            } else if (isset($_GET['user_id'])) {
+                $thing = User::model()->find("user_id=:user_id", array(":user_id"=>$_GET['user_id']));
+                if ($thing) {
+                    $pictureFile = $thing->pictureFile;
+                }
+            } else if (isset($_GET['department_id'])) {
+                $thing = Department::model()->find("department_id=:department_id", array(":department_id"=>$_GET['department_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['class_id'])) {
+                $thing = ClassModel::model()->find("class_id=:class_id",array(":class_id"=>$_GET['class_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['club_id'])) {
+                $thing = Group::model()->find('group_id=:id', array(':id'=>$_GET['club_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            }
 
-                $file_id = $user->pictureFile->file_url;
+            if($thing && $pictureFile) {
+
+                $file_id = $pictureFile->file_url;
+
                 if($file_id){
                     
                     $data = array('success'=>true,'file_url'=>$file_id,'base_url'=>Yii::app()->getBaseUrl(true));

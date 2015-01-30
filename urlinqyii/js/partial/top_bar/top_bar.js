@@ -38,6 +38,8 @@ $(document).ready(function(){
     }); 
 
     $(document).on('focus', '#top_search_bar', function(){
+        $(".top_search_bar_form").css({"background-color":"#fff"});
+        $(this).css({"color":"#222"});
         var $search_bar = $(this);
 
         var search_input = $search_bar.val();
@@ -138,8 +140,10 @@ $(document).ready(function(){
             var search_result_element_type = $(this).attr("data-origin_type");
             if(search_result_element_type == 'class'){
                 $search_result_icon.addClass('class');
-
             }
+            if(search_result_element_type == 'course'){
+                $search_result_icon.addClass('course');
+            }            
             if(search_result_element_type == 'school'){
                 $search_result_icon.addClass('school');
 
@@ -184,7 +188,9 @@ $(document).ready(function(){
 
     $(document).on('click', function(){
         $('.prelist').hide();
+        $("#top_search_bar").css({"color":"#999"});
         $(".topbar .center form").css({"border-radius":"4px"});
+        $(".top_search_bar_form").css({"background-color":"rgba(0, 0, 0, 0.77)"});
     });
 
 });

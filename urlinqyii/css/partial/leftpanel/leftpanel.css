@@ -12,6 +12,19 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     display:none;
     overflow: hidden;
 }
+#left_panel_change_picture_button{
+    position: absolute;
+    /* bottom: 10px; */
+    /* left: 10px; */
+    width: 32px;
+    top: 97px;
+    border: none;
+    height: 32px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-image: url('../../../assets/camera_icon.png');
+}
 
 #LeftPanel_Holder{
     width: 230px;
@@ -95,7 +108,7 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 .SectionHeader_holder{
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #dbdcdc;
 
     height: 26px;
     -moz-box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
@@ -105,7 +118,7 @@ a.MyBox_SO.edit_profile:hover{
     font-family: Avenir;
 
     font-weight: 500;
-    font-size: 14.1px;
+    font-size: 14.8px;
     color: #444;
     -webkit-font-smoothing: antialiased;          -moz-osx-font-smoothing: grayscale;
     margin: 0;
@@ -182,13 +195,15 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 
 .MyBox a.MyBox_PictureLink{
     float: left;
-    
+    height: 48px!important;
+
+    width: 48px!important;
     cursor: pointer;
 }
 
 a.MyBox_PictureLink img.MyBox_Picture{
     height: 48px!important;
-    
+
     width: 48px!important;
     border-radius: 500px;
 }

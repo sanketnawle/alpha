@@ -216,8 +216,38 @@ class EventController extends Controller
 
 
     public function actionGetPlannerEvents(){
+
+
+        if(!isset($_GET['origin_type'])){
+            $data = array('success'=>false, 'error_msg'=>'Origin type not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $origin_type = $_GET['origin_type'];
+        $origin_id = '';
+
+
+        if(isset($_GET['origin_id'])){
+            $origin_id = $_GET['origin_id'];
+        }
+
+
+
+
         //$user_id = $_GET['user_id'];
         $user = $this->get_current_user();
+
+
+        if(!$user){
+            $data = array('success'=>false, 'error_msg'=>'User not authenticated');
+
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
 //        $user = User::model()->findBySql('SELECT * FROM `user` WHERE user_id=.'$user_id');
 
 //        $events = Event::model()->findAll('user_id=:user_id',array(':user_id'=>$user->user_id));
@@ -292,31 +322,43 @@ class EventController extends Controller
 
 
 
+        try{
+
+
+            $event_count = 0;
+
+            //Get events that were due yesterday
+            $date = date("Y-m-d H:i:s", time());
+            $datetime = new DateTime($date);
+            $datetime->modify('-1 day');
+            $start_date= $datetime->format('Y-m-d');
+            $datetime->modify('+4 day');
+            $end_date= $datetime->format('Y-m-d');
 
 
 
+            $events = array();
 
-
-        $event_count = 0;
-
-        //Get events that were due yesterday
-        $date = date("Y-m-d H:i:s", time());
-        $datetime = new DateTime($date);
-        $datetime->modify('-1 day');
-        $start_date= $datetime->format('Y-m-d');
-        $datetime->modify('+4 day');
-        $end_date= $datetime->format('Y-m-d');
-
-        $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
-
-
-        $data = array('success'=>true,'events'=>$events);
-
-        $this->renderJSON($data);
-        return;
+            if($origin_type != 'user'){
+                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+            }else{
+                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+            }
 
 
 
+            $data = array('success'=>true,'events'=>$events);
+
+            $this->renderJSON($data);
+            return;
+
+
+        }catch(Exception $e){
+            $data = array('success'=>false, 'error_msg'=>$e->getMessage());
+
+            $this->renderJSON($data);
+            return;
+        }
 
 
 
@@ -402,8 +444,8 @@ class EventController extends Controller
     //Error ids
     // 1 - All data not set
     // 2 - error creating todo
-	public function actionCreateTodo()
-	{
+    public function actionCreateTodo()
+    {
 
         if(!isset($_POST['todo_name']) || !isset($_POST['todo_date']) || !isset($_POST['todo_time']) || !isset($_POST['origin']) || !isset($_POST['origin_id'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -432,6 +474,8 @@ class EventController extends Controller
 
             $event->origin_type = $todo_origin;
             $event->origin_id = $todo_origin_id;
+            $event->start_date = $todo_date;
+            $event->start_time = $todo_time;
             $event->end_date = $todo_date;
             $event->end_time = $todo_time;
             $event->all_day = false;
@@ -451,7 +495,7 @@ class EventController extends Controller
             $this->renderJSON($data);
             return;
         }
-	}
+    }
 
 
 
@@ -516,6 +560,8 @@ class EventController extends Controller
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                        include_once "protected/components/notification/notification.php";
+                        send_notification('event', $invite_user_id, $event->user_id, $event->event_id, 'event');
                     }
                 }
 
@@ -599,9 +645,11 @@ class EventController extends Controller
                 //were any invitations sent out for this event
                 if(isset($_POST['event']['invites'])){
                     include_once "invite/invite.php";
+                    include_once "notification/notification.php";
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
+                        send_notification('event', $invite_user_id, $event->user_id, $event_id, 'event');
                     }
                 }
 
@@ -811,30 +859,30 @@ class EventController extends Controller
 
 
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
+        return array(
+            'inlineFilterName',
+            array(
+                'class'=>'path.to.FilterClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    public function actions()
+    {
+        // return external action classes, e.g.:
+        return array(
+            'action1'=>'path.to.ActionClass',
+            'action2'=>array(
+                'class'=>'path.to.AnotherActionClass',
+                'propertyName'=>'propertyValue',
+            ),
+        );
+    }
+    */
 }

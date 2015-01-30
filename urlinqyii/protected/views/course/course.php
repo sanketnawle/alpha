@@ -8,6 +8,17 @@
             globals.origin_type = '<?php echo 'course'; ?>';
 
             globals.origin_id = '<?php echo $course->course_id; ?>';
+            globals.user_id = '<?php echo $user->user_id; ?>';
+
+        </script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-59124667-1', 'auto');
+          ga('send', 'pageview');
 
         </script>
 
@@ -21,6 +32,10 @@
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
         <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
            <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
+
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/libs/animate.css' rel='stylesheet' type='text/css'>
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
+        <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
@@ -139,8 +154,11 @@
                                             <?php if($class->class_datetime){ ?>
                                                 <div class= "info_line indent">Time: <?php echo $class->class_datetime; ?></div>
                                             <?php } ?>
-
                                             <div class= "info_line indent"><?php echo count($class_students); ?> students</div>
+                                            <?php $professor = $class->professor; ?>
+                                            <?php if($professor){ ?>
+                                                <div class="info_line indent profile_link" data-user_id="<?php echo $class->professor->user_id; ?>"><?php echo $class->professor->firstname . ' ' . $class->professor->lastname; ?></div>
+                                            <?php } ?>
                                             <div class= "info_line indent">Department of <a class = "department_link" href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $class->department->department_id; ?>"><?php echo $class->department->department_name; ?></a></div>
                                             <div class = "info_line info_about">
                                                 <?php foreach($class_students as $student){ ?>

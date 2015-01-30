@@ -43,7 +43,9 @@ $(document).ready(function(){
 
 
     $('.user_follow_button').click(function(){
-
+        if($(this).hasClass('own_profile')){
+            return;
+        }
         var $user_follow_button = $(this);
 
         var user_id = $user_follow_button.closest('.members_card_wrapper').attr('data-user_id');
@@ -63,7 +65,7 @@ $(document).ready(function(){
         var post_url = globals.base_url + '/user/' + user_id + '/' + verb;
 
 
-        alert(post_url);
+        //alert(post_url);
 
 
         var post_data = {user_id:user_id};
@@ -96,7 +98,7 @@ $(document).ready(function(){
 
 
     $('.user_message_button').click(function(){
-        alert('MESSAGE');
+        //alert('MESSAGE');
     });
 
 

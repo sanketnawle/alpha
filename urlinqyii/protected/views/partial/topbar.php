@@ -13,7 +13,6 @@
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/scroll/jquery.slimscroll.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/top_bar.js"></script>
-    <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/reminders.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/top_bar/notifications.js"></script>
     <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/lptopbar.js"></script>
 
@@ -36,8 +35,8 @@
             </div>
             <div class="center">
                 <!--<form method="get" action="./search_beta.php">-->
-                <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search">
-                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Search your university">
+                <form method="get" action="<?php echo Yii::app()->getBaseUrl(true); ?>/search" class = "top_search_bar_form">
+                    <input type="text" id="top_search_bar" name="q" class="mainsearch text" autocomplete="off" placeholder="Look up classes, clubs, and people">
                     <button type="submit" class="submit"></button>
                 </form>
                 <ul class="prelist">
@@ -91,34 +90,16 @@
             </div>        
 
             <div class="right">
-                <div class="notify calendar">
+                <div class="notify board">
                     <div class="button">
                         <div class="icon"></div>
-                        <div class = "icon_text">Reminders</div>
+                        <div class = "icon_text">Notifications</div>
                     </div>
 
 
 
 
-                    <div class="notify-window" id="reminders" style="display: none;">
-                        <div class="wedge"></div>
-                        <div class="window">
-                            <div class="header">Reminders</div>
-                            <ul class="entries">
 
-
-
-
-
-                            </ul>
-                            <div class="footer">
-                                <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/calendar">
-                                    See full calendar
-                                    <img src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/leftpanel/go-arrow.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -137,14 +118,6 @@
 
                             </ul>
                         </div>
-                    </div>
-
-                </div>
-                <div class="notify board">
-                    <div class="button">
-                        <div class="icon"></div>
-                        <div class = "icon_text">Notifications</div>
-                        <div id="new_notification_count_holder"><span id="new_notification_count"></span></div>
                     </div>
 
                 </div>
@@ -170,7 +143,7 @@
             {{else}}
                 <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/{{origin_type}}/{{origin_id}}" >
                 <span>{{origin_name}}</span>
-                <div class = "search_result_icon non_profile_icon">{{origin_type}}</div>
+                <div class = "search_result_icon non_profile_icon"></div>
             {{/ifCond}}
             </a>
         </li>
@@ -187,34 +160,6 @@
 
 
 
-<script id="reminder_template" type="text/x-handlebars-template">
-
-    <li class="tdo">
-        <div class="icon date">
-            <div class="month">{{month}}</div>
-            <div class="day">{{day}}</div>
-        </div>
-        <div class="content">
-            <div class="right">
-                <div class="dismiss">Dismiss</div>
-                <div class="close"></div>
-            </div>
-
-            {{#ifCond origin_type '==' 'class'}}
-                {{#ifCond event_type '==' 'exam'}}
-                    <div class="message">On {{day_of_week}}, you have a {{event_type}} in class, {{origin.name}}.</div>
-                {{/ifCond}}
-            {{/ifCond}}
-
-
-            <div class="time">
-                <div class="icon"></div>
-                <div class="stamp">{{formatted_end_time}}</div>
-            </div>
-        </div>
-    </li>
-
-</script>
 
 
 <script id='notification_template' type="text/x-handlebars-template">
@@ -240,7 +185,7 @@
             {{/ifCond}}
 
             {{#ifCond type '==' 'like'}}
-                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post!</div>
+                <div class="message">{{actor.firstname}} {{actor.lastname}} liked your post: {{origin.text}}</div>
             {{/ifCond}}
 
             {{#ifCond type '==' 'reply'}}

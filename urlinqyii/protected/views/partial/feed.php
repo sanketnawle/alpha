@@ -2,7 +2,9 @@
 <head>
     <title> Feed </title>
     <script>
-        //var globals = {};
+        var globals = {};
+
+
 
         globals.base_url = '<?php echo Yii::app()->getBaseUrl(true); ?>';
         globals.feed_url = '<?php echo $feed_url; ?>';
@@ -10,6 +12,7 @@
 
         globals.origin_type = '<?php echo $origin_type; ?>';
         globals.origin_id = '<?php echo $origin_id; ?>';
+        globals.user_id = '<?php echo $user->user_id; ?>';
 
 
 
@@ -23,9 +26,12 @@
     <script>
         moment().format();
     </script>
-    <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
-    
+
     <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/handlebars.js" > </script>
+
+
+    
+
     
 
     <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/partial/feed/feed.css"> </link>
@@ -52,9 +58,9 @@
 
 
 
-                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type)); ?>
+                <?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type,'user_id'=>$user->user_id)); ?>
 
-
+                <script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/partial/feed/feed.js"> </script>
             </div>
             
         </div> 

@@ -10,9 +10,17 @@ div#fbar_new {
     -moz-transition: height 450ms ease, box-shadow 250 ease;
     -webkit-transition: height 450ms ease, box-shadow 250 ease;
     transition: height 450ms ease, box-shadow 250 ease;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.0);
+}
+
+#fbar_button_announcement{
+    display:none!important;
+}
+
+section#fbar_buttons div#fbar_button_discuss.fbar_twoprong.fbar_buttonwrapper{
+    background: transparent url(../../../assets/partial/fbar/Fbar_separator.png) no-repeat right center!important;
 }
 
 form#fbar_form {
@@ -20,9 +28,9 @@ form#fbar_form {
 }
 
 div#fbar_new:hover {
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.055);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 div#fbar_new.fbar_shadow{
@@ -56,11 +64,12 @@ section#fbar_buttons .fbar_buttonwrapper {
     top: 0px;
     left: 0;
     cursor: pointer;
-    width: 180.5px;
+    width: 179.5px;
     height: 35px;
     padding: 7px 0px 8px 0px;
-    color: #696969;
+    color: #747474;
     display: inline-block;
+    word-spacing: 10px;
     font-size: 15px;
     opacity: .9;
     font-weight: normal;
@@ -83,7 +92,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_icon {
     background-repeat: no-repeat;
     position: relative;
     display: inline-block;
-    margin-left: 27px;
+    margin-left: 26px;
     float: left;
     margin-top: 2px;
 }
@@ -96,7 +105,9 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text {
     width: 87px;
     -webkit-user-select: none;
     text-align: center;
-    margin-top: 8px;
+    margin-top: 7px;
+    font-size: 16.5px;  font-weight: 500;  white-space: nowrap;
+    display: inline-block; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 
 section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.announce_button_text{
@@ -133,7 +144,7 @@ section#fbar_buttons .fbar_buttonwrapper .fbar_button_text.opportunity_button_te
 }
 
 section#fbar_buttons .fbar_buttonwrapper:hover {
-    color: #222;
+    color: #121212;
     -webkit-transition: .06s;
     -moz-transition: .06s;
     transition: .06s;

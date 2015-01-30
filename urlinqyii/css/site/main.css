@@ -208,9 +208,9 @@ padding-left: 5px;
 }
 
 div.about_box{
-    width: 235px; 
-    height: max-height:364px; font-family: 'Open Sans', sans-serif; background: #fff; 
-    max-height: 365px;
+    width: 235px!important; 
+    font-family: 'Open Sans', sans-serif; background: #fff; 
+    height:auto;
     border-radius: 5px; display: block;  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12); box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
     padding-bottom: 8px;
 }
@@ -232,8 +232,6 @@ div.about_box p{
     
     font-size: 12.7px;
     color: #575757;
-    overflow: scroll;
-    max-height: 340px;
     padding-bottom: 0px;
     margin-top: 0;
     padding-top: 4px;
@@ -262,6 +260,10 @@ div#planner_column.planner_column_group{
 #planner_column.planner_column_group #right_column_specs #fixed_element{
     height: 364px;
     position: relative;
+}
+
+body.body_school #planner_column.planner_column_group #right_column_specs #fixed_element{
+    height:450px;
 }
 
 #right_column_specs{
@@ -385,6 +387,11 @@ div#fbar_wrapper.fbar_group{
 
 }
 
+em.small_icon_time{
+    background-image: url('../../assets/small_icons.png'); background-size: auto; background-repeat: no-repeat; display: inline-block;
+    
+    background-position: -1px -682px!important;
+}
 
 
 /* tab_bar */
@@ -693,6 +700,7 @@ box-shadow: inset 0 1px 1px rgba(146, 146, 146, 0.46),inset 0 -1px 1px rgba(146,
     padding: 0px 12px;
     margin-top:-20px;
     margin-bottom: 140px;
+    min-height:420px;
 }
 
 .panel.active{
@@ -787,6 +795,13 @@ div.professor_image,div.admin_image{
     height: 36px;
     background-size: cover;
     border-radius: 1000px;
+}
+
+div.classic_about_box{
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+border-radius:5px;
 }
 
 div.admin_image{
@@ -1080,20 +1095,21 @@ div.float_Center.courses_list{
     right: 0px;
 }
 
-ul.tabnav_tabs li div.tabnav_tab{
-    background-color: transparent;
-
-    border: 1px solid transparent;
-    border-radius: 3px 3px 0 0;
-    display: inline-block; 
-    padding: 10px 27px 9px; 
+ul.tabnav_tabs li div.tabnav_tab {
+background-color: transparent;
+border: 1px solid transparent;
+border-radius: 3px 3px 0 0;
+cursor: pointer;
+display: inline-block;
+padding: 10px 27px 9px;
 }
 
-ul.tabnav_tabs li.active div.tabnav_tab{
-    border: 1px solid #ddd;
-    font-weight: 600;
-    border-bottom: 1px solid #F4F4F4;
-    box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
+ul.tabnav_tabs li.active div.tabnav_tab {
+border: 1px solid #ddd;
+font-weight: 600;
+border-bottom: 1px solid #F4F4F4;
+box-shadow: 2px 0px 0px #FFF inset, -2px 0px 0px #FFF inset, 0px 2px 0px #FFF inset;
+cursor: default;
 }
 
 ul.tabnav_tabs li div.tabnav_tab span{
@@ -1129,7 +1145,7 @@ ul.tabnav_tabs li.active{
     
 }
 
-#left_search_icon{
+#left_search_icon,.left_search_icon{
     background-image: url(../../assets/left_search_icon.png);
 
     display: inline-block;
@@ -1257,6 +1273,7 @@ border-top: 1px solid #1BAD3E;
     display: inline-block;
     padding: 6px 10px;
     position: absolute;
+    display:none;
     right: 0px;
     padding-left: 0px;
 }
@@ -1567,6 +1584,10 @@ textarea:focus:-moz-placeholder {
         display:none;
     }
 
+    body#body_home #right_panel.group_responsiveness{
+        display:block!important;
+    }
+
     body.left_panel_hidden.left_panel_hidden_p2 #right_panel.group_responsiveness{
         display:block;
     }
@@ -1580,6 +1601,10 @@ textarea:focus:-moz-placeholder {
     .topbar #topbar_responsive_holder{
         padding-right:0px!important;
     }
+
+    body#body_home .topbar #topbar_responsive_holder{
+        padding-right: 150px!important;
+    }    
     /*.topbar > #topbar_responsive_holder > .left{
         margin-left:0px!important;
     }*/
@@ -1590,9 +1615,15 @@ textarea:focus:-moz-placeholder {
     #body_home #main_panel{
         padding-right:0px;
     }
-    #body_home #right_panel{
-        display:none;
+
+    body#body_home .topbar #topbar_responsive_holder{
+        padding-right: 0px!important;
+    }      
+
+    body#body_home #right_panel.group_responsiveness{
+        display:none!important;
     }
+
     #body_home #content_panel{
         margin-left: 280px;
     }
@@ -1614,6 +1645,9 @@ textarea:focus:-moz-placeholder {
 
         body.left_panel_hidden.left_panel_hidden_p2 #main_panel.group_responsiveness{
         padding-right:0px!important;
+    }
+    body.body_group .topbar > #topbar_responsive_holder > .right{
+        float:none;
     }
 }
 
@@ -1682,8 +1716,19 @@ textarea:focus:-moz-placeholder {
     }  
     body{
         overflow-x:scroll!important;
-        min-width:840px;
-    }     
+        min-width:880px;
+    }    
+
+}
+
+@media screen and (max-width: 900px) {
+
+    body div.topbar{
+        position:relative!important;
+    }
+    body#body_home div#wrapper, body#body_group div#wrapper{
+        padding-top: 0px!important;
+    }
 }
 
 
@@ -1864,10 +1909,10 @@ p.founded_text > span.founded_icon{
 
 div.about_section_group_links{
     margin: 8px 10px;
-
     padding-bottom: 2px;
     border-top: 1px solid #dbdcdc;
     padding-top: 2px;
+    margin-top:0;
 }
 
 div.about_section_group_links > div.about_section_border_top{
@@ -1933,6 +1978,10 @@ top: 7px;
 
 div.group_info_block.school_location{
     margin-top:40px;
+}
+
+p.school_about div.padding_bottom{
+    padding:5px 0;
 }
 
 div.group_info_block:hover{
@@ -2059,5 +2108,6 @@ form#cover_photo_form div.dz-details {
     display: none !important;
 }
 
-
+div.no_select::selection { background:transparent; }
+div.no_select::-moz-selection { background:transparent; }
 
