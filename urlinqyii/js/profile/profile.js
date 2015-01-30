@@ -711,6 +711,31 @@ $(document).ready(function() {
             }
         });
     }
+    $(document).on('click','.add_field_button',function(){
+        var $section = $(this).parent();
+
+        if($section.attr('id')=="major_section"){
+            if($section.find('input.edit_field').length==3){
+                return;
+            }
+            $section.append('<input type="text" class="edit_field major additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_major_button"></button>');
+        }else if($section.attr('id')=="minor_section"){
+            if($section.find('input.edit_field').length==3){
+                return;
+            }
+            $section.append('<input type="text" class="edit_field minor additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_minor_button"></button>');
+        }else if($section.attr('id')=="research_section"){
+            $section.append('<input type="text" class="edit_field research additional" style="display:inline-block">'+
+            '<button class="delete_field_button delete_research_button"></button>');
+        }
+    });
+    $(document).on('click','.delete_field_button',function(){
+        $(this).prev('span.ui-helper-hidden-accessible').remove();
+        $(this).prev('input.edit_field').remove();;
+        $(this).remove();
+    });
     //add showcase code
     $(document).on('click','#upload_link_button',function(){
         $('#upfile').click();
@@ -851,6 +876,9 @@ $(document).ready(function() {
         $('.info_name').hide();
         $('.headers').show();
         $('.edit_field').show();
+        $(".edit_field.additional").remove();
+        $(".delete_field_button").remove();
+        $('.add_field_button').show();
         //school
 
         $.getJSON( base_url + "/profile/getSchools",{user: globals.user_id}, function( result) {
@@ -878,24 +906,47 @@ $(document).ready(function() {
         $('#year_section').show();
         $('#level_dropdown').val($('#level_name').text());
         //majors
+        var major_text;
         $('.info_name.major').each(function(i){
             if(!$(this).hasClass('undeclared')){
-                $('.edit_field.major:eq('+i+')').val($(this).text());
+                major_text = $(this).text();
+                if(i==0){
+                    $('.edit_field.major').val(major_text);
+                }else{
+                    $('#major_section').append('<input type="text" class="edit_field major additional"'+
+                    ' value="'+major_text+'" style="display:inline-block">'+
+                    '<button class="delete_field_button delete_major_button"></button>');
+                }
             }
         });
 
         //minors
         any_minor=$('#minor_section').is(':visible');
         $('#minor_section').show();
+        var minor_text;
         $('.info_name.minor').each(function(i){
-            $('.edit_field.minor:eq('+i+')').val($(this).text());
+            minor_text = $(this).text();
+            if(i==0){
+                $('.edit_field.minor').val(minor_text);
+            }else{
+                $('#minor_section').append('<input type="text" class="edit_field minor additional"'+
+                ' value="'+minor_text+'" style="display:inline-block">'+
+                '<button class="delete_field_button delete_minor_button"></button>');
+            }
         });
         //research
         any_research=$('#research_section').is(':visible');
         $('#research_section').show();
-
+        var research_text;
         $('.info_name.research').each(function(i){
-            $('.edit_field.research:eq('+i+')').val($(this).text());
+            research_text = $(this).text();
+            if(i==0){
+                $('.edit_field.research').val(research_text);
+            }else{
+                $('#research_section').append('<input type="text" class="edit_field research additional"'+
+                ' value="'+research_text+'" style="display:inline-block">'+
+                '<button class="delete_field_button delete_research_button"></button>');
+            }
         });
 
         //bio
@@ -1189,10 +1240,14 @@ $(document).ready(function() {
         if(!any_year){
             $('#year_section').hide();
         }
+
+
         $('.headers').hide();
         $('.info_section.account').hide();
         $('.info_name').not('.undeclared').show();
         $('.edit_field').hide();
+        $('.add_field_button').hide();
+        $('.delete_field_button').remove();
         //$('#edit_profile_button').css('margin-left','15px');
         $('#edit_profile_button').text('Edit Profile');
         $('#cancel_edit_button').hide();
