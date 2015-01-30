@@ -401,6 +401,9 @@ class EventController extends Controller
         //Of this event or he is attending it and associated through group_user table
         if($user->user_id == $event->user_id){
             if($event->delete()){
+                $this->delete_associations($event_id);
+
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
@@ -411,6 +414,8 @@ class EventController extends Controller
             }
         }elseif($event_user = $event->user_is_attending($user->user_id)){
             if($event_user->delete()){
+                $this->delete_associations($event_id);
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
@@ -428,6 +433,31 @@ class EventController extends Controller
 
 
 
+
+    }
+
+
+
+    //Takes in an event id and deletes
+    //notifications/posts associated with this event
+    function delete_associations($event_id){
+        $notifications = Notification::model()->find('origin_type="event" and origin_id=:origin_id', array(':origin_id'=>$event_id));
+        foreach($notifications as $notification){
+            $notification->delete();
+        }
+
+
+        $post_events = PostEvent::model()->find('event_id=:event_id', array(':event_id'=>$event_id));
+        foreach($post_events as $post_event){
+            $post = Post::model()->find('post_id=:post_id', array(':post_id'=>$post_event->post_id));
+            if($post){
+                //This will delete post_events associated
+                //as well since they are cascade foreign keys
+                $post->delete();
+            }else{
+                $post_event->delete();
+            }
+        }
 
     }
 
