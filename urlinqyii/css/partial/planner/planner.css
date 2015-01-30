@@ -39,8 +39,12 @@ margin-top: 15px;
     font-family: Avenir;
     font-weight: 200;
     font-weight: 500; 
-    font-size: 14.5px; color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-size: 16.5px; color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     text-transform: uppercase;
+}
+
+#body_department .planner_header{
+    font-size:15.5px;
 }
 #dropdown_arrow{
     padding: 0px 0px 2px 5px;
