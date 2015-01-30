@@ -648,24 +648,27 @@ function add_event(event_json){
 
 
 //For somereason these has to be outside of the .ready()
-$(document).on('click','#add_todo, .create_planner_message',function(){
+$(document).on('click','#add_todo, .create_planner_message',function(event){
+    event.stopPropagation();
     show_planner_creation_form();
-    $("#add_todo_text").text("Discard");
-    $(".entry_field_placeholder").css({"width":"62.5px"});
-    $("#add_todo").addClass("cancel_form");
-    $(".nav-icon-plus").toggleClass('hide-plus');
-    $(".nav-icon").toggleClass('bounce-minus');
+
 });
 
-$(document).on('click','.cancel_form',function(){
+$(document).on('click','.cancel_form',function(event){
+    event.stopPropagation();
     hide_planner_creation_form();
-    $(this).find("#add_todo_text").text("Add Todo");
-    $(".entry_field_placeholder").css({"width":"75px"});
+
     $(this).removeClass("cancel_form");
+  
 });
 function show_planner_creation_form(){
     $("#planner_body_holder").hide();
     $(".create_event_body").fadeIn(500);
+    $("#add_todo_text").text("Discard");
+    $(".entry_field_placeholder").css({"width":"62.5px"});
+    $("#add_todo").addClass("cancel_form");
+    $(".nav-icon-plus").addClass('hide-plus');
+    $(".nav-icon").addClass('bounce-minus');
     $(this).css("display", "none");
     $("#todo_wrap").css("height", "128px");
     $(".entry_field").css("border-bottom", "1px solid #ddd");
@@ -684,6 +687,10 @@ function hide_planner_creation_form(){
     $('.timepicker').css('display', 'none');
     $('.event_time').text('Add time');
     $("#planner_bottom_holder").show();
+    $("#add_todo_text").text("Add Todo");
+    $(".nav-icon-plus").removeClass('hide-plus');
+    $(".nav-icon").removeClass('bounce-minus');  
+    $(".entry_field_placeholder").css({"width":"75px"});
 }
 
 
@@ -833,7 +840,6 @@ $(document).on('click','#create_todo_form',function(e){
         function(response) {
             if(response['success']){
                 $('.entry_field_placeholder').removeClass('cancel_form');
-                $('#add_todo_text').text('Add Todo');
 
                 hide_planner_creation_form();
                 add_event(response['event']);

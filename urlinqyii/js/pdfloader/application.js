@@ -1,5 +1,6 @@
 var file_id = 0;
 var previous = "";
+var editable=" editable";
 var events={};
 var pdf_year= (new Date()).getFullYear();
 var previous_title_empty = false;
@@ -10,6 +11,10 @@ window.onload = function () {
   class_color = get_class_color();
   file_json = get_pdf();
   if(file_json["file_id"]){
+    if(!file_json["edit_access"]){
+      editable = "";
+      $('#add_syllabus_wrap').remove();
+    }
   load_events(file_json["file_id"]);
   run_pdf_algo(false, globals.base_url+file_json["file_url"]);
   }
