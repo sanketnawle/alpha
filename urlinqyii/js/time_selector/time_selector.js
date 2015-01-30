@@ -186,7 +186,7 @@ jQuery(document).ready(function(){
         var input_position = $time_input.offset();
 
         //Set the position of the time selector to underneath this time input
-        $time_selector.css({'position': 'absolute'});
+        $time_selector.css({'position': 'fixed'});
         $time_selector.css({'top': (input_position.top + $time_input.height()).toString() + 'px'});
         $time_selector.css({'left': input_position.left.toString() + 'px'});
         $time_selector.css({'z-index': '9999'});
