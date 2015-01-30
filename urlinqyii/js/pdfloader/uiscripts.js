@@ -81,7 +81,7 @@ var load_events = function (pdf_id) {
          success: function(response) {
           $.each(response,function(index,value){
             var d = new Date(value["start_date"]);
-            html_text='<div id="'+value["event_id"]+'" class = "syllabus_event editable">\
+            html_text='<div id="'+value["event_id"]+'" class = "syllabus_event'+editable+'">\
                     <div style="background-color:'+class_color+';" class = "day_month_box day_box_color">\
                         <div class = "calendar_top_border"></div>\
                         <div class = "calendar_bottom_section">\
@@ -90,8 +90,8 @@ var load_events = function (pdf_id) {
                         </div>\
                     </div>\
                     <div class = "event_name_buttons">\
-                        <span class ="event_name_text">\
-                            Midterm 1\
+                        <span title="'+value["title"]+'" class ="event_name_text">\
+                            '+value["title"].slice(0,20)+"..."+'\
                         </span>\
                         <input class = "syla_tab_event_editor" type = "text" name = "event_name" value="'+value["title"]+'"">\
                         <div class = "done_editing_button">\
