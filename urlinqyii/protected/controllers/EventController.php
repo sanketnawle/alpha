@@ -586,12 +586,12 @@ class EventController extends Controller
                 //If this event was successfully created, check if there
                 //were any invitations sent out for this event
                 if(isset($_POST['event']['invites'])){
-                    include_once "invite/invite.php";\
+                    include_once "invite/invite.php";
                     include_once "notification/notification.php";
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
-                        send_notification('event', $invite_user_id, $event->user_id, $event_id, 'event');
+                        send_notification('event', $invite_user_id, $event->user_id, $event->event_id, 'event');
                     }
                 }
 
