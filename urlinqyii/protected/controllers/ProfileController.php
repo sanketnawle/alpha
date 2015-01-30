@@ -312,7 +312,6 @@ class ProfileController extends Controller
              'file_url'=>$file->file_url,'extension'=>$extension);
 
      }
-   //  public function updateMajorMinor
      public function actionAddShowcase(){
          include "file_upload.php";
          if (isset($_FILES['file'])) {
@@ -464,11 +463,17 @@ class ProfileController extends Controller
             }
             $major = Major::model()->find('name = :mname',array(':mname'=>$majorname));
             if(!$major){
-                $data = 'failure: some major names are not valid';
-                return $data;
-            }else{
-                $majors[] = $major;
+                //$data = 'failure: some major names are not valid';
+                //return $data;
+                $major = new Major();
+                $major->name = $majorname;
+                if(!$major->save()){
+                    $data=$major->getErrors();
+                    return $data;
+                }
             }
+            $majors[] = $major;
+
         }
 
 
@@ -812,7 +817,8 @@ class ProfileController extends Controller
             $extension = pathinfo($_FILES["file"]["name"])['extension'];
             if($extension == "jpg" || $extension == "png" || $extension == "gif"){
                 $result = file_upload($_FILES,"profile/");
-                $user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                //$user= User::model()->find('user_id = :uid',array(':uid'=>$_POST['user']));
+                $user = $this->get_current_user();
                 $user->picture_file_id = $result['file_id'];
                 if($user->save()){
                     $this->renderJSON(array('status'=>'success','file_url'=>Yii::app()->getBaseUrl(true).$user->pictureFile->file_url));
