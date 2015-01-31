@@ -586,7 +586,7 @@ class PostController extends Controller
             return;
         }
 
-        $user = $this->get_current_user($_GET);
+        $user = $this->get_current_user($_POST);
 
         if(!$user){
             $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
