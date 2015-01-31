@@ -125,7 +125,7 @@ class PostController extends Controller
 
 
 
-            $user = $this->get_current_user();
+            $user = $this->get_current_user($_POST);
             if(!$user){
                 $return_data = array('success'=>false, 'error_id'=>2, 'error_msg' => 'user is not logged in');
                 $this->renderJSON($return_data);
@@ -207,7 +207,7 @@ class PostController extends Controller
                         $event->title = $_POST['post']['event']['title'];
                         $event->description = $_POST['post']['event']['description'];
                         $event->event_type = 'event';
-                        $event->user_id = $this->get_current_user_id();
+                        $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['event']['origin_id'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
                         $event->start_date = $_POST['post']['event']['start_date'];
@@ -236,7 +236,7 @@ class PostController extends Controller
                         $event->title = $_POST['post']['opportunity']['title'];
                         $event->description = $_POST['post']['opportunity']['description'];
                         $event->event_type = 'event';
-                        $event->user_id = $this->get_current_user_id();
+                        $event->user_id = $user->user_id;
                         $event->origin_type = $_POST['post']['origin_type'];
                         $event->origin_id = $_POST['post']['origin_id'];
                         $event->start_date = $now->format('Y-m-d');
@@ -668,7 +668,7 @@ class PostController extends Controller
         }
 
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_POST);
         if(!$user){
             $return_data = array('success'=>false,'error_id'=>2, 'error_msg'=>'user is not logged in');
             $this->renderJSON($return_data);
