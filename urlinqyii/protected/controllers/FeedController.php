@@ -481,10 +481,30 @@ class FeedController extends Controller
 
                               or (origin_type = 'university' and origin_id = " . $user->school_id . ")
                               or (origin_type = 'department' and origin_id = " . $user->department_id .")
+
+
+                              or (origin_type = 'club' and origin_id IN (SELECT group_user.group_id
+                                                                         from `group_user`
+                                                                         join `group`
+                                                                         on (group_user.group_id = group.group_id)
+                                                                         where group_user.user_id = " . $user->user_id . "))
+
+                              or (origin_type = 'group' and origin_id IN (SELECT group_user.group_id
+                                                                         from `group_user`
+                                                                         join `group`
+                                                                         on (group_user.group_id = group.group_id)
+                                                                         where group_user.user_id = " . $user->user_id . "))
+
+
                               or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
                                                                             from class_user cu join class cs
                                                                               on (cu.class_id = cs.class_id)
                                                                               where user_id = " . $user->user_id . " and cs.semester = '" . self::$cur_sem . "' and cs.`year` = ".date('Y').")))
+
+
+
+
+
                               and (post.privacy = '' or (post.privacy = '" . $privacy_type . "') or (post.privacy != '" . $privacy_type . "' and post.user_id = " . $user->user_id . "))
 
                               and created_at < '" . $created_at . "'
