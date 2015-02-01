@@ -23,6 +23,7 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: auto;
+    display:block;
     background-image: url('../../../assets/camera_icon.png');
 }
 
