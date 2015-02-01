@@ -399,9 +399,10 @@
     <!--            --><?php //echo Yii::app()->runController('partial/rightmenu'); ?>
 </div>
 
-</body>
 
- <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
+     <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
+
+     <!--<!-- INCLUDE THIS AND date_selector.js and add class name date_input to your date input fields to use this -->
 
     <div id = "calLayer" style="display: none;">
         <section id = "mounth" class="mounth">
@@ -558,6 +559,13 @@ Set the class name on your input to 'time_input' -->
 
 
 </div>
+
+
+
+
+</body>
+
+
 
 
 </html>

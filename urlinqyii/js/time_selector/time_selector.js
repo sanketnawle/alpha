@@ -165,6 +165,9 @@ jQuery(document).ready(function(){
         var $time_selector = $('#time_selector');
 
 
+
+
+
         if($time_selector.is(':visible') && $last_selected_time_input.is($time_input)){
             $time_selector.removeClass('active');
             return;
