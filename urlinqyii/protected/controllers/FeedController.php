@@ -366,10 +366,12 @@ class FeedController extends Controller
                 $post_model = Post::model()->find('post_id=:id', array(':id'=>$post['post_id']));
 
 
-
-
                 $post_event = PostEvent::model()->find('post_id=:id',array(':id'=>$post['post_id']));
 
+                if(!$post_event){
+                    unset($posts[$i]);
+                    continue;
+                }
 
                 $event = $post_event->event;
 
