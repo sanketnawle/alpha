@@ -86,7 +86,9 @@ jQuery(document).ready(function(){
         event.stopPropagation();
         hide_inspect();
         var $inspect_event_popup_month = jQuery('#inspect_event_popup_month');
-        var event_id = last_clicked_event_id;
+        var event_id = $inspect_event_popup_month.attr('data-event_id');
+
+
 
         var post_url = base_url + '/event/' + event_id + '/delete';
 

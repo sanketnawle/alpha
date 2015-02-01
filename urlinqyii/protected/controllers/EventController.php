@@ -459,13 +459,16 @@ class EventController extends Controller
     //Takes in an event id and deletes
     //notifications/posts associated with this event
     function delete_associations($event_id){
-        $notifications = Notification::model()->find('origin_type="event" and origin_id=:origin_id', array(':origin_id'=>$event_id));
+        $notifications = Notification::model()->findAll('origin_type="event" and origin_id=:origin_id', array(':origin_id'=>$event_id));
+
+
+
         foreach($notifications as $notification){
             $notification->delete();
         }
 
 
-        $post_events = PostEvent::model()->find('event_id=:event_id', array(':event_id'=>$event_id));
+        $post_events = PostEvent::model()->findAll('event_id=:event_id', array(':event_id'=>$event_id));
         foreach($post_events as $post_event){
             $post = Post::model()->find('post_id=:post_id', array(':post_id'=>$post_event->post_id));
             if($post){
