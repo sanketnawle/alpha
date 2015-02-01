@@ -26,7 +26,8 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     height: 52px;
     background-color: rgba(18, 19, 20, 0.4);
     background-repeat: no-repeat;
-    background-size: 36%;
+    background-size: auto;
+    display:block;
     background-image: url('../../../assets/camera_icon.png');
     background-position: 16px;
     opacity:0;

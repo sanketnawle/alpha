@@ -336,7 +336,7 @@
  -->
                     </div>
                     <div class = "class_events_holder order_kind">
-                        <div class = "black_action_box">
+                        <div class = "black_action_box" id="add_syllabus_wrap">
                             <button id="btn_add_syllabus" class = "scan_syllabus">
                                 <em class = "syla_plus"></em>Add Syllabus
                             </button>

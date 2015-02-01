@@ -463,7 +463,7 @@ span.follow_icon_profile_page{
     display: none;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 86%;
+    width: 82%;
     /*white-space: nowrap;*/
     margin-bottom: 3px;
     border-radius: 2px;
@@ -528,7 +528,38 @@ div.profile_tab div.profile_tab_content{
 
 .profile_panel.active{
     display: block;
-
+}
+.add_field_button{
+    background-image: url(../../assets/small_icons.png);
+    background-size: auto;
+    background-position: -2px -1186px;
+    border: none;
+    display: inline-block;
+    background-color: transparent;
+    width: 22px;
+    height: 24px;
+    position: relative;
+    top: 1px;
+    cursor:pointer;
+}
+.delete_field_button{
+    background-position: 32px -34px;
+    background-size: 217%;
+    background-image: url('../../assets/ProfilePageIconMap.png');
+    display: inline-block;
+    top: 3px;
+    position: relative;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    width: 22px;
+    cursor: pointer;
+}
+.info_label.inline{
+    display:inline-block;
+}
+.edit_field.dropdown{
+    width: 85.6%;
 }
 .profile_tab_text{
     float: left;
@@ -853,6 +884,7 @@ button.add_showcase_button:active{
 .edit_showcase_button.cancel{
     background-position: 0px -17px;
     background-size: 217%;
+    background-image: url('../../assets/ProfilePageIconMap.png');
     left:350px;
     display: none;
 }

@@ -72,7 +72,7 @@ $(document).ready(function(){
         } else {
 
             $recent_date_input = jQuery(this);
-            jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top + $recent_date_input.height(), left: $recent_date_input.offset().left});
+            jQuery('#calLayer').css({'z-index': '9999',position:'fixed', top: $recent_date_input.offset().top + $recent_date_input.outerHeight(), left: $recent_date_input.offset().left});
             jQuery('#calLayer').show();
         }
 

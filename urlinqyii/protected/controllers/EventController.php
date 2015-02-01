@@ -74,7 +74,7 @@ class EventController extends Controller
             return;
         }
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_GET);
 //        $date = '2014-11-12';
         $date = $_GET['date'];
         //user_id=:user_id AND  //':user_id'=>1,
@@ -91,22 +91,18 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND start_date = '" . $date . "'")->queryAll();
 
-
-
-        $all_events = $this->add_event_data(array_merge($events,$events_attending));
+        $all_events = $this->add_event_data(array_merge($events,$events_attending), $user);
 
 
         $data = array('success'=>true,'events'=>$all_events);
 
         $this->renderJSON($data);
         return;
-
-
     }
 
-    function add_event_data($events){
+    function add_event_data($events, $user){
         for($i=0;$i<count($events);$i++){
-            $events[$i]['color'] = $this->get_user_event_color($this->get_current_user(),$events[$i]);
+            $events[$i]['color'] = $this->get_user_event_color($user,$events[$i]);
 
 
             //Get the origin data
@@ -136,7 +132,16 @@ class EventController extends Controller
 
 
     public function actionGetMonthEvents(){
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_GET);
+
+
+        if(!$user){
+            $data = array('success'=>false, 'error_msg'=>'user not authenticated');
+
+            $this->renderJSON($data);
+            return;
+        }
+
 //        $date = '2014-11-12';
         $date = $_GET['date'];
         //user_id=:user_id AND  //':user_id'=>1,
@@ -153,7 +158,7 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND MONTH(`end_date`) = MONTH("' . $date . '")')->queryAll();
 
-        $events = $this->add_event_data($events);
+        $events = $this->add_event_data($events, $user);
 
 
 
@@ -169,7 +174,20 @@ class EventController extends Controller
 
 
     public function actionGetWeekEvents(){
-        $user = $this->get_current_user();
+
+
+
+        $user = $this->get_current_user($_GET);
+
+
+
+        if(!$user){
+            $data = array('success'=>false, 'error_msg'=>'user not authenticated');
+
+            $this->renderJSON($data);
+            return;
+        }
+
 //        $date = '2014-11-12';
         $date = $_GET['date'];
         //user_id=:user_id AND  //':user_id'=>1,
@@ -186,7 +204,7 @@ class EventController extends Controller
         //Get the events that this
         $events = Yii::app()->db->createCommand('SELECT * FROM `event` WHERE event.user_id = ' . $user->user_id . ' AND WEEK(`end_date`) = WEEK("' . $date . '")')->queryAll();
 
-        $data = array('success'=>true,'events'=>$this->add_event_data(array_merge($events,$events_attending)));
+        $data = array('success'=>true,'events'=>$this->add_event_data(array_merge($events,$events_attending),$user));
 
         $this->renderJSON($data);
         return;
@@ -236,7 +254,7 @@ class EventController extends Controller
 
 
         //$user_id = $_GET['user_id'];
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_GET);
 
 
         if(!$user){
@@ -387,7 +405,7 @@ class EventController extends Controller
             return;
         }
 
-        $user = $this->get_current_user();
+        $user = $this->get_current_user($_POST);
 
         $event_id = $_POST['event_id'];
         $event = Event::model()->find('event_id=:id', array(':id'=>$event_id));
@@ -401,6 +419,9 @@ class EventController extends Controller
         //Of this event or he is attending it and associated through group_user table
         if($user->user_id == $event->user_id){
             if($event->delete()){
+                $this->delete_associations($event_id);
+
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
@@ -411,6 +432,8 @@ class EventController extends Controller
             }
         }elseif($event_user = $event->user_is_attending($user->user_id)){
             if($event_user->delete()){
+                $this->delete_associations($event_id);
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
@@ -428,6 +451,34 @@ class EventController extends Controller
 
 
 
+
+    }
+
+
+
+    //Takes in an event id and deletes
+    //notifications/posts associated with this event
+    function delete_associations($event_id){
+        $notifications = Notification::model()->findAll('origin_type="event" and origin_id=:origin_id', array(':origin_id'=>$event_id));
+
+
+
+        foreach($notifications as $notification){
+            $notification->delete();
+        }
+
+
+        $post_events = PostEvent::model()->findAll('event_id=:event_id', array(':event_id'=>$event_id));
+        foreach($post_events as $post_event){
+            $post = Post::model()->find('post_id=:post_id', array(':post_id'=>$post_event->post_id));
+            if($post){
+                //This will delete post_events associated
+                //as well since they are cascade foreign keys
+                $post->delete();
+            }else{
+                $post_event->delete();
+            }
+        }
 
     }
 
@@ -459,7 +510,7 @@ class EventController extends Controller
 
 
 
-            $user = $this->get_current_user();
+            $user = $this->get_current_user($_POST);
 
             $todo_name = $_POST['todo_name'];
             $todo_date = $_POST['todo_date'];
@@ -522,6 +573,16 @@ class EventController extends Controller
 //                event_todo: event_todo,
 //                all_day: event_all_day
 
+        $user = $this->get_current_user($_POST);
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'user not lgged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
         if(!isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_todo']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
         || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -539,7 +600,7 @@ class EventController extends Controller
             $event->title = $event_data['event_name'];
             $event->description = $event_data['description'];
             $event->event_type = $event_data['event_type'];
-            $event->user_id = $this->get_current_user_id();
+            $event->user_id = $user->user_id;
             $event->origin_type = $event_data['origin_type'];
             $event->origin_id = $event_data['origin_id'];
             $event->start_date = $event_data['start_date'];
@@ -557,16 +618,16 @@ class EventController extends Controller
                 //were any invitations sent out for this event
                 if(isset($_POST['event']['invites'])){
                     include_once "invite/invite.php";
+                    include_once "notification/notification.php";
                     //Loop thru the invites and send an invite to each user
                     foreach($_POST['event']['invites'] as $invite_user_id){
                         send_invite($event->user_id,$invite_user_id, $event->event_id, 'event');
-                        include_once "protected/components/notification/notification.php";
                         send_notification('event', $invite_user_id, $event->user_id, $event->event_id, 'event');
                     }
                 }
 
                 $event = $this->model_to_array($event);
-                $event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
+                $event['color'] = $this->get_user_event_color($user,$event);
 
                 $data = array('success'=>true,'event'=>$event);
                 $this->renderJSON($data);
@@ -611,6 +672,15 @@ class EventController extends Controller
 //        };
 
 
+
+        $user = $this->get_current_user($_POST);
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'noit logged in');
+            $this->renderJSON($data);
+            return;
+        }
+
+
         if(!isset($_POST['event']['event_id']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['event_name']) || !isset($_POST['event']['event_type']) || !isset($_POST['event']['origin_type']) || !isset($_POST['event']['origin_id']) || !isset($_POST['event']['title']) || !isset($_POST['event']['description'])
             || !isset($_POST['event']['start_time']) || !isset($_POST['event']['end_time']) || !isset($_POST['event']['start_date']) || !isset($_POST['event']['end_date']) || !isset($_POST['event']['location']) || !isset($_POST['event']['all_day'])){
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'All data is not set');
@@ -628,7 +698,7 @@ class EventController extends Controller
             $event->title = $event_data['event_name'];
             $event->description = $event_data['description'];
             $event->event_type = $event_data['event_type'];
-            $event->user_id = $this->get_current_user_id();
+            $event->user_id = $user->user_id;
             $event->origin_type = $event_data['origin_type'];
             $event->origin_id = $event_data['origin_id'];
             $event->start_date = $event_data['start_date'];
@@ -655,7 +725,7 @@ class EventController extends Controller
 
 
                 $event = $this->model_to_array($event);
-                $event['color'] = $this->get_user_event_color($this->get_current_user(),$event);
+                $event['color'] = $this->get_user_event_color($user,$event);
 
 
                 $data = array('success'=>true,'event'=>$event);
