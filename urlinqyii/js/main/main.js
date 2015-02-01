@@ -270,7 +270,7 @@ $(document).ready(function(){
             $quote.css("letter-spacing", "1.55px;");
         }
         else if (($numWords >= 10) && ($numWords < 20)) {
-            $quote.css("font-size", "42px");
+            $quote.css("font-size", "46px");
             $quote.css("letter-spacing", "1.35px;");
             $class_title_info.css("font-size","15.6px");
             $class_title_info.css("margin-top","7px");

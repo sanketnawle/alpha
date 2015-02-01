@@ -947,7 +947,7 @@ $(document).ready(function() {
 
 
                 // Create the remove button
-                var removeButton = $("<span class='file_x_icon'>Remove file</span>");
+                var removeButton = $("<span class='file_x_icon'></span>");
 
                 // Add the button to the file preview element.
                 $file.append(removeButton);
@@ -956,7 +956,6 @@ $(document).ready(function() {
                 var name = $file.attr('data-name');
 
                 $file.find('.file_x_icon').on('click',function(e) {
-                    console.log('REMOVE');
 
                     var $x_icon = $(this);
 

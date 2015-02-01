@@ -75,10 +75,20 @@
 
 
                                                         
-                                                    {{#each files}}
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-
-                                                    {{/each}}
+                                                {{#each files}}
+                                                    {{#ifCond file_extension '===' 'jpg'}}
+                                                    <div class = "post_attached_image_container">
+                                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                                    </div>
+                                                    {{else}}
+                                                        {{#ifCond download_count '==' 0}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                        {{else}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/each}}
 
 
 
@@ -213,8 +223,7 @@
                                     {{/if}}
 
 
-                                    <div class = 'comment_owner_container'>
-                                        <div class = 'comment_user_icon'></div>
+                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         </div>
                                         <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                                             {{#ifCond anon '==' 1}}
@@ -309,8 +318,7 @@
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
-                                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
-                                            <div class = 'comment_user_icon'></div>
+                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         </div>
                                         <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                                             {{#ifCond anon '==' 1}}
@@ -347,8 +355,7 @@
 
                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
-                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
-                            <div class = 'comment_user_icon'></div>
+                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                         </div>
                         <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                             {{#ifCond anon '==' 1}}
@@ -381,8 +388,7 @@
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
-                                        <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
-                                            <div class = 'comment_user_icon'></div>
+                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         </div>
                                         <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                                             {{#ifCond anon '==' 1}}
@@ -704,8 +710,7 @@
 
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
-                                    <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                        <div class = 'comment_user_icon'></div>
+                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                     </div>
                                     <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                                         {{#ifCond anon '==' 1}}
@@ -733,8 +738,7 @@
                     {{/if}}
                     </div>
                     <div class = 'postcomment'>
-                        <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
-                            <div class = 'comment_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
+                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                         </div>
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
                         <div class = 'reply_user_icon' style='background:url(http://www.urlinq.com/beta/DefaultImages/anon.png)'></div>
@@ -827,7 +831,18 @@
                                     </div>
                                 {{/if}}
                                 {{#each files}}
-                                    <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                    {{#ifCond file_extension '===' 'jpg'}}
+                                    <div class = "post_attached_image_container">
+                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                    </div>
+                                    {{else}}
+                                        {{#ifCond download_count '==' 0}}
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        {{else}}
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                        {{/ifCond}}
+                                    {{/ifCond}}
                                 {{/each}}
 
 
@@ -923,10 +938,20 @@
 
 
 
-                                                    {{#each files}}
-                                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-
-                                                    {{/each}}
+                                                {{#each files}}
+                                                    {{#ifCond file_extension '===' 'jpg'}}
+                                                    <div class = "post_attached_image_container">
+                                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                                    </div>
+                                                    {{else}}
+                                                        {{#ifCond download_count '==' 0}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                                        {{else}}
+                                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/each}}
 
                                                 </div>
 
@@ -1028,14 +1053,23 @@
                                     </div>
 
                                     {{#each files}}
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-
+                                        {{#ifCond file_extension '===' 'jpg'}}
+                                        <div class = "post_attached_image_container">
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                        </div>
+                                        {{else}}
+                                            {{#ifCond download_count '==' 0}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            {{else}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            {{/ifCond}}
+                                        {{/ifCond}}
                                     {{/each}}
 
 
 
-                                    <div class = 'comment_owner_container' style='background:url("http://www.urlinq.com/beta/includes/get_blob.php?img_id=1"); background-size:cover'>
-                                        <div class = 'comment_user_icon'></div>
+                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                     </div>
                                     <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
                                         {{#ifCond anon '==' 1}}
@@ -1066,8 +1100,7 @@
 
 
                     <div class = 'postcomment'>
-                        <div class = 'comment_owner_container' style='position: absolute; display: none; margin-left: -51px;'>
-                            <div class = 'comment_user_icon'></div>
+                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                         </div>
                         <input class='post_anon_val' name='anon' type='hidden' value='0'>
                         <div class = 'reply_user_icon'></div>

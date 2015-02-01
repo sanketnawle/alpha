@@ -209,8 +209,10 @@
 
                                 <?php foreach($department->courses as $course){ ?>
                                     <div class = "group_box group_course_box" data-name="<?php echo $course->course_name; ?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
-                                        </div>
+                                        <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_image_link">
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $course->pictureFile->file_url; ?>');">
+                                            </div>
+                                        </a>
                                         <div class = "group_box_main_info">
                                             <a href='<?php echo Yii::app()->getBaseUrl(true) . '/course/' . $course->course_id;?>' class = "group_link"><?php echo $course->course_name . ' (' . $course->course_tag . ')'; ?></a>
                                             <div class = "float_Right">
