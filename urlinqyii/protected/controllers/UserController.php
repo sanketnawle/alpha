@@ -329,16 +329,19 @@ class UserController extends Controller
 
 
 
-    public function actionNotifications(){
-        $user = $this->get_current_user($_GET);
-        if($user) {
+        public function actionNotifications(){
+            $user = $this->get_current_user($_GET);
+            if($user) {
 
-//            $data = array('success'=>true,'notifications'=>$user->notifications);
-//            $this->renderJSON($data);
-//            return;
+    //            $data = array('success'=>true,'notifications'=>$user->notifications);
+    //            $this->renderJSON($data);
+    //            return;
 
-
-            $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
+            if ($_GET['last_notification_id']) {
+                $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . 'AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
+            } else {
+                $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
+            }
 
             if ($notifications) {
                 $this->renderJSON($this->get_notifications_data($user, $notifications));
@@ -348,13 +351,16 @@ class UserController extends Controller
                 $this->renderJSON($data);
                 return;
             }
+
+
         }
-        else{
-            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
-            $this->renderJSON($data);
-            return;
+
+            else{
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
+                $this->renderJSON($data);
+                return;
+            }
         }
-    }
 
 
 
