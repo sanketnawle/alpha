@@ -261,7 +261,7 @@ div#nav_drop_down_see_all_button:hover{
     cursor: pointer
 }
 
-div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_courses_text,div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_departments_text{
+div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_courses_text,div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_departments_text, div#nav_drop_down_see_all_button:hover #nav_drop_down_see_all_clubs_text{
     text-decoration: underline;
 }
 

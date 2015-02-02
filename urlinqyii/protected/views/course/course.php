@@ -140,8 +140,10 @@
                                 <?php foreach($course->classes as $class){ ?>
                                     <?php $class_students = $class->students; ?>
                                     <div class = "group_box group_course_box" data-class_id="<?php echo $class->class_id; ?>" data-section_id="<?php echo $class->section_id; ?>" data-name="<?php echo $class->class_name; ?>" data-student_count="<?php echo count($class_students ); ?>">
-                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
-                                        </div>
+                                        <a href='<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id;?>'>
+                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->pictureFile->file_url; ?>');">
+                                            </div>
+                                        </a>
                                         <div class = "group_box_main_info">
                                             <a href='<?php echo Yii::app()->getBaseUrl(true) . '/class/' . $class->class_id;?>' class = "group_link"><?php echo $class->class_name; ?></a>
                                             <div class = "float_Right">

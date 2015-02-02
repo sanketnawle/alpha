@@ -28,7 +28,26 @@ $(document).ready(function(){
         $('#panel_' + panel_id).addClass('active');
     });
 
+    $('#nav_drop_down_see_all_button.courses').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.courses").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_2').addClass('active');        
+    });
+
+    $('#nav_drop_down_see_all_button.departments').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.departments").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_2').addClass('active');        
+    });
     
+    $('#nav_drop_down_see_all_button.clubs').click(function(){
+        $('.tab.active').removeClass('active');
+        $(".tab.clubs").addClass('active');
+        $('.panel.active').removeClass('active');
+        $('#panel_3').addClass('active');        
+    });
 
     $( "#page" ).scroll(function() {
 //        alert('SCROLL');

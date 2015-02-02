@@ -1250,7 +1250,6 @@ border-top: 1px solid #1BAD3E;
 
 .follow_button_wrapper .user_follow_button{
     color: #fff;
-
     font-weight: 600;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1262,6 +1261,10 @@ border-top: 1px solid #1BAD3E;
     position: relative;
     text-align: center;
     width: 100%;
+}
+
+.follow_button_wrapper .user_follow_button.own_profile{
+    cursor: default;
 }
 
 .follow_button_wrapper .user_follow_button.following{

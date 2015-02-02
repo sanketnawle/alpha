@@ -233,7 +233,7 @@
 
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
+                <div id="nav_drop_down_see_all_button" class = "courses">
                     <div id="nav_drop_down_see_all_courses_text" data-panel_id="2">See all courses</div>
                 </div>
             </div>
@@ -290,7 +290,7 @@
 
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
+                <div id="nav_drop_down_see_all_button" class = "departments">
                     <div id="nav_drop_down_see_all_departments_text">See all departments</div>
                 </div>
             </div>
@@ -325,7 +325,7 @@
                 </div>
                 <div id="nav_drop_down_bar_line"></div>
 
-                <div id="nav_drop_down_see_all_button">
+                <div id="nav_drop_down_see_all_button" class = "clubs">
                     <div id="nav_drop_down_see_all_clubs_text">See all clubs</div>
                 </div>
             </div>
