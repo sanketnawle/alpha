@@ -281,8 +281,9 @@ div.form_wrapper header img#fbar_user_icon {
 div.form_wrapper header div#audience_select {
     position: relative;
     display: inline-block;
-    width: auto;
+    width: 130px;
     height: 15px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     color: #222;
     font-size: 13.1px;
     padding-top: 6px;

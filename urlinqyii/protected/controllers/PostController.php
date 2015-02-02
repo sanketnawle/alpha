@@ -404,7 +404,7 @@ class PostController extends Controller
                                 }
 
                             }else{
-                                $return_data = array('success'=>false,'error_msg'=>'school doesnt exist');
+                                $return_data = array('success'=>false,'error_msg'=>'group doesnt exist');
                                 $this->renderJSON($return_data);
                                 return;
                             }
