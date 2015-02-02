@@ -234,7 +234,7 @@
                 <div id="nav_drop_down_bar_line"></div>
 
                 <div id="nav_drop_down_see_all_button">
-                    <div id="nav_drop_down_see_all_courses_text">See all courses</div>
+                    <div id="nav_drop_down_see_all_courses_text" data-panel_id="2">See all courses</div>
                 </div>
             </div>
         </div>

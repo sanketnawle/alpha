@@ -23,8 +23,6 @@ $(document).ready(function(){
         //Change active tab
         $('.tab.active').removeClass('active');
         $tab.addClass('active');
-
-
         //Find the current active panel and remove its active class
         $('.panel.active').removeClass('active');
         $('#panel_' + panel_id).addClass('active');
