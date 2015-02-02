@@ -54,7 +54,9 @@ div.tab_members .tab_content_holder{
 
 
 div.members_tab_content div.members_card_wrapper.class_admin{
-width: 74.95%;
+width: 73.1%;
+margin-top: 10px;
+margin-left: 9px; margin-right: 9px;
 }
 
 div.members_tab_content div.members_card_wrapper.class_admin div.members_card div.members_card_img{

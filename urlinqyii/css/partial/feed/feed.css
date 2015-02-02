@@ -1747,12 +1747,12 @@ text-shadow: 0 1px 1px rgba(0,0,0,0.25);
 
 div.post_attached_image_caption{
     position: absolute;
-
     left: 0;
     right: 0;
     bottom: 0;
+    opacity:0;
     padding: 0px 10px;
-    background: rgba(39, 41, 43, 0.7);
+    background: rgba(0,0,0,0.75);
     height: 40px;
     border-radius: 0px 0px 3px 3px;
 }
@@ -1784,9 +1784,9 @@ div.post_attached_image_caption > p{
 .post_attached_image_container{
     /* background-color: #f5f5f5; */
     margin: .25rem 0;
-    cursor: nesw-resize;
+/*    cursor: nesw-resize;
     cursor: -moz-zoom-in;
-    cursor: -webkit-zoom-in;
+    cursor: -webkit-zoom-in;*/
     /* border: 1px solid #d8d8d8; */
     width: 420px;
     height: 220px;
@@ -1795,6 +1795,11 @@ div.post_attached_image_caption > p{
     padding: 10px 0px;
     position: relative;
 }
+
+.post_attached_image_container:hover > div.post_attached_image_caption{
+opacity:1;
+}
+
 
 .post_attached_image_container:hover{
     background-color: rgba(232, 232, 232, 0);

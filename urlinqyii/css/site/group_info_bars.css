@@ -94,6 +94,7 @@ div.group_info_tab_content div.group_box div.float_Left.group_image{
     -webkit-transition: opacity 0.15s;
     -moz-transition: opacity 0.15s;
     transition: opacity 0.15s;
+    background-position: center center;
 }
 
 div.group_info_tab_content div.group_box.club_box div.float_Left.group_image{

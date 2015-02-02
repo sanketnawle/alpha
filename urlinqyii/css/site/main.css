@@ -75,19 +75,16 @@ div#nav_bar .slimScrollDiv{
 
 
 #page{
-
     overflow-x: hidden;
-
     overflow: auto;
-
     width: 100%;
     height: 100%;
-
+    height: -webkit-calc(100% - 47px);
+    height: calc(100% - 47px);
     margin-right:auto;
     margin-left:auto;
     background-image: url(../../assets/noise_bg.gif);
     top: 90px;
-
     /*position: absolute;*/
 
 
@@ -789,10 +786,8 @@ p#group_name span#name_title{
 
 div.professor_image,div.admin_image{
     display: inline-block;
-
-    width: 36px;
-    background-image: url(../../assets/memon.jpg);
-    height: 36px;
+    width: 33px;
+    height: 33px;
     background-size: cover;
     border-radius: 1000px;
 }
@@ -1384,7 +1379,7 @@ border-top: 1px solid #1BAD3E;
     width: 24.6%;
 
     display: inline-block;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
 }
 
 .members_tab_content div.members_card_wrapper .members_card.admin{
@@ -1397,6 +1392,7 @@ border-top: 1px solid #1BAD3E;
     border-radius: 5px;
     display: block;
     border: 1px solid transparent;   
+    height: 246px;
     margin-bottom: 25px;
     margin: 0px auto;  
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
