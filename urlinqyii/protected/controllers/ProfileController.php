@@ -777,6 +777,14 @@ class ProfileController extends Controller
                 $userFollow->to_user_id = $_POST['user_to_follow'];
                 $userFollow->timestamp = new CDbExpression('NOW()');
                 if($userFollow->save()){
+
+                    include_once "notification/notification.php";
+                    if($userFollow->from_user_id != $userFollow->to_user_id){
+                       send_notification('follow',$userFollow->from_user_id,$userFollow->to_user_id,$userFollow->from_user_id,'user');
+                    }
+
+
+
                     $user = $this->get_current_user();
                     $result['status']="success";
                     $result['user_name']=$user->firstname." ".$user->lastname;

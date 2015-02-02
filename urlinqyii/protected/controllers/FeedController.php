@@ -270,16 +270,34 @@ class FeedController extends Controller
             }
             elseif($post['origin_type']=="class"){
                 $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post['origin_id']));
+
+                if(!$class){
+                    unset($posts[$i]);
+                    continue;
+                }
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($class,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['class_name'];
             }
             elseif($post['origin_type']=="course"){
                 $course = Course::model()->find('course_id=:id', array(':id'=>$post['origin_id']));
+
+                if(!$course){
+                    unset($posts[$i]);
+                    continue;
+                }
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($course,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['course_name'];
             }
             elseif($post['origin_type']=="department"){
                 $department = Department::model()->find('department_id=:id', array(':id'=>$post['origin_id']));
+                if(!$department){
+                    unset($posts[$i]);
+                    continue;
+                }
+
+
                 $posts [$i] ['origin'] = $this->model_to_array($this->get_model_associations($department,array('pictureFile')));
                 $posts[$i]['origin']['name'] = $posts[$i]['origin']['department_name'];
             }

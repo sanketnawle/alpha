@@ -35,6 +35,12 @@ class UserController extends Controller
 
             //If we successfully create the userconnection, return true
             if($user_connection){
+                include_once "notification/notification.php";
+                if($user_connection->from_user_id != $user_connection->to_user_id){
+                   send_notification('follow',$user_connection->from_user_id,$user_connection->to_user_id,$user_connection->from_user_id,'user');
+                }
+
+
                 $data = array('success'=>true);
                 $this->renderJSON($data);
                 return;
