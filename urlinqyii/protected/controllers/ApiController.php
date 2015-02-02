@@ -57,7 +57,7 @@
 
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-            $delete_notification_query = "DELETE FROM ios_notifications WHERE `notification_id` = $notification_id";
+            $delete_notification_query = "DELETE FROM ios_notifications WHERE `notification_id` = " . $notification_id;
 
             $command = Yii::app()->db->createCommand($delete_notification_query);
 
