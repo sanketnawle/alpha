@@ -33,7 +33,7 @@
         }
 
         public function actionAddNotificationID() {
-            return;
+
             if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
@@ -42,7 +42,7 @@
 
             $get_user = $this->get_current_user($_POST);
             if (!$get_user) {
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'is not a valid user');
                 $this->renderJSON($data);
                 return;   
             }
@@ -69,8 +69,8 @@
                 $notification_id->delete;
             }*/
 
-            $user = User::model()->find("notification_id=:notification_id", array(":notification_id"=>$user_id));
-
+            $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
+            $notiModel->delete;
 
 
             $ios_notification = new IosNotifications;
