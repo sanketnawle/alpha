@@ -57,13 +57,7 @@
 
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-            $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
-            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
-
-            foreach($device_notification_ids as $notification_id) {
-                $notification_id->delete;
-            }
-
+  
 
             $ios_notification = new IosNotifications;
             $ios_notification->user_id = $user_id;
