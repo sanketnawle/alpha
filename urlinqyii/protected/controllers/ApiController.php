@@ -33,6 +33,7 @@
         }
 
         public function actionAddNotificationID() {
+            return;
             if(!isset($_POST['user_id']) || !isset($_POST['notification_id'])){
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
