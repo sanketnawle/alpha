@@ -309,7 +309,14 @@ class FeedController extends Controller
             }
             elseif($post['origin_type'] == "group" || $post['origin_type'] == 'club'){
                 $group = Group::model()->find('group_id=:id', array(':id'=>$post['origin_id']));
-                if($group->privacy){
+
+                $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
+
+
+                //If this group is private and the current user
+                //is not apart of the group,
+                //dont show this post
+                if($group->privacy && !$group_user){
                     unset($posts[$i]);
                     continue;
                 }else{
@@ -724,39 +731,50 @@ class FeedController extends Controller
 		  where ((p.origin_type = 'group' or p.origin_type = 'club') and p.origin_id = '". $_GET['id'] ."')
 		    and created_at < '" . $created_at ."'
 			order by created_at DESC
-			LIMIT ".self::$start_rec.",".self::POST_LIMIT;
+			LIMIT 10";
 
-        $command = Yii::app()->db->createCommand($posts_sql_club);
+        //$command = Yii::app()->db->createCommand($posts_sql_club);
 
-        if($posts = $command->queryAll()){
 
-            // check if the current user is an admin to this group/club feed
-            if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
-                $is_member = TRUE;
-                if ($g_mod->is_admin == 1)
-                    $is_admin = TRUE;
-                else
-                    $is_admin = FALSE;
-            }
-            else{
-                $is_member = FALSE;
-                $is_admin = FALSE;
-            }
-            // check ends
+        $posts = $this->models_to_array(Post::model()->findAllBySql('SELECT * FROM `post` WHERE (origin_type = "group" OR origin_type = "club") AND origin_id = 1'));
+        $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+        return;
 
-            $command = Yii::app()->db->createCommand($posts_sql_club);
-            if($posts = $command->queryAll()){
-                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
-                return;
-            }else{
-                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
-                return;
-            }
-        }
-        else{
-            $this->renderJSON(array('success'=>true,'feed'=>array()));
-            return;
-        }
+
+//        if($posts = $command->queryAll()){
+//
+//            // check if the current user is an admin to this group/club feed
+////            if ($g_mod = GroupUser::model()->findbypk(array('group_id' => $_GET['id'], 'user_id' => self::$cur_user_id))) {
+////                $is_member = TRUE;
+////                if ($g_mod->is_admin == 1)
+////                    $is_admin = TRUE;
+////                else
+////                    $is_admin = FALSE;
+////            }
+////            else{
+////                $is_member = FALSE;
+////                $is_admin = FALSE;
+////            }
+//            // check ends
+//
+//
+//            $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+//            return;
+//
+//
+////            $command = Yii::app()->db->createCommand($posts_sql_club);
+////            if($posts = $command->queryAll()){
+////                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
+////                return;
+////            }else{
+////                $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>array()));
+////                return;
+////            }
+//        }
+//        else{
+//            $this->renderJSON(array('success'=>true,'feed'=>array()));
+//            return;
+//        }
 
 
 
