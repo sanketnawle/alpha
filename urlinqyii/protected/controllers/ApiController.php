@@ -55,7 +55,15 @@
                 return;            
             }
 
-            $notification_id = str_replace(array(" "), "", $_POST['notification_id']);
+            $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                $notification_id->delete;
+            }
+
+
+            $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
             $ios_notification = new IosNotifications;
             $ios_notification->user_id = $user_id;
             $ios_notification->notification_id = $notification_id;
@@ -112,15 +120,17 @@
                 $notification_id->delete;
             }
 
+            notifyAlliOSDevicesForUserID(58374, "This is a test message. FROM THE SERVER!");
+
         }
 
         function notifyAlliOSDevicesForUserID($user_id, $message) {
 
-            $sql = "SELECT notification_id FROM IosNotifications WHERE user_id = $user_id;";
+            $sql = "SELECT * FROM IosNotifications WHERE user_id = $user_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
             foreach($device_notification_ids as $notification_id) {
-                pushNotify($message, $notification_id);
+                pushNotify($message, $notification_id->notification_id);
             }
         }
          
