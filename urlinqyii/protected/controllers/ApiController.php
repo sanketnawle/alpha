@@ -57,7 +57,20 @@
 
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-  
+            $delete_notification_query = "DELETE FROM ios_notifications WHERE `notification_id` = $notification_id";
+
+            $command = Yii::app()->db->createCommand($delete_notification_query);
+
+            /*$sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
+            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
+
+            foreach($device_notification_ids as $notification_id) {
+                $notification_id->delete;
+            }*/
+
+            $user = User::model()->find("notification_id=:notification_id", array(":notification_id"=>$user_id));
+
+
 
             $ios_notification = new IosNotifications;
             $ios_notification->user_id = $user_id;
@@ -94,6 +107,7 @@
 
             $user_id = $_POST['user_id'];
             $user = User::model()->find("user_id=:user_id", array(":user_id"=>$user_id));
+
 
             if (!$user) {
                 $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
