@@ -109,6 +109,10 @@ position: relative;
 
 
 
+div.group_info_tab_content div.group_box div.float_Left.group_image{
+    opacity:.8;
+}
+
 div.group_info_tab_content div.group_box:hover div.float_Left.group_image{
     opacity:.9;
 }
@@ -118,11 +122,15 @@ div.group_info_tab_content div.group_box div.float_Left.group_image:active{
     opacity: 1;
 }
 
-div.group_info_tab_content div.group_box div.float_Left.group_image:hover ~ div.group_box_main_info .group_link{
+div.group_info_tab_content div.group_box a.group_image_link:hover ~ div.group_box_main_info .group_link{
     text-decoration: underline;
 }
 
-div.group_info_tab_content div.group_box div.float_Left.group_image:active ~ div.group_box_main_info .group_link{
+div.group_info_tab_content div.group_box a.group_image_link:hover > div.float_left.group_image{
+    opacity:.95;
+}
+
+div.group_info_tab_content div.group_box a.group_image_link:active ~ div.group_box_main_info .group_link{
     color: #016283;
     text-decoration: underline;
 }
@@ -321,11 +329,13 @@ div.department_alias, div.club_count{
     font-family: Avenir;
     color: #fff;
     position: absolute;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-    top: 6%;
-    left: 82%;
-    font-size: 17px;
-    font-weight:100;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.45);
+    bottom: 4%;
+    right: 5%;
+    font-size: 14px;
+    font-weight: 600;
+    width: 80px;
+    text-align: right;
 }
 
 div.group_bar_button_holder{

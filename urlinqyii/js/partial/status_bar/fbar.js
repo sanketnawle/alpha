@@ -950,8 +950,13 @@ function fbar_ready(origin_id) {
 
 
 
+<<<<<<< HEAD
+                // Create the remove button
+                var removeButton = $("<span class='file_x_icon'></span>");
+=======
                     // Create the remove button
                     var removeButton = $("<span class='file_x_icon'>Remove file</span>");
+>>>>>>> 3f506e98612555b42bae1cfbff4b77e47c2a65f3
 
                     // Add the button to the file preview element.
                     $file.append(removeButton);
@@ -959,8 +964,12 @@ function fbar_ready(origin_id) {
                     var last_modified = $file.attr('data-last_modified');
                     var name = $file.attr('data-name');
 
+<<<<<<< HEAD
+                $file.find('.file_x_icon').on('click',function(e) {
+=======
                     $file.find('.file_x_icon').on('click',function(e) {
                         console.log('REMOVE');
+>>>>>>> 3f506e98612555b42bae1cfbff4b77e47c2a65f3
 
                         var $x_icon = $(this);
 

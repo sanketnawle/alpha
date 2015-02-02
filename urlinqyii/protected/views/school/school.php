@@ -230,15 +230,13 @@
 
                             <?php foreach($departments as $department) { ?>
                                 <div class = "group_box group_course_box" data-name="<?php echo $department->department_name; ?>">
-
-                                    <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
-                                        <div class = "department_alias">
-
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>">
+                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url; ?>')">
+                                            <div class = "department_alias"><?php echo $department->department_tag ;?></div>
                                         </div>
-                                    </div>
-
+                                    </a>
                                     <div class = "group_box_main_info">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></a>
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $department->department_id ;?>" class = "group_link"><?php echo $department->department_name; ?></a>
                                         <div class = "float_Right">
                                             <span class = "group_type">Department</span>
                                         </div>

@@ -739,13 +739,13 @@ cursor: pointer;
 position: absolute;
 width: 16px;
 height: 16px;
-border-radius: 1px;
+border-radius: 2px;
 border-style: solid;
 border-width: 1px;
 padding: 0;
 margin-left: 20px;
-border: 2px solid #CFCFCF;
-/* box-shadow: inset 0px 0px 1px 1px rgba(190, 189, 189, 0.21); */
+border: 1px solid rgba(184, 184, 184, 0.61);
+box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
 margin-top: 3px;
 margin-left: 7px;
@@ -799,9 +799,29 @@ margin-left: 7px;
 /* Set the background colors for the different types of events */
 
 #past_events div.event{
-    /*
-    background-color: #FFE0E8;
-    background-image: -owg-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -webkit-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -moz-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: -o-repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,.2) 75%); background-size: 20px 20px;*/
+    text-shadow: 0 1px 1px rgba(123, 123, 123, 0.05);
+    height: 24px;
+}
+
+#past_events .checkbox_hint{
+    margin-top:-5px;
+}
+
+#past_events div.events_data_holder{
+    margin-top: 6px;
+}
+
+#past_events label.planner_checkbox_label{
+    margin-top: -2px;
+}
+
+#past_events div.event div.event_name{
+    color:rgb(211, 11, 11);
+    margin-top: 4px;
+}
+
+#past_events div.event div.event_date_time{
+    display:none;
 }
 
 div.event.complete{

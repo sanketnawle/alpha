@@ -12,19 +12,36 @@ body.left_panel_hidden_p2 #LeftPanel_Holder, body.left_panel_hidden_p2 #left_pan
     display:none;
     overflow: hidden;
 }
+
+
+
 #left_panel_change_picture_button{
     position: absolute;
     /* bottom: 10px; */
-    /* left: 10px; */
-    width: 32px;
-    top: 97px;
+    left: 0px;
+    width: 52px;
+    top: 0px;
     border: none;
-    height: 32px;
-    background-color: transparent;
+    border-radius: 500px;
+    height: 52px;
+    background-color: rgba(18, 19, 20, 0.4);
     background-repeat: no-repeat;
     background-size: auto;
     display:block;
     background-image: url('../../../assets/camera_icon.png');
+    background-position: 16px;
+    opacity:0;
+    -moz-transition:opacity .2s linear;
+    -webkit-transition:opacity .2s linear;
+    transition:opacity .2s linear;
+}
+
+#left_panel_change_picture_button:hover{
+    opacity:.85;
+}
+
+#left_panel_change_picture_button:active{
+    opacity:.6;
 }
 
 #LeftPanel_Holder{
@@ -200,12 +217,13 @@ em.SectionHeader_ribbon.LeftPanel_icons {}
 
     width: 48px!important;
     cursor: pointer;
+    position: relative;
 }
 
-a.MyBox_PictureLink img.MyBox_Picture{
-    height: 48px!important;
-
-    width: 48px!important;
+a.MyBox_PictureLink div.MyBox_Picture{
+    height: 52px!important;
+    background-size:cover;
+    width: 52px!important;
     border-radius: 500px;
 }
 
@@ -221,9 +239,8 @@ div.MyBox_text div.MyBox_textcontent{
 }
 
 div.MyBox_textcontent div.MyBox_NameSO{
-    padding-left: 7px;
-
-    padding-top: 2px;
+padding-left: 12px;
+padding-top: 3px;
 }
 
 a.MyBox_ProfileLink{
