@@ -212,24 +212,29 @@ class EventController extends Controller
     }
 
 
-    public function actionAttendees(){
-        //$user = $this->get_current_user();
-        $event_id = $_GET['id'];
-        //$date = $_GET['date'];
-        //user_id=:user_id AND  //':user_id'=>1,
-        $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
+        public function actionAttendees(){
+            //$user = $this->get_current_user();
+            $event_id = $_GET['id'];
+            //$date = $_GET['date'];
+            //user_id=:user_id AND  //':user_id'=>1,
 
-        //$attendees = $event->attendees;
+        if ($event) {
 
+            $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
 
-        //$data = array('success'=>true,'attendees'=>$attendees);
+            $data = array('success'=>true,'attendees'=>$event->attendees);
 
-        $data = array('success'=>true,'attendees'=>$event->attendees);
+            $this->renderJSON($data);
+            return;
 
-        $this->renderJSON($data);
-        return;
+        } else {
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'not a valid event');
 
-    }
+            $this->renderJSON($data);
+            return;
+        }
+
+        }
 
 
 
