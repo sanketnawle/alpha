@@ -123,8 +123,9 @@
 
 
 
-                        <div id="tab_bar">
+                        <div id="tab_bar" class = "no_select">
 
+                            <?php if($is_member){ ?>
                             <div class="tab feed active" data-panel_id="1">
                                 <div class="tab_content">
                                     <div class="tab_img"></div>
@@ -159,6 +160,32 @@
                                 <div class="tab_wedge"></div>
                             </div>
 
+                            <?php }else{ ?>
+
+                            <div class="tab about active" data-panel_id="6">
+                                <div class="tab_content">
+                                    <div class="tab_img"></div>
+                                    <div class="tab_text">About this Club</div>
+                                </div>
+                                <div class="tab_wedge"></div>
+                            </div>
+
+                            <div class="tab members" data-panel_id="3">
+                                <div class="tab_content">
+                                    <div class="tab_img"></div>
+                                    <div class="tab_text">Members</div>
+                                    <div class = "tab_amount">
+                                        <?php if(count($club->users)>0){
+                                            echo count($club->users);
+                                        }?>
+                                    </div>
+                                </div>
+                                <div class="tab_wedge"></div>
+                            </div>
+
+                            <?php } ?>
+
+
 <!--                            <div class="tab analytics" data-panel_id="4">-->
 <!--                                <div class="tab_content">-->
 <!--                                    <div class="tab_img"></div>-->
@@ -190,7 +217,7 @@
 
                         </div>
 
-
+                        <?php if($is_member){ ?>
                         <div class="panel active panel_feed" id="panel_1">
                             <div id = "planner_column" class = "planner_column_group">
                                 <div id = "right_column_specs">
@@ -346,6 +373,12 @@
                         </div>
                             <!--</form>-->
                         </div>
+
+                        <div class="panel tab_analytics" id="panel_4">
+                            PANEL 4
+                        </div>
+
+                        <?php } ?>
 
                         <div class="panel tab_members" id="panel_3">
                             <div class="tab_content_holder">
@@ -565,46 +598,52 @@
                             </div>                      
                         </div>
 
-                        <div class="panel tab_analytics" id="panel_4">
-                            PANEL 4
-                        </div>
 
                         <!-- About Tab -->
+                        <?php if($is_member){ ?>
                         <div class="panel tab_about" id="panel_6">
-            
+                        <?php }else{ ?>
+                        <div class="panel tab_about active" id="panel_6">
+                        <?php } ?>
+                            
                             <div class="tab_content_holder">
                                
                                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
+                                <?php if($is_member){ ?>
+                                
+                                
+
+                                <?php }else{ ?>
+
                                 <div class="about_tab_header">
                                     <div class = "about_header_sentence">
-                                        ARE YOU IN THIS CLASS?
+                                        <p>ARE YOU IN THIS CLUB?</p>
                                     </div>
-                                    <div class = "floatRight">
-                                        <div class = "join_button"><span "white_plus_sign"></span>Join Class</div>
-                                    </div>
-                                    <div class = "about_header_data">
-                                        To see this class's planner, feed, and materials, enroll in this class <span class = "non_member_join_pointer"></span>
-                                    </div>      
+                                    <div class = "about_header_body">
+                                        <div class = "floatRight">
+                                            <div class = "join_button group_user_action_button non_member" data-action_url="/join"><span "white_plus_sign"></span>Join Club</div>
+                                        </div>
+                                        <div class = "about_header_data">
+                                            <p>To see this club's feed, events, and files, sign up now <span class = "non_member_join_pointer small_icon_map"></span></p>
+                                        </div> 
+                                    </div>     
                                 </div>
 
+                                <?php } ?>
+
                                 <div class = "about_tab_middle">
-                                    <div class = "classic_about_box">
-                                        About
-                                    </div>
-                                    <div class = "cool_members_box">
-                                        <div class = "admin_about_section">
-                                            admin
-                                        </div>
-                                        <div class = "members_about_section">
-                                            members
-                                        </div>
-                                    </div>
+                                    
+
                                 </div>
 
                             </div>
 
-                        </div>                       
+                        </div>  
 
+                        
+
+
+                        </div>
                         
                     </div>
 

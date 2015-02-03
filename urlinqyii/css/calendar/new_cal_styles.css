@@ -48,8 +48,8 @@ div.check.checked > i.checkmark{
 }
 
 div.body .grid-view .grid .grid-item:nth-of-type(7n), div.body .grid-view .grid .grid-item:nth-of-type(7n + 1), .body .grid-view .grid .grid-item:nth-of-type(1) {
-color: #878787;
-background-color: #f5f5f5;
+/* color: #878787; */
+/* background-color: #f5f5f5; */
 }
 
 div.day_event_holder div.event_start_time {
@@ -278,6 +278,7 @@ div.event_name.month_event_name
 
 .ul-calendar .leftbar .slimScrollDiv {
     overflow: visible !important;
+    min-height:300px;
 }
 
 div.event_holder.day_event_holder.colorfied > div.event_type{
