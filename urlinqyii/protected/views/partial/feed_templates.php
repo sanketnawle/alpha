@@ -849,7 +849,7 @@
                                 {{#ifCond user_attending '==' false}}
                                     <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
                                 {{else}}
-                                    <div class='post_event_calendar_button added'><span class = "add_to_cal_icon"></span>Added to Calendar</div>
+                                    <div class='post_event_calendar_button added'><span class = "add_to_cal_icon added"></span>Attending</div>
                                 {{/ifCond}}
 
 
@@ -869,7 +869,186 @@
                 </div>
             </script>
 
+            <script id="post_opportunity_template" type="text/x-handlebars-template">
+                <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}" data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
+                    <div class = 'post_main event_post'>
 
+                        <div class = 'post_head'>
+                            <div class = 'post_event_date_box' style = "background-color:{{event.color.hex}};">
+                                <div class = "top_dark_area"></div>
+                                <div class='post_event_month post_event_date_box_text'>{{event.month}}</div>
+                                <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
+                            </div>
+                            <div class = "event_post_toparea">
+                                <div class='post_event_title'>{{event.title}}</div>
+                                {{#if event.location}}
+                                <div class = "post_event_location_holder">
+                                    <div class = "post_event_location"><span class = "location_icon_dark"></span>{{event.location}}</div>
+                                </div>
+                                {{/if}}
+                                {{#if event.origin_type}}
+                                <div class = "event_context">
+                                    <span class = "down_right_arrow_icon"></span>
+                                    <div class='post_event_type_holder'>
+                                        {{#if event.event_type}}
+                                            <div class = "post_event_type">{{event.event_type}} in </div>
+                                        {{/if}}
+                                    </div>
+                                    <div class = "post_event_origin_holder">
+                                        {{#ifCond event.origin_type '==' 'user'}}
+
+                                        {{else}}
+                                            <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                        {{/ifCond}}
+                                    </div>
+                                </div>
+                                {{/if}} 
+                            </div>
+
+                            <div class='post_event_content'>
+
+                                {{#if event.description}}
+                                    <div class = "event_description_holder">
+                                        <p>{{event.description}}</p>
+                                    </div>
+                                {{/if}}
+                                {{#each files}}
+                                    {{#ifCond file_extension '===' 'jpg'}}
+                                    <div class = "post_attached_image_container">
+                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                        <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                    </div>
+                                    {{else}}
+                                        {{#ifCond download_count '==' 0}}
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        {{else}}
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                        {{/ifCond}}
+                                    {{/ifCond}}
+                                {{/each}}
+
+
+                                {{#ifCond user_attending '==' false}}
+                                    <div class='post_event_calendar_button'><span class = "add_to_cal_icon"></span>Add to Calendar</div>
+                                {{else}}
+                                    <div class='post_event_calendar_button added'><span class = "add_to_cal_icon added"></span>Attending</div>
+                                {{/ifCond}}
+
+
+
+                                <div class='post_event_time_holder'>
+                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="master_comments" id="{{post_id}}">
+                    {{#if replies}}
+
+                            {{#each replies}}
+                            <div class = 'comments'>
+                                <div class = 'comment_main'>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
+                                        {{reply_msg}}
+                                    </div>
+
+                                    {{#each files}}
+                                        {{#ifCond file_extension '===' 'jpg'}}
+                                        <div class = "post_attached_image_container">
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                        </div>
+                                        {{else}}
+                                            {{#ifCond download_count '==' 0}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            {{else}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            {{/ifCond}}
+                                        {{/ifCond}}
+                                    {{/each}}
+
+
+
+                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                    </div>
+                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                        {{#ifCond anon '==' 1}}
+                                            Anonymous
+                                        {{else}}
+                                            {{user_info.user_name}}
+                                        {{/ifCond}}
+                                    </span>
+                                     <div class = 'comment_time'>
+                                        <div class='ct_ts'>
+                                            {{update_timestamp}}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                             {{/each}}
+                             {{#if show_more}}
+                                <div id='show_more' class='morecmt_bar'>
+                                    Show All
+                                </div>
+                            {{/if}}
+
+                    {{/if}}
+                    </div>
+
+
+
+                    <div class = 'postcomment'>
+                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                        </div>
+                        <input class='post_anon_val' name='anon' type='hidden' value='0'>
+                        <div class = 'reply_user_icon'></div>
+                        <div class = 'commentform'>
+
+
+                            <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
+                                <div>
+                                    <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
+                                    <textarea class = 'reply_text_textarea form-control postval' placeholder = 'Add a comment or question...' required></textarea>
+                                    <div class = 'dragdrop_functions'>
+                                        <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
+                                        <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
+                                        <div class='filelistbox'></div>
+                                    </div>
+                                </div>
+                                <div class = 'reply_functions'>
+                                    <div class='check_wrap'>
+                                        <input type='checkbox' id='flat_0' class='flat7c'/>
+                                        <label for='flat7' class='flat7b'>
+                                            <span class='move'></span>
+                                        </label>
+                                        <span class = 'comment_anon_text'>Post Anonymously</span>
+                                    </div>
+                                    <a class = 'reply_button fresh_green_button'>
+                                        Post Reply
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class = 'reply_functions'>
+                                <div class='check_wrap'>
+                                    <input type='checkbox' id='flat_0' class='flat7c'/>
+                                    <label for='flat7' class='flat7b'>
+                                        <span class='move'></span>
+                                    </label>
+                                    <span class = 'comment_anon_text'>Post Anonymously</span>
+                                </div>
+                                <a class = 'reply_button fresh_green_button'>
+                                    Add Comment
+                                </a>
+                        </div>
+                    </div>
+                </div>
+            </script>
 
             <script id="post_note_template" type="text/x-handlebars-template">
                 <div id='{{last_activity}}'>

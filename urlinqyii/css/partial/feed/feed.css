@@ -3542,14 +3542,18 @@ div.event_context{
 
 span.add_to_cal_icon{
     display: inline-block;
-    width: 22.5px;
+    width: 24px;
     height: 16px;
     background-image: url(../../../assets/small_icons.png);
     background-size: auto;
-    background-position: -34px -220px;
+    background-position: -32px -220px;
     position: relative;
     top: 3px;
     margin-right: 8px;
+}
+
+span.add_to_cal_icon.added{
+    background-position: -32px -250px;
 }
 
 div.event_context span.down_right_arrow_icon{

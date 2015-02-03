@@ -126,7 +126,8 @@ function render_post(single_post, prepend){
         }
 
     }
-    else if (single_post['post_type'] == 'event' || single_post['post_type'] == 'opportunity'){
+
+    else if (single_post['post_type'] == 'event'){
 
         var event_start_date = new_date(single_post['event']['start_date']);
 
@@ -146,9 +147,29 @@ function render_post(single_post, prepend){
         }else{
             $("#posts").append($(template(single_post)).hide().fadeIn());
         }
-
-
     }
+
+    else if (single_post['post_type'] == 'opportunity'){
+
+        var event_start_date = new_date(single_post['event']['start_date']);
+
+
+        single_post['event']['date_obj'] = event_start_date;
+        single_post['event']['month'] = date_to_month_string(event_start_date);
+        single_post['event']['day_number'] = event_start_date.getDate();
+        single_post['event']['start_time_string'] = time_string_to_am_pm_string(single_post['event']['start_time']);
+        single_post['event']['end_time_string'] = time_string_to_am_pm_string(single_post['event']['end_time']);
+        
+        var source = $("#post_opportunity_template").html();
+        var template = Handlebars.compile(source);
+
+        if(prepend == 'prepend'){
+           $("#posts").prepend($(template(single_post)).hide().fadeIn());
+        }else{
+            $("#posts").append($(template(single_post)).hide().fadeIn());
+        }
+    }
+
     else {
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
