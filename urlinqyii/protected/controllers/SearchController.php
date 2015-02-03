@@ -110,6 +110,38 @@ class SearchController extends Controller
 
 
 
+
+    public function actionUsers(){
+        if(!isset($_GET['q'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'q not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $query = $_GET['q'];
+
+        $results = array();
+
+        $users = User::model()->findAllBySql("SELECT * FROM `user` WHERE CONCAT(firstname,' ',lastname) LIKE '%" . $query ."%'");
+
+        foreach($users as $user){
+            $user = $this->get_model_associations($user, array('pictureFile'));
+            $user['origin_type'] = 'user';
+            $user['origin_name'] = $user['firstname'] . ' ' . $user['lastname'];
+            array_push($results, $user);
+        }
+
+
+        $data = array('success'=>true,'users'=>$users);
+        $this->renderJSON($data);
+        return;
+    }
+
+
+
+
+
+
     public function actionCourses(){
         if(!isset($_GET['q'])){
             $data = array('success'=>false,'error_id'=>1, 'error_msg'=>'q not set');
