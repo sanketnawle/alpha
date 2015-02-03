@@ -66,6 +66,10 @@ return array(
                 //Maps multiple views in one line
                 //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
 
+
+                'calendar' => 'calendar/view',
+
+
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
 
@@ -93,7 +97,7 @@ return array(
 
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
-                'calendar' => 'calendar/view',
+
 
 
 
