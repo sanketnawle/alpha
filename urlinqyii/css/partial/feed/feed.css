@@ -3365,19 +3365,15 @@ z-index: 999;
 }
 
 div.post_event_month{ 
-
     font-size: 12.5px; font-weight: 600; text-transform: capitalize; letter-spacing: .5px;
-    
-
     margin-top: 8px; 
-
 }
 
 div.post_event_day{
     font-size: 17px; font-weight: 600; line-height: 11px; 
     margin-top: 5px;
- 
 }
+
 
 div.post_event_date_box div.top_dark_area{
 background: rgba(0, 0, 0, 0.13);
@@ -3402,7 +3398,6 @@ div.post_event_date_box_text{
 div.post_event_title{
     color: #333;   
     font-size: 15.5px;
-
     font-weight: 500;
     padding: 8.5px 74px 4px;
     text-transform: capitalize;
@@ -3563,6 +3558,31 @@ div.event_context span.down_right_arrow_icon{
     background-image: url(../../../assets/small_icons.png);
     background-size: auto;
     background-position: -34px -441px;
+}
+
+div.post_event_title.post_opportunity_title{
+    padding: 3.5px 12px 4px;
+
+    font-size: 17.5px;
+}
+
+div.opportunity_post div.post_user_icon{
+    width: 24px;
+
+    height: 24px;
+    margin-left: 11px;
+    border-radius: 100px;
+}
+
+div.opportunity_post span.post_owner{
+    top: 1px;
+    
+    font-size: 13.5px;
+    left: 6px;
+}
+
+span.opportunity_mail_icon{
+
 }
 
 div.playable_wrap{

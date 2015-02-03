@@ -41,6 +41,10 @@ div#page.profile_stop_scroll{
     overflow: hidden!important;
 }
 
+body#body_department form.reply_form{
+    margin-bottom:4px;
+}
+
 body.body_group{
 
 }

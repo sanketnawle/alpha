@@ -88,7 +88,6 @@ $(document).ready(function(e) {
 
             ta.attr("focused", "yes");
             $(".or_answer_div").hide();
-            $(this).attr("placeholder", "Respond");
             ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
             ta.parents(".postcomment").find(".pre_expand_comment_fx").hide();
             ta.parents(".postcomment").find(".comment_owner_container").show();
