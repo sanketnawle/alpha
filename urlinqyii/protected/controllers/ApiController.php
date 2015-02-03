@@ -58,9 +58,6 @@
 
             $notification_id = str_replace(array(" ", "<", ">"), "", $_POST['notification_id']);
 
-            $delete_notification_query = "DELETE FROM ios_notifications WHERE `notification_id` = " . $notification_id;
-
-            $command = Yii::app()->db->createCommand($delete_notification_query);
 
             /*$sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
@@ -69,8 +66,13 @@
                 $notification_id->delete;
             }*/
 
-            $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
-            $notiModel->delete;
+  //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
+//            $notiModel->delete;
+
+$ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
+if($ios_notifiction){
+    $ios_notification->delete();
+}
 
 
             $ios_notification = new IosNotifications;
@@ -122,6 +124,8 @@
                 $this->renderJSON($data);
                 return;   
             }
+
+            $notification_id = $_POST['notification_id'];
 
             $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);

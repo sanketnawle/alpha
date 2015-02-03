@@ -64,7 +64,7 @@ return array(
             //MUST ENABLE mod_rewrite IN APACHE AND HAVE PROPER .htaccess file FOR CLEAN URLS TO WORK
             'rules'=>array(
                 //Maps multiple views in one line
-                '<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
+                //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
 
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 
@@ -89,7 +89,7 @@ return array(
 
 
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-
+                '<action:\w+>'=>'site/<action>',
 
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',

@@ -71,6 +71,18 @@ class Controller extends CController
 //        }
     }
 
+
+
+
+    public function is_urlinq_admin($user){
+        if(strpos($user->user_email, '@urlinq.com') === false){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
     //Returns the current User model
     //Use like this in the controllers:
     //$user = $this->get_current_user();

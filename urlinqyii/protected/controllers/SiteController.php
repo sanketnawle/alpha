@@ -1400,4 +1400,38 @@ public function actionSendReset(){
         }
     }
 
+
+
+    public function actionAdmin(){
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $data = array('success'=>false);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+//        if(!$this->is_urlinq_admin($user)){
+//            $data = array('success'=>false, 'error_msg'=>'Not an admin');
+//            $this->renderJSON($data);
+//            return;
+//        }
+
+
+
+
+
+
+
+
+
+
+        $this->render('admin',array('user'=>$user));
+        return;
+    }
+
+
 }
