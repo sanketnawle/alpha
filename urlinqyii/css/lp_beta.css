@@ -521,7 +521,8 @@ margin-bottom: 28px;
 position: relative;
 width: 81px;
 border: 3px solid;
-border-radius: 3px;
+border-radius: 8px;
+background: rgba(0, 0, 0, 0.41);
 }
 
 div.icon_section h5{
@@ -533,7 +534,7 @@ div.icon_section h5{
   width: 380px;
   color: rgba(255, 255, 255, 0.92);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   left: 18px;
   position: absolute;
   text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
@@ -552,24 +553,25 @@ div.icon_section:hover h5{
 div.icon_section:hover{
   width:100%;
 
+  background: rgba(0, 0, 0, 0.71);
 }
 
 div.icon_section.icon_green{
-    border-color: #01BE8D;
+    border-color: #2cd67c;
 
-    background: rgba(0, 39, 29, 0.7);
 }
 
 div.icon_section.icon_blue{
-    border-color: #22acd6;
+    border-color: #29afde;
   
-    background: rgba(0, 38, 50, 0.7);
 }
 
 div.icon_section.icon_red{
-    border-color: #de445d;
-  
-    background: rgba(60, 0, 10, 0.7);
+    border-color: #ff2674;
+}
+
+div.icon_section.icon_orange{
+    border-color: #FD793A;
 }
 
 div.icon_section em.icon_img{
@@ -594,13 +596,19 @@ em.icon_img.icon_img_b{
     height: 69px; 
     background-size: 82%!important;
     background-position: 11px -54px;
-  
+}
+
+em.icon_img.icon_img_o{
+    width: 80px; 
+    height: 69px; 
+    background-size: 82%!important;
+    background-position: 13px -174px;
 }
 
 em.icon_img.icon_img_r{
     width: 80px; 
-    height: 78px; 
-    background-position: 11px -112px;
+    height: 63px; 
+    background-position: 11px -115px;
   
 }
 

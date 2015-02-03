@@ -538,6 +538,50 @@ class EventController extends Controller
             $event->save(false);
 
             if($event){
+
+
+
+                if($event->origin_type == 'club' || $event->origin_type == 'group'){
+                    $group = Group::model()->find('group_id=:id', array(':id'=>$event->origin_id));
+                    if($group){
+
+                        $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$user->user_id, ':group_id'=>$group->group_id));
+                        if($group_user && $group_user->is_admin){
+                            foreach($group->members as $member){
+                                if($member->user_id != $user->user_id){
+                                    include_once 'color/color.php';
+                                    $event_user = new EventUser;
+                                    $event_user->user_id = $member->user_id;
+                                    $event_user->event_id = $event->event_id;
+                                    $event_user->color_id = get_random_color();
+                                    $event_user->save(false);
+                                }
+                            }
+                        }
+                    }
+                }else if($event->origin_type == 'class'){
+                    $class = ClassModel::model()->find('class_id=:id', array(':id'=>$event->origin_id));
+                    if($class){
+
+                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$class->class_id));
+                        if(($class_user && $class_user->is_admin) || $class->professor_id == $user->user_id){
+
+                            foreach($class->students as $member){
+                                if($member->user_id != $user->user_id){
+                                    include_once 'color/color.php';
+                                    $event_user = new EventUser;
+                                    $event_user->user_id = $member->user_id;
+                                    $event_user->event_id = $event->event_id;
+                                    $event_user->color_id = get_random_color();
+                                    $event_user->save(false);
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
                 $data = array('success'=>true,'event'=>$event);
                 $this->renderJSON($data);
                 return;

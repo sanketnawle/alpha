@@ -192,6 +192,105 @@ class ClassController extends Controller
 	}
 
 
+
+
+    public function actionCreate() {
+        if(!isset($_POST['school_id']) || !isset($_POST['school_id']) || !isset($_POST['department_id']) || !isset($_POST['course_id']) || !isset($_POST['class_name']) || !isset($_POST['professor_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+        $school_id = $_POST['school_id'];
+        $department_id = $_POST['department_id'];
+        $course_id = $_POST['course_id'];
+        $class_name = $_POST['class_name'];
+        $professor_id = $_POST['professor_id'];
+
+
+        $component = '';
+        if(isset($_POST['component'])){
+            $component = $_POST['component'];
+        }
+
+
+        $location = '';
+        if(isset($_POST['location'])){
+            $location = $_POST['location'];
+        }
+
+
+        $datetime = '';
+        if(isset($_POST['datetime'])){
+            $datetime = $_POST['datetime'];
+        }
+
+
+        $picture_file_id = 3;
+
+
+
+
+
+
+        //Get the picture file id from the department
+        $department = Department::model()->find('department_id=:id', array(':id'=>$department_id));
+        if($department){
+            $picture_file_id = $department->cover_file_id;
+        }
+
+
+
+
+        include_once "color/color.php";
+
+
+        $class = new ClassModel;
+        $class->school_id = $school_id;
+        $class->department_id = $department_id;
+        $class->course_id = $course_id;
+        $class->class_name = $class_name;
+        $class->professor_id = $professor_id;
+        $class->component = $component;
+        $class->location = $location;
+        $class->class_datetime = $datetime;
+        $class->color_id = get_random_color();
+        $class->cover_file_id = $picture_file_id;
+        $class->picture_file_id = $picture_file_id;
+
+
+
+
+
+        if($class->save(false)){
+            $data = array('success'=>true, 'class'=>$class);
+            $this->renderJSON($data);
+            return;
+        }else{
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'error saving class', '_files'=>$_FILES,'_post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
     public function actionFileUpload(){
         if (empty($_FILES)) {
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'class id not set', '_files'=>$_FILES,'_post'=>$_POST);
