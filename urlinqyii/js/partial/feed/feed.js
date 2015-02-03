@@ -1,6 +1,6 @@
 
 $(document).ready(ready(globals));
-$.embedly.defaults.key = '94c0f53c0cbe422dbc32e78d899fa4c5';
+//$.embedly.defaults.key = '94c0f53c0cbe422dbc32e78d899fa4c5';
 
 function ready(globals){
 
