@@ -69,8 +69,8 @@
                 $notification_id->delete;
             }*/
 
-            $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
-            $notiModel->delete;
+  //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
+//            $notiModel->delete;
 
 
             $ios_notification = new IosNotifications;
