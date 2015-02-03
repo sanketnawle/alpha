@@ -125,6 +125,8 @@ if($ios_notifiction){
                 return;   
             }
 
+            $notification_id = $_POST['notification_id'];
+
             $sql = "SELECT * FROM IosNotifications WHERE notification_id = $notification_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
