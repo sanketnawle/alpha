@@ -68,9 +68,9 @@
                                                         {{update_timestamp}}
                                                      </time>
                                                 </div>
-                                                    <div class = 'post_msg post_lr_link_msg'>
+                                                <div class = 'post_msg post_lr_link_msg'>
                                                     <span class='msg_span seemore_anchor'>
-                                                                {{text}}
+                                                                {{{text}}}
                                                     </span>
 
 
@@ -90,37 +90,34 @@
                                                     {{/ifCond}}
                                                 {{/each}}
 
-
-
                                                     {{#if embed_link}}
 
-                                                        <p class='f_hidden_p'><a href='{{embed_link}}'>{{embed_link}}
-                                                        </a></p>
-                                                        <div class = 'link-wrapper'>
-                                                                <div class = 'link-container'>
-                                                                    <a class = 'link-anchor-box'>
-                                                                        <div class = 'link-pic-wrap'>
-                                                                            <div class='playable_wrap'>
-                                                                            <div class='play_btn'></div>
-                                                                            <div class = 'link-img'></div>
-                                                                            </div>
-                                                                            <div class = 'link-text-data'>
-                                                                                <div class = 'link-text-title'>
-                                                                                    <span class = 'link-text-website'>
+                                                        <!-- <p class='f_hidden_p'><a href='{{embed_link}}'>{{embed_link}}
+                                                         </a></p>
+                                                         <div class = 'link-wrapper'>
+                                                                 <div class = 'link-container'>
+                                                                     <a class = 'link-anchor-box'>
+                                                                         <div class = 'link-pic-wrap'>
+                                                                             <div class='playable_wrap'>
+                                                                             <div class='play_btn'></div>
+                                                                             <div class = 'link-img'></div>
+                                                                             </div>
+                                                                             <div class = 'link-text-data'>
+                                                                                 <div class = 'link-text-title'>
+                                                                                     <span class = 'link-text-website'>
 
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div class = 'link-text-about'>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                        </div>
-
+                                                                                     </span>
+                                                                                 </div>
+                                                                                 <div class = 'link-text-about'>
+                                                                                 </div>
+                                                                             </div>
+                                                                         </div>
+                                                                     </a>
+                                                                 </div>
+                                                         </div>-->
                                                     {{/if}}
 
-                                                    </div>
+                                                </div>
 
 
                                                 <div class = 'post_edit'>
@@ -491,7 +488,7 @@
                                                 {{/if}}
                                                     <div class = 'post_msg post_lr_link_msg'>
                                                     <div class='question_title_span'>
-                                                                {{text}}
+                                                                {{{text}}}
                                                     </div>
                                                     <div class='question_subtext_span'>
                                                                 {{sub_text}}
@@ -1096,7 +1093,7 @@
                                                 </div>
 
                                                 <div class = 'post_msg post_file_msg'>
-                                                    <span class='msg_span seemore_anchor'>{{text}}</span>
+                                                    <span class='msg_span seemore_anchor'>{{{text}}}</span>
 
 
 
@@ -1308,3 +1305,14 @@
                         </div>
                     </div>
             </script>
+<script id="embedly_link_template" type="text/x-handlebars-template">
+    <div class = "embedly_box">
+        <a href="{{url}}">
+            <img class = "embedly_image" src = "{{thumbnail_url}}">
+            <div class = "embedly_info">
+                <div class = "embedly_title">{{title}}</div>
+                <div class = "embedly_description">{{description}}</div>
+            </div>
+        </a>
+    </div>
+</script>

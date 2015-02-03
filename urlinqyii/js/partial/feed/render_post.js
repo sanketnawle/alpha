@@ -51,9 +51,34 @@ function render_post(single_post, prepend){
 
 
     if(findUrlInPost(single_post['text'])) {
-        single_post.embed_link = findUrlInPost(single_post['text']);
-
+        var url = findUrlInPost(single_post['text']);
+        //var indexOfUrl = single_post['text'].indexOf(url);
+        single_post['text']=single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        console.log(url);
+        console.log(single_post['text']);
+        single_post.embed_link = url;
+        /*$('.msg_span a').embedly({
+         query:{
+         maxwidth: 400,
+         maxheight: 400,
+         chars: 200
+         }});*/
+        var embedly_info = "hi";
+        $.embedly.oembed(url,{
+            query:{
+                maxwidth: 400,
+                maxheight: 400,
+                chars: 200
+            }}).done(function(results){
+                if(!results.invalid){
+                    embedly_info = results[0];
+                    append_embedly(single_post['post_id'],embedly_info);
+                }
+            }
+        );
+        single_post.embedly_info = embedly_info;
     }
+    console.log(single_post.embedly_info);
     if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
@@ -193,7 +218,13 @@ function render_post(single_post, prepend){
         }
     }
 }
-
+function append_embedly(post_id, embedly_info){
+    if(embedly_info.type == "link"){
+        var source = $('#embedly_link_template').html();
+        var template = Handlebars.compile(source);
+        $('.post[data-post_id='+post_id+']').find('span.msg_span').append(template(embedly_info));
+    }
+}
 
 
 
