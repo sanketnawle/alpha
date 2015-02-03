@@ -70,7 +70,7 @@
 //            $notiModel->delete;
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
-if($ios_notifiction){
+if($ios_notification){
     $ios_notification->delete();
 }
 
