@@ -99,7 +99,7 @@ div.nav_section div.nav_text {
 
     margin-left: 5px;
 
-    max-width: 210px;
+    max-width: 208px;
     height: 30px;
     /*position: relative;*/
     /*top: 50%;*/
@@ -113,10 +113,6 @@ div.nav_section div.nav_text {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-
-
-
 }
 
 
