@@ -136,20 +136,7 @@
   });
   /*error handling end*/
 
-  setTimeout(function() {
-    $('div.icon_section.icon_green').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_green').css({"opacity":"1"});
-  },1000);
 
-  setTimeout(function() {
-    $('div.icon_section.icon_red').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_red').css({"opacity":"1"});
-  },1300);
-
-  setTimeout(function() {
-    $('div.icon_section.icon_blue').addClass('animated fadeInLeft');
-    $('div.icon_section.icon_blue').css({"opacity":"1"});
-  },1600);
 
   $(window).scroll(function() {
 
@@ -613,27 +600,34 @@
               </video>
               <div class = "about_section">
                 <div class = "focus_area">
-                  <div class = "icon_section icon_green" style = "opacity:0">
+                  <div class = "icon_section icon_green">
                     <em class = "icon_img icon_img_g">
                     </em>
-                    <h5>
-                      The planner that plans for you - it's never been easier to keep track of everything happening in your academic life. 
+                    <h5 style = "top:18px;">
+                      Keep track of everything with a planner that automatically fills itself out.
                     </h5>
                   </div>
-                  <div class = "icon_section icon_red" style = "opacity:0">
+                  <div class = "icon_section icon_red">
                     <em class = "icon_img icon_img_r">
                     </em>
-                    <h5 style = "top:20px;">
-                      Ask questions, share notes, and discover events with the students and professors at your school.
+                    <h5 style = "top:18px;">
+                      Ask questions, share notes, and discover events with your peers and professors.
                     </h5>
                   </div>
-                  <div class = "icon_section icon_blue" style = "opacity:0">
+                  <div class = "icon_section icon_blue">
                     <em class = "icon_img icon_img_b">
                     </em>
-                    <h5>
-                      Search your university - nothing is off limits when you can search for classes, clubs, departments, and your friends within them. 
+                    <h5 style = "top:18px;">
+                      Search and navigate your entire University - nothing is off limits. 
                     </h5>
                   </div>
+                  <div class = "icon_section icon_orange">
+                    <em class = "icon_img icon_img_o">
+                    </em>
+                    <h5 style = "top:18px;">
+                      Get reminders and notices about upcoming homeworks, meetings, and exams. 
+                    </h5>
+                  </div>                  
                 </div>
               </div>
              

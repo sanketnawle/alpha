@@ -232,6 +232,7 @@ padding: 14px 0px 2px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 text-transform: uppercase;
+margin-bottom: 10px;
 }
 
 div.cool_members_box div.admin_about_section{
