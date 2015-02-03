@@ -66,7 +66,7 @@ return array(
                 //Maps multiple views in one line
                 //'<action:(fileUpload|contact|login|test|json|home|register|logout|timezone|onboard|sendVerificationEmail|verify|finishOnboarding|resendVerificationEmail|sendVerificationEmailFunction|sendReset|reset|doReset)>'=>'site/<action>',
 
-
+                'search' => 'search/view',
                 'calendar' => 'calendar/view',
 
 
