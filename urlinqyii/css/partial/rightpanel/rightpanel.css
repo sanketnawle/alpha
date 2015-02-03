@@ -54,7 +54,10 @@ div.right_panel_suggestions_section div.suggestions_header{
 
 div.right_panel_suggestions_section div.suggestions_header h5{
     margin: 0;
-    
+    -webkit-transition: color .218s;
+    -moz-transition: color .218s;
+    -o-transition: color .218s;
+    transition: color .218s;
     font-size: 17px;
     float: left;
     font-weight: 500;
@@ -247,10 +250,30 @@ div.suggestion_block_right{
 div.suggestion_pic{
     width: 44px;
     height: 44px;
-    background-image: url(../../../assets/neuroProf.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 3.2px;
+    -webkit-transition: opacity .218s;
+    -moz-transition: opacity .218s;
+    -o-transition: opacity .218s;
+    transition: opacity .218s;
+    opacity:.7;
+}
+
+div#right_panel:hover div.suggestion_pic{
+    opacity:.85;
+}
+
+div#groups_to_join:hover div.suggestions_header h5{
+    color:#575757;
+}
+
+div#who_to_follow:hover div.suggestions_header h5{
+    color:#575757;
+}
+
+div.suggestion_pic:hover{
+    opacity:1!important;
 }
 
 div.suggestion_block_right div.suggestion_title{
@@ -275,8 +298,7 @@ div.suggestion_block_right div.suggestion_title > a > div{
 
 div.suggestion_block_right div.suggestion_title > a > div > span{
     font-weight: 500;
-    
-    color: #333;
+    color: #444;
     font-size: 12.5px;   
     -moz-osx-font-smoothing: grayscale;
      -webkit-font-smoothing: antialiased;
@@ -286,6 +308,14 @@ div.suggestion_block_right div.suggestion_title > a > div > span{
     width: 131px;
     margin-top: 1px;
     height:15.5px;
+}
+
+div#right_panel div.suggestion_block_right div.suggestion_title > a > div > span{
+    color:#222;
+}
+
+div.suggestion_title > a > div > span:hover{
+    text-decoration: underline;
 }
 
 div.member_count{

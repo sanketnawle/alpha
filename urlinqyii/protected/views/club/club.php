@@ -219,6 +219,9 @@
 
                         <?php if($is_member){ ?>
                         <div class="panel active panel_feed" id="panel_1">
+                        <?php }else{ ?>
+                        <div class="panel panel_feed" id="panel_1" style="display:none;">
+                        <?php } ?>
                             <div id = "planner_column" class = "planner_column_group">
                                 <div id = "right_column_specs">
 
@@ -256,8 +259,12 @@
 
                         </div>
 
-
+                        <?php if($is_member){ ?>
                         <div class="panel tab_files" id="panel_2">
+                        <?php }else{ ?>
+                        <div class="panel tab_files" id="panel_2" style="display:none;">
+                        <?php } ?>
+
                         <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
                         <div class="tab_content_holder">
                         <div class="tab_header">
@@ -378,9 +385,12 @@
                             PANEL 4
                         </div>
 
+                        <?php if($is_member){ ?>
+                        <div class="panel tab_members" id="panel_3">
+                        <?php }else{ ?>
+                        <div class="panel tab_members" id="panel_3" style="display:none;">
                         <?php } ?>
 
-                        <div class="panel tab_members" id="panel_3">
                             <div class="tab_content_holder">
                                 <div class="tab_header"> 
                                     <div class = "float_Right">

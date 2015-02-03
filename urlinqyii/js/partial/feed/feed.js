@@ -1,6 +1,6 @@
 
 $(document).ready(ready(globals));
-
+$.embedly.defaults.key = '94c0f53c0cbe422dbc32e78d899fa4c5';
 
 function ready(globals){
 
@@ -160,7 +160,10 @@ function ready(globals){
 
     function render_post_with_url(single_post){
 
-        single_post.embed_link = findUrlInPost();
+        var url = findUrlInPost(single_post['text']);
+        console.log(url);
+        single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        single_post.embed_link = url;
 
     }
 
