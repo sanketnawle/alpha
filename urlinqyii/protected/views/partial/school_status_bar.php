@@ -43,7 +43,7 @@
             <div class = "fbar_buttonwrapper fbar_twoprong fbar_button_last" id = "fbar_button_discuss" data-post_button_type = "discuss">
                 <i class = "fbar_button_icon" id = "fbar_icon_discuss2">
                 </i>
-                <p class = "fbar_button_text discussion_button_text">Disccusion</p>
+                <p class = "fbar_button_text discussion_button_text">Discussion</p>
             </div>
         </section>
         <section id = "fbar_postbox">

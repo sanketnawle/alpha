@@ -497,6 +497,8 @@ input.event_title{
 
 
 .hide-plus{
+  -webkit-animation: hidePlus .2s 1;
+  -webkit-animation-fill-mode:forwards;     
   animation: hidePlus .2s 1;
   animation-fill-mode:forwards; 
 }
@@ -514,6 +516,8 @@ input.event_title{
 }
 
 .bounce-minus{
+  -webkit-animation: bounceMinus .2s 1;
+  -webkit-animation-fill-mode:forwards;    
   animation: bounceMinus .2s 1;
   animation-fill-mode:forwards; 
   -webkit-backface-visibility: hidden;

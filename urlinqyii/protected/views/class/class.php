@@ -280,6 +280,9 @@
 
         <?php if($is_member){ ?>
         <div class="panel active panel_feed" id="panel_1">
+        <?php }else{ ?>
+        <div class="panel panel_feed" id="panel_1" style="display:none">
+        <?php } ?>
             <div id = "planner_column" class = "planner_column_group">
                 <div id = "right_column_specs">
                     <div id = "fixed_element" class = "planner_group">
@@ -304,7 +307,11 @@
             </div>
         </div>
 
+        <?php if($is_member){ ?>
         <div class="panel tab_syllabus" id="panel_2">
+        <?php }else{ ?>
+        <div class="panel tab_syllabus" id="panel_2" style="display:none">
+        <?php } ?>
             <div class = "class_syllabus_tab">
                 <div class = "syllabus_tab_holder">
                     <div class = "full_syllabus_box syllabus_tagger">
@@ -528,7 +535,11 @@
             </div>
         </div>
 
+        <?php if($is_member){ ?>
         <div class="panel tab_files" id="panel_3">
+        <?php }else{ ?>
+        <div class="panel tab_files" id="panel_3" style="display:none">
+        <?php } ?>
         <!--<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">-->
         <div class="tab_content_holder">
         <div class="tab_header">
@@ -760,9 +771,7 @@
         <!--</form>-->
         </div>
 
-        
 
-        <?php } ?>
 
         <div class="panel tab_members" id="panel_4">
             <div class="tab_content_holder">

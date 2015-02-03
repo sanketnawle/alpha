@@ -9,6 +9,8 @@ $(document).ready(function(){
             $("body").addClass("left_panel_hidden_p2");
             next();
         });
+        var group_name_left = $("p#group_name").position().left;
+        $("div.center_admin").css({"left":group_name_left})
     });
 
     $(document).delegate(".menu_hider.menu_hidden", "click", function(e) {
@@ -20,6 +22,8 @@ $(document).ready(function(){
             $("body").removeClass("left_panel_hidden");
             next();
         });  
+        var group_name_left = $("p#group_name").position().left;
+        $("div.center_admin").css({"left":group_name_left})
 
         
     });

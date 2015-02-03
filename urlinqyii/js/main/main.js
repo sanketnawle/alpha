@@ -321,6 +321,8 @@ $(document).ready(function(){
 
 
 
+
+
     //$('#create_todo_form').submit(function (e) {
 //    $(document).on('click','#create_todo_form',function(e){
 //        //Send post request to event/create
