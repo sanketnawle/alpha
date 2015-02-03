@@ -625,7 +625,7 @@
                     <em class = "icon_img icon_img_o">
                     </em>
                     <h5 style = "top:18px;">
-                      Get reminders and notices about upcoming homeworks, meetings, and exams. 
+                      Get reminders about upcoming homeworks, meetings, and exams. 
                     </h5>
                   </div>                  
                 </div>

@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     var progress_bar = ["14%", "28%", "43%", "57%", "71%", "86%", "100%"];
-    var btn_text = ["Join your School", "Join your Department", "Resend Verification (Check spam)", "Continue", "Continue", "Continue", "Let's Get Started"];
+    var btn_text = ["Join your School", "Join your Department", "Resend Verification", "Continue", "Continue", "Continue", "Let's Get Started"];
     var hint_text = ["Select your School", "Join your Department", "Verify your Email", "Join your Classes", "Who do you know on campus?", "Find your Clubs", "Complete your Profile"];
     var progress_bar_color = ["rgb(186, 81, 228)", "#009ed3", "rgb(110, 56, 169)", "rgb(0, 173, 61)", "rgb(242, 110, 0)", "#ec3856", "rgb(39, 178, 78)"];
 
@@ -271,7 +271,7 @@ $(document).ready(function () {
 
 
         } else if (curr == 2) {
-            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq. (check your spam folder)</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
+            $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
             $('.skip_progress').hide();
         } else if (curr == 3) {
             $canvas.show();
@@ -279,7 +279,7 @@ $(document).ready(function () {
             $inner.addClass("canvas_adjust");
 
             //hide skp button
-            $('.skip_progress').hide();
+            //$('.skip_progress').hide();
 
 
             $canvas.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[progress_flag] + "</div><div class='right_txt'><span>0</span> selected</div></div>");
