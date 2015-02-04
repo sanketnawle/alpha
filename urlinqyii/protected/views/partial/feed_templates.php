@@ -2,6 +2,9 @@
                         <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}"  data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
+                                        <div class = "post_type_marker reg_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
                                         <div class="post_head">
                                             <div class="post_title">
                                                 {{#ifCond anon '==' 1}}
@@ -415,6 +418,9 @@
                 <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
+                                        <div class = "post_type_marker question_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
                                         <div class="post_head">
                                             <div class="post_title">
                                                 {{#ifCond anon '==' 1}}
@@ -784,6 +790,9 @@
             <script id="post_event_template" type="text/x-handlebars-template">
                 <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-event_id='{{event.event_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}" data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                     <div class = 'post_main event_post'>
+                        <div class = "post_type_marker event_post_type">
+                            <span class = "post_type_icon"></span>
+                        </div>
 
                         <div class = 'post_head'>
                             <div class = 'post_event_date_box' style = "background-color:{{event.color.hex}};">
@@ -874,10 +883,18 @@
 
                             <div class = "event_post_toparea">
                                 <div class='post_event_title post_opportunity_title'>{{event.title}}</div>
-                                <div class = 'post_user_icon profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')"></div>
+                                <a class = 'opportunity_mail_icon' href="mailto:{{user_info.user_email}}"></a>
+                                <div class ="help_div dark">
+                                    <div class = "wedge">
+                                    </div>
+                                    <div class = "box">
+                                        <div class = "mail_hint">Email {{user_info.user_email}}</div>
+                                    </div>
+                                </div>
+                                    
                                 <span class = 'post_owner profile_link' data-user_id={{user_id}}>{{user_info.firstname}} {{user_info.lastname}}</span>
-                                <span class = 'opportunity_mail_icon'></span>
-                                <div class = "mail_hint">{{user_info.user_email}}</div>
+                                
+                                
                             </div>
 
                             <div class='post_event_content'>
@@ -906,19 +923,16 @@
                                 {{#ifCond user_attending '==' false}}
                                     <div class='post_event_calendar_button save_opportunity_btn'><span class = "add_to_cal_icon"></span>Save Opportunity</div>
                                 {{else}}
-                                    <div class='post_event_calendar_button added save_opportunity_btn'><span class = "add_to_cal_icon added"></span>Saved to Calendar</div>
+                                    <div class='post_event_calendar_button added save_opportunity_btn'><span class = "add_to_cal_icon added"></span>Saved</div>
                                 {{/ifCond}}
 
-                                <div class = 'post_event_date_box opportunity_date_box' style = "background-color:{{event.color.hex}};">
-                                    <div class = "top_dark_area"></div>
-                                    <div class='post_event_month post_event_date_box_text'>{{event.month}}</div>
-                                    <div class='post_event_day post_event_date_box_text'>{{event.day_number}}</div>
-                                </div>
-
-
-
-                                <div class='post_event_time_holder'>
-                                    <div class='post_event_start_time'>{{event.start_time_string}}</div> to <div class='post_event_end_time'>{{event.end_time_string}}</div>
+                                <div class = "apply_by_div">
+                                    <span class = "apply_by_text">Deadline:</span> 
+                                    <span class='apply_by_text apply_by_text_month'>{{event.month}}</span>
+                                    <span class='apply_by_text apply_by_text_day'>{{event.day_number}}</span>
+                                    {{#if event.end_time_string}}
+                                    <span class='apply_by_text apply_by_text_time'>at {{event.end_time_string}}</span>
+                                    {{/if}}
                                 </div>
 
                                 
@@ -994,7 +1008,7 @@
                             <form action='/post/reply' class='reply_form' method="POST" enctype="multipart/form-data" data-post_id='{{post_id}}'>
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                    <textarea class = 'reply_text_textarea form-control postval' placeholder = 'Add a comment or question...' required></textarea>
+                                    <textarea class = 'reply_text_textarea form-control postval' placeholder = 'Add a comment or question about this opportunity...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -1035,6 +1049,9 @@
                 <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
                                     <div class="post_main">
+                                        <div class = "post_type_marker notes_post_type">
+                                            <span class = "post_type_icon"></span>
+                                        </div>
                                         <div class="post_head">
                                             <div class="post_title">
                                                 {{#ifCond anon '==' 1}}
