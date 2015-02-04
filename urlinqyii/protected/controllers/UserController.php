@@ -687,7 +687,7 @@ class UserController extends Controller
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','groups'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs'));
 
 
 
