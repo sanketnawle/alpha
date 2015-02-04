@@ -93,7 +93,7 @@ return array(
 
 
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-                //'<action:\w+>'=>'site/<action>',
+                '<action:\w+>'=>'site/<action>',
 
                 'post/json' => '/post/index',
                 'about' => '/site/page/view/about',
