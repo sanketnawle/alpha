@@ -1292,6 +1292,7 @@ $(document).ready(function() {
         var data = new FormData();
 
         data.append("file", upload_file);
+        data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
         //data.append("user", globals.user_id);
         $.ajax({
             url: base_url+'/profile/changeProfilePicture',
