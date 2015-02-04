@@ -12,7 +12,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-    include_once '../iOSPushNotifications.php';
+    include_once 'iOSPushNotifications.php';
     notifyAlliOSDevicesForUserID($user_id, 'This is a test message. From the server. Hi Ben.');
 }
 
