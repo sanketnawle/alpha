@@ -213,8 +213,8 @@
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
 
-                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                        {{reply_msg}}
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
                                     </div>
 
                                     {{#if file_id}}
@@ -310,17 +310,17 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                            {{reply_msg}}
+                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                            {{{reply_msg}}}
                                         </div>
 
                                         {{#if file_id}}
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
-                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        <div class = 'comment_owner_container profile_link' data-user_id="{{user_id}}" style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         </div>
-                                        <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                        <span class = 'comment_owner profile_link' data-user_id="{{user_id}}" >
                                             {{#ifCond anon '==' 1}}
                                                 Anonymous
                                             {{else}}
@@ -347,17 +347,17 @@
             <script id='one_reply_template' type="text/x-handlebars-template">
                 <div class = 'comments'>
                     <div class = 'comment_main'>
-                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                            {{reply_msg}}
+                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                            {{{reply_msg}}}
                         </div>
 
                         {{#if file_id}}
 
                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
-                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                        <div class = 'comment_owner_container profile_link' data-user_id="{{user_info.user_id}}" style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                         </div>
-                        <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                        <span class = 'comment_owner profile_link' data-user_id="{{user_info.user_id}}" >
                             {{#ifCond anon '==' 1}}
                                 Anonymous
                             {{else}}
@@ -380,8 +380,8 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                            {{reply_msg}}
+                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                            {{{reply_msg}}}
                                         </div>
 
                                         {{#if file_id}}
@@ -705,8 +705,8 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                        {{reply_msg}}
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
                                     </div>
 
                                     {{#if file_id}}
@@ -833,7 +833,7 @@
 
                                 {{#if event.description}}
                                     <div class = "event_description_holder">
-                                        <p>{{event.description}}</p>
+                                        <p>{{{event.description}}}</p>
                                     </div>
                                 {{/if}}
                                 {{#each files}}
@@ -901,7 +901,7 @@
 
                                 {{#if event.description}}
                                     <div class = "event_description_holder">
-                                        <p>{{event.description}}</p>
+                                        <p>{{{event.description}}}</p>
                                     </div>
                                 {{/if}}
                                 {{#each files}}
@@ -946,8 +946,8 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                        {{reply_msg}}
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
                                     </div>
 
                                     {{#each files}}
@@ -1225,8 +1225,8 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{replies.reply_id}}'>
-                                        {{reply_msg}}
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
                                     </div>
 
                                     {{#each files}}
@@ -1336,7 +1336,10 @@
 <script id="embedly_video_template" type="text/x-handlebars-template">
     <div class = "embedly_box">
         <a href="{{url}}">
-            {{{html}}}
+            <div class="embedly_video" >
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Xw1J3a140QA" frameborder="0" allowfullscreen></iframe>
+            </div>
+
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>
                 <div class = "embedly_description">{{description}}</div>

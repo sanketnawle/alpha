@@ -49,17 +49,18 @@ function render_post(single_post, prepend){
         }
     }
 
-
     if(findUrlInPost(single_post['text']) || findUrlInPost(single_post['sub_text'])
-        || ((single_post['post_type']==="event" || single_post['post_type']==="opportunity") && findUrlInPost(single_post['description']))) {
+        || ((single_post['post_type']==="event" || single_post['post_type']==="opportunity")&&findUrlInPost(single_post['event']['description']))) {
         var url = findUrlInPost(single_post['text']);
         if(!url){
             url = findUrlInPost(single_post['sub_text']);
         }
         if(single_post['post_type']==="event" || single_post['post_type']==="opportunity"){
-            url = findUrlInPost(single_post['description']);
+            url = findUrlInPost(single_post['event']['description']);
+            single_post['event']['description']=single_post['event']['description'].replace(url,'<a href="'+url+'">'+url+'</a>');
         }
         single_post['text']=single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+
         single_post.embed_link = url;
 
         var embedly_info = "hi";
@@ -223,8 +224,8 @@ function append_embedly(post_id, embedly_info, post_type){
         message_span = "span.msg_span";
     }else if(post_type === "question" || post_type === "multiple_choice" || post_type === "true_false") {
         message_span = "div.question_subtext_span";
-    }else if(post_type === "event"){
-        message_span = "div.event_description_holder";
+    }else if(post_type === "event" || post_type === "opportunity"){
+        message_span = ".event_description_holder";
     }
 
     if(embedly_info.type == "link"){
