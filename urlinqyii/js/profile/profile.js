@@ -1487,7 +1487,7 @@ $(document).ready(function() {
             post_data,
             function (response) {
                 if (response['success']) {
-                    var own_profile = $('#profile_wrapper').attr('data-user_id');
+                    var own_profile = $('#profile_wrapper').attr('data-user_id') == globals.user_id;
                     var $other_follow_button;
                     var following_count;
                     if($follow_button_wrapper.closest('.user_wrapper').attr('id')=="followers_list"){
