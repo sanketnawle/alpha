@@ -807,23 +807,37 @@
                                     <div class = "post_event_location"><span class = "location_icon_dark"></span>{{event.location}}</div>
                                 </div>
                                 {{/if}}
-                                {{#if event.origin_type}}
-                                <div class = "event_context">
-                                    <span class = "down_right_arrow_icon"></span>
-                                    <div class='post_event_type_holder'>
-                                        {{#if event.event_type}}
-                                            <div class = "post_event_type">{{event.event_type}} in </div>
-                                        {{/if}}
-                                    </div>
-                                    <div class = "post_event_origin_holder">
-                                        {{#ifCond event.origin_type '==' 'user'}}
 
-                                        {{else}}
+
+
+                                {{#ifCond event.origin_type '!=' 'user'}}
+                                    <div class = "event_context">
+                                        <span class = "down_right_arrow_icon"></span>
+                                        <div class='post_event_type_holder'>
+                                            {{#if event.event_type}}
+                                                <div class = "post_event_type">{{event.event_type}} in </div>
+                                            {{/if}}
+                                        </div>
+                                        <div class = "post_event_origin_holder">
                                             <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
-                                        {{/ifCond}}
+                                        </div>
                                     </div>
-                                </div>
-                                {{/if}} 
+                                {{else}}
+                                    {{#ifCond '<?php echo $user_id;?>' '!=' event.origin_id}}
+                                        <div class = "event_context">
+                                            <span class = "down_right_arrow_icon"></span>
+                                            <div class='post_event_type_holder'>
+                                                {{#if event.event_type}}
+                                                    <div class = "post_event_type">{{event.event_type}} in </div>
+                                                {{/if}}
+                                            </div>
+                                            <div class = "post_event_origin_holder">
+                                                <div class = "post_event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                            </div>
+                                        </div>
+                                    {{/ifCond}}
+
+                                {{/ifCond}}
                             </div>
 
 
