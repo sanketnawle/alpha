@@ -73,7 +73,6 @@ function render_post(single_post, prepend){
             }}).done(function(results){
                 if(!results.invalid){
                     embedly_info = results[0];
-                    console.log(embedly_info);
                     append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
                 }
             }
@@ -238,7 +237,12 @@ function append_embedly(post_id, embedly_info, post_type){
         source = $('#embedly_photo_template').html();
     }
     var template = Handlebars.compile(source);
-    $('.post[data-post_id='+post_id+']').find(message_span).append(template(embedly_info));
+    if(globals.profile_open){
+        $('#profile_wrapper').find('.post[data-post_id='+post_id+']').find(message_span).append(template(embedly_info));
+    }else{
+        $('.post[data-post_id='+post_id+']').find(message_span).append(template(embedly_info));
+    }
+
 }
 
 
