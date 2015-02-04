@@ -215,7 +215,7 @@ class PostController extends Controller
                         $event->start_time = $_POST['post']['event']['start_time'];
                         $event->end_time = $_POST['post']['event']['end_time'];
                         $event->location = $_POST['post']['event']['location'];
-                        $event->all_day = '';
+                        $event->all_day = 0;
 
                         $event->save(false);
 

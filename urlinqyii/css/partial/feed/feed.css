@@ -345,6 +345,10 @@ color: #029acf;
 .embedly_title{
     font-size: 18px;
 }
+.embedly_video iframe{
+    width:300px;
+    height:200px;
+}
 
 
 

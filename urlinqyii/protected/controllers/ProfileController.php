@@ -1189,7 +1189,6 @@ class ProfileController extends Controller
             $data['own_profile'] = true;
         }
 
-        $data['own_profile'] = true;
 
         $this->renderJSON($data);
     }
