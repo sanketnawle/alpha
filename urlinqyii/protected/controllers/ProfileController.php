@@ -511,6 +511,21 @@ class ProfileController extends Controller
             //$user = User::model()->find('user_id=:uid', array(':uid' => $user_id));
             $user = $this->get_current_user();
             if($user){
+
+
+                if($this->is_urlinq_admin($user)){
+                    if(isset($_POST['user_id'])){
+                        $user = User::model()->find('user_id=:id', array(':id'=>$_POST['user_id']));
+                        if(!$user){
+                            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'invalid user id passed in');
+                            $this->renderJSON($data);
+                            return;
+                        }
+                    }
+                }
+
+
+
                 if (isset($_POST['bio'])) {
                     $user->user_bio = $_POST['bio'];
                     if ($user->save()) {

@@ -993,6 +993,8 @@ $(document).ready(function() {
         data.append('gender',$('.edit_field.gender:checked').val());
         data.append('bio',$('#bio_input').val());
 
+        data.append('user_id', $('#profile_wrapper').attr('data-user_id'));
+
         if($('#year_section').length){
             if($('#year_dropdown').val()){
                 data.append('year',$('#year_dropdown').val());
@@ -1068,7 +1070,7 @@ $(document).ready(function() {
                         $('#year_info').text($('#level_dropdown').val()+' at '+match[1]);
                     }
                 }else if(result.year_name){
-                    alert(result.year_name);
+                    alert(JSON.stringiy(result.year_name));
                     any_errors = true;
                 }
                 if(result.year == "success"){
@@ -1078,17 +1080,17 @@ $(document).ready(function() {
                         $('#name_info').text(match[1] + " " + (parseInt($('#year').text()) % 100));
                     }
                 }else if(result.year){
-                    alert(result.year);
+                    alert(JSON.stringify(result.year));
                     any_errors = true;
                 }
                 if(result.bio == "success"){
                     $('#bio').text($('#bio_input').val());
                 }else if(result.bio){
-                    alert(result.bio);
+                    alert(JSON.stringify(result.bio));
                     any_errors = true;
                 }
                 if(result.gender && result.gender != "success"){
-                    alert(result.gender);
+                    alert(JSON.stringify(result.gender));
                     any_errors = true;
                 }
                 if(result.major == "success"){
