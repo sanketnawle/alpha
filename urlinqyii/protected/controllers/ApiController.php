@@ -2274,18 +2274,20 @@ public function actionLogin() {
                 }
 
                 //If this user is not the professor, make sure he is an admin
-                if($user->user_id != $class->professor_id){
-                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
-                    if(!$class_user){
-                        $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                if(!$this->is_urlinq_admin($user)){
+                    if($user->user_id != $class->professor_id){
+                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
+                        if(!$class_user){
+                            $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
 
-                    if(!$class_user->is_admin){
-                        $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
-                        $this->renderJSON($data);
-                        return;
+                        if(!$class_user->is_admin){
+                            $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }
                 }
 
