@@ -1038,6 +1038,26 @@ class ProfileController extends Controller
             $data['classes'][$i]['class_picture']= ($class->pictureFile) ?
                 Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
         }
+        $index = sizeof($data['classes']);
+        if($user->user_type === "p"){
+            $classesTaught = ClassModel::model()->findAll('professor_id=:pid',array(':pid'=>$user->user_id));
+            foreach($classesTaught as $i=>$class){
+                if($class->course){
+                    $data['classes'][$i+$index]['course_name']=$class->course->course_name;
+                    $data['classes'][$i+$index]['description']= $class->course->course_desc;
+                }
+                if($class->department){
+                    $data['classes'][$i+$index]['department_name']=$class->department->department_name;
+                    $data['classes'][$i+$index]['department_link']=Yii::app()->getBaseUrl(true).'/department/'.$class->department->department_id;
+                }
+                $data['classes'][$i+$index]['section']=$class->section_id;
+                $data['classes'][$i+$index]['class_id']=$class->class_id;
+                $data['classes'][$i+$index]['class_picture']= ($class->pictureFile) ?
+                    Yii::app()->getBaseUrl(true).$class->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/class.png';
+
+            }
+        }
+
 
         foreach($user->clubs as $i=>$club){
             $data['clubs'][$i]['club_name']=$club->group_name;
@@ -1159,7 +1179,7 @@ class ProfileController extends Controller
         $data['profile_pic'] = ($user->pictureFile) ?
             Yii::app()->getBaseUrl(true).$user->pictureFile->file_url : Yii::app()->getBaseUrl(true).'/assets/default/user.png';
         $data['background_pic'] = Yii::app()->getBaseUrl(true).'/assets/nice_background.jpg';
-        $data['num_classes'] = sizeof($user->classes);
+        $data['num_classes'] = sizeof($data['classes']);
         $data['num_clubs'] = sizeof($user->clubs);
         $data['num_following'] = sizeof($user->usersFollowed);
         $data['num_followers'] = sizeof($user->usersFollowing);
