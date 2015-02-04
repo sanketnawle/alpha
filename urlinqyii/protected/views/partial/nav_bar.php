@@ -78,7 +78,7 @@
             <div class="nav_picture"></div>
             <div class="nav_text">Clubs</div>
             <div id="nav_down_arrow"></div>
-            <div id="nav_drop_down_container" class="home_nav_dropdown closed">
+            <div id="nav_drop_down_container" class="last_nav_drop_down_home home_nav_dropdown closed">
                 <div class="nav_drop_down_scrollable">
 
                     <?php

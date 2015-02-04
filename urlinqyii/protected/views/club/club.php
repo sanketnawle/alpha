@@ -613,6 +613,7 @@
                         <!-- About Tab -->
                         <?php if($is_member){ ?>
                         <div class="panel tab_about" id="panel_6">
+
                         <?php }else{ ?>
                         <div class="panel tab_about active" id="panel_6">
                         <?php } ?>
@@ -621,8 +622,22 @@
                                
                                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
                                 <?php if($is_member){ ?>
-                                
-                                
+
+                                <div class="about_tab_header">
+                                    <div class = "about_header_sentence">
+                                        <p class = "about_box_headers">Club Description</p>
+                                        <?php if($is_admin){ ?>
+                                        <div class = "float_right">          
+                                            <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit text</p>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class = "about_header_body">
+                                        <div class = "about_header_data">
+                                            <p>To see this club's feed, events, and files, sign up now <span class = "non_member_join_pointer small_icon_map"></span></p>
+                                        </div> 
+                                    </div>     
+                                </div>
 
                                 <?php }else{ ?>
 
