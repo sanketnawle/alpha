@@ -73,7 +73,10 @@
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
-    $ios_notification->delete();
+    $ios_notification->user_id = $user_id;
+    $data = array('success'=>true);
+    $this->renderJSON($data);
+    return;
 }
 
 
