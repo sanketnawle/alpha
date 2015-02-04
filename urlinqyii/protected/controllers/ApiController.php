@@ -42,7 +42,7 @@
 
             $get_user = $this->get_current_user($_POST);
             if (!$get_user) {
-                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'is not a valid user');
+                $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
                 $this->renderJSON($data);
                 return;   
             }
@@ -68,6 +68,8 @@
 
   //          $notiModel = IosNotifications::model()->find("notification_id=:notification_id", array(":notification_id"=>$notification_id));
 //            $notiModel->delete;
+
+
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
