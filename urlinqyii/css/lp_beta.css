@@ -127,7 +127,6 @@ div.lp-main{
   bottom: 0px;
    
 
-  background-color: transparent;
 
 }
 
@@ -268,7 +267,8 @@ margin: 0 auto;
 border:0;
 height: 60px;
 padding:0;
-max-width: 1140px;
+max-width: calc(57% + 275px);
+margin-left: 90px;
 }
 
 div.header{
@@ -523,7 +523,7 @@ position: relative;
 border: 3px solid;
 border-radius: 8px;
 width:100%;
-background: rgba(0, 0, 0, 0.7);
+background: rgba(0, 0, 0, 0.45);
 }
 
 div.icon_section h5{
@@ -925,14 +925,13 @@ input#lname{
 div.signin-wrap{
   float: right;
   margin-top: 17px;
-  width: 50%;
+  width: auto;
   min-width: 378px;
   max-width: 644px;
   position:relative;
 }
 
 form#login{
-  width: 100%;
 }
 
 div.forgotPassword{
@@ -1247,13 +1246,11 @@ div.bottom-container{
     position: relative;
   
     width: 100%;
-    bottom: 0px;
-    left: -43px;
-    bottom: 0px;
-    height: 100px;
-    right: 0px; 
+    height: 100px; 
     background-color: rgba(237, 239, 237, 0);
+    left: -40px;
     z-index:100;
+    margin-top: -33px;
 }
 
 /*
@@ -1475,7 +1472,6 @@ display:none;
   width:auto;
   z-index:-100;
   background-size:cover;
-  background-image:url(../assets/videoStart.jpg);
 }
 
 div.text-switcher{
@@ -1972,8 +1968,8 @@ font-size: 14px!important;
 }
 
 body{
-  background-image:url(/src/videoStart.jpg);
   background-size:cover;
+  background:#F5F5F5;
 }
 
 #countdown p.smallCD{
