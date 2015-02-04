@@ -102,7 +102,7 @@
 					<div class = "float_Left">
 						<em class = "SectionHeader_ribbon LeftPanel_icons">
 						</em>
-						<h4>My Clubs</h4>
+						<h4>My Groups</h4>
 					</div>
 					<div class = "float_Right">
 						<a class = "textBtn" href="<?php echo Yii::app()->getBaseUrl(true) . '/search'; ?>">Search</a>

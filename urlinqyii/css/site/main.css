@@ -382,7 +382,9 @@ div#fbar_wrapper.fbar_group{
 
     background-size: cover!important;
     /* 250 */
-    
+    -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5) inset;
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5) inset;
 
     height: 295px;
 
