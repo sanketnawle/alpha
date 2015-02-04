@@ -572,7 +572,7 @@
 
                                                     {{#if embed_link}}
 
-                                                        <p class='f_hidden_p'>
+                                                       <!-- <p class='f_hidden_p'>
                                                             <a id="embed_link" href='{{embed_link}}'>
                                                                 {{embed_link}}
                                                              </a>
@@ -597,7 +597,7 @@
                                                                         </div>
                                                                     </a>
                                                                 </div>
-                                                        </div>
+                                                        </div>-->
 
                                                     {{/if}}
 
@@ -1313,6 +1313,29 @@
                 <div class = "embedly_title">{{title}}</div>
                 <div class = "embedly_description">{{description}}</div>
             </div>
+        </a>
+    </div>
+</script>
+<script id="embedly_video_template" type="text/x-handlebars-template">
+    <div class = "embedly_box">
+        <a href="{{url}}">
+            {{{html}}}
+            <div class = "embedly_info">
+                <div class = "embedly_title">{{title}}</div>
+                <div class = "embedly_description">{{description}}</div>
+            </div>
+        </a>
+    </div>
+</script>
+<script id="embedly_photo_template" type="text/x-handlebars-template">
+    <div class = "embedly_box">
+        <a href="{{url}}">
+            <img class = "embedly_image" src = "{{url}}">
+            {{#if title}}
+            <div class = "embedly_info">
+                <div class = "embedly_title">{{title}}</div>
+            </div>
+            {{/if}}
         </a>
     </div>
 </script>

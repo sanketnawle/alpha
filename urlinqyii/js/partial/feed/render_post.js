@@ -50,21 +50,21 @@ function render_post(single_post, prepend){
     }
 
 
-    if(findUrlInPost(single_post['text'])) {
+    if(findUrlInPost(single_post['text']) || findUrlInPost(single_post['sub_text'])
+        || ((single_post['post_type']==="event" || single_post['post_type']==="opportunity") && findUrlInPost(single_post['description']))) {
         var url = findUrlInPost(single_post['text']);
-        //var indexOfUrl = single_post['text'].indexOf(url);
+        if(!url){
+            url = findUrlInPost(single_post['sub_text']);
+        }
+        if(single_post['post_type']==="event" || single_post['post_type']==="opportunity"){
+            url = findUrlInPost(single_post['description']);
+        }
         single_post['text']=single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
-        console.log(url);
-        console.log(single_post['text']);
         single_post.embed_link = url;
-        /*$('.msg_span a').embedly({
-         query:{
-         maxwidth: 400,
-         maxheight: 400,
-         chars: 200
-         }});*/
+
         var embedly_info = "hi";
         $.embedly.oembed(url,{
+            key:'94c0f53c0cbe422dbc32e78d899fa4c5',
             query:{
                 maxwidth: 400,
                 maxheight: 400,
@@ -72,13 +72,12 @@ function render_post(single_post, prepend){
             }}).done(function(results){
                 if(!results.invalid){
                     embedly_info = results[0];
-                    append_embedly(single_post['post_id'],embedly_info);
+                    console.log(embedly_info);
+                    append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
                 }
             }
         );
-        single_post.embedly_info = embedly_info;
     }
-    console.log(single_post.embedly_info);
     if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
@@ -218,12 +217,27 @@ function render_post(single_post, prepend){
         }
     }
 }
-function append_embedly(post_id, embedly_info){
-    if(embedly_info.type == "link"){
-        var source = $('#embedly_link_template').html();
-        var template = Handlebars.compile(source);
-        $('.post[data-post_id='+post_id+']').find('span.msg_span').append(template(embedly_info));
+function append_embedly(post_id, embedly_info, post_type){
+    var message_span, source;
+    if(post_type === "discuss" || post_type === "discussion" || post_type === "notes" || post_type === "files"){
+        message_span = "span.msg_span";
+    }else if(post_type === "question" || post_type === "multiple_choice" || post_type === "true_false") {
+        message_span = "div.question_subtext_span";
+    }else if(post_type === "event"){
+        message_span = "div.event_description_holder";
     }
+
+    if(embedly_info.type == "link"){
+        source = $('#embedly_link_template').html();
+
+    }else if(embedly_info.type == "video"){
+        source = $('#embedly_video_template').html();
+
+    }else if(embedly_info.type == "photo"){
+        source = $('#embedly_photo_template').html();
+    }
+    var template = Handlebars.compile(source);
+    $('.post[data-post_id='+post_id+']').find(message_span).append(template(embedly_info));
 }
 
 
