@@ -73,7 +73,10 @@
 
 $ios_notification = IosNotifications::model()->find('notification_id = :notification_id', array(':notification_id'=>$notification_id));
 if($ios_notification){
-    $ios_notification->delete();
+    $ios_notification->user_id = $user_id;
+    $data = array('success'=>true);
+    $this->renderJSON($data);
+    return;
 }
 
 
@@ -136,54 +139,6 @@ if($ios_notification){
                 $notification_id->delete;
             }
 
-            notifyAlliOSDevicesForUserID(58374, "This is a test message. FROM THE SERVER!");
-
-        }
-
-        function notifyAlliOSDevicesForUserID($user_id, $message) {
-
-            $sql = "SELECT * FROM IosNotifications WHERE user_id = $user_id;";
-            $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
-
-            foreach($device_notification_ids as $notification_id) {
-                pushNotify($message, $notification_id->notification_id);
-            }
-        }
-         
-        function pushNotify($message, $notification_id) {
-
-            $deviceToken = $notification_id;
-            $passphrase = 'URPNCC@MondayCertificate';
-            $message = $message;
-
-            $ctx = stream_context_create();
-            stream_context_set_option($ctx, 'ssl', 'local_cert', '7ed48ded2e412732011227722ff356e9ca5bca05ck.pem');
-            stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
-
-            $fp = stream_socket_client(
-                'ssl://gateway.sandbox.push.apple.com:2195', $err,
-                $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
-
-            if (!$fp)
-                return array('success'=>false,'error_id'=>2,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
-
-            $body['aps'] = array(
-                'alert' => $message,
-                'sound' => 'default'
-                );
-
-            $payload = json_encode($body);
-
-            $msg = chr(0) . pack('n', 32) . pack('H*', $deviceToken) . pack('n', strlen($payload)) . $payload;
-
-            $result = fwrite($fp, $msg, strlen($msg));
-
-            if (!$result)
-                return array('success'=>false,'error_id'=>3,'error_msg'=>"Failed to connect: $err $errstr" . PHP_EOL);
-            else
-                return array('success'=>true);
-
-            fclose($fp);
         }
 
         public function actionGetUserPictureID() {
@@ -2319,18 +2274,20 @@ public function actionLogin() {
                 }
 
                 //If this user is not the professor, make sure he is an admin
-                if($user->user_id != $class->professor_id){
-                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
-                    if(!$class_user){
-                        $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
-                        $this->renderJSON($data);
-                        return;
-                    }
+                if(!$this->is_urlinq_admin($user)){
+                    if($user->user_id != $class->professor_id){
+                        $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$user->user_id, ':class_id'=>$origin_id));
+                        if(!$class_user){
+                            $data = array('success'=>false,'error_id'=>3,'error'=>'user is not a member of this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
 
-                    if(!$class_user->is_admin){
-                        $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
-                        $this->renderJSON($data);
-                        return;
+                        if(!$class_user->is_admin){
+                            $data = array('success'=>false,'error_id'=>4,'error'=>'User is not authorized to upload a photo to this class');
+                            $this->renderJSON($data);
+                            return;
+                        }
                     }
                 }
 
