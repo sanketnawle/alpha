@@ -224,7 +224,7 @@ function append_embedly(post_id, embedly_info, post_type){
         message_span = "span.msg_span";
     }else if(post_type === "question" || post_type === "multiple_choice" || post_type === "true_false") {
         message_span = "div.question_subtext_span";
-    }else if(post_type === "event"){
+    }else if(post_type === "event" || post_type === "opportunity"){
         message_span = ".event_description_holder";
     }
 
