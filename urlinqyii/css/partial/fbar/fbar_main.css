@@ -637,8 +637,6 @@ input.multiple_choice_answer {
     height: 17px;
     background-color: white;
     border: 1px solid #efefef;
-    -webkit-box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
-    box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.15);
     margin-left: 0px;
     margin-left: 1px;
     margin-top: 0px;

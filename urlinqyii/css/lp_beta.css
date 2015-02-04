@@ -47,7 +47,7 @@ position: relative;
 .fb-like{
   position: absolute!important;
 right: 20px;
-bottom: 20px;
+bottom: 10px;
 display:block!important;
 }
 
@@ -287,6 +287,7 @@ img.logo{
   top: 15.5px;
   display: inline-block;
   float: left;
+  margin-left:10px;
   height: 32px;
 }
 
@@ -502,7 +503,7 @@ div.signup-slog{rgb(79, 82, 93)
 div.about_section{
 height: 270px;
 left: 100px;
-top: 87px;
+top: 68px;
 width: 485px;
 z-index:9999;
 position: absolute;
@@ -519,41 +520,27 @@ div.icon_section{
 height: 30%;
 margin-bottom: 28px;
 position: relative;
-width: 81px;
 border: 3px solid;
 border-radius: 8px;
-background: rgba(0, 0, 0, 0.41);
+width:100%;
+background: rgba(0, 0, 0, 0.7);
 }
 
 div.icon_section h5{
-  opacity:0;
   margin: 0px;
-  display:none;
   font-family: Avenir;
   top: 9px;
   width: 380px;
   color: rgba(255, 255, 255, 0.92);
   font-weight: 400;
   font-size: 19px;
+    opacity:1;
+  display:inline-block;
+
   left: 18px;
+  left: 92px;
   position: absolute;
   text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-}
-
-div.icon_section:hover h5{
-  display:inline-block;
-  opacity:1;
-  left: 92px;
-  -webkit-transition: opacity 550ms cubic-bezier(0.0, 0.0, 0.0, 1), left 550ms cubic-bezier(0.23, 0.5, 0.32, 1);
-  
-  transition: opacity 550ms cubic-bezier(0.0, 0.0, 0.0, 1), left 550ms cubic-bezier(0.23, 0.5, 0.32, 1);
-  
-}
-
-div.icon_section:hover{
-  width:100%;
-
-  background: rgba(0, 0, 0, 0.71);
 }
 
 div.icon_section.icon_green{
@@ -1624,10 +1611,6 @@ div.grabber div.grabber-container{
     right: 20px;
   }
 
-  div.about_section{
-    display:none;
-  }
-
   div.main-market-area div.announcement_board{
     top: 70px;
     margin-left: -300px;
@@ -1636,11 +1619,12 @@ div.grabber div.grabber-container{
 
 @media(max-width:1080px){
   div.signup-container{
-    left:602px;
+    left:622px;
   }
   div.grabber{
     left: 50%;
   }
+
 }
 
 
@@ -1650,14 +1634,15 @@ div.grabber div.grabber-container{
     left:572px;
   
 }
+  div.about_section{
+    left:33px;
+  }
   div.grabber{
     left: 50%;
     text-align: center;
   }
 
-  div.about_section{
-    display:none;
-  }
+
 
 
   }
@@ -1677,6 +1662,10 @@ div.grabber div.grabber-container{
   }
   div.grabber{
     left: 50%;
+  }
+
+  div.about_section{
+    left:15px;
   }
 
   }
@@ -1789,6 +1778,10 @@ div.urlinq-marketing{
   height: 130px;
 }
 
+  div.about_section{
+    display:none;
+  }
+
 
 div.grabber{
   left: 50%;
@@ -1807,7 +1800,7 @@ div.signin-wrap{
   margin-left: 20px;
   width: 75%;
   right: -24px;
-  margin-top: 31px;
+  margin-top: 15px;
 }
 
 div.footer-sec button.FacebookConnect {
@@ -1864,8 +1857,8 @@ border: 1px solid rgba(105, 105, 105, 0.17);
 }
 
 img.logo {
-    padding-left:5px;
-  
+    padding-left:10px;
+    margin-left:10px;
     height: 27px;
     width: auto;
 }
@@ -1913,6 +1906,10 @@ padding-right: 22px;
   div.forgotPassword{
   display:none;
   } 
+
+  div.signin-wrap{
+    margin-top:25px;
+  }
 
   .top-bar{
     height:77px;
