@@ -88,7 +88,6 @@ $(document).ready(function(e) {
 
             ta.attr("focused", "yes");
             $(".or_answer_div").hide();
-            $(this).attr("placeholder", "Respond");
             ta.css({"min-height": 65, "padding-bottom": 21, "padding-left": 0});
             ta.parents(".postcomment").find(".pre_expand_comment_fx").hide();
             ta.parents(".postcomment").find(".comment_owner_container").show();
@@ -237,7 +236,7 @@ $(document).ready(function(e) {
     $(document).delegate(".flat7b", "click", function (event) {
 
         if (!$(this).hasClass("flat_checked")) {
-            $(this).css({"border": "1px solid #333", "background-color": "#575757"});
+            $(this).css({"border": "1px solid #333", "background-color": "#999"});
             $(this).closest(".check_wrap").find(".move").css({"margin-left": "19px"});
             $(this).addClass("flat_checked");
             $(this).closest(".check_wrap").find(".comment_anon_text").css("color", "rgba(33,33,33,.85)");
