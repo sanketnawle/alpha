@@ -21,8 +21,9 @@ div.reminders_header.header{
     font-size: 13.5px; font-weight: 600;
     text-transform: uppercase;
     color: #333343; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid #dbdcdc;
     margin-bottom: 10px;
+    padding-bottom: 3px;
 } 
 
 ul.reminder_entries{
@@ -77,7 +78,7 @@ div#reminders_section div.icon.date{
 
 div#reminders_section div.icon.date div.mini_cal_top_border{
     position: absolute;
-	
+    
     top: 0px;
     right: 0;
     height: 7px;
@@ -96,7 +97,7 @@ div#reminders_section div.icon.date div.month{
 
 div#reminders_section div.icon.date div.day{
     text-align: center;
-	
+    
     font-size: 14px; 
     font-weight: 500; line-height: 11px; 
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
@@ -133,20 +134,20 @@ div#reminders_section li.tdo div.content div.time{
 
 div#reminders_section li.tdo div.content div.time div.stamp{
     font-family: Avenir;
-	
+    
     font-weight: 200;
 }
 
 div#reminders_section li.tdo div.content div.message{
     font-size: 12px;
-	
+    
     line-height: 15px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     text-transform: capitalize;
 }
 
 span.event_highlight{
-	
+    
     padding: 1px 2px;
     background-color: rgba(247, 42, 73, 0.12);  
     color: rgba(247, 42, 73, 1);

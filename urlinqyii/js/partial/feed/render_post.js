@@ -50,9 +50,33 @@ function render_post(single_post, prepend){
     }
 
 
-    if(findUrlInPost(single_post['text'])) {
-        single_post.embed_link = findUrlInPost(single_post['text']);
+    if(findUrlInPost(single_post['text']) || findUrlInPost(single_post['sub_text'])
+        || ((single_post['post_type']==="event" || single_post['post_type']==="opportunity") && findUrlInPost(single_post['description']))) {
+        var url = findUrlInPost(single_post['text']);
+        if(!url){
+            url = findUrlInPost(single_post['sub_text']);
+        }
+        if(single_post['post_type']==="event" || single_post['post_type']==="opportunity"){
+            url = findUrlInPost(single_post['description']);
+        }
+        single_post['text']=single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        single_post.embed_link = url;
 
+        var embedly_info = "hi";
+        $.embedly.oembed(url,{
+            key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+            query:{
+                maxwidth: 400,
+                maxheight: 400,
+                chars: 200
+            }}).done(function(results){
+                if(!results.invalid){
+                    embedly_info = results[0];
+                    console.log(embedly_info);
+                    append_embedly(single_post['post_id'],embedly_info,single_post['post_type']);
+                }
+            }
+        );
     }
     if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
         var source   = $("#post_template").html();
@@ -126,7 +150,8 @@ function render_post(single_post, prepend){
         }
 
     }
-    else if (single_post['post_type'] == 'event' || single_post['post_type'] == 'opportunity'){
+
+    else if (single_post['post_type'] == 'event'){
 
         var event_start_date = new_date(single_post['event']['start_date']);
 
@@ -146,9 +171,29 @@ function render_post(single_post, prepend){
         }else{
             $("#posts").append($(template(single_post)).hide().fadeIn());
         }
-
-
     }
+
+    else if (single_post['post_type'] == 'opportunity'){
+
+        var event_start_date = new_date(single_post['event']['start_date']);
+
+
+        single_post['event']['date_obj'] = event_start_date;
+        single_post['event']['month'] = date_to_month_string(event_start_date);
+        single_post['event']['day_number'] = event_start_date.getDate();
+        single_post['event']['start_time_string'] = time_string_to_am_pm_string(single_post['event']['start_time']);
+        single_post['event']['end_time_string'] = time_string_to_am_pm_string(single_post['event']['end_time']);
+        
+        var source = $("#post_opportunity_template").html();
+        var template = Handlebars.compile(source);
+
+        if(prepend == 'prepend'){
+           $("#posts").prepend($(template(single_post)).hide().fadeIn());
+        }else{
+            $("#posts").append($(template(single_post)).hide().fadeIn());
+        }
+    }
+
     else {
         var source   = $("#post_template").html();
         var template = Handlebars.compile(source);
@@ -172,7 +217,28 @@ function render_post(single_post, prepend){
         }
     }
 }
+function append_embedly(post_id, embedly_info, post_type){
+    var message_span, source;
+    if(post_type === "discuss" || post_type === "discussion" || post_type === "notes" || post_type === "files"){
+        message_span = "span.msg_span";
+    }else if(post_type === "question" || post_type === "multiple_choice" || post_type === "true_false") {
+        message_span = "div.question_subtext_span";
+    }else if(post_type === "event"){
+        message_span = "div.event_description_holder";
+    }
 
+    if(embedly_info.type == "link"){
+        source = $('#embedly_link_template').html();
+
+    }else if(embedly_info.type == "video"){
+        source = $('#embedly_video_template').html();
+
+    }else if(embedly_info.type == "photo"){
+        source = $('#embedly_photo_template').html();
+    }
+    var template = Handlebars.compile(source);
+    $('.post[data-post_id='+post_id+']').find(message_span).append(template(embedly_info));
+}
 
 
 
