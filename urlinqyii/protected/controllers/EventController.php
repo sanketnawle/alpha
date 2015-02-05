@@ -212,6 +212,31 @@ class EventController extends Controller
     }
 
 
+    public function actionSearchEventsTitle() {
+        if (!isset($_GET['q'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $query = $_GET['q'];
+        $user_id = $user->user_id;
+
+        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query ."%') LIMIT 5");
+
+        $results = $this->add_event_data(array_merge($events), $user);
+
+        $data = array('success'=>true, 'results'=>$results);
+
+    }
+
         public function actionAttendees(){
             //$user = $this->get_current_user();
             $event_id = $_GET['id'];

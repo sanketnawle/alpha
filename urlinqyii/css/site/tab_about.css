@@ -2,7 +2,7 @@ div.about_tab_header{
     background: #FFF;
 
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .about_header_sentence{ 
@@ -10,6 +10,8 @@ div.about_tab_header{
 
     border-radius: 5px 5px 0 0;
     margin: 0 7px;
+    position: relative;
+    width: 100%;
     height: 36px;
 }
 
@@ -28,9 +30,11 @@ div.about_tab_header{
 p.about_box_headers{
 font-weight: 500;
 font-family: Avenir;
+float: left;
 font-size: 15px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
+display: inline-block;
 }
 
 div.admin_text_data_box{
@@ -277,4 +281,19 @@ div.cool_members_box div.members_about_section{
 
     width: 235px;
     zoom: 1;
+}
+
+p#edit_club_description{
+    margin: 0;
+
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    font-family: Avenir;
+    font-size: 12px;
+    color: #575757;
+}
+
+#edit_club_description span.edit_icon{
+    
 }
