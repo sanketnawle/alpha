@@ -268,7 +268,7 @@
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "name_search_input people_search_input" placeholder = "Search clubs" class = "small_search_input">
+                                    <input type = "text" name = "name_search_input people_search_input" placeholder = "Search clubs" class = "small_search_input name_search_input people_search_input">
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
@@ -278,43 +278,39 @@
 
 
 
-                        <div class="tab_content">
+                        <div class = "group_info_tab_content tab_content">
+                        <?php foreach($school->clubs as $club){?>
 
-                            <div class = "group_info_tab_content">
-                            <?php foreach($school->clubs as $club){?>
 
-                                
-                                    <div class = "group_box group_course_box club_box">
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
-                                            <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
-                                                <div class = "group_link"><?php echo $club->group_name; ?></div>
-                                                <span class = "group_type group_with_button">Club</span>
+                                <div class = "group_box group_course_box club_box" data-name="<?php echo $club->group_name; ?>">
+                                    <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
+                                        <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
+                                            <div class = "group_link"><?php echo $club->group_name; ?></div>
+                                            <span class = "group_type group_with_button">Club</span>
 
-                                            </div>
-                                        </a>
-                                        <div class = "group_box_main_info">
+                                        </div>
+                                    </a>
+                                    <div class = "group_box_main_info">
 
-                                            <div class = "float_Right">
+                                        <div class = "float_Right">
 <!--                                                <div class = "group_bar_button_holder">-->
 <!--                                                    <div class = "join_button_wrapper">-->
 <!--                                                        <div class = "group_join_button nonmember"><em class = "dark_add_icon"></em>Join Club</div>-->
 <!--                                                    </div>-->
 <!--                                                </div>-->
-                                            </div>
-                                        </div>
-                                        <div class = "group_box_secondary_info_section">
-                                            <div class= "info_line indent"><?php echo count($club->members); ?> members</div>
-                                            <div class= "info_line indent info_line_events"><span></span><?php echo count($club->events); ?> events this month</div>
-                                            <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about"><?php echo $club->group_desc;?></div></div></div>
                                         </div>
                                     </div>
+                                    <div class = "group_box_secondary_info_section">
+                                        <div class= "info_line indent"><?php echo count($club->members); ?> members</div>
+                                        <div class= "info_line indent info_line_events"><span></span><?php echo count($club->events); ?> events this month</div>
+                                        <div class = "about_scroll_container"><span class = "scroll_gif"></span><div class = "info_line info_about"><div class = "about"><?php echo $club->group_desc;?></div></div></div>
+                                    </div>
+                                </div>
 
 
-                                
 
-                            <?php } ?>
 
-                            </div>
+                        <?php } ?>
 
                         </div>
 
