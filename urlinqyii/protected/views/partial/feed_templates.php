@@ -853,8 +853,8 @@
                                 {{/if}}
                                 {{#each files}}
                                     {{#ifCond file_extension '===' 'jpg'}}
-                                    <div class = "post_attached_image_container">
-                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                    <div class = "post_attached_image_container post_attached_image_container_flier">
+                                        <div class = 'post_attached_image post_attached_image_flier' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                     </div>
                                     {{else}}
@@ -921,8 +921,8 @@
                                 {{/if}}
                                 {{#each files}}
                                     {{#ifCond file_extension '===' 'jpg'}}
-                                    <div class = "post_attached_image_container">
-                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                    <div class = "post_attached_image_container post_attached_image_container_flier">
+                                        <div class = 'post_attached_image post_attached_image_flier' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                     </div>
                                     {{else}}

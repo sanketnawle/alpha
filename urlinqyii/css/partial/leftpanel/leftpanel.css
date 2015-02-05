@@ -126,10 +126,9 @@ a.MyBox_SO.edit_profile:hover{
 }
 
 .SectionHeader_holder{
-    border-bottom: 1px solid #dbdcdc;
+    border-bottom: 1px solid #EAEAEA;
 
-    height: 26px;
-    -moz-box-shadow: 0px -1px 0px rgba(255, 255, 255, 1) inset; 
+    height: 26px; 
 }
 
 .SectionHeader_holder div h4{
@@ -357,25 +356,38 @@ ul.LeftPanel_GroupsList li a{
     color: #27292b;
     cursor:pointer;
     outline:none;
-    font-size: 13px;
+    font-size: 12.5px;
     padding: 4px 6px;
     width: 220px;
     font-weight: 500;
     border-radius: 3px;
     text-decoration: none;
+    background: transparent;
     display: block;
     padding-right: 0px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     font-family: 'Open Sans', sans-serif;
+    -moz-transition:.035s ease color, .035s ease background;
+    -webkit-transition:.035s ease color, .035s ease background;
+    transition: .035s ease color, .035s ease background;
+
 }
 
 ul.LeftPanel_GroupsList li a:hover{
-color: #029acf;
+color: #111;
+background: rgba(232, 232, 232, 0.56);
 }
 
 ul.LeftPanel_GroupsList li a:active
 {
 background: #E8E8E8;
+box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(42, 43, 44, 0.89);
+color: #111;
+}
+
+ul.LeftPanel_GroupsList li a:focus
+{
+background: #E8E8E8; box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(42, 43, 44, 0.89); color: #111;
 }
 
 ul.LeftPanel_GroupsList li a.current_group, ul.LeftPanel_GroupsList li a.current_group:hover, ul.LeftPanel_GroupsList li a.current_group:active{
