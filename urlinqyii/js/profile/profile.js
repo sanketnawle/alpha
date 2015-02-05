@@ -16,6 +16,14 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.close_modal', function(){
+        close_profile();
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            close_profile();
+        }   // esc
+    });
+    function close_profile(){
         globals.origin_id = old_origin_id;
         globals.origin_type = old_origin_type;
         globals.profile_open = false;
@@ -24,8 +32,7 @@ $(document).ready(function() {
         $("#page").removeClass("profile_stop_scroll");
         $("body").removeClass("profile_stop_scroll");
         $("body#body_home").removeClass("profile_stop_scroll");
-
-    });
+    }
     function open_profile(base_url,user_id,edit_mode){
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {

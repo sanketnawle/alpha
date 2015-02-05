@@ -2,7 +2,7 @@
 <head>
     <title> Feed </title>
     <script>
-        var globals = {};
+        //var globals = {};
 
 
 
@@ -12,7 +12,6 @@
 
         globals.origin_type = '<?php echo $origin_type; ?>';
         globals.origin_id = '<?php echo $origin_id; ?>';
-
 
         globals.user_id = '<?php echo $user->user_id; ?>';
 
