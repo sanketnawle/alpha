@@ -289,7 +289,7 @@ class PostController extends Controller
                         $event->start_time = $now->format('H:i:s');
                         $event->end_time = $_POST['post']['opportunity']['end_time'];
                         $event->location = '';
-                        $event->all_day = '';
+                        $event->all_day = 0;
 
                         $event->save(false);
 
