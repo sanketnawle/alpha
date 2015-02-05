@@ -419,11 +419,11 @@
 <!--                                            </div>-->
 
 
-                                            <div id="create_event_invite_holder" class="invite_holder">
-                                                <div id="create_event_invite_label">Invite people</div>
+                                            <div id="invite_holder" class="invite_holder">
+<!--                                                <div id="create_event_invite_label">Invite people</div>-->
 
 
-                                                <input id="invite_input" name="event_invite_input" placeholder="Enter names" class="text_input invite_input">
+                                                <input id="invite_input" name="event_invite_input" placeholder="Invite people" class="text_input invite_input small_search_input">
 
                                                 <div id="create_event_invite_button" class="invite_people_button">Invite</div>
 

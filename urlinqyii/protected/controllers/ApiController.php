@@ -799,6 +799,91 @@ if($ios_notification){
         }
 
 
+
+        //Invite user to class/club/group
+        public function actionGroupInvite(){
+            if(!isset($_POST['origin_type']) || !isset($_POST['origin_id']) || !isset($_POST['to_user_id'])){
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'all data not set');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            $user = $this->get_current_user($_POST);
+
+            if(!$user){
+                $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user not logged in');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+            $origin_type = $_POST['origin_type'];
+            $origin_id = $_POST['origin_id'];
+
+            if($origin_type != 'class' && $origin_type != 'club' && $origin_type != 'group'){
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid origin type');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $to_user_id = $_POST['to_user_id'];
+
+            if($user->user_id == $to_user_id){
+                $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Cannot invite yourself');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+            $to_user = User::model()->find('user_id=:id', array(':id'=>$to_user_id));
+
+            if($to_user){
+
+                //make sure user isnt already apart of this group
+                if($origin_type == 'club' || $origin_type == 'group'){
+                    $group_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id', array(':user_id'=>$to_user_id, ':group_id'=>$origin_id));
+                    if($group_user){
+                        $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already apart of this group');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }else if($origin_type == 'class'){
+                    $class_user = ClassUser::model()->find('user_id=:user_id and class_id=:class_id', array(':user_id'=>$to_user_id, ':class_id'=>$origin_id));
+                    if($class_user || $class_user->class->professor_id == $to_user_id){
+                        $data = array('success'=>false,'error_id'=>3,'error_msg'=>'User is already apart of this class');
+                        $this->renderJSON($data);
+                        return;
+                    }
+                }
+
+
+
+                include_once 'invite/invite.php';
+                send_invite($user->user_id,$to_user_id, $origin_id, $origin_type);
+
+
+                $data = array('success'=>true);
+                $this->renderJSON($data);
+                return;
+            }else{
+                $data = array('success'=>false,'error_id'=>4,'error_msg'=>'user not valid');
+                $this->renderJSON($data);
+                return;
+            }
+
+
+
+        }
+
+
+
+
+
+
         public function actionCreateReply()
         {
             try {
