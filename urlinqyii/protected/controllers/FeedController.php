@@ -522,6 +522,12 @@ class FeedController extends Controller
                                                                          on (group_user.group_id = group.group_id)
                                                                          where group_user.user_id = " . $user->user_id . "))
 
+                              or (origin_type = 'department' and origin_id IN (SELECT department_follow.department_id
+                                                                         from `department_follow`
+                                                                         join `department`
+                                                                         on (department_follow.department_id = department.department_id)
+                                                                         where department_follow.user_id = " . $user->user_id . "))
+
 
                               or (origin_type = 'class' and origin_id IN (SELECT cu.class_id
                                                                             from class_user cu join class cs
