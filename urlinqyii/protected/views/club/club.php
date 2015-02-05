@@ -54,6 +54,16 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/main.js'></script>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_members.js'></script>
 
+
+
+
+        <?php if($is_admin){ ?>
+            <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/invite_people/invite_people.js"></script>
+            <link href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/invite_people/invite_people.css" type = "text/css" rel = "stylesheet">
+        <?php } ?>
+
+
+
     </head>
 
     <body class = "body_group body_club">
@@ -398,6 +408,57 @@
                                         <div class = "add_people_button">
                                             Add People
                                         </div>
+
+
+
+                                        <?php if($is_admin) { ?>
+<!--                                            <div class = "small_search fade_input_small">-->
+<!--                                                <em id = "left_search_icon">-->
+<!--                                                </em>-->
+<!--                                                <input type = "text" name = "people_search_input" placeholder = "Invite people" class = "small_search_input">-->
+<!--                                            </div>-->
+
+
+                                            <div id="create_event_invite_holder" class="invite_holder">
+                                                <div id="create_event_invite_label">Invite people</div>
+
+
+                                                <input id="invite_input" name="event_invite_input" placeholder="Enter names" class="text_input invite_input">
+
+                                                <div id="create_event_invite_button" class="invite_people_button">Invite</div>
+
+
+
+                                                <div id="invite_popup">
+
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <!--template for user that is in the invite list-->
+                                            <script id="user_template" type="text/x-handlebars-template">
+                                                <div class="invite_user_list_item" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}" data-file_url = "{{base_url}}{{pictureFile.file_url}}">
+                                                    <div class="invite_user_list_item_name invited_user_name">{{user_name}}</div>
+                                                </div>
+                                            </script>
+
+                                            <!--template for user in the dropdown -->
+                                            <script id="invite_user_template" type="text/x-handlebars-template">
+                                                <div class="invite_user_holder" data-id="{{id}}" data-name="{{user_name}}" data-email="{{user_email}}" data-file_url = "{{base_url}}{{pictureFile.file_url}}">
+                                                    <div class = "inviting_user_photo cal_user_photo" style = "background-image:url('{{base_url}}{{pictureFile.file_url}}')"></div>
+                                                    <div class="invite_user_list_item_name inviting_user_name">{{user_name}}</div>
+
+
+                                                </div>
+                                            </script>
+
+
+                                        <?php } ?>
+
+
                                         <div class = "small_search fade_input_small">
                                             <em id = "left_search_icon">
                                             </em>
