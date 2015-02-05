@@ -12,15 +12,16 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
 
 
-//
-//    include_once 'iOSPushNotifications.php';
-//    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
-//    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
+
+    include_once 'iOSPushNotifications.php';
+    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
+    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
 }
 
 function get_notification_text($noti, $user) {
 
-    $notification = get_notifications_data(array($noti), $user)[0];
+    $noti_data = get_notifications_data(array($noti), $user)[0];
+    $notification = $noti_data['notifications'];
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
@@ -35,7 +36,7 @@ function get_notification_text($noti, $user) {
         } else if ($type == 'reply') {
             $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " replied to your post: " . $origin['reply_msg'];
         } else if ($type == 'post') {
-            //$notification_text = $actor['firstname'] . " " . $actor['firstname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
+            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
         } else if ($type == 'invite') {
 
             $origin_type = $noti->origin_type;
