@@ -454,10 +454,13 @@ a#edit_club_icon{
 
     height: 78px; background-color: rgba(18, 19, 20, 0.4); background-repeat: no-repeat; background-size: auto; display: block; 
 
-    background-image: url('../../assets/camera_icon.png'); background-position: 16px; opacity: 0; -moz-transition: opacity .2s linear; -webkit-transition: opacity .2s linear; transition: opacity .2s linear;
+    background-image: url('../../assets/camera_icon.png'); 
+
+    background-position: 30px; opacity: 0; -moz-transition: opacity .2s linear; -webkit-transition: opacity .2s linear; transition: opacity .2s linear;
 }
 
 a#edit_club_icon:hover{
+    opacity: 1;
 
 }
 

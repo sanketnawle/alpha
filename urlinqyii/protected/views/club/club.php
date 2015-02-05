@@ -701,7 +701,7 @@
                                         <div class = "group_info_data">
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
                                                 <?php if($is_admin){ ?>  
-                                                    <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span>Update</a>
+                                                    <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span></a>
                                                 <?php } ?>
                                             </div>
                                             <h4 class = "group_name_text">
@@ -730,9 +730,14 @@
                                                 <div class = "group_info_divider half_divider">
                                                     <hr role = "separator">
                                                     <div class = "group_info_divider_label" data-label = "description"> 
-                                                        <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Add a description of this group</p>
+                                                        <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>
                                                     </div>
                                                 </div>
+                                                <div class = "group_info_data half_data open_look inline_editable">
+                                                    Provide a description of this group. 
+                                                    <span class = "big_edit_icon">
+                                                    </span>
+                                                </div>                                                
                                             <?php } ?>
 
                                         <?php } ?>
@@ -802,7 +807,7 @@
                                         <div class = "group_info_data">
                                             <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
                                                 <?php if($is_admin){ ?>  
-                                                    <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span>Update</a>
+                                                    <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span></a>
                                                 <?php } ?>
                                             </div>
                                             <h4 class = "group_name_text">
