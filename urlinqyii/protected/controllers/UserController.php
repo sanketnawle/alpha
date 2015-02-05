@@ -343,7 +343,7 @@ class UserController extends Controller
     //            $this->renderJSON($data);
     //            return;
 
-            if ($_GET['last_notification_id']) {
+            if (isset($_GET['last_notification_id'])) {
                 $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
             } else {
                 $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
@@ -687,7 +687,7 @@ class UserController extends Controller
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','groups'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs'));
 
 
 

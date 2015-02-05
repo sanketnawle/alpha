@@ -46,6 +46,7 @@
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_settings.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/profile/profile.js"></script>
         <link href='<?php echo Yii::app()->getBaseUrl(true); ?>/css/profile/profile.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="<?php echo Yii::app()->getBaseUrl(true); ?>/css/site/group_info_bars.css">
 
 
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/main/tab_files.js'></script>
@@ -612,6 +613,7 @@
                         <!-- About Tab -->
                         <?php if($is_member){ ?>
                         <div class="panel tab_about" id="panel_6">
+
                         <?php }else{ ?>
                         <div class="panel tab_about active" id="panel_6">
                         <?php } ?>
@@ -620,8 +622,26 @@
                                
                                 <!-- only show to non members. when they click join, refresh or dynamically show members view with full tabs -->
                                 <?php if($is_member){ ?>
-                                
-                                
+
+                                <div class="about_tab_header">
+                                    <div class = "about_header_sentence no_underline">
+                                        <p class = "about_box_headers">GROUP INFO</p>
+                                        <?php if($is_admin){ ?>
+                                        <div class = "float_right">          
+                                            <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit text</p>
+                                        </div>
+                                        <?php } ?>
+                                        <div class = "group_info_divider">
+                                            <hr role = "separator">
+                                            <div class = "group_info_divider_label" data-label = "description"> Description </div>
+                                        </div>
+                                    </div>
+                                    <div class = "about_header_body">
+                                        <div class = "about_header_data">
+                                            <p>To see this club's feed, events, and files, sign up now <span class = "non_member_join_pointer small_icon_map"></span></p>
+                                        </div> 
+                                    </div>     
+                                </div>
 
                                 <?php }else{ ?>
 

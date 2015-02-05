@@ -2,7 +2,7 @@ div.about_tab_header{
     background: #FFF;
 
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07); box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .about_header_sentence{ 
@@ -10,6 +10,8 @@ div.about_tab_header{
 
     border-radius: 5px 5px 0 0;
     margin: 0 7px;
+    position: relative;
+    width: 100%;
     height: 36px;
 }
 
@@ -23,6 +25,16 @@ div.about_tab_header{
     font-weight: bold;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     color: #575757;
+}
+
+p.about_box_headers{
+font-weight: 500;
+font-family: Avenir;
+float: left;
+font-size: 15px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+display: inline-block;
 }
 
 div.admin_text_data_box{
@@ -79,10 +91,13 @@ div.class_description_holder{
 div#group_about_box div.class_description_holder {
     border: none;
     height: 103px !important;
+    padding-top: 8px;
+    margin-top: 0px;
 }
 
 #group_about_box .slimScrollDiv{
-    top: -7px;
+    top: 3px;
+    margin-top: -8px;
 }
 #group_about_box .slimScrollDiv .slimScrollBar {
     margin-top: 7px;
@@ -232,7 +247,7 @@ padding: 14px 0px 2px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 text-transform: uppercase;
-margin-bottom: 10px;
+margin-bottom: 6px;
 }
 
 div.cool_members_box div.admin_about_section{
@@ -256,7 +271,7 @@ div.cool_members_box div.members_about_section{
     font-weight: 500;
 
     background-color: white;
-    height: 150px;
+    height: 160px;
     margin-top: 0px;
 
     outline-color: rgb(51, 51, 51);
@@ -266,4 +281,19 @@ div.cool_members_box div.members_about_section{
 
     width: 235px;
     zoom: 1;
+}
+
+p#edit_club_description{
+    margin: 0;
+
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    font-family: Avenir;
+    font-size: 12px;
+    color: #575757;
+}
+
+#edit_club_description span.edit_icon{
+    
 }

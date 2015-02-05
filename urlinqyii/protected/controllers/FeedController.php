@@ -736,7 +736,7 @@ class FeedController extends Controller
         //$command = Yii::app()->db->createCommand($posts_sql_club);
 
 
-        $posts = $this->models_to_array(Post::model()->findAllBySql('SELECT * FROM `post` WHERE (origin_type = "group" OR origin_type = "club") AND origin_id = 1'));
+        $posts = $this->models_to_array(Post::model()->findAllBySql($posts_sql_club));
         $this->renderJSON(array('success'=>true, 'is_admin'=> FALSE, 'feed'=>self::getReplies(self::addPostData($posts, $user))));
         return;
 

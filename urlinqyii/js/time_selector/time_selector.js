@@ -167,22 +167,32 @@ jQuery(document).ready(function(){
 
 
 
-
-        if($time_selector.is(':visible') && $last_selected_time_input.is($time_input)){
-            $time_selector.removeClass('active');
-            return;
-        }
-
-
-
-
-
         //Close the time input if there is one
         try{
             $('#calLayer').hide();
         }catch(err){
             console.log('Clicked time_input with no calLayer to hide');
         }
+
+
+
+
+
+        if($last_selected_time_input) {
+            if($time_selector.hasClass('active') && $last_selected_time_input.is($time_input)){
+                $last_selected_time_input = null;
+                //alert('LKJSDFOI');
+                $time_selector.removeClass('active');
+                return;
+            }
+        }
+
+
+
+
+
+
+
 
 
         //Get the position of this time input

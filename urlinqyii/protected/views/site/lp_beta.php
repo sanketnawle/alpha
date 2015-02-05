@@ -343,7 +343,9 @@
 
 });
 
-  $(document).delegate(".account-type","click",function(){
+  $('.account-type').bind('touchstart touchend', function(e) {
+      e.preventDefault();
+
     if($(this).hasClass("student")){
       $(".faculty").removeClass("account-type-chosen");
       $(this).addClass("account-type-chosen");
@@ -361,6 +363,25 @@
       
     }
   });
+
+  $(document).delegate(".account-type","click",function(){
+    if($(this).hasClass("student")){
+      $(".faculty").removeClass("account-type-chosen");
+      $(this).addClass("account-type-chosen");
+      $("#student").prop("checked", true);
+      $("#faculty").prop("checked", false);
+      //$(this).val('s');
+    }
+    if($(this).hasClass("faculty")){
+      $(".student").removeClass("account-type-chosen");
+      $(this).addClass("account-type-chosen");
+      $("#faculty").prop("checked", true);
+      $("#student").prop("checked", false);
+      //$(this).val('p');
+    }
+
+  });
+
 
   $(".announce_support_input").keyup(function(event){
     if(event.keyCode == 13){
@@ -662,7 +683,7 @@
                       <h4 class = "header">Sign Up
                     </div>
                     <div class = "header-sec-right">
-                      <div class = "time-to-signup">30 seconds to get started</div>
+                      <div class = "time-to-signup">Your digital campus awaits</div>
                       <!--<div class = "signup-slog">seconds to get started</div>-->
                     </div>
                   </div>

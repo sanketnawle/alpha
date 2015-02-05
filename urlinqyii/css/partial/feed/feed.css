@@ -345,6 +345,10 @@ color: #029acf;
 .embedly_title{
     font-size: 18px;
 }
+.embedly_video iframe{
+    width:300px;
+    height:200px;
+}
 
 
 
@@ -1073,6 +1077,7 @@ font-family: "Open Sans",sans-serif;
 overflow: hidden;
 box-shadow: none !important;
 box-sizing: border-box;
+text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .reply_user_icon {
@@ -3405,7 +3410,7 @@ div.post_event_date_box_text{
 
 div.post_event_title{
     color: #333;   
-    font-size: 15.5px;
+    font-size: 16.5px;
     font-weight: 500;
     padding: 8.5px 74px 4px;
     text-transform: capitalize;
@@ -3458,28 +3463,34 @@ div.event_description_holder{
 }
 
 div.event_description_holder > p{
-    margin: -5px 0 10px 0;
+    margin: -5px 0 14px 0px;
     
+    font-size: 15px;
 }
 
 div.post_event_time_holder{
     display: inline-block;
 
-    font-size: 13px; color: rgba(0,0,0,.64);  
-    padding-left: 8px;
-    padding-top: 7px;
+    font-size: 12px; 
+    color: #575757!important;  
+    padding-left: 12px;
+    padding-top: 10px;
+    font-weight: 500;
+    font-family: avenir;
 }
 
 div.post_event_time_holder > .post_event_start_time{
     display: inline-block;
     
     text-transform: uppercase;
+    font-weight: 500;
 }
 
 div.post_event_time_holder > .post_event_end_time{
     display: inline-block;
     
     text-transform: uppercase;
+    font-weight: 500;
 }
 
 div.event_post_toparea{
@@ -3506,26 +3517,26 @@ div.event_post_toparea{
 }
 
 .post_event_calendar_button.added{
-    cursor: default;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    background: #EEE;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    cursor:default;
 }
 
 .post_event_calendar_button.added:hover{
-    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important; 
-    padding: 2.5px 11px; font-weight: 600; line-height: 24px; border-radius: 3px; 
-    cursor: default;
-    display: inline-block;
-    font-size: 11.9px;   
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    background: #EEE;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    cursor:default;
 }
 
 .post_event_calendar_button.added:active{
-    border: 1px solid #eee; border-bottom-color: #E4E4E4; background-color: #fcfcfc; background-image: -webkit-linear-gradient(#fafafa, #f8f8f8); background-image: linear-gradient(#fafafa, #f8f8f8); color: #575757!important; 
-    padding: 2.5px 11px; font-weight: 600; line-height: 24px; border-radius: 3px; 
-    cursor: default;
-    display: inline-block;
-    font-size: 11.9px;   
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
+    background: #EEE;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
 }
 
 .post_event_calendar_button:active{
@@ -3595,7 +3606,7 @@ div.event_context span.down_right_arrow_icon{
 }
 
 div.post_event_title.post_opportunity_title{
-    padding: 1.5px 12px 4px;
+    padding: 1.5px 12px 5px;
 
     font-size: 17.5px;
     padding-left: 7px;
@@ -3695,6 +3706,7 @@ div.apply_by_div{
     display: inline-block;
 
     padding: 4px 6px;
+    margin-left: 6px;
 }
 
 div.opportunity_post div.event_description_holder p{
@@ -3714,7 +3726,7 @@ span.apply_by_text{
 
     font-size: 13px;
     font-weight: bold;
-    color: #333;
+    color: #575757!important;
 }
 
 span.apply_by_text.apply_by_text_month{

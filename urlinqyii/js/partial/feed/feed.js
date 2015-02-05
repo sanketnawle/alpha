@@ -129,6 +129,8 @@ function ready(globals){
 
             }
 
+            add_embedly_to_replies(post['replies']);
+
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -146,6 +148,7 @@ function ready(globals){
 
 
             render_post(post);
+
         });
     }
 
@@ -237,6 +240,7 @@ function ready(globals){
         var id = $(this).parent(".master_comments").attr("id");
         var array = {'replies' : [replies[id][0],replies[id][1]]};
         $(this).parent(".master_comments").html(template(array));
+        add_embedly_to_replies(replies[id]);
     });
 
 
@@ -247,6 +251,8 @@ function ready(globals){
         var id = $(this).parent(".master_comments").attr("id");
         var array = {'replies' : replies[id]};
         $(this).parent(".master_comments").html(template(array));
+        add_embedly_to_replies(replies[id]);
+
     });
 
 
@@ -366,7 +372,10 @@ function ready(globals){
         var $reply_count = $reply_form.closest(".post").find('.reply_number');
 
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
-
+        if(findUrlInPost(post_data['reply_text'])) {
+            var url = findUrlInPost(post_data['reply_text']);
+            post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        }
         var post_url = globals.base_url + '/post/reply';
 
         console.log('SENDING POST REPLY');
@@ -387,13 +396,72 @@ function ready(globals){
                     }else{
                         $reply_form.closest(".post").find('.post_comment_btn').append('<div class = "reply_number">1</div>');
                     }
+                    if(url){
+                        $.embedly.oembed(url,{
+                            key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                            query:{
+                                maxwidth: 400,
+                                maxheight: 400,
+                                chars: 100
+                            }}).done(function(results){
+                                if(!results.invalid){
+                                    embedly_info = results[0];
+                                    append_embedly(response['reply']['reply_id'],embedly_info);
+                                }
+                            }
+                        );
+                    }
+
                 }else{
                     alert(JSON.stringify(response));
                 }
             }, 'json'
         );
     });
+    function add_embedly_to_replies(replies){
+        $.each(replies,function(index,reply){
+            if(findUrlInPost(reply['reply_msg'])) {
+                var url = findUrlInPost(reply['reply_msg']);
+                //  post['replies'][index]['reply_msg']=reply['reply_msg'].replace(url,'<a href="'+url+'">'+url+'</a>');
+                $.embedly.oembed(url,{
+                    key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                    query:{
+                        maxwidth: 400,
+                        maxheight: 400,
+                        chars: 100
+                    }}).done(function(results){
+                        if(!results.invalid){
+                            embedly_info = results[0];
+                            console.log(embedly_info);
+                            append_embedly(reply['reply_id'],embedly_info);
+                        }
+                    }
+                );
+            }
+        });
+    }
+    function append_embedly(reply_id, embedly_info){
+        console.log('append embedly to reply '+reply_id);
+        var source;
 
+
+
+        if(embedly_info.type == "link"){
+            source = $('#embedly_link_template').html();
+        }else if(embedly_info.type == "video"){
+            source = $('#embedly_video_template').html();
+
+        }else if(embedly_info.type == "photo"){
+            source = $('#embedly_photo_template').html();
+        }
+        var template = Handlebars.compile(source);
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
+    }
 
 
     $(document).on('click', '.post_event_calendar_button', function(){
