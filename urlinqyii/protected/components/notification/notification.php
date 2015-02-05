@@ -34,7 +34,7 @@ function get_notification_text($noti, $user) {
         } else if ($type == 'reply') {
             $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " replied to your post: " . $origin['reply_msg'];
         } else if ($type == 'post') {
-            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
+            //$notification_text = $actor['firstname'] . " " . $actor['firstname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
         } else if ($type == 'invite') {
 
             $origin_type = $noti->origin_type;
