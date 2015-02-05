@@ -1,3 +1,4 @@
+
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}"  data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
@@ -852,8 +853,8 @@
                                 {{/if}}
                                 {{#each files}}
                                     {{#ifCond file_extension '===' 'jpg'}}
-                                    <div class = "post_attached_image_container">
-                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                    <div class = "post_attached_image_container post_attached_image_container_flier">
+                                        <div class = 'post_attached_image post_attached_image_flier' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                     </div>
                                     {{else}}
@@ -920,8 +921,8 @@
                                 {{/if}}
                                 {{#each files}}
                                     {{#ifCond file_extension '===' 'jpg'}}
-                                    <div class = "post_attached_image_container">
-                                        <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                    <div class = "post_attached_image_container post_attached_image_container_flier">
+                                        <div class = 'post_attached_image post_attached_image_flier' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
                                         <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
                                     </div>
                                     {{else}}
@@ -1338,8 +1339,10 @@
             </script>
 <script id="embedly_link_template" type="text/x-handlebars-template">
     <div class = "embedly_box">
-        <a href="{{url}}">
-            <img class = "embedly_image" src = "{{thumbnail_url}}">
+        <a href="{{url}}" target="_blank">
+            {{#if thumbnail_url}}
+            <img class = "embedly_image post_attached_image" src = "{{thumbnail_url}}">
+            {{/if}}
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>
                 <div class = "embedly_description">{{description}}</div>
@@ -1348,10 +1351,10 @@
     </div>
 </script>
 <script id="embedly_video_template" type="text/x-handlebars-template">
-    <div class = "embedly_box">
-        <a href="{{url}}">
+    <div id = "embedly_video_box" class = "embedly_box">
+        <a href="{{url}}" target="_blank">
             <div class="embedly_video" >
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Xw1J3a140QA" frameborder="0" allowfullscreen></iframe>
+                {{{html}}}
             </div>
 
             <div class = "embedly_info">
@@ -1363,8 +1366,10 @@
 </script>
 <script id="embedly_photo_template" type="text/x-handlebars-template">
     <div class = "embedly_box">
-        <a href="{{url}}">
-            <img class = "embedly_image" src = "{{url}}">
+        <a href="{{url}}" target="_blank">
+            {{#if thumbnail_url}}
+            <img class = "embedly_image post_attached_image" src = "{{url}}">
+            {{/if}}
             {{#if title}}
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>

@@ -62,7 +62,7 @@ var MonthGrid = (function (MonthGrid) {
                     init();
 
                     function init(){
-                        var date_str = new Date();
+                        var date_str = new Date(year,month);
                         date_str = date_to_string(date_str);
                         get_month_events(date_str);
                     }

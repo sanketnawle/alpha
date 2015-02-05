@@ -256,8 +256,8 @@ div.suggestion_pic{
     -webkit-transition: opacity .218s;
     -moz-transition: opacity .218s;
     -o-transition: opacity .218s;
+    opacity:.85;
     transition: opacity .218s;
-    opacity:.7;
 }
 
 div#right_panel:hover div.suggestion_pic{
