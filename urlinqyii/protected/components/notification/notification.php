@@ -12,18 +12,19 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
 
 
-
-    include_once 'iOSPushNotifications.php';
-    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
-    notifyAlliOSDevicesForUserID($user_id, $this->get_notification_text($notification, $user));
+//
+//    include_once 'iOSPushNotifications.php';
+//    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
+//    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
 }
 
 function get_notification_text($noti, $user) {
 
-    $notification = $this->get_notifications_data(array($noti), $user)[0];
+    $notification = get_notifications_data(array($noti), $user)[0];
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
+    $notification_text = '';
 
         if ($type == 'follow') {
             $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " is now following you.";
@@ -66,7 +67,7 @@ function get_notifications_data($user, $notifications){
 
         $notifications_new = array();
         foreach ($notifications as $notification) {
-            $notification = $this->model_to_array($notification);
+            $notification = model_to_array($notification);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
             $origin_id = $notification['origin_id'];
@@ -74,18 +75,18 @@ function get_notifications_data($user, $notifications){
 
             if($origin == '' || !$origin_id || !$actor_id){
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'origin type or id not set');
-                //$this->renderJSON($data);
+                //renderJSON($data);
                 return $data;
             }
 
             $actor = User::model()->find("user_id=:user_id", array(":user_id"=>$actor_id));
             if(!$actor){
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'actor doesnt exist');
-                //$this->renderJSON($data);
+                //renderJSON($data);
                 return $data;
             }
 
-            $notification['actor'] = $this->get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
@@ -96,7 +97,7 @@ function get_notifications_data($user, $notifications){
 
                 if(!$invite){
                     $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
-                    $this->renderJSON($data);
+                    renderJSON($data);
                     return;
                 }
 
@@ -108,11 +109,11 @@ function get_notifications_data($user, $notifications){
                     $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$event){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                        $this->renderJSON($data);
+                        renderJSON($data);
                         return;
                     }
 
-                    $event = $this->model_to_array($event);
+                    $event = model_to_array($event);
                     $origin_event = $event['origin_type'];
                     $origin__event_id = $event['origin_id'];
 
@@ -143,21 +144,21 @@ function get_notifications_data($user, $notifications){
                     $class = ClassModel::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$class){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'class doesnt exist');
-                        $this->renderJSON($data);
+                        renderJSON($data);
                         return;
                     }
 
-                    $notification['origin'] = $this->model_to_array($class);
+                    $notification['origin'] = model_to_array($class);
                     $notification['origin']['name'] = $class->class_name;
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
                     $group = Group::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$group){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
-                        $this->renderJSON($data);
+                        renderJSON($data);
                         return;
                     }
 
-                    $notification['origin'] = $this->model_to_array($group);
+                    $notification['origin'] = model_to_array($group);
                     $notification['origin']['name'] = $group->group_name;
                 }
             }
@@ -166,10 +167,10 @@ function get_notifications_data($user, $notifications){
 
                 if(!$follow){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
+                    renderJSON($data);
                     return;
                 }
-                $notification['origin'] = $this->get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+                $notification['origin'] = get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
             }
             elseif($notification_type == 'invite'){
 
@@ -178,12 +179,12 @@ function get_notifications_data($user, $notifications){
                 $reply = Reply::model()->find("reply_id=:reply_id", array(":reply_id"=>$origin_id));
                 if(!$reply){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
+                    renderJSON($data);
                     return;
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
-                $reply=$this->model_to_array($reply);
+                $reply=model_to_array($reply);
                 $reply['post']=$post;
                 $notification['origin']= $reply;
             }
@@ -191,29 +192,29 @@ function get_notifications_data($user, $notifications){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
                 if(!$post){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
+                    renderJSON($data);
                     return;
                 }
 
-                $notification['origin'] = $this->model_to_array($post);
+                $notification['origin'] = model_to_array($post);
 
 
                 if($post->origin_type == 'class'){
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($class);
+                    $notification['origin']['post_origin'] = model_to_array($class);
                     $notification['origin']['post_origin']['name'] = $class->class_name;
                 }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($group);
+                    $notification['origin']['post_origin'] = model_to_array($group);
                     $notification['origin']['post_origin']['name'] = $group->group_name;
                 }else if($post->origin_type == 'department'){
                     $department = Department::model()->find('department_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($department);
+                    $notification['origin']['post_origin'] = model_to_array($department);
                     $notification['origin']['post_origin']['name'] = $department->department_name;
 
                 }else if($post->origin_type == 'school'){
                     $school = School::model()->find('school_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($school);
+                    $notification['origin']['post_origin'] = model_to_array($school);
                     $notification['origin']['post_origin']['name'] = $school->school_name;
                 }else{
                     $notification['origin']['post_origin'] = null;
@@ -223,13 +224,13 @@ function get_notifications_data($user, $notifications){
             }
             else{
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'database doesnt support this kind of notification');
-                //$this->renderJSON($data);
+                //renderJSON($data);
                 return $data;
             }
             array_push($notifications_new, $notification);
         }
         $data = array('success'=>true,'notifications'=>$notifications_new);
-        $this->renderJSON($data);
+        renderJSON($data);
         return;
     }
 
@@ -242,16 +243,16 @@ function get_notifications_data($user, $notifications){
             $row[$key] = $value;
         }
 
-        $row = $this->walk_model($model,$row,$attributes);
+        $row = walk_model($model,$row,$attributes);
 
         return $row;
     }
 
-        function models_to_array($models){
+    function models_to_array($models){
         $array = array();
 
         foreach($models as $model){
-            array_push($array,$this->model_to_array($model));
+            array_push($array,model_to_array($model));
         }
 
         return $array;
@@ -269,7 +270,7 @@ function get_notifications_data($user, $notifications){
        function walk_model($model, array $row,array $model_names){
         //array(schools => array(pictureFile))
 
-        if($this->is_assoc($model_names)){
+        if(is_assoc($model_names)){
             foreach($model_names as $nested_model_name => $nested_attributes) {
                 $name = trim($nested_model_name); //in case of spaces around commas
 
@@ -284,13 +285,13 @@ function get_notifications_data($user, $notifications){
                             foreach($this_model as $key => $value) {
                                 $row[$name][$i][$key] = $value;
                             }
-                            $row[$name][$i] = $this->walk_model($this_model,$row[$name][$i],$nested_attributes);
+                            $row[$name][$i] = walk_model($this_model,$row[$name][$i],$nested_attributes);
                         }
                     }else{
                         foreach($model_values as $key => $value) {
                             $row[$name][$key] = $value;
                         }
-                        $row[$name] = $this->walk_model($model_values,$row[$name],$nested_attributes);
+                        $row[$name] = walk_model($model_values,$row[$name],$nested_attributes);
                     }
                 }else{
                     $relations = $model->relations();

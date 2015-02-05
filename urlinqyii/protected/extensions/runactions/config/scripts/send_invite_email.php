@@ -11,6 +11,8 @@ if (ERunActions::runBackground()){
 
     $actor_name = $params['actor_name'];
 
+    $subject = 'Urlinq Invitation';
+
 
     $mail = new YiiMailer('invite', array('actor_name'=>$actor_name));
     $mail->setFrom($from_email, 'urlinq team');

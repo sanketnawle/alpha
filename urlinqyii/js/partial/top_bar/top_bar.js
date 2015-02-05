@@ -24,7 +24,7 @@ $(document).ready(function(){
             next();
         });  
         var group_name_left = $("p#group_name").position().left;
-        $("div.center_admin").css({"left":group_name_left})
+        $("div.center_admin").css({"left":group_name_left});
 
         $("div.nav_section div.nav_text").css({"max-width":"208px"});
     });
