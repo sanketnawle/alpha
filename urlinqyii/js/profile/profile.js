@@ -16,6 +16,14 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.close_modal', function(){
+        close_profile();
+    });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            close_profile();
+        }   // esc
+    });
+    function close_profile(){
         globals.origin_id = old_origin_id;
         globals.origin_type = old_origin_type;
         globals.profile_open = false;
@@ -24,8 +32,7 @@ $(document).ready(function() {
         $("#page").removeClass("profile_stop_scroll");
         $("body").removeClass("profile_stop_scroll");
         $("body#body_home").removeClass("profile_stop_scroll");
-
-    });
+    }
     function open_profile(base_url,user_id,edit_mode){
         //  var numShowcase;
         $.getJSON( base_url + "/profile/json",{id: user_id}, function( json_profile_data ) {
@@ -369,6 +376,7 @@ $(document).ready(function() {
                 post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
 
             }
+            add_embedly_to_replies(post['replies']);
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -390,11 +398,58 @@ $(document).ready(function() {
         });
     }
 
+    function add_embedly_to_replies(replies){
+        $.each(replies,function(index,reply){
+            if(findUrlInPost(reply['reply_msg'])) {
+                var url = findUrlInPost(reply['reply_msg']);
+                //  post['replies'][index]['reply_msg']=reply['reply_msg'].replace(url,'<a href="'+url+'">'+url+'</a>');
+                $.embedly.oembed(url,{
+                    key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                    query:{
+                        maxwidth: 400,
+                        maxheight: 400,
+                        chars: 100
+                    }}).done(function(results){
+                        if(!results.invalid){
+                            embedly_info = results[0];
+                            console.log(embedly_info);
+                            append_embedly(reply['reply_id'],embedly_info);
+                        }
+                    }
+                );
+            }
+        });
+    }
+    function append_embedly(reply_id, embedly_info){
+        console.log('append embedly to reply '+reply_id);
+        var source;
+
+
+
+        if(embedly_info.type == "link"){
+            source = $('#embedly_link_template').html();
+        }else if(embedly_info.type == "video"){
+            source = $('#embedly_video_template').html();
+
+        }else if(embedly_info.type == "photo"){
+            source = $('#embedly_photo_template').html();
+        }
+        var template = Handlebars.compile(source);
+        console.log(reply_id);
+        console.log(globals.profile_open);
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
+    }
     function render_post_with_url(single_post){
 
         single_post.embed_link = findUrlInPost();
 
     }
+
 
     /*function profile_render_post(single_post){
         console.log('asdf');
@@ -1485,7 +1540,7 @@ $(document).ready(function() {
             post_data,
             function (response) {
                 if (response['success']) {
-                    var own_profile = $('#profile_wrapper').attr('data-user_id');
+                    var own_profile = $('#profile_wrapper').attr('data-user_id') == globals.user_id;
                     var $other_follow_button;
                     var following_count;
                     if($follow_button_wrapper.closest('.user_wrapper').attr('id')=="followers_list"){

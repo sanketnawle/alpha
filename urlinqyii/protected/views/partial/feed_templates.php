@@ -1354,7 +1354,7 @@
     <div id = "embedly_video_box" class = "embedly_box">
         <a href="{{url}}" target="_blank">
             <div class="embedly_video" >
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Xw1J3a140QA" frameborder="0" allowfullscreen></iframe>
+                {{{html}}}
             </div>
 
             <div class = "embedly_info">

@@ -241,14 +241,24 @@ $(document).ready(function(){
     $('#group_user_action_button').mouseenter(function(){
         var $action_button = $(this);
         if($action_button.hasClass('member')){
-            $action_button.find("#group_user_action_button_text").text('Leave');
+            if(globals.origin_type === "department"){
+                $action_button.find("#group_user_action_button_text").text('Unfollow');
+            }else{
+                $action_button.find("#group_user_action_button_text").text('Leave');
+            }
+
+
         }
     });
 
     $('#group_user_action_button').mouseleave(function(){
         var $action_button = $(this);
         if($action_button.hasClass('member')){
-            $action_button.find("#group_user_action_button_text").text('Member');
+            if(globals.origin_type === "department"){
+                $action_button.find("#group_user_action_button_text").text('Following');
+            }else{
+                $action_button.find("#group_user_action_button_text").text('Member');
+            }
         }
     });
 
@@ -422,8 +432,6 @@ $(document).ready(function(){
     $(document).on('click','.group_user_action_button, #group_user_action_button',function(e){
         e.stopPropagation();
 
-
-
         var $group_user_action_button = $(this);
 
         var verb = '';
@@ -435,7 +443,7 @@ $(document).ready(function(){
 
 
 
-        if(verb == 'leave'){
+        if(verb == 'leave' && globals.origin_type != 'department'){
             var r = confirm("Are you sure you want to leave?");
             if (r == false) {
                 return;
@@ -456,7 +464,11 @@ $(document).ready(function(){
                 if(response['success']){
                     var $group_user_action_button_text_div = $('#group_user_action_button_text');
                     if(verb == 'join'){
-                        $group_user_action_button_text_div.text('Member');
+                        if(globals.origin_type == 'department'){
+                            $group_user_action_button_text_div.text('Following');
+                        }else{
+                            $group_user_action_button_text_div.text('Member');
+                        }
                         $group_user_action_button.removeClass('non_member');
                         $group_user_action_button.addClass('member');
 
@@ -468,7 +480,11 @@ $(document).ready(function(){
                         }
 
                     }else if(verb == 'leave'){
-                        $group_user_action_button_text_div.text('Join');
+                        if(globals.origin_type == 'department'){
+                            $group_user_action_button_text_div.text('Follow');
+                        }else{
+                            $group_user_action_button_text_div.text('Join');
+                        }
                         $group_user_action_button.removeClass('member');
                         $group_user_action_button.addClass('non_member');
 

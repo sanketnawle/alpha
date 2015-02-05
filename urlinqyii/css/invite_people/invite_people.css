@@ -17,6 +17,11 @@ overflow-x: hidden;
 }
 
 
+#invite_holder {
+    float: left;
+}
+
+
 #invite_popup.active {
     display: block;
 }
@@ -149,4 +154,23 @@ div.invite_user_holder .invite_user_email{
 
 .invite_user_list_item_remove_button {
     cursor: pointer;
+}
+
+
+
+
+
+.small_search_input{
+    border: 1px solid #C7C7C7;
+
+    width: 210px;
+    padding-left: 25px;
+    padding-right: 15px;
+    height: 30px;
+    background: #fff;
+    box-shadow: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 30px;
 }

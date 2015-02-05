@@ -250,7 +250,7 @@ class UserController extends Controller
                     $notification['origin'] = $this->model_to_array($class);
                     $notification['origin']['name'] = $class->class_name;
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
-                    $group = Group::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
+                    $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
                         $this->renderJSON($data);

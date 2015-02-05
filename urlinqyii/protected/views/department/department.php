@@ -143,13 +143,13 @@
 
                         <!-- #group_user_action_button performs either join/leave or follow/unfollow depending on context -->
                         <?php if($is_following ){ ?>
-<!--                            <div id="group_user_action_button" class="member" data-action_url="/leave">-->
-<!--                                <div id="group_user_action_button_text">Member</div>-->
-<!--                            </div>-->
+                            <div id="group_user_action_button" class="member" data-action_url="leave">
+                                <div id="group_user_action_button_text">Following</div>
+                            </div>
                         <?php }else{ ?>
-<!--                            <div id="group_user_action_button" class="non_member" data-action_url="/join">-->
-<!--                                <div id="group_user_action_button_text">Follow</div>-->
-<!--                            </div>-->
+                            <div id="group_user_action_button" class="non_member" data-action_url="join">
+                                <div id="group_user_action_button_text">Follow</div>
+                            </div>
                         <?php } ?>
 
 
@@ -387,7 +387,7 @@
         </div>
 
         <div id="right_panel" class = "group_responsiveness">
-            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'department','origin_id'=>'')); ?>   
+            <?php echo $this->renderPartial('/partial/right_panel',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
         </div>
 
         <!--            <div id="div1" style="height: 500px;position:relative;">-->

@@ -406,7 +406,6 @@ function ready(globals){
                             }}).done(function(results){
                                 if(!results.invalid){
                                     embedly_info = results[0];
-                                    console.log(embedly_info);
                                     append_embedly(response['reply']['reply_id'],embedly_info);
                                 }
                             }
@@ -457,7 +456,12 @@ function ready(globals){
         }
         var template = Handlebars.compile(source);
 
-        $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
     }
 
 
