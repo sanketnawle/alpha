@@ -124,6 +124,10 @@ function ready(globals){
 
 
 
+
+
+
+
             for(i = 0; i < post['replies'].length; i++){
                 post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
 
