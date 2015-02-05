@@ -208,7 +208,7 @@ class PostController extends Controller
                         $event->description = $_POST['post']['event']['description'];
                         $event->event_type = 'event';
                         $event->user_id = $user->user_id;
-                        $event->origin_type = $_POST['post']['event']['origin_id'];
+                        $event->origin_type = $_POST['post']['event']['origin_type'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
                         $event->start_date = $_POST['post']['event']['start_date'];
                         $event->end_date = $_POST['post']['event']['end_date'];

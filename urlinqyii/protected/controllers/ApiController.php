@@ -861,6 +861,12 @@ if($ios_notification){
                 }
 
 
+                //Check if an invite already exists for this user. If so, delete
+                $old_notification = Notification::model()->find("user_id=:user_id and origin_type=:origin_type and origin_id=:origin_id", array(':user_id'=>$to_user_id, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+                if($old_notification){
+                    $old_notification->delete();
+                }
+
 
                 include_once 'invite/invite.php';
                 send_invite($user->user_id,$to_user_id, $origin_id, $origin_type);

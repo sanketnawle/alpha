@@ -192,7 +192,7 @@ class UserController extends Controller
 
             if($notification_type == 'invite'){
 
-                $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id']));
+                $invite = Invite::model()->find('user_id=:user_id and origin_id=:origin_id and origin_type=:origin_type', array(':user_id'=>$user->user_id, ':origin_id'=>$notification['origin_id'], ':origin_type'=>$origin));
 
                 if(!$invite){
                     $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
@@ -201,7 +201,7 @@ class UserController extends Controller
                 }
 
                 $notification['invite_id'] = $invite->invite_id;
-                $notification['invite_choice'] = $invite->choice;
+                $notification['invite_choice'] = intval($invite->choice);
 
 
                 if($notification['origin_type'] == 'event'){
@@ -343,24 +343,26 @@ class UserController extends Controller
     //            $this->renderJSON($data);
     //            return;
 
-            if (isset($_GET['last_notification_id'])) {
-                $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
-            } else {
-                $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
+                if (isset($_GET['last_notification_id'])) {
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id < ' . $_GET['last_notification_id'] . ' ORDER BY notification_id DESC limit 10');
+                } else {
+                    $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' ORDER BY notification_id DESC limit 5');
+                }
+
+                if ($notifications) {
+                    //$data = array('success'=>true,'notifications'=>$notifications);
+
+                    $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                    $this->renderJSON($data);
+                    return;
+                } else {
+                    $data = array('success'=>true,'notifications'=>array());
+                    $this->renderJSON($data);
+                    return;
+                }
+
+
             }
-
-            if ($notifications) {
-                $this->renderJSON($this->get_notifications_data($user, $notifications));
-                return;
-            } else {
-                $data = array('success'=>true,'notifications'=>array());
-                $this->renderJSON($data);
-                return;
-            }
-
-
-        }
-
             else{
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user doesnt exist');
                 $this->renderJSON($data);
@@ -392,9 +394,9 @@ class UserController extends Controller
 
             $notifications = Notification::model()->findAllBySql('SELECT * FROM `notification` WHERE user_id = ' . $user->user_id . ' AND notification_id > ' . $last_notification_id . ' ORDER BY notification_id DESC limit 0,5');
             if ($notifications) {
-                $this->renderJSON($this->get_notifications_data($user, $notifications));
+                $data = array('success'=>true,'notifications'=>$this->get_notifications_data($user, $notifications));
+                $this->renderJSON($data);
                 return;
-
             } else {
                 $data = array('success'=>true,'notifications'=>array());
                 $this->renderJSON($data);

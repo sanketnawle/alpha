@@ -1234,6 +1234,29 @@ function fbar_ready(origin_id) {
 
 
 
+                //Convert dates from local to UTC
+//                var start_datetime = new_datetime(start_date + ' ' + start_time);
+//                var end_datetime = new_datetime(end_date + ' ' + end_time);
+//
+//
+//                start_datetime = local_to_utc(start_datetime);
+//                end_datetime = local_to_utc(end_datetime);
+//
+//                start_date = date_to_string(start_datetime);
+//                start_time = datetime_to_time_string(start_datetime);
+//
+//                end_date = date_to_string(end_datetime);
+//                end_time = datetime_to_time_string(end_datetime);
+//
+//
+//                console.log('UTC STARTTIME');
+//                console.log(start_datetime);
+//
+//                console.log('UTC ENDTIME');
+//                console.log(end_datetime);
+
+
+
                 post_data['event'] = {};
                 post_data['event']['title'] = event_title;
                 post_data['event']['start_date'] = (start_date) ? start_date : '';
