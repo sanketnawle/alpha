@@ -1362,7 +1362,6 @@ $(document).ready(function() {
                     }
 
                 }else{
-                    alert(data.message);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown)
@@ -1477,7 +1476,6 @@ $(document).ready(function() {
         var post_url = base_url + '/user/' + user_id + '/' + verb;
 
 
-        alert(post_url);
 
 
         var post_data = {user_id: user_id};
@@ -1524,7 +1522,6 @@ $(document).ready(function() {
                     }
 
                 } else {
-                    alert(JSON.stringify(response));
                 }
             }, 'json'
         );

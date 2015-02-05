@@ -21,8 +21,8 @@
 
         <title><?php echo $club->group_name; ?></title>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery.min.js'></script>
-            <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
-
+        <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui.custom.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
         <script src='<?php echo Yii::app()->getBaseUrl(true); ?>/js/jquery-ui-1.11.0/jquery-ui.min.js'></script>
         <script src="<?php echo Yii::app()->getBaseUrl(true); ?>/js/module/timezone_conversion.js"> </script>
 
@@ -626,21 +626,86 @@
                                 <div class="about_tab_header">
                                     <div class = "about_header_sentence no_underline">
                                         <p class = "about_box_headers">GROUP INFO</p>
-                                        <?php if($is_admin){ ?>
-                                        <div class = "float_right">          
-                                            <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit text</p>
-                                        </div>
-                                        <?php } ?>
+
+
                                         <div class = "group_info_divider">
                                             <hr role = "separator">
-                                            <div class = "group_info_divider_label" data-label = "description"> Description </div>
+                                            <div class = "group_info_divider_label" data-label = "description"> Title and Icon 
+                                                <?php if($is_admin){ ?>  
+                                                    <p id = "edit_club_name"><span class = "edit_icon small_icon_map"></span>Edit</p>
+                                                <?php } ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class = "about_header_body">
-                                        <div class = "about_header_data">
-                                            <p>To see this club's feed, events, and files, sign up now <span class = "non_member_join_pointer small_icon_map"></span></p>
-                                        </div> 
-                                    </div>     
+
+                                        <div class = "group_info_data">
+                                            <div class = "group_display_icon" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
+                                                <?php if($is_admin){ ?>  
+                                                    <a id = "edit_club_icon"><span class = "photo_edit_icon small_icon_map"></span>Update</a>
+                                                <?php } ?>
+                                            </div>
+                                            <h4 class = "group_name_text">
+                                                <?php echo $club->group_name; ?>
+                                            </h4>
+                                        </div>
+
+
+
+                                        <?php if($club->group_desc) { ?>
+
+                                        <div class = "group_info_divider half_divider">
+                                            <hr role = "separator">
+                                            <div class = "group_info_divider_label" data-label = "description"> Description 
+                                                <?php if($is_admin){ ?>  
+                                                    <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit</p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class = "group_info_data half_data open_look">
+                                            <?php echo $club->group_desc; ?>
+                                        </div>
+
+                                        <?php }else{ ?>
+                                            <?php if($is_admin){ ?> 
+                                                <div class = "group_info_divider half_divider">
+                                                    <hr role = "separator">
+                                                    <div class = "group_info_divider_label" data-label = "description"> 
+                                                        <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Add a description of this group</p>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+
+                                        <?php } ?>
+
+                                        <?php if($club->mission_statement) { ?>
+
+                                        <div class = "group_info_divider half_divider">
+                                            <hr role = "separator">
+                                            <div class = "group_info_divider_label" data-label = "mission"> Purpose 
+                                                <?php if($is_admin){ ?>  
+                                                    <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class = "group_info_data half_data open_look">
+                                            <?php echo $club->mission_statement; ?>
+                                        </div>
+
+                                        <?php }else{ ?>
+                                            <?php if($is_admin){ ?> 
+                                                <div class = "group_info_divider half_divider">
+                                                    <hr role = "separator">
+                                                    <div class = "group_info_divider_label" data-label = "mission"> 
+                                                        <p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>
+                                                    </div>
+                                                </div>
+                                                <div class = "group_info_data half_data open_look inline_editable">
+                                                    Give your group a 240-character purpose that describes what it will be used for. 
+                                                    <span class = "big_edit_icon">
+                                                    </span>
+                                                </div>
+                                            <?php } ?>
+                                        <?php } ?>                                        
+                                    </div>    
                                 </div>
 
                                 <?php }else{ ?>
@@ -662,9 +727,7 @@
                                 <?php } ?>
 
                                 <div class = "about_tab_middle">
-                                    
 
-                                </div>
 
                             </div>
 
