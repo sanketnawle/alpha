@@ -14,6 +14,8 @@ jQuery(document).ready(function(){
 
     jQuery(document).on('click','.invite_people_button', function(e){
 
+
+
         e.stopPropagation();
         var $invite_button = jQuery(this);
 
@@ -30,17 +32,42 @@ jQuery(document).ready(function(){
 
 
 
-        var name = $invite_input.attr('data-name');
-        var email = $invite_input.attr('data-email');
-        var id = $invite_input.attr('data-id');
-        var file_url = $invite_input.attr('data-file_url');
+        var name = $invite_input.attr('data-name') ? $invite_input.attr('data-name') : '';
+        var email = $invite_input.attr('data-email') ? $invite_input.attr('data-email') : '';
+        var id = $invite_input.attr('data-id') ? $invite_input.attr('data-id') : '';
+        var file_url = $invite_input.attr('data-file_url') ? $invite_input.attr('data-file_url') : '';
+
+
 
         if(id == '' || name == '' || email == ''){
 
             var $invite_popup = $invite_holder.find('#invite_popup');
             $invite_popup.removeClass('active');
 
-            $invite_input.addClass('error');
+            //Check if this email is valid email
+            if(input_string.indexOf('@nyu.edu') > -1){
+                //alert('SENDING EMAIL INVITE TO THIS FOOL');
+
+                var post_url = globals.base_url + '/sendUrlinqInviteEmail';
+
+
+                var post_data = {email: input_string, origin_type: globals.origin_type, origin_id: globals.origin_id};
+
+
+                $.post(
+                    post_url,
+                    post_data,
+                    function(response){
+                        alert(JSON.stringify(response));
+                    },'json'
+                );
+
+                return;
+            }else{
+                alert('invalid input');
+                $invite_input.addClass('error');
+                return;
+            }
 
         }
 
@@ -96,7 +123,17 @@ jQuery(document).ready(function(){
     }
 
 
-    jQuery(document).on('keyup','.invite_input',function(){
+    jQuery(document).on('keyup','.invite_input',function(event){
+
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            alert('You pressed a "enter" key');
+            $('.invite_people_button').click();
+            return;
+        }
+
+
+
         var $invite_input = jQuery(this);
 
 

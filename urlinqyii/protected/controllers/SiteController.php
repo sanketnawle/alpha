@@ -309,6 +309,100 @@ class SiteController extends Controller
     }
 
 
+
+
+    function actionSendUrlinqInviteEmailFunction(){
+
+        if(!isset($_POST['to_email']) || !isset($_POST['from_email']) || !isset($_POST['actor_name'])){
+            $data = array('success'=>false,'error_id'=>1, 'error_msg'=> 'all post data not set', 'post'=>$_POST);
+            $this->renderJSON($data);
+            return;
+        }
+
+        $actor_name = $_POST['actor_name'];
+        $to_email = $_POST['to_email'];
+        $from_email = $_POST['from_email'];
+
+
+        
+
+
+
+        if (ERunActions::runBackground())
+        {
+
+            ERunActions::runScript('send_invite_email',$params=array('to_email'=>$to_email, 'from_email'=>$from_email, 'actor_name'=>$actor_name),$scriptPath=null);
+
+            Yii::log('Sending urlinq invite to ' . $to_email);
+
+            $data = array('success'=>true,'error_id'=>'run');
+            $this->renderJSON($data);
+            return;
+        }
+        else
+        {
+
+            $data = array('success'=>false,'error_id'=>'error running in background');
+            $this->renderJSON($data);
+            return;
+
+        }
+
+
+    }
+
+
+
+
+
+
+    public function actionSendUrlinqInviteEmail(){
+
+        if(!isset($_POST['email']) || !isset($_POST['origin_type']) || !isset($_POST['origin_id'])){
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required data not set');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $user = $this->get_current_user();
+
+        if(!$user){
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'user not defined');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+
+
+        $email = $_POST['email'];
+        $origin_type = $_POST['origin_type'];
+        $origin_id = $_POST['origin_id'];
+
+
+        if(!$this->valid_email($email)){
+            $data = array('success'=>false,'error_id'=>3,'error_msg'=>'Invalid email address');
+            $this->renderJSON($data);
+            return;
+        }
+
+
+        $actor_name = $user->firstname . ' ' . $user->lastname;
+
+        $from_email = 'team@urlinq.com';
+
+
+        ERunActions::touchUrl(Yii::app()->getBaseUrl(true) . '/site/sendUrlinqInviteEmailFunction',$postData=array('to_email'=>$email,'from_email'=>$from_email, 'actor_name'=>$actor_name),$contentType=null);
+
+
+        $data = array('success'=>true);
+        $this->renderJSON($data);
+        return;
+    }
+
+
+
+
     public function actionSendVerificationEmail(){
         if(!isset($_POST['school_id']) || !isset($_POST['department_id'])){
             $data = array('success'=>false,'error_id'=>1);
