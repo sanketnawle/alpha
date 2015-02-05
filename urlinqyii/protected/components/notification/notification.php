@@ -10,12 +10,14 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-//This is breaking shit
-//
-//
-//    include_once 'iOSPushNotifications.php';
-//    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
-//    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
+try {
+
+
+    include_once 'iOSPushNotifications.php';
+    $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
+    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
+
+}
 }
 
 function get_notification_text($noti, $user) {
