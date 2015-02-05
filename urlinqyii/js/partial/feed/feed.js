@@ -455,6 +455,7 @@ function ready(globals){
             source = $('#embedly_photo_template').html();
         }
         var template = Handlebars.compile(source);
+
         if(globals.profile_open){
             $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
         }else{

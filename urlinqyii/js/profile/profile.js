@@ -376,6 +376,7 @@ $(document).ready(function() {
                 post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
 
             }
+            add_embedly_to_replies(post['replies']);
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -397,11 +398,58 @@ $(document).ready(function() {
         });
     }
 
+    function add_embedly_to_replies(replies){
+        $.each(replies,function(index,reply){
+            if(findUrlInPost(reply['reply_msg'])) {
+                var url = findUrlInPost(reply['reply_msg']);
+                //  post['replies'][index]['reply_msg']=reply['reply_msg'].replace(url,'<a href="'+url+'">'+url+'</a>');
+                $.embedly.oembed(url,{
+                    key:'94c0f53c0cbe422dbc32e78d899fa4c5',
+                    query:{
+                        maxwidth: 400,
+                        maxheight: 400,
+                        chars: 100
+                    }}).done(function(results){
+                        if(!results.invalid){
+                            embedly_info = results[0];
+                            console.log(embedly_info);
+                            append_embedly(reply['reply_id'],embedly_info);
+                        }
+                    }
+                );
+            }
+        });
+    }
+    function append_embedly(reply_id, embedly_info){
+        console.log('append embedly to reply '+reply_id);
+        var source;
+
+
+
+        if(embedly_info.type == "link"){
+            source = $('#embedly_link_template').html();
+        }else if(embedly_info.type == "video"){
+            source = $('#embedly_video_template').html();
+
+        }else if(embedly_info.type == "photo"){
+            source = $('#embedly_photo_template').html();
+        }
+        var template = Handlebars.compile(source);
+        console.log(reply_id);
+        console.log(globals.profile_open);
+        if(globals.profile_open){
+            $('#profile_wrapper').find('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }else{
+            $('.comment_msg[id='+reply_id+']').append(template(embedly_info));
+        }
+
+    }
     function render_post_with_url(single_post){
 
         single_post.embed_link = findUrlInPost();
 
     }
+
 
     /*function profile_render_post(single_post){
         console.log('asdf');
