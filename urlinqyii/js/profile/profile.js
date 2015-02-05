@@ -788,7 +788,12 @@ $(document).ready(function() {
     });
     $(document).on('click','.delete_field_button',function(){
         $(this).prev('span.ui-helper-hidden-accessible').remove();
-        $(this).prev('input.edit_field').remove();;
+        $(this).prev('input.edit_field').remove();
+        if($(this).closest('.info_section').attr('id') == "major_section"){
+            major_changed = true;
+        }else if($(this).closest('.info_section').attr('id') == "minor_section"){
+            minor_changed = true;
+        }
         $(this).remove();
     });
     //add showcase code
