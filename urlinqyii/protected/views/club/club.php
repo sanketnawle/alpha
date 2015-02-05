@@ -742,19 +742,19 @@
 
                                         <?php } ?>
 
-                                        <?php if($club->mission_statement) { ?>
+                                        <?php if($club->group_desc) { ?>
 
-                                        <div class = "group_info_divider half_divider">
-                                            <hr role = "separator">
-                                            <div class = "group_info_divider_label" data-label = "mission"> Purpose 
-                                                <?php if($is_admin){ ?>  
-                                                    <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>
-                                                <?php } ?>
+                                            <div class = "group_info_divider half_divider">
+                                                <hr role = "separator">
+                                                <div class = "group_info_divider_label" data-label = "mission"> Purpose
+                                                    <?php if($is_admin){ ?>
+                                                        <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class = "group_info_data half_data open_look">
-                                            <?php echo $club->mission_statement; ?>
-                                        </div>
+                                            <div class = "group_info_data half_data open_look">
+                                                <?php echo $club->mission_statement; ?>
+                                            </div>
 
                                         <?php }else{ ?>
                                             <?php if($is_admin){ ?> 
