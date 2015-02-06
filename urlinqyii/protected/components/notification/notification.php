@@ -17,6 +17,8 @@ try {
     $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
     notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
 
+} catch (Exception $e) {
+
 }
 }
 
