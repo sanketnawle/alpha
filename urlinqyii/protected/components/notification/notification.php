@@ -26,8 +26,8 @@ try {
 
 function get_notification_text($noti, $user) {
 
-    $noti_data = get_notifications_data($user, array($noti));
-    $notification = $noti_data['notifications'][0];
+    $noti_data = get_notifications_data($user, $noti);
+    $notification = $noti_data['notification'];
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
@@ -69,11 +69,10 @@ function get_notification_text($noti, $user) {
 }
 
 
-function get_notifications_data($user, $notifications){
+function get_notifications_data($user, $notification){
 
 
         $notifications_new = array();
-        foreach ($notifications as $notification) {
             $notification = model_to_array($notification);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
@@ -235,8 +234,8 @@ function get_notifications_data($user, $notifications){
                 return $data;
             }
             array_push($notifications_new, $notification);
-        }
-        $data = array('success'=>true,'notifications'=>$notifications_new);
+        
+        $data = array('success'=>true,'notification'=>$notifications_new);
         renderJSON($data);
         return;
     }
