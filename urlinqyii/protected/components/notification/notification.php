@@ -13,10 +13,10 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 try {
 
 
-    include_once 'iOSPushNotifications.php';
+    /*include_once 'iOSPushNotifications.php';
     $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
     $message = get_notification_text($notification, $user);
-    notifyAlliOSDevicesForUserID($user_id, $message);
+    notifyAlliOSDevicesForUserID($user_id, $message);*/
 
 } catch (Exception $e) {
 
