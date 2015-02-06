@@ -15,7 +15,8 @@ try {
 
     include_once 'iOSPushNotifications.php';
     $user = User::model()->find('user_id=:id', array(':id'=>$notification->user_id));
-    notifyAlliOSDevicesForUserID($user_id, get_notification_text($notification, $user));
+    $message = get_notification_text($notification, $user);
+    notifyAlliOSDevicesForUserID($user_id, $message);
 
 } catch (Exception $e) {
 
@@ -24,7 +25,7 @@ try {
 
 function get_notification_text($noti, $user) {
 
-    $noti_data = get_notifications_data(array($noti), $user);
+    $noti_data = get_notifications_data($user, array($noti));
     $notification = $noti_data['notifications'][0];
     $origin = $notification['origin'];
     $type = $noti->type;
