@@ -14,9 +14,9 @@ try {
 
 
     include_once 'iOSPushNotifications.php';
-    $notification_to_send = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
+    $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $message = get_notification_text($notification_to_send, $user);
+    $message = get_notification_text($notification, $user);
     notifyAlliOSDevicesForUserID($user_id, $message);
 
 } catch (Exception $e) {
@@ -26,8 +26,8 @@ try {
 
 function get_notification_text($noti, $user) {
 
-    $noti_data = get_notifications_data($user, $noti);
-    $notification = $noti_data['notification'];
+    $noti_data = get_notifications_data($user, array($noti));
+    $notification = $noti_data['notifications'][0];
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
@@ -69,10 +69,12 @@ function get_notification_text($noti, $user) {
 }
 
 
-function get_notifications_data($user, $notification){
+function get_notifications_data($user, $notifications){
 
 
         $notifications_new = array();
+        foreach ($notifications as $notification) {
+            $notification = models_to_array($notification);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
             $origin_id = $notification['origin_id'];
@@ -233,8 +235,8 @@ function get_notifications_data($user, $notification){
                 return $data;
             }
             array_push($notifications_new, $notification);
-        
-        $data = array('success'=>true,'notification'=>$notifications_new);
+        }
+        $data = array('success'=>true,'notifications'=>$notifications_new);
         renderJSON($data);
         return;
     }
