@@ -74,7 +74,7 @@ function get_notifications_data($user, $notifications){
 
         $notifications_new = array();
         foreach ($notifications as $notification) {
-            $notification = models_to_array($notification);
+            $notification = model_to_array($notification);
             $notification_type = $notification['type'];
             $origin = $notification['origin_type'];
             $origin_id = $notification['origin_id'];
