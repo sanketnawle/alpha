@@ -143,7 +143,7 @@ if($ios_notification){
 
         public function actionGetUserPictureID() {
 
-            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id'])) {
+            if (!isset($_GET['user_id']) && !isset($_GET['department_id']) && !isset($_GET['class_id']) && !isset($_GET['club_id']) && !isset($_GET['school_id'])) {
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'required data not set');
                 $this->renderJSON($data);
                 return;
@@ -164,6 +164,11 @@ if($ios_notification){
                 }
             } else if (isset($_GET['club_id'])) {
                 $thing = Group::model()->find('group_id=:id', array(':id'=>$_GET['club_id']));
+                if ($thing) {
+                    $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
+                }
+            } else if (isset($_GET['school_id'])) {
+                $thing = Group::model()->find('school_id=:school_id', array(':school_id'=>$_GET['school_id']));
                 if ($thing) {
                     $pictureFile = File::model()->find("file_id=:file_id",array(":file_id"=>$thing->picture_file_id));
                 }

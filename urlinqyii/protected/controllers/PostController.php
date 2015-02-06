@@ -402,6 +402,15 @@ class PostController extends Controller
                                         send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
+                                /* not sure if this should be added
+                                //Send a notification to everyone following this department
+                                foreach($department->followers as $department_follower){
+                                    if($department_follower->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$department_follower->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+                                */
+
 
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');

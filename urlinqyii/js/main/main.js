@@ -576,7 +576,85 @@ $(document).ready(function(){
         $(".point").css({"left":"40px","font-size":"13px"})
     }
 
+    $(document).on('click','#edit_club_description',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editDescription";
+            var description = $('#group_description_input').val();
+            var post_data = {description: description, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(description.length){
+                            $edit_button.parent().html('Description <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_description').text(description);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>');
+                            $('#group_description').text("Provide a description of this group.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
 
+            $('#group_description_input').hide();
+            $('#group_description').fadeIn(250);
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_description').hide();
+            $('#group_description_input').fadeIn(250);
+            var description = $.trim($('#group_description').text());
+            if(description != "Provide a description of this group.") {
+                $('#group_description_input').val(description);
+            }
+            $edit_button.addClass('editing');
+        }
+    });
+    $(document).on('click','#edit_club_mission',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editMission";
+            var mission = $('#group_mission_input').val();
+            var post_data = {mission: mission, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(mission.length){
+                            $edit_button.parent().html(' Purpose <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_mission').text(mission);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>');
+                            $('#group_mission').text("Give your group a 240-character purpose that describes what it will be used for.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
+            $('#group_mission_input').hide();
+            $('#group_mission').fadeIn(250);
+
+
+
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_mission').hide();
+            $('#group_mission_input').fadeIn(250);
+            var mission = $.trim($('#group_mission').text());
+            if(mission != "Give your group a 240-character purpose that describes what it will be used for."){
+                $('#group_mission_input').val(mission);
+            }
+
+            $edit_button.addClass('editing');
+        }
+    });
 
 
 

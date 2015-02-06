@@ -721,10 +721,12 @@
                                                 <?php } ?>
                                             </div>
                                         </div>
-                                        <div class = "group_info_data half_data open_look">
-                                            <?php echo $club->group_desc; ?>
+                                        <div id="group_description_holder">
+                                            <div id="group_description" class = "group_info_data half_data open_look">
+                                                <?php echo $club->group_desc; ?>
+                                            </div>
+                                            <textarea id="group_description_input" class="group_textarea" maxlength="240" placeholder="Provide a description of this group." style="display:none"></textarea>
                                         </div>
-
                                         <?php }else{ ?>
                                             <?php if($is_admin){ ?> 
                                                 <div class = "group_info_divider half_divider">
@@ -733,16 +735,19 @@
                                                         <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>
                                                     </div>
                                                 </div>
-                                                <div class = "group_info_data half_data open_look inline_editable">
-                                                    Provide a description of this group. 
-                                                    <span class = "big_edit_icon">
-                                                    </span>
-                                                </div>                                                
+                                                <div id="group_description_holder">
+                                                    <div id="group_description" class = "group_info_data half_data open_look inline_editable">
+                                                        Provide a description of this group.
+                                                        <span class = "big_edit_icon">
+                                                        </span>
+                                                    </div>
+                                                    <textarea id="group_description_input" class="group_textarea" maxlength="240" placeholder="Provide a description of this group." style="display:none;"></textarea>
+                                                </div>
                                             <?php } ?>
 
                                         <?php } ?>
 
-                                        <?php if($club->group_desc) { ?>
+                                        <?php if($club->mission_statement) { ?>
 
                                             <div class = "group_info_divider half_divider">
                                                 <hr role = "separator">
@@ -752,10 +757,12 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <div class = "group_info_data half_data open_look">
-                                                <?php echo $club->mission_statement; ?>
+                                            <div id="group_mission_holder">
+                                                <div id="group_mission" class = "group_info_data half_data open_look">
+                                                    <?php echo $club->mission_statement; ?>
+                                                </div>
+                                                <textarea id="group_mission_input" class="group_textarea" maxlength="240" placeholder="Give your group a 240-character purpose that describes what it will be used for." style="display:none"></textarea>
                                             </div>
-
                                         <?php }else{ ?>
                                             <?php if($is_admin){ ?> 
                                                 <div class = "group_info_divider half_divider">
@@ -764,12 +771,15 @@
                                                         <p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>
                                                     </div>
                                                 </div>
-                                                <div class = "group_info_data half_data open_look inline_editable">
-                                                    Give your group a 240-character purpose that describes what it will be used for. 
-                                                    <span class = "big_edit_icon">
-                                                    </span>
+                                                <div id="group_mission_holder">
+                                                    <div id="group_mission" class = "group_info_data half_data open_look inline_editable">
+                                                        Give your group a 240-character purpose that describes what it will be used for.
+                                                        <span class = "big_edit_icon">
+                                                        </span>
+                                                    </div>
+                                                    <textarea id="group_mission_input" class="group_textarea" maxlength="240" placeholder="Give your group a 240-character purpose that describes what it will be used for." style="display:none"></textarea>
                                                 </div>
-                                            <?php } ?>
+                                           <?php } ?>
                                         <?php } ?>                                        
                                     </div>    
                                 </div>
