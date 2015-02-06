@@ -6,7 +6,7 @@
         public function actionClassesForSchool() {
 
             $user = $this->get_current_user($_GET);
-
+actionGetUserPictureID
             if (!$user) {
                 $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'user not logged in.');
                 $this->renderJSON($data);
