@@ -192,6 +192,14 @@ jQuery(document).ready(function(){
 
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
+            //Check if the dropdown has any users listed
+            //If so, set the field to the values of the first user
+            var $first_invite_holder = $("#invite_popup").children().first();
+            if($first_invite_holder.length){
+                $first_invite_holder.click();
+            }
+
+
             $('.invite_people_button').click();
             return;
         }
@@ -276,6 +284,8 @@ jQuery(document).ready(function(){
     });
 
 
+
+
     jQuery(document).on('click', '.invite_user_holder', function(e){
 
         e.stopPropagation();
@@ -283,9 +293,17 @@ jQuery(document).ready(function(){
         var $invite_user_holder = jQuery(this);
         $last_clicked_element = $invite_user_holder;
 
+        update_invite_input_data($invite_user_holder);
 
 
 
+    });
+
+
+
+    //Takes in a $invite_user_holder object
+    //and sets that data to the invite input
+    function update_invite_input_data($invite_user_holder){
         var user_id = $invite_user_holder.attr('data-id');
         var user_name = $invite_user_holder.attr('data-name');
         var user_email = $invite_user_holder.attr('data-email');
@@ -307,15 +325,7 @@ jQuery(document).ready(function(){
         var $invite_popup = jQuery('#invite_popup');
         $invite_popup.removeClass('active');
         $invite_popup.empty();
-
-
-
-
-
-
-
-
-    });
+    }
 
 
 

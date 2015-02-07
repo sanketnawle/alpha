@@ -227,9 +227,12 @@ class EventController extends Controller
         }
 
         $query = $_GET['q'];
+        $query_lowercased = strtolower($query);
         $user_id = $user->user_id;
 
-        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query ."%') LIMIT 5");
+
+
+        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE '%" . $query_lowercased ."%' LIMIT 5");
 
         $results = $this->add_event_data($this->models_to_array($events), $user);
 
@@ -237,15 +240,17 @@ class EventController extends Controller
 
     }
 
-        public function actionAttendees(){
-            //$user = $this->get_current_user();
-            $event_id = $_GET['id'];
-            //$date = $_GET['date'];
-            //user_id=:user_id AND  //':user_id'=>1,
+    public function actionAttendees(){
+        //$user = $this->get_current_user();
+        $event_id = $_GET['id'];
+        //$date = $_GET['date'];
+        //user_id=:user_id AND  //':user_id'=>1,
+
+        $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
 
         if ($event) {
 
-            $event = Event::model()->find('event_id=:event_id',array('event_id'=>$event_id));
+
 
             $data = array('success'=>true,'attendees'=>$event->attendees);
 
@@ -365,6 +370,11 @@ class EventController extends Controller
 
 
 
+//        if($origin_type == 'club'){
+//            $origin_type = 'group';
+//        }
+
+
 
 
 
@@ -388,7 +398,18 @@ class EventController extends Controller
             $events = array();
 
             if($origin_type != 'user'){
-                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+
+                //Get the events that this user is an event_user of
+                $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.end_date >= '" . $start_date . "' AND event.end_date <= '" . $end_date . "' AND event.origin_type = '" . $origin_type . "' AND event.origin_id = " . $origin_id)->queryAll();;
+
+                //Get the events that this
+                //$events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
+
+
+                $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND end_date >= '" . $start_date . "' AND end_date <= '" . $end_date . "' AND origin_type = '" . $origin_type . "' AND origin_id = " . $origin_id)->queryAll();
+
+                $events = $this->add_event_data(array_merge($events,$events_attending), $user);
+
             }else{
                 $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
             }

@@ -8,7 +8,12 @@ class InviteController extends Controller
 
 
 
-
+    function delete_invite_notification($invite, $user){
+        $notification = Notification::model()->find("type='invite' and user_id=:user_id and origin_id=:origin_id and origin_type=:origin_type", array(':user_id'=>$user->user_id, ':origin_id'=>$invite->origin_id, ':origin_type'=>$invite->origin_type));
+        if($notification){
+            $notification->delete(false);
+        }
+    }
 
 
 
@@ -49,6 +54,8 @@ class InviteController extends Controller
         include_once 'color/color.php';
 
 
+
+
         if($invite->origin_type == 'event'){
             //Add this event to this users calendar
             $event = Event::model()->find('event_id=:id', array(':id'=>$invite->origin_id));
@@ -67,6 +74,15 @@ class InviteController extends Controller
             if($event_user->save(false)){
                 $invite->choice = 1;
                 $invite->save(false);
+
+
+                $this->delete_invite_notification($invite, $user);
+
+
+
+
+
+                $invite->delete(false);
 
                 $return_data = array('success'=>true, 'msg'=>'user is now attending event ' . $event_user->event_id);
                 $this->renderJSON($return_data);
@@ -97,6 +113,11 @@ class InviteController extends Controller
                 $invite->choice = 1;
                 $invite->save(false);
 
+                $this->delete_invite_notification($invite, $user);
+
+
+                $invite->delete(false);
+
                 $return_data = array('success'=>true, 'msg'=>'user is now attending group ' . $group_user->group_id);
                 $this->renderJSON($return_data);
                 return;
@@ -123,6 +144,11 @@ class InviteController extends Controller
             if($class_user->save(false)){
                 $invite->choice = 1;
                 $invite->save(false);
+
+                $this->delete_invite_notification($invite, $user);
+
+
+                $invite->delete(false);
 
                 $return_data = array('success'=>true, 'msg'=>'user is now attending class ' . $class_user->class_id);
                 $this->renderJSON($return_data);

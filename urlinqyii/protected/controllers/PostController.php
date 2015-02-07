@@ -208,7 +208,7 @@ class PostController extends Controller
                         $event->description = $_POST['post']['event']['description'];
                         $event->event_type = 'event';
                         $event->user_id = $user->user_id;
-                        $event->origin_type = $_POST['post']['event']['origin_id'];
+                        $event->origin_type = $_POST['post']['event']['origin_type'];
                         $event->origin_id = $_POST['post']['event']['origin_id'];
                         $event->start_date = $_POST['post']['event']['start_date'];
                         $event->end_date = $_POST['post']['event']['end_date'];
@@ -289,7 +289,7 @@ class PostController extends Controller
                         $event->start_time = $now->format('H:i:s');
                         $event->end_time = $_POST['post']['opportunity']['end_time'];
                         $event->location = '';
-                        $event->all_day = '';
+                        $event->all_day = 0;
 
                         $event->save(false);
 
@@ -402,6 +402,15 @@ class PostController extends Controller
                                         send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
+                                /* not sure if this should be added
+                                //Send a notification to everyone following this department
+                                foreach($department->followers as $department_follower){
+                                    if($department_follower->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$department_follower->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+                                */
+
 
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');

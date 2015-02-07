@@ -58,6 +58,7 @@ $(document).ready(function(){
 
             }else{
                 console.log('Error getting notifications.');
+                console.log(json_data);
             }
         });
     }
@@ -198,7 +199,7 @@ $(document).ready(function(){
 
 
 
-    $(document).on('click', '.accept_invite_button', function(){
+    $(document).on('click', 'div#notifications div.accept_invite_button', function(){
         var $accept_invite_button = $(this);
 
         var origin_type = $accept_invite_button.attr('data-origin_type');
@@ -215,7 +216,18 @@ $(document).ready(function(){
             post_url,
             post_data,
             function (response){
-                //alert(JSON.stringify(response));
+                console.log('ACCEPT INVITE BUTTON RESPONSE');
+                console.log(response);
+
+
+                if(response['success']){
+                    $accept_invite_button.closest('.notification').remove();
+
+
+                    window.location.replace(globals.base_url + '/' + origin_type + '/' + origin_id);
+                }else{
+
+                }
             }, 'json'
         );
 
