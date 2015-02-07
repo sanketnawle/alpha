@@ -1329,7 +1329,7 @@ if($ios_notification){
 
             $user = User::model()->find("user_id=:user_id",array(":user_id"=>$user_id));
             if($user){
-                $data = array('success'=>true,'clubs'=>$user->groups);
+                $data = array('success'=>true,'clubs'=>$user->clubs);
                 $this->renderJSON($data);
                 return;
             }else{
