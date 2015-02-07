@@ -1,18 +1,37 @@
 .topbar {
-    font-family: 'Open Sans'}
+    font-family: 'Open Sans';
+    }
+    
 .topbar > #topbar_responsive_holder .right .notify .notify-window {
     position: absolute;
-    top: 100%;
+    top: 104%;
     right: auto;
     bottom: auto;
     left: -84px;
     z-index: 10;
+    margin-left: 4px;
     width: 360px;
     /* opacity: 0; */
     /* height: 0; */
     overflow: hidden;
     padding: 0 5px 5px;
 }
+
+.noti_header_hint{
+    border-bottom: 2px solid #e6e5e6;
+
+    display: block;
+    font-family: Avenir;
+    font-size: 11.5px;
+    text-align: justify;
+    height: 41px;
+    color: #999;
+    padding-right: 52px;
+    padding-top: 9px;
+    width: 259px;
+    line-height: 17px;
+}
+
 .topbar > #topbar_responsive_holder .right .notify .notify-window .wedge {
     position: absolute;
     top: 0;
@@ -48,14 +67,16 @@
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .header {
     text-align: center;
-    padding: 12px 14px 10px;
-    border-bottom: 2px solid #e6e5e6;
+    padding: 18px 14px 15px;
     font-family: 'Avenir';
     font-weight:  500;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    font-size: 14px;
+    font-size: 14.8px;
     color: #575757;
     text-transform: capitalize;
+    font-family: Avenir;
+    text-transform: uppercase;
+    float: left;
 }
 .topbar > #topbar_responsive_holder .right .notify .notify-window .window .noti-scrollable {
     overflow: auto;
@@ -252,7 +273,7 @@ box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(12, 232, 152, 0.5);
     left:  -186px;
 }
 .topbar > #topbar_responsive_holder .right .notify.board .notify-window .wedge {
-    right: 117px;
+    right: 44px;
 }
 .topbar > #topbar_responsive_holder .right .notify.board .notify-window .window .noti-scrollable {
     bottom: 0;
