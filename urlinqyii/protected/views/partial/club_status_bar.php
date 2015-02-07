@@ -183,6 +183,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon">
+                            <input id="post_anon_checkbox" type="checkbox">Anonymous
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
