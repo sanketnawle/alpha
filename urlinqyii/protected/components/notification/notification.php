@@ -20,7 +20,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
 function get_notification_text($noti, $user) {
 
-    $notification = get_notification_data($user, $noti));
+    $notification = get_notification_data($user, $noti);
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];

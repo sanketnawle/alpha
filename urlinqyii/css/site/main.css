@@ -216,6 +216,10 @@ div.about_box{
     padding-bottom: 8px;
 }
 
+div.about_box div.slimScrollDiv{
+    padding-bottom:10px;
+}
+
 div.about_box h5{
     
     font-family: Avenir; font-size: 14px; background-color: transparent;  color: #999; margin-top: 0;
@@ -1600,6 +1604,10 @@ textarea:focus:-moz-placeholder {
         display:block;
     }
 
+    .topbar .center form{
+        
+    }
+
     #content_panel.group_responsiveness{
         margin-left: 280px;
     }
@@ -1611,7 +1619,7 @@ textarea:focus:-moz-placeholder {
     }
 
     body#body_home .topbar #topbar_responsive_holder{
-        padding-right: 150px!important;
+        padding-right: 186px!important;
     }    
     /*.topbar > #topbar_responsive_holder > .left{
         margin-left:0px!important;
@@ -1630,6 +1638,9 @@ textarea:focus:-moz-placeholder {
 
     body#body_home #right_panel.group_responsiveness{
         display:none!important;
+    }
+    .topbar .center form{
+
     }
 
     #body_home #content_panel{
@@ -1657,12 +1668,19 @@ textarea:focus:-moz-placeholder {
     body.body_group .topbar > #topbar_responsive_holder > .right{
         float:none;
     }
+    .topbar .center form{
+
+    }
 }
 
 @media screen and (max-width: 1090px) {
     #left_panel{
         display:none!important;
     }
+    .topbar .center form{
+
+    }
+
     #content_panel{
         width:100%!important;
         overflow-x:hidden!important;
@@ -1724,7 +1742,7 @@ textarea:focus:-moz-placeholder {
     }  
     body{
         overflow-x:scroll!important;
-        min-width:880px;
+        min-width: 855px;
     }    
 
 }
@@ -1736,6 +1754,9 @@ textarea:focus:-moz-placeholder {
     }
     body#body_home div#wrapper, body#body_group div#wrapper{
         padding-top: 0px!important;
+    }
+    .topbar .center form{
+
     }
 }
 

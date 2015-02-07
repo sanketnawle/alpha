@@ -371,7 +371,7 @@ function ready(globals){
         }
 
 
-        var anonymous = false;
+        var anonymous = $reply_form.find('.check_wrap .flat7b').hasClass('flat_checked') ? 1:0;
         var reply_user_id = globals.user_id;
         var $reply_count = $reply_form.closest(".post").find('.reply_number');
 

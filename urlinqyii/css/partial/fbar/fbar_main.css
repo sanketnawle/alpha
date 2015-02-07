@@ -741,6 +741,13 @@ em.down_arrow {
 
 /* FORM TYPE SELECTORS TO SHOW DIFFERENT POST TYPE TEMPLATES */
 
+#post_anon{
+    display: inline-block;
+    float: left;
+    position: relative;
+    top: 10px;
+}
+
 #post_anonymously {
     display: inline-block;
 
