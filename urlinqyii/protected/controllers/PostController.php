@@ -1061,11 +1061,21 @@ class PostController extends Controller
 
         $post_id = $_GET['post_id'];
 
-        $sql = "SELECT * FROM reply WHERE school_id = $post_id;";
+        $sql = "SELECT * FROM reply WHERE post_id = $post_id;";
 
         $replies = Reply::model()->findAllBySql($sql);
 
-        $data = array('success'=>true,'replies'=>$replies);
+        $replies_with_users = array();
+
+        foreach ($replies as $reply) {
+
+            $reply = $this->model_to_array($reply);
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply['user_id']));
+            $reply['user_info'] = $reply_user;
+            array_push($replies_with_users, $reply);
+        }
+
+        $data = array('success'=>true,'replies'=>$replies_with_users);
         $this->renderJSON($data);
         return;
 
