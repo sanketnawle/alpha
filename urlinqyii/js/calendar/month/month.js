@@ -129,7 +129,7 @@ jQuery(document).ready(function(){
 
         var $window = $(window);
         var windowsize = $window.width();
-        var click_x_difference = windowsize - event.pageX;
+        var click_x_difference = event.pageX;
 
         //Add the event_id to the inspect_event_popup_month for easy access
         $create_month_day_event_popup.attr('data-date', this_date);
@@ -140,7 +140,7 @@ jQuery(document).ready(function(){
                 $create_month_day_event_popup.css('top', event.pageY + 15);
                 jQuery($create_month_day_event_popup).addClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_month_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_month_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -151,7 +151,7 @@ jQuery(document).ready(function(){
                 $create_month_day_event_popup.css('top', event.pageY - 230);
                 jQuery($create_month_day_event_popup).removeClass("top_position");
                 if(click_x_difference <= 187){
-                    $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                    $create_month_day_event_popup.css('right', event.pageX - 328.5);
                     jQuery($create_month_day_event_popup).addClass("right_position");
                 }
                 else{
@@ -177,7 +177,7 @@ jQuery(document).ready(function(){
                     $create_month_day_event_popup.css('top', event.pageY + 15);
                     jQuery($create_month_day_event_popup).addClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_month_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_month_day_event_popup).addClass("right_position");
                     }
                     else{
@@ -188,7 +188,7 @@ jQuery(document).ready(function(){
                     $create_month_day_event_popup.css('top', event.pageY - 230);
                     jQuery($create_month_day_event_popup).removeClass("top_position");
                     if(click_x_difference <= 187){
-                        $create_month_day_event_popup.css('left', event.pageX - 328.5);
+                        $create_month_day_event_popup.css('right', event.pageX - 328.5);
                         jQuery($create_month_day_event_popup).addClass("right_position");
                     }
                     else{
