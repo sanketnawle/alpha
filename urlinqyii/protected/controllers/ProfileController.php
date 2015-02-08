@@ -1243,7 +1243,8 @@ class ProfileController extends Controller
     public function  actionReturnFbar(){
         if(isset($_GET['user'])){
             $user = User::model()->findByPk($_GET['user']);
-            $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'pg_src'=>'profile.html','target_type'=>'user'));
+            $is_admin = $user->user_id == $this->get_current_user_id();
+            $this->renderPartial('/partial/profile_status_bar',array('user'=>$this->get_current_user(),'origin_type'=>'user','origin_id'=>$user->user_id,'is_admin'=>$is_admin));
         }
 
     }

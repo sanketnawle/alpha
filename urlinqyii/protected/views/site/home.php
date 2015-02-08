@@ -83,7 +83,7 @@
                             <div id = "feed_column" class = "feed_column_home">
                                 <div id = "stream_holder" class = "stream_holder_home">
                                     <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id )); ?>
+                                        <?php echo $this->renderPartial('/partial/question_status_bar',array('user'=>$user,'origin_type'=>'user','origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
                                     <div id = "filter_wrapper" class = "filter_bar filter_bar_home">
@@ -101,7 +101,7 @@
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed', 'origin_type'=>'user', 'origin_id'=>$user->user_id)); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/home/feed', 'origin_type'=>'user', 'origin_id'=>$user->user_id ,'is_admin'=>false)); ?>
                                     </div>
 
 

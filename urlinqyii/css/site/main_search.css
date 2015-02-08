@@ -11,6 +11,9 @@ a{
 	text-decoration: none;
 }
 
+#top_search_bar
+{color:#999}
+
 div.page_search .black_background_row{
     left: 0px;
     display:none;

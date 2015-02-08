@@ -16,12 +16,21 @@ display:none;
 }
 
 body.body_group #topbar_responsive_holder{
-max-width:1450px;
 }
 
 body.body_group .topbar > #topbar_responsive_holder > .right{
-    float:right;
-    margin-left:110px;
+    float: none;
+    margin-left: 176px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 155px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 40px;
+
 }
 
 .search_result_icon{
@@ -102,9 +111,9 @@ border: 1px solid rgb(255, 112, 0);
 display:inline-block;
 width: 15px;
 height: 27px;
-position: relative;
-top: -10px;
-left: -2px;
+position: absolute;
+top: 10px;
+left: 22px;
 border-radius: 2px;
 }
 
@@ -680,6 +689,41 @@ border-radius: 4px;}
     opacity: .4;
 }
 
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    margin-left: 23px;
+
+}
+
+#body_calendar .topbar > #topbar_responsive_holder > .center{
+    margin-left:0px!important;
+}
+#body_calendar .topbar > #topbar_responsive_holder > .right{
+    position:absolute;
+    right:193px;
+}
+
+#body_calendar .topbar .topbar_responsive_holder{
+
+}
+
 body .topbar div.calendar_link{
     position: absolute;
 
@@ -744,7 +788,8 @@ body#body_calendar .topbar div.calendar_link{
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{}
-body.body_group .topbar > #topbar_responsive_holder > .right{}
+body.body_group .topbar > #topbar_responsive_holder > .right{
+}
 
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{}
@@ -765,6 +810,11 @@ body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{}
 body.body_group .topbar > #topbar_responsive_holder > .right{}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+
+
 }
 
 @media(max-width:1330px){
@@ -782,13 +832,33 @@ body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{}
 .topbar .center form{}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px!important;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
 }
 
 @media(max-width:1315px){
 #topbar_responsive_holder{
     padding-right: 186px;
 }
-
+.body_searchpage #right_panel{
+    display: none!important;
+}
 .topbar > #topbar_responsive_holder > .left{}
 .topbar > #topbar_responsive_holder > .right{}
 .topbar > #topbar_responsive_holder > .center{}
@@ -806,15 +876,61 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 .topbar > #topbar_responsive_holder > div.right{
 }
 
-.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 294px;
+}
 .topbar > #topbar_responsive_holder > .right{}
 .topbar > #topbar_responsive_holder > .center{}
 body .topbar div.calendar_link{}
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
-body.body_group .topbar > #topbar_responsive_holder > .center{}
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 168px!important;
+}
 .topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none; 
+    margin-left: 177px; };
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 0px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: right;
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: -18px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 156px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
+
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{}
+
 }
 
 @media screen and (max-width: 1298px) {
@@ -838,15 +954,42 @@ body .topbar div.calendar_link{}
 .topbar .center form{
     max-width: 537px;
 }
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+
+}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
+body.body_group #topbar_responsive_holder{
+}
+
 }
 
 
 @media(max-width:1248px){
 .topbar > #topbar_responsive_holder > .left a{
-    margin-left:2px!important;
 }
 body.body_group .topbar > #topbar_responsive_holder > .right{}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
 
+}
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{}
@@ -856,27 +999,98 @@ body.body_group .topbar > #topbar_responsive_holder > .center{}
 .topbar > #topbar_responsive_holder > .center{}
 body .topbar div.calendar_link{}
 .topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left a{margin-left:0px!important;
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 18px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: 0px;
+
+}
 }
 
 @media(max-width:1198px){
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 0px;
+
+    margin-right: 5px;
+}
 
 
-body.body_group .topbar > #topbar_responsive_holder > .right{}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: right!important;
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+    left: -18px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: none!important;
+    margin-left: 116px;
+}
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
 body.body_group .topbar > #topbar_responsive_holder > .center{}
 
 .topbar > #topbar_responsive_holder > .left{
-    margin-left: 15px;
+    margin-left: 24px;
     margin-right: 13px;
 }
-.topbar > #topbar_responsive_holder > .right{}
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+.topbar > #topbar_responsive_holder > .right{
+    margin-left: 17px;
+}
 .topbar > #topbar_responsive_holder > .center{
-    /* margin-left: -2px; */
+    margin-left: 191px;
+    width: 550px;
 }
 body .topbar div.calendar_link{}
-.topbar .center form{}
+.topbar .center form{
+    max-width: 537px;
+}
+body.body_group #topbar_responsive_holder{
+    padding-right: 0px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 160px!important;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
 }
 
 @media(max-width:1175px){
@@ -897,24 +1111,64 @@ body .topbar div.calendar_link{}
 body#body_home .topbar #topbar_responsive_holder{
 
 }
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
 .topbar .center form{}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    margin-left: 10px;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
 }
 
 @media(max-width:1090px){
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
 
+}
+body.left_panel_hidden_p2.left_panel_hidden #topbar_responsive_holder{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
 
 body.body_group .topbar > #topbar_responsive_holder > .right{}
 
 body.body_group .topbar > #topbar_responsive_holder > .left{}
 
-.topbar > #topbar_responsive_holder > .left{}
+.topbar > #topbar_responsive_holder > .left{
+    margin-left: 15px;
+}
 .topbar > #topbar_responsive_holder > .right{
     margin-left: 14px;
 }
 .topbar > #topbar_responsive_holder > .center{
     margin-left: 0px;
 }
-
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
 body.body_group .topbar > #topbar_responsive_holder > .center{}
 
 body .topbar div.calendar_link{}
@@ -922,7 +1176,25 @@ body#body_home .topbar #topbar_responsive_holder{
     width: 830px!important;
 }
 .topbar .center form{
-    max-width: 454px;
+    max-width: 456px;
+}
+body.body_group #topbar_responsive_holder{
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .right{
+    float: right!important;
+
+    margin-right: 60px;
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+    margin-left: 0px!important;
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+    margin-left: 16px;
+
 }
 }
 
@@ -937,13 +1209,51 @@ body.body_group .topbar > #topbar_responsive_holder > .right{}
 .topbar > #topbar_responsive_holder > .right{
     margin-left: 32px;
 }
+#body_calendar .topbar > #topbar_responsive_holder > .left{
+    
+}
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .left{
+    margin-left: 16px;
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .center{
+
+}
+
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar > #topbar_responsive_holder > .right{
+    float: none!important;
+
+    margin-left: 17px;
+}
+
+body.body_group.left_panel_hidden_p2.left_panel_hidden .topbar .menu_hider{
+
+}
 .topbar > #topbar_responsive_holder > .center{
-    width: 454px;
+    width: 457px;
 }
 body .topbar div.calendar_link{
     right: 13px;
 }
 body#body_home .topbar #topbar_responsive_holder{}
 .topbar .center form{}
+
+
+body.body_group #topbar_responsive_holder{
 }
 
+body.body_group .topbar > #topbar_responsive_holder > .right{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .center{
+
+}
+
+body.body_group .topbar > #topbar_responsive_holder > .left{
+
+}
+}

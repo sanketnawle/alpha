@@ -49,7 +49,7 @@
 
                                                     {{#ifCond origin_type '==' 'user'}}
 
-                                                        {{#ifCond origin_id '!=' '<?php echo $user_id; ?>'}}
+                                                        {{#ifCond origin_id '!=' user_id}}
                                                             <span class = 'post_format'>
                                                                 <em class = "posted_to"></em>
                                                                 <span class = 'post_group'>
@@ -178,7 +178,7 @@
                                                 <div class = 'post_functions_showr shower'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
-                                                    {{#if pownership}}
+                                                    {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
                                                         <hr class = 'post_options_hr'>
                                                         <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
@@ -189,7 +189,7 @@
                                                         <div class = 'post_functions_option option_report'>
                                                             Report this Post
                                                         </div>
-                                                    {{/if}}
+                                                    {{/ifCond}}
                                                 </div>
                                             </div>
                                 <div class='posttool-select'>
@@ -751,7 +751,7 @@
                                                 <div class = 'post_functions_showr shower'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
-                                                    {{#if pownership}}
+                                                    {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
                                             <hr class = 'post_options_hr'>
                                             <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
@@ -762,7 +762,7 @@
                                                         <div class = 'post_functions_option option_report'>
                                                             Report this Post
                                                         </div>
-                                                    {{/if}}
+                                                    {{/ifCond}}
                                                 </div>
                                             </div>
                                 <div class='posttool-select'>
@@ -1354,7 +1354,7 @@
                                                 <div class = 'post_functions_showr'>
                                                 </div>
                                                 <div class = 'post_functions_box'>
-                                                    {{#if pownership}}
+                                                    {{#ifCond pownership '||' '<?php echo $is_admin;?>'}}
                                             <hr class = 'post_options_hr'>
                                             <div class = 'post_functions_option option_delete'>Delete</div>
                                                     {{else}}
@@ -1365,7 +1365,7 @@
                                                         <div class = 'post_functions_option option_report'>
                                                             Report this Post
                                                         </div>
-                                                    {{/if}}
+                                                    {{/ifCond}}
                                                 </div>
                                             </div>
                                 <div class='posttool-select'>
