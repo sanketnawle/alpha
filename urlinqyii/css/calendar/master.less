@@ -29,11 +29,16 @@ html, body {
     }
 
     .toolbar {
-        .absolute(0, 23px, auto, @leftbar-width + 23, 10);
-        border: solid @border-color;
+        position: absolute;
+        top: 0;
+        left: 23px;
+        bottom: auto;
+        right: 193px;
+        z-index: 10;
+        border: solid #d4d4d4;
         border-width: 0 1px;
         background-color: #FFF;
-        height: @toolbar-height;
+        height: 45px;
         @corner-rd: 4px;
 
         .wrap {
@@ -178,7 +183,7 @@ html, body {
     }
 
     .body {
-        .absolute(@toolbar-height, 23px, 0, @leftbar-width + 23px);
+        .absolute(@toolbar-height, @leftbar-width + 23px, 0, 23px);
         border: 1px solid @border-color;
         border-width: 0 1px;
         background-color: #fff;

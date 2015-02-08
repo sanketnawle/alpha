@@ -1753,7 +1753,7 @@ if($ios_notification){
                 $data['class']['admins'] = $class->admins;
                 $data['class']['students'] = $class->students;
                 $data['class']['course'] = $class->course;
-                $data['class']['professor'] = $class->professorUser;
+                $data['class']['professor'] = $class->professor;
 
 
                 $user = $this->get_current_user($_GET);
