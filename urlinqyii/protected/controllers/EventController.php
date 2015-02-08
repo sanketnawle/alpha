@@ -230,9 +230,7 @@ class EventController extends Controller
         $query_lowercased = strtolower($query);
         $user_id = $user->user_id;
 
-
-
-        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE '%" . $query_lowercased ."%' LIMIT 5");
+        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query . "%') LIMIT 5");
 
         $results = $this->add_event_data($this->models_to_array($events), $user);
 
