@@ -287,46 +287,54 @@ $(document).ready(function(){
 
 
 
-        var $quote = $("#group_name > #name_title");
-        var $class_title_info = $(".class_title_info");
-        
-        var $numWords = $quote.text().split("").length;
-        
-        if (($numWords >= 1) && ($numWords < 10)) {
-            $quote.css("font-size", "48.5px");
-            $quote.css("letter-spacing", "1.55px;");
-        }
-        else if (($numWords >= 10) && ($numWords < 20)) {
-            $quote.css("font-size", "46px");
-            $quote.css("letter-spacing", "1.35px;");
-            $class_title_info.css("font-size","15.6px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","18.4px");
-        }
-        else if (($numWords >= 20) && ($numWords < 30)) {
-            $quote.css("font-size", "37.6px");
-            $quote.css("letter-spacing", "1.18px;");
-            $class_title_info.css("font-size","14px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","16.2px");
-        }
-        else if (($numWords >= 30) && ($numWords < 38)) {
-            $quote.css("font-size", "32.5px");
-        }
-        else {
-            $quote.css("font-size", "27.5px");
-            $class_title_info.css("font-size","10.4px");
-            $class_title_info.css("margin-top","4px");
-            $class_title_info.css("line-height","12.8px");
-        }    
 
-        var group_name_left = $("p#group_name").position().left;
-        $("div.center_admin").css({"left":group_name_left});
 
-        $(window).on('resize', function(){
-             var group_name_left = $("p#group_name").position().left;
-            $("div.center_admin").css({"left":group_name_left})
-        });          
+            $(window).on('resize', function(){
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left})
+            });          
+
+            setTimeout(function(){
+                var $quote = $("#group_name > #name_title");
+                var $class_title_info = $(".class_title_info");
+                
+                var $numWords = $quote.text().split("").length;
+                
+                if (($numWords >= 1) && ($numWords < 10)) {
+                    $quote.css("font-size", "48.5px");
+                    $quote.css("letter-spacing", "1.55px;");
+                }
+                else if (($numWords >= 10) && ($numWords < 20)) {
+                    $quote.css("font-size", "46px");
+                    $quote.css("letter-spacing", "1.35px;");
+                    $class_title_info.css("font-size","15.6px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","18.4px");
+                }
+                else if (($numWords >= 20) && ($numWords < 30)) {
+                    $quote.css("font-size", "37.6px");
+                    $quote.css("letter-spacing", "1.18px;");
+                    $class_title_info.css("font-size","14px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","16.2px");
+                }
+                else if (($numWords >= 30) && ($numWords < 38)) {
+                    $quote.css("font-size", "32.5px");
+                }
+                else {
+                    $quote.css("font-size", "27.5px");
+                    $class_title_info.css("font-size","10.4px");
+                    $class_title_info.css("margin-top","4px");
+                    $class_title_info.css("line-height","12.8px");
+                }    
+
+                var group_name_left = $("p#group_name").position().left;
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left});  
+                setTimeout(function(){          
+                    $("div.group_name").css({"opacity":"1"});
+                }, 200);
+            }, 600);
 
 
 

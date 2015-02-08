@@ -165,13 +165,15 @@
                         <span><?php echo $class->location; ?></span>
 
                         <br>
+                        <?php if($class->class_datetime) { ?>
                         <em class ="small_icon_time"></em>
                         <span><?php echo $class->class_datetime; ?></span>
+                        <?php } else { }?>
                     </div>
                     <?php } else { }?>
 
                     <?php if($is_admin){ ?>
-                    <div class = "group_info_block" id = "class_schedule">
+                    <div class = "group_info_block upload_cover_container" id = "class_schedule">
                         <div class="upload_cover_photo_button">Upload cover photo</div>
                     </div>
                     <?php } ?>
@@ -822,10 +824,10 @@
                                 <span class = "title">Professor</span>
                                 <div class = "user_main_info">
                                     <a class = "name profile_link" data-user_id="<?php echo $professor->user_id; ?>"><?php echo $professor->full_name(); ?></a>
-                                    <span class = "office_hours in_office">
+                                    <!--<span class = "office_hours in_office">
                                         <em></em>
                                         <span>In office</span>
-                                    </span>
+                                    </span>-->
                                 </div>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>
