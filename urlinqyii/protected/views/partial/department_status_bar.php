@@ -88,7 +88,7 @@
 
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
                             <div class = "upload_half half_2">
@@ -118,13 +118,13 @@
                         <div class = "submission_inputs_wrap opportunity_input_hidden">
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">Upload Application</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
-                            <div class = "upload_half half_2">
+                            <!--<div class = "upload_half half_2">
                                 <div><p class = "upload_hint">Submission Link/Email</p></div>
                                 <div><input placeholder = "Web or email address" class = "fbar_date_time submission_input"></div>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -200,9 +200,7 @@
                         </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
                         <div style = "display:none" class = "opportunity_form_content opportunity_more_options">More options</div>
-                        <div id="post_anon">
-                            <input id="post_anon_checkbox" type="checkbox">Anonymous
-                        </div>
+
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
                             Post
                         </div>

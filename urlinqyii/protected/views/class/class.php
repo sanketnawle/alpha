@@ -792,9 +792,9 @@
                                     <span>Done</span>
                                 </div>
                             </div>
-                            <div class = "add_people_button">
+                            <!--<div class = "add_people_button">
                                 Add Members
-                            </div>
+                            </div>-->
 
                         <?php } ?>
                         <div class="fade_input_small small_search">

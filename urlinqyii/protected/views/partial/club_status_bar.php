@@ -99,13 +99,13 @@
 
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p>--></div>
                             </div>
 
-                            <div class = "upload_half half_2">
+                            <!--<div class = "upload_half half_2">
                                 <div><em class = "google_drive"></em><p class = "upload_hint">From your Google Drive</p></div>
                                 <div><div class = "upload_button upload_button_alone">Choose File</div></div>
-                            </div>
+                            </div>-->
 
                         </div>  
 
@@ -125,9 +125,9 @@
                         <div class = "input_wrap" style = "position:relative;">
                             <label for = "event_location">Where:</label><input placeholder = "Enter a location" id = "event_location" class = "gray_bg location_input autocomplete_location fbar_date_time" type = "text" name = "event_location"><span class = "where_icon"></span>
                             <div class = "location_matches_list"></div>
-                            <div class = "input_wrap event_input_hidden repeat_event_input"> 
+                            <!--<div class = "input_wrap event_input_hidden repeat_event_input"> 
                                 <label style = "margin-left: 30px;" for = "event_repeat">Repeat:</label><div class = "repeat_activator">No repeat <em class = "down_arrow"></em></div>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -183,7 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="post_anon">
+                        <div id="post_anon" class = "event_form_hide_content">
                             <input id="post_anon_checkbox" type="checkbox">Anonymous
                         </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>

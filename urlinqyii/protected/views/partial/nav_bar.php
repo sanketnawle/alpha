@@ -66,7 +66,7 @@
                         usort($departments, "compare_department_names");
                     ?>
                     <?php foreach($departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
                     <?php } ?>
                 </div>
             </div>
@@ -278,7 +278,7 @@
 
 
                     <?php foreach($origin->departments as $department){ ?>
-                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name . ' (' . $department->department_tag . ')'; ?></div>
+                        <div class="nav_drop_down_section" data-id="<?php echo $department->department_id; ?>"><?php echo $department->department_name; ?></div>
                     <?php } ?>
 
 

@@ -1,4 +1,3 @@
-
 <script id="post_template" type="text/x-handlebars-template">
                         <div id='{{last_activity}}'>
                             <div class = 'post new_fd' id = '{{post_id}}' data-post_id='{{post_id}}' data-post_type='{{post_type}}' data-origin_type='{{origin_type}}' data-origin_id="{{origin_id}}"  data-created_at='{{created_at}}' data-last_activity='{{last_activity}}'>
@@ -24,12 +23,12 @@
 
                                                 {{#if user_id}}
                                                     {{#ifCond anon '==' 1}}
-                                                                    <span class = 'post_owner'>
+                                                                    <span class = 'post_owner anonymous_post_owner'>
                                                                         Anonymous
                                                                     </span>
                                                         {{#if pownership}}
-                                                                    <span class="post_owner post_own_post">
-                                                                        (you)
+                                                                    <span class="post_owner post_own_post anonymous_post_owner">
+                                                                        (me)
                                                                     </span>
                                                         {{/if}}
                                                     {{else}}
@@ -242,12 +241,12 @@
 
                                     {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                            <span class = 'comment_owner'>
+                                            <span class = 'comment_owner anonymous_post_owner'>
                                                         Anonymous
                                                     </span>
                                                     {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment">
-                                                            (you)
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
                                                         </span>
                                                     {{/if}}
                                         {{else}}
@@ -357,12 +356,12 @@
                                         {{/ifCond}}
                                         {{#if user_id}}
                                             {{#ifCond anon '==' 1}}
-                                                    <span class = 'comment_owner'>
+                                                    <span class = 'comment_owner anonymous_post_owner'>
                                                         Anonymous
                                                     </span>
                                                     {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment">
-                                                            (you)
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
                                                         </span>
                                                     {{/if}}
                                             {{else}}
@@ -413,12 +412,12 @@
 
                         {{#if user_id}}
                             {{#ifCond anon '==' 1}}
-                                <span class = 'comment_owner'>
+                                <span class = 'comment_owner anonymous_post_owner'>
                                     Anonymous
                                 </span>
                                 {{#if cownership}}
-                                    <span class="comment_owner comment_own_comment">
-                                        (you)
+                                    <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                        (me)
                                     </span>
                                 {{/if}}
                             {{else}}
@@ -464,12 +463,12 @@
                                         {{/ifCond}}
                                         {{#if user_id}}
                                             {{#ifCond anon '==' 1}}
-                                                        <span class = 'comment_owner'>
+                                                        <span class = 'comment_owner anonymous_post_owner'>
                                                             Anonymous
                                                         </span>
                                                 {{#if cownership}}
-                                                                <span class="comment_owner comment_own_comment">
-                                                                    (you)
+                                                                <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                                    (me)
                                                                 </span>
                                                 {{/if}}
                                             {{else}}
@@ -524,12 +523,12 @@
 
                                                 {{#if user_id}}
                                                     {{#ifCond anon '==' 1}}
-                                                                    <span class = 'post_owner'>
+                                                                    <span class = 'post_owner anonymous_post_owner'>
                                                                         Anonymous
                                                                     </span>
                                                         {{#if pownership}}
-                                                            <span class="post_owner post_own_post">
-                                                                (you)
+                                                            <span class="post_owner post_own_post anonymous_post_owner">
+                                                                (me)
                                                             </span>
                                                         {{/if}}
                                                     {{else}}
@@ -813,12 +812,12 @@
 
                                     {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                                <span class = 'comment_owner'>
+                                                <span class = 'comment_owner anonymous_post_owner'>
                                                         Anonymous
                                                     </span>
                                                     {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment">
-                                                            (you)
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
                                                         </span>
                                                     {{/if}}
                                         {{else}}
@@ -859,7 +858,7 @@
 
                                 <div>
                                     <div class = "pre_expand_comment_fx"><span class = "small_icon_map"></span></div>
-                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Respond' required></textarea><div class = "or_answer_div"><span>or </span><span class = "answer_section_flash">Answer</span></div>
+                                    <textarea class = 'reply_text_textarea form-control postval ' name='reply_text' placeholder = 'Respond to this question...' required></textarea>
                                     <div class = 'dragdrop_functions'>
                                         <div class='dragdropbox'>Drag and drop files here or Click to upload files</div>
                                         <div class='fileinputbox'><input type='file' class='fileinput' multiple></div>
@@ -1017,12 +1016,12 @@
 
                                 {{#if user_id}}
                                     {{#ifCond anon '==' 1}}
-                                        <span class = 'post_owner'>
+                                        <span class = 'post_owner anonymous_post_owner'>
                                             Anonymous
                                         </span>
                                         {{#if pownership}}
-                                                            <span class="post_owner post_own_post">
-                                                                (you)
+                                                            <span class="post_owner post_own_post anonymous_post_owner">
+                                                                (me)
                                                             </span>
                                         {{/if}}
                                     {{else}}
@@ -1121,12 +1120,12 @@
 
                                     {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                               <span class = 'comment_owner'>
+                                               <span class = 'comment_owner anonymous_post_owner'>
                                                         Anonymous
                                                     </span>
                                                  {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment">
-                                                            (you)
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
                                                         </span>
                                                  {{/if}}
                                         {{else}}
@@ -1234,12 +1233,12 @@
 
                                                     {{#if user_id}}
                                                         {{#ifCond anon '==' 1}}
-                                                                <span class = 'post_owner'>
+                                                                <span class = 'post_owner anonymous_post_owner'>
                                                                     Anonymous
                                                                 </span>
                                                                 {{#if pownership}}
-                                                                    <span class="post_owner post_own_post">
-                                                                        (you)
+                                                                    <span class="post_owner post_own_post anonymous_post_owner">
+                                                                        (me)
                                                                     </span>
                                                                 {{/if}}
                                                         {{else}}
@@ -1427,12 +1426,12 @@
 
                                     {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                                <span class = 'comment_owner'>
+                                                <span class = 'comment_owner anonymous_post_owner'>
                                                         Anonymous
                                                     </span>
                                                 {{#if cownership}}
-                                                        <span class="comment_owner comment_own_comment">
-                                                            (you)
+                                                        <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                                            (me)
                                                         </span>
                                                 {{/if}}
                                         {{else}}

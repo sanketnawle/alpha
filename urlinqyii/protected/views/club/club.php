@@ -101,17 +101,19 @@
                                 <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
                                     <div class = "group_name">
                                         <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                        <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
+                                        <div class = "center_text">
+                                            <p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p>
+                                            <?php if($is_admin){ ?>
+                                                <span class = "you_are_admin">
+                                                    Admin
+                                                </span>
+                                            <?php } ?>
+                                        </div>
                                     </div>
                                     <div class = "group_right_info group_info_boxes">
                                         <div class = "group_info_block">
                                             <?php if($is_admin){ ?>
                                                 <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
-                                            <?php } ?>
-
-                                            <?php if($club->contact_email != ''){?>
-                                                <br>
-                                                <?php echo $club->contact_email; ?>
                                             <?php } ?>
 
                                             <?php if($club->website != ''){?>
@@ -406,7 +408,14 @@
                                 <div class="tab_header"> 
                                     <div class = "float_Right">
                                         <div class = "add_people_button">
-                                            Add People
+                                            Add Members
+                                        </div>
+                                        <div class = "help_div dark">
+                                            <div class = "wedge">
+                                            </div>
+                                            <div class = "box">
+                                                Add new members to join your group. If they don't already have a Urlinq account, they'll receive an email to signup.
+                                            </div>
                                         </div>
 
 
@@ -422,10 +431,10 @@
                                             <div id="invite_holder" class="invite_holder">
 <!--                                                <div id="create_event_invite_label">Invite people</div>-->
 
-
-                                                <input id="invite_input" name="event_invite_input" placeholder="Invite people" class="text_input invite_input small_search_input">
-
-                                                <div id="create_event_invite_button" class="invite_people_button">Invite</div>
+                                                <em class = "successful_invite_icon"></em>
+                                                <input id="invite_input" name="event_invite_input" placeholder="Add a new member" class="text_input invite_input small_search_input">
+                                                <em class = "invite_people_icon"></em>
+                                                <div id="create_event_invite_button" class="invite_people_button">Send Invite</div>
 
 
 

@@ -1392,6 +1392,15 @@ margin-top: 5px;
 margin-left: 5px;
 }
 
+.anonymous_post_owner{
+    color:#333!important;
+    text-decoration: none!important;
+    cursor: default!important;
+}
+
+.post_user_icon_anonymous{
+    cursor: default!important;
+}
 
 .posttool-select {
 margin-right: 10px;
