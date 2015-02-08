@@ -1072,6 +1072,7 @@ class PostController extends Controller
             $reply['user_info'] = $reply_user;
         }
 
+        $data = array('success'=>true,'replies'=>$replies);
         $this->renderJSON($data);
         return;
 
