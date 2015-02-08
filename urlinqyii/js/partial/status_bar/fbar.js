@@ -1172,8 +1172,7 @@ function fbar_ready(origin_id) {
             }
 
 
-
-            post_data['anon'] = 0;
+            post_data['anon'] = $fbar_holder.find('#post_anon_checkbox').prop("checked") ? 1:0;
 
             post_data['like_count'] = 0;
 

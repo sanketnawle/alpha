@@ -993,7 +993,7 @@ class PostController extends Controller
                             'picture_file_id'=>$reply_user->picture_file_id
                         ),
                         'cownership'=>false,
-                        'vote_status'=>null
+                        'vote_status'=>nullx
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
                     $this->renderJSON($data);
@@ -1028,6 +1028,32 @@ class PostController extends Controller
             echo "Notification created successfully";
         else
             var_dump($model->getErrors());
+    }
+
+    public function actionGetPostComments() {
+        if (!isset($_GET['post_id']) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required values not set');
+            $this->renderJSON($data);
+            return;
+        }
+        
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $post_id = $_GET['post_id'];
+
+        $sql = "SELECT * FROM reply WHERE school_id = $post_id;";
+
+        $replies = Reply::model()->findAllBySql($sql);
+
+        $data = array('success'=>true,'replies'=>$replies);
+        $this->renderJSON($data);
+        return;
+
     }
 
 	/**

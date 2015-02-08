@@ -8,34 +8,42 @@
                                         </div>
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#ifCond anon '==' 1}}
-                                                    <a href ='profile.php?user_id={{user_id}}'> Link
-                                                {{else}}
-                                                    <a>
-                                                {{/ifCond}}
-                                                    <div class = 'image_container'>
+                                                <div class = 'image_container'>
 
-                                                        {{#ifCond anon '==' 1}}
-                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
-                                                          </div>
-                                                        {{else}}
-                                                            <div class = 'post_user_icon profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                                            </div>
-                                                        {{/ifCond}}
+                                                    {{#ifCond anon '==' 1}}
+                                                    <div class = 'post_user_icon post_user_icon_anonymous' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                                     </div>
-
-                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
-                                                        {{#if user_id}}
-                                                            {{#ifCond anon '==' 1}}
-                                                                Anonymous
-                                                            {{else}}
-                                                                {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/ifCond}}
-                                                        {{else}}
-                                                            Invalid User
-                                                        {{/if}}
-                                                    </span>
+                                                    {{else}}
+                                                    <a>
+                                                        <div class = 'post_user_icon profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                        </div>
                                                     </a>
+                                                    {{/ifCond}}
+                                                </div>
+
+
+                                                {{#if user_id}}
+                                                    {{#ifCond anon '==' 1}}
+                                                                    <span class = 'post_owner'>
+                                                                        Anonymous
+                                                                    </span>
+                                                        {{#if pownership}}
+                                                                    <span class="post_owner post_own_post">
+                                                                        (you)
+                                                                    </span>
+                                                        {{/if}}
+                                                    {{else}}
+                                                        <a>
+                                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
+                                                                        {{user_info.firstname}} {{user_info.lastname}}
+                                                                    </span>
+                                                        </a>
+                                                    {{/ifCond}}
+                                                {{else}}
+                                                        <span class = 'post_owner'>
+                                                            Invalid User
+                                                        </span>
+                                                {{/if}}
 
 
 
@@ -224,24 +232,44 @@
                                     {{/if}}
 
 
-                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                    {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                         </div>
-                                        <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
-                                            {{#ifCond anon '==' 1}}
-                                                Anonymous
-                                            {{else}}
-                                                {{user_info.user_name}}
-                                            {{/ifCond}}
-                                        </span>
-                                         <div class = 'comment_time'>
-                                            <div class='ct_ts'>
-                                                {{update_timestamp}}
-                                            </div>
+                                    {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
                                         </div>
+                                    {{/ifCond}}
 
+                                    {{#if user_id}}
+                                        {{#ifCond anon '==' 1}}
+                                            <span class = 'comment_owner'>
+                                                        Anonymous
+                                                    </span>
+                                                    {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment">
+                                                            (you)
+                                                        </span>
+                                                    {{/if}}
+                                        {{else}}
+                                            <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                {{user_info.user_name}}
+                                            </span>
+                                        {{/ifCond}}
+                                    {{else}}
+                                        <span class = 'comment_owner'>
+                                            Invalid User
+                                        </span>
+                                    {{/if}}
+
+                                     <div class = 'comment_time'>
+                                        <div class='ct_ts'>
+                                            {{update_timestamp}}
+                                        </div>
                                     </div>
 
                                 </div>
+
+                            </div>
                              {{/each}}
                              {{#if show_more}}
                                 <div id='show_more' class='morecmt_bar'>
@@ -319,15 +347,34 @@
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
-                                        <div class = 'comment_owner_container profile_link' data-user_id="{{user_id}}" style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+
+                                        {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                         </div>
-                                        <span class = 'comment_owner profile_link' data-user_id="{{user_id}}" >
+                                        {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        </div>
+                                        {{/ifCond}}
+                                        {{#if user_id}}
                                             {{#ifCond anon '==' 1}}
-                                                Anonymous
+                                                    <span class = 'comment_owner'>
+                                                        Anonymous
+                                                    </span>
+                                                    {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment">
+                                                            (you)
+                                                        </span>
+                                                    {{/if}}
                                             {{else}}
-                                                {{user_info.user_name}}
+                                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                        {{user_info.user_name}}
+                                                    </span>
                                             {{/ifCond}}
-                                        </span>
+                                        {{else}}
+                                            <span class = 'comment_owner'>
+                                                Invalid User
+                                            </span>
+                                        {{/if}}
                                         <div class = 'comment_time'>
                                             <div class='ct_ts'>
                                                 {{update_timestamp}}
@@ -356,15 +403,34 @@
 
                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                         {{/if}}
-                        <div class = 'comment_owner_container profile_link' data-user_id="{{user_info.user_id}}" style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                        {{#ifCond anon '==' 1}}
+                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                         </div>
-                        <span class = 'comment_owner profile_link' data-user_id="{{user_info.user_id}}" >
+                        {{else}}
+                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                        </div>
+                        {{/ifCond}}
+
+                        {{#if user_id}}
                             {{#ifCond anon '==' 1}}
-                                Anonymous
+                                <span class = 'comment_owner'>
+                                    Anonymous
+                                </span>
+                                {{#if cownership}}
+                                    <span class="comment_owner comment_own_comment">
+                                        (you)
+                                    </span>
+                                {{/if}}
                             {{else}}
-                                {{user_info.user_name}}
-                            {{/ifCond}}
-                        </span>
+                                <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                    {{user_info.user_name}}
+                                </span>
+                           {{/ifCond}}
+                        {{else}}
+                            <span class = 'comment_owner'>
+                                Invalid User
+                            </span>
+                        {{/if}}
                         <div class = 'comment_time'>
                             <div class='ct_ts'>
                                 {{update_timestamp}}
@@ -389,15 +455,33 @@
 
                                             <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                         {{/if}}
-                                        <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                         </div>
-                                        <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                        {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        </div>
+                                        {{/ifCond}}
+                                        {{#if user_id}}
                                             {{#ifCond anon '==' 1}}
-                                                Anonymous
+                                                        <span class = 'comment_owner'>
+                                                            Anonymous
+                                                        </span>
+                                                {{#if cownership}}
+                                                                <span class="comment_owner comment_own_comment">
+                                                                    (you)
+                                                                </span>
+                                                {{/if}}
                                             {{else}}
-                                                {{user_info.user_name}}
+                                                        <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                            {{user_info.user_name}}
+                                                        </span>
                                             {{/ifCond}}
-                                        </span>
+                                        {{else}}
+                                            <span class = 'comment_owner'>
+                                                Invalid User
+                                            </span>
+                                        {{/if}}
                                         <div class = 'comment_time'>
                                             <div class='ct_ts'>
                                                 {{update_timestamp}}
@@ -424,38 +508,42 @@
                                         </div>
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#ifCond anon '==' 1}}
-                                                    <a href ='profile.php?user_id={{user_id}}'> Link
-                                                {{else}}
-                                                    <a>
-                                                {{/ifCond}}
-                                                    <div class = 'image_container'>
+                                                <div class = 'image_container'>
 
-                                                        {{#ifCond anon '==' 1}}
-                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
-                                                          </div>
-                                                        {{else}}
-                                                            <div class = 'post_user_icon profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                                          </div>
-                                                        {{/ifCond}}
+                                                    {{#ifCond anon '==' 1}}
+                                                    <div class = 'post_user_icon post_user_icon_anonymous' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                                     </div>
-
-                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
-                                                        {{#if user_id}}
-                                                            {{#ifCond anon '==' 1}}
-                                                                {{#if pownership}}
-                                                                    Anonymous (you)
-                                                                {{else}}
-                                                                    Anonymous
-                                                                {{/if}}
-                                                            {{else}}
-                                                                {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/ifCond}}
-                                                        {{else}}
-                                                            Invalid User
-                                                        {{/if}}
-                                                    </span>
+                                                    {{else}}
+                                                    <a>
+                                                        <div class = 'post_user_icon profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                        </div>
                                                     </a>
+                                                    {{/ifCond}}
+                                                </div>
+
+
+                                                {{#if user_id}}
+                                                    {{#ifCond anon '==' 1}}
+                                                                    <span class = 'post_owner'>
+                                                                        Anonymous
+                                                                    </span>
+                                                        {{#if pownership}}
+                                                            <span class="post_owner post_own_post">
+                                                                (you)
+                                                            </span>
+                                                        {{/if}}
+                                                    {{else}}
+                                                        <a>
+                                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
+                                                                        {{user_info.firstname}} {{user_info.lastname}}
+                                                                    </span>
+                                                        </a>
+                                                    {{/ifCond}}
+                                                {{else}}
+                                                        <span class = 'post_owner'>
+                                                            Invalid User
+                                                        </span>
+                                                {{/if}}
 
 
 
@@ -714,15 +802,35 @@
 
                                         <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
                                     {{/if}}
-                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                    </div>
-                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+
+                                    {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+                                        </div>
+                                    {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        </div>
+                                    {{/ifCond}}
+
+                                    {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                            Anonymous
+                                                <span class = 'comment_owner'>
+                                                        Anonymous
+                                                    </span>
+                                                    {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment">
+                                                            (you)
+                                                        </span>
+                                                    {{/if}}
                                         {{else}}
-                                            {{user_info.user_name}}
+                                                <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                    {{user_info.user_name}}
+                                                </span>
                                         {{/ifCond}}
-                                    </span>
+                                    {{else}}
+                                        <span class = 'comment_owner'>
+                                            Invalid User
+                                        </span>
+                                    {{/if}}
                                      <div class = 'comment_time'>
                                         <div class='ct_ts'>
                                             {{update_timestamp}}
@@ -906,8 +1014,29 @@
                                         <div class = "mail_hint">Email {{user_info.user_email}}</div>
                                     </div>
                                 </div>
-                                    
-                                <span class = 'post_owner profile_link' data-user_id={{user_id}}>{{user_info.firstname}} {{user_info.lastname}}</span>
+
+                                {{#if user_id}}
+                                    {{#ifCond anon '==' 1}}
+                                        <span class = 'post_owner'>
+                                            Anonymous
+                                        </span>
+                                        {{#if pownership}}
+                                                            <span class="post_owner post_own_post">
+                                                                (you)
+                                                            </span>
+                                        {{/if}}
+                                    {{else}}
+                                        <a>
+                                        <span class = 'post_owner profile_link' data-user_id={{user_id}} >
+                                            {{user_info.firstname}} {{user_info.lastname}}
+                                        </span>
+                                        </a>
+                                    {{/ifCond}}
+                                {{else}}
+                                    <span class = 'post_owner'>
+                                        Invalid User
+                                    </span>
+                                {{/if}}
                                 
                                 
                             </div>
@@ -982,15 +1111,34 @@
 
 
 
-                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                    </div>
-                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                    {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+                                        </div>
+                                    {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        </div>
+                                    {{/ifCond}}
+
+                                    {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                            Anonymous
+                                               <span class = 'comment_owner'>
+                                                        Anonymous
+                                                    </span>
+                                                 {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment">
+                                                            (you)
+                                                        </span>
+                                                 {{/if}}
                                         {{else}}
-                                            {{user_info.user_name}}
+                                                <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                    {{user_info.user_name}}
+                                                </span>
                                         {{/ifCond}}
-                                    </span>
+                                    {{else}}
+                                        <span class = 'comment_owner'>
+                                            Invalid User
+                                        </span>
+                                    {{/if}}
                                      <div class = 'comment_time'>
                                         <div class='ct_ts'>
                                             {{update_timestamp}}
@@ -1069,38 +1217,46 @@
                                         </div>
                                         <div class="post_head">
                                             <div class="post_title">
-                                                {{#ifCond anon '==' 1}}
-                                                    <a href ='profile.php?user_id={{user_id}}'> Link
-                                                {{else}}
-                                                    <a>
-                                                {{/ifCond}}
+
                                                     <div class = 'image_container'>
 
                                                         {{#ifCond anon '==' 1}}
-                                                          <div class = 'post_user_icon post_user_icon_anonymous'>
-                                                          </div>
+                                                        <div class = 'post_user_icon post_user_icon_anonymous' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+                                                        </div>
                                                         {{else}}
-                                                            <div class = 'post_user_icon profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                                          </div>
+                                                        <a>
+                                                            <div class = 'post_user_icon profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                                            </div>
+                                                        </a>
                                                         {{/ifCond}}
                                                     </div>
 
-                                                    <span class = 'post_owner profile_link' data-user_id={{user_id}} >
-                                                        {{#if user_id}}
-                                                            {{#ifCond anon '==' 1}}
-                                                                {{#if pownership}}
-                                                                    Anonymous (you)
-                                                                {{else}}
+
+                                                    {{#if user_id}}
+                                                        {{#ifCond anon '==' 1}}
+                                                                <span class = 'post_owner'>
                                                                     Anonymous
+                                                                </span>
+                                                                {{#if pownership}}
+                                                                    <span class="post_owner post_own_post">
+                                                                        (you)
+                                                                    </span>
                                                                 {{/if}}
-                                                            {{else}}
-                                                                {{user_info.firstname}} {{user_info.lastname}}
-                                                            {{/ifCond}}
                                                         {{else}}
+                                                           <a>
+                                                                <span class = 'post_owner profile_link' data-user_id={{user_id}} >
+                                                                    {{user_info.firstname}} {{user_info.lastname}}
+                                                                </span>
+                                                           </a>
+                                                        {{/ifCond}}
+                                                    {{else}}
+                                                        <span class = 'post_owner'>
                                                             Invalid User
-                                                        {{/if}}
-                                                    </span>
-                                                    </a>
+                                                        </span>
+                                                    {{/if}}
+
+
+
 
                                                     {{#ifCond origin_type '!=' '<?php echo $origin_type; ?>'}}
 
@@ -1261,15 +1417,34 @@
 
 
 
-                                    <div class = 'comment_owner_container profile_link' data-user_id={{user_id}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
-                                    </div>
-                                    <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                    {{#ifCond anon '==' 1}}
+                                        <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
+                                        </div>
+                                    {{else}}
+                                        <div class = 'comment_owner_container profile_link' data-user_id='{{user_id}}' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{user_info.pictureFile.file_url}}')">
+                                        </div>
+                                    {{/ifCond}}
+
+                                    {{#if user_id}}
                                         {{#ifCond anon '==' 1}}
-                                            Anonymous
+                                                <span class = 'comment_owner'>
+                                                        Anonymous
+                                                    </span>
+                                                {{#if cownership}}
+                                                        <span class="comment_owner comment_own_comment">
+                                                            (you)
+                                                        </span>
+                                                {{/if}}
                                         {{else}}
-                                            {{user_info.user_name}}
+                                                <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                                    {{user_info.user_name}}
+                                                </span>
                                         {{/ifCond}}
-                                    </span>
+                                    {{else}}
+                                        <span class = 'comment_owner'>
+                                            Invalid User
+                                        </span>
+                                    {{/if}}
                                      <div class = 'comment_time'>
                                         <div class='ct_ts'>
                                             {{update_timestamp}}
