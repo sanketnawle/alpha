@@ -1065,7 +1065,13 @@ class PostController extends Controller
 
         $replies = Reply::model()->findAllBySql($sql);
 
-        $data = array('success'=>true,'replies'=>$replies);
+        foreach ($replies as $reply) {
+
+            $reply = $this->model_to_array($reply);
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply['user_id']));
+            $reply['user_info'] = $reply_user;
+        }
+
         $this->renderJSON($data);
         return;
 
