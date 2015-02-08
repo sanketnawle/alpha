@@ -739,9 +739,24 @@ class PostController extends Controller
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
-            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
-            $this->renderJSON($return_data);
-            return;
+            if($post->origin_type == "club"){
+                $origin = Group::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "class"){
+                $origin = ClassModel::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "department"){
+                $origin = Department::model()->findByPk($post->origin_id);
+            }
+            $is_admin=false;
+            foreach($origin->admins as $admin){
+                if($user->user_id == $admin->user_id){
+                    $is_admin = true;
+                }
+            }if($is_admin == false){
+                $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
+                $this->renderJSON($return_data);
+                return;
+            }
+
         }
 
 
@@ -1031,7 +1046,7 @@ class PostController extends Controller
     }
 
     public function actionGetPostComments() {
-        if (!isset($_GET['post_id']) {
+        if (!isset($_GET['post_id'])) {
             $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required values not set');
             $this->renderJSON($data);
             return;

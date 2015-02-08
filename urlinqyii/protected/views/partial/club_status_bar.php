@@ -377,7 +377,7 @@ Set the class name on your input to 'time_input' -->
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>$is_admin)); ?>
 
 
 

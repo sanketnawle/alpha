@@ -172,11 +172,11 @@
                         <div id = "feed_column" class = "feed_column_group">
                             <div id = "stream_holder" class = "stream_holder_home">
                                 <div id = "fbar_wrapper" class = "fbar_home">
-                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false)); ?>
                                 </div>
 
                                 <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false)); ?>
                                 </div>
 
 

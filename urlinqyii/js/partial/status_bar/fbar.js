@@ -1139,7 +1139,7 @@ function fbar_ready(origin_id) {
 
 
             post_data['origin_type'] = globals.origin_type;
-            post_data['origin_id'] = origin_id;
+            post_data['origin_id'] = globals.origin_id;
 
             //alert(origin_id);
 
