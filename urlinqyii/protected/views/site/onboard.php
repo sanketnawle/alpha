@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="progress_hint_1">Step <span class="curr_step">1</span> of <span>7</span></div>
+                        <div class="progress_hint_1"></div>
                         <div class="progress_goback" style="display: none;"></div>
                     </div>
                     <div class="progress_content">

@@ -184,9 +184,11 @@ $(document).ready(function () {
 
 
         $(".progress_hint_0").text(hint_text[curr]);
-
         var curr_act = parseInt(curr) + 1;
-        $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
+        if(curr == 3 || curr == 4 || curr == 5){
+            $(".progress_hint_1").show();
+            $(".progress_hint_1").html("Step <span class='curr_step'>" + curr_act + "</span> of <span>7</span>");
+        }
         if (curr == 6) { $(".progress_hint_1").html("Last Step"); };
 
         if (curr == 6) {
