@@ -108,7 +108,7 @@
 
 </head>
 
-    <body class = "body_group">
+    <body class = "body_group body_class">
 
 
 
@@ -149,12 +149,12 @@
 
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
                         <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
                     <?php }else{ ?>
-                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
                     <?php } ?>
                     <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
@@ -171,14 +171,14 @@
                         <?php } else { }?>
                     </div>
                     <?php } else { }?>
-
-                    <?php if($is_admin){ ?>
-                    <div class = "group_info_block upload_cover_container" id = "class_schedule">
-                        <div class="upload_cover_photo_button">Upload cover photo</div>
-                    </div>
-                    <?php } ?>
                     
                 </div>
+
+                <?php if($is_admin){ ?>
+                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                    <div class="upload_cover_photo_text">Change cover</div>
+                </div>
+                <?php } ?>                
 
 
             </div>

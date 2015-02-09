@@ -41,7 +41,7 @@
 
 </head>
 
-<body class = "body_group" id = "body_department">
+<body class = "body_group body_department" id = "body_department">
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
 <div id="wrapper">

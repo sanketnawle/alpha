@@ -578,10 +578,21 @@ $(document).ready(function(){
 
 
 
-    if($("body").hasClass("body_group") == true){
+    if($("body").hasClass("body_class") == true){
 
-        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
-        $(".point").css({"left":"40px","font-size":"13px"})
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this class's schedule");
+        $("span.create_planner_message").css({"left":"18px", "width":"192px"})
+    }
+
+    if($("body").hasClass("body_department") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Schedule group events");
+        $("span.create_planner_message").css({"left":"22px", "width":"192px"})
+    }
+    if($("body").hasClass("body_club") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this group's schedule");
+        $("span.create_planner_message").css({"left":"12px", "width":"202px"})
     }
 
     $(document).on('click','#edit_club_description',function(){
