@@ -129,6 +129,9 @@ a.MyBox_SO.edit_profile:hover{
     border-bottom: 1px solid #EAEAEA;
 
     height: 26px; 
+    -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
 }
 
 .SectionHeader_holder div h4{

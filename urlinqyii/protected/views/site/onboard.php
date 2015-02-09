@@ -102,11 +102,11 @@
                         <div class="progress_footer_glyph_0"></div>
                         <div class="next_progress blue_btn" style="display: none;">Join your School</div>
                         <div class="skip_progress" style="display: none;">or <span>skip this step</span></div>
-                        <div class="full_skip" style="display: none;">or <span>skip to home page</span></div>
 
                         <input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
                     </div>
                 </div>
+                <div class="full_skip" style="display: none;">or <span>skip to home page</span></div>
             </div>
         </div>
     </body>
