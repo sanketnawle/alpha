@@ -28,7 +28,7 @@ function array_for_notification_model($notification) {
 
 function get_notification_text($noti, $user) {
 
-    return get_notifications_data($user, array($noti));
+    return renderJSON(get_notifications_data($user, array($noti)));
     $origin = $notification['origin'];
     $type = $noti['type'];
     $actor = $notification['actor'];
