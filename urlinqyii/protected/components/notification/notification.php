@@ -13,7 +13,7 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     include_once 'iOSPushNotifications.php';
     $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $notification_array = $this->array_for_notification_model($notification);
+    $notification_array = array_for_notification_model($notification);
   //  $message = get_notification_text($notification_array, $user);
 
 $thing = get_notifications_data($user, array($notification_array));
@@ -26,7 +26,7 @@ function array_for_notification_model($notification) {
     return array("type"=>$notification->type, "actor_id"=>$notification->actor_id, "user_id"=>$notification->user_id, "origin_id"=>$notification->origin_id, "origin_type"=>$notification->origin_type);
 }
 
-function get_notification_text($noti, $user) {
+/*function get_notification_text($noti, $user) {
 
     $notification = get_notification_data($user, $noti);
     $origin = $notification['origin'];
@@ -67,7 +67,7 @@ function get_notification_text($noti, $user) {
             $notification_text = "Notification not supported yet.";
         }
         return $notification_text;
-}
+}*/
 function get_notifications_data($user, $notifications){
 
 
@@ -187,9 +187,9 @@ function get_notifications_data($user, $notifications){
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
-                $reply=>model_to_array($reply);
-                $reply['post']=$post;
-                $notification['origin']= $reply;
+                $reply_thing=model_to_array($reply);
+                $reply_thing['post']=$post;
+                $notification['origin']= $reply_thing;
             }
             elseif($notification_type == 'like' || $notification_type == 'post'){
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$origin_id));
