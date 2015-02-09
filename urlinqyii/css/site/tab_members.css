@@ -20,8 +20,9 @@ div.tab_members .tab_content_holder{
     margin-right: 2px;
     border-radius: 2px; -webkit-font-smoothing: antialiased; 
     font-size: 13px;       
-    display:none;      
 }
+
+
 
 .tab_members .tab_content_holder .tab_header div.float_Right .add_people_button:hover{
     background: #EEE;
@@ -35,6 +36,7 @@ div.tab_members .tab_content_holder{
 .tab_members .tab_content_holder .tab_header div.float_Right .small_search{
     display: inline-block;
 
+    margin-top: 6px;
 }
 
 .tab_members .tab_content_holder .tab_header div.float_Right .small_search em{
@@ -216,9 +218,9 @@ div.remove#done_removing_button span{
     text-shadow: none;
     border-color: #B8B8B8 #969696 #7E7E7E;
     background-color: #eee;
-    -moz-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
-    -webkit-box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
-    box-shadow: -10px 0px 8px #fff,inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    -moz-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    -webkit-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+    box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
 }
 
 .remove_members_state div.regular_member div.members_card div.user_card_button_holder div.follow_button_wrapper{
@@ -269,6 +271,31 @@ div.remove_member_button em{
 
 div.remove_state_controls{
     display:none;
+}
+
+.add_people_button:hover ~ .help_div.dark{
+    z-index: 1;
+    opacity:1;
+}
+
+.tab_members .help_div.dark{
+    top: 49px;
+
+    margin-left: -59px;
+}
+
+.tab_members .help_div.dark .box{
+    width: 200px;
+    
+    background: rgba(18, 19, 20, 0.93);
+    font-weight: 600;
+}
+
+.tab_members .help_div.dark .wedge{
+    border-bottom-color: rgba(18, 19, 20, 0.93);
+    
+    left: 50%;
+    margin-left: -7px;
 }
 
 div.remove_member_button span{

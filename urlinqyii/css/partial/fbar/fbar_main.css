@@ -1128,7 +1128,7 @@ div.upload_half > div > div.upload_button {
     border-radius: 2px;
     cursor: pointer;
     border: 1px solid;
-    margin-left: 36px;
+    margin-left: 82px;
     border-color: #Ddd;
     box-shadow: 0px -1px #fff inset, rgba(0, 0, 0, 0.0980392) 0px 1px 0px 0px;
     color: #575757 !important;
@@ -1334,14 +1334,14 @@ input.event_location {
     border-radius: 2px;
 }
 
-#fbar_holder.events_more_options .fbar_date_time#event_location {
+/*#fbar_holder.events_more_options .fbar_date_time#event_location {
     width: 270px;
 
 }
 
 #fbar_holder.events_more_options .location_matches_list {
     width: 268px;
-}
+}*/
 
 .fbar_date_time#event_location.gray_bg {
     background: #f5f5f5;
@@ -1399,6 +1399,7 @@ div#fbar_holder.events_more_options div.event_input_hidden, div#fbar_holder.opps
 
 div#fbar_holder.events_more_options div.event_input_hidden.repeat_event_input {
     display: inline-block;
+    display:none;
 }
 
 div.event_more_options, div.opportunity_more_options{
@@ -1550,6 +1551,4 @@ div.photo_flier_upload_box {
     background-image: url(http://localhost/alpha/urlinqyii/assets/small_icons.png);
 }
 
-input.error {
-    background-color: red;
-}
+

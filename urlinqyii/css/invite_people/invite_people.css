@@ -16,6 +16,92 @@ overflow: scroll;
 overflow-x: hidden;
 }
 
+.tab_members .invite_people_button{
+    
+
+    float: right;
+
+    display: inline-block;
+
+    font-size: 12.5px;
+
+    font-family: 'Open Sans', sans-serif; 
+
+    text-transform: capitalize; 
+
+    font-weight: 700;  border-radius: 3px; 
+
+    margin-top: 4px;
+
+    padding: 5px 12px; cursor: pointer;    
+
+    border: 1px solid rgba(199, 202, 205, 0.27); 
+
+    border: 1px solid #C0C0C0; background-color: #fcfcfc; background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); background-image: linear-gradient(rgba(255,255,255,0), rgba(235,235,235,.3) 60%, rgba(225,225,225,.6)); -moz-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); -webkit-box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); box-shadow: inset 0 0 0 #000, 0 1px 2px rgba(0, 0, 0, .02), inset 0 1px 0 rgba(255, 255, 255, 1), inset -1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 rgba(255, 255, 255, .5), inset 1px 0 0 rgba(255, 255, 255, 1); 
+    color: #575757;
+
+}
+
+.tab_members .invite_people_button:hover{
+outline: 0;
+background-color: #f9f9f9;
+color:#029acf;
+border-color: #B8B8B8 rgba(150, 150, 150, 0.71) rgba(126, 126, 126, 0.58);
+}
+
+.tab_members .invite_people_button:active{
+text-shadow: none;
+border-color: #B8B8B8 rgba(150, 150, 150, 0.71) rgba(126, 126, 126, 0.58);
+background-color: #eee;
+-moz-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+-webkit-box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;
+box-shadow: inset 0 0 0 #000, 0 1px 3px rgba(0, 0, 0, .0), inset 0 2px 2px rgba(0, 0, 0, 0.05), /* top inner border */ inset 0 1px 1px rgba(0, 0, 0, 0.08), /* top inner border n2 */ inset -2px 0 2px rgba(0, 0, 0, 0.03), /* right inner border */ inset 0 -1px 0 rgba(0, 0, 0, .02), /* bottom inner border */ inset 2px 0 2px rgba(0, 0, 0, .03) /* left inner border */;    
+}
+
+.tab_members #invite_holder{
+    position:relative;
+    width: 310px;
+    margin-top: 3px;
+    display:none;
+}
+
+.tab_members #invite_popup{
+    font-family: Avenir;
+font-weight: 400;
+font-size: 13.5px;
+margin-top: 30px;
+width: 198px;
+}
+
+em.invite_people_icon{
+    background-image: url(../../assets/gray_add_icon.png); background-size: auto; width: 10px; height: 10px; background-repeat: no-repeat; 
+    left: 9px; 
+    top: 16px; display: inline-block; 
+    position: absolute;
+
+    opacity: .6;
+}
+
+em.successful_invite_icon{
+     background-image: url(../../assets/small_icons.png); background-size: auto; 
+     width: 18px; 
+     height: 18px; background-repeat: no-repeat; 
+     left: -26px; 
+     top: 11px; 
+     border-radius: 2px;
+     display: inline-block; 
+    position: absolute;
+    display: none;
+     background-position: -87px -1093px;
+     opacity: 1;   
+}
+
+.small_search_input.invite_input{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); -webkit-transition: border linear .2s,box-shadow linear .2s; -moz-transition: border linear .2s,box-shadow linear .2s; -o-transition: border linear .2s,box-shadow linear .2s; transition: border linear .2s,box-shadow linear .2s;
+
+    margin-top: 4px;
+    float: left;
+}
 
 #invite_holder {
     float: left;
@@ -87,6 +173,10 @@ div.invite_user_holder{
     padding: 5px 3px;
 }
 
+div.invite_user_holder:hover{
+background:#f8f8f8;
+}
+
 input#create_month_day_event_button{
 
 }
@@ -151,15 +241,11 @@ div.invite_user_holder .invite_user_email{
     cursor: pointer;
 }
 
-
-
-
-
 .small_search_input{
     border: 1px solid #C7C7C7;
 
     width: 210px;
-    padding-left: 25px;
+    padding-left: 22px;
     padding-right: 15px;
     height: 30px;
     background: #fff;
