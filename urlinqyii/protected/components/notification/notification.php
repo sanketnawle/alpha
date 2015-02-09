@@ -235,8 +235,7 @@ function get_notifications_data($user, $notifications){
             array_push($notifications_new, $notification);
         }
         $data = array('success'=>true,'notifications'=>$notifications_new);
-        $this->renderJSON($data);
-        return;
+        return $data;
     }
 
     function get_model_associations($model, array $attributes) {
@@ -333,7 +332,18 @@ function get_notifications_data($user, $notifications){
         return $row;
     }
 
+function renderJSON($data)
+    {
+        header('Content-type: application/json');
+        echo CJSON::encode($data);
 
+        foreach (Yii::app()->log->routes as $route) {
+            if($route instanceof CWebLogRoute) {
+                $route->enabled = false; // disable any weblogroutes
+            }
+        }
+        Yii::app()->end();
+    }
 
 
 ?>
