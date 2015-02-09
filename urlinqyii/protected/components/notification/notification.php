@@ -78,9 +78,7 @@ function get_notifications_data($user, $notifications){
             $origin_id = $notification['origin_id'];
             $actor_id = $notification['actor_id'];
 
-}
-return;
-/*
+
 
             if($origin == '' || !$origin_id || !$actor_id){
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'origin type or id not set');
@@ -94,6 +92,11 @@ return;
                 //$this->renderJSON($data);
                 return $data;
             }
+
+
+            }
+return;
+/*
 
             $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
