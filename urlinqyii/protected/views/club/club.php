@@ -99,6 +99,10 @@
                         <?php } ?>
 
                                 <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
+                                    <div class = "blur_section_overflow_container">
+                                        <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
+                                        </div>
+                                    </div>                                         
                                     <div class = "group_name">
                                         <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
                                         <div class = "center_text">

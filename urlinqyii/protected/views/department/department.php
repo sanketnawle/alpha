@@ -78,6 +78,10 @@
 
 
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                            <div class = "blur_section_overflow_container">
+                                <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                                </div>
+                            </div>                           
                             <div class = "group_name">
                                 <div class = "center_admin"><div class = "department_of">Department of</div></div>
                                 <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
