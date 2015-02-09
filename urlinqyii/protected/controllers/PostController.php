@@ -953,6 +953,8 @@ class PostController extends Controller
             return;
         }
 
+        $user = $this->get_current_user($_POST);
+
         try{
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
