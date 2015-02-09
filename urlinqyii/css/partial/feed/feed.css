@@ -106,7 +106,7 @@ margin-left: 5px;
 background-size: cover!important;
 border-left: none;
 opacity: .8;
--webkit-transition: opacity .15s ease-out; -moz-transition: opacity .15s ease-out; -o-transition: opacity .15s ease-out; transition: opacity .15s ease-out;
+-webkit-transition: opacity .218s; -moz-transition: opacity .218s; -o-transition: opacity .218s; transition: opacity .218s;
 }
 
 .post_head .image_container{
@@ -1435,11 +1435,11 @@ margin-left: 5px;
 
 .post_own_post{
     opacity:0;
-    -webkit-transition: opacity 0.17s ease;
-    -moz-transition: opacity 0.17s ease;
-    -ms-transition: opacity 0.17s ease;
-    -o-transition: opacity 0.17s ease;
-    transition: opacity 0.17s ease;
+    -webkit-transition: opacity 0.218s;
+    -moz-transition: opacity 0.218s;
+    -ms-transition: opacity 0.218s;
+    -o-transition: opacity 0.218s;
+    transition: opacity 0.218s;
 }
 
 div.post:hover .post_own_post{

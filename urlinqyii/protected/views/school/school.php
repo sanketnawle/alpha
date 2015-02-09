@@ -83,7 +83,10 @@
     <div id="content_panel" class = "group_responsiveness">
     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
-
+        <div class = "blur_section_overflow_container">
+            <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
+            </div>
+        </div>  
         <div class = "group_name">
             <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
             <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>

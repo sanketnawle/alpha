@@ -149,7 +149,10 @@
 
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
-
+                <div class = "blur_section_overflow_container">
+                    <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                    </div>
+                </div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
