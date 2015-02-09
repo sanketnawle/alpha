@@ -2033,6 +2033,7 @@ border: 0;
 box-sizing: content-box;  
 border-radius: 0px;
 box-shadow: 0 0 1px rgba(0, 0, 0, 0.51) inset;
+background-position:center center;
 }
 
 div.post_attachment_review:hover span.download_icon{

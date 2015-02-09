@@ -1512,7 +1512,7 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" src = "{{thumbnail_url}}">
+            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
             {{/if}}
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>
@@ -1539,7 +1539,7 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" src = "{{url}}">
+            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
             {{/if}}
             {{#if title}}
             <div class = "embedly_info">

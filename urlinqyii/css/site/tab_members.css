@@ -35,9 +35,12 @@ div.tab_members .tab_content_holder{
 
 .tab_members .tab_content_holder .tab_header div.float_Right .small_search{
     display: inline-block;
-
     margin-top: 6px;
 }
+
+.tab_members .tab_content_holder .tab_header div.float_Right .small_search.members_lift_search{
+    margin-top:4px;
+    }
 
 .tab_members .tab_content_holder .tab_header div.float_Right .small_search em{
     width: 16px; 
