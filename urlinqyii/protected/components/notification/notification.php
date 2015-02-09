@@ -236,7 +236,7 @@ function get_notifications_data($user, $notifications){
             }
             array_push($notifications_new, $notification);
         }
-        $data = array('success'=>true,'notifications'=>$notifications_new);
+        $data = $notifications_new;
         return $data;
     
     }
