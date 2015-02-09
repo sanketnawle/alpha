@@ -92,18 +92,14 @@ function get_notifications_data($user, $notifications){
                 //$this->renderJSON($data);
                 return $data;
             }
-
-
-
+}
+return;
+/*
 
             $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
-
-}
-return;
-            /*
 
             if($notification_type == 'invite'){
 
