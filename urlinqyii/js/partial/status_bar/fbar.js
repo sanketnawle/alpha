@@ -1463,6 +1463,7 @@ function fbar_ready(origin_id) {
                         console.log(JSON.stringify(response));
 
                         if(response['success']){
+                            response['post']['update_timestamp'] = moment(response['post']['update_timestamp'], "X").fromNow();
                             reset_fbar();
                             render_post(response['post'],'prepend');
                         }else{

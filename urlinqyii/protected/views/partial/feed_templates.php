@@ -163,7 +163,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            <span class = "reply_icon"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -221,15 +221,6 @@
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
 
-                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                        {{{reply_msg}}}
-                                    </div>
-
-                                    {{#if file_id}}
-
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                    {{/if}}
-
 
                                     {{#ifCond anon '==' 1}}
                                         <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
@@ -265,6 +256,14 @@
                                             {{update_timestamp}}
                                         </div>
                                     </div>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
+                                    </div>
+
+                                    {{#if file_id}}
+
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                    {{/if}}                              
 
                                 </div>
 
@@ -338,14 +337,7 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                            {{{reply_msg}}}
-                                        </div>
 
-                                        {{#if file_id}}
-
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                        {{/if}}
 
                                         {{#ifCond anon '==' 1}}
                                         <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
@@ -380,6 +372,15 @@
                                             </div>
                                         </div>
 
+                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                            {{{reply_msg}}}
+                                        </div>
+
+                                        {{#if file_id}}
+
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        {{/if}}
+
                                     </div>
 
                                 </div>
@@ -394,14 +395,7 @@
             <script id='one_reply_template' type="text/x-handlebars-template">
                 <div class = 'comments'>
                     <div class = 'comment_main'>
-                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                            {{{reply_msg}}}
-                        </div>
 
-                        {{#if file_id}}
-
-                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                        {{/if}}
                         {{#ifCond anon '==' 1}}
                         <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                         </div>
@@ -431,7 +425,14 @@
                                 {{update_timestamp}}
                             </div>
                         </div>
+                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                            {{{reply_msg}}}
+                        </div>
 
+                        {{#if file_id}}
+
+                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                        {{/if}}
                     </div>
 
                 </div>
@@ -442,14 +443,7 @@
                     {{#each replies}}
                                 <div class = 'comments'>
                                     <div class = 'comment_main'>
-                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                            {{{reply_msg}}}
-                                        </div>
 
-                                        {{#if file_id}}
-
-                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                        {{/if}}
                                         {{#ifCond anon '==' 1}}
                                         <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
                                         </div>
@@ -482,7 +476,14 @@
                                                 {{update_timestamp}}
                                             </div>
                                         </div>
+                                        <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                            {{{reply_msg}}}
+                                        </div>
 
+                                        {{#if file_id}}
+
+                                            <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                        {{/if}}
                                     </div>
 
                                 </div>
@@ -726,7 +727,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            <span class = "reply_icon"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -789,14 +790,7 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                        {{{reply_msg}}}
-                                    </div>
 
-                                    {{#if file_id}}
-
-                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                    {{/if}}
 
                                     {{#ifCond anon '==' 1}}
                                         <div class = 'comment_owner_container' style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true)."/assets/avatars/".(rand(1,10)).".png"; ?>')">
@@ -831,7 +825,14 @@
                                             {{update_timestamp}}
                                         </div>
                                     </div>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
+                                    </div>
 
+                                    {{#if file_id}}
+
+                                        <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file.file_url}}" download='{{original_name}}'><div class='{{file.file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                    {{/if}}
                                 </div>
 
                             </div>
@@ -1085,24 +1086,7 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                        {{{reply_msg}}}
-                                    </div>
 
-                                    {{#each files}}
-                                        {{#ifCond file_extension '===' 'jpg'}}
-                                        <div class = "post_attached_image_container">
-                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
-                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
-                                        </div>
-                                        {{else}}
-                                            {{#ifCond download_count '==' 0}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                            {{else}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
-                                            {{/ifCond}}
-                                        {{/ifCond}}
-                                    {{/each}}
 
 
 
@@ -1139,7 +1123,24 @@
                                             {{update_timestamp}}
                                         </div>
                                     </div>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
+                                    </div>
 
+                                    {{#each files}}
+                                        {{#ifCond file_extension '===' 'jpg'}}
+                                        <div class = "post_attached_image_container">
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                        </div>
+                                        {{else}}
+                                            {{#ifCond download_count '==' 0}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            {{else}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            {{/ifCond}}
+                                        {{/ifCond}}
+                                    {{/each}}
                                 </div>
 
                             </div>
@@ -1335,7 +1336,7 @@
                                                             </div>
 
                                                         <div class = 'post_comment_btn'>
-                                                            <span class = "reply_icon"></span><span class = "reply_link_text">Reply</span>
+                                                            <span class = "reply_icon"></span>
                                                             {{#ifCond reply_count '>=' 1}}
                                                             <div class = 'reply_number'>
 
@@ -1391,24 +1392,7 @@
                             {{#each replies}}
                             <div class = 'comments'>
                                 <div class = 'comment_main'>
-                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
-                                        {{{reply_msg}}}
-                                    </div>
 
-                                    {{#each files}}
-                                        {{#ifCond file_extension '===' 'jpg'}}
-                                        <div class = "post_attached_image_container">
-                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
-                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
-                                        </div>
-                                        {{else}}
-                                            {{#ifCond download_count '==' 0}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
-                                            {{else}}
-                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
-                                            {{/ifCond}}
-                                        {{/ifCond}}
-                                    {{/each}}
 
 
 
@@ -1445,7 +1429,24 @@
                                             {{update_timestamp}}
                                         </div>
                                     </div>
+                                    <div class = 'comment_msg seemore_anchor' id = '{{reply_id}}'>
+                                        {{{reply_msg}}}
+                                    </div>
 
+                                    {{#each files}}
+                                        {{#ifCond file_extension '===' 'jpg'}}
+                                        <div class = "post_attached_image_container">
+                                            <div class = 'post_attached_image' title={{original_name}} style = "background-image:url('<?php echo Yii::app()->getBaseUrl(true); ?>{{file_url}}')"></div>
+                                            <div class = "post_attached_image_caption"><p>{{original_name}}</p><span class = "link_image_add_icon"></span></div>
+                                        </div>
+                                        {{else}}
+                                            {{#ifCond download_count '==' 0}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span></div></a>
+                                            {{else}}
+                                                <a href="<?php echo Yii::app()->getBaseUrl(true);?>{{file_url}}" download='{{original_name}}'><div class='png {{file_type}} post_attachment_review'>{{original_name}}<span class = "download_icon"></span><span class = "download_count_circle">download_count</span></div></a>
+                                            {{/ifCond}}
+                                        {{/ifCond}}
+                                    {{/each}}
                                 </div>
 
                             </div>
@@ -1511,7 +1512,7 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" src = "{{thumbnail_url}}">
+            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
             {{/if}}
             <div class = "embedly_info">
                 <div class = "embedly_title">{{title}}</div>
@@ -1538,7 +1539,7 @@
     <div class = "embedly_box">
         <a href="{{url}}" target="_blank">
             {{#if thumbnail_url}}
-            <img class = "embedly_image post_attached_image" src = "{{url}}">
+            <img class = "embedly_image post_attached_image" style = "background-image:url({{thumbnail_url}}); background-size:cover;">
             {{/if}}
             {{#if title}}
             <div class = "embedly_info">

@@ -358,7 +358,7 @@ div.about_tab_middle div.cool_members_box{
 
 div.cool_members_box > div > h5, div.classic_about_box > h5{
 font-family: Avenir;
-font-size: 14px;
+font-size: 16.5px;
 background-color: transparent;
 color: #999;
 margin-top: 0;
@@ -367,7 +367,7 @@ position: relative;
 border-radius: 4px 4px 0px 0px;
 border-bottom: 1px solid #dbdcdc;
 font-weight: 500;
-font-size: 14.5px;
+font-size: 16.5px;
 margin: 0 10px;
 color: #444;
 padding: 14px 0px 2px;
