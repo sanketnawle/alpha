@@ -149,6 +149,9 @@
 
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                <div id = "cover_photo" class = "blur_image banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+
+                </div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>

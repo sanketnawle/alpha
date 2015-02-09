@@ -398,6 +398,8 @@ div#fbar_wrapper.fbar_group{
 
 }
 
+.blur_image.banner_image{ width:367; height:459px; -webkit-filter: blur(3px); filter: blur(3px); }
+
 em.small_icon_time{
     background-image: url('../../assets/small_icons.png'); background-size: auto; background-repeat: no-repeat; display: inline-block;
     
