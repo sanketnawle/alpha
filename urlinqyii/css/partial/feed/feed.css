@@ -253,7 +253,7 @@ span.time_icon{
 }
 
 .post_msg{
-margin-left: 16.5px;
+margin-left: 20.5px;
 padding-top: 2px;
 width: 100%;
 line-height: 21px;
@@ -1431,6 +1431,19 @@ margin-left: 5px;
     color:#333!important;
     text-decoration: none!important;
     cursor: default!important;
+}
+
+.post_own_post{
+    opacity:0;
+    -webkit-transition: opacity 0.17s ease;
+    -moz-transition: opacity 0.17s ease;
+    -ms-transition: opacity 0.17s ease;
+    -o-transition: opacity 0.17s ease;
+    transition: opacity 0.17s ease;
+}
+
+div.post:hover .post_own_post{
+    opacity:1!important;
 }
 
 .post_user_icon_anonymous{
