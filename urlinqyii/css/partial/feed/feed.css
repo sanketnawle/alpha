@@ -3318,6 +3318,7 @@ cursor: pointer;
 
 .seemore_anchor a{
 color:rgb(20, 24, 35);
+display:block;
 }
 
 .delete-comment:hover {
