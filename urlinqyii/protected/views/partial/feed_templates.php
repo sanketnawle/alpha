@@ -410,26 +410,22 @@
                         </div>
                         {{/ifCond}}
 
-                        {{#if user_id}}
-                            {{#ifCond anon '==' 1}}
-                                <span class = 'comment_owner anonymous_post_owner'>
-                                    Anonymous
-                                </span>
-                                {{#if cownership}}
-                                    <span class="comment_owner comment_own_comment anonymous_post_owner">
-                                        (me)
-                                    </span>
-                                {{/if}}
-                            {{else}}
-                                <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
-                                    {{user_info.user_name}}
-                                </span>
-                           {{/ifCond}}
-                        {{else}}
-                            <span class = 'comment_owner'>
-                                Invalid User
+
+                        {{#ifCond anon '==' 1}}
+                            <span class = 'comment_owner anonymous_post_owner'>
+                                Anonymous
                             </span>
-                        {{/if}}
+                            {{#if cownership}}
+                                <span class="comment_owner comment_own_comment anonymous_post_owner">
+                                    (me)
+                                </span>
+                            {{/if}}
+                        {{else}}
+                            <span class = 'comment_owner profile_link' data-user_id={{user_id}} >
+                                {{user_info.user_name}}
+                            </span>
+                       {{/ifCond}}
+
                         <div class = 'comment_time'>
                             <div class='ct_ts'>
                                 {{update_timestamp}}
