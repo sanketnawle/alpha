@@ -10,17 +10,17 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-    /*include_once 'iOSPushNotifications.php';
+    include_once 'iOSPushNotifications.php';
     $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $message = get_notification_text($notification, $user);
-    notifyAlliOSDevicesForUserID($user_id, $message);*/
+    $message = $this->get_notification_text($notification, $user);
+    notifyAlliOSDevicesForUserID($user_id, $message);
 
 }
 
-function get_notification_text($noti, $user) {
+public function get_notification_text($noti, $user) {
 
-    $notification = get_notification_data($user, $noti);
+    $notification = $this->get_notification_data($user, $noti);
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
@@ -62,7 +62,7 @@ function get_notification_text($noti, $user) {
 }
 
 
-function get_notification_data($user, $notif){
+public function get_notification_data($user, $notif){
 
 
             $notification = model_to_array($notif);
