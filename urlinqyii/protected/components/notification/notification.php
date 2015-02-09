@@ -78,6 +78,10 @@ function get_notifications_data($user, $notifications){
             $origin_id = $notification['origin_id'];
             $actor_id = $notification['actor_id'];
 
+}
+return;
+/*
+
             if($origin == '' || !$origin_id || !$actor_id){
                 $data = array('success'=>false,'error_id'=>2,'error_msg'=>'origin type or id not set');
                 //$this->renderJSON($data);
@@ -234,6 +238,7 @@ function get_notifications_data($user, $notifications){
         }
         $data = array('success'=>true,'notifications'=>$notifications_new);
         return $data;
+    */
     }
 
     function get_model_associations($model, array $attributes) {
