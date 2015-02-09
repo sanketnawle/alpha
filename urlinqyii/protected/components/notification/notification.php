@@ -28,7 +28,7 @@ function array_for_notification_model($notification) {
 
 function get_notification_text($noti, $user) {
 
-    $notification = get_notifications_data($user, array($noti));
+    return get_notifications_data($user, array($noti));
     $origin = $notification['origin'];
     $type = $noti['type'];
     $actor = $notification['actor'];
@@ -119,7 +119,7 @@ function get_notifications_data($user, $notifications){
                     if(!$event){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                         //$this->renderJSON($data);
-                        return;
+                        return $data;
                     }
 
                     $event = model_to_array($event);
@@ -153,7 +153,7 @@ function get_notifications_data($user, $notifications){
                     $class = ClassModel::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$class){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'class doesnt exist');
-                        return;
+                        return $data;
                     }
 
                     $notification['origin'] = model_to_array($class);
@@ -162,7 +162,7 @@ function get_notifications_data($user, $notifications){
                     $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
                     if(!$group){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'group doesnt exist');
-                        return;
+                        return $data;
                     }
 
                     $notification['origin'] = model_to_array($group);
@@ -175,7 +175,7 @@ function get_notifications_data($user, $notifications){
                 if(!$follow){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     //$this->renderJSON($data);
-                    return;
+                    return $data;
                 }
                 $notification['origin'] = get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
             }
@@ -187,7 +187,7 @@ function get_notifications_data($user, $notifications){
                 if(!$reply){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     //$this->renderJSON($data);
-                    return;
+                    return $data;
                 }
 
                 $post = Post::model()->find("post_id=:post_id", array(":post_id"=>$reply->post_id));
@@ -200,7 +200,7 @@ function get_notifications_data($user, $notifications){
                 if(!$post){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
                     //$this->renderJSON($data);
-                    return;
+                    return $data;
                 }
 
                 $notification['origin'] = model_to_array($post);
@@ -337,7 +337,7 @@ function get_notifications_data($user, $notifications){
 function renderJSON($data)
     {
         header('Content-type: application/json');
-        echo CJSON::encode($data);
+        return CJSON::encode($data);
 
         foreach (Yii::app()->log->routes as $route) {
             if($route instanceof CWebLogRoute) {
