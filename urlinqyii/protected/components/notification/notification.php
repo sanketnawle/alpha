@@ -94,10 +94,8 @@ function get_notifications_data($user, $notifications){
             }
 
 
-            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
-}
-return;
-/*
+//            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
 
@@ -239,7 +237,7 @@ return;
         }
         $data = array('success'=>true,'notifications'=>$notifications_new);
         return $data;
-    */
+    
     }
 
     function get_model_associations($model, array $attributes) {
