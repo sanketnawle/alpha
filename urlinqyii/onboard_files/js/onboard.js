@@ -506,6 +506,9 @@ $(document).ready(function () {
         e.stopPropagation();
 
         var gender = $('input[name=gender]:checked').val();
+        if(!gender){
+            gender = null;
+        }
         //Check if gender is null
         /*if(!gender){
             alert('Please select a gender');
@@ -528,6 +531,9 @@ $(document).ready(function () {
         */
 
 
+        if(selected_data['classes'].length == 0){
+            selected_data['classes'] = null;
+        }
         if(selected_data['clubs'].length == 0){
             selected_data['clubs'] = null;
         }
@@ -794,6 +800,13 @@ $(document).ready(function () {
 
     $(document).delegate(".full_skip", "click", function () {
         if(progress_flag>2){
+            if(!selected_data['classes']){
+                selected_data['classes'] = [];
+            }
+            if(!selected_data['clubs']){
+                selected_data['clubs'] = [];
+            }
+
             $(".next_progress").addClass("last_step_btn");
             $('.last_step_btn').click();
         }
