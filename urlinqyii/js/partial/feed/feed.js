@@ -113,6 +113,18 @@ function ready(globals){
             //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
             //var time = new Date(jsonData[key]['created_time']);
             //jsonData[key]['created_time'] = time
+
+
+
+
+
+
+
+
+            for(i = 0; i < post['replies'].length; i++){
+                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow();
+            }
+            add_embedly_to_replies(post['replies']);
             if(post['reply_count'] >  2) {
                 post.show_more = true;
 
@@ -123,17 +135,6 @@ function ready(globals){
             }
 
 
-
-
-
-
-
-            for(i = 0; i < post['replies'].length; i++){
-                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
-
-            }
-
-            add_embedly_to_replies(post['replies']);
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -392,6 +393,7 @@ function ready(globals){
                 if(response['success']){
                     var source   = $("#one_reply_template").html();
                     var template = Handlebars.compile(source);
+                    response['reply']['update_timestamp'] = moment(response['reply']['update_timestamp'], "X").fromNow();
                     $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
                     $reply_form.find('.reply_text_textarea').val('');
 
