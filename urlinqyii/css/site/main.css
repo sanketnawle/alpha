@@ -389,12 +389,12 @@ body.body_class .blur_section{
 body.body_class .blur_section_overflow_container{}
 
 body.body_club .blur_section{
-    height: 130px;
+    height: 114px;
 
 }
 
 body.body_club .blur_section_overflow_container{
-    height:150px;
+    height: 171px;
 }
 
 body.body_course .blur_section{
@@ -1079,6 +1079,10 @@ left: 20px;
     display:inline-block;
 }
 
+.small_search.course_search{
+    margin-top:6px;
+}
+
 .fade_input_small{
 
 }
@@ -1166,9 +1170,14 @@ ul.tabnav_tabs li{
     height: 35px;
     box-shadow: 0 -1px 1px #fff inset;
 }
+
+.tab_header_courses.tab_header{
+    padding-bottom:5px!important;
+}
+
 .tab_members .tab_content_holder .tab_header{
     padding-top:17px!important;
-    padding-bottom: 6px;
+    padding-bottom: 5px;
 }
 
 .tab_group_info .tab_content_holder .tab_header{

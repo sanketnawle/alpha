@@ -190,7 +190,7 @@
 
                     <div class="panel tab_group_info" id="panel_2">
                         <div class = "tab_content_holder">
-                            <div class="tab_header"> 
+                            <div class="tab_header tab_header_courses"> 
                                 <div class = "float_Right">
 
 <!--                                    <span class = "sort_label">Order:</span>-->
@@ -199,14 +199,14 @@
 <!--                                        <em class = "dropdown_arrow">-->
 <!--                                        </em>-->
 <!--                                    </div>-->
-                                    <div class = "small_search fade_input_small">
+                                    <div class = "small_search fade_input_small course_search">
                                         <em id = "left_search_icon">
                                         </em>
                                         <input type = "text" name = "people_search_input" placeholder = "Search courses" class = "name_search_input small_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Courses this Semester
+                                    Courses in <?php echo $department->department_name; ?>
                                 </div>
                             </div>
                             <div class = "group_info_tab_content tab_content">
@@ -253,7 +253,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                   Faculty
+                                   <?php echo $department->department_name; ?> Faculty
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_admins_members_tab_content">
@@ -326,7 +326,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Students
+                                    <?php echo $department->department_name; ?> Students
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_students_members_tab_content">
