@@ -835,7 +835,7 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user){
+            if($club_user || (strpos($user->user_email,'@urlinq.com') !== false)){
                 if($club_user->is_admin || (strpos($user->user_email,'@urlinq.com') !== false)){
                     $club->group_desc = $_POST['description'];
                     if($club->save(false)){
@@ -858,7 +858,7 @@ class ClubController extends Controller
         $club = Group::model()->find('group_id=:id',array(':id'=>$_POST['club_id']));
         if($club){
             $club_user = GroupUser::model()->find('group_id=:gid and user_id=:uid',array(':gid'=>$club->group_id,':uid'=>$user->user_id));
-            if($club_user){
+            if($club_user  || (strpos($user->user_email,'@urlinq.com') !== false)){
                 if($club_user->is_admin  || (strpos($user->user_email,'@urlinq.com') !== false)){
                     $club->mission_statement = $_POST['mission'];
                     if($club->save(false)){
