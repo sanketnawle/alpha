@@ -561,6 +561,12 @@ class EventController extends Controller
 
             $user = $this->get_current_user($_POST);
 
+            if (!$user) {
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;
+            }
+
             $todo_name = $_POST['todo_name'];
             $todo_date = $_POST['todo_date'];
             $todo_time = $_POST['todo_time'];

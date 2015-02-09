@@ -953,6 +953,14 @@ class PostController extends Controller
             return;
         }
 
+        $user = $this->get_current_user($_POST);
+
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
         try{
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
@@ -1007,8 +1015,8 @@ class PostController extends Controller
                             'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
                             'picture_file_id'=>$reply_user->picture_file_id
                         ),
-                        'cownership'=>false,
-                        'vote_status'=>nullx
+                        'cownership'=>true,
+                        'vote_status'=>null
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
                     $this->renderJSON($data);
