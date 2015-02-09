@@ -312,7 +312,7 @@ div.main-market-area{
   right: 0px;
   
 
-  height: 585px;
+  height: 100%;
   
 
   overflow: hidden;
@@ -1480,11 +1480,11 @@ display:none;
   left: 0px;
   min-width: 1300px;
   right: 0px;
-  -o-filter: blur(7px);
-  -ms-filter: blur(7px);
-  -moz-filter: blur(7px);
-  -webkit-filter: blur(7px);
-  filter: blur(7px);
+  -o-filter: blur(4.5px);
+  -ms-filter: blur(4.5px);
+  -moz-filter: blur(4.5px);
+  -webkit-filter: blur(4.5px);
+  filter: blur(4.5px);
   max-width: 100%;
   top: -60px;
   bottom:0px;

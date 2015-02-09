@@ -334,7 +334,7 @@ $(document).ready(function(){
                 setTimeout(function(){          
                     $("div.group_name").css({"opacity":"1"});
                 }, 200);
-            }, 600);
+            }, 450);
 
 
 
