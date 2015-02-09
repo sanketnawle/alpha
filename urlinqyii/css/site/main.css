@@ -777,7 +777,7 @@ div.center_text p#group_name span.bottom{
     -moz-osx-font-smoothing: grayscale;
     font-weight: bold;   
     width: auto;
-    text-transform: uppercase;
+    text-transform: capitalize;
     display: block;
     text-align: center;
 }
@@ -1060,7 +1060,9 @@ span.you_are_admin{
     font-size: 11.5px;
 border: 1px solid #fff;
 padding: 2px 3px;
-border-radius: 1000px;
+
+    text-transform: uppercase;
+    border-radius: 1000px;
 background:rgba(0,0,0,.35);
 }
 
@@ -2057,8 +2059,27 @@ div.group_info_boxes.group_desc_box .group_info_block{
     overflow: hidden;
 }
 
-.group_info_block.upload_cover_container{
 
+.group_info_block_new.upload_cover_container{ background: rgba(18, 19, 20, 0.85); 
+    border-radius: 0 1.5px 1.5px 0; color: #fff; font-size: 12.5px; -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.5); box-shadow: 0px 0 3px rgba(0,0,0,0.5);
+    position: absolute;
+    left: 2px;
+    padding:2.5px 8px;
+    top: 60px;
+    float: left;
+ height: 30px;}
+
+.group_info_block_new.upload_cover_container:hover{
+    background: rgba(11, 11, 11, .9);
+
+}
+
+.group_info_block_new.upload_cover_container:active{
+    -webkit-box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
+    -moz-box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
+    box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.81), inset 0px 1px 0px rgba(255, 255, 255, 0.8);
+
+    outline: 2px solid rgba(0, 0, 0, 1);
 }
 
 div.group_info_boxes.course_info_box{
@@ -2295,8 +2316,10 @@ div.group_info_block#class_schedule em{
 /*width: 18%;*/
 /*}*/
 
-.upload_cover_photo_button {
+.upload_cover_photo_text {
     cursor: pointer;
+    line-height: 30px;
+    font-size:13.5px;
 }
 
 

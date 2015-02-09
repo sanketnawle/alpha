@@ -58,6 +58,9 @@
                         <?php
                             if($origin_type == 'home'){
                                 echo '';
+                            }
+                            if($origin_type == 'club'){
+                                echo 'Group';
                             }else{
                                 echo ucfirst($origin_type);
                             }

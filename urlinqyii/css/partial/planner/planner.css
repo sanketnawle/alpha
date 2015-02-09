@@ -182,16 +182,16 @@ span.create_planner_message {}
 .point{
     display: block;
 
-    font-size: 14.5px;
+    font-size: 14.5px!important;
     text-align: left;
     position: absolute;
     background: #FFFFFF;
-    padding: 3.3px 5px 3.3px 7px;
+    padding: 3.3px 5px 3.3px 7px!important;
     width: auto;
     margin: 0 auto;
-    top: 127px;
+    top: 127px!important;
     border-radius: 2.5px;
-    left: 33px;
+    left: 33px!important;
     font-family: avenir;
     color: #545454;
 } 
@@ -202,13 +202,13 @@ span.create_planner_message {}
     border-radius: 999px;
     width: 3px;
     height: 3px;
-    display: none;
+    display: none!important;
 }
 
 .point.point1{
-    top: 185px;
+    top: 185px!important;
 
-    left: 26px;
+    left: 26px!important;
 }
 
 .point.point2{
@@ -216,9 +216,9 @@ span.create_planner_message {}
 }
 
 .point.point2 {
-    top: 156px;
+    top: 156px!important;
 
-    left: 19px;
+    left: 19px!important;
 }
 
 

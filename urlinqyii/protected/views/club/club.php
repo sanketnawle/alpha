@@ -110,23 +110,21 @@
                                             <?php } ?>
                                         </div>
                                     </div>
+
                                     <div class = "group_right_info group_info_boxes">
+                                        <?php if($club->website != ''){?>
                                         <div class = "group_info_block">
-                                            <?php if($is_admin){ ?>
-                                                <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
-                                            <?php } ?>
 
-                                            <?php if($club->website != ''){?>
-                                                <br>
                                                 <?php echo $club->website; ?>
-                                            <?php } ?>
 
-
-
-                                            <br>
                                         </div>
+                                        <?php } ?>
                                     </div>
-
+                                    <?php if($is_admin){ ?>
+                                    <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                        <span class="upload_cover_photo_text">Update cover</span>
+                                    </div>
+                                    <?php } ?>
                                 </div>
 
                         <!--        close the cover photo dropzone form if user is an admin -->
