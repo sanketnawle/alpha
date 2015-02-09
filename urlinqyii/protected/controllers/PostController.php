@@ -955,6 +955,12 @@ class PostController extends Controller
 
         $user = $this->get_current_user($_POST);
 
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
         try{
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
@@ -1010,7 +1016,7 @@ class PostController extends Controller
                             'picture_file_id'=>$reply_user->picture_file_id
                         ),
                         'cownership'=>false,
-                        'vote_status'=>nullx
+                        'vote_status'=>null
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
                     $this->renderJSON($data);
