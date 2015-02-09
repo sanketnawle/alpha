@@ -30,7 +30,7 @@ function get_notification_text($noti, $user) {
 
     $notification = get_notifications_data($user, array($noti));
     $origin = $notification['origin'];
-    $type = $noti->type;
+    $type = $noti['type'];
     $actor = $notification['actor'];
     $notification_text = '';
 
