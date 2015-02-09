@@ -102,7 +102,7 @@ function get_notifications_data($user, $notifications){
 
                 if(!$invite){
                     $data = array('success'=>false,'error_id'=>3,'error_msg'=>'invalid invite');
-                    $this->renderJSON($data);
+                    //$this->renderJSON($data);
                     return;
                 }
 
@@ -114,7 +114,7 @@ function get_notifications_data($user, $notifications){
                     $event = Event::model()->find("event_id=:event_id", array(":event_id"=>$origin_id));
                     if(!$event){
                         $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                        $this->renderJSON($data);
+                        //$this->renderJSON($data);
                         return;
                     }
 
@@ -152,7 +152,7 @@ function get_notifications_data($user, $notifications){
                         return;
                     }
 
-                    $notification['origin'] = $this->model_to_array($class);
+                    $notification['origin'] = model_to_array($class);
                     $notification['origin']['name'] = $class->class_name;
                 }else if($notification['origin_type'] == 'club' || $notification['origin_type'] == 'group'){
                     $group = Group::model()->find("group_id=:group_id", array(":group_id"=>$origin_id));
@@ -170,7 +170,7 @@ function get_notifications_data($user, $notifications){
 
                 if(!$follow){
                     $data = array('success'=>false,'error_id'=>2,'error_msg'=>'related thing doesnt exist');
-                    $this->renderJSON($data);
+                    //$this->renderJSON($data);
                     return;
                 }
                 $notification['origin'] = get_model_associations($follow,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
@@ -204,20 +204,20 @@ function get_notifications_data($user, $notifications){
 
                 if($post->origin_type == 'class'){
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($class);
+                    $notification['origin']['post_origin'] = $model_to_array($class);
                     $notification['origin']['post_origin']['name'] = $class->class_name;
                 }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($group);
+                    $notification['origin']['post_origin'] = model_to_array($group);
                     $notification['origin']['post_origin']['name'] = $group->group_name;
                 }else if($post->origin_type == 'department'){
                     $department = Department::model()->find('department_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($department);
+                    $notification['origin']['post_origin'] = model_to_array($department);
                     $notification['origin']['post_origin']['name'] = $department->department_name;
 
                 }else if($post->origin_type == 'school'){
                     $school = School::model()->find('school_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $this->model_to_array($school);
+                    $notification['origin']['post_origin'] = model_to_array($school);
                     $notification['origin']['post_origin']['name'] = $school->school_name;
                 }else{
                     $notification['origin']['post_origin'] = null;
