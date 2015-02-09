@@ -153,11 +153,16 @@ $(document).ready(function () {
             $(".progress_footer_glyph_0").hide();
         }
 
-        if (curr <= 2) { $(".skip_progress").hide(); } else {
+        if (curr <= 2) {
+            $(".skip_progress").hide();
+            $(".full_skip").hide();
+        } else {
             if (curr != 6) {
                 $(".skip_progress").show();
+                $(".full_skip").show();
             } else {
                 $(".skip_progress").hide();
+                $(".full_skip").hide();
             }
         }
 
@@ -227,6 +232,7 @@ $(document).ready(function () {
 
 
          $('.skip_progress').show();
+         $(".full_skip").show();
          $(".canvas_banner").remove();
 
         console.log("CURR " + curr.toString());
@@ -250,6 +256,7 @@ $(document).ready(function () {
             }
 
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
 
         }else if (curr == 1) {
@@ -270,11 +277,13 @@ $(document).ready(function () {
             }
 
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
 
         } else if (curr == 2) {
             $canvas.append("<div class='step_2_card'><h1>Check your email</h1><p>We sent you a confirmation email with a link to get you started on Urlinq.</p><img src='" + base_url + "/onboard_files/img/EmailConfirmIcon.png'</div>");
             $('.skip_progress').hide();
+            $(".full_skip").hide();
         } else if (curr == 3) {
             $canvas.show();
             $canvas.addClass("canvas_adjust");
@@ -330,6 +339,7 @@ $(document).ready(function () {
 
         }else if (curr == 4) {
             $('.skip_progress').show();
+            $(".full_skip").show();
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt right_txt_adjust'><span class='follow_all_btn'>Follow All</span></div></div>");
@@ -356,6 +366,7 @@ $(document).ready(function () {
             $canvas.addClass("canvas_adjust");
             $inner.addClass("canvas_adjust");
             $('.skip_progress').show();
+            $(".full_skip").show();
             $frame.prepend("<div class='canvas_banner'><div class='left_txt'>" + canvas_hint[curr] + "</div><div class='right_txt'><span>0</span> joined</div></div>");
 
 
@@ -383,6 +394,7 @@ $(document).ready(function () {
 
         }else if (curr == 6) {
             $('.skip_progress').hide();
+            $(".full_skip").hide();
 
             var data = {base_url: base_url, user_type: user_type};
 
@@ -495,12 +507,12 @@ $(document).ready(function () {
 
         var gender = $('input[name=gender]:checked').val();
         //Check if gender is null
-        if(!gender){
+        /*if(!gender){
             alert('Please select a gender');
             return;
-        }
+        }*/
 
-
+        /*
         if(selected_data["classes"].length == 0){
             if(user_type == 'p'){
                 if(professor_classes.length == 0){
@@ -513,7 +525,7 @@ $(document).ready(function () {
                 return;
             }
         }
-
+        */
 
 
         if(selected_data['clubs'].length == 0){
@@ -779,6 +791,14 @@ $(document).ready(function () {
             content_paint(progress_flag);
         }
     });
+
+    $(document).delegate(".full_skip", "click", function () {
+        if(progress_flag>2){
+            $(".next_progress").addClass("last_step_btn");
+            $('.last_step_btn').click();
+        }
+    });
+
 
     $(document).delegate(".progress_goback", "click", function () {
         if ((progress_flag > 0) && (progress_flag != 3)) {
