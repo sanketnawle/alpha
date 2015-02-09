@@ -1015,7 +1015,7 @@ class PostController extends Controller
                             'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
                             'picture_file_id'=>$reply_user->picture_file_id
                         ),
-                        'cownership'=>false,
+                        'cownership'=>true,
                         'vote_status'=>null
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
