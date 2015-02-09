@@ -1480,7 +1480,11 @@ display:none;
   left: 0px;
   min-width: 1300px;
   right: 0px;
-  -webkit-filter: blur(10px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
   max-width: 100%;
   top: -60px;
   bottom:0px;
@@ -2289,7 +2293,7 @@ height: 801px;
 }
 
 .top-bar{
-  height:100px;
+  height:77px;
 }
 
 img.logo{
