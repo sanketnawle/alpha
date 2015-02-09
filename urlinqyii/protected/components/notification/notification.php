@@ -14,11 +14,11 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
     $notification = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
     $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
     $notification_array = array_for_notification_model($notification);
-  //  $message = get_notification_text($notification_array, $user);
+    $message = get_notification_text($notification_array, $user);
 
-$thing = get_notifications_data($user, array($notification_array));
+//$thing = get_notifications_data($user, array($notification_array));
 
-    notifyAlliOSDevicesForUserID($user_id, "testtest");
+    notifyAlliOSDevicesForUserID($user_id, $message);
 
 }
 
@@ -26,9 +26,9 @@ function array_for_notification_model($notification) {
     return array("type"=>$notification->type, "actor_id"=>$notification->actor_id, "user_id"=>$notification->user_id, "origin_id"=>$notification->origin_id, "origin_type"=>$notification->origin_type);
 }
 
-/*function get_notification_text($noti, $user) {
+function get_notification_text($noti, $user) {
 
-    $notification = get_notification_data($user, $noti);
+    $notification = get_notifications_data($user, array($noti));
     $origin = $notification['origin'];
     $type = $noti->type;
     $actor = $notification['actor'];
@@ -67,7 +67,8 @@ function array_for_notification_model($notification) {
             $notification_text = "Notification not supported yet.";
         }
         return $notification_text;
-}*/
+}
+
 function get_notifications_data($user, $notifications){
 
 
