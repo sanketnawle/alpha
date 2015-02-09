@@ -28,6 +28,11 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
 }
 
+.user_wrapper{
+    width: 570px;
+    margin: 5px auto;
+}
+
 #profile_wrapper .search_bar{
     height: 33px;
     background-image: url(../../assets/small_icons.png);
@@ -65,6 +70,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
     position: relative;
     border-radius: 0px 0px 5px 5px;
     background-color: #f5f5f5;
+    padding-bottom: 30px;
 }
 #modal_header{
     height: 220px;
@@ -958,6 +964,8 @@ div.members_card_wrapper {
     width: 166px;
     display: inline-block;
     margin-top: 10px;
+    float: left;
+    margin-top: 16px;
 }
 /*classes*/
 #profile_wrapper .info_line.info_about{

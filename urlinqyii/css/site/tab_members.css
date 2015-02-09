@@ -50,7 +50,7 @@ div.tab_members .tab_content_holder{
 }
 
 .members_tab_content{
-    padding: 25px 0 0 0;
+    padding: 7px 0 0 0;
     
     position: relative;
     width: 100%;
@@ -62,6 +62,10 @@ div.members_tab_content div.members_card_wrapper.class_admin{
 width: 73.1%;
 margin-top: 10px;
 margin-left: 9px; margin-right: 9px;
+}
+
+body.left_panel_hidden.left_panel_hidden_p2 .members_tab_content div.members_card_wrapper{
+    width:19.6%;
 }
 
 div.members_tab_content div.members_card_wrapper.class_admin div.members_card div.members_card_img{

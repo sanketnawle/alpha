@@ -1971,6 +1971,9 @@ body.body_searchpage .topbar > #topbar_responsive_holder{}
     body.body_group #wrapper{
         padding-top:0px!important;
     }
+    body.left_panel_hidden.left_panel_hidden_p2 .members_tab_content div.members_card_wrapper{
+        width:24.6%!important;
+    }
     #main_panel.main_panel_search{
         padding-right:150px;
     }
