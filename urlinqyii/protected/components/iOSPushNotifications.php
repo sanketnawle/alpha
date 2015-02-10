@@ -29,7 +29,8 @@
 
             $body['aps'] = array(
                 'alert' => $message,
-                'sound' => 'default'
+                'sound' => 'default',
+                'origin_urlinq_ios_push_notification' => "hi ios this is ben"
                 );
 
             $payload = json_encode($body);
