@@ -113,6 +113,18 @@ function ready(globals){
             //if(jsonData[key]['user_id'] === '0') jsonData[key]['user_id'] = '';
             //var time = new Date(jsonData[key]['created_time']);
             //jsonData[key]['created_time'] = time
+
+
+
+
+
+
+
+
+            for(i = 0; i < post['replies'].length; i++){
+                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow();
+            }
+            add_embedly_to_replies(post['replies']);
             if(post['reply_count'] >  2) {
                 post.show_more = true;
 
@@ -123,17 +135,6 @@ function ready(globals){
             }
 
 
-
-
-
-
-
-            for(i = 0; i < post['replies'].length; i++){
-                post['replies'][i]['update_timestamp'] = moment(post['replies'][i]['update_timestamp'], "X").fromNow(true);
-
-            }
-
-            add_embedly_to_replies(post['replies']);
 
             if(post['post_type'] == 'question' && post['question']['question_type'] == 'multiple_choice'){
                 var alphabet= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -334,14 +335,20 @@ function ready(globals){
         var $delete_button = $(this);
 
 
-
         var $post = $delete_button.closest('.post');
 
         var post_id = $post.attr('data-post_id');
 
+        var event_id=null;
+        if($post.is('[data-event_id]')){
+            event_id = $post.attr('data-event_id');
+        }
 
         var post_data = {'post_id': post_id};
 
+        if(event_id !=null){
+            post_data.event_id = event_id;
+        }
 
         $.post(
             globals.base_url + '/post/delete',
@@ -371,7 +378,7 @@ function ready(globals){
         }
 
 
-        var anonymous = false;
+        var anonymous = $reply_form.find('.check_wrap .flat7b').hasClass('flat_checked') ? 1:0;
         var reply_user_id = globals.user_id;
         var $reply_count = $reply_form.closest(".post").find('.reply_number');
 
@@ -392,6 +399,7 @@ function ready(globals){
                 if(response['success']){
                     var source   = $("#one_reply_template").html();
                     var template = Handlebars.compile(source);
+                    response['reply']['update_timestamp'] = moment(response['reply']['update_timestamp'], "X").fromNow();
                     $reply_form.closest(".post").find('.master_comments').append(template(response['reply']));
                     $reply_form.find('.reply_text_textarea').val('');
 

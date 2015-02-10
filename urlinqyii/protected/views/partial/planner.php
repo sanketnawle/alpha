@@ -58,6 +58,9 @@
                         <?php
                             if($origin_type == 'home'){
                                 echo '';
+                            }
+                            if($origin_type == 'club'){
+                                echo 'Group';
                             }else{
                                 echo ucfirst($origin_type);
                             }
@@ -110,9 +113,10 @@
             <div id="planner_body_holder">
                 <div id="free_planner_wrap" style="display: none;">
                     <img id="eventImg" src="<?php echo Yii::app()->getBaseUrl(true); ?>/assets/partial/planner/eventImg.png" />
-                    <span class="create_planner_message" style = "opacity:1">   Fill out your planner</span>
-                    <span class="point point1" style = "opacity:1"> <em></em> classwork reminders</span>
-                    <span class="point point2" style = "opacity:1"> <em></em> syncs with cal</span>
+                    <span class="create_planner_message" style = "opacity:1">   Plan your Week</span>
+                    <span class="point point1" style = "opacity:1"> <em></em> Invite your friends to join in</span>
+                    <span class="point point2" style = "opacity:1"> <em></em> Receive classwork reminders</span>
+                    <span class="point point3" style = "opacity:1"> <em></em> Syncs with your calendar</span>
                 </div>
 
                 <div id="event_list">
@@ -124,6 +128,9 @@
                         <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}">
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
+                                {{#if future}}
+                                    <div class="event_date_time date">{{start_date}}</div>
+                                {{/if}}
                                 <div class='event_date_time'>{{start_time}}</div>
                             </div>
                             <div class='event_checkbox_holder'>

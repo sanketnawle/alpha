@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="progress_hint_1">Step <span class="curr_step">1</span> of <span>7</span></div>
+                        <div class="progress_hint_1"></div>
                         <div class="progress_goback" style="display: none;"></div>
                     </div>
                     <div class="progress_content">
@@ -106,6 +106,7 @@
                         <input type="text" placeholder="Search schools" class="onboard_textarea_t0 onboard_textarea_t1 onboard_textarea_t2">
                     </div>
                 </div>
+                <div class="full_skip" style="display: none;">or <span>skip to home page</span></div>
             </div>
         </div>
     </body>

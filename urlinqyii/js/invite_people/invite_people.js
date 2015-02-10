@@ -147,8 +147,10 @@ jQuery(document).ready(function(){
                      //Clear the text input field
                     $invite_input.val('');
                     $invite_input.removeClass('error');
-
-                    alert(JSON.stringify(response));
+                    $(".successful_invite_icon").fadeIn(100).delay(850).queue(function(next){
+                        $(".successful_invite_icon").fadeOut(150);
+                        next();
+                    });
                 },'json'
             );
 
@@ -297,6 +299,13 @@ jQuery(document).ready(function(){
 
 
 
+    });
+
+    jQuery(document).on('click', '.add_people_button', function(e){
+        $(this).hide();
+        $(".help_div.dark").hide();
+        $("#invite_holder").show();
+        $("#invite_holder .invite_input").focus();
     });
 
 

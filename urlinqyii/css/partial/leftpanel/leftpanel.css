@@ -129,6 +129,9 @@ a.MyBox_SO.edit_profile:hover{
     border-bottom: 1px solid #EAEAEA;
 
     height: 26px; 
+    -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
+    box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
 }
 
 .SectionHeader_holder div h4{
@@ -381,13 +384,13 @@ background: rgba(232, 232, 232, 0.56);
 ul.LeftPanel_GroupsList li a:active
 {
 background: #E8E8E8;
-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(42, 43, 44, 0.89);
 color: #111;
 }
 
 ul.LeftPanel_GroupsList li a:focus
 {
-background: #E8E8E8; box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(42, 43, 44, 0.89); color: #111;
+background: #E8E8E8;
+color: #111;
 }
 
 ul.LeftPanel_GroupsList li a.current_group, ul.LeftPanel_GroupsList li a.current_group:hover, ul.LeftPanel_GroupsList li a.current_group:active{

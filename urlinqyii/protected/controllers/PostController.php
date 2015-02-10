@@ -402,6 +402,15 @@ class PostController extends Controller
                                         send_notification('post',$user->user_id,$department_user->user_id,$post_data['post_id'],'post');
                                     }
                                 }
+                                /* not sure if this should be added
+                                //Send a notification to everyone following this department
+                                foreach($department->followers as $department_follower){
+                                    if($department_follower->user_id != $user->user_id){
+                                        send_notification('post',$user->user_id,$department_follower->user_id,$post_data['post_id'],'post');
+                                    }
+                                }
+                                */
+
 
                             }else{
                                 $return_data = array('success'=>false,'error_msg'=>'department doesnt exist');
@@ -485,7 +494,8 @@ class PostController extends Controller
                     $post_data['pownership'] = true;
 
 
-
+                    //$post_data['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s'));
+                    $post_data['update_timestamp'] =strtotime("now");
                     $post_data['user_info'] = $this->get_model_associations($user, array('pictureFile'));
 
                     $return_data = array('success'=>true,'post'=>$post_data);
@@ -727,17 +737,51 @@ class PostController extends Controller
             $this->renderJSON($return_data);
             return;
         }
+        if($post->post_type == "event"){
+            if(!isset($_POST['event_id'])){
+                $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $event = Event::model()->find('event_id=:eid',array(':eid'=>$_POST['event_id']));
+            }
+
+        }
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
-            $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
-            $this->renderJSON($return_data);
-            return;
+            if($post->origin_type == "club"){
+                $origin = Group::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "class"){
+                $origin = ClassModel::model()->findByPk($post->origin_id);
+            }else if($post->origin_type == "department"){
+                $origin = Department::model()->findByPk($post->origin_id);
+            }
+            $is_admin=false;
+            foreach($origin->admins as $admin){
+                if($user->user_id == $admin->user_id){
+                    $is_admin = true;
+                }
+            }if($is_admin == false){
+                $return_data = array('success'=>false,'error_id'=>4, 'error_msg'=>'User is not authorized to delete this post');
+                $this->renderJSON($return_data);
+                return;
+            }
+
         }
 
 
         //If all goes well, delete the post
         if($post->delete()){
+            if(isset($event)){
+                if(!$event->delete()){
+                    $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }
+
+
             $return_data = array('success'=>true);
             $this->renderJSON($return_data);
             return;
@@ -929,6 +973,14 @@ class PostController extends Controller
             return;
         }
 
+        $user = $this->get_current_user($_POST);
+
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
         try{
             //$post_id = $_POST['post_id'];
             $post_id = $_POST['post_id'];
@@ -977,13 +1029,14 @@ class PostController extends Controller
                         'down_vote'=>$reply->down_vote,
                         'file_id'=>$reply->file_id,
                         'anon'=>$reply->anon,
+                        //'update_timestamp'=>strtotime(gmdate('Y-m-d H:i:s')),
                         'update_timestamp'=>$reply->update_timestamp,
                         'user_info'=>array(
                             'user_id'=>$reply_user_id,
                             'user_name'=>$reply_user->firstname . ' ' . $reply_user->lastname,
-                            'picture_file_id'=>$reply_user->picture_file_id
+                            'pictureFile'=>$reply_user->pictureFile
                         ),
-                        'cownership'=>false,
+                        'cownership'=>true,
                         'vote_status'=>null
                     );
                     $data = array('success'=>true,'reply'=>$reply_data);
@@ -1019,6 +1072,42 @@ class PostController extends Controller
             echo "Notification created successfully";
         else
             var_dump($model->getErrors());
+    }
+
+    public function actionGetPostComments() {
+        if (!isset($_GET['post_id'])) {
+            $data = array('success'=>false,'error_id'=>1,'error_msg'=>'required values not set');
+            $this->renderJSON($data);
+            return;
+        }
+        
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false,'error_id'=>2,'error_msg'=>'not a valid user.');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $post_id = $_GET['post_id'];
+
+        $sql = "SELECT * FROM reply WHERE post_id = $post_id;";
+
+        $replies = Reply::model()->findAllBySql($sql);
+
+        $replies_with_users = array();
+
+        foreach ($replies as $reply) {
+
+            $reply = $this->model_to_array($reply);
+            $reply_user = User::model()->find("user_id=:user_id",array(":user_id"=>$reply['user_id']));
+            $reply['user_info'] = $reply_user;
+            array_push($replies_with_users, $reply);
+        }
+
+        $data = array('success'=>true,'replies'=>$replies_with_users);
+        $this->renderJSON($data);
+        return;
+
     }
 
 	/**

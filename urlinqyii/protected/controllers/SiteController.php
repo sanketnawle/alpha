@@ -808,7 +808,7 @@ class SiteController extends Controller
         $picture_file_id = $_POST['picture_file_id'];
 
 
-        if($gender != 'M' && $gender != 'F'){
+        if($gender != 'M' && $gender != 'F' && $gender != null){
             $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'invalid gender');
             $this->renderJSON($data);
             return;
@@ -856,7 +856,7 @@ class SiteController extends Controller
             }
         }else{
 
-            if($user->user_type == 'p'){
+          /*  if($user->user_type == 'p'){
                 //Check if professor is the current professor of any classes.
                 //If not, return an error
                 $class = ClassModel::model()->find('professor_id=:id',array(':id'=>$user->user_id));
@@ -869,7 +869,7 @@ class SiteController extends Controller
                 $data = array('success'=>false, 'error_id'=>10, 'error_msg'=>'must register in atleast one class');
                 $this->renderJSON($data);
                 return;
-            }
+            }*/
         }
 
 
@@ -1002,8 +1002,10 @@ class SiteController extends Controller
 
 
         } else if($user->user_type == 's'){
-            if(isset($_POST['graduation_date'])){
+            if(isset($_POST['graduation_date'])) {
                 $graduation_date = $_POST['graduation_date'];
+            }else{
+                $graduation_date = null;
             }
             $student_attribute = StudentAttributes::model()->find('user_id=:id',array(':id'=>$user->user_id));
             if($student_attribute){

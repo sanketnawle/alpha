@@ -18,12 +18,13 @@ div.reminders_header.header{
     font-family: Avenir;
 
     font-size: 15px;
-    font-size: 13.5px; font-weight: 600;
+    font-size: 14.8px; 
+    font-weight: 500;
     text-transform: uppercase;
-    color: #333343; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    border-bottom: 1px solid #dbdcdc;
+    color: #444; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     margin-bottom: 10px;
     padding-bottom: 3px;
+    border-bottom: 1px solid #EAEAEA;  -moz-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; -webkit-box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset; box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.77) inset;
 } 
 
 ul.reminder_entries{

@@ -1139,7 +1139,7 @@ function fbar_ready(origin_id) {
 
 
             post_data['origin_type'] = globals.origin_type;
-            post_data['origin_id'] = origin_id;
+            post_data['origin_id'] = globals.origin_id;
 
             //alert(origin_id);
 
@@ -1172,8 +1172,7 @@ function fbar_ready(origin_id) {
             }
 
 
-
-            post_data['anon'] = 0;
+            post_data['anon'] = $fbar_holder.find('#post_anon .flat7b').hasClass('flat_checked') ? 1:0;
 
             post_data['like_count'] = 0;
 
@@ -1464,6 +1463,7 @@ function fbar_ready(origin_id) {
                         console.log(JSON.stringify(response));
 
                         if(response['success']){
+                            response['post']['update_timestamp'] = moment(response['post']['update_timestamp'], "X").fromNow();
                             reset_fbar();
                             render_post(response['post'],'prepend');
                         }else{

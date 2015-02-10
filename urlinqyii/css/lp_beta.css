@@ -13,8 +13,12 @@ border-top: none;
 
 border-bottom: none;
 font-family: 'Open Sans', sans-serif;
-overflow-x:hidden; 
-background:#edefed;;
+
+
+overflow: hidden; 
+
+
+background: rgba(18, 19, 20, 0.85);;
 
 
 position: relative;
@@ -48,13 +52,14 @@ position: relative;
   position: absolute!important;
 right: 20px;
 bottom: 10px;
-display:block!important;
+
+  display: none!important;
 }
 
 div.lp_terms{
     position: absolute; 
     left: 16px; 
-    bottom: 12px; 
+    bottom: 7px; 
     width: 320px;
 
 }
@@ -64,6 +69,7 @@ div.lp_terms p.lp_terms_p{
 
     font-size: 10.8px;
     color: #777;
+    text-shadow: none;
 }
 
 div.lp_terms p.lp_terms_p a{
@@ -207,18 +213,18 @@ cursor:pointer;
 .registration-sec-texts{
     position: relative;
   
-    margin-top: 12px;
+    margin-top: 19px;
     padding: 0px 10px;
 }
 
 .registration-sec-texts input{
   border: 1px solid #d7d7d7;
   border-radius: 3px;
-  height: 36px;
+  height: 43px;
   color: rgb(41, 47, 51);
-  font-size: 14px; 
-  width: 308px;
-  padding: 8px 10px;
+  font-size: 16px; 
+  width: 368px;
+  padding: 10px 10px;
 }
 
 button.FacebookConnect em{
@@ -306,10 +312,10 @@ div.main-market-area{
   right: 0px;
   
 
-  height: 585px;
+  height: 100%;
   
 
-  /* overflow: hidden; */
+  overflow: hidden;
 
   top: 0px;
   
@@ -328,10 +334,10 @@ div.main-market-area{
 .main-content-wrap{
   background: transparent;
 
-  height: 585px;
+  height: 100%;
   /* overflow: hidden; */
   position: relative;
-  top: 0px;        
+  top: -60px;        
 }
 
 .footer-area{
@@ -348,17 +354,18 @@ div.main-market-area{
 div.signup-container{
     display: block;
     position: absolute;
-    width: 340.656315px;
-    top: 120px;
+    width: 400px;
+    top: 170px;
     border-radius: 8px;
-    left: 57%;
+    left: 50%;
     /* background: rgba(255, 255, 255, 0); */ padding: 4px;  z-index: 100;  
+    margin-left: -200px;
 }
 
 div.signup-form-wrap{
     border-radius: 6px; 
     background-color: rgba(255, 255, 255, 0.95); 
-    height: 425px;
+    height: 380px;
     position: relative;
     padding: 5px;  
     border: 1px solid rgba(105, 105, 105, 0.17);
@@ -428,27 +435,28 @@ div.signup-form-wrap div.footer-sec{
 div.header-sec-left h4.header{
     margin: 0;
  
-    font-weight: 200;
+    font-weight: 900;
     font-size: 32px;
     line-height: 44px;
-    color: rgb(49, 49, 49);
+    color: #fff;
     padding-left: 8px;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     font-family: Avenir;
+    font-size: 3.6em; letter-spacing: -2px; 
 }
 
 div.header-sec-left{
     display: inline-block;
 
     float: left;
-    width: 132px;
-    border-right: 2px solid rgba(49, 49, 49, 1);
+    width: auto;
     height: 42px;
-    padding-left: 33px;
+    padding-left: 0px;
+    padding-right: 19px;
 }
 
 div.header-sec{
-    top: 14px;
+    top: -76px;
 
     position: relative;
     height: 40px;
@@ -464,14 +472,14 @@ div.header-sec div.header-sec-right{
 
 div.header-sec-right div.time-to-signup{
 
-    font-size: 18px;
-    padding-left: 13px;
+    font-size: 22px;
+    
     
 
-    font-weight: 100;
+    font-weight: 400;
     
 
-    color: rgba(49, 49, 49, 1);
+    color: #fff;
     display: inline-block;
     float: left;
     
@@ -480,7 +488,7 @@ div.header-sec-right div.time-to-signup{
     font-family: Avenir;
     
 
-    width: 126px;
+    width: 148px;
 
     padding-top: 2px;
 
@@ -507,6 +515,7 @@ top: 68px;
 width: 485px;
 z-index:9999;
 position: absolute;
+display: none;
 }
 
 div.focus_area{
@@ -600,11 +609,17 @@ em.icon_img.icon_img_r{
 }
 
 div.registration-form{
+    position: relative;
 
+    top: -50px;
 }
 
 div.registration-form form.register{
 
+}
+
+.signup_password_field{
+  margin-top:11px!important;
 }
 
 #countdown{
@@ -650,7 +665,7 @@ div.registration-sec ul.account-types{
 list-style: none;
 margin: 0;
 padding: 0;
-margin-top: 0px;
+margin-top: -3px;
 margin-left: 9px;
 position: absolute;
 
@@ -663,9 +678,9 @@ div.fname-lname-sec input.lname{
 }
 
 ul.account-types li.account-type #account-type-label{
-    font-weight: 600; 
-    font-size: 14px; 
-    top: 38px; position: absolute;  
+    font-weight: 500; 
+    font-size: 16px; 
+    top: 41px; position: absolute;  
     pointer-events: none;
     cursor: pointer;
 
@@ -678,10 +693,10 @@ box-sizing: border-box;
 float: left;
 border: 1px solid #d7d7d7; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;    background: #fff;
 color: rgb(161, 163, 165);
-height: 62px;
+height: 68px;
 border-radius: 4px;
 position: relative;
-width: 154px;
+width: 184px;
 }
 
 ul.account-types li.account-type:hover{
@@ -726,7 +741,7 @@ outline-color: #3B99FC;
 
 button.SignUp{
 
-  width: 310px;
+  width: 369px;
   text-align: center;
 position: relative;
 display: block;
@@ -813,16 +828,18 @@ ul.account-types li.student label{
     background-image: url(../assets/account_type_icons.png); 
     background-position: center -9px;
 
-    margin-top: -1px;
+    margin-top: 1px;
     width: 76px;
     height: 38px;
-    margin-left: 37px;
+    margin-left: 49px;
     background-size: auto;
 }
 
 ul.account-types li.faculty label{
     background-image: url(../assets/account_type_icons.png); 
-    background-position: center -86px; margin-top: -1px; width: 76px; height: 38px; margin-left: 37px; background-size: auto;
+    background-position: center -86px; 
+    margin-top: 1px; width: 76px; height: 38px; 
+    margin-left: 49px; background-size: auto;
  
  
 }
@@ -892,16 +909,19 @@ position: relative;
   padding-left: 10px;
 
   padding-top: 14px;
-padding-bottom: 4px;
-font-size: 13px;
 
+  padding-bottom: 8px;
+
+  font-size: 14.5px;
+
+  margin-top: -10px;
   font-weight: 500;
 
   color: #222020;
 }
 
 div.fname-lname-sec input{
-    width: 149px;
+    width: 180px;
   
 }
 
@@ -909,6 +929,7 @@ div.fname-lname-sec{
     position: relative;
 
     height: 35px;
+    margin-top: 13px;
 }
 
 input#fname{
@@ -1243,14 +1264,14 @@ div.feature-description h1{
 }
 
 div.bottom-container{
-    position: relative;
+    position: absolute;
   
     width: 100%;
     height: 100px; 
-    background-color: rgba(237, 239, 237, 0);
-    left: -40px;
+    margin: 0 auto;
     z-index:100;
-    margin-top: -33px;
+    margin-top: -10px;
+    top: 90%;
 }
 
 /*
@@ -1305,7 +1326,6 @@ ul.color-border{
   font-size: 12px;
   margin: 0 auto;
   position: relative;
-  background: rgba(0, 0, 0, 0.21);
   padding: 0;
   margin-top: 29px;
   width: 360px;
@@ -1464,14 +1484,18 @@ display:none;
   left: 0px;
   min-width: 1300px;
   right: 0px;
+  -o-filter: blur(4.5px);
+  -ms-filter: blur(4.5px);
+  -moz-filter: blur(4.5px);
+  -webkit-filter: blur(4.5px);
+  filter: blur(4.5px);
   max-width: 100%;
   top: -60px;
   bottom:0px;
-  min-height:100%;
+  min-height: 100%;
   height:auto;
   width:auto;
   z-index:-100;
-  background-size:cover;
 }
 
 div.text-switcher{
@@ -1592,7 +1616,7 @@ div.grabber div.grabber-container{
 
 @media(max-width:1250px){
   div.signup-container{
-    left:652px;
+    left: 50%;
   }
   div.grabber{
 
@@ -1615,7 +1639,7 @@ div.grabber div.grabber-container{
 
 @media(max-width:1080px){
   div.signup-container{
-    left:622px;
+    left: 50%;
   }
   div.grabber{
     left: 50%;
@@ -1627,7 +1651,7 @@ div.grabber div.grabber-container{
 
 @media(max-width:980px){
  div.signup-container{
-    left:572px;
+    left: 50%;
   
 }
   div.about_section{
@@ -1804,7 +1828,7 @@ width: 409px;
 }
 button.SignUp{
   width:409px;
-  top:6px;
+  top: 14px;
 }
 
 div.or-head {
@@ -1813,6 +1837,7 @@ div.or-head {
 
 div.header-sec-right div.time-to-signup{
   padding-left: 22px;
+  padding-top: 6px;
 }
 
 ul.account-types li.student label {
@@ -1821,11 +1846,11 @@ margin-left: 64px;
 
 
 div.header-sec-left {
-width: 112px;
+width: auto;
 }
 
 div.header-sec-left h4.header{
-  margin-left: -30px;
+  margin-left: 0px;
 }
 div.fname-lname-sec input {
 width: 199px;
@@ -1847,7 +1872,7 @@ ul.account-types li.faculty label{
 div.signup-form-wrap {
 border-radius: 6px;
 background-color: #fff;
-height: 430px;
+height: 380px;
 padding: 5px;
 border: 1px solid rgba(105, 105, 105, 0.17);
 }
@@ -1865,16 +1890,15 @@ position: fixed;
   position:absolute;
 
 width: 440px;
-top: 120px;
+top: 170px;
 margin-left: -220px;
 border-radius: 8px;
 left: 50%;
-background: rgba(255, 255, 255, 0);
+/* background: rgba(255, 255, 255, 0); */
 padding: 4px;
--webkit-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
--moz-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
+/* -webkit-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2); */
 z-index: 100;
-box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2);
+/* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .2); */
 }
 
 button.FacebookConnect span.buttonText{
@@ -1883,7 +1907,7 @@ button.FacebookConnect span.buttonText{
 
 .main-content-wrap {
 background: transparent;
-height: 650px;
+height: 100%;
 position: relative;
 }
 div.main-market-area{
@@ -1894,6 +1918,7 @@ div.main-market-area{
 {
 padding-left: 22px;
 padding-right: 22px;
+margin-left: 0px;
 }
 
 }
@@ -1913,7 +1938,7 @@ padding-right: 22px;
 
   img.logo{
     height: 26px;
-    padding-top: 11px;
+    padding-top: 13px;
   }
 
   .announcement_board_writtable h4{
@@ -1969,7 +1994,7 @@ font-size: 14px!important;
 
 body{
   background-size:cover;
-  background:#F5F5F5;
+  background: rgba(18, 19, 20, 0.85);
 }
 
 #countdown p.smallCD{
@@ -2272,7 +2297,7 @@ height: 801px;
 }
 
 .top-bar{
-  height:100px;
+  height:77px;
 }
 
 img.logo{

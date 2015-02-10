@@ -234,7 +234,6 @@ $(document).ready(function(e) {
     // });
 
     $(document).delegate(".flat7b", "click", function (event) {
-
         if (!$(this).hasClass("flat_checked")) {
             $(this).css({"border": "1px solid #333", "background-color": "#999"});
             $(this).closest(".check_wrap").find(".move").css({"margin-left": "19px"});

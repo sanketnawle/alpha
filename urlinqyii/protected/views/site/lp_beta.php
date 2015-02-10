@@ -665,12 +665,12 @@
 
 
           <ul class = "color-border">
-            <li style = "background-color:#565a5c;"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
+            <li style = "background-color:rgba(0,0,0,.35);"><a style = "color: white; text-decoration:none" class = "cb-link1" href="http://urlinq.com/beta/lp_beta.php">Home</a></li>
           <li><a style = "color: #1DA7D3; text-decoration:none" class = "cb-link2" href="http://urlinq.com/blog">Blog</a></li>
           <li><a style = "color: rgba(253, 112, 45, 0.74); text-decoration:none" class = "cb-link3" href="https://urlinq.com/team/jobs">Jobs</a></li>
           <li><a style = "color: rgba(177, 104, 226, 0.8); text-decoration:none" class = "cb-link4" href="https://urlinq.com/team/contact">Team</a></li>
           <li><a style = "color: #ff5a5f; text-decoration:none" class = "cb-link5" href="https://urlinq.com/about/legal/privacy">Privacy</a></li>
-          <li><p>&#169; 2014 Urlinq</p></li>
+          <li><p>&#169; 2015 Urlinq</p></li>
           </ul>
           
           </div>
@@ -743,7 +743,7 @@
                                         }                                            
                                   ?>">
                       </div>
-                      <div class = "registration-sec-texts">
+                      <div class = "registration-sec-texts signup_password_field">
                         <input type = "password" name = "password" id = "password" placeholder = "Password">
                         <?php 
                            //session_destroy();

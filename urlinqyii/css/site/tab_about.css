@@ -358,7 +358,7 @@ div.about_tab_middle div.cool_members_box{
 
 div.cool_members_box > div > h5, div.classic_about_box > h5{
 font-family: Avenir;
-font-size: 14px;
+font-size: 16.5px;
 background-color: transparent;
 color: #999;
 margin-top: 0;
@@ -367,7 +367,7 @@ position: relative;
 border-radius: 4px 4px 0px 0px;
 border-bottom: 1px solid #dbdcdc;
 font-weight: 500;
-font-size: 14.5px;
+font-size: 16.5px;
 margin: 0 10px;
 color: #444;
 padding: 14px 0px 2px;
@@ -421,18 +421,26 @@ div.cool_members_box div.members_about_section{
 }
 
 p#edit_club_description{
-    margin: 0;
-
-    position: absolute;
-    top: -13px;
-    opacity: 0;
-    font-family: Avenir;
-    font-size: 12px;
-    color: #575757;
-    left: 8px;
-    text-transform: capitalize;
+    font-weight: 400;
+    padding: 2px .45rem;
+    letter-spacing: .5px;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 11.5px;
+    position: relative;
+    text-transform: uppercase;
+    color: #999;
+    cursor: pointer;
+    background: #f5f5f5;
+    color: #029acf;
+    margin-top: -2px;
 }
-
+.group_textarea{
+    resize: none;
+    margin-top: 10px;
+    width: 100%;
+    height: 77px;
+}
 div.group_display_icon{
     width: 78px;
 

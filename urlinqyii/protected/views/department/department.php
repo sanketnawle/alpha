@@ -41,7 +41,7 @@
 
 </head>
 
-<body class = "body_group" id = "body_department">
+<body class = "body_group body_department" id = "body_department">
 
 <?php echo Yii::app()->runController('partial/topbar'); ?>
 <div id="wrapper">
@@ -78,6 +78,10 @@
 
 
                         <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                            <div class = "blur_section_overflow_container">
+                                <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $department->coverFile->file_url ?>');">
+                                </div>
+                            </div>                           
                             <div class = "group_name">
                                 <div class = "center_admin"><div class = "department_of">Department of</div></div>
                                 <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $department->department_name; ?></span></p></div>
@@ -172,11 +176,11 @@
                         <div id = "feed_column" class = "feed_column_group">
                             <div id = "stream_holder" class = "stream_holder_home">
                                 <div id = "fbar_wrapper" class = "fbar_home">
-                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/department_status_bar',array('user'=>$user,'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false,'origin'=>$department)); ?>
                                 </div>
 
                                 <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id)); ?>
+                                    <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/department/'.$department->department_id.'/feed', 'origin_type'=>'department','origin_id'=>$department->department_id,'is_admin'=>false)); ?>
                                 </div>
 
 
@@ -186,7 +190,7 @@
 
                     <div class="panel tab_group_info" id="panel_2">
                         <div class = "tab_content_holder">
-                            <div class="tab_header"> 
+                            <div class="tab_header tab_header_courses"> 
                                 <div class = "float_Right">
 
 <!--                                    <span class = "sort_label">Order:</span>-->
@@ -195,14 +199,14 @@
 <!--                                        <em class = "dropdown_arrow">-->
 <!--                                        </em>-->
 <!--                                    </div>-->
-                                    <div class = "small_search fade_input_small">
+                                    <div class = "small_search fade_input_small course_search">
                                         <em id = "left_search_icon">
                                         </em>
                                         <input type = "text" name = "people_search_input" placeholder = "Search courses" class = "name_search_input small_search_input">
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Courses this Semester
+                                    Courses in <?php echo $department->department_name; ?>
                                 </div>
                             </div>
                             <div class = "group_info_tab_content tab_content">
@@ -249,7 +253,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                   Faculty
+                                   <?php echo $department->department_name; ?> Faculty
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_admins_members_tab_content">
@@ -322,7 +326,7 @@
                                     </div>                                        
                                 </div>
                                 <div class = "header_sentence">
-                                    Students
+                                    <?php echo $department->department_name; ?> Students
                                 </div>
                             </div>
                             <div class = "members_tab_content tab_content" id="department_students_members_tab_content">

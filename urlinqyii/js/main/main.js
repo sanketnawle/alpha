@@ -287,46 +287,54 @@ $(document).ready(function(){
 
 
 
-        var $quote = $("#group_name > #name_title");
-        var $class_title_info = $(".class_title_info");
-        
-        var $numWords = $quote.text().split("").length;
-        
-        if (($numWords >= 1) && ($numWords < 10)) {
-            $quote.css("font-size", "48.5px");
-            $quote.css("letter-spacing", "1.55px;");
-        }
-        else if (($numWords >= 10) && ($numWords < 20)) {
-            $quote.css("font-size", "46px");
-            $quote.css("letter-spacing", "1.35px;");
-            $class_title_info.css("font-size","15.6px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","18.4px");
-        }
-        else if (($numWords >= 20) && ($numWords < 30)) {
-            $quote.css("font-size", "37.6px");
-            $quote.css("letter-spacing", "1.18px;");
-            $class_title_info.css("font-size","14px");
-            $class_title_info.css("margin-top","7px");
-            $class_title_info.css("line-height","16.2px");
-        }
-        else if (($numWords >= 30) && ($numWords < 38)) {
-            $quote.css("font-size", "32.5px");
-        }
-        else {
-            $quote.css("font-size", "27.5px");
-            $class_title_info.css("font-size","10.4px");
-            $class_title_info.css("margin-top","4px");
-            $class_title_info.css("line-height","12.8px");
-        }    
 
-        var group_name_left = $("p#group_name").position().left;
-        $("div.center_admin").css({"left":group_name_left});
 
-        $(window).on('resize', function(){
-             var group_name_left = $("p#group_name").position().left;
-            $("div.center_admin").css({"left":group_name_left})
-        });          
+            $(window).on('resize', function(){
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left})
+            });          
+
+            setTimeout(function(){
+                var $quote = $("#group_name > #name_title");
+                var $class_title_info = $(".class_title_info");
+                
+                var $numWords = $quote.text().split("").length;
+                
+                if (($numWords >= 1) && ($numWords < 10)) {
+                    $quote.css("font-size", "48.5px");
+                    $quote.css("letter-spacing", "1.55px;");
+                }
+                else if (($numWords >= 10) && ($numWords < 20)) {
+                    $quote.css("font-size", "46px");
+                    $quote.css("letter-spacing", "1.35px;");
+                    $class_title_info.css("font-size","15.6px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","18.4px");
+                }
+                else if (($numWords >= 20) && ($numWords < 30)) {
+                    $quote.css("font-size", "37.6px");
+                    $quote.css("letter-spacing", "1.18px;");
+                    $class_title_info.css("font-size","14px");
+                    $class_title_info.css("margin-top","7px");
+                    $class_title_info.css("line-height","16.2px");
+                }
+                else if (($numWords >= 30) && ($numWords < 38)) {
+                    $quote.css("font-size", "32.5px");
+                }
+                else {
+                    $quote.css("font-size", "27.5px");
+                    $class_title_info.css("font-size","10.4px");
+                    $class_title_info.css("margin-top","4px");
+                    $class_title_info.css("line-height","12.8px");
+                }    
+
+                var group_name_left = $("p#group_name").position().left;
+                var group_name_left = $("p#group_name").position().left;
+                $("div.center_admin").css({"left":group_name_left});  
+                setTimeout(function(){          
+                    $("div.group_name").css({"opacity":"1"});
+                }, 200);
+            }, 450);
 
 
 
@@ -570,13 +578,102 @@ $(document).ready(function(){
 
 
 
-    if($("body").hasClass("body_group") == true){
+    if($("body").hasClass("body_class") == true){
 
-        $("span.create_planner_message").css({"left":"27px"}).text("Add tasks to this group planner");
-        $(".point").css({"left":"40px","font-size":"13px"})
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this class's schedule");
+        $("span.create_planner_message").css({"left":"18px", "width":"192px"})
     }
 
+    if($("body").hasClass("body_department") == true){
 
+        $("span.create_planner_message").css({"left":"27px"}).text("Schedule group events");
+        $("span.create_planner_message").css({"left":"22px", "width":"192px"})
+    }
+    if($("body").hasClass("body_club") == true){
+
+        $("span.create_planner_message").css({"left":"27px"}).text("Plan this group's schedule");
+        $("span.create_planner_message").css({"left":"12px", "width":"202px"})
+    }
+
+    $(document).on('click','#edit_club_description',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editDescription";
+            var description = $('#group_description_input').val();
+            var post_data = {description: description, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(description.length){
+                            $edit_button.parent().html('Description <p id = "edit_club_description"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_description').text(description);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>');
+                            $('#group_description').text("Provide a description of this group.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
+
+            $('#group_description_input').hide();
+            $('#group_description').fadeIn(250);
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_description').hide();
+            $('#group_description_input').fadeIn(250);
+            var description = $.trim($('#group_description').text());
+            if(description != "Provide a description of this group.") {
+                $('#group_description_input').val(description);
+            }
+            $edit_button.addClass('editing');
+        }
+    });
+    $(document).on('click','#edit_club_mission',function(){
+        var $edit_button = $(this);
+        if($edit_button.hasClass('editing')){
+            var post_url = globals.base_url+"/club/editMission";
+            var mission = $('#group_mission_input').val();
+            var post_data = {mission: mission, club_id: globals.origin_id};
+            $.post(
+                post_url,
+                post_data,
+                function(response){
+                    if(response['success']){
+                        if(mission.length){
+                            $edit_button.parent().html(' Purpose <p id = "edit_club_mission"><span class = "edit_icon small_icon_map"></span>Edit</p>')
+                            $('#group_mission').text(mission);
+                        }else{
+                            $edit_button.parent().html('<p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>');
+                            $('#group_mission').text("Give your group a 240-character purpose that describes what it will be used for.");
+                        }
+                    }else{
+                        alert(JSON.stringify(response));
+                    }
+                }
+            )
+            $('#group_mission_input').hide();
+            $('#group_mission').fadeIn(250);
+
+
+
+            $edit_button.removeClass('editing');
+        }else{
+            $edit_button.text('Done Editing');
+            $('#group_mission').hide();
+            $('#group_mission_input').fadeIn(250);
+            var mission = $.trim($('#group_mission').text());
+            if(mission != "Give your group a 240-character purpose that describes what it will be used for."){
+                $('#group_mission_input').val(mission);
+            }
+
+            $edit_button.addClass('editing');
+        }
+    });
 
 
 

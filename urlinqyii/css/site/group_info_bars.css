@@ -168,6 +168,8 @@ div.group_box_main_info .group_link{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     cursor: pointer;
+    display: block;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 div.group_box.club_box .group_link{

@@ -238,9 +238,10 @@ class EventController extends Controller
         }
 
         $query = $_GET['q'];
+        $query_lowercased = strtolower($query);
         $user_id = $user->user_id;
 
-        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query ."%') LIMIT 5");
+        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE user_id = $user_id AND LOWER(title) LIKE LOWER('%" . $query . "%') LIMIT 5");
 
         $results = $this->add_event_data($this->models_to_array($events), $user);
 
@@ -570,6 +571,12 @@ class EventController extends Controller
 
 
             $user = $this->get_current_user($_POST);
+
+            if (!$user) {
+                $data = array('success'=>false,'error_id'=>1,'error_msg'=>'not a valid user');
+                $this->renderJSON($data);
+                return;
+            }
 
             $todo_name = $_POST['todo_name'];
             $todo_date = $_POST['todo_date'];

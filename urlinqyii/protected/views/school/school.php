@@ -83,7 +83,10 @@
     <div id="content_panel" class = "group_responsiveness">
     <?php echo $this->renderPartial('/partial/nav_bar',array('origin_type'=>'school','origin_id'=>$school->school_id,'origin'=>$school)); ?>
     <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->coverFile->file_url ?>');">
-
+        <div class = "blur_section_overflow_container">
+            <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $school->pictureFile->file_url ?>');">
+            </div>
+        </div>  
         <div class = "group_name">
             <div class = "center_admin univ_art"><div class = "text"></div><div class = "university_arrow"></div></div>
             <div class = "center_text"><p id = "group_name" class = "school_name"><span id = "name_title"><?php echo $school->school_name; ?></span></p></div>
@@ -124,7 +127,7 @@
                     <div class="tab clubs" data-panel_id="3">
                         <div class="tab_content">
                             <div class="tab_img"></div>
-                            <div class="tab_text">Clubs</div>
+                            <div class="tab_text">Groups</div>
                             <div class = "tab_amount"><?php echo count($clubs); ?></div>
                         </div>
                         <div class="tab_wedge"></div>
@@ -197,11 +200,11 @@
                     <div id = "feed_column" class = "feed_column_group">
                         <div id = "stream_holder" class = "stream_holder_home">
                             <div id = "fbar_wrapper" class = "fbar_home">
-                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id,'pg_src'=>'school.php','target_type'=>'school')); ?>
+                                <?php echo $this->renderPartial('/partial/school_status_bar',array('user'=>$user,'origin_type'=>'school','origin_id'=>$school->school_id,'pg_src'=>'school.php','target_type'=>'school','is_admin'=>false,'origin'=>$school)); ?>
                             </div>
 
                             <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/'.$school->school_id.'/feed', 'origin_type'=>'school','origin_id'=>$school->school_id)); ?>
+                                <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/school/'.$school->school_id.'/feed', 'origin_type'=>'school','origin_id'=>$school->school_id,'is_admin'=>false)); ?>
                             </div>
                         </div>
                     </div>
@@ -225,7 +228,7 @@
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
-                                Departments
+                                Departments at <?php echo $school->school_name; ?>
                             </div>
                         </div>
                         <div class = "group_info_tab_content tab_content">
@@ -270,11 +273,11 @@
                                 <div class = "small_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
-                                    <input type = "text" name = "name_search_input people_search_input" placeholder = "Search clubs" class = "small_search_input name_search_input people_search_input">
+                                    <input type = "text" name = "name_search_input people_search_input" placeholder = "Search clubs and groups" class = "small_search_input name_search_input people_search_input">
                                 </div>                                        
                             </div>
                             <div class = "header_sentence">
-                                Clubs
+                                Groups at <?php echo $school->school_name; ?>
                             </div>
                         </div>
 
@@ -288,7 +291,7 @@
                                     <a href="<?php echo Yii::app()->getBaseUrl(true) . '/club/' . $club->group_id; ?>">
                                         <div class = "float_Left group_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url; ?>')">
                                             <div class = "group_link"><?php echo $club->group_name; ?></div>
-                                            <span class = "group_type group_with_button">Club</span>
+                                            <span class = "group_type group_with_button">Group</span>
 
                                         </div>
                                     </a>
@@ -326,17 +329,17 @@
                     <div class="tab_content_holder">
                         <div class="tab_header">
                             <div class = "float_Right">
-                                <div class = "add_people_button">
+                                <!--<div class = "add_people_button">
                                     Add People
-                                </div>
-                                <div class = "small_search" class = "fade_input_small">
+                                </div>-->
+                                <div class = "small_search members_lift_search" class = "fade_input_small">
                                     <em id = "left_search_icon">
                                     </em>
                                     <input type = "text" name = "people_search_input" placeholder = "Search people" class = "name_search_input small_search_input" id="school_users_search_input">
                                 </div>
                             </div>
                             <div class = "header_sentence">
-                                Members
+                                Members of <?php echo $school->school_name; ?>
                             </div>
                         </div>
                         <div class = "members_tab_content tab_content">

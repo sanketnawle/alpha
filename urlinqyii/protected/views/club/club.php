@@ -99,32 +99,36 @@
                         <?php } ?>
 
                                 <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->coverFile->file_url ?>');">
+                                    <div class = "blur_section_overflow_container">
+                                        <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $club->pictureFile->file_url ?>');">
+                                        </div>
+                                    </div>                                         
                                     <div class = "group_name">
                                         <!--<div class = "center_admin"><div class = "admin_image"></div><div class = "admin_image"></div><div class = "admin_image"></div></div>-->
-                                        <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p></div>
-                                    </div>
-                                    <div class = "group_right_info group_info_boxes">
-                                        <div class = "group_info_block">
+                                        <div class = "center_text">
+                                            <p id = "group_name"><span id = "name_title"><?php echo $club->group_name; ?></span></p>
                                             <?php if($is_admin){ ?>
-                                                <span class="upload_cover_photo_button"><em class ="small_icon_map cover_photo_update_icon"></em>Update cover photo</span>
+                                                <span class = "you_are_admin">
+                                                    Admin
+                                                </span>
                                             <?php } ?>
-
-                                            <?php if($club->contact_email != ''){?>
-                                                <br>
-                                                <?php echo $club->contact_email; ?>
-                                            <?php } ?>
-
-                                            <?php if($club->website != ''){?>
-                                                <br>
-                                                <?php echo $club->website; ?>
-                                            <?php } ?>
-
-
-
-                                            <br>
                                         </div>
                                     </div>
 
+                                    <div class = "group_right_info group_info_boxes">
+                                        <?php if($club->website != ''){?>
+                                        <div class = "group_info_block">
+
+                                                <?php echo $club->website; ?>
+
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                    <?php if($is_admin){ ?>
+                                    <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                                        <span class="upload_cover_photo_text">Update cover</span>
+                                    </div>
+                                    <?php } ?>
                                 </div>
 
                         <!--        close the cover photo dropzone form if user is an admin -->
@@ -257,11 +261,11 @@
                             <div id = "feed_column" class = "feed_column_group">
                                 <div id = "stream_holder" class = "stream_holder_home">
                                     <div id = "fbar_wrapper" class = "fbar_home">
-                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user, 'origin_type'=>'club','origin_id'=>$club->group_id, 'origin'=>$club)); ?>
+                                        <?php echo $this->renderPartial('/partial/club_status_bar',array('user'=>$user, 'origin_type'=>'club','origin_id'=>$club->group_id, 'origin'=>$club,'is_admin'=>$is_admin)); ?>
                                     </div>
 
                                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/'.$club->group_id.'/feed', 'origin_type'=>'club','origin_id'=>$club->group_id)); ?>
+                                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/club/'.$club->group_id.'/feed', 'origin_type'=>'club','origin_id'=>$club->group_id,'is_admin'=>$is_admin)); ?>
                                     </div>
                                 </div>
                             </div>
@@ -406,7 +410,14 @@
                                 <div class="tab_header"> 
                                     <div class = "float_Right">
                                         <div class = "add_people_button">
-                                            Add People
+                                            Add Members
+                                        </div>
+                                        <div class = "help_div dark">
+                                            <div class = "wedge">
+                                            </div>
+                                            <div class = "box">
+                                                Add new members to join your group. If they don't already have a Urlinq account, they'll receive an email to signup.
+                                            </div>
                                         </div>
 
 
@@ -422,10 +433,10 @@
                                             <div id="invite_holder" class="invite_holder">
 <!--                                                <div id="create_event_invite_label">Invite people</div>-->
 
-
-                                                <input id="invite_input" name="event_invite_input" placeholder="Invite people" class="text_input invite_input small_search_input">
-
-                                                <div id="create_event_invite_button" class="invite_people_button">Invite</div>
+                                                <em class = "successful_invite_icon"></em>
+                                                <input id="invite_input" name="event_invite_input" placeholder="Add a new member" class="text_input invite_input small_search_input">
+                                                <em class = "invite_people_icon"></em>
+                                                <div id="create_event_invite_button" class="invite_people_button">Send Invite</div>
 
 
 
@@ -721,10 +732,12 @@
                                                 <?php } ?>
                                             </div>
                                         </div>
-                                        <div class = "group_info_data half_data open_look">
-                                            <?php echo $club->group_desc; ?>
+                                        <div id="group_description_holder">
+                                            <div id="group_description" class = "group_info_data half_data open_look">
+                                                <?php echo $club->group_desc; ?>
+                                            </div>
+                                            <textarea id="group_description_input" class="group_textarea" maxlength="240" placeholder="Provide a description of this group." style="display:none"></textarea>
                                         </div>
-
                                         <?php }else{ ?>
                                             <?php if($is_admin){ ?> 
                                                 <div class = "group_info_divider half_divider">
@@ -733,16 +746,19 @@
                                                         <p id = "edit_club_description"><span class = "add_icon small_icon_map"></span>Edit Description</p>
                                                     </div>
                                                 </div>
-                                                <div class = "group_info_data half_data open_look inline_editable">
-                                                    Provide a description of this group. 
-                                                    <span class = "big_edit_icon">
-                                                    </span>
-                                                </div>                                                
+                                                <div id="group_description_holder">
+                                                    <div id="group_description" class = "group_info_data half_data open_look inline_editable">
+                                                        Provide a description of this group.
+                                                        <span class = "big_edit_icon">
+                                                        </span>
+                                                    </div>
+                                                    <textarea id="group_description_input" class="group_textarea" maxlength="240" placeholder="Provide a description of this group." style="display:none;"></textarea>
+                                                </div>
                                             <?php } ?>
 
                                         <?php } ?>
 
-                                        <?php if($club->group_desc) { ?>
+                                        <?php if($club->mission_statement) { ?>
 
                                             <div class = "group_info_divider half_divider">
                                                 <hr role = "separator">
@@ -752,10 +768,12 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <div class = "group_info_data half_data open_look">
-                                                <?php echo $club->mission_statement; ?>
+                                            <div id="group_mission_holder">
+                                                <div id="group_mission" class = "group_info_data half_data open_look">
+                                                    <?php echo $club->mission_statement; ?>
+                                                </div>
+                                                <textarea id="group_mission_input" class="group_textarea" maxlength="240" placeholder="Give your group a 240-character purpose that describes what it will be used for." style="display:none"></textarea>
                                             </div>
-
                                         <?php }else{ ?>
                                             <?php if($is_admin){ ?> 
                                                 <div class = "group_info_divider half_divider">
@@ -764,12 +782,15 @@
                                                         <p id = "edit_club_mission"><span class = "add_icon small_icon_map"></span>Edit Group Purpose</p>
                                                     </div>
                                                 </div>
-                                                <div class = "group_info_data half_data open_look inline_editable">
-                                                    Give your group a 240-character purpose that describes what it will be used for. 
-                                                    <span class = "big_edit_icon">
-                                                    </span>
+                                                <div id="group_mission_holder">
+                                                    <div id="group_mission" class = "group_info_data half_data open_look inline_editable">
+                                                        Give your group a 240-character purpose that describes what it will be used for.
+                                                        <span class = "big_edit_icon">
+                                                        </span>
+                                                    </div>
+                                                    <textarea id="group_mission_input" class="group_textarea" maxlength="240" placeholder="Give your group a 240-character purpose that describes what it will be used for." style="display:none"></textarea>
                                                 </div>
-                                            <?php } ?>
+                                           <?php } ?>
                                         <?php } ?>                                        
                                     </div>    
                                 </div>

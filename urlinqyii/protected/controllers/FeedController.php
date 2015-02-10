@@ -179,6 +179,8 @@ class FeedController extends Controller
                         $replies[$j]['down_vote'] = intval($reply1['down_vote']);
 
                         $replies[$j]['update_timestamp'] = strtotime($reply1['update_timestamp']);
+                        //$replies[$j]['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s',strtotime($reply1['update_timestamp']." EST")));
+
 
                         $replies[$j]['user_info'] = self::getUserInfo($reply1['user_id'],"reply");
                         //                    echo "***".$j." ".$reply1['user_id']." ".self::$cur_user_id."***";
@@ -449,6 +451,7 @@ class FeedController extends Controller
 
             $posts[$i]['last_activity'] = strtotime($post['last_activity']);
             $posts[$i]['update_timestamp'] = strtotime($post['created_at']);
+            //$posts[$i]['update_timestamp'] = strtotime(gmdate('Y-m-d H:i:s',strtotime($post['created_at']." EST")));
         }
 //        self::getReplies($posts);
         return $posts;

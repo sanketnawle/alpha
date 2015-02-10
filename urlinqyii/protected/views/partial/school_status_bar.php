@@ -50,7 +50,7 @@
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">School</span></span></div></a>
+                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $origin->school_name;?></span></span></div></a>
                         <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Discussion</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
                         <div id = "notes_form_content" class = "post_type_header active post_type_notes"><span>Notes/Files</span></div>                 
@@ -128,6 +128,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
 
                         <div style = "-webkit-user-select: none;" class = "post_btn fresh_green_button" id = "post_btn">
@@ -158,7 +165,7 @@
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
 
 
 

@@ -108,7 +108,7 @@
 
 </head>
 
-    <body class = "body_group">
+    <body class = "body_group body_class">
 
 
 
@@ -149,12 +149,15 @@
 
 
             <div id="cover_photo" class="section header banner_image" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                <div class = "blur_section_overflow_container">
+                    <div class = "blur_section" style="background-size:cover; background-image:url('<?php echo Yii::app()->getBaseUrl(true) . $class->coverFile->file_url ?>');">
+                    </div>
+                </div>
                 <div class = "group_name">
 
                     <?php if($class->professor){ ?>
                         <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . $class->professor->pictureFile->file_url; ?>');"></div><div class = "professor_name">Professor <?php echo $class->professor->firstname; ?> <?php echo $class->professor->lastname; ?></div></div>
                     <?php }else{ ?>
-                        <div class = "center_admin"><div class = "professor_image" style="background-image: url('<?php echo Yii::app()->getBaseUrl(true) . '/assets/avatars/3.png' ?>');"></div><div class = "professor_name">Unknown Professor</div></div>
                     <?php } ?>
                     <div class = "center_text"><p id = "group_name"><span id = "name_title"><?php echo $class->class_name . ' (' . $class->course->course_tag . ') '; ?></span><span class = "class_title_info"><?php echo $class->component; ?><br><?php echo $class->section_id; ?></span></p></div>
                 </div>
@@ -165,18 +168,20 @@
                         <span><?php echo $class->location; ?></span>
 
                         <br>
+                        <?php if($class->class_datetime) { ?>
                         <em class ="small_icon_time"></em>
                         <span><?php echo $class->class_datetime; ?></span>
+                        <?php } else { }?>
                     </div>
                     <?php } else { }?>
-
-                    <?php if($is_admin){ ?>
-                    <div class = "group_info_block" id = "class_schedule">
-                        <div class="upload_cover_photo_button">Upload cover photo</div>
-                    </div>
-                    <?php } ?>
                     
                 </div>
+
+                <?php if($is_admin){ ?>
+                <div class = "upload_cover_photo_button group_info_block_new upload_cover_container">
+                    <div class="upload_cover_photo_text">Change cover</div>
+                </div>
+                <?php } ?>                
 
 
             </div>
@@ -296,11 +301,11 @@
             <div id = "feed_column" class = "feed_column_group">
                 <div id = "stream_holder" class = "stream_holder_home">
                     <div id = "fbar_wrapper" class = "fbar_home">
-                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id, 'origin'=>$class)); ?>
+                        <?php echo $this->renderPartial('/partial/class_status_bar',array('user'=>$user, 'origin_type'=>'class','origin_id'=>$class->class_id, 'origin'=>$class,'is_admin'=>$is_admin)); ?>
                     </div>
 
                     <div id = "feed_wrapper" class = "feed_wrapper_home">
-                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id)); ?>
+                        <?php echo $this->renderPartial('/partial/feed',array('user'=>$user, 'feed_url'=>'/class/' . $class->class_id . '/feed', 'origin_type'=>'class','origin_id'=>$class->class_id,'is_admin'=>$is_admin)); ?>
                     </div>
 
 
@@ -792,9 +797,9 @@
                                     <span>Done</span>
                                 </div>
                             </div>
-                            <div class = "add_people_button">
+                            <!--<div class = "add_people_button">
                                 Add Members
-                            </div>
+                            </div>-->
 
                         <?php } ?>
                         <div class="fade_input_small small_search">
@@ -822,10 +827,10 @@
                                 <span class = "title">Professor</span>
                                 <div class = "user_main_info">
                                     <a class = "name profile_link" data-user_id="<?php echo $professor->user_id; ?>"><?php echo $professor->full_name(); ?></a>
-                                    <span class = "office_hours in_office">
+                                    <!--<span class = "office_hours in_office">
                                         <em></em>
                                         <span>In office</span>
-                                    </span>
+                                    </span>-->
                                 </div>
                                 <div class = "user_more_info">
                                     <span class = "label">Department <br> </span><a href="<?php echo Yii::app()->getBaseUrl(true) . '/department/' . $professor->department->department_id; ?>" class = "data department_link"><?php echo $professor->department->department_name; ?></a>

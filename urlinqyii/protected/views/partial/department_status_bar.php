@@ -70,7 +70,7 @@
             <form id = "fbar_form">
                 <div class = "form_wrapper">
                     <header id = "fbar_header" class = "fbar_contents_fix">
-                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience">Department Name</span></span></div></a>
+                        <a class = "audience_default"><div id = "audience_select"><span>To <span class = "selected_audience"><?php echo $origin->department_name;?></span></span></div></a>
                         <div id = "discussion_form_content" class = "post_type_header active post_type_discussion"><span>Post</span></div>  
                         <div id = "event_form_content" class = "post_type_header active post_type_events"><span>Event</span></div> 
                         <div id = "opportunity_form_content" class = "post_type_header active post_type_opportunity"><span>Opportunity - Job/Research/Project</span></div>                 
@@ -88,7 +88,7 @@
 
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">From your computer</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
                             <div class = "upload_half half_2">
@@ -118,13 +118,13 @@
                         <div class = "submission_inputs_wrap opportunity_input_hidden">
                             <div class = "upload_half half_1">
                                 <div><p class = "upload_hint">Upload Application</p></div>
-                                <div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+                                <div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p></div>-->
                             </div>
 
-                            <div class = "upload_half half_2">
+                            <!--<div class = "upload_half half_2">
                                 <div><p class = "upload_hint">Submission Link/Email</p></div>
                                 <div><input placeholder = "Web or email address" class = "fbar_date_time submission_input"></div>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -198,6 +198,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap event_form_hide_content opportunity_form_hide_content'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
                         <div style = "display:none" class = "opportunity_form_content opportunity_more_options">More options</div>
 
@@ -223,7 +230,7 @@
 
 
 
-<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id)); ?>
+<?php echo $this->renderPartial('/partial/feed_templates',array('origin_type'=>$origin_type, 'user_id'=>$user->user_id,'is_admin'=>false)); ?>
 
 
 

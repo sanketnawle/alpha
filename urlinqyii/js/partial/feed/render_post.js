@@ -79,7 +79,13 @@ function render_post(single_post, prepend){
         );
     }
     if(single_post['post_type'] === "discuss" || single_post['post_type'] === "discussion"){
-        var source   = $("#post_template").html();
+        var source="";
+        if(globals.profile_open) {
+            source = $('#profile_wrapper').find("#post_template").html();
+
+        }else{
+            source = $("#post_template").html();
+        }
         var template = Handlebars.compile(source);
         if(globals.profile_open){
 
@@ -103,7 +109,13 @@ function render_post(single_post, prepend){
     }
     else if(single_post['post_type'] === "notes" || single_post['post_type'] === "files") {
         console.log('note');
-        var source   = $("#post_note_template").html();
+        var source="";
+        if(globals.profile_open) {
+            source = $('#profile_wrapper').find("#post_note_template").html();
+        }else{
+            source = $("#post_note_template").html();
+        }
+        //var source   = $("#post_note_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
 
@@ -126,7 +138,13 @@ function render_post(single_post, prepend){
     }
     else if(single_post['post_type'] === "question" || single_post['post_type'] === "multiple_choice" || single_post['post_type'] === "true_false") {
         console.log("question");
-        var source   = $("#post_question_template").html();
+        var source="";
+        if(globals.profile_open) {
+            source = $('#profile_wrapper').find("#post_question_template").html();
+        }else{
+            source = $("#post_question_template").html();
+        }
+        //var source   = $("#post_question_template").html();
         var template = Handlebars.compile(source);
         if(globals.profile_open){
 

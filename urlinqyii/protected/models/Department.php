@@ -70,6 +70,8 @@ class Department extends CActiveRecord
 
 
 			'users' => array(self::HAS_MANY, 'User', 'department_id'),
+
+            'followers' => array(self::MANY_MANY, 'User', 'department_follow(department_id,user_id)'),
 		);
 	}
 
