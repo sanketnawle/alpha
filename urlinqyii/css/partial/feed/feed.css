@@ -716,6 +716,15 @@ margin-bottom: 3px;
 margin-left: -12px;
 }
 
+.post_functions.event_functions{
+    float:right;
+}
+.post_functions.event_functions .post_functions_box{
+    bottom: 35px;
+    right: 14px;
+    top: auto;
+}
+
 .post_tools .post_functions{
 display: inline-block;
 float: right;

@@ -335,14 +335,20 @@ function ready(globals){
         var $delete_button = $(this);
 
 
-
         var $post = $delete_button.closest('.post');
 
         var post_id = $post.attr('data-post_id');
 
+        var event_id=null;
+        if($post.is('[data-event_id]')){
+            event_id = $post.attr('data-event_id');
+        }
 
         var post_data = {'post_id': post_id};
 
+        if(event_id !=null){
+            post_data.event_id = event_id;
+        }
 
         $.post(
             globals.base_url + '/post/delete',
