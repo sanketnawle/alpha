@@ -92,7 +92,7 @@
 
 							<div class = "upload_half half_1">
 								<div><p class = "upload_hint">From your computer</p></div>
-								<div><div class = "upload_button">Choose File</div><p class = "drag_hint">or drag &#x26; drop</p></div>
+								<div><div class = "upload_button">Choose File</div><!--<p class = "drag_hint">or drag &#x26; drop</p>--></div>
 							</div>
 
 <!--							<div class = "upload_half half_2">-->

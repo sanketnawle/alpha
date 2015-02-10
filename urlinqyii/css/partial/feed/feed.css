@@ -3326,9 +3326,11 @@ cursor: pointer;
 }
 
 .seemore_anchor a{
-color:rgb(20, 24, 35);
+color: #2885B6;
 display:block;
 }
+
+.seemore_anchor a:hover{text-decoration: underline;}
 
 .delete-comment:hover {
 background-color: #313234;
