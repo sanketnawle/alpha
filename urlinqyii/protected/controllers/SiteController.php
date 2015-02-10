@@ -1230,6 +1230,16 @@ class SiteController extends Controller
                 $user = User::model()->find("user_email=:user_email",array(":user_email"=>$email));
                 if($user){
 
+                    //Update with the info they just input
+//                    $user->user_email = $email;
+//                    $user->user_type = $user_type;
+                    $user->firstname = $firstname;
+                    $user->lastname = $lastname;
+//                    $user->school_id = null;
+//                    $user->department_id = null;
+                    //$user->status = 'unverified';
+                    $user->save(false);
+
                     Yii::app()->session['user_type'] = 's';
                     Yii::app()->session['onboarding_step'] = 0;
 

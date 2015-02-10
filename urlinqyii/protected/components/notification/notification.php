@@ -10,18 +10,18 @@ function send_notification($notification_type, $actor_id, $user_id, $origin_id, 
 
     $notification->save(false);
 
-try {
+    try {
 
 
-    include_once 'iOSPushNotifications.php';
-    $notification_to_send = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
-    $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
-    $message = get_notification_text($notification_to_send, $user);
-    notifyAlliOSDevicesForUserID($user_id, $message);
+        include_once 'iOSPushNotifications.php';
+        $notification_to_send = Notification::model()->find('notification_id=:id', array(':id'=>$notification->notification_id));
+        $user = User::model()->find('user_id=:id', array(':id'=>$user_id));
+        $message = get_notification_text($notification_to_send, $user);
+        notifyAlliOSDevicesForUserID($user_id, $message);
 
-} catch (Exception $e) {
+    } catch (Exception $e) {
 
-}
+    }
 }
 
 function get_notification_text($noti, $user) {

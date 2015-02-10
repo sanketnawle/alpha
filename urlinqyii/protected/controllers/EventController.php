@@ -124,6 +124,17 @@ class EventController extends Controller
                 //reassign the name to make it easier to get in the handlebars
                 $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
             }
+
+            //Count is always atleast one since a user
+            //is required to create an event
+            $events[$i]['attendance_count'] = 1;
+
+
+            $event_users = EventUser::model()->findAllBySql('SELECT * FROM `event_user` WHERE event_id = ' . $events[$i]['event_id']);
+            $count = count($event_users);
+
+            $events[$i]['attendance_count'] += $count;
+
         }
 
         return $events;
