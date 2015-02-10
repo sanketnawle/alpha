@@ -862,6 +862,7 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
     font-weight: 600;
     /* font-family: Avenir; */
     color: #222;
+    display: inline-block;
 }
 
 #todays_events{
