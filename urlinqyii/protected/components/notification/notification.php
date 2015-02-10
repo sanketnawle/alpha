@@ -95,7 +95,7 @@ function get_notifications_data($user, $notifications){
             }
 
 
-            //$notification['actor'] = $actor;
+//            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
@@ -208,7 +208,7 @@ function get_notifications_data($user, $notifications){
 
                 if($post->origin_type == 'class'){
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = model_to_array($class);
+                    $notification['origin']['post_origin'] = $model_to_array($class);
                     $notification['origin']['post_origin']['name'] = $class->class_name;
                 }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
