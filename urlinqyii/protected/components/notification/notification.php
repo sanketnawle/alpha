@@ -28,7 +28,7 @@ function array_for_notification_model($notification) {
 
 function get_notification_text($noti, $user) {
 
-    $notification = get_notifications_data($user, array($noti))[0];
+    $notification = get_notifications_data($user, array($noti))[];
     $origin = $notification['origin'];
     $type = $noti['type'];
     $actor = $notification['actor'];
@@ -95,7 +95,7 @@ function get_notifications_data($user, $notifications){
             }
 
 
-//            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+            $notification['actor'] = model_to_array($array);
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
