@@ -166,8 +166,12 @@
                 <div id="cancel_edit_button"></div>
             </div>
             <div id="name_info_wrapper">
-                <div id="name_info">{{#if professor}}Professor {{firstname}} {{lastname}}
-                    {{else}} {{firstname}} {{lastname}} {{year_truncated}}{{/if}}</div>
+                <div id="name_info">
+                    {{#if professor}}Professor {{firstname}} {{lastname}}
+                    {{else}} {{firstname}} {{lastname}} 
+                         {{#if year_truncated}}'{{year_truncated}}
+                         {{/if}}
+                    {{/if}}</div>
                 {{#if professor}}
                     {{#if office_hours}}
                         <div id="office_hours_info"><span class = "office_hours_label">Office Hours:</span> {{office_hours}}</div>

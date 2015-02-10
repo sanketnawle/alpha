@@ -743,7 +743,7 @@
                                         }                                            
                                   ?>">
                       </div>
-                      <div class = "registration-sec-texts">
+                      <div class = "registration-sec-texts signup_password_field">
                         <input type = "password" name = "password" id = "password" placeholder = "Password">
                         <?php 
                            //session_destroy();
