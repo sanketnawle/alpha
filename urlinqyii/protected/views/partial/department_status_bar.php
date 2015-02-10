@@ -198,6 +198,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="post_anon" class='check_wrap event_form_hide_content opportunity_form_hide_content'>
+                            <input type='checkbox' id='flat_0' class='flat7c'/>
+                            <label for='flat7' class='flat7b'>
+                                <span class='move'></span>
+                            </label>
+                            <span class = 'comment_anon_text'>Post Anonymously</span>
+                        </div>
                         <div style = "display:none" class = "event_form_content event_more_options">More options</div>
                         <div style = "display:none" class = "opportunity_form_content opportunity_more_options">More options</div>
 

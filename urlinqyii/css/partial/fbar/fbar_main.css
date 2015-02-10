@@ -747,7 +747,12 @@ em.down_arrow {
     position: relative;
     top: 10px;
 }
-
+#post_anon .comment_anon_text{
+    margin-top:1px;
+}
+#post_anon .flat7b{
+    margin-top:7px;
+}
 #post_anonymously {
     display: inline-block;
 
@@ -772,6 +777,9 @@ div.event_form_hide_content {
 }
 
 #fbar_holder.event div.event_form_hide_content {
+    display: none!important;
+}
+#fbar_holder.opportunity div.opportunity_form_hide_content {
     display: none!important;
 }
 
