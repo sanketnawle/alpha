@@ -736,6 +736,16 @@ class PostController extends Controller
             $this->renderJSON($return_data);
             return;
         }
+        if($post->post_type == "event"){
+            if(!isset($_POST['event_id'])){
+                $return_data = array('success'=>false,'error_id'=>1, 'error_msg'=>'all data not set');
+                $this->renderJSON($return_data);
+                return;
+            }else{
+                $event = Event::model()->find('event_id=:eid',array(':eid'=>$_POST['event_id']));
+            }
+
+        }
 
         //Make sure this user created this post
         if($post->user_id != $user->user_id){
@@ -762,6 +772,15 @@ class PostController extends Controller
 
         //If all goes well, delete the post
         if($post->delete()){
+            if(isset($event)){
+                if(!$event->delete()){
+                    $return_data = array('success'=>false,'error_id'=>5, 'error_msg'=>'Error deleting event');
+                    $this->renderJSON($return_data);
+                    return;
+                }
+            }
+
+
             $return_data = array('success'=>true);
             $this->renderJSON($return_data);
             return;
