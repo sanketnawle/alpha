@@ -95,7 +95,7 @@ function get_notifications_data($user, $notifications){
             }
 
 
-//            $notification['actor'] = get_model_associations($actor,array('department'=>array(),'school'=>array('university'),'groups'=>array(),'classes'=>array()));
+            $notification['actor'] = model_to_array($actor);
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
