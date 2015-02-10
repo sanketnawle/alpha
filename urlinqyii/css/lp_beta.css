@@ -618,6 +618,10 @@ div.registration-form form.register{
 
 }
 
+.signup_password_field{
+  margin-top:11px!important;
+}
+
 #countdown{
 margin-left: 86px;
 margin-top: 31px;
