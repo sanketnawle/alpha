@@ -95,7 +95,7 @@ function get_notifications_data($user, $notifications){
             }
 
 
-            $notification['actor'] = $actor;
+            //$notification['actor'] = $actor;
 
 
             $notification['actor']['pictureFile'] = $actor->pictureFile;
