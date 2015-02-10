@@ -35,27 +35,27 @@ function get_notification_text($noti, $user) {
     $notification_text = '';
 
         if ($type == 'follow') {
-            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " is now following you.";
+            $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " is now following you.";
 
         } else if ($type == 'like') {
-            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " liked your post: " . $origin['text'];
+            $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " liked your post: " . $origin['text'];
 
         } else if ($type == 'reply') {
-            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " replied to your post: " . $origin['reply_msg'];
+            $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " replied to your post: " . $origin['reply_msg'];
         } else if ($type == 'post') {
-            $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
+            $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " posted " . $origin['post_origin'] . " in " . $origin['post_origin']['name'] . ": " . $origin['text'];
         } else if ($type == 'invite') {
 
             $origin_type = $noti->origin_type;
 
             if ($origin_type == 'event') {
-                $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " invited you to the event " . $origin['title'];
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " invited you to the event " . $origin['title'];
             } else if ($origin_type == 'class') {
-                $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " invited you to the class " . $origin['class_name'];
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " invited you to the class " . $origin['class_name'];
             } else if ($origin_type == 'club') {
-                $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " invited you to the club " . $origin['group_name'];
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " invited you to the club " . $origin['group_name'];
             } else if ($origin_type == 'group') {
-                $notification_text = $actor['firstname'] . " " . $actor['firstname'] . " invited you to the group " . $origin['group_name'];
+                $notification_text = $actor['firstname'] . " " . $actor['lastname'] . " invited you to the group " . $origin['group_name'];
             } else {
                 $notification_text = "Notification not supported yet.";
             }
