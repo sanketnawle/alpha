@@ -128,6 +128,9 @@
                         <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}">
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
+                                {{#if future}}
+                                    <div class="event_date_time date">{{start_date}}</div>
+                                {{/if}}
                                 <div class='event_date_time'>{{start_time}}</div>
                             </div>
                             <div class='event_checkbox_holder'>

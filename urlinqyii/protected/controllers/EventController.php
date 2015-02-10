@@ -124,6 +124,17 @@ class EventController extends Controller
                 //reassign the name to make it easier to get in the handlebars
                 $events[$i]['origin']['name'] = $events[$i]['origin']['group_name'];
             }
+
+            //Count is always atleast one since a user
+            //is required to create an event
+            $events[$i]['attendance_count'] = 1;
+
+
+            $event_users = EventUser::model()->findAllBySql('SELECT * FROM `event_user` WHERE event_id = ' . $events[$i]['event_id']);
+            $count = count($event_users);
+
+            $events[$i]['attendance_count'] += $count;
+
         }
 
         return $events;
@@ -163,7 +174,7 @@ class EventController extends Controller
 
 
 
-        $data = array('success'=>true,'events'=>array_merge($events,$events_attending));
+        $data = array('success'=>true,'events'=>$this->add_event_data(array_merge($events,$events_attending), $user));
 
         $this->renderJSON($data);
         return;
@@ -409,7 +420,7 @@ class EventController extends Controller
                 $events = $this->add_event_data(array_merge($events,$events_attending), $user);
 
             }else{
-                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+                $events = $this->add_event_data($this->models_to_array(Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0))), $user);
             }
 
 
@@ -728,7 +739,7 @@ class EventController extends Controller
                 $event = $this->model_to_array($event);
                 $event['color'] = $this->get_user_event_color($user,$event);
 
-                $data = array('success'=>true,'event'=>$event);
+                $data = array('success'=>true,'event'=>$this->add_event_data(array($event), $user)[0]);
                 $this->renderJSON($data);
                 return;
             }else{
@@ -827,7 +838,7 @@ class EventController extends Controller
                 $event['color'] = $this->get_user_event_color($user,$event);
 
 
-                $data = array('success'=>true,'event'=>$event);
+                $data = array('success'=>true,'event'=>$this->add_event_data(array($event), $user)[0]);
                 $this->renderJSON($data);
                 return;
             }else{

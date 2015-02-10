@@ -689,7 +689,7 @@ class UserController extends Controller
 
 
 
-            $user_data = $this->get_model_associations($user,array('classes','clubs'));
+            $user_data = $this->get_model_associations($user,array('classes','clubs','groups'));
 
 
 
@@ -701,6 +701,18 @@ class UserController extends Controller
                 $color = Color::model()->find('color_id=:id',array(':id'=>$class_user->color_id));
 
                 $user_data['classes'][$i]['color'] = array('hex'=>$color->hex);
+            }
+
+
+            for($i = 0;$i < count($user_data['clubs']);++$i){
+                $user_data['clubs'][$i] = $this->model_to_array($user_data['clubs'][$i]);
+                $user_data['clubs'][$i]['color'] = array('hex'=>'#FABBB3');
+
+                $club_user = GroupUser::model()->find('user_id=:user_id and group_id=:group_id',array(':user_id'=>$user->user_id,':group_id'=>$user_data['clubs'][$i]['group_id']));
+                $color = Color::model()->find('color_id=:id',array(':id'=>$club_user->color_id));
+
+                $user_data['clubs'][$i]['color'] = array('hex'=>$color->hex);
+
             }
 
 
