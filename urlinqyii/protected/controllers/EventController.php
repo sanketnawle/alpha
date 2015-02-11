@@ -236,7 +236,7 @@ class EventController extends Controller
         $event_type = "Syllabus";
         $origin_type = "class";
 
-        $events = Event::model()->find('event_type=Syllabus and origin_type=class origin_id=:origin_id', array(':origin_id'=>$class_id));
+        $events = Event::model()->find('event_type=Syllabus and origin_type=class and origin_id=:origin_id', array(':origin_id'=>$class_id));
 
         $data = array('success'=>true, 'events'=>$events);
         $this->renderJSON($data);
