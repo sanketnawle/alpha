@@ -410,7 +410,7 @@ border-image: none;
     
     
 
-    /*top: -10px;*/
+    top: 0px;
 
     position: relative;
 
@@ -443,10 +443,11 @@ body.body_group input.event_title{
 .event{
     display: block;
     position: relative;
-    height: 34px;
+    height: auto;
 
-    margin-bottom: 4px;
-    padding-bottom: 8px;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
 }
 
 #planner_header_holder {
@@ -600,10 +601,9 @@ body.body_group input.event_title{
 
 .event_data_holder {
     display: inline-block;
-    float: left;
     width: 80%;
     margin-top: 3px;
-    margin-left: 8px;
+    margin-left: 10px;
 
     font-size: 12px;
     font-weight: 600;
@@ -755,7 +755,8 @@ label.planner_checkbox_label:after{
     pointer-events: none;
     z-index: 99;
     right: 30px;
-    margin-top: 1px;
+    margin-top: -10px;
+    top: 50%;
 }
 .hint_wedge{
     display: block;
@@ -798,8 +799,9 @@ margin-left: 20px;
 border: 1px solid rgba(184, 184, 184, 0.61);
 box-shadow: inset 0px 0px 2px 0px rgba(205, 205, 205, 0.12);
 background: white;
-margin-top: 3px;
+margin-top: -8px;
 margin-left: 7px;
+top: 50%;
 }
 
 .event_checkbox_input{
@@ -832,20 +834,21 @@ margin-left: 7px;
 }
 
 /*If the event is completed, strike out its name*/
-.event.complete div.event_name {
+.event.complete span.event_name {
     text-decoration: line-through;
     color:#999!important;
 }
 
 
 .event_name {
-    font-size: 13.5px;
+    font-size: 13px;
 
-    color: #222;
+    color: #121314;
     text-transform: capitalize;
     padding-bottom: 2px;
     -moz-osx-font-smoothing: grayscale; 
     -webkit-font-smoothing: antialiased;
+    font-weight: 600;
 }
 /* Set the background colors for the different types of events */
 
@@ -866,9 +869,24 @@ margin-left: 7px;
     margin-top: -2px;
 }
 
-#past_events div.event div.event_name{
+#past_events div.event span.event_name{
     color:rgb(211, 11, 11);
     margin-top: 4px;
+}
+
+span.event_origin{
+
+}
+
+div.event:hover span.event_origin > a{
+    
+}
+
+span.event_origin > a{
+    font-family: Avenir;
+    
+    font-weight: 400;
+    color: #777;
 }
 
 #past_events div.event div.event_date_time{
@@ -879,7 +897,7 @@ div.event.complete{
     background: #F5F5F5!important;
 }
 
-div.event.complete div.event_name, div.event.complete div.event_date_time{
+div.event.complete span.event_name, div.event.complete div.event_date_time{
     color:#999!important;
 }
 
@@ -894,11 +912,11 @@ div.event.complete div.event_name, div.event.complete div.event_date_time{
 }
 
 .event_date_time{
-    font-size: 10.5px;
-    font-weight: 600;
-    /* font-family: Avenir; */
-    color: #222;
+    font-size: 10.4px;
+    font-weight: 400;
+    font-family: Avenir;
     display: inline-block;
+    color: #525557;
 }
 
 #todays_events{
@@ -1070,9 +1088,9 @@ opacity:1;
     display:none;
 }
 
-.slimScrollDiv {
+.planner_container .slimScrollDiv {
     width:100% !important;
-    top: 0px;
+    top: -8px;
 }
 
 .slimScrollBar {

@@ -127,14 +127,19 @@
 
                         <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}" data-color_hex="{{color.hex}}">
                             <div class='event_data_holder'>
-                                <div class='event_name'>{{title}}</div>
+                                
                                 {{#ifCond origin_type '!=' 'user'}}
-                                    <div class = "event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
+                                    <span class = "event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></span>
                                 {{/ifCond}}
+                                <span class='event_name'>{{title}}</span>
+                                <div class = "planner_event_date">
                                 {{#if future}}
                                     <div class="event_date_time date">{{start_date}}</div>
                                 {{/if}}
-                                <div class='event_date_time'>{{start_time}}</div>
+                                {{#if start_time}}
+                                <div class='event_date_time'>at {{start_time}}</div>
+                                {{/if}}
+                                </div>
                             </div>
                             <div class='event_checkbox_holder'>
 
@@ -217,11 +222,6 @@
                     </div>
 
 
-
-                    <div class='planner_event_header' id='future_events_header' style="display: none;">
-                        <div class="planner_event_header_label">Future</div>
-                        <div class="planner_event_header_date" id="future_date"></div>
-                    </div>
 
                     <div id='future_events'>
 
