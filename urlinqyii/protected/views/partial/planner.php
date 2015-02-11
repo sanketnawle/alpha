@@ -56,15 +56,19 @@
                 <div class="planner_header_panel">
                     <div class="planner_header">
                         <?php
-                            if($origin_type == 'home'){
-                                echo '';
+                            if($origin_type === 'club'){
+                                echo 'Group Planner';
                             }
-                            if($origin_type == 'club'){
-                                echo 'Group';
-                            }else{
-                                echo ucfirst($origin_type);
+                            if($origin_type === 'class'){
+                                echo 'Class Planner';
                             }
-                         ?> Planner
+                            if($origin_type === 'department'){
+                                echo 'Department Planner';
+                            }
+                            else{
+                                echo 'Planner';
+                            }
+                         ?>
                          <div class="entry_field_placeholder" id="add_todo">
                             <span id = "add_todo_text">Add Todo</span>
                             <div class="nav-icon">

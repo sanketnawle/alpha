@@ -874,18 +874,18 @@ top: 50%;
     margin-top: 4px;
 }
 
-span.event_origin{
+div.event_origin{
     font-family: Avenir;
-
+    padding-right:2px;
     line-height: 14px;
 }
 
-div.event:hover span.event_origin > a{
+div.event:hover div.event_origin > a{
     color: #029acf;
     
 }
 
-span.event_origin > a:hover{
+div.event_origin > a:hover{
     text-decoration: underline;
     cursor: pointer;
 }
@@ -1115,6 +1115,10 @@ opacity:1;
     top: -1px;
     font-weight: 800;
     font-family: Avenir;
+}
+
+div.event_origin{
+    display: inline-block;
 }
 
 #event_date {
