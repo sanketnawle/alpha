@@ -132,7 +132,7 @@
                                     <div class = "event_origin"><a href='<?php echo Yii::app()->getBaseUrl(true);?>/{{origin_type}}/{{origin_id}}'>{{origin.name}}</a></div>
                                 {{/ifCond}}
                                 {{#if future}}
-                                    <div class="event_date_time date">{{start_date}}</div>
+                                    <div class="event_date_time date">{{formatted_date_time}}</div>
                                 {{/if}}
                                 <div class='event_date_time'>{{start_time}}</div>
                             </div>

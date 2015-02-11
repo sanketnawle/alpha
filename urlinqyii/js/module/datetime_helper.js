@@ -8,6 +8,10 @@ function date_to_month_string(date_obj){
     return months_short[date_obj.getMonth()];
 }
 
+// Jan 9
+function date_to_month_and_day_string(this_date){
+    return months_short[this_date.getMonth()] + ' ' + this_date.getDate();
+}
 
 
 
