@@ -125,7 +125,7 @@
                     <!--    Add btn to delete event from planner                -->
                     <script id="event_template" type="text/x-handlebars-template">
 
-                        <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}">
+                        <div class='event {{complete}}' data-event_id='{{event_id}}' data-start_date="{{start_date}}" data-start_time="{{start_time}}" data-end_date="{{end_date}}" data-end_time="{{end_time}}" data-color_hex="{{color.hex}}">
                             <div class='event_data_holder'>
                                 <div class='event_name'>{{title}}</div>
                                 {{#ifCond origin_type '!=' 'user'}}
