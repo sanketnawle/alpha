@@ -1,16 +1,16 @@
 <?php
 
-        function notifyAlliOSDevicesForUserID($user_id, $message) {
+        function notifyAlliOSDevicesForUserID($user_id, $message, $origin) {
 
             $sql = "SELECT * FROM ios_notifications WHERE user_id = $user_id;";
             $device_notification_ids = IosNotifications::model()->findAllBySql($sql);
 
             foreach($device_notification_ids as $notification_id) {
-                pushNotify($message, $notification_id->notification_id);
+                pushNotify($message, $notification_id->notification_id, $origin);
             }
         }
          
-        function pushNotify($message, $notification_id) {
+        function pushNotify($message, $notification_id, $origin) {
 
             $deviceToken = $notification_id;
             $passphrase = 'URPNCC@MondayCertificate';
@@ -30,7 +30,7 @@
             $body['aps'] = array(
                 'alert' => $message,
                 'sound' => 'default',
-                'origin_urlinq_ios_push_notification' => "hi ios this is ben"
+                'ios_push_notification_urlinq_origin_ef75a66abbc5de5dc4697d7205e21e535155fdf7' => $origin
                 );
 
             $payload = json_encode($body);

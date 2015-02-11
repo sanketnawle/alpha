@@ -890,7 +890,6 @@ class PostController extends Controller
                     $post->like_count = $post->like_count + 1;
                     $post->save(false);
                     if($post){
-                        include_once "notification/notification.php";
                         if($post->user_id != $user->user_id){
                            send_notification('like',$user->user_id,$post->user_id,$post->post_id,'post');
                         }
