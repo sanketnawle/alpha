@@ -385,7 +385,7 @@ function ready(globals){
         var post_data = {post_id: post_id, reply_text: reply_text, reply_user_id: reply_user_id, anonymous: anonymous};
         if(findUrlInPost(post_data['reply_text'])) {
             var url = findUrlInPost(post_data['reply_text']);
-            post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+            post_data['reply_text']=post_data['reply_text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
         }
         var post_url = globals.base_url + '/post/reply';
 

@@ -544,6 +544,7 @@ function show_event(event,event_div_id){
 //    alert("DATETIME TO STRING "+ datetime_to_time_string(local_event_start_time));
 //    alert("START TIME: " + time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time)));
     event['start_time'] = time_string_to_am_pm_string(datetime_to_time_string(local_event_start_time));
+    event['formatted_date_time'] = date_to_month_and_day_string(local_event_start_time);
     if(event_div_id=="#future_events"){
         event['future'] = true;
     }else{
@@ -870,7 +871,7 @@ $(document).on('click','#create_todo_form',function(e){
 $(window).load(function(){
 
         $('#event_list').slimScroll({
-            height: '214px'
+            height: '340px'
         });
 
 

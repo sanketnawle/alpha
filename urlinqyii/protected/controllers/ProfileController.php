@@ -1185,9 +1185,9 @@ class ProfileController extends Controller
         $data['num_followers'] = sizeof($user->usersFollowing);
 
 
-        if($this->is_urlinq_admin($user)){
+        /*if($this->is_urlinq_admin($this->get_current_user())){
             $data['own_profile'] = true;
-        }
+        }*/
 
 
         $this->renderJSON($data);

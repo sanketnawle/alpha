@@ -881,6 +881,7 @@ div.professor_image,div.admin_image{
     display: inline-block;
     width: 33px;
     height: 33px;
+    cursor: pointer;
     background-size: cover;
     border-radius: 1000px;
 }
@@ -901,7 +902,7 @@ div.admin_image{
 
 div.professor_name{
     display: inline-block;
-    
+    cursor: pointer;
     position: relative;
     top: -10px;
     left: 8px;

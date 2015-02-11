@@ -57,9 +57,9 @@ function render_post(single_post, prepend){
         }
         if(single_post['post_type']==="event" || single_post['post_type']==="opportunity"){
             url = findUrlInPost(single_post['event']['description']);
-            single_post['event']['description']=single_post['event']['description'].replace(url,'<a href="'+url+'">'+url+'</a>');
+            single_post['event']['description']=single_post['event']['description'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
         }
-        single_post['text']=single_post['text'].replace(url,'<a href="'+url+'">'+url+'</a>');
+        single_post['text']=single_post['text'].replace(url,'<a href="'+url+'" target = "_blank" >'+url+'</a>');
 
         single_post.embed_link = url;
 
