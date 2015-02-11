@@ -236,7 +236,7 @@ class EventController extends Controller
         $event_type = "Syllabus";
         $origin_type = "class";
 
-        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event_type = " . $event_type);// . " AND origin_type = " . $origin_type . " AND origin_id = " . $class_id);
+        $events = Event::model()->find('user_id=:id and event_type=Syllabus and origin_type=class origin_id=:origin_id', array(':origin_id'=>$class_id));
 
         $data = array('success'=>true, 'events'=>$events);
         $this->renderJSON($data);
