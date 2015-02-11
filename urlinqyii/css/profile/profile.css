@@ -107,7 +107,7 @@ opacity:1;
 span.white_vertical_line{
     display: inline-block;
     
-    width: 1px;
+    width: 2px;
     height: 27px;
     position: relative;
     background: #fff;
@@ -119,12 +119,19 @@ div#modal_controls.student_modal_controls_professor{
     background-color: #1CC782;
 
     border-bottom: 1px solid #08AD6A;
+    background-image: -ms-linear-gradient(#1DD38A, #0EB873);
+    background-image: -webkit-linear-gradient(#1DD38A, #0EB873);
+    background-image: linear-gradient(#1DD38A, #0EB873);
+    background-image: -moz-linear-gradient(#1DD38A, #0EB873);
 }
 
 div#modal_controls.student_modal_controls_student{
     background-color: #1da7d2;
 
+    background-image: -webkit-linear-gradient(#029acf, #0888B0);
     border-bottom: 1px solid #057FA5;
+    background-image: linear-gradient(#029acf, #0888B0);
+    background-image: -moz-linear-gradient(#029acf, #0888B0);
 }
 
 .controls{
