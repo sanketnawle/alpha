@@ -1276,8 +1276,9 @@ display: inline-block;
 .reply_functions {
 display: none;
 clear: both;
-overflow: auto;
+overflow: hidden;
 margin-top: 0px;
+height:32px;
 margin-bottom: 6px;
 }
 
