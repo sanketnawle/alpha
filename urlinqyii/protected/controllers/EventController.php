@@ -211,6 +211,37 @@ class EventController extends Controller
 
     }
 
+    public function actionGetClassSyllabus() {
+        if (!isset($_GET['class_id'])) {
+            $data = array('success'=>false, 'error_id'=>1, 'error_msg'=>'all data is not set');
+            $this->renderJSON($data);
+            return;
+        }
+        $user = $this->get_current_user($_GET);
+        if (!$user) {
+            $data = array('success'=>false, 'error_id'=>2, 'error_msg'=>'not a valid user');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class = ClassModel::model()->find('class_id=:id', array(':id'=>$_GET['class_id']));
+
+        if (!$class) {
+            $data = array('success'=>false, 'error_id'=>3, 'error_msg'=>'not a valid class');
+            $this->renderJSON($data);
+            return;
+        }
+
+        $class_id = $_GET['class_id'];
+        $event_type = "Syllabus";
+        $origin_type = "class";
+
+        $events = Event::model()->findAllBySql("SELECT * FROM `event` WHERE event_type='Syllabus' AND origin_type = 'class' AND origin_id = $class_id");
+        
+        $data = array('success'=>true, 'events'=>$events);
+        $this->renderJSON($data);
+        return;
+    }
 
     public function actionSearchEventsTitle() {
         if (!isset($_GET['q'])) {
@@ -235,6 +266,9 @@ class EventController extends Controller
         $results = $this->add_event_data($this->models_to_array($events), $user);
 
         $data = array('success'=>true, 'results'=>$results);
+
+        $this->renderJSON($data);
+        return;
 
     }
 
@@ -388,8 +422,8 @@ class EventController extends Controller
             $datetime = new DateTime($date);
             $datetime->modify('-1 day');
             $start_date= $datetime->format('Y-m-d');
-            $datetime->modify('+4 day');
-            $end_date= $datetime->format('Y-m-d');
+            //$datetime->modify('+4 day');
+            //$end_date= $datetime->format('Y-m-d');
 
 
 
@@ -398,18 +432,20 @@ class EventController extends Controller
             if($origin_type != 'user'){
 
                 //Get the events that this user is an event_user of
-                $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.end_date >= '" . $start_date . "' AND event.end_date <= '" . $end_date . "' AND event.origin_type = '" . $origin_type . "' AND event.origin_id = " . $origin_id)->queryAll();;
+                $events_attending = Yii::app()->db->createCommand("SELECT * FROM `event` JOIN `event_user` ON (event.event_id = event_user.event_id) WHERE event_user.user_id = " . $user->user_id . " AND event.end_date >= '" . $start_date . "' AND event.origin_type = '" . $origin_type . "' AND event.origin_id = " . $origin_id)->queryAll();
 
                 //Get the events that this
                 //$events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete and origin_type=:origin_type and origin_id=:origin_id',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0, ':origin_type'=>$origin_type, ':origin_id'=>$origin_id));
 
 
-                $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND end_date >= '" . $start_date . "' AND end_date <= '" . $end_date . "' AND origin_type = '" . $origin_type . "' AND origin_id = " . $origin_id)->queryAll();
-
-                $events = $this->add_event_data(array_merge($events,$events_attending), $user);
+                $events = Yii::app()->db->createCommand("SELECT * FROM `event` WHERE event.user_id = " . $user->user_id . " AND end_date >= '" . $start_date . "' AND origin_type = '" . $origin_type . "' AND origin_id = " . $origin_id)->queryAll();
+                $events = array_slice(array_merge($events,$events_attending),0,8);
+                $events = $this->add_event_data($events, $user);
 
             }else{
-                $events = Event::model()->findAll('end_date>=:start_date and end_date<=:end_date and user_id=:user_id and complete=:complete',array(':start_date'=>$start_date,':end_date'=>$end_date,':user_id'=>$user->user_id, ':complete'=>0));
+                //$events = Event::model()->findAllBySql('select * from event e where e.end_date>=:start_date and (e.user_id=:user_id or exists (select * from event_user eu where eu.user_id=:user_id and eu.event_id=e.event_id)) and e.complete=:complete limit 8',array(':start_date'=>$start_date,':user_id'=>$user->user_id, ':complete'=>0));
+                $events = Yii::app()->db->createCommand("select * from event e where e.end_date>='" . $start_date . "' and (e.user_id=" . $user->user_id . " or exists (select * from event_user eu where eu.user_id=" . $user->user_id . " and eu.event_id=e.event_id)) and e.complete=0 limit 8")->queryAll();
+                $events = $this->add_event_data($events, $user);
             }
 
 

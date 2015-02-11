@@ -208,7 +208,7 @@ function get_notifications_data($user, $notifications){
 
                 if($post->origin_type == 'class'){
                     $class = ClassModel::model()->find('class_id=:id', array(':id'=>$post->origin_id));
-                    $notification['origin']['post_origin'] = $model_to_array($class);
+                    $notification['origin']['post_origin'] = model_to_array($class);
                     $notification['origin']['post_origin']['name'] = $class->class_name;
                 }else if($post->origin_type == 'group' || $post->origin_type == 'club'){
                     $group = Group::model()->find('group_id=:id', array(':id'=>$post->origin_id));
@@ -332,6 +332,10 @@ function get_notifications_data($user, $notifications){
         }
         //var_dump($row);
         return $row;
+    }
+
+        function is_assoc($array) {
+        return (bool)count(array_filter(array_keys($array), 'is_string'));
     }
 
 function renderJSON($data)
